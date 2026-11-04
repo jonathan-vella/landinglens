@@ -19,6 +19,51 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## LL-26: automated local review session
+
+Owner-directed follow-up on 2026-11-05: the template/download/import/render
+workflow requires too much manual work. [#44](https://github.com/jonathan-vella/landinglens/issues/44)
+adds one local command and browser form. This is a new bounded increment, not a
+reopening of the delivered baseline below.
+
+`review serve EVIDENCE --directory NEW_DIRECTORY` reads saved normalized evidence
+and its explicit catalog/applicability/freshness selections. It opens a private
+loopback session; the assessor supplies a decision, attribution, evidence,
+rationale and expiry. Save runs the existing Python review validation/evaluator,
+writes an immutable local revision and automatically regenerates every report.
+Existing `--manual`/`--exceptions` files are retained unless the user explicitly
+confirms replacement of the selected record. Technical outcomes and exception
+dispositions remain separate. No decision or supporting evidence is invented.
+
+Acceptance follows #44's six criteria: normalized scoped input and no collection;
+explicit bound human decisions; transactional revisions/all formats; random
+loopback capability with Host/origin/body/path guards; executable session/HTTP/
+installed-CLI and browser-save evidence; synchronized user/product documentation.
+Failed saves keep the previous revision and show an explicit error. Current save
+time reevaluates freshness without changing collection/evaluation-source times.
+
+This intentionally permits a temporary local HTTP listener to automate file
+saving, rather than a hosted web application or authentication service. It uses
+the standard library, no database/framework/runtime dependency, no outbound
+requests/assets and no Azure operations. Local users/processes remain trusted;
+the capability URL and identity-bearing output directory must remain private.
+Existing directories are refused; reopening uses the original evidence and
+explicit review files from a saved revision in a new directory. Stop releases the
+listener and retains files.
+
+Implementation evidence: `review_session.py` uses the existing review/evaluation/
+report helpers; `review_page.py` reuses the established theme and has no evaluator.
+Twelve new tests cover session/HTTP/installed-CLI behavior, bringing the installed
+suite to **157 tests: 156 passed, one Windows symlink-privilege skip**. Ruff,
+formatting, mypy, dependency checks and real existing no-restore Bicep passed.
+An actual browser saved an authored fixture exception, automatically refreshed
+the embedded report and retained its technical failure with an active accepted
+exception. A second save without replacement consent was refused visibly, with
+revision 1 unchanged. The page made zero external requests and had no horizontal
+overflow; its Stop control released the listener. These are fixture/browser
+results, not a new Azure collection or an invented approval of a real control.
+The issue records required CI and merged delivery evidence.
+
 ## Next increment: trustworthy automation and usable reviews
 
 Planning baseline: requested on 2026-11-04, before implementation. The
@@ -636,7 +681,7 @@ downstream implementation are recorded above.
 
 - **Python**, packaged as an installable CLI. Raw Terraform parsing is an important requirement, so prove a maintained HCL2 parser and a bounded evaluator before broad implementation. `python-hcl2` is a candidate, not an approved or verified dependency.
 - Working project/command name: `alz-assessor`; verify naming before publishing. No remote repository creation or package publication is authorized.
-- No web application, database, hosted service, deployment engine or APEX runtime dependency.
+- No web application, database, hosted service, deployment engine or APEX runtime dependency in the original release. The later owner-authorized LL-26 follow-up permits only a temporary loopback review form.
 - Use standard-library CLI facilities where sufficient; add only justified parsing, schema, Azure authentication/client and rendering dependencies.
 - Validate licenses, maintenance, supported Python versions, approved feed availability and applicable seven-day package-age requirements before dependency pins or installation. Do not copy APEX version requirements automatically.
 - Choose the new project location before implementation writes. It must remain separate from the current APEX checkout unless the user explicitly changes the delivery decision.

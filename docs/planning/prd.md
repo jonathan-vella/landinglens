@@ -91,7 +91,8 @@ boundaries.
 - Automatically signing in, collecting an entire tenant, or assuming Microsoft
   Graph or billing permissions.
 - Building a web application, hosted service, database or blocking
-  assessment-based CI gate.
+  assessment-based CI gate. The later owner-authorized FR-21 follow-up permits
+  only a temporary loopback form for local review saving.
 - Claiming all Microsoft recommendations are automated or every landing zone is
   compliant.
 
@@ -381,6 +382,33 @@ Reconcile every mandatory issue against merged implementation and actual checks,
 including an explicitly supplied licensed/redacted offline ALZ reference corpus.
 No live Azure proof, deployment, package publication or automatic issue closure
 is implied. LL-22 and a future authorized live pilot are not release dependencies.
+
+### FR-21: One-step local review saving (LL-26)
+
+The owner requested automation of the review workflow on 2026-11-05. A single
+`review serve` invocation opens a loopback-only browser form over saved normalized
+evidence. The assessor supplies the decision, reviewer, rationale, supporting
+evidence and finite validity; Save automatically validates, persists and
+regenerates JSON/Markdown/HTML and minimized HTML through the existing Python
+contracts and evaluator. No manual JSON editing, download/import or render
+sequence is required. Manual evidence and exceptions retain their distinct
+meanings; excepted technical failures are not converted into passes.
+
+Scope/control hashes come from the supplied exact evidence/catalog, not browser
+fields. Minimized/rendered reports and unscoped inputs fail explicitly. Preserve
+supplied review records, require explicit replacement confirmation, detect stale
+browser revisions, retain immutable earlier revisions and expose validation/write
+errors without losing the last saved output. Reevaluate at save time without
+refreshing source evidence timestamps or weakening the chosen freshness policy.
+
+The temporary standard-library loopback listener is the narrow exception to the
+original no-web-application non-goal; no hosted portal, database, authentication
+service, new dependency or Azure access is introduced. Use an ephemeral port,
+random per-session capability, exact Host/origin checks, bounded JSON writes and
+fixed routes. Do not serve raw normalized evidence in the editor or load remote
+assets. Disclose private identities/output paths, stop behavior and the trusted
+local-process boundary. Record HTTP/session/installed-wheel and actual browser
+save/report-refresh acceptance under [#44](https://github.com/jonathan-vella/landinglens/issues/44).
 
 ### Next-increment delivery status
 
