@@ -104,15 +104,18 @@ and advisory/non-blocking behavior remain intact.
 | LL-20 / #19 | [#37](https://github.com/jonathan-vella/landinglens/pull/37) / `66f164c8c745bac0fb55513a08b0f1916775f2d6` |
 | LL-22 / #29, study only | [#38](https://github.com/jonathan-vella/landinglens/pull/38) / `fc0e35c774414cf715aef3a877752df0781c9020` |
 | LL-23 / #27 | [#39](https://github.com/jonathan-vella/landinglens/pull/39) / `c8fe279a317d2e6eec1f6078d37dee4ab8660343` |
+| LL-25 / #28 | [#41](https://github.com/jonathan-vella/landinglens/pull/41) / `fcb58a4a5f3706ad51e6ade69cbecb1e073d7644` |
 
 LL-25 adds the installed licensed-corpus/review/replay/retirement workflow.
 The final local exact-wheel run passed 144 of 145 tests, with one Windows
 symlink-privilege skip; real existing Bicep, static/type/dependency checks passed.
 The current matrix has four automated predicates and all 255 entries. Six
 corpus controllers remain symbolic; no complete AVM/ALZ compatibility or
-live-control verification follows from these results. The reconciliation's
-actual supported CI must pass before merge and closure; #40 remains separately
-tracked for truthful live-validation evidence.
+live-control verification follows from these results. The reconciliation passed
+all eight actual checks and merged; #28 is closed. #40 remains separately tracked:
+its initial live run found an assignment-filter defect, now covered by a
+regression fix pending installed live reverification. Private identities/evidence
+remain outside Git; authorization and ancestor-definition gaps remain explicit.
 
 ## Original baseline work items
 
