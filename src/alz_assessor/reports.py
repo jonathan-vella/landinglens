@@ -5,6 +5,7 @@ import json
 from typing import Any
 
 from .contracts import digest, validate
+from .diagnostics import guidance
 
 
 def report_model(assessment: dict[str, Any], minimize: bool = False) -> dict[str, Any]:
@@ -27,7 +28,15 @@ def report_model(assessment: dict[str, Any], minimize: bool = False) -> dict[str
         for bundle in assessment["evidence"]
     ]
     result = json.loads(json.dumps(result))
+    for entry in result["results"]:
+        for mode in ("planned", "observed"):
+            if entry.get(mode):
+                entry[mode]["guidance"] = guidance(entry[mode]["reason"])
+        if entry.get("comparison_reason"):
+            entry["comparison_guidance"] = guidance(entry["comparison_reason"])
     for bundle in result["evidence"]:
+        for diagnostic in bundle.get("diagnostics") or []:
+            diagnostic["guidance"] = guidance(diagnostic["reason"])
         metadata = bundle.get("metadata") or {}
         bundle["metadata"] = {
             key: metadata[key]
@@ -64,6 +73,8 @@ def report_model(assessment: dict[str, Any], minimize: bool = False) -> dict[str
             for mode in ("planned", "observed"):
                 if entry.get(mode):
                     entry[mode]["evidence_links"] = ["[minimized]"]
+                    for review in entry[mode].get("reviews", []):
+                        review["reviewer"] = None
         for bundle in result["evidence"]:
             bundle["scope"] = None
             bundle["artifact_hashes"] = {
@@ -71,7 +82,11 @@ def report_model(assessment: dict[str, Any], minimize: bool = False) -> dict[str
             }
             bundle["metadata"] = {"minimized": True}
             bundle["diagnostics"] = [
-                {"reason": item.get("reason"), "facet": item.get("facet")}
+                {
+                    "reason": item.get("reason"),
+                    "facet": item.get("facet"),
+                    "guidance": guidance(item["reason"]),
+                }
                 for item in bundle.get("diagnostics") or []
             ]
     return result
@@ -113,6 +128,8 @@ def render(assessment: dict[str, Any], format: str = "json", minimize: bool = Fa
             + str(entry["comparison"])
             + (" (" + entry["comparison_reason"] + ")" if entry.get("comparison_reason") else "")
         )
+        if entry.get("comparison_guidance"):
+            cells.append(json.dumps(entry["comparison_guidance"], sort_keys=True))
         cells.append(
             "guidance/evidence: "
             + json.dumps(
