@@ -115,8 +115,28 @@ def assess(
                     reason = resource["reason"]
                 else:
                     fact = property_at(resource["properties"], rule["property"])
-                    if type(fact) is bool:
-                        outcome = "pass" if fact is rule["expected"] else "fail"
+                    enum = rule.get("operation") == "enum-equals"
+                    sku = property_at(resource["properties"], "sku.tier") if enum else None
+                    if enum and (
+                        not isinstance(sku, str)
+                        or sku
+                        not in {
+                            "Basic",
+                            "Standard",
+                            "Premium",
+                        }
+                    ):
+                        outcome, reason, fact = "unknown", "sku_unresolved_or_wrong_type", None
+                    elif enum and sku not in rule["applicable_skus"]:
+                        outcome, reason, fact = (
+                            "not_applicable",
+                            "explicit_sku_capability_not_applicable",
+                            None,
+                        )
+                    elif (enum and isinstance(fact, str) and fact in {"Alert", "Deny", "Off"}) or (
+                        not enum and type(fact) is bool
+                    ):
+                        outcome = "pass" if fact == rule["expected"] else "fail"
                         reason = (
                             "explicit_property_matches"
                             if outcome == "pass"
@@ -125,6 +145,8 @@ def assess(
                     else:
                         outcome, reason, fact = "unknown", "property_unresolved_or_wrong_type", None
                     links = [resource["source_location"] + "#" + rule["property"]]
+                    if enum:
+                        links.append(resource["source_location"] + "#sku.tier")
             disposition = None
             validity: dict[str, str | None] = {"manual": None, "exceptions": None}
             reviews = []

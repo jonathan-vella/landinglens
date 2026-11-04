@@ -1,0 +1,68 @@
+{
+  "version": "2026-11-04-wave1.1",
+  "sources": [
+    {
+      "id": "firewall-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/firewallpolicies",
+      "sha256": "7a0d072b6e47d5a9fc3492dcb6c7cc810b18efd512f4f82594a07ede6db17be7",
+      "retrieved_at": "2026-11-04T20:28:32.560809+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "2024-05-01 exposes explicit Alert/Deny/Off modes and Basic/Standard/Premium tiers; IDPS effective parent/child mode is the stricter mode.",
+      "reuse": "Microsoft Learn CC-BY-4.0 documentation; metadata and own facts only"
+    },
+    {
+      "id": "firewall-sku",
+      "url": "https://learn.microsoft.com/en-us/azure/firewall/features-by-sku",
+      "sha256": "298dae8cd7844ff2549215b397356dd70ecf13893976ec73f881b427d7433b10",
+      "retrieved_at": "2026-11-04T20:28:32.988261+00:00",
+      "revision": "a280a1aef1e18e06d4ad796d3d745d5f277b2c49",
+      "finding": "Basic threat intelligence cannot deny; Standard/Premium can. IDPS is Premium-only.",
+      "reuse": "Microsoft Learn CC-BY-4.0 documentation; metadata and own facts only"
+    },
+    {
+      "id": "firewall-inheritance",
+      "url": "https://learn.microsoft.com/en-us/azure/firewall-manager/policy-overview",
+      "sha256": "8dbfb62cd0749b21f0c7bf41781fb4bb49cddf12304eafbd111dea9458a38d62",
+      "retrieved_at": "2026-11-04T20:28:33.208437+00:00",
+      "revision": "b7ed1fa051d68f02140c082432c141009de78dca",
+      "finding": "Parent threat intelligence is inherited; child can be stricter. Local flags do not prove attachment, effective inheritance, allowlists or traffic protection.",
+      "reuse": "Microsoft Learn CC-BY-4.0 documentation; metadata and own facts only"
+    },
+    {
+      "id": "firewall-provider",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/firewall_policy.html.markdown",
+      "sha256": "a48b645a81c4b652bdff38e2e2c79b4bd10114c64cdb179f39b493639eb24ecd",
+      "retrieved_at": "2026-11-04T20:28:33.502675+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "AzureRM 4.50.0 explicit sku, threat_intelligence_mode and intrusion_detection.mode map to the reviewed ARM fields. Optional defaults must not be inferred.",
+      "reuse": "MPL-2.0 provider documentation; metadata and own facts only"
+    },
+    {
+      "id": "vault-soft-delete",
+      "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/soft-delete-overview",
+      "sha256": "7ec0424f61d9a07144ad4bf2969e0345bfdd085dc465f25908b50435d8dec6c6",
+      "retrieved_at": "2026-11-04T20:28:33.743884+00:00",
+      "revision": "cc9ac0f545a688e4f2016a1541f565f136e23129",
+      "finding": "G02.03 is compound soft-delete plus purge protection; creation defaults are not evidence of explicit configuration or older-vault state.",
+      "reuse": "Microsoft Learn CC-BY-4.0 documentation; metadata and own facts only"
+    },
+    {
+      "id": "container-soft-delete",
+      "url": "https://learn.microsoft.com/en-us/azure/storage/blobs/soft-delete-container-overview",
+      "sha256": "8f67ac0365d2d58f6b57e55ce51856e5fc25b5bb58c249fd3b50c760fc5ea830",
+      "retrieved_at": "2026-11-04T20:28:33.828876+00:00",
+      "revision": "0e760437c26f5e8693a40ed4344554540070850a",
+      "finding": "G04.02 needs the blobServices/default child configuration and supported account capability, not the parent storage list or blob-level deletion alone.",
+      "reuse": "Microsoft Learn CC-BY-4.0 documentation; metadata and own facts only"
+    },
+    {
+      "id": "resource-locks",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/lock-resources",
+      "sha256": "3b1d70c88e32bfb02fbea206748bc6fc08c298635f02d512d9a0d247b7f41487",
+      "retrieved_at": "2026-11-04T20:28:34.131404+00:00",
+      "revision": "e90dd2cd9106e12ee0b9e1743cc3b29e79422434",
+      "finding": "F01.08 needs explicit critical-resource intent and ancestor lock coverage. Management locks do not protect data-plane content.",
+      "reuse": "Microsoft Learn CC-BY-4.0 documentation; metadata and own facts only"
+    }
+  ]
+}

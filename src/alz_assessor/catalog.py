@@ -23,6 +23,13 @@ def load_catalog(path: str | None = None) -> dict[str, Any]:
             "control_source_manifest_sha256",
         ):
             raise InputError("Packaged control-source provenance hash mismatch")
+        if data.get("wave_source_manifest_sha256"):
+            if hashlib.sha256(
+                root.joinpath("wave-control-sources.json").read_bytes()
+            ).hexdigest() != data["wave_source_manifest_sha256"] or digest(
+                json.loads(root.joinpath("accepted-matrix.json").read_text("utf-8"))
+            ) != data.get("accepted_matrix_sha256"):
+                raise InputError("Packaged first-wave source or accepted-matrix hash mismatch")
     return validate(data, "catalog")
 
 

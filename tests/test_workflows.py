@@ -14,7 +14,7 @@ from alz_assessor.arm import arm_source
 from alz_assessor.catalog import load_catalog, reviewed_refresh
 from alz_assessor.cli import main
 from alz_assessor.comparison import compare
-from alz_assessor.contracts import digest, document, now, read_document, validate
+from alz_assessor.contracts import control_digest, digest, document, now, read_document, validate
 from alz_assessor.engine import assess
 from alz_assessor.plan import plan_source
 from alz_assessor.reports import render
@@ -64,7 +64,7 @@ class WorkflowTests(unittest.TestCase):
                 for row in self.catalog["controls"]
                 if row["automation"] == "automated"
             },
-            {"G04.01", "D07.18"},
+            {"G04.01", "D07.18", "D07.06", "D07.07"},
         )
         for control in self.catalog["controls"]:
             self.assertTrue(control["references"][0]["item_sha256"])
@@ -96,8 +96,10 @@ class WorkflowTests(unittest.TestCase):
             "rationale": "reviewed evidence",
             "evidence": "review://record",
             "outcome": "pass",
+            "reviewer": "test-reviewer",
+            "control_sha256": control_digest(manual_control),
         }
-        active = document("manual", entries=[entry])
+        active = document("manual", schema_version="1.1", entries=[entry])
         report = assess(self.bundle, self.catalog, manual=active)
         result = next(row for row in report["results"] if row["control_id"] == entry["control_id"])
         self.assertEqual(result["observed"]["outcome"], "pass")

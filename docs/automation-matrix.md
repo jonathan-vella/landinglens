@@ -70,9 +70,11 @@ both canonical identities with saved observed evidence in all three formats.
 
 The original two-control release acceptance above is preserved. Under the
 owner's delegated acceptance authority, LL-19 accepts **D07.06 and D07.07 only**
-for subsequent LL-20 promotion after LL-21 collection evidence. Acceptance of
-this matrix is not a claim that the new predicates are already implemented,
-live-verified, or that upstream KQL is safe to execute.
+for LL-20 promotion after LL-21 collection evidence. LL-21 is delivered in
+PR #36. The packaged successor catalog `2026-11-04.2` implements these predicates
+through contract 1.1 and the existing evaluator, with exact reviewed before/after
+control hashes. Acceptance and fixture verification are not live verification,
+nor evidence that upstream KQL is safe to execute.
 
 [`candidate-audit.json`](../references/2026-11-04-wave1/candidate-audit.json)
 classifies every one of the **49** pinned query-bearing GUIDs, records its query
@@ -119,3 +121,23 @@ and violation-only query output are not passing evidence. G02.03 needs a compoun
 vault-state review, G04.02 needs the blob-service child configuration, and F01.08
 needs explicit criticality intent plus ancestor locks; separate reviewed tasks/
 matrices are required before implementing them.
+
+### Promotion and historical compatibility
+
+The package retains the original catalog as `data/catalog-2026-11-04.1.json`
+with its unchanged 1.0 meaning and two predicates; explicit `--catalog FILE`
+can select a supplied historical artifact. `tools/build_catalog.py` reconstructs
+that frozen artifact and refuses a changed historical meaning. The current
+catalog has all 255 entries, four automated controls and 251 human-evidence
+items. Legacy unbound reviews do not assert outcomes under the new 1.1 catalog;
+complete content-bound reviews instead. Different catalog/contract meanings
+cannot produce comparison drift.
+
+`tests/test_matrix.py` explicitly retains the historical cross-mode baseline.
+`tests/test_control_wave.py` verifies successor typed outcomes, explicit SKU
+applicability, missing/stale/partial/error evidence, unsupported mappings,
+canonical identity comparison and installed raw Terraform, ARM, optional plan,
+saved-observed and actual existing no-restore Bicep workflows. All report formats
+retain the same outcomes and narrow local-configuration caveats. Source and
+matrix artifacts are packaged and hash-checked. No live-control outcome is
+claimed from these tests.
