@@ -112,6 +112,16 @@ rejects blank human attestations and malformed catalog/report inputs before
 evaluation/rendering. Acceptance is limited to the reviewed two-control matrix,
 not full ALZ compliance or complete Terraform/ARM interpretation.
 
+Final local verification used an exact Git archive of `24e9c04`, built its wheel
+without dependency changes and installed it with the reviewed development pins
+into a new virtual environment through the approved feed. The imported package
+was confirmed under that environment's `site-packages`, not an editable checkout.
+**97 tests ran: 96 passed, one Windows symlink-privilege skip.** The actual
+existing Bicep compiler exercised both controls and all-format source comparisons
+with restoration disabled. Ruff lint/format, mypy, dependency consistency and
+installed catalog validation passed. Wheel SHA-256:
+`d3a573db14eb6b809fbf318b8ac3d5eba7b56763a439321e07f2feae4b297646`.
+
 ## Prerequisite results: 2026-11-04
 
 The approved standalone location is this `landinglens` repository, separate
