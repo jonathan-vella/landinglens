@@ -1,0 +1,150 @@
+{
+  "sources": [
+    {
+      "id": "resource-graph",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b466b0ffcfd90c19380bf26440570a223a1e2020/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/ResourceGraph/stable/2022-10-01/resourcegraph.json",
+      "revision": "b466b0ffcfd90c19380bf26440570a223a1e2020",
+      "api_version": "2022-10-01",
+      "sha256": "99c6932f31305c878b393a655afab3d1c1149af7ff276ce7c6dd136c0a1f7795",
+      "retrieved_at": "2026-11-04T20:37:01.829911+00:00",
+      "operations": [
+        {
+          "method": "POST",
+          "path": "/providers/Microsoft.ResourceGraph/resources",
+          "operation": "Resources"
+        },
+        {
+          "method": "GET",
+          "path": "/providers/Microsoft.ResourceGraph/operations",
+          "operation": "Operations_List"
+        }
+      ],
+      "schema_keys": [
+        "Column",
+        "ColumnDataType",
+        "Error",
+        "ErrorDetails",
+        "ErrorResponse",
+        "Facet",
+        "FacetError",
+        "FacetRequest",
+        "FacetRequestOptions",
+        "FacetResult",
+        "Operation",
+        "OperationListResult",
+        "QueryRequest",
+        "QueryRequestOptions",
+        "QueryResponse",
+        "Row",
+        "Table"
+      ],
+      "reuse": "MIT; read-operation metadata and own factual notes only"
+    },
+    {
+      "id": "definitions",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b466b0ffcfd90c19380bf26440570a223a1e2020/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json",
+      "revision": "b466b0ffcfd90c19380bf26440570a223a1e2020",
+      "api_version": "2023-04-01",
+      "sha256": "9d707ad996174330367c811461f5f3b2e1c710b63e5b171e804ad058850d9ad6",
+      "retrieved_at": "2026-11-04T20:37:02.273378+00:00",
+      "operations": [
+        {
+          "method": "GET",
+          "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
+          "operation": "PolicyDefinitions_Get"
+        },
+        {
+          "method": "GET",
+          "path": "/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
+          "operation": "PolicyDefinitions_GetBuiltIn"
+        },
+        {
+          "method": "GET",
+          "path": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
+          "operation": "PolicyDefinitions_GetAtManagementGroup"
+        },
+        {
+          "method": "GET",
+          "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions",
+          "operation": "PolicyDefinitions_List"
+        },
+        {
+          "method": "GET",
+          "path": "/providers/Microsoft.Authorization/policyDefinitions",
+          "operation": "PolicyDefinitions_ListBuiltIn"
+        },
+        {
+          "method": "GET",
+          "path": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions",
+          "operation": "PolicyDefinitions_ListByManagementGroup"
+        }
+      ],
+      "schema_keys": [
+        "CloudError",
+        "ParameterDefinitions",
+        "ParameterDefinitionsValue",
+        "PolicyDefinition",
+        "PolicyDefinitionListResult",
+        "PolicyDefinitionProperties"
+      ],
+      "reuse": "MIT; read-operation metadata and own factual notes only"
+    },
+    {
+      "id": "initiatives",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b466b0ffcfd90c19380bf26440570a223a1e2020/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json",
+      "revision": "b466b0ffcfd90c19380bf26440570a223a1e2020",
+      "api_version": "2023-04-01",
+      "sha256": "a75b99bf469062e594abc1468aea4f473c5f070b21311e894c4b1e3a86d89e48",
+      "retrieved_at": "2026-11-04T20:37:02.597279+00:00",
+      "operations": [
+        {
+          "method": "GET",
+          "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
+          "operation": "PolicySetDefinitions_Get"
+        },
+        {
+          "method": "GET",
+          "path": "/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
+          "operation": "PolicySetDefinitions_GetBuiltIn"
+        },
+        {
+          "method": "GET",
+          "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions",
+          "operation": "PolicySetDefinitions_List"
+        },
+        {
+          "method": "GET",
+          "path": "/providers/Microsoft.Authorization/policySetDefinitions",
+          "operation": "PolicySetDefinitions_ListBuiltIn"
+        },
+        {
+          "method": "GET",
+          "path": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}",
+          "operation": "PolicySetDefinitions_GetAtManagementGroup"
+        },
+        {
+          "method": "GET",
+          "path": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions",
+          "operation": "PolicySetDefinitions_ListByManagementGroup"
+        }
+      ],
+      "schema_keys": [
+        "CloudError",
+        "PolicyDefinitionGroup",
+        "PolicyDefinitionReference",
+        "PolicySetDefinition",
+        "PolicySetDefinitionListResult",
+        "PolicySetDefinitionProperties"
+      ],
+      "reuse": "MIT; read-operation metadata and own factual notes only"
+    }
+  ],
+  "review_notes": [
+    "ARG scopes live in the POST subscriptions body; query filters are not scope.",
+    "Only the fixed id/type projection is accepted; no upstream/arbitrary KQL.",
+    "Rows, counts, resultTruncated and skipToken determine page exhaustion, not RBAC completeness; eventual consistency and child gaps remain explicit.",
+    "Definitions are listed at exact scopes; references resolve only inside the boundary or as built-ins, without ancestor-scope read escalation.",
+    "Definition/rule/parameter hashes and associations are configuration, not compliance. No policy rules or deployment actions are executed.",
+    "Pinned PolicyStates 2019-10-01 and exemption 2022-07-01-preview operations remain; management-group exemption lists explicitly use atScope()."
+  ]
+}

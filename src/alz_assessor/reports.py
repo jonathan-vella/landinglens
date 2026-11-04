@@ -52,6 +52,8 @@ def report_model(assessment: dict[str, Any], minimize: bool = False) -> dict[str
                 "run_complete",
                 "inventory_authorization_attested",
                 "policy_warning",
+                "arg_warning",
+                "inventory_transport",
                 "source_binding",
                 "warning",
             )
@@ -60,7 +62,13 @@ def report_model(assessment: dict[str, Any], minimize: bool = False) -> dict[str
         counts = metadata.get("policy_record_counts", {})
         bundle["metadata"]["policy_record_counts"] = {
             key: len(metadata[key]) if isinstance(metadata.get(key), list) else counts[key]
-            for key in ("policy_assignments", "policy_exemptions", "policy_compliance")
+            for key in (
+                "policy_assignments",
+                "policy_exemptions",
+                "policy_compliance",
+                "policy_definitions",
+                "policy_set_definitions",
+            )
             if isinstance(metadata.get(key), list)
             or (isinstance(counts, dict) and type(counts.get(key)) is int)
         }

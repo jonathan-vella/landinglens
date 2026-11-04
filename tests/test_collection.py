@@ -97,6 +97,17 @@ class CollectionTests(unittest.TestCase):
                     }
                 ]
             )
+        if "/policyDefinitions?" in url or "/policySetDefinitions?" in url:
+            return response()
+        if "/policyDefinitions/test?" in url:
+            return Response(
+                200,
+                {
+                    "id": "/providers/Microsoft.Authorization/policyDefinitions/test",
+                    "properties": {"policyRule": {"then": {"effect": "Audit"}}},
+                },
+                {},
+            )
         if "/queryResults?" in url:
             self.assertEqual(method, "POST")
             return response(
@@ -195,7 +206,7 @@ class CollectionTests(unittest.TestCase):
         self.assertEqual(bundle["metadata"]["scopes"], [SCOPE])
         self.assertEqual(
             bundle["metadata"]["relationships"][0]["parent"],
-            "/providers/Microsoft.Management/managementGroups/parent",
+            "/providers/microsoft.management/managementgroups/parent",
         )
 
         def partial(method, url):

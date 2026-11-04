@@ -9,8 +9,10 @@ passes. **This is not Microsoft certification or estate-wide compliance.**
 
 Raw Terraform, Bicep/ARM, optional plan JSON and saved observed evidence share
 [versioned contracts](docs/contracts.md), one evaluator and JSON/Markdown/HTML
-reports. Read-only Azure collection is implemented but has only been verified
-with mocks; **no live tenant collection or deployment was performed**.
+reports. The original release's read-only collector was mock-verified. Later
+bounded access probes are not full collector/control verification; scoped
+extensions and their limitations are documented in [collection.md](docs/collection.md).
+No infrastructure was deployed or remediated.
 
 ## Install and check
 
