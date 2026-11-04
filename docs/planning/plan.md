@@ -363,7 +363,7 @@ merged as `fcb58a4a5f3706ad51e6ade69cbecb1e073d7644` after all eight checks pass
 | LL-22 / #29, optional | AC1: retrieved pinned registry/authentication/README plus metadata-only ARM/policy schema discovery; native/proxy/cache/credential/telemetry distinctions. AC2: future parity contract cases specified. AC3: evidence-backed **not ready** due scope/output/runtime gaps. AC4: no adapter, resource calls, start/install/login/configuration changes. See `collection.md`. Study complete; adapter unimplemented and non-gating. | [#38](https://github.com/jonathan-vella/landinglens/pull/38), `fc0e35c774414cf715aef3a877752df0781c9020` |
 | LL-23 / #27 | AC1: opt-in flat local bundle, exact packaged catalog/rules, normalized property projection, safe invocation/hash bindings and sanitized reviews; default unmapped reviewer pseudonyms and explicit identity disclosure. AC2: installed explicit-time semantic replay checks outcomes/identity/freshness/coverage. AC3: partial remains partial, minimized/unavailable artifacts fail. AC4: fixed paths, schema/size/count/hash/link/conflict checks; privacy/tamper/traversal/hardlink and exact 8-MB/10,000-resource tests. `replay.py`, replay/delivery tests and README. | [#39](https://github.com/jonathan-vella/landinglens/pull/39), `c8fe279a317d2e6eec1f6078d37dee4ab8660343` |
 | LL-24 / #26 | AC1: deterministic unittest invariants for types/unknowns/redaction/bounds/evidence loss, no new dependency. AC2: exact-wheel install/test outside checkout with import/dependency assertions. AC3: compiler exercised/unavailable artifacts, no install fallback. AC4: Windows/Linux Python 3.12/3.13, exact-byte fixtures and static/advisory checks retained. | #34, same merge |
-| LL-25 / #28 | AC1: this actual-issue/merge reconciliation; optional study/live pilot excluded from gate. AC2: installed licensed/redacted ALZ corpus plus existing fixtures with supported/unresolved results below. AC3: `test_delivery.py` chains doctor, reasons, review prepare/validate/import, reports, replay and refresh/retirement; existing suites cover expiry and all accepted cross-mode predicates. AC4: exact installed-wheel/static/dependency checks and actual supported CI/compiler evidence; closure requires this change's green merge. | This reconciliation and `tests/test_delivery.py`; no publication |
+| LL-25 / #28 | AC1: this actual-issue/merge reconciliation; optional study/live pilot excluded from gate. AC2: installed licensed/redacted ALZ corpus plus existing fixtures with supported/unresolved results below. AC3: `test_delivery.py` chains doctor, reasons, review prepare/validate/import, reports, replay and refresh/retirement; existing suites cover expiry and all accepted cross-mode predicates. AC4: exact installed-wheel/static/dependency checks and actual supported CI/compiler evidence; all eight reconciliation checks passed before merge and closure. | [#41](https://github.com/jonathan-vella/landinglens/pull/41), `fcb58a4a5f3706ad51e6ade69cbecb1e073d7644`; no publication |
 
 ### Integrated verification and actual limits
 
@@ -401,9 +401,18 @@ performed. There is no mandatory blocked scope decision or failed first-wave gat
 The subsequent #40 scoped live pilot inventoried 98 resources and generated all
 three report formats plus minimized HTML with the installed wheel. It exposed
 four failing unfiltered management-group assignment reads, prompting an
-`atScope()` regression fix and a required live rerun, not a completeness waiver.
-Initial counts, private-evidence handling and retained authorization/ancestor
-definition gaps are recorded in [collection notes](../collection.md#selected-boundary-live-pilot).
+`atScope()` regression fix in [#42](https://github.com/jonathan-vella/landinglens/pull/42),
+merge `6139ba1f20e2a6d2adca6e6f86e85e8ec1e5490c`. All eight checks passed, as did
+the merged-main matrix. The exact installed fix reran successfully within the
+same guard: 293 HTTP 200s, zero HTTP failures, 98 resources and 1,726 original-time
+PolicyStates records. Five automated result instances were three pass, one fail
+and one capability exclusion, not a whole-estate score or effective runtime proof.
+The minimized report contained no private identity/allowlist values.
+All four supported compiler artifacts from run `41915026223` explicitly record
+`exercised`; the installed local fix again ran 145 tests (144 passed; one Windows
+privilege skip), with static/type/dependency checks passing. Historical failures,
+private-evidence handling and retained authorization/ancestor-definition gaps are
+recorded in [collection notes](../collection.md#selected-boundary-live-pilot).
 
 ## Implemented release baseline: 2026-11-04
 
