@@ -230,6 +230,156 @@ execution failures return a nonzero exit with a clear diagnostic. Partial
 collection remains conspicuous in the report. An assessment never authorizes
 deployment.
 
+## Next increment requirements
+
+Status: planned on 2026-11-04, not implemented. The owner requested this
+extension following the automation/source-maintenance/presentation research
+and usability recommendations. Preserve the completed release and its accepted
+two-control matrix; do not reinterpret the 49 upstream query-bearing entries
+as verified automation. Full issue acceptance criteria are in the
+[next-increment plan](plan.md#next-increment-trustworthy-automation-and-usable-reviews)
+and [linked backlog](backlog.md#next-increment-work-items).
+
+### FR-11: Controlled lifecycle and review compatibility (LL-13)
+
+Support explicit contract-version evolution without silently reinterpreting
+1.0 documents. Keep old source/catalog versions and historical replay.
+Retired controls remain traceable but do not inflate current active
+denominators; supersession and changed predicate/content require review.
+
+Bind new attestations/exceptions to control content, scope, validity and an
+explicitly supplied opaque reviewer label. Legacy unbound records remain
+visible but cannot acquire verified attribution/content binding by default.
+Treat attribution as a producer assertion, not authenticated identity proof.
+Reject ambiguous/conflicting review records; exception disposition never
+rewrites a technical result. Comparison must disclose incompatible
+catalog/rule meanings instead of manufacturing drift.
+
+### FR-12: Offline readiness and actionable unknowns (LL-14, LL-15)
+
+Provide a preflight/doctor workflow for explicit input modes, checking paths,
+snapshot hashes, mappings, scope/identity prerequisites and existing compiler
+availability. Emit structured and human-readable readiness; success means
+only that the checked prerequisites passed, not complete IaC or Azure support.
+
+Preserve stable reason codes and add specific, sanitized explanations of
+what evidence resolves each unknown/error. Unknown reason codes remain
+visible with an explicit unsupported-explanation notice. Never fetch modules,
+install/restore tooling, execute IaC, authenticate, query Azure or weaken
+validation as a preflight/diagnostic side effect.
+
+### FR-13: Review preparation (LL-16)
+
+Generate deterministic templates for selected unresolved controls and scope.
+Require supplied outcomes, rationale, reviewer and evidence before accepting
+them as completed reviews; do not prefill a passing attestation. Validate
+expiry, content/scope binding and duplicate/conflicting records. Present
+review status/ownership independently of technical outcomes, without a
+service, identity lookup or automatic issue/message creation.
+
+### FR-14: Accessible static presentation (LL-17)
+
+Improve the existing self-contained HTML, not a hosted web application.
+Provide summary, area, finding, control-detail, review and provenance views
+from one sanitized model. Filtering/sorting/expansion cannot reevaluate rules.
+Keep useful no-JavaScript content, text statuses, keyboard access and print
+styles; test representative offline/browser/print behavior.
+
+Retain JSON/Markdown parity and distinguish automated coverage, completion,
+assessed-subset pass rate, resource counts, visibility and freshness.
+Safely serialize any embedded data, validate links and preserve minimized
+presentation-only output. No raw evidence dump, credentials, CDN, telemetry,
+external asset requests or PDF dependency by default.
+
+### FR-15: Reviewed source maintenance (LL-18)
+
+Use weekly/manual public-source detection with immutable candidate snapshots,
+source/license hashes and semantic diffs. Display last successful polling,
+last semantic review and pending changes separately. Detect GUID changes,
+text/query/schema/taxonomy/license changes and display-ID conflicts.
+
+Failed detection retains the known catalog with an explicit warning; no
+runtime refresh, automatic query execution or auto-merge. Default workflow
+permissions are read-only and output is candidate/diff artifacts. A maintainer
+opens a reviewed promotion PR. Bot write access/credentials require separate
+approval. Apply FR-11 retirement and stale-review handling during promotion.
+Ten-working-day triage is an operating proposal, not a delivery guarantee.
+
+### FR-16: Evidence-backed automation expansion (LL-19, LL-20)
+
+Audit all 49 pinned query-bearing entries and G02.03/G04.02/F01.08 by GUID.
+Distinguish executable predicates from relational/contextual heuristics and
+inventory-only evidence. Review D07.06/D07.07 as the bounded first-wave
+candidates, including enum/SKU/API/provider/applicability semantics.
+
+Record a successor matrix under the existing delegated acceptance authority
+before implementation, naming controls, modes and all required outcomes.
+Implement only accepted predicates in the existing evaluator/adapters; avoid
+a general-purpose expression language, inferred defaults or duplicate engine.
+Test installed cross-mode behavior, identity, missing/partial/stale evidence
+and report parity. The original matrix/inventory remain intact.
+
+If no candidate is viable, leave implementation/integrated acceptance blocked
+pending an explicit coverage decision. A research conclusion does not satisfy
+the promised new-control implementation. Later candidate waves need their own
+reviewed matrix and scoped implementation tasks.
+
+### FR-17: Scalable scoped evidence (LL-21)
+
+Review exact ARG/ARM detail/child-resource/PolicyStates operations, API versions,
+properties and least-privilege needs for the committed matrix. Require explicit
+scope, validate returned identities/continuations and retain bounded paging,
+retry, error, truncation and time metadata.
+
+ARG is eventually consistent; completed pagination does not prove complete
+authorization. Missing properties and partial visibility stay unresolved.
+Policy configuration, exemptions and original-time compliance evaluations
+remain distinct. Demonstrate behavior with injected transports, not live calls
+or triggerEvaluation, and preserve offline use and data minimization.
+
+### FR-18: Optional MCP feasibility (LL-22)
+
+Evaluate source and metadata only: native versus proxied tools, exact schemas,
+explicit scope, structured facts, paging, identity, freshness, privacy and
+read-only/exact-tool allowlists. Missing remote scope/output evidence yields
+a documented not-ready decision; mocks cannot verify remote behavior.
+
+This study is optional and non-gating. It does not install/start/authenticate
+tooling or deliver a production MCP adapter. A future adapter or live pilot
+requires a separate scoped issue and any excluded-action authorization.
+
+### FR-19: Portable replay with privacy boundaries (LL-23)
+
+Offer an explicit, bounded local bundle of sanitized normalized evidence,
+catalog/rule versions, safe invocation metadata, hashes and bound reviews.
+Exclude credentials, source trees, raw variable files and ambient environment.
+Sanitize all metadata/review text and pseudonymize reviewer labels by default;
+retaining attribution requires opt-in. Disclose retained scoped resource IDs
+and never upload/share automatically.
+
+Replay from an installed wheel outside the checkout at the recorded evaluation
+time must preserve semantic outcomes, identities, freshness and coverage.
+Unavailable artifacts, tampered hashes, invalid schema, traversal, links and
+size/count violations fail explicitly. Minimized exports stay presentation-only,
+not replayable. Do not promise identical generation timestamps or HTML bytes.
+
+### FR-20: Continuous verification and offline acceptance (LL-24, LL-25)
+
+Add deterministic generated tests for unknown propagation, type safety,
+redaction, expansion bounds and evidence loss without invented passes.
+Automate clean-wheel build/install outside the checkout and verify import
+location/dependency consistency. Retain Windows/Linux Python 3.12/3.13,
+exact-byte fixture portability, lint/format/types and advisory exit behavior.
+
+Report real-compiler exercised versus unavailable jobs and skip reasons;
+claim compiler CI coverage only after an existing-compiler integration job
+actually runs. No automatic compiler installation/restoration fallback.
+
+Reconcile every mandatory issue against merged implementation and actual checks,
+including an explicitly supplied licensed/redacted offline ALZ reference corpus.
+No live Azure proof, deployment, package publication or automatic issue closure
+is implied. LL-22 and a future authorized live pilot are not release dependencies.
+
 ## Non-functional requirements
 
 - **Safety:** No implicit deployment, remediation, authentication, Terraform
@@ -276,6 +426,14 @@ Mocked or saved evidence must not be presented as live-tenant verification.
 The [backlog](backlog.md) links each implementation task to a GitHub issue.
 The source inventory, bounded parser choice, delegated automation-matrix
 acceptance, two reviewed item/control mappings and scoped Azure API choices are
-recorded in the linked evidence. There is no remaining dependency-ready issue
-after LL-12. Additional automation or source/API versions require new review;
-the existing accepted limitations do not imply unverified coverage.
+recorded in the linked evidence. No original implementation issue remains
+after LL-12; new work is tracked separately in the next-increment backlog.
+Additional automation and source/API versions require review; the existing
+accepted limitations do not imply unverified coverage.
+
+The current request authorizes this planning update and issue creation, not
+implementation of the next increment or excluded actions. Live Azure access,
+authentication/permissions, bot write credentials, deployment, policy scans,
+tool/module installation and package publication remain separately gated.
+If candidate verification fails, obtain an explicit coverage decision rather
+than silently dropping the expansion requirement.
