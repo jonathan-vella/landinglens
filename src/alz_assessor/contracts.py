@@ -252,6 +252,8 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
             addresses.add(address)
             identities.add(identity)
     elif actual in {"manual", "exceptions"}:
+        if data.get("is_template"):
+            raise InputError("Unasserted review templates cannot be ingested as completed records")
         entries = require(data, "entries", list)
         seen = set()
         for entry in entries:

@@ -132,11 +132,11 @@ def assess(
                 if record_set is None:
                     continue
                 for entry in record_set["entries"]:
-                    if (
-                        entry["control_id"] == control["control_id"]
-                        and bundle.get("scope")
-                        and entry["scope"].lower() == bundle["scope"].lower()
-                    ):
+                    if entry["control_id"] == control["control_id"]:
+                        scope_matches = bool(
+                            bundle.get("scope")
+                            and entry["scope"].lower() == bundle["scope"].lower()
+                        )
                         active = (
                             timestamp(entry["valid_from"])
                             <= instant
@@ -146,17 +146,21 @@ def assess(
                             "control_sha256"
                         ] == control_digest(control)
                         legacy = record_set["schema_version"] == "1.0"
-                        applicable_review = bound or (legacy and catalog["schema_version"] == "1.0")
+                        applicable_review = scope_matches and (
+                            bound or (legacy and catalog["schema_version"] == "1.0")
+                        )
                         reviews.append(
                             {
                                 "kind": "manual" if manual_set else "exceptions",
-                                "binding": "bound"
+                                "binding": "scope_mismatch"
+                                if not scope_matches
+                                else "bound"
                                 if bound
                                 else "legacy_unbound"
                                 if legacy
                                 else "changed_control",
                                 "reviewer": entry.get("reviewer") if bound else None,
-                                "requires_review": not bound or not active,
+                                "requires_review": not bound or not active or not scope_matches,
                             }
                         )
                         validity["manual" if manual_set else "exceptions"] = (
