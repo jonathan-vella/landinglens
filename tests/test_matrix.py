@@ -2,6 +2,8 @@ import contextlib
 import io
 import json
 import os
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -113,6 +115,102 @@ class MatrixTests(unittest.TestCase):
                 arm["mode"], arm["source"] = "observed", "saved"
                 self.assert_matrix(arm, outcome)
 
+    def test_installed_cli_accepted_matrix_in_each_source_mode(self):
+        def run(*arguments):
+            result = subprocess.run(
+                [sys.executable, "-m", "alz_assessor.cli", *map(str, arguments)],
+                cwd=self.root,
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                timeout=60,
+                check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            return result.stdout
+
+        for value, outcome in ((True, "pass"), (False, "fail")):
+            template = self.write("template.json", self.template(value))
+            observed = arm_source(template, scope=SCOPE)
+            observed["mode"], observed["source"] = "observed", "saved"
+            saved = self.write("observed.json", observed)
+            observed_report = self.root / "observed-report.json"
+            observed_report.write_text(
+                run("assess", saved, "--input", "evidence"), encoding="utf-8"
+            )
+            cases = [
+                (
+                    "terraform",
+                    FIXTURES / "slice",
+                    [
+                        "--scope",
+                        SCOPE,
+                        "--provider-version",
+                        "4.50.0",
+                        "--snapshots",
+                        FIXTURES / "slice" / "snapshots.json",
+                        "--authorize-root",
+                        FIXTURES / "alz",
+                        "--var",
+                        "secure=" + json.dumps(value),
+                        "--var",
+                        "dns_proxy=" + json.dumps(value),
+                    ],
+                ),
+                ("arm", template, ["--scope", SCOPE]),
+                ("evidence", saved, []),
+            ]
+            if os.environ.get("BICEP_COMPILER"):
+                parameters = self.write(
+                    "parameters.json",
+                    {"parameters": {"secure": {"value": value}, "dnsProxy": {"value": value}}},
+                )
+                cases.append(
+                    (
+                        "bicep",
+                        FIXTURES / "slice" / "controls.bicep",
+                        [
+                            "--scope",
+                            SCOPE,
+                            "--compiler",
+                            os.environ["BICEP_COMPILER"],
+                            "--parameters",
+                            parameters,
+                        ],
+                    )
+                )
+            for mode, source, arguments in cases:
+                with self.subTest(mode=mode, outcome=outcome):
+                    report = json.loads(run("assess", source, "--input", mode, *arguments))
+                    evidence_mode = "observed" if mode == "evidence" else "planned"
+                    rows = [row for row in report["results"] if row["automation"] == "automated"]
+                    self.assertEqual({row["upstream_id"] for row in rows}, ACCEPTED)
+                    self.assertTrue(all(row[evidence_mode]["outcome"] == outcome for row in rows))
+                    self.assertEqual(report["coverage"]["controls"], 255)
+                    self.assertEqual(len({row["design_area"] for row in report["results"]}), 8)
+                    path = self.write("report.json", report)
+                    reason = (
+                        "explicit_property_matches"
+                        if outcome == "pass"
+                        else "explicit_property_differs"
+                    )
+                    for format in ("json", "markdown", "html"):
+                        self.assertEqual(run("render", path, "--format", format).count(reason), 2)
+                        if mode != "evidence":
+                            paired = run("compare", path, observed_report, "--format", format)
+                            self.assertEqual(
+                                paired.count("canonical_identity_and_explicit_fact"), 2
+                            )
+                            if format == "json":
+                                compared = [
+                                    row
+                                    for row in json.loads(paired)["results"]
+                                    if row["automation"] == "automated"
+                                ]
+                                self.assertTrue(
+                                    all(row["comparison"] == "match" for row in compared)
+                                )
+
     @unittest.skipUnless(os.environ.get("BICEP_COMPILER"), "Existing Bicep compiler not configured")
     def test_committed_positive_negative_bicep_matrix_actual_no_restore_compiler(self):
         for value, outcome in ((True, "pass"), (False, "fail")):
@@ -194,6 +292,37 @@ class MatrixTests(unittest.TestCase):
         self.assertFalse(result["inventory_complete"])
         unbound = arm_source(self.write("plain.json", self.template(True)))
         self.assertTrue(all(row["arm_id"] is None for row in unbound["resources"]))
+
+    def test_arm_nested_equality_preserves_types_and_unknown_numeric_semantics(self):
+        declarations = {"parameters": {"left": {"type": "object"}, "right": {"type": "object"}}}
+        for left, right, expected in (
+            ({"value": [1]}, {"value": [True]}, False),
+            ({"value": [False]}, {"value": [0]}, False),
+            ({"value": [True]}, {"value": [True]}, True),
+            ({"value": [1]}, {"value": [1]}, True),
+        ):
+            with self.subTest(left=left, right=right):
+                context = Expressions(declarations, {"left": left, "right": right}, SCOPE)
+                self.assertIs(
+                    context.value("[equals(parameters('left'), parameters('right'))]"), expected
+                )
+        context = Expressions(
+            declarations, {"left": {"value": 1.0}, "right": {"value": 1.0}}, SCOPE
+        )
+        self.assertIn("unknown", context.value("[equals(parameters('left'), parameters('right'))]"))
+        template = self.template(True)
+        template["parameters"].update(
+            {
+                "left": {"type": "object", "defaultValue": {"value": [1]}},
+                "right": {"type": "object", "defaultValue": {"value": [True]}},
+            }
+        )
+        template["parameters"]["secure"]["defaultValue"] = (
+            "[equals(parameters('left'), parameters('right'))]"
+        )
+        self.assert_matrix(
+            arm_source(self.write("typed-equality.json", template), scope=SCOPE), "fail"
+        )
 
     def test_plan_is_separate_and_sensitive_values_do_not_override_source(self):
         plan = {
