@@ -130,6 +130,41 @@ expiry and review readiness; it neither authenticates the reviewer nor imports
 an outcome automatically. Use `assess --manual`/`--exceptions` to import completed
 records. Duplicate/conflicting records fail, and exceptions never rewrite facts.
 
+### Opt-in local replay
+
+Save normalized input with `assess --evidence-output evidence.json`, then create
+a replay at an explicit evaluation time:
+
+```powershell
+alz-assessor replay export evidence.json --at 2026-11-04T00:00:00Z --destination replay-bundle
+alz-assessor replay run replay-bundle --format html --output replay.html
+```
+
+Supply the original `--manual`, `--exceptions`, `--catalog`, `--landing-zone`
+and `--max-age-hours` selections when applicable. Export evaluates and binds
+that invocation; it does not reconstruct missing normalized facts from a
+rendered report or prove the files existed at the selected historical time.
+The installed package includes current `2026-11-04.2` and frozen
+`2026-11-04.1` catalog meaning. Altered/custom or unavailable historical
+artifacts fail explicitly rather than substituting today's rules.
+
+Replay is a new bounded four-file local directory, not an archive, service or
+automatic upload. It retains scoped resource/logical identities and is **not
+anonymized**. Only the reviewed property vocabulary is retained. Paths, arbitrary
+metadata, unknown free-text reasons and review evidence/rationale are withheld
+or replaced by hash aliases. Reviewer labels are pseudonymized without a mapping
+export; only explicit `--retain-attribution` retains their original labels.
+Treat hashes and retained identities as sensitive inventory. No source trees,
+raw variables, environment or credentials are bundled.
+
+Import rejects extra/traversal paths, links, duplicate JSON keys, unsupported
+schema, size/hash mismatches and changed semantic outcomes. Each file is bounded
+to 8 MB, total content to 16 MB, with 10,000 resources and 1,000 review entries.
+Export refuses an existing destination; import does not extract files.
+Outcomes, identities, freshness and coverage are checked at the recorded time;
+free text, generated presentation bytes and source paths are not reproduced.
+Partial inputs remain partial. Minimized presentations cannot be replayed.
+
 `--identity-map FILE` accepts an exact input-hash-bound map, not name matching.
 Entries require `logical_id`, full `arm_id` and `scope`; duplicates, conflicting
 IDs and stale input hashes fail. Default-provider derivation is restricted to

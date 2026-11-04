@@ -19,6 +19,7 @@ from .diagnostics import explain
 from .engine import assess
 from .plan import plan_source
 from .preflight import preflight, render_preflight
+from .replay import export_bundle, replay_bundle
 from .reports import render
 from .reviews import prepare_reviews, validate_reviews
 from .sources import terraform_source
@@ -135,6 +136,27 @@ def main() -> int:
             stream.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description="LandingLens advisory ALZ assessment")
     commands = parser.add_subparsers(dest="command", required=True)
+    replay = commands.add_parser(
+        "replay", help="Export or replay an explicit sanitized local bundle"
+    )
+    replay_commands = replay.add_subparsers(dest="replay_operation", required=True)
+    export = replay_commands.add_parser("export")
+    export.add_argument(
+        "source", type=Path, help="Saved normalized evidence, not a rendered report"
+    )
+    export.add_argument("--destination", type=Path, required=True)
+    export.add_argument("--at", required=True)
+    export.add_argument("--catalog")
+    export.add_argument("--manual", type=Path)
+    export.add_argument("--exceptions", type=Path)
+    export.add_argument("--landing-zone", choices=["platform", "application"], default="platform")
+    export.add_argument("--max-age-hours", type=float, default=24)
+    export.add_argument("--retain-attribution", action="store_true")
+    replay_run = replay_commands.add_parser("run")
+    replay_run.add_argument("source", type=Path)
+    replay_run.add_argument("--format", choices=["json", "markdown", "html"], default="json")
+    replay_run.add_argument("--output", type=Path)
+    replay_run.add_argument("--minimize", action="store_true")
     explanation = commands.add_parser(
         "explain", help="Explain a stable reason without taking action"
     )
@@ -209,6 +231,28 @@ def main() -> int:
         command.add_argument("--minimize", action="store_true")
     args = parser.parse_args()
     try:
+        if args.command == "replay":
+            if args.replay_operation == "export":
+                result = export_bundle(
+                    args.destination,
+                    read_json(args.source),
+                    load_catalog(args.catalog),
+                    at=args.at,
+                    landing_zone=args.landing_zone,
+                    max_age_hours=args.max_age_hours,
+                    manual=read_json(args.manual) if args.manual else None,
+                    exceptions=read_json(args.exceptions) if args.exceptions else None,
+                    retain_attribution=args.retain_attribution,
+                )
+                print(json.dumps(result, indent=2))
+                return 0
+            result = replay_bundle(args.source)
+            output = render(result, args.format, args.minimize)
+            if args.output:
+                args.output.write_text(output, encoding="utf-8")
+            else:
+                sys.stdout.write(output)
+            return 0
         if args.command == "review":
             catalog = load_catalog(args.catalog)
             result = (

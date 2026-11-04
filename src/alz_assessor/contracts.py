@@ -438,8 +438,14 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
 
 
 def read_document(path: Path, max_bytes: int = 8_000_000) -> Any:
-    if path.stat().st_size > max_bytes:
+    with path.open("rb") as stream:
+        content = stream.read(max_bytes + 1)
+    if len(content) > max_bytes:
         raise InputError("JSON document exceeds byte limit")
+    return parse_document(content.decode("utf-8"))
+
+
+def parse_document(content: str) -> Any:
 
     def pairs(entries: list[tuple[str, Any]]) -> dict[str, Any]:
         result = {}
@@ -454,7 +460,7 @@ def read_document(path: Path, max_bytes: int = 8_000_000) -> Any:
 
     try:
         return json.loads(
-            path.read_text("utf-8"),
+            content,
             object_pairs_hook=pairs,
             parse_constant=constant,
         )
