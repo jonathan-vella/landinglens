@@ -1,0 +1,65 @@
+---
+title: Azure landing zone Documentation
+resources:
+  - name: alz-journey
+    src: img/customer-landing-zone-journey.png
+    alt: Azure landing zone Journey
+    title: Azure landing zone Journey
+---
+
+Welcome to the Azure landing zone technical documentation site.
+This site provides guidance on how to deploy and manage Azure landing zone using the solutions we provide.
+
+Use the navigation links on the left to explore the documentation.
+
+## Definitions and Concepts
+
+Please see our [documentation on Learn](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/) for an introduction to the concepts that we will build on here.
+
+## The Azure landing zone Journey
+
+The Azure landing zone journey is a multi-step process that starts with bootstrapping your environment and ends with the deployment of workloads.
+
+{{< img name="alz-journey" size="origin" lazy=true >}}
+
+### Bootstrap your environment
+
+The bootstrap is the first step in the Azure landing zone journey.
+It is the process of setting up the foundational components that will be used to deploy and manage Azure landing zone.
+In this step we ensure we have the correct access and some subscriptions to work with.
+
+See the [getting started]({{< relref "bootstrap" >}}) section for more information.
+
+### Azure landing zone platform
+
+The Azure landing zone platform is the core of the Azure landing zone journey.
+It provides the core governance, networking, security and management components that will be used to deploy and manage Azure landing zone.
+
+Included in the Azure landing zone platform are:
+
+- **Management groups** - used to organize subscriptions and resources.
+- **Policy** - used to enforce governance and compliance.
+- **Role-based access control (RBAC)** - used to control access to resources.
+- **Centralized logging** - used to collect and analyze logs from Azure resources.
+- **Networking** - used to provide connectivity between resources.
+
+The reference management group and policy structure for Azure landing zone is published in the [Azure landing zone Library](https://azure.github.io/Azure-Landing-Zones-Library/).
+
+### Subscription vending
+
+Subscription vending is the process of automating the creation of new subscriptions for use by the organization.
+
+To be able to automate the creation of subscriptions, you will need to have the correct permissions.
+These permissions are assigned at the billing scope and the process is documented [here](https://learn.microsoft.com/azure/cost-management-billing/manage/programmatically-create-subscription).
+
+### Application landing zones
+
+Application landing zones build upon subscription vending to provide application teams with a pre-configured environment to deploy their workloads.
+
+### Workloads
+
+Workloads are the applications and services that are deployed into the Azure landing zone.
+
+## Next steps
+
+To get started with the Azure landing zone journey, let's look at the [bootstrap your environment]({{< relref "bootstrap" >}}) process.

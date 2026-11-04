@@ -5,6 +5,30 @@ This backlog tracks the complete [implementation plan](plan.md) and
 issue status is the source of truth. Dependencies describe implementation
 order, not additional authorization to access Azure or publish a package.
 
+## Implementation evidence: 2026-11-04
+
+LL-01 through LL-12 have implementation evidence in this feature branch.
+Issues remain open for owner review. The owner authorized commits, push and one
+ready PR, but not merge, issue closure, publication or live Azure collection.
+
+LL-01 produced reviewed snapshot **2026-11-04.1**, an eight-area taxonomy and
+the complete 255-item provenance/disposition ledger. Three duplicated display
+IDs, the billing-label conflict and unverified item/control mappings are explicit.
+LL-02 produced an installable Python CLI spike and executable Terraform,
+snapshot/scoping/precedence/bounds and no-restore Bicep checks. Its ALZ module
+snapshots include authored ALZ wrappers plus an unmodified, pinned Microsoft AVM
+workspace 0.5.1 module. Bounded operator/dynamic-block improvements now leave six
+resource controllers symbolic. Full AVM compatibility is not claimed.
+See [current evidence and limits](plan.md#implemented-release-baseline-2026-11-04).
+
+The owner explicitly delegated LL-04 acceptance to Autopilot. The accepted
+[two-control matrix](../automation-matrix.md) covers raw Terraform, Bicep/ARM and
+observed fixtures with positive/negative cases; all 255 entries remain visible.
+Six uncovered areas have explicit assisted/manual rationale.
+
+**Next dependency-ready issue:** none after LL-12. The next owner action is PR
+review and merge, not a new implementation dependency or automated issue closure.
+
 ## Work items
 
 | ID | Work item | Prerequisites |
@@ -32,8 +56,9 @@ order, not additional authorization to access Azure or publish a package.
   representative module-based ALZ configuration, including explicit local
   module snapshots and honest missing-module outcomes.
 
-These items can proceed independently. Neither a source-backed catalog nor
-parser feasibility is assumed to exist today.
+These items can proceed independently. Their source inventory and bounded
+feasibility evidence established the gate. The source-backed catalog is now
+implemented; complete parser/interpreter coverage is not claimed.
 
 ### 2. Establish contracts and the vertical-slice gate
 
@@ -41,7 +66,8 @@ parser feasibility is assumed to exist today.
   explicit scope and cross-mode identity rules.
 - **LL-04:** Demonstrate representative controls end to end using raw
   Terraform, saved observed evidence and all three report formats. Obtain
-  owner acceptance of the initial automation matrix before full expansion.
+  acceptance of the initial automation matrix before full expansion, under
+  the owner's explicit delegation to Autopilot.
 
 The accepted matrix must identify actual source-backed controls, applicable
 evidence modes and tests. It must include automated coverage across all three

@@ -1,0 +1,101 @@
+{
+  "repository": "Azure/terraform-azurerm-avm-res-operationalinsights-workspace",
+  "revision": "b4ffa3ff87ac09ff6de3b7014c44b4d213aa302b",
+  "tag": "v0.5.1",
+  "license": "MIT",
+  "retained": "All module-root .tf files and LICENSE, unmodified",
+  "omitted": "Examples, tests, CI and documentation; no module-root IaC omitted",
+  "review_state": "reviewed-source-fixture-not-complete-AVM-compatibility",
+  "files": [
+    {
+      "file": "LICENSE",
+      "url": "https://raw.githubusercontent.com/Azure/terraform-azurerm-avm-res-operationalinsights-workspace/b4ffa3ff87ac09ff6de3b7014c44b4d213aa302b/LICENSE",
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "retrieved_at": "2026-11-04T13:08:24.600818+00:00"
+    },
+    {
+      "file": "locals.tf",
+      "url": "https://raw.githubusercontent.com/Azure/terraform-azurerm-avm-res-operationalinsights-workspace/b4ffa3ff87ac09ff6de3b7014c44b4d213aa302b/locals.tf",
+      "sha256": "b85308a8a4d316a31fca1b6acc836639a7213088e4f7b762417409157987a7f2",
+      "retrieved_at": "2026-11-04T13:08:24.901044+00:00"
+    },
+    {
+      "file": "main.data_export.tf",
+      "url": "https://raw.githubusercontent.com/Azure/terraform-azurerm-avm-res-operationalinsights-workspace/b4ffa3ff87ac09ff6de3b7014c44b4d213aa302b/main.data_export.tf",
+      "sha256": "0eff222a8195ffac84f71c410fe473cb46cb779240edbfa03681d2e131706293",
+      "retrieved_at": "2026-11-04T13:08:25.230401+00:00"
+    },
+    {
+      "file": "main.indexes.tf",
+      "url": "https://raw.githubusercontent.com/Azure/terraform-azurerm-avm-res-operationalinsights-workspace/b4ffa3ff87ac09ff6de3b7014c44b4d213aa302b/main.indexes.tf",
+      "sha256": "b07d2d98698eeab49a28799a48fdc26c44e9a0bfc82dd741327b12edc83faebe",
+      "retrieved_at": "2026-11-04T13:08:25.522776+00:00"
+    },
+    {
+      "file": "main.linked_service.tf",
+      "url": "https://raw.githubusercontent.com/Azure/terraform-azurerm-avm-res-operationalinsights-workspace/b4ffa3ff87ac09ff6de3b7014c44b4d213aa302b/main.linked_service.tf",
+      "sha256": "874ecab5f94b67ae204c376481367f9dd72e739ed84579fdd6e2206e96174cfd",
+      "retrieved_at": "2026-11-04T13:08:25.837825+00:00"
+    },
+    {
+      "file": "main.linked_storage_account.tf",
+      "url": "https://raw.githubusercontent.com/Azure/terraform-azurerm-avm-res-operationalinsights-workspace/b4ffa3ff87ac09ff6de3b7014c44b4d213aa302b/main.linked_storage_account.tf",
+      "sha256": "29f74dc4f1e297025cee6ef30d245b27f3bedcf15b839c3778044f93db52b7af",
+      "retrieved_at": "2026-11-04T13:08:26.279955+00:00"
+    },
+    {
+      "file": "main.nsp.tf",
+      "url": "https://raw.githubusercontent.com/Azure/terraform-azurerm-avm-res-operationalinsights-workspace/b4ffa3ff87ac09ff6de3b7014c44b4d213aa302b/main.nsp.tf",
+      "sha256": "b588296ef44ec73cfc70b99ba69ed50ba091f43944ca3fa79d49f0b9cdb5af2e",
+      "retrieved_at": "2026-11-04T13:08:26.697443+00:00"
+    },
+    {
+      "file": "main.privateendpoint.tf",
+      "url": "https://raw.githubusercontent.com/Azure/terraform-azurerm-avm-res-operationalinsights-workspace/b4ffa3ff87ac09ff6de3b7014c44b4d213aa302b/main.privateendpoint.tf",
+      "sha256": "19caa425e102b8b5c12582882e6218a1ec3e3d7bec8b0a9c24054f195f8ce4e6",
+      "retrieved_at": "2026-11-04T13:08:26.973957+00:00"
+    },
+    {
+      "file": "main.privatelinkscope.tf",
+      "url": "https://raw.githubusercontent.com/Azure/terraform-azurerm-avm-res-operationalinsights-workspace/b4ffa3ff87ac09ff6de3b7014c44b4d213aa302b/main.privatelinkscope.tf",
+      "sha256": "8ed54915f91434eaf05ab112878304a00e9f735e13bb8ef8c69b62f76096d0ff",
+      "retrieved_at": "2026-11-04T13:08:27.338717+00:00"
+    },
+    {
+      "file": "main.tables.tf",
+      "url": "https://raw.githubusercontent.com/Azure/terraform-azurerm-avm-res-operationalinsights-workspace/b4ffa3ff87ac09ff6de3b7014c44b4d213aa302b/main.tables.tf",
+      "sha256": "673a28de8fd778e752de475df9d022cc54c3e1d6ce6fa399b54fa10da02adf3f",
+      "retrieved_at": "2026-11-04T13:08:27.784533+00:00"
+    },
+    {
+      "file": "main.telemetry.tf",
+      "url": "https://raw.githubusercontent.com/Azure/terraform-azurerm-avm-res-operationalinsights-workspace/b4ffa3ff87ac09ff6de3b7014c44b4d213aa302b/main.telemetry.tf",
+      "sha256": "d7f652dacdad8bd16ee07bd3aff3575fe1953a3bcfbcd8f0be21460d031fd98c",
+      "retrieved_at": "2026-11-04T13:08:28.464907+00:00"
+    },
+    {
+      "file": "main.tf",
+      "url": "https://raw.githubusercontent.com/Azure/terraform-azurerm-avm-res-operationalinsights-workspace/b4ffa3ff87ac09ff6de3b7014c44b4d213aa302b/main.tf",
+      "sha256": "04c151c6e7e3eed9e047e83164a4ad391201707311ec495336e9fecba19d7563",
+      "retrieved_at": "2026-11-04T13:08:28.700204+00:00"
+    },
+    {
+      "file": "outputs.tf",
+      "url": "https://raw.githubusercontent.com/Azure/terraform-azurerm-avm-res-operationalinsights-workspace/b4ffa3ff87ac09ff6de3b7014c44b4d213aa302b/outputs.tf",
+      "sha256": "0da52c6f23dd66ba841329797ed21170f72b8539aa339192e19939c1f59a31a7",
+      "retrieved_at": "2026-11-04T13:08:29.028140+00:00"
+    },
+    {
+      "file": "terraform.tf",
+      "url": "https://raw.githubusercontent.com/Azure/terraform-azurerm-avm-res-operationalinsights-workspace/b4ffa3ff87ac09ff6de3b7014c44b4d213aa302b/terraform.tf",
+      "sha256": "9685c7291d6fc81ddee18f1173f671cb5091997d5ff475c91835bdbed6f92663",
+      "retrieved_at": "2026-11-04T13:08:29.312432+00:00"
+    },
+    {
+      "file": "variables.tf",
+      "url": "https://raw.githubusercontent.com/Azure/terraform-azurerm-avm-res-operationalinsights-workspace/b4ffa3ff87ac09ff6de3b7014c44b4d213aa302b/variables.tf",
+      "sha256": "fe6bf02cbd74f55fec3e23c5a3eca348835b589a49fe3b36fed7ab704f4bd13b",
+      "retrieved_at": "2026-11-04T13:08:29.555492+00:00"
+    }
+  ]
+}

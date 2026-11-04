@@ -1,8 +1,28 @@
 # LandingLens product requirements
 
-Status: planning. The Microsoft reference sources and checklist have not yet
-been retrieved or verified. This document describes the intended product, not
-implemented functionality.
+Status: implemented advisory release baseline, subject to owner PR review.
+All twelve backlog items have implementation evidence in the
+[plan](plan.md#implemented-release-baseline-2026-11-04). The owner authorized
+end-to-end work and delegated matrix acceptance to Autopilot; merge, publication,
+issue closure and live Azure collection are not authorized.
+
+Verified findings: [source review](../../references/2026-11-04/review.md) and
+[prerequisite acceptance evidence](plan.md#prerequisite-results-2026-11-04).
+The catalog contains 255 items with GUID-based provenance: two accepted
+automated predicates, 211 assisted and 42 manual recommendations. The
+[accepted matrix](../automation-matrix.md) identifies both verified property
+mappings, required modes and uncovered areas. Duplicate display IDs and the
+CAF/checklist billing-label conflict remain flagged. Full per-item semantic
+mapping, Microsoft certification and live Azure verification are not claimed.
+
+Feasibility is demonstrated for the tested bounded subset against synthetic,
+versioned ALZ-shaped module snapshots and an unmodified, commit-pinned Microsoft
+AVM workspace module 0.5.1, not the complete official AVM library.
+Unsupported expressions and missing modules remain unknown. Actual Bicep
+compilation was exercised with restoration disabled. Bounded ARM expressions,
+safe inner-scope inline templates and native HCL dynamic blocks are implemented.
+Runtime expressions, linked/child templates, JSON dynamic blocks and richer
+interpreter semantics remain unknown/incomplete, not silently passed.
 
 ## Problem
 
@@ -49,7 +69,9 @@ read-only Azure evidence without requiring both.
 | Microsoft sources | Retrieve, verify and pin reviewed public references |
 | Runtime | Python is recommended by the plan; dependency choices require validation |
 
-The CLI command name and individual library selections are not yet finalized.
+The installed command is `alz-assessor`; publication naming remains unverified.
+python-hcl2 8.1.4 is accepted for bounded AST parsing following the
+[dependency review](../dependency-review.md); future dependencies need their own review.
 The [implementation plan](plan.md) is the source of detailed execution
 boundaries.
 
@@ -246,5 +268,8 @@ Mocked or saved evidence must not be presented as live-tenant verification.
 ## Execution and open decisions
 
 The [backlog](backlog.md) links each implementation task to a GitHub issue.
-The automation matrix, actual Microsoft item mappings, precise parser and Azure
-API choices remain open until their evidence-gathering tasks are complete.
+The automation matrix, actual Microsoft item/control mappings and Azure API
+choices remain open until their evidence-gathering tasks are complete. The
+bounded parser choice and source inventory are now established; LL-03 is the
+next dependency-ready issue. The LL-04 owner automation-matrix gate remains
+mandatory before broad implementation.

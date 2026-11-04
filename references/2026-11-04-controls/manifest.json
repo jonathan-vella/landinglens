@@ -1,0 +1,60 @@
+{
+  "version": "2026-11-04-controls.1",
+  "review_state": "reviewed-property-subsets-not-certification",
+  "sources": [
+    {
+      "id": "storage-guidance",
+      "url": "https://learn.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer",
+      "sha256": "8eae7a28041c11fdab71f0b62e5ff37f921df10b6b2e331231007cdc36c16f16",
+      "retrieved_at": "2026-11-04T13:25:57.057372+00:00",
+      "finding": "Require secure transfer for storage REST requests; Azure Files needs separate analysis.",
+      "revision": "retrieved-page",
+      "reuse": "CC-BY-4.0 documentation; metadata only"
+    },
+    {
+      "id": "firewall-guidance",
+      "url": "https://learn.microsoft.com/en-us/azure/firewall/dns-settings",
+      "sha256": "13cbb5cb22555864d3e0035187df8f0cd08728ff0536cdfee50b5b0373348e8e",
+      "retrieved_at": "2026-11-04T13:25:57.368598+00:00",
+      "finding": "DNS proxy is an explicit setting; policy DNS settings can override/inherit. Client DNS routing and operational effectiveness are not proved by the flag.",
+      "revision": "retrieved-page",
+      "reuse": "CC-BY-4.0 documentation; metadata only"
+    },
+    {
+      "id": "storage-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts",
+      "sha256": "60a7beb3c2561e09115e5ea3657ebbec3475efb6579dfe5dbe1c2f8eadb15f4f",
+      "retrieved_at": "2026-11-04T13:25:58.099009+00:00",
+      "finding": "2023-05-01 ARM storage-account properties.supportsHttpsTrafficOnly is a boolean.",
+      "revision": "retrieved-page",
+      "reuse": "CC-BY-4.0 documentation; metadata only"
+    },
+    {
+      "id": "firewall-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/firewallpolicies",
+      "sha256": "40e1fb2cc0b4646c1b2bd829b3a7054f89bea106b278578e67640946002cc0bd",
+      "retrieved_at": "2026-11-04T13:25:58.704018+00:00",
+      "finding": "2024-05-01 ARM firewall-policy properties.dnsSettings.enableProxy is a boolean.",
+      "revision": "retrieved-page",
+      "reuse": "CC-BY-4.0 documentation; metadata only"
+    },
+    {
+      "id": "terraform-storage_account",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown",
+      "sha256": "2497fd8c88453f99b82d2697bda7b7faee30f889693a1840fafc5bc59305219a",
+      "retrieved_at": "2026-11-04T13:25:59.011929+00:00",
+      "finding": "AzureRM 4.50.0 explicit https_traffic_only_enabled mapping only; omitted provider defaults are not inferred.",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "reuse": "MPL-2.0 provider documentation; metadata and own factual notes only"
+    },
+    {
+      "id": "terraform-firewall_policy",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/firewall_policy.html.markdown",
+      "sha256": "a48b645a81c4b652bdff38e2e2c79b4bd10114c64cdb179f39b493639eb24ecd",
+      "retrieved_at": "2026-11-04T13:25:59.306819+00:00",
+      "finding": "AzureRM 4.50.0 explicit proxy_enabled mapping only; omitted provider defaults are not inferred.",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "reuse": "MPL-2.0 provider documentation; metadata and own factual notes only"
+    }
+  ]
+}
