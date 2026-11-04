@@ -9,8 +9,8 @@ Use a versioned, source-backed control catalog; normalize evidence from Bicep/AR
 This is the approved implementation plan. The initial LL-01/LL-02 increment
 established the prerequisites below. The owner subsequently authorized
 end-to-end implementation, feature-branch push and one ready PR, and delegated
-LL-04 matrix acceptance to Autopilot. Merge, issue closure, publication,
-deployment and live Azure collection remain unauthorized.
+LL-04 matrix acceptance to Autopilot. Agent-initiated merge, issue closure,
+publication, deployment and live Azure collection remain unauthorized.
 
 Original research basis: an earlier report retained in the planning session,
 not included here. Implementation now uses the retrieved, pinned sources in
@@ -52,6 +52,15 @@ symlink-privilege skip**. Both real-compiler positive/negative control cases and
 outside-checkout installed workflows ran. Ruff lint/format, mypy and dependency
 consistency passed. CI covers the declared Windows/Linux runtime matrix; its
 actual run is linked from the delivery PR rather than assumed from local results.
+
+The owner merged [PR #13](https://github.com/jonathan-vella/landinglens/pull/13)
+on 2026-11-04; its four Windows/Linux Python 3.12/3.13 check jobs passed.
+The subsequent contract-validation follow-up is committed locally as `4295773`,
+not pushed or included in another PR. Its installed-wheel verification ran
+**95 tests, 94 passed, one Windows symlink-privilege skip**, with the existing
+Bicep compiler; Ruff lint/format, mypy and dependency consistency also passed.
+This supplements rather than replaces the historical release verification above.
+Another push and PR require owner approval beyond the original one-PR allowance.
 
 **Remaining capability limits:** the two predicates prove configuration flags,
 not DNS routing, runtime encryption effectiveness or complete ALZ compliance.

@@ -1,10 +1,11 @@
 # LandingLens product requirements
 
-Status: implemented advisory release baseline, subject to owner PR review.
+Status: advisory release baseline merged by the owner through
+[PR #13](https://github.com/jonathan-vella/landinglens/pull/13) on 2026-11-04.
 All twelve backlog items have implementation evidence in the
 [plan](plan.md#implemented-release-baseline-2026-11-04). The owner authorized
-end-to-end work and delegated matrix acceptance to Autopilot; merge, publication,
-issue closure and live Azure collection are not authorized.
+end-to-end work and delegated matrix acceptance to Autopilot; agent-initiated
+merge, publication, issue closure and live Azure collection are not authorized.
 
 Verified findings: [source review](../../references/2026-11-04/review.md) and
 [prerequisite acceptance evidence](plan.md#prerequisite-results-2026-11-04).

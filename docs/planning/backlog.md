@@ -7,9 +7,11 @@ order, not additional authorization to access Azure or publish a package.
 
 ## Implementation evidence: 2026-11-04
 
-LL-01 through LL-12 have implementation evidence in this feature branch.
-Issues remain open for owner review. The owner authorized commits, push and one
-ready PR, but not merge, issue closure, publication or live Azure collection.
+LL-01 through LL-12 were delivered to `main` through
+[PR #13](https://github.com/jonathan-vella/landinglens/pull/13), merged by the
+owner on 2026-11-04. Issues remain open for owner review. The owner authorized
+commits, push and one ready PR, but not agent-initiated merge, issue closure,
+publication or live Azure collection.
 
 LL-01 produced reviewed snapshot **2026-11-04.1**, an eight-area taxonomy and
 the complete 255-item provenance/disposition ledger. Three duplicated display
@@ -26,8 +28,9 @@ The owner explicitly delegated LL-04 acceptance to Autopilot. The accepted
 observed fixtures with positive/negative cases; all 255 entries remain visible.
 Six uncovered areas have explicit assisted/manual rationale.
 
-**Next dependency-ready issue:** none after LL-12. The next owner action is PR
-review and merge, not a new implementation dependency or automated issue closure.
+**Next dependency-ready issue:** none after LL-12. The baseline is merged.
+The verified contract-validation follow-up is committed locally; another push
+and PR require owner approval. Issue closure is not automatic.
 
 ## Work items
 
