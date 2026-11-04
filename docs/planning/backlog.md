@@ -114,8 +114,13 @@ corpus controllers remain symbolic; no complete AVM/ALZ compatibility or
 live-control verification follows from these results. The reconciliation passed
 all eight actual checks and merged; #28 is closed. #40 remains separately tracked:
 its initial live run found an assignment-filter defect, now covered by a
-regression fix pending installed live reverification. Private identities/evidence
-remain outside Git; authorization and ancestor-definition gaps remain explicit.
+regression fix merged in [#42](https://github.com/jonathan-vella/landinglens/pull/42)
+as `6139ba1f20e2a6d2adca6e6f86e85e8ec1e5490c`. The exact installed rerun completed:
+293 HTTP 200s, zero HTTP failures, 98 resources, original policy timestamps and
+all report workflows. #40's acceptance record preserves the initial failure and
+the verified fix, not a claim of full tenant/control visibility. Private
+identities/evidence remain outside Git; authorization and ancestor-definition
+gaps remain explicit. No mandatory backlog gate remains blocked.
 
 ## Original baseline work items
 

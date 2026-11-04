@@ -405,7 +405,11 @@ The final local installed-wheel run exercised 145 tests (144 passed; one Windows
 symlink-privilege skip), real existing no-restore Bicep and the licensed AVM/
 authored ALZ corpus. Six symbolic controllers and incomplete visibility remain
 explicit. The separate owner-authorized live pilot in #40 retains private
-scope/raw evidence and cannot substitute for full control or estate verification.
+scope/raw evidence. Its installed collector found and, after merged #42, verified
+an assignment-filter fix: 293 HTTP 200s with zero HTTP failures on the rerun.
+Inventory authorization was not attested and ancestor custom-definition references
+remained unread. This cannot substitute for full control or estate verification;
+see the [sanitized pilot record](../collection.md#selected-boundary-live-pilot).
 Publication, deployment/remediation and authentication/permission changes remain
 outside this delivery.
 

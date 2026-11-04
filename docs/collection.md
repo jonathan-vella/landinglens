@@ -235,7 +235,21 @@ and four HTTP 400s, all from unfiltered management-group assignment requests.
 Filtered assignment reads succeeded. Five automated result instances comprised
 three passes, one failure and one explicit capability exclusion; these are local
 configuration results, not a whole-estate security score or runtime proof.
-The assignment-filter fix requires a separate installed live verification.
+These initial failures are retained as historical evidence, not relabelled as
+successful calls.
+
+The fix merged in [#42](https://github.com/jonathan-vella/landinglens/pull/42)
+as `6139ba1f20e2a6d2adca6e6f86e85e8ec1e5490c` after all eight checks passed.
+A second exact installed-wheel run, outside the checkout and under the same
+guard, completed in 329 seconds: **293 HTTP 200 responses and no HTTP failures**.
+It retained 98 resources and the same five automated result instances. All
+ten assignment reads succeeded; assignment, exemption, configuration,
+relationship and existing-compliance facets were complete within the collector's
+bounds. All 1,726 retained PolicyStates records had their original timestamps.
+JSON, Markdown, HTML and minimized HTML workflows succeeded. The minimized HTML
+contained none of the private tenant/account/group/subscription allowlist values.
+No applicable IDPS-mode positive/negative result or effective runtime protection
+is established by the capability exclusion.
 
 Inventory authorization was deliberately not attested. Four ancestor custom
 definition references remained outside the approved boundary; those reads were
