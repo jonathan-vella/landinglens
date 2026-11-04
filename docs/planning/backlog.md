@@ -5,6 +5,25 @@ This backlog tracks the complete [implementation plan](plan.md) and
 issue status is the source of truth. Dependencies describe implementation
 order, not additional authorization to access Azure or publish a package.
 
+## LL-26: automated local review session
+
+[#44](https://github.com/jonathan-vella/landinglens/issues/44) tracks the
+owner-directed 2026-11-05 follow-up. One `review serve` command opens a local
+browser workflow; Save validates an explicit human decision, persists a new
+revision and regenerates all reports automatically. No JSON editing or separate
+import/render steps, new evaluator, dependency, hosted service or Azure operation.
+Depends on the delivered LL-13/LL-16/LL-17 contracts/reviews/reporting. The prior
+scope is complete. This increment is implemented and locally verified with 157
+installed tests (156 passed, one Windows privilege skip), static/type/dependency
+checks, real Bicep and an actual browser save, automatic report refresh, refused
+unconfirmed replacement and listener stop. Browser validation used authored
+fixtures, not new Azure reads or invented real approvals.
+
+Acceptance: scoped normalized inputs, explicit bound decisions and retained
+existing reviews, transactional outputs, guarded loopback access, installed/
+HTTP/browser tests and synchronized documentation. Closure requires verified
+implementation and merged delivery; see FR-21 and the plan's LL-26 section.
+
 ## Implementation evidence: 2026-11-04
 
 LL-01 through LL-12 were delivered to `main` through

@@ -119,6 +119,47 @@ Guidance links require HTTPS and only navigate when explicitly selected.
 
 ### Identity, manual evidence and optional plans
 
+For the automated local workflow, start from saved **normalized evidence**, not
+a rendered or minimized assessment:
+
+```powershell
+alz-assessor review serve evidence.json --directory private-reviews
+```
+
+The browser opens automatically. Choose a finding and review kind; supply the
+decision, reviewer, justification, supporting evidence and expiry, then select
+**Save review and update reports**. Python validates the bound review, writes a
+new revision and refreshes the report automatically. No JSON editing or separate
+validation/import/render commands are needed. An exception remains separate from
+the technical result; an accepted exception never turns a failure into a pass.
+Reviews apply to the displayed evidence scope/control, not just one resource.
+
+Supply `--manual FILE` / `--exceptions FILE` to retain existing records,
+`--catalog FILE` for the exact nondefault version-1.1 catalog, and the original
+`--landing-zone` / `--max-age-hours` selections when applicable. Existing records
+are not silently replaced: confirm replacement explicitly; earlier revisions
+remain intact. Changed/expired records stay visible as requiring review.
+
+Each `revision-NNNN` directory contains the normalized evidence, exact catalog,
+completed review files, full normalized assessment and JSON/Markdown/HTML plus
+minimized HTML reports. `invocation.json` records applicability/freshness selections
+and evaluation time for reopening. Validation/write failures leave the previous revision
+intact and are shown in the page. Evidence timestamps are never refreshed;
+evaluation/freshness is recomputed at save time. To reopen, start another session
+with saved `evidence.json`, `catalog.json`, `manual.json` and `exceptions.json`
+from the desired revision and a **new** output directory. Original inputs and
+existing directories are never overwritten.
+
+This is a private loopback-only listener, not a hosted application. Keep its
+capability URL and output files private: full files retain scoped identities,
+review text and attribution. Other local processes/users are trusted; this is
+not an authentication boundary or an anonymized bundle. No Azure operations,
+outbound requests, credentials or new dependencies are needed. Use **Stop local
+review** or Ctrl+C to release the listener; simply closing a tab does not stop
+it. `--no-browser` prints the address without launching a browser.
+
+The original explicit file workflows remain available:
+
 `alz-assessor review prepare assessment.json --control CONTROL_ID --scope ARM_SCOPE
 --kind manual --output review.json` creates deterministic, content-bound templates
 for explicitly selected unresolved/failed controls. Use `--kind exceptions` for a

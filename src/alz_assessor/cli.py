@@ -21,6 +21,7 @@ from .plan import plan_source
 from .preflight import preflight, render_preflight
 from .replay import export_bundle, replay_bundle
 from .reports import render
+from .review_session import ReviewSession, serve_reviews
 from .reviews import prepare_reviews, validate_reviews
 from .sources import terraform_source
 from .terraform import Analyzer, InputError, tree_hash
@@ -163,14 +164,20 @@ def main() -> int:
     explanation.add_argument("reason")
     explanation.add_argument("--format", choices=["json", "text"], default="text")
     review = commands.add_parser("review", help="Prepare or validate explicit local human reviews")
-    review.add_argument("operation", choices=["prepare", "validate"])
+    review.add_argument("operation", choices=["prepare", "validate", "serve"])
     review.add_argument("source", type=Path)
     review.add_argument("--catalog")
-    review.add_argument("--scope", required=True)
+    review.add_argument("--scope")
     review.add_argument("--control", action="append", default=[])
     review.add_argument("--kind", choices=["manual", "exceptions"], default="manual")
     review.add_argument("--at")
     review.add_argument("--output", type=Path)
+    review.add_argument("--directory", type=Path)
+    review.add_argument("--manual", type=Path)
+    review.add_argument("--exceptions", type=Path)
+    review.add_argument("--landing-zone", choices=["platform", "application"], default="platform")
+    review.add_argument("--max-age-hours", type=float, default=24)
+    review.add_argument("--no-browser", action="store_true")
     tf = commands.add_parser("spike-terraform", help="Analyze a bounded offline HCL2 subset")
     tf.add_argument("root", type=Path)
     tf.add_argument("--snapshots", type=Path)
@@ -255,6 +262,29 @@ def main() -> int:
             return 0
         if args.command == "review":
             catalog = load_catalog(args.catalog)
+            if args.operation == "serve":
+                if not args.directory or any((args.scope, args.at, args.output, args.control)):
+                    raise InputError(
+                        "review serve requires --directory NEW_DIRECTORY and saved normalized "
+                        "evidence; scope/time come from evidence and current review time"
+                    )
+                serve_reviews(
+                    ReviewSession(
+                        read_json(args.source),
+                        catalog,
+                        args.directory,
+                        manual=read_json(args.manual) if args.manual else None,
+                        exceptions=read_json(args.exceptions) if args.exceptions else None,
+                        landing_zone=args.landing_zone,
+                        max_age_hours=args.max_age_hours,
+                    ),
+                    open_browser=not args.no_browser,
+                )
+                return 0
+            if not args.scope or any(
+                (args.directory, args.manual, args.exceptions, args.no_browser)
+            ):
+                raise InputError("review prepare/validate requires --scope and no serve options")
             result = (
                 prepare_reviews(
                     read_json(args.source),
