@@ -6,7 +6,7 @@ from datetime import timedelta
 from math import isfinite
 from typing import Any
 
-from .contracts import document, now, timestamp, validate
+from .contracts import control_digest, digest, document, now, timestamp, validate
 from .sources import property_at
 from .terraform import InputError
 
@@ -72,7 +72,23 @@ def assess(
             if any(entry["control_id"] not in known_controls for entry in supplied["entries"]):
                 raise InputError("Manual/exception entry references an unknown catalog control")
     results = []
+    retired = []
     for control in catalog["controls"]:
+        if control["lifecycle"] == "retired":
+            retired.append(
+                {
+                    key: control.get(key)
+                    for key in (
+                        "control_id",
+                        "upstream_id",
+                        "recommendation",
+                        "retired_at",
+                        "retirement_reason",
+                        "superseded_by",
+                    )
+                }
+            )
+            continue
         rule = control.get("rule")
         targets = [
             resource
@@ -111,8 +127,11 @@ def assess(
                     links = [resource["source_location"] + "#" + rule["property"]]
             disposition = None
             validity: dict[str, str | None] = {"manual": None, "exceptions": None}
+            reviews = []
             for record_set, manual_set in ((manual, True), (exceptions, False)):
-                for entry in (record_set or {}).get("entries", []):
+                if record_set is None:
+                    continue
+                for entry in record_set["entries"]:
                     if (
                         entry["control_id"] == control["control_id"]
                         and bundle.get("scope")
@@ -123,6 +142,23 @@ def assess(
                             <= instant
                             < timestamp(entry["valid_until"])
                         )
+                        bound = record_set["schema_version"] == "1.1" and entry[
+                            "control_sha256"
+                        ] == control_digest(control)
+                        legacy = record_set["schema_version"] == "1.0"
+                        applicable_review = bound or (legacy and catalog["schema_version"] == "1.0")
+                        reviews.append(
+                            {
+                                "kind": "manual" if manual_set else "exceptions",
+                                "binding": "bound"
+                                if bound
+                                else "legacy_unbound"
+                                if legacy
+                                else "changed_control",
+                                "reviewer": entry.get("reviewer") if bound else None,
+                                "requires_review": not bound or not active,
+                            }
+                        )
                         validity["manual" if manual_set else "exceptions"] = (
                             "active" if active else "expired_or_not_yet_valid"
                         )
@@ -131,11 +167,12 @@ def assess(
                             and not rule
                             and not stale
                             and active
+                            and applicable_review
                             and landing_zone in control["applicability"]
                         ):
                             outcome, reason = entry["outcome"], "manual_attestation"
                             links = [entry["evidence"]]
-                        elif not manual_set:
+                        elif not manual_set and applicable_review:
                             disposition = entry["disposition"]
             body = {
                 "outcome": outcome,
@@ -146,6 +183,7 @@ def assess(
                 "inventory_complete": bundle["inventory_complete"],
                 "exception_disposition": disposition,
                 "disposition_validity": validity,
+                "reviews": reviews,
                 "method": control["method"],
                 "confidence": "explicit-configuration-only"
                 if rule and outcome in {"pass", "fail"}
@@ -165,6 +203,8 @@ def assess(
                     "flags": control["flags"],
                     "evidence_requirements": control["evidence_requirements"],
                     "rationale": control["rationale"],
+                    "control_sha256": control_digest(control),
+                    "rule_sha256": digest(rule),
                     "logical_id": resource["logical_id"] if resource else "scope",
                     "arm_id": resource.get("arm_id") if resource else None,
                     "planned": body if bundle["mode"] == "planned" else None,
@@ -175,12 +215,24 @@ def assess(
     return validate(
         document(
             "assessment",
+            schema_version=catalog["schema_version"],
             catalog_version=catalog["catalog_version"],
             generated_at=instant.isoformat(),
             results=results,
+            retired_controls=retired,
             evidence=[bundle],
-            coverage=coverage(results, bundle["inventory_complete"]),
-            source_versions={"catalog": catalog["catalog_version"], "contracts": "1.0"},
+            coverage={
+                **coverage(results, bundle["inventory_complete"]),
+                "retired_controls": len(retired),
+                "automated_controls": sum(
+                    c["automation"] == "automated" and c["lifecycle"] == "active"
+                    for c in catalog["controls"]
+                ),
+            },
+            source_versions={
+                "catalog": catalog["catalog_version"],
+                "contracts": catalog["schema_version"],
+            },
             freshness_policy_hours=max_age_hours,
         )
     )

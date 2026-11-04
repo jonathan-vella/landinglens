@@ -86,6 +86,8 @@ def render(assessment: dict[str, Any], format: str = "json", minimize: bool = Fa
         f"{model['generated_at']}"
     )
     lines = [heading, "", json.dumps(model["coverage"], sort_keys=True), ""]
+    for retired in model.get("retired_controls", []):
+        lines += ["Retired/historical: " + json.dumps(retired, sort_keys=True), ""]
     for bundle in model["evidence"]:
         lines += [json.dumps(bundle, sort_keys=True), ""]
     area = None

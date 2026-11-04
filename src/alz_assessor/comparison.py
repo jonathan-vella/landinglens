@@ -17,6 +17,8 @@ def compare(
         raise InputError("Minimized presentations cannot be used for identity comparison")
     if planned["catalog_version"] != observed["catalog_version"]:
         raise InputError("Comparison requires the same reviewed catalog version")
+    if planned["schema_version"] != observed["schema_version"]:
+        raise InputError("Comparison requires matching contract versions")
     if not all(row.get("planned") is not None for row in planned["results"]):
         raise InputError("First assessment must contain planned results")
     if not all(row.get("observed") is not None for row in observed["results"]):
@@ -57,6 +59,10 @@ def compare(
     scope_rows = {row["control_id"]: row for row in observed_rows if row["logical_id"] == "scope"}
     used = set()
     rows = []
+
+    def same_meaning(left: dict[str, Any], right: dict[str, Any]) -> bool:
+        return all(left.get(key) == right.get(key) for key in ("control_sha256", "rule_sha256"))
+
     for row in planned_rows:
         identity = canonical_id(row["arm_id"]) if row.get("arm_id") else None
         key = (row["control_id"], identity)
@@ -75,8 +81,11 @@ def compare(
         if other:
             used.add(id(other))
             result["observed"] = other["observed"]
+            if not same_meaning(row, other):
+                result["comparison_reason"] = "incompatible_control_or_rule"
             if (
                 identity
+                and same_meaning(row, other)
                 and row["planned"]["outcome"] in {"pass", "fail"}
                 and other["observed"]["outcome"] in {"pass", "fail"}
                 and type(row["planned"].get("fact")) is bool
@@ -93,6 +102,11 @@ def compare(
                     bundle["mode"] == "observed"
                     and bundle["inventory_complete"]
                     and observed_current
+                    and planned_current
+                    and any(
+                        item["control_id"] == row["control_id"] and same_meaning(row, item)
+                        for item in observed_rows
+                    )
                     and (
                         (scope and identity.startswith(scope.lower() + "/"))
                         or any(
@@ -129,10 +143,18 @@ def compare(
     return validate(
         document(
             "assessment",
+            schema_version=planned["schema_version"],
             catalog_version=planned["catalog_version"],
             generated_at=instant.isoformat(),
             results=rows,
             evidence=planned["evidence"] + observed["evidence"],
-            coverage=coverage(rows, complete),
+            retired_controls=planned.get("retired_controls", []),
+            coverage={
+                **coverage(rows, complete),
+                "retired_controls": len(planned.get("retired_controls", [])),
+                "automated_controls": len(
+                    {row["control_id"] for row in rows if row.get("automation") == "automated"}
+                ),
+            },
         )
     )

@@ -5,7 +5,7 @@ import json
 from importlib.resources import files
 from typing import Any
 
-from .contracts import digest, read_document, timestamp, validate
+from .contracts import control_digest, digest, read_document, require, timestamp, validate
 from .terraform import InputError
 
 
@@ -27,6 +27,7 @@ def load_catalog(path: str | None = None) -> dict[str, Any]:
 
 
 def reviewed_refresh(candidate: dict[str, Any], current: dict[str, Any]) -> dict[str, Any]:
+    validate(current, "catalog")
     validate(candidate, "catalog")
     if candidate.get("review_state") != "reviewed":
         raise InputError("Refresh accepts only an explicitly reviewed local catalog")
@@ -38,14 +39,42 @@ def reviewed_refresh(candidate: dict[str, Any], current: dict[str, Any]) -> dict
     if before.keys() - after.keys():
         raise InputError("Refresh cannot silently remove imported checklist items")
     for key, control in before.items():
-        if control["automation"] == "automated" and (
-            after[key]["automation"] != "automated" or after[key]["rule"] != control["rule"]
+        if (control["automation"] == "automated" or after[key]["automation"] == "automated") and (
+            after[key]["automation"] != control["automation"]
+            or after[key].get("rule") != control.get("rule")
+            or after[key]["lifecycle"] != control["lifecycle"]
         ):
-            raise InputError("Accepted automation matrix cannot be downgraded by reference refresh")
+            review = candidate.get("change_review")
+            if (
+                candidate["schema_version"] != "1.1"
+                or not isinstance(review, dict)
+                or review.get("base_sha256") != digest(current)
+                or candidate.get("accepted_matrix_sha256") != review.get("matrix_sha256")
+            ):
+                raise InputError(
+                    "Accepted automation matrix cannot be downgraded by reference refresh"
+                )
+            from .contracts import hashes
+
+            hashes({"matrix": candidate.get("accepted_matrix_sha256")})
+            timestamp(require(review, "reviewed_at", str))
+            require(review, "reviewer", str)
+            changes = require(review, "changes", list)
+            for item in changes:
+                require(item, "control_id", str)
+            matches = [item for item in changes if item["control_id"] == key]
+            if (
+                len(matches) != 1
+                or matches[0].get("before_sha256") != control_digest(control)
+                or matches[0].get("after_sha256") != control_digest(after[key])
+            ):
+                raise InputError("Predicate change requires exact reviewed before/after hashes")
+            require(matches[0], "rationale", str)
     return {
         "from": current["catalog_version"],
         "to": candidate["catalog_version"],
         "added": sorted(after.keys() - before.keys()),
         "changed": sorted(key for key in before if digest(before[key]) != digest(after[key])),
+        "retired": sorted(key for key in after if after[key]["lifecycle"] == "retired"),
         "candidate_sha256": digest(candidate),
     }

@@ -14,6 +14,7 @@ from uuid import UUID
 from .terraform import InputError
 
 VERSION = "1.0"
+SUPPORTED_VERSIONS = {"1.0", "1.1"}
 OUTCOMES = {"pass", "fail", "unknown", "error", "manual", "not_applicable"}
 STATES = {"known", "unknown", "inaccessible", "error", "absent"}
 ARM_ID = re.compile(
@@ -44,6 +45,31 @@ def digest(value: Any) -> str:
     return hashlib.sha256(
         json.dumps(value, sort_keys=True, separators=(",", ":"), allow_nan=False).encode(),
     ).hexdigest()
+
+
+def control_digest(control: dict[str, Any]) -> str:
+    """Bind review meaning, not polling timestamps or presentation metadata."""
+    return digest(
+        {
+            key: control.get(key)
+            for key in (
+                "control_id",
+                "upstream_id",
+                "recommendation",
+                "applicability",
+                "method",
+                "rule",
+                "lifecycle",
+                "evidence_requirements",
+                "baseline",
+                "automation",
+                "design_area",
+                "references",
+                "rationale",
+                "flags",
+            )
+        }
+    )
 
 
 def canonical_id(value: str) -> str:
@@ -150,8 +176,12 @@ def hashes(value: Any) -> None:
 
 
 def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
-    if not isinstance(data, dict) or data.get("schema_version") != VERSION:
-        raise InputError("Unsupported or missing schema_version; expected 1.0")
+    if (
+        not isinstance(data, dict)
+        or not isinstance(data.get("schema_version"), str)
+        or data["schema_version"] not in SUPPORTED_VERSIONS
+    ):
+        raise InputError("Unsupported or missing schema_version; expected 1.0 or 1.1")
     actual = data.get("kind")
     if not isinstance(actual, str):
         raise InputError("Document kind must be a string")
@@ -230,6 +260,10 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                 raise InputError("Duplicate manual/exception disposition")
             seen.add(key)
             require(entry, "rationale", str)
+            if data["schema_version"] == "1.1":
+                require(entry, "reviewer", str)
+                require(entry, "evidence", str)
+                hashes({"control": require(entry, "control_sha256", str)})
             start = timestamp(require(entry, "valid_from", str))
             end = timestamp(require(entry, "valid_until", str))
             if end <= start:
@@ -265,6 +299,17 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                 raise InputError("Invalid applicability")
             for field in ("upstream_id", "recommendation", "method", "rationale", "lifecycle"):
                 require(control, field, str)
+            if data["schema_version"] == "1.1":
+                if control["lifecycle"] not in {"active", "retired"}:
+                    raise InputError("Lifecycle must be active or retired")
+                if control["lifecycle"] == "retired":
+                    timestamp(require(control, "retired_at", str))
+                    require(control, "retirement_reason", str)
+                replacement = control.get("superseded_by")
+                if replacement is not None and (
+                    not isinstance(replacement, str) or replacement == identity
+                ):
+                    raise InputError("Invalid supersession")
             require(control, "flags", list)
             require(control, "references", list)
             require(control, "evidence_requirements", list)
@@ -277,6 +322,18 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                 raise InputError("Human-evidence controls cannot contain automated rules")
             if control.get("baseline") != "microsoft-recommendation":
                 raise InputError("Tenant policy/org extensions cannot overwrite this baseline")
+        for control in data["controls"]:
+            if control.get("superseded_by") and control["superseded_by"] not in seen:
+                raise InputError("Supersession references an unknown control")
+        replacements = {c["control_id"]: c.get("superseded_by") for c in data["controls"]}
+        for identity in replacements:
+            visited = set()
+            target = identity
+            while target is not None:
+                if target in visited:
+                    raise InputError("Cyclic control supersession")
+                visited.add(target)
+                target = replacements.get(target)
     elif actual == "assessment":
         require(data, "catalog_version", str)
         require(data, "coverage", dict)
@@ -339,6 +396,21 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                         seen_results.add(result_key)
             if result.get("comparison") not in (None, "match", "drift", "absent", "not_comparable"):
                 raise InputError("Invalid comparison outcome")
+            for hash_key in ("control_sha256", "rule_sha256"):
+                if hash_key in result or data["schema_version"] == "1.1":
+                    hashes({hash_key: result.get(hash_key)})
+        if "retired_controls" in data:
+            retired_ids = set()
+            active_ids = {row["control_id"] for row in data["results"]}
+            for item in require(data, "retired_controls", list):
+                identity = require(item, "control_id", str)
+                if identity in retired_ids or identity in active_ids:
+                    raise InputError("Duplicate or active retired control")
+                retired_ids.add(identity)
+                require(item, "upstream_id", str)
+                require(item, "recommendation", str)
+                require(item, "retirement_reason", str)
+                timestamp(require(item, "retired_at", str))
     else:
         raise InputError("Unsupported document kind")
     return data

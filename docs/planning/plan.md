@@ -27,6 +27,17 @@ baseline. The [PRD](prd.md#next-increment-requirements) and
 This request covers planning, review and issue creation, not execution of
 these implementation tasks or authorization to access Azure.
 
+**Subsequent execution authorization (2026-11-04):** the owner has now approved
+implementation, scoped PR delivery/merges after checks, and acceptance-backed
+closure. Existing-identity, read-only live validation is separately authorized
+for one explicitly selected management group and its descendants. Actual
+identifiers and raw evidence remain private session artifacts. Bounded access
+probes succeeded, but did not prove complete inventory, control correctness or
+MCP runtime safety. Earlier mock-only/no-live statements below describe their
+historical scope, not this new authorization. No deployment, policy scan,
+authentication/permission change, tool/module installation or publication is
+authorized. LL-13 implementation has started; it is not yet merged acceptance.
+
 The immediate priorities are offline preflight, actionable unknowns and
 human-review preparation. Improve the existing static reports and source
 maintenance in parallel; grow verified controls without adding a second

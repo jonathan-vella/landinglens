@@ -1,7 +1,8 @@
-# Version 1.0 contracts
+# Versioned contracts
 
 `alz_assessor.contracts.validate` is the executable validator for the JSON
-contracts. Each document requires `schema_version: "1.0"` and a `kind`.
+contracts. Each document requires an explicit supported version (`"1.0"` or
+`"1.1"`) and a `kind`. Existing producers/fixtures default to 1.0.
 Unsupported versions fail rather than being interpreted as current data.
 The same contracts are used by adapters, evaluation, comparison and rendering.
 
@@ -37,3 +38,28 @@ references and manual/exception rationale. A known resource may have an empty
 reason; other resource states require a reason. Catalog/result display IDs,
 catalog flags and structured diagnostic lists are validated before evaluation
 or rendering, so malformed saved documents produce explicit input errors.
+
+## Version 1.1 lifecycle and reviews
+
+Catalogs explicitly select `active` or `retired`. Retirement requires a timestamp
+and rationale; records remain visible in every report but are excluded from
+active denominators. Supersession references must exist and cannot form cycles.
+Historical catalogs are not rewritten.
+
+New manual/exception documents require an opaque, explicitly supplied reviewer,
+supporting evidence, scope, validity and `control_sha256` from `control_digest`.
+The hash covers recommendation/rule/applicability and review-relevant meaning,
+not poll timestamps. Reviewer labels are assertions, not authenticated identity.
+Duplicate dispositions fail instead of selecting the last record. Changed or
+legacy-unbound records are visible as requiring review; 1.0 records retain their
+old effect only against a 1.0 catalog. Exceptions never rewrite technical facts.
+
+Assessment output adopts its catalog's contract version. Comparison rejects
+mixed contract/catalog versions; incompatible content/rule hashes cannot create
+matches, drift or absence. Historical 1.0 assessments remain readable.
+
+Reviewed refresh retains every prior GUID. Changes to accepted predicates,
+automation disposition or retirement require a 1.1 `change_review` with the exact
+base catalog hash, accepted matrix hash, reviewer/time and unique before/after
+control hashes with rationale. This is a review record, not a generic downgrade
+switch; missing/malformed review evidence fails explicitly.
