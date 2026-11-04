@@ -150,3 +150,67 @@ The scoped-extension verification ran 133 tests against an installed wheel
 outside the checkout: 132 passed and one Windows symlink-privilege case skipped.
 This included the existing no-restore Bicep compiler and injected collection to
 saved-evidence assessment. It did not use live Azure credentials or calls.
+
+## Optional Azure MCP study: not ready
+
+LL-22's decision is **not ready for a production LandingLens transport**. This
+completes the optional feasibility study, not an adapter or live pilot.
+On 2026-11-04, only the already available ARM/policy routers' `learn=true`
+metadata was requested. No resource tool, new process, installation, login,
+consent, permission change or tenant operation was executed. The owner's
+"server 3" label does not establish a software version.
+
+The reviewed Microsoft source is pinned to
+[`deb78ee37b1da6930668c51db397afaaad555861`](https://github.com/microsoft/mcp/tree/deb78ee37b1da6930668c51db397afaaad555861):
+the [registry](https://github.com/microsoft/mcp/blob/deb78ee37b1da6930668c51db397afaaad555861/servers/Azure.Mcp.Server/src/Resources/registry.json),
+[authentication documentation](https://github.com/microsoft/mcp/blob/deb78ee37b1da6930668c51db397afaaad555861/docs/Authentication.md)
+and [README](https://github.com/microsoft/mcp/blob/deb78ee37b1da6930668c51db397afaaad555861/servers/Azure.Mcp.Server/README.md)
+were actually retrieved. They are public MIT-licensed repository references;
+this study records findings rather than redistributing their documentation.
+Pinning local source does not freeze remote tools or prove the installed build.
+
+| Observed interface | Boundary and decision |
+|---|---|
+| ARM namespace | Registry-proxied to `https://mcp.management.azure.com`, not the same implementation boundary as a native local collector. The registry requests a distinct OAuth audience; an existing ARM token does not establish proxy consent/cache availability. |
+| `execute_query` | Required `query`; optional `options` contains only `$top`, `$skipToken`, `resultFormat`. No explicit subscription, management-group or tenant transport field was exposed. Query text/KQL filtering is not authorization scope. Reject for the approved pilot. |
+| `get_resource` | Required exact `resourceId`; optional `apiVersion` and `queryParameters`. An adapter would have to require the pinned API version, allowlist IDs/query keys, validate returned identity and block implicit latest-version selection. Tenant/credential selection remains unproved. |
+| Policy namespace | Not an external entry in the reviewed registry. Discovered `policy_assignment_list` has optional `scope`, `subscription`, `tenant`, and no required fields. Its subscription description permits ambient CLI-profile/environment defaults. Native namespace discovery does not verify its credential implementation or output completeness. |
+| Result schemas | Discovered inputs and prose/examples are not an enforced normalized output contract. No service output, authorization coverage, full paging or original evaluation-time behavior was demonstrated. |
+
+The pinned authentication guide documents a local credential chain that can
+reach interactive browser authentication; broker mode can also fall back to a
+browser. It documents pinning `AZURE_TOKEN_CREDENTIALS=AzureCliCredential`, but
+this does not prove the configured server/proxy uses that setting or the intended
+tenant/cache. A future adapter must reject interactive acquisition and validate
+the existing principal/tenant before the first scoped operation. Local SDK,
+CLI, broker and proxy caches/consents are distinct unverified boundaries, not
+interchangeable proof of access.
+
+The pinned README documents read-only configuration (not enabled by default)
+and telemetry enabled by default. A future deployment needs verified read-only
+mode **and** an exact command/argument allowlist, not a whole-namespace grant.
+Exclude generic CLI execution, deployment, scans, mutation and authentication
+tools. Require `AZURE_MCP_COLLECT_TELEMETRY=false` and
+`AZURE_MCP_COLLECT_TELEMETRY_MICROSOFT=false`, with actual configuration evidence;
+these flags do not attest the remote service's logging/retention. None of the
+running server's credential, cache, telemetry or read-only settings was changed
+or claimed verified by this study.
+
+### Required future transport contract tests
+
+These are adapter acceptance requirements, **not executed remote tests**:
+
+| Case | Required behavior before parity can be accepted |
+|---|---|
+| Scope and credentials | Exact tenant/principal and explicit subscription body or validated descendant boundary; reject omitted/ambient scope, foreign IDs and browser/broker/consent fallback. |
+| Structured facts | Exact reviewed operation/API version, typed property projection and canonical resource ID; reject coercion, arbitrary payloads, prose-only responses and missing identity. |
+| Paging and completeness | Preserve every bounded page, counts, truncation and tokens; repeated/missing tokens and partial/denied child inventories stay incomplete. Exhaustion never attests RBAC coverage. |
+| Errors and retries | Bound throttling/transient retries; permission, service, transport and byte limits remain explicit facet gaps, never passing empty inventories. |
+| Time | Preserve collection start and original PolicyStates evaluation timestamps separately; replay against an explicit time and reject stale facts. No triggerEvaluation. |
+| Schema drift | Pin schema/operation fingerprints, reject incompatible output changes and rerun direct-transport parity fixtures before any reviewed promotion. |
+| Safety and privacy | Verify exact read-only allowlist, no redirects/authentication/mutations, telemetry/retention boundaries and redaction before resource access; exercise privacy sentinels. |
+
+A later adapter/pilot requires its own scoped issue and any missing owner
+authorization. The direct injected transport is the parity baseline. This
+not-ready decision does not block the mandatory offline increment or justify
+broader Azure access.
