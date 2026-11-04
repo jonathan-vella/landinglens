@@ -65,3 +65,57 @@ ARM and saved-observed inputs, plus Bicep when an existing compiler is configure
 Each case checks both exact outcomes, all 255 controls, eight design areas and
 consistent JSON/Markdown/HTML rendering. Each planned source mode also compares
 both canonical identities with saved observed evidence in all three formats.
+
+## Accepted successor matrix: bounded first wave
+
+The original two-control release acceptance above is preserved. Under the
+owner's delegated acceptance authority, LL-19 accepts **D07.06 and D07.07 only**
+for subsequent LL-20 promotion after LL-21 collection evidence. Acceptance of
+this matrix is not a claim that the new predicates are already implemented,
+live-verified, or that upstream KQL is safe to execute.
+
+[`candidate-audit.json`](../references/2026-11-04-wave1/candidate-audit.json)
+classifies every one of the **49** pinned query-bearing GUIDs, records its query
+hash, statically inferred output/identity, permission profile, population and
+missing-value defects, plus the nonquery G02.03/G04.02/F01.08 candidates.
+[`manifest.json`](../references/2026-11-04-wave1/manifest.json) records actual
+retrieved Microsoft/API/provider source hashes, revisions, timestamps and reuse
+notes. The audit is reproducible with `tools/audit_candidates.py`; only explicit
+`--capture-sources` acquires metadata for a new review. No upstream query was
+executed or imported as an evaluator.
+
+| Item / GUID | Exact local predicate | Reviewed applicability | Committed modes |
+|---|---|---|---|
+| D07.06 / e9c8f584-6d5e-473b-8dc5-acc9fbaab4e3 | `threatIntelMode == "Deny"` | Explicit `sku.tier` Standard/Premium; Basic is capability-not-applicable | Raw AzureRM 4.50.0; compiled no-restore Bicep/direct ARM 2024-05-01; optional plan; saved/collected observed |
+| D07.07 / b9d0dff5-bdd4-4cd8-88ed-5811610b2b2c | `intrusionDetection.mode == "Deny"` | Explicit Premium; Basic/Standard are capability-not-applicable | Same five modes and exact versions |
+
+AzureRM mappings are explicit `sku`, `threat_intelligence_mode` and exactly one
+`intrusion_detection` block's `mode`; optional plan maps the same reviewed
+properties with unknown/sensitive masks honored. API enums are exactly
+`Alert`, `Deny`, `Off`; SKU enums are exactly `Basic`, `Standard`, `Premium`.
+Missing/wrong-type/unsupported values are unknown, never inferred from provider
+defaults, a parent policy, firewall names or query coercion.
+
+Positive fixtures require an explicit applicable tier plus Deny; negative
+fixtures use Alert and Off. Unknown cases include missing/malformed/unresolved
+fields, unsupported versions, stale evidence, inaccessible details and missing
+targets under partial inventory. Known properties remain individually assessable
+under partial inventory, with incomplete coverage still visible. Normalized
+resource errors remain errors. Only explicit unsupported capability tiers, or
+a genuinely complete inventory with no targets, establish not-applicability.
+Installed CLI cases must cover these outcomes, exact identity match/drift,
+and shared JSON/Markdown/HTML rendering in every committed mode.
+
+These are **local configuration** predicates. A child's effective threat-intel/
+IDPS mode may inherit a stricter parent; local Alert/Off failure is not proof of
+an insecure effective inherited mode. Omitted/inherited-only local values remain
+unknown. A Deny flag does not establish firewall attachment, allowlist/bypass or
+signature behavior, traffic routing, operational protection or certification.
+The first wave does not resolve inheritance or expand to classic firewall fields.
+
+All 255 recommendations and both original predicates remain. No other audited
+candidate is committed: arbitrary thresholds, inferred hub/DC names, absent joins
+and violation-only query output are not passing evidence. G02.03 needs a compound
+vault-state review, G04.02 needs the blob-service child configuration, and F01.08
+needs explicit criticality intent plus ancestor locks; separate reviewed tasks/
+matrices are required before implementing them.
