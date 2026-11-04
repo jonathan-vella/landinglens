@@ -126,12 +126,14 @@ def document(kind: str, **fields: Any) -> dict[str, Any]:
     return {"schema_version": VERSION, "kind": kind, **fields}
 
 
-def require(data: Any, key: str, expected: type) -> Any:
+def require(data: Any, key: str, expected: type, *, allow_blank: bool = False) -> Any:
     if not isinstance(data, dict):
         raise InputError("Contract entries must be objects")
     value = data.get(key)
     if not isinstance(value, expected) or (expected is int and isinstance(value, bool)):
         raise InputError(f"{key} must be {expected.__name__}")
+    if isinstance(value, str) and not allow_blank and not value.strip():
+        raise InputError(f"{key} must not be blank")
     return value
 
 
@@ -191,7 +193,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                 raise InputError("Invalid resource state")
             if resource["state"] != "known" and not resource.get("reason"):
                 raise InputError("Non-known resources require an explicit reason")
-            require(resource, "reason", str)
+            require(resource, "reason", str, allow_blank=resource["state"] == "known")
             identity = resource.get("arm_id")
             if identity is not None:
                 identity = canonical_id(identity)
@@ -243,14 +245,16 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                 raise InputError("Invalid exception disposition")
     elif actual == "catalog":
         require(data, "catalog_version", str)
-        require(data, "design_areas", list)
+        areas = require(data, "design_areas", list)
+        if any(not isinstance(area, str) or not area.strip() for area in areas):
+            raise InputError("Design areas must be nonblank strings")
         seen = set()
         for control in require(data, "controls", list):
             identity = require(control, "control_id", str)
             if identity in seen:
                 raise InputError("Duplicate control ID")
             seen.add(identity)
-            if control.get("design_area") not in data["design_areas"]:
+            if require(control, "design_area", str) not in areas:
                 raise InputError("Unrecognized design area")
             if control.get("automation") not in ("automated", "assisted", "manual", "unmapped"):
                 raise InputError("Invalid automation disposition")
@@ -259,8 +263,9 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                 value not in ("platform", "application") for value in applicability
             ):
                 raise InputError("Invalid applicability")
-            for field in ("recommendation", "method", "rationale", "lifecycle"):
+            for field in ("upstream_id", "recommendation", "method", "rationale", "lifecycle"):
                 require(control, field, str)
+            require(control, "flags", list)
             require(control, "references", list)
             require(control, "evidence_requirements", list)
             if control["automation"] == "automated":
@@ -289,6 +294,8 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
             require(bundle, "inventory_complete", bool)
             timestamp(require(bundle, "collected_at", str))
             hashes(bundle.get("artifact_hashes"))
+            for diagnostic in require(bundle, "diagnostics", list):
+                require(diagnostic, "reason", str)
             if bundle.get("mode") not in ("planned", "observed"):
                 raise InputError("Invalid assessment evidence mode")
             if bundle.get("scope") is not None:
@@ -301,6 +308,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
         seen_results = set()
         for result in require(data, "results", list):
             require(result, "control_id", str)
+            require(result, "upstream_id", str)
             require(result, "logical_id", str)
             require(result, "design_area", str)
             require(result, "applicability", list)

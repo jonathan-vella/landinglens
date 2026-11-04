@@ -31,3 +31,9 @@ Versioned contracts allow additive metadata. Required fields and identity
 invariants are validated, rather than silently defaulted. Evidence properties
 outside the implemented control vocabulary are not exported. A report contains
 only result facts, not raw source variables or provider configuration.
+
+Required text must contain non-whitespace content, including manual evidence
+references and manual/exception rationale. A known resource may have an empty
+reason; other resource states require a reason. Catalog/result display IDs,
+catalog flags and structured diagnostic lists are validated before evaluation
+or rendering, so malformed saved documents produce explicit input errors.

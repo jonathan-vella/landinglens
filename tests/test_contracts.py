@@ -41,6 +41,27 @@ def resource(identity=None, state="known"):
 
 
 class ContractTests(unittest.TestCase):
+    def test_manual_evidence_and_exceptions_require_nonblank_justification(self):
+        entry = {
+            "control_id": "test",
+            "scope": SCOPE,
+            "rationale": "reviewed",
+            "valid_from": "2026-01-01T00:00:00Z",
+            "valid_until": "2027-01-01T00:00:00Z",
+            "outcome": "pass",
+            "evidence": "review://record",
+            "disposition": "accepted",
+        }
+        for kind, fields in (
+            ("manual", ("control_id", "rationale", "evidence")),
+            ("exceptions", ("control_id", "rationale")),
+        ):
+            for field in fields:
+                for value in ("", " \t\n"):
+                    with self.subTest(kind=kind, field=field, value=value):
+                        with self.assertRaises(InputError):
+                            validate(document(kind, entries=[{**entry, field: value}]))
+
     def test_scoped_identity_child_resources_and_case(self):
         first = derive_id(SCOPE, "Microsoft.Storage/storageAccounts", "test")
         self.assertEqual(canonical_id(first.upper()), first)
@@ -99,6 +120,7 @@ class ContractTests(unittest.TestCase):
     def test_all_contracts_positive_negative_version_and_required_fields(self):
         control = {
             "control_id": "test",
+            "upstream_id": "test",
             "design_area": "Security",
             "automation": "manual",
             "applicability": ["platform", "application"],
@@ -108,6 +130,7 @@ class ContractTests(unittest.TestCase):
             "lifecycle": "active",
             "references": [],
             "evidence_requirements": ["review"],
+            "flags": [],
             "baseline": "microsoft-recommendation",
         }
         entry = {
@@ -137,6 +160,7 @@ class ContractTests(unittest.TestCase):
                 results=[
                     {
                         "control_id": "test",
+                        "upstream_id": "test",
                         "logical_id": "scope",
                         "design_area": "Security",
                         "recommendation": "review",

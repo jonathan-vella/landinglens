@@ -363,6 +363,37 @@ resource "test" "x" {
         with self.assertRaises(InputError):
             validate(candidate)
 
+    def test_cli_rejects_missing_catalog_fields_without_tracebacks(self):
+        evidence = self.write("evidence.json", self.bundle)
+        for field in ("upstream_id", "flags", "design_area"):
+            with self.subTest(field=field):
+                catalog = json.loads(json.dumps(self.catalog))
+                catalog["controls"][0].pop(field)
+                path = self.write("catalog.json", catalog)
+                code, stdout, stderr = self.run_cli(
+                    ["assess", evidence, "--input", "evidence", "--catalog", path]
+                )
+                self.assertEqual((code, stdout), (2, ""))
+                self.assertIn("Input error:", stderr)
+
+    def test_cli_rejects_malformed_report_rows_and_diagnostics_without_tracebacks(self):
+        report = assess(self.bundle, self.catalog)
+        for case in ("missing_upstream_id", "nonobject_diagnostic", "nonlist_diagnostics"):
+            with self.subTest(case=case):
+                candidate = json.loads(json.dumps(report))
+                if case == "missing_upstream_id":
+                    candidate["results"][0].pop("upstream_id")
+                elif case == "nonobject_diagnostic":
+                    candidate["evidence"][0]["diagnostics"] = ["invalid"]
+                else:
+                    candidate["evidence"][0]["diagnostics"] = {"reason": "invalid"}
+                path = self.write("report.json", candidate)
+                code, stdout, stderr = self.run_cli(
+                    ["render", path, "--minimize", "--format", "markdown"]
+                )
+                self.assertEqual((code, stdout), (2, ""))
+                self.assertIn("Input error:", stderr)
+
     def test_cli_catalog_collect_guards_and_irrelevant_options(self):
         code, stdout, stderr = self.run_cli(["catalog", "validate"])
         self.assertEqual((code, json.loads(stdout)["controls"], stderr), (0, 255, ""))
