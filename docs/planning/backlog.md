@@ -34,13 +34,58 @@ The owner explicitly delegated LL-04 acceptance to Autopilot. The accepted
 observed fixtures with positive/negative cases; all 255 entries remain visible.
 Six uncovered areas have explicit assisted/manual rationale.
 
-**Next dependency-ready issue:** none after LL-12. The baseline is merged.
+**Original baseline:** no dependency-ready issue remains after LL-12.
+The next increment below introduces separate planned work; it is not delivered.
 The contract-validation and final acceptance follow-ups are merged. The
 criterion-by-criterion
 [acceptance evidence](plan.md#final-acceptance-reconciliation-2026-11-04) governs
 issue closure; open checkboxes alone are not evidence of missing implementation.
 
-## Work items
+## Next increment work items
+
+Status: planned on 2026-11-04 following the research and requested plan review.
+The [next-increment plan](plan.md#next-increment-trustworthy-automation-and-usable-reviews)
+contains numbered acceptance criteria; [FR-11-FR-20](prd.md#next-increment-requirements)
+defines corresponding product requirements. LL identifiers are not GitHub
+issue numbers. All thirteen new issues were created open; none is implemented.
+
+| ID | Work item | Prerequisites | PRD | Delivery |
+|---|---|---|---|---|
+| [LL-13 (#18)](https://github.com/jonathan-vella/landinglens/issues/18) | Evolve catalog lifecycle and review bindings | Completed baseline | FR-11 | Mandatory |
+| [LL-14 (#24)](https://github.com/jonathan-vella/landinglens/issues/24) | Add offline preflight | Completed baseline | FR-12 | Mandatory |
+| [LL-15 (#23)](https://github.com/jonathan-vella/landinglens/issues/23) | Explain unresolved evidence | Completed baseline | FR-12 | Mandatory |
+| [LL-16 (#21)](https://github.com/jonathan-vella/landinglens/issues/21) | Prepare attributable human reviews | LL-13, LL-15 | FR-13 | Mandatory |
+| [LL-17 (#20)](https://github.com/jonathan-vella/landinglens/issues/20) | Improve self-contained HTML reports | LL-13 | FR-14 | Mandatory |
+| [LL-18 (#17)](https://github.com/jonathan-vella/landinglens/issues/17) | Detect and review source changes | LL-13 | FR-15 | Mandatory |
+| [LL-19 (#22)](https://github.com/jonathan-vella/landinglens/issues/22) | Audit automation candidates and define the successor matrix | Completed baseline | FR-16 | Mandatory |
+| [LL-20 (#19)](https://github.com/jonathan-vella/landinglens/issues/19) | Implement the accepted first control wave | LL-13, LL-19, LL-21 | FR-16 | Mandatory; blocked if no accepted wave |
+| [LL-21 (#25)](https://github.com/jonathan-vella/landinglens/issues/25) | Extend explicitly scoped observed collection | LL-13, LL-19 | FR-17 | Mandatory |
+| [LL-22 (#29)](https://github.com/jonathan-vella/landinglens/issues/29) | Evaluate optional Azure MCP transport | LL-21 | FR-18 | Optional, non-gating study |
+| [LL-23 (#27)](https://github.com/jonathan-vella/landinglens/issues/27) | Add opt-in sanitized replay bundles | LL-13, LL-16 | FR-19 | Mandatory |
+| [LL-24 (#26)](https://github.com/jonathan-vella/landinglens/issues/26) | Strengthen invariants and installed-wheel CI | Completed baseline | FR-20 | Mandatory |
+| [LL-25 (#28)](https://github.com/jonathan-vella/landinglens/issues/28) | Reconcile the next increment offline | LL-13-LL-21, LL-23, LL-24 | FR-20 | Mandatory |
+
+Dependency-ready: **LL-13, LL-14, LL-15, LL-19 and LL-24**. Prioritize preflight
+and actionable reasons while contract/catalog evolution enables human review.
+LL-14 can assess current readiness independently of the richer LL-15 guidance;
+reuse stable reasons when the latter lands rather than blocking a simple check.
+
+Dependencies are implementation prerequisites, not authorization. New source
+monitoring defaults to read-only artifact generation, not bot PR write access.
+LL-19 audits 49 upstream query entries plus G02.03/G04.02/F01.08; LL-20 implements
+only the accepted D07.06/D07.07 first-wave matrix. A failed gate leaves LL-20
+and LL-25 blocked pending an explicit coverage decision, not complete.
+
+LL-22 ends with a justified ready/not-ready feasibility record, not a production
+adapter or proof of remote scope behavior. An MCP adapter, new automation waves
+or real-tenant pilot need later scoped issues/decisions. Do not create runnable
+live-pilot work while credentials, scope and retention are unauthorized.
+
+Close new issues only after their own acceptance criteria are satisfied and
+implementation is merged. This planning task does not execute those issues;
+all exclusions and the original advisory/non-blocking behavior remain intact.
+
+## Original baseline work items
 
 | ID | Work item | Prerequisites |
 |---|---|---|

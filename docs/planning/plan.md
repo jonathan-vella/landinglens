@@ -18,6 +18,307 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## Next increment: trustworthy automation and usable reviews
+
+Status: planning update requested on 2026-11-04; the work below is **not
+implemented**. It extends, rather than reopens, the completed LL-01-LL-12
+baseline. The [PRD](prd.md#next-increment-requirements) and
+[backlog](backlog.md#next-increment-work-items) track the same scope.
+This request covers planning, review and issue creation, not execution of
+these implementation tasks or authorization to access Azure.
+
+The immediate priorities are offline preflight, actionable unknowns and
+human-review preparation. Improve the existing static reports and source
+maintenance in parallel; grow verified controls without adding a second
+evaluator, hosted application, database or general-purpose rule language.
+
+### Research decisions and evidence
+
+- The pinned [Microsoft ALZ checklist](https://github.com/Azure/review-checklists/blob/f131b93418892102b00c247fd9cf685e3d356522/checklists/alz_checklist.en.json)
+  contains 255 items and 49 nonempty `graph` fields, not 49 verified controls.
+  B03.02 is an inventory query; B04.01 uses a hub-name heuristic and does not
+  return canonical `id` plus boolean `compliant`. Audit queries before reuse.
+- In that same snapshot, D07.06 explicitly compares `threatIntelMode` with
+  `Deny` and D07.07 compares `intrusionDetection.mode` with `Deny`, making
+  them plausible narrow candidates, not verified new controls.
+  G02.03, G04.02 and F01.08 have no `graph` text in that reviewed JSON.
+- Use one deterministic Python evaluator after normalization. Prefer explicit
+  ARG/ARM/Policy evidence; keep assignments, exemptions and original-time
+  PolicyStates separate. [ARG visibility](https://learn.microsoft.com/en-us/azure/governance/resource-graph/overview)
+  can be partial without a warning; paging does not prove authorization.
+- Azure MCP is optional. Its reviewed [registry](https://github.com/microsoft/mcp/blob/deb78ee37b1da6930668c51db397afaaad555861/servers/Azure.Mcp.Server/src/Resources/registry.json)
+  proxies ARM to a remote service. The discovered `execute_query` schema had
+  no explicit tenant/subscription/MG fields; public source and installed tool
+  versions were not established as identical. No live behavior was verified.
+- Borrow navigation, rule transparency and export organization from
+  [the ALZ documenter](https://github.com/GetToThe-Cloud/documenter-azure-landingzone/tree/ee446fc90805b723f6ea0d40a85ea0052a6e6b5e).
+  Do not import its count-based maturity scores as compliance predicates,
+  split PowerShell/JavaScript evaluators or local authentication server.
+  Retain MIT notices for substantial copied/adapted portions.
+- Monitor upstream revisions and prepare candidate diffs; never replace the
+  installed catalog at runtime. Start with weekly detection and manual
+  dispatch; ten-working-day triage is a proposed operating target, not a
+  claim of implemented monitoring or source currency.
+- Improve self-contained HTML over the existing sanitized projection.
+  Browser code may filter/sort, but cannot recalculate technical outcomes.
+  No CDN, external fonts, browser credentials, live fetches or hosted service.
+
+### Scope, sequencing and gates
+
+Work IDs LL-13-LL-25 are distinct from GitHub issue numbers. The backlog
+records their actual issue links and prerequisites. Unless marked optional,
+the tasks below define this increment; no completion claim is made by this
+planning update.
+
+1. Establish controlled contract/catalog evolution (LL-13). In parallel,
+   implement actionable diagnostics (LL-15), offline preflight (LL-14),
+   review the automation queue (LL-19) and strengthen CI (LL-24).
+2. Use the evolved contracts for human review (LL-16), reports (LL-17) and
+   reviewed source maintenance (LL-18). Keep these small, independent CLI
+   workflows rather than a new application.
+3. Implement scoped collection (LL-21) against the reviewed matrix, then
+   promote the first control wave end to end (LL-20). Prepare portable replay
+   bundles (LL-23) once review bindings are available.
+4. Run integrated offline acceptance (LL-25). Optional MCP feasibility
+   (LL-22) must not block useful delivery; a justified not-ready decision
+   completes the study, not a production adapter or live-verification claim.
+
+No live Azure pilot, new authentication, role change, deployment, policy
+evaluation trigger, remediation, module/tool installation or package/release
+publication is authorized. A future live pilot needs explicit scope, existing
+approved credentials and evidence-retention permission. It is not a mandatory
+offline-release dependency and does not get a misleading executable issue.
+Existing non-goals and advisory exit behavior remain in force.
+
+### Bounded work and acceptance criteria
+
+The numbered criteria below are the issue acceptance contract, not suggestions
+to omit during implementation.
+
+#### LL-13: Evolve catalog lifecycle and review bindings
+
+1. Define explicit supported-version compatibility for existing 1.0 documents
+   and new lifecycle/review fields. Retain old fixtures and historical replay;
+   never synthesize missing reviewer, content or scope bindings as verified.
+2. Retain removed upstream GUIDs as retired records with reviewed supersession
+   where applicable. Active/current denominators exclude retired controls;
+   historical catalogs remain immutable and reproducible.
+3. Bind new manual/exception review records to control-content hash, scope,
+   reviewer attribution, evidence reference and validity. Use an explicitly
+   supplied opaque reviewer label, not a directory lookup or required email.
+   Changed/unbound
+   records remain visible and require review; attribution is not authenticated
+   identity proof. Preserve technical outcomes independently of exceptions.
+4. Provide a reviewed version/matrix change path for legitimate predicate
+   changes without a generic downgrade override. Wire validation, refresh,
+   evaluation, comparison and every report; mixed versions/rules cannot create
+   spurious drift. Test retirement, changed wording, stale bindings and old data.
+
+#### LL-14: Add offline preflight
+
+1. Add a documented preflight/doctor CLI workflow for an explicitly selected
+   input; check permitted paths, snapshot hashes, scope/identity prerequisites,
+   supported provider mappings and existing compiler availability.
+2. Emit machine-readable and human-readable readiness with actionable reasons,
+   distinguishing missing requirements, unsupported capabilities and warnings.
+3. Never install, restore, fetch modules, contact Azure or initiate login.
+   Do not execute IaC; any compiler version probe is bounded and explicit.
+4. Exercise installed CLI success/failure/partial cases on supported runtimes;
+   no preflight success may imply complete interpretation or Azure readiness.
+
+#### LL-15: Explain unresolved evidence
+
+1. Map existing reason codes to bounded, specific explanations and required
+   evidence, including missing snapshots, unresolved identity, stale facts,
+   denied reads, partial inventory and unsupported expressions.
+2. Preserve stable reason codes, technical outcomes and sanitized provenance
+   across JSON/Markdown/HTML and CLI diagnostics; do not dump source values.
+3. Explain safe next actions without executing them, weakening validation,
+   granting permissions, suggesting implicit downloads or claiming certainty.
+4. Test every documented reason and unknown/unrecognized codes; retain the
+   code and an explicit unsupported-explanation notice rather than hiding it.
+
+#### LL-16: Prepare attributable human reviews
+
+1. Generate deterministic manual-evidence and exception templates for explicitly
+   selected unresolved controls/scope, using LL-13 bindings and LL-15 guidance.
+2. Leave outcome, rationale, reviewer and supporting evidence unasserted until
+   supplied; generated templates cannot be ingested as completed attestations.
+3. Validate completed records, conflict/duplicate handling, expiry and changed
+   control content. Do not select an arbitrary last matching record.
+4. Keep review ownership/status and exception disposition separate from technical
+   evidence; test import and every report without a service, identity provider
+   or automatic GitHub issue/message creation.
+
+#### LL-17: Improve self-contained HTML reports
+
+1. Build summary, design-area, findings, control detail, review and provenance
+   views from the existing sanitized projection; retain all active dispositions
+   and explicitly present retired/historical entries under LL-13 semantics.
+2. Show control versus resource counts, completion, assessed-subset pass rate,
+   automated coverage, inventory visibility and freshness separately.
+3. Add accessible keyboard/filter/expand navigation and print CSS; useful content
+   remains without JavaScript. No network assets, duplicate evaluator or raw
+   evidence dump; validate links and safely embed any client-side data.
+4. Test format/model parity, malicious strings, minimized presentation-only mode,
+   no external requests and representative offline/browser/print behavior.
+   Do not claim PDF byte reproducibility or introduce a PDF engine by default.
+
+#### LL-18: Detect and review source changes
+
+1. Reuse maintainer snapshot/build utilities for weekly/manual public-source
+   detection, candidate acquisition and hashes/license retention, not runtime
+   refresh. Separate last successful poll, semantic review and pending changes.
+2. Diff GUID additions/removals, text, category, applicability, links, queries,
+   schema, taxonomy and license. Flag display-ID collisions and same-GUID edits.
+3. Use LL-13 retirement/review semantics; promotion requires reviewed PR/matrix
+   evidence. Preserve prior source/catalog bytes and stale-attestation impact.
+4. Test upstream failures, malformed/changed schema, GUID conflicts, removals and
+   deterministic generation. Failed polling retains the known catalog and an
+   explicit warning; the monitor never auto-merges or executes upstream queries.
+5. Default to read-only GitHub permissions and downloadable candidate/diff
+   artifacts. A maintainer opens the promotion PR; do not create credentials or
+   grant bot write access. Automated PR writing is deferred pending separate
+   approval. Treat upstream data as untrusted and pin workflow dependencies.
+
+#### LL-19: Audit automation candidates and define the successor matrix
+
+1. Classify all 49 pinned query-bearing entries by GUID as direct predicate,
+   relational check, heuristic or evidence-only; validate output types/identity,
+   applicability, missing-value behavior, permissions and population semantics.
+2. Also review G02.03, G04.02 and F01.08, which lack upstream query text. Record
+   compound/child-resource/inheritance/criticality limits, not invented passes.
+3. Propose D07.06 and D07.07 as the bounded first wave, subject to verified
+   enum/SKU/API/provider semantics. Name each committed control/mode, positive,
+   negative, unknown/error/not-applicable cases and exact source/version evidence.
+4. Accept and record a successor matrix under the existing delegated acceptance
+   authority; preserve the two-control baseline if candidates fail review.
+   A missing viable candidate is an explicit coverage gate, not authority to
+   substitute heuristics or silently reduce promised modes. Future candidate
+   implementation remains deferred until a separate reviewed matrix/task.
+
+#### LL-20: Implement the accepted first control wave
+
+1. Implement only LL-19's accepted first-wave predicates through the existing
+   engine and reviewed adapter mappings; add only needed typed enum and
+   applicability operations, not a general executable expression language.
+2. Wire raw Terraform, Bicep/ARM, optional plan and observed modes precisely as
+   committed in the matrix; do not infer provider defaults or capability/SKU.
+3. Demonstrate true/false/unknown/error/not-applicable, missing/partial/stale
+   evidence and identity-safe comparisons through the installed CLI.
+4. Update the catalog/matrix/user docs and all report formats; preserve the
+   original controls and entire inventory. LL-19/LL-21 evidence must precede
+   promotion; no new mapping is live-verified by mocked tests.
+5. If LL-19 accepts no viable first wave, leave this issue blocked with the
+   precise gap and request an explicit coverage decision. Do not close it as
+   implemented or mark LL-25 complete on the strength of a research decision.
+
+#### LL-21: Extend explicitly scoped observed collection
+
+1. Review and pin exact ARG, ARM detail/child-resource and existing PolicyStates
+   operations/versions and required permissions for the committed matrix.
+   Collect only approved properties and keep policy evidence categories distinct.
+2. Require explicit scope; validate continuation destinations and returned
+   identities. Preserve pages/truncation, bounded retry/errors and collection
+   versus policy-evaluation times; ARG eventual consistency remains explicit.
+3. Treat pagination completion separately from authorization coverage. Missing
+   properties, partial visibility and incomplete child inventories remain
+   unknown/inaccessible, not false, absent or automatically not applicable.
+4. Use injected transports for multi-page, truncated-without-token, forbidden,
+   partial, throttled and stale cases, and verify offline installed workflows.
+   No live calls, triggerEvaluation, generic actions or authentication changes.
+
+#### LL-22: Evaluate optional Azure MCP transport
+
+1. Inspect pinned source and available metadata without Azure resource calls.
+   Record native versus proxied tools, discovered schemas, credential/cache/
+   telemetry boundaries and read-only plus exact-tool allowlist requirements.
+2. Define contract tests for explicit scope, structured facts, identity,
+   completeness/paging, errors, original-time freshness and schema drift.
+   KQL filters are not proof of authorization or transport scope.
+3. Produce an evidence-backed ready/not-ready decision. Missing scope/output
+   evidence stays a documented blocker; mocks do not prove remote behavior.
+4. Do not install/start/authenticate new tooling or implement a production
+   adapter under this study. A later adapter/live pilot needs its own scoped
+   issue and any excluded-action authorization; LL-25 does not depend on it.
+
+#### LL-23: Add opt-in sanitized replay bundles
+
+1. Define a bounded local bundle with catalog/rule versions, sanitized normalized
+   evidence, safe invocation metadata, hashes and bound reviews/exceptions;
+   no credentials, raw variable files, source trees or ambient environment.
+   Sanitize all included metadata/review text and pseudonymize reviewer labels
+   by default without exporting the mapping; require explicit opt-in to retain
+   attribution. Disclose that replay retains scoped resource identities and is
+   not an anonymized report; never upload or share the bundle automatically.
+2. Demonstrate offline semantic replay at an explicit recorded evaluation time
+   from the installed wheel outside the checkout. Preserve outcomes, identities,
+   freshness and coverage; do not claim identical generated timestamps/HTML bytes.
+3. Label minimized exports presentation-only, not replayable. Incomplete evidence
+   remains incomplete; unavailable historical artifacts fail explicitly.
+4. Validate manifest paths, entry/size limits, hashes and schema before import;
+   reject traversal/links/conflicts and prevent overwrite outside the selected
+   destination. Test tampering, malformed bundles and privacy sentinels.
+
+#### LL-24: Strengthen invariants and installed-wheel CI
+
+1. Add deterministic generated/invariant tests for unknown propagation, strict
+   types, redaction, bounded expansion and loss of evidence without manufactured
+   passes. Reuse unittest first; justify any additional dependency separately.
+2. Automate building a wheel and installing that artifact in a clean environment
+   outside the checkout; verify the imported package location and dependencies.
+3. Distinguish real-Bicep exercised versus unavailable jobs and preserve skip
+   reasons. Require at least one demonstrated existing-compiler integration job
+   before claiming compiler coverage; never auto-install/restore Bicep.
+4. Retain Windows/Linux Python 3.12/3.13, exact-byte fixture portability,
+   formatting/lint/types and advisory findings exit behavior. Do not silently
+   turn optional environment checks into a false green coverage claim.
+
+#### LL-25: Reconcile the next increment offline
+
+1. Reconcile each mandatory issue AC to merged code, tests, docs and actual CI;
+   optional LL-22 and a separately authorized live pilot are not release gates.
+2. Run an explicitly supplied, licensed/redacted ALZ reference corpus plus existing
+   fixtures through installed workflows. Record supported versus unresolved
+   behavior and review false-pass/unknown cases; never fetch modules implicitly.
+3. Exercise preflight, diagnostics, review import/expiry, refresh/retirement,
+   rich reports, replay and the accepted cross-mode matrix end to end.
+4. Record clean-wheel/static/dependency checks, supported CI/compiler coverage
+   and limitations. Close new issues only after their criteria and merged
+   evidence justify it; no package publication or live-verification claim.
+
+### Deferred work and completion boundary
+
+Do not implement the documenter's maturity scoring, a hosted portal, Power BI,
+deployed workbooks, PDF tooling, arbitrary KQL execution, all 255 automated
+controls or exhaustive IaC interpretation. G02.03/G04.02/F01.08 enter reviewed
+discovery in LL-19, not an unbounded implementation promise in LL-20.
+An MCP adapter and real-tenant pilot require later explicit go/no-go work.
+
+This increment is complete only when mandatory LL-13-LL-21 and LL-23-LL-25
+have merged acceptance evidence, all active imported recommendations remain
+visible, historical assessments remain reproducible and exclusions remain
+truthfully labelled. Creating issues or merging this planning update does
+not satisfy those implementation criteria. A failed LL-19 coverage gate leaves
+LL-20/LL-25 blocked until an explicit revised scope/matrix decision; it does not
+silently waive automated-control expansion.
+
+### Planning review: 2026-11-04
+
+The requested rubber-duck review challenged the draft before PRD/backlog
+synchronization. Applied corrections: explicit failed-candidate blocking,
+reviewer privacy throughout replay, artifact-only/read-only source monitoring
+instead of unapproved bot write access, and source-backed candidate rationale.
+The compiler-availability gate remains explicit: unavailable tooling cannot
+be presented as exercised CI coverage, and no installation fallback is allowed.
+
+The full research scope (automation, source maintenance, optional MCP and static
+presentation) plus the subsequent usability recommendations is included because
+the owner's planning request followed both discussions. This does not authorize
+implementation or excluded actions. No owner decision is needed merely to file
+the offline work; future live access, bot write permissions or a failed coverage
+gate still requires an explicit decision rather than assumed consent.
+
 ## Implemented release baseline: 2026-11-04
 
 The accepted [automation matrix](../automation-matrix.md) names **G04.01**
@@ -80,7 +381,8 @@ These are documented bounds of the approved advisory baseline, not fabricated
 passes or removal of the all-mode requirements. All original acceptance
 criteria below remain the reference. Issue closure requires the acceptance
 reconciliation and merged evidence below; there is no remaining dependency-ready
-implementation issue after LL-12.
+implementation issue after LL-12 for that baseline; the next increment above
+introduces separate work.
 
 ## Final acceptance reconciliation: 2026-11-04
 
@@ -135,12 +437,15 @@ states were verified through GitHub. No original implementation issue remains
 open. Source snapshots, accepted coverage and historical verification results
 remain unchanged.
 
-Separate maintenance: existing
+Historical maintenance at acceptance: existing
 [Dependabot PR #14](https://github.com/jonathan-vella/landinglens/pull/14)
 tracks a setuptools build-backend update. GitHub reports two development-scope
 advisories (medium and low) for the existing pin. They are not represented as
 resolved by this acceptance delivery; dependency re-vetting/upgrades were not
 silently folded into the original implementation scope.
+Subsequently, PR #14 merged as `e9046fef649c8da49e9701a7a744f60afe9ba455`,
+updating the build pin to setuptools 84.1.0. The current planning checkout
+includes that change; this update does not claim a new vulnerability audit.
 
 ## Prerequisite results: 2026-11-04
 
