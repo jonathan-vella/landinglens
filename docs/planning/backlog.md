@@ -11,7 +11,8 @@ LL-01 through LL-12 were delivered to `main` through
 [PR #13](https://github.com/jonathan-vella/landinglens/pull/13), merged by the
 owner on 2026-11-04. The subsequent completion authorization permits additional
 scoped PRs, merges after passing checks and acceptance-backed issue closure.
-Publication, deployment and live Azure collection remain excluded. GitHub is
+Publication, deployment and live Azure collection were excluded at that stage.
+The later selected-boundary read authorization is tracked separately in #40. GitHub is
 the source of final issue state; closure requires verified, merged evidence.
 
 Final reconciliation: issues **#1-#12 are closed as completed**, each with
@@ -35,7 +36,7 @@ observed fixtures with positive/negative cases; all 255 entries remain visible.
 Six uncovered areas have explicit assisted/manual rationale.
 
 **Original baseline:** no dependency-ready issue remains after LL-12.
-The next increment below introduces separate planned work; it is not delivered.
+The next increment below records separate work and its subsequent delivery.
 The contract-validation and final acceptance follow-ups are merged. The
 criterion-by-criterion
 [acceptance evidence](plan.md#final-acceptance-reconciliation-2026-11-04) governs
@@ -43,11 +44,14 @@ issue closure; open checkboxes alone are not evidence of missing implementation.
 
 ## Next increment work items
 
-Status: planned on 2026-11-04 following the research and requested plan review.
+Originally planned on 2026-11-04 following the research and requested plan review.
 The [next-increment plan](plan.md#next-increment-trustworthy-automation-and-usable-reviews)
 contains numbered acceptance criteria; [FR-11-FR-20](prd.md#next-increment-requirements)
 defines corresponding product requirements. LL identifiers are not GitHub
-issue numbers. All thirteen new issues were created open; none is implemented.
+issue numbers. All thirteen issues were originally created open. Current merged
+evidence is in the
+[delivery reconciliation](plan.md#next-increment-delivery-reconciliation-2026-11-04):
+#17-#27 and #29 are closed; #28 awaits this final reconciliation's green merge.
 
 | ID | Work item | Prerequisites | PRD | Delivery |
 |---|---|---|---|---|
@@ -65,10 +69,10 @@ issue numbers. All thirteen new issues were created open; none is implemented.
 | [LL-24 (#26)](https://github.com/jonathan-vella/landinglens/issues/26) | Strengthen invariants and installed-wheel CI | Completed baseline | FR-20 | Mandatory |
 | [LL-25 (#28)](https://github.com/jonathan-vella/landinglens/issues/28) | Reconcile the next increment offline | LL-13-LL-21, LL-23, LL-24 | FR-20 | Mandatory |
 
-Dependency-ready: **LL-13, LL-14, LL-15, LL-19 and LL-24**. Prioritize preflight
-and actionable reasons while contract/catalog evolution enables human review.
-LL-14 can assess current readiness independently of the richer LL-15 guidance;
-reuse stable reasons when the latter lands rather than blocking a simple check.
+Current dependency-ready work: **LL-25 / #28 final reconciliation**. Its mandatory
+implementation prerequisites are merged, including LL-21 in #36, the accepted
+first wave in #37 and replay in #39. The optional MCP study concluded not ready
+in #38 and does not block release acceptance.
 
 Dependencies are implementation prerequisites, not authorization. New source
 monitoring defaults to read-only artifact generation, not bot PR write access.
@@ -78,12 +82,37 @@ and LL-25 blocked pending an explicit coverage decision, not complete.
 
 LL-22 ends with a justified ready/not-ready feasibility record, not a production
 adapter or proof of remote scope behavior. An MCP adapter, new automation waves
-or real-tenant pilot need later scoped issues/decisions. Do not create runnable
-live-pilot work while credentials, scope and retention are unauthorized.
+or real-tenant pilot need separate scoped issues/decisions. The owner's later
+private selected-boundary authorization is now tracked in #40, not inferred
+from the original planning permission; no broader access is implied.
 
 Close new issues only after their own acceptance criteria are satisfied and
-implementation is merged. This planning task does not execute those issues;
-all exclusions and the original advisory/non-blocking behavior remain intact.
+implementation is merged. The original planning task did not execute those
+issues; later authorized implementation is evidenced separately. Exclusions
+and advisory/non-blocking behavior remain intact.
+
+### Current delivery evidence
+
+| Delivered work | PR / merge |
+|---|---|
+| LL-13 / #18 | [#31](https://github.com/jonathan-vella/landinglens/pull/31) / `001b344f17d4592df8129aa091d2bb4704951223` |
+| LL-14-LL-15 / #24, #23 | [#32](https://github.com/jonathan-vella/landinglens/pull/32) / `1082abe2daf2b7b13b678bda4edfeadd10812338` |
+| LL-16-LL-17 / #21, #20 | [#33](https://github.com/jonathan-vella/landinglens/pull/33) / `576f0e519dc90a4a86aaeb66d26073b62cb75a9a` |
+| LL-18, LL-24 / #17, #26 | [#34](https://github.com/jonathan-vella/landinglens/pull/34) / `730837d489e7284e884b105b15584866087ab203` |
+| LL-19 / #22 | [#35](https://github.com/jonathan-vella/landinglens/pull/35) / `601062bee928d0a7c1d41dabfa123875af501b59` |
+| LL-21 / #25 | [#36](https://github.com/jonathan-vella/landinglens/pull/36) / `a44543f35c916d6021cae38bb390f4c1d1c23adf` |
+| LL-20 / #19 | [#37](https://github.com/jonathan-vella/landinglens/pull/37) / `66f164c8c745bac0fb55513a08b0f1916775f2d6` |
+| LL-22 / #29, study only | [#38](https://github.com/jonathan-vella/landinglens/pull/38) / `fc0e35c774414cf715aef3a877752df0781c9020` |
+| LL-23 / #27 | [#39](https://github.com/jonathan-vella/landinglens/pull/39) / `c8fe279a317d2e6eec1f6078d37dee4ab8660343` |
+
+LL-25 adds the installed licensed-corpus/review/replay/retirement workflow.
+The final local exact-wheel run passed 144 of 145 tests, with one Windows
+symlink-privilege skip; real existing Bicep, static/type/dependency checks passed.
+The current matrix has four automated predicates and all 255 entries. Six
+corpus controllers remain symbolic; no complete AVM/ALZ compatibility or
+live-control verification follows from these results. The reconciliation's
+actual supported CI must pass before merge and closure; #40 remains separately
+tracked for truthful live-validation evidence.
 
 ## Original baseline work items
 

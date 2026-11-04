@@ -11,7 +11,8 @@ established the prerequisites below. The owner subsequently authorized
 end-to-end implementation, feature-branch push and one ready PR, and delegated
 LL-04 matrix acceptance to Autopilot. The subsequent completion authorization
 permits additional scoped PRs, merges after passing checks and acceptance-backed
-issue closure. Publication, deployment and live Azure collection remain excluded.
+issue closure. Publication, deployment and live Azure collection were excluded
+at that stage; the later narrowly scoped read authorization is recorded below.
 
 Original research basis: an earlier report retained in the planning session,
 not included here. Implementation now uses the retrieved, pinned sources in
@@ -20,8 +21,9 @@ from that report.
 
 ## Next increment: trustworthy automation and usable reviews
 
-Status: planning update requested on 2026-11-04; the work below is **not
-implemented**. It extends, rather than reopens, the completed LL-01-LL-12
+Planning baseline: requested on 2026-11-04, before implementation. The
+[delivery reconciliation](#next-increment-delivery-reconciliation-2026-11-04)
+below records current merged evidence. This extends, rather than reopens, the completed LL-01-LL-12
 baseline. The [PRD](prd.md#next-increment-requirements) and
 [backlog](backlog.md#next-increment-work-items) track the same scope.
 This request covers planning, review and issue creation, not execution of
@@ -36,7 +38,8 @@ probes succeeded, but did not prove complete inventory, control correctness or
 MCP runtime safety. Earlier mock-only/no-live statements below describe their
 historical scope, not this new authorization. No deployment, policy scan,
 authentication/permission change, tool/module installation or publication is
-authorized. LL-13 implementation has started; it is not yet merged acceptance.
+authorized. The current delivery record supersedes the earlier in-progress
+status without rewriting the historical baseline results.
 
 The immediate priorities are offline preflight, actionable unknowns and
 human-review preparation. Improve the existing static reports and source
@@ -94,12 +97,14 @@ planning update.
    (LL-22) must not block useful delivery; a justified not-ready decision
    completes the study, not a production adapter or live-verification claim.
 
-No live Azure pilot, new authentication, role change, deployment, policy
+The original planning authorization excluded a live Azure pilot, new authentication, role change, deployment, policy
 evaluation trigger, remediation, module/tool installation or package/release
 publication is authorized. A future live pilot needs explicit scope, existing
 approved credentials and evidence-retention permission. It is not a mandatory
 offline-release dependency and does not get a misleading executable issue.
-Existing non-goals and advisory exit behavior remain in force.
+The owner's later selected-boundary authorization is tracked separately in
+[#40](https://github.com/jonathan-vella/landinglens/issues/40); it is not a
+mandatory offline gate. Existing non-goals and advisory exit behavior remain in force.
 
 ### Bounded work and acceptance criteria
 
@@ -329,6 +334,67 @@ the owner's planning request followed both discussions. This does not authorize
 implementation or excluded actions. No owner decision is needed merely to file
 the offline work; future live access, bot write permissions or a failed coverage
 gate still requires an explicit decision rather than assumed consent.
+
+## Next-increment delivery reconciliation: 2026-11-04
+
+The original results below remain historical. The current catalog is
+**2026-11-04.2 / contract 1.1**, retaining all **255** GUIDs: **4 automated,
+209 assisted and 42 manual**. Both original predicates and the packaged
+`catalog-2026-11-04.1.json` remain unchanged. Only the accepted D07.06/D07.07
+local enum/SKU predicates were promoted, after LL-19 and LL-21 delivery.
+
+Each issue's numbered acceptance criteria are reconciled here to concrete
+implementation, executable evidence and merged delivery. Issue state was
+re-read, not inferred from checkboxes. #17-#27 and #29 are closed with merged
+evidence; #28 closes only after this reconciliation's required checks/merge.
+
+| Work / issue | Acceptance reconciliation | Merged delivery |
+|---|---|---|
+| LL-13 / #18 | AC1: explicit 1.0/1.1 validation and frozen catalog replay. AC2: retirement/supersession/history and active denominators. AC3: content/scope/time/reviewer bindings, unbound visibility and independent exceptions. AC4: exact reviewed before/after hashes across refresh/evaluation/comparison/reports. `contracts.py`, `catalog.py`, `engine.py`, lifecycle/contract/workflow tests. | [#31](https://github.com/jonathan-vella/landinglens/pull/31), `001b344f17d4592df8129aa091d2bb4704951223` |
+| LL-14 / #24 | AC1-2: explicit-input `doctor`, permitted paths/all supplied snapshot hashes, mappings, scope/compiler prerequisites and structured/text readiness. AC3: no execution/install/fetch/login; compiler version probe explicit. AC4: installed success/partial/blocked cases. `preflight.py`, diagnostics tests and installed corpus delivery test. | [#32](https://github.com/jonathan-vella/landinglens/pull/32), `1082abe2daf2b7b13b678bda4edfeadd10812338` |
+| LL-15 / #23 | AC1-2: shared bounded guidance preserves reason codes/outcomes and sanitized provenance in CLI/all formats. AC3: suggestions never execute. AC4: documented/unknown reason coverage and explicit unsupported guidance. `diagnostics.py`, diagnostic/report tests. | #32, same merge |
+| LL-16 / #21 | AC1-2: deterministic selected-control/scope templates remain unasserted and cannot be ingested. AC3: completed validation, expiry/content/conflict checks. AC4: separate review/exception status without identity service; all-format/import and installed corpus tests. `reviews.py`, review/lifecycle/delivery tests. | [#33](https://github.com/jonathan-vella/landinglens/pull/33), `576f0e519dc90a4a86aaeb66d26073b62cb75a9a` |
+| LL-17 / #20 | AC1-2: existing sanitized model, summary/area/findings/review/provenance and separate coverage/resource metrics. AC3: keyboard/filter/expand/no-JS/print behavior, no second evaluator/network assets. AC4: parity/malicious/minimized tests plus actual browser interaction, no external requests/overflow and print-style inspection. Screenshot/native PDF output was not verified. | #33, same merge |
+| LL-18 / #17 | AC1-2: reviewed source registry, weekly/manual artifact-only polling and full GUID/schema/taxonomy/license/field diffs with separate poll/review/pending state. AC3: reviewed promotion/retirement path retains historical meaning. AC4: failure/malformed/conflict/removal/determinism tests. AC5: pinned read-only workflow, no credentials/bot writes/query execution. `maintenance.py`, monitor tools/workflow/tests. Actual manual workflow `41906322701` succeeded with no pending byte changes. | [#34](https://github.com/jonathan-vella/landinglens/pull/34), `730837d489e7284e884b105b15584866087ab203` |
+| LL-19 / #22 | AC1: all 49 actual query texts reviewed by GUID/hash/classification/output/identity/population/permissions. AC2: three nonquery candidates retain compound/child/inheritance/criticality gates. AC3-4: actual API/SKU/inheritance/provider review precedes exact accepted two-control successor matrix. No upstream query was executed. `candidate-audit.json`, source manifest, reproducible audit/tests. | [#35](https://github.com/jonathan-vella/landinglens/pull/35), `601062bee928d0a7c1d41dabfa123875af501b59` |
+| LL-21 / #25 | AC1: pinned ARG/detail/policy API/permission metadata and projected properties. AC2: validated descendant/returned identities, fixed explicit-scope ARG, bounded pages/retries/bytes/references and original policy times. AC3: authorization remains distinct from exhaustion; partial facts remain unknown. AC4: injected page/403/truncation/throttle/stale/conflict/limit fixtures and installed collection-to-assessment flow. `azure.py`, collection suites/docs. | [#36](https://github.com/jonathan-vella/landinglens/pull/36), `a44543f35c916d6021cae38bb390f4c1d1c23adf` |
+| LL-20 / #19 | AC1-2: only accepted typed local modes/SKU applicability in the same evaluator/adapters; raw Terraform, actual no-restore Bicep, ARM, optional plan and saved/collected observed. AC3: installed pass/fail/unknown/error/not-applicable, missing/partial/stale and identity match/drift. AC4: catalog/matrix/all formats preserve inventory/original predicates and narrow caveats, after #35/#36. AC5's failed-candidate branch is not applicable: two candidates were accepted, not substituted with heuristics. Wave/matrix/collection suites. | [#37](https://github.com/jonathan-vella/landinglens/pull/37), `66f164c8c745bac0fb55513a08b0f1916775f2d6` |
+| LL-22 / #29, optional | AC1: retrieved pinned registry/authentication/README plus metadata-only ARM/policy schema discovery; native/proxy/cache/credential/telemetry distinctions. AC2: future parity contract cases specified. AC3: evidence-backed **not ready** due scope/output/runtime gaps. AC4: no adapter, resource calls, start/install/login/configuration changes. See `collection.md`. Study complete; adapter unimplemented and non-gating. | [#38](https://github.com/jonathan-vella/landinglens/pull/38), `fc0e35c774414cf715aef3a877752df0781c9020` |
+| LL-23 / #27 | AC1: opt-in flat local bundle, exact packaged catalog/rules, normalized property projection, safe invocation/hash bindings and sanitized reviews; default unmapped reviewer pseudonyms and explicit identity disclosure. AC2: installed explicit-time semantic replay checks outcomes/identity/freshness/coverage. AC3: partial remains partial, minimized/unavailable artifacts fail. AC4: fixed paths, schema/size/count/hash/link/conflict checks; privacy/tamper/traversal/hardlink and exact 8-MB/10,000-resource tests. `replay.py`, replay/delivery tests and README. | [#39](https://github.com/jonathan-vella/landinglens/pull/39), `c8fe279a317d2e6eec1f6078d37dee4ab8660343` |
+| LL-24 / #26 | AC1: deterministic unittest invariants for types/unknowns/redaction/bounds/evidence loss, no new dependency. AC2: exact-wheel install/test outside checkout with import/dependency assertions. AC3: compiler exercised/unavailable artifacts, no install fallback. AC4: Windows/Linux Python 3.12/3.13, exact-byte fixtures and static/advisory checks retained. | #34, same merge |
+| LL-25 / #28 | AC1: this actual-issue/merge reconciliation; optional study/live pilot excluded from gate. AC2: installed licensed/redacted ALZ corpus plus existing fixtures with supported/unresolved results below. AC3: `test_delivery.py` chains doctor, reasons, review prepare/validate/import, reports, replay and refresh/retirement; existing suites cover expiry and all accepted cross-mode predicates. AC4: exact installed-wheel/static/dependency checks and actual supported CI/compiler evidence; closure requires this change's green merge. | This reconciliation and `tests/test_delivery.py`; no publication |
+
+### Integrated verification and actual limits
+
+The exact wheel was installed outside the checkout, its imported package
+location asserted and dependencies checked. **145 tests ran: 144 passed and
+one Windows symlink-privilege test skipped.** Real existing Bicep was exercised
+with restoration disabled; Ruff formatting/lint and mypy passed. CI runs both
+supported Python versions on Windows/Linux. Run `41912493412`'s downloaded
+compiler artifacts independently record `status: exercised` for all four jobs,
+not inferred from green checks. This reconciliation must pass its own actual
+CI before merge; historical 97/103/109/115/123/124-test results are not rewritten.
+
+The supplied offline corpus is `tests/fixtures/alz-avm`: authored ALZ platform/
+connectivity wrappers and the explicitly supplied, unmodified MIT-licensed
+Microsoft AVM workspace v0.5.1 root sources at
+`b4ffa3ff87ac09ff6de3b7014c44b4d213aa302b`. The provenance test checks all 15
+source/license files byte-for-byte; local module snapshot hashes are explicit.
+Installed doctor/assessment preserve **six symbolic controllers** and incomplete
+inventory. Workspace name/location/group, retention 45, PerGB2018 and explicit
+authentication/network flags resolve; no provider defaults, telemetry execution,
+module downloads or complete AVM/ALZ compatibility are claimed. Four automated
+recommendations without established targets remain unknown, not passes or
+absence-based not-applicable. Review/replay does not improve inventory coverage.
+
+Accepted limitations remain: 251 human-evidence items, narrow local configuration
+rather than effective inherited/runtime protection, bounded IaC interpretation,
+ARG eventual consistency and unproved authorization coverage, unavailable custom
+historical replay artifacts, and an optional MCP transport that is not ready.
+The separately authorized pilot in #40 is not evidence that every control or a
+whole tenant is live-verified. No deployment, remediation, scan, new authentication/
+permissions, implicit module/tool restoration or package/release publication was
+performed. There is no mandatory blocked scope decision or failed first-wave gate.
 
 ## Implemented release baseline: 2026-11-04
 
