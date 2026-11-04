@@ -122,6 +122,26 @@ with restoration disabled. Ruff lint/format, mypy, dependency consistency and
 installed catalog validation passed. Wheel SHA-256:
 `d3a573db14eb6b809fbf318b8ac3d5eba7b56763a439321e07f2feae4b297646`.
 
+### Final delivery and issue state
+
+[PR #15](https://github.com/jonathan-vella/landinglens/pull/15) merged at
+2026-11-04T16:36:38Z as `7c6c3390907c9916f264a645f6359d7fdb48897d`.
+Its [push checks](https://github.com/jonathan-vella/landinglens/actions/runs/41867916726)
+and [PR checks](https://github.com/jonathan-vella/landinglens/actions/runs/41867991016)
+each passed all four Windows/Linux Python 3.12/3.13 jobs before merge; there
+were no outstanding reviews or review comments. Issues **#1-#12 were then
+closed as completed**, with individual acceptance evidence, and their closed
+states were verified through GitHub. No original implementation issue remains
+open. Source snapshots, accepted coverage and historical verification results
+remain unchanged.
+
+Separate maintenance: existing
+[Dependabot PR #14](https://github.com/jonathan-vella/landinglens/pull/14)
+tracks a setuptools build-backend update. GitHub reports two development-scope
+advisories (medium and low) for the existing pin. They are not represented as
+resolved by this acceptance delivery; dependency re-vetting/upgrades were not
+silently folded into the original implementation scope.
+
 ## Prerequisite results: 2026-11-04
 
 The approved standalone location is this `landinglens` repository, separate

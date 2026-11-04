@@ -2,6 +2,9 @@
 
 Status: advisory release baseline merged by the owner through
 [PR #13](https://github.com/jonathan-vella/landinglens/pull/13) on 2026-11-04.
+Acceptance hardening is merged through
+[PR #15](https://github.com/jonathan-vella/landinglens/pull/15);
+issues #1-#12 are closed with verified acceptance evidence.
 All twelve backlog items have implementation evidence in the
 [plan](plan.md#implemented-release-baseline-2026-11-04). The owner authorized
 end-to-end work and delegated matrix acceptance to Autopilot. The subsequent
