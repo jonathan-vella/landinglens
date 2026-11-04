@@ -9,7 +9,7 @@ from unittest.mock import patch
 from alz_assessor.catalog import load_catalog
 from alz_assessor.cli import main
 from alz_assessor.comparison import compare
-from alz_assessor.contracts import document, now
+from alz_assessor.contracts import control_digest, document, now
 from alz_assessor.engine import assess
 from alz_assessor.reports import render
 from alz_assessor.sources import terraform_source
@@ -102,8 +102,26 @@ class SliceTests(unittest.TestCase):
             "valid_from": "2020-01-01T00:00:00Z",
             "valid_until": "2099-01-01T00:00:00Z",
             "disposition": "accepted",
+            "reviewer": "test-reviewer",
+            "evidence": "review://explicit-fixture",
+            "control_sha256": control_digest(
+                next(
+                    control
+                    for control in self.catalog["controls"]
+                    if control["control_id"]
+                    == self.storage(assess(bundle, self.catalog))["control_id"]
+                )
+            ),
         }
-        report = assess(bundle, self.catalog, exceptions=document("exceptions", entries=[entry]))
+        report = assess(
+            bundle,
+            self.catalog,
+            exceptions=document(
+                "exceptions",
+                schema_version="1.1",
+                entries=[entry],
+            ),
+        )
         row = self.storage(report)
         self.assertEqual(row["planned"]["outcome"], "fail")
         self.assertEqual(row["planned"]["exception_disposition"], "accepted")

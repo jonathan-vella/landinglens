@@ -88,8 +88,15 @@ def compare(
                 and same_meaning(row, other)
                 and row["planned"]["outcome"] in {"pass", "fail"}
                 and other["observed"]["outcome"] in {"pass", "fail"}
-                and type(row["planned"].get("fact")) is bool
-                and type(other["observed"].get("fact")) is bool
+                and type(row["planned"].get("fact")) is type(other["observed"].get("fact"))
+                and (
+                    type(row["planned"].get("fact")) is bool
+                    or (
+                        isinstance(row["planned"].get("fact"), str)
+                        and row["planned"]["fact"] in {"Alert", "Deny", "Off"}
+                        and other["observed"]["fact"] in {"Alert", "Deny", "Off"}
+                    )
+                )
             ):
                 result["comparison"] = (
                     "match" if row["planned"]["fact"] == other["observed"]["fact"] else "drift"

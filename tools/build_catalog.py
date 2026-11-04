@@ -1,11 +1,13 @@
 """Build the installed catalog from reviewed bytes; no network or new source decisions."""
 
 import argparse
+import copy
 import hashlib
 import json
 from pathlib import Path
 
-from alz_assessor.contracts import document, validate
+from alz_assessor.catalog import reviewed_refresh
+from alz_assessor.contracts import control_digest, digest, document, validate
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "references" / "2026-11-04"
@@ -113,6 +115,89 @@ def main() -> None:
     validate(catalog, "catalog")
     target = ROOT / "src" / "alz_assessor" / "data"
     target.mkdir(exist_ok=True)
+    if not args.slice:
+        historical = target / "catalog-2026-11-04.1.json"
+        if historical.exists() and digest(json.loads(historical.read_text("utf-8"))) != digest(
+            catalog
+        ):
+            raise ValueError("Frozen historical catalog cannot be overwritten with changed meaning")
+        historical.write_text(json.dumps(catalog, indent=2) + "\n", encoding="utf-8")
+        previous = copy.deepcopy(catalog)
+        wave = ROOT / "references" / "2026-11-04-wave1"
+        audit = json.loads((wave / "candidate-audit.json").read_text("utf-8"))
+        manifest = (wave / "manifest.json").read_bytes()
+        matrix_sha = digest(audit)
+        catalog.update(
+            schema_version="1.1",
+            catalog_version="2026-11-04.2",
+            accepted_matrix_sha256=matrix_sha,
+            wave_source_manifest_sha256=hashlib.sha256(manifest).hexdigest(),
+        )
+        changes = []
+        for control in catalog["controls"]:
+            if control["upstream_guid"] not in {
+                "e9c8f584-6d5e-473b-8dc5-acc9fbaab4e3",
+                "b9d0dff5-bdd4-4cd8-88ed-5811610b2b2c",
+            }:
+                continue
+            before = control_digest(control)
+            threat = control["upstream_id"] == "D07.06"
+            field = "threatIntelMode" if threat else "intrusionDetection.mode"
+            coverage = (
+                "Explicit local firewall-policy mode on a verified capable SKU; not effective "
+                "inherited mode, attachment, bypass/signature coverage or runtime protection."
+            )
+            rule = {
+                "operation": "enum-equals",
+                "resource_type": "Microsoft.Network/firewallPolicies",
+                "property": field,
+                "expected": "Deny",
+                "applicable_skus": ["Standard", "Premium"] if threat else ["Premium"],
+                "api_versions": ["2024-05-01"],
+                "coverage": coverage,
+            }
+            control.update(
+                automation="automated",
+                method="explicit-enum-with-sku",
+                rule=rule,
+                evidence_requirements=["sku.tier", field],
+                rationale=coverage,
+                mapping_state="verified-local-configuration-subset",
+                flags=[],
+            )
+            for source in json.loads(manifest)["sources"][:4]:
+                control["references"].append(
+                    {
+                        "source_url": source["url"],
+                        "source_sha256": source["sha256"],
+                        "revision": source["revision"],
+                        "retrieved_at": source["retrieved_at"],
+                        "pointer": field,
+                        "guidance": source["url"],
+                    }
+                )
+            changes.append(
+                {
+                    "control_id": control["control_id"],
+                    "before_sha256": before,
+                    "after_sha256": control_digest(control),
+                    "rationale": (
+                        "LL-19 accepted exact local enum/SKU matrix; LL-21 collection verified."
+                    ),
+                }
+            )
+        if len(changes) != 2:
+            raise ValueError("Reviewed wave GUIDs no longer match the pinned inventory")
+        catalog["change_review"] = {
+            "base_sha256": digest(previous),
+            "matrix_sha256": matrix_sha,
+            "reviewed_at": json.loads(manifest)["sources"][0]["retrieved_at"],
+            "reviewer": "delegated-maintainer-matrix-review",
+            "changes": changes,
+        }
+        reviewed_refresh(catalog, previous)
+        (target / "wave-control-sources.json").write_bytes(manifest)
+        (target / "accepted-matrix.json").write_bytes((wave / "candidate-audit.json").read_bytes())
     (target / "catalog.json").write_text(json.dumps(catalog, indent=2) + "\n", encoding="utf-8")
     (target / "reference.LICENSE").write_bytes((SOURCE / "alz-checklist.LICENSE").read_bytes())
     (target / "control-sources.json").write_bytes(

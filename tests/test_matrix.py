@@ -6,6 +6,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from importlib.resources import files
 from pathlib import Path
 from unittest.mock import patch
 
@@ -28,7 +29,10 @@ class MatrixTests(unittest.TestCase):
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name)
-        self.catalog = load_catalog()
+        self.legacy_path = str(
+            files("alz_assessor").joinpath("data").joinpath("catalog-2026-11-04.1.json")
+        )
+        self.catalog = load_catalog(self.legacy_path)
 
     def write(self, name, value):
         path = self.root / name
@@ -82,6 +86,8 @@ class MatrixTests(unittest.TestCase):
                             "evidence",
                             "--format",
                             format,
+                            "--catalog",
+                            self.legacy_path,
                         ],
                     ),
                     contextlib.redirect_stdout(stdout),
@@ -117,6 +123,8 @@ class MatrixTests(unittest.TestCase):
 
     def test_installed_cli_accepted_matrix_in_each_source_mode(self):
         def run(*arguments):
+            if arguments[0] == "assess":
+                arguments = (*arguments, "--catalog", self.legacy_path)
             result = subprocess.run(
                 [sys.executable, "-m", "alz_assessor.cli", *map(str, arguments)],
                 cwd=self.root,

@@ -63,3 +63,13 @@ automation disposition or retirement require a 1.1 `change_review` with the exac
 base catalog hash, accepted matrix hash, reviewer/time and unique before/after
 control hashes with rationale. This is a review record, not a generic downgrade
 switch; missing/malformed review evidence fails explicitly.
+
+The successor catalog also uses a bounded `enum-equals` operation for the
+reviewed firewall-policy mode fields only. Exact `Alert`/`Deny`/`Off` strings
+and explicit `Basic`/`Standard`/`Premium` SKU applicability are typed separately;
+booleans, coercions, omitted fields and unreviewed values cannot satisfy either.
+Capability exclusions need an explicit recognized SKU. Stale/error evidence is
+handled before applicability; incomplete inventory cannot prove no targets.
+The original boolean operation and frozen 1.0 catalog meaning are unchanged.
+Identity-safe comparison accepts exact enum facts under matching control/rule
+hashes, never arbitrary strings or cross-type equality.

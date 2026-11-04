@@ -1,5 +1,6 @@
 import copy
 import unittest
+from importlib.resources import files
 
 from test_contracts import SCOPE, evidence, resource
 
@@ -15,7 +16,9 @@ AT = "2026-11-04T00:00:00Z"
 
 class LifecycleTests(unittest.TestCase):
     def setUp(self):
-        self.legacy = load_catalog()
+        self.legacy = load_catalog(
+            str(files("alz_assessor").joinpath("data").joinpath("catalog-2026-11-04.1.json"))
+        )
         self.catalog = copy.deepcopy(self.legacy)
         self.catalog.update(schema_version="1.1", catalog_version="test-1.1")
         self.manual = next(c for c in self.catalog["controls"] if not c.get("rule"))

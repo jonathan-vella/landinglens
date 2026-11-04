@@ -319,7 +319,26 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                 rule = require(control, "rule", dict)
                 for field in ("resource_type", "property"):
                     require(rule, field, str)
-                require(rule, "expected", bool)
+                operation = rule.get("operation", "boolean")
+                if operation == "boolean":
+                    require(rule, "expected", bool)
+                    if "applicable_skus" in rule:
+                        raise InputError("Boolean rules cannot contain SKU applicability")
+                elif operation == "enum-equals" and data["schema_version"] == "1.1":
+                    if require(rule, "expected", str) not in {"Alert", "Deny", "Off"}:
+                        raise InputError("Unsupported firewall mode enum")
+                    skus = require(rule, "applicable_skus", list)
+                    if (
+                        not skus
+                        or any(not isinstance(sku, str) for sku in skus)
+                        or len(set(skus)) != len(skus)
+                        or set(skus) - {"Basic", "Standard", "Premium"}
+                        or rule["resource_type"] != "Microsoft.Network/firewallPolicies"
+                        or rule["property"] not in {"threatIntelMode", "intrusionDetection.mode"}
+                    ):
+                        raise InputError("Invalid reviewed enum/SKU applicability")
+                else:
+                    raise InputError("Unsupported rule operation or contract version")
             elif control.get("rule") is not None:
                 raise InputError("Human-evidence controls cannot contain automated rules")
             if control.get("baseline") != "microsoft-recommendation":

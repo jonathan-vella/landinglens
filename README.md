@@ -2,9 +2,10 @@
 
 Standalone, offline-first, advisory Azure Landing Zones CLI. All **255** reviewed
 checklist items remain visible across eight CAF design areas. The
-[accepted automation baseline](docs/automation-matrix.md) implements two explicit
-configuration checks: storage secure transfer and firewall-policy DNS proxy.
-The other 253 items require human evidence; they are not silently treated as
+[accepted automation matrix](docs/automation-matrix.md) implements four bounded
+configuration checks: storage secure transfer, firewall-policy DNS proxy,
+local threat-intelligence Deny mode and local IDPS Deny mode on explicit capable
+SKUs. The other 251 items require human evidence; they are not silently treated as
 passes. **This is not Microsoft certification or estate-wide compliance.**
 
 Raw Terraform, Bicep/ARM, optional plan JSON and saved observed evidence share
@@ -99,7 +100,7 @@ return **0**, including failures, unknowns and manual work. Invalid invocation o
 unrecoverable input/tool failure returns **2**. Zero denominators are unavailable,
 not 100%. CI checks software behavior; it does not gate on estate findings.
 
-Normal workflows export only reviewed boolean properties, provenance and result
+Normal workflows export only reviewed boolean/enum properties, provenance and result
 facts, not raw variable/parameter values. Marked sensitive Terraform values,
 plan sensitivity markers and ARM secure parameters are withheld. An explicit
 `--evidence-output FILE` saves the normalized evidence contract when needed for
