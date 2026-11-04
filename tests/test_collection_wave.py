@@ -108,6 +108,9 @@ class CollectionWaveTests(unittest.TestCase):
         )
         self.assertIn("eventually consistent", bundle["metadata"]["arg_warning"])
         report = assess(bundle, load_catalog())
+        for control, expected in (("D07.06", "pass"), ("D07.07", "fail")):
+            row = next(r for r in report["results"] if r["upstream_id"] == control)
+            self.assertEqual(row["observed"]["outcome"], expected)
         self.assertEqual(
             next(r for r in report["results"] if r["upstream_id"] == "G04.01")["observed"][
                 "outcome"

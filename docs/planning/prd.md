@@ -232,7 +232,9 @@ deployment.
 
 ## Next increment requirements
 
-Status: planned on 2026-11-04, not implemented. The owner requested this
+Planning baseline: requested on 2026-11-04 before implementation. The
+[delivery reconciliation](plan.md#next-increment-delivery-reconciliation-2026-11-04)
+now records merged implementation and per-criterion evidence. The owner requested this
 extension following the automation/source-maintenance/presentation research
 and usability recommendations. Preserve the completed release and its accepted
 two-control matrix; do not reinterpret the 49 upstream query-bearing entries
@@ -379,6 +381,32 @@ Reconcile every mandatory issue against merged implementation and actual checks,
 including an explicitly supplied licensed/redacted offline ALZ reference corpus.
 No live Azure proof, deployment, package publication or automatic issue closure
 is implied. LL-22 and a future authorized live pilot are not release dependencies.
+
+### Next-increment delivery status
+
+FR-11 through FR-19 and the FR-20 invariant/clean-wheel foundations are delivered
+through PRs #31-#39, with actual supported CI passing before each merge.
+The final FR-20 reconciliation adds an installed, licensed-corpus workflow and
+the [criterion-by-criterion delivery record](plan.md#next-increment-delivery-reconciliation-2026-11-04);
+issue #28 closes only after that change passes its own required CI and merges.
+Earlier release results remain historical rather than being relabelled as
+newer verification.
+
+Current catalog `2026-11-04.2` retains all 255 entries: four bounded automated
+predicates, 209 assisted and 42 manual. Original `2026-11-04.1` meaning is packaged
+unchanged. D07.06/D07.07 use exact explicit local mode/SKU evidence, not effective
+inherited or runtime protection. The other 49-query audit candidates were not
+silently promoted. Optional MCP is **not ready**, a completed study rather than
+a delivered adapter. Replay is a bounded local directory retaining identities,
+not an anonymized report or support for arbitrary unavailable historical rules.
+
+The final local installed-wheel run exercised 145 tests (144 passed; one Windows
+symlink-privilege skip), real existing no-restore Bicep and the licensed AVM/
+authored ALZ corpus. Six symbolic controllers and incomplete visibility remain
+explicit. The separate owner-authorized live pilot in #40 retains private
+scope/raw evidence and cannot substitute for full control or estate verification.
+Publication, deployment/remediation and authentication/permission changes remain
+outside this delivery.
 
 ## Non-functional requirements
 
