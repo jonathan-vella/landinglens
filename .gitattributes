@@ -1,0 +1,5 @@
+* text=auto
+*.tf text eol=lf
+*.bicep text eol=lf
+references/** -text
+tests/fixtures/alz-avm/snapshots/workspace/** -text

@@ -5,6 +5,28 @@ This backlog tracks the complete [implementation plan](plan.md) and
 issue status is the source of truth. Dependencies describe implementation
 order, not additional authorization to access Azure or publish a package.
 
+## Local prerequisite evidence: 2026-11-04
+
+LL-01 and LL-02 now have implementation evidence in this feature branch; issues
+[#1](https://github.com/jonathan-vella/landinglens/issues/1) and
+[#2](https://github.com/jonathan-vella/landinglens/issues/2) remain open.
+No push, closure, publication or downstream implementation is implied.
+
+LL-01 produced reviewed snapshot **2026-11-04.1**, an eight-area taxonomy and
+the complete 255-item provenance/disposition ledger. Three duplicated display
+IDs, the billing-label conflict and unverified item/control mappings are explicit.
+LL-02 produced an installable Python CLI spike and executable Terraform,
+snapshot/scoping/precedence/bounds and no-restore Bicep checks. Its ALZ module
+snapshots include authored ALZ wrappers plus an unmodified, pinned Microsoft AVM
+workspace 0.5.1 module. Supported properties resolve; ten resource controllers
+in that module remain symbolic. Full AVM compatibility and wider evaluator
+support are not claimed. See [acceptance evidence and limitations](plan.md#prerequisite-results-2026-11-04).
+
+**Next dependency-ready issue:**
+[LL-03 / #3](https://github.com/jonathan-vella/landinglens/issues/3).
+It has not started in this increment. LL-04 still requires owner acceptance of
+the concrete automation matrix before adapter/catalog expansion.
+
 ## Work items
 
 | ID | Work item | Prerequisites |
@@ -32,8 +54,9 @@ order, not additional authorization to access Azure or publish a package.
   representative module-based ALZ configuration, including explicit local
   module snapshots and honest missing-module outcomes.
 
-These items can proceed independently. Neither a source-backed catalog nor
-parser feasibility is assumed to exist today.
+These items can proceed independently. Their source inventory and bounded
+feasibility evidence now exist; a source-backed control catalog and full parser
+coverage do not.
 
 ### 2. Establish contracts and the vertical-slice gate
 

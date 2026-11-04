@@ -1,0 +1,21 @@
+{
+  "modules": [
+    {
+      "source": "example.invalid/landinglens/avm-platform/azurerm",
+      "version": "1.0.0",
+      "subdirectory": "",
+      "path": "snapshots/platform",
+      "sha256": "1939b830b2a53086281c9d796adad458b9b6c0f19dd4df82ecd2d5b626c294a3",
+      "origin": "LandingLens authored platform wrapper"
+    },
+    {
+      "source": "Azure/avm-res-operationalinsights-workspace/azurerm",
+      "version": "0.5.1",
+      "subdirectory": "",
+      "path": "snapshots/workspace",
+      "sha256": "f44df9020eacc258b914a1ccc86e9c177a4248d4d0550e56504101acf9b6864c",
+      "origin": "Azure/terraform-azurerm-avm-res-operationalinsights-workspace",
+      "revision": "b4ffa3ff87ac09ff6de3b7014c44b4d213aa302b"
+    }
+  ]
+}

@@ -6,9 +6,91 @@ Create a standalone, advisory-only CLI that compares planned or deployed Azure i
 
 Use a versioned, source-backed control catalog; normalize evidence from Bicep/ARM, raw Terraform source, optional Terraform plan JSON and read-only Azure collection; then evaluate and report through one shared engine. Preserve planned and observed results separately. Missing evidence, unresolved expressions and unsupported controls must never become passes.
 
-This is a plan only. No project, Azure resources, credentials, repository or deployment will be created during planning.
+This is the approved implementation plan. Initial implementation in this
+standalone repository is limited to LL-01 and LL-02; verified results and
+limitations are recorded below. No deployment or live Azure collection is authorized.
 
-Research basis: an earlier research report retained in the original planning session; it is not included in this repository.
+Original research basis: an earlier report retained in the planning session,
+not included here. Implementation now uses the retrieved, pinned sources in
+[`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
+from that report.
+
+## Prerequisite results: 2026-11-04
+
+The approved standalone location is this `landinglens` repository, separate
+from APEX. Only issues [#1](https://github.com/jonathan-vella/landinglens/issues/1)
+and [#2](https://github.com/jonathan-vella/landinglens/issues/2) are implemented in
+this increment. Their acceptance evidence is recorded here; their GitHub issues
+remain open and no downstream contracts or broad implementation have begun.
+
+### LL-01 reference and inventory gate
+
+- Snapshot **2026-11-04.1** contains immutable source revisions, actual retrieval
+  timestamps, SHA-256 values, source licenses and reviewed provenance.
+- CAF publishes eight design areas; the exact table labels and line citations
+  are preserved. The ALZ technical site is implementation guidance, not a
+  replacement design-area taxonomy.
+- The complete checklist has **255 items and 255 unique GUIDs**. Display IDs
+  `B03.02`, `D05.08` and `D07.12` are duplicated. The ledger uses upstream GUIDs
+  and preserves IDs, JSON Pointers and item hashes; future identity stability
+  must be reviewed rather than assumed.
+- Every item has provenance and an explicit candidate disposition: **7 automated,
+  206 assisted, 42 manual**. These are candidates, not an accepted automation
+  matrix or implemented control coverage.
+- Checklist billing terminology differs from the CAF taxonomy. That conflict,
+  candidate category mappings, unverified per-item guidance mappings and
+  unresolved platform/application applicability are explicit in the ledger.
+- MIT/CC BY 4.0 retention and attribution requirements were reviewed and notices
+  retained. Website assets and HashiCorp page prose are not redistributed.
+- HashiCorp local variable precedence and Microsoft Bicep no-restore behavior
+  were retrieved and reviewed, with sources and executable regression cases.
+
+Artifacts: [review](../../references/2026-11-04/review.md),
+[source manifest](../../references/2026-11-04/manifest.json),
+[full disposition ledger](../../references/2026-11-04/inventory.json).
+This establishes a reviewed source inventory, **not Microsoft certification,
+complete recommendation mapping or live verification**.
+
+### LL-02 project and feasibility gate
+
+| Required case | Demonstrated outcome |
+|---|---|
+| Standalone Python package, tests, lint and type checking | Installable `src/alz_assessor` package, `alz-assessor` spike commands, standard-library unittest, Ruff and mypy configuration. Python 3.12.10 / Windows ARM64 exercised. |
+| Dependency vetting | Exact runtime, build and development pins reviewed for licenses, compatibility, maintenance, configured feed availability and seven-day minimum artifact age; newer ineligible candidates rejected. See [dependency review](../dependency-review.md). |
+| Raw Terraform literals, variables and locals | Parsed with python-hcl2's HCL2 AST; bounded allowlisted evaluation, forward locals, cycles and unresolved values tested. `.tf.json` is tested separately. |
+| Local module inputs and outputs | Child defaults and caller inputs resolve in child scope; root locals, root tfvars and ambient environment do not leak into child modules. |
+| Representative module-based ALZ input | Authored ALZ-shaped root resolves management group, shared Log Analytics, hub VNet and application resource-group properties using exact-version, hashed platform and nested management snapshots plus a local connectivity module. An additional fixture resolves workspace name/location/resource group/retention/SKU/local-auth properties from the unmodified Microsoft AVM workspace 0.5.1 snapshot, commit `b4ffa3ff87ac09ff6de3b7014c44b4d213aa302b`, through a versioned platform wrapper. |
+| Missing modules and provenance | The same fixture without the nested mapping or snapshot yields explicit unknowns and incomplete coverage, while independent properties remain resolvable. No snapshots means no invented module resources. Hash/version mismatches and source/ref/subdirectory matching are tested. |
+| `count` and `for_each` | Known integer count, string-set/map for_each and module instances expand; data-driven controls remain symbolic. File/byte, instance, expression and recursion bounds are explicit. |
+| Variable precedence | Defaults < explicitly opted-in environment values < terraform.tfvars < terraform.tfvars.json < lexical auto files < ordered explicit var/file arguments. Ambient environment and HCP Terraform workspace variables are not read. |
+| Bicep | Actual installed Bicep 0.47.16 compiled the local fixture with `--no-restore --stdout`. The unrestored registry module failed BCP190. Missing tooling, partial stdout on failure, invalid output and timeouts never yield resource evidence. |
+| No implicit execution/fetch | Terraform spike has no command/network path; regression tests prohibit socket connections and subprocess invocation. Bicep uses only the existing standalone compiler with no-restore. No Terraform init/plan/apply, module fetch, restore, deployment or Azure collection was performed. |
+
+Executable evidence lives in `tests/test_terraform.py`, `tests/test_bicep.py`,
+`tests/test_avm_fixture.py`, `tests/test_references.py` and `tests/test_cli.py`; reproduction commands are in
+the [README](../../README.md).
+
+Local checks: 58 unittest cases run, 57 passed and one Windows symlink-creation
+case skipped for missing platform privilege; the real Bicep integration case
+ran. Ruff lint/format, mypy, dependency consistency and wheel build/installed-CLI
+smoke checks passed. These checks use no production Azure credentials.
+
+**Actual limitations, not scope reductions:** authored ALZ wrappers and synthetic
+modules are complemented by one actual AVM resource-module snapshot, not the
+complete ALZ pattern library. In the actual AVM fixture, ten resource controllers
+remain symbolic; internet-access comparisons and dynamic blocks remain unknown.
+This proves supported properties, not full AVM compatibility. Unsupported
+operators/functions, computed attributes, data sources and dynamic blocks remain
+unknown. Provider-schema-specific JSON nested-block normalization, Terraform
+constraint/type validation and defaults, complete Bicep/parameter dependency
+provenance and ARM evaluation remain later adapter work. Windows symlink creation
+can require privileges; that regression case explicitly skips when unavailable,
+while traversal/authorized-root cases execute. Real Azure behavior is unverified.
+
+The bounded prerequisite cases are demonstrated; no runtime switch or release
+scope reduction is needed. The next dependency-ready work item is
+[LL-03 / #3](https://github.com/jonathan-vella/landinglens/issues/3). The owner
+automation-matrix acceptance gate remains at LL-04, before broad expansion.
 
 ## Confirmed decisions
 
@@ -61,7 +143,10 @@ Every imported item remains visible even when manual, unsupported, unmapped or o
 
 ## Reference-verification gate
 
-The research was local-only: the current Microsoft documentation and upstream checklist have not been verified. This is a prerequisite, not completed research.
+The original planning research was local-only. LL-01 has now retrieved and
+reviewed the approved source inventory; see the frozen snapshot and limitations
+above. Individual recommendation mappings and automation coverage are not yet
+verified. The following gate remains the procedure for future source versions.
 
 During implementation:
 
@@ -213,7 +298,9 @@ Advisory exit behavior:
 
 ## Implementation todos
 
-All implementation tasks remain pending until plan approval and a standalone project location are established.
+Plan approval and the standalone repository location are established. LL-01 and
+LL-02 have implementation evidence above; LL-03 onward remain pending. GitHub
+issue status is not changed automatically by this document.
 
 ### 1. Verifying references and checklist inventory
 

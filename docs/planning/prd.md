@@ -1,8 +1,24 @@
 # LandingLens product requirements
 
-Status: planning. The Microsoft reference sources and checklist have not yet
-been retrieved or verified. This document describes the intended product, not
+Status: prerequisite implementation. LL-01 has a reviewed, pinned Microsoft
+source inventory and LL-02 has an executable bounded parser/compiler spike.
+The assessor and release requirements below remain the intended product, not
 implemented functionality.
+
+Verified findings: [source review](../../references/2026-11-04/review.md) and
+[prerequisite acceptance evidence](plan.md#prerequisite-results-2026-11-04).
+The inventory contains 255 items with GUID-based provenance and candidate
+dispositions. Duplicate display IDs and the CAF/checklist billing-label conflict
+are flagged, not silently normalized. No completed item/control mapping,
+Microsoft certification or live Azure verification is claimed.
+
+Feasibility is demonstrated for the tested bounded subset against synthetic,
+versioned ALZ-shaped module snapshots and an unmodified, commit-pinned Microsoft
+AVM workspace module 0.5.1, not the complete official AVM library.
+Unsupported expressions and missing modules remain unknown. Actual Bicep
+compilation was exercised with restoration disabled; ARM expressions remain
+unevaluated. Dynamic-block expansion and full adapter support remain release
+requirements, not removed scope.
 
 ## Problem
 
@@ -49,7 +65,9 @@ read-only Azure evidence without requiring both.
 | Microsoft sources | Retrieve, verify and pin reviewed public references |
 | Runtime | Python is recommended by the plan; dependency choices require validation |
 
-The CLI command name and individual library selections are not yet finalized.
+The local spike command is `alz-assessor`; publication naming remains unverified.
+python-hcl2 8.1.4 is accepted for the bounded spike following the
+[dependency review](../dependency-review.md); future dependencies need their own review.
 The [implementation plan](plan.md) is the source of detailed execution
 boundaries.
 
@@ -246,5 +264,8 @@ Mocked or saved evidence must not be presented as live-tenant verification.
 ## Execution and open decisions
 
 The [backlog](backlog.md) links each implementation task to a GitHub issue.
-The automation matrix, actual Microsoft item mappings, precise parser and Azure
-API choices remain open until their evidence-gathering tasks are complete.
+The automation matrix, actual Microsoft item/control mappings and Azure API
+choices remain open until their evidence-gathering tasks are complete. The
+bounded parser choice and source inventory are now established; LL-03 is the
+next dependency-ready issue. The LL-04 owner automation-matrix gate remains
+mandatory before broad implementation.

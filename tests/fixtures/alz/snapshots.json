@@ -1,0 +1,20 @@
+{
+  "modules": [
+    {
+      "source": "example.invalid/landinglens/alz/azurerm",
+      "version": "1.0.0",
+      "subdirectory": "",
+      "path": "snapshots/platform",
+      "sha256": "ff237af531d2f570dfd289c6ef4dee2702f2251a258b71ced40ae6c8ae36c550",
+      "origin": "LandingLens synthetic authored fixture, not an official AVM/ALZ release"
+    },
+    {
+      "source": "example.invalid/landinglens/management/azurerm",
+      "version": "1.0.0",
+      "subdirectory": "",
+      "path": "snapshots/management",
+      "sha256": "f2577ac01fe0286396642b0ea2ef3a81a63d917ad393fb2cfe185adba6a029c7",
+      "origin": "LandingLens synthetic authored fixture, not an official AVM/ALZ release"
+    }
+  ]
+}
