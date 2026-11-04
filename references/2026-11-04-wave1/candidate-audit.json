@@ -1,0 +1,667 @@
+{
+  "version": "2026-11-04-wave1.1",
+  "review_state": "reviewed-static-not-service-executed",
+  "source_manifest_sha256": "f6bb37bcdfa7d45062d41da2d22aebc0e500b0b9b2cbccb8911c54757ef032b8",
+  "permission_profiles": {
+    "resources": "Microsoft.ResourceGraph/resources/read plus read access to every selected resource/child/join population; not proof of authorization completeness.",
+    "role-definitions": "ARG plus Microsoft.Authorization/roleDefinitions/read.",
+    "role-assignments": "ARG plus Microsoft.Authorization/roleAssignments/read; no Entra/Graph group-membership proof.",
+    "ancestry": "ARG subscription-container visibility and management-group ancestry read coverage; no tenant-wide population inference."
+  },
+  "universal_limits": [
+    "Queries were inspected as untrusted data, never executed or imported as rules.",
+    "Declared output types are static review, not service compilation/runtime validation.",
+    "Every projection/join needs complete canonical scope-bound identities before use.",
+    "Null/coerced values, filtered-out rows and inaccessible joins cannot prove absence.",
+    "Only explicit scoped transport populations are allowed; query text cannot scope access."
+  ],
+  "query_audit": [
+    {
+      "guid": "0390417d-53dc-44d9-b3f4-c8832f359b41",
+      "display_id": "D09.07",
+      "query_sha256": "81c4551c5e89bf0cb46681ccce22f8e500966c2df8d17fb2365b88ba0a8d015e",
+      "classification": "direct-predicate",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "<900 disagrees with no more than 900 at the boundary; complete custom rule arrays and separate system/effective rules require review.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "0c47f486-656d-4699-8c30-edef5b8a93c4",
+      "display_id": "D03.05",
+      "query_sha256": "48de83e82493de6fffe5ee34ee8b96148e150fe792fc9475bff4bf51a2442af9",
+      "classification": "direct-predicate",
+      "statically_inferred_output": "violation rows",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Regional IP zone-array subset; does not establish Standard SKU, zone capability or global-IP applicability. No rows is not a pass.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "0ce74f19-9abb-47e4-ae95-6b057a1d2be9",
+      "display_id": "B04.04",
+      "query_sha256": "886af77074f8d71f91a7a9a39343fca2e3799a1f00ffccd0f1497c354677a7fd",
+      "classification": "heuristic",
+      "statically_inferred_output": "integer 0/1",
+      "projected_identity": "scope",
+      "permission_profile": "role-assignments",
+      "population_applicability_and_missing_value_review": "Arbitrary owner threshold >3; Azure RBAC Owner counts are not enrollment account ownership. Missing assignments do not prove zero owners.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "0d83fd81-952c-4d47-a6cb-3a930925ef2e",
+      "display_id": "F01.18",
+      "query_sha256": "a9e264ead99710d3e4556ad6f97ac3c287f4df467ee9ad0428ebb11308989330",
+      "classification": "direct-predicate",
+      "statically_inferred_output": "violation rows",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "LRS SKU matches only; missing/unsupported SKUs and resiliency intent cannot become passes from an empty violation list.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "0dd4e625-9c4b-4a56-b54a-4357bac12761",
+      "display_id": "B03.13",
+      "query_sha256": "0765d76f16fea62d934e980ace50b5c97c447000e638f7122a870ecb522d59f0",
+      "classification": "direct-predicate",
+      "statically_inferred_output": "violation rows",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Replica-array count subset only. Missing arrays can disappear; complete replica inventory and intended multi-region applicability are required.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "0e7c28ec-9366-4572-83b0-f4664b1d944a",
+      "display_id": "D01.11",
+      "query_sha256": "5fd2c7b79736dbf2c6edb8dd012c0a7fb4a63e8bec443e4a215110ce24eca853",
+      "classification": "heuristic",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "450 peerings differs from 400 spokes and 500 peering limit; not regional hub identification or ExpressRoute prefix population. Empty arrays vanish.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "11deb39d-8299-4e47-bbe0-0fb5a36318a8",
+      "display_id": "D09.02",
+      "query_sha256": "2994d1252c1f6b3e47f371c5762f8e178e6b4828075e33a22b5f934010ec171b",
+      "classification": "heuristic",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Any blanket deny ignores priority, preceding allows, service-tag semantics and effective NSG rules; not an effective inbound-policy proof.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "14d99880-2f88-47e8-a134-62a7d85c94af",
+      "display_id": "D07.04",
+      "query_sha256": "59a7411db95f7c5adb33f1569108fc126d8faafdac707db3189b93682acf2775",
+      "classification": "heuristic",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "DNS proxy alone does not establish application rules, FQDN network rules or egress routing; compound recommendation cannot be reduced to this flag.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "1559ab91-53e8-4908-ae28-c84c33b6b780",
+      "display_id": "B03.09",
+      "query_sha256": "1e05abe06c0f113dc1885b7bfc1426ef62fe6e3f46f8f5c8a22c20979a382448",
+      "classification": "heuristic",
+      "statically_inferred_output": "integer 0/1",
+      "projected_identity": "name only",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "DC role inferred from name/tags. Any zone or availability set does not prove two DCs across zones, supported locations or resiliency.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "22d6419e-b627-4d95-9e7d-019fa759387f",
+      "display_id": "D07.11",
+      "query_sha256": "4e04d2108df588fd799e08437ab241591dc6315182feceafeff9ef26703dc5d5",
+      "classification": "direct-predicate",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "parent VNet id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Exact /26 subset needs numeric/CIDR validation and canonical subnet ID; omitted arrays and subnet applicability remain unknown.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "2447ec66-138a-4720-8f1c-e16ed301d6e8",
+      "display_id": "D06.06",
+      "query_sha256": "36e91ea0a6309fefea20c265ab0df06a626394952c7dfb65a8d7ff73ced12274",
+      "classification": "heuristic",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "AZ substring is not verified zone support; population also includes VPN although recommendation names ExpressRoute. Region applicability missing.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "2df27ee4-12e7-4f98-9f63-04722dd69c5b",
+      "display_id": "C02.01",
+      "query_sha256": "6aab7d7cf2e888d31d670574d0f20a3648fd6671dcf780a8c4faeacb2f4e1ec0",
+      "classification": "relational",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id",
+      "permission_profile": "ancestry",
+      "population_applicability_and_missing_value_review": "Subscription ancestor-chain length only; root counting and complete visible hierarchy matter. Null/inaccessible chains cannot prove flatness.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "33aad5e8-c68e-41d7-9667-313b4f5664b5",
+      "display_id": "D03.03",
+      "query_sha256": "f0a7854438040950dfacb57bb043ec50ee1d9559373475429885c991b2852a8c",
+      "classification": "heuristic",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id and addressPrefix",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Mask >16 is not evidence that address space is appropriately allocated or not wasted; string/numeric conversion and intent are unverified.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "33b6b780-8b9f-4e5c-9104-9d403a923c34",
+      "display_id": "C02.05",
+      "query_sha256": "9d9a00519d46a572261c62bafe4ec2ef3410c4e9827334a2b3c07a5646f1f28c",
+      "classification": "relational",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id",
+      "permission_profile": "ancestry",
+      "population_applicability_and_missing_value_review": "Ancestor length >1 is a subscription-placement subset, not proof that all subscriptions are visible or root governance is appropriate.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "3d457936-e9b7-41eb-bdff-314b26450b12",
+      "display_id": "D01.12",
+      "query_sha256": "77fa8250cad714f6a20023b7139e839bc294597bea56c6492613900bd167218d",
+      "classification": "heuristic",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "<360 differs from recommendation limit 400. Expansion loses empty/omitted route tables; embedded routes must be complete.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "3f630472-2dd6-49c5-a5c2-622f54b69bad",
+      "display_id": "D03.02",
+      "query_sha256": "0ae65af5f08d6c14e4258051cdae8b1c9881d36738ba50e05918aee2c40782a0",
+      "classification": "heuristic",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id and cidr",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "RFC1918-looking string prefix is not validated CIDR/network containment; multiple prefixes require distinct evidence instances.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "4348bf81-7573-4512-8f46-9061cc198fea",
+      "display_id": "B03.02",
+      "query_sha256": "11dcfb5b084f94a8b1801c2ca0e6c5819499ceffd3ac2ca767e467fdca0aeb6f",
+      "classification": "evidence-only",
+      "statically_inferred_output": "resource rows",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Selects existing managed identities, omits combined identity type and service-principal consumers; cannot establish replacement or tenant usage.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "4704489a-8042-4d88-b79d-17b73b22a5a6",
+      "display_id": "D08.04",
+      "query_sha256": "2e88b3d41d2b4da3b90eb5c00471b26ce20bb5377ec99371c756b11edd0149ed",
+      "classification": "direct-predicate",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "subnet id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Null serviceEndpoints becomes compliant; missing details can manufacture a pass. Exceptions and full subnet inventory require review.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "48682fb1-1e86-4458-a686-518ebd47393d",
+      "display_id": "D01.15",
+      "query_sha256": "3a545ea14dae0c4c7b24a6f22cc53cc649e953de82cd632761c03aab9c754a19",
+      "classification": "relational",
+      "statically_inferred_output": "violation rows with integer counts",
+      "projected_identity": "load-balancer id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Inline backend and NIC membership branches need complete inventories; unmatched/null NIC counts may disappear. Pool identity is not retained.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "4b69bad3-3aad-45e8-a68e-1d76667313b4",
+      "display_id": "B03.03",
+      "query_sha256": "d0a794c47803e88ffb81dbfb966a4b91be5880a17c52c041c1d84f1622d3d02c",
+      "classification": "relational",
+      "statically_inferred_output": "integer 0/1",
+      "projected_identity": "subscriptionId (subscription scope)",
+      "permission_profile": "role-assignments",
+      "population_applicability_and_missing_value_review": "Only exact subscription-scope role assignments join; no assignment ID, nested groups, inherited/RG roles or on-premises group management evidence.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "4d873974-8b66-42d6-b15f-512a65498f6d",
+      "display_id": "D06.09",
+      "query_sha256": "7980f290fa8301195bcce9e2020c2f47cec0b175639574f1922a582174641959",
+      "classification": "heuristic",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "SKU-name AZ substring does not establish regional zone availability or current capability; no default/capability inference is accepted.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "5de32c19-9248-4160-9d5d-1e4e614658d3",
+      "display_id": "C02.14",
+      "query_sha256": "b8586a7b795856ba0da38242ac4c5b6df95d5103a9601fd691630a4bd062f70f",
+      "classification": "heuristic",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Non-null tags can be empty or irrelevant; no billing keys/values or cost allocation intent is tested.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "6eab9eb6-762b-485e-8ea8-15aa5dba0bd0",
+      "display_id": "D05.02",
+      "query_sha256": "3819987e691b2288bdc4110c21b18eea4d8c9f476d282b4918ecda68da5b7345",
+      "classification": "direct-predicate",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "parent VNet id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Named Bastion subnet prefix subset; needs numeric CIDR validation, SKU applicability and canonical subnet IDs; missing subnets are not absent.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "7025b442-f6e9-4af6-b11f-c9574916016f",
+      "display_id": "D06.04",
+      "query_sha256": "0ffbd9103e36776b60f7aa6a4fe06f0d4563b35b403b2f8e0667ef09a17bea67",
+      "classification": "heuristic",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Metered/local SKU is not a cost-justification test; actual bandwidth, contract and intended usage are missing.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "72105cc8-aaea-4ee1-8c7a-ad25977afcaf",
+      "display_id": "D06.17",
+      "query_sha256": "7b78c1eec14cbccb20b11e4427233f492c43f8438fd43637cb427f6032770fd9",
+      "classification": "relational",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "parent VNet id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Left-join null disableBgpRoutePropagation is treated as compliant: an inaccessible/missing route table can manufacture a pass. Not accepted.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "727c77e1-b9aa-4a37-a024-129d042422c1",
+      "display_id": "D10.06",
+      "query_sha256": "738e1137d821859bce739f3d359aa0ffbe8164ec2f85bbbf2644183ce8abb6b0",
+      "classification": "direct-predicate",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Boolean property compared with string true; coercion is not accepted. Explicit approved branch-blocking intent can change applicability.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "7d5d1e4e-6146-458d-9558-fd77249b8211",
+      "display_id": "D10.03",
+      "query_sha256": "d952a2f37414434acd2aed2a9a282bffc39ec3e45679c1b1ec3561a5d812844e",
+      "classification": "direct-predicate",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Virtual-hub firewall reference subset; existence does not prove secured outbound routing or effective filtering.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "872e52e3-611c-4c58-a5a4-b1511e43a58a",
+      "display_id": "D09.04",
+      "query_sha256": "d5c04b1ff2f2ab055a83b215cb03f126ac04f2b7ea9db54e865281d5f9069645",
+      "classification": "direct-predicate",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "parent id and subnetName",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "NSG-reference presence subset only; requires canonical child identities, explicit special-subnet applicability and effective-policy caveats.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
+      "display_id": "D01.08",
+      "query_sha256": "b02b4f4239c734763b3f2979345fedb507832a735cddce14e071ae2e82c2a0c3",
+      "classification": "direct-predicate",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "parent VNet id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Prefix split has no explicit numeric/CIDR validation; <=27 differs from exact /27. Distinct parent IDs lose multiple subnet identities.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "94f3eede-9aa3-4088-92a3-bb9a56509fad",
+      "display_id": "D07.18",
+      "query_sha256": "3bad6147121522e856c5ab25e0158e24bb45e45577c9fa302a5103f991825c62",
+      "classification": "direct-predicate",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Query filters to attached policies and compares a Boolean with string true. Existing accepted typed predicate is separate, not this query.",
+      "runtime_verified": false,
+      "disposition": "existing-separate-predicate"
+    },
+    {
+      "guid": "9c75dfef-573c-461c-a698-68598595581a",
+      "display_id": "D10.09",
+      "query_sha256": "f3352d73bd9273171c7a3067ffa1bc1cdf4ac9c1f5e6e39c17d27117467a7dbc",
+      "classification": "heuristic",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Mask <23 incorrectly excludes /23 versus at least /23; subnet text parsing is not CIDR validation. No corrected automation is accepted here.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "9cf5418b-1520-4b7b-add7-88eb28f833e8",
+      "display_id": "B04.01",
+      "query_sha256": "9886f56cd6854218d78aae6690f5f08001903e3933eac7ee092bcc20788008d5",
+      "classification": "heuristic",
+      "statically_inferred_output": "integer 0/1",
+      "projected_identity": "name and remoteVnetId",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Hub classification is a name substring, not topology. Missing peerings or inaccessible remote networks cannot establish connectivity.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "9dcd6250-9c4a-4382-aa9b-5b84c64fc1fe",
+      "display_id": "D01.14",
+      "query_sha256": "acc8c623434e94e4e8e1e4a3c0c165185d1fa61c4ba8abfe79413e09ec59992d",
+      "classification": "relational",
+      "statically_inferred_output": "violation rows",
+      "projected_identity": "load-balancer id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Frontend/private zones and public-IP joins require complete child/remote inventory; excludes Basic instead of failing it; regional support unknown.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "a0477a20-9945-4bda-9333-4f2491163418",
+      "display_id": "G02.02",
+      "query_sha256": "e5ceef3409d5bdfff42264533427c234a19378be9729063960b5a046777b0575",
+      "classification": "heuristic",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "subscriptionId and nullable vault id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Vault count !=1 makes zero vaults compliant; does not distinguish apps, environments or regions. Not an acceptable segregation predicate.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "a3784907-9836-4271-aafc-93535f8ec08b",
+      "display_id": "D07.08",
+      "query_sha256": "b6faec58614ce91d7df3ecffc467259c80daa596b598742994917508668504c4",
+      "classification": "heuristic",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "VNet id and subnetId",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "A route-table reference is not an Internet route to a firewall/NVA; Virtual WAN peering inferred from names. Missing joins are unsafe.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "a56888b2-7e83-4404-bd31-b886528502d1",
+      "display_id": "G03.09",
+      "query_sha256": "31e5062b1af2a16231d37f50d4299e7dc963098ddba83ad0315c2eca9b8ea5ec",
+      "classification": "relational",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "workspaceResourceId",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Inner-joined SecurityInsights solution existence excludes unmatched workspaces and does not prove SIEM ingestion, correlation or operations.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "b9d0dff5-bdd4-4cd8-88ed-5811610b2b2c",
+      "display_id": "D07.07",
+      "query_sha256": "3f79d9ceb9775db45940fd5ccb7f6843d49feedd17f5fb80a9f3c390bb643e89",
+      "classification": "direct-predicate",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Reimplement typed local IDPS Deny flag on explicit Premium tier only; not effective inherited mode, bypass/signature coverage or runtime IDPS.",
+      "runtime_verified": false,
+      "disposition": "accepted-typed-reimplementation"
+    },
+    {
+      "guid": "c10d51ef-f999-455d-bba0-5c90ece07447",
+      "display_id": "D07.05",
+      "query_sha256": "e7741a0012e1284efbab7a4006b0589a0e869d7b8a4694364bd198dcf4292710",
+      "classification": "direct-predicate",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Explicit policy SKU only, not firewall association, runtime protection or whether Premium is required for this workload.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "c76cb5a2-abe2-11ed-afa1-0242ac120002",
+      "display_id": "D01.13",
+      "query_sha256": "09aade6cee96dbc61305caf941711c72c2129486337ef407eaff4a1bb9285489",
+      "classification": "direct-predicate",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "parent id and peeringName",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Explicit peering flag subset; child canonical ID is not projected. Capitalized True syntax and returned types are not service-executed.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "d38ad60c-bc9e-4d49-b699-97e5d4dcf707",
+      "display_id": "D07.21",
+      "query_sha256": "eb8016f424262a7c181977b6a26fd330af69cba009c64f71ccad6a21098a8cbd",
+      "classification": "direct-predicate",
+      "statically_inferred_output": "violation rows",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Non-VWAN firewall zone-array subset; managed/regional zone support and SKU/availability applicability need review. No rows cannot prove resilience.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "d49ac006-6670-4bc9-9948-d3e0a3a94f4d",
+      "display_id": "D10.07",
+      "query_sha256": "b614ee7d0ae3674ac009351717a26c80902d8fb75dd650d7fc60b3d311e4b103",
+      "classification": "direct-predicate",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Explicit routing-preference enum subset; defaults, operational routing and regional/product applicability are not inferred.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "d4cd21b0-8813-47f5-b6c4-cfd3e504547c",
+      "display_id": "D06.03",
+      "query_sha256": "2ded7e4f856ba3db1da2930d7022c16fd421946b5493305a2e72a33fbe16cdac",
+      "classification": "heuristic",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Excluding Basic/Standard is not bandwidth or performance sizing evidence; missing SKUs and workload requirements remain unknown.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "dfe237de-143b-416c-91d7-aa9b64704489",
+      "display_id": "D09.06",
+      "query_sha256": "574d9b911f39263248f794d2a1d914ebda9efbe62ba0e64580bf32122fab714f",
+      "classification": "relational",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "lowercased VNet id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Flow-log join tests existence but does not require the projected Traffic Analytics flag to be true. Inaccessible flow logs cannot prove absence.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "e0d5973c-d4cd-421b-8881-37f5e6c4cfd3",
+      "display_id": "D06.15",
+      "query_sha256": "bc531cafbd2a8acd9dd19d6324a5ed44969e28aa8704f96c1de7f833eab617c4",
+      "classification": "relational",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "gateway id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Distinct circuit-location count requires complete connection/circuit joins; case-normalized IDs and missing locations need explicit validation.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "e8143efa-0301-4d62-be54-ca7b5ce566dc",
+      "display_id": "D07.22",
+      "query_sha256": "486a968e67a2f2caba36f3e1adb176e454555e5933ca40e50d26da3ca4f9b215",
+      "classification": "relational",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "firewall id (nullable on outer join)",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Firewall/VNet/DDoS plan joins need complete child IDs; orphan right rows can lack firewall identity. Association is not runtime mitigation.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "e9c8f584-6d5e-473b-8dc5-acc9fbaab4e3",
+      "display_id": "D07.06",
+      "query_sha256": "37f8ccbd6fa01784b39df7da439c0ee5c612cb7c114d78a2afbb60bec6c7d001",
+      "classification": "direct-predicate",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Reimplement typed local Deny flag with explicit Standard/Premium tier. Basic cannot deny. Missing enums/SKU are unknown, not provider defaults.",
+      "runtime_verified": false,
+      "disposition": "accepted-typed-reimplementation"
+    },
+    {
+      "guid": "f2aad7e3-bb03-4adc-8606-4123d342a917",
+      "display_id": "D09.01",
+      "query_sha256": "6d0e477d2f4e7ee37348adb0b05be98cdf56fd9d8f138b44ddf09cbe643cc576",
+      "classification": "direct-predicate",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "parent VNet id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Gateway subnet <=27 requires numeric/CIDR and canonical child checks; missing or inapplicable gateway subnets cannot be inferred absent.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "f4e7926a-ec35-476e-a412-5dd17136bd62",
+      "display_id": "D06.05",
+      "query_sha256": "1a08053af97d3da8fa6862d6e9dcf53d5746b409c69cae3c30320be077ed3992",
+      "classification": "relational",
+      "statically_inferred_output": "boolean expression",
+      "projected_identity": "gateway id",
+      "permission_profile": "resources",
+      "population_applicability_and_missing_value_review": "Connection/circuit join needs full canonical identities and region eligibility. Any Local circuit does not justify every circuit's cost.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    },
+    {
+      "guid": "f5664b5e-984a-4859-a773-e7d261623a76",
+      "display_id": "B03.11",
+      "query_sha256": "5ecfe16ddb707315db86e6463e5d8887467091c02432eeea592e32f24cf4bae7",
+      "classification": "evidence-only",
+      "statically_inferred_output": "constant integer 1",
+      "projected_identity": "roleName only",
+      "permission_profile": "role-definitions",
+      "population_applicability_and_missing_value_review": "Custom-role existence does not prove required business roles, permissions or team alignment; role definition ID is lost.",
+      "runtime_verified": false,
+      "disposition": "deferred"
+    }
+  ],
+  "nonquery_candidates": [
+    {
+      "display_id": "F01.08",
+      "guid": "541acdce-9793-477b-adb3-751ab2ab13ad",
+      "disposition": "deferred",
+      "reason": "Criticality requires supplied intent and current review; ancestor locks and complete lock visibility cannot be inferred from resource names."
+    },
+    {
+      "display_id": "G02.03",
+      "guid": "2ba52752-6944-4008-ae7d-7e4843276d8b",
+      "disposition": "deferred",
+      "reason": "Compound soft-delete/purge protection; API/provider versions, older-vault behavior and positive/negative mappings need a separate matrix."
+    },
+    {
+      "display_id": "G04.02",
+      "guid": "159aac9f-863f-4f48-82cf-00c28fa97a0e",
+      "disposition": "deferred",
+      "reason": "Child blobServices/default configuration and retention/capability semantics require detail reads; parent account presence is insufficient."
+    }
+  ],
+  "accepted_first_wave": {
+    "D07.06": {
+      "property": "threatIntelMode",
+      "expected": "Deny",
+      "applicable_tiers": [
+        "Standard",
+        "Premium"
+      ],
+      "not_applicable": [
+        "Basic"
+      ]
+    },
+    "D07.07": {
+      "property": "intrusionDetection.mode",
+      "expected": "Deny",
+      "applicable_tiers": [
+        "Premium"
+      ],
+      "not_applicable": [
+        "Basic",
+        "Standard"
+      ]
+    }
+  },
+  "mode_commitment": [
+    "raw-terraform-4.50.0",
+    "bicep-no-restore",
+    "arm-2024-05-01",
+    "optional-plan",
+    "saved-and-collected-observed"
+  ],
+  "outcome_commitment": {
+    "pass": "Explicit applicable SKU and exact local Deny mode.",
+    "fail": "Explicit applicable SKU and exact local Alert or Off mode.",
+    "unknown": "Missing/invalid/unresolved SKU or mode, unsupported mapping/version, stale facts, incomplete/unavailable evidence; never infer provider defaults.",
+    "error": "A normalized error resource remains an error.",
+    "not_applicable": "Only explicit reviewed unsupported capability SKU, or verified complete inventory with no target; partial/denied inventory never proves absence."
+  },
+  "acceptance": "Accepted under delegated matrix authority for bounded explicit local configuration predicates, not effective inherited mode or runtime security. Original two-control baseline and all 255 entries remain unchanged until LL-20 promotion follows LL-21 collection evidence. No other candidate is committed."
+}
