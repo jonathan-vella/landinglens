@@ -11,7 +11,7 @@ from lark.exceptions import LarkError
 from .bicep import compile_bicep
 from .contracts import derive_id, digest, document, now, read_document, scope_id, validate
 from .sources import boolean, file_hash, unknown
-from .terraform import InputError
+from .terraform import InputError, Unknown, exact_equal
 
 PARSER = Lark(
     r"""
@@ -169,7 +169,8 @@ class Expressions:
         if name in {"tolower", "toupper"} and len(args) == 1 and isinstance(args[0], str):
             return args[0].lower() if name == "tolower" else args[0].upper()
         if name == "equals" and len(args) == 2:
-            return type(args[0]) is type(args[1]) and args[0] == args[1]
+            result = exact_equal(args[0], args[1])
+            return unknown(result.reason) if isinstance(result, Unknown) else result
         if name in {"not", "and", "or"} and args and all(type(arg) is bool for arg in args):
             if name == "not":
                 return not args[0] if len(args) == 1 else unknown("invalid_not")

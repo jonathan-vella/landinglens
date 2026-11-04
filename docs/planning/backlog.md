@@ -9,9 +9,10 @@ order, not additional authorization to access Azure or publish a package.
 
 LL-01 through LL-12 were delivered to `main` through
 [PR #13](https://github.com/jonathan-vella/landinglens/pull/13), merged by the
-owner on 2026-11-04. Issues remain open for owner review. The owner authorized
-commits, push and one ready PR, but not agent-initiated merge, issue closure,
-publication or live Azure collection.
+owner on 2026-11-04. The subsequent completion authorization permits additional
+scoped PRs, merges after passing checks and acceptance-backed issue closure.
+Publication, deployment and live Azure collection remain excluded. GitHub is
+the source of final issue state; closure requires verified, merged evidence.
 
 LL-01 produced reviewed snapshot **2026-11-04.1**, an eight-area taxonomy and
 the complete 255-item provenance/disposition ledger. Three duplicated display
@@ -29,8 +30,10 @@ observed fixtures with positive/negative cases; all 255 entries remain visible.
 Six uncovered areas have explicit assisted/manual rationale.
 
 **Next dependency-ready issue:** none after LL-12. The baseline is merged.
-The verified contract-validation follow-up is committed locally; another push
-and PR require owner approval. Issue closure is not automatic.
+The contract-validation and final acceptance follow-ups are authorized for
+delivery. The criterion-by-criterion
+[acceptance evidence](plan.md#final-acceptance-reconciliation-2026-11-04) governs
+issue closure; open checkboxes alone are not evidence of missing implementation.
 
 ## Work items
 

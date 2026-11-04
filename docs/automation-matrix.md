@@ -58,3 +58,10 @@ CLI rendering/comparison, input-binding and partial-evidence cases;
 compilation is exercised locally without restore; environments without that
 tool report explicit skips. These are fixture-based checks only. Live Azure
 collection and deployment are neither performed nor claimed.
+
+`test_installed_cli_accepted_matrix_in_each_source_mode` invokes the installed
+package outside the checkout for both controls' positive/negative Terraform,
+ARM and saved-observed inputs, plus Bicep when an existing compiler is configured.
+Each case checks both exact outcomes, all 255 controls, eight design areas and
+consistent JSON/Markdown/HTML rendering. Each planned source mode also compares
+both canonical identities with saved observed evidence in all three formats.

@@ -9,8 +9,9 @@ Use a versioned, source-backed control catalog; normalize evidence from Bicep/AR
 This is the approved implementation plan. The initial LL-01/LL-02 increment
 established the prerequisites below. The owner subsequently authorized
 end-to-end implementation, feature-branch push and one ready PR, and delegated
-LL-04 matrix acceptance to Autopilot. Agent-initiated merge, issue closure,
-publication, deployment and live Azure collection remain unauthorized.
+LL-04 matrix acceptance to Autopilot. The subsequent completion authorization
+permits additional scoped PRs, merges after passing checks and acceptance-backed
+issue closure. Publication, deployment and live Azure collection remain excluded.
 
 Original research basis: an earlier report retained in the planning session,
 not included here. Implementation now uses the retrieved, pinned sources in
@@ -55,12 +56,12 @@ actual run is linked from the delivery PR rather than assumed from local results
 
 The owner merged [PR #13](https://github.com/jonathan-vella/landinglens/pull/13)
 on 2026-11-04; its four Windows/Linux Python 3.12/3.13 check jobs passed.
-The subsequent contract-validation follow-up is committed locally as `4295773`,
-not pushed or included in another PR. Its installed-wheel verification ran
+The subsequent contract-validation follow-up was committed locally as `4295773`.
+Its installed-wheel verification ran
 **95 tests, 94 passed, one Windows symlink-privilege skip**, with the existing
 Bicep compiler; Ruff lint/format, mypy and dependency consistency also passed.
 This supplements rather than replaces the historical release verification above.
-Another push and PR require owner approval beyond the original one-PR allowance.
+The newer completion authorization supersedes the original one-PR allowance.
 
 **Remaining capability limits:** the two predicates prove configuration flags,
 not DNS routing, runtime encryption effectiveness or complete ALZ compliance.
@@ -77,8 +78,39 @@ explicit producer authorization-coverage attestation; HTTP 200 is insufficient.
 
 These are documented bounds of the approved advisory baseline, not fabricated
 passes or removal of the all-mode requirements. All original acceptance
-criteria below remain the reference. GitHub issues stay open for owner review;
-there is no remaining dependency-ready implementation issue after LL-12.
+criteria below remain the reference. Issue closure requires the acceptance
+reconciliation and merged evidence below; there is no remaining dependency-ready
+implementation issue after LL-12.
+
+## Final acceptance reconciliation: 2026-11-04
+
+The final audit read issues #1-#12 and their comments (none at audit time), the
+PRD, backlog, implementation and executable fixtures. AC numbers below follow
+each issue's acceptance-criteria order. The original LL-04 human-interruption
+requirement was superseded by explicit owner delegation, not silently waived.
+All evidence is offline, saved or mocked; live Azure verification is neither
+required by these issues nor claimed.
+
+| Issue | Acceptance criteria and concrete evidence |
+|---|---|
+| #1 | AC1: all 255 entries retain source revision/hash, retrieval time, item hash and disposition (`inventory.json`, `test_complete_inventory_and_per_item_provenance`). AC2-3: duplicate IDs, billing-label conflicts and unverified mappings are explicit; exact taxonomy points to retained source lines (`review.md`, `test_exact_taxonomy_is_traced_to_reviewed_excerpt`). AC4: reviewed HashiCorp precedence and Bicep no-restore semantics are documented and exercised. AC5-6: frozen manifest/ledger precede catalog consumption, with no certification claim; retained source/license hashes are checked by `test_source_and_license_hashes`. |
+| #2 | AC1-2: literals, supplied variables, locals and isolated child defaults/inputs/outputs are checked in `test_terraform.py`. AC3-4: ALZ nested snapshots and the pinned AVM fixture resolve supported properties; missing snapshots remain unknown without execution/network. AC5: known/unknown count and map/set expansion, plus bounds, are tested. AC6: each precedence layer and interleaved overrides have executable checks. AC7: real existing Bicep success/unrestored failure and mocked missing-tool/timeout/invalid-output cases are in `test_bicep.py`. AC8: feasibility was demonstrated for the documented bounded subset; no stop decision or runtime substitution was needed. Dependency vetting is retained in `docs/dependencies.json`. |
+| #3 | AC1: all six versioned document kinds have positive/negative fixtures (`test_all_contracts_positive_negative_version_and_required_fields`). AC2: distinct known/unknown/inaccessible/error/absent states and six result outcomes are tested. AC3-4: full scope/type/name/parent identities, module instances, same-name/different-scope targets, ARM-to-observed and unbound non-comparability are covered by contract, assessment and workflow tests. AC5-6: incomplete absence and duplicate/conflicting/hash-mismatched identity maps are rejected. `contracts.py` is shared by adapters, evaluator, comparison and rendering. |
+| #4 | AC1: installed slice CLI checks consistent JSON/Markdown/HTML and advisory pass/fail behavior (`test_installed_cli_slice_advisory_exit_in_every_format`). AC2-4: the accepted matrix commits G04.01 and D07.18 across Terraform, Bicep/ARM and observed fixtures; all eight areas remain visible and six uncovered areas have explicitly accepted rationale. AC5-6: `docs/automation-matrix.md` records fixture-only evidence and delegated acceptance; `test_assessment.py` and `test_matrix.py` are the retained regression baseline, not a replacement engine. |
+| #5 | AC1: GUID-set equality proves no imported item disappears. AC2: automated rules have reviewed references, explicit resource-type/applicability predicates and positive/negative tests. AC3-4: accepted IDs and all-mode outcomes are asserted; reviewed refresh rejects removal or silent rule downgrade. AC5: human-evidence entries stay in all-format reports. Evidence: `catalog.py`, packaged catalog, `test_inventory_guid_provenance_dispositions_and_no_matrix_downgrade`, matrix and report tests. |
+| #6 | AC1: source-only module/snapshot fixtures exercise both accepted controls without a plan. AC2: outcome, derived identity, unresolved graph and distinct reviewed plan-binding tests are in matrix, assessment and workflow suites. AC3: README documents exact source/version/subdirectory/hash mappings and authorized roots. AC4: recursion, traversal and symlink-escape tests run; the symlink test can skip on Windows privilege denial and runs on Linux CI. AC5: analyzer has no subprocess/network execution path, and offline guards reject attempted execution during raw-source tests. |
+| #7 | AC1-4: ARM parameters, literal/unknown/API-version/copy/nested-scope cases and actual no-restore Bicep positive/negative fixtures are exercised by matrix, Bicep and workflow tests; failed compilation never returns evidence. AC5: the compiler invokes only existing standalone `--version` and `build --no-restore --stdout`; no installer, restore, what-if or deployment path exists. Final hardening also rejects nested boolean/integer equality coercion and leaves unverified floating-point equality unknown. |
+| #8 | AC1: injected-transport tests cover management-group inheritance, paging, retry limits, expired exemptions, denied configuration/inventory, stale evidence and partial descendants. AC2: assignment configuration and original-time policy-compliance records remain separate; assignment presence does not pass governance controls. AC3-4: explicit scope/token inputs only, no login/Graph/billing enumeration and no live test. AC5: exact operations/versions/actions are pinned in collection reference metadata and `docs/collection.md`; HTTP success alone does not establish authorization completeness. |
+| #9 | AC1: repeated fixed-time assessment is deterministic. AC2: policy presence remains manual. AC3-5: comparison requires canonical identity and explicit facts; same-name/different-scope, stale, unbound and unmatched targets remain non-comparable across Terraform and ARM/Bicep-normalized modes. AC6: only current, complete, relevant, identity-resolved observed inventory establishes absence. AC7: active or expired exceptions retain technical failures. Evidence: `engine.py`, `comparison.py`, assessment and workflow tests. |
+| #10 | AC1: all formats use one minimized result model and retain identical coverage/outcomes. AC2-3: malicious HTML is escaped, external assets are absent, raw properties/secure values are withheld and unknown metadata is filtered. AC4: incomplete inventory and zero denominators never claim estate-wide or 100% compliance. AC5: manual/unknown/inaccessible/stale reasons are retained. Evidence: `reports.py`, `test_formats_have_same_outcomes_and_escape_html`, cross-format/zero-denominator/redaction and staleness tests. |
+| #11 | AC1-4: subprocess tests outside the checkout assess source-only Terraform, Bicep, saved observed evidence, render all three formats and compare canonical identities; ARM comparison has dedicated coverage. AC5: the final installed-source CLI matrix checks both controls' positive/negative outcomes for Terraform, ARM, saved observed and existing Bicep, retaining 255 controls/eight areas. AC6-7: offline execution guards, explicit collect credentials/scope, missing-tool and invalid-input failures, and completed-with-findings exit success are tested. Evidence: `cli.py`, matrix, CLI and workflow suites. |
+| #12 | AC1-2: clean wheel installation, full offline tests, lint/format/types/dependency checks and actual Windows/Linux Python 3.12/3.13 CI verify the accepted matrix. AC3: CI runs a deliberately failing configuration assessment successfully; only software/input failures fail the job. AC4-6: inspected fixtures use synthetic scopes and injected transports, require no production credentials and do not publish/create repositories/deploy; README and collection docs explicitly distinguish mocked/saved evidence from live verification. New follow-up CI must pass before merge and issue closure. |
+
+The audit found and fixed nested ARM equality type confusion and extended
+installed-source CLI matrix coverage. The earlier contract-validation fix
+rejects blank human attestations and malformed catalog/report inputs before
+evaluation/rendering. Acceptance is limited to the reviewed two-control matrix,
+not full ALZ compliance or complete Terraform/ARM interpretation.
 
 ## Prerequisite results: 2026-11-04
 
@@ -210,8 +242,9 @@ Every imported item remains visible even when manual, unsupported, unmapped or o
 
 The original planning research was local-only. LL-01 has now retrieved and
 reviewed the approved source inventory; see the frozen snapshot and limitations
-above. Individual recommendation mappings and automation coverage are not yet
-verified. The following gate remains the procedure for future source versions.
+above. Only the accepted matrix's two property mappings are verified; the other
+recommendations retain their review requirements. The following gate remains
+the procedure for future source versions.
 
 During implementation:
 

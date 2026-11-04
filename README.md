@@ -229,6 +229,8 @@ individual cached dependency-source hashes are not available.
 
 ARM supports literals, parameters, variables, member/index access, concatenation,
 boolean functions, explicit scope/resource IDs and bounded resource copies.
+Equality preserves nested value types; floating-point equality remains unknown
+rather than relying on Python numeric coercion.
 Runtime references, unsupported functions/APIs, linked templates and nested child
 resource declarations remain unknown/incomplete rather than guessed. Reviewed
 API versions are intentionally narrow; omission of a setting never infers a
