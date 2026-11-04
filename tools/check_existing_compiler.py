@@ -1,0 +1,42 @@
+"""Record exercised integration versus unavailable tooling; never acquire a compiler."""
+
+import argparse
+import json
+import os
+import shutil
+import sys
+import unittest
+from pathlib import Path
+
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--tests", type=Path, required=True)
+parser.add_argument("--output", type=Path, required=True)
+args = parser.parse_args()
+compiler = os.environ.get("BICEP_COMPILER") or shutil.which("bicep")
+record = {
+    "status": "unavailable",
+    "compiler": compiler,
+    "exercised": False,
+    "reason": "No existing compiler discovered; no installation or restoration attempted",
+    "skipped": [],
+}
+success = True
+if compiler:
+    sys.path.insert(0, str(args.tests.resolve()))
+    suite = unittest.defaultTestLoader.loadTestsFromName(
+        "test_bicep.BicepTests.test_actual_installed_compiler_local_success_and_unrestored_failure",
+    )
+    result = unittest.TextTestRunner(verbosity=2).run(suite)
+    exercised = result.wasSuccessful() and result.testsRun == 1 and not result.skipped
+    success = result.wasSuccessful()
+    record.update(
+        status="exercised" if exercised else "skipped" if result.skipped else "failed",
+        exercised=bool(exercised),
+        reason="Existing compiler: local success and --no-restore missing-module failure"
+        if exercised
+        else "Integration did not exercise the compiler; inspect results",
+        skipped=[reason for _, reason in result.skipped],
+    )
+args.output.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
+print(json.dumps(record, indent=2))
+raise SystemExit(0 if success else 1)
