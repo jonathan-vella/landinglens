@@ -15,11 +15,13 @@ from .bicep import compile_bicep
 from .catalog import load_catalog, reviewed_refresh
 from .comparison import compare
 from .contracts import apply_identity_map, read_document, validate
+from .diagnostics import explain
 from .engine import assess
 from .plan import plan_source
+from .preflight import preflight, render_preflight
 from .reports import render
 from .sources import terraform_source
-from .terraform import Analyzer, InputError
+from .terraform import Analyzer, InputError, tree_hash
 
 
 class VariableInput(argparse.Action):
@@ -44,12 +46,99 @@ class VariableInput(argparse.Action):
         setattr(namespace, self.dest, previous)
 
 
+def input_arguments(command: argparse.ArgumentParser) -> None:
+    command.add_argument("source", type=Path)
+    command.add_argument(
+        "--input",
+        choices=["terraform", "terraform-plan", "arm", "bicep", "evidence"],
+        required=True,
+    )
+    command.add_argument("--parameters", type=Path)
+    command.add_argument("--compiler")
+    command.add_argument("--source-evidence", type=Path)
+    command.add_argument("--plan-binding", type=Path)
+    command.add_argument("--scope")
+    command.add_argument("--provider-version")
+    command.add_argument("--snapshots", type=Path)
+    command.add_argument("--authorize-root", type=Path, action="append", default=[])
+    command.add_argument("--var-file", dest="variable_inputs", action=VariableInput)
+    command.add_argument("--var", dest="variable_inputs", action=VariableInput)
+    command.add_argument("--identity-map", type=Path)
+
+
+def validate_input_options(args: argparse.Namespace) -> None:
+    allowed = {
+        "snapshots": {"terraform"},
+        "authorize_root": {"terraform"},
+        "variable_inputs": {"terraform"},
+        "parameters": {"arm", "bicep"},
+        "compiler": {"bicep"},
+        "provider_version": {"terraform", "terraform-plan"},
+        "source_evidence": {"terraform-plan"},
+        "plan_binding": {"terraform-plan"},
+    }
+    for name, modes in allowed.items():
+        if getattr(args, name) and args.input not in modes:
+            raise InputError(f"--{name.replace('_', '-')} is not valid for {args.input}")
+    if args.input == "evidence" and args.scope:
+        raise InputError("Saved evidence carries its own immutable scope; do not override it")
+
+
+def load_evidence(args: argparse.Namespace) -> dict[str, Any]:
+    validate_input_options(args)
+    if args.input == "terraform":
+        if args.command == "doctor" and args.snapshots:
+            analyzer = Analyzer(
+                args.source,
+                manifest=args.snapshots,
+                authorized_roots=args.authorize_root,
+            )
+            for entry in analyzer.snapshots:
+                path = analyzer.safe(args.snapshots.parent / entry["path"])
+                if not path.is_dir() or tree_hash(path, analyzer.limits) != entry["sha256"]:
+                    raise InputError("Snapshot content hash mismatch")
+        bundle = terraform_source(
+            args.source,
+            scope=args.scope,
+            provider_version=args.provider_version,
+            snapshots=args.snapshots,
+            authorized_roots=args.authorize_root,
+            variable_inputs=args.variable_inputs,
+        )
+    elif args.input == "terraform-plan":
+        bundle = plan_source(
+            args.source,
+            scope=args.scope,
+            provider_version=args.provider_version,
+            source_binding=read_json(args.source_evidence) if args.source_evidence else None,
+            binding=read_json(args.plan_binding) if args.plan_binding else None,
+        )
+    elif args.input in {"arm", "bicep"}:
+        bundle = arm_source(
+            args.source,
+            scope=args.scope,
+            parameters=args.parameters,
+            compiler=args.compiler,
+            bicep=args.input == "bicep",
+        )
+    else:
+        bundle = read_json(args.source)
+    if args.identity_map:
+        bundle = apply_identity_map(bundle, read_json(args.identity_map))
+    return validate(bundle, "evidence")
+
+
 def main() -> int:
     for stream in (sys.stdout, sys.stderr):
         if isinstance(stream, io.TextIOWrapper):
             stream.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description="LandingLens advisory ALZ assessment")
     commands = parser.add_subparsers(dest="command", required=True)
+    explanation = commands.add_parser(
+        "explain", help="Explain a stable reason without taking action"
+    )
+    explanation.add_argument("reason")
+    explanation.add_argument("--format", choices=["json", "text"], default="text")
     tf = commands.add_parser("spike-terraform", help="Analyze a bounded offline HCL2 subset")
     tf.add_argument("root", type=Path)
     tf.add_argument("--snapshots", type=Path)
@@ -62,23 +151,7 @@ def main() -> int:
     assessment = commands.add_parser(
         "assess", help="Assess source or saved evidence, without deployment"
     )
-    assessment.add_argument("source", type=Path)
-    assessment.add_argument(
-        "--input",
-        choices=["terraform", "terraform-plan", "arm", "bicep", "evidence"],
-        required=True,
-    )
-    assessment.add_argument("--parameters", type=Path)
-    assessment.add_argument("--compiler")
-    assessment.add_argument("--source-evidence", type=Path)
-    assessment.add_argument("--plan-binding", type=Path)
-    assessment.add_argument("--scope")
-    assessment.add_argument("--provider-version")
-    assessment.add_argument("--snapshots", type=Path)
-    assessment.add_argument("--authorize-root", type=Path, action="append", default=[])
-    assessment.add_argument("--var-file", dest="variable_inputs", action=VariableInput)
-    assessment.add_argument("--var", dest="variable_inputs", action=VariableInput)
-    assessment.add_argument("--identity-map", type=Path)
+    input_arguments(assessment)
     assessment.add_argument("--evidence-output", type=Path)
     assessment.add_argument("--manual", type=Path)
     assessment.add_argument("--exceptions", type=Path)
@@ -88,6 +161,11 @@ def main() -> int:
     )
     assessment.add_argument("--at")
     assessment.add_argument("--max-age-hours", type=float, default=24)
+    doctor = commands.add_parser("doctor", help="Inspect explicit input prerequisites offline")
+    input_arguments(doctor)
+    doctor.add_argument("--probe-compiler", action="store_true")
+    doctor.add_argument("--format", choices=["json", "text"], default="json")
+    doctor.add_argument("--output", type=Path)
     comparison = commands.add_parser(
         "compare", help="Compare saved planned and observed assessments"
     )
@@ -120,6 +198,14 @@ def main() -> int:
         command.add_argument("--minimize", action="store_true")
     args = parser.parse_args()
     try:
+        if args.command == "explain":
+            guidance = explain(args.reason)
+            print(
+                json.dumps(guidance, indent=2)
+                if args.format == "json"
+                else "\n".join(f"{key}: {value}" for key, value in guidance.items())
+            )
+            return 0
         if args.command == "spike-terraform":
             result = Analyzer(
                 args.root,
@@ -128,56 +214,27 @@ def main() -> int:
             ).analyze(variable_inputs=args.variable_inputs)
         elif args.command == "spike-bicep":
             result = compile_bicep(args.source, args.compiler)
-        elif args.command == "assess":
-            allowed = {
-                "snapshots": {"terraform"},
-                "authorize_root": {"terraform"},
-                "variable_inputs": {"terraform"},
-                "parameters": {"arm", "bicep"},
-                "compiler": {"bicep"},
-                "provider_version": {"terraform", "terraform-plan"},
-                "source_evidence": {"terraform-plan"},
-                "plan_binding": {"terraform-plan"},
-            }
-            for name, modes in allowed.items():
-                if getattr(args, name) and args.input not in modes:
-                    raise InputError(f"--{name.replace('_', '-')} is not valid for {args.input}")
-            if args.input == "evidence" and args.scope:
-                raise InputError(
-                    "Saved evidence carries its own immutable scope; do not override it"
-                )
-            if args.input == "terraform":
-                bundle = terraform_source(
+        elif args.command in {"assess", "doctor"}:
+            validate_input_options(args)
+            if args.command == "doctor":
+                if args.probe_compiler and args.input != "bicep":
+                    raise InputError("--probe-compiler is only valid for bicep input")
+                result = preflight(
                     args.source,
+                    args.input,
+                    lambda: load_evidence(args),
                     scope=args.scope,
                     provider_version=args.provider_version,
-                    snapshots=args.snapshots,
-                    authorized_roots=args.authorize_root,
-                    variable_inputs=args.variable_inputs,
-                )
-            elif args.input == "terraform-plan":
-                bundle = plan_source(
-                    args.source,
-                    scope=args.scope,
-                    provider_version=args.provider_version,
-                    source_binding=read_json(args.source_evidence)
-                    if args.source_evidence
-                    else None,
-                    binding=read_json(args.plan_binding) if args.plan_binding else None,
-                )
-            elif args.input in {"arm", "bicep"}:
-                bundle = arm_source(
-                    args.source,
-                    scope=args.scope,
-                    parameters=args.parameters,
                     compiler=args.compiler,
-                    bicep=args.input == "bicep",
+                    probe_compiler=args.probe_compiler,
                 )
-            else:
-                bundle = read_json(args.source)
-            if args.identity_map:
-                bundle = apply_identity_map(bundle, read_json(args.identity_map))
-            validate(bundle, "evidence")
+                output = render_preflight(result, args.format)
+                if args.output:
+                    args.output.write_text(output, encoding="utf-8")
+                else:
+                    sys.stdout.write(output)
+                return 2 if result["readiness"] == "blocked" else 0
+            bundle = load_evidence(args)
             if args.evidence_output:
                 args.evidence_output.write_text(
                     json.dumps(bundle, indent=2) + "\n",

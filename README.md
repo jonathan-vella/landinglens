@@ -38,6 +38,25 @@ The implementation never installs Bicep or invokes the Azure CLI wrapper.
 
 ## Assessment workflows
 
+Run `alz-assessor doctor SOURCE --input MODE` before assessment. It checks paths,
+all explicitly supplied snapshot hashes, reviewed provider mappings and identity
+prerequisites through the same bounded offline adapters. It emits JSON by default;
+`--format text` explains each prerequisite. `ready` means checked prerequisites,
+`partial` means supported inspection with unresolved capabilities, and `blocked`
+means an invalid/missing requirement (exit 2). Partial readiness exits 0 but is
+explicitly not complete interpretation or Azure readiness.
+
+Bicep preflight checks an existing compiler only; `--probe-compiler` explicitly
+permits a bounded `--version` call. It never builds, restores, installs, fetches
+modules, queries Azure or logs in. Compilation remains an assessment operation.
+Supply the same scope/provider/snapshot/identity-map flags used for assessment.
+
+`alz-assessor explain REASON` gives bounded, offline evidence guidance without
+executing any suggested action. `--format json` is machine-readable. Reports
+carry the same explanations and required evidence alongside unchanged reason
+codes and technical outcomes. Unknown producer codes remain visible with an
+explicit unsupported-explanation notice.
+
 The following examples use authored fixtures, not a live tenant. The Terraform
 fixture combines the proven ALZ module graph with an explicitly supplied
 security snapshot; it does not execute providers or need a plan.
