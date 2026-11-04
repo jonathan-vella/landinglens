@@ -97,7 +97,26 @@ source paths and topology from reports; minimized output is presentation-only
 and cannot be used for comparison. HTML escapes all data and has no external
 scripts, fonts or assets. Diagnostic spikes below are not assessment reports.
 
+HTML reports provide summary/area navigation, separate control and resource
+metrics, expandable findings, human-review status and provenance. Optional local
+search/outcome/area filters only hide existing results; they never reevaluate
+rules. All findings are present and expanded without JavaScript. Print styles
+hide controls, restore all findings and expand details; no PDF engine is needed.
+The report uses system fonts, light/dark theme variables and a no-network CSP.
+Guidance links require HTTPS and only navigate when explicitly selected.
+
 ### Identity, manual evidence and optional plans
+
+`alz-assessor review prepare assessment.json --control CONTROL_ID --scope ARM_SCOPE
+--kind manual --output review.json` creates deterministic, content-bound templates
+for explicitly selected unresolved/failed controls. Use `--kind exceptions` for a
+separate exception record. Display IDs that are ambiguous require the canonical
+control ID. Preparation never asserts a reviewer, outcome, rationale or evidence.
+Complete those fields and the finite validity interval, then remove `is_template`.
+`review validate review.json --scope ARM_SCOPE --at TIME` reports changed bindings,
+expiry and review readiness; it neither authenticates the reviewer nor imports
+an outcome automatically. Use `assess --manual`/`--exceptions` to import completed
+records. Duplicate/conflicting records fail, and exceptions never rewrite facts.
 
 `--identity-map FILE` accepts an exact input-hash-bound map, not name matching.
 Entries require `logical_id`, full `arm_id` and `scope`; duplicates, conflicting

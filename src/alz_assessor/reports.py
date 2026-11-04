@@ -6,6 +6,7 @@ from typing import Any
 
 from .contracts import digest, validate
 from .diagnostics import guidance
+from .html_report import render_html
 
 
 def report_model(assessment: dict[str, Any], minimize: bool = False) -> dict[str, Any]:
@@ -146,12 +147,5 @@ def render(assessment: dict[str, Any], format: str = "json", minimize: bool = Fa
         # Escape raw HTML, table delimiters and link syntax from untrusted input.
         return html.escape(text, quote=False).replace("|", "\\|").replace("[", "\\[")
     if format == "html":
-        return (
-            '<!doctype html><html lang="en"><meta charset="utf-8">'
-            '<meta name="viewport" content="width=device-width, initial-scale=1">'
-            "<title>LandingLens advisory assessment</title>"
-            "<style>body{font:16px system-ui;margin:2rem;color:#17233b;background:#fff}"
-            "pre{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6}</style>"
-            "<h1>LandingLens advisory assessment</h1><pre>" + html.escape(text) + "</pre></html>"
-        )
+        return render_html(model)
     raise ValueError("Unsupported report format")

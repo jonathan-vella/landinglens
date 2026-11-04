@@ -145,8 +145,9 @@ class WorkflowTests(unittest.TestCase):
             self.assertNotIn(SCOPE, minimized)
             self.assertNotIn("authored://storage-fixture", minimized)
             if format == "html":
-                for forbidden in ("<script", "<img", "<iframe", "src=", "@import"):
+                for forbidden in ("<script>", "<img", "<iframe", "src=", "@import"):
                     self.assertNotIn(forbidden, output)
+                self.assertEqual(output.count('<script type="text/javascript">'), 2)
         projected = json.loads(render(report))
         self.assertEqual(projected["coverage"], expected)
         for format in ("markdown", "html"):

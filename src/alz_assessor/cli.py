@@ -20,6 +20,7 @@ from .engine import assess
 from .plan import plan_source
 from .preflight import preflight, render_preflight
 from .reports import render
+from .reviews import prepare_reviews, validate_reviews
 from .sources import terraform_source
 from .terraform import Analyzer, InputError, tree_hash
 
@@ -139,6 +140,15 @@ def main() -> int:
     )
     explanation.add_argument("reason")
     explanation.add_argument("--format", choices=["json", "text"], default="text")
+    review = commands.add_parser("review", help="Prepare or validate explicit local human reviews")
+    review.add_argument("operation", choices=["prepare", "validate"])
+    review.add_argument("source", type=Path)
+    review.add_argument("--catalog")
+    review.add_argument("--scope", required=True)
+    review.add_argument("--control", action="append", default=[])
+    review.add_argument("--kind", choices=["manual", "exceptions"], default="manual")
+    review.add_argument("--at")
+    review.add_argument("--output", type=Path)
     tf = commands.add_parser("spike-terraform", help="Analyze a bounded offline HCL2 subset")
     tf.add_argument("root", type=Path)
     tf.add_argument("--snapshots", type=Path)
@@ -198,6 +208,25 @@ def main() -> int:
         command.add_argument("--minimize", action="store_true")
     args = parser.parse_args()
     try:
+        if args.command == "review":
+            catalog = load_catalog(args.catalog)
+            result = (
+                prepare_reviews(
+                    read_json(args.source),
+                    catalog,
+                    args.control,
+                    args.scope,
+                    args.kind,
+                )
+                if args.operation == "prepare"
+                else validate_reviews(read_json(args.source), catalog, args.scope, args.at)
+            )
+            output = json.dumps(result, indent=2) + "\n"
+            if args.output:
+                args.output.write_text(output, encoding="utf-8")
+            else:
+                sys.stdout.write(output)
+            return 0
         if args.command == "explain":
             guidance = explain(args.reason)
             print(
