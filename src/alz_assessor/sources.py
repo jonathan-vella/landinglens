@@ -32,6 +32,14 @@ def boolean(value: Any) -> Any:
     return value if type(value) is bool else unknown("boolean_missing_unresolved_or_invalid")
 
 
+def enumeration(value: Any, allowed: tuple[str, ...]) -> Any:
+    return (
+        value
+        if isinstance(value, str) and value in allowed
+        else unknown("enum_missing_unresolved_or_invalid")
+    )
+
+
 def property_at(properties: Any, path: str) -> Any:
     current = properties
     for key in path.split("."):
@@ -48,6 +56,7 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
         return {"supportsHttpsTrafficOnly": boolean(properties.get("https_traffic_only_enabled"))}
     if kind == "azurerm_firewall_policy":
         dns = properties.get("dns")
+        intrusion = properties.get("intrusion_detection")
         value = (
             dns[0].get("proxy_enabled")
             if (isinstance(dns, list) and len(dns) == 1 and isinstance(dns[0], dict))
@@ -55,6 +64,21 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
         )
         return {
             "dnsSettings": {"enableProxy": boolean(value)},
+            "sku": {"tier": enumeration(properties.get("sku"), ("Basic", "Standard", "Premium"))},
+            "threatIntelMode": enumeration(
+                properties.get("threat_intelligence_mode"),
+                ("Alert", "Deny", "Off"),
+            ),
+            "intrusionDetection": {
+                "mode": enumeration(
+                    intrusion[0].get("mode")
+                    if isinstance(intrusion, list)
+                    and len(intrusion) == 1
+                    and isinstance(intrusion[0], dict)
+                    else None,
+                    ("Alert", "Deny", "Off"),
+                ),
+            },
         }
     return {}
 

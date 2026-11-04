@@ -201,6 +201,7 @@ def main() -> int:
     selection.add_argument("--management-group")
     collection.add_argument("--token-env", default="LANDINGLENS_ARM_TOKEN")
     collection.add_argument("--inventory-authorized", action="store_true")
+    collection.add_argument("--resource-graph", action="store_true")
     collection.add_argument("--output", type=Path)
     for command in (assessment, comparison, rendering):
         command.add_argument("--format", choices=["json", "markdown", "html"], default="json")
@@ -290,6 +291,7 @@ def main() -> int:
                 subscriptions=args.subscription,
                 management_group=args.management_group,
                 inventory_authorized=args.inventory_authorized,
+                resource_graph=args.resource_graph,
             )
             if not result["metadata"]["run_complete"]:
                 print(

@@ -10,7 +10,7 @@ from lark.exceptions import LarkError
 
 from .bicep import compile_bicep
 from .contracts import derive_id, digest, document, now, read_document, scope_id, validate
-from .sources import boolean, file_hash, unknown
+from .sources import boolean, enumeration, file_hash, unknown
 from .terraform import InputError, Unknown, exact_equal
 
 PARSER = Lark(
@@ -52,7 +52,23 @@ def properties(kind: str, values: Any) -> dict[str, Any]:
     if kind.lower() == "microsoft.network/firewallpolicies":
         dns = values.get("dnsSettings")
         proxy = dns.get("enableProxy") if isinstance(dns, dict) else None
-        return {"dnsSettings": {"enableProxy": boolean(proxy)}}
+        sku, intrusion = values.get("sku"), values.get("intrusionDetection")
+        return {
+            "dnsSettings": {"enableProxy": boolean(proxy)},
+            "sku": {
+                "tier": enumeration(
+                    sku.get("tier") if isinstance(sku, dict) else None,
+                    ("Basic", "Standard", "Premium"),
+                )
+            },
+            "threatIntelMode": enumeration(values.get("threatIntelMode"), ("Alert", "Deny", "Off")),
+            "intrusionDetection": {
+                "mode": enumeration(
+                    intrusion.get("mode") if isinstance(intrusion, dict) else None,
+                    ("Alert", "Deny", "Off"),
+                )
+            },
+        }
     return {}
 
 
