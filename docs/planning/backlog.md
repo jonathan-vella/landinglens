@@ -14,6 +14,11 @@ scoped PRs, merges after passing checks and acceptance-backed issue closure.
 Publication, deployment and live Azure collection remain excluded. GitHub is
 the source of final issue state; closure requires verified, merged evidence.
 
+Final reconciliation: issues **#1-#12 are closed as completed**, each with
+criterion-specific evidence. The acceptance hardening was merged through
+[PR #15](https://github.com/jonathan-vella/landinglens/pull/15), commit
+`7c6c3390907c9916f264a645f6359d7fdb48897d`, after both four-job CI runs passed.
+
 LL-01 produced reviewed snapshot **2026-11-04.1**, an eight-area taxonomy and
 the complete 255-item provenance/disposition ledger. Three duplicated display
 IDs, the billing-label conflict and unverified item/control mappings are explicit.
@@ -30,8 +35,8 @@ observed fixtures with positive/negative cases; all 255 entries remain visible.
 Six uncovered areas have explicit assisted/manual rationale.
 
 **Next dependency-ready issue:** none after LL-12. The baseline is merged.
-The contract-validation and final acceptance follow-ups are authorized for
-delivery. The criterion-by-criterion
+The contract-validation and final acceptance follow-ups are merged. The
+criterion-by-criterion
 [acceptance evidence](plan.md#final-acceptance-reconciliation-2026-11-04) governs
 issue closure; open checkboxes alone are not evidence of missing implementation.
 
