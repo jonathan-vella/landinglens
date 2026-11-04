@@ -32,6 +32,11 @@ All validated child management groups receive scoped policy reads. Assignment
 and exemption conflicts remain unusable/conflicted rather than selecting a
 last record. Management-group exemptions explicitly use `atScope()` to retain
 applicable and expired evidence without the service's unfiltered-list failure.
+Management-group assignments likewise use `atScope()`; every validated descendant
+group is read separately, while subscription unfiltered lists retain child
+resource-group/resource assignments. The owner-authorized pilot found four
+unfiltered management-group assignment HTTP 400s, whereas the scoped reads
+succeeded. Removing those failing calls does not lose descendant coverage.
 PolicyStates preserve original evaluation times; collection start time does not
 re-date them or trigger evaluation.
 
@@ -120,7 +125,9 @@ alz-assessor collect --management-group platform --output observed.json
 ```
 
 These are real read-only collection commands for separately authorized use.
-They were **not** executed during development. Do not copy raw tokens into this
+The historical baseline did not execute them. The later owner-authorized pilot
+used the installed Collector API under an additional exact-scope/operation egress
+guard, then installed CLI assessment and rendering. Do not copy raw tokens into this
 documentation. Reports/evidence are local files only; nothing is uploaded.
 
 Transport accepts only `https://management.azure.com`, rejects redirects and
@@ -214,3 +221,24 @@ A later adapter/pilot requires its own scoped issue and any missing owner
 authorization. The direct injected transport is the parity baseline. This
 not-ready decision does not block the mandatory offline increment or justify
 broader Azure access.
+
+## Selected-boundary live pilot
+
+The separately authorized pilot in #40 used the existing cached identity, verified
+its tenant/principal/audience claims and read one approved management-group
+boundary: four groups including its root and three descendant subscriptions.
+Exact identities, tokens, normalized evidence and reports remain private.
+
+The initial installed-wheel run inventoried 98 resources and exercised JSON,
+Markdown, HTML and minimized HTML workflows. There were 293 HTTP 200 responses
+and four HTTP 400s, all from unfiltered management-group assignment requests.
+Filtered assignment reads succeeded. Five automated result instances comprised
+three passes, one failure and one explicit capability exclusion; these are local
+configuration results, not a whole-estate security score or runtime proof.
+The assignment-filter fix requires a separate installed live verification.
+
+Inventory authorization was deliberately not attested. Four ancestor custom
+definition references remained outside the approved boundary; those reads were
+not attempted. Inventory and definition completeness therefore cannot be claimed.
+PolicyStates retain original timestamps; no evaluation was triggered. No MCP
+resource calls, login, permission changes, deployment or remediation occurred.

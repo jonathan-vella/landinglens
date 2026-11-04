@@ -388,14 +388,15 @@ FR-11 through FR-19 and the FR-20 invariant/clean-wheel foundations are delivere
 through PRs #31-#39, with actual supported CI passing before each merge.
 The final FR-20 reconciliation adds an installed, licensed-corpus workflow and
 the [criterion-by-criterion delivery record](plan.md#next-increment-delivery-reconciliation-2026-11-04);
-issue #28 closes only after that change passes its own required CI and merges.
+Issue #28 is closed following [#41](https://github.com/jonathan-vella/landinglens/pull/41),
+merge `fcb58a4a5f3706ad51e6ade69cbecb1e073d7644`, with all eight checks passing.
 Earlier release results remain historical rather than being relabelled as
 newer verification.
 
 Current catalog `2026-11-04.2` retains all 255 entries: four bounded automated
 predicates, 209 assisted and 42 manual. Original `2026-11-04.1` meaning is packaged
 unchanged. D07.06/D07.07 use exact explicit local mode/SKU evidence, not effective
-inherited or runtime protection. The other 49-query audit candidates were not
+inherited or runtime protection. Remaining audited candidates were not
 silently promoted. Optional MCP is **not ready**, a completed study rather than
 a delivered adapter. Replay is a bounded local directory retaining identities,
 not an anonymized report or support for arbitrary unavailable historical rules.

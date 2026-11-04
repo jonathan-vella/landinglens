@@ -523,8 +523,13 @@ class Collector:
                 + scope
                 + "/providers/Microsoft.Authorization/policyAssignments?api-version=2023-04-01"
             )
-            all_assignments = self.pages("GET", assignment_url, "assignments")
-            # atScope includes inherited assignments; unfiltered lists retain child assignments too.
+            # MG descendants are read separately; its service requires the scoped filter.
+            all_assignments = (
+                []
+                if scope.startswith("/providers/microsoft.management/")
+                else self.pages("GET", assignment_url, "assignments")
+            )
+            # Subscription unfiltered lists additionally retain resource-group/resource assignments.
             all_assignments += self.pages(
                 "GET", assignment_url + "&$filter=atScope()", "assignments"
             )

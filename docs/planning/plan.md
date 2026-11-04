@@ -346,7 +346,8 @@ local enum/SKU predicates were promoted, after LL-19 and LL-21 delivery.
 Each issue's numbered acceptance criteria are reconciled here to concrete
 implementation, executable evidence and merged delivery. Issue state was
 re-read, not inferred from checkboxes. #17-#27 and #29 are closed with merged
-evidence; #28 closes only after this reconciliation's required checks/merge.
+evidence. #28 is also closed: [#41](https://github.com/jonathan-vella/landinglens/pull/41)
+merged as `fcb58a4a5f3706ad51e6ade69cbecb1e073d7644` after all eight checks passed.
 
 | Work / issue | Acceptance reconciliation | Merged delivery |
 |---|---|---|
@@ -373,7 +374,8 @@ with restoration disabled; Ruff formatting/lint and mypy passed. CI runs both
 supported Python versions on Windows/Linux. Run `41912493412`'s downloaded
 compiler artifacts independently record `status: exercised` for all four jobs,
 not inferred from green checks. This reconciliation must pass its own actual
-CI before merge; historical 97/103/109/115/123/124-test results are not rewritten.
+CI before merge; this was satisfied in runs `41913958670` and `41913965807`.
+Historical 97/103/109/115/123/124-test results are not rewritten.
 
 The supplied offline corpus is `tests/fixtures/alz-avm`: authored ALZ platform/
 connectivity wrappers and the explicitly supplied, unmodified MIT-licensed
@@ -395,6 +397,13 @@ The separately authorized pilot in #40 is not evidence that every control or a
 whole tenant is live-verified. No deployment, remediation, scan, new authentication/
 permissions, implicit module/tool restoration or package/release publication was
 performed. There is no mandatory blocked scope decision or failed first-wave gate.
+
+The subsequent #40 scoped live pilot inventoried 98 resources and generated all
+three report formats plus minimized HTML with the installed wheel. It exposed
+four failing unfiltered management-group assignment reads, prompting an
+`atScope()` regression fix and a required live rerun, not a completeness waiver.
+Initial counts, private-evidence handling and retained authorization/ancestor
+definition gaps are recorded in [collection notes](../collection.md#selected-boundary-live-pilot).
 
 ## Implemented release baseline: 2026-11-04
 

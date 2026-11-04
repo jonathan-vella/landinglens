@@ -206,6 +206,9 @@ class CollectionWaveTests(unittest.TestCase):
 
         def transport(method, url, body=None):
             calls.append(url)
+            if "managementgroups/" in url and "/policyAssignments?" in url:
+                if "&$filter=atScope()" not in url:
+                    return Response(400, {}, {})
             if "/descendants?" in url:
                 return baseline.response(
                     [
@@ -233,6 +236,19 @@ class CollectionWaveTests(unittest.TestCase):
         ]
         self.assertTrue(exemptions)
         self.assertTrue(all("&$filter=atScope()" in url for url in exemptions))
+        assignments = [
+            url for url in calls if "managementgroups/" in url and "/policyAssignments?" in url
+        ]
+        self.assertTrue(assignments)
+        self.assertTrue(all("&$filter=atScope()" in url for url in assignments))
+        self.assertTrue(bundle["metadata"]["completeness"]["assignments"])
+        self.assertTrue(
+            any(
+                SCOPE + "/providers/Microsoft.Authorization/policyAssignments?" in url
+                and "&$filter=" not in url
+                for url in calls
+            )
+        )
 
     def test_definition_associations_hash_values_and_never_read_parent_scope(self):
         initiative = "/providers/Microsoft.Authorization/policySetDefinitions/set"
