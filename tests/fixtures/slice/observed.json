@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "kind": "evidence",
+  "mode": "observed",
+  "source": "saved",
+  "scope": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-management",
+  "collected_at": "2026-11-04T00:00:00Z",
+  "inventory_complete": true,
+  "artifact_hashes": {
+    "authored-resource-records": "9cbe3cfcb4984b9748f7a13edf433fbdf88abae10e7bc28ec876f73da2390e3c"
+  },
+  "resources": [
+    {
+      "logical_id": "saved-storage",
+      "resource_type": "Microsoft.Storage/storageAccounts",
+      "arm_id": "/subscriptions/00000000-0000-0000-0000-000000000001/resourcegroups/rg-management/providers/microsoft.storage/storageaccounts/landinglenslogs",
+      "state": "known",
+      "reason": "",
+      "properties": {
+        "supportsHttpsTrafficOnly": true
+      },
+      "source_location": "authored://storage-fixture"
+    }
+  ],
+  "diagnostics": []
+}

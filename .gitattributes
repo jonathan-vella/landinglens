@@ -1,5 +1,6 @@
 * text=auto
 *.tf text eol=lf
 *.bicep text eol=lf
-references/** -text
+references/** -text whitespace=cr-at-eol
+src/alz_assessor/data/** -text whitespace=cr-at-eol
 tests/fixtures/alz-avm/snapshots/workspace/** -text

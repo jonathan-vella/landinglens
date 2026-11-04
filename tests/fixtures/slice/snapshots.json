@@ -1,0 +1,28 @@
+{
+  "modules": [
+    {
+      "source": "example.invalid/landinglens/alz/azurerm",
+      "version": "1.0.0",
+      "subdirectory": "",
+      "path": "../alz/snapshots/platform",
+      "sha256": "e89c95044d86d8112050e0114030548bd3c6c411d8b975f43b919a047cefcac6",
+      "origin": "LandingLens synthetic authored fixture, not an official AVM/ALZ release"
+    },
+    {
+      "source": "example.invalid/landinglens/management/azurerm",
+      "version": "1.0.0",
+      "subdirectory": "",
+      "path": "../alz/snapshots/management",
+      "sha256": "74188bf90038878aba072d5147ea9987a2b4c5a81fa8b51acca5a06fd8c8eab0",
+      "origin": "LandingLens synthetic authored fixture, not an official AVM/ALZ release"
+    },
+    {
+      "source": "example/security/azurerm",
+      "version": "1.0.0",
+      "subdirectory": "",
+      "path": "snapshots/security",
+      "sha256": "c7b46fad55268342121b0edbf0d081c7468ec2c3f9efc53215ce28fdc02eb6e2",
+      "origin": "LandingLens authored security slice, not an upstream module"
+    }
+  ]
+}

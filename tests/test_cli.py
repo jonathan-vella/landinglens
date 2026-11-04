@@ -43,7 +43,11 @@ class CliTests(unittest.TestCase):
             ]
         )
         self.assertEqual(code, 0)
-        self.assertEqual(json.loads(stdout)["resources"][0]["properties"]["location"], "last")
+        result = json.loads(stdout)
+        self.assertNotIn("outputs", result)
+        self.assertTrue(result["resources"])
+        self.assertTrue(all("properties" not in item for item in result["resources"]))
+        self.assertIn("withheld", result["details_withheld"])
 
     def test_missing_compiler_is_nonzero_and_never_json_output(self):
         with patch("shutil.which", return_value=None):

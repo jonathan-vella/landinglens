@@ -6,22 +6,78 @@ Create a standalone, advisory-only CLI that compares planned or deployed Azure i
 
 Use a versioned, source-backed control catalog; normalize evidence from Bicep/ARM, raw Terraform source, optional Terraform plan JSON and read-only Azure collection; then evaluate and report through one shared engine. Preserve planned and observed results separately. Missing evidence, unresolved expressions and unsupported controls must never become passes.
 
-This is the approved implementation plan. Initial implementation in this
-standalone repository is limited to LL-01 and LL-02; verified results and
-limitations are recorded below. No deployment or live Azure collection is authorized.
+This is the approved implementation plan. The initial LL-01/LL-02 increment
+established the prerequisites below. The owner subsequently authorized
+end-to-end implementation, feature-branch push and one ready PR, and delegated
+LL-04 matrix acceptance to Autopilot. Merge, issue closure, publication,
+deployment and live Azure collection remain unauthorized.
 
 Original research basis: an earlier report retained in the planning session,
 not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## Implemented release baseline: 2026-11-04
+
+The accepted [automation matrix](../automation-matrix.md) names **G04.01**
+(storage secure-transfer flag) and **D07.18** (firewall-policy DNS-proxy flag).
+Autopilot accepted this concrete baseline under the owner's explicit delegation,
+including the documented reasons six design areas have no automated predicate.
+All **255** original GUIDs remain visible: **2 automated, 211 assisted and
+42 manual**. This supersedes candidate dispositions, not the original inventory.
+The same evaluator and report model established by the LL-04 slice were extended;
+there is no replacement engine or all-manual release.
+
+| Issues | Implementation and executable evidence |
+|---|---|
+| LL-03 / #3 | Version-1.0 contracts, hash-bound identity maps, distinct evidence states, scope, freshness and disposition validity; `tests/test_contracts.py`. |
+| LL-04 / #4 | Module-based Terraform slice, saved observed match/drift, missing-binding non-comparability, complete-only absence and three formats; `tests/test_assessment.py`. |
+| LL-05 / #5 | Full packaged catalog with preserved provenance, uncertainty flags, explicit review-only refresh/diff and no silent matrix downgrade; `tests/test_workflows.py`. |
+| LL-06 / #6 | Raw HCL AST evaluation, supplied snapshots, native dynamic blocks, precedence/scoping/bounds and optional separately hash-bound plan import; Terraform/AVM/workflow/matrix tests. |
+| LL-07 / #7 | Existing-compiler no-restore Bicep, direct ARM/parameters, bounded expressions/copies and safe nested scope handling; Bicep/matrix/workflow tests. |
+| LL-08 / #8 | Explicit-scope read-only collector, inherited assignments, exemption expiry, separate policy evaluations, bounded pagination/retries and visible partial authorization; injected transports in `tests/test_collection.py` only. |
+| LL-09 / #9 | Six outcomes, independent manual/exception disposition, freshness rechecks and canonical identity/fact comparison; assessment/workflow tests. |
+| LL-10 / #10 | JSON, Markdown and escaped self-contained HTML share counts, evidence and reasons; minimized reports are presentation-only. |
+| LL-11 / #11 | Installed `catalog`, `assess`, `collect`, `compare`, `render` workflows and input guards; outside-checkout CLI workflow tests. |
+| LL-12 / #12 | Pinned dependencies, clean-wheel validation, Windows/Linux Python 3.12/3.13 advisory CI and user-facing contracts/collection/limitations documentation. |
+
+The full positive/negative matrix is in `tests/test_matrix.py`; real Bicep
+compilation is local and explicitly skips where no existing compiler is
+available. CI never installs/restores Bicep, deploys, publishes or collects Azure
+data. Findings return success; software/input failures remain nonzero.
+
+Local release verification used a wheel installed into a fresh environment,
+not the editable checkout: **92 tests run, 91 passed, one Windows
+symlink-privilege skip**. Both real-compiler positive/negative control cases and
+outside-checkout installed workflows ran. Ruff lint/format, mypy and dependency
+consistency passed. CI covers the declared Windows/Linux runtime matrix; its
+actual run is linked from the delivery PR rather than assumed from local results.
+
+**Remaining capability limits:** the two predicates prove configuration flags,
+not DNS routing, runtime encryption effectiveness or complete ALZ compliance.
+The other 253 recommendations need human evidence. Six real-AVM controllers
+remain symbolic; richer HCL semantics, JSON dynamic blocks, provider defaults
+and complete AVM/ALZ graph support remain unproven. ARM runtime references,
+linked templates, nested child declarations and inline deployments without
+verified inner-expression semantics remain unknown/incomplete. Compiled bytes
+bind resolved dependencies, but individual cached Bicep source hashes are not
+available. Explicit plan IDs/maps are required for identity; source association
+is a reviewed producer assertion, not proof Terraform generated the plan.
+Live Azure behavior is unverified. Inventory completeness additionally requires
+explicit producer authorization-coverage attestation; HTTP 200 is insufficient.
+
+These are documented bounds of the approved advisory baseline, not fabricated
+passes or removal of the all-mode requirements. All original acceptance
+criteria below remain the reference. GitHub issues stay open for owner review;
+there is no remaining dependency-ready implementation issue after LL-12.
+
 ## Prerequisite results: 2026-11-04
 
 The approved standalone location is this `landinglens` repository, separate
 from APEX. Only issues [#1](https://github.com/jonathan-vella/landinglens/issues/1)
-and [#2](https://github.com/jonathan-vella/landinglens/issues/2) are implemented in
-this increment. Their acceptance evidence is recorded here; their GitHub issues
-remain open and no downstream contracts or broad implementation have begun.
+and [#2](https://github.com/jonathan-vella/landinglens/issues/2) were implemented in
+the first increment. The following records that historical checkpoint;
+downstream results and the delegated gate are recorded above. Issues remain open.
 
 ### LL-01 reference and inventory gate
 
@@ -77,20 +133,20 @@ smoke checks passed. These checks use no production Azure credentials.
 
 **Actual limitations, not scope reductions:** authored ALZ wrappers and synthetic
 modules are complemented by one actual AVM resource-module snapshot, not the
-complete ALZ pattern library. In the actual AVM fixture, ten resource controllers
-remain symbolic; internet-access comparisons and dynamic blocks remain unknown.
+complete ALZ pattern library. At this checkpoint ten AVM resource controllers
+were symbolic; subsequent bounded operators and native dynamic blocks reduced
+that to six and resolved the internet-access settings.
 This proves supported properties, not full AVM compatibility. Unsupported
 operators/functions, computed attributes, data sources and dynamic blocks remain
-unknown. Provider-schema-specific JSON nested-block normalization, Terraform
+unknown at that checkpoint. Provider-schema-specific JSON nested-block normalization, Terraform
 constraint/type validation and defaults, complete Bicep/parameter dependency
-provenance and ARM evaluation remain later adapter work. Windows symlink creation
+provenance remain limited; bounded ARM evaluation is now implemented. Windows symlink creation
 can require privileges; that regression case explicitly skips when unavailable,
 while traversal/authorized-root cases execute. Real Azure behavior is unverified.
 
-The bounded prerequisite cases are demonstrated; no runtime switch or release
-scope reduction is needed. The next dependency-ready work item is
-[LL-03 / #3](https://github.com/jonathan-vella/landinglens/issues/3). The owner
-automation-matrix acceptance gate remains at LL-04, before broad expansion.
+The bounded prerequisite cases enabled LL-03, followed by LL-04 before broad
+expansion. The owner subsequently delegated that gate; the accepted matrix and
+downstream implementation are recorded above.
 
 ## Confirmed decisions
 
@@ -163,29 +219,30 @@ During implementation:
 
 Do not label draft mappings as Microsoft-aligned or substitute an ALZ policy baseline for the full design-area checklist.
 
-## Proposed project structure
+## Implemented project structure
 
-Paths below are relative to the future standalone project root.
+Paths are relative to this standalone root. Flat, purpose-specific modules avoid
+unnecessary packages; executable contract validators replace an additional
+schema dependency.
 
 ```text
 pyproject.toml
 README.md
-catalog/
-schemas/
+references/
 src/alz_assessor/
   cli.py
-  references.py
   contracts.py
-  evidence.py
-  evaluators.py
-  sources/
-    terraform.py
-    bicep_arm.py
-    azure_live.py
-  reports/
-    json_report.py
-    markdown_report.py
-    html_report.py
+  catalog.py
+  terraform.py
+  bicep.py
+  sources.py
+  arm.py
+  plan.py
+  azure.py
+  engine.py
+  comparison.py
+  reports.py
+  data/
 tests/
   fixtures/
 docs/
@@ -298,9 +355,10 @@ Advisory exit behavior:
 
 ## Implementation todos
 
-Plan approval and the standalone repository location are established. LL-01 and
-LL-02 have implementation evidence above; LL-03 onward remain pending. GitHub
-issue status is not changed automatically by this document.
+Plan approval, the standalone repository location and all twelve implementation
+work items have evidence above. The original task descriptions and acceptance
+criteria below are retained for review. GitHub issue status is not changed
+automatically by this document.
 
 ### 1. Verifying references and checklist inventory
 
@@ -339,7 +397,7 @@ Before full catalog and adapter expansion, assess representative source-backed c
 - Demonstrate both satisfying and violating configurations, plus a missing-module unknown. Match a scope-bound planned resource to a saved observed-evidence fixture and demonstrate a real comparison and a non-comparable case.
 - Record which behavior was established with fixtures; this checkpoint does not claim live-Azure verification.
 
-At this checkpoint, obtain explicit acceptance of a concrete release automation matrix derived from the verified source inventory. List control IDs, design areas, applicable evidence modes, automated versus assisted/manual disposition, and required positive/negative fixtures.
+At this checkpoint, obtain explicit acceptance of a concrete release automation matrix derived from the verified source inventory. The owner delegated this decision to Autopilot; the recorded matrix satisfies the original safeguards. List control IDs, design areas, applicable evidence modes, automated versus assisted/manual disposition, and required positive/negative fixtures.
 
 Acceptance: the installed CLI produces consistent reports for the slice; the matrix names a nonempty automated control set with required coverage for Bicep/ARM, raw Terraform and observed Azure evidence. Any design area without automated coverage is explicitly identified and accepted, not silently omitted. An entirely manual/unmapped catalog cannot satisfy release acceptance.
 

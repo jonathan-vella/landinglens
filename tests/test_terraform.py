@@ -404,6 +404,7 @@ resource "test" "name" {
 """)
         props = result["resources"][0]["properties"]
         self.assertEqual(props.pop("known"), "yes")
+        self.assertEqual(props.pop("unsupported"), 2)
         self.assertTrue(all("unknown" in value for value in props.values()))
 
     def test_sensitive_inputs_outputs_are_withheld(self):
@@ -429,7 +430,7 @@ resource "test" "x" {
   }
 }
 """)
-        self.assertIn("unknown", result["resources"][0]["properties"]["dynamic"][0])
+        self.assertEqual(result["resources"][0]["properties"]["rule"], [{"name": "a"}])
 
     def test_file_and_byte_limits(self):
         self.write('resource "test" "x" {}')

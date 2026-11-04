@@ -26,11 +26,12 @@ security/legal approval or a vulnerability audit.
 | typing-extensions | 4.16.0 | PSF-2.0 | Required by mypy; compatible maintained release. |
 | pathspec | 0.12.1 | MPL-2.0 | Required by mypy; development-only, unmodified library. Preserve MPL file-level notices/source obligations if redistributing it; no pathspec code is copied into this project. |
 
-The runtime is Python >=3.12; only 3.12.10 has been exercised here. This keeps
-standard-library `argparse`, `unittest`, JSON, hashing and path handling sufficient.
-Newer supported Python versions still need CI coverage before a release.
-No pytest, Azure SDK, authentication, template engine or CLI framework is
-justified for these two prerequisites.
+The release targets Python 3.12 and 3.13 (`>=3.12,<3.14`), with Windows/Linux
+CI coverage and local Python 3.12.10 Windows ARM64 execution. Newer runtimes
+remain unverified. Standard-library `argparse`, `unittest`, JSON, hashing,
+HTTP transport and path handling remain sufficient for the full accepted
+baseline. No dependencies were added for downstream implementation: no pytest,
+Azure SDK, authentication package, template engine or CLI framework is needed.
 
 python-hcl2 was a candidate, not predetermined: its maintenance and compatibility,
 feed presence, MIT license, package age, `.tf` AST, `.tf.json` integration and

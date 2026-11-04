@@ -1,9 +1,10 @@
-"""Bounded, offline Terraform feasibility spike, not a Terraform runtime."""
+"""Bounded, offline Terraform source analysis, not a Terraform runtime."""
 
 from __future__ import annotations
 
 import hashlib
 import json
+import operator
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -70,6 +71,36 @@ def trees(node: Tree[Any]) -> list[Tree[Any]]:
 
 def word(node: Tree[Any]) -> str:
     return str(node.children[0])
+
+
+def resolved(value: Any) -> bool:
+    if isinstance(value, (Unknown, Namespace)):
+        return False
+    if isinstance(value, dict):
+        return all(resolved(item) for item in value.values())
+    if isinstance(value, (list, tuple, set)):
+        return all(resolved(item) for item in value)
+    return True
+
+
+def exact_equal(left: Any, right: Any) -> bool | Unknown:
+    if isinstance(left, float) or isinstance(right, float):
+        return Unknown("floating-point equality outside verified numeric subset")
+    if type(left) is not type(right):
+        return False
+    if isinstance(left, dict):
+        if left.keys() != right.keys():
+            return False
+        parts = [exact_equal(value, right[key]) for key, value in left.items()]
+    elif isinstance(left, list):
+        if len(left) != len(right):
+            return False
+        parts = [exact_equal(a, b) for a, b in zip(left, right, strict=True)]
+    else:
+        return bool(left == right)
+    if any(isinstance(part, Unknown) for part in parts):
+        return Unknown("unverified nested equality")
+    return all(parts)
 
 
 def read_body(node: Tree[Any], file: str) -> Body:
@@ -242,6 +273,7 @@ class Context:
     ) -> None:
         self.analyzer, self.body, self.path = analyzer, body, path
         self.address, self.ancestors = address, ancestors
+        self.identity_bindings_verified = True
         self.cache: dict[str, Any] = {}
         self.active: set[str] = set()
         self.locals: dict[str, Any] = {}
@@ -340,7 +372,8 @@ class Context:
         if kind in {"expr_term", "interpolation", "object_elem_key"}:
             return ev(children[0])
         if kind == "int_lit":
-            return int(word(node))
+            text = word(node)
+            return int(text) if len(text) <= 1233 else Unknown("numeric size limit")
         if kind == "float_lit":
             return float(word(node))
         if kind == "literal_value":
@@ -408,12 +441,96 @@ class Context:
             if type(condition) is not bool:
                 return Unknown("unknown/non-boolean condition")
             return ev(children[1] if condition else children[2])
+        if kind == "unary_op":
+            value = ev(children[0])
+            op = str(node.children[0])
+            if op == "!" and type(value) is bool:
+                return not value
+            if op == "-" and type(value) is int:
+                return -value
+            return Unknown("unknown or invalid unary operand")
+        if kind == "binary_op":
+            left = ev(children[0])
+            term = trees(children[1])
+            op, right = word(term[0]), ev(term[1])
+            if not resolved(left) or not resolved(right):
+                return Unknown("unresolved binary operand")
+            if op in {"==", "!="}:
+                equal = exact_equal(left, right)
+                if isinstance(equal, Unknown):
+                    return equal
+                return equal if op == "==" else not equal
+            if op in {"&&", "||"} and type(left) is bool and type(right) is bool:
+                return left and right if op == "&&" else left or right
+            if type(left) is int and type(right) is int:
+                if op in {"/", "%"} and right == 0:
+                    return Unknown("division by zero")
+                if op == "%" and (left < 0 or right < 0):
+                    return Unknown("signed remainder outside verified numeric subset")
+                if op == "/" and left % right:
+                    return Unknown("nonintegral division outside supported numeric subset")
+                operations = {
+                    "+": operator.add,
+                    "-": operator.sub,
+                    "*": operator.mul,
+                    "/": operator.floordiv,
+                    "%": operator.mod,
+                    "<": operator.lt,
+                    "<=": operator.le,
+                    ">": operator.gt,
+                    ">=": operator.ge,
+                }
+                if op in operations:
+                    value = operations[op](left, right)
+                    return value if value.bit_length() <= 4096 else Unknown("numeric size limit")
+            return Unknown("unsupported or invalid binary operands")
         if kind == "function_call":
             name = word(children[0])
             args = [ev(arg) for arg in trees(children[-1])] if len(children) > 1 else []
             if name == "toset" and len(args) == 1 and isinstance(args[0], list):
                 if all(isinstance(v, str) for v in args[0]):
                     return set(args[0])
+            if not all(resolved(arg) for arg in args):
+                return Unknown(f"unresolved function argument: {name}")
+            if name == "length" and len(args) == 1 and isinstance(args[0], (dict, list, str, set)):
+                return len(args[0])
+            if name in {"lower", "upper"} and len(args) == 1 and isinstance(args[0], str):
+                return args[0].lower() if name == "lower" else args[0].upper()
+            if (
+                name == "lookup"
+                and len(args) == 3
+                and isinstance(args[0], dict)
+                and isinstance(args[1], str)
+            ):
+                return args[0].get(args[1], args[2])
+            if name in {"keys", "values"} and len(args) == 1 and isinstance(args[0], dict):
+                return (
+                    sorted(args[0]) if name == "keys" else [args[0][key] for key in sorted(args[0])]
+                )
+            if (
+                name == "contains"
+                and len(args) == 2
+                and (
+                    isinstance(args[0], list)
+                    or isinstance(args[0], set)
+                    and not isinstance(args[1], (dict, list, set))
+                )
+            ):
+                matches = [exact_equal(item, args[1]) for item in args[0]]
+                return (
+                    Unknown("unverified collection membership")
+                    if any(isinstance(item, Unknown) for item in matches)
+                    else any(matches)
+                )
+            if name == "merge" and all(isinstance(arg, dict) for arg in args):
+                merged = {}
+                for arg in args:
+                    merged.update(arg)
+                return merged
+            if name == "concat" and all(isinstance(arg, list) for arg in args):
+                if sum(len(arg) for arg in args) > self.analyzer.limits.instances:
+                    return Unknown("collection size limit")
+                return [item for arg in args for item in arg]
             return Unknown(f"unsupported function: {name}")
         return Unknown(f"unsupported expression: {kind}")
 
@@ -560,7 +677,14 @@ class Analyzer:
                 for name, value in attrs.items()
                 if name not in {"source", "version", "count", "for_each", "providers", "depends_on"}
             }
-            results[suffix] = self.walk(path, inputs, address + suffix + ".", parent.ancestors)
+            results[suffix] = self.walk(
+                path,
+                inputs,
+                address + suffix + ".",
+                parent.ancestors,
+                identity_bindings_verified=parent.identity_bindings_verified
+                and "providers" not in attrs,
+            )
         if "count" in block.body.attributes:
             return list(results.values())
         if "for_each" in block.body.attributes:
@@ -573,6 +697,8 @@ class Analyzer:
         inputs: dict[str, Any],
         address: str = "",
         ancestors: tuple[Path, ...] = (),
+        *,
+        identity_bindings_verified: bool = True,
     ) -> Any:
         path = self.safe(path)
         if path in ancestors or len(ancestors) >= self.limits.module_depth:
@@ -580,6 +706,11 @@ class Analyzer:
         if not path.is_dir():
             return self.diagnostic(address, "local module directory missing")
         context = Context(self, self.load(path), inputs, path, address, (*ancestors, path))
+        context.identity_bindings_verified = identity_bindings_verified and not any(
+            block.kind == "provider"
+            and bool({"subscription_id", "tenant_id"} & block.body.attributes.keys())
+            for block in context.body.blocks
+        )
         # Resolve all module calls, including ones whose outputs are not referenced.
         for name in context.modules:
             context.lookup("module", name)
@@ -593,6 +724,8 @@ class Analyzer:
                 self.resources.append(
                     {
                         "address": resource_address + "[*]",
+                        "resource_type": block.labels[0],
+                        "scope_binding_safe": context.identity_bindings_verified,
                         "properties": expanded,
                         "file": block.file,
                     }
@@ -609,6 +742,9 @@ class Analyzer:
                 self.resources.append(
                     {
                         "address": resource_address + suffix,
+                        "resource_type": block.labels[0],
+                        "scope_binding_safe": context.identity_bindings_verified
+                        and "provider" not in block.body.attributes,
                         "properties": props,
                         "file": block.file,
                     }
@@ -631,9 +767,49 @@ class Analyzer:
             if nested.kind in result and not isinstance(result[nested.kind], list):
                 raise InputError(f"Conflicting nested block/attribute: {nested.kind}")
             if nested.kind == "dynamic":
-                result.setdefault("dynamic", []).append(
-                    Unknown("dynamic blocks not implemented in prerequisite spike"),
-                )
+                if len(nested.labels) != 1:
+                    raise InputError("Dynamic block requires one target label")
+                target = nested.labels[0]
+                collection = context.eval(nested.body.attributes.get("for_each"), instance)
+                if isinstance(collection, set) and all(isinstance(v, str) for v in collection):
+                    collection = sorted(collection)
+                if isinstance(collection, list):
+                    collection = dict(enumerate(collection))
+                content = [part for part in nested.body.blocks if part.kind == "content"]
+                if (
+                    not isinstance(collection, dict)
+                    or not resolved(list(collection))
+                    or len(content) != 1
+                    or "labels" in nested.body.attributes
+                    or len(collection) > self.limits.instances - self.instances
+                ):
+                    reason = Unknown(
+                        "dynamic controller/content unsupported or expansion limit exceeded"
+                    )
+                    result[target] = reason
+                    result.setdefault("dynamic", []).append(reason)
+                    self.diagnostic(context.address + target, reason.reason)
+                    continue
+                iterator = nested.body.attributes.get("iterator")
+                iterator_name = target
+                if iterator is not None:
+                    evaluated = context.eval(iterator, instance)
+                    if not isinstance(evaluated, Namespace):
+                        raise InputError("Dynamic iterator must be a single identifier")
+                    iterator_name = evaluated.name
+                expanded = result.setdefault(target, [])
+                if not isinstance(expanded, list):
+                    raise InputError("Dynamic/static block conflict")
+                for key, value in collection.items():
+                    self.instances += 1
+                    expanded.append(
+                        self.properties(
+                            content[0].body,
+                            context,
+                            {**instance, iterator_name: {"key": key, "value": value}},
+                            depth + 1,
+                        )
+                    )
             else:
                 result.setdefault(nested.kind, []).append(
                     self.properties(nested.body, context, instance, depth + 1),

@@ -1,24 +1,28 @@
 # LandingLens product requirements
 
-Status: prerequisite implementation. LL-01 has a reviewed, pinned Microsoft
-source inventory and LL-02 has an executable bounded parser/compiler spike.
-The assessor and release requirements below remain the intended product, not
-implemented functionality.
+Status: implemented advisory release baseline, subject to owner PR review.
+All twelve backlog items have implementation evidence in the
+[plan](plan.md#implemented-release-baseline-2026-11-04). The owner authorized
+end-to-end work and delegated matrix acceptance to Autopilot; merge, publication,
+issue closure and live Azure collection are not authorized.
 
 Verified findings: [source review](../../references/2026-11-04/review.md) and
 [prerequisite acceptance evidence](plan.md#prerequisite-results-2026-11-04).
-The inventory contains 255 items with GUID-based provenance and candidate
-dispositions. Duplicate display IDs and the CAF/checklist billing-label conflict
-are flagged, not silently normalized. No completed item/control mapping,
-Microsoft certification or live Azure verification is claimed.
+The catalog contains 255 items with GUID-based provenance: two accepted
+automated predicates, 211 assisted and 42 manual recommendations. The
+[accepted matrix](../automation-matrix.md) identifies both verified property
+mappings, required modes and uncovered areas. Duplicate display IDs and the
+CAF/checklist billing-label conflict remain flagged. Full per-item semantic
+mapping, Microsoft certification and live Azure verification are not claimed.
 
 Feasibility is demonstrated for the tested bounded subset against synthetic,
 versioned ALZ-shaped module snapshots and an unmodified, commit-pinned Microsoft
 AVM workspace module 0.5.1, not the complete official AVM library.
 Unsupported expressions and missing modules remain unknown. Actual Bicep
-compilation was exercised with restoration disabled; ARM expressions remain
-unevaluated. Dynamic-block expansion and full adapter support remain release
-requirements, not removed scope.
+compilation was exercised with restoration disabled. Bounded ARM expressions,
+safe inner-scope inline templates and native HCL dynamic blocks are implemented.
+Runtime expressions, linked/child templates, JSON dynamic blocks and richer
+interpreter semantics remain unknown/incomplete, not silently passed.
 
 ## Problem
 
@@ -65,8 +69,8 @@ read-only Azure evidence without requiring both.
 | Microsoft sources | Retrieve, verify and pin reviewed public references |
 | Runtime | Python is recommended by the plan; dependency choices require validation |
 
-The local spike command is `alz-assessor`; publication naming remains unverified.
-python-hcl2 8.1.4 is accepted for the bounded spike following the
+The installed command is `alz-assessor`; publication naming remains unverified.
+python-hcl2 8.1.4 is accepted for bounded AST parsing following the
 [dependency review](../dependency-review.md); future dependencies need their own review.
 The [implementation plan](plan.md) is the source of detailed execution
 boundaries.

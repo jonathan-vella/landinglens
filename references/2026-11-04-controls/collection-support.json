@@ -1,0 +1,31 @@
+{
+  "review_version": "2026-11-04-controls.1",
+  "hash_representation": "Retrieved public HTML response body bytes",
+  "reuse": "Microsoft Learn metadata and original factual review notes only; no page prose or assets redistributed",
+  "sources": [
+    {
+      "id": "resource-list",
+      "url": "https://learn.microsoft.com/en-us/rest/api/resources/resources/list?view=rest-resources-2021-04-01",
+      "retrieved_at": "2026-11-04T14:12:37.5386224Z",
+      "sha256": "45efd8db8262fe048ddbdebe0c898297b3a3ca452f91761bb995193a9466bc96",
+      "revision": "0ca2c6cb5cbffdce70b13a6209caaecc0c352334",
+      "finding": "GET /subscriptions/{subscriptionId}/resources uses API 2021-04-01 and returns subscription resources; optional filtering is not used by the collector."
+    },
+    {
+      "id": "management-descendants",
+      "url": "https://learn.microsoft.com/en-us/rest/api/managementgroups/management-groups/get-descendants?view=rest-managementgroups-2020-05-01",
+      "retrieved_at": "2026-11-04T14:12:37.9265613Z",
+      "sha256": "67dc28989626a9806a6ae4a59f3865a2b46a7ef278bcea4b372d61c562ef84b5",
+      "revision": "20af5c34516d13dfcbd2cb31d0bae52fd7613ad7",
+      "finding": "GET /providers/Microsoft.Management/managementGroups/{groupId}/descendants uses API 2020-05-01; continuation is supplied through nextLink. A stale generic api-version parameter description mentions a preview version, while the actual operation and examples specify 2020-05-01."
+    },
+    {
+      "id": "nested-template-scope",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/linked-templates",
+      "retrieved_at": "2026-11-04T14:12:38.2673804Z",
+      "sha256": "aebb97044ae381d34c4b3a773af00366226c87e991cb1e0966f50ebe0306e29a",
+      "revision": "2b6e9147f464bc6247fb2b879bd523bf05634f9b",
+      "finding": "Nested expression evaluation normally defaults to outer; languageVersion 2.0 defaults to inner and blocks outer. This release conservatively requires explicit inner scope and resolved child deployment bindings."
+    }
+  ]
+}

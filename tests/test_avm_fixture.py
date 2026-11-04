@@ -44,10 +44,12 @@ class AvmFixtureTests(unittest.TestCase):
         self.assertEqual(workspace["sku"], "PerGB2018")
         self.assertIs(workspace["local_authentication_enabled"], False)
         self.assertIsNone(workspace["daily_quota_gb"])  # No provider default is invented.
-        self.assertIn("unknown", workspace["internet_ingestion_enabled"])
-        self.assertTrue(all("unknown" in block for block in workspace["dynamic"]))
-        self.assertEqual(sum(address.endswith("[*]") for address in resources), 10)
-        self.assertEqual(len(result["diagnostics"]), 10)
+        self.assertIs(workspace["internet_ingestion_enabled"], False)
+        self.assertIs(workspace["internet_query_enabled"], False)
+        self.assertEqual(workspace["identity"], [])
+        self.assertEqual(workspace["timeouts"], [])
+        self.assertEqual(sum(address.endswith("[*]") for address in resources), 6)
+        self.assertEqual(len(result["diagnostics"]), 6)
         self.assertFalse(any("telemetry" in address for address in resources))
         self.assertIn("module.platform.module.workspace:snapshot", result["input_sha256"])
 

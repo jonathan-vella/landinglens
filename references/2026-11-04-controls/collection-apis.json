@@ -1,0 +1,146 @@
+{
+  "sources": [
+    {
+      "id": "assignments",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b466b0ffcfd90c19380bf26440570a223a1e2020/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json",
+      "revision": "b466b0ffcfd90c19380bf26440570a223a1e2020",
+      "retrieved_at": "2026-11-04T13:43:08.849123+00:00",
+      "sha256": "85934922ce8fe3e200fe0642df802f38b72ad153d66807ad874fdf78ee443989",
+      "api_version": "2023-04-01",
+      "operations": [
+        {
+          "method": "GET",
+          "path": "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
+          "operation": "PolicyAssignments_Get"
+        },
+        {
+          "method": "GET",
+          "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/policyAssignments",
+          "operation": "PolicyAssignments_ListForResourceGroup"
+        },
+        {
+          "method": "GET",
+          "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/policyAssignments",
+          "operation": "PolicyAssignments_ListForResource"
+        },
+        {
+          "method": "GET",
+          "path": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyAssignments",
+          "operation": "PolicyAssignments_ListForManagementGroup"
+        },
+        {
+          "method": "GET",
+          "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments",
+          "operation": "PolicyAssignments_List"
+        },
+        {
+          "method": "GET",
+          "path": "/{policyAssignmentId}",
+          "operation": "PolicyAssignments_GetById"
+        }
+      ],
+      "filter_semantics": [
+        "The filter to apply on the operation. Valid values for $filter are: 'atScope()', 'atExactScope()' or 'policyDefinitionId eq '{value}''. If $filter is not provided, no filtering is performed. If $filter=atScope() is provided, the returned list only includes all policy assignments that apply to the scope, which is everything in the unfiltered list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned list only includes all policy assignments that at the given scope. If $filter=policyDefinitionId eq '{value}' is provided, the returned list includes all policy assignments of the policy definition whose id is {value}."
+      ],
+      "reuse": "MIT; metadata only"
+    },
+    {
+      "id": "exemptions",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b466b0ffcfd90c19380bf26440570a223a1e2020/specification/resources/resource-manager/Microsoft.Authorization/policy/preview/2022-07-01-preview/policyExemptions.json",
+      "revision": "b466b0ffcfd90c19380bf26440570a223a1e2020",
+      "retrieved_at": "2026-11-04T13:43:09.176039+00:00",
+      "sha256": "ac6cd70f14cf04a2e2ef815343c2a085075d264720caa8ba65a5062a2c5425de",
+      "api_version": "2022-07-01-preview",
+      "operations": [
+        {
+          "method": "GET",
+          "path": "/{scope}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}",
+          "operation": "PolicyExemptions_Get"
+        },
+        {
+          "method": "GET",
+          "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyExemptions",
+          "operation": "PolicyExemptions_List"
+        },
+        {
+          "method": "GET",
+          "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/policyExemptions",
+          "operation": "PolicyExemptions_ListForResourceGroup"
+        },
+        {
+          "method": "GET",
+          "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/policyExemptions",
+          "operation": "PolicyExemptions_ListForResource"
+        },
+        {
+          "method": "GET",
+          "path": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyExemptions",
+          "operation": "PolicyExemptions_ListForManagementGroup"
+        }
+      ],
+      "filter_semantics": [
+        "The filter to apply on the operation. Valid values for $filter are: 'atScope()', 'atExactScope()', 'excludeExpired()' or 'policyAssignmentId eq '{value}''. If $filter is not provided, no filtering is performed. If $filter is not provided, the unfiltered list includes all policy exemptions associated with the scope, including those that apply directly or apply from containing scopes. If $filter=atScope() is provided, the returned list only includes all policy exemptions that apply to the scope, which is everything in the unfiltered list except those applied to sub scopes contained within the given scope. If $filter=atExactScope() is provided, the returned list only includes all policy exemptions that at the given scope. If $filter=excludeExpired() is provided, the returned list only includes all policy exemptions that either haven't expired or didn't set expiration date. If $filter=policyAssignmentId eq '{value}' is provided. the returned list only includes all policy exemptions that are associated with the give policyAssignmentId."
+      ],
+      "reuse": "MIT; metadata only"
+    },
+    {
+      "id": "compliance",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/b466b0ffcfd90c19380bf26440570a223a1e2020/specification/policyinsights/resource-manager/Microsoft.PolicyInsights/PolicyInsights/stable/2019-10-01/policyStates.json",
+      "revision": "b466b0ffcfd90c19380bf26440570a223a1e2020",
+      "retrieved_at": "2026-11-04T13:43:09.463689+00:00",
+      "sha256": "15abe8f2a9b7a3c2c8495b5ec11def0c7a80d4983c5d6a5e7ae4023502d3ac5e",
+      "api_version": "2019-10-01",
+      "operations": [
+        {
+          "method": "POST",
+          "path": "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+          "operation": "PolicyStates_ListQueryResultsForManagementGroup"
+        },
+        {
+          "method": "POST",
+          "path": "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+          "operation": "PolicyStates_ListQueryResultsForSubscription"
+        },
+        {
+          "method": "POST",
+          "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+          "operation": "PolicyStates_ListQueryResultsForResourceGroup"
+        },
+        {
+          "method": "POST",
+          "path": "/{resourceId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+          "operation": "PolicyStates_ListQueryResultsForResource"
+        },
+        {
+          "method": "POST",
+          "path": "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+          "operation": "PolicyStates_ListQueryResultsForPolicySetDefinition"
+        },
+        {
+          "method": "POST",
+          "path": "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+          "operation": "PolicyStates_ListQueryResultsForPolicyDefinition"
+        },
+        {
+          "method": "POST",
+          "path": "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+          "operation": "PolicyStates_ListQueryResultsForSubscriptionLevelPolicyAssignment"
+        },
+        {
+          "method": "POST",
+          "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
+          "operation": "PolicyStates_ListQueryResultsForResourceGroupLevelPolicyAssignment"
+        }
+      ],
+      "filter_semantics": [
+        "OData filter expression."
+      ],
+      "reuse": "MIT; metadata only"
+    }
+  ],
+  "permissions": {
+    "url": "https://learn.microsoft.com/en-us/azure/role-based-access-control/permissions/management-and-governance",
+    "sha256": "05b3c73de289b179205942c83a859c6dbe7123adf415b0d108d80f185807426f",
+    "reviewed_operation_excerpt": "Microsoft.PolicyInsights/policyStates/queryResults/action</code></td>\n<td>Query information about policy states.</td>\n</tr>\n<tr>\n<td><code>Microsoft.PolicyInsights/policyStates/summarize/action</code></td>\n<td>Query summary information about policy l"
+  }
+}
