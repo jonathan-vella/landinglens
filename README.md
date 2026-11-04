@@ -36,6 +36,15 @@ is explicitly skipped; missing-tool and failed-build tests still run. Symlink
 escape tests may be skipped when Windows denies symlink creation privileges.
 The implementation never installs Bicep or invokes the Azure CLI wrapper.
 
+CI builds an exact wheel, installs it into a fresh environment outside the
+checkout, asserts the import location, checks dependencies, then runs the full
+suite and advisory smoke workflow there. Each Windows/Linux Python 3.12/3.13
+job retains `compiler-coverage.json`: only a successful real local-build and
+missing-module `--no-restore` integration is marked exercised. An unavailable
+compiler remains explicitly unavailable; mocks and a green job do not establish
+compiler coverage. Generated invariants cover strict types, loss of evidence,
+redaction and bounded expansion without adding a test dependency.
+
 ## Assessment workflows
 
 Run `alz-assessor doctor SOURCE --input MODE` before assessment. It checks paths,
@@ -144,6 +153,27 @@ or a reviewed identity map; names alone do not establish provider scope.
 For real collection permissions, explicit scopes, existing-token handling,
 pagination, partial runs and inventory authorization attestation, see
 [collection.md](docs/collection.md). No credentials are needed for offline use.
+
+## Reviewed source maintenance
+
+Maintainers can run `python tools\monitor_sources.py --output NEW_DIRECTORY`.
+This explicitly acquires commit-pinned public sources from the existing reviewed
+registry, retains licensed bytes/hashes and produces GUID/field/schema/taxonomy/
+license diffs. The weekly/manual read-only workflow emits downloadable artifacts,
+not PRs. Runtime assessment never polls or replaces its catalog.
+
+`status.json` separates last successful polling, the recorded catalog semantic
+review and pending changes. `--previous-status FILE` retains the last successful
+poll across failed local attempts; without a prior status it remains unknown.
+GitHub run artifacts retain per-run history for 14 days. Failed/invalid polling
+warns and exits 2 without touching known snapshots. Changed license terms block
+source retention pending review; license hashes and the required review remain
+visible. Upstream queries are data, never executed.
+
+A maintainer must review the candidate, preserve removed GUIDs as retired 1.1
+records, reconcile taxonomy/ID conflicts, inspect stale review bindings and open
+a promotion PR. Use the exact reviewed matrix-change path and explicit
+`catalog refresh`; detection does not grant acceptance or bot write privileges.
 
 ## Offline Terraform spike
 
