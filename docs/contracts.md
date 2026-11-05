@@ -80,6 +80,37 @@ JSON/Markdown/HTML share the same counts, with no browser-side tier evaluator.
 
 ## Catalog and evidence contracts
 
+### Review workspace version 1.0
+
+The local workspace adds its own explicit state version, design-area totals,
+severity/tier routing, pending review IDs, specific interview templates and an
+assumption-labelled effort estimate. It obtains tiers from the shared explicit
+1.2 projection; saved assessment 1.0/1.1 semantics are not rewritten when
+`--evidence-tiers` was not selected. No browser evaluator exists.
+Verified/Signal/Needs decision/manual estimates are fixed 2/5/10/15 minutes per
+pending control, not empirical measurement. Unknown/manual/error and pending
+reviews remain unresolved; active explicit final decisions can leave the review
+queue without rewriting technical results.
+
+Fixed new POST routes are `save-many` and `interview`, under the existing random
+capability and exact Host/origin/JSON/header/body guards. The 32-KB request limit
+is unchanged. Bulk transactions accept 1-20 unique explicitly selected bound
+records with a decision, attribution, evidence, rationale, validity and exact
+replacement consent for each. All entries validate against one current baseline
+before any persisted revision/memory state changes. A failure is all-or-nothing.
+Interview compilation reuses the same review path. A bound human confirmation of
+an automated-control Signal is recorded separately and cannot overwrite the
+accepted technical predicate's unknown/fail result.
+
+Each revision now includes all reports plus text-safe trackers and a versioned
+`session-manifest.json` hashing exactly six core JSON files: evidence, catalog,
+assessment, invocation, manual and exceptions. Resume requires regular nonlinked
+bounded files and exact hashes/fields/version, then uses their saved invocation
+and produces a new output directory/revision without changing old files or source
+timestamps. The manifest detects content changes, not authenticated authorship.
+Legacy revisions use explicit saved files, never silently acquire verified resume.
+Scope/catalog/freshness overrides are refused with `--resume`.
+
 ### Summary and tracker exports
 
 HTML begins with an executive summary and severity-ranked failures/errors.

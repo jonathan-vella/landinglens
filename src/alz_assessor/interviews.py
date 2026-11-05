@@ -152,6 +152,8 @@ def compile_interview(
     for field in FIELDS:
         if len(require(response, field, str)) > (200 if field == "reviewer" else 4000):
             raise InputError("Interview review field exceeds bounds")
+    if len(answer.strip() + "\n\n" + response["rationale"].strip()) > 4000:
+        raise InputError("Combined interview answer and rationale exceed review field bounds")
     decisions = require(response, "decisions", list)
     if not decisions or len(decisions) > len(BANK[question_id]["controls"]):
         raise InputError("Interview requires bounded explicitly selected decisions")
