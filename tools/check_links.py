@@ -80,7 +80,10 @@ def check(root: Path, paths: list[Path], *, external: bool = False) -> dict[str,
     broken = []
     public = set()
     checked = 0
-    for path in paths:
+    for supplied in paths:
+        path = supplied.resolve()
+        if not path.is_relative_to(root):
+            raise ValueError("Documentation input is outside the explicit repository root")
         text = content_without_fences(path.read_text("utf-8"))
         for value in re.findall(r"\]\(([^)]+)\)", text):
             checked += 1

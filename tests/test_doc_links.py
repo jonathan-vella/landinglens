@@ -33,6 +33,10 @@ class DocumentationLinkTests(unittest.TestCase):
             result = LINKS.check(root, [source])
             self.assertEqual(len(result["broken"]), 1)
             self.assertIn("absent", result["broken"][0]["link"])
+            (root / "alias").mkdir()
+            aliased = root / "alias" / ".." / "source.md"
+            normalised = LINKS.check(root, [aliased])
+            self.assertEqual(normalised["broken"][0]["file"], "source.md")
         with patch("urllib.request.urlopen", side_effect=AssertionError("live origin forbidden")):
             for url in (
                 "https://management.azure.com",
