@@ -12,7 +12,8 @@ Owner-authorised 2026-11-05, tracking
 [FR-23-FR-36](prd.md#next-increment-assessor-efficiency) and the
 [numbered plan](plan.md#assessor-efficiency-increment) govern delivery.
 Verified baseline is merged `.3`, 7/205/43, not the paused draft `.4`.
-All items below are open, not delivered by this planning update.
+The items below were originally opened by the planning update; current delivery
+and operational blockers are recorded per row.
 
 | ID / issue | Work item | Prerequisites | FR | Delivery status |
 |---|---|---|---|---|
@@ -25,14 +26,14 @@ All items below are open, not delivered by this planning update.
 | [LL-33 / #60](https://github.com/jonathan-vella/landinglens/issues/60) | Allowlisted query Signals | LL-27, LL-28, LL-29, LL-31 | FR-29 | Merged #74; issue closed |
 | [LL-34 / #57](https://github.com/jonathan-vella/landinglens/issues/57) | Interviews/cohort priority | LL-28, LL-29, LL-32 | FR-30 | Merged #76; issue closed |
 | [LL-35 / #62](https://github.com/jonathan-vella/landinglens/issues/62) | Source-update PR pipeline | LL-27, LL-28, LL-29, LL-34 | FR-31 | Code merged #77; actual source/assets workflow passed; operational PR/auto-merge remains open in [#78](https://github.com/jonathan-vella/landinglens/issues/78) |
-| [LL-36 / #61](https://github.com/jonathan-vella/landinglens/issues/61) | Local triage workspace | LL-28, LL-29, LL-30, LL-31, LL-33, LL-34, LL-38 | FR-32 | Local/exact installed/actual browser checks pass; CI/merge pending |
+| [LL-36 / #61](https://github.com/jonathan-vella/landinglens/issues/61) | Local triage workspace | LL-28, LL-29, LL-30, LL-31, LL-33, LL-34, LL-38 | FR-32 | Merged #81; issue closed |
 | [LL-37 / #65](https://github.com/jonathan-vella/landinglens/issues/65) | SARIF/PR summaries | LL-28, LL-29; execute after LL-35 | FR-33 | Merged #79; issue closed |
 | [LL-38 / #64](https://github.com/jonathan-vella/landinglens/issues/64) | Summary/tracker exports | LL-28, LL-29, LL-37 | FR-34 | Merged #80; issue closed |
-| [LL-39 / #67](https://github.com/jonathan-vella/landinglens/issues/67) | Documentation restructure | LL-32, LL-35, LL-36, LL-37, LL-38 | FR-35 | Pending |
+| [LL-39 / #67](https://github.com/jonathan-vella/landinglens/issues/67) | Documentation restructure | LL-32, LL-35, LL-36, LL-37, LL-38 | FR-35 | Local/exact installed/link/command checks pass; CI/merge pending |
 | [LL-40 / #66](https://github.com/jonathan-vella/landinglens/issues/66) | Reconcile delivery | LL-27-LL-39 merged or explicitly blocked | FR-36 | Pending; blockers do not satisfy criteria |
 
 Planning merged in #68 and LL-27 in #69. Current dependency-ready item:
-**LL-36 / #61**. LL-35 operational publication remains blocked in #78. Follow the
+**LL-39 / #67**, then LL-40 reconciliation. LL-35 operational publication remains blocked in #78. Follow the
 plan's explicit execution order; blocked GitHub publication does not prevent
 offline evidence/triage work. Do not change repository settings. Keep candidate
 artifacts/generated PR body when workflow PR creation or safe auto-merge is denied.

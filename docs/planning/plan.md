@@ -321,7 +321,29 @@ groups can help multiple cohorts without manufacturing their acceptance.
 | 2026-11-05 | LL-35 source candidates | [#77](https://github.com/jonathan-vella/landinglens/pull/77) | `c6be5c00b2362602bf6d3c92b052a9db00781742` | 268 local/installed tests: 267 pass, one Windows privilege skip; eight platform checks/four exercised compiler artifacts; source workflow 42021697739 passed | Code merged; operational PR/auto-merge blocked in #78 | Unchanged public poll; immutable accepted catalog/index Release assets downloaded and verified |
 | 2026-11-05 | LL-37 advisory CI formats | [#79](https://github.com/jonathan-vella/landinglens/pull/79) | `8213cf471738b78da223cf546879a81c918b3d53` | 272 local/installed tests: 271 pass, one Windows privilege skip; eight platform checks and four exercised compiler artifacts | Merged; #65 closed | SARIF and compact PR summary; no invented locations or findings-based gates |
 | 2026-11-05 | LL-38 summary/trackers | [#80](https://github.com/jonathan-vella/landinglens/pull/80) | `5a2af9c05ac1126fc869f4892b4e29a87ec9988a` | 277 local/installed tests: 276 pass, one Windows privilege skip; native workbook; eight platform checks and four exercised compiler artifacts | Merged; #64 closed | Shared CSV/XLSX text values; no dependency, formulas/external links/security warnings |
-| 2026-11-05 | LL-36 local workspace | Pending | Pending | 284 local/installed tests: 283 pass, one Windows privilege skip; installed browser acceptance; static/type/dependencies pass; CI pending | Implemented, unmerged | Zero external requests/overflow; explicit decisions only, original evidence times preserved |
+| 2026-11-05 | LL-36 local workspace | [#81](https://github.com/jonathan-vella/landinglens/pull/81) | `6c89761ea8686bf972e77d6ef71f58550af3802a` | 284 local/installed tests: 283 pass, one Windows privilege skip; installed browser; eight platform checks and four exercised compiler artifacts | Merged; #61 closed | Zero external requests/overflow; explicit decisions only, original evidence times preserved |
+| 2026-11-05 | LL-39 documentation | Pending | Pending | 286 local/installed tests: 285 pass, one Windows privilege skip; 231 local links/anchors, two public targets and installed commands pass; CI pending | Implemented, unmerged | README quickstart, canonical evidence-limits page, detailed usage and retained history |
+
+### Catalog delivery history
+
+Versions below identify delivered meaning, not live verification. Exact prior
+catalog bytes remain packaged for replay. The paused cohort-19 `.4` draft is not
+an accepted version and was not published.
+
+| Catalog | Change | Delivery |
+|---|---|---|
+| 2026-11-04.1 | Original two explicit predicates; 255 retained GUIDs | #13/#15 |
+| 2026-11-04.2 | Reviewed local threat-intel/IDPS modes; four predicates | #37 |
+| 2026-11-05.1 | Cohort 01 vault/container protection and specific review workflows; six predicates | #47 |
+| 2026-11-05.2 | Cohort 17 firewall deployment/operations; seven predicates | #49 |
+| 2026-11-05.3 | Cohort 18 resilience/private-connectivity assistance; no new whole predicate | #51 |
+| 2026-11-05.5 | Source-backed severity/archetype metadata; unchanged seven predicates | #71 |
+
+Current disposition totals are 7 automated / 205 assisted / 43 manual. Crosswalk
+`.2` has 51 mapped controls / 53 partial-or-related associations, not 53 working
+checks. Tier counts vary by supplied evidence and are not permanent catalog
+dispositions. The fixed 251-target expansion remains 26 merged / 225 undelivered;
+efficiency features do not manufacture their acceptance receipts.
 
 LL-28 design choice: use explicit `--evidence-tiers` instead of silently upgrading
 existing assessments or rewriting the current catalog. This delivers the new
