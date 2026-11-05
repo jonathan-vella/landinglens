@@ -18,6 +18,11 @@ TF_TYPES = {
     "azurerm_virtual_network": "Microsoft.Network/virtualNetworks",
     "azurerm_management_group": "Microsoft.Management/managementGroups",
     "azurerm_key_vault": "Microsoft.KeyVault/vaults",
+    "azurerm_firewall": "Microsoft.Network/azureFirewalls",
+    "azurerm_subnet": "Microsoft.Network/virtualNetworks/subnets",
+    "azurerm_firewall_nat_rule_collection": "Microsoft.Network/azureFirewalls/natRuleCollections",
+    "azurerm_monitor_diagnostic_setting": "Microsoft.Insights/diagnosticSettings",
+    "azurerm_ip_group": "Microsoft.Network/ipGroups",
 }
 BLOB_SERVICE_TYPE = "Microsoft.Storage/storageAccounts/blobServices"
 
@@ -113,7 +118,9 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
                 ),
             },
         }
-    return {}
+    from .network_evidence import projected_properties
+
+    return projected_properties(TF_TYPES.get(kind, kind), properties, terraform=True)
 
 
 def blob_service_record(parent: dict[str, Any]) -> dict[str, Any]:
@@ -193,6 +200,35 @@ def resource_scope(scope: str | None, properties: dict[str, Any]) -> str | None:
     return None
 
 
+def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str | None:
+    name = values.get("name")
+    if kind == "azurerm_monitor_diagnostic_setting":
+        from .network_evidence import reference
+
+        target = reference(values.get("target_resource_id"))
+        boundary = scope_id(scope) if scope else None
+        if (
+            boundary
+            and isinstance(target, str)
+            and (target == boundary or target.startswith(boundary + "/"))
+            and isinstance(name, str)
+            and name
+            and "/" not in name
+        ):
+            return canonical_id(target + "/providers/Microsoft.Insights/diagnosticSettings/" + name)
+        return None
+    parent_key = {
+        "azurerm_subnet": "virtual_network_name",
+        "azurerm_firewall_nat_rule_collection": "azure_firewall_name",
+    }.get(kind)
+    if parent_key:
+        parent = values.get(parent_key)
+        if not isinstance(parent, str) or not parent or "/" in parent or not isinstance(name, str):
+            return None
+        name = parent + "/" + name
+    return derive_id(resource_scope(scope, values), TF_TYPES.get(kind, kind), name)
+
+
 def terraform_source(
     root: Path,
     *,
@@ -214,13 +250,8 @@ def terraform_source(
         properties = item["properties"]
         symbolic = "unknown" in properties
         arm_type = TF_TYPES.get(kind, kind)
-        name = properties.get("name")
         identity = (
-            derive_id(
-                resource_scope(scope, properties),
-                arm_type,
-                name,
-            )
+            tf_resource_id(scope, kind, properties)
             if supported and not symbolic and item.get("scope_binding_safe", False)
             else None
         )

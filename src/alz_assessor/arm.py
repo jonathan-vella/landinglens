@@ -37,6 +37,9 @@ API_VERSIONS = {
     "microsoft.network/firewallpolicies": {"2024-05-01"},
     "microsoft.keyvault/vaults": {"2024-11-01"},
     "microsoft.storage/storageaccounts/blobservices": {"2023-05-01"},
+    "microsoft.network/azurefirewalls": {"2024-05-01"},
+    "microsoft.network/virtualnetworks/subnets": {"2024-05-01"},
+    "microsoft.network/ipgroups": {"2024-05-01"},
 }
 
 
@@ -101,7 +104,9 @@ def properties(kind: str, values: Any) -> dict[str, Any]:
                 )
             },
         }
-    return {}
+    from .network_evidence import projected_properties
+
+    return projected_properties(kind, values)
 
 
 class Expressions:

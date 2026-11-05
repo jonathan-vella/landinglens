@@ -35,6 +35,19 @@ than resolving the contradiction speculatively.
 
 ## Next-increment scoped collection
 
+### Cohort-17 network projections
+
+The reviewed detail allowlist now includes existing inventoried
+`Microsoft.Network/azureFirewalls`, standalone
+`Microsoft.Network/virtualNetworks/subnets` and `Microsoft.Network/ipGroups`
+at **2024-05-01**. Only the reviewed SKU, positive references, IPv4 prefix/address
+and classic DNAT source fields are retained. The generic collector's existing
+approved per-resource GET path is used; there is no new diagnostic enumeration,
+parent/ancestor traversal, route/packet/log query or data-plane access. Canonical
+positive references do not establish complete relationships or missing-resource
+absence. Mocked detail reads/denials and saved fixtures exercise these additions;
+no new live tenant run is claimed.
+
 The accepted first wave adds only explicit firewall-policy `sku.tier`,
 `threatIntelMode` and `intrusionDetection.mode` to the existing approved detail
 projection. It does not collect bypass lists, secrets or arbitrary properties.

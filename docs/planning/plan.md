@@ -47,6 +47,28 @@ G02.02's boundary/capacity judgment is explicitly manual, not a counted new chec
 Raw Terraform/plan cannot prove G02.03 soft-delete state for an imported/updated
 vault; this mode stays unknown rather than assuming a creation default.
 
+[Cohort 17 / #48](https://github.com/jonathan-vella/landinglens/issues/48)
+implements nine firewall recommendations after the merged prerequisite. Its
+[matrix](../../references/recommendation-batches/batch-17.json) and
+[17 actual source captures](../../references/recommendation-batches/batch-17-sources.json)
+precede promotion. Working successor `2026-11-05.2` has 7 automated, 205
+assisted and 43 manual recommendations. The sole new whole predicate is the
+explicit deployed Firewall Premium SKU. Eight assisted workflows expose bounded
+facts/questions for routing, logging, migration, subnet capacity, hierarchy,
+IP Groups, direct DNAT sources and SNAT operations; runtime effectiveness,
+inheritance and human applicability remain unasserted. Delivery is pending.
+The exact prior catalog is frozen as `catalog-2026-11-05.1.json`; batch-matrix
+and source artifacts are version-specific. Cohort numbers are not dependency
+order: successors are built in catalog-version order with explicit prerequisites.
+
+Pre-delivery cohort-17 checks passed: all 184 tests ran against the exact
+installed wheel outside the checkout (183 passed; one Windows symlink-privilege
+skip), with format/lint, 22-source-file type checks and dependency consistency
+passing. The existing Bicep compiler exercised the new firewall SKU fixture
+without restoration. Evidence remains fixture/injected and installed-CLI
+verified, not new live-control verification. Protected CI/merge acceptance is
+still pending and is recorded separately in the ledger.
+
 Specific review questions and limitations appear in templates, reports and the
 local editor. Templates/editor prepare at most 100 matching inventory records
 and selected typed scalar facts, without arbitrary raw properties or decisions;

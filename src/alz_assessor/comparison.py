@@ -21,7 +21,11 @@ def comparable_fact(body: dict[str, Any]) -> Any:
         ):
             return (parts["enableSoftDelete"], parts["enablePurgeProtection"])
         return None
-    return value if type(value) is bool or value in ("Alert", "Deny", "Off") else None
+    return (
+        value
+        if type(value) is bool or value in ("Alert", "Deny", "Off", "Basic", "Standard", "Premium")
+        else None
+    )
 
 
 def compare(

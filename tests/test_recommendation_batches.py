@@ -37,7 +37,9 @@ class RecommendationBatchTests(unittest.TestCase):
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name)
-        self.catalog = load_catalog()
+        self.catalog = load_catalog(
+            str(files("alz_assessor").joinpath("data").joinpath("catalog-2026-11-05.1.json"))
+        )
 
     def write(self, name, value):
         path = self.root / name

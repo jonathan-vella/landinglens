@@ -2,8 +2,9 @@
 
 ## Active increment: fixed recommendation expansion
 
-The current working successor is `2026-11-05.1`: 255 retained GUIDs, 6 automated,
-206 assisted and 43 manual. This is batch-01 implementation, not exhaustive
+The current working successor is `2026-11-05.2`: 255 retained GUIDs, 7 automated,
+205 assisted and 43 manual. Batch 01 is merged; cohort 17 implementation and
+its acceptance are tracked separately. This is not exhaustive
 251-target acceptance; delivery/check evidence is tracked in the
 [active plan](plan.md#recommendation-expansion-active).
 Earlier catalog counts and runtime results below are historical.

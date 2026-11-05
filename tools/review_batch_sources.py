@@ -1,4 +1,4 @@
-"""Explicit maintainer capture of batch-01 sources already inspected for intent and semantics."""
+"""Explicit maintainer capture of batch sources already inspected for intent and semantics."""
 
 import argparse
 import hashlib
@@ -135,16 +135,147 @@ SOURCES = [
 ]
 
 
+SOURCES_17 = [
+    (
+        "subnet-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/virtualnetworks/subnets",
+        ["addressPrefix", "natGateway", "routeTable"],
+        "Explicit IPv4 prefixes and typed "
+        "route-table/NAT references are preparable. IPAM allocation, missing/mixed prefix "
+        "forms and unavailable joins do not establish capacity or effective routes.",
+    ),
+    (
+        "ipgroup-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/ipgroups",
+        ["ipAddresses", "string[]"],
+        "IP group membership is a string array; only reviewed "
+        "IPv4 address/prefix/range values are projected, with bounded lists.",
+    ),
+    (
+        "terraform-ipgroup",
+        RAW + "website/docs/r/ip_group.html.markdown",
+        ["cidrs", "ip_group_cidr"],
+        "4.50.0 cidrs is an optional membership list; absent "
+        "cidrs can mean separately managed membership and is not an empty group.",
+    ),
+    (
+        "firewall-premium",
+        LEARN + "azure/firewall/premium-features",
+        ["Premium", "IDPS", "TLS"],
+        "Premium is a deployed SKU capability, not proof "
+        "that TLS inspection, IDPS, categories or traffic inspection are enabled.",
+    ),
+    (
+        "firewall-routing",
+        LEARN + "azure/virtual-network/virtual-networks-udr-overview",
+        ["0.0.0.0/0", "Virtual appliance"],
+        "Configured UDRs, association, route selection "
+        "and actual next-hop inspection are distinct. Dynamic/effective paths require evidence.",
+    ),
+    (
+        "firewall-logging",
+        LEARN + "azure/firewall/firewall-structured-logs",
+        ["diagnostic", "resource-specific"],
+        "The checklist link redirects to Monitor Azure "
+        "Firewall; diagnostic routing and resource-specific destination "
+        "are not proof of ingestion.",
+    ),
+    (
+        "firewall-migration",
+        LEARN + "azure/firewall-manager/migrate-to-policy",
+        ["RuleCollectionGroup", "NatRuleCollections"],
+        "Migration converts collections and "
+        "associates policy. A policy reference does not prove rule equivalence "
+        "or completed migration.",
+    ),
+    (
+        "firewall-subnet",
+        LEARN + "azure/firewall/firewall-faq",
+        ["/26", "scaling"],
+        "FAQ explains /26 scaling capacity; pinned provider guidance "
+        "permits /26 or larger and documents a /24 example. Names alone do not identify use.",
+    ),
+    (
+        "firewall-hierarchy",
+        LEARN + "azure/firewall-manager/rule-hierarchy",
+        ["base policy", "priority"],
+        "Inherited collection priority and ownership are relevant; "
+        "collection presence does not establish frequency-based organization.",
+    ),
+    (
+        "firewall-ipgroups",
+        LEARN + "azure/firewall/ip-groups",
+        ["DNAT", "skipped"],
+        "Groups support addresses, prefixes and ranges. Empty groups skip "
+        "referencing rules; group presence is not utilization, reduction or source restriction.",
+    ),
+    (
+        "firewall-dnat",
+        LEARN + "azure/firewall/tutorial-firewall-dnat",
+        ["specific source", "wildcards"],
+        "Guidance explicitly avoids wildcard DNAT sources "
+        "and distinguishes classic configuration from preferred Firewall Policy.",
+    ),
+    (
+        "firewall-snat",
+        LEARN + "azure/firewall/integrate-with-nat-gateway",
+        ["SNAT", "AzureFirewallSubnet"],
+        "NAT association, demand, port allocation, workload "
+        "routes and failover evidence are separate. No arbitrary exhaustion threshold is inferred.",
+    ),
+    (
+        "firewall-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/azurefirewalls",
+        ["managementIpConfiguration", "sourceIpGroups", "Premium"],
+        "Versioned SKU tier/name, explicit subnet/policy references and classic NAT structures "
+        "are reviewed. Missing values and unexpanded IP Groups are not safe-source evidence.",
+    ),
+    (
+        "terraform-firewall",
+        RAW + "website/docs/r/firewall.html.markdown",
+        ["sku_tier", "management_ip_configuration", "/26"],
+        "4.50.0 declares Basic/Standard/"
+        "Premium, exactly one data subnet reference and optional management configuration. "
+        "Both subnet kinds need minimum /26 capacity; defaults are not inferred.",
+    ),
+    (
+        "terraform-subnet",
+        RAW + "website/docs/r/subnet.html.markdown",
+        ["address_prefixes", "ip_address_pool"],
+        "4.50.0 supports explicit prefixes or IPAM pool, "
+        "not both. IPAM allocation does not establish actual prefixes. Inline/standalone "
+        "subnet mixing is unsupported by the provider.",
+    ),
+    (
+        "terraform-nat",
+        RAW + "website/docs/r/firewall_nat_rule_collection.html.markdown",
+        ["source_addresses", "source_ip_groups", "natRuleCollections"],
+        "4.50.0 classic NAT "
+        "collections have actual child identities, Dnat/Snat actions and address/group source "
+        "alternatives; absent direct addresses do not mean no sources.",
+    ),
+    (
+        "terraform-diagnostics",
+        RAW + "website/docs/r/monitor_diagnostic_setting.html.markdown",
+        ["Dedicated", "target_resource_id", "enabled_log"],
+        "Dedicated is meaningful only with "
+        "a workspace; enabled_log and metric blocks differ. Terraform's imported pipe ID "
+        "is not an ARM identity and must not be copied as one.",
+    ),
+]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
+    parser.add_argument("--batch", choices=["01", "17"], default="01")
     args = parser.parse_args()
-    target = ROOT / "references" / "recommendation-batches" / "batch-01-sources.json"
+    target = ROOT / "references" / "recommendation-batches" / f"batch-{args.batch}-sources.json"
     if target.exists() and not args.append_new_sources:
         raise ValueError("Frozen source review exists; do not silently recollect or redate it")
     sources = json.loads(target.read_text("utf-8"))["sources"] if target.exists() else []
     existing = {source["id"]: source for source in sources}
-    for identity, url, markers, finding in SOURCES:
+    for identity, url, markers, finding in SOURCES if args.batch == "01" else SOURCES_17:
         if identity in existing:
             if existing[identity]["url"] != url:
                 raise ValueError("A captured source URL changed; use a new reviewed identity")
@@ -184,7 +315,7 @@ def main() -> None:
         )
         print(identity, sources[-1]["revision"], sources[-1]["sha256"])
     target.write_text(
-        json.dumps({"batch": "01", "review_state": "reviewed", "sources": sources}, indent=2)
+        json.dumps({"batch": args.batch, "review_state": "reviewed", "sources": sources}, indent=2)
         + "\n",
         encoding="utf-8",
     )
