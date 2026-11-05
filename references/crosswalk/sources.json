@@ -1,0 +1,95 @@
+{
+  "sources": [
+    {
+      "id": "alz-storage-assignment",
+      "url": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/4eae565287844360a61545f9799400431adb6d0a/platform/alz/policy_assignments/Deny-Storage-http.alz_policy_assignment.json",
+      "revision": "4eae565287844360a61545f9799400431adb6d0a",
+      "sha256": "67bb28bf3142d7170815bc326d08e2422062f2548630c87e4feb8cfa4f42abe7",
+      "retrieved_at": "2026-11-05T02:06:17.551448+00:00",
+      "release": "platform/alz/2026.10.0",
+      "license": "MIT",
+      "license_url": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/4eae565287844360a61545f9799400431adb6d0a/LICENSE",
+      "license_revision": "4eae565287844360a61545f9799400431adb6d0a",
+      "license_sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "finding": "Exact Deny-Storage-http assignment references built-in 404c3081 with Deny effect and 2.*.* definition version. Placeholder scope is a library template, not deployed evidence."
+    },
+    {
+      "id": "builtin-storage-transfer",
+      "url": "https://raw.githubusercontent.com/Azure/azure-policy/f096d8de10fb25e71dd7f82b78ded110ec711d73/built-in-policies/policyDefinitions/Storage/Storage_AuditForHTTPSEnabled_Audit.json",
+      "revision": "f096d8de10fb25e71dd7f82b78ded110ec711d73",
+      "sha256": "dafed20a9e1d68bf0022209bbbd6b9523b63e033dd7b12ea04ddda06781212e6",
+      "retrieved_at": "2026-11-05T02:06:18.170819+00:00",
+      "release": null,
+      "license": "MIT",
+      "license_url": "https://raw.githubusercontent.com/Azure/azure-policy/f096d8de10fb25e71dd7f82b78ded110ec711d73/LICENSE",
+      "license_revision": "f096d8de10fb25e71dd7f82b78ded110ec711d73",
+      "license_sha256": "27ebda9d51f0a56b7e281ccd8230a27236dcb51c05f64b07869ecf6e965d68b0",
+      "finding": "Built-in 404c3081 version 2.0.0 checks explicit false and API-dependent absent values. Audit/Deny/Disabled effect and missing-property defaults differ from LandingLens's explicit-boolean-only predicate; compliance remains a Signal, not an equivalent pass."
+    },
+    {
+      "id": "psrule-storage-yaml",
+      "url": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/a40c77e029c6e6d95f7a809dc70219c9ee9a4242/src/PSRule.Rules.Azure/rules/Azure.Storage.Rule.yaml",
+      "revision": "a40c77e029c6e6d95f7a809dc70219c9ee9a4242",
+      "sha256": "05dac57f7faa35eb8b728cf4781147d231e67c02b9698d5f2548df5566d4aec6",
+      "retrieved_at": "2026-11-05T02:06:18.615179+00:00",
+      "release": "v1.48.0-B0228",
+      "license": "MIT",
+      "license_url": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/a40c77e029c6e6d95f7a809dc70219c9ee9a4242/LICENSE",
+      "license_revision": "a40c77e029c6e6d95f7a809dc70219c9ee9a4242",
+      "license_sha256": "7df20dcdf9197e9945c14858d41c60f11b52b93e5b69e2b63416b874d598d322",
+      "finding": "Azure.Storage.SecureTransfer / AZR-000196 accepts an omitted flag for API >=2019-04-01. This differs from LandingLens's explicit-property requirement; partial mapping only."
+    },
+    {
+      "id": "psrule-storage-powershell",
+      "url": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/a40c77e029c6e6d95f7a809dc70219c9ee9a4242/src/PSRule.Rules.Azure/rules/Azure.Storage.Rule.ps1",
+      "revision": "a40c77e029c6e6d95f7a809dc70219c9ee9a4242",
+      "sha256": "dec26db27df765f879b5f6dc35a7981705ad639aed4e55998ee4a423e44e2274",
+      "retrieved_at": "2026-11-05T02:06:19.095878+00:00",
+      "release": "v1.48.0-B0228",
+      "license": "MIT",
+      "license_url": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/a40c77e029c6e6d95f7a809dc70219c9ee9a4242/LICENSE",
+      "license_revision": "a40c77e029c6e6d95f7a809dc70219c9ee9a4242",
+      "license_sha256": "7df20dcdf9197e9945c14858d41c60f11b52b93e5b69e2b63416b874d598d322",
+      "finding": "Azure.Storage.ContainerSoftDelete / AZR-000289 checks child enabled plus days>=1, with CloudShell/HNS/FileStorage exclusions. Its population and child/default semantics are not equivalent to the whole checklist or LandingLens predicate."
+    },
+    {
+      "id": "psrule-storage-guidance",
+      "url": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/a40c77e029c6e6d95f7a809dc70219c9ee9a4242/docs/en/rules/Azure.Storage.SecureTransfer.md",
+      "revision": "a40c77e029c6e6d95f7a809dc70219c9ee9a4242",
+      "sha256": "e2c9dd6d8b2aba04aba2a8fe691b1d73d6009aa7f6e19cfc40ef4345843485e3",
+      "retrieved_at": "2026-11-05T02:06:19.592088+00:00",
+      "release": "v1.48.0-B0228",
+      "license": "MIT",
+      "license_url": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/a40c77e029c6e6d95f7a809dc70219c9ee9a4242/LICENSE",
+      "license_revision": "a40c77e029c6e6d95f7a809dc70219c9ee9a4242",
+      "license_sha256": "7df20dcdf9197e9945c14858d41c60f11b52b93e5b69e2b63416b874d598d322",
+      "finding": "Actual rule guidance links built-in 404c3081 and documents API-dependent secure-transfer defaults. These are associations, not operational encryption verification."
+    },
+    {
+      "id": "checklist",
+      "url": "https://raw.githubusercontent.com/Azure/review-checklists/f131b93418892102b00c247fd9cf685e3d356522/checklists/alz_checklist.en.json",
+      "revision": "f131b93418892102b00c247fd9cf685e3d356522",
+      "sha256": "c812868dc68d137a2352d838f5a7293062e999acaaf59775b5eff9a3d38cea28",
+      "retrieved_at": "2026-11-05T02:06:20.364132+00:00",
+      "release": null,
+      "license": "MIT",
+      "license_url": "https://raw.githubusercontent.com/Azure/review-checklists/f131b93418892102b00c247fd9cf685e3d356522/LICENSE",
+      "license_revision": "f131b93418892102b00c247fd9cf685e3d356522",
+      "license_sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "finding": "Frozen 255-GUID checklist supplies exact 49 nonempty query hashes and recommendation intent."
+    },
+    {
+      "id": "candidate-audit",
+      "url": "https://raw.githubusercontent.com/jonathan-vella/landinglens/601062bee928d0a7c1d41dabfa123875af501b59/references/2026-11-04-wave1/candidate-audit.json",
+      "revision": "601062bee928d0a7c1d41dabfa123875af501b59",
+      "sha256": "7428d8c7b26e14a44368e2ebd2a495f49bab95514d35cff1f6195e34279c1f12",
+      "retrieved_at": "2026-11-05T02:06:20.881972+00:00",
+      "release": null,
+      "license": "Own factual review; underlying checklist MIT",
+      "license_url": "https://raw.githubusercontent.com/Azure/review-checklists/f131b93418892102b00c247fd9cf685e3d356522/LICENSE",
+      "license_revision": "f131b93418892102b00c247fd9cf685e3d356522",
+      "license_sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "finding": "Reviewed static 49-query audit supplies per-GUID output/population limitations. No query was executed; query associations are related only, not an execution allowlist."
+    }
+  ]
+}

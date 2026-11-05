@@ -1,5 +1,35 @@
 # Accepted release automation matrix
 
+## Evidence crosswalk foundation
+
+Crosswalk `2026-11-05.1` binds catalog `2026-11-05.3` without changing its
+7 automated / 205 assisted / 43 manual dispositions or the fixed 251-target
+ledger. All 255 GUIDs are represented: 51 have 53 associations; 204 are explicitly
+unmapped. Forty-nine associations are related static query hashes, not an
+execution allowlist or new predicates.
+
+Actual reviewed sources are in
+[`references/crosswalk/sources.json`](../references/crosswalk/sources.json).
+ALZ Library `platform/alz/2026.10.0` pins `4eae565287844360a61545f9799400431adb6d0a`.
+Its `Deny-Storage-http` assignment points to built-in
+`404c3081-a854-4457-ae30-26a93ef643f9`, version `2.*.*`, with Deny effect.
+The actual built-in source at `f096d8de10fb25e71dd7f82b78ded110ec711d73`
+and PSRule `Azure.Storage.SecureTransfer` at tag `v1.48.0-B0228`
+use API-dependent missing-property defaults. Their G04.01 mappings are **partial**,
+not equivalent to LandingLens's explicit boolean predicate.
+
+PSRule `Azure.Storage.ContainerSoftDelete` has additional days and population/
+child-selection conditions; its G04.02 mapping is partial too. All four
+nonquery associations require human interpretation of supported scope and
+actual evidence. No assignment, scanner result or query hash changes a technical
+outcome. Seven source captures retain immutable revisions, actual hashes,
+retrieval times, reuse metadata and findings. The source builder is offline
+unless its explicit maintainer capture flag is supplied.
+
+The crosswalk CLI and strict contract are documented in
+[contracts](contracts.md#evidence-crosswalk-version-10). This is LL-27's
+foundation, not delivery of tiers, policy/scanner ingestion or query execution.
+
 The owner explicitly delegated LL-04 acceptance to Autopilot in the attached
 execution authorization. This replaces the original human-interruption gate,
 not the coverage safeguards. The accepted baseline is two explicit property

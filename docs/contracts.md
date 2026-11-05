@@ -6,6 +6,39 @@ contracts. Each document requires an explicit supported version (`"1.0"` or
 Unsupported versions fail rather than being interpreted as current data.
 The same contracts are used by adapters, evaluation, comparison and rendering.
 
+## Evidence crosswalk version 1.0
+
+The separate `crosswalk` document is validated by
+`alz_assessor.crosswalk.validate_crosswalk`; it does not change catalog/evidence/
+assessment contract 1.0 or 1.1. Every catalog GUID appears exactly once, including
+explicit empty mappings. `catalog_sha256` binds the exact reviewed catalog;
+future versions require a matching explicitly reviewed crosswalk.
+
+Each target has an exact kind/ID, `equivalent`, `partial` or `related` strength,
+reviewer rationale and unique source references. Supported kinds are ALZ policy
+assignment/definition names, Microsoft built-in Policy definition IDs, PSRule rule
+IDs/names and upstream ARG query SHA-256 values. ALZ associations require a pinned
+`platform/alz` release. Source and licence URLs pin actual commits and retain
+hashes, retrieval time, licence metadata and factual findings. An own audit's
+underlying checklist licence is distinguished from a product licence grant.
+No substantial upstream content is redistributed.
+
+The packaged binding hashes the complete crosswalk, and offline generation
+rechecks the actual frozen checklist/audit bytes and all 49 query hashes. Explicit
+files are producer-supplied reviewed associations, not authenticated assertions.
+Validation rejects changed catalog bindings, invalid/duplicate GUIDs, conflicting
+targets, unknown source IDs, invalid target formats, missing hashes/rationale,
+unreviewed versions and extra raw-data fields. Sources are bounded to 100,
+targets to 100 per GUID and source references to 10 per target.
+
+`catalog crosswalk inspect [--id ID]` returns mappings/provenance;
+`catalog crosswalk validate` returns counts and validation status. Both are offline,
+and ambiguous display IDs fail rather than choosing a GUID. Neither loads query
+text, executes a scanner or changes assessment outcomes, review bindings, frozen
+catalogs or the fixed-target ledger. Missing mappings do not imply N/A.
+
+## Catalog and evidence contracts
+
 Batch successor `2026-11-05.1` adds the narrowly typed 1.1 operation
 `vault-deletion-protection`: only `Microsoft.KeyVault/vaults`,
 `enableSoftDelete`, expected `true`, with the fixed second boolean

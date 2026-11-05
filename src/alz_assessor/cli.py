@@ -15,6 +15,7 @@ from .bicep import compile_bicep
 from .catalog import load_catalog, reviewed_refresh
 from .comparison import compare
 from .contracts import apply_identity_map, read_document, validate
+from .crosswalk import inspect_crosswalk, load_crosswalk
 from .diagnostics import explain
 from .engine import assess
 from .plan import plan_source
@@ -216,7 +217,11 @@ def main() -> int:
     catalog_command = commands.add_parser(
         "catalog", help="Inspect, validate or explicitly refresh a reviewed local catalog"
     )
-    catalog_command.add_argument("operation", choices=["inspect", "validate", "refresh"])
+    catalog_command.add_argument(
+        "operation", choices=["inspect", "validate", "refresh", "crosswalk"]
+    )
+    catalog_command.add_argument("crosswalk_operation", nargs="?", choices=["inspect", "validate"])
+    catalog_command.add_argument("--crosswalk", type=Path)
     catalog_command.add_argument("--source")
     catalog_command.add_argument("--id")
     catalog_command.add_argument("--reviewed", type=Path)
@@ -374,6 +379,31 @@ def main() -> int:
                 )
         elif args.command == "catalog":
             current = load_catalog(args.source)
+            if args.operation == "crosswalk":
+                if (
+                    not args.crosswalk_operation
+                    or args.reviewed
+                    or args.accept_reviewed
+                    or (args.id and args.crosswalk_operation == "validate")
+                ):
+                    raise InputError("Use catalog crosswalk inspect [--id ID] or validate")
+                crosswalk = load_crosswalk(current, args.crosswalk)
+                result = inspect_crosswalk(crosswalk, current, args.id)
+                if args.crosswalk_operation == "validate":
+                    result = {
+                        key: value
+                        for key, value in result.items()
+                        if key not in {"entries", "sources"}
+                    }
+                    result["valid"] = True
+                output = json.dumps(result, indent=2) + "\n"
+                if args.output:
+                    args.output.write_text(output, encoding="utf-8")
+                else:
+                    sys.stdout.write(output)
+                return 0
+            if args.crosswalk_operation or args.crosswalk:
+                raise InputError("Crosswalk options require catalog crosswalk")
             if args.operation == "refresh":
                 if not args.reviewed or not args.accept_reviewed or not args.output:
                     raise InputError(
