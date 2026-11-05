@@ -71,8 +71,8 @@ without restoration. Evidence remains fixture/injected and installed-CLI
 verified, not new live-control verification. All eight cross-platform CI
 checks passed; all four downloaded PR compiler artifacts report exercised.
 Protected exact-head merge acceptance is persisted per GUID in the ledger.
-Seventeen of the fixed 251 targets are merged. Cohort 18's nine are in progress,
-with 225 others pending; none is completed just by classification.
+Twenty-six of the fixed 251 targets are merged, with 225 pending;
+none is completed just by classification.
 
 [Cohort 18 / #50](https://github.com/jonathan-vella/landinglens/issues/50)
 follows merged cohort 17. Its [matrix](../../references/recommendation-batches/batch-18.json)
@@ -90,9 +90,13 @@ checkout: 195 tests ran, 194 passed and one Windows symlink-privilege test skipp
 Formatting, lint, 22-source-file type checks and dependency consistency passed.
 Existing Bicep exercised the new zone/VNet/rule-group/private-endpoint fixture
 without restoration. Evidence is fixture/injected and installed-CLI verified,
-not new live Azure or backend-resilience/connectivity verification. Protected
-PR delivery and cross-platform CI acceptance remain pending, separate from
-delegated matrix acceptance.
+not new live Azure or backend-resilience/connectivity verification.
+[#51](https://github.com/jonathan-vella/landinglens/pull/51) merged the exact checked
+head normally without override as `ce59bce5953e4e9cdb7122072324a9a2cc0928cb`;
+#50 closed after merge. All eight cross-platform checks passed and all four
+downloaded compiler artifacts report exercised. No branch protection or required
+review was configured at that merge; neither was bypassed. Per-GUID receipts
+are reconciled to their own cohort delivery. Cohort 19 is dependency-ready next.
 
 Specific review questions and limitations appear in templates, reports and the
 local editor. Templates/editor prepare at most 100 matching inventory records

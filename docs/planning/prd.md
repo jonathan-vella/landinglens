@@ -3,8 +3,8 @@
 ## Active increment: fixed recommendation expansion
 
 The current working successor is `2026-11-05.3`: 255 retained GUIDs, 7 automated,
-205 assisted and 43 manual. Cohorts 01 and 17 are merged; cohort 18's nine
-assisted workflows are implemented with delivery pending. Configured zones do
+205 assisted and 43 manual. Cohorts 01, 17 and 18 are merged (26 fixed targets);
+225 remain pending. Configured zones do
 not establish backend redundancy; rule TLS/category fields and approved private
 endpoints do not establish effective inspection or connectivity. This is not exhaustive
 251-target acceptance; delivery/check evidence is tracked in the

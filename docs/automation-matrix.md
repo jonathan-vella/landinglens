@@ -213,7 +213,9 @@ enumeration, log query, packet test, module acquisition or human decision occurs
 The [nine-GUID matrix](../references/recommendation-batches/batch-18.json) and
 [18 actual source captures](../references/recommendation-batches/batch-18-sources.json)
 support working successor `2026-11-05.3`, still **7 automated / 205 assisted /
-43 manual**. All nine remain assisted. This is implementation, not merged acceptance.
+43 manual**. All nine remain assisted. [#51](https://github.com/jonathan-vella/landinglens/pull/51)
+merged after all eight checks passed and all four compiler artifacts reported
+exercised; per-GUID receipts retain fixture/injected and installed-CLI scope.
 
 D07.15-.17 prepare minimal application-rule action, explicit TLS boolean and
 supplied category-label count with specific trust/coverage/gateway flow questions.

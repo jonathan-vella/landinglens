@@ -241,6 +241,20 @@ def main() -> None:
         } != {item["guid"] for item in ledger}:
             raise ValueError("Delivery ledger differs from the fixed target set")
         for entry in existing["recommendations"]:
+            if entry["status"] == "merged":
+                receipt = existing.get("deliveries", {}).get(entry["batch"])
+                if (
+                    not receipt
+                    or not receipt.get("pr")
+                    or not receipt.get("merge_commit")
+                    or entry.get("pr") != receipt["pr"]
+                    or entry.get("merge_commit") != receipt["merge_commit"]
+                ):
+                    raise ValueError("Merged recommendation differs from its cohort receipt")
+            elif entry.get("merge_commit") or (
+                entry["status"] == "pending" and (entry.get("pr") or entry.get("runtime_evidence"))
+            ):
+                raise ValueError("Undelivered recommendation has stale acceptance references")
             if entry["guid"] in updates and entry["status"] != "merged":
                 entry["review"] = updates[entry["guid"]]
                 entry["issue"] = issues[entry["batch"]]
