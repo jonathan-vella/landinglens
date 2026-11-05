@@ -139,6 +139,10 @@ def render(
     sarif_base: Path | None = None,
 ) -> str:
     model = report_model(assessment, minimize)
+    if format == "csv":
+        from .tracker_exports import csv_tracker
+
+        return csv_tracker(model)
     if format in {"sarif", "pr-summary"}:
         from .ci_reports import pr_summary, sarif
 
@@ -231,3 +235,9 @@ def render(
     if format == "html":
         return render_html(model)
     raise ValueError("Unsupported report format")
+
+
+def render_xlsx(assessment: dict[str, Any], minimize: bool = False) -> bytes:
+    from .tracker_exports import xlsx_tracker
+
+    return xlsx_tracker(report_model(assessment, minimize))

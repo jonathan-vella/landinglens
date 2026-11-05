@@ -1,5 +1,11 @@
 # Accepted release automation matrix
 
+Summary-first HTML and text-only CSV/XLSX trackers share the sanitised assessment
+model and add no predicates. Heat-map values are labelled outcome-instance counts,
+not maturity scores. Tracker formula-like text is escaped; no spreadsheet
+formulas/macros/external links are emitted. Source/version notes and minimisation
+retain the evidence boundary without a new dependency or calculation engine.
+
 Advisory SARIF and PR-summary outputs project the same outcomes/tiers/coverage;
 they add no predicates. Unknown/manual Signals do not turn into passing scan
 results. Source-file locations require an explicit base and real contained

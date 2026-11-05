@@ -80,6 +80,31 @@ JSON/Markdown/HTML share the same counts, with no browser-side tier evaluator.
 
 ## Catalog and evidence contracts
 
+### Summary and tracker exports
+
+HTML begins with an executive summary and severity-ranked failures/errors.
+The design-area heat map has explicit outcome names/counts, not colour-only
+meaning or a maturity/compliance score. Shared completion denominators and
+assessed-subset pass rate remain independent.
+
+CSV and XLSX use exactly the same sanitised, severity-ordered tracker rows:
+control/display ID, area, severity, recommendation, automation, target, mode,
+tier, outcome, reason, freshness, exception, review-record state, evidence
+references and comparison. Missing review records say not-recorded, never an
+implied approval. Rows represent target/mode instances, not control
+totals. Minimisation removes private identities/paths through the shared model.
+Missing historical automation metadata is explicit Unknown, not inferred.
+
+Formula-like strings, including whitespace/BOM-prefixed `=`, `+`, `-` and `@`,
+are prefixed with an apostrophe in both formats. CSV quotes every field. XLSX
+uses inline text cells, seven fixed OOXML parts, no formulas/error cells/macros/
+hyperlinks/external relationships/hidden raw data, a professional font, frozen
+header, filter and source notes. XML control characters and text over Excel's
+32,767-character cell limit fail rather than truncating.
+`--format xlsx` requires a new explicit output file; validation completes before
+file creation and existing files are refused. No workbook recalculation is needed
+because there are no formulas. See the [dependency decision](dependency-review.md#tracker-xlsx-decision-2026-11-05).
+
 ### Advisory CI formats
 
 `sarif` renders SARIF 2.1.0 from the same sanitised model as JSON/Markdown/HTML:

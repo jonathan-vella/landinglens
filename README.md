@@ -209,7 +209,7 @@ time cannot prove that newly read source files existed then. Current collection
 time never makes old policy evaluations current. Missing bindings yield
 `not_comparable`, not drift.
 
-`--format json|markdown|html|sarif|pr-summary` applies to assess, compare and render.
+`--format json|markdown|html|sarif|pr-summary|csv|xlsx` applies to assess, compare and render.
 SARIF 2.1.0 retains stable rules, independent modes/outcomes, tier/freshness and
 coverage. Azure-only evidence has no invented file location. Optional
 `--sarif-base EXISTING_DIRECTORY` includes only real supplied source files beneath
@@ -219,6 +219,16 @@ lists up to ten priority failures. Both remain advisory exit 0.
 The [example PR workflow](docs/examples/advisory-pr-workflow.yml) writes a job
 summary and offers an explicitly enabled, pinned SARIF uploader; repository code
 scanning/fork-token permissions must already support it. No setting is changed.
+
+HTML starts with an executive summary, priority failures and a text-labelled
+design-area heat map; completion remains separate from pass rate among assessed.
+`--format csv` and `--format xlsx --output tracker.xlsx` export the same
+severity-ordered tracker values, one row per target/mode. XLSX requires a new
+output file and preserves existing workbooks. Headers are frozen/filterable and
+a Notes sheet records source/version and snapshot limits. Cells are text only;
+formula-like prefixes are escaped and no formulas, external links or macros exist.
+Use `--minimize` before sharing either tracker. This is a static assessment
+snapshot, not a financial/calculation model.
 
 Every format
 shows all dispositions, independent planned/observed results, evidence reasons,
