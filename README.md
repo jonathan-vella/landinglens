@@ -14,7 +14,7 @@ passes. **This is not Microsoft certification or estate-wide compliance.**
 The [fixed 251-item expansion](docs/planning/plan.md#recommendation-expansion-active)
 retains its starting GUIDs regardless of later classification. Batch 01 reviews
 eight recommendations and is merged. Cohort 17 implements nine more firewall
-recommendations in working catalog `2026-11-05.2`; its delivery remains pending.
+recommendations in merged catalog `2026-11-05.2`.
 Other batches are pending, not completed by being listed.
 Vault deletion protection is unresolved for raw Terraform/optional plan
 values because those values do not establish soft-delete state after import or

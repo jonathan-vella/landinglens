@@ -56,7 +56,9 @@ assisted and 43 manual recommendations. The sole new whole predicate is the
 explicit deployed Firewall Premium SKU. Eight assisted workflows expose bounded
 facts/questions for routing, logging, migration, subnet capacity, hierarchy,
 IP Groups, direct DNAT sources and SNAT operations; runtime effectiveness,
-inheritance and human applicability remain unasserted. Delivery is pending.
+inheritance and human applicability remain unasserted.
+[#49](https://github.com/jonathan-vella/landinglens/pull/49) merged as
+`4290f80ef32d0f40dc2001fe128e17e8623dfa2d`; #48 is closed.
 The exact prior catalog is frozen as `catalog-2026-11-05.1.json`; batch-matrix
 and source artifacts are version-specific. Cohort numbers are not dependency
 order: successors are built in catalog-version order with explicit prerequisites.
@@ -66,8 +68,11 @@ installed wheel outside the checkout (183 passed; one Windows symlink-privilege
 skip), with format/lint, 22-source-file type checks and dependency consistency
 passing. The existing Bicep compiler exercised the new firewall SKU fixture
 without restoration. Evidence remains fixture/injected and installed-CLI
-verified, not new live-control verification. Protected CI/merge acceptance is
-still pending and is recorded separately in the ledger.
+verified, not new live-control verification. All eight cross-platform CI
+checks passed; all four downloaded PR compiler artifacts report exercised.
+Protected exact-head merge acceptance is persisted per GUID in the ledger.
+Seventeen of the fixed 251 targets are merged; 234 remain pending.
+Cohort 18 is the next dependency-ready batch.
 
 Specific review questions and limitations appear in templates, reports and the
 local editor. Templates/editor prepare at most 100 matching inventory records

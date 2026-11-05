@@ -182,7 +182,9 @@ live verification or completion of the remaining 243 targets.
 The [nine-GUID matrix](../references/recommendation-batches/batch-17.json) and
 [17 reviewed sources](../references/recommendation-batches/batch-17-sources.json)
 support working successor `2026-11-05.2`: **7 automated / 205 assisted / 43 manual**.
-The two D07.12 display IDs retain separate original GUIDs. Delivery remains pending.
+The two D07.12 display IDs retain separate original GUIDs.
+[#49](https://github.com/jonathan-vella/landinglens/pull/49) merged after all eight
+CI checks passed and all four compiler artifacts reported exercised.
 
 D07.05 checks the deployed `Microsoft.Network/azureFirewalls` **Premium** tier,
 not a Firewall Policy. ARM/existing no-restore Bicep/saved observed/detail GET
