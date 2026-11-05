@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import re
 import subprocess
 import time
 from collections.abc import Callable
@@ -24,7 +25,12 @@ def publish(
 ) -> dict:
     if not run_id.isdigit():
         raise ValueError("Run ID must be numeric")
-    status = {"published": False, "auto_merge_requested": False, "blocker": None}
+    status = {
+        "published": False,
+        "checks_dispatched": False,
+        "auto_merge_requested": False,
+        "blocker": None,
+    }
     path = directory / "publication-status.json"
     try:
         update = read_document(directory / "catalog-update.json")
@@ -33,19 +39,8 @@ def publish(
         if update["classification"] == "unchanged":
             status["blocker"] = "No source changes; no PR needed."
             return status
-        permission = command("gh", "api", f"repos/{repository}/actions/permissions/workflow")
-        if permission.returncode != 0:
-            status["blocker"] = (
-                "Workflow PR-creation setting could not be verified with GITHUB_TOKEN; "
-                "retain artifacts. Owner must verify "
-                "Allow GitHub Actions to create and approve pull requests."
-            )
-            return status
-        if json.loads(permission.stdout).get("can_approve_pull_request_reviews") is not True:
-            status["blocker"] = (
-                "Allow GitHub Actions to create and approve pull requests is disabled."
-            )
-            return status
+        # GitHub enforces the PR-creation setting on the create operation itself.
+        # Reading the administration endpoint would require an unnecessary permission.
         branch = "catalog-update-" + run_id
         target = (workspace or Path.cwd()) / "references" / "catalog-candidates" / run_id
         target.mkdir(parents=True, exist_ok=False)
@@ -69,6 +64,8 @@ def publish(
                 "commit",
                 "-m",
                 "Review classified catalog source candidate",
+                "-m",
+                "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>",
             ),
             ("git", "push", "origin", branch),
         ]
@@ -85,7 +82,9 @@ def publish(
             "--head",
             branch,
             "--title",
-            "Catalog source candidate: " + update["classification"],
+            ("Validation only: " if update.get("validation_only") is True else "")
+            + "Catalog source candidate: "
+            + update["classification"],
             "--body-file",
             str(directory / "PR-BODY.md"),
             "--label",
@@ -100,6 +99,31 @@ def publish(
             return status
         status["published"] = True
         status["pr"] = created.stdout.strip()
+        local = command("git", "rev-parse", "HEAD")
+        if local.returncode or not re.fullmatch("[0-9a-f]{40}", local.stdout.strip()):
+            status["blocker"] = "Candidate commit identity unavailable; no checks dispatched."
+            return status
+        expected_head = local.stdout.strip()
+        status["candidate_head"] = expected_head
+        dispatched = command(
+            "gh",
+            "workflow",
+            "run",
+            "checks.yml",
+            "--repo",
+            repository,
+            "--ref",
+            branch,
+        )
+        if dispatched.returncode:
+            status["blocker"] = (
+                "Dispatch of checks.yml failed. The source-update workflow needs actions: write; "
+                "the PR remains open without an auto-merge request."
+            )
+            return status
+        status["checks_dispatched"] = True
+        status["checks_workflow"] = "checks.yml"
+        status["checks_ref"] = branch
         if update["classification"] == "safe":
             settings = command("gh", "api", f"repos/{repository}")
             if (
@@ -135,6 +159,35 @@ def publish(
                     ready = required.issubset({item.get("name") for item in actual}) and all(
                         item.get("state") == "SUCCESS" for item in actual
                     )
+                    if ready:
+                        runs = command(
+                            "gh",
+                            "run",
+                            "list",
+                            "--repo",
+                            repository,
+                            "--workflow",
+                            "checks.yml",
+                            "--branch",
+                            branch,
+                            "--event",
+                            "workflow_dispatch",
+                            "--commit",
+                            expected_head,
+                            "--json",
+                            "databaseId,headSha,status,conclusion",
+                        )
+                        matching = json.loads(runs.stdout) if runs.returncode == 0 else []
+                        matching = [
+                            run
+                            for run in matching
+                            if run.get("headSha") == expected_head
+                            and run.get("status") == "completed"
+                            and run.get("conclusion") == "success"
+                        ]
+                        ready = bool(matching)
+                        if ready:
+                            status["checks_run_id"] = matching[0]["databaseId"]
                     if ready or any(
                         item.get("state")
                         in {
@@ -162,19 +215,28 @@ def publish(
                     repository,
                     status["pr"],
                     "--json",
-                    "headRefOid",
-                    "--jq",
-                    ".headRefOid",
+                    "headRefOid,statusCheckRollup",
                 )
-                local = command("git", "rev-parse", "HEAD")
-                if (
-                    head.returncode
-                    or local.returncode
-                    or len(head.stdout.strip()) != 40
-                    or head.stdout.strip() != local.stdout.strip()
-                ):
+                live = json.loads(head.stdout) if head.returncode == 0 else {}
+                rollup = live.get("statusCheckRollup")
+                live_ready = (
+                    isinstance(rollup, list)
+                    and required.issubset(
+                        {check.get("name", check.get("context")) for check in rollup}
+                    )
+                    and all(
+                        check.get("state") == "SUCCESS"
+                        or (
+                            check.get("status") == "COMPLETED"
+                            and check.get("conclusion") == "SUCCESS"
+                        )
+                        for check in rollup
+                    )
+                )
+                if head.returncode or live.get("headRefOid") != expected_head or not live_ready:
                     status["blocker"] = (
-                        "Candidate head changed; do not request unchecked auto-merge."
+                        "Candidate head changed or live checks are not green; "
+                        "no auto-merge request."
                     )
                     return status
                 merged = command(
@@ -186,7 +248,7 @@ def publish(
                     "--auto",
                     "--merge",
                     "--match-head-commit",
-                    head.stdout.strip(),
+                    expected_head,
                     status["pr"],
                 )
                 status["auto_merge_requested"] = merged.returncode == 0

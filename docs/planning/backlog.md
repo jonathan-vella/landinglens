@@ -33,9 +33,11 @@ and operational blockers are recorded per row.
 | [LL-40 / #66](https://github.com/jonathan-vella/landinglens/issues/66) | Reconcile delivery | LL-27-LL-39 merged or explicitly blocked | FR-36 | Merged #83; issue closed; operational gap remains open in #78 |
 
 All independent assessor-efficiency implementation and reconciliation are merged.
-**LL-35 operational publication remains blocked in #78**; tracking #53 remains open.
-There is no remaining independently actionable item in this increment.
-Do not change repository settings. Keep candidate
+**LL-35 operational validation is now actionable in #78** after the owner's
+explicit approval. Both settings are enabled, defaults remain read-only, and
+the source workflow's fixed `checks.yml` dispatch is being implemented.
+Tracking #53 remains open pending actual bot PR/check/merge evidence. No other
+settings or permissions are authorised. Keep candidate
 artifacts/generated PR body when workflow PR creation or safe auto-merge is denied.
 The tracking issue retains precise owner actions; no routine authorisation question
 is needed. No issue is closed solely because a blocker or disposition is written.

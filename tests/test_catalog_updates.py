@@ -93,27 +93,41 @@ class CatalogUpdateTests(unittest.TestCase):
         with self.assertRaises(InputError):
             self.update(duplicate)
 
-    def test_publication_settings_denial_keeps_artifacts_and_never_mutates_settings(self):
+    def test_pr_creation_denial_keeps_artifacts_and_never_mutates_settings(self):
         publisher = module("publish_catalog_update")
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             directory = root / "candidate"
             directory.mkdir()
+            for name in (
+                "candidate-catalog.json",
+                "PR-BODY.md",
+                "manifest.json",
+                "extended-source-status.json",
+            ):
+                (directory / name).write_text("{}")
             (directory / "catalog-update.json").write_text(json.dumps({"classification": "safe"}))
             commands = []
 
             def run(*args):
                 commands.append(args)
                 return subprocess.CompletedProcess(
-                    args, 0, '{"can_approve_pull_request_reviews":false}', ""
+                    args, 1 if args[:3] == ("gh", "pr", "create") else 0, "", ""
                 )
 
             with patch.object(publisher, "command", side_effect=run):
                 result = publisher.publish(directory, "owner/repo", "123", workspace=root)
             self.assertFalse(result["published"])
-            self.assertIn("disabled", result["blocker"])
-            self.assertEqual(len(commands), 1)
-            self.assertFalse((root / "references").exists())
+            self.assertIn("denied/failed", result["blocker"])
+            self.assertTrue((root / "references/catalog-candidates/123").is_dir())
+            self.assertFalse(any(command[:3] == ("gh", "workflow", "run") for command in commands))
+            self.assertFalse(
+                any(
+                    "actions/permissions/workflow" in part
+                    for command in commands
+                    for part in command
+                )
+            )
             self.assertTrue((directory / "publication-status.json").is_file())
             self.assertFalse(any("--method" in command for command in commands))
 
@@ -142,6 +156,8 @@ class CatalogUpdateTests(unittest.TestCase):
                     output = "https://github.com/owner/repo/pull/1"
                 elif args[:3] == ("gh", "pr", "checks"):
                     output = "[]"
+                elif args[:2] == ("git", "rev-parse"):
+                    output = "0" * 40
                 return subprocess.CompletedProcess(args, 0, output, "")
 
             with patch.object(publisher, "command", side_effect=run):
@@ -149,13 +165,34 @@ class CatalogUpdateTests(unittest.TestCase):
                     directory, "owner/repo", "123", workspace=root, sleep=lambda _: None
                 )
             self.assertTrue(result["published"])
+            self.assertTrue(result["checks_dispatched"])
+            self.assertIn(
+                (
+                    "gh",
+                    "workflow",
+                    "run",
+                    "checks.yml",
+                    "--repo",
+                    "owner/repo",
+                    "--ref",
+                    "catalog-update-123",
+                ),
+                commands,
+            )
             self.assertFalse(result["auto_merge_requested"])
             self.assertIn("not all green", result["blocker"])
             self.assertFalse(any(command[:3] == ("gh", "pr", "merge") for command in commands))
 
     def test_only_safe_with_all_real_checks_can_request_auto_merge(self):
         publisher = module("publish_catalog_update")
-        for classification in ("safe", "needs-review"):
+        for scenario in (
+            "safe",
+            "needs-review",
+            "wrong-run-sha",
+            "pending-run",
+            "live-check-failure",
+        ):
+            classification = "needs-review" if scenario == "needs-review" else "safe"
             with tempfile.TemporaryDirectory() as temp:
                 root = Path(temp)
                 directory = root / "candidate"
@@ -172,7 +209,7 @@ class CatalogUpdateTests(unittest.TestCase):
                 )
                 operations = []
 
-                def run(*args, operations=operations):
+                def run(*args, operations=operations, scenario=scenario):
                     operations.append(args)
                     output = ""
                     if args[:2] == ("gh", "api"):
@@ -187,17 +224,179 @@ class CatalogUpdateTests(unittest.TestCase):
                                 for version in ("3.12", "3.13")
                             ]
                         )
-                    elif args[:3] == ("gh", "pr", "view") or args[:2] == ("git", "rev-parse"):
+                    elif args[:2] == ("git", "rev-parse"):
                         output = "0" * 40
+                    elif args[:3] == ("gh", "pr", "view"):
+                        output = json.dumps(
+                            {
+                                "headRefOid": "0" * 40,
+                                "statusCheckRollup": [
+                                    {
+                                        "name": f"checks ({os}, {version})",
+                                        "status": "COMPLETED",
+                                        "conclusion": (
+                                            "FAILURE"
+                                            if scenario == "live-check-failure"
+                                            else "SUCCESS"
+                                        ),
+                                    }
+                                    for os in ("ubuntu-latest", "windows-latest")
+                                    for version in ("3.12", "3.13")
+                                ],
+                            }
+                        )
+                    elif args[:3] == ("gh", "run", "list"):
+                        output = json.dumps(
+                            [
+                                {
+                                    "databaseId": 1234,
+                                    "headSha": ("1" if scenario == "wrong-run-sha" else "0") * 40,
+                                    "status": (
+                                        "in_progress" if scenario == "pending-run" else "completed"
+                                    ),
+                                    "conclusion": "success",
+                                }
+                            ]
+                        )
                     return subprocess.CompletedProcess(args, 0, output, "")
 
                 with patch.object(publisher, "command", side_effect=run):
-                    result = publisher.publish(directory, "owner/repo", "123", workspace=root)
-                self.assertEqual(result["auto_merge_requested"], classification == "safe")
+                    result = publisher.publish(
+                        directory, "owner/repo", "123", workspace=root, sleep=lambda _: None
+                    )
+                self.assertEqual(result["auto_merge_requested"], scenario == "safe", scenario)
+                self.assertTrue(result["checks_dispatched"])
+                if scenario == "safe":
+                    self.assertEqual(result["checks_run_id"], 1234)
                 self.assertEqual(
                     any(op[:3] == ("gh", "pr", "merge") for op in operations),
-                    classification == "safe",
+                    scenario == "safe",
                 )
+
+    def test_denied_check_dispatch_never_requests_merge(self):
+        publisher = module("publish_catalog_update")
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            directory = root / "candidate"
+            directory.mkdir()
+            for name in (
+                "candidate-catalog.json",
+                "PR-BODY.md",
+                "manifest.json",
+                "extended-source-status.json",
+            ):
+                (directory / name).write_text("{}")
+            (directory / "catalog-update.json").write_text(json.dumps({"classification": "safe"}))
+            operations = []
+
+            def run(*args):
+                operations.append(args)
+                output = ""
+                if args[:3] == ("gh", "pr", "create"):
+                    output = "https://github.com/owner/repo/pull/1"
+                elif args[:2] == ("git", "rev-parse"):
+                    output = "0" * 40
+                return subprocess.CompletedProcess(
+                    args, 1 if args[:3] == ("gh", "workflow", "run") else 0, output, ""
+                )
+
+            with patch.object(publisher, "command", side_effect=run):
+                result = publisher.publish(directory, "owner/repo", "123", workspace=root)
+            self.assertFalse(result["checks_dispatched"])
+            self.assertFalse(result["auto_merge_requested"])
+            self.assertIn("actions: write", result["blocker"])
+            self.assertFalse(
+                any(operation[:3] == ("gh", "pr", "merge") for operation in operations)
+            )
+
+    def test_authored_validation_keeps_actual_poll_separate_and_catalog_unmodified(self):
+        extension = module("prepare_catalog_update")
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "status.json").write_text(json.dumps({"poll_attempted_at": AT}))
+            original = self.update()
+            for name, value in (
+                ("catalog-update.json", original),
+                ("candidate-catalog.json", original["candidate"]),
+            ):
+                (root / name).write_text(json.dumps(value))
+            (root / "PR-BODY.md").write_text("Actual unchanged source poll.")
+            before = digest(load_catalog())
+            result = extension.prepare_validation(
+                root, ROOT / "references/2026-11-04", "Authored fixture: unit tests passed"
+            )
+            self.assertTrue(result["validation_only"])
+            self.assertEqual(result["classification"], "safe")
+            observed = json.loads((root / "observed-catalog-update.json").read_text())
+            self.assertEqual(observed, original)
+            self.assertIn("not an upstream source-change claim", (root / "PR-BODY.md").read_text())
+            self.assertEqual(digest(load_catalog()), before)
+
+    def test_check_dispatch_permission_is_scoped_to_source_workflow(self):
+        source = (ROOT / ".github/workflows/source-monitor.yml").read_text()
+        checks = (ROOT / ".github/workflows/checks.yml").read_text()
+        self.assertIn("  actions: write", source)
+        self.assertNotIn("actions: write", checks)
+        self.assertIn("  contents: read", checks)
+        self.assertIn("validate_publication:", source)
+        self.assertIn("Validation does not publish accepted catalog assets.", source)
+
+    def test_head_changed_after_dispatch_cannot_merge_checked_different_commit(self):
+        publisher = module("publish_catalog_update")
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            directory = root / "candidate"
+            directory.mkdir()
+            for name in (
+                "candidate-catalog.json",
+                "PR-BODY.md",
+                "manifest.json",
+                "extended-source-status.json",
+            ):
+                (directory / name).write_text("{}")
+            (directory / "catalog-update.json").write_text(json.dumps({"classification": "safe"}))
+            operations = []
+
+            def run(*args):
+                operations.append(args)
+                output = ""
+                if args[:2] == ("gh", "api"):
+                    output = '{"allow_auto_merge":true}'
+                elif args[:3] == ("gh", "pr", "create"):
+                    output = "https://github.com/owner/repo/pull/1"
+                elif args[:2] == ("git", "rev-parse"):
+                    output = "0" * 40
+                elif args[:3] == ("gh", "pr", "view"):
+                    output = json.dumps({"headRefOid": "1" * 40, "statusCheckRollup": []})
+                elif args[:3] == ("gh", "run", "list"):
+                    output = json.dumps(
+                        [
+                            {
+                                "databaseId": 1234,
+                                "headSha": "0" * 40,
+                                "status": "completed",
+                                "conclusion": "success",
+                            }
+                        ]
+                    )
+                elif args[:3] == ("gh", "pr", "checks"):
+                    output = json.dumps(
+                        [
+                            {"name": f"checks ({os}, {version})", "state": "SUCCESS"}
+                            for os in ("ubuntu-latest", "windows-latest")
+                            for version in ("3.12", "3.13")
+                        ]
+                    )
+                return subprocess.CompletedProcess(args, 0, output, "")
+
+            with patch.object(publisher, "command", side_effect=run):
+                result = publisher.publish(directory, "owner/repo", "123", workspace=root)
+            self.assertTrue(result["checks_dispatched"])
+            self.assertFalse(result["auto_merge_requested"])
+            self.assertIn("head changed", result["blocker"])
+            self.assertFalse(
+                any(operation[:3] == ("gh", "pr", "merge") for operation in operations)
+            )
 
     def test_local_known_version_lag_is_explicit_and_never_network_refresh(self):
         index = {

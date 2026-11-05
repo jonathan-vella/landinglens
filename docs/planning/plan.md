@@ -21,6 +21,40 @@ from that report.
 
 ## Assessor-efficiency increment
 
+### Source-automation approval and dispatch follow-up
+
+On 2026-11-05 the owner explicitly approved the two requested repository toggles
+and `actions: write` on the source-update workflow only. Before editing workflow
+code, live REST reads verified `allow_auto_merge=true`,
+`can_approve_pull_request_reviews=true` and unchanged
+`default_workflow_permissions=read`. No branch-protection, secret or Azure change
+was made.
+
+The publisher dispatches only existing `checks.yml` on its numeric-run-ID
+candidate branch, for safe and needs-review PRs alike. Only safe candidates may
+request merge, after all supported jobs/checks pass and the live PR head matches
+the captured candidate commit. The workflow token relies on GitHub's actual PR
+create policy, not an administration-read endpoint requiring an unnecessary grant.
+Denied creation/dispatch, missing/failed checks or a changed head retain an
+explicit blocker and leave the PR unmerged.
+
+An optional manual validation uses a clearly labelled authored English-locale
+link canonicalisation. Both public URLs were checked and resolve to the same
+Microsoft page/revision `ac4bcb1eb41ca6e2ace58e626de7d186ea80bb00`.
+It preserves the real poll in `observed-*`, claims no upstream change and never
+activates a catalog or publishes accepted assets. It is not enabled on schedules.
+Actual bot PR/dispatch/check/merge evidence remains pending in #78.
+
+Local follow-up verification ran 292 tests with one explicit Windows
+symlink-privilege skip, including the exact installed wheel outside the checkout.
+The 13 source-update tests cover denied creation/dispatch, missing checks, a
+wrong-SHA or incomplete dispatch run, changed live head/checks, needs-review
+exclusion and authored-fixture isolation. Lint, formatting, types and dependency
+checks passed. The wheel SHA256 is
+`c4ef87ce18cf4ca7a33b84f9de357cc35cbc27ecf99ce06d7a7d5233c73efbaa`.
+The fixed check workflow's read-only permission, accepted catalog bytes and
+recommendation ledger remain unchanged.
+
 Owner request dated 2026-11-05; tracked by
 [#53](https://github.com/jonathan-vella/landinglens/issues/53) and
 [FR-23-FR-36](prd.md#next-increment-assessor-efficiency). This authorises
@@ -471,7 +505,11 @@ existing catalog/index bytes were not replaced. Final reconciliation also adds
 the notice to future initial publication and a bounded check wait before any
 safe auto-merge request.
 
-### Remaining operational blocker and owner action
+### Remaining operational blocker and owner action: pre-approval snapshot
+
+The setting values below are historical. The source-automation approval and
+dispatch follow-up above records the owner's later permission and current
+enabled settings; operational demonstration is still pending.
 
 Final local verification ran **288 tests: 287 passed and one explicit Windows
 symlink-privilege skip**, both from the checkout and the exact installed wheel
