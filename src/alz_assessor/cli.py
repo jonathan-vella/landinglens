@@ -259,10 +259,13 @@ def main() -> int:
     collection.add_argument("--query-guid")
     collection.add_argument("--output", type=Path)
     for command in (assessment, comparison, rendering):
-        command.add_argument("--format", choices=["json", "markdown", "html"], default="json")
+        command.add_argument(
+            "--format", choices=["json", "markdown", "html", "sarif", "pr-summary"], default="json"
+        )
         command.add_argument("--output", type=Path)
         command.add_argument("--minimize", action="store_true")
         command.add_argument("--catalog-index", type=Path)
+        command.add_argument("--sarif-base", type=Path)
     args = parser.parse_args()
     try:
         if args.command == "interview":
@@ -545,10 +548,16 @@ def main() -> int:
             result["catalog_status"] = catalog_lag(
                 result["catalog_version"], read_json(args.catalog_index)
             )
+        if (
+            args.command in {"assess", "compare", "render"}
+            and args.sarif_base
+            and args.format != "sarif"
+        ):
+            raise InputError("--sarif-base is only valid for explicit SARIF output")
         output = (
             json.dumps(result, indent=2) + "\n"
             if args.command.startswith("spike-") or args.command in {"catalog", "collect"}
-            else render(result, args.format, args.minimize)
+            else render(result, args.format, args.minimize, sarif_base=args.sarif_base)
         )
         if getattr(args, "output", None):
             args.output.write_text(output, encoding="utf-8")

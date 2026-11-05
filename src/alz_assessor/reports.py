@@ -2,6 +2,7 @@
 
 import html
 import json
+from pathlib import Path
 from typing import Any
 
 from .contracts import digest, validate
@@ -130,8 +131,18 @@ def report_model(assessment: dict[str, Any], minimize: bool = False) -> dict[str
     return result
 
 
-def render(assessment: dict[str, Any], format: str = "json", minimize: bool = False) -> str:
+def render(
+    assessment: dict[str, Any],
+    format: str = "json",
+    minimize: bool = False,
+    *,
+    sarif_base: Path | None = None,
+) -> str:
     model = report_model(assessment, minimize)
+    if format in {"sarif", "pr-summary"}:
+        from .ci_reports import pr_summary, sarif
+
+        return sarif(model, sarif_base) if format == "sarif" else pr_summary(model)
     if format == "json":
         return json.dumps(model, indent=2, allow_nan=False) + "\n"
     heading = (
