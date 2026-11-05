@@ -56,7 +56,9 @@ assisted and 43 manual recommendations. The sole new whole predicate is the
 explicit deployed Firewall Premium SKU. Eight assisted workflows expose bounded
 facts/questions for routing, logging, migration, subnet capacity, hierarchy,
 IP Groups, direct DNAT sources and SNAT operations; runtime effectiveness,
-inheritance and human applicability remain unasserted. Delivery is pending.
+inheritance and human applicability remain unasserted.
+[#49](https://github.com/jonathan-vella/landinglens/pull/49) merged as
+`4290f80ef32d0f40dc2001fe128e17e8623dfa2d`; #48 is closed.
 The exact prior catalog is frozen as `catalog-2026-11-05.1.json`; batch-matrix
 and source artifacts are version-specific. Cohort numbers are not dependency
 order: successors are built in catalog-version order with explicit prerequisites.
@@ -66,8 +68,31 @@ installed wheel outside the checkout (183 passed; one Windows symlink-privilege
 skip), with format/lint, 22-source-file type checks and dependency consistency
 passing. The existing Bicep compiler exercised the new firewall SKU fixture
 without restoration. Evidence remains fixture/injected and installed-CLI
-verified, not new live-control verification. Protected CI/merge acceptance is
-still pending and is recorded separately in the ledger.
+verified, not new live-control verification. All eight cross-platform CI
+checks passed; all four downloaded PR compiler artifacts report exercised.
+Protected exact-head merge acceptance is persisted per GUID in the ledger.
+Seventeen of the fixed 251 targets are merged. Cohort 18's nine are in progress,
+with 225 others pending; none is completed just by classification.
+
+[Cohort 18 / #50](https://github.com/jonathan-vella/landinglens/issues/50)
+follows merged cohort 17. Its [matrix](../../references/recommendation-batches/batch-18.json)
+and [18 actual source captures](../../references/recommendation-batches/batch-18-sources.json)
+precede working successor `2026-11-05.3`, with unchanged 7/205/43 counts.
+All nine workflows remain assisted: minimal application TLS/category-count,
+configured-zone, VNet DDoS, subnet NSG and private endpoint target/state facts
+support specific evidence questions, not working-inspection/connectivity claims.
+Current Microsoft zone guidance explicitly invalidates a configured-zone-count
+compliance rule; backend redundancy can be invisible in ARM/JSON/ARG. Versioned
+backup/restore evidence is requested; minimized assessor replay is not a backup.
+The exact `.2` predecessor is frozen and all earlier meanings retained.
+Pre-delivery verification passed against the exact installed wheel outside the
+checkout: 195 tests ran, 194 passed and one Windows symlink-privilege test skipped.
+Formatting, lint, 22-source-file type checks and dependency consistency passed.
+Existing Bicep exercised the new zone/VNet/rule-group/private-endpoint fixture
+without restoration. Evidence is fixture/injected and installed-CLI verified,
+not new live Azure or backend-resilience/connectivity verification. Protected
+PR delivery and cross-platform CI acceptance remain pending, separate from
+delegated matrix acceptance.
 
 Specific review questions and limitations appear in templates, reports and the
 local editor. Templates/editor prepare at most 100 matching inventory records
@@ -84,7 +109,7 @@ inventing a reviewer or decision. These are fixture/injected and installed-CLI
 results, not new live Azure verification. All eight actual Windows/Linux Python
 3.12/3.13 checks passed; all four PR compiler artifacts report exercised
 no-restore integration. The per-GUID ledger retains these acceptance references.
-Batch 17's nine firewall recommendations are the next evidence-ready cohort;
+Those are historical batch-01 results, not current-cohort runtime acceptance;
 numeric cohort order does not imply a dependency.
 Continue through dependency-ready cohorts after each merged batch; a blocked
 item does not block unrelated work. This increment is not complete.

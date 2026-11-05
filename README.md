@@ -14,7 +14,11 @@ passes. **This is not Microsoft certification or estate-wide compliance.**
 The [fixed 251-item expansion](docs/planning/plan.md#recommendation-expansion-active)
 retains its starting GUIDs regardless of later classification. Batch 01 reviews
 eight recommendations and is merged. Cohort 17 implements nine more firewall
-recommendations in working catalog `2026-11-05.2`; its delivery remains pending.
+recommendations in merged catalog `2026-11-05.2`.
+Cohort 18's nine resilience/private-connectivity workflows are implemented in
+working successor `2026-11-05.3`, with delivery still pending. Configured firewall
+zones are not backend redundancy; TLS/category fields and approved private
+endpoints do not establish working inspection or connectivity.
 Other batches are pending, not completed by being listed.
 Vault deletion protection is unresolved for raw Terraform/optional plan
 values because those values do not establish soft-delete state after import or
@@ -198,8 +202,8 @@ Supply the original `--manual`, `--exceptions`, `--catalog`, `--landing-zone`
 and `--max-age-hours` selections when applicable. Export evaluates and binds
 that invocation; it does not reconstruct missing normalized facts from a
 rendered report or prove the files existed at the selected historical time.
-The installed package includes current `2026-11-05.2` and frozen
-`2026-11-04.1`, `2026-11-04.2` and `2026-11-05.1` catalog meaning.
+The installed package includes current `2026-11-05.3` and frozen
+`2026-11-04.1`, `2026-11-04.2`, `2026-11-05.1` and `2026-11-05.2` catalog meaning.
 Altered/custom or unavailable historical
 artifacts fail explicitly rather than substituting today's rules.
 

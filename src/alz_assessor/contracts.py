@@ -329,7 +329,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                 paths = require(control, "review_fact_paths", list)
                 if (
                     not paths
-                    or len(paths) > 4
+                    or len(paths) > 8
                     or any(
                         not isinstance(path, str)
                         or path
@@ -350,11 +350,18 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                             "logAnalyticsDestinationType",
                             "natRuleCollections",
                             "ipAddresses",
+                            "configuredZones",
+                            "applicationRules",
+                            "enableDdosProtection",
+                            "ddosProtectionPlan.id",
+                            "privateConnections",
+                            "subnet.id",
+                            "networkSecurityGroup.id",
                         }
                         for path in paths
                     )
                 ):
-                    raise InputError("Review fact preparation requires reviewed scalar paths")
+                    raise InputError("Review fact preparation requires 1-8 reviewed typed paths")
             if control["automation"] == "automated":
                 rule = require(control, "rule", dict)
                 for field in ("resource_type", "property"):

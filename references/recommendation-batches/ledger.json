@@ -21,6 +21,27 @@
       "browser": "Authored isolated installed-CLI fixture displayed all three assisted scalar projections with blank reviewer and decision; listener stopped.",
       "live_verification": "Not run for this increment; no new Azure access or owner decisions.",
       "next_dependency_ready_batch": "17"
+    },
+    "17": {
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/49",
+      "merge_commit": "4290f80ef32d0f40dc2001fe128e17e8623dfa2d",
+      "merged_at": "2026-11-05T01:15:24Z",
+      "checked_head": "b968e2407b21978f815cb98e6db1ef3f86e826ca",
+      "checks": [
+        "https://github.com/jonathan-vella/landinglens/actions/runs/41946824199",
+        "https://github.com/jonathan-vella/landinglens/actions/runs/41946849846"
+      ],
+      "acceptance": "All eight Windows/Linux Python 3.12/3.13 checks passed. All four downloaded PR compiler artifacts report exercised local success and no-restore missing-module failure. Exact checked head merged without protection override; issue 48 closed after merge.",
+      "local_installed_suite": {
+        "tests": 184,
+        "passed": 183,
+        "skipped": 1
+      },
+      "local_skip": "Windows symlink privilege unavailable",
+      "wheel_sha256": "ad76b103c156e2312210ac3719f8a5a55e1c4a81037fb3a36da2492a58da9785",
+      "review_workflow": "Bounded typed facts, subnet links, partial subchecks and specific questions verified through prepared context and installed review-session tests; no owner records generated.",
+      "live_verification": "Not run for this increment; no new Azure access or owner decisions.",
+      "next_dependency_ready_batch": "18"
     }
   },
   "recommendations": [
@@ -2326,7 +2347,7 @@
       "baseline_control_sha256": "29f95019a1d4c1175abd669c3ba29a1c9514ae8af2191508363c4b5f39585082",
       "design_area": "Network topology and connectivity",
       "batch": "17",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "c10d51ef-f999-455d-bba0-5c90ece07447",
         "upstream_id": "D07.05",
@@ -2360,9 +2381,13 @@
         ]
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/48",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/49",
+      "merge_commit": "4290f80ef32d0f40dc2001fe128e17e8623dfa2d",
+      "runtime_evidence": [
+        "fixture/injected verified",
+        "installed CLI verified",
+        "deliveries.17: all eight CI checks passed; all four compiler integrations exercised"
+      ]
     },
     {
       "guid": "a3784907-9836-4271-aafc-93535f8ec08b",
@@ -2372,7 +2397,7 @@
       "baseline_control_sha256": "c3c511722b3e53e96b182a58ce8bcab0ca8f9853835285140651460a30f975ad",
       "design_area": "Network topology and connectivity",
       "batch": "17",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "a3784907-9836-4271-aafc-93535f8ec08b",
         "upstream_id": "D07.08",
@@ -2406,9 +2431,13 @@
         ]
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/48",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/49",
+      "merge_commit": "4290f80ef32d0f40dc2001fe128e17e8623dfa2d",
+      "runtime_evidence": [
+        "fixture/injected verified",
+        "installed CLI verified",
+        "deliveries.17: all eight CI checks passed; all four compiler integrations exercised"
+      ]
     },
     {
       "guid": "715d833d-4708-4527-90ac-1b142c7045ba",
@@ -2418,7 +2447,7 @@
       "baseline_control_sha256": "359e4afe8a6a1d4e372ad422c470e6f8ae805cc42a0a8f27184192090c645b14",
       "design_area": "Network topology and connectivity",
       "batch": "17",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "715d833d-4708-4527-90ac-1b142c7045ba",
         "upstream_id": "D07.09",
@@ -2450,9 +2479,13 @@
         ]
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/48",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/49",
+      "merge_commit": "4290f80ef32d0f40dc2001fe128e17e8623dfa2d",
+      "runtime_evidence": [
+        "fixture/injected verified",
+        "installed CLI verified",
+        "deliveries.17: all eight CI checks passed; all four compiler integrations exercised"
+      ]
     },
     {
       "guid": "e960fc6b-4ab2-4db6-9609-3745135f9ffa",
@@ -2462,7 +2495,7 @@
       "baseline_control_sha256": "df30a3a4995bcf187cb3a42e8c27bb67424e7eb0b4e47a345124bc5a93ea8956",
       "design_area": "Network topology and connectivity",
       "batch": "17",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "e960fc6b-4ab2-4db6-9609-3745135f9ffa",
         "upstream_id": "D07.10",
@@ -2492,9 +2525,13 @@
         ]
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/48",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/49",
+      "merge_commit": "4290f80ef32d0f40dc2001fe128e17e8623dfa2d",
+      "runtime_evidence": [
+        "fixture/injected verified",
+        "installed CLI verified",
+        "deliveries.17: all eight CI checks passed; all four compiler integrations exercised"
+      ]
     },
     {
       "guid": "22d6419e-b627-4d95-9e7d-019fa759387f",
@@ -2504,7 +2541,7 @@
       "baseline_control_sha256": "fdefbc10637afa9802867fedec6cd4a352d079cb71f47ec47d1915b6ecbb55c6",
       "design_area": "Network topology and connectivity",
       "batch": "17",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "22d6419e-b627-4d95-9e7d-019fa759387f",
         "upstream_id": "D07.11",
@@ -2538,9 +2575,13 @@
         ]
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/48",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/49",
+      "merge_commit": "4290f80ef32d0f40dc2001fe128e17e8623dfa2d",
+      "runtime_evidence": [
+        "fixture/injected verified",
+        "installed CLI verified",
+        "deliveries.17: all eight CI checks passed; all four compiler integrations exercised"
+      ]
     },
     {
       "guid": "828cec2e-af6c-40c2-8fa2-1b681ee63eb7",
@@ -2550,7 +2591,7 @@
       "baseline_control_sha256": "57f99897c3b2592a92382b97e530a724ea174f6ed1f41faf99b533dcd293c1c6",
       "design_area": "Network topology and connectivity",
       "batch": "17",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "828cec2e-af6c-40c2-8fa2-1b681ee63eb7",
         "upstream_id": "D07.12",
@@ -2575,9 +2616,13 @@
         ]
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/48",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/49",
+      "merge_commit": "4290f80ef32d0f40dc2001fe128e17e8623dfa2d",
+      "runtime_evidence": [
+        "fixture/injected verified",
+        "installed CLI verified",
+        "deliveries.17: all eight CI checks passed; all four compiler integrations exercised"
+      ]
     },
     {
       "guid": "0da83bb1-2f39-49af-b5c9-835fc455e3d1",
@@ -2587,7 +2632,7 @@
       "baseline_control_sha256": "b919c49b30983784571560f19580b500e6fad8d8f03d981226e2047ed1bb9825",
       "design_area": "Network topology and connectivity",
       "batch": "17",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "0da83bb1-2f39-49af-b5c9-835fc455e3d1",
         "upstream_id": "D07.12",
@@ -2619,9 +2664,13 @@
         ]
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/48",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/49",
+      "merge_commit": "4290f80ef32d0f40dc2001fe128e17e8623dfa2d",
+      "runtime_evidence": [
+        "fixture/injected verified",
+        "installed CLI verified",
+        "deliveries.17: all eight CI checks passed; all four compiler integrations exercised"
+      ]
     },
     {
       "guid": "c44c6f0e-1642-4a61-a17b-0922f835c93a",
@@ -2631,7 +2680,7 @@
       "baseline_control_sha256": "a0288785a8ae3480e16d10ca0009b7f9f6575bd727e6824e9771272311957144",
       "design_area": "Network topology and connectivity",
       "batch": "17",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "c44c6f0e-1642-4a61-a17b-0922f835c93a",
         "upstream_id": "D07.13",
@@ -2665,9 +2714,13 @@
         ]
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/48",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/49",
+      "merge_commit": "4290f80ef32d0f40dc2001fe128e17e8623dfa2d",
+      "runtime_evidence": [
+        "fixture/injected verified",
+        "installed CLI verified",
+        "deliveries.17: all eight CI checks passed; all four compiler integrations exercised"
+      ]
     },
     {
       "guid": "7371dc21-251a-47a3-af14-6e01b9da4757",
@@ -2677,7 +2730,7 @@
       "baseline_control_sha256": "b125be003fd91d99e19ee7ca636da200fdeb7efa80e21be6a6db5a5c962dd69b",
       "design_area": "Network topology and connectivity",
       "batch": "17",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "7371dc21-251a-47a3-af14-6e01b9da4757",
         "upstream_id": "D07.14",
@@ -2710,9 +2763,13 @@
         ]
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/48",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/49",
+      "merge_commit": "4290f80ef32d0f40dc2001fe128e17e8623dfa2d",
+      "runtime_evidence": [
+        "fixture/injected verified",
+        "installed CLI verified",
+        "deliveries.17: all eight CI checks passed; all four compiler integrations exercised"
+      ]
     },
     {
       "guid": "346840b8-1064-496e-8396-4b1340172d52",
@@ -2722,12 +2779,47 @@
       "baseline_control_sha256": "40fec5811ce46c6a2b6cfb58cfd61390116302ddf9befb4b7a56ac70b3e88276",
       "design_area": "Network topology and connectivity",
       "batch": "18",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "346840b8-1064-496e-8396-4b1340172d52",
+        "upstream_id": "D07.15",
+        "classification": "assisted",
+        "implemented_subclaim": "Supplied application-rule terminateTLS booleans and policy/deployed SKU facts, not an effective TLS-inspection verdict.",
+        "sources": [
+          "premium-inspection-categories",
+          "application-rules-arm",
+          "terraform-application-rules",
+          "firewall-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/azureFirewalls",
+          "Microsoft.Network/firewallPolicies",
+          "Microsoft.Network/firewallPolicies/ruleCollectionGroups"
+        ],
+        "review_fact_paths": [
+          "sku.tier",
+          "firewallPolicy.id",
+          "applicationRules"
+        ],
+        "evidence_requirements": [
+          "Map each Premium firewall to its exact effective policy and applicable application rules, including inheritance, bypasses, priorities and HTTPS traffic population.",
+          "Provide redacted CA/reference readiness, certificate validity/rotation, managed-identity access and client trust evidence; never submit private keys, certificate material or secret values.",
+          "Reviewer decision: do attributable application rules and trust configuration establish TLS inspection for the intended outbound/east-west HTTPS flows, with documented exclusions and observed validation?"
+        ],
+        "limitations": "Premium capability or terminateTLS=true alone does not establish trusted working inspection. No certificate/secret read, effective-policy expansion, TLS connection or data-plane test is performed.",
+        "flags": [
+          "rule-tls-not-working-inspection",
+          "no-certificate-material"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/50",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/49",
+      "merge_commit": "4290f80ef32d0f40dc2001fe128e17e8623dfa2d",
+      "runtime_evidence": [
+        "fixture/injected verified",
+        "installed CLI verified",
+        "deliveries.17: all eight CI checks passed; all four compiler integrations exercised"
+      ]
     },
     {
       "guid": "39990a13-915c-45f9-a2d3-562d7d6c4b7c",
@@ -2737,12 +2829,45 @@
       "baseline_control_sha256": "e2c7b392a603b49e83837298d8d24517ef38afc8166f31609b980586cc8f3447",
       "design_area": "Network topology and connectivity",
       "batch": "18",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "39990a13-915c-45f9-a2d3-562d7d6c4b7c",
+        "upstream_id": "D07.16",
+        "classification": "assisted",
+        "implemented_subclaim": "Bounded counts of explicitly supplied application-rule category labels and collection actions; labels themselves are withheld.",
+        "sources": [
+          "premium-inspection-categories",
+          "application-rules-arm",
+          "terraform-application-rules"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/azureFirewalls",
+          "Microsoft.Network/firewallPolicies",
+          "Microsoft.Network/firewallPolicies/ruleCollectionGroups"
+        ],
+        "review_fact_paths": [
+          "sku.tier",
+          "applicationRules"
+        ],
+        "evidence_requirements": [
+          "Provide the approved category policy and exact application-rule collections, actions, priorities, higher-priority exceptions and intended user/traffic population.",
+          "Reconcile source versions: current Learn describes categories on Standard and Premium, while pinned AzureRM 4.50.0 documents Premium requirements. Verify the actual supported deployment rather than assigning applicability from one statement.",
+          "Reviewer decision: do effective category rules enforce the intended topics, including HTTPS/TLS limitations and privacy-related nontermination categories, without being bypassed by other rules?"
+        ],
+        "limitations": "A nonzero supplied-label count does not validate category names, feature/SKU support, effective ordering or traffic filtering. No category lookup, URL submission, log query or permission expansion is performed.",
+        "flags": [
+          "category-count-not-enforcement",
+          "source-version-capability-difference"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/50",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/49",
+      "merge_commit": "4290f80ef32d0f40dc2001fe128e17e8623dfa2d",
+      "runtime_evidence": [
+        "fixture/injected verified",
+        "installed CLI verified",
+        "deliveries.17: all eight CI checks passed; all four compiler integrations exercised"
+      ]
     },
     {
       "guid": "6eff7e6c-6c4a-43d7-be3f-6641c2cb3d4a",
@@ -2752,12 +2877,45 @@
       "baseline_control_sha256": "4ccc4502c73ccc82c8609a055638b40c4f4c1e63866f46667f95cb92ef53b59b",
       "design_area": "Network topology and connectivity",
       "batch": "18",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "6eff7e6c-6c4a-43d7-be3f-6641c2cb3d4a",
+        "upstream_id": "D07.17",
+        "classification": "assisted",
+        "implemented_subclaim": "Bounded firewall/policy/rule and Application Gateway inventory with specific traffic-chain review, not inferred connectivity.",
+        "sources": [
+          "gateway-before-firewall",
+          "premium-inspection-categories",
+          "application-rules-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/applicationGateways",
+          "Microsoft.Network/azureFirewalls",
+          "Microsoft.Network/firewallPolicies/ruleCollectionGroups"
+        ],
+        "review_fact_paths": [
+          "firewallPolicy.id",
+          "applicationRules"
+        ],
+        "evidence_requirements": [
+          "Map the actual client-to-gateway-to-Premium-firewall-to-backend path, including routing, Host header, DNS answer and HTTPS port 443 requirements.",
+          "Provide redacted evidence that the gateway trusts the firewall CA and that each TLS leg validates the intended certificate/name; never supply certificate or key material.",
+          "Reviewer decision: can the intended Application Gateway traffic actually traverse the inspected and re-encrypted chain, including return routing, rather than merely sharing a VNet?"
+        ],
+        "limitations": "Resource presence, TLS booleans or address/name similarity cannot establish this routed trust chain. No DNS, packet, endpoint, certificate or data-plane probe is run.",
+        "flags": [
+          "gateway-inspection-chain-needs-evidence",
+          "no-name-based-connectivity"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/50",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/49",
+      "merge_commit": "4290f80ef32d0f40dc2001fe128e17e8623dfa2d",
+      "runtime_evidence": [
+        "fixture/injected verified",
+        "installed CLI verified",
+        "deliveries.17: all eight CI checks passed; all four compiler integrations exercised"
+      ]
     },
     {
       "guid": "64e7000e-3c06-485e-b455-ced7f454cba3",
@@ -2767,12 +2925,43 @@
       "baseline_control_sha256": "e78d9ef38645ec3da870ef337726115ee99a4bbb507f26df2bd30a5ca54a26ee",
       "design_area": "Network topology and connectivity",
       "batch": "18",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "64e7000e-3c06-485e-b455-ced7f454cba3",
+        "upstream_id": "D07.20",
+        "classification": "assisted",
+        "implemented_subclaim": "Original-time firewall/policy/rule inventory to reconcile against an owner-supplied versioned backup and restore record.",
+        "sources": [
+          "firewall-backup-operations",
+          "application-rules-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/azureFirewalls",
+          "Microsoft.Network/firewallPolicies",
+          "Microsoft.Network/firewallPolicies/ruleCollectionGroups"
+        ],
+        "review_fact_paths": [
+          "firewallPolicy.id"
+        ],
+        "evidence_requirements": [
+          "Map every effective firewall policy, classic rule set and inherited dependency to a versioned backup artifact or complete source-controlled IaC, including explicit coverage gaps.",
+          "Provide redacted artifact references/hashes, backup timestamps, retention/access controls, responsible recovery role and a successful reviewed restore-test record meeting the agreed recovery objective.",
+          "Reviewer decision: is the intended firewall rule population recoverable from those artifacts, not just represented by a current assessment report or a backup-resource name?"
+        ],
+        "limitations": "LandingLens assessment/replay bundles intentionally omit full rules and secrets; they are not firewall backups. Inventory presence does not establish backup completion, retention or recoverability. No backup/restore job or infrastructure action is executed.",
+        "flags": [
+          "assessment-is-not-firewall-backup",
+          "restore-evidence-not-executed"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/50",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/49",
+      "merge_commit": "4290f80ef32d0f40dc2001fe128e17e8623dfa2d",
+      "runtime_evidence": [
+        "fixture/injected verified",
+        "installed CLI verified",
+        "deliveries.17: all eight CI checks passed; all four compiler integrations exercised"
+      ]
     },
     {
       "guid": "d38ad60c-bc9e-4d49-b699-97e5d4dcf707",
@@ -2782,12 +2971,44 @@
       "baseline_control_sha256": "e293787d3ff56edf39e4a11e50c0bf3aca5d5c8749ddf5693732cca998920dfd",
       "design_area": "Network topology and connectivity",
       "batch": "18",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "d38ad60c-bc9e-4d49-b699-97e5d4dcf707",
+        "upstream_id": "D07.21",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit configured zone identifiers only; never backend placement, migration status or an SLA verdict.",
+        "sources": [
+          "firewall-managed-zone-redundancy",
+          "firewall-backup-operations",
+          "firewall-arm",
+          "terraform-firewall"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/azureFirewalls"
+        ],
+        "review_fact_paths": [
+          "configuredZones",
+          "sku.tier"
+        ],
+        "evidence_requirements": [
+          "Record cloud, region, deployment context and required resilience; compare against the reviewed current zone-redundant-by-default rollout guidance and applicable service agreement.",
+          "Reconcile configured zones with platform migration evidence: the 2026-11-04 guidance says backend placement may not appear in ARM/JSON/ARG. Empty or single configured zones are not proof of backend nonredundancy.",
+          "Reviewer decision: does attributable current platform/region evidence establish the required redundancy? For new eligible deployments follow the documented omission/default path; do not add explicit zones solely to satisfy this checklist."
+        ],
+        "limitations": "Current Microsoft guidance recommends omitting explicit firewall zones in compatible regions. Configured zone counts cannot safely pass/fail this recommendation or establish an SLA because backend migration may be invisible. No region capability scan or availability test occurs.",
+        "flags": [
+          "configured-zones-not-backend-redundancy",
+          "current-managed-default-not-explicit-zones"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/50",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/49",
+      "merge_commit": "4290f80ef32d0f40dc2001fe128e17e8623dfa2d",
+      "runtime_evidence": [
+        "fixture/injected verified",
+        "installed CLI verified",
+        "deliveries.17: all eight CI checks passed; all four compiler integrations exercised"
+      ]
     },
     {
       "guid": "e8143efa-0301-4d62-be54-ca7b5ce566dc",
@@ -2797,12 +3018,50 @@
       "baseline_control_sha256": "e801c61001bf8c12b13e0bce6471614a1b9cef7fdc4773eb590026f79ab88b3d",
       "design_area": "Network topology and connectivity",
       "batch": "18",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "e8143efa-0301-4d62-be54-ca7b5ce566dc",
+        "upstream_id": "D07.22",
+        "classification": "assisted",
+        "implemented_subclaim": "Typed explicit VNet DDoS flag/plan reference and unique positive firewall-subnet-VNet links, not complete protected-population coverage.",
+        "sources": [
+          "ddos-overview",
+          "firewall-backup-operations",
+          "vnet-arm",
+          "terraform-vnet",
+          "subnet-arm",
+          "firewall-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/azureFirewalls",
+          "Microsoft.Network/virtualNetworks",
+          "Microsoft.Network/virtualNetworks/subnets"
+        ],
+        "review_fact_paths": [
+          "sku.name",
+          "subnetReferences",
+          "enableDdosProtection",
+          "ddosProtectionPlan.id"
+        ],
+        "evidence_requirements": [
+          "Bind each applicable VNet-hosted firewall and public endpoint to its actual hosting VNet and DDoS protection plan; identify unsupported or unclassified relationships.",
+          "Use explicit VNet enableDdosProtection and plan IDs as configuration evidence only. Distinguish Network Protection from per-IP protection and identify the documented Virtual WAN exclusion.",
+          "Reviewer decision: is the intended firewall deployment population covered by the appropriate configured protection, with applicability and exceptions supported rather than inferred from one plan's existence?"
+        ],
+        "limitations": "Positive canonical links do not establish population completeness or mitigation effectiveness. Missing/denied VNet or plan evidence stays unknown; Virtual WAN applicability requires explicit context. No attack, scan, billing read, permission change or additional relationship enumeration occurs.",
+        "flags": [
+          "ddos-positive-links-not-coverage",
+          "virtual-wan-applicability-explicit"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/50",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/49",
+      "merge_commit": "4290f80ef32d0f40dc2001fe128e17e8623dfa2d",
+      "runtime_evidence": [
+        "fixture/injected verified",
+        "installed CLI verified",
+        "deliveries.17: all eight CI checks passed; all four compiler integrations exercised"
+      ]
     },
     {
       "guid": "d301d6e8-72e5-42e3-911c-c58b5a4b1511",
@@ -2812,12 +3071,45 @@
       "baseline_control_sha256": "59602d0b8ac4b859fdebb9c35d25487d1081dac0e7a80275c26c278b6a4346df",
       "design_area": "Network topology and connectivity",
       "batch": "18",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "d301d6e8-72e5-42e3-911c-c58b5a4b1511",
+        "upstream_id": "D07.23",
+        "classification": "assisted",
+        "implemented_subclaim": "Exact supplied subnet route-table/NSG references and specific per-service control-plane review.",
+        "sources": [
+          "injected-service-networking",
+          "subnet-arm",
+          "terraform-subnet"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks/subnets",
+          "Microsoft.Network/routeTables",
+          "Microsoft.Network/networkSecurityGroups"
+        ],
+        "review_fact_paths": [
+          "routeTable.id",
+          "networkSecurityGroup.id"
+        ],
+        "evidence_requirements": [
+          "Identify every injected service/subnet, its deployment mode, and the current service-specific allowed routes, NSG ports/service tags and delegation restrictions.",
+          "Reconcile exact attached route-table/NSG IDs with effective routes, BGP/peering, rule priorities, service tags and any default-route appliance requirements; missing relationships are not safe negative evidence.",
+          "Reviewer decision: do those service-specific paths preserve management/control-plane reachability, including return traffic, without treating any 0.0.0.0/0 route or NSG presence as automatically broken?"
+        ],
+        "limitations": "Generic route/NSG configuration cannot establish per-service reachability. Standalone Terraform associations require separate evidence and are not inferred. No service inventory expansion, route query, packet, port or control-plane health probe occurs.",
+        "flags": [
+          "service-specific-control-plane-reachability",
+          "no-generic-route-failure"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/50",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/49",
+      "merge_commit": "4290f80ef32d0f40dc2001fe128e17e8623dfa2d",
+      "runtime_evidence": [
+        "fixture/injected verified",
+        "installed CLI verified",
+        "deliveries.17: all eight CI checks passed; all four compiler integrations exercised"
+      ]
     },
     {
       "guid": "e43a58a9-c229-49c4-b7b5-7d0c655562f2",
@@ -2827,12 +3119,46 @@
       "baseline_control_sha256": "5684659b1b53bd022712c615c8fb82040b01cf3493a648a92f439699a75cb330",
       "design_area": "Network topology and connectivity",
       "batch": "18",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "e43a58a9-c229-49c4-b7b5-7d0c655562f2",
+        "upstream_id": "D08.02",
+        "classification": "assisted",
+        "implemented_subclaim": "Bounded private endpoint subnet/target/explicit connection-state facts, not shared-service applicability or working private access.",
+        "sources": [
+          "private-link-overview",
+          "private-endpoint-overview",
+          "private-endpoint-arm",
+          "terraform-private-endpoint"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/privateEndpoints",
+          "Microsoft.Network/privateLinkServices",
+          "Microsoft.Network/virtualNetworks/subnets"
+        ],
+        "review_fact_paths": [
+          "subnet.id",
+          "privateConnections"
+        ],
+        "evidence_requirements": [
+          "List shared PaaS services and required subresources, verify actual Private Link availability, and map each applicable target to its exact private endpoint and subnet.",
+          "Provide explicit connection approval and correct private DNS/routing plus service public-network controls. An assigned IP or automatic-approval intent is not approval; Approved alone does not prove DNS or public-access restriction.",
+          "Reviewer decision: does supported private connectivity cover every intended shared service/subresource and client population, with unavailable services and intentional exceptions documented?"
+        ],
+        "limitations": "Resource existence or Approved state is not a reachable private-only path. Raw Terraform/plan does not expose approval state; aliases remain unresolved. No approval action, DNS/packet probe, public-access inference or service availability query is performed.",
+        "flags": [
+          "private-endpoint-configuration-not-connectivity",
+          "approval-not-inferred-from-intent"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/50",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/49",
+      "merge_commit": "4290f80ef32d0f40dc2001fe128e17e8623dfa2d",
+      "runtime_evidence": [
+        "fixture/injected verified",
+        "installed CLI verified",
+        "deliveries.17: all eight CI checks passed; all four compiler integrations exercised"
+      ]
     },
     {
       "guid": "b3e4563a-4d87-4397-98b6-62d6d15f512a",
@@ -2842,9 +3168,39 @@
       "baseline_control_sha256": "7d9313459b22081c882664e01a6942ebbbc32ead66d24aefb199dd3cdc70e9c6",
       "design_area": "Network topology and connectivity",
       "batch": "18",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "b3e4563a-4d87-4397-98b6-62d6d15f512a",
+        "upstream_id": "D08.03",
+        "classification": "assisted",
+        "implemented_subclaim": "Private endpoint target/state inventory plus specific on-premises private-peering and DNS evidence requests.",
+        "sources": [
+          "private-link-overview",
+          "private-endpoint-overview",
+          "private-endpoint-arm",
+          "terraform-private-endpoint"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/privateEndpoints",
+          "Microsoft.Network/expressRouteCircuits",
+          "Microsoft.Network/virtualNetworkGateways"
+        ],
+        "review_fact_paths": [
+          "subnet.id",
+          "privateConnections"
+        ],
+        "evidence_requirements": [
+          "Map each on-premises client network to the intended approved service/subresource private endpoint, including private DNS forwarding/resolution to its private address.",
+          "Provide attributable ExpressRoute private-peering, VNet/gateway/route and return-path evidence. Distinguish this from Microsoft peering or VPN access and identify public-internet fallback paths.",
+          "Reviewer decision: do representative original-time path records establish the intended private-peering access without public internet transit for the relevant clients and services?"
+        ],
+        "limitations": "An ExpressRoute circuit or approved endpoint alone cannot establish an end-to-end private path. Terraform connection intent never supplies approval. No peering enumeration, DNS lookup, traffic capture, packet probe or data-plane access is added.",
+        "flags": [
+          "private-peering-path-needs-evidence",
+          "no-circuit-presence-pass"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/50",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []

@@ -4,7 +4,7 @@ from ipaddress import ip_address, ip_network
 from typing import Any
 
 from .contracts import canonical_id
-from .sources import enumeration, property_at, unknown
+from .sources import boolean, enumeration, property_at, unknown
 from .terraform import InputError
 
 REVIEW_PATHS = {
@@ -20,6 +20,13 @@ REVIEW_PATHS = {
     "logAnalyticsDestinationType",
     "natRuleCollections",
     "ipAddresses",
+    "configuredZones",
+    "applicationRules",
+    "enableDdosProtection",
+    "ddosProtectionPlan.id",
+    "privateConnections",
+    "subnet.id",
+    "networkSecurityGroup.id",
 }
 
 
@@ -104,6 +111,143 @@ def nat_collections(value: Any) -> Any:
     return result
 
 
+def configured_zones(value: Any) -> Any:
+    if (
+        not isinstance(value, list)
+        or len(value) > 3
+        or any(not isinstance(item, str) or item not in {"1", "2", "3"} for item in value)
+        or len(set(value)) != len(value)
+    ):
+        return unknown("configured_zones_not_explicit_or_invalid")
+    return value
+
+
+def category_count(value: Any) -> Any:
+    if (
+        not isinstance(value, list)
+        or len(value) > 100
+        or any(not isinstance(item, str) or not item.strip() or len(item) > 128 for item in value)
+    ):
+        return unknown("category_list_missing_invalid_or_over_100")
+    return len(value)
+
+
+def application_facts(value: Any) -> Any:
+    if not isinstance(value, list) or len(value) > 100:
+        return unknown("application_rules_missing_or_over_100")
+    result: list[dict[str, Any]] = []
+    for rule in value:
+        if not isinstance(rule, dict) or "unknown" in rule:
+            result.append(unknown("application_rule_not_explicit"))
+            continue
+        count = rule.get("webCategoryCount")
+        result.append(
+            {
+                "action": enumeration(rule.get("action"), ("Allow", "Deny")),
+                "terminateTLS": boolean(rule.get("terminateTLS")),
+                "webCategoryCount": count
+                if type(count) is int and 0 <= count <= 100
+                else unknown("category_count_not_explicit"),
+            }
+        )
+    return result
+
+
+def application_rules(values: dict[str, Any], *, terraform: bool) -> Any:
+    collections = values.get("application_rule_collection" if terraform else "ruleCollections")
+    if not isinstance(collections, list) or len(collections) > 20:
+        return unknown("application_collections_missing_or_over_20")
+    result: list[dict[str, Any]] = []
+    for collection in collections:
+        if not isinstance(collection, dict):
+            return unknown("application_collection_not_object")
+        rules = collection.get("rule" if terraform else "rules")
+        if not isinstance(rules, list) or len(rules) > 100:
+            return unknown("collection_rules_missing_or_over_100")
+        action = collection.get("action")
+        action = action if terraform else action.get("type") if isinstance(action, dict) else None
+        for rule in rules:
+            if not isinstance(rule, dict):
+                result.append(unknown("application_rule_not_explicit"))
+            elif not terraform and rule.get("ruleType") in ("NetworkRule", "NatRule"):
+                continue
+            elif not terraform and rule.get("ruleType") != "ApplicationRule":
+                result.append(unknown("application_rule_not_explicit"))
+            else:
+                result.append(
+                    {
+                        "action": action,
+                        "terminateTLS": rule.get("terminate_tls" if terraform else "terminateTLS"),
+                        "webCategoryCount": category_count(
+                            rule.get("web_categories" if terraform else "webCategories")
+                        ),
+                    }
+                )
+            if len(result) > 100:
+                return unknown("application_rules_missing_or_over_100")
+    return application_facts(result)
+
+
+def private_connection_facts(value: Any) -> Any:
+    if not isinstance(value, list) or len(value) > 20:
+        return unknown("private_connections_missing_or_over_20")
+    result = []
+    for connection in value:
+        if not isinstance(connection, dict):
+            return unknown("private_connection_not_object")
+        result.append(
+            {
+                "resourceId": reference(connection.get("resourceId")),
+                "status": enumeration(
+                    connection.get("status"), ("Approved", "Pending", "Rejected", "Disconnected")
+                ),
+            }
+        )
+    return result
+
+
+def private_connections(values: dict[str, Any], *, terraform: bool) -> Any:
+    if terraform:
+        connections = values.get("private_service_connection")
+        if (
+            not isinstance(connections, list)
+            or len(connections) != 1
+            or not isinstance(connections[0], dict)
+        ):
+            return unknown("terraform_service_connection_not_explicit")
+        connection = connections[0]
+        alias = connection.get("private_connection_resource_alias")
+        target = (
+            reference(connection.get("private_connection_resource_id"))
+            if alias is None
+            else unknown("private_target_alias_or_conflicting_binding")
+        )
+        return [{"resourceId": target, "status": unknown("terraform_approval_state_not_exposed")}]
+    fields = ("privateLinkServiceConnections", "manualPrivateLinkServiceConnections")
+    if not any(key in values for key in fields):
+        return unknown("private_connections_not_supplied")
+    result = []
+    for key in fields:
+        if key not in values:
+            continue
+        entries = values[key]
+        if not isinstance(entries, list) or len(entries) > 20:
+            return unknown("private_connections_missing_or_over_20")
+        for entry in entries:
+            body = entry.get("properties") if isinstance(entry, dict) else None
+            if not isinstance(body, dict):
+                return unknown("private_connection_not_object")
+            result.append(
+                {
+                    "resourceId": body.get("privateLinkServiceId"),
+                    "status": property_at(body, "privateLinkServiceConnectionState.status"),
+                }
+            )
+            if len(result) > 20:
+                return unknown("private_connections_missing_or_over_20")
+    return private_connection_facts(result)
+
+
 def review_fact(properties: dict[str, Any], path: str) -> Any:
     value = property_at(properties, path)
     if path == "sku.tier":
@@ -120,11 +264,19 @@ def review_fact(properties: dict[str, Any], path: str) -> Any:
         return nat_collections(value)
     if path == "logAnalyticsDestinationType":
         return enumeration(value, ("Dedicated", "AzureDiagnostics"))
+    if path == "configuredZones":
+        return configured_zones(value)
+    if path == "applicationRules":
+        return application_facts(value)
+    if path == "enableDdosProtection":
+        return boolean(value)
+    if path == "privateConnections":
+        return private_connection_facts(value)
     return reference(value)
 
 
 def projected_properties(
-    kind: str, values: dict[str, Any], *, terraform: bool = False
+    kind: str, values: dict[str, Any], *, terraform: bool = False, root: Any = None
 ) -> dict[str, Any]:
     kind = kind.lower()
     if kind == "microsoft.network/azurefirewalls":
@@ -192,7 +344,42 @@ def projected_properties(
             "natRuleCollections": nat_collections(values.get("natRuleCollections"))
             if not terraform
             else unknown("classic_nat_collections_are_separate_tf_resources"),
+            "configuredZones": configured_zones(
+                values.get("zones")
+                if terraform
+                else root.get("zones")
+                if isinstance(root, dict)
+                else None
+            ),
         }
+    if kind == "microsoft.network/virtualnetworks":
+        plan = values.get("ddos_protection_plan")
+        plan = (
+            plan[0]
+            if isinstance(plan, list) and len(plan) == 1 and isinstance(plan[0], dict)
+            else {}
+        )
+        return {
+            "enableDdosProtection": boolean(
+                plan.get("enable") if terraform else values.get("enableDdosProtection")
+            ),
+            "ddosProtectionPlan": {
+                "id": reference(
+                    plan.get("id") if terraform else property_at(values, "ddosProtectionPlan.id")
+                )
+            },
+        }
+    if kind == "microsoft.network/privateendpoints":
+        return {
+            "subnet": {
+                "id": reference(
+                    values.get("subnet_id") if terraform else property_at(values, "subnet.id")
+                )
+            },
+            "privateConnections": private_connections(values, terraform=terraform),
+        }
+    if kind == "microsoft.network/firewallpolicies/rulecollectiongroups":
+        return {"applicationRules": application_rules(values, terraform=terraform)}
     if kind == "microsoft.network/virtualnetworks/subnets":
         prefixes = (
             values.get("address_prefixes")
@@ -211,6 +398,11 @@ def projected_properties(
             if not terraform
             else {"id": unknown("association_requires_separate_evidence")},
             "natGateway": {"id": reference(property_at(values, "natGateway.id"))}
+            if not terraform
+            else {"id": unknown("association_requires_separate_evidence")},
+            "networkSecurityGroup": {
+                "id": reference(property_at(values, "networkSecurityGroup.id"))
+            }
             if not terraform
             else {"id": unknown("association_requires_separate_evidence")},
         }
@@ -269,6 +461,9 @@ def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
         "microsoft.network/ipgroups",
         "microsoft.network/azurefirewalls/natrulecollections",
         "microsoft.insights/diagnosticsettings",
+        "microsoft.network/virtualnetworks",
+        "microsoft.network/privateendpoints",
+        "microsoft.network/firewallpolicies/rulecollectiongroups",
     }:
         return {}
     result: dict[str, Any] = {}

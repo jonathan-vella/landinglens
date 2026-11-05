@@ -182,7 +182,9 @@ live verification or completion of the remaining 243 targets.
 The [nine-GUID matrix](../references/recommendation-batches/batch-17.json) and
 [17 reviewed sources](../references/recommendation-batches/batch-17-sources.json)
 support working successor `2026-11-05.2`: **7 automated / 205 assisted / 43 manual**.
-The two D07.12 display IDs retain separate original GUIDs. Delivery remains pending.
+The two D07.12 display IDs retain separate original GUIDs.
+[#49](https://github.com/jonathan-vella/landinglens/pull/49) merged after all eight
+CI checks passed and all four compiler artifacts reported exercised.
 
 D07.05 checks the deployed `Microsoft.Network/azureFirewalls` **Premium** tier,
 not a Firewall Policy. ARM/existing no-restore Bicep/saved observed/detail GET
@@ -205,3 +207,42 @@ target/workspace/destination fields do not establish categories or ingestion.
 Association alone does not establish migration, effective routing, rule ownership,
 deduplication, SNAT demand or failover. No additional live access, diagnostic
 enumeration, log query, packet test, module acquisition or human decision occurs.
+
+## Fixed-target cohort 18: resilience and private connectivity
+
+The [nine-GUID matrix](../references/recommendation-batches/batch-18.json) and
+[18 actual source captures](../references/recommendation-batches/batch-18-sources.json)
+support working successor `2026-11-05.3`, still **7 automated / 205 assisted /
+43 manual**. All nine remain assisted. This is implementation, not merged acceptance.
+
+D07.15-.17 prepare minimal application-rule action, explicit TLS boolean and
+supplied category-label count with specific trust/coverage/gateway flow questions.
+Labels, destinations, headers, secret/certificate material and connection messages
+are withheld. Current Learn describes Standard/Premium category support whereas
+pinned AzureRM 4.50.0 describes Premium requirements; neither statement establishes
+universal applicability or effective categorization. D07.20 asks for attributable
+versioned artifacts and restore-test evidence; minimized assessor replay is not
+a restorable firewall backup.
+
+D07.21 deliberately has **no configured-zone-count predicate**. Microsoft's
+2026-11-04 guidance recommends omitting explicit zones for new eligible-region
+deployments; migrated backend redundancy may not appear in ARM/JSON/ARG.
+Empty, single or multiple configured zones cannot determine redundancy or an SLA.
+The workflow requests attributable platform/region evidence without recommending
+unnecessary redeployment or treating a region list as migration proof.
+
+D07.22 prepares explicit VNet DDoS flag/plan references and unique positive
+firewall-subnet-VNet joins, with a specific Virtual WAN applicability question.
+D07.23 requests per-service injected PaaS control-plane requirements and exposes
+supplied NSG/route-table references, not a generic default-route verdict.
+D08.02-.03 prepare endpoint target/subnet/explicit ARM connection state and ask
+about service subresources, DNS/public access, ExpressRoute private peering and
+return routing. Terraform intent/IP cannot establish approval; Approved cannot
+establish working private connectivity. Aliases and missing joins remain unknown.
+
+All new mappings use ARM **2024-05-01** and AzureRM **4.50.0**; raw supplied-module
+Terraform, optional plan, ARM/existing no-restore Bicep, saved observed and injected
+detail transports share the bounded preparation vocabulary. No effective-policy
+expansion, parent traversal, new live reads, connectivity test or human decision
+is added. All 255 entries, the fixed 251 targets and exact historical catalog bytes
+remain preserved.

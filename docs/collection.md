@@ -48,6 +48,28 @@ positive references do not establish complete relationships or missing-resource
 absence. Mocked detail reads/denials and saved fixtures exercise these additions;
 no new live tenant run is claimed.
 
+### Cohort-18 network preparation
+
+The existing per-inventoried-resource detail path additionally supports
+`Microsoft.Network/virtualNetworks`, `Microsoft.Network/privateEndpoints` and
+`Microsoft.Network/firewallPolicies/ruleCollectionGroups` at **2024-05-01**
+(`read` on those exact resource types). Missing child/group inventory is not
+silently expanded through parents. No permission is granted or scope broadened.
+Firewall configured zones come from the resource root, not `properties.zones`.
+Only typed VNet DDoS flag/plan, subnet NSG, endpoint target/explicit state and
+bounded rule action/TLS/category-count facts are projected. Canonical subnet/VNet
+links use already supplied unique known records, never additional reads.
+Connection messages/aliases, category labels, rule destinations/headers, DNS
+names, private endpoint addresses and certificate material are withheld.
+
+These are informational configuration facts: backend zone migration can be
+invisible to ARM/JSON/ARG, private connection intent is not approval, Approved
+is not end-to-end DNS/routing, and TLS/category fields are not effective
+inspection. The [18 actual reviewed sources](../references/recommendation-batches/batch-18-sources.json)
+and [nine-GUID matrix](../references/recommendation-batches/batch-18.json)
+retain these limitations. Verification uses saved fixtures and injected detail
+reads/denials, not a new live tenant run, packet/DNS/log probe or approval action.
+
 The accepted first wave adds only explicit firewall-policy `sku.tier`,
 `threatIntelMode` and `intrusionDetection.mode` to the existing approved detail
 projection. It does not collect bypass lists, secrets or arbitrary properties.
