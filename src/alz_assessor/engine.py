@@ -7,7 +7,7 @@ from math import isfinite
 from typing import Any
 
 from .contracts import control_digest, digest, document, now, timestamp, validate
-from .sources import property_at
+from .sources import BLOB_SERVICE_TYPE, complete_blob_services, property_at
 from .terraform import InputError
 
 
@@ -73,6 +73,19 @@ def assess(
                 raise InputError("Manual/exception entry references an unknown catalog control")
     results = []
     retired = []
+    resources = list(bundle["resources"])
+    if any(
+        c.get("rule") and c["rule"]["resource_type"].lower() == BLOB_SERVICE_TYPE.lower()
+        for c in catalog["controls"]
+        if c["lifecycle"] == "active"
+    ):
+        complete_blob_services(
+            resources,
+            256
+            if bundle["mode"] == "planned"
+            and bundle["source"] in {"terraform", "terraform-plan", "arm", "bicep"}
+            else 10_000,
+        )
     for control in catalog["controls"]:
         if control["lifecycle"] == "retired":
             retired.append(
@@ -92,11 +105,12 @@ def assess(
         rule = control.get("rule")
         targets = [
             resource
-            for resource in bundle["resources"]
+            for resource in resources
             if rule and resource["resource_type"].lower() == rule["resource_type"].lower()
         ] or [None]
         for resource in targets:
             reason, fact, links = "human_evidence_required", None, []
+            component_facts = None
             outcome = "manual"
             if landing_zone not in control["applicability"]:
                 outcome, reason = "not_applicable", "landing_zone_not_applicable"
@@ -113,8 +127,25 @@ def assess(
                 elif resource["state"] != "known":
                     outcome = "error" if resource["state"] == "error" else "unknown"
                     reason = resource["reason"]
+                elif (
+                    resource["resource_type"].lower() == BLOB_SERVICE_TYPE.lower()
+                    and resource.get("arm_id")
+                    and not resource["arm_id"].lower().endswith("/blobservices/default")
+                ):
+                    outcome, reason = "unknown", "blob_service_identity_not_default"
                 else:
                     fact = property_at(resource["properties"], rule["property"])
+                    vault = rule.get("operation") == "vault-deletion-protection"
+                    if vault:
+                        purge = property_at(resource["properties"], "enablePurgeProtection")
+                        if type(fact) is bool and type(purge) is bool:
+                            component_facts = {
+                                "enableSoftDelete": fact,
+                                "enablePurgeProtection": purge,
+                            }
+                        fact = (
+                            fact and purge if type(fact) is bool and type(purge) is bool else None
+                        )
                     enum = rule.get("operation") == "enum-equals"
                     sku = property_at(resource["properties"], "sku.tier") if enum else None
                     if enum and (
@@ -147,6 +178,8 @@ def assess(
                     links = [resource["source_location"] + "#" + rule["property"]]
                     if enum:
                         links.append(resource["source_location"] + "#sku.tier")
+                    if vault:
+                        links.append(resource["source_location"] + "#enablePurgeProtection")
             disposition = None
             validity: dict[str, str | None] = {"manual": None, "exceptions": None}
             reviews = []
@@ -204,6 +237,7 @@ def assess(
                 "outcome": outcome,
                 "reason": reason,
                 "fact": fact,
+                **({"component_facts": component_facts} if component_facts is not None else {}),
                 "evidence_links": links,
                 "freshness": "stale" if stale else "current",
                 "inventory_complete": bundle["inventory_complete"],

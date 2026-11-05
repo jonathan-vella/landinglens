@@ -4,7 +4,56 @@ from typing import Any
 
 from .contracts import control_digest, document, now, scope_id, timestamp, validate
 from .diagnostics import guidance
+from .sources import boolean, enumeration, property_at
 from .terraform import InputError
+
+
+def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str, Any]:
+    available = "resources" in bundle
+    if available:
+        validate(bundle, "evidence")
+    kinds = control.get("review_resource_types", [])
+    if control.get("rule"):
+        kinds = [control["rule"]["resource_type"]]
+    allowed = {kind.lower() for kind in kinds}
+    resources = [
+        {
+            **{
+                key: resource.get(key) for key in ("logical_id", "arm_id", "resource_type", "state")
+            },
+            "facts": {
+                path: (
+                    boolean(property_at(resource["properties"], path))
+                    if path == "enableRbacAuthorization"
+                    else enumeration(
+                        property_at(resource["properties"], path),
+                        {
+                            "publicNetworkAccess": ("Enabled", "Disabled"),
+                            "networkAcls.defaultAction": ("Allow", "Deny"),
+                            "minimumTlsVersion": ("TLS1_0", "TLS1_1", "TLS1_2"),
+                        }[path],
+                    )
+                )
+                if resource["state"] == "known"
+                else {"unknown": "resource_not_known"}
+                for path in control.get("review_fact_paths", [])
+            },
+        }
+        for resource in bundle.get("resources", [])
+        if resource["resource_type"].lower() in allowed
+    ]
+    return {
+        "mode": bundle["mode"],
+        "collected_at": bundle["collected_at"],
+        "inventory_complete": bundle["inventory_complete"],
+        "normalized_resources_available": available,
+        "resources": resources[:100],
+        "matching_resources": len(resources) if available else None,
+        "truncated": len(resources) > 100,
+        "warning": (
+            "Informational inventory only; no applicability, relationship or outcome inferred."
+        ),
+    }
 
 
 def prepare_reviews(
@@ -60,6 +109,12 @@ def prepare_reviews(
             "valid_until": None,
             "outcome" if kind == "manual" else "disposition": None,
             "preparation": {
+                "available_evidence": [
+                    review_context(control, bundle) for bundle in assessment["evidence"]
+                ],
+                "evidence_requirements": control["evidence_requirements"],
+                "limitations": control["rationale"],
+                "references": control["references"],
                 "reasons": sorted({r["reason"] for r in unresolved}),
                 "guidance": [
                     guidance(reason) for reason in sorted({r["reason"] for r in unresolved})

@@ -127,7 +127,7 @@ matrices are required before implementing them.
 The package retains the original catalog as `data/catalog-2026-11-04.1.json`
 with its unchanged 1.0 meaning and two predicates; explicit `--catalog FILE`
 can select a supplied historical artifact. `tools/build_catalog.py` reconstructs
-that frozen artifact and refuses a changed historical meaning. The current
+that frozen artifact and refuses a changed historical meaning. That increment's
 catalog has all 255 entries, four automated controls and 251 human-evidence
 items. Legacy unbound reviews do not assert outcomes under the new 1.1 catalog;
 complete content-bound reviews instead. Different catalog/contract meanings
@@ -141,3 +141,38 @@ saved-observed and actual existing no-restore Bicep workflows. All report format
 retain the same outcomes and narrow local-configuration caveats. Source and
 matrix artifacts are packaged and hash-checked. No live-control outcome is
 claimed from these tests.
+
+## Fixed-target batch 01: vault and storage protection
+
+The owner delegated source-backed batch acceptance for the fixed 251 starting
+GUIDs. The [matrix](../references/recommendation-batches/batch-01.json) records
+each exact GUID, intent, classification, source IDs, evidence modes, semantics,
+limitations and uncertainty tests. The
+[source manifest](../references/recommendation-batches/batch-01-sources.json)
+contains actual retrieved hashes/revisions and original factual findings, not
+redistributed pages or executed upstream queries.
+
+| Recommendation | Accepted explicit predicate | Modes and material limits |
+|---|---|---|
+| G02.03 / 2ba52752-6944-4008-ae7d-7e4843276d8b | Same vault's `enableSoftDelete` **and** `enablePurgeProtection` are explicitly true | ARM/existing no-restore Bicep API **2024-11-01**, saved observed and injected scoped ARM GET. Both booleans known: conjunction passes/fails; missing/wrong-type/stale/inaccessible stays unknown. Raw AzureRM **4.50.0** and optional plan expose purge state but not soft-delete state after import/update: unknown, not an assumed creation default. Recovery effectiveness is not tested. |
+| G04.02 / 159aac9f-863f-4f48-82cf-00c28fa97a0e | Exact default blob-service child's `containerDeleteRetentionPolicy.enabled` is explicitly true | ARM/existing Bicep and scoped ARM GET API **2023-05-01**, saved observed; AzureRM **4.50.0** raw/optional plan with one explicit retention block and integer days **1-365**. Missing/invalid/default days remain unknown. Blob deletion protection does not substitute for container protection. A known account missing child configuration produces unknown, not N/A. No owner-specific retention threshold or recovery claim. |
+
+G02.01, G02.04, G02.07, G02.08 and G04.03 remain assisted; G02.02 is explicitly
+manual because application/environment/regional partitioning and capacity need
+intent. All six now have specific redacted evidence requests, human decision
+questions, limitations and bounded inventory preparation in templates/editor.
+Reviewed local RBAC, public-network/default-ACL and minimum-TLS scalars are
+prepared for G02.04, G02.07 and G04.03 respectively, without promoting
+least privilege, actual private connectivity or effective policy enforcement.
+No secret enumeration, PIM access, DNS/network probe, log query, policy
+enforcement interpretation or human approval is inferred. G04.03's supplied
+checklist link is a storage protection overview, not sufficient TLS-policy
+semantics; the actually inspected TLS-policy guidance supplements it.
+
+Working catalog `2026-11-05.1` has **6 automated / 206 assisted / 43 manual**.
+Both `.1` and `.2` historical catalogs and the original four hashes remain.
+Compound comparison retains both explicit vault component facts, so two
+different failing configurations are not incorrectly labelled a match.
+Absent target populations require complete relevant inventory; independent known
+facts remain usable during unrelated gaps. Pending delivery evidence is not
+live verification or completion of the remaining 243 targets.

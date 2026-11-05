@@ -14,6 +14,7 @@ from urllib.parse import parse_qs, urlsplit
 
 from .arm import API_VERSIONS, properties
 from .contracts import canonical_id, digest, document, now, scope_id, timestamp, validate
+from .sources import blob_service_record
 from .terraform import InputError
 
 ORIGIN = "https://management.azure.com"
@@ -625,6 +626,35 @@ class Collector:
                 self.definition(reference, policy_scopes, definitions, initiatives)
             else:
                 self.gap("definitions", "assignment_definition_reference_missing", assignment["id"])
+        existing = {resource["arm_id"] for resource in resources}
+        for parent in list(resources):
+            if parent["resource_type"].lower() != "microsoft.storage/storageaccounts":
+                continue
+            child = blob_service_record(parent)
+            identity = child["arm_id"]
+            if identity in existing:
+                continue
+            if len(resources) >= 10_000:
+                raise InputError("Azure resource limit includes default blob-service children")
+            child["api_version"] = "2023-05-01"
+            child["source_location"] = ORIGIN + identity
+            detail = self.request(
+                "GET",
+                child["source_location"] + "?api-version=2023-05-01",
+                "configuration",
+            )
+            if detail is not None:
+                if canonical_id(detail.get("id", "")) != identity:
+                    raise InputError("Azure blob-service identity differs from requested child")
+                child.update(
+                    state="known",
+                    reason="",
+                    properties=properties(child["resource_type"], detail.get("properties")),
+                )
+            else:
+                child.update(state="inaccessible", reason="resource_configuration_unavailable")
+            resources.append(child)
+            existing.add(identity)
         bundle_scope = selected or (scopes[0] if len(scopes) == 1 else None)
         self.artifacts["requested-scopes"] = digest(
             {"subscriptions": subscriptions, "management_group": management_group}

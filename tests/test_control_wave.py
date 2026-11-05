@@ -94,7 +94,10 @@ class ControlWaveTests(unittest.TestCase):
     def outcomes(self, bundle):
         report = assess(bundle, self.catalog)
         self.assertEqual(report["coverage"]["controls"], 255)
-        self.assertEqual(report["coverage"]["automated_controls"], 4)
+        self.assertEqual(
+            report["coverage"]["automated_controls"],
+            sum(c["automation"] == "automated" for c in self.catalog["controls"]),
+        )
         return {
             row["upstream_id"]: row[bundle["mode"]]["outcome"]
             for row in report["results"]
@@ -103,6 +106,7 @@ class ControlWaveTests(unittest.TestCase):
 
     def test_exact_promotion_preserves_historical_meaning_and_all_inventory(self):
         data = files("alz_assessor").joinpath("data")
+        self.catalog = load_catalog(str(data.joinpath("catalog-2026-11-04.2.json")))
         previous = load_catalog(str(data.joinpath("catalog-2026-11-04.1.json")))
         original = {c["control_id"]: c for c in previous["controls"]}
         self.assertEqual(len(reviewed_refresh(self.catalog, previous)["changed"]), 2)

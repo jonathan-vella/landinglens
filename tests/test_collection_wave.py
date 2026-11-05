@@ -94,7 +94,7 @@ class CollectionWaveTests(unittest.TestCase):
             inventory_authorized=True,
         )
         self.assertTrue(bundle["inventory_complete"])
-        self.assertEqual(len(bundle["resources"]), 2)
+        self.assertEqual(len(bundle["resources"]), 3)
         self.assertEqual(calls[0]["subscriptions"], [SUB])
         self.assertEqual(calls[0]["query"], ARG_QUERY)
         self.assertEqual(calls[1]["options"]["$skipToken"], "opaque-next")

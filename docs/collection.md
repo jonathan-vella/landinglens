@@ -5,6 +5,34 @@ fixtures, not a live tenant. That historical baseline is unchanged. Subsequent
 owner-authorized access probes are bounded access evidence, not full collector
 or control verification. Normal assessment and tests need no Azure credentials.
 
+## Batch-01 configuration reads
+
+The batch successor adds only management-plane configuration GETs:
+`Microsoft.KeyVault/vaults` **2024-11-01** (`enableSoftDelete` and
+`enablePurgeProtection`, plus explicit RBAC/public-network/default-ACL flags
+for assisted review) and each inventoried storage account's exact
+`Microsoft.Storage/storageAccounts/blobServices/default` **2023-05-01**
+(`containerDeleteRetentionPolicy.enabled`). These correspond to
+`Microsoft.KeyVault/vaults/read` and
+`Microsoft.Storage/storageAccounts/blobServices/read`; no permission is granted
+or changed. The actual operation/schema sources are in the
+[batch source manifest](../references/recommendation-batches/batch-01-sources.json).
+
+Child identity must equal the requested canonical child. No blob/container,
+secret, certificate, key, credential or access-key enumeration occurs. A denied
+or absent child read remains unavailable, not disabled or N/A; other independent
+known configuration remains usable. Missing child facts in saved/declared
+evidence also remain unknown. Derived children count toward existing resource
+bounds (256 planned, 10,000 collected/evaluated); overflow fails explicitly.
+Raw response hashes bind the additional reads under the original collection
+time/scope. Existing egress, paging, origin, authorization and privacy guards
+remain; no new live verification is claimed by this offline/injected batch.
+The existing storage-account detail projection also retains explicit
+`minimumTlsVersion` for assisted TLS-policy review. It does not evaluate policy
+enforcement. TLS1_3 appears in the 2023-05-01 template enum while the same
+reference says minimum 1.3 is unsupported; this mapping stays unknown rather
+than resolving the contradiction speculatively.
+
 ## Next-increment scoped collection
 
 The accepted first wave adds only explicit firewall-policy `sku.tier`,

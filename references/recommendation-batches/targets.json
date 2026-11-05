@@ -1,0 +1,2272 @@
+{
+  "baseline_version": "2026-11-04.2",
+  "baseline_sha256": "11dab1537b647abfcdaefdba3f337e1160aa33360e9f769ebb0424395c59c841",
+  "baseline_file_sha256": "eb7f8bae8dca257be9adb2e3259aa39e8803511872b6280b0376bb795d5939a7",
+  "preserved_automated": {
+    "ALZ-e9c8f584-6d5e-473b-8dc5-acc9fbaab4e3": "2ac0e429a24ac7efcdd4eee7f00f305a965dfa3214e1cfb073c7090f932882f9",
+    "ALZ-b9d0dff5-bdd4-4cd8-88ed-5811610b2b2c": "29e68cf5d7554fcb5b3076ab0624f2a8d54fcb15382454962fecd9b2cf00b6e8",
+    "ALZ-94f3eede-9aa3-4088-92a3-bb9a56509fad": "a1ea5198f10782398d16d5e5d49a66dcbb278eb648418f48faef570f684b5e77",
+    "ALZ-b03ed428-4617-4067-a787-85468b9ccf3f": "81e72d0b69774c2393cf8c93e778584483cb29cc491319863c302f17b068336a"
+  },
+  "targets": [
+    {
+      "guid": "5017f154-e3ab-4369-9829-e7e316183687",
+      "control_id": "ALZ-5017f154-e3ab-4369-9829-e7e316183687",
+      "upstream_id": "G02.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "8bd076887dc44cc3090ed0d27c3a90f215b6ac47cb0cfd19fe645951ccb75b88",
+      "design_area": "Security",
+      "batch": "01"
+    },
+    {
+      "guid": "a0477a20-9945-4bda-9333-4f2491163418",
+      "control_id": "ALZ-a0477a20-9945-4bda-9333-4f2491163418",
+      "upstream_id": "G02.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "5b59f22e9da388aedadde27f93047914e0231287541765c4dcf5257d708c4439",
+      "design_area": "Security",
+      "batch": "01"
+    },
+    {
+      "guid": "2ba52752-6944-4008-ae7d-7e4843276d8b",
+      "control_id": "ALZ-2ba52752-6944-4008-ae7d-7e4843276d8b",
+      "upstream_id": "G02.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "dc2b5eb5ca789b3d432a7ff8fc562eac7d621af392a14305f07429a7b710bd2b",
+      "design_area": "Security",
+      "batch": "01"
+    },
+    {
+      "guid": "dc055bcf-619e-48a1-9f98-879525d62688",
+      "control_id": "ALZ-dc055bcf-619e-48a1-9f98-879525d62688",
+      "upstream_id": "G02.04",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "e77b3ea49fc02854b4aeaa7c7baa75b91eb8c5279974f4ccdfb3b7c8a24e6496",
+      "design_area": "Security",
+      "batch": "01"
+    },
+    {
+      "guid": "cdb3751a-b2ab-413a-ba6e-55d7d8a2adb1",
+      "control_id": "ALZ-cdb3751a-b2ab-413a-ba6e-55d7d8a2adb1",
+      "upstream_id": "G02.07",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "e13402fcd76bd09643271e4a1c1a8d0762ecd3ef64fc07ed0c52669c79fe8e3d",
+      "design_area": "Security",
+      "batch": "01"
+    },
+    {
+      "guid": "17d6326a-f625-4ca4-9e56-95f2223ace8c",
+      "control_id": "ALZ-17d6326a-f625-4ca4-9e56-95f2223ace8c",
+      "upstream_id": "G02.08",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "c8d571ba8f544cfa76ba0f2c2db66bd62004255ea0441c277f0010230f52e56f",
+      "design_area": "Security",
+      "batch": "01"
+    },
+    {
+      "guid": "159aac9f-863f-4f48-82cf-00c28fa97a0e",
+      "control_id": "ALZ-159aac9f-863f-4f48-82cf-00c28fa97a0e",
+      "upstream_id": "G04.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "88fc4acb2045dc51038535ed81d345592407e2063f193a87e8c5b33cff743be1",
+      "design_area": "Security",
+      "batch": "01"
+    },
+    {
+      "guid": "31e77d70-f001-455b-93aa-6d05eea10968",
+      "control_id": "ALZ-31e77d70-f001-455b-93aa-6d05eea10968",
+      "upstream_id": "G04.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "63bb9641a9a77b9013698611eac7cd18c08a494a0365d0aedad15d3f2f55b405",
+      "design_area": "Security",
+      "batch": "01"
+    },
+    {
+      "guid": "70c15989-c726-42c7-b0d3-24b7375b9201",
+      "control_id": "ALZ-70c15989-c726-42c7-b0d3-24b7375b9201",
+      "upstream_id": "A01.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "b418946b412e5f80be1593523e73dc2a43c39aeba293fc3fa0cda8abd775e517",
+      "design_area": "Azure billing and Active Directory tenant",
+      "batch": "02"
+    },
+    {
+      "guid": "6309957b-821a-43d1-b9d9-7fcf1802b747",
+      "control_id": "ALZ-6309957b-821a-43d1-b9d9-7fcf1802b747",
+      "upstream_id": "A01.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "bcd6f540d7e6a52df9e980bdca5e5de476b153712a45ee24ff42563403f897c0",
+      "design_area": "Azure billing and Active Directory tenant",
+      "batch": "02"
+    },
+    {
+      "guid": "78e11934-499a-45ed-8ef7-aae5578f0ecf",
+      "control_id": "ALZ-78e11934-499a-45ed-8ef7-aae5578f0ecf",
+      "upstream_id": "A01.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "e1b6c47f359343b13b02fad4776d918d950dcc02a1a0b3dba3cc8087b657b652",
+      "design_area": "Azure billing and Active Directory tenant",
+      "batch": "02"
+    },
+    {
+      "guid": "5d82e6df-6f61-42f2-82e2-3132d293be3d",
+      "control_id": "ALZ-5d82e6df-6f61-42f2-82e2-3132d293be3d",
+      "upstream_id": "A02.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "cab23390cb2fe7accc3e5eb346015c02a1aeb6a0dec9de305ef81811e5d2503f",
+      "design_area": "Azure billing and Active Directory tenant",
+      "batch": "02"
+    },
+    {
+      "guid": "a24d0de3-d4b9-4dfb-8ddd-bbfaf123fa01",
+      "control_id": "ALZ-a24d0de3-d4b9-4dfb-8ddd-bbfaf123fa01",
+      "upstream_id": "A02.02",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "0dbc548d0a7336978d04afaa1b794811270c1727f1fbbfd807804c2214b32fc2",
+      "design_area": "Azure billing and Active Directory tenant",
+      "batch": "02"
+    },
+    {
+      "guid": "32952499-58c8-4e6f-ada5-972e67893d55",
+      "control_id": "ALZ-32952499-58c8-4e6f-ada5-972e67893d55",
+      "upstream_id": "A02.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "29d9f798b3217c1774c397a0fa09b69e27ba14483f8f47f8a80b49376231c3f6",
+      "design_area": "Azure billing and Active Directory tenant",
+      "batch": "02"
+    },
+    {
+      "guid": "685cb4f2-ac9c-4b19-9167-993ed0b32415",
+      "control_id": "ALZ-685cb4f2-ac9c-4b19-9167-993ed0b32415",
+      "upstream_id": "A03.01",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "755563fe93f53540c25b8b0ab03c33c1287b78bdb4363306af414c2f4c96be21",
+      "design_area": "Azure billing and Active Directory tenant",
+      "batch": "02"
+    },
+    {
+      "guid": "12cd499f-96e2-4e41-a243-231fb3245a1c",
+      "control_id": "ALZ-12cd499f-96e2-4e41-a243-231fb3245a1c",
+      "upstream_id": "A03.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "10bc678dfa6705003dd85efa3d0bb429d6d4161af98ac423b752f7c854c4f157",
+      "design_area": "Azure billing and Active Directory tenant",
+      "batch": "02"
+    },
+    {
+      "guid": "54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+      "control_id": "ALZ-54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+      "upstream_id": "A03.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "fa768e1a524e6fab3c8b1dfca3857a71a75100f4778b347fc2cf65e5da54ca01",
+      "design_area": "Azure billing and Active Directory tenant",
+      "batch": "03"
+    },
+    {
+      "guid": "ca0fe401-12ad-46fc-8a7e-86293866a9f6",
+      "control_id": "ALZ-ca0fe401-12ad-46fc-8a7e-86293866a9f6",
+      "upstream_id": "A03.04",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "78dd6782baf3f1149cbee554a49550943e6af98cf4c983f62a5a5006dfbae6ee",
+      "design_area": "Azure billing and Active Directory tenant",
+      "batch": "03"
+    },
+    {
+      "guid": "5cf9f485-2784-49b3-9824-75d9b8bdb57b",
+      "control_id": "ALZ-5cf9f485-2784-49b3-9824-75d9b8bdb57b",
+      "upstream_id": "A03.05",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "6ff4a2afb4a3b733d3006919ae516a33dde30d52c219feed043552707c799c0d",
+      "design_area": "Azure billing and Active Directory tenant",
+      "batch": "03"
+    },
+    {
+      "guid": "6ad5c3dd-e5ea-4ff1-81a4-7886ff87845c",
+      "control_id": "ALZ-6ad5c3dd-e5ea-4ff1-81a4-7886ff87845c",
+      "upstream_id": "A04.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "0dc4d345df6c97050d4ced14c30d3d177f9dc3cb11daedff62429ff621a0c4ce",
+      "design_area": "Azure billing and Active Directory tenant",
+      "batch": "03"
+    },
+    {
+      "guid": "90e87802-602f-4dfb-acea-67c60689f1d7",
+      "control_id": "ALZ-90e87802-602f-4dfb-acea-67c60689f1d7",
+      "upstream_id": "A04.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "4ab6dfdf49244d9b4b37c362b61abf44ded4ab25cc59319e98b7649125fbc365",
+      "design_area": "Azure billing and Active Directory tenant",
+      "batch": "03"
+    },
+    {
+      "guid": "e81a73f0-84c4-4641-b406-14db3b4d1f50",
+      "control_id": "ALZ-e81a73f0-84c4-4641-b406-14db3b4d1f50",
+      "upstream_id": "A04.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "3359386f617f921314617dab0d232d7ac48fe4c22c183976cda07c04295297ed",
+      "design_area": "Azure billing and Active Directory tenant",
+      "batch": "03"
+    },
+    {
+      "guid": "ae757485-92a4-482a-8bc9-eefe6f5b5ec3",
+      "control_id": "ALZ-ae757485-92a4-482a-8bc9-eefe6f5b5ec3",
+      "upstream_id": "A04.04",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "33a4f354d9958e61e5b07388b0a9acdfbd617d675229a8260fd67e81973d09a2",
+      "design_area": "Azure billing and Active Directory tenant",
+      "batch": "03"
+    },
+    {
+      "guid": "348ef254-c27d-442e-abba-c7571559ab91",
+      "control_id": "ALZ-348ef254-c27d-442e-abba-c7571559ab91",
+      "upstream_id": "B03.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "a244e819a7c1ef3941427684f6255f8ddf32bb0719d10010a6e0b985111fb93f",
+      "design_area": "Identity and access management",
+      "batch": "04"
+    },
+    {
+      "guid": "4348bf81-7573-4512-8f46-9061cc198fea",
+      "control_id": "ALZ-4348bf81-7573-4512-8f46-9061cc198fea",
+      "upstream_id": "B03.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "7ce5aaae1f8eec1707bea62a0481db4430cc77f4a2adbfe24a41f156b998d1a3",
+      "design_area": "Identity and access management",
+      "batch": "04"
+    },
+    {
+      "guid": "12e7f983-f630-4472-8dd6-9c5b5c2622f5",
+      "control_id": "ALZ-12e7f983-f630-4472-8dd6-9c5b5c2622f5",
+      "upstream_id": "B03.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "443ea61d620b27a5e3596ee7f372ee2307ac5076d5a40044db18be9756e7345a",
+      "design_area": "Identity and access management",
+      "batch": "04"
+    },
+    {
+      "guid": "4b69bad3-3aad-45e8-a68e-1d76667313b4",
+      "control_id": "ALZ-4b69bad3-3aad-45e8-a68e-1d76667313b4",
+      "upstream_id": "B03.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "8de5a8e8505d19e502e1b9af7a7d44fc6a2fc3c28fc9485254a6d1737e8e0d94",
+      "design_area": "Identity and access management",
+      "batch": "04"
+    },
+    {
+      "guid": "53e8908a-e28c-484c-93b6-b7808b9fe5c4",
+      "control_id": "ALZ-53e8908a-e28c-484c-93b6-b7808b9fe5c4",
+      "upstream_id": "B03.04",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "e78533d4ebea378ed880d270491e46e1f4827425036dde7297e70b928c69f1ec",
+      "design_area": "Identity and access management",
+      "batch": "04"
+    },
+    {
+      "guid": "1049d403-a923-4c34-94d0-0018ac6a9e01",
+      "control_id": "ALZ-1049d403-a923-4c34-94d0-0018ac6a9e01",
+      "upstream_id": "B03.05",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "5263815ccfb50fcb8450ed5d85f913807155b7aa006d88946d7391366f50fb3b",
+      "design_area": "Identity and access management",
+      "batch": "04"
+    },
+    {
+      "guid": "e6a83de5-de32-4c19-a248-1607d5d1e4e6",
+      "control_id": "ALZ-e6a83de5-de32-4c19-a248-1607d5d1e4e6",
+      "upstream_id": "B03.06",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "99daca6af062bd441444e893c9ea0109e367c5fb9e752d477e885050f1f3136b",
+      "design_area": "Identity and access management",
+      "batch": "04"
+    },
+    {
+      "guid": "14658d35-58fd-4772-99b8-21112df27ee4",
+      "control_id": "ALZ-14658d35-58fd-4772-99b8-21112df27ee4",
+      "upstream_id": "B03.07",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "c176c316acced0a9526e6e27cc268fc0a6705a1576fc3f759ac30e7fddc861da",
+      "design_area": "Identity and access management",
+      "batch": "04"
+    },
+    {
+      "guid": "d98d954d-7d1c-4a07-92a7-cf3afe8dcbd2",
+      "control_id": "ALZ-d98d954d-7d1c-4a07-92a7-cf3afe8dcbd2",
+      "upstream_id": "B03.08",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "e184dce8180583c01c166cb26c8c5cffba4f4ecc213ba94e2d93be1ef151db55",
+      "design_area": "Identity and access management",
+      "batch": "05"
+    },
+    {
+      "guid": "1559ab91-53e8-4908-ae28-c84c33b6b780",
+      "control_id": "ALZ-1559ab91-53e8-4908-ae28-c84c33b6b780",
+      "upstream_id": "B03.09",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "e944ede74b44ef5f52293816a5611e567aaaa3ffd5b0cea84eb42f5d79e875fc",
+      "design_area": "Identity and access management",
+      "batch": "05"
+    },
+    {
+      "guid": "e8aa1e41-870d-4968-94c6-77be14f510ac",
+      "control_id": "ALZ-e8aa1e41-870d-4968-94c6-77be14f510ac",
+      "upstream_id": "B03.10",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "4bafd5d69276742be899f140ee12ac29205990b099cf56550522bd3ab993e5ea",
+      "design_area": "Identity and access management",
+      "batch": "05"
+    },
+    {
+      "guid": "f5664b5e-984a-4859-a773-e7d261623a76",
+      "control_id": "ALZ-f5664b5e-984a-4859-a773-e7d261623a76",
+      "upstream_id": "B03.11",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "a13f1a79a5525071e3f56b123f21d7f2c911b6cc8fcdde600135a1908b6c63ae",
+      "design_area": "Identity and access management",
+      "batch": "05"
+    },
+    {
+      "guid": "8b9fe5c4-1049-4d40-9a92-3c3474d00018",
+      "control_id": "ALZ-8b9fe5c4-1049-4d40-9a92-3c3474d00018",
+      "upstream_id": "B03.12",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "2d89fd6f543b019f30415ecfdc14533ec848e03f6d2546028ccd3bcc9114f221",
+      "design_area": "Identity and access management",
+      "batch": "05"
+    },
+    {
+      "guid": "0dd4e625-9c4b-4a56-b54a-4357bac12761",
+      "control_id": "ALZ-0dd4e625-9c4b-4a56-b54a-4357bac12761",
+      "upstream_id": "B03.13",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "cacdfec577b4f616d0429cf3e3d951f3655a298d4a2c978a9a883c463ba0ca6c",
+      "design_area": "Identity and access management",
+      "batch": "05"
+    },
+    {
+      "guid": "1cf0b8da-70bd-44d0-94af-8d99cfc89ae1",
+      "control_id": "ALZ-1cf0b8da-70bd-44d0-94af-8d99cfc89ae1",
+      "upstream_id": "B03.14",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "e7936895043325d9c670c54ae6e3fb99e44fef91185818c8fcdc484ea4ca9c1f",
+      "design_area": "Identity and access management",
+      "batch": "05"
+    },
+    {
+      "guid": "984a859c-773e-47d2-9162-3a765a917e1f",
+      "control_id": "ALZ-984a859c-773e-47d2-9162-3a765a917e1f",
+      "upstream_id": "B03.15",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "2d1e78d8a3ab0d49d8ea5a86930894f827d55e3490440f436625d45af4083558",
+      "design_area": "Identity and access management",
+      "batch": "05"
+    },
+    {
+      "guid": "cd163e39-84a5-4b39-97b7-6973abd70d94",
+      "control_id": "ALZ-cd163e39-84a5-4b39-97b7-6973abd70d94",
+      "upstream_id": "B03.16",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "f14f245101a88fd29605014514e783bafddce0880f29e4e369c3563b970b71c9",
+      "design_area": "Identity and access management",
+      "batch": "06"
+    },
+    {
+      "guid": "35037e68-9349-4c15-b371-228514f4cdff",
+      "control_id": "ALZ-35037e68-9349-4c15-b371-228514f4cdff",
+      "upstream_id": "B03.17",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "8df7cf041d4a11409567ee8f1c8b5db4a5bfb470fe0391bf30253f870ac64fc9",
+      "design_area": "Identity and access management",
+      "batch": "06"
+    },
+    {
+      "guid": "d5d1e4e6-1465-48d3-958f-d77249b82111",
+      "control_id": "ALZ-d5d1e4e6-1465-48d3-958f-d77249b82111",
+      "upstream_id": "B03.18",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "b2041c7187824e5a7ee0c3f42af48789f06cbd221efd52003e47548580b9900d",
+      "design_area": "Identity and access management",
+      "batch": "06"
+    },
+    {
+      "guid": "9cf5418b-1520-4b7b-add7-88eb28f833e8",
+      "control_id": "ALZ-9cf5418b-1520-4b7b-add7-88eb28f833e8",
+      "upstream_id": "B04.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "ac7904e745fb2477229b54a067a855d2af03211aec456cb2f97208a9fc2cf3c0",
+      "design_area": "Identity and access management",
+      "batch": "06"
+    },
+    {
+      "guid": "d4d1ad54-1abc-4919-b267-3f342d3b49e4",
+      "control_id": "ALZ-d4d1ad54-1abc-4919-b267-3f342d3b49e4",
+      "upstream_id": "B04.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "3eb3876f615d295f15fb8c6008669e5913ac1eaf5e5de81ba41b4f89a0fe75dc",
+      "design_area": "Identity and access management",
+      "batch": "06"
+    },
+    {
+      "guid": "d505ebcb-79b1-4274-9c0d-a27c8bea489c",
+      "control_id": "ALZ-d505ebcb-79b1-4274-9c0d-a27c8bea489c",
+      "upstream_id": "B04.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "8dafe6129bbf051b773354d500cb3d948e054710e58338ff57c9b5ab439782b0",
+      "design_area": "Identity and access management",
+      "batch": "06"
+    },
+    {
+      "guid": "0ce74f19-9abb-47e4-ae95-6b057a1d2be9",
+      "control_id": "ALZ-0ce74f19-9abb-47e4-ae95-6b057a1d2be9",
+      "upstream_id": "B04.04",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "977354eea4c83df6b830467a14f9888629b8726242d3a52ec070f4e438c369f9",
+      "design_area": "Identity and access management",
+      "batch": "06"
+    },
+    {
+      "guid": "1770a2ac-c194-4e5c-ade4-82939d38a510",
+      "control_id": "ALZ-1770a2ac-c194-4e5c-ade4-82939d38a510",
+      "upstream_id": "B05.01",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "3d4052b54f93713aa3999562789b3b705a63aa615e817786688abdd9394ce7ea",
+      "design_area": "Identity and access management",
+      "batch": "06"
+    },
+    {
+      "guid": "cacf55bc-e4e4-46be-96bc-57a5f23a269a",
+      "control_id": "ALZ-cacf55bc-e4e4-46be-96bc-57a5f23a269a",
+      "upstream_id": "C01.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "9f76fa5f9c5950dff8af62661aa272eabd6ca23862b2bf0d62079283824ddaba",
+      "design_area": "Resource organization",
+      "batch": "07"
+    },
+    {
+      "guid": "2df27ee4-12e7-4f98-9f63-04722dd69c5b",
+      "control_id": "ALZ-2df27ee4-12e7-4f98-9f63-04722dd69c5b",
+      "upstream_id": "C02.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "1cf8ea67494a07d6b1c569bd9a93ca44d69ff11835145ae23ccd8333bab3f8ad",
+      "design_area": "Resource organization",
+      "batch": "07"
+    },
+    {
+      "guid": "667313b4-f566-44b5-b984-a859c773e7d2",
+      "control_id": "ALZ-667313b4-f566-44b5-b984-a859c773e7d2",
+      "upstream_id": "C02.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "befeb8a6f171dae90989ebba2cd42e22f1c26fffe375af18a142d652a5c551d7",
+      "design_area": "Resource organization",
+      "batch": "07"
+    },
+    {
+      "guid": "61623a76-5a91-47e1-b348-ef254c27d42e",
+      "control_id": "ALZ-61623a76-5a91-47e1-b348-ef254c27d42e",
+      "upstream_id": "C02.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "5f42eaab0e4f228eff300b9b129be11642378a05c3d7780a92951fe959b7cdb0",
+      "design_area": "Resource organization",
+      "batch": "07"
+    },
+    {
+      "guid": "8bbac757-1559-4ab9-853e-8908ae28c84c",
+      "control_id": "ALZ-8bbac757-1559-4ab9-853e-8908ae28c84c",
+      "upstream_id": "C02.04",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "0ad9d603106eaa64076efc51d67a795dbea0fd3052bb6351287506eed4ee260a",
+      "design_area": "Resource organization",
+      "batch": "07"
+    },
+    {
+      "guid": "33b6b780-8b9f-4e5c-9104-9d403a923c34",
+      "control_id": "ALZ-33b6b780-8b9f-4e5c-9104-9d403a923c34",
+      "upstream_id": "C02.05",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "c3f8b7f0f924da24c01d77e91182ec72bea8a6a18ed58631e005ea8dffd61fe2",
+      "design_area": "Resource organization",
+      "batch": "07"
+    },
+    {
+      "guid": "74d00018-ac6a-49e0-8e6a-83de5de32c19",
+      "control_id": "ALZ-74d00018-ac6a-49e0-8e6a-83de5de32c19",
+      "upstream_id": "C02.06",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "98555b8c447c653a5057aeb290815b53eb5e6e027f724fcd9a0c563d4144dcdd",
+      "design_area": "Resource organization",
+      "batch": "07"
+    },
+    {
+      "guid": "92481607-d5d1-4e4e-9146-58d3558fd772",
+      "control_id": "ALZ-92481607-d5d1-4e4e-9146-58d3558fd772",
+      "upstream_id": "C02.07",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "c3d8b516de760f83d0fba059072ce9887719fe66806037246df3c876bb60fe6e",
+      "design_area": "Resource organization",
+      "batch": "07"
+    },
+    {
+      "guid": "49b82111-2df2-47ee-912e-7f983f630472",
+      "control_id": "ALZ-49b82111-2df2-47ee-912e-7f983f630472",
+      "upstream_id": "C02.08",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "75d813d3cb2157cab2f2458ca182e70347d85274bb78e5c971df9d375a5e80fd",
+      "design_area": "Resource organization",
+      "batch": "08"
+    },
+    {
+      "guid": "2dd69c5b-5c26-422f-94b6-9bad33aad5e8",
+      "control_id": "ALZ-2dd69c5b-5c26-422f-94b6-9bad33aad5e8",
+      "upstream_id": "C02.09",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "2e2404a4fd569a0a9e8c6edc662d5b14bd79621d201fe20d6c14d2de96955aaa",
+      "design_area": "Resource organization",
+      "batch": "08"
+    },
+    {
+      "guid": "c68e1d76-6673-413b-9f56-64b5e984a859",
+      "control_id": "ALZ-c68e1d76-6673-413b-9f56-64b5e984a859",
+      "upstream_id": "C02.10",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "55ae3b65e8ed0d87ab08d7b0a8907c8e44683749ac6c4dccbf27faf62f57c61e",
+      "design_area": "Resource organization",
+      "batch": "08"
+    },
+    {
+      "guid": "c773e7d2-6162-43a7-95a9-17e1f348ef25",
+      "control_id": "ALZ-c773e7d2-6162-43a7-95a9-17e1f348ef25",
+      "upstream_id": "C02.11",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "2b475c5b30d4a5426c9b590f71fecc4b993e01625c21b903620b1173c149fa06",
+      "design_area": "Resource organization",
+      "batch": "08"
+    },
+    {
+      "guid": "ae28c84c-33b6-4b78-88b9-fe5c41049d40",
+      "control_id": "ALZ-ae28c84c-33b6-4b78-88b9-fe5c41049d40",
+      "upstream_id": "C02.12",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "3c2ab184ce96ca45038c59897ce10d9621133f6d322ac11b6213bd4637d8e9e2",
+      "design_area": "Resource organization",
+      "batch": "08"
+    },
+    {
+      "guid": "3a923c34-74d0-4001-aac6-a9e01e6a83de",
+      "control_id": "ALZ-3a923c34-74d0-4001-aac6-a9e01e6a83de",
+      "upstream_id": "C02.13",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "a9855c2cde5ad3b96fe45103428fa9936e289d5659ee034310c594cc40d5a4bd",
+      "design_area": "Resource organization",
+      "batch": "08"
+    },
+    {
+      "guid": "5de32c19-9248-4160-9d5d-1e4e614658d3",
+      "control_id": "ALZ-5de32c19-9248-4160-9d5d-1e4e614658d3",
+      "upstream_id": "C02.14",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "9453387bf7643533a774739e2dc3692286d7a82612fcce0ab5b42893bf2f1e13",
+      "design_area": "Resource organization",
+      "batch": "08"
+    },
+    {
+      "guid": "6cc0ea22-42bb-441e-a345-804ab0a09666",
+      "control_id": "ALZ-6cc0ea22-42bb-441e-a345-804ab0a09666",
+      "upstream_id": "C02.15",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "74777b7b7a3e57c34bcdcca229b1421e9940548e4586939b396fbd893c1bf9e1",
+      "design_area": "Resource organization",
+      "batch": "09"
+    },
+    {
+      "guid": "250d81ce-8bbe-4f85-9051-6a18a8221e50",
+      "control_id": "ALZ-250d81ce-8bbe-4f85-9051-6a18a8221e50",
+      "upstream_id": "C03.01",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "59a4e7e88327646a05e5b52c6353e5f6f7f24f1e8b4a5a059de607ee0fd38c76",
+      "design_area": "Resource organization",
+      "batch": "09"
+    },
+    {
+      "guid": "19ca3f89-397d-44b1-b5b6-5e18661372ac",
+      "control_id": "ALZ-19ca3f89-397d-44b1-b5b6-5e18661372ac",
+      "upstream_id": "C03.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "83f5fd86decfd3dac850296fecea76d988a2655f307bc72e961b785ac4a2169d",
+      "design_area": "Resource organization",
+      "batch": "09"
+    },
+    {
+      "guid": "4c27d42e-8bba-4c75-9155-9ab9153e8908",
+      "control_id": "ALZ-4c27d42e-8bba-4c75-9155-9ab9153e8908",
+      "upstream_id": "C03.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "943867f0d3eb62a69d33d72119746abf0173f44808cfabcff917551d4d47c9a0",
+      "design_area": "Resource organization",
+      "batch": "09"
+    },
+    {
+      "guid": "914b8cb7-c2f6-40fa-ae18-81c049e0cb5a",
+      "control_id": "ALZ-914b8cb7-c2f6-40fa-ae18-81c049e0cb5a",
+      "upstream_id": "C04.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "bb68698bce117553cb33d001c71a7feae7961b3bab87e9277a8140d3d4ef5767",
+      "design_area": "Resource organization",
+      "batch": "09"
+    },
+    {
+      "guid": "51a1e9e9-a49a-40b2-87b9-ff753bc6de86",
+      "control_id": "ALZ-51a1e9e9-a49a-40b2-87b9-ff753bc6de86",
+      "upstream_id": "C04.02",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "7530314e818f1d1d21e282387f138f4501987ee466b979a81038893c9fd26c1e",
+      "design_area": "Resource organization",
+      "batch": "09"
+    },
+    {
+      "guid": "a89153d8-18b2-4caf-bc19-850fc8fba00f",
+      "control_id": "ALZ-a89153d8-18b2-4caf-bc19-850fc8fba00f",
+      "upstream_id": "C04.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "a6782dd3396988f7d590e99cfe3e84350768868dc8b804be2b4a7f05bbb84cbe",
+      "design_area": "Resource organization",
+      "batch": "09"
+    },
+    {
+      "guid": "373f482f-3e39-4d39-8aa4-7e566f6082b6",
+      "control_id": "ALZ-373f482f-3e39-4d39-8aa4-7e566f6082b6",
+      "upstream_id": "D01.01",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "a664147125eb2fcda54282689c99b04aeed136a41743f7a6c23203dfa9bdd66b",
+      "design_area": "Network topology and connectivity",
+      "batch": "10"
+    },
+    {
+      "guid": "e8bbac75-7155-49ab-a153-e8908ae28c84",
+      "control_id": "ALZ-e8bbac75-7155-49ab-a153-e8908ae28c84",
+      "upstream_id": "D01.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "61e3df0bffa4524be413d7a851db81e5529484dafd7d0c1f8786232b91ae3807",
+      "design_area": "Network topology and connectivity",
+      "batch": "10"
+    },
+    {
+      "guid": "7bc1c396-2461-4698-b57f-30ca69525252",
+      "control_id": "ALZ-7bc1c396-2461-4698-b57f-30ca69525252",
+      "upstream_id": "D01.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "37b91f65773827622537bbbe48fb98014c55a5158e8f8124da23d88d22c00605",
+      "design_area": "Network topology and connectivity",
+      "batch": "10"
+    },
+    {
+      "guid": "7dd61623-a364-4a90-9eca-e48ebd54cd7d",
+      "control_id": "ALZ-7dd61623-a364-4a90-9eca-e48ebd54cd7d",
+      "upstream_id": "D01.04",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "c1ee4a1d666f4a55d1a8a843b9fb9f927e9759aef45e043cbfa996d705b66871",
+      "design_area": "Network topology and connectivity",
+      "batch": "10"
+    },
+    {
+      "guid": "e2e8abac-3571-4559-ab91-53e89f89dc7b",
+      "control_id": "ALZ-e2e8abac-3571-4559-ab91-53e89f89dc7b",
+      "upstream_id": "D01.06",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "983cedccf52b181c5db5f1423942ff62f657638327db505aa5fe0d66a19feb4c",
+      "design_area": "Network topology and connectivity",
+      "batch": "10"
+    },
+    {
+      "guid": "ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
+      "control_id": "ALZ-ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
+      "upstream_id": "D01.07",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "9ec74d770f7b2a672cab9ae3c55a22e7dc8b5e6a52dae8bc00a8b80b03fcb785",
+      "design_area": "Network topology and connectivity",
+      "batch": "10"
+    },
+    {
+      "guid": "91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
+      "control_id": "ALZ-91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
+      "upstream_id": "D01.08",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "2798f71d52063c6b921537d03618f7360d7fe6cf7429a05e775777efb9a715fa",
+      "design_area": "Network topology and connectivity",
+      "batch": "10"
+    },
+    {
+      "guid": "cc881471-607c-41cc-a0e6-14658dd558f9",
+      "control_id": "ALZ-cc881471-607c-41cc-a0e6-14658dd558f9",
+      "upstream_id": "D01.09",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "d9e90e6ab792d91aea31d2b7bf59a73812c062c1c43582e12da96b2eac2cadc2",
+      "design_area": "Network topology and connectivity",
+      "batch": "10"
+    },
+    {
+      "guid": "4722d929-c1b1-4cd6-81f5-4b29bade39ad",
+      "control_id": "ALZ-4722d929-c1b1-4cd6-81f5-4b29bade39ad",
+      "upstream_id": "D01.10",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "0d11eb5020901890e013457a66d4286e0303c9db8bc1f792effb5711104f66c3",
+      "design_area": "Network topology and connectivity",
+      "batch": "10"
+    },
+    {
+      "guid": "0e7c28ec-9366-4572-83b0-f4664b1d944a",
+      "control_id": "ALZ-0e7c28ec-9366-4572-83b0-f4664b1d944a",
+      "upstream_id": "D01.11",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "3811add812557e830e8f09b9636ecb2ce08039a377796baee3e32d4bbe6e1a2e",
+      "design_area": "Network topology and connectivity",
+      "batch": "10"
+    },
+    {
+      "guid": "3d457936-e9b7-41eb-bdff-314b26450b12",
+      "control_id": "ALZ-3d457936-e9b7-41eb-bdff-314b26450b12",
+      "upstream_id": "D01.12",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "f0c7044765817741cfe5de6806782812f5eaab935fea4d663117e66d5d616c0c",
+      "design_area": "Network topology and connectivity",
+      "batch": "11"
+    },
+    {
+      "guid": "c76cb5a2-abe2-11ed-afa1-0242ac120002",
+      "control_id": "ALZ-c76cb5a2-abe2-11ed-afa1-0242ac120002",
+      "upstream_id": "D01.13",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "11ef49dd05374e2707f8ede6cefd53582420e472a47fd9268dba1c8c0f7aff57",
+      "design_area": "Network topology and connectivity",
+      "batch": "11"
+    },
+    {
+      "guid": "9dcd6250-9c4a-4382-aa9b-5b84c64fc1fe",
+      "control_id": "ALZ-9dcd6250-9c4a-4382-aa9b-5b84c64fc1fe",
+      "upstream_id": "D01.14",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "839d7cd0e457b5697a60ce90c742d75929be659993d28dbd3993f0d00e5fab90",
+      "design_area": "Network topology and connectivity",
+      "batch": "11"
+    },
+    {
+      "guid": "48682fb1-1e86-4458-a686-518ebd47393d",
+      "control_id": "ALZ-48682fb1-1e86-4458-a686-518ebd47393d",
+      "upstream_id": "D01.15",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "f06001bd770c5fd49eac6298078b9697f2bcc9758e5d22c15584be5e37f2b763",
+      "design_area": "Network topology and connectivity",
+      "batch": "11"
+    },
+    {
+      "guid": "821a568d-c632-4693-ba76-e2751de35050",
+      "control_id": "ALZ-821a568d-c632-4693-ba76-e2751de35050",
+      "upstream_id": "D02.01",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "0b7caef0288eac6285629f24204b1bd670af96045b59c250a37d78a89615c5d4",
+      "design_area": "Network topology and connectivity",
+      "batch": "11"
+    },
+    {
+      "guid": "de0d5973-cd4c-4d21-a088-137f5e6c4cfd",
+      "control_id": "ALZ-de0d5973-cd4c-4d21-a088-137f5e6c4cfd",
+      "upstream_id": "D02.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "7a0fce1b62cbb59b5c18ba6471ad298d9ba70dfd4c5e7ea013a2b5521fb33f76",
+      "design_area": "Network topology and connectivity",
+      "batch": "11"
+    },
+    {
+      "guid": "ed301d6e-872e-452e-9611-cc58b5a4b151",
+      "control_id": "ALZ-ed301d6e-872e-452e-9611-cc58b5a4b151",
+      "upstream_id": "D02.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "db58a89e09bd633edc2bf5a122e601e01bb475034b625bd3ff9fd96db9fdcf9a",
+      "design_area": "Network topology and connectivity",
+      "batch": "11"
+    },
+    {
+      "guid": "558fd772-49b8-4211-82df-27ee412e7f98",
+      "control_id": "ALZ-558fd772-49b8-4211-82df-27ee412e7f98",
+      "upstream_id": "D03.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "73ae2ab741adbbad242c1529132e82c626872b9c495bf9597eebd5913cf4e2de",
+      "design_area": "Network topology and connectivity",
+      "batch": "11"
+    },
+    {
+      "guid": "3f630472-2dd6-49c5-a5c2-622f54b69bad",
+      "control_id": "ALZ-3f630472-2dd6-49c5-a5c2-622f54b69bad",
+      "upstream_id": "D03.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "b69aaedbbb2f8677e92ec3902c738c9a28b7812697f949a1f321821d6b2d590e",
+      "design_area": "Network topology and connectivity",
+      "batch": "11"
+    },
+    {
+      "guid": "33aad5e8-c68e-41d7-9667-313b4f5664b5",
+      "control_id": "ALZ-33aad5e8-c68e-41d7-9667-313b4f5664b5",
+      "upstream_id": "D03.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "a1b97004bd8649c342ad808579d75d31ce4cb78ec55ce62d8fd003047ce0c59c",
+      "design_area": "Network topology and connectivity",
+      "batch": "11"
+    },
+    {
+      "guid": "f348ef25-4c27-4d42-b8bb-ac7571559ab9",
+      "control_id": "ALZ-f348ef25-4c27-4d42-b8bb-ac7571559ab9",
+      "upstream_id": "D03.04",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "3a1d198464ee71747e5d19225e056f6f0b3e4b6a0557ee98d53d09709c17869b",
+      "design_area": "Network topology and connectivity",
+      "batch": "12"
+    },
+    {
+      "guid": "0c47f486-656d-4699-8c30-edef5b8a93c4",
+      "control_id": "ALZ-0c47f486-656d-4699-8c30-edef5b8a93c4",
+      "upstream_id": "D03.05",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "6281c1e951ef2a060189e6939ace05f91b2d88d6f2325d142bedbb9019a0af9b",
+      "design_area": "Network topology and connectivity",
+      "batch": "12"
+    },
+    {
+      "guid": "153e8908-ae28-4c84-a33b-6b7808b9fe5c",
+      "control_id": "ALZ-153e8908-ae28-4c84-a33b-6b7808b9fe5c",
+      "upstream_id": "D03.06",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "2cc8979f90047fb6bb222ed439b46cb4214df63a2177a7d2f2979a2cd91baf0c",
+      "design_area": "Network topology and connectivity",
+      "batch": "12"
+    },
+    {
+      "guid": "41049d40-3a92-43c3-974d-00018ac6a9e0",
+      "control_id": "ALZ-41049d40-3a92-43c3-974d-00018ac6a9e0",
+      "upstream_id": "D03.07",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "1ed85af715745d9cdd2adba782756a0a3b347bb7ebdb19dc76b9e07a90d7f9fe",
+      "design_area": "Network topology and connectivity",
+      "batch": "12"
+    },
+    {
+      "guid": "1e6a83de-5de3-42c1-a924-81607d5d1e4e",
+      "control_id": "ALZ-1e6a83de-5de3-42c1-a924-81607d5d1e4e",
+      "upstream_id": "D03.08",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "414fb80d6b0dba2fbd0e5e1ae5a9ccc25459757ac0be38d36deee4bc3575c4e4",
+      "design_area": "Network topology and connectivity",
+      "batch": "12"
+    },
+    {
+      "guid": "614658d3-558f-4d77-849b-821112df27ee",
+      "control_id": "ALZ-614658d3-558f-4d77-849b-821112df27ee",
+      "upstream_id": "D03.09",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "f5926aec82fb36cf1b234acaefaaf3f983d9933e3b603d13eb08764118db48dd",
+      "design_area": "Network topology and connectivity",
+      "batch": "12"
+    },
+    {
+      "guid": "18c80eb0-582a-4198-bf5c-d8800b2d263b",
+      "control_id": "ALZ-18c80eb0-582a-4198-bf5c-d8800b2d263b",
+      "upstream_id": "D03.10",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "f86d998ee2c07d10a3073a86e80cf4ad5df87d93e604853f481155e00e741116",
+      "design_area": "Network topology and connectivity",
+      "batch": "12"
+    },
+    {
+      "guid": "baac3ecb-a94c-4ac4-8c79-cdf27c0d78df",
+      "control_id": "ALZ-baac3ecb-a94c-4ac4-8c79-cdf27c0d78df",
+      "upstream_id": "D03.11",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "409b99ec85ed96827ed8f3b6bf321868017394293086e93cc7a2552232c7f066",
+      "design_area": "Network topology and connectivity",
+      "batch": "12"
+    },
+    {
+      "guid": "ee1ac551-c4d5-46cf-b035-d0a3c50d87ad",
+      "control_id": "ALZ-ee1ac551-c4d5-46cf-b035-d0a3c50d87ad",
+      "upstream_id": "D05.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "7c0d004dfd321bb039024a65fb314377b24df213e67ac54111d6e90896f3b170",
+      "design_area": "Network topology and connectivity",
+      "batch": "12"
+    },
+    {
+      "guid": "6eab9eb6-762b-485e-8ea8-15aa5dba0bd0",
+      "control_id": "ALZ-6eab9eb6-762b-485e-8ea8-15aa5dba0bd0",
+      "upstream_id": "D05.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "8b0e044896b65f638a526eb43dddd43c8c24c588bf0b9f694f8d676a45b824ed",
+      "design_area": "Network topology and connectivity",
+      "batch": "12"
+    },
+    {
+      "guid": "1d7aa9b6-4704-4489-a804-2d88e79d17b7",
+      "control_id": "ALZ-1d7aa9b6-4704-4489-a804-2d88e79d17b7",
+      "upstream_id": "D05.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "10cbe2d006bae942068b4f390f031f8245735b17e16c2b7ddb5f84abd2427350",
+      "design_area": "Network topology and connectivity",
+      "batch": "13"
+    },
+    {
+      "guid": "3b22a5a6-7e7a-48ed-9b30-e38c3f29812b",
+      "control_id": "ALZ-3b22a5a6-7e7a-48ed-9b30-e38c3f29812b",
+      "upstream_id": "D05.04",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "3b7e34d3e0f66b259dd351528d63f5deaf87a323f3a3145b3604c509ac7f42fe",
+      "design_area": "Network topology and connectivity",
+      "batch": "13"
+    },
+    {
+      "guid": "2363cefe-179b-4599-be0d-5973cd4cd21b",
+      "control_id": "ALZ-2363cefe-179b-4599-be0d-5973cd4cd21b",
+      "upstream_id": "D05.05",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "40ac2e4b97e5d679bffe7f91203722056749fc8e31b94614731eeb83898c4405",
+      "design_area": "Network topology and connectivity",
+      "batch": "13"
+    },
+    {
+      "guid": "088137f5-e6c4-4cfd-9e50-4547c2447ec6",
+      "control_id": "ALZ-088137f5-e6c4-4cfd-9e50-4547c2447ec6",
+      "upstream_id": "D05.06",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "9532c764867db9c57ee50506865ab42472c65a36ff675bc9c44760144171e6c9",
+      "design_area": "Network topology and connectivity",
+      "batch": "13"
+    },
+    {
+      "guid": "b034c01e-110b-463a-b36e-e3346e57f225",
+      "control_id": "ALZ-b034c01e-110b-463a-b36e-e3346e57f225",
+      "upstream_id": "D05.07",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "2b49a9d1a829e93382579e72d99c317c433b177d57e8934efbc1b895ab500b2e",
+      "design_area": "Network topology and connectivity",
+      "batch": "13"
+    },
+    {
+      "guid": "b1c82a3f-2320-4dfa-8972-7ae4823c8930",
+      "control_id": "ALZ-b1c82a3f-2320-4dfa-8972-7ae4823c8930",
+      "upstream_id": "D05.08",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "cc81a5efc9dfd1643c6d6b42cae678bfa1a0617155042428f5d6a43630784cd0",
+      "design_area": "Network topology and connectivity",
+      "batch": "13"
+    },
+    {
+      "guid": "3c5a808d-c695-4c14-a63c-c7ab7a510e41",
+      "control_id": "ALZ-3c5a808d-c695-4c14-a63c-c7ab7a510e41",
+      "upstream_id": "D05.08",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "1404ec07f8e58f07c5732f9771568be2e76f46ec9ee3c10ba9ec195c90c85cad",
+      "design_area": "Network topology and connectivity",
+      "batch": "13"
+    },
+    {
+      "guid": "359c373e-7dd6-4162-9a36-4a907ecae48e",
+      "control_id": "ALZ-359c373e-7dd6-4162-9a36-4a907ecae48e",
+      "upstream_id": "D06.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "3ed4f56d25002a46608d47989fdbf77ef82ba160c294fbb21ff0787235eae909",
+      "design_area": "Network topology and connectivity",
+      "batch": "13"
+    },
+    {
+      "guid": "f29812b2-363c-4efe-879b-599de0d5973c",
+      "control_id": "ALZ-f29812b2-363c-4efe-879b-599de0d5973c",
+      "upstream_id": "D06.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "00ab7ca6895b7bd6cda47dbae3f5833c5275d22d7c6f46c4a1c4adb0fa9a77aa",
+      "design_area": "Network topology and connectivity",
+      "batch": "13"
+    },
+    {
+      "guid": "d4cd21b0-8813-47f5-b6c4-cfd3e504547c",
+      "control_id": "ALZ-d4cd21b0-8813-47f5-b6c4-cfd3e504547c",
+      "upstream_id": "D06.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "04991136746b91eefa205678238ec4e6872596ae54db408380c33ded460bd4e1",
+      "design_area": "Network topology and connectivity",
+      "batch": "13"
+    },
+    {
+      "guid": "7025b442-f6e9-4af6-b11f-c9574916016f",
+      "control_id": "ALZ-7025b442-f6e9-4af6-b11f-c9574916016f",
+      "upstream_id": "D06.04",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "598dea8b02650133de2b5098904891ad5a87a9ad8d7b23272938a9291b8d04c0",
+      "design_area": "Network topology and connectivity",
+      "batch": "14"
+    },
+    {
+      "guid": "f4e7926a-ec35-476e-a412-5dd17136bd62",
+      "control_id": "ALZ-f4e7926a-ec35-476e-a412-5dd17136bd62",
+      "upstream_id": "D06.05",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "aa5f09046f8a3548798373429abb019fb5caa4dbd1cfae0e4bc58e360c11dc95",
+      "design_area": "Network topology and connectivity",
+      "batch": "14"
+    },
+    {
+      "guid": "2447ec66-138a-4720-8f1c-e16ed301d6e8",
+      "control_id": "ALZ-2447ec66-138a-4720-8f1c-e16ed301d6e8",
+      "upstream_id": "D06.06",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "ec24eb827baa44e7a64ac51b878d970b9c4de65ba85e506db05245c55dad17a7",
+      "design_area": "Network topology and connectivity",
+      "batch": "14"
+    },
+    {
+      "guid": "72e52e36-11cc-458b-9a4b-1511e43a58a9",
+      "control_id": "ALZ-72e52e36-11cc-458b-9a4b-1511e43a58a9",
+      "upstream_id": "D06.07",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "447abdcc6636b560fdf5e2a6fc215c3e0fa4cb7f4f96e3f39bc3bb4a19322642",
+      "design_area": "Network topology and connectivity",
+      "batch": "14"
+    },
+    {
+      "guid": "c2299c4d-7b57-4d0c-9555-62f2b3e4563a",
+      "control_id": "ALZ-c2299c4d-7b57-4d0c-9555-62f2b3e4563a",
+      "upstream_id": "D06.08",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "c539b0b5d3f4d747c2187dd38b48bc729f3b4cd5292491853d59f1b1693ca57e",
+      "design_area": "Network topology and connectivity",
+      "batch": "14"
+    },
+    {
+      "guid": "4d873974-8b66-42d6-b15f-512a65498f6d",
+      "control_id": "ALZ-4d873974-8b66-42d6-b15f-512a65498f6d",
+      "upstream_id": "D06.09",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "0ef45bb4131f7238cc2ba34a820b045b08f3a11daffeb85a9a3ce0bcd5c7dda9",
+      "design_area": "Network topology and connectivity",
+      "batch": "14"
+    },
+    {
+      "guid": "45866df8-cf85-4ca9-bbe2-65ec1478919e",
+      "control_id": "ALZ-45866df8-cf85-4ca9-bbe2-65ec1478919e",
+      "upstream_id": "D06.10",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "cf5f2a8c6ae1575051f5e930e49f715cd2e0092d8927edeac178461397684ad1",
+      "design_area": "Network topology and connectivity",
+      "batch": "14"
+    },
+    {
+      "guid": "718cb437-b060-2589-8856-2e93a5c6633b",
+      "control_id": "ALZ-718cb437-b060-2589-8856-2e93a5c6633b",
+      "upstream_id": "D06.11",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "1a78a19fa01af43105c2ec75f636c49227238c1843b1d84a1880787ec3b5a993",
+      "design_area": "Network topology and connectivity",
+      "batch": "14"
+    },
+    {
+      "guid": "8042d88e-79d1-47b7-9b22-a5a67e7a8ed4",
+      "control_id": "ALZ-8042d88e-79d1-47b7-9b22-a5a67e7a8ed4",
+      "upstream_id": "D06.12",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "9a000061103f201b76867fc690934d9d416f9417a096d9b298319221bfaf3b2a",
+      "design_area": "Network topology and connectivity",
+      "batch": "14"
+    },
+    {
+      "guid": "b30e38c3-f298-412b-8363-cefe179b599d",
+      "control_id": "ALZ-b30e38c3-f298-412b-8363-cefe179b599d",
+      "upstream_id": "D06.13",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "7dec70d87811110c737d19272198cc1a57a8f74ad82547f39299578ced49bd97",
+      "design_area": "Network topology and connectivity",
+      "batch": "15"
+    },
+    {
+      "guid": "5bf68dc9-325e-4873-bf88-f8214ef2e5d2",
+      "control_id": "ALZ-5bf68dc9-325e-4873-bf88-f8214ef2e5d2",
+      "upstream_id": "D06.14",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "e52be6d77bd4646922c904068ded7552d49f23de288b9942e18c5f63df288d23",
+      "design_area": "Network topology and connectivity",
+      "batch": "15"
+    },
+    {
+      "guid": "e0d5973c-d4cd-421b-8881-37f5e6c4cfd3",
+      "control_id": "ALZ-e0d5973c-d4cd-421b-8881-37f5e6c4cfd3",
+      "upstream_id": "D06.15",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "83b081ce4c34c0c478bed41d8d9fb917900ff77a9983a06d2bc942aebaee8811",
+      "design_area": "Network topology and connectivity",
+      "batch": "15"
+    },
+    {
+      "guid": "cf3fe65c-fec0-495a-8edc-9675200f2add",
+      "control_id": "ALZ-cf3fe65c-fec0-495a-8edc-9675200f2add",
+      "upstream_id": "D06.16",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "891ce5082bbf94f9cb9069153ee210dec4b9188178de720c77357d686e06b603",
+      "design_area": "Network topology and connectivity",
+      "batch": "15"
+    },
+    {
+      "guid": "72105cc8-aaea-4ee1-8c7a-ad25977afcaf",
+      "control_id": "ALZ-72105cc8-aaea-4ee1-8c7a-ad25977afcaf",
+      "upstream_id": "D06.17",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "b93731dc712f0287696e38531434ee802ad9fb6961fbe5a18c051b9b86aa2e42",
+      "design_area": "Network topology and connectivity",
+      "batch": "15"
+    },
+    {
+      "guid": "d581a947-69a2-4783-942e-9df3664324c8",
+      "control_id": "ALZ-d581a947-69a2-4783-942e-9df3664324c8",
+      "upstream_id": "D06.18",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "3443d761c25904bf561fe43bac9d68f6df3b3123877f8bd8207197907a95d592",
+      "design_area": "Network topology and connectivity",
+      "batch": "15"
+    },
+    {
+      "guid": "b258f058-b9f6-46cd-b28d-990106f0c3f8",
+      "control_id": "ALZ-b258f058-b9f6-46cd-b28d-990106f0c3f8",
+      "upstream_id": "D06.19",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "3cf9b1d1b77975601b0edf879cd507cf4adbb618773b10fd92b4c9fba396a3a7",
+      "design_area": "Network topology and connectivity",
+      "batch": "15"
+    },
+    {
+      "guid": "fe2a1b53-6fbd-4c67-b58a-85d7c7a0afcb",
+      "control_id": "ALZ-fe2a1b53-6fbd-4c67-b58a-85d7c7a0afcb",
+      "upstream_id": "D06.20",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "1738cb45b0b0720865e71356df302099f310b10f6abe00b5b3dc9dca53d1206a",
+      "design_area": "Network topology and connectivity",
+      "batch": "15"
+    },
+    {
+      "guid": "669b215a-ce43-4371-8f6f-11047f6490f1",
+      "control_id": "ALZ-669b215a-ce43-4371-8f6f-11047f6490f1",
+      "upstream_id": "D06.22",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "419c9714847da6244c9f3361d37472406db85cd5d5693ddee515fdd2f4ce78c7",
+      "design_area": "Network topology and connectivity",
+      "batch": "15"
+    },
+    {
+      "guid": "3f79ed00-203b-4c95-9efd-691505f5a1f9",
+      "control_id": "ALZ-3f79ed00-203b-4c95-9efd-691505f5a1f9",
+      "upstream_id": "D06.23",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "2c446b9746794f4745655fb1cac7e03f9b4bec4f6c65bb40f9da712f3e2bbae3",
+      "design_area": "Network topology and connectivity",
+      "batch": "16"
+    },
+    {
+      "guid": "5234c93f-b651-41dd-80c1-234177b91ced",
+      "control_id": "ALZ-5234c93f-b651-41dd-80c1-234177b91ced",
+      "upstream_id": "D06.24",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "85df73d68d2560bd73aeed7a56fc63e62d677e53b662b51601fe8192c90f4a9b",
+      "design_area": "Network topology and connectivity",
+      "batch": "16"
+    },
+    {
+      "guid": "8ac6a9e0-1e6a-483d-b5de-32c199248160",
+      "control_id": "ALZ-8ac6a9e0-1e6a-483d-b5de-32c199248160",
+      "upstream_id": "D06.25",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "aa80ede90fc887974a120510a37427e39fece1c63a581711d2ce492753fa7eb7",
+      "design_area": "Network topology and connectivity",
+      "batch": "16"
+    },
+    {
+      "guid": "4cc8ca4e-a503-4bac-9b1e-82283a711043",
+      "control_id": "ALZ-4cc8ca4e-a503-4bac-9b1e-82283a711043",
+      "upstream_id": "D06.26",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "b7660b1d193996559498a293821e5df1d9aafd3c4c7126f79a1e3ea4fce99452",
+      "design_area": "Network topology and connectivity",
+      "batch": "16"
+    },
+    {
+      "guid": "8b517d94-c9d0-42c4-9803-d93ed0a46bc0",
+      "control_id": "ALZ-8b517d94-c9d0-42c4-9803-d93ed0a46bc0",
+      "upstream_id": "D06.27",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "d7c2f0143467512b4dbb401011e7c4f9e4592c8a54068d0fa1baa1f6f3ab3bb8",
+      "design_area": "Network topology and connectivity",
+      "batch": "16"
+    },
+    {
+      "guid": "e6c4cfd3-e504-4547-a244-7ec66138a720",
+      "control_id": "ALZ-e6c4cfd3-e504-4547-a244-7ec66138a720",
+      "upstream_id": "D07.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "5baac734b4a561e56e6d2f09a556ad0dc19df039d0167138e8649f8352ade06d",
+      "design_area": "Network topology and connectivity",
+      "batch": "16"
+    },
+    {
+      "guid": "5a4b1511-e43a-458a-ac22-99c4d7b57d0c",
+      "control_id": "ALZ-5a4b1511-e43a-458a-ac22-99c4d7b57d0c",
+      "upstream_id": "D07.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "102a7e6da254b55abefa6048571678e3faaf2e24a5bdd3856ea630fda375d111",
+      "design_area": "Network topology and connectivity",
+      "batch": "16"
+    },
+    {
+      "guid": "655562f2-b3e4-4563-a4d8-739748b662d6",
+      "control_id": "ALZ-655562f2-b3e4-4563-a4d8-739748b662d6",
+      "upstream_id": "D07.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "24ab2f22d1c2fb49bd6e8dc940f49c9b90d43550033d9f2c004d8c77075d4fbe",
+      "design_area": "Network topology and connectivity",
+      "batch": "16"
+    },
+    {
+      "guid": "14d99880-2f88-47e8-a134-62a7d85c94af",
+      "control_id": "ALZ-14d99880-2f88-47e8-a134-62a7d85c94af",
+      "upstream_id": "D07.04",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "72f24c117e6a463f86a650f133e72b8231610dd200f9c440798f412b3bf1b3f1",
+      "design_area": "Network topology and connectivity",
+      "batch": "16"
+    },
+    {
+      "guid": "c10d51ef-f999-455d-bba0-5c90ece07447",
+      "control_id": "ALZ-c10d51ef-f999-455d-bba0-5c90ece07447",
+      "upstream_id": "D07.05",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "29f95019a1d4c1175abd669c3ba29a1c9514ae8af2191508363c4b5f39585082",
+      "design_area": "Network topology and connectivity",
+      "batch": "17"
+    },
+    {
+      "guid": "a3784907-9836-4271-aafc-93535f8ec08b",
+      "control_id": "ALZ-a3784907-9836-4271-aafc-93535f8ec08b",
+      "upstream_id": "D07.08",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "c3c511722b3e53e96b182a58ce8bcab0ca8f9853835285140651460a30f975ad",
+      "design_area": "Network topology and connectivity",
+      "batch": "17"
+    },
+    {
+      "guid": "715d833d-4708-4527-90ac-1b142c7045ba",
+      "control_id": "ALZ-715d833d-4708-4527-90ac-1b142c7045ba",
+      "upstream_id": "D07.09",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "359e4afe8a6a1d4e372ad422c470e6f8ae805cc42a0a8f27184192090c645b14",
+      "design_area": "Network topology and connectivity",
+      "batch": "17"
+    },
+    {
+      "guid": "e960fc6b-4ab2-4db6-9609-3745135f9ffa",
+      "control_id": "ALZ-e960fc6b-4ab2-4db6-9609-3745135f9ffa",
+      "upstream_id": "D07.10",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "df30a3a4995bcf187cb3a42e8c27bb67424e7eb0b4e47a345124bc5a93ea8956",
+      "design_area": "Network topology and connectivity",
+      "batch": "17"
+    },
+    {
+      "guid": "22d6419e-b627-4d95-9e7d-019fa759387f",
+      "control_id": "ALZ-22d6419e-b627-4d95-9e7d-019fa759387f",
+      "upstream_id": "D07.11",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "fdefbc10637afa9802867fedec6cd4a352d079cb71f47ec47d1915b6ecbb55c6",
+      "design_area": "Network topology and connectivity",
+      "batch": "17"
+    },
+    {
+      "guid": "828cec2e-af6c-40c2-8fa2-1b681ee63eb7",
+      "control_id": "ALZ-828cec2e-af6c-40c2-8fa2-1b681ee63eb7",
+      "upstream_id": "D07.12",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "57f99897c3b2592a92382b97e530a724ea174f6ed1f41faf99b533dcd293c1c6",
+      "design_area": "Network topology and connectivity",
+      "batch": "17"
+    },
+    {
+      "guid": "0da83bb1-2f39-49af-b5c9-835fc455e3d1",
+      "control_id": "ALZ-0da83bb1-2f39-49af-b5c9-835fc455e3d1",
+      "upstream_id": "D07.12",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "b919c49b30983784571560f19580b500e6fad8d8f03d981226e2047ed1bb9825",
+      "design_area": "Network topology and connectivity",
+      "batch": "17"
+    },
+    {
+      "guid": "c44c6f0e-1642-4a61-a17b-0922f835c93a",
+      "control_id": "ALZ-c44c6f0e-1642-4a61-a17b-0922f835c93a",
+      "upstream_id": "D07.13",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "a0288785a8ae3480e16d10ca0009b7f9f6575bd727e6824e9771272311957144",
+      "design_area": "Network topology and connectivity",
+      "batch": "17"
+    },
+    {
+      "guid": "7371dc21-251a-47a3-af14-6e01b9da4757",
+      "control_id": "ALZ-7371dc21-251a-47a3-af14-6e01b9da4757",
+      "upstream_id": "D07.14",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "b125be003fd91d99e19ee7ca636da200fdeb7efa80e21be6a6db5a5c962dd69b",
+      "design_area": "Network topology and connectivity",
+      "batch": "17"
+    },
+    {
+      "guid": "346840b8-1064-496e-8396-4b1340172d52",
+      "control_id": "ALZ-346840b8-1064-496e-8396-4b1340172d52",
+      "upstream_id": "D07.15",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "40fec5811ce46c6a2b6cfb58cfd61390116302ddf9befb4b7a56ac70b3e88276",
+      "design_area": "Network topology and connectivity",
+      "batch": "18"
+    },
+    {
+      "guid": "39990a13-915c-45f9-a2d3-562d7d6c4b7c",
+      "control_id": "ALZ-39990a13-915c-45f9-a2d3-562d7d6c4b7c",
+      "upstream_id": "D07.16",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "e2c7b392a603b49e83837298d8d24517ef38afc8166f31609b980586cc8f3447",
+      "design_area": "Network topology and connectivity",
+      "batch": "18"
+    },
+    {
+      "guid": "6eff7e6c-6c4a-43d7-be3f-6641c2cb3d4a",
+      "control_id": "ALZ-6eff7e6c-6c4a-43d7-be3f-6641c2cb3d4a",
+      "upstream_id": "D07.17",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "4ccc4502c73ccc82c8609a055638b40c4f4c1e63866f46667f95cb92ef53b59b",
+      "design_area": "Network topology and connectivity",
+      "batch": "18"
+    },
+    {
+      "guid": "64e7000e-3c06-485e-b455-ced7f454cba3",
+      "control_id": "ALZ-64e7000e-3c06-485e-b455-ced7f454cba3",
+      "upstream_id": "D07.20",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "e78d9ef38645ec3da870ef337726115ee99a4bbb507f26df2bd30a5ca54a26ee",
+      "design_area": "Network topology and connectivity",
+      "batch": "18"
+    },
+    {
+      "guid": "d38ad60c-bc9e-4d49-b699-97e5d4dcf707",
+      "control_id": "ALZ-d38ad60c-bc9e-4d49-b699-97e5d4dcf707",
+      "upstream_id": "D07.21",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "e293787d3ff56edf39e4a11e50c0bf3aca5d5c8749ddf5693732cca998920dfd",
+      "design_area": "Network topology and connectivity",
+      "batch": "18"
+    },
+    {
+      "guid": "e8143efa-0301-4d62-be54-ca7b5ce566dc",
+      "control_id": "ALZ-e8143efa-0301-4d62-be54-ca7b5ce566dc",
+      "upstream_id": "D07.22",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "e801c61001bf8c12b13e0bce6471614a1b9cef7fdc4773eb590026f79ab88b3d",
+      "design_area": "Network topology and connectivity",
+      "batch": "18"
+    },
+    {
+      "guid": "d301d6e8-72e5-42e3-911c-c58b5a4b1511",
+      "control_id": "ALZ-d301d6e8-72e5-42e3-911c-c58b5a4b1511",
+      "upstream_id": "D07.23",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "59602d0b8ac4b859fdebb9c35d25487d1081dac0e7a80275c26c278b6a4346df",
+      "design_area": "Network topology and connectivity",
+      "batch": "18"
+    },
+    {
+      "guid": "e43a58a9-c229-49c4-b7b5-7d0c655562f2",
+      "control_id": "ALZ-e43a58a9-c229-49c4-b7b5-7d0c655562f2",
+      "upstream_id": "D08.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "5684659b1b53bd022712c615c8fb82040b01cf3493a648a92f439699a75cb330",
+      "design_area": "Network topology and connectivity",
+      "batch": "18"
+    },
+    {
+      "guid": "b3e4563a-4d87-4397-98b6-62d6d15f512a",
+      "control_id": "ALZ-b3e4563a-4d87-4397-98b6-62d6d15f512a",
+      "upstream_id": "D08.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "7d9313459b22081c882664e01a6942ebbbc32ead66d24aefb199dd3cdc70e9c6",
+      "design_area": "Network topology and connectivity",
+      "batch": "18"
+    },
+    {
+      "guid": "4704489a-8042-4d88-b79d-17b73b22a5a6",
+      "control_id": "ALZ-4704489a-8042-4d88-b79d-17b73b22a5a6",
+      "upstream_id": "D08.04",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "a97de6430c0aff456f2c5dbbbe9eafc862e75a1639d115d2d65ebb2ca39d4fdf",
+      "design_area": "Network topology and connectivity",
+      "batch": "19"
+    },
+    {
+      "guid": "7e7a8ed4-b30e-438c-9f29-812b2363cefe",
+      "control_id": "ALZ-7e7a8ed4-b30e-438c-9f29-812b2363cefe",
+      "upstream_id": "D08.05",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "e4d83727ae22a48f3bf2937e5495a19b9d445da17da820ce18ddcc027e693746",
+      "design_area": "Network topology and connectivity",
+      "batch": "19"
+    },
+    {
+      "guid": "f2aad7e3-bb03-4adc-8606-4123d342a917",
+      "control_id": "ALZ-f2aad7e3-bb03-4adc-8606-4123d342a917",
+      "upstream_id": "D09.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "7f4bed3409dcbfd37c8827f3d743c7d1ec249dd9f3d26a236d1075142974abf2",
+      "design_area": "Network topology and connectivity",
+      "batch": "19"
+    },
+    {
+      "guid": "11deb39d-8299-4e47-bbe0-0fb5a36318a8",
+      "control_id": "ALZ-11deb39d-8299-4e47-bbe0-0fb5a36318a8",
+      "upstream_id": "D09.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "90fb1783135d496d0503ffb12257c008daddcccb0944a31e41c38d852bdd3c9b",
+      "design_area": "Network topology and connectivity",
+      "batch": "19"
+    },
+    {
+      "guid": "c2447ec6-6138-4a72-80f1-ce16ed301d6e",
+      "control_id": "ALZ-c2447ec6-6138-4a72-80f1-ce16ed301d6e",
+      "upstream_id": "D09.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "26da9f45495a078fe619beb63d68b1b385b4fb6eb486e32afd63bee1bf6af49f",
+      "design_area": "Network topology and connectivity",
+      "batch": "19"
+    },
+    {
+      "guid": "872e52e3-611c-4c58-a5a4-b1511e43a58a",
+      "control_id": "ALZ-872e52e3-611c-4c58-a5a4-b1511e43a58a",
+      "upstream_id": "D09.04",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "e58be6c7750a216dde9d2cad0fc75d14957d1366f26bfae2460008d415cd712c",
+      "design_area": "Network topology and connectivity",
+      "batch": "19"
+    },
+    {
+      "guid": "a4d87397-48b6-462d-9d15-f512a65498f6",
+      "control_id": "ALZ-a4d87397-48b6-462d-9d15-f512a65498f6",
+      "upstream_id": "D09.05",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "475d23b5a41aeaf0a022e24a4208ccbcbf97d3640bcb5a94a1c54d500108a144",
+      "design_area": "Network topology and connectivity",
+      "batch": "19"
+    },
+    {
+      "guid": "dfe237de-143b-416c-91d7-aa9b64704489",
+      "control_id": "ALZ-dfe237de-143b-416c-91d7-aa9b64704489",
+      "upstream_id": "D09.06",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "7a7e59b05bd0e81fe9e73dbcf76977a40b60dcbc0b736b6662c73d4fd71bd2e5",
+      "design_area": "Network topology and connectivity",
+      "batch": "19"
+    },
+    {
+      "guid": "0390417d-53dc-44d9-b3f4-c8832f359b41",
+      "control_id": "ALZ-0390417d-53dc-44d9-b3f4-c8832f359b41",
+      "upstream_id": "D09.07",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "ec8500524b0beb57b9a4ef9b9a7964738a3598328aba334344ba56c90d42d9bc",
+      "design_area": "Network topology and connectivity",
+      "batch": "19"
+    },
+    {
+      "guid": "412e7f98-3f63-4047-82dd-69c5b5c2622f",
+      "control_id": "ALZ-412e7f98-3f63-4047-82dd-69c5b5c2622f",
+      "upstream_id": "D10.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "bf424e1fb22de80059c05bd132d73e96bb81ecdba7cd49bff5827461e4e1eaf7",
+      "design_area": "Network topology and connectivity",
+      "batch": "20"
+    },
+    {
+      "guid": "54b69bad-33aa-4d5e-ac68-e1d76667313b",
+      "control_id": "ALZ-54b69bad-33aa-4d5e-ac68-e1d76667313b",
+      "upstream_id": "D10.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "7cabd5b47ff34ccc88b60e1d132462f15c14aef9c6b298b0a801e60cdeaf10c3",
+      "design_area": "Network topology and connectivity",
+      "batch": "20"
+    },
+    {
+      "guid": "7d5d1e4e-6146-458d-9558-fd77249b8211",
+      "control_id": "ALZ-7d5d1e4e-6146-458d-9558-fd77249b8211",
+      "upstream_id": "D10.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "8b3bb787852c4c40926741d8c2809a339cec6d1e49f22484a46314fe8d1e1bd8",
+      "design_area": "Network topology and connectivity",
+      "batch": "20"
+    },
+    {
+      "guid": "6667313b-4f56-464b-9e98-4a859c773e7d",
+      "control_id": "ALZ-6667313b-4f56-464b-9e98-4a859c773e7d",
+      "upstream_id": "D10.04",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "6ee9a889d0f31a815341bed36a67c55be9128e1f1fef10f1570743a0c950d059",
+      "design_area": "Network topology and connectivity",
+      "batch": "20"
+    },
+    {
+      "guid": "261623a7-65a9-417e-8f34-8ef254c27d42",
+      "control_id": "ALZ-261623a7-65a9-417e-8f34-8ef254c27d42",
+      "upstream_id": "D10.05",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "877408da6409819e09036ea8a8ca1367202700aca01f7c9dc70d359090f2940c",
+      "design_area": "Network topology and connectivity",
+      "batch": "20"
+    },
+    {
+      "guid": "727c77e1-b9aa-4a37-a024-129d042422c1",
+      "control_id": "ALZ-727c77e1-b9aa-4a37-a024-129d042422c1",
+      "upstream_id": "D10.06",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "f143a5e51c0ac9e28756d2e3c1857131b7635e403068e228dd928666cf0044fb",
+      "design_area": "Network topology and connectivity",
+      "batch": "20"
+    },
+    {
+      "guid": "d49ac006-6670-4bc9-9948-d3e0a3a94f4d",
+      "control_id": "ALZ-d49ac006-6670-4bc9-9948-d3e0a3a94f4d",
+      "upstream_id": "D10.07",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "d55dfc28108af75ece4bf1069b5d13014a309c79f4907f2340109c564194ce9f",
+      "design_area": "Network topology and connectivity",
+      "batch": "20"
+    },
+    {
+      "guid": "2586b854-237e-47f1-84a1-d45d4cd2310d",
+      "control_id": "ALZ-2586b854-237e-47f1-84a1-d45d4cd2310d",
+      "upstream_id": "D10.08",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "3303a13c7463cdebec3e2cac95167d92c169c3251c72e05422a56345a4f53bf5",
+      "design_area": "Network topology and connectivity",
+      "batch": "20"
+    },
+    {
+      "guid": "9c75dfef-573c-461c-a698-68598595581a",
+      "control_id": "ALZ-9c75dfef-573c-461c-a698-68598595581a",
+      "upstream_id": "D10.09",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "eb101d4c31ba1e15356285de07335c09a106c70cee62fc07a774346d2a8359a0",
+      "design_area": "Network topology and connectivity",
+      "batch": "20"
+    },
+    {
+      "guid": "b86ad884-08e3-4727-94b8-75ba18f20459",
+      "control_id": "ALZ-b86ad884-08e3-4727-94b8-75ba18f20459",
+      "upstream_id": "G01.01",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "0ff36e7a023b84903e3cc9c204fc55f8a11ac109540c37b14a72f34e145f64c7",
+      "design_area": "Security",
+      "batch": "21"
+    },
+    {
+      "guid": "01365d38-e43f-49cc-ad86-8266abca264f",
+      "control_id": "ALZ-01365d38-e43f-49cc-ad86-8266abca264f",
+      "upstream_id": "G01.02",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "416a5ef89f324ad1f8b7c0efabf604c5e7421c56a55bedbe0ba7966b328963d7",
+      "design_area": "Security",
+      "batch": "21"
+    },
+    {
+      "guid": "6d70ba6c-97be-4995-8904-83845c986cb2",
+      "control_id": "ALZ-6d70ba6c-97be-4995-8904-83845c986cb2",
+      "upstream_id": "G02.05",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "860df77d51b10721d2547d533b955caa5c64de3cc51706a1e56e36a7b57d066d",
+      "design_area": "Security",
+      "batch": "21"
+    },
+    {
+      "guid": "913156a1-2476-4e49-b541-acdce979377b",
+      "control_id": "ALZ-913156a1-2476-4e49-b541-acdce979377b",
+      "upstream_id": "G02.06",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "3bde89e904dfa364821e87a8b68c3541d4c7464f567db06a5aa54c815ea244bb",
+      "design_area": "Security",
+      "batch": "21"
+    },
+    {
+      "guid": "b12308ca-5017-4f15-9e3a-b3693829e7e3",
+      "control_id": "ALZ-b12308ca-5017-4f15-9e3a-b3693829e7e3",
+      "upstream_id": "G02.09",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "2c92076d7afa4db203f9db6d83817e3087a1b592fcedab51e05e082d7b73bca2",
+      "design_area": "Security",
+      "batch": "21"
+    },
+    {
+      "guid": "16183687-a047-47a2-8994-5bda43334f24",
+      "control_id": "ALZ-16183687-a047-47a2-8994-5bda43334f24",
+      "upstream_id": "G02.10",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "1da69366315b8650ca03f37cf6f3bdc2a8b2d14cbe178f9e1e751ef3d1f78f9c",
+      "design_area": "Security",
+      "batch": "21"
+    },
+    {
+      "guid": "b48ade7f-50be-4d2e-9866-d57b17942fc2",
+      "control_id": "ALZ-b48ade7f-50be-4d2e-9866-d57b17942fc2",
+      "upstream_id": "G02.11",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "50ecda07769504522e83e1d7a227c8ece354479b5656f8a7cfa43d8a0b2c59f4",
+      "design_area": "Security",
+      "batch": "21"
+    },
+    {
+      "guid": "25d62688-6d70-4ba6-a97b-e99519048384",
+      "control_id": "ALZ-25d62688-6d70-4ba6-a97b-e99519048384",
+      "upstream_id": "G02.12",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "1ba6af42a6140f34155a2cc4d5476e13b5d782cca6ada766eb36053ea63457c8",
+      "design_area": "Security",
+      "batch": "21"
+    },
+    {
+      "guid": "4ac6b67c-b3a4-4ff9-8e87-b07a7ce7bbdb",
+      "control_id": "ALZ-4ac6b67c-b3a4-4ff9-8e87-b07a7ce7bbdb",
+      "upstream_id": "G02.13",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "96f4325f7b8f829cc84a7b24441dbc3f538f09283cebbe370786187bb4123b31",
+      "design_area": "Security",
+      "batch": "22"
+    },
+    {
+      "guid": "4e5695f2-223a-4ce8-ab12-308ca5017f15",
+      "control_id": "ALZ-4e5695f2-223a-4ce8-ab12-308ca5017f15",
+      "upstream_id": "G03.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "3b3a425a13bcbf2e02970465a2e29ff9a54f0fb0dc1d4106190ae76053f5c466",
+      "design_area": "Security",
+      "batch": "22"
+    },
+    {
+      "guid": "4e3ab369-3829-4e7e-9161-83687a0477a2",
+      "control_id": "ALZ-4e3ab369-3829-4e7e-9161-83687a0477a2",
+      "upstream_id": "G03.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "488529e164d31d688575b7032c8404033f582807a6c950c395749a44417d7fcc",
+      "design_area": "Security",
+      "batch": "22"
+    },
+    {
+      "guid": "09945bda-4333-44f2-9911-634182ba5275",
+      "control_id": "ALZ-09945bda-4333-44f2-9911-634182ba5275",
+      "upstream_id": "G03.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "1ad977fb5e936834edfe57ee826308cf05913a022fa151aab427d5345286cf32",
+      "design_area": "Security",
+      "batch": "22"
+    },
+    {
+      "guid": "36a72a48-fffe-4c40-9747-0ab5064355ba",
+      "control_id": "ALZ-36a72a48-fffe-4c40-9747-0ab5064355ba",
+      "upstream_id": "G03.04",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "d8d513bbc08e71c90030f21e0c21816c9f87795c2b73fd8e191cfc92c659d618",
+      "design_area": "Security",
+      "batch": "22"
+    },
+    {
+      "guid": "77425f48-ecba-43a0-aeac-a3ac733ccc6a",
+      "control_id": "ALZ-77425f48-ecba-43a0-aeac-a3ac733ccc6a",
+      "upstream_id": "G03.05",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "927756dc00c605717046aa87b8a1db1c3baccf69028bb93a02df12e4380f2cf6",
+      "design_area": "Security",
+      "batch": "22"
+    },
+    {
+      "guid": "24d96b30-61ee-4436-a1cc-d6ef08bc574b",
+      "control_id": "ALZ-24d96b30-61ee-4436-a1cc-d6ef08bc574b",
+      "upstream_id": "G03.06",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "cb1a46532775a7dc3d8760966f21e2320f9c9500a00c00d76ee85d077751fad9",
+      "design_area": "Security",
+      "batch": "22"
+    },
+    {
+      "guid": "15833ee7-ad6c-46d3-9331-65c7acbe44ab",
+      "control_id": "ALZ-15833ee7-ad6c-46d3-9331-65c7acbe44ab",
+      "upstream_id": "G03.07",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "7104f87bb101a9e9522134fb855e8d89d7fcc2e99cafbfce99a4d4134fcea771",
+      "design_area": "Security",
+      "batch": "22"
+    },
+    {
+      "guid": "e5f8d79f-2e87-4768-924c-516775c6ea95",
+      "control_id": "ALZ-e5f8d79f-2e87-4768-924c-516775c6ea95",
+      "upstream_id": "G03.08",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "13fd7a6823eb22edce18786da7655d9742d20be6bb7398129e27bac74f3b5e75",
+      "design_area": "Security",
+      "batch": "23"
+    },
+    {
+      "guid": "a56888b2-7e83-4404-bd31-b886528502d1",
+      "control_id": "ALZ-a56888b2-7e83-4404-bd31-b886528502d1",
+      "upstream_id": "G03.09",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "962f410ea5bddd374a5e2c6b9d24daeb386d86aff17fa5fb75c156d42e72c11e",
+      "design_area": "Security",
+      "batch": "23"
+    },
+    {
+      "guid": "d21a922d-5ca7-427a-82a6-35f7b21f1bfc",
+      "control_id": "ALZ-d21a922d-5ca7-427a-82a6-35f7b21f1bfc",
+      "upstream_id": "G03.10",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "597e2c1402ada7dd8d21aa959cfb4fafaabfe5b85647e92fc5a12bcc574b62b2",
+      "design_area": "Security",
+      "batch": "23"
+    },
+    {
+      "guid": "874a748b-662d-46d1-9051-2a66498f6dfe",
+      "control_id": "ALZ-874a748b-662d-46d1-9051-2a66498f6dfe",
+      "upstream_id": "G03.11",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "92c5b74da9af33c020338825db15fa25b370279106b0459caa7f5191425a5b84",
+      "design_area": "Security",
+      "batch": "23"
+    },
+    {
+      "guid": "6f704104-85c1-441f-96d3-c9819911645e",
+      "control_id": "ALZ-6f704104-85c1-441f-96d3-c9819911645e",
+      "upstream_id": "G05.01",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "a9b5ba70adcd109ed04f41b6c06b93c5435363f8daa098fb5340c178cc464af1",
+      "design_area": "Security",
+      "batch": "23"
+    },
+    {
+      "guid": "9a19bf39-c95d-444c-9c89-19ca1f6d5215",
+      "control_id": "ALZ-9a19bf39-c95d-444c-9c89-19ca1f6d5215",
+      "upstream_id": "G06.01",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "2fbeef034ce304ec0f0cc77b6a0a747080840022f2f0e292f04d036bb4fc2f51",
+      "design_area": "Security",
+      "batch": "23"
+    },
+    {
+      "guid": "ae514b93-3d45-485e-8112-9bd7ba012f7b",
+      "control_id": "ALZ-ae514b93-3d45-485e-8112-9bd7ba012f7b",
+      "upstream_id": "G06.02",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "a0e6f06ce1fab167d705c7a23310fad6f51564dff723a0b27c411fc470842bf9",
+      "design_area": "Security",
+      "batch": "23"
+    },
+    {
+      "guid": "67e7a8ed-4b30-4e38-a3f2-9812b2363cef",
+      "control_id": "ALZ-67e7a8ed-4b30-4e38-a3f2-9812b2363cef",
+      "upstream_id": "F01.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "0821c2ce97b6fbbffdec656370137c2c43b4dcffbccc72971ad38487bfaed1fa",
+      "design_area": "Management",
+      "batch": "24"
+    },
+    {
+      "guid": "7418ada9-4199-4c28-8286-d15e9433e8f3",
+      "control_id": "ALZ-7418ada9-4199-4c28-8286-d15e9433e8f3",
+      "upstream_id": "F01.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "f02a53f93fd5cda8cc7f525ccc69aad1f7b852884f7d7da2ffc6c9bdcc62cdc5",
+      "design_area": "Management",
+      "batch": "24"
+    },
+    {
+      "guid": "5e6c4cfd-3e50-4454-9c24-47ec66138a72",
+      "control_id": "ALZ-5e6c4cfd-3e50-4454-9c24-47ec66138a72",
+      "upstream_id": "F01.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "b1024f1dd8fd9423f5655278ac2e01b2a5ae1d91a326c3c294ef2080483ac60e",
+      "design_area": "Management",
+      "batch": "24"
+    },
+    {
+      "guid": "e7d7e484-3276-4d8b-bc05-5bcf619e8a13",
+      "control_id": "ALZ-e7d7e484-3276-4d8b-bc05-5bcf619e8a13",
+      "upstream_id": "F01.04",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "b0cc79cd69d1c8c20011f33ceb4cf2e4b1c48665e6249abd35db390c7c36b297",
+      "design_area": "Management",
+      "batch": "24"
+    },
+    {
+      "guid": "f9887952-5d62-4688-9d70-ba6c97be9951",
+      "control_id": "ALZ-f9887952-5d62-4688-9d70-ba6c97be9951",
+      "upstream_id": "F01.05",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "dccb62951f01df1119d8059541db6b084ac31973c3a53e1c7aa6d585501bff73",
+      "design_area": "Management",
+      "batch": "24"
+    },
+    {
+      "guid": "c806c048-26b7-4ddf-b4c2-b4f0c476925d",
+      "control_id": "ALZ-c806c048-26b7-4ddf-b4c2-b4f0c476925d",
+      "upstream_id": "F01.06",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "a30b2784163b04173f734fd1e658a3d420b0b8115af36add7bc80a734a4674b8",
+      "design_area": "Management",
+      "batch": "24"
+    },
+    {
+      "guid": "90483845-c986-4cb2-a131-56a12476e49f",
+      "control_id": "ALZ-90483845-c986-4cb2-a131-56a12476e49f",
+      "upstream_id": "F01.07",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "e8ac3927de7d9694749d716e8787e20910a950ad7572c1df446addd3215db477",
+      "design_area": "Management",
+      "batch": "24"
+    },
+    {
+      "guid": "541acdce-9793-477b-adb3-751ab2ab13ad",
+      "control_id": "ALZ-541acdce-9793-477b-adb3-751ab2ab13ad",
+      "upstream_id": "F01.08",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "99789596a73baa4be2f566ef161e5ca0af6f19d6eb913b8d0ec6714c314989cb",
+      "design_area": "Management",
+      "batch": "24"
+    },
+    {
+      "guid": "a6e55d7d-8a2a-4db1-87d6-326af625ca44",
+      "control_id": "ALZ-a6e55d7d-8a2a-4db1-87d6-326af625ca44",
+      "upstream_id": "F01.09",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "c59e5b3d43d4a0a7400876af8524c693c04aaba74b38b079d351f4c9113a751f",
+      "design_area": "Management",
+      "batch": "24"
+    },
+    {
+      "guid": "e5695f22-23ac-4e8c-a123-08ca5017f154",
+      "control_id": "ALZ-e5695f22-23ac-4e8c-a123-08ca5017f154",
+      "upstream_id": "F01.10",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "474d879eac7ab7c68eb4e4e5ed07f58dcfd73e346eef98ed44c1360403a29830",
+      "design_area": "Management",
+      "batch": "25"
+    },
+    {
+      "guid": "d5f345bf-97ab-41a7-819c-6104baa7d48c",
+      "control_id": "ALZ-d5f345bf-97ab-41a7-819c-6104baa7d48c",
+      "upstream_id": "F01.11",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "6629706bc2f20dc1100b42757d7d9b890ce946f7a588a8627cf0ab776c3d2739",
+      "design_area": "Management",
+      "batch": "25"
+    },
+    {
+      "guid": "e3ab3693-829e-47e3-8618-3687a0477a20",
+      "control_id": "ALZ-e3ab3693-829e-47e3-8618-3687a0477a20",
+      "upstream_id": "F01.12",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "72be9a0a6fb07889f75a5978b7b185842ceed8b376d5f520fcdb35ba8a7f8e87",
+      "design_area": "Management",
+      "batch": "25"
+    },
+    {
+      "guid": "6944008b-e7d7-4e48-9327-6d8bdc055bcf",
+      "control_id": "ALZ-6944008b-e7d7-4e48-9327-6d8bdc055bcf",
+      "upstream_id": "F01.13",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "c714f57dcc1daa5401721f7d2b8330ec82cc6a92b689245eb1c9144febf46ad7",
+      "design_area": "Management",
+      "batch": "25"
+    },
+    {
+      "guid": "619e8a13-f988-4795-85d6-26886d70ba6c",
+      "control_id": "ALZ-619e8a13-f988-4795-85d6-26886d70ba6c",
+      "upstream_id": "F01.14",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "d6df86ff55d301efe47c1f0c6db2f5d362a4bc59d1c1bc7edd50768cf9422b91",
+      "design_area": "Management",
+      "batch": "25"
+    },
+    {
+      "guid": "97be9951-9048-4384-9c98-6cb2913156a1",
+      "control_id": "ALZ-97be9951-9048-4384-9c98-6cb2913156a1",
+      "upstream_id": "F01.15",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "a78d76bd73740a11052eac849d5cfd3f60fdac67d1c8ef0fac51c1c805d2e97b",
+      "design_area": "Management",
+      "batch": "25"
+    },
+    {
+      "guid": "859c3900-4514-41eb-b010-475d695abd74",
+      "control_id": "ALZ-859c3900-4514-41eb-b010-475d695abd74",
+      "upstream_id": "F01.16",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "319e56c4d2291508f3de94b4f31f820219d305a87a890b4660c0139f453c6c6d",
+      "design_area": "Management",
+      "batch": "25"
+    },
+    {
+      "guid": "aa45be6a-8f2d-4896-b0e3-775e6e94e610",
+      "control_id": "ALZ-aa45be6a-8f2d-4896-b0e3-775e6e94e610",
+      "upstream_id": "F01.17",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "300d148b9bedb71b6c66d611e5719ab20d6b83946c3438f2e1828c3303b4d3f3",
+      "design_area": "Management",
+      "batch": "25"
+    },
+    {
+      "guid": "0d83fd81-952c-4d47-a6cb-3a930925ef2e",
+      "control_id": "ALZ-0d83fd81-952c-4d47-a6cb-3a930925ef2e",
+      "upstream_id": "F01.18",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "c3326e7c59f63b63d98bfb800de753ed0f044a943dcf2b01c8500bbc08b31814",
+      "design_area": "Management",
+      "batch": "25"
+    },
+    {
+      "guid": "7ea02e1c-7166-45a3-bdf5-098891367fcb",
+      "control_id": "ALZ-7ea02e1c-7166-45a3-bdf5-098891367fcb",
+      "upstream_id": "F02.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "1b83e8bdd57af10aa31d883c9faef4b290db149f0d5bc2ffeb091c268f153ff5",
+      "design_area": "Management",
+      "batch": "26"
+    },
+    {
+      "guid": "eba8cf22-45c6-4dc1-9b57-2cceb3b97ce5",
+      "control_id": "ALZ-eba8cf22-45c6-4dc1-9b57-2cceb3b97ce5",
+      "upstream_id": "F02.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "9a722bf31a6cf5056c5961792339f6ba0aa61c9bafb7d7f02936482844d7a31c",
+      "design_area": "Management",
+      "batch": "26"
+    },
+    {
+      "guid": "f541acdc-e979-4377-acdb-3751ab2ab13a",
+      "control_id": "ALZ-f541acdc-e979-4377-acdb-3751ab2ab13a",
+      "upstream_id": "F03.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "3f8f1d95064df69e9ce5c3a778051c9bd96190da2e3c2224ee2d87185eafd109",
+      "design_area": "Management",
+      "batch": "26"
+    },
+    {
+      "guid": "da6e55d7-d8a2-4adb-817d-6326af625ca4",
+      "control_id": "ALZ-da6e55d7-d8a2-4adb-817d-6326af625ca4",
+      "upstream_id": "F03.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "36896894c39ec459052b5217dc8ae85b7414b5c7ac23c5c9f5b9c7230f644a88",
+      "design_area": "Management",
+      "batch": "26"
+    },
+    {
+      "guid": "b2ab13ad-a6e5-45d7-b8a2-adb117d6326a",
+      "control_id": "ALZ-b2ab13ad-a6e5-45d7-b8a2-adb117d6326a",
+      "upstream_id": "F04.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "e419068538b7e06f12c11254146554e9f66c8bd0cc3dc8af1fcee23086a9f705",
+      "design_area": "Management",
+      "batch": "26"
+    },
+    {
+      "guid": "f625ca44-e569-45f2-823a-ce8cb12308ca",
+      "control_id": "ALZ-f625ca44-e569-45f2-823a-ce8cb12308ca",
+      "upstream_id": "F04.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "c4458158681c7e1fe7444be4930bc0fd4b6b6662764b4d495e8499462950c12e",
+      "design_area": "Management",
+      "batch": "26"
+    },
+    {
+      "guid": "89cc5e11-aa4d-4c3b-893d-feb99215266a",
+      "control_id": "ALZ-89cc5e11-aa4d-4c3b-893d-feb99215266a",
+      "upstream_id": "F06.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "030586956bceda818176e44f8f33f2892113188ce7a157545ad9f576c8d11fec",
+      "design_area": "Management",
+      "batch": "26"
+    },
+    {
+      "guid": "7f408960-c626-44cb-a018-347c8d790cdf",
+      "control_id": "ALZ-7f408960-c626-44cb-a018-347c8d790cdf",
+      "upstream_id": "F06.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "4d44eb8d4cafb9e27f8531c3046ce4c8488cb99ba93e8fe9e29935db0f237bd4",
+      "design_area": "Management",
+      "batch": "26"
+    },
+    {
+      "guid": "5c986cb2-9131-456a-8247-6e49f541acdc",
+      "control_id": "ALZ-5c986cb2-9131-456a-8247-6e49f541acdc",
+      "upstream_id": "E01.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "5d47b7ef3159dede6878567359814810bf864a4f1091f0c94e03784ef42d57bb",
+      "design_area": "Governance",
+      "batch": "27"
+    },
+    {
+      "guid": "d8a2adb1-17d6-4326-af62-5ca44e5695f2",
+      "control_id": "ALZ-d8a2adb1-17d6-4326-af62-5ca44e5695f2",
+      "upstream_id": "E01.03",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "d7f7b1e0f6c3f878a79365abde9cef4242ac7f6d380e97a3558ebe1f3c249af0",
+      "design_area": "Governance",
+      "batch": "27"
+    },
+    {
+      "guid": "223ace8c-b123-408c-a501-7f154e3ab369",
+      "control_id": "ALZ-223ace8c-b123-408c-a501-7f154e3ab369",
+      "upstream_id": "E01.04",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "afce6eb7321299b383ae8f5dd66601f363ad0250bfebc577d35f47b8ea930703",
+      "design_area": "Governance",
+      "batch": "27"
+    },
+    {
+      "guid": "3829e7e3-1618-4368-9a04-77a209945bda",
+      "control_id": "ALZ-3829e7e3-1618-4368-9a04-77a209945bda",
+      "upstream_id": "E01.05",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "38644c193f092e57335a7c4c1d0e7cde6cd5d8882799a5a39c6f6ade20ff3848",
+      "design_area": "Governance",
+      "batch": "27"
+    },
+    {
+      "guid": "43334f24-9116-4341-a2ba-527526944008",
+      "control_id": "ALZ-43334f24-9116-4341-a2ba-527526944008",
+      "upstream_id": "E01.06",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "5e61ca9ff4acb5902a0d1d036357c42b52424d9ba9f43aa4180d5642e1cbc113",
+      "design_area": "Governance",
+      "batch": "27"
+    },
+    {
+      "guid": "be7d7e48-4327-46d8-adc0-55bcf619e8a1",
+      "control_id": "ALZ-be7d7e48-4327-46d8-adc0-55bcf619e8a1",
+      "upstream_id": "E01.07",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "fb70469e0ca52a1b0939abb26f18d47e0295363165e26614bf4a91b3fe778fb0",
+      "design_area": "Governance",
+      "batch": "27"
+    },
+    {
+      "guid": "3f988795-25d6-4268-a6d7-0ba6c97be995",
+      "control_id": "ALZ-3f988795-25d6-4268-a6d7-0ba6c97be995",
+      "upstream_id": "E01.08",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "24a2c781dad197febe71f51dc1fad56c118704b0e01bb22b824a8f3feb017628",
+      "design_area": "Governance",
+      "batch": "27"
+    },
+    {
+      "guid": "19048384-5c98-46cb-8913-156a12476e49",
+      "control_id": "ALZ-19048384-5c98-46cb-8913-156a12476e49",
+      "upstream_id": "E01.09",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "26e166fbce8390934f5b5b722bde62e3b1be25bd42dd37ac1f64e843bf188d33",
+      "design_area": "Governance",
+      "batch": "27"
+    },
+    {
+      "guid": "29fd366b-a180-452b-9bd7-954b7700c667",
+      "control_id": "ALZ-29fd366b-a180-452b-9bd7-954b7700c667",
+      "upstream_id": "E02.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "2a6e004265229c5f733713687804bba47a3454690dc3f92387d8786edc41a6b7",
+      "design_area": "Governance",
+      "batch": "28"
+    },
+    {
+      "guid": "5a917e1f-348e-4f25-9c27-d42e8bbac757",
+      "control_id": "ALZ-5a917e1f-348e-4f25-9c27-d42e8bbac757",
+      "upstream_id": "E03.01",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "63bd36362b5e8312997a03ef5b9c852d702e8983acf9a9114b692202e96a4e63",
+      "design_area": "Governance",
+      "batch": "28"
+    },
+    {
+      "guid": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+      "control_id": "ALZ-78b22132-b41c-460b-a4d3-df8f73a67dc2",
+      "upstream_id": "E03.02",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "c9d4a52d0a4afe601a404db499dc09480bb66c2c8e3463c77226583093089d94",
+      "design_area": "Governance",
+      "batch": "28"
+    },
+    {
+      "guid": "caeea0e9-1024-41df-a52e-d99c3f22a6f4",
+      "control_id": "ALZ-caeea0e9-1024-41df-a52e-d99c3f22a6f4",
+      "upstream_id": "E03.03",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "e71c16577146797c136be90500407a1cc2789ee557191c5b2b8839a7aa6156af",
+      "design_area": "Governance",
+      "batch": "28"
+    },
+    {
+      "guid": "9b461617-db7b-4399-8ac6-d4eb7153893a",
+      "control_id": "ALZ-9b461617-db7b-4399-8ac6-d4eb7153893a",
+      "upstream_id": "E03.04",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "e9c4aececdf7a2152dd20331516c683eb2e889f40b806fa1a430ba657de43495",
+      "design_area": "Governance",
+      "batch": "28"
+    },
+    {
+      "guid": "bfaf7b7a-9e6c-4840-a2bd-2c524326bdf6",
+      "control_id": "ALZ-bfaf7b7a-9e6c-4840-a2bd-2c524326bdf6",
+      "upstream_id": "E03.05",
+      "baseline_disposition": "assisted",
+      "baseline_control_sha256": "fd46f722d23c5c652e4adc608625d7055da4d10314ed8dc2b2a1819e4aa844ad",
+      "design_area": "Governance",
+      "batch": "28"
+    },
+    {
+      "guid": "3105633e-b168-4ce0-a016-5f10e7cdea5a",
+      "control_id": "ALZ-3105633e-b168-4ce0-a016-5f10e7cdea5a",
+      "upstream_id": "E03.06",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "f4f1a875bcafbb244aa6d836653c938a9977fb6cd67cc83b888bfc5479ea37e6",
+      "design_area": "Governance",
+      "batch": "28"
+    },
+    {
+      "guid": "77cf1acd-16b4-4092-8d30-6ec9579854ce",
+      "control_id": "ALZ-77cf1acd-16b4-4092-8d30-6ec9579854ce",
+      "upstream_id": "E03.07",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "22705f38618b0e9d74c094a0ca82911530ba6dc0eb5292363fb673858d12b799",
+      "design_area": "Governance",
+      "batch": "28"
+    },
+    {
+      "guid": "e85f4226-bf06-4e35-8a8b-7aee4d2d633a",
+      "control_id": "ALZ-e85f4226-bf06-4e35-8a8b-7aee4d2d633a",
+      "upstream_id": "H01.01",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "f662122557079b940873d9ed8dafc1fd071eed3f79bb7773a5d6f4f17fe4e9c9",
+      "design_area": "Platform automation and DevOps",
+      "batch": "29"
+    },
+    {
+      "guid": "634146bf-7085-4419-a7b5-f96d2726f6da",
+      "control_id": "ALZ-634146bf-7085-4419-a7b5-f96d2726f6da",
+      "upstream_id": "H01.02",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "a1d905b1cf24d12449c5889ff8f4f8a38c5b58a5185879d930c79d451b944b3c",
+      "design_area": "Platform automation and DevOps",
+      "batch": "29"
+    },
+    {
+      "guid": "a9e65070-c59e-4112-8bf6-c11364d4a2a5",
+      "control_id": "ALZ-a9e65070-c59e-4112-8bf6-c11364d4a2a5",
+      "upstream_id": "H01.03",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "0756d244a3f685b8a66352f837a22a025a5c8e427e02dcebe3f3216d5520809b",
+      "design_area": "Platform automation and DevOps",
+      "batch": "29"
+    },
+    {
+      "guid": "165eb5e9-b434-448a-9e24-178632186212",
+      "control_id": "ALZ-165eb5e9-b434-448a-9e24-178632186212",
+      "upstream_id": "H01.04",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "a8f86186df4ec47ae625994c41c82489da4fd69f47b629d3929bb720eccdf6cb",
+      "design_area": "Platform automation and DevOps",
+      "batch": "29"
+    },
+    {
+      "guid": "0cadb8c7-8fa5-4fbf-8f39-d1fadb3b0460",
+      "control_id": "ALZ-0cadb8c7-8fa5-4fbf-8f39-d1fadb3b0460",
+      "upstream_id": "H01.05",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "2aa0cf833516983f79a276fb70748e8ba01ba3f47c5f1a033645761173ea47fe",
+      "design_area": "Platform automation and DevOps",
+      "batch": "29"
+    },
+    {
+      "guid": "108d5099-a11d-4445-bd8b-e12a5e95412e",
+      "control_id": "ALZ-108d5099-a11d-4445-bd8b-e12a5e95412e",
+      "upstream_id": "H01.06",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "fd7d9ebbc0443748bfca9473ca61c12c918ec18b31b21d875bfb37e026dbb095",
+      "design_area": "Platform automation and DevOps",
+      "batch": "29"
+    },
+    {
+      "guid": "a52e0c98-76b9-4a09-a1c9-6b2babf22ac4",
+      "control_id": "ALZ-a52e0c98-76b9-4a09-a1c9-6b2babf22ac4",
+      "upstream_id": "H01.07",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "d0a0e38105eaf1d486d24ad50ffb6c749e1ac2dacd60a179365b60372855d1a3",
+      "design_area": "Platform automation and DevOps",
+      "batch": "29"
+    },
+    {
+      "guid": "cfe363b5-f579-4284-bc56-a42153e4c10b",
+      "control_id": "ALZ-cfe363b5-f579-4284-bc56-a42153e4c10b",
+      "upstream_id": "H02.01",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "ed1272f7cd3e90d5c290b7ce87b18a463bf5980effe914c1d61f3a08889ba189",
+      "design_area": "Platform automation and DevOps",
+      "batch": "30"
+    },
+    {
+      "guid": "c7245dd4-af8a-403a-8bb7-890c1a7cfa9d",
+      "control_id": "ALZ-c7245dd4-af8a-403a-8bb7-890c1a7cfa9d",
+      "upstream_id": "H02.02",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "43ca441adf7d9ee2542226beec8a5cb8ddb1757059d7b84e6f3828f3a17acbc4",
+      "design_area": "Platform automation and DevOps",
+      "batch": "30"
+    },
+    {
+      "guid": "12aeea20-9165-4b3e-bdf2-6795fcd3cdbe",
+      "control_id": "ALZ-12aeea20-9165-4b3e-bdf2-6795fcd3cdbe",
+      "upstream_id": "H02.03",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "1f2f804e955a0ebc8dcdfa30aac16cc444ebf00ff5bce7db89a3272b66abb837",
+      "design_area": "Platform automation and DevOps",
+      "batch": "30"
+    },
+    {
+      "guid": "2676ae46-65ca-444e-8695-fdddeace4cb1",
+      "control_id": "ALZ-2676ae46-65ca-444e-8695-fdddeace4cb1",
+      "upstream_id": "H02.04",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "8a15d3e700f0902c19a5f5aa92cd90c09b4b91cce62d65a0727c2796e0f8d92c",
+      "design_area": "Platform automation and DevOps",
+      "batch": "30"
+    },
+    {
+      "guid": "2cdc9d99-dbcc-4ad4-97f5-e7d358bdfa73",
+      "control_id": "ALZ-2cdc9d99-dbcc-4ad4-97f5-e7d358bdfa73",
+      "upstream_id": "H03.01",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "44f313b4186eac14268b7c80a1652d48d202fcd5d9bee0bbdfeecdcab053b8f1",
+      "design_area": "Platform automation and DevOps",
+      "batch": "30"
+    },
+    {
+      "guid": "cc87a3bc-c572-4ad2-92ed-8cabab66160f",
+      "control_id": "ALZ-cc87a3bc-c572-4ad2-92ed-8cabab66160f",
+      "upstream_id": "H04.01",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "a1b9027eb723e936460ea9957a5d0742d4401c3a2f840dfed655b8462500d105",
+      "design_area": "Platform automation and DevOps",
+      "batch": "30"
+    },
+    {
+      "guid": "047c91e2-6bb4-4a42-a0ef-ab06ad0062c9",
+      "control_id": "ALZ-047c91e2-6bb4-4a42-a0ef-ab06ad0062c9",
+      "upstream_id": "H05.01",
+      "baseline_disposition": "manual",
+      "baseline_control_sha256": "5e3d808424df7f03c2ec7d75f155968494b88a845c82ea9023ba9b4b70d8b529",
+      "design_area": "Platform automation and DevOps",
+      "batch": "30"
+    }
+  ]
+}

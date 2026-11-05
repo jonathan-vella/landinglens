@@ -68,6 +68,8 @@ def control_digest(control: dict[str, Any]) -> str:
                 "rationale",
                 "flags",
             )
+            + (("review_resource_types",) if "review_resource_types" in control else ())
+            + (("review_fact_paths",) if "review_fact_paths" in control else ())
         }
     )
 
@@ -315,6 +317,32 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
             require(control, "flags", list)
             require(control, "references", list)
             require(control, "evidence_requirements", list)
+            if "review_resource_types" in control:
+                kinds = require(control, "review_resource_types", list)
+                if (
+                    not kinds
+                    or len(kinds) > 10
+                    or any(not isinstance(kind, str) or not kind.strip() for kind in kinds)
+                ):
+                    raise InputError("Review resource preparation requires 1-10 explicit types")
+            if "review_fact_paths" in control:
+                paths = require(control, "review_fact_paths", list)
+                if (
+                    not paths
+                    or len(paths) > 4
+                    or any(
+                        not isinstance(path, str)
+                        or path
+                        not in {
+                            "enableRbacAuthorization",
+                            "publicNetworkAccess",
+                            "networkAcls.defaultAction",
+                            "minimumTlsVersion",
+                        }
+                        for path in paths
+                    )
+                ):
+                    raise InputError("Review fact preparation requires reviewed scalar paths")
             if control["automation"] == "automated":
                 rule = require(control, "rule", dict)
                 for field in ("resource_type", "property"):
@@ -324,6 +352,14 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                     require(rule, "expected", bool)
                     if "applicable_skus" in rule:
                         raise InputError("Boolean rules cannot contain SKU applicability")
+                elif operation == "vault-deletion-protection" and data["schema_version"] == "1.1":
+                    if (
+                        rule["resource_type"] != "Microsoft.KeyVault/vaults"
+                        or rule["property"] != "enableSoftDelete"
+                        or rule.get("expected") is not True
+                        or "applicable_skus" in rule
+                    ):
+                        raise InputError("Invalid reviewed vault deletion-protection conjunction")
                 elif operation == "enum-equals" and data["schema_version"] == "1.1":
                     if require(rule, "expected", str) not in {"Alert", "Deny", "Off"}:
                         raise InputError("Unsupported firewall mode enum")

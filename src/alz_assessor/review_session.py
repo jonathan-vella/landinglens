@@ -16,7 +16,7 @@ from .contracts import document, now, parse_document, require, scope_id, timesta
 from .engine import assess
 from .reports import render
 from .review_page import review_page
-from .reviews import prepare_reviews, validate_reviews
+from .reviews import prepare_reviews, review_context, validate_reviews
 from .terraform import InputError
 
 MAX_REQUEST = 32_000
@@ -75,6 +75,9 @@ class ReviewSession:
             {
                 "control_id": control["control_id"],
                 "label": control["upstream_id"] + ": " + control["recommendation"],
+                "evidence_requirements": control["evidence_requirements"],
+                "limitations": control["rationale"],
+                "available_evidence": review_context(control, self.evidence),
                 "kinds": ["exceptions"] if control.get("rule") else ["exceptions", "manual"],
                 "results": sorted(
                     {

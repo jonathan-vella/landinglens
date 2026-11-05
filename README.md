@@ -2,11 +2,21 @@
 
 Standalone, offline-first, advisory Azure Landing Zones CLI. All **255** reviewed
 checklist items remain visible across eight CAF design areas. The
-[accepted automation matrix](docs/automation-matrix.md) implements four bounded
+[accepted automation matrix](docs/automation-matrix.md) implements six bounded
 configuration checks: storage secure transfer, firewall-policy DNS proxy,
 local threat-intelligence Deny mode and local IDPS Deny mode on explicit capable
-SKUs. The other 251 items require human evidence; they are not silently treated as
+SKUs, explicit vault soft-delete plus purge protection, and container soft delete
+on the default blob-service child. The other 249 items require human evidence;
+they are not silently treated as
 passes. **This is not Microsoft certification or estate-wide compliance.**
+
+The [fixed 251-item expansion](docs/planning/plan.md#recommendation-expansion-active)
+retains its starting GUIDs regardless of later classification. Batch 01 reviews
+eight recommendations; remaining batches are pending, not completed by being
+listed. Vault deletion protection is unresolved for raw Terraform/optional plan
+values because those values do not establish soft-delete state after import or
+update. Container retention requires explicit valid days in Terraform; omitted
+blocks/defaults are not inferred. No new live verification is claimed.
 
 Raw Terraform, Bicep/ARM, optional plan JSON and saved observed evidence share
 [versioned contracts](docs/contracts.md), one evaluator and JSON/Markdown/HTML
@@ -185,8 +195,8 @@ Supply the original `--manual`, `--exceptions`, `--catalog`, `--landing-zone`
 and `--max-age-hours` selections when applicable. Export evaluates and binds
 that invocation; it does not reconstruct missing normalized facts from a
 rendered report or prove the files existed at the selected historical time.
-The installed package includes current `2026-11-04.2` and frozen
-`2026-11-04.1` catalog meaning. Altered/custom or unavailable historical
+The installed package includes current `2026-11-05.1` and frozen
+`2026-11-04.1` and `2026-11-04.2` catalog meaning. Altered/custom or unavailable historical
 artifacts fail explicitly rather than substituting today's rules.
 
 Replay is a new bounded four-file local directory, not an archive, service or

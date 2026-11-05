@@ -1,0 +1,141 @@
+{
+  "batch": "01",
+  "review_state": "owner-delegated-source-backed-matrix",
+  "prerequisites": [],
+  "issue": "https://github.com/jonathan-vella/landinglens/issues/46",
+  "acceptance_evidence": "Runtime and delivery evidence belong in the fixed ledger; matrix acceptance alone does not demonstrate execution.",
+  "recommendations": [
+    {
+      "guid": "5017f154-e3ab-4369-9829-e7e316183687",
+      "upstream_id": "G02.01",
+      "classification": "assisted",
+      "sources": ["vault-overview", "vault-security"],
+      "review_resource_types": ["Microsoft.KeyVault/vaults"],
+      "evidence_requirements": [
+        "Map each in-scope application's credential use to a vault-backed reference and its managed identity; provide redacted configuration, never secret values.",
+        "Identify any credentials remaining in source, environment configuration or deployment parameters and document the migration or explicit exception.",
+        "Reviewer decision: does the redacted application-to-vault map cover every relevant credential in this scope?"
+      ],
+      "limitations": "Vault existence does not prove applications store or retrieve their credentials there. Application intent and redacted owner-provided integration evidence are required; no secret enumeration, repository credential scan or data-plane access is performed.",
+      "flags": ["human-application-coverage-required", "no-secret-values"]
+    },
+    {
+      "guid": "a0477a20-9945-4bda-9333-4f2491163418",
+      "upstream_id": "G02.02",
+      "classification": "manual",
+      "sources": ["vault-throttling", "vault-security"],
+      "review_resource_types": ["Microsoft.KeyVault/vaults"],
+      "evidence_requirements": [
+        "Provide the application/environment/region inventory and map each security or availability domain to its vault.",
+        "Identify intentionally shared vaults, their access boundaries and expected transaction demand; include the reviewed sharing justification.",
+        "Reviewer decision: does the vault partitioning respect each declared application, environment, regional and access boundary without an unreviewed shared blast radius?"
+      ],
+      "limitations": "Resource names, vault counts and arbitrary request-rate thresholds do not establish application boundaries or adequate scaling. Architecture ownership and workload demand require human judgment; no workload traffic or secret contents are collected.",
+      "flags": ["human-boundary-and-capacity-judgment"]
+    },
+    {
+      "guid": "2ba52752-6944-4008-ae7d-7e4843276d8b",
+      "upstream_id": "G02.03",
+      "classification": "fully-automated-explicit-configuration",
+      "sources": ["vault-security", "vault-arm", "vault-rest", "terraform-vault", "terraform-vault-implementation"],
+      "method": "explicit-vault-protection-conjunction",
+      "rule": {
+        "operation": "vault-deletion-protection",
+        "resource_type": "Microsoft.KeyVault/vaults",
+        "property": "enableSoftDelete",
+        "expected": true,
+        "api_versions": ["2024-11-01"],
+        "coverage": "Both explicit vault enableSoftDelete and enablePurgeProtection booleans are true. This proves configuration, not successful recovery or operational effectiveness."
+      },
+      "evidence_requirements": [
+        "Explicit enableSoftDelete and enablePurgeProtection booleans on the same canonical Microsoft.KeyVault/vaults instance using reviewed API 2024-11-01.",
+        "ARM and existing no-restore Bicep, saved normalized observed evidence and injected scoped management-plane GET are supported.",
+        "Raw Terraform and optional plan project the explicit purge flag but cannot establish soft-delete state for an imported or updated vault: the result remains unknown even when purge protection is true."
+      ],
+      "limitations": "Only explicit booleans on one vault are assessed; omitted/null/symbolic/wrong-type fields stay unknown. Both known true pass; either known false with the other known fails. Missing, inaccessible and stale evidence cannot pass. No vault targets are N/A only with complete relevant inventory; otherwise unknown. AzureRM 4.50.0 sets soft delete on creation, but raw configuration/plan values alone do not prove creation versus import/update, so no provider default or creation-only invariant is inferred.",
+      "flags": ["terraform-soft-delete-not-established", "configuration-not-recovery-test"],
+      "verification": ["all-four-boolean-combinations", "missing-null-wrong-type-symbolic", "stale-denied-error", "unsupported-api-provider", "complete-empty-vs-partial", "exact-vault-identity-comparison", "historical-replay"]
+    },
+    {
+      "guid": "dc055bcf-619e-48a1-9f98-879525d62688",
+      "upstream_id": "G02.04",
+      "classification": "assisted",
+      "sources": ["vault-security", "vault-arm", "terraform-vault", "terraform-vault-implementation"],
+      "review_resource_types": ["Microsoft.KeyVault/vaults"],
+      "review_fact_paths": ["enableRbacAuthorization"],
+      "evidence_requirements": [
+        "Provide redacted vault RBAC scope/role assignments, privileged role eligibility and activation requirements, including approval and MFA settings.",
+        "Map operators and applications to their required actions; identify excessive standing privileges, legacy access policies and documented exceptions.",
+        "Reviewer decision: are privileged administrative rights least-privileged and eligible/JIT rather than unreviewed standing access? Use owner-supplied evidence; do not request new Graph/Entra access."
+      ],
+      "limitations": "An RBAC-enabled flag or role assignment alone does not demonstrate least privilege, PIM eligibility or activation controls. New Entra/PIM/Graph access is outside authorization; absent evidence is not a failing or passing least-privilege conclusion.",
+      "flags": ["owner-supplied-pim-evidence-required", "no-new-entra-access"]
+    },
+    {
+      "guid": "cdb3751a-b2ab-413a-ba6e-55d7d8a2adb1",
+      "upstream_id": "G02.07",
+      "classification": "assisted",
+      "sources": ["vault-security", "vault-arm", "terraform-vault"],
+      "review_resource_types": ["Microsoft.KeyVault/vaults"],
+      "review_fact_paths": ["publicNetworkAccess", "networkAcls.defaultAction"],
+      "evidence_requirements": [
+        "Map each vault to its chosen private-endpoint or permitted service-endpoint/firewall access pattern and the workloads allowed to reach it.",
+        "For private endpoints, supply redacted approval, vault/subnet identity, private DNS resolution and client-route evidence; for firewall alternatives, supply default action, allowed subnet/IP rules and reviewed trusted-service bypasses.",
+        "Reviewer decision: do the exact relationships and intended access path restrict the vault appropriately, including any public-access or trusted-service exception?"
+      ],
+      "limitations": "A private endpoint, disabled-public flag or firewall rule in isolation does not prove approval, DNS, client reachability or the intended alternative access pattern. No network scans, client probes or remediation are performed.",
+      "flags": ["human-network-path-and-alternative-review"]
+    },
+    {
+      "guid": "17d6326a-f625-4ca4-9e56-95f2223ace8c",
+      "upstream_id": "G02.08",
+      "classification": "assisted",
+      "sources": ["vault-monitor", "vault-security"],
+      "review_resource_types": ["Microsoft.KeyVault/vaults", "Microsoft.OperationalInsights/workspaces"],
+      "evidence_requirements": [
+        "Map each in-scope vault's enabled AuditEvent/allLogs diagnostic category to its exact destination Log Analytics workspace identity.",
+        "Identify which workspace the platform owner has designated as central and provide redacted retained-log/ingestion evidence from the owner.",
+        "Reviewer decision: do all relevant vaults send audit usage to the approved central workspace, rather than only metrics or an unrelated destination?"
+      ],
+      "limitations": "Metrics are collected automatically but resource audit logs require routed diagnostic settings. Workspace existence or a diagnostic-setting name cannot prove audit-category selection, the approved central destination or ingestion. No Log Analytics/data-plane queries are executed.",
+      "flags": ["human-central-workspace-and-ingestion-review"]
+    },
+    {
+      "guid": "159aac9f-863f-4f48-82cf-00c28fa97a0e",
+      "upstream_id": "G04.02",
+      "classification": "fully-automated-explicit-configuration",
+      "sources": ["storage-data-protection", "container-guidance", "blob-arm", "blob-rest", "terraform-storage", "terraform-storage-implementation"],
+      "method": "explicit-blob-service-container-retention",
+      "rule": {
+        "resource_type": "Microsoft.Storage/storageAccounts/blobServices",
+        "property": "containerDeleteRetentionPolicy.enabled",
+        "expected": true,
+        "api_versions": ["2023-05-01"],
+        "coverage": "Explicit container soft-delete enablement on the exact default blob-service child. Not blob soft delete, account deletion protection, recovery success or an owner-specific retention duration."
+      },
+      "evidence_requirements": [
+        "Actual default blob-service child containerDeleteRetentionPolicy.enabled boolean using reviewed API 2023-05-01; a storage-account secure-transfer flag or blob deleteRetentionPolicy is not a substitute.",
+        "ARM and existing no-restore Bicep support explicit child resources; raw Terraform and optional plan support an explicit single blob_properties.container_delete_retention_policy block with an explicitly valid days value from 1 through 365 on AzureRM 4.50.0.",
+        "Saved normalized observed evidence and injected scoped management-plane GET of the default child are supported; no storage data-plane endpoint is contacted."
+      ],
+      "limitations": "A known explicit true passes and false fails. Missing child configuration, unresolved/omitted/invalid retention days, unsupported versions, denied or stale evidence stay unknown. Terraform block omission is not inferred as false and provider-default days are not inferred. Every known storage account missing a child receives an unresolved child, not an absence-based N/A. No blob targets are N/A only for complete relevant inventory with no storage accounts/children. FileStorage capability is not inferred from absence or failed reads. The current recommendation is enablement only: a seven-day preference or retention adequacy is not silently imposed.",
+      "flags": ["container-not-blob-soft-delete", "no-retention-default-inference"],
+      "verification": ["enabled-disabled", "blob-only-does-not-pass", "missing-child-does-not-become-na", "days-0-1-365-366-bool-string-null", "unknown-block-and-partial-inventory", "unsupported-api-provider", "stale-denied-error", "exact-child-identity-comparison", "historical-replay"]
+    },
+    {
+      "guid": "31e77d70-f001-455b-93aa-6d05eea10968",
+      "upstream_id": "G04.03",
+      "classification": "assisted",
+      "sources": ["storage-data-protection", "storage-tls", "storage-arm", "terraform-storage"],
+      "review_resource_types": ["Microsoft.Storage/storageAccounts"],
+      "review_fact_paths": ["minimumTlsVersion"],
+      "evidence_requirements": [
+        "Provide the relevant TLS policy definition/initiative, assignment scope, enforcement mode, effect, parameter values, exclusions and active exemptions for the exact storage-account population.",
+        "Compare explicit storage-account minimumTlsVersion values with that policy intent and original-time compliance results; identify inherited or inaccessible policy-definition gaps.",
+        "Reviewer decision: is the intended minimum TLS version actually enforced by the relevant effective policy configuration, not just configured on one account?"
+      ],
+      "limitations": "The checklist requests Azure Policy enforcement. A minimumTlsVersion flag alone is only local configuration and cannot pass this recommendation. Assignments without relevant definitions, effects, parameters and population coverage are insufficient; old compliance timestamps are not refreshed. No policy changes, scans or evaluations are triggered.",
+      "flags": ["policy-enforcement-not-local-tls-flag"]
+    }
+  ]
+}
