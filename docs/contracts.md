@@ -80,6 +80,29 @@ JSON/Markdown/HTML share the same counts, with no browser-side tier evaluator.
 
 ## Catalog and evidence contracts
 
+### Advisory CI formats
+
+`sarif` renders SARIF 2.1.0 from the same sanitised model as JSON/Markdown/HTML:
+stable control IDs/rules, one result per available target/mode, original outcomes,
+freshness, tier, independent exceptions and coverage. Unknown/manual/error remain
+review observations; technical failure remains failure. A successful software
+invocation is not a compliant estate. Findings keep CLI exit 0; invalid
+input/software failures keep exit 2. No scanner runs or GitHub upload occurs in
+normal assessment.
+
+Locations require explicit `--sarif-base` and an existing supplied evidence path
+that resolves to a regular file beneath that base. Remote/unsafe/traversal paths
+and unavailable files yield no annotation location. No line/column is invented
+because normalised evidence has no verified source offsets. Minimisation removes
+all locations and private IDs. Rule fingerprints are hashes, not anonymisation.
+
+`pr-summary` is a compact Markdown projection: control/visibility counts,
+per-mode assessed/completion/subset pass metrics, tiers and up to ten already
+severity-ordered failures/errors. It escapes untrusted Markdown/HTML and does not
+recalculate outcomes. The documented workflow uses a pinned optional SARIF upload
+action and explicit token permissions without configuring repository settings or
+gating on estate findings.
+
 ### Source-update candidates and known version index
 
 Source polling generates a separate candidate catalog, GUID classification and

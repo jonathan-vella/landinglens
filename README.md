@@ -209,7 +209,18 @@ time cannot prove that newly read source files existed then. Current collection
 time never makes old policy evaluations current. Missing bindings yield
 `not_comparable`, not drift.
 
-`--format json|markdown|html` applies to assess, compare and render. Every format
+`--format json|markdown|html|sarif|pr-summary` applies to assess, compare and render.
+SARIF 2.1.0 retains stable rules, independent modes/outcomes, tier/freshness and
+coverage. Azure-only evidence has no invented file location. Optional
+`--sarif-base EXISTING_DIRECTORY` includes only real supplied source files beneath
+that directory, without guessing line numbers. `--minimize` omits all locations.
+`pr-summary` reports completion separately from assessed-subset pass rate and
+lists up to ten priority failures. Both remain advisory exit 0.
+The [example PR workflow](docs/examples/advisory-pr-workflow.yml) writes a job
+summary and offers an explicitly enabled, pinned SARIF uploader; repository code
+scanning/fork-token permissions must already support it. No setting is changed.
+
+Every format
 shows all dispositions, independent planned/observed results, evidence reasons,
 source/catalog versions, subset metrics and inventory completeness. Findings
 return **0**, including failures, unknowns and manual work. Invalid invocation or

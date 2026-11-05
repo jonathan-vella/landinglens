@@ -1,5 +1,10 @@
 # Accepted release automation matrix
 
+Advisory SARIF and PR-summary outputs project the same outcomes/tiers/coverage;
+they add no predicates. Unknown/manual Signals do not turn into passing scan
+results. Source-file locations require an explicit base and real contained
+paths; line numbers are never guessed. CI examples never gate on estate findings.
+
 Source-update candidates do not change this accepted matrix. The extended
 maintainer poll classifies only demonstrable HTTPS link/training edits as safe;
 ambiguous wording/meaning/severity/query/external-target changes require review.
