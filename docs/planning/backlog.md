@@ -25,22 +25,24 @@ and operational blockers are recorded per row.
 | [LL-32 / #54](https://github.com/jonathan-vella/landinglens/issues/54) | Plan-first guidance | Existing adapters; execute after LL-33 | FR-28 | Merged #75; issue closed |
 | [LL-33 / #60](https://github.com/jonathan-vella/landinglens/issues/60) | Allowlisted query Signals | LL-27, LL-28, LL-29, LL-31 | FR-29 | Merged #74; issue closed |
 | [LL-34 / #57](https://github.com/jonathan-vella/landinglens/issues/57) | Interviews/cohort priority | LL-28, LL-29, LL-32 | FR-30 | Merged #76; issue closed |
-| [LL-35 / #62](https://github.com/jonathan-vella/landinglens/issues/62) | Source-update PR pipeline | LL-27, LL-28, LL-29, LL-34 | FR-31 | Code merged #77; actual source/assets workflow passed; operational PR/auto-merge remains open in [#78](https://github.com/jonathan-vella/landinglens/issues/78) |
+| [LL-35 / #62](https://github.com/jonathan-vella/landinglens/issues/62) | Source-update PR pipeline | LL-27, LL-28, LL-29, LL-34 | FR-31 | Merged #77/#85/#87; assets and actual bot PR/check/merge demonstrated; receipt in [#78](https://github.com/jonathan-vella/landinglens/issues/78) |
 | [LL-36 / #61](https://github.com/jonathan-vella/landinglens/issues/61) | Local triage workspace | LL-28, LL-29, LL-30, LL-31, LL-33, LL-34, LL-38 | FR-32 | Merged #81; issue closed |
 | [LL-37 / #65](https://github.com/jonathan-vella/landinglens/issues/65) | SARIF/PR summaries | LL-28, LL-29; execute after LL-35 | FR-33 | Merged #79; issue closed |
 | [LL-38 / #64](https://github.com/jonathan-vella/landinglens/issues/64) | Summary/tracker exports | LL-28, LL-29, LL-37 | FR-34 | Merged #80; issue closed |
 | [LL-39 / #67](https://github.com/jonathan-vella/landinglens/issues/67) | Documentation restructure | LL-32, LL-35, LL-36, LL-37, LL-38 | FR-35 | Merged #82; issue closed |
-| [LL-40 / #66](https://github.com/jonathan-vella/landinglens/issues/66) | Reconcile delivery | LL-27-LL-39 merged or explicitly blocked | FR-36 | Merged #83; issue closed; operational gap remains open in #78 |
+| [LL-40 / #66](https://github.com/jonathan-vella/landinglens/issues/66) | Reconcile delivery | LL-27-LL-39 merged or explicitly blocked | FR-36 | Merged #83; issue closed; #78 operational proof now complete |
 
 All independent assessor-efficiency implementation and reconciliation are merged.
-**LL-35 operational validation is now actionable in #78** after the owner's
-explicit approval. Both settings are enabled, defaults remain read-only, and
-the source workflow's fixed `checks.yml` dispatch is being implemented.
-Tracking #53 remains open pending actual bot PR/check/merge evidence. No other
+**LL-35 operational validation passed in #78** after the owner's explicit
+approval. Both settings are enabled and defaults remain read-only. Source run
+`42047648713` created and merged bot #88 after exact-SHA dispatched run
+`42047963456` and other checks passed. The planning receipt retains the first
+conservative unmerged run, public-source acquisition failure and successful repeat.
+Tracking #53 has no remaining mandatory operational blocker. No other
 settings or permissions are authorised. Keep candidate
 artifacts/generated PR body when workflow PR creation or safe auto-merge is denied.
-The tracking issue retains precise owner actions; no routine authorisation question
-is needed. No issue is closed solely because a blocker or disposition is written.
+The tracking issue retains the actual verification evidence. No issue is closed
+solely because a blocker or disposition is written.
 
 ## Active: fixed 251-recommendation expansion
 

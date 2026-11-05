@@ -91,11 +91,14 @@ permissions and `actions: write` to dispatch only existing `checks.yml` on its
 candidate branch. No PAT or stored bot secret is used. On 2026-11-05 the owner
 approved enabling workflow PR creation/approval and repository auto-merge; both
 settings are verified enabled and default workflow permissions remain read-only.
-Operational validation is tracked in #78. Artifacts remain the fallback when a
-create/dispatch/check gate fails. Only safe-only
+Operational validation passed with bot-created and bot-merged #88, recorded in
+#78. Artifacts remain the fallback when a create/dispatch/check gate fails. Only safe-only
 candidates with every supported platform check green and the exact checked head
-may request auto-merge. All other classes require human merge and reviewed
-promotion; source candidates never replace the installed catalog by polling.
+may request auto-merge. Needs-review candidates require human merge; all accepted
+promotion remains reviewed. Source candidates never replace the installed catalog
+by polling. Dispatched jobs are verified directly on the exact-SHA Actions run,
+because GitHub may omit that suite from the PR rollup. PR-associated checks are
+verified separately.
 
 The manual `validate_publication` dispatch uses an explicitly labelled authored
 link-only fixture to exercise a real bot PR, dispatched platform checks and the
