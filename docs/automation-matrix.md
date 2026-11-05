@@ -1,5 +1,11 @@
 # Accepted release automation matrix
 
+Terraform assessment now recommends separately supplied plan JSON, with raw
+source/snapshot analysis retained as the supported fallback. No predicate,
+version, unknown handling or source/identity/sensitivity requirement changes.
+The [ADR](planning/plan.md#adr-prefer-supplied-plan-json-freeze-interpreter-expansion)
+limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
+
 ## Evidence crosswalk foundation
 
 Crosswalk `2026-11-05.1` binds catalog `2026-11-05.3` without changing its

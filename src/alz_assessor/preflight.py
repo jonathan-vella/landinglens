@@ -114,6 +114,17 @@ def preflight(
         "readiness": readiness,
         "checks": checks,
         "warning": "Checked prerequisites only; not complete interpretation or Azure readiness.",
+        **(
+            {
+                "terraform_guidance": (
+                    "Prefer separately prepared Terraform plan JSON with --input terraform-plan. "
+                    "Raw source is a supported bounded fallback with explicit local snapshots. "
+                    "LandingLens never generates plans, contacts backends or downloads modules."
+                )
+            }
+            if mode in {"terraform", "terraform-plan"}
+            else {}
+        ),
     }
 
 
@@ -125,6 +136,7 @@ def render_preflight(result: dict[str, Any], format: str) -> str:
             [
                 "LandingLens offline preflight: " + result["readiness"],
                 result["warning"],
+                *([result["terraform_guidance"]] if "terraform_guidance" in result else []),
                 *(
                     f"{c['requirement']}: {c['status']} ({c['reason']})\n"
                     + c["guidance"]["next_action"]
