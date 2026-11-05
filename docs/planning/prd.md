@@ -16,11 +16,14 @@ The fixed ledger has 26 merged and 225 pending targets. Cohort 19 work for #52
 is preserved in a named Git stash, not accepted or included in this increment's
 planning PR. Its draft `.4` catalog is not the delivered baseline.
 
-Planning is merged in #68. FR-23 is implemented locally: the separate crosswalk
+Planning is merged in #68. FR-23 is merged in #69: the separate crosswalk
 represents all 255 GUIDs, with 51 mapped controls and 53 partial/related
 associations. Its 207-test local and exact installed suites passed with one
-Windows privilege skip; CI/merge acceptance remains pending. No tier,
-policy/scanner ingestion or query executor is delivered by that foundation.
+Windows privilege skip; eight platform checks and four exercised compiler
+artifacts passed. FR-24 is now implemented locally as explicit assessment 1.2
+opt-in. Its 219-test local and exact installed suites passed with one Windows
+privilege skip; CI/merge acceptance remains pending. Policy/scanner ingestion and
+query execution remain pending; neither foundation delivers them.
 
 ### Requirements and acceptance
 

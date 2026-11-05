@@ -16,8 +16,8 @@ All items below are open, not delivered by this planning update.
 
 | ID / issue | Work item | Prerequisites | FR | Delivery status |
 |---|---|---|---|---|
-| [LL-27 / #58](https://github.com/jonathan-vella/landinglens/issues/58) | Verified evidence crosswalk | Planning PR | FR-23 | Implemented; local/exact installed checks pass; CI/merge pending |
-| [LL-28 / #59](https://github.com/jonathan-vella/landinglens/issues/59) | Explicit evidence tiers | LL-27 | FR-24 | Pending |
+| [LL-27 / #58](https://github.com/jonathan-vella/landinglens/issues/58) | Verified evidence crosswalk | Planning PR | FR-23 | Merged #69; issue closed |
+| [LL-28 / #59](https://github.com/jonathan-vella/landinglens/issues/59) | Explicit evidence tiers | LL-27 | FR-24 | Implemented; local/exact installed checks pass; CI/merge pending |
 | [LL-29 / #56](https://github.com/jonathan-vella/landinglens/issues/56) | Severity/applicability | LL-27, LL-28 | FR-25 | Pending |
 | [LL-30 / #55](https://github.com/jonathan-vella/landinglens/issues/55) | Saved/scoped policy Signals | LL-27, LL-28, LL-29 | FR-26 | Pending |
 | [LL-31 / #63](https://github.com/jonathan-vella/landinglens/issues/63) | Saved scanner ingestion | LL-27, LL-28, LL-29, LL-30 | FR-27 | Pending |
@@ -31,7 +31,8 @@ All items below are open, not delivered by this planning update.
 | [LL-39 / #67](https://github.com/jonathan-vella/landinglens/issues/67) | Documentation restructure | LL-32, LL-35, LL-36, LL-37, LL-38 | FR-35 | Pending |
 | [LL-40 / #66](https://github.com/jonathan-vella/landinglens/issues/66) | Reconcile delivery | LL-27-LL-39 merged or explicitly blocked | FR-36 | Pending; blockers do not satisfy criteria |
 
-Planning merged in #68. Current dependency-ready item: **LL-27 / #58**. Follow the
+Planning merged in #68 and LL-27 in #69. Current dependency-ready item:
+**LL-28 / #59**. Follow the
 plan's explicit execution order; blocked GitHub publication does not prevent
 offline evidence/triage work. Do not change repository settings. Keep candidate
 artifacts/generated PR body when workflow PR creation or safe auto-merge is denied.

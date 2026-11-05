@@ -35,6 +35,7 @@ class ReviewSession:
         landing_zone: str = "platform",
         max_age_hours: float = 24,
         clock: Callable[[], str] = now,
+        evidence_tiers: bool = False,
     ) -> None:
         validate(evidence, "evidence")
         validate(catalog, "catalog")
@@ -46,6 +47,7 @@ class ReviewSession:
         self.evidence, self.catalog = copy.deepcopy(evidence), copy.deepcopy(catalog)
         self.directory = directory.resolve()
         self.landing_zone, self.max_age_hours, self.clock = landing_zone, max_age_hours, clock
+        self.evidence_tiers = evidence_tiers
         self.revision = 0
         self.reviews = {
             "manual": copy.deepcopy(
@@ -106,6 +108,7 @@ class ReviewSession:
             max_age_hours=self.max_age_hours,
             manual=reviews.get("manual"),
             exceptions=reviews.get("exceptions"),
+            evidence_tiers=self.evidence_tiers,
         )
 
     def _persist(
@@ -124,6 +127,7 @@ class ReviewSession:
                     "landing_zone": self.landing_zone,
                     "max_age_hours": self.max_age_hours,
                     "evaluated_at": report["generated_at"],
+                    **({"evidence_tiers": True} if self.evidence_tiers else {}),
                 },
                 **reviews,
             }.items():
@@ -158,6 +162,7 @@ class ReviewSession:
                 )
         return {
             "revision": self.revision,
+            **({"evidence_tiers": self.report["evidence_tiers"]} if self.evidence_tiers else {}),
             "controls": self.controls,
             "records": records,
             "scope": self.scope,

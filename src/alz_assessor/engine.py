@@ -11,6 +11,7 @@ from .contracts import control_digest, digest, document, now, timestamp, validat
 from .network_evidence import address_list, nat_collections
 from .sources import BLOB_SERVICE_TYPE, complete_blob_services, property_at, unknown
 from .terraform import InputError
+from .tiers import attach, prepared_signal
 
 
 def restricted_direct_sources(addresses: list[str]) -> bool:
@@ -120,9 +121,12 @@ def assess(
     max_age_hours: float = 24,
     manual: dict[str, Any] | None = None,
     exceptions: dict[str, Any] | None = None,
+    evidence_tiers: bool = False,
 ) -> dict[str, Any]:
     validate(bundle, "evidence")
     validate(catalog, "catalog")
+    if type(evidence_tiers) is not bool:
+        raise InputError("Evidence tier selection must be an explicit boolean")
     if max_age_hours <= 0 or not isfinite(max_age_hours) or max_age_hours > 876_000:
         raise InputError("Evidence freshness limit must be positive and finite")
     if landing_zone not in {"platform", "application"}:
@@ -169,6 +173,12 @@ def assess(
             )
             continue
         rule = control.get("rule")
+        review_signal = (
+            evidence_tiers
+            and not stale
+            and landing_zone in control["applicability"]
+            and prepared_signal(control, bundle)
+        )
         targets = [
             resource
             for resource in resources
@@ -329,6 +339,12 @@ def assess(
                 if reason == "manual_attestation"
                 else "insufficient-evidence",
             }
+            if evidence_tiers:
+                body["machine_evidence"] = (
+                    not stale
+                    and landing_zone in control["applicability"]
+                    and ((bool(rule) and outcome in {"pass", "fail"}) or review_signal)
+                )
             results.append(
                 {
                     "control_id": control["control_id"],
@@ -350,27 +366,26 @@ def assess(
                     "comparison": None,
                 }
             )
-    return validate(
-        document(
-            "assessment",
-            schema_version=catalog["schema_version"],
-            catalog_version=catalog["catalog_version"],
-            generated_at=instant.isoformat(),
-            results=results,
-            retired_controls=retired,
-            evidence=[bundle],
-            coverage={
-                **coverage(results, bundle["inventory_complete"]),
-                "retired_controls": len(retired),
-                "automated_controls": sum(
-                    c["automation"] == "automated" and c["lifecycle"] == "active"
-                    for c in catalog["controls"]
-                ),
-            },
-            source_versions={
-                "catalog": catalog["catalog_version"],
-                "contracts": catalog["schema_version"],
-            },
-            freshness_policy_hours=max_age_hours,
-        )
+    result = document(
+        "assessment",
+        schema_version=catalog["schema_version"],
+        catalog_version=catalog["catalog_version"],
+        generated_at=instant.isoformat(),
+        results=results,
+        retired_controls=retired,
+        evidence=[bundle],
+        coverage={
+            **coverage(results, bundle["inventory_complete"]),
+            "retired_controls": len(retired),
+            "automated_controls": sum(
+                c["automation"] == "automated" and c["lifecycle"] == "active"
+                for c in catalog["controls"]
+            ),
+        },
+        source_versions={
+            "catalog": catalog["catalog_version"],
+            "contracts": catalog["schema_version"],
+        },
+        freshness_policy_hours=max_age_hours,
     )
+    return validate(attach(result) if evidence_tiers else result)

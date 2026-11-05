@@ -181,6 +181,17 @@ def prepare_reviews(
             "valid_until": None,
             "outcome" if kind == "manual" else "disposition": None,
             "preparation": {
+                **(
+                    {
+                        "evidence_tier": next(
+                            item["tier"]
+                            for item in assessment["evidence_tiers"]["controls"]
+                            if item["control_id"] == control["control_id"]
+                        )
+                    }
+                    if assessment["schema_version"] == "1.2"
+                    else {}
+                ),
                 "available_evidence": [
                     review_context(control, bundle) for bundle in assessment["evidence"]
                 ],

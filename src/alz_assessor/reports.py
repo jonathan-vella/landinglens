@@ -110,6 +110,12 @@ def render(assessment: dict[str, Any], format: str = "json", minimize: bool = Fa
         f"{model['generated_at']}"
     )
     lines = [heading, "", json.dumps(model["coverage"], sort_keys=True), ""]
+    if "evidence_tiers" in model:
+        lines += [
+            "Evidence tiers: " + json.dumps(model["evidence_tiers"]["counts"], sort_keys=True),
+            "Verified includes failures; Signals are not passes. Counts are once per control.",
+            "",
+        ]
     for retired in model.get("retired_controls", []):
         lines += ["Retired/historical: " + json.dumps(retired, sort_keys=True), ""]
     for bundle in model["evidence"]:

@@ -115,6 +115,21 @@ Use a canonical GUID/control ID for duplicated display IDs. `--crosswalk FILE`
 and `--source CATALOG` select an explicit matching pair; mismatched catalogs fail.
 See the [crosswalk contract](docs/contracts.md#evidence-crosswalk-version-10).
 
+Add `--evidence-tiers` to `assess`, `review serve` or `replay export` for explicit
+assessment contract 1.2. **Verified** means sufficient current accepted-predicate
+evidence, including failures. **Signal** means usable machine evidence awaits
+human confirmation. **Needs decision** has no usable machine evidence; manual
+recommendations remain separately counted. Counts are once per GUID across
+targets/modes and sum to 255 for the packaged catalog. A partly unresolved
+predicate population is Signal, never wholly Verified.
+
+Existing commands without the flag keep 1.0/1.1 output unchanged. Compare two
+1.2 assessments to retain/recompute tiers; mixed contracts are not comparable.
+`render` displays the saved version without upgrading it. Signals do not create
+outcomes or reviews. Existing typed prepared facts can supply Signals; policy,
+scanner and query ingestion are separate pending work, not inferred from arbitrary
+metadata. See [tier semantics](docs/contracts.md#assessment-version-12-evidence-tiers).
+
 The frozen observed fixture is assessed at its recorded example time. Comparison
 rechecks both inputs against its own time and the 24-hour default freshness
 limit, so this example becomes non-comparable when the fixture ages.

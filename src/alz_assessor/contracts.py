@@ -14,7 +14,7 @@ from uuid import UUID
 from .terraform import InputError
 
 VERSION = "1.0"
-SUPPORTED_VERSIONS = {"1.0", "1.1"}
+SUPPORTED_VERSIONS = {"1.0", "1.1", "1.2"}
 OUTCOMES = {"pass", "fail", "unknown", "error", "manual", "not_applicable"}
 STATES = {"known", "unknown", "inaccessible", "error", "absent"}
 ARM_ID = re.compile(
@@ -183,12 +183,14 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
         or not isinstance(data.get("schema_version"), str)
         or data["schema_version"] not in SUPPORTED_VERSIONS
     ):
-        raise InputError("Unsupported or missing schema_version; expected 1.0 or 1.1")
+        raise InputError("Unsupported or missing schema_version; expected 1.0, 1.1 or 1.2")
     actual = data.get("kind")
     if not isinstance(actual, str):
         raise InputError("Document kind must be a string")
     if kind and actual != kind:
         raise InputError(f"Expected {kind} document")
+    if data["schema_version"] == "1.2" and actual != "assessment":
+        raise InputError("Version 1.2 currently defines tiered assessments only")
     if actual == "evidence":
         if data.get("mode") not in ("planned", "observed"):
             raise InputError("Evidence mode must be planned or observed")
@@ -481,7 +483,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
             if result.get("comparison") not in (None, "match", "drift", "absent", "not_comparable"):
                 raise InputError("Invalid comparison outcome")
             for hash_key in ("control_sha256", "rule_sha256"):
-                if hash_key in result or data["schema_version"] == "1.1":
+                if hash_key in result or data["schema_version"] in {"1.1", "1.2"}:
                     hashes({hash_key: result.get(hash_key)})
         if "retired_controls" in data:
             retired_ids = set()
@@ -495,6 +497,33 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                 require(item, "recommendation", str)
                 require(item, "retirement_reason", str)
                 timestamp(require(item, "retired_at", str))
+        if data["schema_version"] == "1.2":
+            from .tiers import TIERS, body_tier, summary
+
+            tier_data = require(data, "evidence_tiers", dict)
+            counts = require(tier_data, "counts", dict)
+            if set(counts) != set(TIERS) or any(
+                type(value) is not int or value < 0 for value in counts.values()
+            ):
+                raise InputError("Evidence tier counts must be nonnegative integers")
+            for result in data["results"]:
+                for mode in ("planned", "observed"):
+                    if result.get(mode):
+                        body = result[mode]
+                        require(body, "machine_evidence", bool)
+                        if body.get("evidence_tier") != body_tier(result.get("automation"), body):
+                            raise InputError("Evidence tier differs from its outcome/evidence")
+            if data.get("evidence_tiers") != summary(
+                data["results"], data.get("retired_controls", [])
+            ):
+                raise InputError("Evidence tier counts or control identities differ")
+        elif "evidence_tiers" in data or any(
+            "evidence_tier" in result[mode] or "machine_evidence" in result[mode]
+            for result in data["results"]
+            for mode in ("planned", "observed")
+            if result.get(mode)
+        ):
+            raise InputError("Evidence tiers require explicit assessment contract 1.2")
     else:
         raise InputError("Unsupported document kind")
     return data
