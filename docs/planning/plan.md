@@ -309,6 +309,8 @@ groups can help multiple cohorts without manufacturing their acceptance.
 
 | Date | Item | PR | Merge SHA | Checks | Status | Notes |
 |---|---|---|---|---|---|---|
+| 2026-11-05 | Planning / phase 0 | [#68](https://github.com/jonathan-vella/landinglens/pull/68) | `b048126f8fb27989563d2ae35ef0426a8f526803` | 195 installed tests: 194 pass, one Windows privilege skip; static/type/dependencies; eight platform checks and four exercised compiler artifacts | Merged | Cohort 18 already delivered; cohort 19 preserved separately; GitHub settings blockers recorded |
+| 2026-11-05 | LL-27 crosswalk | Pending | Pending | 207 local/installed tests: 206 pass, one Windows privilege skip; static/type/dependencies passed; CI pending | Implemented, unmerged | 255 GUIDs, 51 mapped / 53 associations, all partial/related; no new outcome |
 
 ## Recommendation expansion (active)
 

@@ -94,6 +94,8 @@ security snapshot; it does not execute providers or need a plan.
 ```powershell
 alz-assessor catalog validate
 alz-assessor catalog inspect --id G04.01
+alz-assessor catalog crosswalk validate
+alz-assessor catalog crosswalk inspect --id G04.01
 alz-assessor assess tests\fixtures\slice --input terraform --snapshots tests\fixtures\slice\snapshots.json --authorize-root tests\fixtures\alz --provider-version 4.50.0 --scope /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-management --output planned.json
 alz-assessor assess tests\fixtures\slice --input terraform --snapshots tests\fixtures\slice\snapshots.json --authorize-root tests\fixtures\alz --provider-version 4.50.0 --var secure=false --format markdown --output findings.md
 alz-assessor assess tests\fixtures\slice\controls.bicep --input bicep --compiler C:\path\to\bicep.exe --scope /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-management --format html --output bicep.html
@@ -102,6 +104,16 @@ alz-assessor assess tests\fixtures\slice\observed.json --input evidence --at 202
 alz-assessor compare planned.json observed.json --output comparison.json
 alz-assessor render comparison.json --format html --output comparison.html
 ```
+
+The offline crosswalk links every GUID to zero or more reviewed evidence sources.
+Its first version has **51 mapped controls / 53 associations**: four partial
+storage policy/PSRule associations and 49 related upstream query hashes.
+The other 204 entries have explicit empty mappings. A mapping is not a result,
+query execution permission or an equivalent pass. Source revisions, release tags,
+hashes, licence metadata and reviewer rationale are included in inspection.
+Use a canonical GUID/control ID for duplicated display IDs. `--crosswalk FILE`
+and `--source CATALOG` select an explicit matching pair; mismatched catalogs fail.
+See the [crosswalk contract](docs/contracts.md#evidence-crosswalk-version-10).
 
 The frozen observed fixture is assessed at its recorded example time. Comparison
 rechecks both inputs against its own time and the 24-hour default freshness
