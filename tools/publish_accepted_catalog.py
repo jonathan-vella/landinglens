@@ -4,6 +4,7 @@ import argparse
 import json
 import subprocess
 import tempfile
+from importlib.resources import files
 from pathlib import Path
 
 from alz_assessor.catalog import load_catalog
@@ -54,6 +55,8 @@ def publish(repository: str, commit: str) -> dict:
             + "\n",
             encoding="utf-8",
         )
+        notice = root / "reference.LICENSE"
+        notice.write_bytes(files("alz_assessor").joinpath("data", "reference.LICENSE").read_bytes())
         result = subprocess.run(
             [
                 "gh",
@@ -62,6 +65,7 @@ def publish(repository: str, commit: str) -> dict:
                 tag,
                 str(path),
                 str(index),
+                str(notice),
                 "--repo",
                 repository,
                 "--target",

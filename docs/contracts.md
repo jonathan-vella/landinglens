@@ -183,7 +183,8 @@ accepted catalog versions and are never runtime refresh inputs.
 or fetching assets. Index acceptance is an explicit producer assertion. Duplicate/
 malformed/empty/unbounded indexes fail. Release publication accepts only the exact
 installed reviewed catalog; candidate files cannot be supplied or uploaded in its
-place. Existing Release tags/assets are never replaced.
+place. Initial publication includes the original reference licence notice.
+Existing catalog/index assets are never replaced.
 
 ### Guided interview responses
 

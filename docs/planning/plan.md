@@ -322,7 +322,8 @@ groups can help multiple cohorts without manufacturing their acceptance.
 | 2026-11-05 | LL-37 advisory CI formats | [#79](https://github.com/jonathan-vella/landinglens/pull/79) | `8213cf471738b78da223cf546879a81c918b3d53` | 272 local/installed tests: 271 pass, one Windows privilege skip; eight platform checks and four exercised compiler artifacts | Merged; #65 closed | SARIF and compact PR summary; no invented locations or findings-based gates |
 | 2026-11-05 | LL-38 summary/trackers | [#80](https://github.com/jonathan-vella/landinglens/pull/80) | `5a2af9c05ac1126fc869f4892b4e29a87ec9988a` | 277 local/installed tests: 276 pass, one Windows privilege skip; native workbook; eight platform checks and four exercised compiler artifacts | Merged; #64 closed | Shared CSV/XLSX text values; no dependency, formulas/external links/security warnings |
 | 2026-11-05 | LL-36 local workspace | [#81](https://github.com/jonathan-vella/landinglens/pull/81) | `6c89761ea8686bf972e77d6ef71f58550af3802a` | 284 local/installed tests: 283 pass, one Windows privilege skip; installed browser; eight platform checks and four exercised compiler artifacts | Merged; #61 closed | Zero external requests/overflow; explicit decisions only, original evidence times preserved |
-| 2026-11-05 | LL-39 documentation | Pending | Pending | 286 local/installed tests: 285 pass, one Windows privilege skip; 231 local links/anchors, two public targets and installed commands pass; CI pending | Implemented, unmerged | README quickstart, canonical evidence-limits page, detailed usage and retained history |
+| 2026-11-05 | LL-39 documentation | [#82](https://github.com/jonathan-vella/landinglens/pull/82) | `3b6620a11f0b147ab485d0ce367429827872fef4` | 286 local/installed tests: 285 pass, one Windows privilege skip; links/commands; corrected-head eight platform checks and four exercised compiler artifacts | Merged; #67 closed | Windows short-path alias diagnostic fixed after initial CI failure; no weakened tests |
+| 2026-11-05 | LL-40 reconciliation | Pending | Pending | 288 local/installed tests: 287 pass, one Windows privilege skip; static/type/dependencies and 234 local links/anchors pass; CI pending | Implemented, unmerged | Independent implementation delivered; LL-35 operations remain blocked in #78 |
 
 ### Catalog delivery history
 
@@ -404,6 +405,99 @@ Rejected alternatives: a complete Terraform interpreter would duplicate provider
 semantics and increase false-confidence risk. Requiring a plan would remove the
 approved raw-source workflow. Executing Terraform to fill gaps would cross the
 existing safety boundary. No new dependency or contract migration is needed.
+
+## Assessor-efficiency delivery reconciliation: 2026-11-05
+
+This record distinguishes merged implementation, actual verification and blocked
+operations. It does not declare the fixed 251-target expansion complete.
+GitHub issues and acceptance criteria were reread on 2026-11-05; no issue is
+accepted solely from a plan, disposition or a green mock.
+
+### Criterion-by-criterion delivery
+
+| Work / issue | Acceptance reconciliation | Delivered PR / merge |
+|---|---|---|
+| Planning / #53 | Phase 0 verified `.3`, 255 GUIDs, 7/205/43 and already merged #51/closed #50. D1-D6 recorded verbatim; 14 scoped issues and sequence/criteria created. Cohort 19 preserved separately. | #68 / `b048126f8fb27989563d2ae35ef0426a8f526803` |
+| LL-27 / #58 | AC1: all 255 GUIDs in versioned source-hashed crosswalk, including empty mappings. AC2: actual ALZ/built-in/PSRule/query source and licence review; conservative partial/related strength. AC3: offline inspect/validate with strict IDs/hashes/versions/conflicts. AC4: privacy/history/installed/reproducibility tests and docs. `crosswalk.py`, `build_crosswalk.py`, 12 tests. | #69 / `3b5eba50733ee529ca1e145ab013f675c841523d` |
+| LL-28 / #59 | AC1: explicit assessment 1.2, distinct tiers/manual and once-per-GUID totals. AC2: Signals/human records do not manufacture Verified technical outcomes. AC3: shared evaluation/comparison/review/report/replay projection. AC4: mixed/stale/partial/typed/legacy/privacy/installed tests. `tiers.py`, 12 tests. | #70 / `80f7d8baeb90ab991fdffae798d0acc5ffc784d5` |
+| LL-29 / #56 | AC1: actual checklist severity and pinned ALZ architecture/archetype/licences. AC2: deterministic severity ordering, Unknown explicit. AC3: exact saved MG binding and reviewer-required suggestion; no name/inheritance exclusion. AC4: source/history/schema/queue/report/replay/privacy/installed tests. `priorities.py`, 9 tests. | #71 / `d7219aad6d50757eacd88979426323c81266b9e0` |
+| LL-30 / #55 | AC1: bounded saved assignments/evaluations with original time and canonical scope. AC2: only mapped Signals; missing/denied/partial/stale/conflicted/indirect context visible, assignment alone never compliance. AC3: existing #40 transport, injected reads only. AC4: typed reports/reviews/replay/comparison/privacy/installed tests and API docs. `policy_evidence.py`, 10 tests. | #72 / `e7fcd11a27d05dd68bcf6546e785835464e34df5` |
+| LL-31 / #63 | AC1: actual PSRule output/SARIF/schema/licence review, explicit producer/version/baseline/hash/time/index-ID wrapper. AC2: verified namespace mappings only, never automatic passes. AC3: no scanner execution/external file fetch; bounds/path/raw-data guards. AC4: both formats/modes, errors/conflicts/freshness, paired comparison/review/replay/privacy/installed tests. `scanner_evidence.py`, 8 tests. | #73 / `4fa8bd0afc54b1ad9f09a2c1edcc029313000848` |
+| LL-32 / #54 | AC1-2: supplied-plan recommendation and doctor hints, raw fallback/identity/sensitivity unchanged and no Terraform execution. AC3: scope-freeze ADR with rejected alternatives. AC4: ready/partial/blocked and installed raw/plan regressions. `preflight.py`, 2 tests. | #75 / `5feb134bc4ca2d212c5b894d5f92da63bef8c469` |
+| LL-33 / #60 | AC1: all 49 actual query hashes accounted for, 2 reviewed local-mode observations and 47 exclusions. AC2: exact packaged query only, explicit subscription bodies. AC3: inherited retry/byte bounds, paging/token/identity/partial/conflict guards, Signals only. AC4: injected/saved/installed report/review/replay/privacy and stale cases. Live compilation remains undemonstrated. `query_signals.py`, 6 tests. | #74 / `0310c485e36a8eba1779470e6b0d2d26b379111c` |
+| LL-34 / #57 | AC1-2: specific shared-narrative bank with separate explicit bound decisions and all-or-nothing compilation. AC3: unchanged 225 pending GUIDs ranked by actual severity/crosswalk association coverage, exact table checked. AC4: blank/invalid/expiry/conflict/privacy/installed/no-overwrite tests; single-control reviews remain. `interviews.py`, 5 tests. | #76 / `a3c9867e274a87698652af7b4dc7fa28d8d5e949` |
+| LL-35 / #62, blocker #78 | AC1-2: actual public-source release/commit/licence/library/built-in-tree polling; conservative GUID candidates, retirement, stale bindings and evaluator rejection of unaccepted candidates. AC3-4: scoped GITHUB_TOKEN PR code/labels/actual-check/head gates and artifacts/body fallback implemented, but operational PR/auto-merge remains blocked in #78. AC5: actual accepted `.5` catalog/index Release assets published/downloaded/verified; reference licence retained; local index lag does not refresh runtime. 9 tests plus actual workflow `42021697739`. | Code #77 / `c6be5c00b2362602bf6d3c92b052a9db00781742`; operational acceptance incomplete |
+| LL-36 / #61 | AC1: three panes, shared tier/severity/progress queue, keyboard and disclosed effort assumptions. AC2: explicit transactional bulk/interview decisions; no technical override or implied approval. AC3: hash-checked invocation/core resume/new immutable output and original times. AC4: original capability/loopback/Host/origin/32-KB/fixed-route/no-assets guards. AC5: 7 tests, existing HTTP/session tests and actual installed browser keyboard/bulk/interview/replacement/report/resume/stop with zero external requests/overflow. | #81 / `6c89761ea8686bf972e77d6ef71f58550af3802a` |
+| LL-37 / #65 | AC1: advisory SARIF 2.1.0, stable rules, honest optional contained file-only locations, no invented lines. AC2: sanitised PR summary and unchanged advisory exits. AC3: pinned optional upload example without settings/finding gates. AC4: 4 shape/parity/privacy/path/installed assess/compare/render tests. Actual GitHub code-scanning ingestion is not claimed. | #79 / `8213cf471738b78da223cf546879a81c918b3d53` |
+| LL-38 / #64 | AC1: summary-first HTML, separate denominators, priority risks and labelled heat map. AC2: exact-parity sanitised CSV/XLSX tracker, injection/link/privacy guards. AC3: standard-library decision, no dependency installation. AC4: 5 tests plus actual native workbook/cell inspection: two sheets, zero formulas/external links/security warnings. | #80 / `5a2af9c05ac1126fc869f4892b4e29a87ec9988a` |
+| LL-39 / #67 | AC1-3: quickstart, detailed usage, canonical evidence-limits page, plan history and truthful current/blocker documentation. AC4: 231 authored local links/anchors valid; migrated public targets returned 200; installed examples passed. First Windows CI found an 8.3 alias diagnostic defect; resolving supplied paths fixed it and the exact supported matrix reran green. 2 link tests. | #82 / `3b6620a11f0b147ab485d0ce367429827872fef4` |
+| LL-40 / #66 | AC1: this actual issue/criterion/merge record. AC2: evidence-specific tier counts and immutable fixed-ledger audit below. AC3: integrated authored config + policy/scanner/query/interview/replay/all-format/installed checks, prior licensed AVM corpus retained. AC4: PRD/backlog/progress/tracking receipts; #53 stays open while #78 is blocked. Final merge receipt is posted to #66/#53 after gates. | This reconciliation; final merge/CI gate |
+
+### Counts and runtime scope
+
+The increment starts at `.3` and ends at metadata successor `.5`, both with
+**255 GUIDs: 7 automated / 205 assisted / 43 manual**. No new whole-recommendation
+predicate was invented. Severity remains **71 High / 158 Medium / 26 Low**.
+Crosswalk `.2` has **51 mapped controls / 53 associations**: four partial external
+storage mappings and 49 related static query hashes; 204 GUIDs are explicitly
+unmapped. Only two exact queries are executable as Signals.
+
+Tiers describe supplied evidence, not permanent catalog dispositions. The final
+authored integration snapshot at the explicitly selected fixture time has
+**7 Verified / 8 Signal / 197 Needs decision / 43 manual = 255**. All seven accepted
+configuration predicates are exercised: four pass and three fail, while inventory
+remains incomplete. The policy Compliant/scanner Pass fixtures do not overwrite
+the storage configuration failure. This is authored test evidence, not a live
+estate score. The frozen observed fixture has **1 / 0 / 211 / 43 = 255**; the
+query-only fixture has **0 / 1 / 211 / 43 = 255** and no technical pass.
+
+The fixed 251-target ledger remains **26 merged / 225 undelivered** with every
+merged entry matching its own cohort PR/merge receipt. All original four control
+hashes and historical catalogs remain unchanged. Cohort 19 remains an unmerged
+named stash and open #52, not delivered by efficiency features.
+
+New verification is fixture/injected, exact installed CLI, actual authored browser,
+native workbook, public-source polling and accepted Release-asset verification.
+There is **no new live Azure run, ARG service compilation or scanner execution**.
+The earlier #40 pilot is historical and does not establish current full-control
+or tenant-wide proof. Real GitHub code-scanning ingestion is undemonstrated.
+Both local browser helper listeners were stopped.
+
+The actual source workflow `42021697739` succeeded with unchanged polling and
+accepted catalog/index Release assets. Their downloaded catalog semantic SHA-256
+is `57ad6d460e801fb63cce5e541879c2c25b516954fe820c76f22aca36869c1bea`.
+The original Microsoft MIT notice accompanies the catalog as `reference.LICENSE`;
+existing catalog/index bytes were not replaced. Final reconciliation also adds
+the notice to future initial publication and a bounded check wait before any
+safe auto-merge request.
+
+### Remaining operational blocker and owner action
+
+Final local verification ran **288 tests: 287 passed and one explicit Windows
+symlink-privilege skip**, both from the checkout and the exact installed wheel
+outside it. Ruff lint/format (108 files), mypy (32 source files), dependency
+consistency and 234 authored local links/anchors passed. Existing no-restore
+Bicep and the retained licensed AVM corpus were exercised; no new dependencies
+were restored or installed. Final wheel SHA-256:
+`3e642fc52da7a9672e57f975813e66e7202e0318d3912cd3aecb775a6588d96a`.
+Supported CI and downloaded compiler artifacts remain the final premerge gate.
+
+[#78](https://github.com/jonathan-vella/landinglens/issues/78) retains LL-35's
+unsatisfied operational criteria. Live settings still report
+`can_approve_pull_request_reviews=false` and `allow_auto_merge=false`.
+Owner action is enabling those settings if desired and arranging an independently
+approved platform-check trigger for workflow-created PRs, then demonstrating
+safe-only exact-head auto-merge. The agent did not change settings, add a PAT,
+expand token permissions or bypass checks. Candidate artifacts and a generated
+PR body remain available meanwhile.
+
+GitHub auto-completed #62 from a negated issue keyword in #77's body. This was
+not acceptance of the blocked operation. Following the owner's no-reopen rule,
+the exact gap remains open in #78 and tracking #53 remains open. All independent
+implementation has been completed; full operational source automation is not
+claimed. No deployment, remediation, scan, authentication/role/settings change,
+implicit modules/compiler restore, package publication or fabricated real review
+was performed.
 
 ## Recommendation expansion (active)
 
