@@ -16,9 +16,12 @@ owner-authorized increment. Baseline `2026-11-04.2` remains 4 automated /
 |---|---|---|---|
 | 01 / [#46](https://github.com/jonathan-vella/landinglens/issues/46) | G02.01-.04, G02.07-.08, G04.02-.03; fixed GUIDs in ledger | Delivered catalogs/contracts/local reviews; no new live access required | [#47](https://github.com/jonathan-vella/landinglens/pull/47) merged; all eight checks passed, exact installed suite and all four CI compiler integrations exercised; issue closed |
 | 17 / [#48](https://github.com/jonathan-vella/landinglens/issues/48) | Nine firewall GUIDs; duplicate D07.12 entries remain distinct | Merged cohort 01, actual source review, reviewed network schemas | [#49](https://github.com/jonathan-vella/landinglens/pull/49) merged; all eight checks passed, exact installed suite and all four CI compiler integrations exercised; issue closed |
-| Other cohorts | Remaining 234 GUIDs in 5-10-item cohorts | Explicit per-batch source/evidence prerequisites, recorded before work | Pending; no per-GUID completion or source review inferred from partitioning |
+| 18 / [#50](https://github.com/jonathan-vella/landinglens/issues/50) | Nine TLS/resilience/private-connectivity GUIDs | Merged cohort 17; 18 actual source captures and reviewed versioned schemas | Implemented assisted preparation and specific workflows; delivery pending, no whole predicate or owner decisions invented |
+| Other cohorts | Remaining 225 GUIDs in 5-10-item cohorts | Explicit per-batch source/evidence prerequisites, recorded before work | Pending; no per-GUID completion or source review inferred from partitioning |
 
-Working successor `2026-11-05.2`: 7 automated / 205 assisted / 43 manual, all 255 visible.
+Working successor `2026-11-05.3`: 7 automated / 205 assisted / 43 manual, all 255 visible.
+Seventeen fixed targets are merged, nine in progress and 225 pending; classification
+alone is not delivery.
 G02.02 is explicitly manual; unsupported Terraform vault soft-delete evidence
 remains unknown. Create ready batch issues as implementation proceeds, not 251
 bookkeeping issues. Continue after each merge; retain blockers and demonstrated

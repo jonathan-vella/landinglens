@@ -30,12 +30,29 @@ normalized resource evidence is available. Optional content-bound
 `review_fact_paths` selects only the reviewed RBAC, network-access/default-action
 and minimum-TLS scalar vocabulary, plus reviewed network SKU, canonical
 relationship, IPv4 prefix/address and classic DNAT source facts.
+Successor `2026-11-05.3` permits 1-8 reviewed paths, including top-level configured
+firewall zones, explicit VNet DDoS flag/plan ID, subnet NSG references, private
+endpoint target/state and minimal application-rule action/TLS/category-count
+facts. No category labels, rule destinations, headers, descriptions, connection
+messages, DNS names, private endpoint addresses or certificate material are retained.
+Configured zones are limited to three distinct `"1"`/`"2"`/`"3"` identifiers;
+empty and single-zone configurations never determine backend redundancy.
+Application collections are bounded to 20 and their combined prepared rules to
+100; category lists to 100 nonblank strings of at most 128 characters, retained
+only as supplied-label counts (not validated category membership). Private
+connections are bounded to 20 across both ARM connection arrays. Only explicit
+ARM Approved/Pending/Rejected/Disconnected states are retained; Terraform
+approval intent or an assigned IP cannot supply approval state. Aliases never
+become ARM target IDs. Missing/invalid/defaulted facts stay unknown.
 Network lists are limited to 100 entries; classic NAT collections to 20 with
 100 rules each. Prefix capacity and direct-source subchecks run in the shared
 evaluator, not browser code, and never establish whole-recommendation outcomes.
-Only unique known subnet records can resolve explicit firewall subnet IDs;
+Only unique known subnet records can resolve explicit firewall/private-endpoint subnet IDs;
 missing/ambiguous/inaccessible/wrong-type links are unknown, with at most
 20 linked previews and explicit truncation. These typed local facts are informational
+and may resolve the exact canonical subnet parent to one known VNet's DDoS facts,
+never through names or new reads. Missing/denied parent evidence stays unknown.
+They remain informational
 subchecks, never a least-privilege, reachable private path or effective-policy
 pass. Arbitrary raw properties and approvals are never copied. All original
 review bindings/expiry apply.

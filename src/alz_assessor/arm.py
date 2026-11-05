@@ -40,6 +40,9 @@ API_VERSIONS = {
     "microsoft.network/azurefirewalls": {"2024-05-01"},
     "microsoft.network/virtualnetworks/subnets": {"2024-05-01"},
     "microsoft.network/ipgroups": {"2024-05-01"},
+    "microsoft.network/virtualnetworks": {"2024-05-01"},
+    "microsoft.network/privateendpoints": {"2024-05-01"},
+    "microsoft.network/firewallpolicies/rulecollectiongroups": {"2024-05-01"},
 }
 
 
@@ -49,7 +52,7 @@ def unresolved(value: Any) -> bool:
     return isinstance(value, list) and any(unresolved(v) for v in value)
 
 
-def properties(kind: str, values: Any) -> dict[str, Any]:
+def properties(kind: str, values: Any, *, root: Any = None) -> dict[str, Any]:
     if not isinstance(values, dict):
         return {}
     if kind.lower() == "microsoft.storage/storageaccounts":
@@ -106,7 +109,7 @@ def properties(kind: str, values: Any) -> dict[str, Any]:
         }
     from .network_evidence import projected_properties
 
-    return projected_properties(kind, values)
+    return projected_properties(kind, values, root=root)
 
 
 class Expressions:
@@ -421,7 +424,9 @@ def arm_source(
                         "original_arm_id": identity,
                         "api_version": version if isinstance(version, str) else None,
                         "properties": properties(
-                            arm_type, context.value(entry.get("properties", {}))
+                            arm_type,
+                            context.value(entry.get("properties", {})),
+                            root={"zones": context.value(entry.get("zones"))},
                         )
                         if state == "known"
                         else {},

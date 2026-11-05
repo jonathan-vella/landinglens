@@ -265,17 +265,135 @@ SOURCES_17 = [
 ]
 
 
+SOURCES_18 = [
+    (
+        "premium-inspection-categories",
+        LEARN + "azure/firewall/premium-features",
+        ["TLS inspection must be enabled at the application rule level", "Web categories"],
+        "TLS inspection requires application rules and CA/client trust, not Premium SKU alone. "
+        "Current Learn guidance says categories also exist on Standard; the pinned provider's "
+        "Premium restriction cannot establish universal SKU applicability.",
+    ),
+    (
+        "gateway-before-firewall",
+        LEARN
+        + "azure/architecture/example-scenario/gateway/application-gateway-before-azure-firewall",
+        ["Host header", "443", "root CA"],
+        "Gateway-to-firewall inspection needs matching Host/DNS, port 443, trusted CA and an "
+        "actual routed flow. Co-located resources or enabled TLS fields do not prove this chain.",
+    ),
+    (
+        "firewall-backup-operations",
+        LEARN + "azure/well-architected/service-guides/azure-firewall",
+        ["backup and versioning", "doesn", "Virtual WAN"],
+        "Maintain versioned policy/rule backups or a companion backup mechanism. Current "
+        "assessment/replay exports are minimized facts, not complete restorable rule backups. "
+        "The guidance also excludes Virtual WAN from hub-VNet DDoS-plan recommendations.",
+    ),
+    (
+        "firewall-managed-zone-redundancy",
+        LEARN + "azure/firewall/deploy-availability-zone-powershell",
+        ["Zone-redundant-by-default", "backward compatibility", "ARM"],
+        "The 2026-11-04 revision says omit explicit zones in compatible regions. Backend "
+        "migration is not necessarily reflected in ARM/JSON/ARG. Empty or single configured "
+        "zone lists cannot establish backend nonredundancy; explicit zone counts are facts only.",
+    ),
+    (
+        "ddos-overview",
+        "https://learn.microsoft.com/en-gb/azure/ddos-protection/ddos-protection-overview",
+        ["DDoS Network Protection", "DDoS IP Protection", "virtual network"],
+        "Network-plan protection and per-IP protection differ. A supplied VNet flag/plan is "
+        "configuration evidence, not proof of firewall applicability or mitigation effectiveness.",
+    ),
+    (
+        "injected-service-networking",
+        LEARN + "azure/virtual-network/vnet-integration-for-azure-services",
+        ["restrictions", "network security groups", "per guidance provided by the service"],
+        "Injected services have service-specific subnet, route and NSG requirements. Generic "
+        "default-route or NSG presence cannot prove control-plane reachability or breakage.",
+    ),
+    (
+        "private-link-overview",
+        LEARN + "azure/private-link/private-link-overview",
+        ["ExpressRoute private peering", "Microsoft peering", "availability"],
+        "Private Link supports on-premises private-peering access. Service availability, "
+        "subresources, DNS and actual routes still require specific evidence; no packet test.",
+    ),
+    (
+        "private-endpoint-overview",
+        LEARN + "azure/private-link/private-endpoint-overview",
+        ["Approved", "Pending", "DNS configuration", "public network access"],
+        "Only approved connections can carry traffic, but approval alone does not establish "
+        "DNS, private routing or disabled public access. A Terraform private IP can exist even "
+        "for rejected requests; manual=false is not approval evidence.",
+    ),
+    (
+        "vnet-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/virtualnetworks",
+        ["enableDdosProtection", "ddosProtectionPlan"],
+        "Versioned VNet DDoS flag and canonical plan reference are separate typed fields; "
+        "missing flags and absent plan data are unknown, not disabled or nonexistent.",
+    ),
+    (
+        "private-endpoint-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/privateendpoints",
+        ["manualPrivateLinkServiceConnections", "privateLinkServiceConnectionState", "subnet"],
+        "Versioned automatic/manual connection arrays contain target IDs and explicit states; "
+        "retain only reviewed typed fields, not messages, DNS names, aliases or addresses.",
+    ),
+    (
+        "application-rules-arm",
+        LEARN
+        + "azure/templates/microsoft.network/2024-05-01/firewallpolicies/rulecollectiongroups",
+        ["ApplicationRule", "terminateTLS", "webCategories", "FirewallPolicyFilterRuleCollection"],
+        "Application rule TLS booleans and supplied category counts are partial facts only. "
+        "Do not retain rule descriptions, headers, destinations or category labels, or infer "
+        "policy inheritance, effective ordering or traffic coverage.",
+    ),
+    (
+        "terraform-vnet",
+        RAW + "website/docs/r/virtual_network.html.markdown",
+        ["ddos_protection_plan", "`enable`", "`id`"],
+        "Pinned 4.50.0 explicit DDoS block has required ID and boolean enable. Omitted blocks "
+        "do not establish a default. Inline/standalone subnet mixing remains unsupported.",
+    ),
+    (
+        "terraform-private-endpoint",
+        RAW + "website/docs/r/private_endpoint.html.markdown",
+        ["private_connection_resource_alias", "is_manual_connection", "Rejected"],
+        "Pinned 4.50.0 has one explicit service-connection block and target ID or alias. "
+        "It does not export approval state; neither manual=false nor private IP proves approval. "
+        "Aliases remain unresolved rather than being converted to ARM IDs.",
+    ),
+    (
+        "terraform-application-rules",
+        RAW + "website/docs/r/firewall_policy_rule_collection_group.html.markdown",
+        ["terminate_tls", "web_categories", "firewall_policy_id"],
+        "Pinned 4.50.0 collection action and rule TLS/categories are explicit fields. It "
+        "documents Premium requirements that differ from current general feature guidance; "
+        "no effective category/SKU or inherited-policy verdict is inferred.",
+    ),
+    *[
+        source
+        for source in SOURCES_17
+        if source[0] in {"firewall-arm", "terraform-firewall", "subnet-arm", "terraform-subnet"}
+    ],
+]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
-    parser.add_argument("--batch", choices=["01", "17"], default="01")
+    parser.add_argument("--batch", choices=["01", "17", "18"], default="01")
     args = parser.parse_args()
     target = ROOT / "references" / "recommendation-batches" / f"batch-{args.batch}-sources.json"
     if target.exists() and not args.append_new_sources:
         raise ValueError("Frozen source review exists; do not silently recollect or redate it")
     sources = json.loads(target.read_text("utf-8"))["sources"] if target.exists() else []
     existing = {source["id"]: source for source in sources}
-    for identity, url, markers, finding in SOURCES if args.batch == "01" else SOURCES_17:
+    for identity, url, markers, finding in {"01": SOURCES, "17": SOURCES_17, "18": SOURCES_18}[
+        args.batch
+    ]:
         if identity in existing:
             if existing[identity]["url"] != url:
                 raise ValueError("A captured source URL changed; use a new reviewed identity")

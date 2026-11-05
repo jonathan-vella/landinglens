@@ -6,7 +6,16 @@ import hashlib
 from pathlib import Path
 from typing import Any
 
-from .contracts import canonical_id, derive_id, digest, document, now, scope_id, validate
+from .contracts import (
+    canonical_id,
+    derive_id,
+    digest,
+    document,
+    identity_type,
+    now,
+    scope_id,
+    validate,
+)
 from .terraform import Analyzer
 
 PROVIDER_VERSION = "4.50.0"
@@ -23,6 +32,10 @@ TF_TYPES = {
     "azurerm_firewall_nat_rule_collection": "Microsoft.Network/azureFirewalls/natRuleCollections",
     "azurerm_monitor_diagnostic_setting": "Microsoft.Insights/diagnosticSettings",
     "azurerm_ip_group": "Microsoft.Network/ipGroups",
+    "azurerm_private_endpoint": "Microsoft.Network/privateEndpoints",
+    "azurerm_firewall_policy_rule_collection_group": (
+        "Microsoft.Network/firewallPolicies/ruleCollectionGroups"
+    ),
 }
 BLOB_SERVICE_TYPE = "Microsoft.Storage/storageAccounts/blobServices"
 
@@ -202,6 +215,22 @@ def resource_scope(scope: str | None, properties: dict[str, Any]) -> str | None:
 
 def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str | None:
     name = values.get("name")
+    if kind == "azurerm_firewall_policy_rule_collection_group":
+        from .network_evidence import reference
+
+        parent = reference(values.get("firewall_policy_id"))
+        boundary = scope_id(scope) if scope else None
+        if (
+            boundary
+            and isinstance(parent, str)
+            and parent.startswith(boundary + "/")
+            and identity_type(parent) == "microsoft.network/firewallpolicies"
+            and isinstance(name, str)
+            and name
+            and "/" not in name
+        ):
+            return canonical_id(parent + "/ruleCollectionGroups/" + name)
+        return None
     if kind == "azurerm_monitor_diagnostic_setting":
         from .network_evidence import reference
 

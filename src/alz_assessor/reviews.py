@@ -15,7 +15,7 @@ def prepared_resource(
     control: dict[str, Any],
     by_id: dict[str, list[dict[str, Any]]],
 ) -> dict[str, Any]:
-    facts = {}
+    facts: dict[str, Any] = {}
     for path in control.get("review_fact_paths", []):
         if resource["state"] != "known":
             facts[path] = {"unknown": "resource_not_known"}
@@ -38,8 +38,10 @@ def prepared_resource(
         "subchecks": local_subchecks(facts),
     }
     refs = facts.get("subnetReferences")
+    if refs is None and "subnet.id" in facts:
+        refs = [facts["subnet.id"]]
     if isinstance(refs, list):
-        links = []
+        links: list[dict[str, Any]] = []
         for identity in refs[:20]:
             candidates = by_id.get(identity, []) if isinstance(identity, str) else []
             if (
@@ -57,11 +59,36 @@ def prepared_resource(
                 continue
             child = candidates[0]
             prefixes = review_fact(child["properties"], "addressPrefixes")
+            parent_id = identity.rsplit("/subnets/", 1)[0]
+            parents = by_id.get(parent_id, [])
+            parent: dict[str, Any] = {
+                "arm_id": parent_id,
+                "unknown": "referenced_vnet_not_unique_known",
+            }
+            if (
+                len(parents) == 1
+                and parents[0]["resource_type"].lower() == "microsoft.network/virtualnetworks"
+                and parents[0]["state"] == "known"
+            ):
+                parent = {
+                    "arm_id": parent_id,
+                    "enableDdosProtection": review_fact(
+                        parents[0]["properties"], "enableDdosProtection"
+                    ),
+                    "ddosProtectionPlan.id": review_fact(
+                        parents[0]["properties"], "ddosProtectionPlan.id"
+                    ),
+                }
             links.append(
                 {
                     "arm_id": identity,
                     "addressPrefixes": prefixes,
                     "subchecks": local_subchecks({"addressPrefixes": prefixes}),
+                    "routeTable.id": review_fact(child["properties"], "routeTable.id"),
+                    "networkSecurityGroup.id": review_fact(
+                        child["properties"], "networkSecurityGroup.id"
+                    ),
+                    "virtualNetwork": parent,
                 }
             )
         prepared["linked_subnets"] = links
