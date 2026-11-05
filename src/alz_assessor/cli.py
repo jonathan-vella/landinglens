@@ -23,7 +23,7 @@ from .policy_evidence import import_policy_export
 from .preflight import preflight, render_preflight
 from .priorities import archetype_bindings
 from .replay import export_bundle, replay_bundle
-from .reports import render
+from .reports import render, render_xlsx
 from .review_session import ReviewSession, serve_reviews
 from .reviews import prepare_reviews, validate_reviews
 from .scanner_evidence import import_scanner
@@ -260,7 +260,9 @@ def main() -> int:
     collection.add_argument("--output", type=Path)
     for command in (assessment, comparison, rendering):
         command.add_argument(
-            "--format", choices=["json", "markdown", "html", "sarif", "pr-summary"], default="json"
+            "--format",
+            choices=["json", "markdown", "html", "sarif", "pr-summary", "csv", "xlsx"],
+            default="json",
         )
         command.add_argument("--output", type=Path)
         command.add_argument("--minimize", action="store_true")
@@ -268,6 +270,8 @@ def main() -> int:
         command.add_argument("--sarif-base", type=Path)
     args = parser.parse_args()
     try:
+        if getattr(args, "format", None) == "xlsx" and not args.output:
+            raise InputError("XLSX output requires an explicit --output file")
         if args.command == "interview":
             from .interviews import compile_interview, prepare_interview, question_bank
 
@@ -554,6 +558,11 @@ def main() -> int:
             and args.format != "sarif"
         ):
             raise InputError("--sarif-base is only valid for explicit SARIF output")
+        if args.command in {"assess", "compare", "render"} and args.format == "xlsx":
+            content = render_xlsx(result, args.minimize)
+            with args.output.open("xb") as stream:
+                stream.write(content)
+            return 0
         output = (
             json.dumps(result, indent=2) + "\n"
             if args.command.startswith("spike-") or args.command in {"catalog", "collect"}

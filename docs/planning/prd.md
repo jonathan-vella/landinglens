@@ -44,8 +44,12 @@ in #77; actual public polling succeeded without source changes. Workflow
 42021697739 passed and published immutable accepted catalog `.5` plus local index
 as Release assets; downloaded assets match the installed catalog and semantic
 hash. Workflow PR creation/auto-merge remains blocked by existing settings in #78,
-not delivered by mock evidence. FR-33 SARIF/PR summaries are implemented locally;
-delivery checks are pending.
+not delivered by mock evidence. FR-33 SARIF/PR summaries are merged in #79 with
+272 local/exact installed tests, one Windows privilege skip, eight platform checks
+and four exercised compiler artifacts. FR-34 summary-first HTML and CSV/XLSX
+trackers are implemented locally; native workbook inspection confirmed readable
+cells, two sheets, zero formulas/external links and no security warnings.
+Full delivery checks are pending.
 
 ### Requirements and acceptance
 

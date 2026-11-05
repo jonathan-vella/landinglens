@@ -1,5 +1,23 @@
 # Dependency review
 
+## Tracker XLSX decision: 2026-11-05
+
+LL-38 requires a static tracker snapshot, not spreadsheet calculation/editing.
+Use standard-library `zipfile` and `xml.etree.ElementTree` for the seven-part
+OOXML workbook with explicit inline text, styles, frozen headers, filter and
+source notes. No runtime/dev dependency or installation is needed, so no new
+package licence/feed/age/maintenance acceptance is implied. `openpyxl` was not
+selected or installed: its additional editing/formula features are unnecessary
+for this bounded output. Revisit the dependency review if scope later needs them.
+
+All tracker cells are explicit text, with formula-like prefixes escaped in CSV
+and XLSX; no formulas, macros, external links or hidden raw data exist. This is
+a snapshot of the shared assessment model, not an editable calculation model.
+No formula recalculation tool or Office process is required. Tests check ZIP/XML
+parts/relationships, exact CSV/XLSX value parity, bounds, privacy and absence of
+formula/error cells; native workbook inspection provides an additional
+interoperability check without adding a project dependency.
+
 Reviewed 2026-11-04 for LL-02. Exact metadata, upload timestamps, artifact hashes,
 upstream project URLs, repository maintenance state and feed availability are
 captured in `dependencies.json`. Every upstream repository was checked as

@@ -94,6 +94,10 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: .9rem; }
   border-radius: .625rem; margin: 4px; background: var(--cp-surface-soft); }
 .pass { color: var(--cp-success); } .fail, .error { color: var(--cp-danger); }
 .mode { padding-left: 16px; border-left: 2px solid var(--cp-border); margin: 16px 0; }
+.heatmap { overflow-x: auto; }
+.heatmap table { width: auto; border-collapse: collapse; }
+.heatmap th, .heatmap td { border: 1px solid var(--cp-border); padding: 8px; text-align: left; }
+.heatmap td { background: var(--cp-surface-soft); }
 @media print {
   html, html[data-theme="dark"] { color-scheme: light; }
   body { background: var(--cp-surface); color: var(--cp-text); font-size: 10pt; }
@@ -172,6 +176,66 @@ def fields(values: dict[str, Any]) -> str:
     )
 
 
+def executive_summary(model: dict[str, Any]) -> str:
+    metrics = model["coverage"]
+    parts = [
+        '<section aria-labelledby="executive"><h2 id="executive">Executive summary</h2>',
+        f"<p>{metrics['controls']} active controls; {metrics['resource_instances']} resource "
+        "instances. Evidence and human decisions remain separate.</p>",
+    ]
+    for mode, counts in metrics["modes"].items():
+        rate = counts["subset_pass_rate"]
+        rate_text = "unavailable" if rate is None else f"{100 * rate:.1f}%"
+        parts.append(
+            f"<p>{escaped(mode.title())}: {counts['assessed']} assessed instances; "
+            f"pass rate among assessed {rate_text}. "
+            "Unknown/manual instances still require work.</p>"
+        )
+    parts.append("<h3>Top risks by severity</h3><ol>")
+    risks = [
+        (row, mode, row[mode])
+        for row in sorted(model["results"], key=sort_key)
+        for mode in ("planned", "observed")
+        if row.get(mode) and row[mode]["outcome"] in {"fail", "error"}
+    ]
+    for row, mode, body in risks[:10]:
+        parts.append(
+            f"<li>{escaped(row['upstream_id'])}: {escaped(row.get('severity', 'Unknown'))} "
+            f"({mode}, {body['outcome']}) {escaped(row['recommendation'])}</li>"
+        )
+    parts.append("</ol>")
+    if not risks:
+        parts.append(
+            "<p>No assessed failures/errors recorded. "
+            "This does not resolve unknown or manual work.</p>"
+        )
+    outcomes = ("pass", "fail", "unknown", "error", "manual", "not_applicable")
+    areas = sorted({row["design_area"] for row in model["results"]})
+    parts += [
+        '<h3>Design-area heat map</h3><div class="heatmap"><table>',
+        "<caption>Result-instance counts with text labels, not a maturity score.</caption>",
+        '<thead><tr><th scope="col">Design area</th>',
+        *[f'<th scope="col">{escaped(value)}</th>' for value in outcomes],
+        "</tr></thead><tbody>",
+    ]
+    for area in areas:
+        counts = {outcome: 0 for outcome in outcomes}
+        for row in model["results"]:
+            if row["design_area"] == area:
+                for mode in ("planned", "observed"):
+                    if row.get(mode):
+                        counts[row[mode]["outcome"]] += 1
+        parts.append(f'<tr><th scope="row">{escaped(area)}</th>')
+        parts += [
+            f'<td class="{outcome}" aria-label="{outcome}: {counts[outcome]}">'
+            f"{counts[outcome]}</td>"
+            for outcome in outcomes
+        ]
+        parts.append("</tr>")
+    parts.append("</tbody></table></div></section>")
+    return "".join(parts)
+
+
 def render_html(model: dict[str, Any]) -> str:
     coverage = model["coverage"]
     areas = sorted({r["design_area"] for r in model["results"]})
@@ -195,6 +259,7 @@ def render_html(model: dict[str, Any]) -> str:
         + "</style></head><body>",
         '<a class="skip" href="#findings">Skip to findings</a><header>',
         "<h1>LandingLens advisory assessment</h1>",
+        executive_summary(model),
         fields({"Catalog": model["catalog_version"], "Evaluation time": model["generated_at"]}),
         '<p class="notice">Advisory configuration evidence, not certification or '
         "estate-wide compliance. Policy assignments do not prove effectiveness.</p>",
