@@ -141,6 +141,17 @@ def main() -> int:
             stream.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description="LandingLens advisory ALZ assessment")
     commands = parser.add_subparsers(dest="command", required=True)
+    interview = commands.add_parser(
+        "interview", help="Prepare or compile explicit multi-control reviews"
+    )
+    interview.add_argument("operation", choices=["inspect", "prepare", "apply"])
+    interview.add_argument("source", nargs="?", type=Path)
+    interview.add_argument("--question")
+    interview.add_argument("--control", action="append")
+    interview.add_argument("--scope")
+    interview.add_argument("--catalog")
+    interview.add_argument("--at")
+    interview.add_argument("--output", type=Path)
     replay = commands.add_parser(
         "replay", help="Export or replay an explicit sanitized local bundle"
     )
@@ -253,6 +264,35 @@ def main() -> int:
         command.add_argument("--minimize", action="store_true")
     args = parser.parse_args()
     try:
+        if args.command == "interview":
+            from .interviews import compile_interview, prepare_interview, question_bank
+
+            catalog = load_catalog(args.catalog)
+            if args.operation == "inspect":
+                if args.source or args.question or args.control or args.scope or args.at:
+                    raise InputError("Interview inspect accepts only catalog/output selection")
+                result = question_bank(catalog)
+            elif args.operation == "prepare":
+                if not args.source or not args.question or not args.scope or args.at:
+                    raise InputError(
+                        "Interview prepare requires assessment source, question and scope"
+                    )
+                result = prepare_interview(
+                    read_json(args.source), catalog, args.question, args.scope, args.control
+                )
+            else:
+                if not args.source or args.question or args.control or args.scope:
+                    raise InputError(
+                        "Interview apply requires only the completed response and optional time"
+                    )
+                result = compile_interview(read_json(args.source), catalog, at=args.at)
+            text = json.dumps(result, indent=2) + "\n"
+            if args.output:
+                with args.output.open("x", encoding="utf-8") as stream:
+                    stream.write(text)
+            else:
+                sys.stdout.write(text)
+            return 0
         if args.command == "replay":
             if args.replay_operation == "export":
                 result = export_bundle(

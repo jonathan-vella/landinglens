@@ -80,6 +80,27 @@ JSON/Markdown/HTML share the same counts, with no browser-side tier evaluator.
 
 ## Catalog and evidence contracts
 
+### Guided interview responses
+
+The versioned `question-bank` 1.0 groups specific Key Vault operating-model and
+private-service-path questions by exact retained human-evidence control IDs.
+It exposes each control's own requirements/limitations; a shared question does
+not claim the recommendations have identical meanings or outcomes.
+
+`interview-response` 1.0 binds bank version, full catalog hash, question, explicit
+scope, selected unique canonical control IDs, content hashes and a requirements
+hash. Preparation leaves answer, reviewer, rationale, evidence, validity and every
+per-control outcome null. Compilation requires every field and separate explicit
+outcome, validates current scope/content/time through existing 1.1 reviews, and
+produces only a standard `manual` document. No inferred answer-to-outcome mapping,
+automated technical override, exception change or implicit reviewer exists.
+
+All selected records validate before CLI output is opened exclusively; invalid/
+expired/duplicate/conflicting bindings cannot leave a partial output or overwrite
+existing records. Answer/field lengths and group sizes are bounded. The shared
+narrative becomes attributable rationale, not machine evidence or a Verified tier.
+Original single-control workflows and historical replay remain unchanged.
+
 ### Allowlisted query evidence
 
 The separate packaged `query-allowlist` 1.0 accounts for all 49 frozen audited

@@ -35,6 +35,10 @@ two-query allowlist and Signal executor are merged in #74. Both 252-test
 local/exact installed suites passed with one Windows privilege skip, eight platform
 checks and four exercised compiler artifacts. Live query behaviour is undemonstrated.
 
+FR-28 is merged in #75 with plan-first doctor guidance and the interpreter
+scope-freeze ADR. FR-30's specific shared-narrative interviews and source-backed
+remaining-cohort priority are implemented locally; delivery checks are pending.
+
 ### Requirements and acceptance
 
 | Requirement | Scope and acceptance | Work |

@@ -21,9 +21,9 @@ All items below are open, not delivered by this planning update.
 | [LL-29 / #56](https://github.com/jonathan-vella/landinglens/issues/56) | Severity/applicability | LL-27, LL-28 | FR-25 | Merged #71; issue closed |
 | [LL-30 / #55](https://github.com/jonathan-vella/landinglens/issues/55) | Saved/scoped policy Signals | LL-27, LL-28, LL-29 | FR-26 | Merged #72; issue closed |
 | [LL-31 / #63](https://github.com/jonathan-vella/landinglens/issues/63) | Saved scanner ingestion | LL-27, LL-28, LL-29, LL-30 | FR-27 | Merged #73; issue closed |
-| [LL-32 / #54](https://github.com/jonathan-vella/landinglens/issues/54) | Plan-first guidance | Existing adapters; execute after LL-33 | FR-28 | Local/exact installed checks pass; CI/merge pending |
+| [LL-32 / #54](https://github.com/jonathan-vella/landinglens/issues/54) | Plan-first guidance | Existing adapters; execute after LL-33 | FR-28 | Merged #75; issue closed |
 | [LL-33 / #60](https://github.com/jonathan-vella/landinglens/issues/60) | Allowlisted query Signals | LL-27, LL-28, LL-29, LL-31 | FR-29 | Merged #74; issue closed |
-| [LL-34 / #57](https://github.com/jonathan-vella/landinglens/issues/57) | Interviews/cohort priority | LL-28, LL-29, LL-32 | FR-30 | Pending |
+| [LL-34 / #57](https://github.com/jonathan-vella/landinglens/issues/57) | Interviews/cohort priority | LL-28, LL-29, LL-32 | FR-30 | Local/exact installed checks pass; CI/merge pending |
 | [LL-35 / #62](https://github.com/jonathan-vella/landinglens/issues/62) | Source-update PR pipeline | LL-27, LL-28, LL-29, LL-34 | FR-31 | Implementation pending; observed auto-merge/workflow PR settings block operational publication |
 | [LL-36 / #61](https://github.com/jonathan-vella/landinglens/issues/61) | Local triage workspace | LL-28, LL-29, LL-30, LL-31, LL-33, LL-34, LL-38 | FR-32 | Pending |
 | [LL-37 / #65](https://github.com/jonathan-vella/landinglens/issues/65) | SARIF/PR summaries | LL-28, LL-29; execute after LL-35 | FR-33 | Pending |
@@ -32,7 +32,7 @@ All items below are open, not delivered by this planning update.
 | [LL-40 / #66](https://github.com/jonathan-vella/landinglens/issues/66) | Reconcile delivery | LL-27-LL-39 merged or explicitly blocked | FR-36 | Pending; blockers do not satisfy criteria |
 
 Planning merged in #68 and LL-27 in #69. Current dependency-ready item:
-**LL-32 / #54**. Follow the
+**LL-34 / #57**. Follow the
 plan's explicit execution order; blocked GitHub publication does not prevent
 offline evidence/triage work. Do not change repository settings. Keep candidate
 artifacts/generated PR body when workflow PR creation or safe auto-merge is denied.
@@ -62,6 +62,49 @@ remains unknown. Create ready batch issues as implementation proceeds, not 251
 bookkeeping issues. Continue after each merge; retain blockers and demonstrated
 versus undemonstrated runtime labels. Prior completion statements below refer
 only to their earlier increments.
+
+### Remaining-cohort review priority
+
+LL-34 ranks the unchanged pending partitions by High-severity count, then controls
+with any reviewed crosswalk association, then cohort ID. Counts come from current
+source-bound severity and crosswalk, not invented machine-check coverage. The
+49 related query hashes count as associations, not accepted predicates or working
+collection. This is review priority, not an assertion that source/dependency gates
+for every cohort are satisfied. Known prerequisites still win; paused cohort 19
+must be reconciled against the new foundations before resuming.
+
+| Cohort | Undelivered GUIDs | High / Medium / Low | Controls with associations |
+|---|---|---|---|
+| 11 | 10 | 5 / 5 / 0 | 6 |
+| 04 | 8 | 5 / 3 / 0 | 2 |
+| 13 | 10 | 5 / 4 / 1 | 1 |
+| 22 | 8 | 4 / 4 / 0 | 0 |
+| 19 | 9 | 3 / 6 / 0 | 6 |
+| 14 | 9 | 3 / 6 / 0 | 4 |
+| 12 | 10 | 3 / 5 / 2 | 2 |
+| 15 | 9 | 3 / 6 / 0 | 2 |
+| 08 | 7 | 3 / 4 / 0 | 1 |
+| 30 | 7 | 3 / 3 / 1 | 0 |
+| 20 | 9 | 2 / 7 / 0 | 4 |
+| 05 | 8 | 2 / 6 / 0 | 3 |
+| 16 | 9 | 2 / 5 / 2 | 1 |
+| 23 | 7 | 2 / 3 / 2 | 1 |
+| 02 | 8 | 2 / 3 / 3 | 0 |
+| 27 | 8 | 2 / 5 / 1 | 0 |
+| 29 | 7 | 2 / 2 / 3 | 0 |
+| 06 | 8 | 1 / 7 / 0 | 2 |
+| 10 | 10 | 1 / 7 / 2 | 2 |
+| 25 | 9 | 1 / 8 / 0 | 1 |
+| 09 | 7 | 1 / 6 / 0 | 0 |
+| 24 | 9 | 1 / 7 / 1 | 0 |
+| 26 | 8 | 1 / 6 / 1 | 0 |
+| 07 | 8 | 0 / 8 / 0 | 2 |
+| 03 | 7 | 0 / 2 / 5 | 0 |
+| 21 | 8 | 0 / 8 / 0 | 0 |
+| 28 | 8 | 0 / 8 / 0 | 0 |
+
+These remain 225 undelivered GUIDs. No membership, original baseline hash,
+receipt, issue completion or pending status changes through reprioritisation.
 
 ## LL-26: automated local review session
 
