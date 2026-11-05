@@ -5,6 +5,7 @@ from typing import Any
 
 from .contracts import canonical_id, document, now, timestamp, validate
 from .engine import coverage
+from .policy_evidence import refresh_signals
 from .terraform import InputError
 from .tiers import attach
 
@@ -182,5 +183,18 @@ def compare(
         result["freshness_policy_hours"] = min(
             planned.get("freshness_policy_hours", 24), observed.get("freshness_policy_hours", 24)
         )
+        if observed.get("policy_signals"):
+            result["policy_signals"] = refresh_signals(
+                observed["policy_signals"], instant.isoformat(), result["freshness_policy_hours"]
+            )
+            usable = {
+                item["control_id"] for item in result["policy_signals"]["records"] if item["usable"]
+            }
+            for row in result["results"]:
+                body = row.get("observed")
+                if body and body.get("policy_signal_only"):
+                    body["machine_evidence"] = (
+                        row["control_id"] in usable and body["freshness"] == "current"
+                    )
         attach(result)
     return validate(result)

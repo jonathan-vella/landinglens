@@ -19,6 +19,7 @@ from .crosswalk import inspect_crosswalk, load_crosswalk
 from .diagnostics import explain
 from .engine import assess
 from .plan import plan_source
+from .policy_evidence import import_policy_export
 from .preflight import preflight, render_preflight
 from .priorities import archetype_bindings
 from .replay import export_bundle, replay_bundle
@@ -206,6 +207,7 @@ def main() -> int:
     assessment.add_argument("--max-age-hours", type=float, default=24)
     assessment.add_argument("--evidence-tiers", action="store_true")
     assessment.add_argument("--archetypes", type=Path)
+    assessment.add_argument("--policy-evidence", type=Path)
     doctor = commands.add_parser("doctor", help="Inspect explicit input prerequisites offline")
     input_arguments(doctor)
     doctor.add_argument("--probe-compiler", action="store_true")
@@ -351,6 +353,10 @@ def main() -> int:
                     sys.stdout.write(output)
                 return 2 if result["readiness"] == "blocked" else 0
             bundle = load_evidence(args)
+            if args.policy_evidence:
+                if not args.evidence_tiers:
+                    raise InputError("--policy-evidence requires explicit --evidence-tiers")
+                bundle = import_policy_export(bundle, read_json(args.policy_evidence))
             if args.archetypes:
                 if not args.evidence_tiers:
                     raise InputError("--archetypes requires explicit --evidence-tiers")

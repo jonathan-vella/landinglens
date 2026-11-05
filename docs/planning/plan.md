@@ -312,7 +312,8 @@ groups can help multiple cohorts without manufacturing their acceptance.
 | 2026-11-05 | Planning / phase 0 | [#68](https://github.com/jonathan-vella/landinglens/pull/68) | `b048126f8fb27989563d2ae35ef0426a8f526803` | 195 installed tests: 194 pass, one Windows privilege skip; static/type/dependencies; eight platform checks and four exercised compiler artifacts | Merged | Cohort 18 already delivered; cohort 19 preserved separately; GitHub settings blockers recorded |
 | 2026-11-05 | LL-27 crosswalk | [#69](https://github.com/jonathan-vella/landinglens/pull/69) | `3b5eba50733ee529ca1e145ab013f675c841523d` | 207 local/installed tests: 206 pass, one Windows privilege skip; static/type/dependencies; eight platform checks and four exercised compiler artifacts | Merged; #58 closed | 255 GUIDs, 51 mapped / 53 associations, all partial/related; no new outcome |
 | 2026-11-05 | LL-28 tiers | [#70](https://github.com/jonathan-vella/landinglens/pull/70) | `80f7d8baeb90ab991fdffae798d0acc5ffc784d5` | 219 local/installed tests: 218 pass, one Windows privilege skip; static/type/dependencies; eight platform checks and four exercised compiler artifacts | Merged; #59 closed | Explicit 1.2 assessment opt-in; catalog/review/evidence bytes unchanged |
-| 2026-11-05 | LL-29 priority/applicability | Pending | Pending | 228 local/installed tests: 227 pass, one Windows privilege skip; static/type/dependencies passed; CI pending | Implemented, unmerged | 71 High / 158 Medium / 26 Low; exact explicit MG/archetype binding, suggestions only |
+| 2026-11-05 | LL-29 priority/applicability | [#71](https://github.com/jonathan-vella/landinglens/pull/71) | `d7219aad6d50757eacd88979426323c81266b9e0` | 228 local/installed tests: 227 pass, one Windows privilege skip; static/type/dependencies; eight platform checks and four exercised compiler artifacts | Merged; #56 closed | 71 High / 158 Medium / 26 Low; exact explicit MG/archetype binding, suggestions only |
+| 2026-11-05 | LL-30 policy Signals | Pending | Pending | 238 local/installed tests: 237 pass, one Windows privilege skip; static/type/dependencies passed; CI pending | Implemented, unmerged | Saved exports and injected existing collector, direct partial mapping only; no new live run |
 
 LL-28 design choice: use explicit `--evidence-tiers` instead of silently upgrading
 existing assessments or rewriting the current catalog. This delivers the new
@@ -330,6 +331,14 @@ other archetypes remain explicitly unreviewed without delaying useful priority
 sorting. Report ordering intentionally changes; diagnostic parity now compares
 the exact severity-sorted identity/outcome/reason sequence rather than old input
 positions. No check or outcome is removed.
+
+LL-30 reuses normalised collector policy records and one explicit saved-export
+wrapper rather than a new collector/SDK. Direct verified definition matches supply
+Signals only; indirect initiative/member mapping and unsupported compliance states
+remain explicit unusable evidence. Rejected inferring effect/compliance from an
+assignment or coercing Exempt/Unknown into pass/N/A. The existing API/permission
+review and exact #40 boundary remain unchanged. Live behaviour is undemonstrated;
+acceptance uses saved/injected inputs and exact installed workflows.
 
 ## Recommendation expansion (active)
 

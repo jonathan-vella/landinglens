@@ -67,6 +67,23 @@ unreviewed, and no parent inheritance or absence-based exclusion is inferred.
 Stale/missing/foreign/conflicting bindings cannot set applicability or outcomes.
 This is offline/saved evidence preparation, not new Azure reads or deployment.
 
+## Policy evaluation Signals
+
+The reviewed direct built-in storage mapping can prepare original-time Compliant/
+NonCompliant policy observations as **Signals only** under explicit assessment
+1.2. It never replaces G04.01's accepted explicit configuration predicate or
+changes any automation count. Raw saved exports and the existing scoped
+collector's normalised policy arrays share one bounded projection.
+
+Canonical in-scope resource/assignment identities, a unique direct definition
+match, explicit exclusions and current original evaluation/collection times are
+required for a usable Signal. Conflicts, missing contexts, stale/future/unresolved
+times, unsupported states and indirect initiatives remain visible but unusable.
+Assignment-only/empty results cannot pass a recommendation. Parameters/effects/
+exemption applicability and population completeness remain human review.
+Comparison expires policy-only evidence at evaluation age; review/replay/privacy
+retain the same boundary. See [contract](contracts.md#policy-export-and-signals).
+
 The owner explicitly delegated LL-04 acceptance to Autopilot in the attached
 execution authorization. This replaces the original human-interruption gate,
 not the coverage safeguards. The accepted baseline is two explicit property
