@@ -549,6 +549,33 @@ class FirewallBatchTests(unittest.TestCase):
             ),
         )
         self.assertIn("01", ledger["deliveries"])
+        for status, changes, message in (
+            (
+                "merged",
+                {"pr": "https://github.com/jonathan-vella/landinglens/pull/0"},
+                "cohort receipt",
+            ),
+            (
+                "pending",
+                {"pr": "https://github.com/jonathan-vella/landinglens/pull/0"},
+                "stale acceptance",
+            ),
+            ("pending", {"runtime_evidence": ["fixture/injected verified"]}, "stale acceptance"),
+            ("implementation-in-progress", {"merge_commit": "0" * 40}, "stale acceptance"),
+        ):
+            changed = copy.deepcopy(ledger)
+            entry = (
+                next(row for row in changed["recommendations"] if row["status"] == status)
+                if status == "merged"
+                else next(row for row in changed["recommendations"] if row["status"] == "pending")
+            )
+            entry.update(status=status, **changes)
+            self.write("reviews/ledger.json", changed)
+            with (
+                patch.dict(build["main"].__globals__, DATA=data, REVIEWS=reviews),
+                self.assertRaisesRegex(ValueError, message),
+            ):
+                build["main"]()
 
     def test_comparison_replay_reports_and_review_questions(self):
         planned = self.bundle("Basic")

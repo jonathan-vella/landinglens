@@ -16,7 +16,8 @@ retains its starting GUIDs regardless of later classification. Batch 01 reviews
 eight recommendations and is merged. Cohort 17 implements nine more firewall
 recommendations in merged catalog `2026-11-05.2`.
 Cohort 18's nine resilience/private-connectivity workflows are implemented in
-working successor `2026-11-05.3`, with delivery still pending. Configured firewall
+merged successor `2026-11-05.3` through [#51](https://github.com/jonathan-vella/landinglens/pull/51).
+Configured firewall
 zones are not backend redundancy; TLS/category fields and approved private
 endpoints do not establish working inspection or connectivity.
 Other batches are pending, not completed by being listed.

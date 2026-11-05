@@ -19,6 +19,297 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## Assessor-efficiency increment
+
+Owner request dated 2026-11-05; tracked by
+[#53](https://github.com/jonathan-vella/landinglens/issues/53) and
+[FR-23-FR-36](prd.md#next-increment-assessor-efficiency). This authorises
+implementation, not another planning-only exercise. D1-D6 are recorded verbatim
+in [Execution and open decisions](prd.md#assessor-efficiency-authorisation-2026-11-05).
+Use scoped PRs and normal exact-head merges after actual checks; do not change
+repository settings or broaden Azure access.
+
+### Phase 0 reconciliation
+
+`main` is `ce59bce5953e4e9cdb7122072324a9a2cc0928cb`: #51 merged on
+2026-11-05 at 01:35:11 UTC; #50 is closed. No repeat cohort-18 delivery is needed.
+Catalog `2026-11-05.3` has 255 entries, 7 automated / 205 assisted / 43 manual;
+the fixed 251-target ledger has 26 merged / 225 pending. The prompt's pending
+cohort-18 assumption is stale. Existing receipt-reconciliation commit `91fcd35`
+records its actual per-GUID acceptance and guards against mismatched receipts;
+the planning PR carries that postmerge bookkeeping, not a new predicate.
+
+Cohort 19 / #52 was interrupted before delivery. Its source captures, matrix,
+draft `.4` catalog, implementation and tests are preserved in Git stash
+`Paused cohort 19 before assessor-efficiency increment` on the existing session
+branch. Do not apply it over contract changes blindly or count it as merged.
+Revisit it after the evidence foundation; this planning/efficiency work does not
+drop its nine targets or replace their accepted scope.
+
+Read-only GitHub inspection found `allow_auto_merge=false`,
+`can_approve_pull_request_reviews=false` and no protection on `main`.
+These are observed settings, not authority to change them or guarantees for
+future merges. FR-31 operational publication is blocked where these settings
+deny it. The exact owner actions are enabling repository auto-merge and
+"Allow GitHub Actions to create and approve pull requests". Keep fallback
+artifacts and a generated PR body; leave denied criteria open.
+
+### Design, sequence and delivery gates
+
+Reuse the current evaluator, normalisers, scoped transport, immutable review
+session and sanitised report model. Use contract 1.2 only where new semantics
+require it; preserve 1.0/1.1 catalogs and replay unchanged. Crosswalk has its own
+version. No second expression engine, hosted portal or database.
+
+Ordered execution is LL-27, LL-28, LL-29, LL-30, LL-31, LL-33, LL-32,
+LL-34, LL-35, LL-37, LL-38, LL-36, LL-39, LL-40. The backlog lists actual
+prerequisites. Unrelated blocked operations do not block independently ready work.
+One scoped PR per item; combine small shared-file items only when justified.
+Start from latest merged `main`, preserving the existing dedicated session branch
+and unrelated saved work. Do not mix the paused cohort into an open efficiency PR.
+
+For each PR run Ruff lint/format, mypy, the full suite, `pip check` and an exact
+wheel installed outside checkout, asserting site-packages import. Retain actual
+Windows/Linux Python 3.12/3.13 checks and existing-Bicep exercised/unavailable
+artifacts. Add positive, negative, unknown, stale, partial, missing, error,
+identity, version and privacy cases for each new path. Test JSON/Markdown/HTML
+and SARIF/export parity where relevant. Fixtures/injected, installed CLI and live
+evidence are distinct labels. No new live acceptance is required.
+
+PR bodies link the issue, reconcile every numbered criterion, list one-line
+rejected alternatives, disclose demonstrated/undemonstrated behaviour and confirm
+exclusions. Refresh actual checks/reviews/protection/head immediately before
+normal merge. After three failed fix attempts, keep a diagnosed draft PR and
+blocker, then continue independent work. Rebase conflicts and rerun checks.
+Only close issues with merged acceptance. Unsafe catalog changes wait for human
+merge even though implementation PR merges are delegated.
+
+### Work items and numbered acceptance
+
+#### LL-27: Verified evidence crosswalk
+
+Scope/design: source-hashed GUID mappings to zero or more ALZ Library
+`platform/alz` policy names, built-in Policy IDs, PSRule IDs and query hashes.
+Use equivalent/partial/related plus reviewer rationale; choose weaker when unsure.
+Version impact: separate crosswalk version, no historical catalog rewrite.
+Prerequisite: merged planning PR.
+
+1. Inspect actual source/release structures and licences; pin revisions/hashes/time.
+2. Seed verified mappings, investigate `Deny-Storage-http` against G04.01 and
+   represent all unmapped GUIDs explicitly with empty targets.
+3. Add `catalog crosswalk inspect` and validation; mappings never set outcomes.
+4. Test tampering, duplicate/conflicting/unknown identities, bounds, versions,
+   provenance/privacy and installed workflows; update contracts/matrix/docs.
+
+#### LL-28: Evidence tiers
+
+Scope/design: one shared control-level projection, retaining `automation` and
+technical outcomes. Verified is sufficient current accepted-predicate evidence,
+including fail; Signal is attributable machine evidence awaiting review; Needs
+decision has no usable machine evidence. Manual remains separately counted.
+Version impact: explicit 1.2, never reinterpret older documents.
+Prerequisite: LL-27.
+
+1. Define conservative mixed-resource/mode/freshness rules; count once per GUID,
+   with all four tier/manual totals summing to 255.
+2. Never promote Signals, policy/scanner/query/interview data or exceptions to passes.
+3. Wire evaluation/comparison/reviews/replay and JSON/Markdown/HTML consistently.
+4. Test insufficient/stale/partial/conflicting evidence, history, redaction,
+   count parity and installed CLI. Record final semantics in contracts.
+
+#### LL-29: Severity and applicability
+
+Scope/design: preserve actual upstream severity, stable deterministic ordering
+and explainable suggestions from explicit saved MG/archetype relationships.
+Version impact: reviewed 1.2 metadata/bindings; historical ordering remains historical.
+Prerequisites: LL-27, LL-28.
+
+1. Verify checklist severity and pinned ALZ Library architecture structures/licences.
+2. Sort reports/queues by verified severity; unknown values remain explicit.
+3. Require bound reviewer confirmation of applicability; no name-based exclusions.
+4. Test absent/stale/conflicting structures, format/queue parity, 255 visibility,
+   privacy and installed workflow without extra hierarchy reads.
+
+#### LL-30: Policy-compliance evidence
+
+Scope/design: reuse current collector/PolicyStates categories and exact crosswalk.
+Version impact: explicit bounded 1.2 Signal envelope with original evaluation time.
+Prerequisites: LL-27, LL-28, LL-29.
+
+1. Accept saved assignment/compliance exports with source hashes, identities and scope.
+2. Separate assignment/effect/exemption/member context from actual evaluations;
+   never infer compliance from assignment or re-date old evaluations.
+3. Use existing scoped transport only inside #40; test injected paging, throttling,
+   foreign IDs, stale/conflicted/denied/partial populations without new live reads.
+4. Wire Signals through tiers/reviews/reports/replay; installed/privacy tests and
+   exact API/permission docs; record live behaviour as undemonstrated where applicable.
+
+#### LL-31: Saved scanner ingestion
+
+Scope/design: bounded PSRule/SARIF adapters using exact crosswalk rule identities.
+Version impact: 1.2 Signal provenance, not new evaluator predicates.
+Prerequisites: LL-27, LL-28, LL-29, LL-30.
+
+1. Verify actual saved output/schema/licences and supported versions.
+2. Keep scanner/version/baseline/input/run provenance; emit Signals only.
+3. Reject unsafe paths/remote references/oversize/malformed data and withhold raw
+   snippets; empty findings or unknown rules do not pass controls.
+4. Test saved positive/negative/stale/partial/error/identity cases and installed
+   tier/report/review/replay/privacy parity. Never install/run scanners.
+
+#### LL-32: Plan-first Terraform guidance
+
+Scope/design: recommend separately prepared plan JSON; preserve raw/snapshot fallback.
+Version impact: none; reuse doctor/adapters. Execute after LL-33.
+
+1. Update guidance and doctor hints consistently without Terraform execution.
+2. Preserve scope, sensitivity, explicit identity and source-plan binding safeguards.
+3. Record an ADR-style decision here freezing interpreter feature expansion to
+   bug fixes unless an accepted cohort explicitly needs more; record alternatives.
+4. Test ready/partial/blocked installed hints and all raw/plan regressions.
+
+#### LL-33: Allowlisted upstream query Signals
+
+Scope/design: exact reviewed query hashes through existing explicit-scope ARG POST.
+Version impact: versioned allowlist and 1.2 Signals; no arbitrary query mode.
+Prerequisites: LL-27, LL-28, LL-29, LL-31.
+
+1. Reinspect all 49 audited query bytes; seed only executable entries with exact
+   GUID/hash, output columns/types, identity column, permission profile and rationale.
+   Record why every excluded entry stays data.
+2. Reject changed/nonallowlisted text before transport; every request has explicit
+   validated subscription scope within the authorised boundary.
+3. Bound paging/retries/bytes and validate identity/output/partial/truncation metadata.
+   Empty violations never imply pass or complete population.
+4. Exercise saved/injected and installed error/stale/denied/foreign/conflict/privacy
+   cases; reports/replay retain Signals and undemonstrated live status.
+
+#### LL-34: Guided interviews and cohort priority
+
+Scope/design: specific question bank maps explicit answers to selected exact GUIDs.
+Version impact: versioned bank, existing bound review semantics.
+Prerequisites: LL-28, LL-29, LL-32.
+
+1. Preview per-control decisions; no interview answer automatically sets outcomes.
+2. Require reviewer, rationale, evidence, validity and explicit outcome for each
+   content/scope-bound record; reject changed/expired/conflicting records.
+3. Reorder remaining cohort work by source-backed severity/crosswalk coverage in
+   the backlog without altering fixed GUID memberships or inventing receipts.
+4. Test transactional multi-record failure, privacy and installed workflows;
+   retain single-control reviews and independent exceptions.
+
+#### LL-35: Controlled source-update PRs
+
+Scope/design: extend current maintainer monitor and its single workflow.
+Version impact: explicit classified successors, crosswalk revisions and known-local
+catalog version index; retain exact historical bytes. Prerequisites: LL-27,
+LL-28, LL-29, LL-34.
+
+1. Verify checklist, ALZ Library releases, PSRule baselines and built-in Policy
+   structure/licences. Block retention if licence changes.
+2. Carry unchanged GUIDs; safe means demonstrably wording/link/translation only.
+   Meaning/severity/query/crosswalk changes require review and stale bindings;
+   additions need decisions; removals retain retired records. Ambiguous text is
+   needs-review, not automatically safe.
+3. Generate one PR per poll with semantic diff, class table and actual tests;
+   labels `catalog-update` and class. Only this workflow receives scoped
+   `GITHUB_TOKEN` writes. No PAT, stored secrets or unsafe automatic merge.
+4. Auto-merge only safe-only PRs after every gate. Others require human merge.
+   On denied GitHub settings retain candidate artifacts/generated PR body and
+   record exact blocker; never change settings or claim publication happened.
+5. Publish accepted immutable catalogs as GitHub Release assets only. Runtime
+   shows versions behind only against a locally known accepted index and never
+   auto-replaces its catalog.
+6. Test failures/no-change/schema/licence/duplicates/retirement/stale bindings,
+   write-denial fallback, privacy and installed workflows; verify actual CI.
+
+#### LL-36: Local triage workspace
+
+Scope/design: evolve current review page/session, not a hosted portal or evaluator.
+Version impact: versioned resume metadata; reuse explicit review bindings.
+Prerequisites: LL-28, LL-29, LL-30, LL-31, LL-33, LL-34, LL-38.
+
+1. Three panes, keyboard navigation, tier/severity queue, evidence/decision detail
+   and a transparent deterministic effort estimate.
+2. Integrate interviews and deliberate bulk Signal decisions with per-control
+   preview/bindings, supplied attribution/evidence/rationale/validity and replacement
+   confirmation. No one-click invented approval or technical-result overwrite.
+3. Resume from exact persisted invocation/evidence/catalog and immutable revisions;
+   reject stale browser state, invalid hashes and transactional write failures.
+4. Preserve loopback/capability/Host/origin/fixed route/body bounds, privacy and
+   no external assets; retain the single-review workflow.
+5. Exercise HTTP/session/installed tests plus actual browser keyboard/bulk/interview/
+   resume/save/report refresh and zero external requests. No new Azure operation.
+
+#### LL-37: SARIF and PR summaries
+
+Scope/design: render from the same sanitised model; no invented file locations.
+Version impact: explicit output formats, existing technical semantics.
+Prerequisites: LL-28, LL-29; execute after LL-35.
+
+1. Add assess/compare SARIF using verified schema and stable identities.
+2. Add concise Markdown PR summaries retaining tier/severity/unknown/visibility and
+   assessed versus subset pass metrics; findings exit 0, invalid/failure exits 2.
+3. Add docs workflow example for optional annotations/upload with explicit token
+   permissions, never a findings-based gate or repository settings change.
+4. Test missing locations, escaping/unsafe paths, minimisation/redaction and
+   installed cross-format/noncomparable workflows.
+
+#### LL-38: Summary-first reports and tracker exports
+
+Scope/design: executive summary, top risks and text-labelled area heat map, CSV/XLSX.
+Version impact: report/export formats share the versioned model.
+Prerequisites: LL-28, LL-29, LL-37.
+
+1. Keep all 255 entries reachable and completion distinct from pass rate among assessed.
+2. Preserve minimised output; test spreadsheet formula injection/unsafe links and
+   sensitive fields in both exports.
+3. Review any XLSX dependency against licence/maintenance/runtimes/feed/age before
+   installation; use a vetted alternative or standard library if it fails.
+4. Test genuine workbook validity, zero/multiple-resource metrics, stale/partial/
+   manual/error parity, privacy and installed/full checks; no external assets.
+
+#### LL-39: Documentation restructure
+
+Scope/design: README quickstart, one limitations page, existing plan/catalog history.
+Version impact: none. Prerequisites: LL-32, LL-35, LL-36, LL-37, LL-38.
+
+1. Document actual installed commands, plan-first path and raw fallback concisely.
+2. Consolidate caveats with links without removing safety-critical action context.
+3. Preserve history and explain tiers/crosswalks/source-setting fallback/review
+   consent/resume/privacy without claiming undelivered or live behaviour.
+4. Check local links/anchors and public links with explicit inaccessible results;
+   verify examples with installed CLI and retain British English.
+
+#### LL-40: Delivery reconciliation
+
+Scope/design: LL-25-style criterion-by-criterion evidence, not a completion assertion.
+Version impact: none beyond delivered versions. Prerequisites: LL-27-LL-39
+merged or precisely blocked; blockers are not satisfied acceptance criteria.
+
+1. Re-read actual issues/PRs/merges/checks; reconcile every numbered criterion.
+2. Record tiers/manual summing to 255, crosswalk coverage and fixed-target progress
+   with exact historical meaning preserved.
+3. Run integrated exact installed-wheel/full/static/type/dependency workflows and
+   inspect supported CI/compiler artifacts; report real totals/skips and live gaps.
+4. Update PRD/backlog/progress and tracking summary with PR/merge/blocker/minimum
+   owner action. Close tracking only if every mandatory issue is closed.
+
+### How remaining cohorts change
+
+FR-22 remains active, but evidence reuse and triage now precede further bespoke
+cohorts. The 251 GUIDs and 30 fixed partitions never change; 26 are delivered.
+The remaining 225 are not completed by tiering or crosswalk coverage. Preserve
+cohort 19 separately and assess its draft against merged 1.2 foundations before
+resuming. LL-34 records priority from actual severity and crosswalk coverage,
+not guessed coverage or numeric cohort order. Crosswalks, Signals and question
+groups can help multiple cohorts without manufacturing their acceptance.
+
+### Progress log
+
+| Date | Item | PR | Merge SHA | Checks | Status | Notes |
+|---|---|---|---|---|---|---|
+
 ## Recommendation expansion (active)
 
 The owner authorized execution for the **fixed 251 nonautomated GUIDs** in
@@ -71,8 +362,8 @@ without restoration. Evidence remains fixture/injected and installed-CLI
 verified, not new live-control verification. All eight cross-platform CI
 checks passed; all four downloaded PR compiler artifacts report exercised.
 Protected exact-head merge acceptance is persisted per GUID in the ledger.
-Seventeen of the fixed 251 targets are merged. Cohort 18's nine are in progress,
-with 225 others pending; none is completed just by classification.
+Twenty-six of the fixed 251 targets are merged, with 225 pending;
+none is completed just by classification.
 
 [Cohort 18 / #50](https://github.com/jonathan-vella/landinglens/issues/50)
 follows merged cohort 17. Its [matrix](../../references/recommendation-batches/batch-18.json)
@@ -90,9 +381,13 @@ checkout: 195 tests ran, 194 passed and one Windows symlink-privilege test skipp
 Formatting, lint, 22-source-file type checks and dependency consistency passed.
 Existing Bicep exercised the new zone/VNet/rule-group/private-endpoint fixture
 without restoration. Evidence is fixture/injected and installed-CLI verified,
-not new live Azure or backend-resilience/connectivity verification. Protected
-PR delivery and cross-platform CI acceptance remain pending, separate from
-delegated matrix acceptance.
+not new live Azure or backend-resilience/connectivity verification.
+[#51](https://github.com/jonathan-vella/landinglens/pull/51) merged the exact checked
+head normally without override as `ce59bce5953e4e9cdb7122072324a9a2cc0928cb`;
+#50 closed after merge. All eight cross-platform checks passed and all four
+downloaded compiler artifacts report exercised. No branch protection or required
+review was configured at that merge; neither was bypassed. Per-GUID receipts
+are reconciled to their own cohort delivery. Cohort 19 is dependency-ready next.
 
 Specific review questions and limitations appear in templates, reports and the
 local editor. Templates/editor prepare at most 100 matching inventory records
