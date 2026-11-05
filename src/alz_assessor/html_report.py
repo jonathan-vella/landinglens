@@ -203,6 +203,8 @@ def render_html(model: dict[str, Any]) -> str:
         parts.append(
             '<p class="notice">Minimized presentation only: not comparable or replayable.</p>'
         )
+    if "catalog_status" in model:
+        parts.append('<p class="notice">' + escaped(model["catalog_status"]["warning"]) + "</p>")
     if "applicability_suggestions" in model:
         parts.append(
             "<details><summary>Applicability suggestions: "

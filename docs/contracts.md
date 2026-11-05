@@ -80,6 +80,32 @@ JSON/Markdown/HTML share the same counts, with no browser-side tier evaluator.
 
 ## Catalog and evidence contracts
 
+### Source-update candidates and known version index
+
+Source polling generates a separate candidate catalog, GUID classification and
+PR body. Unchanged items carry over; verified HTTPS link/training-only changes
+are safe. Wording, meaning, severity, queries, taxonomy, additions/removals,
+unverified link schemes and external crosswalk-source drift require review.
+Ambiguous wording never becomes safe automatically. New GUIDs have no rule and
+need a decision; removed GUIDs remain retired 1.1 records. Unknown taxonomy/schema
+or licence changes block candidate preparation rather than guessing a design area
+or silently retaining disallowed source content. Changed review bindings require
+review, including conservative invalidation for external mapping changes.
+
+The maintainer-only extension checks actual ALZ Library/PSRule release identities,
+reviewed target bytes and library/baseline tree hashes plus all built-in definition
+blob identities. This detects drift, not automatic equivalence of newly discovered
+targets. Accepted source mappings remain the verified crosswalk subset. Original
+catalogs/contracts/matrix bytes remain unchanged; candidates are not installed
+accepted catalog versions and are never runtime refresh inputs.
+
+`accepted-catalog-index` 1.0 contains exact version/SHA-256 entries. Optional
+`--catalog-index FILE` displays a local version-lag warning without changing outcomes
+or fetching assets. Index acceptance is an explicit producer assertion. Duplicate/
+malformed/empty/unbounded indexes fail. Release publication accepts only the exact
+installed reviewed catalog; candidate files cannot be supplied or uploaded in its
+place. Existing Release tags/assets are never replaced.
+
 ### Guided interview responses
 
 The versioned `question-bank` 1.0 groups specific Key Vault operating-model and

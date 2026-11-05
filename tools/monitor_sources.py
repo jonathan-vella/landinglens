@@ -142,11 +142,33 @@ if __name__ == "__main__":
     parser.add_argument("--baseline", type=Path, default=Path("references") / "2026-11-04")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--previous-status", type=Path)
+    parser.add_argument("--efficiency", action="store_true")
+    parser.add_argument("--test-results", type=Path)
     args = parser.parse_args()
     result = monitor(
         args.baseline,
         args.output,
         previous_status=read_document(args.previous_status) if args.previous_status else None,
     )
+    if args.efficiency and not result["warning"]:
+        from prepare_catalog_update import prepare
+
+        try:
+            if not args.test_results:
+                raise InputError("Efficiency candidates require actual --test-results")
+            prepare(args.output, args.baseline, args.test_results.read_text("utf-8"))
+        except (OSError, ValueError, InputError, KeyError) as exc:
+            result["warning"] = (
+                "Extended source update blocked: " + type(exc).__name__ + ": " + str(exc)
+            )
+            (args.output / "PR-BODY.md").write_text(
+                "## Source update blocked\n\n"
+                + result["warning"]
+                + "\n\nCandidate artifacts retained; installed catalog unchanged.\n",
+                encoding="utf-8",
+            )
+            (args.output / "status.json").write_text(
+                json.dumps(result, indent=2) + "\n", encoding="utf-8"
+            )
     print(json.dumps({key: value for key, value in result.items() if key != "diff"}, indent=2))
     raise SystemExit(2 if result["warning"] else 0)

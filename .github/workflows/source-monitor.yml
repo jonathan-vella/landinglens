@@ -4,9 +4,15 @@ on:
   schedule:
     - cron: '17 6 * * 1'
   workflow_dispatch:
+    inputs:
+      publish_accepted:
+        description: Publish installed accepted catalog as immutable Release assets
+        type: boolean
+        default: false
 
 permissions:
-  contents: read
+  contents: write
+  pull-requests: write
 
 jobs:
   candidate:
@@ -17,9 +23,25 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install reviewed package
-        run: python -m pip install .
+        run: python -m pip install ".[dev]"
+      - name: Verify candidate tooling before polling
+        run: |
+          python -m ruff check . > "$RUNNER_TEMP/catalog-tests.txt"
+          python -m ruff format --check . >> "$RUNNER_TEMP/catalog-tests.txt"
+          python -m mypy >> "$RUNNER_TEMP/catalog-tests.txt"
+          python -m unittest discover -s tests -q >> "$RUNNER_TEMP/catalog-tests.txt" 2>&1
+          python -m pip check >> "$RUNNER_TEMP/catalog-tests.txt"
       - name: Detect and acquire unreviewed candidate
-        run: python tools/monitor_sources.py --output "$RUNNER_TEMP/source-candidate"
+        run: python tools/monitor_sources.py --output "$RUNNER_TEMP/source-candidate" --efficiency --test-results "$RUNNER_TEMP/catalog-tests.txt"
+      - name: Publish one classified PR or record settings blocker
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python tools/publish_catalog_update.py --directory "$RUNNER_TEMP/source-candidate" --repository "$GITHUB_REPOSITORY" --run-id "$GITHUB_RUN_ID"
+      - name: Publish accepted catalog assets only
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.publish_accepted }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python tools/publish_accepted_catalog.py --repository "$GITHUB_REPOSITORY" --commit "$GITHUB_SHA"
       - name: Retain candidate and explicit poll status
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4

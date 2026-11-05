@@ -112,6 +112,21 @@ alz-assessor compare planned.json observed.json --output comparison.json
 alz-assessor render comparison.json --format html --output comparison.html
 ```
 
+Source maintenance now prepares classified candidate snapshots and a PR body with
+actual checks. Its single workflow has approved `GITHUB_TOKEN` content/PR write
+permissions; no PAT or stored bot secret is used. Current repository settings
+disable workflow PR creation/approval and auto-merge, so artifacts remain the
+operational fallback. No setting is changed automatically. Only safe-only
+candidates with every supported platform check green and the exact checked head
+may request auto-merge. All other classes require human merge and reviewed
+promotion; source candidates never replace the installed catalog by polling.
+
+The workflow's explicit `publish_accepted` dispatch publishes only the installed
+accepted catalog and version index as immutable GitHub Release assets, never a
+package. Existing releases/assets are not overwritten. Supply a downloaded,
+reviewed local index with `--catalog-index FILE` to assess/compare/render to show
+known versions behind; runtime does not contact GitHub or replace its catalog.
+
 The offline crosswalk links every GUID to zero or more reviewed evidence sources.
 Its first version has **51 mapped controls / 53 associations**: four partial
 storage policy/PSRule associations and 49 related upstream query hashes.
