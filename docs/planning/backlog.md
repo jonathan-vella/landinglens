@@ -30,12 +30,12 @@ and operational blockers are recorded per row.
 | [LL-37 / #65](https://github.com/jonathan-vella/landinglens/issues/65) | SARIF/PR summaries | LL-28, LL-29; execute after LL-35 | FR-33 | Merged #79; issue closed |
 | [LL-38 / #64](https://github.com/jonathan-vella/landinglens/issues/64) | Summary/tracker exports | LL-28, LL-29, LL-37 | FR-34 | Merged #80; issue closed |
 | [LL-39 / #67](https://github.com/jonathan-vella/landinglens/issues/67) | Documentation restructure | LL-32, LL-35, LL-36, LL-37, LL-38 | FR-35 | Merged #82; issue closed |
-| [LL-40 / #66](https://github.com/jonathan-vella/landinglens/issues/66) | Reconcile delivery | LL-27-LL-39 merged or explicitly blocked | FR-36 | 288 local/exact installed tests and all static/link gates pass; CI/merge pending |
+| [LL-40 / #66](https://github.com/jonathan-vella/landinglens/issues/66) | Reconcile delivery | LL-27-LL-39 merged or explicitly blocked | FR-36 | Merged #83; issue closed; operational gap remains open in #78 |
 
-Planning merged in #68 and LL-27 in #69. Current dependency-ready item:
-**LL-40 / #66 reconciliation**. LL-35 operational publication remains blocked in #78. Follow the
-plan's explicit execution order; blocked GitHub publication does not prevent
-offline evidence/triage work. Do not change repository settings. Keep candidate
+All independent assessor-efficiency implementation and reconciliation are merged.
+**LL-35 operational publication remains blocked in #78**; tracking #53 remains open.
+There is no remaining independently actionable item in this increment.
+Do not change repository settings. Keep candidate
 artifacts/generated PR body when workflow PR creation or safe auto-merge is denied.
 The tracking issue retains precise owner actions; no routine authorisation question
 is needed. No issue is closed solely because a blocker or disposition is written.
