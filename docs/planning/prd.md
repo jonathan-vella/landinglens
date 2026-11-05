@@ -16,61 +16,25 @@ The fixed ledger has 26 merged and 225 pending targets. Cohort 19 work for #52
 is preserved in a named Git stash, not accepted or included in this increment's
 planning PR. Its draft `.4` catalog is not the delivered baseline.
 
-Planning is merged in #68. FR-23 is merged in #69: the separate crosswalk
-represents all 255 GUIDs, with 51 mapped controls and 53 partial/related
-associations. Its 207-test local and exact installed suites passed with one
-Windows privilege skip; eight platform checks and four exercised compiler
-artifacts passed. FR-24 is merged in #70 as explicit assessment 1.2
-opt-in. Its 219-test local and exact installed suites passed with one Windows
-privilege skip, eight platform checks and four exercised compiler artifacts.
-FR-25 is merged in #71 in metadata-only catalog `.5`, with source-backed
-severity and guarded saved archetype suggestions. Its 228-test local/exact
-installed suites passed with one Windows privilege skip; eight platform checks and four exercised compiler artifacts passed.
-FR-26 policy Signals are merged in #72. Both 238-test local/exact installed suites
-passed with one Windows privilege skip; eight platform checks and four exercised
-compiler artifacts passed. FR-27 saved scanner ingestion is merged in #73;
-both 246-test local/exact installed suites pass with one Windows privilege skip,
-eight platform checks and four exercised compiler artifacts. FR-29's exact
-two-query allowlist and Signal executor are merged in #74. Both 252-test
-local/exact installed suites passed with one Windows privilege skip, eight platform
-checks and four exercised compiler artifacts. Live query behaviour is undemonstrated.
+All independent efficiency implementation and reconciliation are merged through
+#83. Catalog `.5` retains 255 GUIDs with 7 automated / 205 assisted / 43 manual
+recommendations. Crosswalk `.2` has 51 mapped controls and 53 partial/related
+associations. Evidence-specific authored integration tiers are 7 Verified /
+8 Signal / 197 Needs decision / 43 manual, not live estate counts.
 
-FR-28 is merged in #75 with plan-first doctor guidance and the interpreter
-scope-freeze ADR. FR-30's specific shared-narrative interviews and source-backed
-remaining-cohort priority are merged in #76. Both 259-test local/exact installed
-suites passed with one Windows privilege skip, eight platform checks and four
-exercised compiler artifacts. FR-31 source-update candidates/fallback are implemented
-in #77; actual public polling succeeded without source changes. Workflow
-42021697739 passed and published immutable accepted catalog `.5` plus local index
-as Release assets; downloaded assets match the installed catalog and semantic
-hash. Workflow PR creation/auto-merge remains blocked by existing settings in #78,
-not delivered by mock evidence. FR-33 SARIF/PR summaries are merged in #79 with
-272 local/exact installed tests, one Windows privilege skip, eight platform checks
-and four exercised compiler artifacts. FR-34 summary-first HTML and CSV/XLSX
-trackers are implemented locally; native workbook inspection confirmed readable
-cells, two sheets, zero formulas/external links and no security warnings.
-FR-34 is now merged in #80 with 277 local/exact installed tests, one Windows
-privilege skip, eight platform checks and four exercised compiler artifacts.
-FR-32's three-pane local workspace is implemented and demonstrated with an
-installed authored browser fixture: keyboard navigation, explicit two-control
-bulk decisions, shared interview with unresolved outcomes retained, rejected
-unconfirmed replacement, report refresh and verified resume of four records.
-No external requests or horizontal overflow occurred; both listeners were stopped.
-FR-32 is now merged in #81 with 284 local/exact installed tests, one Windows
-privilege skip, eight platform checks and four exercised compiler artifacts.
-FR-35 documentation is reorganised locally into a quickstart, detailed usage and
-one evidence-limits page, with history retained in the plan, and merged in #82.
-The Windows short-path alias diagnostic found by CI was fixed and all supported
-checks reran green without weakening tests. FR-36's criterion reconciliation and
-integrated acceptance tests are implemented; final gates are pending.
+Final local and exact installed-wheel suites ran 288 tests: 287 passed and one
+Windows privilege case skipped. All eight final platform checks and four
+downloaded compiler artifacts passed/exercised. Actual authored browser and native
+workbook acceptance passed; no new live Azure/query compilation/scanner run is
+claimed. The earlier Windows short-path CI defect and corrected rerun remain
+recorded without weakening tests.
 
-Independent efficiency implementation is delivered, with source-update operational
-PR/auto-merge acceptance still blocked in #78. Catalog dispositions remain
-7/205/43. Evidence-specific authored integration tiers are 7 Verified / 8 Signal /
-197 Needs decision / 43 manual, summing to 255; these are not live estate counts.
-The [delivery reconciliation](plan.md#assessor-efficiency-delivery-reconciliation-2026-11-05)
-records all criteria, counts, limits and minimum owner action. Tracking #53 remains
-open while the operational blocker is open.
+Source polling and accepted catalog/index/notice Release assets are demonstrated;
+workflow PR creation/safe auto-merge remains blocked in #78 by unchanged settings
+and an approved check trigger. Tracking #53 remains open. The
+[delivery reconciliation](plan.md#assessor-efficiency-delivery-reconciliation-2026-11-05)
+is the criterion-by-criterion source for PRs, merges, historical checks, limits and
+minimum owner action.
 
 ### Requirements and acceptance
 

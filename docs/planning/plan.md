@@ -323,7 +323,7 @@ groups can help multiple cohorts without manufacturing their acceptance.
 | 2026-11-05 | LL-38 summary/trackers | [#80](https://github.com/jonathan-vella/landinglens/pull/80) | `5a2af9c05ac1126fc869f4892b4e29a87ec9988a` | 277 local/installed tests: 276 pass, one Windows privilege skip; native workbook; eight platform checks and four exercised compiler artifacts | Merged; #64 closed | Shared CSV/XLSX text values; no dependency, formulas/external links/security warnings |
 | 2026-11-05 | LL-36 local workspace | [#81](https://github.com/jonathan-vella/landinglens/pull/81) | `6c89761ea8686bf972e77d6ef71f58550af3802a` | 284 local/installed tests: 283 pass, one Windows privilege skip; installed browser; eight platform checks and four exercised compiler artifacts | Merged; #61 closed | Zero external requests/overflow; explicit decisions only, original evidence times preserved |
 | 2026-11-05 | LL-39 documentation | [#82](https://github.com/jonathan-vella/landinglens/pull/82) | `3b6620a11f0b147ab485d0ce367429827872fef4` | 286 local/installed tests: 285 pass, one Windows privilege skip; links/commands; corrected-head eight platform checks and four exercised compiler artifacts | Merged; #67 closed | Windows short-path alias diagnostic fixed after initial CI failure; no weakened tests |
-| 2026-11-05 | LL-40 reconciliation | Pending | Pending | 288 local/installed tests: 287 pass, one Windows privilege skip; static/type/dependencies and 234 local links/anchors pass; CI pending | Implemented, unmerged | Independent implementation delivered; LL-35 operations remain blocked in #78 |
+| 2026-11-05 | LL-40 reconciliation | [#83](https://github.com/jonathan-vella/landinglens/pull/83) | `c915268447315b866379f582b5d864b77f4ff86f` | 288 local/installed tests: 287 pass, one Windows privilege skip; static/type/dependencies/links; eight platform checks and four exercised compiler artifacts | Merged; #66 closed | Independent implementation delivered; LL-35 operations remain blocked in #78 |
 
 ### Catalog delivery history
 
@@ -431,7 +431,7 @@ accepted solely from a plan, disposition or a green mock.
 | LL-37 / #65 | AC1: advisory SARIF 2.1.0, stable rules, honest optional contained file-only locations, no invented lines. AC2: sanitised PR summary and unchanged advisory exits. AC3: pinned optional upload example without settings/finding gates. AC4: 4 shape/parity/privacy/path/installed assess/compare/render tests. Actual GitHub code-scanning ingestion is not claimed. | #79 / `8213cf471738b78da223cf546879a81c918b3d53` |
 | LL-38 / #64 | AC1: summary-first HTML, separate denominators, priority risks and labelled heat map. AC2: exact-parity sanitised CSV/XLSX tracker, injection/link/privacy guards. AC3: standard-library decision, no dependency installation. AC4: 5 tests plus actual native workbook/cell inspection: two sheets, zero formulas/external links/security warnings. | #80 / `5a2af9c05ac1126fc869f4892b4e29a87ec9988a` |
 | LL-39 / #67 | AC1-3: quickstart, detailed usage, canonical evidence-limits page, plan history and truthful current/blocker documentation. AC4: 231 authored local links/anchors valid; migrated public targets returned 200; installed examples passed. First Windows CI found an 8.3 alias diagnostic defect; resolving supplied paths fixed it and the exact supported matrix reran green. 2 link tests. | #82 / `3b6620a11f0b147ab485d0ce367429827872fef4` |
-| LL-40 / #66 | AC1: this actual issue/criterion/merge record. AC2: evidence-specific tier counts and immutable fixed-ledger audit below. AC3: integrated authored config + policy/scanner/query/interview/replay/all-format/installed checks, prior licensed AVM corpus retained. AC4: PRD/backlog/progress/tracking receipts; #53 stays open while #78 is blocked. Final merge receipt is posted to #66/#53 after gates. | This reconciliation; final merge/CI gate |
+| LL-40 / #66 | AC1: this actual issue/criterion/merge record. AC2: evidence-specific tier counts and immutable fixed-ledger audit below. AC3: integrated authored config + policy/scanner/query/interview/replay/all-format/installed checks, prior licensed AVM corpus retained. AC4: PRD/backlog/progress/tracking receipts; #53 stays open while #78 is blocked. | #83 / `c915268447315b866379f582b5d864b77f4ff86f` |
 
 ### Counts and runtime scope
 
@@ -480,7 +480,14 @@ consistency and 234 authored local links/anchors passed. Existing no-restore
 Bicep and the retained licensed AVM corpus were exercised; no new dependencies
 were restored or installed. Final wheel SHA-256:
 `3e642fc52da7a9672e57f975813e66e7202e0318d3912cd3aecb775a6588d96a`.
-Supported CI and downloaded compiler artifacts remain the final premerge gate.
+The exact checked head `258092983b87b7891cb2e7987bf70c56cf1026db` passed all eight
+Windows/Linux Python 3.12/3.13 checks in runs `42032973246` and `42033035003`,
+plus CodeQL. All four downloaded PR compiler artifacts report exercised.
+[#83](https://github.com/jonathan-vella/landinglens/pull/83) merged normally at
+2026-11-05T13:11:32Z as `c915268447315b866379f582b5d864b77f4ff86f`;
+#66 is closed. No branch protection or pending review was configured/observed
+at merge; no override was used. This receipt preserves the earlier Windows
+short-path failure and its successful corrected rerun rather than erasing it.
 
 [#78](https://github.com/jonathan-vella/landinglens/issues/78) retains LL-35's
 unsatisfied operational criteria. Live settings still report
