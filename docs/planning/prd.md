@@ -1,5 +1,57 @@
 # LandingLens product requirements
 
+## Next increment: assessor efficiency
+
+Owner-authorised on 2026-11-05, tracked in
+[#53](https://github.com/jonathan-vella/landinglens/issues/53). Reduce assessor
+effort by reusing attributable evidence and prioritising explicit human decisions,
+not by counting Signals as passes. The
+[execution plan](plan.md#assessor-efficiency-increment) defines acceptance,
+dependencies and delivery gates.
+
+Verified starting point: `main` at `ce59bce5953e4e9cdb7122072324a9a2cc0928cb`,
+catalog `2026-11-05.3`, 255 entries: 7 automated, 205 assisted, 43 manual.
+#51 is merged and #50 closed, contrary to the request's expected pending state.
+The fixed ledger has 26 merged and 225 pending targets. Cohort 19 work for #52
+is preserved in a named Git stash, not accepted or included in this increment's
+planning PR. Its draft `.4` catalog is not the delivered baseline.
+
+### Requirements and acceptance
+
+| Requirement | Scope and acceptance | Work |
+|---|---|---|
+| FR-23 | Versioned source-hashed crosswalk for every GUID, allowing empty mappings; verified ALZ Library, built-in Policy, PSRule and query identities with conservative strength/rationale; inspect/validate CLI and provenance tests. Mapping is not an outcome. | LL-27 |
+| FR-24 | Explicit contract 1.2 evidence tiers, separate from automation disposition/outcome: Verified, Signal, Needs decision, with manual counted separately. Control counts sum to 255; old 1.0/1.1 meanings and render/replay remain unchanged. All formats share one model. | LL-28 |
+| FR-25 | Preserve source-backed severity and deterministic priority. Suggest applicability only from explicit saved MG/archetype evidence and require reviewer confirmation; never infer exclusions from names. | LL-29 |
+| FR-26 | Saved/scoped assignment and original-time compliance evidence maps to attributable Signals. Assignments, exemptions, evaluation time, freshness, gaps and technical results remain distinct. Injected/saved acceptance stays within #40's boundary. | LL-30 |
+| FR-27 | Ingest supported saved PSRule and generic SARIF with scanner/version/baseline/hash provenance and redaction. Never run/install scanners; empty results, unknown rules or missing identities cannot pass controls. | LL-31 |
+| FR-28 | Recommend separately supplied plan JSON, retaining raw Terraform fallback. Doctor hints explain both. Freeze interpreter scope to bug fixes unless an accepted cohort needs more; no Terraform execution. | LL-32 |
+| FR-29 | Execute only exact reviewed hash-allowlisted upstream ARG queries with explicit scoped transport, typed output/identity validation and bounded paging/retries. Emit Signals only; exclude and explain all other audited queries. | LL-33 |
+| FR-30 | Specific multi-GUID interviews produce only explicitly confirmed, content/scope-bound reviews with reviewer/rationale/evidence/validity. Reprioritise fixed cohorts by severity/crosswalk coverage without changing membership or receipts. | LL-34 |
+| FR-31 | Extend source polling to checklist, ALZ Library, PSRule and built-ins. Produce classified candidate PRs; safe-only auto-merge is separately guarded. Preserve review/retirement/history; accepted catalog Release assets only, local lag notice, no runtime replacement. Blocked GitHub settings retain artifacts and generated PR body. | LL-35 |
+| FR-32 | Three-pane local triage with keyboard navigation, tier/severity queue, evidence/decision panel, disclosed effort estimate, explicit bulk Signal review, interviews and verified resume. Retain capability/Host/origin/routes, immutable revisions and no remote assets. | LL-36 |
+| FR-33 | Advisory SARIF and Markdown PR summaries share the sanitised assessment model; genuine safe locations only, no invented source lines. Provide a docs example without findings-based gates. | LL-37 |
+| FR-34 | Summary-first HTML, separate completion/subset pass rate, severity risks, text-labelled area heat map and minimised CSV/XLSX trackers. Review dependencies first and test spreadsheet injection, workbook validity and all-format parity. | LL-38 |
+| FR-35 | README quickstart, one linked limitations page, preserved planning/catalog history and checked links/examples. Never present planned behaviour as delivered. | LL-39 |
+| FR-36 | Criterion-by-criterion merged delivery, actual checks/skips, tier totals/crosswalk coverage and live-versus-injected limits. Close tracking only when every mandatory item is closed; blockers remain visible. | LL-40 |
+
+Contract design decision: retain `automation` and all six technical outcomes.
+Tiers describe evidence available in a particular assessment, not permanent new
+compliance dispositions. Verified means a current supported accepted predicate
+has sufficient evidence, including a failure, not that it passed. Signal means
+attributable machine evidence awaits confirmation. Needs decision means no usable
+machine evidence. Explicit manual disposition remains its own count. Aggregate
+once per GUID with conservative mixed-resource/mode handling, defined and tested
+in LL-28; insufficient evidence cannot become Verified. No 1.0/1.1 document
+acquires these meanings implicitly.
+
+All changes preserve advisory exits 0/2, planned/observed separation, independent
+exceptions, `not_comparable`, immutable historical bytes, original policy times,
+review attribution/content/scope/expiry and privacy. No signal, assignment,
+scanner, query or interview answer creates a pass without an accepted predicate
+or explicit bound human decision. Every current GUID remains visible; retired
+records remain traceable under explicit lifecycle semantics.
+
 ## Active increment: fixed recommendation expansion
 
 The current working successor is `2026-11-05.3`: 255 retained GUIDs, 7 automated,
@@ -112,9 +164,9 @@ boundaries.
   undocumented provider defaults.
 - Automatically signing in, collecting an entire tenant, or assuming Microsoft
   Graph or billing permissions.
-- Building a web application, hosted service, database or blocking
-  assessment-based CI gate. The later owner-authorized FR-21 follow-up permits
-  only a temporary loopback form for local review saving.
+- Building a hosted service, database or blocking assessment-based CI gate.
+  FR-21 permits a temporary loopback form; FR-32 extends that same local boundary
+  into triage, not a hosted application.
 - Claiming all Microsoft recommendations are automated or every landing zone is
   compliant.
 
@@ -323,12 +375,14 @@ source/license hashes and semantic diffs. Display last successful polling,
 last semantic review and pending changes separately. Detect GUID changes,
 text/query/schema/taxonomy/license changes and display-ID conflicts.
 
-Failed detection retains the known catalog with an explicit warning; no
+Historical FR-15 baseline: failed detection retains the known catalog with an explicit warning; no
 runtime refresh, automatic query execution or auto-merge. Default workflow
 permissions are read-only and output is candidate/diff artifacts. A maintainer
 opens a reviewed promotion PR. Bot write access/credentials require separate
 approval. Apply FR-11 retirement and stale-review handling during promotion.
 Ten-working-day triage is an operating proposal, not a delivery guarantee.
+FR-31 supersedes the artifact-only/bot-write gate only for the newly approved
+workflow; arbitrary query execution and runtime refresh remain excluded.
 
 ### FR-16: Evidence-backed automation expansion (LL-19, LL-20)
 
@@ -514,9 +568,42 @@ after LL-12; new work is tracked separately in the next-increment backlog.
 Additional automation and source/API versions require review; the existing
 accepted limitations do not imply unverified coverage.
 
-The current request authorizes this planning update and issue creation, not
-implementation of the next increment or excluded actions. Live Azure access,
-authentication/permissions, bot write credentials, deployment, policy scans,
-tool/module installation and package publication remain separately gated.
-If candidate verification fails, obtain an explicit coverage decision rather
-than silently dropping the expansion requirement.
+### Assessor-efficiency authorisation: 2026-11-05
+
+The following owner approvals are recorded verbatim. They supersede the earlier
+planning-only and artifact-only gates only within this increment.
+
+- **D1** Planning update and issue creation: **APPROVED**
+- **D2** Implementation of every work item below, through separate scoped PRs, merging
+  each after all required checks pass, and closing issues that have verified, merged
+  acceptance evidence: **APPROVED**
+- **D3** The source-update workflow may open PRs using the workflow's own
+  `GITHUB_TOKEN`, with `contents: write` and `pull-requests: write` scoped to that single
+  workflow (no PATs, no stored bot secrets): **APPROVED**
+- **D4** Auto-merge for the "safe" catalog-change class (wording, link or translation only,
+  all checks green), with every other class requiring a human merge: **APPROVED**
+- **D5** Executing reviewed, allowlisted, read-only upstream Azure Resource Graph queries
+  as **Signals** (never passes) within an explicit, user-supplied scope: **APPROVED**. This
+  replaces the rule "upstream queries are data, never executed" for allowlisted queries
+  only. Non-allowlisted queries stay data.
+- **D6** Adding new runtime or dev dependencies (for example, `openpyxl` for XLSX export)
+  **is approved, provided each one passes the existing dependency-review process**
+  (licence, maintenance, supported runtimes, approved feed, package age), recorded in
+  `docs/dependency-review.md`. If a candidate fails review, choose an alternative or a
+  standard-library approach. Do not stop.
+
+Exclusions remain: no Azure deployment/remediation/deletion/policy mutation, wider
+live reads than #40, automatic authentication or permission changes, repository
+settings/protection/secrets changes, package publication, implicit modules or
+unsupported Terraform/Bicep execution. Policy/D5 acceptance uses saved fixtures
+and injected transports; unavailable authorised credentials mean live behaviour
+is undemonstrated. Dependencies require review before installation. Accepted
+catalogs may be published only as GitHub Release assets under FR-31, not packages.
+
+Repository facts win on state; this authorisation wins on new scope. Choose the
+smallest existing-contract design, use weaker crosswalk strengths where uncertain,
+record unverifiable subsets and blockers, and continue independent work. Do not
+reopen closed issues. No approval question is required for these routine choices.
+The 2026-11-05 read-only settings inspection found auto-merge disabled and workflow
+PR creation/approval disabled. Do not change either setting. LL-35 must retain
+artifacts/generated PR body and record exact blocked operations in #53.

@@ -5,6 +5,39 @@ This backlog tracks the complete [implementation plan](plan.md) and
 issue status is the source of truth. Dependencies describe implementation
 order, not additional authorization to access Azure or publish a package.
 
+## Assessor-efficiency work items
+
+Owner-authorised 2026-11-05, tracking
+[#53](https://github.com/jonathan-vella/landinglens/issues/53).
+[FR-23-FR-36](prd.md#next-increment-assessor-efficiency) and the
+[numbered plan](plan.md#assessor-efficiency-increment) govern delivery.
+Verified baseline is merged `.3`, 7/205/43, not the paused draft `.4`.
+All items below are open, not delivered by this planning update.
+
+| ID / issue | Work item | Prerequisites | FR | Delivery status |
+|---|---|---|---|---|
+| [LL-27 / #58](https://github.com/jonathan-vella/landinglens/issues/58) | Verified evidence crosswalk | Planning PR | FR-23 | Pending |
+| [LL-28 / #59](https://github.com/jonathan-vella/landinglens/issues/59) | Explicit evidence tiers | LL-27 | FR-24 | Pending |
+| [LL-29 / #56](https://github.com/jonathan-vella/landinglens/issues/56) | Severity/applicability | LL-27, LL-28 | FR-25 | Pending |
+| [LL-30 / #55](https://github.com/jonathan-vella/landinglens/issues/55) | Saved/scoped policy Signals | LL-27, LL-28, LL-29 | FR-26 | Pending |
+| [LL-31 / #63](https://github.com/jonathan-vella/landinglens/issues/63) | Saved scanner ingestion | LL-27, LL-28, LL-29, LL-30 | FR-27 | Pending |
+| [LL-32 / #54](https://github.com/jonathan-vella/landinglens/issues/54) | Plan-first guidance | Existing adapters; execute after LL-33 | FR-28 | Pending |
+| [LL-33 / #60](https://github.com/jonathan-vella/landinglens/issues/60) | Allowlisted query Signals | LL-27, LL-28, LL-29, LL-31 | FR-29 | Pending |
+| [LL-34 / #57](https://github.com/jonathan-vella/landinglens/issues/57) | Interviews/cohort priority | LL-28, LL-29, LL-32 | FR-30 | Pending |
+| [LL-35 / #62](https://github.com/jonathan-vella/landinglens/issues/62) | Source-update PR pipeline | LL-27, LL-28, LL-29, LL-34 | FR-31 | Implementation pending; observed auto-merge/workflow PR settings block operational publication |
+| [LL-36 / #61](https://github.com/jonathan-vella/landinglens/issues/61) | Local triage workspace | LL-28, LL-29, LL-30, LL-31, LL-33, LL-34, LL-38 | FR-32 | Pending |
+| [LL-37 / #65](https://github.com/jonathan-vella/landinglens/issues/65) | SARIF/PR summaries | LL-28, LL-29; execute after LL-35 | FR-33 | Pending |
+| [LL-38 / #64](https://github.com/jonathan-vella/landinglens/issues/64) | Summary/tracker exports | LL-28, LL-29, LL-37 | FR-34 | Pending dependency review |
+| [LL-39 / #67](https://github.com/jonathan-vella/landinglens/issues/67) | Documentation restructure | LL-32, LL-35, LL-36, LL-37, LL-38 | FR-35 | Pending |
+| [LL-40 / #66](https://github.com/jonathan-vella/landinglens/issues/66) | Reconcile delivery | LL-27-LL-39 merged or explicitly blocked | FR-36 | Pending; blockers do not satisfy criteria |
+
+Current dependency-ready item: **planning PR, then LL-27 / #58**. Follow the
+plan's explicit execution order; blocked GitHub publication does not prevent
+offline evidence/triage work. Do not change repository settings. Keep candidate
+artifacts/generated PR body when workflow PR creation or safe auto-merge is denied.
+The tracking issue retains precise owner actions; no routine authorisation question
+is needed. No issue is closed solely because a blocker or disposition is written.
+
 ## Active: fixed 251-recommendation expansion
 
 The [active plan](plan.md#recommendation-expansion-active) and
@@ -17,10 +50,11 @@ owner-authorized increment. Baseline `2026-11-04.2` remains 4 automated /
 | 01 / [#46](https://github.com/jonathan-vella/landinglens/issues/46) | G02.01-.04, G02.07-.08, G04.02-.03; fixed GUIDs in ledger | Delivered catalogs/contracts/local reviews; no new live access required | [#47](https://github.com/jonathan-vella/landinglens/pull/47) merged; all eight checks passed, exact installed suite and all four CI compiler integrations exercised; issue closed |
 | 17 / [#48](https://github.com/jonathan-vella/landinglens/issues/48) | Nine firewall GUIDs; duplicate D07.12 entries remain distinct | Merged cohort 01, actual source review, reviewed network schemas | [#49](https://github.com/jonathan-vella/landinglens/pull/49) merged; all eight checks passed, exact installed suite and all four CI compiler integrations exercised; issue closed |
 | 18 / [#50](https://github.com/jonathan-vella/landinglens/issues/50) | Nine TLS/resilience/private-connectivity GUIDs | Merged cohort 17; 18 actual source captures and reviewed versioned schemas | [#51](https://github.com/jonathan-vella/landinglens/pull/51) merged; all eight checks passed, exact installed suite and all four compiler integrations exercised; issue closed |
-| Other cohorts | Remaining 225 GUIDs in 5-10-item cohorts | Explicit per-batch source/evidence prerequisites, recorded before work | Pending; no per-GUID completion or source review inferred from partitioning |
+| 19 / [#52](https://github.com/jonathan-vella/landinglens/issues/52) | Nine service-endpoint/subnet/segmentation GUIDs | Merged cohort 18; re-evaluate after efficiency foundations | Paused unmerged draft preserved in named Git stash; no acceptance receipt |
+| Other cohorts | Other 216 GUIDs in unchanged 5-10-item cohorts | Evidence foundations, then LL-34 severity/crosswalk priority with per-batch source requirements | Pending; partitioning/tiering is not delivery |
 
 Working successor `2026-11-05.3`: 7 automated / 205 assisted / 43 manual, all 255 visible.
-Twenty-six fixed targets are merged and 225 pending; classification
+Twenty-six fixed targets are merged and 225 undelivered, including paused cohort 19; classification
 alone is not delivery.
 G02.02 is explicitly manual; unsupported Terraform vault soft-delete evidence
 remains unknown. Create ready batch issues as implementation proceeds, not 251
@@ -111,10 +145,12 @@ evidence is in the
 | [LL-24 (#26)](https://github.com/jonathan-vella/landinglens/issues/26) | Strengthen invariants and installed-wheel CI | Completed baseline | FR-20 | Mandatory |
 | [LL-25 (#28)](https://github.com/jonathan-vella/landinglens/issues/28) | Reconcile the next increment offline | LL-13-LL-21, LL-23, LL-24 | FR-20 | Mandatory |
 
-Current dependency-ready work: **LL-25 / #28 final reconciliation**. Its mandatory
+Historical dependency-ready work was **LL-25 / #28 final reconciliation**. Its mandatory
 implementation prerequisites are merged, including LL-21 in #36, the accepted
 first wave in #37 and replay in #39. The optional MCP study concluded not ready
 in #38 and does not block release acceptance.
+That work is now merged and #28 closed; the current dependency-ready item is
+LL-27 after the assessor-efficiency planning PR.
 
 Dependencies are implementation prerequisites, not authorization. New source
 monitoring defaults to read-only artifact generation, not bot PR write access.
