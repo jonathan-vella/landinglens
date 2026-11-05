@@ -49,6 +49,13 @@ not delivered by mock evidence. FR-33 SARIF/PR summaries are merged in #79 with
 and four exercised compiler artifacts. FR-34 summary-first HTML and CSV/XLSX
 trackers are implemented locally; native workbook inspection confirmed readable
 cells, two sheets, zero formulas/external links and no security warnings.
+FR-34 is now merged in #80 with 277 local/exact installed tests, one Windows
+privilege skip, eight platform checks and four exercised compiler artifacts.
+FR-32's three-pane local workspace is implemented and demonstrated with an
+installed authored browser fixture: keyboard navigation, explicit two-control
+bulk decisions, shared interview with unresolved outcomes retained, rejected
+unconfirmed replacement, report refresh and verified resume of four records.
+No external requests or horizontal overflow occurred; both listeners were stopped.
 Full delivery checks are pending.
 
 ### Requirements and acceptance

@@ -282,6 +282,19 @@ validation/import/render commands are needed. An exception remains separate from
 the technical result; an accepted exception never turns a failure into a pass.
 Reviews apply to the displayed evidence scope/control, not just one resource.
 
+The workspace has design-area progress, a severity/tier-filtered "Needs me" queue
+and an evidence/decision panel. Use Alt+Up/Alt+Down or Previous/Next to navigate.
+The effort estimate states its fixed per-tier assumptions; it is not measured
+effort or a compliance score. Unknown/manual/pending decisions remain in the queue.
+
+For bulk Signal review, select each control and its explicit outcome, then supply
+shared reviewer, justification, evidence and validity. No decision is prefilled.
+One transaction validates all selected records and creates one immutable revision;
+any invalid/stale/unconfirmed replacement leaves the previous revision intact.
+The interview panel reuses one narrative with separate per-GUID outcomes.
+Human confirmation of an automated-control Signal does not replace its technical
+predicate or turn unavailable configuration into a pass.
+
 Supply `--manual FILE` / `--exceptions FILE` to retain existing records,
 `--catalog FILE` for the exact nondefault version-1.1 catalog, and the original
 `--landing-zone` / `--max-age-hours` selections when applicable. Existing records
@@ -297,6 +310,14 @@ evaluation/freshness is recomputed at save time. To reopen, start another sessio
 with saved `evidence.json`, `catalog.json`, `manual.json` and `exceptions.json`
 from the desired revision and a **new** output directory. Original inputs and
 existing directories are never overwritten.
+
+New revisions include CSV/XLSX trackers and a hash-bound core manifest. Resume with
+`review serve PRIVATE_DIRECTORY\revision-0002 --resume --directory NEW_DIRECTORY`.
+This verifies the saved evidence, catalog, reviews, assessment and invocation;
+do not override their scope/catalog/freshness selections. Original evidence times
+and prior revisions are preserved; freshness is reevaluated now. A changed hash,
+link, schema or invocation fails explicitly. Legacy revisions without a manifest
+still use the explicit saved-file workflow above rather than gaining new trust.
 
 This is a private loopback-only listener, not a hosted application. Keep its
 capability URL and output files private: full files retain scoped identities,

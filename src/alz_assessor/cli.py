@@ -195,6 +195,7 @@ def main() -> int:
     review.add_argument("--max-age-hours", type=float, default=24)
     review.add_argument("--no-browser", action="store_true")
     review.add_argument("--evidence-tiers", action="store_true")
+    review.add_argument("--resume", action="store_true")
     tf = commands.add_parser("spike-terraform", help="Analyze a bounded offline HCL2 subset")
     tf.add_argument("root", type=Path)
     tf.add_argument("--snapshots", type=Path)
@@ -332,6 +333,23 @@ def main() -> int:
                         "review serve requires --directory NEW_DIRECTORY and saved normalized "
                         "evidence; scope/time come from evidence and current review time"
                     )
+                if args.resume:
+                    if (
+                        args.manual
+                        or args.exceptions
+                        or args.catalog
+                        or args.evidence_tiers
+                        or args.landing_zone != "platform"
+                        or args.max_age_hours != 24
+                    ):
+                        raise InputError(
+                            "Resume uses saved catalog/reviews/invocation; do not override them"
+                        )
+                    serve_reviews(
+                        ReviewSession.resume(args.source, args.directory),
+                        open_browser=not args.no_browser,
+                    )
+                    return 0
                 serve_reviews(
                     ReviewSession(
                         read_json(args.source),
@@ -347,7 +365,14 @@ def main() -> int:
                 )
                 return 0
             if not args.scope or any(
-                (args.directory, args.manual, args.exceptions, args.no_browser, args.evidence_tiers)
+                (
+                    args.directory,
+                    args.manual,
+                    args.exceptions,
+                    args.no_browser,
+                    args.evidence_tiers,
+                    args.resume,
+                )
             ):
                 raise InputError("review prepare/validate requires --scope and no serve options")
             result = (

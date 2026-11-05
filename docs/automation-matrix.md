@@ -1,5 +1,11 @@
 # Accepted release automation matrix
 
+Local triage routes shared tier/severity evidence and explicit bound reviews,
+not new predicates. Bulk/interview saves validate every selected outcome before
+one immutable revision; unknown/pending decisions stay in the queue. Active
+human confirmation does not rewrite automated technical evidence. Resume verifies
+saved core hashes/invocation and rechecks freshness without recollection.
+
 Summary-first HTML and text-only CSV/XLSX trackers share the sanitised assessment
 model and add no predicates. Heat-map values are labelled outcome-instance counts,
 not maturity scores. Tracker formula-like text is escaped; no spreadsheet
