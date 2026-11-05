@@ -1,5 +1,6 @@
 """Maintainer extension: reviewed-source metadata, candidate diff and PR body artifacts."""
 
+import copy
 import json
 import re
 from pathlib import Path
@@ -191,4 +192,50 @@ def prepare(
     ):
         (destination / name).write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8")
     (destination / "PR-BODY.md").write_text(pr_body(update, tests), encoding="utf-8")
+    return update
+
+
+def prepare_validation(destination: Path, baseline: Path, tests: str) -> dict[str, Any]:
+    """Keep the live poll intact and isolate one explicitly authored link-only fixture."""
+    for name in ("candidate-catalog.json", "catalog-update.json", "PR-BODY.md"):
+        source = destination / name
+        if not source.is_file():
+            raise InputError("Validation requires an independently completed live source poll")
+        (destination / ("observed-" + name)).write_bytes(source.read_bytes())
+    before = read_document(baseline / "alz-checklist.json")
+    after = copy.deepcopy(before)
+    item = next(
+        entry for entry in after["items"] if entry["guid"] == "b03ed428-4617-4067-a787-85468b9ccf3f"
+    )
+    expected = "https://learn.microsoft.com/azure/storage/common/storage-require-secure-transfer"
+    if item.get("link") != expected:
+        raise InputError("The reviewed link-validation fixture baseline changed")
+    item["link"] = expected.replace("microsoft.com/azure/", "microsoft.com/en-us/azure/", 1)
+    status = read_document(destination / "status.json")
+    update = candidate_catalog(
+        load_catalog(),
+        before,
+        after,
+        at=status["poll_attempted_at"],
+    )
+    if update["classification"] != "safe":
+        raise InputError("Authored validation must remain strictly link-only")
+    update["validation_only"] = True
+    update["validation_note"] = (
+        "Authored locale-link fixture, not an upstream source-change claim. "
+        "The independently observed poll is retained in observed-* artifacts. "
+        "No catalog activation or accepted Release publication."
+    )
+    for name, value in (
+        ("candidate-catalog.json", update["candidate"]),
+        ("catalog-update.json", update),
+    ):
+        (destination / name).write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8")
+    (destination / "PR-BODY.md").write_text(
+        "## Validation only\n\n"
+        + update["validation_note"]
+        + "\n\nRelates to #78.\n\n"
+        + pr_body(update, tests),
+        encoding="utf-8",
+    )
     return update

@@ -144,19 +144,24 @@ if __name__ == "__main__":
     parser.add_argument("--previous-status", type=Path)
     parser.add_argument("--efficiency", action="store_true")
     parser.add_argument("--test-results", type=Path)
+    parser.add_argument("--validation-candidate", action="store_true")
     args = parser.parse_args()
+    if args.validation_candidate and not args.efficiency:
+        parser.error("--validation-candidate requires --efficiency and actual test results")
     result = monitor(
         args.baseline,
         args.output,
         previous_status=read_document(args.previous_status) if args.previous_status else None,
     )
     if args.efficiency and not result["warning"]:
-        from prepare_catalog_update import prepare
+        from prepare_catalog_update import prepare, prepare_validation
 
         try:
             if not args.test_results:
                 raise InputError("Efficiency candidates require actual --test-results")
             prepare(args.output, args.baseline, args.test_results.read_text("utf-8"))
+            if args.validation_candidate:
+                prepare_validation(args.output, args.baseline, args.test_results.read_text("utf-8"))
         except (OSError, ValueError, InputError, KeyError) as exc:
             result["warning"] = (
                 "Extended source update blocked: " + type(exc).__name__ + ": " + str(exc)

@@ -74,10 +74,12 @@ invent an unavailable historical catalog.
 Source detection is separate from semantic acceptance. Candidates cannot be used
 as accepted evaluator catalogs. Wording/meaning/severity/query/new/removed/
 crosswalk-source changes require review; only demonstrable safe changes may request
-auto-merge after actual platform checks and exact-head gates. Repository settings
-currently block operational workflow PR creation/auto-merge, tracked in
-[#78](https://github.com/jonathan-vella/landinglens/issues/78). No settings or secrets
-are changed to bypass them.
+auto-merge after actual platform checks and exact-head gates. The owner explicitly
+approved workflow PR creation/approval, repository auto-merge and `actions: write`
+for the source workflow on 2026-11-05. Both repository settings are enabled;
+default workflow permissions remain read-only. Operational validation is tracked
+in [#78](https://github.com/jonathan-vella/landinglens/issues/78). No branch-protection
+change, bypass, PAT or stored bot secret is used.
 
 Accepted catalog Release assets never replace the installed catalog at runtime.
 A locally supplied version index is a producer assertion, not an online update.

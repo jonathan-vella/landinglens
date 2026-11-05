@@ -29,9 +29,10 @@ workbook acceptance passed; no new live Azure/query compilation/scanner run is
 claimed. The earlier Windows short-path CI defect and corrected rerun remain
 recorded without weakening tests.
 
-Source polling and accepted catalog/index/notice Release assets are demonstrated;
-workflow PR creation/safe auto-merge remains blocked in #78 by unchanged settings
-and an approved check trigger. Tracking #53 remains open. The
+Source polling and accepted catalog/index/notice Release assets are demonstrated.
+The owner's later approval permits enabling both repository settings and
+workflow-scoped check dispatch; settings are now enabled, while live operational
+validation remains pending in #78. Tracking #53 remains open. The
 [delivery reconciliation](plan.md#assessor-efficiency-delivery-reconciliation-2026-11-05)
 is the criterion-by-criterion source for PRs, merges, historical checks, limits and
 minimum owner action.
@@ -585,6 +586,27 @@ Real-tenant smoke tests require separately authorized scope and credentials.
 Mocked or saved evidence must not be presented as live-tenant verification.
 
 ## Execution and open decisions
+
+### Source-automation permission approval: 2026-11-05
+
+After being asked about the three exact changes, the owner replied:
+"I approve these changes. proceed." This authorises enabling repository
+**Allow GitHub Actions to create and approve pull requests**, enabling
+**Allow auto-merge**, and adding **`actions: write` to the source-update workflow
+only** so it can dispatch existing `checks.yml` on the candidate branch.
+
+Both settings are now verified true. Repository-wide default workflow permissions
+remain `read`; branch protection and all other settings, secrets, credentials and
+Azure permissions are unchanged. The source workflow never approves reviews or
+bypasses checks. Its token creates the PR, dispatches the fixed check workflow,
+waits for all four supported platform jobs and all other applicable checks, then
+binds any safe-only merge request to the exact candidate SHA.
+
+This narrowly supersedes the earlier prohibition for those two settings only.
+Validation may use a clearly labelled authored safe-link fixture with the real
+source poll retained separately; it must not claim Microsoft changed its source
+or activate/publish a new accepted catalog. Actual workflow/PR/check/merge evidence
+is required before resolving #78.
 
 The [backlog](backlog.md) links each implementation task to a GitHub issue.
 The source inventory, bounded parser choice, delegated automation-matrix

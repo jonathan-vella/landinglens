@@ -87,12 +87,21 @@ alz-assessor render comparison.json --format html --output comparison.html
 
 Source maintenance now prepares classified candidate snapshots and a PR body with
 actual checks. Its single workflow has approved `GITHUB_TOKEN` content/PR write
-permissions; no PAT or stored bot secret is used. Current repository settings
-disable workflow PR creation/approval and auto-merge, so artifacts remain the
-operational fallback. No setting is changed automatically. Only safe-only
+permissions and `actions: write` to dispatch only existing `checks.yml` on its
+candidate branch. No PAT or stored bot secret is used. On 2026-11-05 the owner
+approved enabling workflow PR creation/approval and repository auto-merge; both
+settings are verified enabled and default workflow permissions remain read-only.
+Operational validation is tracked in #78. Artifacts remain the fallback when a
+create/dispatch/check gate fails. Only safe-only
 candidates with every supported platform check green and the exact checked head
 may request auto-merge. All other classes require human merge and reviewed
 promotion; source candidates never replace the installed catalog by polling.
+
+The manual `validate_publication` dispatch uses an explicitly labelled authored
+link-only fixture to exercise a real bot PR, dispatched platform checks and the
+safe merge gate. It retains the independent live poll as `observed-*` artifacts,
+does not claim an upstream source change and cannot be combined with accepted
+catalog publication. Scheduled polls never enable this validation mode.
 
 The workflow's explicit `publish_accepted` dispatch publishes only the installed
 accepted catalog and version index as immutable GitHub Release assets, never a

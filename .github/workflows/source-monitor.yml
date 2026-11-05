@@ -9,10 +9,15 @@ on:
         description: Publish installed accepted catalog as immutable Release assets
         type: boolean
         default: false
+      validate_publication:
+        description: Authored safe-link validation PR with real checks; no catalog activation
+        type: boolean
+        default: false
 
 permissions:
   contents: write
   pull-requests: write
+  actions: write
 
 jobs:
   candidate:
@@ -24,6 +29,15 @@ jobs:
           python-version: '3.12'
       - name: Install reviewed package
         run: python -m pip install ".[dev]"
+      - name: Check explicit dispatch modes
+        env:
+          VALIDATE_PUBLICATION: ${{ github.event_name == 'workflow_dispatch' && inputs.validate_publication }}
+          PUBLISH_ACCEPTED: ${{ github.event_name == 'workflow_dispatch' && inputs.publish_accepted }}
+        run: |
+          if [ "$VALIDATE_PUBLICATION" = "true" ] && [ "$PUBLISH_ACCEPTED" = "true" ]; then
+            echo "::error::Validation does not publish accepted catalog assets."
+            exit 2
+          fi
       - name: Verify candidate tooling before polling
         run: |
           python -m ruff check . > "$RUNNER_TEMP/catalog-tests.txt"
@@ -32,7 +46,12 @@ jobs:
           python -m unittest discover -s tests -q >> "$RUNNER_TEMP/catalog-tests.txt" 2>&1
           python -m pip check >> "$RUNNER_TEMP/catalog-tests.txt"
       - name: Detect and acquire unreviewed candidate
-        run: python tools/monitor_sources.py --output "$RUNNER_TEMP/source-candidate" --efficiency --test-results "$RUNNER_TEMP/catalog-tests.txt"
+        env:
+          VALIDATE_PUBLICATION: ${{ github.event_name == 'workflow_dispatch' && inputs.validate_publication }}
+        run: |
+          args=()
+          if [ "$VALIDATE_PUBLICATION" = "true" ]; then args+=(--validation-candidate); fi
+          python tools/monitor_sources.py --output "$RUNNER_TEMP/source-candidate" --efficiency --test-results "$RUNNER_TEMP/catalog-tests.txt" "${args[@]}"
       - name: Publish one classified PR or record settings blocker
         env:
           GH_TOKEN: ${{ github.token }}
