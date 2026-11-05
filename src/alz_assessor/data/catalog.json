@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "kind": "catalog",
-  "catalog_version": "2026-11-05.3",
+  "catalog_version": "2026-11-05.5",
   "design_areas": [
     "Azure billing and Active Directory tenant",
     "Identity and access management",
@@ -55,7 +55,8 @@
           "item_sha256": "60299dd824bdeed7ff7f9f0ce380f27d95d9528053f3cba2b44522958c05821e",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/multi-tenant/considerations-recommendations"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-6309957b-821a-43d1-b9d9-7fcf1802b747",
@@ -99,7 +100,8 @@
           "item_sha256": "9110108e4243a566968cc91e2e85c16a159760ab0feb6169942ddd59f5845202",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/multi-tenant/automation"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-78e11934-499a-45ed-8ef7-aae5578f0ecf",
@@ -143,7 +145,8 @@
           "item_sha256": "e7ed0b4772643d5296e7896b097b48cef00503072c04a9d55ccd0e011a72429f",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/multi-tenant/lighthouse"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-5d82e6df-6f61-42f2-82e2-3132d293be3d",
@@ -187,7 +190,8 @@
           "item_sha256": "af9047dcadfedd46b21962000e9a57ccb45eb2da14b2c3428fd27a3a4dbc3dd9",
           "guidance": "https://learn.microsoft.com/azure/lighthouse/overview"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-a24d0de3-d4b9-4dfb-8ddd-bbfaf123fa01",
@@ -231,7 +235,8 @@
           "item_sha256": "dc0ed15393c52b763c14e1678cccade34e72cede8942564eb05b371b79cfb61a",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-cloud-solution-provider#design-recommendations"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-32952499-58c8-4e6f-ada5-972e67893d55",
@@ -275,7 +280,8 @@
           "item_sha256": "bff8a0622d563bf3697acb3af96c72fd3baa312a2aec2f007da550d24fb1bc67",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-685cb4f2-ac9c-4b19-9167-993ed0b32415",
@@ -319,7 +325,8 @@
           "item_sha256": "761995f44b5d3a1896647c458082210a0c95910a9e3d7bd74bfd90af1f6afea4",
           "guidance": "https://learn.microsoft.com/azure/cost-management-billing/manage/direct-ea-administration#manage-notification-contacts"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-12cd499f-96e2-4e41-a243-231fb3245a1c",
@@ -363,7 +370,8 @@
           "item_sha256": "6060ae15a0742c87a13a0f20ed3d3f1f8617280d850706109bbe3fefa489c5e0",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement#design-considerations"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
@@ -407,7 +415,8 @@
           "item_sha256": "9a0c5d9cf875643c5992db337161b4d196452d5335226d5e1ead269aa86df71d",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement#design-considerations"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-ca0fe401-12ad-46fc-8a7e-86293866a9f6",
@@ -451,7 +460,8 @@
           "item_sha256": "48cd86b959389cd00231cf51b40b1822e3de31f7f6b44cb818bb6fd5368c8f62",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement#design-recommendations"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-5cf9f485-2784-49b3-9824-75d9b8bdb57b",
@@ -495,7 +505,8 @@
           "item_sha256": "95a4de171f6b95a311311fbe5787c2e671b2b19dda05d769d5439ce3c8016898",
           "guidance": "https://azure.microsoft.com/pricing/offers/ms-azr-0148p"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-6ad5c3dd-e5ea-4ff1-81a4-7886ff87845c",
@@ -539,7 +550,8 @@
           "item_sha256": "81741623aba424876d9c997f2f0ae89d04200c3224d1192492c0a5406da0acfa",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-90e87802-602f-4dfb-acea-67c60689f1d7",
@@ -583,7 +595,8 @@
           "item_sha256": "859f9857c410457048735d32282562f1cacc383dbb09be1e560a836532e413be",
           "guidance": "https://learn.microsoft.com/azure/cost-management-billing/manage/mca-section-invoice"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-e81a73f0-84c4-4641-b406-14db3b4d1f50",
@@ -627,7 +640,8 @@
           "item_sha256": "8562c396f8fd074f67b4ca34a2bb98c92c2fc0daaf1b466ea665369c92d021e9",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-ae757485-92a4-482a-8bc9-eefe6f5b5ec3",
@@ -671,7 +685,8 @@
           "item_sha256": "0e4c2893e6de4ea37cb656c389681af964ba0c7bec3a7b0b8738ab62dbe6ea87",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-348ef254-c27d-442e-abba-c7571559ab91",
@@ -714,7 +729,8 @@
           "item_sha256": "752bc3d9a0221984677472cb5f8839fc6c3071ae0308437d348a3da223ee8bef",
           "guidance": "https://learn.microsoft.com/azure/role-based-access-control/overview"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-4348bf81-7573-4512-8f46-9061cc198fea",
@@ -759,7 +775,8 @@
           "item_sha256": "b7c11555706d352d376c4ab5afb3bff1a340fbe154c5c1878835b96469910fe7",
           "guidance": "https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-12e7f983-f630-4472-8dd6-9c5b5c2622f5",
@@ -804,7 +821,8 @@
           "item_sha256": "bb351be53ef3107d498e775a7a2cf05cf4f155e456cb5b60fbea2791e6ee6d72",
           "guidance": "https://learn.microsoft.com/azure/active-directory/roles/security-planning#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-4b69bad3-3aad-45e8-a68e-1d76667313b4",
@@ -847,7 +865,8 @@
           "item_sha256": "de07a1cf6bdf719e9ff373ab1467f6da82bfba3e4268b88a31a460dc67a1c9ba",
           "guidance": "https://learn.microsoft.com/entra/fundamentals/how-to-manage-groups"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-53e8908a-e28c-484c-93b6-b7808b9fe5c4",
@@ -890,7 +909,8 @@
           "item_sha256": "4a9f3dc064d8728e06fdf4db626c6b9dd9b84b50402df3ef925fdd44399d2d2d",
           "guidance": "https://learn.microsoft.com/azure/active-directory/conditional-access/overview"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-1049d403-a923-4c34-94d0-0018ac6a9e01",
@@ -933,7 +953,8 @@
           "item_sha256": "4b52bd42f484fb4c466d064bb2ae465c60580191258065a4dc70e95f2963f513",
           "guidance": "https://learn.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-e6a83de5-de32-4c19-a248-1607d5d1e4e6",
@@ -976,7 +997,8 @@
           "item_sha256": "0a12f5f2eb8fd360cc2f41c6c05b2e6ea14cec8a0fa99fa76acd515a492e4e81",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/manage/centralize-operations"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-14658d35-58fd-4772-99b8-21112df27ee4",
@@ -1019,7 +1041,8 @@
           "item_sha256": "2f419eb04cb203369b8c83f7cdbd47ded6c5fbe9e659939ee521ae97aa00360f",
           "guidance": "https://learn.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-d98d954d-7d1c-4a07-92a7-cf3afe8dcbd2",
@@ -1062,7 +1085,8 @@
           "item_sha256": "3c5e4f3362d8bb008fdd7c8b8ef399b81cb85bb4cd2b8d490dab0af343c77c35",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones#microsoft-entra-id-recommendations"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-1559ab91-53e8-4908-ae28-c84c33b6b780",
@@ -1105,7 +1129,8 @@
           "item_sha256": "107407a75f7659c14592e882af778b8571f71a85bc52d3116aedd08fff768397",
           "guidance": "https://learn.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain#vm-recommendations"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-e8aa1e41-870d-4968-94c6-77be14f510ac",
@@ -1148,7 +1173,8 @@
           "item_sha256": "8fbf003be6915b79038d338a3c06da5d5164c6a4aeb9596de07bd3d53b2d2983",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/regions#identity"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-f5664b5e-984a-4859-a773-e7d261623a76",
@@ -1191,7 +1217,8 @@
           "item_sha256": "e44d8c18de740fa55a33ce3ece046b0263672059a222679d8a224bc7e779885e",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access#prerequisites-for-a-landing-zone---design-recommendations"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-8b9fe5c4-1049-4d40-9a92-3c3474d00018",
@@ -1234,7 +1261,8 @@
           "item_sha256": "873cdb3fa7afac24b3a93972cbd36f56547e07a6e0847b39dc61bcddef4eec94",
           "guidance": "https://learn.microsoft.com/entra/identity/domain-services/overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-0dd4e625-9c4b-4a56-b54a-4357bac12761",
@@ -1277,7 +1305,8 @@
           "item_sha256": "0f3d1d2c1d25f5febad18a56b4f65db22255c2ab479befad0dd7756c0189a98a",
           "guidance": "https://learn.microsoft.com/entra/identity/domain-services/overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-1cf0b8da-70bd-44d0-94af-8d99cfc89ae1",
@@ -1320,7 +1349,8 @@
           "item_sha256": "b5af0b8e1dc080aa6f20ab847ee8044d2854632b9c41d944a8e934814a5220ec",
           "guidance": "https://learn.microsoft.com/azure/active-directory/reports-monitoring/concept-activity-logs-azure-monitor"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-984a859c-773e-47d2-9162-3a765a917e1f",
@@ -1363,7 +1393,8 @@
           "item_sha256": "09f9b64c8858890e8b018304da9eb66a974456cb98464258b4b1dd8bb2a37c6e",
           "guidance": "https://learn.microsoft.com/azure/active-directory/roles/security-emergency-access"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-cd163e39-84a5-4b39-97b7-6973abd70d94",
@@ -1406,7 +1437,8 @@
           "item_sha256": "b10f59c9e84cc1042aa04f5ec903568e17af51dca8640388097e0d4a8f9f5fac",
           "guidance": "https://learn.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-staging-server"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-35037e68-9349-4c15-b371-228514f4cdff",
@@ -1449,7 +1481,8 @@
           "item_sha256": "6f12e85130b48aad722cd2bfee4f125acdd750c5e7fc110a2f3e7928c535380b",
           "guidance": "https://learn.microsoft.com/azure/active-directory/roles/best-practices"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-d5d1e4e6-1465-48d3-958f-d77249b82111",
@@ -1492,7 +1525,8 @@
           "item_sha256": "834c28b5584d4fe9e579e0de646b05f95ff7aa4eefb0fe351c747189c182dfa6",
           "guidance": "https://learn.microsoft.com/azure/active-directory/app-proxy/application-proxy"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-9cf5418b-1520-4b7b-add7-88eb28f833e8",
@@ -1535,7 +1569,8 @@
           "item_sha256": "d1adfd8cb66a6605f482239300e5be524c7563e75f34dab8b77aa5df9022cce9",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones#identity-and-access-management-in-the-azure-landing-zone-accelerator"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-d4d1ad54-1abc-4919-b267-3f342d3b49e4",
@@ -1578,7 +1613,8 @@
           "item_sha256": "9353c34639585a60096a1109174f3aa2fd79393b9ca8079861c34363d55a37eb",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones#rbac-recommendations"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-d505ebcb-79b1-4274-9c0d-a27c8bea489c",
@@ -1621,7 +1657,8 @@
           "item_sha256": "0513b1b3a85e78b4db33588f317e36909706adc8ccb48fe130ac150740871120",
           "guidance": "https://learn.microsoft.com/azure/active-directory/privileged-identity-management/pim-create-roles-and-resource-roles-review"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-0ce74f19-9abb-47e4-ae95-6b057a1d2be9",
@@ -1664,7 +1701,8 @@
           "item_sha256": "180e59ca90a7a58a7231f69d9afec0241be14131915fec2d87f02e2cbb49d0dc",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-1770a2ac-c194-4e5c-ade4-82939d38a510",
@@ -1707,7 +1745,8 @@
           "item_sha256": "05d7a75d6380fea290e0caee164a9b9911e582987006e7eaa546a4d5b9da39d9",
           "guidance": "https://learn.microsoft.com/en-us/industry/financial-services/architecture/location-based-access-content"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-cacf55bc-e4e4-46be-96bc-57a5f23a269a",
@@ -1750,7 +1789,8 @@
           "item_sha256": "94bcaf0a822c3090c202e2d941abcfdab2aba330c0d9edb0089a16998af7cac8",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-2df27ee4-12e7-4f98-9f63-04722dd69c5b",
@@ -1793,7 +1833,8 @@
           "item_sha256": "008cb0f7117211a70cab3512ded3701ae1390a0f726df5ffa9b6512d7868bb81",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-667313b4-f566-44b5-b984-a859c773e7d2",
@@ -1836,7 +1877,8 @@
           "item_sha256": "681d0d6d53940593d2c1b1a0a122ad19da6b95f44d58b009f33e338a596afed2",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups#management-group-recommendations"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-61623a76-5a91-47e1-b348-ef254c27d42e",
@@ -1879,7 +1921,8 @@
           "item_sha256": "a7eb1b143438ed8c4dc2fd16175df129c0953abfec540c4945bd678ff418c140",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups#management-group-recommendations"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-8bbac757-1559-4ab9-853e-8908ae28c84c",
@@ -1922,7 +1965,8 @@
           "item_sha256": "0090af0281755ddb49e3311e563c2844bc2de731255b3bbdae582bf8698f109c",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups#management-group-recommendations"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-33b6b780-8b9f-4e5c-9104-9d403a923c34",
@@ -1965,7 +2009,8 @@
           "item_sha256": "41d2520bdccd9f8da2462e891a0b209085d95de00e203b7888e7bf344634ca96",
           "guidance": "https://learn.microsoft.com/azure/governance/management-groups/how-to/protect-resource-hierarchy#setting---default-management-group"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-74d00018-ac6a-49e0-8e6a-83de5de32c19",
@@ -2008,7 +2053,8 @@
           "item_sha256": "63e0448f188311545c3b9693febba2ce1780bce7076cf1bb8a47aaa67647aa95",
           "guidance": "https://learn.microsoft.com/azure/governance/management-groups/how-to/protect-resource-hierarchy#setting---require-authorization"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-92481607-d5d1-4e4e-9146-58d3558fd772",
@@ -2051,7 +2097,8 @@
           "item_sha256": "d162aa8ae92fb0a134f9479fa9421a96891b9dd7fb37c812c9922c3efe73a031",
           "guidance": "https://learn.microsoft.com/azure/governance/management-groups/overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-49b82111-2df2-47ee-912e-7f983f630472",
@@ -2094,7 +2141,8 @@
           "item_sha256": "6e07aa0de1e51bad3040c865b3d41dfdacc4f4995e5060a8324aa1322e4c37f5",
           "guidance": "https://learn.microsoft.com/entra/id-governance/access-reviews-overview"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-2dd69c5b-5c26-422f-94b6-9bad33aad5e8",
@@ -2137,7 +2185,8 @@
           "item_sha256": "4f708562be386d248c3d72acf3d6f5a0c1aa318f7783a43ebaaeb7b1be8b1b50",
           "guidance": "https://learn.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-c68e1d76-6673-413b-9f56-64b5e984a859",
@@ -2180,7 +2229,8 @@
           "item_sha256": "b26ff23a7da9792499b90fc4d5226d23ffb1dff4f1c583e802a67772afbcd08f",
           "guidance": "https://learn.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-c773e7d2-6162-43a7-95a9-17e1f348ef25",
@@ -2223,7 +2273,8 @@
           "item_sha256": "f380001ebae7ec48e0717e6f85b8559c2e50d4dcfe964d804e9e97636d4b73ca",
           "guidance": "https://learn.microsoft.com/azure/azure-portal/azure-portal-dashboards"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-ae28c84c-33b6-4b78-88b9-fe5c41049d40",
@@ -2266,7 +2317,8 @@
           "item_sha256": "79b564d0274b119d9846e5ac01e21a8df969f76f458f1ec51d93de3d83f019e0",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/get-started/manage-costs"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-3a923c34-74d0-4001-aac6-a9e01e6a83de",
@@ -2309,7 +2361,8 @@
           "item_sha256": "02b2125edad6c693be088d8b7e11e948449310517b1840dc3a5783a632488957",
           "guidance": "https://learn.microsoft.com/azure/governance/management-groups/overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-5de32c19-9248-4160-9d5d-1e4e614658d3",
@@ -2352,7 +2405,8 @@
           "item_sha256": "fc0ea724b442a964d1ee59cd6f2b399b0c8a7f4bbc7f94a470cf1000d8aca955",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/track-costs"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-6cc0ea22-42bb-441e-a345-804ab0a09666",
@@ -2395,7 +2449,8 @@
           "item_sha256": "78e4d9cf1d027acaf37c33b4486d9cb9dba04f1174f9d2aef04b6c34d63785e6",
           "guidance": "https://github.com/Azure/sovereign-landing-zone/blob/main/docs/02-Architecture.md"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-250d81ce-8bbe-4f85-9051-6a18a8221e50",
@@ -2438,7 +2493,8 @@
           "item_sha256": "6abba27eb052a629294035c50c244e3c3457239d550e1549731c4d425f6fa792",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/regions"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-19ca3f89-397d-44b1-b5b6-5e18661372ac",
@@ -2481,7 +2537,8 @@
           "item_sha256": "98f33cb777f4a364f6e521a1491f7c79a3e746adc4c2a1f72e5daf17e7ac6f06",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/regions#operate-in-multiple-geographic-regions"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-4c27d42e-8bba-4c75-9155-9ab9153e8908",
@@ -2524,7 +2581,8 @@
           "item_sha256": "ead196527b159c4b67e9003fe166b674c001d5251bc406177234ef9bee599c4a",
           "guidance": "https://azure.microsoft.com/explore/global-infrastructure/products-by-region/"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-914b8cb7-c2f6-40fa-ae18-81c049e0cb5a",
@@ -2567,7 +2625,8 @@
           "item_sha256": "ffc1e65408cc4e9b35fa6ecde3e9400fe31ec9f50efce3908110d67fcbecd39e",
           "guidance": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-51a1e9e9-a49a-40b2-87b9-ff753bc6de86",
@@ -2610,7 +2669,8 @@
           "item_sha256": "244ac8f40a4eff5293078afea312081fc8670d92c11bbe51341258395f94a590",
           "guidance": "https://learn.microsoft.com/en-us/azure/well-architected/security/data-classification"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-a89153d8-18b2-4caf-bc19-850fc8fba00f",
@@ -2653,7 +2713,8 @@
           "item_sha256": "7a350d3c58ab2ad3fbb9bfeadd84e30eb7bb9c6148156c868da938695219a668",
           "guidance": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-373f482f-3e39-4d39-8aa4-7e566f6082b6",
@@ -2696,7 +2757,8 @@
           "item_sha256": "aa377cc8ef966b2e4f909a80f42ba5191804a2f304fe56af0c15a4bc92341f10",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-app-delivery"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-e8bbac75-7155-49ab-a153-e8908ae28c84",
@@ -2739,7 +2801,8 @@
           "item_sha256": "ba83024a2d8618ebe82daccbc4c11f413e600f68e4f4d2f4d0a898450e91a5e9",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/network-topology-and-connectivity"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-7bc1c396-2461-4698-b57f-30ca69525252",
@@ -2782,7 +2845,8 @@
           "item_sha256": "054e1a36e1b543e215315da7597500962c5a7f3a0c3b109e91c7e9a327cb2ee4",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/regions"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-7dd61623-a364-4a90-9eca-e48ebd54cd7d",
@@ -2825,7 +2889,8 @@
           "item_sha256": "a4044381b16efaf5f655cd723d79df5674962b83eaee48b73ea7d4fc49bc7eb4",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-e2e8abac-3571-4559-ab91-53e89f89dc7b",
@@ -2868,7 +2933,8 @@
           "item_sha256": "4c94669296ca6d68e3f8a85feba0dc81feed01699fb0250dc493c812b975e5fb",
           "guidance": "https://learn.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
@@ -2911,7 +2977,8 @@
           "item_sha256": "8d9f465aca056af696205230951e3df00d75c2723c9ddd7efadaefaaf4ca6624",
           "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager#to-enable-transit-routing-between-expressroute-and-azure-vpn"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
@@ -2954,7 +3021,8 @@
           "item_sha256": "884dc046d64b5849ba814cdb48bbd2aa69af5110e62b554e931e1d7025e040fe",
           "guidance": "https://learn.microsoft.com/azure/route-server/quickstart-configure-route-server-portal#create-a-route-server-1"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-cc881471-607c-41cc-a0e6-14658dd558f9",
@@ -2997,7 +3065,8 @@
           "item_sha256": "1a216b981803b00f9bb9e7a1467834148b3c55830dd039d12dcab1119e53b994",
           "guidance": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-faq#can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-4722d929-c1b1-4cd6-81f5-4b29bade39ad",
@@ -3040,7 +3109,8 @@
           "item_sha256": "89456aaf992711b9f0f84a27779d3d1bf5d7a6b9f11fdb7a010cea8444c2efdc",
           "guidance": "https://learn.microsoft.com/azure/azure-monitor/insights/network-insights-overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-0e7c28ec-9366-4572-83b0-f4664b1d944a",
@@ -3083,7 +3153,8 @@
           "item_sha256": "6985ae05dd24f39c09c5e19c1487bca9becfbc56a1e7f4dfd48b71a0e777c668",
           "guidance": "https://learn.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits?toc=/azure/virtual-network/toc.json#azure-resource-manager-virtual-networking-limits"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-3d457936-e9b7-41eb-bdff-314b26450b12",
@@ -3126,7 +3197,8 @@
           "item_sha256": "60294b26693cee94f8d3c77e4d775e4a54403e79d47cd8ddf5780af4b7d0dba3",
           "guidance": "https://learn.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits?toc=/azure/virtual-network/toc.json#azure-resource-manager-virtual-networking-limits"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-c76cb5a2-abe2-11ed-afa1-0242ac120002",
@@ -3169,7 +3241,8 @@
           "item_sha256": "2ba66384ad1b7a73510d9f962ad5690be5d8f4ab3b68aaf3020733c214ff6d93",
           "guidance": "https://learn.microsoft.com/azure/virtual-network/virtual-network-manage-peering"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-9dcd6250-9c4a-4382-aa9b-5b84c64fc1fe",
@@ -3212,7 +3285,8 @@
           "item_sha256": "ed4d2522cb277cd3da24b688157bdf2c919f02f173ffde515a87b42f02382044",
           "guidance": "https://learn.microsoft.com/azure/reliability/reliability-load-balancer?tabs=graph#zone-redundant"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-48682fb1-1e86-4458-a686-518ebd47393d",
@@ -3255,7 +3329,8 @@
           "item_sha256": "bb9b2848d22144b2046f4ebc8d6937900fc1d26754f415793d357062d462a8e6",
           "guidance": "https://learn.microsoft.com/azure/reliability/reliability-load-balancer?tabs=graph#zone-redundant"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-821a568d-c632-4693-ba76-e2751de35050",
@@ -3298,7 +3373,8 @@
           "item_sha256": "01189660697cbcf3b135f1a6dbc798d461a80548b4b07a547d639c1d4d818347",
           "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-howto-macsec"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-de0d5973-cd4c-4d21-a088-137f5e6c4cfd",
@@ -3341,7 +3417,8 @@
           "item_sha256": "d542aa62e243bba0a1b49ca4aab849cc483a12fb25cea7c3213499d3ec9e4797",
           "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-howto-macsec"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-ed301d6e-872e-452e-9611-cc58b5a4b151",
@@ -3384,7 +3461,8 @@
           "item_sha256": "d8360c2f1d66ca85ec19094f8025f06349320e4350d9012df4354e42d840d39e",
           "guidance": "https://learn.microsoft.com/azure/vpn-gateway/site-to-site-vpn-private-peering"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-558fd772-49b8-4211-82df-27ee412e7f98",
@@ -3427,7 +3505,8 @@
           "item_sha256": "6138292eba5b59d792957bc5fee56edfd971a53a645dbea4b2fc0314b4ebf778",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-ip-addressing"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-3f630472-2dd6-49c5-a5c2-622f54b69bad",
@@ -3470,7 +3549,8 @@
           "item_sha256": "5e89d23b7bdaaa125ba74b15477e0bd66699951ada4c7c9e19629c4bcb84d0fb",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-ip-addressing"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-33aad5e8-c68e-41d7-9667-313b4f5664b5",
@@ -3513,7 +3593,8 @@
           "item_sha256": "6b64f47e66a2dbd50aae5ca0bec188f47e6f1188043088e2b80302f59623afdd",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-ip-addressing"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-f348ef25-4c27-4d42-b8bb-ac7571559ab9",
@@ -3556,7 +3637,8 @@
           "item_sha256": "a764f1dd1e1cbc20fb901c5b1a833b8dcae70986ee2c81635ce0b0b2eaf360e4",
           "guidance": "https://learn.microsoft.com/azure/site-recovery/concepts-on-premises-to-azure-networking#retain-ip-addresses"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-0c47f486-656d-4699-8c30-edef5b8a93c4",
@@ -3599,7 +3681,8 @@
           "item_sha256": "5d60ceb36442ec80fbd2f293b4baa79421b3e770852d347c94dc0e0fdb165403",
           "guidance": "https://learn.microsoft.com/azure/virtual-network/ip-services/public-ip-addresses#availability-zone"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-153e8908-ae28-4c84-a33b-6b7808b9fe5c",
@@ -3642,7 +3725,8 @@
           "item_sha256": "178dbc3abfbcd9b2fdfb0fd7c7f4f168085e68e60d775e1fcb6215fd0942e017",
           "guidance": "https://learn.microsoft.com/azure/dns/private-dns-getstarted-portal"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-41049d40-3a92-43c3-974d-00018ac6a9e0",
@@ -3685,7 +3769,8 @@
           "item_sha256": "539036a91c1eb61630b1c7ee5b9e73f8fd21f4f9e82e559f232988698272a9bf",
           "guidance": "https://learn.microsoft.com/azure/dns/dns-private-resolver-overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-1e6a83de-5de3-42c1-a924-81607d5d1e4e",
@@ -3728,7 +3813,8 @@
           "item_sha256": "5f7e43a4029b35c2d2584b576741ce06570fb8f14a6d197b41f0fc3ce13e2534",
           "guidance": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-614658d3-558f-4d77-849b-821112df27ee",
@@ -3771,7 +3857,8 @@
           "item_sha256": "c77362e9b1d62d820470393119b9dc5c1f343b03ceb1c19272c115909ed64aa8",
           "guidance": "https://learn.microsoft.com/azure/dns/private-dns-autoregistration"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-18c80eb0-582a-4198-bf5c-d8800b2d263b",
@@ -3814,7 +3901,8 @@
           "item_sha256": "add0a9c25f8641b13d50fded55e5337779ebe594746dd40a1c9a35010afd7a63",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/private-link-and-dns-integration-at-scale#private-link-and-dns-integration-in-hub-and-spoke-network-architectures"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-baac3ecb-a94c-4ac4-8c79-cdf27c0d78df",
@@ -3857,7 +3945,8 @@
           "item_sha256": "174a4c1afaeb555342f4cfcab8bb4c3189a4bd4e9586a5b5382bdf9f98d98326",
           "guidance": "https://techcommunity.microsoft.com/blog/coreinfrastructureandsecurityblog/unmasking-dns-timeouts-the-hidden-culprit-in-azure-virtual-networks/4250444"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-ee1ac551-c4d5-46cf-b035-d0a3c50d87ad",
@@ -3900,7 +3989,8 @@
           "item_sha256": "98adb6de1bc83eace99bf5d9573ed1d826e1436831c06d0440220e994529935c",
           "guidance": "https://learn.microsoft.com/azure/bastion/bastion-overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-6eab9eb6-762b-485e-8ea8-15aa5dba0bd0",
@@ -3943,7 +4033,8 @@
           "item_sha256": "6cb147703839ffb7032d5c6c1a05b99379fa7b3305c3557a9d337486da83965e",
           "guidance": "https://learn.microsoft.com/azure/bastion/bastion-faq#subnet"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-1d7aa9b6-4704-4489-a804-2d88e79d17b7",
@@ -3986,7 +4077,8 @@
           "item_sha256": "38c38acffe537961ca3795401afc1d9c02df818e3bac0d39bd62d1f684943ce4",
           "guidance": "https://learn.microsoft.com/azure/web-application-firewall/afds/afds-overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-3b22a5a6-7e7a-48ed-9b30-e38c3f29812b",
@@ -4029,7 +4121,8 @@
           "item_sha256": "b6380597dd3fceaf3b41c050fcf30ebaa111df5e78977e8b328a222b1a9ff426",
           "guidance": "https://learn.microsoft.com/azure/web-application-firewall/ag/ag-overview"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-2363cefe-179b-4599-be0d-5973cd4cd21b",
@@ -4072,7 +4165,8 @@
           "item_sha256": "b9a8c5e3812001b8f579df1c3f304560479da357f95ab0822ce9e87acae9cd18",
           "guidance": "https://learn.microsoft.com/azure/web-application-firewall/ag/ag-overview"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-088137f5-e6c4-4cfd-9e50-4547c2447ec6",
@@ -4115,7 +4209,8 @@
           "item_sha256": "9cf4a3134d58b1d21c81f2f5542f5da82393f51ea1b0f95d6c7f07c44f91049c",
           "guidance": "https://learn.microsoft.com/azure/ddos-protection/ddos-protection-reference-architectures"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-b034c01e-110b-463a-b36e-e3346e57f225",
@@ -4158,7 +4253,8 @@
           "item_sha256": "aed52405204a706d9e6836e9c4dffd991d81622a2c3d9e5bcdb3fae1e631452e",
           "guidance": "https://learn.microsoft.com/azure/virtual-network/ip-services/default-outbound-access"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-b1c82a3f-2320-4dfa-8972-7ae4823c8930",
@@ -4203,7 +4299,8 @@
           "item_sha256": "c480d6ffb31d0797feab8efd2518fb02607f28bdff6e9293e1c0ced5e988b07b",
           "guidance": "https://learn.microsoft.com/azure/ddos-protection/ddos-protection-reference-architectures"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-3c5a808d-c695-4c14-a63c-c7ab7a510e41",
@@ -4248,7 +4345,8 @@
           "item_sha256": "12df2f81cb9ddb5dcceedad7fa10f10f395400d96504b2ff6254812a70937a97",
           "guidance": "https://github.com/Azure/Enterprise-Scale/wiki/ALZ-Policies#corp"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-359c373e-7dd6-4162-9a36-4a907ecae48e",
@@ -4291,7 +4389,8 @@
           "item_sha256": "2cd447976045ad30a60822037454955942283d55f6f4d2c9cecfaed982481dcd",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/connectivity-to-azure"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-f29812b2-363c-4efe-879b-599de0d5973c",
@@ -4334,7 +4433,8 @@
           "item_sha256": "2f61970f7d1bf35cff046bf770c875538298261f0988f7b5eeb74644ca1b5730",
           "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-routing"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-d4cd21b0-8813-47f5-b6c4-cfd3e504547c",
@@ -4377,7 +4477,8 @@
           "item_sha256": "a66b2d9a90e295cc17b4bd0de33beb55b998ad955b0274c12e01f3f7a809dfc7",
           "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways?source=recommendations#gwsku"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-7025b442-f6e9-4af6-b11f-c9574916016f",
@@ -4420,7 +4521,8 @@
           "item_sha256": "d6930bc7e3084301e1a2be997c08167a0a07a1acc7abd761a3b225799b5f7d91",
           "guidance": "https://learn.microsoft.com/azure/expressroute/plan-manage-cost"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-f4e7926a-ec35-476e-a412-5dd17136bd62",
@@ -4463,7 +4565,8 @@
           "item_sha256": "ef3123bcdde89dac2488c05d2479baee0e3feea8e3d1f2e580e5fa7774e381bf",
           "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-local"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-2447ec66-138a-4720-8f1c-e16ed301d6e8",
@@ -4506,7 +4609,8 @@
           "item_sha256": "e7c5dd74680969e404da67d8026808825bf957766297130e075a36c71359f627",
           "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-72e52e36-11cc-458b-9a4b-1511e43a58a9",
@@ -4549,7 +4653,8 @@
           "item_sha256": "7d2aa1046e317ff857201dba20594213b0c7c6d8f9e062f2f378039f8a43e8db",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/connectivity-to-azure"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-c2299c4d-7b57-4d0c-9555-62f2b3e4563a",
@@ -4592,7 +4697,8 @@
           "item_sha256": "d3268c1ebf227da973fd864fa887e73f3136f034e22e89282e1b9523994e83b9",
           "guidance": "https://learn.microsoft.com/azure/expressroute/about-fastpath"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-4d873974-8b66-42d6-b15f-512a65498f6d",
@@ -4635,7 +4741,8 @@
           "item_sha256": "17b54a0836441582b9ce6d56aa90cdddbbb2d9bdbf599d65c6ade9ae3eed4834",
           "guidance": "https://learn.microsoft.com/azure/vpn-gateway/create-zone-redundant-vnet-gateway"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-45866df8-cf85-4ca9-bbe2-65ec1478919e",
@@ -4678,7 +4785,8 @@
           "item_sha256": "3362698b7dea3ebe2e05c2589084997374f4250201565fb70b1800e40501aa11",
           "guidance": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-718cb437-b060-2589-8856-2e93a5c6633b",
@@ -4721,7 +4829,8 @@
           "item_sha256": "0574f27bfe3022ee3e51ced8b0920073bb4cb377e9e974fe90f06e7fedc5f967",
           "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-erdirect-about"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-8042d88e-79d1-47b7-9b22-a5a67e7a8ed4",
@@ -4764,7 +4873,8 @@
           "item_sha256": "af85dacdf98a76c7d96404b5f9eee78f5e6b4be81b7b522e68fca80ff3d17f92",
           "guidance": "https://learn.microsoft.com/azure/architecture/framework/services/networking/expressroute/reliability"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-b30e38c3-f298-412b-8363-cefe179b599d",
@@ -4807,7 +4917,8 @@
           "item_sha256": "ad1840813521c4d7832459354d0981ca1ad88c1b58da0c32c7faa79e969c54a3",
           "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-monitoring-metrics-alerts"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-5bf68dc9-325e-4873-bf88-f8214ef2e5d2",
@@ -4850,7 +4961,8 @@
           "item_sha256": "9c963aa79f69fe94ca767c70d3d152d2f659fc0f1c010ad33c63ef7d41aa1f58",
           "guidance": "https://learn.microsoft.com/azure/expressroute/how-to-configure-connection-monitor"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-e0d5973c-d4cd-421b-8881-37f5e6c4cfd3",
@@ -4893,7 +5005,8 @@
           "item_sha256": "646b14a0bad1264606df35f9a3e74568c839492f3c9f8549316ed7cf22e0e445",
           "guidance": "https://learn.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering#need-for-redundant-connectivity-solution"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-cf3fe65c-fec0-495a-8edc-9675200f2add",
@@ -4936,7 +5049,8 @@
           "item_sha256": "4d897accc5439758179a4f7cd9ae0ecfa6ea1de830a7b8f09e2f68f572afc240",
           "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-72105cc8-aaea-4ee1-8c7a-ad25977afcaf",
@@ -4979,7 +5093,8 @@
           "item_sha256": "deac789e8358f184f04a8a468c3a4b9b46cc12857eb33a222ce0da79df31fa8f",
           "guidance": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsub"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-d581a947-69a2-4783-942e-9df3664324c8",
@@ -5022,7 +5137,8 @@
           "item_sha256": "a0d4f732b4cc8bf187e87eab68a04c6e46d9342463d6181940e9d3cfd04e6404",
           "guidance": "https://learn.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute#active-active-connections"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-b258f058-b9f6-46cd-b28d-990106f0c3f8",
@@ -5065,7 +5181,8 @@
           "item_sha256": "57b7806630128e37d9a7235fabe9974e65642ea3cb7fb46609b8707a4dc2dffc",
           "guidance": "https://learn.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-fe2a1b53-6fbd-4c67-b58a-85d7c7a0afcb",
@@ -5108,7 +5225,8 @@
           "item_sha256": "4a305de3035da2f6c101eeb68d6bf379be31e38a859f48ac5580d4e60f04e897",
           "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-bfd"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-669b215a-ce43-4371-8f6f-11047f6490f1",
@@ -5151,7 +5269,8 @@
           "item_sha256": "d26a6201d1e5e6aa0cac8a2460b91aa18ab88bc92e70b804c9daa879ec7db461",
           "guidance": "https://learn.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-3f79ed00-203b-4c95-9efd-691505f5a1f9",
@@ -5194,7 +5313,8 @@
           "item_sha256": "532f3e2d9bcec46685b01b158ce52800bb682fd2779696203e6f55596352ca1a",
           "guidance": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-5234c93f-b651-41dd-80c1-234177b91ced",
@@ -5237,7 +5357,8 @@
           "item_sha256": "c9576e39165f2b5d50559ce4d9afb294cf7cf95fdc53df59e44e836315b73ad5",
           "guidance": "https://learn.microsoft.com/azure/expressroute/virtual-network-connectivity-guidance"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-8ac6a9e0-1e6a-483d-b5de-32c199248160",
@@ -5280,7 +5401,8 @@
           "item_sha256": "64b63d7f5dbf6ed797da9b0d40709449340d9c79607ff2a0f7d28dbb27c1773e",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/scenarios/azure-virtual-desktop/eslz-network-topology-and-connectivity"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-4cc8ca4e-a503-4bac-9b1e-82283a711043",
@@ -5323,7 +5445,8 @@
           "item_sha256": "f9f4410ac6af72a941c24d430399a51290facb56a8ba89bd9993d62b06f06c87",
           "guidance": "https://learn.microsoft.com/en-us/azure/expressroute/expressroute-locations-providers?tabs=america%2Ca-c%2Ca-k"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-8b517d94-c9d0-42c4-9803-d93ed0a46bc0",
@@ -5366,7 +5489,8 @@
           "item_sha256": "3e4d70ae1e628e37e5d4a4ae293525db4d049fa8075d65a5c9f2bc6e32a91bf8",
           "guidance": "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-e6c4cfd3-e504-4547-a244-7ec66138a720",
@@ -5409,7 +5533,8 @@
           "item_sha256": "cca55ce823ab095dbf4f3cef7c460eaaeb108a99bcdb44f8bb408d7895e78248",
           "guidance": "https://learn.microsoft.com/azure/firewall/overview"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-5a4b1511-e43a-458a-ac22-99c4d7b57d0c",
@@ -5452,7 +5577,8 @@
           "item_sha256": "7deafa21dea4401c029fd6fea9728c8a8a7141a2f89c33bb108e034ec41b860b",
           "guidance": "https://learn.microsoft.com/azure/firewall-manager/policy-overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-655562f2-b3e4-4563-a4d8-739748b662d6",
@@ -5495,7 +5621,8 @@
           "item_sha256": "3407efedb5177d299909984597c5fd02e9ef0100012970143709f201a95a056a",
           "guidance": "https://learn.microsoft.com/azure/firewall-manager/deploy-trusted-security-partner"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-14d99880-2f88-47e8-a134-62a7d85c94af",
@@ -5538,7 +5665,8 @@
           "item_sha256": "1aa4436998ee8abdef2e5af294b5ae7a9e715ad44b4e0cbbbcc81a8ad57888de",
           "guidance": "https://learn.microsoft.com/azure/firewall/fqdn-filtering-network-rules"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-c10d51ef-f999-455d-bba0-5c90ece07447",
@@ -5612,7 +5740,8 @@
           "pointer": "c10d51ef-f999-455d-bba0-5c90ece07447",
           "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/firewall.html.markdown"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-e9c8f584-6d5e-473b-8dc5-acc9fbaab4e3",
@@ -5698,7 +5827,8 @@
           "pointer": "threatIntelMode",
           "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/firewall_policy.html.markdown"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-b9d0dff5-bdd4-4cd8-88ed-5811610b2b2c",
@@ -5783,7 +5913,8 @@
           "pointer": "intrusionDetection.mode",
           "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/firewall_policy.html.markdown"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-a3784907-9836-4271-aafc-93535f8ec08b",
@@ -5870,7 +6001,8 @@
       "review_fact_paths": [
         "subnetReferences",
         "routeTable.id"
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-715d833d-4708-4527-90ac-1b142c7045ba",
@@ -5941,7 +6073,8 @@
         "targetResourceId",
         "workspaceId",
         "logAnalyticsDestinationType"
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-e960fc6b-4ab2-4db6-9609-3745135f9ffa",
@@ -6024,7 +6157,8 @@
       ],
       "review_fact_paths": [
         "firewallPolicy.id"
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-22d6419e-b627-4d95-9e7d-019fa759387f",
@@ -6118,7 +6252,8 @@
         "sku.name",
         "subnetReferences",
         "addressPrefixes"
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-828cec2e-af6c-40c2-8fa2-1b681ee63eb7",
@@ -6184,7 +6319,8 @@
         "Microsoft.Network/firewallPolicies",
         "Microsoft.Network/firewallPolicies/ruleCollectionGroups",
         "Microsoft.Network/azureFirewalls"
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-0da83bb1-2f39-49af-b5c9-835fc455e3d1",
@@ -6270,7 +6406,8 @@
       ],
       "review_fact_paths": [
         "ipAddresses"
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-c44c6f0e-1642-4a61-a17b-0922f835c93a",
@@ -6357,7 +6494,8 @@
       "review_fact_paths": [
         "natRuleCollections",
         "ipAddresses"
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-7371dc21-251a-47a3-af14-6e01b9da4757",
@@ -6443,7 +6581,8 @@
       "review_fact_paths": [
         "subnetReferences",
         "natGateway.id"
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-346840b8-1064-496e-8396-4b1340172d52",
@@ -6530,7 +6669,8 @@
         "sku.tier",
         "firewallPolicy.id",
         "applicationRules"
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-39990a13-915c-45f9-a2d3-562d7d6c4b7c",
@@ -6608,7 +6748,8 @@
       "review_fact_paths": [
         "sku.tier",
         "applicationRules"
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-6eff7e6c-6c4a-43d7-be3f-6641c2cb3d4a",
@@ -6686,7 +6827,8 @@
       "review_fact_paths": [
         "firewallPolicy.id",
         "applicationRules"
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-94f3eede-9aa3-4088-92a3-bb9a56509fad",
@@ -6735,7 +6877,8 @@
           "item_sha256": "af2498900b9c1a0a261812253db747f56abe070f8d197e84d90f2c81821ac20a",
           "guidance": "https://learn.microsoft.com/en-us/azure/firewall/dns-settings"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-64e7000e-3c06-485e-b455-ced7f454cba3",
@@ -6804,7 +6947,8 @@
       ],
       "review_fact_paths": [
         "firewallPolicy.id"
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-d38ad60c-bc9e-4d49-b699-97e5d4dcf707",
@@ -6888,7 +7032,8 @@
       "review_fact_paths": [
         "configuredZones",
         "sku.tier"
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-e8143efa-0301-4d62-be54-ca7b5ce566dc",
@@ -6992,7 +7137,8 @@
         "subnetReferences",
         "enableDdosProtection",
         "ddosProtectionPlan.id"
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-d301d6e8-72e5-42e3-911c-c58b5a4b1511",
@@ -7070,7 +7216,8 @@
       "review_fact_paths": [
         "routeTable.id",
         "networkSecurityGroup.id"
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-e43a58a9-c229-49c4-b7b5-7d0c655562f2",
@@ -7156,7 +7303,8 @@
       "review_fact_paths": [
         "subnet.id",
         "privateConnections"
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-b3e4563a-4d87-4397-98b6-62d6d15f512a",
@@ -7242,7 +7390,8 @@
       "review_fact_paths": [
         "subnet.id",
         "privateConnections"
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-4704489a-8042-4d88-b79d-17b73b22a5a6",
@@ -7285,7 +7434,8 @@
           "item_sha256": "6069d4be35db408f8978fb78ec5ed89b68cdc5778cb5a293b6ef172dd6c91858",
           "guidance": "https://learn.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-7e7a8ed4-b30e-438c-9f29-812b2363cefe",
@@ -7328,7 +7478,8 @@
           "item_sha256": "612fac48c1fbca80faf85c443741886804dced21aa4118d5734df7a538a25531",
           "guidance": "azure/private-link/inspect-traffic-with-azure-firewall"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-f2aad7e3-bb03-4adc-8606-4123d342a917",
@@ -7371,7 +7522,8 @@
           "item_sha256": "0ece51df0ec137affd9da9ba5fed42fd616751ce385f4b7fcbb4a127139d090e",
           "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-11deb39d-8299-4e47-bbe0-0fb5a36318a8",
@@ -7414,7 +7566,8 @@
           "item_sha256": "7f87bc3d0bb20aa073cbce3c49ff829bb555855f802ea11dab076877bdad418d",
           "guidance": "https://learn.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-c2447ec6-6138-4a72-80f1-ce16ed301d6e",
@@ -7457,7 +7610,8 @@
           "item_sha256": "0e3750a8bb8152f18a9f87ebd03986df4f5530069dde69ef6102cd7e49dd8782",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-landing-zone-network-segmentation"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-872e52e3-611c-4c58-a5a4-b1511e43a58a",
@@ -7500,7 +7654,8 @@
           "item_sha256": "6fac07743fa8d40a1478e83b99ae22580357706a016bbf281d6b988239a6d15e",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-landing-zone-network-segmentation"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-a4d87397-48b6-462d-9d15-f512a65498f6",
@@ -7543,7 +7698,8 @@
           "item_sha256": "5aa735aef2313ff6c249a155108821252a356804a73d4b7747525f29c1a02409",
           "guidance": "https://learn.microsoft.com/azure/virtual-network/network-security-group-how-it-works"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-dfe237de-143b-416c-91d7-aa9b64704489",
@@ -7586,7 +7742,8 @@
           "item_sha256": "f129ff19bc2b63c5c5937187f681b93b12d9d6f225c0a7c35693eba7c55591bb",
           "guidance": "https://learn.microsoft.com/azure/network-watcher/vnet-flow-logs-overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-0390417d-53dc-44d9-b3f4-c8832f359b41",
@@ -7629,7 +7786,8 @@
           "item_sha256": "0eebc00664761cf820e8e7ea6c1002d65753ae42b0559361b1b896ec9b9b03c5",
           "guidance": "https://learn.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-412e7f98-3f63-4047-82dd-69c5b5c2622f",
@@ -7672,7 +7830,8 @@
           "item_sha256": "1a5032920550669c1f54469f46d237b0d2bedd8eff3e67bbeb6056c61023644d",
           "guidance": "https://learn.microsoft.com/azure/virtual-wan/scenario-any-to-any"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-54b69bad-33aa-4d5e-ac68-e1d76667313b",
@@ -7715,7 +7874,8 @@
           "item_sha256": "aaa301a79ab3db909be62eeb9449cd077661e51a33ae55358eec310d1ead0b21",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/virtual-wan-network-topology#virtual-wan-network-design-recommendationst"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-7d5d1e4e-6146-458d-9558-fd77249b8211",
@@ -7758,7 +7918,8 @@
           "item_sha256": "c808c57d5da710aac4ff43973c8bebaa9f4ebb89b716ed415f2f5fa0f4e3d8a8",
           "guidance": "https://learn.microsoft.com/azure/virtual-wan/howto-firewall"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-6667313b-4f56-464b-9e98-4a859c773e7d",
@@ -7801,7 +7962,8 @@
           "item_sha256": "4ca9698c919803cb2b17815612f19cba9b0e00d56e709f9d6804a6c52d80a27f",
           "guidance": "https://learn.microsoft.com/azure/virtual-wan/migrate-from-hub-spoke-topology"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-261623a7-65a9-417e-8f34-8ef254c27d42",
@@ -7844,7 +8006,8 @@
           "item_sha256": "97ff90d734e24f419f951f99416d8485c92c6ee0fe72bd575de1eed8a7414117",
           "guidance": "https://learn.microsoft.com/azure/virtual-wan/azure-monitor-insights"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-727c77e1-b9aa-4a37-a024-129d042422c1",
@@ -7887,7 +8050,8 @@
           "item_sha256": "b7d03afb90d8dd7b4eb0f97e0bb48e1a6fc028636b58b0758a42fc4bd2744522",
           "guidance": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-faq#is-branch-to-branch-connectivity-allowed-in-virtual-wan"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-d49ac006-6670-4bc9-9948-d3e0a3a94f4d",
@@ -7930,7 +8094,8 @@
           "item_sha256": "b342b64b57e06255341ad373a3ac53bbd925d20bda06954fa625dac3243d7146",
           "guidance": "https://learn.microsoft.com/azure/virtual-wan/about-virtual-hub-routing-preference"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-2586b854-237e-47f1-84a1-d45d4cd2310d",
@@ -7973,7 +8138,8 @@
           "item_sha256": "c1de57297e9857f3b454febf5dd1caa39e2c617cfbc6e7d65d2211a33efefce8",
           "guidance": "https://learn.microsoft.com/azure/virtual-wan/about-virtual-hub-routing#labels"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-9c75dfef-573c-461c-a698-68598595581a",
@@ -8016,7 +8182,8 @@
           "item_sha256": "316c1f0dcabb5dd91160790c3fe019812c1ebc4a7111f6b26dfe2460801865b2",
           "guidance": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-faq#what-is-the-recommended-hub-address-space-during-hub-creation"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-5c986cb2-9131-456a-8247-6e49f541acdc",
@@ -8059,7 +8226,8 @@
           "item_sha256": "49f1a6042733f9714bc2ee0f120a5688747dce6a6451b9d64b7f01e66eb06305",
           "guidance": "https://learn.microsoft.com/azure/governance/policy/overview"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-d8a2adb1-17d6-4326-af62-5ca44e5695f2",
@@ -8102,7 +8270,8 @@
           "item_sha256": "ab3ed4c9ff6295ec0a544982398e4b3b6d919b12393115ebc3af47ec24eea567",
           "guidance": "https://learn.microsoft.com/azure/governance/policy/overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-223ace8c-b123-408c-a501-7f154e3ab369",
@@ -8145,7 +8314,8 @@
           "item_sha256": "a5a119c3817420aa34c32c715412e360b8520180ee5e979fa8c388d71708e186",
           "guidance": "https://learn.microsoft.com/azure/governance/policy/overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-3829e7e3-1618-4368-9a04-77a209945bda",
@@ -8188,7 +8358,8 @@
           "item_sha256": "70134fe47db6ed26f123d334186d592b18665aa1d9db0d9de7d37815faf4b303",
           "guidance": "https://learn.microsoft.com/azure/governance/policy/overview"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-43334f24-9116-4341-a2ba-527526944008",
@@ -8231,7 +8402,8 @@
           "item_sha256": "a155253c2e62f9305c33e2ba6c36f0f5fb01286039f01c8579dc3e90448cd494",
           "guidance": "https://learn.microsoft.com/security/benchmark/azure/mcsb-asset-management#am-2-use-only-approved-services"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-be7d7e48-4327-46d8-adc0-55bcf619e8a1",
@@ -8274,7 +8446,8 @@
           "item_sha256": "3bfbd70b9f2ce1ed9c090a34229486e2b9596b77bf55ff14d849a65ee053d32c",
           "guidance": "https://learn.microsoft.com/azure/governance/policy/overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-3f988795-25d6-4268-a6d7-0ba6c97be995",
@@ -8317,7 +8490,8 @@
           "item_sha256": "96fbd22c69ca34628e51ed07d3e3af3d7105199b6470d86dea183f44645dc856",
           "guidance": "https://learn.microsoft.com/azure/governance/policy/overview#azure-rbac-permissions-in-azure-policy"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-19048384-5c98-46cb-8913-156a12476e49",
@@ -8360,7 +8534,8 @@
           "item_sha256": "9a24eeb2270b4bc5f9f6aa9aef864d1543d4cd1f76d20ae20fcf3e3263876d2c",
           "guidance": "https://learn.microsoft.com/azure/governance/policy/overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-29fd366b-a180-452b-9bd7-954b7700c667",
@@ -8403,7 +8578,8 @@
           "item_sha256": "60b2dea461c903853bd733ce37f5182111e8b55de98083f6f1e13d10e5e04115",
           "guidance": "https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets?bc=%2Fazure%2Fcloud-adoption-framework%2F_bread%2Ftoc.json&toc=%2Fazure%2Fcloud-adoption-framework%2Ftoc.json"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-5a917e1f-348e-4f25-9c27-d42e8bbac757",
@@ -8446,7 +8622,8 @@
           "item_sha256": "04c7b6239f3c01b391151862e7a6446c858c600150f2faa752acc17a90f775ac",
           "guidance": "https://learn.microsoft.com/industry/release-plan/2023wave2/cloud-sovereignty/enable-data-sovereignty-policy-baseline"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-78b22132-b41c-460b-a4d3-df8f73a67dc2",
@@ -8489,7 +8666,8 @@
           "item_sha256": "bb01187d3546c0f807063d5eb648253b165d32857f1615bab9a7cd4c7cd4c98c",
           "guidance": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/implementing-workloads/design-sovereign-policies#sovereign-policy-initiatives"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-caeea0e9-1024-41df-a52e-d99c3f22a6f4",
@@ -8532,7 +8710,8 @@
           "item_sha256": "6add12ed42ba47825db11b0968b5f14d149a5de2fa4f47b654c80f141383234f",
           "guidance": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/sovereign-landing-zone/implement-controls-principles"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-9b461617-db7b-4399-8ac6-d4eb7153893a",
@@ -8575,7 +8754,8 @@
           "item_sha256": "3d144d0bb047b26718eb0f901cbfca2e3c1ea4ab054154d75a5604fb3bf41757",
           "guidance": "https://learn.microsoft.com/en-us/azure/reliability/regions-paired"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-bfaf7b7a-9e6c-4840-a2bd-2c524326bdf6",
@@ -8618,7 +8798,8 @@
           "item_sha256": "a2cf9ac66518c9fc937a280a788cf270da89200a3897626e777a0ef8c2b907e2",
           "guidance": "https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-3105633e-b168-4ce0-a016-5f10e7cdea5a",
@@ -8661,7 +8842,8 @@
           "item_sha256": "f6ca1846c8ef4a1c8de6ce90b250ec5ef3c2e42b21ba492e32a3edd387e893c0",
           "guidance": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/recommendations-reference-identity-access"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-77cf1acd-16b4-4092-8d30-6ec9579854ce",
@@ -8704,7 +8886,8 @@
           "item_sha256": "7fdce278bbbd70ff994d1035a28e537f10c2ac8ee26a0d1bea5d7509e091662a",
           "guidance": "https://learn.microsoft.com/en-us/azure/confidential-computing/"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-67e7a8ed-4b30-4e38-a3f2-9812b2363cef",
@@ -8747,7 +8930,8 @@
           "item_sha256": "0cd3abb3fcfe1c1ffdebd497300b1fbcdcbe33ccf64cfaaf3451b8f030eb7231",
           "guidance": "https://learn.microsoft.com/azure/azure-monitor/logs/workspace-design#azure-regions"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-7418ada9-4199-4c28-8286-d15e9433e8f3",
@@ -8790,7 +8974,8 @@
           "item_sha256": "884f08df1f36b0c603409168c77670b86f54ae500e6729b65ffe3b44daad8b9e",
           "guidance": "https://learn.microsoft.com/azure/azure-monitor/logs/design-logs-deployment"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-5e6c4cfd-3e50-4454-9c24-47ec66138a72",
@@ -8833,7 +9018,8 @@
           "item_sha256": "57c4e8c4b121e95e2be28bb9c8c7dea5157b1438a054b74f778323356ad01837",
           "guidance": "https://learn.microsoft.com/azure/azure-monitor/logs/data-retention-archive?tabs=portal-1%2Cportal-2#how-retention-and-archiving-work"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-e7d7e484-3276-4d8b-bc05-5bcf619e8a13",
@@ -8876,7 +9062,8 @@
           "item_sha256": "3f77d6a2142ea2413c800cff01159575bca593a6b07173fff42b56109e4519ad",
           "guidance": "https://learn.microsoft.com/azure/governance/machine-configuration/overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-f9887952-5d62-4688-9d70-ba6c97be9951",
@@ -8919,7 +9106,8 @@
           "item_sha256": "9182cb71eaf1545e8f5a2dc4e7373b727e19e04868368e50461ccf97129afe74",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-operational-compliance#update-management-considerations"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-c806c048-26b7-4ddf-b4c2-b4f0c476925d",
@@ -8962,7 +9150,8 @@
           "item_sha256": "3c0e03bea442a97ed7a3742bba9f63937f921ca66a0e87a577c1d2ea3fff61b8",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-operational-compliance#update-management-considerations "
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-90483845-c986-4cb2-a131-56a12476e49f",
@@ -9005,7 +9194,8 @@
           "item_sha256": "01d4690bc9197ae921bb5fed99d611a35a2b4a16c83616fd345cdfe5153142bc",
           "guidance": "https://learn.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-541acdce-9793-477b-adb3-751ab2ab13ad",
@@ -9048,7 +9238,8 @@
           "item_sha256": "89fb473c0e90f649630b0bf79d6ed16c95db67f16ef076df3401938c083ac4f3",
           "guidance": "https://learn.microsoft.com/azure/azure-resource-manager/management/lock-resources?tabs=json"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-a6e55d7d-8a2a-4db1-87d6-326af625ca44",
@@ -9091,7 +9282,8 @@
           "item_sha256": "1151d799ecef88efa584f00269972cb07658a186c8b676ae84d1e15ddc80f9be",
           "guidance": "https://learn.microsoft.com/azure/governance/policy/concepts/effect-deny"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-e5695f22-23ac-4e8c-a123-08ca5017f154",
@@ -9134,7 +9326,8 @@
           "item_sha256": "9e64a7e2cd91e55fd7ba1235e8439a2b08b7d1edc644a2435270a6adfc82720f",
           "guidance": "https://learn.microsoft.com/azure/service-health/alerts-activity-log-service-notifications-portal"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-d5f345bf-97ab-41a7-819c-6104baa7d48c",
@@ -9177,7 +9370,8 @@
           "item_sha256": "ee07a33a5a841ffce753fec2c7669deb2dcb0ed0bafef0e12bbff360fea389f5",
           "guidance": "https://learn.microsoft.com/azure/azure-monitor/alerts/action-groups"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-e3ab3693-829e-47e3-8618-3687a0477a20",
@@ -9220,7 +9414,8 @@
           "item_sha256": "2d75cef426c03d452b1a4ca45f03d40e71a68350476235cc6851c127b11a74ed",
           "guidance": "https://learn.microsoft.com/azure/sentinel/quickstart-onboard"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-6944008b-e7d7-4e48-9327-6d8bdc055bcf",
@@ -9263,7 +9458,8 @@
           "item_sha256": "8fb7037eac8b9946128522e285a8e5cf25a771a6d6068ae4c39422ea9024891a",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/monitoring-reporting?tabs=AzureMonitor"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-619e8a13-f988-4795-85d6-26886d70ba6c",
@@ -9306,7 +9502,8 @@
           "item_sha256": "3f2c0cd67b9bfa92a806c319e65258ab2585b6bc085aa85ef37f320cb99def46",
           "guidance": "https://learn.microsoft.com/azure/azure-monitor/agents/diagnostics-extension-overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-97be9951-9048-4384-9c98-6cb2913156a1",
@@ -9349,7 +9546,8 @@
           "item_sha256": "12a5456f50104a42b165abdb8f428c460305329e9cab6c228c16b42f1c823666",
           "guidance": "https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-859c3900-4514-41eb-b010-475d695abd74",
@@ -9392,7 +9590,8 @@
           "item_sha256": "23eb6c6be728b8b58ceacdf676f08f1d7b5f5f83d6c420a7edeb906229b0caf1",
           "guidance": "https://learn.microsoft.com/azure/architecture/best-practices/monitoring"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-aa45be6a-8f2d-4896-b0e3-775e6e94e610",
@@ -9435,7 +9634,8 @@
           "item_sha256": "40478dd5a6f872a100025fd9cb258fa5086b842257d120a6d49c638cdc39edb5",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-monitor"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-0d83fd81-952c-4d47-a6cb-3a930925ef2e",
@@ -9478,7 +9678,8 @@
           "item_sha256": "434ccb97b0abb012b294267c1be6d8af6a24986a9327aeee412fdaa26fb12265",
           "guidance": "https://learn.microsoft.com/en-gb/azure/storage/common/redundancy-migration?tabs=portal"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-7ea02e1c-7166-45a3-bdf5-098891367fcb",
@@ -9521,7 +9722,8 @@
           "item_sha256": "84ad35f77e2c4ecd33116d1c1f55d4e8821d2cb71747241ccdecefaf2f2aafd0",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-business-continuity-disaster-recovery#design-recommendations"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-eba8cf22-45c6-4dc1-9b57-2cceb3b97ce5",
@@ -9564,7 +9766,8 @@
           "item_sha256": "cf4607d0f93181f43dc28f68ae83f987977615bac174a444618283937e0359bc",
           "guidance": "https://learn.microsoft.com/azure/storage/common/storage-redundancy"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-f541acdc-e979-4377-acdb-3751ab2ab13a",
@@ -9607,7 +9810,8 @@
           "item_sha256": "60d240f06000bdfcb75fe2fe89a4187125ac0c57241c337117aa8319cdd3ca1f",
           "guidance": "https://learn.microsoft.com/azure/governance/policy/concepts/guest-configuration"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-da6e55d7-d8a2-4adb-817d-6326af625ca4",
@@ -9650,7 +9854,8 @@
           "item_sha256": "0124d840f45161b705e0190be78dd425a1509896f500208698bd533f0f7b9261",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-operational-compliance#monitoring-for-configuration-drift"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-b2ab13ad-a6e5-45d7-b8a2-adb117d6326a",
@@ -9693,7 +9898,8 @@
           "item_sha256": "596c4aa451a439c4b00f7ad5ad8595383b067fb477066f054230fe78175ee94c",
           "guidance": "https://learn.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-f625ca44-e569-45f2-823a-ce8cb12308ca",
@@ -9736,7 +9942,8 @@
           "item_sha256": "30390b1e9fcd712ed00bab26c8119f98c8f9ad01a743d02a4fb754f06d0a47c6",
           "guidance": "https://learn.microsoft.com/azure/backup/backup-center-overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-89cc5e11-aa4d-4c3b-893d-feb99215266a",
@@ -9779,7 +9986,8 @@
           "item_sha256": "2d654d294687259c4e3db9c6bd8090d7c51ce242950aba73662397eb7f10824b",
           "guidance": "https://learn.microsoft.com/azure/web-application-firewall/afds/waf-front-door-best-practices#add-diagnostic-settings-to-save-your-wafs-logs"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-7f408960-c626-44cb-a018-347c8d790cdf",
@@ -9822,7 +10030,8 @@
           "item_sha256": "2a0ada337f88c4fdeb0fac551d6e845e3fd766723dd83706c32d0d271c4701d8",
           "guidance": "https://learn.microsoft.com/azure/web-application-firewall/afds/waf-front-door-best-practices#send-logs-to-microsoft-sentinel"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-b86ad884-08e3-4727-94b8-75ba18f20459",
@@ -9865,7 +10074,8 @@
           "item_sha256": "a1f549f32b8ecb97b0c5e4adfb5493d5dbdd2507f16f6ddbf44d8446e27b7789",
           "guidance": "https://learn.microsoft.com/security/benchmark/azure/security-control-incident-response"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-01365d38-e43f-49cc-ad86-8266abca264f",
@@ -9908,7 +10118,8 @@
           "item_sha256": "b2f3a898dfb1fcc00c14ed167aae55213c560d380b533ca67e1c0a05a6808c5b",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/security-zero-trust"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-5017f154-e3ab-4369-9829-e7e316183687",
@@ -9972,7 +10183,8 @@
       ],
       "review_resource_types": [
         "Microsoft.KeyVault/vaults"
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-a0477a20-9945-4bda-9333-4f2491163418",
@@ -10035,7 +10247,8 @@
       ],
       "review_resource_types": [
         "Microsoft.KeyVault/vaults"
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-2ba52752-6944-4008-ae7d-7e4843276d8b",
@@ -10129,7 +10342,8 @@
           "pointer": "2ba52752-6944-4008-ae7d-7e4843276d8b",
           "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/keyvault/key_vault_resource.go"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-dc055bcf-619e-48a1-9f98-879525d62688",
@@ -10212,7 +10426,8 @@
       ],
       "review_fact_paths": [
         "enableRbacAuthorization"
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-6d70ba6c-97be-4995-8904-83845c986cb2",
@@ -10255,7 +10470,8 @@
           "item_sha256": "32cfcd5554640db8d3fba1a1be33f2b3a49cf207c32b88479bad112e121fd071",
           "guidance": "https://learn.microsoft.com/azure/key-vault/general/best-practices"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-913156a1-2476-4e49-b541-acdce979377b",
@@ -10298,7 +10514,8 @@
           "item_sha256": "8b3deda9ac190c76e174c96883a804eda2b9105008499ac10ba1e9d73669f90c",
           "guidance": "https://learn.microsoft.com/azure/key-vault/general/best-practices"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-cdb3751a-b2ab-413a-ba6e-55d7d8a2adb1",
@@ -10373,7 +10590,8 @@
       "review_fact_paths": [
         "publicNetworkAccess",
         "networkAcls.defaultAction"
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-17d6326a-f625-4ca4-9e56-95f2223ace8c",
@@ -10437,7 +10655,8 @@
       "review_resource_types": [
         "Microsoft.KeyVault/vaults",
         "Microsoft.OperationalInsights/workspaces"
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-b12308ca-5017-4f15-9e3a-b3693829e7e3",
@@ -10480,7 +10699,8 @@
           "item_sha256": "fa9fdc8bc9fb746148e6bb7d619dbe0f18afe2c2e5c845dcc47935abdca7bc11",
           "guidance": "https://learn.microsoft.com/azure/key-vault/general/best-practices"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-16183687-a047-47a2-8994-5bda43334f24",
@@ -10523,7 +10743,8 @@
           "item_sha256": "01900d814d4df4f15c470b32f865e4b439d8f0e39fc06f5a4264858b6462c7f8",
           "guidance": "https://learn.microsoft.com/azure/security/fundamentals/encryption-atrest"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-b48ade7f-50be-4d2e-9866-d57b17942fc2",
@@ -10566,7 +10787,8 @@
           "item_sha256": "94aebcebf69a80bea7ff22c26b015f184df01b6b66d0e793040f2886b310c887",
           "guidance": "https://learn.microsoft.com/azure/security/fundamentals/encryption-atrest"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-25d62688-6d70-4ba6-a97b-e99519048384",
@@ -10609,7 +10831,8 @@
           "item_sha256": "87bca1f0ee1f78df3b4286d84b3f08abd18e711cef30f416887ab246a01b8b69",
           "guidance": "https://learn.microsoft.com/en-us/azure/security/fundamentals/encryption-customer-managed-keys-support"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-4ac6b67c-b3a4-4ff9-8e87-b07a7ce7bbdb",
@@ -10652,7 +10875,8 @@
           "item_sha256": "9c83968936fa8130ca1bff72c6d225e9a00565cfea873ac60a3869be47048f34",
           "guidance": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/capabilities/external-key-management"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-4e5695f2-223a-4ce8-ab12-308ca5017f15",
@@ -10695,7 +10919,8 @@
           "item_sha256": "572a9b3114de9e30660086fea951f5a287f90337f2e4346234d4e7be8c1fe119",
           "guidance": "https://learn.microsoft.com/azure/active-directory/reports-monitoring/overview-reports"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-4e3ab369-3829-4e7e-9161-83687a0477a2",
@@ -10738,7 +10963,8 @@
           "item_sha256": "6e47f0c3a087a6bccf0c0d4e19446705188ff19cfabb9d6bab6b2c8d653d2036",
           "guidance": "https://learn.microsoft.com/azure/azure-monitor/logs/logs-data-export?tabs=portal"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-09945bda-4333-44f2-9911-634182ba5275",
@@ -10781,7 +11007,8 @@
           "item_sha256": "bfad461eea2740a7183d3f6005223c9df8a410e0bc0111a8f6c92ef119c572aa",
           "guidance": "https://learn.microsoft.com/azure/defender-for-cloud/concept-cloud-security-posture-management"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-36a72a48-fffe-4c40-9747-0ab5064355ba",
@@ -10824,7 +11051,8 @@
           "item_sha256": "2b36cdf6b061d886ca70419b6f7cd81ae2b6a6b006c62333d044e2721a1322ae",
           "guidance": "https://learn.microsoft.com/azure/defender-for-cloud/plan-defender-for-servers-select-plan"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-77425f48-ecba-43a0-aeac-a3ac733ccc6a",
@@ -10867,7 +11095,8 @@
           "item_sha256": "fdeb7c06e72e42caa92e8b4f08741d3047e925e920a05ba1664406c83bb5bf9c",
           "guidance": "https://learn.microsoft.com/azure/defender-for-cloud/connect-azure-subscription"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-24d96b30-61ee-4436-a1cc-d6ef08bc574b",
@@ -10910,7 +11139,8 @@
           "item_sha256": "486fe4d81af0486f800396ad03c4851089e3d0a6093b01275b2b1d062b3e7b5d",
           "guidance": "https://learn.microsoft.com/mem/configmgr/protect/deploy-use/endpoint-protection"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-15833ee7-ad6c-46d3-9331-65c7acbe44ab",
@@ -10953,7 +11183,8 @@
           "item_sha256": "7bd8b294bb132cd60eda1d2719a1b8d49be06218142516789bebf5bda474a94d",
           "guidance": "https://learn.microsoft.com/azure/security-center/"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-e5f8d79f-2e87-4768-924c-516775c6ea95",
@@ -10996,7 +11227,8 @@
           "item_sha256": "9fa74bd9ed15b7d6306891b14574876e408aa54309ae833ef36c050d87ee8d33",
           "guidance": "https://learn.microsoft.com/azure/azure-monitor/logs/design-logs-deployment"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-a56888b2-7e83-4404-bd31-b886528502d1",
@@ -11039,7 +11271,8 @@
           "item_sha256": "9e96985f562ab032bb2c700fb7388e10079f4fd45d4e20c3ee14b1aab95fdfac",
           "guidance": "https://learn.microsoft.com/azure/well-architected/security/monitor-threats#centralized-threat-detection-with-correlated-logs"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-d21a922d-5ca7-427a-82a6-35f7b21f1bfc",
@@ -11082,7 +11315,8 @@
           "item_sha256": "aac5d740b6c7ab36514de2676cc22af65d0b7519d73e5f8343be2becc0795c86",
           "guidance": "https://learn.microsoft.com/en-gb/azure/security/fundamentals/customer-lockbox-overview"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-874a748b-662d-46d1-9051-2a66498f6dfe",
@@ -11125,7 +11359,8 @@
           "item_sha256": "10bd08969c7574949b53bd5d4c763abc56bb1cdad1127408b5324d1e16659b81",
           "guidance": "https://learn.microsoft.com/azure/event-grid/set-alerts"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-b03ed428-4617-4067-a787-85468b9ccf3f",
@@ -11174,7 +11409,8 @@
           "item_sha256": "909226110666bd96e6da526ef9be87e4ea197bd449e85068ef02df99f2bcf76e",
           "guidance": "https://learn.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-159aac9f-863f-4f48-82cf-00c28fa97a0e",
@@ -11275,7 +11511,8 @@
           "pointer": "159aac9f-863f-4f48-82cf-00c28fa97a0e",
           "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/storage/storage_account_resource.go"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-31e77d70-f001-455b-93aa-6d05eea10968",
@@ -11357,7 +11594,8 @@
       ],
       "review_fact_paths": [
         "minimumTlsVersion"
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-6f704104-85c1-441f-96d3-c9819911645e",
@@ -11400,7 +11638,8 @@
           "item_sha256": "785db27d8d7955d51a04fb8023fd347ffc3f642cf98df9df4ec33bc92c3179b5",
           "guidance": "https://learn.microsoft.com/azure/active-directory/roles/security-planning"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-9a19bf39-c95d-444c-9c89-19ca1f6d5215",
@@ -11443,7 +11682,8 @@
           "item_sha256": "7595843da0b0013a3c4683cc7a0516c9115797727bb56bf24ab04cfeef9f9653",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/service-enablement-framework"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-ae514b93-3d45-485e-8112-9bd7ba012f7b",
@@ -11486,7 +11726,8 @@
           "item_sha256": "80e7a880f3fc8054d65ac7ce6e2f82f0263b627a879c9a4a8dda69a542c1e5b3",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/service-enablement-framework"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-e85f4226-bf06-4e35-8a8b-7aee4d2d633a",
@@ -11529,7 +11770,8 @@
           "item_sha256": "15642463c4d5242cdbac87522ca833bbfc3f356b35f8d0864a303b7354b7c91f",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/platform-automation-devops"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-634146bf-7085-4419-a7b5-f96d2726f6da",
@@ -11572,7 +11814,8 @@
           "item_sha256": "64788fb1a35ab1ddf23b49a49cf94f32bc1e143be05c7027fea520c5eaa72d32",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/devops-teams-topologies#design-recommendations"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-a9e65070-c59e-4112-8bf6-c11364d4a2a5",
@@ -11615,7 +11858,8 @@
           "item_sha256": "d9b7835a2f3fc8ae10148d1f39bdbe58bab71e2e9d3de4492fc63978c1f991db",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/devops-teams-topologies#design-recommendations"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-165eb5e9-b434-448a-9e24-178632186212",
@@ -11658,7 +11902,8 @@
           "item_sha256": "301a1455bf17fc7825c52c3aa8914df1f5625b36e696dc7607a6e9502ea89004",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-0cadb8c7-8fa5-4fbf-8f39-d1fadb3b0460",
@@ -11701,7 +11946,8 @@
           "item_sha256": "913d36cde93e08dfdd1cfe20b1cc77005233443ea1a3ba238c2d514694c92988",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/development-strategy-development-lifecycle#automated-builds"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-108d5099-a11d-4445-bd8b-e12a5e95412e",
@@ -11744,7 +11990,8 @@
           "item_sha256": "baccc35bf31c362e383c8ccb1980ded02679e19575c533f266fdd5441677c0d0",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/development-strategy-development-lifecycle#automated-builds"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-a52e0c98-76b9-4a09-a1c9-6b2babf22ac4",
@@ -11787,7 +12034,8 @@
           "item_sha256": "058208ab12b7943f4b444d7b93d120a5ec5711644ba2cd411b0394c3886254ee",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/subscription-vending"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-cfe363b5-f579-4284-bc56-a42153e4c10b",
@@ -11830,7 +12078,8 @@
           "item_sha256": "00abc6797510e02eddad19b2f8af25cc4d5993988f792511d7a5f8211494aae0",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-c7245dd4-af8a-403a-8bb7-890c1a7cfa9d",
@@ -11873,7 +12122,8 @@
           "item_sha256": "a6fa0b965442d6c67d730115b5c16a2f9fb5b5e49c900e7e924e9b2a628769a3",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/development-strategy-development-lifecycle"
         }
-      ]
+      ],
+      "severity": "Low"
     },
     {
       "control_id": "ALZ-12aeea20-9165-4b3e-bdf2-6795fcd3cdbe",
@@ -11916,7 +12166,8 @@
           "item_sha256": "76f84f8b1e7f5e6a964003a7381c62831527d0aed5707c8cfbbf12a73a37355d",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/development-strategy-development-lifecycle"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-2676ae46-65ca-444e-8695-fdddeace4cb1",
@@ -11959,7 +12210,8 @@
           "item_sha256": "6eefe3594c459cb5925ba25596373042e28ec14d77a2fcd93103ede2ab801596",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-platform"
         }
-      ]
+      ],
+      "severity": "Medium"
     },
     {
       "control_id": "ALZ-2cdc9d99-dbcc-4ad4-97f5-e7d358bdfa73",
@@ -12002,7 +12254,8 @@
           "item_sha256": "6d17a71ee0d19a66196017151609283694a1855e8605a491edf9a58bb3601ceb",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-cc87a3bc-c572-4ad2-92ed-8cabab66160f",
@@ -12045,7 +12298,8 @@
           "item_sha256": "117093c23c98e4cc631a90655f5444697e10355395efcfa0b37d97780cc68265",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/landing-zone-security#secure"
         }
-      ]
+      ],
+      "severity": "High"
     },
     {
       "control_id": "ALZ-047c91e2-6bb4-4a42-a0ef-ab06ad0062c9",
@@ -12088,7 +12342,8 @@
           "item_sha256": "08d08dfc75ad55955530c1800b05e95411ffbc2ff4926e3927d2748ab8898ad3",
           "guidance": "https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency"
         }
-      ]
+      ],
+      "severity": "Medium"
     }
   ],
   "separate_mappings": {
@@ -12164,5 +12419,7 @@
     ]
   },
   "first_wave_matrix_sha256": "f649b2293211c844d661ea93c6978fe2db948eff17237af01ca090809da8e1fb",
-  "batch_source_manifest_sha256": "f75469d47a3c8cde29d2a607479638d15c607884c5dbd3db930a07d590953f35"
+  "batch_source_manifest_sha256": "f75469d47a3c8cde29d2a607479638d15c607884c5dbd3db930a07d590953f35",
+  "batch_catalog_version": "2026-11-05.3",
+  "priority_manifest_sha256": "b42971f85b9110f71fdc5ae81695fe4be72c1f28022ec27aeb719140ed1475c0"
 }

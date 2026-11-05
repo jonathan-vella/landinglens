@@ -50,6 +50,11 @@ def semantic(report: dict[str, Any]) -> str:
         {
             "coverage": report["coverage"],
             **({"evidence_tiers": report["evidence_tiers"]} if "evidence_tiers" in report else {}),
+            **(
+                {"applicability_suggestions": report["applicability_suggestions"]}
+                if "applicability_suggestions" in report
+                else {}
+            ),
             "results": [
                 {
                     **{key: row.get(key) for key in ("control_id", "logical_id", "arm_id")},
@@ -157,6 +162,10 @@ def sanitize_evidence(bundle: dict[str, Any]) -> dict[str, Any]:
         )
     metadata: dict[str, Any] = {"replay_sanitized": True}
     original = bundle.get("metadata") or {}
+    if "archetype_bindings" in original:
+        from .priorities import archetype_bindings
+
+        metadata["archetype_bindings"] = archetype_bindings(original["archetype_bindings"], bundle)
     if "scopes" in original:
         metadata["scopes"] = [scope_id(value) for value in require(original, "scopes", list)]
     if isinstance(original.get("completeness"), dict):

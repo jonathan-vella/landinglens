@@ -20,6 +20,7 @@ from .diagnostics import explain
 from .engine import assess
 from .plan import plan_source
 from .preflight import preflight, render_preflight
+from .priorities import archetype_bindings
 from .replay import export_bundle, replay_bundle
 from .reports import render
 from .review_session import ReviewSession, serve_reviews
@@ -204,6 +205,7 @@ def main() -> int:
     assessment.add_argument("--at")
     assessment.add_argument("--max-age-hours", type=float, default=24)
     assessment.add_argument("--evidence-tiers", action="store_true")
+    assessment.add_argument("--archetypes", type=Path)
     doctor = commands.add_parser("doctor", help="Inspect explicit input prerequisites offline")
     input_arguments(doctor)
     doctor.add_argument("--probe-compiler", action="store_true")
@@ -349,6 +351,16 @@ def main() -> int:
                     sys.stdout.write(output)
                 return 2 if result["readiness"] == "blocked" else 0
             bundle = load_evidence(args)
+            if args.archetypes:
+                if not args.evidence_tiers:
+                    raise InputError("--archetypes requires explicit --evidence-tiers")
+                binding = archetype_bindings(read_json(args.archetypes), bundle)
+                if "archetype_bindings" in (bundle.get("metadata") or {}):
+                    raise InputError("Saved evidence already has immutable archetype bindings")
+                bundle.setdefault("metadata", {})["archetype_bindings"] = binding
+                from .contracts import digest
+
+                bundle["artifact_hashes"]["explicit-archetype-bindings"] = digest(binding)
             if args.evidence_output:
                 args.evidence_output.write_text(
                     json.dumps(bundle, indent=2) + "\n",

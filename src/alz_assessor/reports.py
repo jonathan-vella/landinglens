@@ -7,6 +7,7 @@ from typing import Any
 from .contracts import digest, validate
 from .diagnostics import guidance
 from .html_report import render_html
+from .priorities import sort_key
 
 
 def report_model(assessment: dict[str, Any], minimize: bool = False) -> dict[str, Any]:
@@ -29,6 +30,8 @@ def report_model(assessment: dict[str, Any], minimize: bool = False) -> dict[str
         for bundle in assessment["evidence"]
     ]
     result = json.loads(json.dumps(result))
+    if any("severity" in entry for entry in result["results"]):
+        result["results"].sort(key=sort_key)
     for entry in result["results"]:
         for mode in ("planned", "observed"):
             if entry.get(mode):
@@ -56,6 +59,7 @@ def report_model(assessment: dict[str, Any], minimize: bool = False) -> dict[str
                 "inventory_transport",
                 "source_binding",
                 "warning",
+                "archetype_bindings",
             )
             if key in metadata
         }
@@ -74,6 +78,8 @@ def report_model(assessment: dict[str, Any], minimize: bool = False) -> dict[str
         }
     if minimize:
         result["presentation_only"] = True
+        for suggestion in result.get("applicability_suggestions", []):
+            suggestion["scope"] = None
         for entry in result["results"]:
             entry["logical_id"], entry["arm_id"] = (
                 "target-" + digest(entry["logical_id"])[:12],
@@ -116,14 +122,18 @@ def render(assessment: dict[str, Any], format: str = "json", minimize: bool = Fa
             "Verified includes failures; Signals are not passes. Counts are once per control.",
             "",
         ]
+    if "applicability_suggestions" in model:
+        lines += [
+            "Applicability suggestions (reviewer confirmation required): "
+            + json.dumps(model["applicability_suggestions"], sort_keys=True),
+            "",
+        ]
     for retired in model.get("retired_controls", []):
         lines += ["Retired/historical: " + json.dumps(retired, sort_keys=True), ""]
     for bundle in model["evidence"]:
         lines += [json.dumps(bundle, sort_keys=True), ""]
     area = None
-    for entry in sorted(
-        model["results"], key=lambda row: (row["design_area"], row["control_id"], row["logical_id"])
-    ):
+    for entry in sorted(model["results"], key=sort_key):
         if entry["design_area"] != area:
             area = entry["design_area"]
             lines += ["## " + area, ""]
@@ -132,6 +142,7 @@ def render(assessment: dict[str, Any], format: str = "json", minimize: bool = Fa
             entry["logical_id"],
             "/".join(entry["applicability"]),
             entry["recommendation"],
+            *(["Severity: " + entry["severity"]] if "severity" in entry else []),
         ]
         for mode in ("planned", "observed"):
             item = entry.get(mode)

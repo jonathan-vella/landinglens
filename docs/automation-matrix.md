@@ -47,6 +47,26 @@ The [1.2 contract](contracts.md#assessment-version-12-evidence-tiers) defines
 validation, historical compatibility, comparison and replay. No new Azure
 operation, ingestion adapter or owner decision is added by tier projection.
 
+## Source-backed priority and applicability suggestions
+
+Metadata-only catalog `2026-11-05.5` carries 71 High / 158 Medium / 26 Low values
+from the exact reviewed checklist. No automation classifications or original
+predicate hashes change. The `.3` catalog is frozen byte-for-byte; current
+crosswalk `.2` binds `.5` with the same 51/53 association coverage.
+
+Actual pinned ALZ Library architecture and `landing_zones` archetype captures
+are recorded in packaged `catalog-priorities.json`, including hashes, retrieval
+times and MIT reuse metadata. Only the exact `landing_zones` ->
+`Deny-Storage-http` -> G04.01 association supports a suggestion. The library's
+template IDs are not discovered tenant identities. A saved explicit binding must
+match the assessment's exact management group; it is a producer assertion, not
+proof that the deployed topology equals the template.
+
+Suggestions always require reviewer confirmation. Other archetype mappings are
+unreviewed, and no parent inheritance or absence-based exclusion is inferred.
+Stale/missing/foreign/conflicting bindings cannot set applicability or outcomes.
+This is offline/saved evidence preparation, not new Azure reads or deployment.
+
 The owner explicitly delegated LL-04 acceptance to Autopilot in the attached
 execution authorization. This replaces the original human-interruption gate,
 not the coverage safeguards. The accepted baseline is two explicit property

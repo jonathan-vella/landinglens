@@ -353,6 +353,7 @@ def assess(
                     "recommendation": control["recommendation"],
                     "applicability": control["applicability"],
                     "automation": control["automation"],
+                    **({"severity": control["severity"]} if "severity" in control else {}),
                     "references": control["references"],
                     "flags": control["flags"],
                     "evidence_requirements": control["evidence_requirements"],

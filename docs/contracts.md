@@ -80,6 +80,32 @@ JSON/Markdown/HTML share the same counts, with no browser-side tier evaluator.
 
 ## Catalog and evidence contracts
 
+Metadata-only successor `2026-11-05.5` carries the frozen checklist's optional
+`severity`: High, Medium, Low or explicit Unknown. Its source-hashed priority
+manifest binds all GUIDs, actual architecture/archetype captures and reviewed
+limitations. `batch_catalog_version` identifies the unchanged `.3` matrix/source
+bundle instead of copying it. The exact `.3` catalog and first crosswalk remain
+frozen; crosswalk `.2` binds the new catalog without changing associations.
+Severity is presentation metadata, not a predicate or an automatic applicability
+decision; original four content hashes and all technical meanings are retained.
+FR-31 must still classify future severity changes as needs-review and stale
+affected reviews rather than treating priority changes as safe wording updates.
+
+An optional explicit archetype file contains only `collected_at` and 1-100
+`entries`, each with canonical MG `scope` and a reviewed architecture `group_id`.
+The MG must equal the evidence scope. Unknown/duplicate/foreign bindings or raw
+extra fields fail; no topology lookup, inheritance or default-name matching
+occurs. `--archetypes` requires assessment 1.2 and cannot replace an existing saved
+binding. The normalised metadata and hash preserve the supplied original time.
+
+Only the verified `landing_zones` assignment association yields a positive G04.01
+review suggestion. Missing/stale/unreviewed mappings yield no suggestion, not N/A
+or a pass. Typed `applicability_suggestions` always require confirmation; they
+cannot change `applicability` or outcomes. JSON/Markdown/HTML and review queue
+ordering use one deterministic severity key; old catalogs without severity keep
+their previous ordering. Replay retains bindings/suggestions and their witness;
+minimisation removes the actual private scope.
+
 Batch successor `2026-11-05.1` adds the narrowly typed 1.1 operation
 `vault-deletion-protection`: only `Microsoft.KeyVault/vaults`,
 `enableSoftDelete`, expected `true`, with the fixed second boolean

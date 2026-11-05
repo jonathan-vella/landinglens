@@ -20,9 +20,13 @@ Planning is merged in #68. FR-23 is merged in #69: the separate crosswalk
 represents all 255 GUIDs, with 51 mapped controls and 53 partial/related
 associations. Its 207-test local and exact installed suites passed with one
 Windows privilege skip; eight platform checks and four exercised compiler
-artifacts passed. FR-24 is now implemented locally as explicit assessment 1.2
+artifacts passed. FR-24 is merged in #70 as explicit assessment 1.2
 opt-in. Its 219-test local and exact installed suites passed with one Windows
-privilege skip; CI/merge acceptance remains pending. Policy/scanner ingestion and
+privilege skip, eight platform checks and four exercised compiler artifacts.
+FR-25 is implemented locally in metadata-only catalog `.5`, with source-backed
+severity and guarded saved archetype suggestions. Its 228-test local/exact
+installed suites passed with one Windows privilege skip; CI/merge acceptance is pending.
+Policy/scanner ingestion and
 query execution remain pending; neither foundation delivers them.
 
 ### Requirements and acceptance

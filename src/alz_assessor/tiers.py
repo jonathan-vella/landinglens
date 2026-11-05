@@ -114,4 +114,15 @@ def attach(assessment: dict[str, Any]) -> dict[str, Any]:
     assessment["evidence_tiers"] = summary(
         assessment["results"], assessment.get("retired_controls", [])
     )
+    if any(
+        (bundle.get("metadata") or {}).get("archetype_bindings") is not None
+        for bundle in assessment["evidence"]
+    ):
+        from .priorities import suggestions
+
+        assessment["applicability_suggestions"] = suggestions(
+            assessment["evidence"],
+            assessment["generated_at"],
+            assessment.get("freshness_policy_hours", 24),
+        )
     return assessment
