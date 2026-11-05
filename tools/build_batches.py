@@ -220,6 +220,12 @@ def main() -> None:
         issues[batch["batch"]] = batch.get(
             "issue", "https://github.com/jonathan-vella/landinglens/issues/46"
         )
+    if (DATA / "catalog-priorities.json").exists():
+        from alz_assessor.priorities import prioritised_catalog
+
+        catalog = prioritised_catalog(
+            catalog, json.loads((DATA / "catalog-priorities.json").read_text("utf-8"))
+        )
     write(DATA / "catalog.json", catalog)
     ledger = [
         {

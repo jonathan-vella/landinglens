@@ -4,6 +4,7 @@ import test_assessment
 
 from alz_assessor.diagnostics import GUIDANCE, REASON_GROUP, explain
 from alz_assessor.engine import assess
+from alz_assessor.priorities import sort_key
 from alz_assessor.reports import render, report_model
 
 
@@ -37,14 +38,14 @@ class DiagnosticTests(unittest.TestCase):
         fixture.setUp()
         assessment = assess(fixture.source(snapshots=False), fixture.catalog)
         original = [
-            (r["control_id"], r["planned"]["outcome"], r["planned"]["reason"])
-            for r in assessment["results"]
+            (r["control_id"], r["logical_id"], r["planned"]["outcome"], r["planned"]["reason"])
+            for r in sorted(assessment["results"], key=sort_key)
         ]
         model = report_model(assessment)
         self.assertEqual(
             original,
             [
-                (r["control_id"], r["planned"]["outcome"], r["planned"]["reason"])
+                (r["control_id"], r["logical_id"], r["planned"]["outcome"], r["planned"]["reason"])
                 for r in model["results"]
             ],
         )

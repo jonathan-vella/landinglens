@@ -14,6 +14,7 @@ from urllib.parse import urlsplit
 
 from .contracts import document, now, parse_document, require, scope_id, timestamp, validate
 from .engine import assess
+from .priorities import SEVERITIES
 from .reports import render
 from .review_page import review_page
 from .reviews import prepare_reviews, review_context, validate_reviews
@@ -77,6 +78,7 @@ class ReviewSession:
             {
                 "control_id": control["control_id"],
                 "label": control["upstream_id"] + ": " + control["recommendation"],
+                **({"severity": control["severity"]} if "severity" in control else {}),
                 "evidence_requirements": control["evidence_requirements"],
                 "limitations": control["rationale"],
                 "available_evidence": review_context(control, self.evidence),
@@ -94,7 +96,13 @@ class ReviewSession:
             and control["lifecycle"] == "active"
             and landing_zone in control["applicability"]
         ]
-        self.controls.sort(key=lambda c: ("fail" not in c["results"], c["label"]))
+        self.controls.sort(
+            key=lambda c: (
+                SEVERITIES.index(c.get("severity", "Unknown")),
+                "fail" not in c["results"],
+                c["label"],
+            )
+        )
         self.report = self.evaluate(at, self.reviews)
         self.directory.mkdir(exist_ok=False)
         self._persist(self.report, self.reviews, self.revision)

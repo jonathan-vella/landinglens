@@ -5,6 +5,7 @@ import json
 from typing import Any
 from urllib.parse import urlsplit
 
+from .priorities import sort_key
 from .tiers import LABELS
 
 THEME_SCRIPT = """
@@ -202,6 +203,13 @@ def render_html(model: dict[str, Any]) -> str:
         parts.append(
             '<p class="notice">Minimized presentation only: not comparable or replayable.</p>'
         )
+    if "applicability_suggestions" in model:
+        parts.append(
+            "<details><summary>Applicability suggestions: "
+            "reviewer confirmation required</summary><pre>"
+            + escaped(json.dumps(model["applicability_suggestions"], indent=2))
+            + "</pre></details>"
+        )
     parts += [
         '</header><main><section aria-labelledby="summary"><h2 id="summary">Summary</h2>',
         '<div class="cards">',
@@ -278,21 +286,18 @@ def render_html(model: dict[str, Any]) -> str:
         f'<p id="shown" role="status" aria-live="polite">{len(model["results"])} '
         "result instances; all shown without JavaScript</p>",
     ]
-    previous = None
+    seen_areas = set()
     for row in sorted(
         model["results"],
-        key=lambda r: (
-            r["design_area"],
-            r["control_id"],
-            r["logical_id"],
-        ),
+        key=sort_key,
     ):
-        if row["design_area"] != previous:
-            previous = row["design_area"]
-            parts.append(f'<h3 id="area-{area_ids[previous]}">{escaped(previous)}</h3>')
+        area = row["design_area"]
+        if area not in seen_areas:
+            seen_areas.add(area)
+            parts.append(f'<h3 id="area-{area_ids[area]}">{escaped(area)}</h3>')
         statuses = [row[m]["outcome"] for m in ("planned", "observed") if row.get(m)]
         parts.append(
-            f'<article class="finding" data-area="{area_ids[previous]}" '
+            f'<article class="finding" data-area="{area_ids[area]}" '
             f'data-status="{escaped(" ".join(statuses))}"><details open><summary>'
             f"{escaped(row['upstream_id'])}: {escaped(row['recommendation'])}"
             "</summary>"
@@ -303,6 +308,7 @@ def render_html(model: dict[str, Any]) -> str:
                     "Control ID": row["control_id"],
                     "Target": row.get("arm_id") or row["logical_id"],
                     "Automation": row.get("automation"),
+                    **({"Severity": row["severity"]} if "severity" in row else {}),
                     "Applicability": "/".join(row["applicability"]),
                     "Comparison": row.get("comparison"),
                     "Comparison reason": row.get("comparison_reason"),

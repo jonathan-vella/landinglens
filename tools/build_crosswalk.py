@@ -207,7 +207,7 @@ def build() -> None:
         {
             "schema_version": "1.0",
             "kind": "crosswalk",
-            "crosswalk_version": "2026-11-05.1",
+            "crosswalk_version": "2026-11-05.2",
             "catalog_sha256": digest(catalog),
             "review_state": "reviewed",
             "reviewed_at": max(source["retrieved_at"] for source in manifest["sources"]),

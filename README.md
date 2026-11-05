@@ -130,6 +130,21 @@ outcomes or reviews. Existing typed prepared facts can supply Signals; policy,
 scanner and query ingestion are separate pending work, not inferred from arbitrary
 metadata. See [tier semantics](docs/contracts.md#assessment-version-12-evidence-tiers).
 
+Catalog `2026-11-05.5` adds source-backed priority metadata: 71 High, 158 Medium
+and 26 Low recommendations. Reports and review queues sort severity first;
+historical catalogs retain their original presentation. This is a metadata-only
+successor, not new automated coverage. Draft `.4` remains paused cohort-19 work.
+
+For evidence scoped to one explicit management group, `assess --evidence-tiers
+--archetypes FILE` accepts a saved binding shaped as
+`{"collected_at":"2026-11-05T00:00:00Z","entries":[{"scope":"/providers/Microsoft.Management/managementGroups/your-group","group_id":"landingzones"}]}`.
+The scope must exactly match the evidence, not a guessed group name. The reviewed
+ALZ Library architecture supplies suggestions only: `landing_zones` contains
+`Deny-Storage-http`, associated with G04.01. Other archetypes are explicitly
+unreviewed; no inheritance, exclusion or outcome is inferred. Every suggestion
+requires reviewer confirmation. Saved evidence, review sessions and replay retain
+the binding's original time; minimised reports withhold its private scope.
+
 The frozen observed fixture is assessed at its recorded example time. Comparison
 rechecks both inputs against its own time and the 24-hour default freshness
 limit, so this example becomes non-comparable when the fixture ages.
@@ -230,8 +245,9 @@ Supply the original `--manual`, `--exceptions`, `--catalog`, `--landing-zone`
 and `--max-age-hours` selections when applicable. Export evaluates and binds
 that invocation; it does not reconstruct missing normalized facts from a
 rendered report or prove the files existed at the selected historical time.
-The installed package includes current `2026-11-05.3` and frozen
-`2026-11-04.1`, `2026-11-04.2`, `2026-11-05.1` and `2026-11-05.2` catalog meaning.
+The installed package includes current `2026-11-05.5` and frozen
+`2026-11-04.1`, `2026-11-04.2`, `2026-11-05.1`, `2026-11-05.2` and
+`2026-11-05.3` catalog meaning.
 Altered/custom or unavailable historical
 artifacts fail explicitly rather than substituting today's rules.
 

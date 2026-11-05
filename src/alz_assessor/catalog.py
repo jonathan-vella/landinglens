@@ -35,7 +35,7 @@ def load_catalog(path: str | None = None) -> dict[str, Any]:
             ):
                 raise InputError("Packaged first-wave source or accepted-matrix hash mismatch")
         if data.get("batch_source_manifest_sha256"):
-            version = data["catalog_version"]
+            version = data.get("batch_catalog_version", data["catalog_version"])
             suffix = "" if version == "2026-11-05.1" else "-" + version
             if hashlib.sha256(
                 root.joinpath(f"batch-control-sources{suffix}.json").read_bytes()
@@ -43,6 +43,16 @@ def load_catalog(path: str | None = None) -> dict[str, Any]:
                 json.loads(root.joinpath(f"batch-matrix{suffix}.json").read_text("utf-8"))
             ) != data.get("accepted_matrix_sha256"):
                 raise InputError("Packaged batch source or accepted-matrix hash mismatch")
+        if data.get("priority_manifest_sha256"):
+            from .priorities import load_priorities
+
+            priorities = load_priorities()
+            if (
+                digest(priorities) != data["priority_manifest_sha256"]
+                or {c["upstream_guid"]: c.get("severity") for c in data["controls"]}
+                != priorities["severities"]
+            ):
+                raise InputError("Packaged severity source binding mismatch")
     return validate(data, "catalog")
 
 

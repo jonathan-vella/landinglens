@@ -178,4 +178,9 @@ def compare(
             ),
         },
     )
-    return validate(attach(result) if result["schema_version"] == "1.2" else result)
+    if result["schema_version"] == "1.2":
+        result["freshness_policy_hours"] = min(
+            planned.get("freshness_policy_hours", 24), observed.get("freshness_policy_hours", 24)
+        )
+        attach(result)
+    return validate(result)

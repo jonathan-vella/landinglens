@@ -319,6 +319,13 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
             require(control, "flags", list)
             require(control, "references", list)
             require(control, "evidence_requirements", list)
+            if "severity" in control and control["severity"] not in (
+                "High",
+                "Medium",
+                "Low",
+                "Unknown",
+            ):
+                raise InputError("Unsupported catalog severity")
             if "review_resource_types" in control:
                 kinds = require(control, "review_resource_types", list)
                 if (
@@ -456,6 +463,13 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
             require(result, "design_area", str)
             require(result, "applicability", list)
             require(result, "recommendation", str)
+            if "severity" in result and result["severity"] not in (
+                "High",
+                "Medium",
+                "Low",
+                "Unknown",
+            ):
+                raise InputError("Unsupported result severity")
             if result.get("arm_id") is not None:
                 canonical_id(result["arm_id"])
             for mode in ("planned", "observed"):
@@ -524,6 +538,58 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
             if result.get(mode)
         ):
             raise InputError("Evidence tiers require explicit assessment contract 1.2")
+        if "applicability_suggestions" in data:
+            if data["schema_version"] != "1.2":
+                raise InputError("Applicability suggestions require assessment 1.2")
+            suggestions = require(data, "applicability_suggestions", list)
+            if len(suggestions) > 200:
+                raise InputError("Applicability suggestion bound exceeded")
+            for suggestion in suggestions:
+                if not isinstance(suggestion, dict) or set(suggestion) != {
+                    "mode",
+                    "scope",
+                    "group_id",
+                    "archetypes",
+                    "suggested_controls",
+                    "reason",
+                    "collected_at",
+                    "source_sha256",
+                    "requires_confirmation",
+                }:
+                    raise InputError("Unexpected applicability suggestion fields")
+                if require(suggestion, "requires_confirmation", bool) is not True:
+                    raise InputError(
+                        "Applicability suggestions always require reviewer confirmation"
+                    )
+                timestamp(require(suggestion, "collected_at", str))
+                hashes({"source": suggestion.get("source_sha256")})
+                require(suggestion, "suggested_controls", list)
+                if suggestion["mode"] not in ("planned", "observed") or suggestion[
+                    "reason"
+                ] not in (
+                    "reviewed_archetype_assignment",
+                    "stale_archetype_binding",
+                    "archetype_mapping_not_reviewed",
+                ):
+                    raise InputError("Unreviewed applicability suggestion mode or reason")
+                from .priorities import load_priorities
+
+                architecture = load_priorities()["architecture"]
+                group = require(suggestion, "group_id", str)
+                if (
+                    group not in architecture
+                    or suggestion["archetypes"] != architecture[group]["archetypes"]
+                ):
+                    raise InputError("Unreviewed archetype identity")
+                if suggestion["suggested_controls"] not in (
+                    [],
+                    ["ALZ-b03ed428-4617-4067-a787-85468b9ccf3f"],
+                ):
+                    raise InputError("Unreviewed archetype control association")
+                if suggestion.get("scope") is not None:
+                    scope_id(suggestion["scope"])
+                elif not data.get("presentation_only"):
+                    raise InputError("Full applicability suggestions require an explicit scope")
     else:
         raise InputError("Unsupported document kind")
     return data
