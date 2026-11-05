@@ -10,6 +10,7 @@ from typing import Any
 from .contracts import control_digest, digest, document, now, timestamp, validate
 from .network_evidence import address_list, nat_collections
 from .policy_evidence import policy_signals
+from .query_signals import query_signals
 from .scanner_evidence import scanner_signals
 from .sources import BLOB_SERVICE_TYPE, complete_blob_services, property_at, unknown
 from .terraform import InputError
@@ -145,6 +146,12 @@ def assess(
                 raise InputError("Manual/exception entry references an unknown catalog control")
     results = []
     retired = []
+    queried = query_signals(bundle, instant.isoformat(), max_age_hours) if evidence_tiers else None
+    queried_controls = (
+        {"ALZ-" + queried["guid"]}
+        if queried and any(row["usable"] for row in queried["records"])
+        else set()
+    )
     scanned = (
         scanner_signals(bundle, instant.isoformat(), max_age_hours) if evidence_tiers else None
     )
@@ -200,6 +207,7 @@ def assess(
                 prepared
                 or control["control_id"] in signal_controls
                 or control["control_id"] in scanned_controls
+                or control["control_id"] in queried_controls
             )
         )
         targets = [
@@ -369,7 +377,7 @@ def assess(
                     and outcome not in {"pass", "fail"}
                 )
                 body["supplemental_signal_only"] = (
-                    control["control_id"] in signal_controls | scanned_controls
+                    control["control_id"] in signal_controls | scanned_controls | queried_controls
                     and not prepared
                     and outcome not in {"pass", "fail"}
                 )
@@ -426,4 +434,6 @@ def assess(
         result["policy_signals"] = supplemental
     if scanned is not None:
         result["scanner_signals"] = scanned
+    if queried is not None:
+        result["query_signals"] = queried
     return validate(attach(result) if evidence_tiers else result)

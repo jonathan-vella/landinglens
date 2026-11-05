@@ -228,6 +228,12 @@ def render_html(model: dict[str, Any]) -> str:
             + escaped(json.dumps(model["scanner_signal_runs"], indent=2))
             + "</pre></details>"
         )
+    if "query_signals" in model:
+        parts.append(
+            "<details><summary>Query Signals: not checklist outcomes</summary><pre>"
+            + escaped(json.dumps(model["query_signals"], indent=2))
+            + "</pre></details>"
+        )
     parts += [
         '</header><main><section aria-labelledby="summary"><h2 id="summary">Summary</h2>',
         '<div class="cards">',

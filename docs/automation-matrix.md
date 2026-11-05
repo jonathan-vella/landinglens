@@ -100,6 +100,21 @@ establishes no coverage. Source metadata, supported shapes and exclusions are
 documented in the [scanner contract](contracts.md#saved-scanner-evidence).
 No scanner execution, external artifact fetch, new dependency or Azure call occurs.
 
+## Reviewed upstream-query Signal allowlist
+
+The 49-query audit remains static source evidence. Its two direct local
+D07.06/D07.07 `id, compliant` observations are now allowlisted for explicit scoped
+ARG execution under D5. Their original query bytes and hashes remain unchanged;
+all 47 other entries have exact visible exclusion rationales. This does not
+promote any audited candidate or bypass SKU, inheritance, missing-value or
+configuration requirements in the accepted evaluator.
+
+Only exact allowlisted text and explicit subscription request bodies are accepted.
+Typed booleans are reported observations, not checklist outcomes. Null, malformed,
+partial, conflicting, stale, denied and empty populations stay unresolved.
+No live runtime is claimed; injected paging/retry/scope/error/privacy/replay
+and installed saved-evidence workflows are the acceptance evidence.
+
 The owner explicitly delegated LL-04 acceptance to Autopilot in the attached
 execution authorization. This replaces the original human-interruption gate,
 not the coverage safeguards. The accepted baseline is two explicit property

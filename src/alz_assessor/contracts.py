@@ -596,6 +596,22 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                 for record in data["policy_signals"]["records"]
             ):
                 raise InputError("Policy Signal references an unknown assessment control")
+        if "query_signals" in data:
+            if data["schema_version"] != "1.2":
+                raise InputError("Query Signals require explicit assessment 1.2")
+            from .query_signals import validate_query_evidence
+
+            query_data = require(data, "query_signals", dict)
+            raw_query = {
+                **query_data,
+                "records": [
+                    {key: value for key, value in record.items() if key != "usable"}
+                    for record in require(query_data, "records", list)
+                ],
+            }
+            validate_query_evidence(raw_query, minimized=bool(data.get("presentation_only")))
+            for record in query_data["records"]:
+                require(record, "usable", bool)
         if "applicability_suggestions" in data:
             if data["schema_version"] != "1.2":
                 raise InputError("Applicability suggestions require assessment 1.2")

@@ -314,7 +314,8 @@ groups can help multiple cohorts without manufacturing their acceptance.
 | 2026-11-05 | LL-28 tiers | [#70](https://github.com/jonathan-vella/landinglens/pull/70) | `80f7d8baeb90ab991fdffae798d0acc5ffc784d5` | 219 local/installed tests: 218 pass, one Windows privilege skip; static/type/dependencies; eight platform checks and four exercised compiler artifacts | Merged; #59 closed | Explicit 1.2 assessment opt-in; catalog/review/evidence bytes unchanged |
 | 2026-11-05 | LL-29 priority/applicability | [#71](https://github.com/jonathan-vella/landinglens/pull/71) | `d7219aad6d50757eacd88979426323c81266b9e0` | 228 local/installed tests: 227 pass, one Windows privilege skip; static/type/dependencies; eight platform checks and four exercised compiler artifacts | Merged; #56 closed | 71 High / 158 Medium / 26 Low; exact explicit MG/archetype binding, suggestions only |
 | 2026-11-05 | LL-30 policy Signals | [#72](https://github.com/jonathan-vella/landinglens/pull/72) | `e7fcd11a27d05dd68bcf6546e785835464e34df5` | 238 local/installed tests: 237 pass, one Windows privilege skip; eight platform checks and four exercised compiler artifacts | Merged; #55 closed | Saved exports and injected existing collector, direct partial mapping only; no new live run |
-| 2026-11-05 | LL-31 scanner Signals | Pending | Pending | 246 local/installed tests: 245 pass, one Windows privilege skip; static/type/dependencies pass; CI pending | Implemented, unmerged | Saved PSRule/SARIF, exact index-to-ID mappings; no scanner execution |
+| 2026-11-05 | LL-31 scanner Signals | [#73](https://github.com/jonathan-vella/landinglens/pull/73) | `4fa8bd0afc54b1ad9f09a2c1edcc029313000848` | 246 local/installed tests: 245 pass, one Windows privilege skip; eight platform checks and four exercised compiler artifacts | Merged; #63 closed | Saved PSRule/SARIF, exact index-to-ID mappings; no scanner execution |
+| 2026-11-05 | LL-33 query Signals | Pending | Pending | 252 local/installed tests: 251 pass, one Windows privilege skip; static/type/dependencies pass; CI pending | Implemented, unmerged | Two exact local mode queries allowlisted; 47 exclusions; no live query run |
 
 LL-28 design choice: use explicit `--evidence-tiers` instead of silently upgrading
 existing assessments or rewriting the current catalog. This delivers the new
@@ -348,6 +349,14 @@ remain explicit gaps. Provenance is an explicit producer assertion, never claime
 authenticated execution. Both modes and paired comparison retain separate runs;
 external properties and unsafe artifact paths fail before use. No scanner/tool
 installation or new dependency is needed.
+
+LL-33 selects only D07.06/D07.07 from the audit's direct-predicate class, with
+actual `id, compliant` output review; the audit does not claim service execution.
+All other 47 entries retain the precise source/population limitation. Rejected
+allowlisting every direct-predicate label because several use names, stale quota/
+zone assumptions, filtered populations or coercions. Static allowlisting is not
+new acceptance of their whole recommendation. The executor reuses existing ARG
+transport and explicit subscription bodies; no generic query CLI or wider scope.
 
 ## Recommendation expansion (active)
 

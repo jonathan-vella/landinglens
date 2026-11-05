@@ -95,10 +95,12 @@ class HttpTransport:
         if method != "GET" and not (policy_query or graph):
             raise InputError("Transport rejects non-read-only operations")
         if graph:
+            from .query_signals import approved_text
+
             if (
                 not isinstance(body, dict)
                 or set(body) != {"subscriptions", "query", "options"}
-                or body["query"] != ARG_QUERY
+                or (body.get("query") != ARG_QUERY and not approved_text(body.get("query")))
                 or not isinstance(body["subscriptions"], list)
                 or not body["subscriptions"]
                 or not isinstance(body["options"], dict)
