@@ -56,7 +56,11 @@ installed authored browser fixture: keyboard navigation, explicit two-control
 bulk decisions, shared interview with unresolved outcomes retained, rejected
 unconfirmed replacement, report refresh and verified resume of four records.
 No external requests or horizontal overflow occurred; both listeners were stopped.
-Full delivery checks are pending.
+FR-32 is now merged in #81 with 284 local/exact installed tests, one Windows
+privilege skip, eight platform checks and four exercised compiler artifacts.
+FR-35 documentation is reorganised locally into a quickstart, detailed usage and
+one evidence-limits page, with history retained in the plan. Link/delivery checks
+are pending.
 
 ### Requirements and acceptance
 
