@@ -315,7 +315,8 @@ groups can help multiple cohorts without manufacturing their acceptance.
 | 2026-11-05 | LL-29 priority/applicability | [#71](https://github.com/jonathan-vella/landinglens/pull/71) | `d7219aad6d50757eacd88979426323c81266b9e0` | 228 local/installed tests: 227 pass, one Windows privilege skip; static/type/dependencies; eight platform checks and four exercised compiler artifacts | Merged; #56 closed | 71 High / 158 Medium / 26 Low; exact explicit MG/archetype binding, suggestions only |
 | 2026-11-05 | LL-30 policy Signals | [#72](https://github.com/jonathan-vella/landinglens/pull/72) | `e7fcd11a27d05dd68bcf6546e785835464e34df5` | 238 local/installed tests: 237 pass, one Windows privilege skip; eight platform checks and four exercised compiler artifacts | Merged; #55 closed | Saved exports and injected existing collector, direct partial mapping only; no new live run |
 | 2026-11-05 | LL-31 scanner Signals | [#73](https://github.com/jonathan-vella/landinglens/pull/73) | `4fa8bd0afc54b1ad9f09a2c1edcc029313000848` | 246 local/installed tests: 245 pass, one Windows privilege skip; eight platform checks and four exercised compiler artifacts | Merged; #63 closed | Saved PSRule/SARIF, exact index-to-ID mappings; no scanner execution |
-| 2026-11-05 | LL-33 query Signals | Pending | Pending | 252 local/installed tests: 251 pass, one Windows privilege skip; static/type/dependencies pass; CI pending | Implemented, unmerged | Two exact local mode queries allowlisted; 47 exclusions; no live query run |
+| 2026-11-05 | LL-33 query Signals | [#74](https://github.com/jonathan-vella/landinglens/pull/74) | `0310c485e36a8eba1779470e6b0d2d26b379111c` | 252 local/installed tests: 251 pass, one Windows privilege skip; eight platform checks and four exercised compiler artifacts | Merged; #60 closed | Two exact local mode queries allowlisted; 47 exclusions; no live query run |
+| 2026-11-05 | LL-32 plan-first guidance | Pending | Pending | 254 local/installed tests: 253 pass, one Windows privilege skip; static/type/dependencies pass; CI pending | Implemented, unmerged | No interpreter expansion or Terraform execution |
 
 LL-28 design choice: use explicit `--evidence-tiers` instead of silently upgrading
 existing assessments or rewriting the current catalog. This delivers the new
@@ -357,6 +358,25 @@ allowlisting every direct-predicate label because several use names, stale quota
 zone assumptions, filtered populations or coercions. Static allowlisting is not
 new acceptance of their whole recommendation. The executor reuses existing ARG
 transport and explicit subscription bodies; no generic query CLI or wider scope.
+
+### ADR: prefer supplied plan JSON, freeze interpreter expansion
+
+Accepted 2026-11-05 under FR-28. Prefer separately prepared Terraform plan JSON
+for Terraform assessment; retain raw source plus explicitly supplied snapshots
+as the supported fallback. Plans expose provider-resolved shapes without extending
+LandingLens's custom interpreter. They still require exact scope, sensitivity,
+identity and provenance checks, and do not prove deployed behaviour.
+
+Freeze custom HCL interpreter feature expansion to bug fixes unless a reviewed
+cohort explicitly needs more. Existing supported syntax, precedence, bounds,
+unknown propagation and snapshot behaviour remain unchanged. `doctor` explains
+the preferred path for ready/partial/blocked raw and plan inputs without generating
+a plan, contacting a backend, executing provisioners or downloading modules.
+
+Rejected alternatives: a complete Terraform interpreter would duplicate provider
+semantics and increase false-confidence risk. Requiring a plan would remove the
+approved raw-source workflow. Executing Terraform to fill gaps would cross the
+existing safety boundary. No new dependency or contract migration is needed.
 
 ## Recommendation expansion (active)
 

@@ -68,6 +68,13 @@ redaction and bounded expansion without adding a test dependency.
 
 ## Assessment workflows
 
+For Terraform, prefer a separately prepared plan JSON with
+`--input terraform-plan --provider-version 4.50.0 --scope ARM_SCOPE`.
+LandingLens only reads the supplied JSON; it never runs Terraform to produce it.
+Keep sensitive-value masks, explicit resource IDs and source/plan hash bindings.
+If a plan is unavailable, raw Terraform with supplied local module snapshots
+remains a supported bounded fallback, not an inferior compliance result.
+
 Run `alz-assessor doctor SOURCE --input MODE` before assessment. It checks paths,
 all explicitly supplied snapshot hashes, reviewed provider mappings and identity
 prerequisites through the same bounded offline adapters. It emits JSON by default;

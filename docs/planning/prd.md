@@ -31,9 +31,9 @@ passed with one Windows privilege skip; eight platform checks and four exercised
 compiler artifacts passed. FR-27 saved scanner ingestion is merged in #73;
 both 246-test local/exact installed suites pass with one Windows privilege skip,
 eight platform checks and four exercised compiler artifacts. FR-29's exact
-two-query allowlist and Signal executor are implemented locally; delivery
-CI/merge remains pending. Both 252-test local/exact installed suites passed with
-one Windows privilege skip. Live query behaviour is undemonstrated.
+two-query allowlist and Signal executor are merged in #74. Both 252-test
+local/exact installed suites passed with one Windows privilege skip, eight platform
+checks and four exercised compiler artifacts. Live query behaviour is undemonstrated.
 
 ### Requirements and acceptance
 
@@ -173,6 +173,12 @@ python-hcl2 8.1.4 is accepted for bounded AST parsing following the
 [dependency review](../dependency-review.md); future dependencies need their own review.
 The [implementation plan](plan.md) is the source of detailed execution
 boundaries.
+
+FR-28 now recommends separately supplied plan JSON as the first Terraform path,
+retaining raw-source fallback. No plan is required or executed. The
+[ADR](plan.md#adr-prefer-supplied-plan-json-freeze-interpreter-expansion) freezes
+custom interpreter expansion to bug fixes unless accepted cohort requirements
+justify a narrow extension.
 
 ## Non-goals for the first release
 
