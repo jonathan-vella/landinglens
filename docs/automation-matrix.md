@@ -84,6 +84,22 @@ exemption applicability and population completeness remain human review.
 Comparison expires policy-only evidence at evaluation age; review/replay/privacy
 retain the same boundary. See [contract](contracts.md#policy-export-and-signals).
 
+## Saved scanner Signals
+
+Saved detailed PSRule JSON and SARIF 2.1.0 are projected through the reviewed
+crosswalk, never imported as predicates. The seed supports the two reviewed
+storage PSRule rules with partial mappings. Generic SARIF from other namespaces
+is accepted as explicitly unmapped evidence; matching text does not grant PSRule
+provenance or whole-checklist equivalence. Exact caller-supplied result-index/
+ARM-ID bindings are required for usable Signals.
+
+Known Pass/Fail results with supported producer, current original time and explicit
+complete-run context can supply Signals, not outcomes. Missing/unknown/error/
+skipped/suppressed/partial/conflicted records remain visible. Empty output
+establishes no coverage. Source metadata, supported shapes and exclusions are
+documented in the [scanner contract](contracts.md#saved-scanner-evidence).
+No scanner execution, external artifact fetch, new dependency or Azure call occurs.
+
 The owner explicitly delegated LL-04 acceptance to Autopilot in the attached
 execution authorization. This replaces the original human-interruption gate,
 not the coverage safeguards. The accepted baseline is two explicit property

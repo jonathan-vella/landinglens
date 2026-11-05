@@ -183,6 +183,22 @@ def prepare_reviews(
             "preparation": {
                 **(
                     {
+                        "scanner_signals": [
+                            record
+                            for run in (
+                                [assessment["scanner_signals"]]
+                                if "scanner_signals" in assessment
+                                else assessment.get("scanner_signal_runs", [])
+                            )
+                            for record in run["records"]
+                            if record["control_id"] == control["control_id"]
+                        ]
+                    }
+                    if "scanner_signals" in assessment or "scanner_signal_runs" in assessment
+                    else {}
+                ),
+                **(
+                    {
                         "policy_signals": [
                             item
                             for item in assessment["policy_signals"]["records"]

@@ -80,6 +80,18 @@ def report_model(assessment: dict[str, Any], minimize: bool = False) -> dict[str
         result["presentation_only"] = True
         for suggestion in result.get("applicability_suggestions", []):
             suggestion["scope"] = None
+        if "scanner_signals" in result:
+            scanned = result["scanner_signals"]
+            scanned["scope"] = None
+            scanned["artifact_hashes"] = {
+                f"input-{i}": value for i, value in enumerate(scanned["artifact_hashes"].values())
+            }
+            for record in scanned["records"]:
+                record["resource_id"] = None
+        for scanned in result.get("scanner_signal_runs", []):
+            scanned["scope"] = None
+            for record in scanned["records"]:
+                record["resource_id"] = None
         for signal in (result.get("policy_signals") or {}).get("records", []):
             signal["resource_id"] = None
             signal["assignment_id"] = None
@@ -180,6 +192,16 @@ def render(assessment: dict[str, Any], format: str = "json", minimize: bool = Fa
             )
         )
         lines += [" | ".join(cells), ""]
+    if "scanner_signals" in model:
+        lines += [
+            "Scanner Signals (not checklist outcomes): "
+            + json.dumps(model["scanner_signals"], sort_keys=True),
+            "",
+        ]
+    if "scanner_signal_runs" in model:
+        lines += [
+            "Separate scanner runs: " + json.dumps(model["scanner_signal_runs"], sort_keys=True)
+        ]
     text = "\n".join(lines)
     if format == "markdown":
         # Escape raw HTML, table delimiters and link syntax from untrusted input.

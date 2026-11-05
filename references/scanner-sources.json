@@ -1,0 +1,49 @@
+{
+  "review_state": "reviewed",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/microsoft/PSRule/8da173a54028cc7f1fe0ac47ad0b1d98700c6d6a/src/PSRule/Rules/RuleRecord.cs",
+      "revision": "8da173a54028cc7f1fe0ac47ad0b1d98700c6d6a",
+      "sha256": "b2ed7a850d4ab1864c4dcd45cbd562a67e1665e39c3974ed84d5b734c09b3273",
+      "retrieved_at": "2026-11-05T10:50:06.793105+00:00",
+      "license_url": "https://raw.githubusercontent.com/microsoft/PSRule/8da173a54028cc7f1fe0ac47ad0b1d98700c6d6a/LICENSE",
+      "license": "MIT",
+      "license_sha256": "7df20dcdf9197e9945c14858d41c60f11b52b93e5b69e2b63416b874d598d322",
+      "retention": "Metadata and own factual findings only; no upstream schema/code copied.",
+      "finding": "Detailed JSON uses ruleName/ref, targetName/type and outcome; targetName is not assumed to be an ARM ID. Explicit caller index-to-ID mapping is required."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/microsoft/PSRule/8da173a54028cc7f1fe0ac47ad0b1d98700c6d6a/tests/PSRule.Tests/Pipeline/Output/JsonOutputWriterTests.cs",
+      "revision": "8da173a54028cc7f1fe0ac47ad0b1d98700c6d6a",
+      "sha256": "1f65f2d7d8cb81f1a02e736239dc75dfb644cee0d6596a4cf3efdb5db1361e4e",
+      "retrieved_at": "2026-11-05T10:50:07.189355+00:00",
+      "license_url": "https://raw.githubusercontent.com/microsoft/PSRule/8da173a54028cc7f1fe0ac47ad0b1d98700c6d6a/LICENSE",
+      "license": "MIT",
+      "license_sha256": "7df20dcdf9197e9945c14858d41c60f11b52b93e5b69e2b63416b874d598d322",
+      "retention": "Metadata and own factual findings only; no upstream schema/code copied.",
+      "finding": "Actual JSON output fixtures use outcome Pass/Fail and info.moduleName. Arbitrary field/detail/source/raw data is withheld, not exported."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/microsoft/PSRule/8da173a54028cc7f1fe0ac47ad0b1d98700c6d6a/docs/examples/sarif/basic-1.sarif",
+      "revision": "8da173a54028cc7f1fe0ac47ad0b1d98700c6d6a",
+      "sha256": "c44317760f418fbba41177874e9bc8cac38a04cc3cb7446c3a407bd244d3e502",
+      "retrieved_at": "2026-11-05T10:50:07.643425+00:00",
+      "license_url": "https://raw.githubusercontent.com/microsoft/PSRule/8da173a54028cc7f1fe0ac47ad0b1d98700c6d6a/LICENSE",
+      "license": "MIT",
+      "license_sha256": "7df20dcdf9197e9945c14858d41c60f11b52b93e5b69e2b63416b874d598d322",
+      "retention": "Metadata and own factual findings only; no upstream schema/code copied.",
+      "finding": "Actual SARIF example has version 2.1.0, tool.driver, invocations and results; empty results do not establish recommendation compliance."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/1742a253eb654bf8a4ed7c60eaef7412b2c23553/sarif-2.1/schema/sarif-schema-2.1.0.json",
+      "revision": "1742a253eb654bf8a4ed7c60eaef7412b2c23553",
+      "sha256": "c3b4bb2d6093897483348925aaa73af03b3e3f4bd4ca38cef26dcb4212a2682e",
+      "retrieved_at": "2026-11-05T10:50:08.142860+00:00",
+      "license_url": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/1742a253eb654bf8a4ed7c60eaef7412b2c23553/LICENSE.md",
+      "license": "OASIS TC repository terms",
+      "license_sha256": "1ee371a08c4bc2a64cf4382990271676835c3d75bc984560a181de54c88471c5",
+      "retention": "Metadata and own factual findings only; no upstream schema/code copied.",
+      "finding": "Reviewed 2.1.0 result ruleId/kind/locations and invocation executionSuccessful. Kind omission has fail semantics; missing successful execution cannot prove a run completed. External properties and unsafe artifact locations are rejected."
+    }
+  ]
+}

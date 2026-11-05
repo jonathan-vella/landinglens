@@ -145,6 +145,14 @@ unusable; assignment presence or empty evaluations never clear a control.
 Original evaluation times, source hashes and gaps remain visible across reports,
 review preparation, comparison and replay. No new live validation is claimed.
 
+`assess evidence.json --input evidence --evidence-tiers --scanner-evidence scanner.json`
+accepts a saved `scanner-export` 1.0 wrapper containing PSRule detailed JSON or
+SARIF 2.1.0 plus explicit producer/version/baseline, original time, scope, mode,
+input hashes and result-index-to-ARM-ID bindings. LandingLens never installs or
+runs the scanner. Matching rule names from an unrelated producer, unbound target
+names, empty findings, failed/partial runs and stale results cannot establish passes.
+See the [scanner contract](docs/contracts.md#saved-scanner-evidence).
+
 Catalog `2026-11-05.5` adds source-backed priority metadata: 71 High, 158 Medium
 and 26 Low recommendations. Reports and review queues sort severity first;
 historical catalogs retain their original presentation. This is a metadata-only

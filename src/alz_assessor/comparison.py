@@ -196,5 +196,35 @@ def compare(
                     body["machine_evidence"] = (
                         row["control_id"] in usable and body["freshness"] == "current"
                     )
+        from .scanner_evidence import scanner_signals
+
+        scanned_controls: dict[str, set[str]] = {"planned": set(), "observed": set()}
+        scans = []
+        for bundle in result["evidence"]:
+            scan = scanner_signals(bundle, instant.isoformat(), result["freshness_policy_hours"])
+            if scan is not None:
+                scans.append(scan)
+                scanned_controls[bundle["mode"]].update(
+                    record["control_id"] for record in scan["records"] if record["usable"]
+                )
+        if len(scans) == 1:
+            result["scanner_signals"] = scans[0]
+        elif scans:
+            result["scanner_signal_runs"] = scans
+        policy_controls = {
+            item["control_id"]
+            for item in (result.get("policy_signals") or {}).get("records", [])
+            if item["usable"]
+        }
+        for row in result["results"]:
+            for mode in ("planned", "observed"):
+                body = row.get(mode)
+                if body and body.get("supplemental_signal_only"):
+                    available = scanned_controls[mode] | (
+                        policy_controls if mode == "observed" else set()
+                    )
+                    body["machine_evidence"] = (
+                        row["control_id"] in available and body["freshness"] == "current"
+                    )
         attach(result)
     return validate(result)

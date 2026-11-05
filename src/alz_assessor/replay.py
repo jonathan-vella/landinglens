@@ -56,6 +56,11 @@ def semantic(report: dict[str, Any]) -> str:
                 else {}
             ),
             **({"policy_signals": report["policy_signals"]} if "policy_signals" in report else {}),
+            **(
+                {"scanner_signals": report["scanner_signals"]}
+                if "scanner_signals" in report
+                else {}
+            ),
             "results": [
                 {
                     **{key: row.get(key) for key in ("control_id", "logical_id", "arm_id")},
@@ -163,6 +168,11 @@ def sanitize_evidence(bundle: dict[str, Any]) -> dict[str, Any]:
         )
     metadata: dict[str, Any] = {"replay_sanitized": True}
     original = bundle.get("metadata") or {}
+    if "scanner_evidence" in original:
+        from .scanner_evidence import validate_scanner
+
+        validate_scanner(original["scanner_evidence"])
+        metadata["scanner_evidence"] = original["scanner_evidence"]
     if any(
         key in original for key in ("policy_assignments", "policy_compliance", "policy_exemptions")
     ):
