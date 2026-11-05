@@ -220,6 +220,17 @@ Guidance links require HTTPS and only navigate when explicitly selected.
 
 ### Identity, manual evidence and optional plans
 
+`interview inspect` lists versioned, specific multi-control questions and each
+control's evidence requirements. `interview prepare assessment.json --question
+private-service-paths --scope ARM_SCOPE --output response.json` prepares a blank
+shared narrative with separate per-control decisions. After the assessor supplies
+the answer, reviewer, rationale, evidence, validity and every selected outcome,
+`interview apply response.json --output manual.json` validates all bindings
+together and writes a normal manual-review document. Existing outputs are refused.
+An answer alone never approves anything; a failed/expired/changed decision rejects
+the whole output. Import the completed document with the usual `assess --manual`.
+The local workspace integration is separately tracked, not delivered by this CLI.
+
 For the automated local workflow, start from saved **normalized evidence**, not
 a rendered or minimized assessment:
 
