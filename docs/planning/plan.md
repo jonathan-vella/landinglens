@@ -43,7 +43,7 @@ link canonicalisation. Both public URLs were checked and resolve to the same
 Microsoft page/revision `ac4bcb1eb41ca6e2ace58e626de7d186ea80bb00`.
 It preserves the real poll in `observed-*`, claims no upstream change and never
 activates a catalog or publishes accepted assets. It is not enabled on schedules.
-Actual bot PR/dispatch/check/merge evidence remains pending in #78.
+Actual bot PR/dispatch/check/merge evidence is demonstrated by the receipt below.
 
 Local follow-up verification ran 292 tests with one explicit Windows
 symlink-privilege skip, including the exact installed wheel outside the checkout.
@@ -65,8 +65,47 @@ existed and passed. The bounded wait retained the explicit unmerged blocker.
 The follow-up verifies the four job names/statuses directly on the dispatched
 Actions run, then separately waits for all PR-associated checks and rechecks the
 live head/rollup before the SHA-bound merge request. This uses the approved
-Actions permission without adding a grant or weakening a gate. Live repeat proof
-remains pending; the initial run is not reported as full acceptance.
+Actions permission without adding a grant or weakening a gate. The initial run
+is not reported as full acceptance.
+
+The correction merged in #87 as `adfaf384fe221ce3b7696bd46bc2a331e5081ce8`,
+after eight platform jobs, applicable CodeQL checks and four downloaded exercised
+compiler artifacts passed. Source run `42047255177` then failed during public
+source acquisition with `HTTPError`, before creating a PR; its failed poll
+artifact is retained and was not substituted with stale evidence.
+
+Successful repeat source run
+[42047648713](https://github.com/jonathan-vella/landinglens/actions/runs/42047648713)
+used only `GITHUB_TOKEN` to create, label and merge authored safe-link
+[#88](https://github.com/jonathan-vella/landinglens/pull/88).
+Both API author and merger are `github-actions[bot]`. Its exact candidate SHA
+`616b3a6ae9b2bf9fed7b5efcb598072b2dbbdcf1` matches successful dispatched run
+[42047963456](https://github.com/jonathan-vella/landinglens/actions/runs/42047963456).
+All four supported jobs and other associated checks passed; all four downloaded
+compiler artifacts report exercised local success and `--no-restore`
+missing-module failure with no compiler skips. Publication status records the
+same head/run/ref, `auto_merge_requested=true` and `blocker=null`. The bot merged
+normally as `84c92a4946e517b159d0f373038804a628dbc133`, without a manual substitute
+or administration bypass. The branch remains unprotected; this was a workflow
+gated merge, not a protected-branch or queued-auto-merge demonstration.
+
+The independent actual poll is `unchanged`; the separate authored fixture changes
+one G04.01 link only and is labelled validation-only. The accepted-assets step was
+skipped. Git blobs for the accepted catalog, fixed ledger/targets and read-only
+check workflow are identical to the pre-approval baseline. Existing accepted
+Release assets remain unchanged. Needs-review human-merge enforcement and
+missing/failed/wrong-SHA/incomplete-job rejection remain executable regression
+coverage, not claims of additional live source changes.
+
+Ordinary source run
+[42048744871](https://github.com/jonathan-vella/landinglens/actions/runs/42048744871)
+also passed with validation and accepted publication disabled. Its actual
+unchanged poll recorded `published=false`, `checks_dispatched=false`,
+`auto_merge_requested=false` and "No source changes; no PR needed." No candidate
+PR exists for that run. This demonstrates that authored validation does not alter
+scheduled/no-change behaviour. LL-35/#78 now has its required operational proof;
+tracking #53 has no remaining mandatory efficiency blocker. Cohort 19/#52 remains
+stashed and the fixed ledger is still 26 merged / 225 pending.
 
 Owner request dated 2026-11-05; tracked by
 [#53](https://github.com/jonathan-vella/landinglens/issues/53) and
@@ -371,6 +410,9 @@ groups can help multiple cohorts without manufacturing their acceptance.
 | 2026-11-05 | LL-36 local workspace | [#81](https://github.com/jonathan-vella/landinglens/pull/81) | `6c89761ea8686bf972e77d6ef71f58550af3802a` | 284 local/installed tests: 283 pass, one Windows privilege skip; installed browser; eight platform checks and four exercised compiler artifacts | Merged; #61 closed | Zero external requests/overflow; explicit decisions only, original evidence times preserved |
 | 2026-11-05 | LL-39 documentation | [#82](https://github.com/jonathan-vella/landinglens/pull/82) | `3b6620a11f0b147ab485d0ce367429827872fef4` | 286 local/installed tests: 285 pass, one Windows privilege skip; links/commands; corrected-head eight platform checks and four exercised compiler artifacts | Merged; #67 closed | Windows short-path alias diagnostic fixed after initial CI failure; no weakened tests |
 | 2026-11-05 | LL-40 reconciliation | [#83](https://github.com/jonathan-vella/landinglens/pull/83) | `c915268447315b866379f582b5d864b77f4ff86f` | 288 local/installed tests: 287 pass, one Windows privilege skip; static/type/dependencies/links; eight platform checks and four exercised compiler artifacts | Merged; #66 closed | Independent implementation delivered; LL-35 operations remain blocked in #78 |
+| 2026-11-05 | Approved source dispatch | [#85](https://github.com/jonathan-vella/landinglens/pull/85) | `afe33f92999f7cc53706352b286209656c164c20` | 292 local/installed tests: 291 pass, one Windows privilege skip; eight platform jobs, CodeQL and four exercised compiler artifacts | Merged | Owner-approved settings and isolated authored validation; first bot run conservatively left #86 unmerged |
+| 2026-11-05 | Exact dispatched-job gate | [#87](https://github.com/jonathan-vella/landinglens/pull/87) | `adfaf384fe221ce3b7696bd46bc2a331e5081ce8` | 292 local/installed tests: 291 pass, one Windows privilege skip; eight platform jobs, CodeQL and four exercised compiler artifacts | Merged | Actual workflow-dispatch suite omission reproduced; all four direct jobs and other associated checks required |
+| 2026-11-05 | Actual bot-token validation | [#88](https://github.com/jonathan-vella/landinglens/pull/88) | `84c92a4946e517b159d0f373038804a628dbc133` | Source run 42047648713; exact-SHA child 42047963456; four platform jobs, other checks and four exercised compiler artifacts | Bot-created and bot-merged; LL-35 operational proof complete | Authored single-link fixture only; separate real poll unchanged; no accepted activation/publication; ordinary no-change run 42048744871 created no PR |
 
 ### Catalog delivery history
 
@@ -473,12 +515,12 @@ accepted solely from a plan, disposition or a green mock.
 | LL-32 / #54 | AC1-2: supplied-plan recommendation and doctor hints, raw fallback/identity/sensitivity unchanged and no Terraform execution. AC3: scope-freeze ADR with rejected alternatives. AC4: ready/partial/blocked and installed raw/plan regressions. `preflight.py`, 2 tests. | #75 / `5feb134bc4ca2d212c5b894d5f92da63bef8c469` |
 | LL-33 / #60 | AC1: all 49 actual query hashes accounted for, 2 reviewed local-mode observations and 47 exclusions. AC2: exact packaged query only, explicit subscription bodies. AC3: inherited retry/byte bounds, paging/token/identity/partial/conflict guards, Signals only. AC4: injected/saved/installed report/review/replay/privacy and stale cases. Live compilation remains undemonstrated. `query_signals.py`, 6 tests. | #74 / `0310c485e36a8eba1779470e6b0d2d26b379111c` |
 | LL-34 / #57 | AC1-2: specific shared-narrative bank with separate explicit bound decisions and all-or-nothing compilation. AC3: unchanged 225 pending GUIDs ranked by actual severity/crosswalk association coverage, exact table checked. AC4: blank/invalid/expiry/conflict/privacy/installed/no-overwrite tests; single-control reviews remain. `interviews.py`, 5 tests. | #76 / `a3c9867e274a87698652af7b4dc7fa28d8d5e949` |
-| LL-35 / #62, blocker #78 | AC1-2: actual public-source release/commit/licence/library/built-in-tree polling; conservative GUID candidates, retirement, stale bindings and evaluator rejection of unaccepted candidates. AC3-4: scoped GITHUB_TOKEN PR code/labels/actual-check/head gates and artifacts/body fallback implemented, but operational PR/auto-merge remains blocked in #78. AC5: actual accepted `.5` catalog/index Release assets published/downloaded/verified; reference licence retained; local index lag does not refresh runtime. 9 tests plus actual workflow `42021697739`. | Code #77 / `c6be5c00b2362602bf6d3c92b052a9db00781742`; operational acceptance incomplete |
+| LL-35 / #62, follow-up #78 | AC1-2: actual public-source release/commit/licence/library/built-in-tree polling; conservative GUID candidates, retirement, stale bindings and evaluator rejection of unaccepted candidates. AC3-4: approved scoped GITHUB_TOKEN creation/labels/four dispatched jobs/other checks/exact-head merge demonstrated by source run `42047648713`, child `42047963456` and bot #88; first conservative wait and public-source failure retained. No-change run `42048744871` created no PR. Needs-review/failure guards remain regression coverage. AC5: actual accepted `.5` catalog/index/notice assets retained unchanged; local lag does not refresh runtime. Originally 9 source tests, now 13 within 292 local/installed tests. | #77 / `c6be5c00b2362602bf6d3c92b052a9db00781742`; #85/#87 and actual bot #88 / `84c92a4946e517b159d0f373038804a628dbc133`; operational proof complete |
 | LL-36 / #61 | AC1: three panes, shared tier/severity/progress queue, keyboard and disclosed effort assumptions. AC2: explicit transactional bulk/interview decisions; no technical override or implied approval. AC3: hash-checked invocation/core resume/new immutable output and original times. AC4: original capability/loopback/Host/origin/32-KB/fixed-route/no-assets guards. AC5: 7 tests, existing HTTP/session tests and actual installed browser keyboard/bulk/interview/replacement/report/resume/stop with zero external requests/overflow. | #81 / `6c89761ea8686bf972e77d6ef71f58550af3802a` |
 | LL-37 / #65 | AC1: advisory SARIF 2.1.0, stable rules, honest optional contained file-only locations, no invented lines. AC2: sanitised PR summary and unchanged advisory exits. AC3: pinned optional upload example without settings/finding gates. AC4: 4 shape/parity/privacy/path/installed assess/compare/render tests. Actual GitHub code-scanning ingestion is not claimed. | #79 / `8213cf471738b78da223cf546879a81c918b3d53` |
 | LL-38 / #64 | AC1: summary-first HTML, separate denominators, priority risks and labelled heat map. AC2: exact-parity sanitised CSV/XLSX tracker, injection/link/privacy guards. AC3: standard-library decision, no dependency installation. AC4: 5 tests plus actual native workbook/cell inspection: two sheets, zero formulas/external links/security warnings. | #80 / `5a2af9c05ac1126fc869f4892b4e29a87ec9988a` |
 | LL-39 / #67 | AC1-3: quickstart, detailed usage, canonical evidence-limits page, plan history and truthful current/blocker documentation. AC4: 231 authored local links/anchors valid; migrated public targets returned 200; installed examples passed. First Windows CI found an 8.3 alias diagnostic defect; resolving supplied paths fixed it and the exact supported matrix reran green. 2 link tests. | #82 / `3b6620a11f0b147ab485d0ce367429827872fef4` |
-| LL-40 / #66 | AC1: this actual issue/criterion/merge record. AC2: evidence-specific tier counts and immutable fixed-ledger audit below. AC3: integrated authored config + policy/scanner/query/interview/replay/all-format/installed checks, prior licensed AVM corpus retained. AC4: PRD/backlog/progress/tracking receipts; #53 stays open while #78 is blocked. | #83 / `c915268447315b866379f582b5d864b77f4ff86f` |
+| LL-40 / #66 | AC1: this actual issue/criterion/merge record. AC2: evidence-specific tier counts and immutable fixed-ledger audit below. AC3: integrated authored config + policy/scanner/query/interview/replay/all-format/installed checks, prior licensed AVM corpus retained. AC4: PRD/backlog/progress/tracking receipts, including later approved and demonstrated #78 operations above; no remaining mandatory blocker for #53. | #83 / `c915268447315b866379f582b5d864b77f4ff86f`; operational follow-up #85/#87/#88 |
 
 ### Counts and runtime scope
 
@@ -520,9 +562,9 @@ safe auto-merge request.
 
 ### Remaining operational blocker and owner action: pre-approval snapshot
 
-The setting values below are historical. The source-automation approval and
-dispatch follow-up above records the owner's later permission and current
-enabled settings; operational demonstration is still pending.
+The setting values and blocked operational state below are historical. The
+source-automation approval and dispatch follow-up above records the owner's
+later permission, enabled settings and successful operational demonstration.
 
 Final local verification ran **288 tests: 287 passed and one explicit Windows
 symlink-privilege skip**, both from the checkout and the exact installed wheel

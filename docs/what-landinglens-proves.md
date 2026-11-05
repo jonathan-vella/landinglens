@@ -77,9 +77,13 @@ crosswalk-source changes require review; only demonstrable safe changes may requ
 auto-merge after actual platform checks and exact-head gates. The owner explicitly
 approved workflow PR creation/approval, repository auto-merge and `actions: write`
 for the source workflow on 2026-11-05. Both repository settings are enabled;
-default workflow permissions remain read-only. Operational validation is tracked
-in [#78](https://github.com/jonathan-vella/landinglens/issues/78). No branch-protection
-change, bypass, PAT or stored bot secret is used.
+default workflow permissions remain read-only. Actual workflow-token creation,
+four-job dispatch and safe merge passed with
+[#88](https://github.com/jonathan-vella/landinglens/pull/88), recorded in
+[#78](https://github.com/jonathan-vella/landinglens/issues/78). The link-only
+fixture is explicitly authored; the independent real poll found no change.
+Ordinary unchanged polling also created no PR. No branch-protection change,
+bypass, PAT or stored bot secret is used.
 
 Accepted catalog Release assets never replace the installed catalog at runtime.
 A locally supplied version index is a producer assertion, not an online update.

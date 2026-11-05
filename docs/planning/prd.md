@@ -22,7 +22,7 @@ recommendations. Crosswalk `.2` has 51 mapped controls and 53 partial/related
 associations. Evidence-specific authored integration tiers are 7 Verified /
 8 Signal / 197 Needs decision / 43 manual, not live estate counts.
 
-Final local and exact installed-wheel suites ran 288 tests: 287 passed and one
+Latest local and exact installed-wheel suites ran 292 tests: 291 passed and one
 Windows privilege case skipped. All eight final platform checks and four
 downloaded compiler artifacts passed/exercised. Actual authored browser and native
 workbook acceptance passed; no new live Azure/query compilation/scanner run is
@@ -30,9 +30,12 @@ claimed. The earlier Windows short-path CI defect and corrected rerun remain
 recorded without weakening tests.
 
 Source polling and accepted catalog/index/notice Release assets are demonstrated.
-The owner's later approval permits enabling both repository settings and
-workflow-scoped check dispatch; settings are now enabled, while live operational
-validation remains pending in #78. Tracking #53 remains open. The
+The owner's later approval enabled both repository settings and workflow-scoped
+check dispatch. Actual source run `42047648713` used `GITHUB_TOKEN` to create,
+label and merge authored safe-link bot #88 after exact-SHA dispatched run
+`42047963456` and other checks passed. An ordinary unchanged poll created no PR.
+The accepted catalog/ledger remain unchanged; #78 now has the required operational
+evidence, with no remaining mandatory blocker for tracking #53. The
 [delivery reconciliation](plan.md#assessor-efficiency-delivery-reconciliation-2026-11-05)
 is the criterion-by-criterion source for PRs, merges, historical checks, limits and
 minimum owner action.
