@@ -4,8 +4,69 @@ from typing import Any
 
 from .contracts import control_digest, document, now, scope_id, timestamp, validate
 from .diagnostics import guidance
+from .engine import local_subchecks
+from .network_evidence import REVIEW_PATHS, review_fact
 from .sources import boolean, enumeration, property_at
 from .terraform import InputError
+
+
+def prepared_resource(
+    resource: dict[str, Any],
+    control: dict[str, Any],
+    by_id: dict[str, list[dict[str, Any]]],
+) -> dict[str, Any]:
+    facts = {}
+    for path in control.get("review_fact_paths", []):
+        if resource["state"] != "known":
+            facts[path] = {"unknown": "resource_not_known"}
+        elif path in REVIEW_PATHS:
+            facts[path] = review_fact(resource["properties"], path)
+        elif path == "enableRbacAuthorization":
+            facts[path] = boolean(property_at(resource["properties"], path))
+        else:
+            facts[path] = enumeration(
+                property_at(resource["properties"], path),
+                {
+                    "publicNetworkAccess": ("Enabled", "Disabled"),
+                    "networkAcls.defaultAction": ("Allow", "Deny"),
+                    "minimumTlsVersion": ("TLS1_0", "TLS1_1", "TLS1_2"),
+                }[path],
+            )
+    prepared: dict[str, Any] = {
+        **{key: resource.get(key) for key in ("logical_id", "arm_id", "resource_type", "state")},
+        "facts": facts,
+        "subchecks": local_subchecks(facts),
+    }
+    refs = facts.get("subnetReferences")
+    if isinstance(refs, list):
+        links = []
+        for identity in refs[:20]:
+            candidates = by_id.get(identity, []) if isinstance(identity, str) else []
+            if (
+                len(candidates) != 1
+                or candidates[0]["resource_type"].lower()
+                != ("microsoft.network/virtualnetworks/subnets")
+                or candidates[0]["state"] != "known"
+            ):
+                links.append(
+                    {
+                        "arm_id": identity if isinstance(identity, str) else None,
+                        "unknown": "referenced_subnet_not_unique_known",
+                    }
+                )
+                continue
+            child = candidates[0]
+            prefixes = review_fact(child["properties"], "addressPrefixes")
+            links.append(
+                {
+                    "arm_id": identity,
+                    "addressPrefixes": prefixes,
+                    "subchecks": local_subchecks({"addressPrefixes": prefixes}),
+                }
+            )
+        prepared["linked_subnets"] = links
+        prepared["links_truncated"] = len(refs) > 20
+    return prepared
 
 
 def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str, Any]:
@@ -16,29 +77,12 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     if control.get("rule"):
         kinds = [control["rule"]["resource_type"]]
     allowed = {kind.lower() for kind in kinds}
-    resources = [
-        {
-            **{
-                key: resource.get(key) for key in ("logical_id", "arm_id", "resource_type", "state")
-            },
-            "facts": {
-                path: (
-                    boolean(property_at(resource["properties"], path))
-                    if path == "enableRbacAuthorization"
-                    else enumeration(
-                        property_at(resource["properties"], path),
-                        {
-                            "publicNetworkAccess": ("Enabled", "Disabled"),
-                            "networkAcls.defaultAction": ("Allow", "Deny"),
-                            "minimumTlsVersion": ("TLS1_0", "TLS1_1", "TLS1_2"),
-                        }[path],
-                    )
-                )
-                if resource["state"] == "known"
-                else {"unknown": "resource_not_known"}
-                for path in control.get("review_fact_paths", [])
-            },
-        }
+    by_id: dict[str, list[dict[str, Any]]] = {}
+    for resource in bundle.get("resources", []):
+        if resource.get("arm_id"):
+            by_id.setdefault(resource["arm_id"].lower(), []).append(resource)
+    matches = [
+        resource
         for resource in bundle.get("resources", [])
         if resource["resource_type"].lower() in allowed
     ]
@@ -47,11 +91,12 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
         "collected_at": bundle["collected_at"],
         "inventory_complete": bundle["inventory_complete"],
         "normalized_resources_available": available,
-        "resources": resources[:100],
-        "matching_resources": len(resources) if available else None,
-        "truncated": len(resources) > 100,
+        "resources": [prepared_resource(resource, control, by_id) for resource in matches[:100]],
+        "matching_resources": len(matches) if available else None,
+        "truncated": len(matches) > 100,
         "warning": (
-            "Informational inventory only; no applicability, relationship or outcome inferred."
+            "Informational original-time inventory/subchecks only; positive references are not "
+            "complete relationships. No whole-recommendation outcome or current freshness inferred."
         ),
     }
 

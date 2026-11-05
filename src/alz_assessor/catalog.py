@@ -35,10 +35,12 @@ def load_catalog(path: str | None = None) -> dict[str, Any]:
             ):
                 raise InputError("Packaged first-wave source or accepted-matrix hash mismatch")
         if data.get("batch_source_manifest_sha256"):
+            version = data["catalog_version"]
+            suffix = "" if version == "2026-11-05.1" else "-" + version
             if hashlib.sha256(
-                root.joinpath("batch-control-sources.json").read_bytes()
+                root.joinpath(f"batch-control-sources{suffix}.json").read_bytes()
             ).hexdigest() != data["batch_source_manifest_sha256"] or digest(
-                json.loads(root.joinpath("batch-matrix.json").read_text("utf-8"))
+                json.loads(root.joinpath(f"batch-matrix{suffix}.json").read_text("utf-8"))
             ) != data.get("accepted_matrix_sha256"):
                 raise InputError("Packaged batch source or accepted-matrix hash mismatch")
     return validate(data, "catalog")

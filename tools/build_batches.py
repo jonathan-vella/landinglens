@@ -83,22 +83,36 @@ def target_set(original: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def main() -> None:
-    original = baseline()
-    targets = target_set(original)
-    fixed = REVIEWS / "targets.json"
-    if fixed.exists() and json.loads(fixed.read_text("utf-8")) != targets:
-        raise ValueError("The fixed target set cannot be changed by catalog refresh or delivery")
-    write(fixed, targets)
-    catalog = copy.deepcopy(original)
-    manifest_path = REVIEWS / "batch-01-sources.json"
+def apply_batch(
+    previous: dict[str, Any],
+    original: dict[str, Any],
+    targets: dict[str, Any],
+    batch: dict[str, Any],
+    batches: list[dict[str, Any]],
+    manifests: list[dict[str, Any]],
+) -> dict[str, Any]:
+    catalog = copy.deepcopy(previous)
+    identity = batch["batch"]
+    for version, expected_hash in batch.get("preserved_catalog_bytes", {}).items():
+        if (
+            hashlib.sha256((DATA / f"catalog-{version}.json").read_bytes()).hexdigest()
+            != expected_hash
+        ):
+            raise ValueError("A delivered historical catalog's exact bytes changed")
+    manifest_path = REVIEWS / f"batch-{identity}-sources.json"
     if not manifest_path.exists():
         raise ValueError("Capture and review actual batch sources before building a successor")
     manifest = json.loads(manifest_path.read_text("utf-8"))
-    batch = json.loads((REVIEWS / "batch-01.json").read_text("utf-8"))
-    expected = {r["guid"] for r in targets["targets"] if r["batch"] == "01"}
-    if {r["guid"] for r in batch["recommendations"]} != expected:
+    expected = {r["guid"] for r in targets["targets"] if r["batch"] == identity}
+    if (
+        len(batch["recommendations"]) != len(expected)
+        or {r["guid"] for r in batch["recommendations"]} != expected
+    ):
         raise ValueError("Reviewed batch does not match its fixed GUID membership")
+    if set(batch.get("prerequisites", [])) - {b["batch"] for b in batches}:
+        raise ValueError("A batch's accepted prerequisite matrix is unavailable")
+    if manifest["batch"] != identity:
+        raise ValueError("Source manifest belongs to a different batch")
     source_by_id = {source["id"]: source for source in manifest["sources"]}
     updates = {item["guid"]: item for item in batch["recommendations"]}
     changes = []
@@ -111,7 +125,7 @@ def main() -> None:
             automation="manual" if update["classification"] == "manual" else "assisted",
             evidence_requirements=update["evidence_requirements"],
             rationale=update["limitations"],
-            mapping_state="source-reviewed-batch-01",
+            mapping_state=f"source-reviewed-batch-{identity}",
             flags=update["flags"],
         )
         if "review_resource_types" in update:
@@ -137,21 +151,30 @@ def main() -> None:
                 "control_id": control["control_id"],
                 "before_sha256": before,
                 "after_sha256": control_digest(control),
-                "rationale": "Owner-delegated source-backed batch 01 acceptance: "
+                "rationale": f"Owner-delegated source-backed batch {identity} acceptance: "
                 + update["classification"],
             }
         )
-    matrix = {"fixed_targets_sha256": digest(targets), "batches": [batch], "sources": [manifest]}
+    batches.append(batch)
+    manifests.append(manifest)
+    matrix = {"fixed_targets_sha256": digest(targets), "batches": batches, "sources": manifests}
+    version = batch.get("catalog_version", "2026-11-05.1")
+    suffix = "" if identity == "01" else "-" + version
+    source_name = f"batch-control-sources{suffix}.json"
+    if identity == "01":
+        (DATA / source_name).write_bytes(manifest_path.read_bytes())
+    else:
+        write(DATA / source_name, {"batches": manifests})
     catalog.update(
-        catalog_version="2026-11-05.1",
+        catalog_version=version,
         first_wave_matrix_sha256=original["accepted_matrix_sha256"],
         accepted_matrix_sha256=digest(matrix),
-        batch_source_manifest_sha256=hashlib.sha256(manifest_path.read_bytes()).hexdigest(),
+        batch_source_manifest_sha256=hashlib.sha256((DATA / source_name).read_bytes()).hexdigest(),
     )
     catalog["change_review"] = {
-        "base_sha256": digest(original),
+        "base_sha256": digest(previous),
         "matrix_sha256": digest(matrix),
-        "reviewed_at": manifest["sources"][0]["retrieved_at"],
+        "reviewed_at": batch.get("accepted_at", manifest["sources"][0]["retrieved_at"]),
         "reviewer": "owner-delegated-source-backed-batch-review",
         "changes": changes,
     }
@@ -160,18 +183,50 @@ def main() -> None:
             expected_hash
         ):
             raise ValueError("An original automated control changed during batch expansion")
-    reviewed_refresh(catalog, original)
-    write(DATA / "batch-matrix.json", matrix)
-    (DATA / "batch-control-sources.json").write_bytes(manifest_path.read_bytes())
+    reviewed_refresh(catalog, previous)
+    write(DATA / f"batch-matrix{suffix}.json", matrix)
+    return catalog
+
+
+def catalog_order(batch: dict[str, Any]) -> tuple[str, int]:
+    date, sequence = batch.get("catalog_version", "2026-11-05.1").rsplit(".", 1)
+    return date, int(sequence)
+
+
+def main() -> None:
+    original = baseline()
+    targets = target_set(original)
+    fixed = REVIEWS / "targets.json"
+    if fixed.exists() and json.loads(fixed.read_text("utf-8")) != targets:
+        raise ValueError("The fixed target set cannot be changed by catalog refresh or delivery")
+    write(fixed, targets)
+    catalog = original
+    batches: list[dict[str, Any]] = []
+    manifests: list[dict[str, Any]] = []
+    updates = {}
+    issues = {}
+    accepted = sorted(
+        (json.loads(path.read_text("utf-8")) for path in REVIEWS.glob("batch-[0-9][0-9].json")),
+        key=catalog_order,
+    )
+    for index, batch in enumerate(accepted):
+        catalog = apply_batch(catalog, original, targets, batch, batches, manifests)
+        if index < len(accepted) - 1:
+            frozen = DATA / f"catalog-{catalog['catalog_version']}.json"
+            if frozen.exists() and json.loads(frozen.read_text("utf-8")) != catalog:
+                raise ValueError("A delivered historical catalog's meaning changed")
+            write(frozen, catalog)
+        updates.update({item["guid"]: item for item in batch["recommendations"]})
+        issues[batch["batch"]] = batch.get(
+            "issue", "https://github.com/jonathan-vella/landinglens/issues/46"
+        )
     write(DATA / "catalog.json", catalog)
     ledger = [
         {
             **item,
             "status": "implementation-in-progress" if item["guid"] in updates else "pending",
             "review": updates.get(item["guid"]),
-            "issue": "https://github.com/jonathan-vella/landinglens/issues/46"
-            if item["batch"] == "01"
-            else None,
+            "issue": issues.get(item["batch"]),
             "pr": None,
             "merge_commit": None,
             "runtime_evidence": [],
@@ -188,6 +243,9 @@ def main() -> None:
         for entry in existing["recommendations"]:
             if entry["guid"] in updates and entry["status"] != "merged":
                 entry["review"] = updates[entry["guid"]]
+                entry["issue"] = issues[entry["batch"]]
+                if entry["status"] == "pending":
+                    entry["status"] = "implementation-in-progress"
         write(ledger_path, existing)
     else:
         write(ledger_path, {"fixed_targets_sha256": digest(targets), "recommendations": ledger})

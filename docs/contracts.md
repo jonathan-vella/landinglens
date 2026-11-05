@@ -14,6 +14,13 @@ is the conjunction; `component_facts` retains both booleans for exact
 configuration comparison and replay witnesses. This is not a general expression
 engine. Existing boolean/firewall enum meanings are unchanged.
 
+Successor `2026-11-05.2` adds `firewall-premium-sku`: only deployed
+`Microsoft.Network/azureFirewalls`, property `sku.tier`, expected `Premium`.
+Explicit Basic/Standard fail; unsupported, wrong-type or missing tiers stay
+unknown. A Premium Firewall Policy is not a deployed firewall SKU or a feature
+enablement/traffic-inspection claim. Both negative SKU facts remain available
+for configuration comparison rather than collapsing every failure into a match.
+
 Optional `review_resource_types` selects 1-10 explicit types for bounded
 inventory preparation, not applicability or outcome evaluation. It participates
 in the control content hash only when present, preserving historical hashes.
@@ -21,7 +28,14 @@ Templates/editor show up to 100 matching identities/types/states, original
 collection time, inventory completeness, explicit truncation and whether
 normalized resource evidence is available. Optional content-bound
 `review_fact_paths` selects only the reviewed RBAC, network-access/default-action
-and minimum-TLS scalar vocabulary. These typed local facts are informational
+and minimum-TLS scalar vocabulary, plus reviewed network SKU, canonical
+relationship, IPv4 prefix/address and classic DNAT source facts.
+Network lists are limited to 100 entries; classic NAT collections to 20 with
+100 rules each. Prefix capacity and direct-source subchecks run in the shared
+evaluator, not browser code, and never establish whole-recommendation outcomes.
+Only unique known subnet records can resolve explicit firewall subnet IDs;
+missing/ambiguous/inaccessible/wrong-type links are unknown, with at most
+20 linked previews and explicit truncation. These typed local facts are informational
 subchecks, never a least-privilege, reachable private path or effective-policy
 pass. Arbitrary raw properties and approvals are never copied. All original
 review bindings/expiry apply.

@@ -338,6 +338,18 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                             "publicNetworkAccess",
                             "networkAcls.defaultAction",
                             "minimumTlsVersion",
+                            "sku.tier",
+                            "sku.name",
+                            "subnetReferences",
+                            "firewallPolicy.id",
+                            "addressPrefixes",
+                            "routeTable.id",
+                            "natGateway.id",
+                            "targetResourceId",
+                            "workspaceId",
+                            "logAnalyticsDestinationType",
+                            "natRuleCollections",
+                            "ipAddresses",
                         }
                         for path in paths
                     )
@@ -373,6 +385,14 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                         or rule["property"] not in {"threatIntelMode", "intrusionDetection.mode"}
                     ):
                         raise InputError("Invalid reviewed enum/SKU applicability")
+                elif operation == "firewall-premium-sku" and data["schema_version"] == "1.1":
+                    if (
+                        rule["resource_type"] != "Microsoft.Network/azureFirewalls"
+                        or rule["property"] != "sku.tier"
+                        or rule.get("expected") != "Premium"
+                        or "applicable_skus" in rule
+                    ):
+                        raise InputError("Invalid reviewed deployed-firewall SKU predicate")
                 else:
                     raise InputError("Unsupported rule operation or contract version")
             elif control.get("rule") is not None:

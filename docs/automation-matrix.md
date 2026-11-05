@@ -176,3 +176,32 @@ different failing configurations are not incorrectly labelled a match.
 Absent target populations require complete relevant inventory; independent known
 facts remain usable during unrelated gaps. Pending delivery evidence is not
 live verification or completion of the remaining 243 targets.
+
+## Fixed-target cohort 17: firewall deployment and operations
+
+The [nine-GUID matrix](../references/recommendation-batches/batch-17.json) and
+[17 reviewed sources](../references/recommendation-batches/batch-17-sources.json)
+support working successor `2026-11-05.2`: **7 automated / 205 assisted / 43 manual**.
+The two D07.12 display IDs retain separate original GUIDs. Delivery remains pending.
+
+D07.05 checks the deployed `Microsoft.Network/azureFirewalls` **Premium** tier,
+not a Firewall Policy. ARM/existing no-restore Bicep/saved observed/detail GET
+use **2024-05-01**; raw Terraform and optional plan use explicit AzureRM
+**4.50.0**. Premium passes, Basic/Standard fail, unsupported/missing/wrong types
+remain unknown. Feature enablement, traffic inspection and capacity are not proven.
+
+The other eight recommendations remain assisted with specific review questions
+and typed original-time facts. Unique canonical firewall-to-subnet references
+can expose supplied IPv4 prefix capacity: /24, /25 and /26 have at least /26
+capacity; /27 does not. This deliberately does not fail a valid larger subnet
+because the checklist says /26. Invalid, IPv6, empty, conflicting or IPAM-only
+prefix evidence is unknown. This partial capacity result never clears D07.11.
+
+Direct classic DNAT sources can be checked for `*`, `any`, `0.0.0.0/0` or the
+full IPv4 range, including multiple supplied prefixes/ranges that together
+cover all IPv4 addresses within one rule. This does not resolve IP Groups, inherited/effective policy,
+application/network rules or coverage, and never clears D07.13. Typed diagnostic
+target/workspace/destination fields do not establish categories or ingestion.
+Association alone does not establish migration, effective routing, rule ownership,
+deduplication, SNAT demand or failover. No additional live access, diagnostic
+enumeration, log query, packet test, module acquisition or human decision occurs.

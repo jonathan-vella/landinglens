@@ -14,6 +14,7 @@ from .catalog import load_catalog
 from .contracts import digest, document, hashes, parse_document, require, scope_id, validate
 from .diagnostics import REASONS
 from .engine import assess
+from .network_evidence import replay_properties
 from .sources import boolean, enumeration, property_at
 from .terraform import InputError
 
@@ -149,6 +150,7 @@ def sanitize_evidence(bundle: dict[str, Any]) -> dict[str, Any]:
                             ("Alert", "Deny", "Off"),
                         )
                     },
+                    **replay_properties(resource["resource_type"], values),
                 },
             }
         )

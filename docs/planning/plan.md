@@ -41,10 +41,33 @@ G02.01-.04, G02.07-.08 and G04.02-.03. Its
 [actual source metadata](../../references/recommendation-batches/batch-01-sources.json)
 precede promotion. Two explicit configuration predicates and six specific
 human-evidence workflows are implemented in working catalog `2026-11-05.1`
-(6 automated, 206 assisted, 43 manual); delivery acceptance remains pending.
+(6 automated, 206 assisted, 43 manual). [#47](https://github.com/jonathan-vella/landinglens/pull/47)
+merged as `aba2585a06cf3e9d55fe12bfb2ff50a3b47725ec`; #46 is closed.
 G02.02's boundary/capacity judgment is explicitly manual, not a counted new check.
 Raw Terraform/plan cannot prove G02.03 soft-delete state for an imported/updated
 vault; this mode stays unknown rather than assuming a creation default.
+
+[Cohort 17 / #48](https://github.com/jonathan-vella/landinglens/issues/48)
+implements nine firewall recommendations after the merged prerequisite. Its
+[matrix](../../references/recommendation-batches/batch-17.json) and
+[17 actual source captures](../../references/recommendation-batches/batch-17-sources.json)
+precede promotion. Working successor `2026-11-05.2` has 7 automated, 205
+assisted and 43 manual recommendations. The sole new whole predicate is the
+explicit deployed Firewall Premium SKU. Eight assisted workflows expose bounded
+facts/questions for routing, logging, migration, subnet capacity, hierarchy,
+IP Groups, direct DNAT sources and SNAT operations; runtime effectiveness,
+inheritance and human applicability remain unasserted. Delivery is pending.
+The exact prior catalog is frozen as `catalog-2026-11-05.1.json`; batch-matrix
+and source artifacts are version-specific. Cohort numbers are not dependency
+order: successors are built in catalog-version order with explicit prerequisites.
+
+Pre-delivery cohort-17 checks passed: all 184 tests ran against the exact
+installed wheel outside the checkout (183 passed; one Windows symlink-privilege
+skip), with format/lint, 22-source-file type checks and dependency consistency
+passing. The existing Bicep compiler exercised the new firewall SKU fixture
+without restoration. Evidence remains fixture/injected and installed-CLI
+verified, not new live-control verification. Protected CI/merge acceptance is
+still pending and is recorded separately in the ledger.
 
 Specific review questions and limitations appear in templates, reports and the
 local editor. Templates/editor prepare at most 100 matching inventory records
@@ -58,7 +81,11 @@ format/lint/types/dependency checks passing. Existing Bicep exercised local
 compilation and missing-module failure using `--no-restore`. The isolated local
 browser fixture displayed all three assisted scalar projections without
 inventing a reviewer or decision. These are fixture/injected and installed-CLI
-results, not new live Azure verification; CI/merge acceptance is still pending.
+results, not new live Azure verification. All eight actual Windows/Linux Python
+3.12/3.13 checks passed; all four PR compiler artifacts report exercised
+no-restore integration. The per-GUID ledger retains these acceptance references.
+Batch 17's nine firewall recommendations are the next evidence-ready cohort;
+numeric cohort order does not imply a dependency.
 Continue through dependency-ready cohorts after each merged batch; a blocked
 item does not block unrelated work. This increment is not complete.
 

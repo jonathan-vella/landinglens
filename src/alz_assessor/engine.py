@@ -3,12 +3,78 @@
 from __future__ import annotations
 
 from datetime import timedelta
+from ipaddress import ip_address, ip_network
 from math import isfinite
 from typing import Any
 
 from .contracts import control_digest, digest, document, now, timestamp, validate
-from .sources import BLOB_SERVICE_TYPE, complete_blob_services, property_at
+from .network_evidence import address_list, nat_collections
+from .sources import BLOB_SERVICE_TYPE, complete_blob_services, property_at, unknown
 from .terraform import InputError
+
+
+def restricted_direct_sources(addresses: list[str]) -> bool:
+    intervals = []
+    for value in addresses:
+        if value in {"*", "any"}:
+            return False
+        if "/" in value:
+            prefix = ip_network(value)
+            intervals.append((int(prefix.network_address), int(prefix.broadcast_address)))
+        elif "-" in value:
+            first_text, last_text = value.split("-")
+            intervals.append((int(ip_address(first_text)), int(ip_address(last_text))))
+        else:
+            single = int(ip_address(value))
+            intervals.append((single, single))
+    covered_until = 0
+    for first, last in sorted(intervals):
+        if first > covered_until:
+            return True
+        covered_until = max(covered_until, last + 1)
+    return covered_until < 2**32
+
+
+def local_subchecks(properties: dict[str, Any]) -> dict[str, Any]:
+    """Original-time partial facts, never whole-recommendation outcomes."""
+    result: dict[str, Any] = {}
+    if "addressPrefixes" in properties:
+        prefixes = address_list(properties["addressPrefixes"], prefix_only=True)
+        known = (
+            isinstance(prefixes, list)
+            and bool(prefixes)
+            and all(isinstance(value, str) and "/" in value for value in prefixes)
+        )
+        result["supplied_ipv4_prefixes_have_minimum_26_capacity"] = (
+            all(ip_network(value).prefixlen <= 26 for value in prefixes)
+            if known
+            else unknown("explicit_ipv4_prefixes_required")
+        )
+    if "natRuleCollections" in properties:
+        collections = nat_collections(properties["natRuleCollections"])
+        restrictions = []
+        complete = isinstance(collections, list) and bool(collections)
+        for collection in collections if isinstance(collections, list) else []:
+            body = collection["properties"]
+            if body["action"]["type"] != "Dnat":
+                complete = False
+                continue
+            for rule in body["rules"]:
+                addresses = rule.get("sourceAddresses")
+                if (
+                    not isinstance(addresses, list)
+                    or not addresses
+                    or any(not isinstance(value, str) for value in addresses)
+                ):
+                    complete = False
+                else:
+                    restrictions.append(restricted_direct_sources(addresses))
+        result["supplied_direct_dnat_addresses_restricted"] = (
+            all(restrictions)
+            if complete and restrictions
+            else unknown("direct_dnat_source_addresses_not_complete")
+        )
+    return result
 
 
 def coverage(results: list[dict[str, Any]], complete: bool) -> dict[str, Any]:
@@ -147,8 +213,20 @@ def assess(
                             fact and purge if type(fact) is bool and type(purge) is bool else None
                         )
                     enum = rule.get("operation") == "enum-equals"
+                    premium = rule.get("operation") == "firewall-premium-sku"
                     sku = property_at(resource["properties"], "sku.tier") if enum else None
-                    if enum and (
+                    if (
+                        premium
+                        and isinstance(fact, str)
+                        and fact in {"Basic", "Standard", "Premium"}
+                    ):
+                        outcome = "pass" if fact == "Premium" else "fail"
+                        reason = (
+                            "explicit_property_matches"
+                            if outcome == "pass"
+                            else "explicit_property_differs"
+                        )
+                    elif enum and (
                         not isinstance(sku, str)
                         or sku
                         not in {
@@ -165,7 +243,7 @@ def assess(
                             None,
                         )
                     elif (enum and isinstance(fact, str) and fact in {"Alert", "Deny", "Off"}) or (
-                        not enum and type(fact) is bool
+                        not enum and not premium and type(fact) is bool
                     ):
                         outcome = "pass" if fact == rule["expected"] else "fail"
                         reason = (

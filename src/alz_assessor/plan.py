@@ -8,9 +8,9 @@ from .sources import (
     PROVIDER_VERSION,
     TF_TYPES,
     file_hash,
-    resource_scope,
     tf_blob_service,
     tf_properties,
+    tf_resource_id,
 )
 from .terraform import InputError
 
@@ -86,21 +86,26 @@ def plan_source(
             normalized = tf_properties(kind, values)
             arm_type = TF_TYPES.get(kind, kind)
             verified = provider_version == PROVIDER_VERSION
-            from .contracts import derive_id
-
-            candidate = (
-                derive_id(
-                    resource_scope(scope, values),
-                    arm_type,
-                    values.get("name"),
-                )
-                if verified
-                else None
-            )
+            candidate = tf_resource_id(scope, kind, values) if verified else None
             explicit_id = values.get("id")
-            identity = (
-                canonical_id(explicit_id) if verified and isinstance(explicit_id, str) else None
-            )
+            if kind == "azurerm_monitor_diagnostic_setting":
+                identity = candidate
+                if (
+                    isinstance(explicit_id, str)
+                    and candidate
+                    and explicit_id.lower()
+                    not in {
+                        candidate,
+                        (
+                            str(values.get("target_resource_id")) + "|" + str(values.get("name"))
+                        ).lower(),
+                    }
+                ):
+                    raise InputError("Diagnostic plan ID conflicts with explicit target/name")
+            else:
+                identity = (
+                    canonical_id(explicit_id) if verified and isinstance(explicit_id, str) else None
+                )
             if identity and candidate and identity != candidate:
                 raise InputError("Plan resource ID conflicts with explicit scope/name bindings")
             if identity and (not scope or not identity.startswith(scope.lower() + "/")):
