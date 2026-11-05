@@ -23,11 +23,12 @@ Windows privilege skip; eight platform checks and four exercised compiler
 artifacts passed. FR-24 is merged in #70 as explicit assessment 1.2
 opt-in. Its 219-test local and exact installed suites passed with one Windows
 privilege skip, eight platform checks and four exercised compiler artifacts.
-FR-25 is implemented locally in metadata-only catalog `.5`, with source-backed
+FR-25 is merged in #71 in metadata-only catalog `.5`, with source-backed
 severity and guarded saved archetype suggestions. Its 228-test local/exact
-installed suites passed with one Windows privilege skip; CI/merge acceptance is pending.
-Policy/scanner ingestion and
-query execution remain pending; neither foundation delivers them.
+installed suites passed with one Windows privilege skip; eight platform checks and four exercised compiler artifacts passed.
+FR-26 policy Signals are implemented locally. Both 238-test local/exact installed
+suites passed with one Windows privilege skip; CI/merge acceptance remains pending.
+Scanner ingestion and query execution remain pending.
 
 ### Requirements and acceptance
 

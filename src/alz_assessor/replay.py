@@ -55,6 +55,7 @@ def semantic(report: dict[str, Any]) -> str:
                 if "applicability_suggestions" in report
                 else {}
             ),
+            **({"policy_signals": report["policy_signals"]} if "policy_signals" in report else {}),
             "results": [
                 {
                     **{key: row.get(key) for key in ("control_id", "logical_id", "arm_id")},
@@ -162,6 +163,12 @@ def sanitize_evidence(bundle: dict[str, Any]) -> dict[str, Any]:
         )
     metadata: dict[str, Any] = {"replay_sanitized": True}
     original = bundle.get("metadata") or {}
+    if any(
+        key in original for key in ("policy_assignments", "policy_compliance", "policy_exemptions")
+    ):
+        from .policy_evidence import project_policy_metadata
+
+        metadata.update(project_policy_metadata(original))
     if "archetype_bindings" in original:
         from .priorities import archetype_bindings
 

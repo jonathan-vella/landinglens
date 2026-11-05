@@ -9,6 +9,7 @@ from typing import Any
 
 from .contracts import control_digest, digest, document, now, timestamp, validate
 from .network_evidence import address_list, nat_collections
+from .policy_evidence import policy_signals
 from .sources import BLOB_SERVICE_TYPE, complete_blob_services, property_at, unknown
 from .terraform import InputError
 from .tiers import attach, prepared_signal
@@ -143,6 +144,16 @@ def assess(
                 raise InputError("Manual/exception entry references an unknown catalog control")
     results = []
     retired = []
+    supplemental = (
+        policy_signals(bundle, catalog, instant.isoformat(), max_age_hours)
+        if evidence_tiers
+        else None
+    )
+    signal_controls = (
+        {item["control_id"] for item in supplemental["records"] if item["usable"]}
+        if supplemental
+        else set()
+    )
     resources = list(bundle["resources"])
     if any(
         c.get("rule") and c["rule"]["resource_type"].lower() == BLOB_SERVICE_TYPE.lower()
@@ -173,11 +184,12 @@ def assess(
             )
             continue
         rule = control.get("rule")
+        prepared = evidence_tiers and not stale and prepared_signal(control, bundle)
         review_signal = (
             evidence_tiers
             and not stale
             and landing_zone in control["applicability"]
-            and prepared_signal(control, bundle)
+            and (prepared or control["control_id"] in signal_controls)
         )
         targets = [
             resource
@@ -340,6 +352,11 @@ def assess(
                 else "insufficient-evidence",
             }
             if evidence_tiers:
+                body["policy_signal_only"] = (
+                    control["control_id"] in signal_controls
+                    and not prepared
+                    and outcome not in {"pass", "fail"}
+                )
                 body["machine_evidence"] = (
                     not stale
                     and landing_zone in control["applicability"]
@@ -389,4 +406,6 @@ def assess(
         },
         freshness_policy_hours=max_age_hours,
     )
+    if supplemental and (supplemental["records"] or supplemental["gaps"]):
+        result["policy_signals"] = supplemental
     return validate(attach(result) if evidence_tiers else result)

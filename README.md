@@ -126,9 +126,24 @@ predicate population is Signal, never wholly Verified.
 Existing commands without the flag keep 1.0/1.1 output unchanged. Compare two
 1.2 assessments to retain/recompute tiers; mixed contracts are not comparable.
 `render` displays the saved version without upgrading it. Signals do not create
-outcomes or reviews. Existing typed prepared facts can supply Signals; policy,
-scanner and query ingestion are separate pending work, not inferred from arbitrary
+outcomes or reviews. Existing typed prepared facts can supply Signals. Scanner and query ingestion are
+separate pending work, not inferred from arbitrary
 metadata. See [tier semantics](docs/contracts.md#assessment-version-12-evidence-tiers).
+
+For saved policy exports, use `assess evidence.json --input evidence
+--evidence-tiers --policy-evidence policy.json`. The separate `policy-export`
+1.0 file carries explicit `scope`, original `collected_at`, and raw ARM
+`assignments`, PolicyStates `states` and `exemptions` arrays. Its scope must equal
+the observed evidence; it cannot replace existing saved policy records or attach
+observations to planned input. See the [policy contract](docs/contracts.md#policy-export-and-signals).
+
+Existing scoped collector bundles also supply policy Signals when assessed with
+`--evidence-tiers`, without a new collection operation. Compliant and NonCompliant
+states are evidence for review, not checklist outcomes. Stale/conflicted/missing
+contexts, indirect initiative relationships and unsupported states stay explicitly
+unusable; assignment presence or empty evaluations never clear a control.
+Original evaluation times, source hashes and gaps remain visible across reports,
+review preparation, comparison and replay. No new live validation is claimed.
 
 Catalog `2026-11-05.5` adds source-backed priority metadata: 71 High, 158 Medium
 and 26 Low recommendations. Reports and review queues sort severity first;

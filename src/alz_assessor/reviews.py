@@ -183,6 +183,17 @@ def prepare_reviews(
             "preparation": {
                 **(
                     {
+                        "policy_signals": [
+                            item
+                            for item in assessment["policy_signals"]["records"]
+                            if item["control_id"] == control["control_id"]
+                        ]
+                    }
+                    if "policy_signals" in assessment
+                    else {}
+                ),
+                **(
+                    {
                         "evidence_tier": next(
                             item["tier"]
                             for item in assessment["evidence_tiers"]["controls"]

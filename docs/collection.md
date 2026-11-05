@@ -5,6 +5,30 @@ fixtures, not a live tenant. That historical baseline is unchanged. Subsequent
 owner-authorized access probes are bounded access evidence, not full collector
 or control verification. Normal assessment and tests need no Azure credentials.
 
+## Policy evidence reuse
+
+LL-30 consumes the existing scoped collector's separate assignments, exemptions
+and original-time PolicyStates records as assessment 1.2 Signals. No new
+management-plane operation, permission, scope expansion or evaluation trigger is
+introduced. The existing #40 guard and API versions/actions below remain the
+live boundary. Saved exports can be attached through an explicit
+[`policy-export` wrapper](contracts.md#policy-export-and-signals); normalised
+collector evidence needs no wrapper or new collection command.
+
+Only direct source-verified crosswalk definitions are interpreted. The initial
+storage mapping is partial: a Compliant state is not a checklist pass, effects/
+exemptions need review, and missing/denied/conflicted/stale/indirect initiative
+contexts remain unusable. Definition/initiative configuration does not substitute
+for an actual original-time evaluation. Empty evaluations do not prove compliance
+or absence; raw assignment parameters/descriptions are not exported.
+
+Verification is saved/injected and installed CLI only. The injected existing
+collector path demonstrates an independent fresh policy Signal while the
+resource-detail GET is denied and its technical outcome remains unknown. No new
+live tenant run, login, permission change, ancestor read, Graph/billing/data-plane
+access or policy scan was attempted. Live behaviour for this increment remains
+undemonstrated, not silently counted as exercised.
+
 ## Batch-01 configuration reads
 
 The batch successor adds only management-plane configuration GETs:

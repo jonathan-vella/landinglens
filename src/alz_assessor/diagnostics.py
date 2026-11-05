@@ -4,6 +4,11 @@ import re
 from typing import Any
 
 GUIDANCE = {
+    "policy": (
+        "Policy evidence is partial, stale or conflicted, not a checklist outcome.",
+        "Original evaluation time, exact assignment/definition context, exclusions and exemptions.",
+        "Review the Signal and its source; do not infer a pass or trigger policy evaluation.",
+    ),
     "snapshot": (
         "A required local module snapshot is unavailable.",
         "An explicitly supplied, hash-verified module snapshot and its authorized local path.",
@@ -57,6 +62,29 @@ GUIDANCE = {
 }
 
 REASONS = {
+    "policy": (
+        "policy_evidence_not_observed",
+        "policy_crosswalk_catalog_unavailable",
+        "policy_assignments_unavailable",
+        "policy_compliance_unavailable",
+        "policy_exemptions_unavailable",
+        "policy_assignment_identity_unresolved",
+        "conflicting_policy_assignment",
+        "policy_state_invalid",
+        "policy_state_identity_unresolved",
+        "policy_state_outside_explicit_scope",
+        "policy_definition_not_mapped",
+        "effect_and_exemption_interpretation_required",
+        "policy_population_not_proven_complete",
+        "conflicting_policy_evaluations",
+        "assignment_context_missing_or_conflicted",
+        "initiative_or_definition_relationship_unresolved",
+        "assignment_exclusions_unresolved",
+        "resource_excluded_by_assignment",
+        "policy_evaluation_stale_or_unresolved",
+        "policy_state_not_supported",
+        "policy_resource_type_unreviewed",
+    ),
     "snapshot": (
         "required module snapshot missing",
         "required module snapshot absent",

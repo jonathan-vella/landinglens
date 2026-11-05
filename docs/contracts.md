@@ -80,6 +80,49 @@ JSON/Markdown/HTML share the same counts, with no browser-side tier evaluator.
 
 ## Catalog and evidence contracts
 
+### Policy export and Signals
+
+The explicit `policy-export` wrapper has schema version `1.0`, kind
+`policy-export`, exact `scope`, original `collected_at`, `assignments`, `states`
+and `exemptions`. Arrays contain saved ARM/PolicyStates objects and are bounded
+to 10,000 each. All fields are required; unknown top-level fields, wrong shapes,
+foreign targets/scopes, planned-mode attachment or replacement of existing saved
+policy populations fail. `assess --policy-evidence FILE` requires `--evidence-tiers`.
+The original resource evidence timestamp is not changed by import.
+
+The importer projects assignment identity/definition/exclusions and context hash,
+original evaluation identity/state/time/member hash, and exemption identity/
+assignment/expiry. Raw parameters, descriptions, member labels and arbitrary
+properties are withheld. Its `policy-export-content` binding hashes the explicit
+parsed document; it is a semantic content hash, not a byte-for-byte export claim.
+Existing normalised collector policy arrays use the same projector. Nothing
+executes policy evaluations or follows definitions beyond the saved boundary.
+
+Assessment 1.2's strict `policy_signals` envelope retains mapped records, exact
+crosswalk hash, stable gap counts and an explicit non-outcome warning. The
+verified seed supports direct built-in storage secure-transfer evaluations through
+the partial crosswalk. Current Compliant/NonCompliant observations with canonical
+in-scope targets, a unique matching assignment/definition and valid original times
+can supply a Signal, never a pass or new resource fact. Collection time cannot
+refresh evaluation time. Assignment alone or empty evaluations supplies no Signal.
+No successful read proves policy/population completeness.
+
+Missing/denied/partial contexts, conflicting records, exclusions, stale/future/
+invalid times, unmapped definitions, unsupported states and indirect initiative
+relationships stay visible and unusable. Initiative member interpretation and
+other state values require further source-backed mappings; they are not silently
+coerced to compliance. Effects, parameters/selectors/overrides and effective
+exemption applicability always require review. The association does not establish
+current enforcement or whole-control equivalence.
+
+Technical outcomes remain independent. Per-mode `policy_signal_only` records when
+policy evidence is the sole machine basis, so comparison can expire that Signal
+at the original evaluation age even while resource collection is still current.
+Review preparation leaves all decisions blank. Replay projects the same typed
+metadata/provenance and preserves Signal semantics; minimised reports remove
+resource/assignment/private definition identities. Stable policy guidance explains
+gaps without triggering evaluation, changing access or recommending a wider scan.
+
 Metadata-only successor `2026-11-05.5` carries the frozen checklist's optional
 `severity`: High, Medium, Low or explicit Unknown. Its source-hashed priority
 manifest binds all GUIDs, actual architecture/archetype captures and reviewed

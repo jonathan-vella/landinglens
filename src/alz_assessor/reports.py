@@ -80,6 +80,13 @@ def report_model(assessment: dict[str, Any], minimize: bool = False) -> dict[str
         result["presentation_only"] = True
         for suggestion in result.get("applicability_suggestions", []):
             suggestion["scope"] = None
+        for signal in (result.get("policy_signals") or {}).get("records", []):
+            signal["resource_id"] = None
+            signal["assignment_id"] = None
+            if not isinstance(signal["definition_id"], str) or not signal[
+                "definition_id"
+            ].startswith("/providers/microsoft.authorization/"):
+                signal["definition_id"] = None
         for entry in result["results"]:
             entry["logical_id"], entry["arm_id"] = (
                 "target-" + digest(entry["logical_id"])[:12],
@@ -126,6 +133,12 @@ def render(assessment: dict[str, Any], format: str = "json", minimize: bool = Fa
         lines += [
             "Applicability suggestions (reviewer confirmation required): "
             + json.dumps(model["applicability_suggestions"], sort_keys=True),
+            "",
+        ]
+    if "policy_signals" in model:
+        lines += [
+            "Policy Signals (not checklist outcomes): "
+            + json.dumps(model["policy_signals"], sort_keys=True),
             "",
         ]
     for retired in model.get("retired_controls", []):

@@ -525,6 +525,8 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                     if result.get(mode):
                         body = result[mode]
                         require(body, "machine_evidence", bool)
+                        if "policy_signal_only" in body:
+                            require(body, "policy_signal_only", bool)
                         if body.get("evidence_tier") != body_tier(result.get("automation"), body):
                             raise InputError("Evidence tier differs from its outcome/evidence")
             if data.get("evidence_tiers") != summary(
@@ -532,12 +534,26 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
             ):
                 raise InputError("Evidence tier counts or control identities differ")
         elif "evidence_tiers" in data or any(
-            "evidence_tier" in result[mode] or "machine_evidence" in result[mode]
+            "evidence_tier" in result[mode]
+            or "machine_evidence" in result[mode]
+            or "policy_signal_only" in result[mode]
             for result in data["results"]
             for mode in ("planned", "observed")
             if result.get(mode)
         ):
             raise InputError("Evidence tiers require explicit assessment contract 1.2")
+        if "policy_signals" in data:
+            if data["schema_version"] != "1.2":
+                raise InputError("Policy Signals require explicit assessment 1.2")
+            from .policy_evidence import validate_signals
+
+            validate_signals(data["policy_signals"], minimized=bool(data.get("presentation_only")))
+            known_controls = {result["control_id"] for result in data["results"]}
+            if any(
+                record["control_id"] not in known_controls
+                for record in data["policy_signals"]["records"]
+            ):
+                raise InputError("Policy Signal references an unknown assessment control")
         if "applicability_suggestions" in data:
             if data["schema_version"] != "1.2":
                 raise InputError("Applicability suggestions require assessment 1.2")
