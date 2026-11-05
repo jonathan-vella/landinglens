@@ -154,6 +154,7 @@ def main() -> int:
     export.add_argument("--landing-zone", choices=["platform", "application"], default="platform")
     export.add_argument("--max-age-hours", type=float, default=24)
     export.add_argument("--retain-attribution", action="store_true")
+    export.add_argument("--evidence-tiers", action="store_true")
     replay_run = replay_commands.add_parser("run")
     replay_run.add_argument("source", type=Path)
     replay_run.add_argument("--format", choices=["json", "markdown", "html"], default="json")
@@ -179,6 +180,7 @@ def main() -> int:
     review.add_argument("--landing-zone", choices=["platform", "application"], default="platform")
     review.add_argument("--max-age-hours", type=float, default=24)
     review.add_argument("--no-browser", action="store_true")
+    review.add_argument("--evidence-tiers", action="store_true")
     tf = commands.add_parser("spike-terraform", help="Analyze a bounded offline HCL2 subset")
     tf.add_argument("root", type=Path)
     tf.add_argument("--snapshots", type=Path)
@@ -201,6 +203,7 @@ def main() -> int:
     )
     assessment.add_argument("--at")
     assessment.add_argument("--max-age-hours", type=float, default=24)
+    assessment.add_argument("--evidence-tiers", action="store_true")
     doctor = commands.add_parser("doctor", help="Inspect explicit input prerequisites offline")
     input_arguments(doctor)
     doctor.add_argument("--probe-compiler", action="store_true")
@@ -255,6 +258,7 @@ def main() -> int:
                     manual=read_json(args.manual) if args.manual else None,
                     exceptions=read_json(args.exceptions) if args.exceptions else None,
                     retain_attribution=args.retain_attribution,
+                    evidence_tiers=args.evidence_tiers,
                 )
                 print(json.dumps(result, indent=2))
                 return 0
@@ -282,12 +286,13 @@ def main() -> int:
                         exceptions=read_json(args.exceptions) if args.exceptions else None,
                         landing_zone=args.landing_zone,
                         max_age_hours=args.max_age_hours,
+                        evidence_tiers=args.evidence_tiers,
                     ),
                     open_browser=not args.no_browser,
                 )
                 return 0
             if not args.scope or any(
-                (args.directory, args.manual, args.exceptions, args.no_browser)
+                (args.directory, args.manual, args.exceptions, args.no_browser, args.evidence_tiers)
             ):
                 raise InputError("review prepare/validate requires --scope and no serve options")
             result = (
@@ -357,6 +362,7 @@ def main() -> int:
                 max_age_hours=args.max_age_hours,
                 manual=read_json(args.manual) if args.manual else None,
                 exceptions=read_json(args.exceptions) if args.exceptions else None,
+                evidence_tiers=args.evidence_tiers,
             )
         elif args.command == "compare":
             result = compare(read_json(args.planned), read_json(args.observed), args.at)

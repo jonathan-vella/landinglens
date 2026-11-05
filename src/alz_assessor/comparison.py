@@ -6,6 +6,7 @@ from typing import Any
 from .contracts import canonical_id, document, now, timestamp, validate
 from .engine import coverage
 from .terraform import InputError
+from .tiers import attach
 
 
 def comparable_fact(body: dict[str, Any]) -> Any:
@@ -161,21 +162,20 @@ def compare(
     complete = (
         planned["coverage"]["inventory_complete"] and observed["coverage"]["inventory_complete"]
     )
-    return validate(
-        document(
-            "assessment",
-            schema_version=planned["schema_version"],
-            catalog_version=planned["catalog_version"],
-            generated_at=instant.isoformat(),
-            results=rows,
-            evidence=planned["evidence"] + observed["evidence"],
-            retired_controls=planned.get("retired_controls", []),
-            coverage={
-                **coverage(rows, complete),
-                "retired_controls": len(planned.get("retired_controls", [])),
-                "automated_controls": len(
-                    {row["control_id"] for row in rows if row.get("automation") == "automated"}
-                ),
-            },
-        )
+    result = document(
+        "assessment",
+        schema_version=planned["schema_version"],
+        catalog_version=planned["catalog_version"],
+        generated_at=instant.isoformat(),
+        results=rows,
+        evidence=planned["evidence"] + observed["evidence"],
+        retired_controls=planned.get("retired_controls", []),
+        coverage={
+            **coverage(rows, complete),
+            "retired_controls": len(planned.get("retired_controls", [])),
+            "automated_controls": len(
+                {row["control_id"] for row in rows if row.get("automation") == "automated"}
+            ),
+        },
     )
+    return validate(attach(result) if result["schema_version"] == "1.2" else result)

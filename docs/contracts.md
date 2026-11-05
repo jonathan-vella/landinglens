@@ -4,6 +4,8 @@
 contracts. Each document requires an explicit supported version (`"1.0"` or
 `"1.1"`) and a `kind`. Existing producers/fixtures default to 1.0.
 Unsupported versions fail rather than being interpreted as current data.
+Assessment-only version 1.2 is an explicit opt-in described below; other document
+kinds do not acquire a 1.2 interpretation.
 The same contracts are used by adapters, evaluation, comparison and rendering.
 
 ## Evidence crosswalk version 1.0
@@ -36,6 +38,45 @@ targets to 100 per GUID and source references to 10 per target.
 and ambiguous display IDs fail rather than choosing a GUID. Neither loads query
 text, executes a scanner or changes assessment outcomes, review bindings, frozen
 catalogs or the fixed-target ledger. Missing mappings do not imply N/A.
+
+## Assessment version 1.2: evidence tiers
+
+`assess --evidence-tiers`, `review serve --evidence-tiers` and
+`replay export --evidence-tiers` explicitly select the new assessment contract.
+Catalog/evidence/review contracts and bytes stay 1.0/1.1. Without the flag, output
+retains its previous schema/meaning. `render` never upgrades a saved report.
+`source_versions` distinguishes assessment contract from original catalog contract.
+
+Per-mode `machine_evidence` is a strict boolean and `evidence_tier` is derived,
+not an outcome. Verified requires an accepted automated predicate, current
+freshness, explicit configuration confidence and pass/fail. It includes technical
+failure; capability/scope N/A is not automatically Verified. Signal requires
+current usable typed prepared evidence or a known subset of an otherwise
+unresolved predicate population. Needs decision has no usable machine evidence.
+Manual disposition is counted separately regardless of human review status.
+A completed human attestation changes an allowed outcome, not the evidence tier.
+
+`evidence_tiers` contains deterministic per-control identities/tiers and four
+nonnegative integer counts. Each GUID is counted once across all resource
+instances and planned/observed modes. Mixed Verified/unresolved targets are
+Signal, not wholly Verified. Retired entries remain traceable as Needs decision
+but stay outside active completion denominators. All 255 packaged GUIDs are
+counted. No crosswalk, assignment presence, empty query, arbitrary scanner
+metadata, resource presence or exception creates machine evidence or a pass.
+The first tier producer uses existing reviewed typed preparation only; ingestion
+adapters are separately scoped work.
+
+Validation recomputes tiers/counts and rejects boolean/coerced counts, changed
+identities and fields grafted onto 1.0/1.1 assessments. Comparison requires matching
+contracts and recomputes tiers after refreshing evidence age. Review templates
+retain the control tier with all decision fields blank. Local sessions persist
+the explicit invocation selection without widening listener privileges.
+
+Replay manifest 1.1 is selected only for tiered export and requires explicit
+`evidence_tiers: true`; its semantic witness includes tiers. Replay manifest 1.0
+keeps its exact three invocation fields and historical witness meaning. Original
+evidence timestamps, reviewed facts, redaction and attribution rules remain.
+JSON/Markdown/HTML share the same counts, with no browser-side tier evaluator.
 
 ## Catalog and evidence contracts
 

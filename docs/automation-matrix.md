@@ -30,6 +30,23 @@ The crosswalk CLI and strict contract are documented in
 [contracts](contracts.md#evidence-crosswalk-version-10). This is LL-27's
 foundation, not delivery of tiers, policy/scanner ingestion or query execution.
 
+## Explicit evidence tier projection
+
+LL-28 adds opt-in assessment 1.2 without promoting a control or changing any
+frozen catalog. Verified means current sufficient accepted-predicate evidence,
+including fail; Signal is machine evidence awaiting explicit confirmation; Needs
+decision has no usable machine evidence; manual is separate. Mixed unresolved
+targets never count as wholly Verified. Counts are control-level across modes,
+not resource counts, and sum to the complete 255-GUID inventory.
+
+Existing reviewed typed preparation can establish a Signal without establishing
+the whole recommendation. Stale/denied/unsupported facts, arbitrary source
+metadata, assignments, empty scanner/query outputs and accepted exceptions never
+establish a pass. Review outcome, technical result and evidence tier are separate.
+The [1.2 contract](contracts.md#assessment-version-12-evidence-tiers) defines
+validation, historical compatibility, comparison and replay. No new Azure
+operation, ingestion adapter or owner decision is added by tier projection.
+
 The owner explicitly delegated LL-04 acceptance to Autopilot in the attached
 execution authorization. This replaces the original human-interruption gate,
 not the coverage safeguards. The accepted baseline is two explicit property

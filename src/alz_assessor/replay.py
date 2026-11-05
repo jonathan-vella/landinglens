@@ -49,6 +49,7 @@ def semantic(report: dict[str, Any]) -> str:
     return digest(
         {
             "coverage": report["coverage"],
+            **({"evidence_tiers": report["evidence_tiers"]} if "evidence_tiers" in report else {}),
             "results": [
                 {
                     **{key: row.get(key) for key in ("control_id", "logical_id", "arm_id")},
@@ -246,10 +247,13 @@ def export_bundle(
     manual: dict[str, Any] | None = None,
     exceptions: dict[str, Any] | None = None,
     retain_attribution: bool = False,
+    evidence_tiers: bool = False,
 ) -> dict[str, Any]:
     catalog = known_catalog(catalog)
     sanitized = sanitize_evidence(evidence)
     invocation = {"at": at, "landing_zone": landing_zone, "max_age_hours": max_age_hours}
+    if evidence_tiers:
+        invocation["evidence_tiers"] = True
     original = assess(
         evidence,
         catalog,
@@ -258,6 +262,7 @@ def export_bundle(
         at=at,
         landing_zone=landing_zone,
         max_age_hours=max_age_hours,
+        evidence_tiers=evidence_tiers,
     )
     reviews = {
         "manual": sanitize_reviews(manual, "manual", retain_attribution),
@@ -271,6 +276,7 @@ def export_bundle(
         at=at,
         landing_zone=landing_zone,
         max_age_hours=max_age_hours,
+        evidence_tiers=evidence_tiers,
     )
     if semantic(original) != semantic(replayed):
         raise InputError("Privacy projection cannot preserve this assessment's semantics")
@@ -280,7 +286,7 @@ def export_bundle(
         for name, value in documents.items()
     }
     manifest = {
-        "schema_version": "1.0",
+        "schema_version": "1.1" if evidence_tiers else "1.0",
         "kind": "landinglens-replay",
         "files": {
             name: {"sha256": hashlib.sha256(value).hexdigest(), "size": len(value)}
@@ -342,7 +348,7 @@ def replay_bundle(source: Path) -> dict[str, Any]:
             "warning",
             "attribution_retained",
         }
-        or manifest["schema_version"] != "1.0"
+        or manifest["schema_version"] not in ("1.0", "1.1")
         or manifest["kind"] != "landinglens-replay"
         or manifest["warning"] != WARNING
         or type(manifest["attribution_retained"]) is not bool
@@ -360,8 +366,13 @@ def replay_bundle(source: Path) -> dict[str, Any]:
         ):
             raise InputError("Replay member hash or size mismatch")
     invocation = require(manifest, "invocation", dict)
-    if set(invocation) != {"at", "landing_zone", "max_age_hours"}:
+    expected_options = {"at", "landing_zone", "max_age_hours"} | (
+        {"evidence_tiers"} if manifest["schema_version"] == "1.1" else set()
+    )
+    if set(invocation) != expected_options:
         raise InputError("Replay invocation contains unsupported options")
+    if manifest["schema_version"] == "1.1" and invocation["evidence_tiers"] is not True:
+        raise InputError("Tiered replay requires explicit evidence_tiers=true")
     require(invocation, "at", str)
     require(invocation, "landing_zone", str)
     if type(invocation["max_age_hours"]) not in (int, float):

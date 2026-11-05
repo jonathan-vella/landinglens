@@ -5,6 +5,8 @@ import json
 from typing import Any
 from urllib.parse import urlsplit
 
+from .tiers import LABELS
+
 THEME_SCRIPT = """
 (() => {
   const param = new URLSearchParams(window.location.search).get("scoutTheme");
@@ -219,6 +221,14 @@ def render_html(model: dict[str, Any]) -> str:
     ):
         parts.append(f'<div class="card"><strong>{escaped(value)}</strong>{label}</div>')
     parts.append("</div>")
+    if "evidence_tiers" in model:
+        parts.append('<h3>Evidence tiers</h3><div class="cards">')
+        for tier, value in model["evidence_tiers"]["counts"].items():
+            parts.append(f'<div class="card"><strong>{escaped(value)}</strong>{LABELS[tier]}</div>')
+        parts.append(
+            "</div><p>Verified includes technical failures. Signals are not passes. "
+            "Counts are once per control across targets and modes; manual stays separate.</p>"
+        )
     parts.append(
         "<details><summary>Shared coverage model and denominators</summary><pre>"
         + escaped(json.dumps(coverage, sort_keys=True))
@@ -316,6 +326,11 @@ def render_html(model: dict[str, Any]) -> str:
                         "Fact": body.get("fact"),
                         "Method": body.get("method"),
                         "Confidence": body.get("confidence"),
+                        **(
+                            {"Evidence tier": LABELS[body["evidence_tier"]]}
+                            if "evidence_tier" in body
+                            else {}
+                        ),
                         "Exception disposition": body.get("exception_disposition"),
                         "Review validity": json.dumps(
                             body.get("disposition_validity"), sort_keys=True
