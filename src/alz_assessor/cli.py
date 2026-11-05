@@ -26,6 +26,7 @@ from .replay import export_bundle, replay_bundle
 from .reports import render
 from .review_session import ReviewSession, serve_reviews
 from .reviews import prepare_reviews, validate_reviews
+from .scanner_evidence import import_scanner
 from .sources import terraform_source
 from .terraform import Analyzer, InputError, tree_hash
 
@@ -208,6 +209,7 @@ def main() -> int:
     assessment.add_argument("--evidence-tiers", action="store_true")
     assessment.add_argument("--archetypes", type=Path)
     assessment.add_argument("--policy-evidence", type=Path)
+    assessment.add_argument("--scanner-evidence", type=Path)
     doctor = commands.add_parser("doctor", help="Inspect explicit input prerequisites offline")
     input_arguments(doctor)
     doctor.add_argument("--probe-compiler", action="store_true")
@@ -353,6 +355,12 @@ def main() -> int:
                     sys.stdout.write(output)
                 return 2 if result["readiness"] == "blocked" else 0
             bundle = load_evidence(args)
+            if args.scanner_evidence:
+                if not args.evidence_tiers:
+                    raise InputError("--scanner-evidence requires explicit --evidence-tiers")
+                bundle = import_scanner(
+                    bundle, read_json(args.scanner_evidence), load_catalog(args.catalog)
+                )
             if args.policy_evidence:
                 if not args.evidence_tiers:
                     raise InputError("--policy-evidence requires explicit --evidence-tiers")

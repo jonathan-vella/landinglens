@@ -26,9 +26,11 @@ privilege skip, eight platform checks and four exercised compiler artifacts.
 FR-25 is merged in #71 in metadata-only catalog `.5`, with source-backed
 severity and guarded saved archetype suggestions. Its 228-test local/exact
 installed suites passed with one Windows privilege skip; eight platform checks and four exercised compiler artifacts passed.
-FR-26 policy Signals are implemented locally. Both 238-test local/exact installed
-suites passed with one Windows privilege skip; CI/merge acceptance remains pending.
-Scanner ingestion and query execution remain pending.
+FR-26 policy Signals are merged in #72. Both 238-test local/exact installed suites
+passed with one Windows privilege skip; eight platform checks and four exercised
+compiler artifacts passed. FR-27 saved scanner ingestion is implemented locally;
+both 246-test local/exact installed suites pass with one Windows privilege skip.
+CI/merge acceptance and query execution remain pending.
 
 ### Requirements and acceptance
 

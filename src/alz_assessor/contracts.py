@@ -527,6 +527,8 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                         require(body, "machine_evidence", bool)
                         if "policy_signal_only" in body:
                             require(body, "policy_signal_only", bool)
+                        if "supplemental_signal_only" in body:
+                            require(body, "supplemental_signal_only", bool)
                         if body.get("evidence_tier") != body_tier(result.get("automation"), body):
                             raise InputError("Evidence tier differs from its outcome/evidence")
             if data.get("evidence_tiers") != summary(
@@ -537,11 +539,51 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
             "evidence_tier" in result[mode]
             or "machine_evidence" in result[mode]
             or "policy_signal_only" in result[mode]
+            or "supplemental_signal_only" in result[mode]
             for result in data["results"]
             for mode in ("planned", "observed")
             if result.get(mode)
         ):
             raise InputError("Evidence tiers require explicit assessment contract 1.2")
+        if "scanner_signals" in data:
+            if data["schema_version"] != "1.2":
+                raise InputError("Scanner Signals require explicit assessment 1.2")
+            from .scanner_evidence import validate_scanner
+
+            validate_scanner(
+                data["scanner_signals"],
+                assessment=True,
+                minimized=bool(data.get("presentation_only")),
+            )
+            known_controls = {row["control_id"] for row in data["results"]}
+            if any(
+                record["control_id"] not in known_controls
+                for record in data["scanner_signals"]["records"]
+            ):
+                raise InputError("Scanner Signal references unknown control")
+        if "scanner_signal_runs" in data:
+            if data["schema_version"] != "1.2":
+                raise InputError("Scanner comparisons require assessment 1.2")
+            from .scanner_evidence import validate_scanner
+
+            runs = require(data, "scanner_signal_runs", list)
+            if (
+                len(runs) != 2
+                or {run.get("mode") for run in runs if isinstance(run, dict)}
+                != {
+                    "planned",
+                    "observed",
+                }
+                or "scanner_signals" in data
+            ):
+                raise InputError("Scanner comparison requires one separate run per mode")
+            known_controls = {row["control_id"] for row in data["results"]}
+            for run in runs:
+                validate_scanner(
+                    run, assessment=True, minimized=bool(data.get("presentation_only"))
+                )
+                if any(record["control_id"] not in known_controls for record in run["records"]):
+                    raise InputError("Scanner comparison references unknown control")
         if "policy_signals" in data:
             if data["schema_version"] != "1.2":
                 raise InputError("Policy Signals require explicit assessment 1.2")

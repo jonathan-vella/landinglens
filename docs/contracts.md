@@ -80,6 +80,47 @@ JSON/Markdown/HTML share the same counts, with no browser-side tier evaluator.
 
 ## Catalog and evidence contracts
 
+### Saved scanner evidence
+
+`scanner-export` version 1.0 requires `format` (`psrule-json` or `sarif-2.1.0`),
+`scanner` with plain bounded `name`, `version`, `baseline`, explicit `scope`,
+`mode`, original `evaluated_at`, nonempty `artifact_hashes`, boolean `complete`,
+`identities` and `output`. Mode/scope must match the supplied evidence exactly.
+Each identity maps one result `index` to a canonical in-scope `arm_id`; target names,
+paths and filenames never establish resource identity. Unbound results stay visible
+but unusable. Raw output must be an explicit array for PSRule, or one SARIF run
+with driver/results/invocations. No scanner is installed or executed.
+
+Source review in [scanner-sources.json](../references/scanner-sources.json)
+pins actual PSRule detailed output and SARIF example/schema/licence metadata.
+The reviewed PSRule crosswalk maps SecureTransfer/AZR-000196 and
+ContainerSoftDelete/AZR-000289 only. Rule-reference conflicts fail; other rules
+and generic scanner namespaces remain explicit unmapped gaps rather than being
+guessed equivalent to PSRule. SARIF driver/version and any ruleIndex/time binding
+must agree with supplied provenance. Omitted SARIF kind has its specified fail
+semantics, not a success inference. Suppressed/skipped/error states stay unusable.
+
+Results and bindings are bounded to 10,000, structure depth to 32. External SARIF
+properties, remote/absolute/traversal artifact paths, invalid versions/shapes,
+duplicate bindings and replacement of existing normalised scanner records fail.
+Messages, snippets, target names, raw object/detail/custom properties and input
+path labels are withheld; input hashes retain neutral labels. Caller-supplied
+producer/baseline/time/completeness are provenance assertions, not authenticated
+scanner execution proof.
+
+The supported PSRule for Azure module version is the actually reviewed
+`1.48.0-B0228`. Detailed JSON declares that module/version in the wrapper.
+SARIF from PSRule core must additionally identify the matching Azure module in
+`tool.extensions`; core scanner name alone does not establish Azure rule provenance.
+
+Assessment 1.2 retains typed `scanner_signals`, crosswalk/input/content hashes,
+producer/version/baseline, mapped rule/status/target, flags and gaps. Pass/Fail
+are Signals only; unknown/error/partial/failed/conflicted/stale/unbound/wrong-type
+results remain visible and unusable. Existing outcomes never change. Separate
+planned/observed scanner runs remain separate in comparison; their original times
+are checked again. Review preparation leaves decisions blank. Replay retains the
+projected metadata and semantic witness; minimisation removes private scope/IDs.
+
 ### Policy export and Signals
 
 The explicit `policy-export` wrapper has schema version `1.0`, kind

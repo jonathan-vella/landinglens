@@ -10,6 +10,7 @@ from typing import Any
 from .contracts import control_digest, digest, document, now, timestamp, validate
 from .network_evidence import address_list, nat_collections
 from .policy_evidence import policy_signals
+from .scanner_evidence import scanner_signals
 from .sources import BLOB_SERVICE_TYPE, complete_blob_services, property_at, unknown
 from .terraform import InputError
 from .tiers import attach, prepared_signal
@@ -144,6 +145,12 @@ def assess(
                 raise InputError("Manual/exception entry references an unknown catalog control")
     results = []
     retired = []
+    scanned = (
+        scanner_signals(bundle, instant.isoformat(), max_age_hours) if evidence_tiers else None
+    )
+    scanned_controls = (
+        {item["control_id"] for item in scanned["records"] if item["usable"]} if scanned else set()
+    )
     supplemental = (
         policy_signals(bundle, catalog, instant.isoformat(), max_age_hours)
         if evidence_tiers
@@ -189,7 +196,11 @@ def assess(
             evidence_tiers
             and not stale
             and landing_zone in control["applicability"]
-            and (prepared or control["control_id"] in signal_controls)
+            and (
+                prepared
+                or control["control_id"] in signal_controls
+                or control["control_id"] in scanned_controls
+            )
         )
         targets = [
             resource
@@ -357,6 +368,11 @@ def assess(
                     and not prepared
                     and outcome not in {"pass", "fail"}
                 )
+                body["supplemental_signal_only"] = (
+                    control["control_id"] in signal_controls | scanned_controls
+                    and not prepared
+                    and outcome not in {"pass", "fail"}
+                )
                 body["machine_evidence"] = (
                     not stale
                     and landing_zone in control["applicability"]
@@ -408,4 +424,6 @@ def assess(
     )
     if supplemental and (supplemental["records"] or supplemental["gaps"]):
         result["policy_signals"] = supplemental
+    if scanned is not None:
+        result["scanner_signals"] = scanned
     return validate(attach(result) if evidence_tiers else result)
