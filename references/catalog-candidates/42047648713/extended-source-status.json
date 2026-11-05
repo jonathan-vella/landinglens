@@ -1,0 +1,45 @@
+{
+  "records": [
+    {
+      "id": "alz-storage-assignment",
+      "revision": "4eae565287844360a61545f9799400431adb6d0a",
+      "release": "platform/alz/2026.10.0",
+      "sha256": "67bb28bf3142d7170815bc326d08e2422062f2548630c87e4feb8cfa4f42abe7",
+      "license_sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+    },
+    {
+      "id": "alz-storage-assignment-library-tree",
+      "revision": "4eae565287844360a61545f9799400431adb6d0a",
+      "before_sha256": "e791fcbd152166ba2cf43a365670ebe4707441186afdcc894fbcb9bda890bb28",
+      "sha256": "e791fcbd152166ba2cf43a365670ebe4707441186afdcc894fbcb9bda890bb28"
+    },
+    {
+      "id": "builtin-storage-transfer",
+      "revision": "f096d8de10fb25e71dd7f82b78ded110ec711d73",
+      "release": null,
+      "sha256": "dafed20a9e1d68bf0022209bbbd6b9523b63e033dd7b12ea04ddda06781212e6",
+      "license_sha256": "27ebda9d51f0a56b7e281ccd8230a27236dcb51c05f64b07869ecf6e965d68b0"
+    },
+    {
+      "id": "psrule-storage-yaml",
+      "revision": "a40c77e029c6e6d95f7a809dc70219c9ee9a4242",
+      "release": "v1.48.0-B0228",
+      "sha256": "05dac57f7faa35eb8b728cf4781147d231e67c02b9698d5f2548df5566d4aec6",
+      "license_sha256": "7df20dcdf9197e9945c14858d41c60f11b52b93e5b69e2b63416b874d598d322"
+    },
+    {
+      "id": "psrule-storage-yaml-library-tree",
+      "revision": "a40c77e029c6e6d95f7a809dc70219c9ee9a4242",
+      "before_sha256": "40a87f3f3cb2f190c2451ac1aa638fa3a271a0fa91cae6a70e8f546af1e334aa",
+      "sha256": "40a87f3f3cb2f190c2451ac1aa638fa3a271a0fa91cae6a70e8f546af1e334aa"
+    },
+    {
+      "id": "builtin-definition-tree",
+      "revision": "f096d8de10fb25e71dd7f82b78ded110ec711d73",
+      "content_sha256": "cc7365f8fa1340ce015d08932e9f5f5e1f1c2485b6d756996a918dd1f8db4f55",
+      "definitions": 5457
+    }
+  ],
+  "changes": [],
+  "coverage": "Release identity and reviewed crosswalk targets; other target mappings require review."
+}
