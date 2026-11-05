@@ -55,6 +55,19 @@ checks passed. The wheel SHA256 is
 The fixed check workflow's read-only permission, accepted catalog bytes and
 recommendation ledger remain unchanged.
 
+Implementation #85 merged as `afe33f92999f7cc53706352b286209656c164c20`
+after eight platform jobs, applicable CodeQL checks and four downloaded exercised
+compiler artifacts passed. First actual source run `42043707985` created labelled
+bot PR #86 and dispatched successful four-job run `42044026035` on candidate SHA
+`a4022ad68c43e5bcd82757810b7013e93b3fb052`. It did not merge: GitHub's PR check
+rollup omitted the workflow-dispatch suite even though its exact-SHA check runs
+existed and passed. The bounded wait retained the explicit unmerged blocker.
+The follow-up verifies the four job names/statuses directly on the dispatched
+Actions run, then separately waits for all PR-associated checks and rechecks the
+live head/rollup before the SHA-bound merge request. This uses the approved
+Actions permission without adding a grant or weakening a gate. Live repeat proof
+remains pending; the initial run is not reported as full acceptance.
+
 Owner request dated 2026-11-05; tracked by
 [#53](https://github.com/jonathan-vella/landinglens/issues/53) and
 [FR-23-FR-36](prd.md#next-increment-assessor-efficiency). This authorises

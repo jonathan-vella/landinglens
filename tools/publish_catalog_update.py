@@ -15,6 +15,17 @@ def command(*args: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(list(args), capture_output=True, text=True, timeout=120, check=False)
 
 
+def successful_checks(rollup: object) -> bool:
+    return isinstance(rollup, list) and all(
+        isinstance(check, dict)
+        and (
+            check.get("state") == "SUCCESS"
+            or (check.get("status") == "COMPLETED" and check.get("conclusion") == "SUCCESS")
+        )
+        for check in rollup
+    )
+
+
 def publish(
     directory: Path,
     repository: str,
@@ -141,63 +152,83 @@ def publish(
                 }
                 ready = False
                 for attempt in range(30):
-                    checks = command(
+                    runs = command(
                         "gh",
-                        "pr",
-                        "checks",
+                        "run",
+                        "list",
                         "--repo",
                         repository,
-                        status["pr"],
+                        "--workflow",
+                        "checks.yml",
+                        "--branch",
+                        branch,
+                        "--event",
+                        "workflow_dispatch",
+                        "--commit",
+                        expected_head,
                         "--json",
-                        "name,state",
+                        "databaseId,headSha,status,conclusion",
                     )
-                    actual = (
-                        json.loads(checks.stdout)
-                        if checks.returncode in (0, 8) and checks.stdout.strip()
+                    matching = (
+                        json.loads(runs.stdout)
+                        if runs.returncode == 0 and runs.stdout.strip()
                         else []
                     )
-                    ready = required.issubset({item.get("name") for item in actual}) and all(
-                        item.get("state") == "SUCCESS" for item in actual
+                    matching = [run for run in matching if run.get("headSha") == expected_head]
+                    ready = bool(matching) and (
+                        matching[0].get("status") == "completed"
+                        and matching[0].get("conclusion") == "success"
+                    )
+                    failed = bool(matching) and (
+                        matching[0].get("status") == "completed"
+                        and matching[0].get("conclusion") != "success"
                     )
                     if ready:
-                        runs = command(
+                        status["checks_run_id"] = matching[0]["databaseId"]
+                        checked = command(
                             "gh",
                             "run",
-                            "list",
+                            "view",
+                            str(status["checks_run_id"]),
                             "--repo",
                             repository,
-                            "--workflow",
-                            "checks.yml",
-                            "--branch",
-                            branch,
-                            "--event",
-                            "workflow_dispatch",
-                            "--commit",
-                            expected_head,
                             "--json",
-                            "databaseId,headSha,status,conclusion",
+                            "headSha,event,status,conclusion,jobs",
                         )
-                        matching = json.loads(runs.stdout) if runs.returncode == 0 else []
-                        matching = [
-                            run
-                            for run in matching
-                            if run.get("headSha") == expected_head
-                            and run.get("status") == "completed"
-                            and run.get("conclusion") == "success"
-                        ]
-                        ready = bool(matching)
-                        if ready:
-                            status["checks_run_id"] = matching[0]["databaseId"]
-                    if ready or any(
-                        item.get("state")
-                        in {
-                            "FAILURE",
-                            "CANCELLED",
-                            "TIMED_OUT",
-                            "ACTION_REQUIRED",
-                        }
-                        for item in actual
-                    ):
+                        detail = json.loads(checked.stdout) if checked.returncode == 0 else {}
+                        jobs = detail.get("jobs", [])
+                        ready = (
+                            detail.get("headSha") == expected_head
+                            and detail.get("event") == "workflow_dispatch"
+                            and detail.get("status") == "completed"
+                            and detail.get("conclusion") == "success"
+                            and required.issubset({job.get("name") for job in jobs})
+                            and all(
+                                job.get("status") == "completed"
+                                and job.get("conclusion") == "success"
+                                for job in jobs
+                            )
+                        )
+                    if ready:
+                        live_check = command(
+                            "gh",
+                            "pr",
+                            "view",
+                            "--repo",
+                            repository,
+                            status["pr"],
+                            "--json",
+                            "headRefOid,statusCheckRollup",
+                        )
+                        live = json.loads(live_check.stdout) if live_check.returncode == 0 else {}
+                        if live_check.returncode or live.get("headRefOid") != expected_head:
+                            status["blocker"] = (
+                                "Candidate head changed or live checks are unreadable; "
+                                "no auto-merge request."
+                            )
+                            return status
+                        ready = successful_checks(live.get("statusCheckRollup"))
+                    if ready or failed:
                         break
                     if attempt < 29:
                         sleep(20)
@@ -218,21 +249,7 @@ def publish(
                     "headRefOid,statusCheckRollup",
                 )
                 live = json.loads(head.stdout) if head.returncode == 0 else {}
-                rollup = live.get("statusCheckRollup")
-                live_ready = (
-                    isinstance(rollup, list)
-                    and required.issubset(
-                        {check.get("name", check.get("context")) for check in rollup}
-                    )
-                    and all(
-                        check.get("state") == "SUCCESS"
-                        or (
-                            check.get("status") == "COMPLETED"
-                            and check.get("conclusion") == "SUCCESS"
-                        )
-                        for check in rollup
-                    )
-                )
+                live_ready = successful_checks(live.get("statusCheckRollup"))
                 if head.returncode or live.get("headRefOid") != expected_head or not live_ready:
                     status["blocker"] = (
                         "Candidate head changed or live checks are not green; "

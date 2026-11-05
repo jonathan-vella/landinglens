@@ -25,6 +25,20 @@ def module(name):
     return value
 
 
+def completed_checks_run():
+    return {
+        "headSha": "0" * 40,
+        "event": "workflow_dispatch",
+        "status": "completed",
+        "conclusion": "success",
+        "jobs": [
+            {"name": f"checks ({os}, {version})", "status": "completed", "conclusion": "success"}
+            for os in ("ubuntu-latest", "windows-latest")
+            for version in ("3.12", "3.13")
+        ],
+    }
+
+
 class CatalogUpdateTests(unittest.TestCase):
     def setUp(self):
         self.catalog = load_catalog()
@@ -191,6 +205,9 @@ class CatalogUpdateTests(unittest.TestCase):
             "wrong-run-sha",
             "pending-run",
             "live-check-failure",
+            "missing-platform-job",
+            "failed-platform-job",
+            "wrong-detail-sha",
         ):
             classification = "needs-review" if scenario == "needs-review" else "safe"
             with tempfile.TemporaryDirectory() as temp:
@@ -232,7 +249,7 @@ class CatalogUpdateTests(unittest.TestCase):
                                 "headRefOid": "0" * 40,
                                 "statusCheckRollup": [
                                     {
-                                        "name": f"checks ({os}, {version})",
+                                        "name": "CodeQL",
                                         "status": "COMPLETED",
                                         "conclusion": (
                                             "FAILURE"
@@ -240,8 +257,6 @@ class CatalogUpdateTests(unittest.TestCase):
                                             else "SUCCESS"
                                         ),
                                     }
-                                    for os in ("ubuntu-latest", "windows-latest")
-                                    for version in ("3.12", "3.13")
                                 ],
                             }
                         )
@@ -258,6 +273,15 @@ class CatalogUpdateTests(unittest.TestCase):
                                 }
                             ]
                         )
+                    elif args[:3] == ("gh", "run", "view"):
+                        detail = completed_checks_run()
+                        if scenario == "missing-platform-job":
+                            detail["jobs"].pop()
+                        elif scenario == "failed-platform-job":
+                            detail["jobs"][0]["conclusion"] = "failure"
+                        elif scenario == "wrong-detail-sha":
+                            detail["headSha"] = "1" * 40
+                        output = json.dumps(detail)
                     return subprocess.CompletedProcess(args, 0, output, "")
 
                 with patch.object(publisher, "command", side_effect=run):
@@ -368,6 +392,8 @@ class CatalogUpdateTests(unittest.TestCase):
                     output = "0" * 40
                 elif args[:3] == ("gh", "pr", "view"):
                     output = json.dumps({"headRefOid": "1" * 40, "statusCheckRollup": []})
+                elif args[:3] == ("gh", "run", "view"):
+                    output = json.dumps(completed_checks_run())
                 elif args[:3] == ("gh", "run", "list"):
                     output = json.dumps(
                         [
