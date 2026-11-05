@@ -128,6 +128,8 @@ def assess(
 ) -> dict[str, Any]:
     validate(bundle, "evidence")
     validate(catalog, "catalog")
+    if str(catalog.get("review_state", "")).startswith("candidate"):
+        raise InputError("Source candidates are not accepted evaluator catalogs")
     if type(evidence_tiers) is not bool:
         raise InputError("Evidence tier selection must be an explicit boolean")
     if max_age_hours <= 0 or not isfinite(max_age_hours) or max_age_hours > 876_000:

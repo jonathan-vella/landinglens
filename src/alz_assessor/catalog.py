@@ -53,7 +53,47 @@ def load_catalog(path: str | None = None) -> dict[str, Any]:
                 != priorities["severities"]
             ):
                 raise InputError("Packaged severity source binding mismatch")
+    if str(data.get("review_state", "")).startswith("candidate"):
+        raise InputError("Source candidates cannot be loaded as accepted assessment catalogs")
     return validate(data, "catalog")
+
+
+def catalog_lag(version: str, index: dict[str, Any]) -> dict[str, Any]:
+    import re
+
+    from .contracts import hashes
+
+    if (
+        not isinstance(index, dict)
+        or set(index) != {"schema_version", "kind", "catalogs"}
+        or (index["schema_version"] != "1.0" or index["kind"] != "accepted-catalog-index")
+    ):
+        raise InputError("Expected accepted-catalog-index contract 1.0")
+    versions = []
+    for entry in require(index, "catalogs", list):
+        if not isinstance(entry, dict) or set(entry) != {"version", "sha256"}:
+            raise InputError("Catalog index requires exact version and SHA-256")
+        value = require(entry, "version", str)
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}\.\d+", value) or value in versions:
+            raise InputError("Catalog index version is invalid or duplicated")
+        hashes({"catalog": entry["sha256"]})
+        versions.append(value)
+    if not versions or len(versions) > 1000:
+        raise InputError("Catalog index requires 1-1000 known accepted versions")
+
+    def order(value: str) -> tuple[str, int]:
+        day, sequence = value.rsplit(".", 1)
+        return day, int(sequence)
+
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}\.\d+", version):
+        raise InputError("Catalog lag requires a comparable reviewed version")
+    behind = sum(order(item) > order(version) for item in versions)
+    return {
+        "known_latest": max(versions, key=order),
+        "versions_behind": behind,
+        "warning": f"Catalog is {behind} versions behind the explicitly supplied local index. "
+        "Index acceptance is a producer assertion; no network refresh or replacement.",
+    }
 
 
 def reviewed_refresh(candidate: dict[str, Any], current: dict[str, Any]) -> dict[str, Any]:

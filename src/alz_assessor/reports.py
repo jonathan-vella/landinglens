@@ -139,6 +139,8 @@ def render(assessment: dict[str, Any], format: str = "json", minimize: bool = Fa
         f"{model['generated_at']}"
     )
     lines = [heading, "", json.dumps(model["coverage"], sort_keys=True), ""]
+    if "catalog_status" in model:
+        lines += [model["catalog_status"]["warning"], ""]
     if "evidence_tiers" in model:
         lines += [
             "Evidence tiers: " + json.dumps(model["evidence_tiers"]["counts"], sort_keys=True),

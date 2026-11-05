@@ -1,5 +1,13 @@
 # Accepted release automation matrix
 
+Source-update candidates do not change this accepted matrix. The extended
+maintainer poll classifies only demonstrable HTTPS link/training edits as safe;
+ambiguous wording/meaning/severity/query/external-target changes require review.
+New items need decisions and removed items remain retired. Installed catalog
+replacement and new predicate acceptance are never polling side effects.
+Workflow PR/auto-merge operations remain subject to actual settings/checks/head
+gates and retain artifacts/generated PR body when blocked.
+
 Terraform assessment now recommends separately supplied plan JSON, with raw
 source/snapshot analysis retained as the supported fallback. No predicate,
 version, unknown handling or source/identity/sensitivity requirement changes.

@@ -23,8 +23,8 @@ All items below are open, not delivered by this planning update.
 | [LL-31 / #63](https://github.com/jonathan-vella/landinglens/issues/63) | Saved scanner ingestion | LL-27, LL-28, LL-29, LL-30 | FR-27 | Merged #73; issue closed |
 | [LL-32 / #54](https://github.com/jonathan-vella/landinglens/issues/54) | Plan-first guidance | Existing adapters; execute after LL-33 | FR-28 | Merged #75; issue closed |
 | [LL-33 / #60](https://github.com/jonathan-vella/landinglens/issues/60) | Allowlisted query Signals | LL-27, LL-28, LL-29, LL-31 | FR-29 | Merged #74; issue closed |
-| [LL-34 / #57](https://github.com/jonathan-vella/landinglens/issues/57) | Interviews/cohort priority | LL-28, LL-29, LL-32 | FR-30 | Local/exact installed checks pass; CI/merge pending |
-| [LL-35 / #62](https://github.com/jonathan-vella/landinglens/issues/62) | Source-update PR pipeline | LL-27, LL-28, LL-29, LL-34 | FR-31 | Implementation pending; observed auto-merge/workflow PR settings block operational publication |
+| [LL-34 / #57](https://github.com/jonathan-vella/landinglens/issues/57) | Interviews/cohort priority | LL-28, LL-29, LL-32 | FR-30 | Merged #76; issue closed |
+| [LL-35 / #62](https://github.com/jonathan-vella/landinglens/issues/62) | Source-update PR pipeline | LL-27, LL-28, LL-29, LL-34 | FR-31 | Local/exact installed checks pass; CI/merge pending; operational PR/auto-merge blocked |
 | [LL-36 / #61](https://github.com/jonathan-vella/landinglens/issues/61) | Local triage workspace | LL-28, LL-29, LL-30, LL-31, LL-33, LL-34, LL-38 | FR-32 | Pending |
 | [LL-37 / #65](https://github.com/jonathan-vella/landinglens/issues/65) | SARIF/PR summaries | LL-28, LL-29; execute after LL-35 | FR-33 | Pending |
 | [LL-38 / #64](https://github.com/jonathan-vella/landinglens/issues/64) | Summary/tracker exports | LL-28, LL-29, LL-37 | FR-34 | Pending dependency review |
@@ -32,7 +32,7 @@ All items below are open, not delivered by this planning update.
 | [LL-40 / #66](https://github.com/jonathan-vella/landinglens/issues/66) | Reconcile delivery | LL-27-LL-39 merged or explicitly blocked | FR-36 | Pending; blockers do not satisfy criteria |
 
 Planning merged in #68 and LL-27 in #69. Current dependency-ready item:
-**LL-34 / #57**. Follow the
+**LL-35 / #62**, then independently ready LL-37 if operational publication stays blocked. Follow the
 plan's explicit execution order; blocked GitHub publication does not prevent
 offline evidence/triage work. Do not change repository settings. Keep candidate
 artifacts/generated PR body when workflow PR creation or safe auto-merge is denied.

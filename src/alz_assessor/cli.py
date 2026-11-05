@@ -12,7 +12,7 @@ from typing import Any
 from .arm import arm_source
 from .azure import Collector, HttpTransport
 from .bicep import compile_bicep
-from .catalog import load_catalog, reviewed_refresh
+from .catalog import catalog_lag, load_catalog, reviewed_refresh
 from .comparison import compare
 from .contracts import apply_identity_map, read_document, validate
 from .crosswalk import inspect_crosswalk, load_crosswalk
@@ -262,6 +262,7 @@ def main() -> int:
         command.add_argument("--format", choices=["json", "markdown", "html"], default="json")
         command.add_argument("--output", type=Path)
         command.add_argument("--minimize", action="store_true")
+        command.add_argument("--catalog-index", type=Path)
     args = parser.parse_args()
     try:
         if args.command == "interview":
@@ -540,6 +541,10 @@ def main() -> int:
             for resource in result.get("resources", []):
                 resource.pop("properties", None)
             result["details_withheld"] = "Raw properties, outputs and compiled templates withheld"
+        if args.command in {"assess", "compare", "render"} and args.catalog_index:
+            result["catalog_status"] = catalog_lag(
+                result["catalog_version"], read_json(args.catalog_index)
+            )
         output = (
             json.dumps(result, indent=2) + "\n"
             if args.command.startswith("spike-") or args.command in {"catalog", "collect"}
