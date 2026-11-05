@@ -28,9 +28,12 @@ severity and guarded saved archetype suggestions. Its 228-test local/exact
 installed suites passed with one Windows privilege skip; eight platform checks and four exercised compiler artifacts passed.
 FR-26 policy Signals are merged in #72. Both 238-test local/exact installed suites
 passed with one Windows privilege skip; eight platform checks and four exercised
-compiler artifacts passed. FR-27 saved scanner ingestion is implemented locally;
-both 246-test local/exact installed suites pass with one Windows privilege skip.
-CI/merge acceptance and query execution remain pending.
+compiler artifacts passed. FR-27 saved scanner ingestion is merged in #73;
+both 246-test local/exact installed suites pass with one Windows privilege skip,
+eight platform checks and four exercised compiler artifacts. FR-29's exact
+two-query allowlist and Signal executor are implemented locally; delivery
+CI/merge remains pending. Both 252-test local/exact installed suites passed with
+one Windows privilege skip. Live query behaviour is undemonstrated.
 
 ### Requirements and acceptance
 

@@ -216,12 +216,23 @@ def compare(
             for item in (result.get("policy_signals") or {}).get("records", [])
             if item["usable"]
         }
+        from .query_signals import query_signals
+
+        query_controls = set()
+        for bundle in result["evidence"]:
+            queried = query_signals(bundle, instant.isoformat(), result["freshness_policy_hours"])
+            if queried is not None:
+                result["query_signals"] = queried
+                if any(record["usable"] for record in queried["records"]):
+                    query_controls.add("ALZ-" + queried["guid"])
         for row in result["results"]:
             for mode in ("planned", "observed"):
                 body = row.get(mode)
                 if body and body.get("supplemental_signal_only"):
-                    available = scanned_controls[mode] | (
-                        policy_controls if mode == "observed" else set()
+                    available = (
+                        scanned_controls[mode]
+                        | (policy_controls if mode == "observed" else set())
+                        | (query_controls if mode == "observed" else set())
                     )
                     body["machine_evidence"] = (
                         row["control_id"] in available and body["freshness"] == "current"

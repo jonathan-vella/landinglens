@@ -92,6 +92,10 @@ def report_model(assessment: dict[str, Any], minimize: bool = False) -> dict[str
             scanned["scope"] = None
             for record in scanned["records"]:
                 record["resource_id"] = None
+        if "query_signals" in result:
+            result["query_signals"]["scopes"] = []
+            for record in result["query_signals"]["records"]:
+                record["resource_id"] = None
         for signal in (result.get("policy_signals") or {}).get("records", []):
             signal["resource_id"] = None
             signal["assignment_id"] = None
@@ -201,6 +205,11 @@ def render(assessment: dict[str, Any], format: str = "json", minimize: bool = Fa
     if "scanner_signal_runs" in model:
         lines += [
             "Separate scanner runs: " + json.dumps(model["scanner_signal_runs"], sort_keys=True)
+        ]
+    if "query_signals" in model:
+        lines += [
+            "Query Signals (not checklist outcomes): "
+            + json.dumps(model["query_signals"], sort_keys=True)
         ]
     text = "\n".join(lines)
     if format == "markdown":

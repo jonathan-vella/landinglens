@@ -80,6 +80,40 @@ JSON/Markdown/HTML share the same counts, with no browser-side tier evaluator.
 
 ## Catalog and evidence contracts
 
+### Allowlisted query evidence
+
+The separate packaged `query-allowlist` 1.0 accounts for all 49 frozen audited
+GUIDs. Two exact unchanged local firewall Deny-mode queries are approved as
+Signals; 47 exclusions retain their audited limitation and rationale. Query
+bytes/SHA-256, canonical identity column, expected `id` and boolean-or-null
+`compliant`, resource type and permission profile are pinned. The packaged
+allowlist digest and every approved query hash are checked offline.
+This is static review, not live service compilation proof or a new predicate.
+
+`collect --query-guid GUID` requires 1-100 explicit unique subscription UUIDs and
+the existing token environment. It rejects management-group/graph/inventory
+flags and unallowlisted GUIDs before transport. The existing HTTP transport
+accepts only fixed inventory or exact allowlisted query text at reviewed ARG
+2022-10-01; it never accepts arbitrary caller KQL.
+
+The executor uses existing bounded retries/response limits and at most
+100 pages/10,000 retained identities with explicit skip tokens/object-array
+counts/truncation. Foreign/wrong-type/malformed identities fail; missing or
+wrong-type booleans remain unknown. Repeated tokens, denied/oversized/transient
+failures, truncated-without-token responses and conflicting rows remain explicit.
+Only identity and reported boolean are retained, never arbitrary returned tags,
+names or fields. Pagination exhaustion cannot establish inventory authorisation;
+the produced evidence always has `inventory_complete=false`.
+
+Typed `query_evidence` keeps exact GUID/hash/scopes, original collection time,
+pages/partial state and projected observations. Assessment 1.2 rechecks time and
+bindings to produce query Signals, not configuration facts. Both boolean values
+remain observations; empty output proves nothing. Partial/conflicted/unknown/
+stale records cannot establish usable complete evidence or a passing outcome.
+Reports, blank review preparation, comparison and replay preserve these semantics;
+minimised output removes private resource/scope IDs. No query is run by assessment,
+rendering or replay.
+
 ### Saved scanner evidence
 
 `scanner-export` version 1.0 requires `format` (`psrule-json` or `sarif-2.1.0`),

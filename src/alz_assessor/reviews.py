@@ -182,6 +182,12 @@ def prepare_reviews(
             "outcome" if kind == "manual" else "disposition": None,
             "preparation": {
                 **(
+                    {"query_signals": assessment["query_signals"]}
+                    if "query_signals" in assessment
+                    and "ALZ-" + assessment["query_signals"]["guid"] == control["control_id"]
+                    else {}
+                ),
+                **(
                     {
                         "scanner_signals": [
                             record

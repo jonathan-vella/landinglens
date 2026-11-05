@@ -245,6 +245,7 @@ def main() -> int:
     collection.add_argument("--token-env", default="LANDINGLENS_ARM_TOKEN")
     collection.add_argument("--inventory-authorized", action="store_true")
     collection.add_argument("--resource-graph", action="store_true")
+    collection.add_argument("--query-guid")
     collection.add_argument("--output", type=Path)
     for command in (assessment, comparison, rendering):
         command.add_argument("--format", choices=["json", "markdown", "html"], default="json")
@@ -393,11 +394,29 @@ def main() -> int:
         elif args.command == "compare":
             result = compare(read_json(args.planned), read_json(args.observed), args.at)
         elif args.command == "collect":
+            if args.query_guid:
+                from .query_signals import selected_query
+
+                selected_query(args.query_guid)
+                if args.management_group or args.resource_graph or args.inventory_authorized:
+                    raise InputError(
+                        "Query Signals require explicit --subscription only, no inventory flags"
+                    )
             token = os.environ.get(args.token_env)
             if not token:
                 raise InputError(
                     "Existing token not found in selected environment variable; no login attempted"
                 )
+            if args.query_guid:
+                from .query_signals import execute_query
+
+                result = execute_query(HttpTransport(token), args.query_guid, args.subscription)
+                output = json.dumps(result, indent=2) + "\n"
+                if args.output:
+                    args.output.write_text(output, encoding="utf-8")
+                else:
+                    sys.stdout.write(output)
+                return 0
             result = Collector(HttpTransport(token)).collect(
                 subscriptions=args.subscription,
                 management_group=args.management_group,

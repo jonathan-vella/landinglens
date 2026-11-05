@@ -29,6 +29,30 @@ live tenant run, login, permission change, ancestor read, Graph/billing/data-pla
 access or policy scan was attempted. Live behaviour for this increment remains
 undemonstrated, not silently counted as exercised.
 
+## Reviewed upstream-query Signals
+
+Owner approval D5 permits exact hash-allowlisted read-only queries as Signals,
+not arbitrary KQL or recommendation passes. The seed contains only the reviewed
+D07.06/D07.07 local firewall-policy mode observations from the existing frozen
+49-query audit; other candidates retain explicit exclusion reasons. This does
+not change the evaluator's stricter SKU/missing/inheritance requirements.
+
+The opt-in `collect --query-guid GUID --subscription UUID` path uses existing
+`Microsoft.ResourceGraph/resources/read`, API 2022-10-01 and the same scoped
+transport/retry/byte guards. It requires explicit subscriptions in every POST
+body, never derives authority from query text or an ambient account, and does
+not enumerate management-group descendants. The caller must stay within the
+previously approved exact #40 boundary; no new live run is performed for acceptance.
+The existing token environment is required; no login or permission change occurs.
+
+At most 100 pages/10,000 identities are retained; missing/repeated tokens,
+partial/denied/oversized responses and original-time freshness remain explicit.
+No rows or exhausted pages prove compliance or authorisation completeness.
+Saved output is assessed/replayed offline with Signals only. See the
+[query contract](contracts.md#allowlisted-query-evidence) for schema/provenance
+and unsupported cases. Tests use saved/injected transports and installed CLI;
+live query compilation/behaviour remains undemonstrated.
+
 ## Batch-01 configuration reads
 
 The batch successor adds only management-plane configuration GETs:

@@ -153,6 +153,17 @@ runs the scanner. Matching rule names from an unrelated producer, unbound target
 names, empty findings, failed/partial runs and stale results cannot establish passes.
 See the [scanner contract](docs/contracts.md#saved-scanner-evidence).
 
+For separately authorised use, `collect --subscription SUBSCRIPTION_UUID
+--query-guid e9c8f584-6d5e-473b-8dc5-acc9fbaab4e3 --output query-evidence.json`
+runs the exact reviewed upstream query using the existing ARM-token environment
+selection. This is opt-in collection, not an assessment side effect. Only D07.06
+and D07.07 query hashes are allowlisted; no arbitrary query text, ambient scope,
+automatic login or management-group expansion is accepted in this path.
+Assess the saved result with `--input evidence --evidence-tiers`.
+Unknown/partial/stale/conflicted/empty query output never establishes a pass.
+Use only the already authorised #40 boundary; this increment tested injected
+transports and saved outputs, not a new live run.
+
 Catalog `2026-11-05.5` adds source-backed priority metadata: 71 High, 158 Medium
 and 26 Low recommendations. Reports and review queues sort severity first;
 historical catalogs retain their original presentation. This is a metadata-only
