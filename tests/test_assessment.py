@@ -138,7 +138,7 @@ class SliceTests(unittest.TestCase):
             if format != "json":
                 self.assertNotIn("<script>", output)
                 self.assertIn("&lt;script&gt;", output)
-        self.assertNotIn("properties", render(report))
+        self.assertNotIn('"properties":', render(report))
 
     def test_installed_cli_slice_advisory_exit_in_every_format(self):
         with tempfile.TemporaryDirectory() as directory:

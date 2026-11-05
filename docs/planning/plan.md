@@ -19,6 +19,49 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## Recommendation expansion (active)
+
+The owner authorized execution for the **fixed 251 nonautomated GUIDs** in
+catalog `2026-11-04.2`: implementation, public source review, practical batch
+issues, scoped PRs, protected merges after actual checks and acceptance-backed
+issue closure. This is not authorization for 251 automatic passes or wider Azure,
+Graph/Entra/billing/data-plane access, login, remediation, package publication,
+IaC execution or implicit module acquisition.
+
+[`targets.json`](../../references/recommendation-batches/targets.json) binds the
+exact baseline bytes/meaning, four original automated control hashes and all 251
+GUIDs into 5-10-item cohorts. [`ledger.json`](../../references/recommendation-batches/ledger.json)
+separates source-backed classification from implementation, checks and merged
+delivery. Pending entries have no invented review or acceptance. Display IDs
+are not primary keys; the original 255-item inventory remains frozen.
+
+[Batch 01 / #46](https://github.com/jonathan-vella/landinglens/issues/46) covers
+G02.01-.04, G02.07-.08 and G04.02-.03. Its
+[reviewed matrix](../../references/recommendation-batches/batch-01.json) and
+[actual source metadata](../../references/recommendation-batches/batch-01-sources.json)
+precede promotion. Two explicit configuration predicates and six specific
+human-evidence workflows are implemented in working catalog `2026-11-05.1`
+(6 automated, 206 assisted, 43 manual); delivery acceptance remains pending.
+G02.02's boundary/capacity judgment is explicitly manual, not a counted new check.
+Raw Terraform/plan cannot prove G02.03 soft-delete state for an imported/updated
+vault; this mode stays unknown rather than assuming a creation default.
+
+Specific review questions and limitations appear in templates, reports and the
+local editor. Templates/editor prepare at most 100 matching inventory records
+and selected typed scalar facts, without arbitrary raw properties or decisions;
+unavailable normalized evidence and
+truncation are explicit. Existing owner reviews/expiry are never synthesized.
+The original four automated hashes and both historical catalogs are retained.
+Pre-delivery verification: all 171 tests ran against the exact installed wheel
+outside the checkout (170 passed; one Windows symlink-privilege skip), with
+format/lint/types/dependency checks passing. Existing Bicep exercised local
+compilation and missing-module failure using `--no-restore`. The isolated local
+browser fixture displayed all three assisted scalar projections without
+inventing a reviewer or decision. These are fixture/injected and installed-CLI
+results, not new live Azure verification; CI/merge acceptance is still pending.
+Continue through dependency-ready cohorts after each merged batch; a blocked
+item does not block unrelated work. This increment is not complete.
+
 ## LL-26: automated local review session
 
 Owner-directed follow-up on 2026-11-05: the template/download/import/render

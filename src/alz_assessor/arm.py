@@ -35,6 +35,8 @@ STRING: /'(?:[^']|'')*'/
 API_VERSIONS = {
     "microsoft.storage/storageaccounts": {"2023-05-01"},
     "microsoft.network/firewallpolicies": {"2024-05-01"},
+    "microsoft.keyvault/vaults": {"2024-11-01"},
+    "microsoft.storage/storageaccounts/blobservices": {"2023-05-01"},
 }
 
 
@@ -48,7 +50,37 @@ def properties(kind: str, values: Any) -> dict[str, Any]:
     if not isinstance(values, dict):
         return {}
     if kind.lower() == "microsoft.storage/storageaccounts":
-        return {"supportsHttpsTrafficOnly": boolean(values.get("supportsHttpsTrafficOnly"))}
+        return {
+            "supportsHttpsTrafficOnly": boolean(values.get("supportsHttpsTrafficOnly")),
+            "minimumTlsVersion": enumeration(
+                values.get("minimumTlsVersion"), ("TLS1_0", "TLS1_1", "TLS1_2")
+            ),
+        }
+    if kind.lower() == "microsoft.keyvault/vaults":
+        acls = values.get("networkAcls")
+        return {
+            "enableSoftDelete": boolean(values.get("enableSoftDelete")),
+            "enablePurgeProtection": boolean(values.get("enablePurgeProtection")),
+            "enableRbacAuthorization": boolean(values.get("enableRbacAuthorization")),
+            "publicNetworkAccess": enumeration(
+                values.get("publicNetworkAccess"), ("Enabled", "Disabled")
+            ),
+            "networkAcls": {
+                "defaultAction": enumeration(
+                    acls.get("defaultAction") if isinstance(acls, dict) else None,
+                    ("Allow", "Deny"),
+                )
+            },
+        }
+    if kind.lower() == "microsoft.storage/storageaccounts/blobservices":
+        retention = values.get("containerDeleteRetentionPolicy")
+        return {
+            "containerDeleteRetentionPolicy": {
+                "enabled": boolean(
+                    retention.get("enabled") if isinstance(retention, dict) else None
+                )
+            }
+        }
     if kind.lower() == "microsoft.network/firewallpolicies":
         dns = values.get("dnsSettings")
         proxy = dns.get("enableProxy") if isinstance(dns, dict) else None
@@ -367,6 +399,10 @@ def arm_source(
                     if condition is True and known_count and (supported or not applicable)
                     else "unknown"
                 )
+                if arm_type.lower() == "microsoft.storage/storageaccounts/blobservices" and (
+                    not isinstance(name, str) or name.split("/")[-1] != "default"
+                ):
+                    state = "unknown"
                 binding = target_scope
                 if "scope" in entry:
                     explicit_scope = context.value(entry["scope"])

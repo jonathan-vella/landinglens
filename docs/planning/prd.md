@@ -1,5 +1,24 @@
 # LandingLens product requirements
 
+## Active increment: fixed recommendation expansion
+
+The current working successor is `2026-11-05.1`: 255 retained GUIDs, 6 automated,
+206 assisted and 43 manual. This is batch-01 implementation, not exhaustive
+251-target acceptance; delivery/check evidence is tracked in the
+[active plan](plan.md#recommendation-expansion-active).
+Earlier catalog counts and runtime results below are historical.
+
+**FR-22:** Address every GUID in the frozen 251-item starting set with reviewed
+sources and the strongest defensible implementation: full explicit predicate,
+useful partial/assisted support, specific inherently manual workflow, or exact
+visible blocker. Classification alone is not delivery. Keep canonical membership,
+source revisions, precise supported modes, prerequisites, tests, limitations
+and merged acceptance per GUID. No unavailable/empty/filtered/inaccessible
+evidence, resource name, accepted exception or narrow local flag can establish
+the whole recommendation. Retain all 255 entries, original four meanings and
+historical replay. Continue independent batches within the existing access
+boundary; do not broaden permissions or invent owner decisions.
+
 Status: advisory release baseline merged by the owner through
 [PR #13](https://github.com/jonathan-vella/landinglens/pull/13) on 2026-11-04.
 Acceptance hardening is merged through
@@ -421,7 +440,7 @@ merge `fcb58a4a5f3706ad51e6ade69cbecb1e073d7644`, with all eight checks passing.
 Earlier release results remain historical rather than being relabelled as
 newer verification.
 
-Current catalog `2026-11-04.2` retains all 255 entries: four bounded automated
+The pre-expansion catalog `2026-11-04.2` retains all 255 entries: four bounded automated
 predicates, 209 assisted and 42 manual. Original `2026-11-04.1` meaning is packaged
 unchanged. D07.06/D07.07 use exact explicit local mode/SKU evidence, not effective
 inherited or runtime protection. Remaining audited candidates were not

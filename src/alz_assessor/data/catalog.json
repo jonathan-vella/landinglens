@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "kind": "catalog",
-  "catalog_version": "2026-11-04.2",
+  "catalog_version": "2026-11-05.1",
   "design_areas": [
     "Azure billing and Active Directory tenant",
     "Identity and access management",
@@ -9222,14 +9222,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Vault existence does not prove applications store or retrieve their credentials there. Application intent and redacted owner-provided integration evidence are required; no secret enumeration, repository credential scan or data-plane access is performed.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Map each in-scope application's credential use to a vault-backed reference and its managed identity; provide redacted configuration, never secret values.",
+        "Identify any credentials remaining in source, environment configuration or deployment parameters and document the migration or explicit exception.",
+        "Reviewer decision: does the redacted application-to-vault map cover every relevant credential in this scope?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-01",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "human-application-coverage-required",
+        "no-secret-values"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -9244,7 +9246,26 @@
           "pointer": "/items/211",
           "item_sha256": "652af74c420b8f4115abd5a2992cc9af79f7e2a03e143ff5de43ac056b1d5519",
           "guidance": "https://learn.microsoft.com/azure/key-vault/general/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/key-vault/general/overview",
+          "source_sha256": "190cd7236a92956f6d89932b89b09ae4e36c8322253b26c0c6250be392bd063a",
+          "revision": "8dfb50ed846e99053e32805d00bf6bd9eface9c4",
+          "retrieved_at": "2026-11-05T00:03:41.520637+00:00",
+          "pointer": "5017f154-e3ab-4369-9829-e7e316183687",
+          "guidance": "https://learn.microsoft.com/en-us/azure/key-vault/general/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices",
+          "source_sha256": "3c35d8403bec2c00a480b2a6eb52b9c6074a50d9d2211e24f9e22ce6d22e5a22",
+          "revision": "8dfb50ed846e99053e32805d00bf6bd9eface9c4",
+          "retrieved_at": "2026-11-05T00:03:42.541583+00:00",
+          "pointer": "5017f154-e3ab-4369-9829-e7e316183687",
+          "guidance": "https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices"
         }
+      ],
+      "review_resource_types": [
+        "Microsoft.KeyVault/vaults"
       ]
     },
     {
@@ -9260,19 +9281,20 @@
       ],
       "applicability_note": "Review recommendation conditions within selected scope.",
       "recommendation": "Use different Azure Key Vaults for different applications, environments and regions to avoid transaction scale limits and restrict access to secrets.",
-      "automation": "assisted",
+      "automation": "manual",
       "method": "human-review",
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Resource names, vault counts and arbitrary request-rate thresholds do not establish application boundaries or adequate scaling. Architecture ownership and workload demand require human judgment; no workload traffic or secret contents are collected.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Provide the application/environment/region inventory and map each security or availability domain to its vault.",
+        "Identify intentionally shared vaults, their access boundaries and expected transaction demand; include the reviewed sharing justification.",
+        "Reviewer decision: does the vault partitioning respect each declared application, environment, regional and access boundary without an unreviewed shared blast radius?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-01",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "human-boundary-and-capacity-judgment"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -9287,7 +9309,26 @@
           "pointer": "/items/212",
           "item_sha256": "12f3d6b0c50e72bddd645adea4fdcc9bc5d16e1db43d099c078aa7c7eae554a7",
           "guidance": "https://learn.microsoft.com/azure/key-vault/general/overview-throttling"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/key-vault/general/overview-throttling",
+          "source_sha256": "adb86ea8c2876670295b3188af1a9bc47d0916dbebf3eda04e7ce921b8b43f75",
+          "revision": "bdb26e62f581710e3c6a59994e8b564e60c1a861",
+          "retrieved_at": "2026-11-05T00:03:42.079798+00:00",
+          "pointer": "a0477a20-9945-4bda-9333-4f2491163418",
+          "guidance": "https://learn.microsoft.com/en-us/azure/key-vault/general/overview-throttling"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices",
+          "source_sha256": "3c35d8403bec2c00a480b2a6eb52b9c6074a50d9d2211e24f9e22ce6d22e5a22",
+          "revision": "8dfb50ed846e99053e32805d00bf6bd9eface9c4",
+          "retrieved_at": "2026-11-05T00:03:42.541583+00:00",
+          "pointer": "a0477a20-9945-4bda-9333-4f2491163418",
+          "guidance": "https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices"
         }
+      ],
+      "review_resource_types": [
+        "Microsoft.KeyVault/vaults"
       ]
     },
     {
@@ -9303,19 +9344,30 @@
       ],
       "applicability_note": "Review recommendation conditions within selected scope.",
       "recommendation": "Provision Azure Key Vault with the soft delete and purge policies enabled to allow retention protection for deleted objects.",
-      "automation": "assisted",
-      "method": "human-review",
-      "rule": null,
+      "automation": "automated",
+      "method": "explicit-vault-protection-conjunction",
+      "rule": {
+        "operation": "vault-deletion-protection",
+        "resource_type": "Microsoft.KeyVault/vaults",
+        "property": "enableSoftDelete",
+        "expected": true,
+        "api_versions": [
+          "2024-11-01"
+        ],
+        "coverage": "Both explicit vault enableSoftDelete and enablePurgeProtection booleans are true. This proves configuration, not successful recovery or operational effectiveness."
+      },
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Explicit configuration property is a candidate for bounded evaluation; applicability, provider mapping and positive/negative fixtures remain unverified.",
+      "rationale": "Only explicit booleans on one vault are assessed; omitted/null/symbolic/wrong-type fields stay unknown. Both known true pass; either known false with the other known fails. Missing, inaccessible and stale evidence cannot pass. No vault targets are N/A only with complete relevant inventory; otherwise unknown. AzureRM 4.50.0 sets soft delete on creation, but raw configuration/plan values alone do not prove creation versus import/update, so no provider default or creation-only invariant is inferred.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Explicit enableSoftDelete and enablePurgeProtection booleans on the same canonical Microsoft.KeyVault/vaults instance using reviewed API 2024-11-01.",
+        "ARM and existing no-restore Bicep, saved normalized observed evidence and injected scoped management-plane GET are supported.",
+        "Raw Terraform and optional plan project the explicit purge flag but cannot establish soft-delete state for an imported or updated vault: the result remains unknown even when purge protection is true."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-01",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "terraform-soft-delete-not-established",
+        "configuration-not-recovery-test"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -9330,6 +9382,46 @@
           "pointer": "/items/213",
           "item_sha256": "eed6ef20ec9fa62cabd55e18533ea67ab855ca8fd7785640a0a5e7ae76bdc0be",
           "guidance": "https://learn.microsoft.com/azure/key-vault/general/best-practices"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices",
+          "source_sha256": "3c35d8403bec2c00a480b2a6eb52b9c6074a50d9d2211e24f9e22ce6d22e5a22",
+          "revision": "8dfb50ed846e99053e32805d00bf6bd9eface9c4",
+          "retrieved_at": "2026-11-05T00:03:42.541583+00:00",
+          "pointer": "2ba52752-6944-4008-ae7d-7e4843276d8b",
+          "guidance": "https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/2024-11-01/vaults",
+          "source_sha256": "f2da66424ab1c336b84ef7cb56f35330a22a377f216d72a010a237adb9a2d276",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-05T00:03:42.973137+00:00",
+          "pointer": "2ba52752-6944-4008-ae7d-7e4843276d8b",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/2024-11-01/vaults"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/rest/api/keyvault/keyvault/vaults/get?view=rest-keyvault-keyvault-2024-11-01",
+          "source_sha256": "f5867ea7614df301e9fbd4d74b6d76d17677ef78ab6b24f25176d748b3dfb5d9",
+          "revision": "55b16f163141af68329f44c87dd2580df8c6829a",
+          "retrieved_at": "2026-11-05T00:03:43.193834+00:00",
+          "pointer": "2ba52752-6944-4008-ae7d-7e4843276d8b",
+          "guidance": "https://learn.microsoft.com/en-us/rest/api/keyvault/keyvault/vaults/get?view=rest-keyvault-keyvault-2024-11-01"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/key_vault.html.markdown",
+          "source_sha256": "225c6dd855527be91b60a9d3f22f9c34a6ae89ed6b5a22b07700cbe9388853c7",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-05T00:03:45.517378+00:00",
+          "pointer": "2ba52752-6944-4008-ae7d-7e4843276d8b",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/key_vault.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/keyvault/key_vault_resource.go",
+          "source_sha256": "549dbdd65446a051a1e9f5c3f76199118819a5712400022d1f81e9a551d699b8",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-05T00:03:45.828828+00:00",
+          "pointer": "2ba52752-6944-4008-ae7d-7e4843276d8b",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/keyvault/key_vault_resource.go"
         }
       ]
     },
@@ -9351,14 +9443,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "An RBAC-enabled flag or role assignment alone does not demonstrate least privilege, PIM eligibility or activation controls. New Entra/PIM/Graph access is outside authorization; absent evidence is not a failing or passing least-privilege conclusion.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Provide redacted vault RBAC scope/role assignments, privileged role eligibility and activation requirements, including approval and MFA settings.",
+        "Map operators and applications to their required actions; identify excessive standing privileges, legacy access policies and documented exceptions.",
+        "Reviewer decision: are privileged administrative rights least-privileged and eligible/JIT rather than unreviewed standing access? Use owner-supplied evidence; do not request new Graph/Entra access."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-01",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "owner-supplied-pim-evidence-required",
+        "no-new-entra-access"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -9373,7 +9467,45 @@
           "pointer": "/items/214",
           "item_sha256": "ed8b743aa2a159efca65b94f9fc715ac727f09bfc93dd55ef78848f046059ebd",
           "guidance": "https://learn.microsoft.com/azure/key-vault/general/best-practices"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices",
+          "source_sha256": "3c35d8403bec2c00a480b2a6eb52b9c6074a50d9d2211e24f9e22ce6d22e5a22",
+          "revision": "8dfb50ed846e99053e32805d00bf6bd9eface9c4",
+          "retrieved_at": "2026-11-05T00:03:42.541583+00:00",
+          "pointer": "dc055bcf-619e-48a1-9f98-879525d62688",
+          "guidance": "https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/2024-11-01/vaults",
+          "source_sha256": "f2da66424ab1c336b84ef7cb56f35330a22a377f216d72a010a237adb9a2d276",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-05T00:03:42.973137+00:00",
+          "pointer": "dc055bcf-619e-48a1-9f98-879525d62688",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/2024-11-01/vaults"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/key_vault.html.markdown",
+          "source_sha256": "225c6dd855527be91b60a9d3f22f9c34a6ae89ed6b5a22b07700cbe9388853c7",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-05T00:03:45.517378+00:00",
+          "pointer": "dc055bcf-619e-48a1-9f98-879525d62688",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/key_vault.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/keyvault/key_vault_resource.go",
+          "source_sha256": "549dbdd65446a051a1e9f5c3f76199118819a5712400022d1f81e9a551d699b8",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-05T00:03:45.828828+00:00",
+          "pointer": "dc055bcf-619e-48a1-9f98-879525d62688",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/keyvault/key_vault_resource.go"
         }
+      ],
+      "review_resource_types": [
+        "Microsoft.KeyVault/vaults"
+      ],
+      "review_fact_paths": [
+        "enableRbacAuthorization"
       ]
     },
     {
@@ -9480,14 +9612,15 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "A private endpoint, disabled-public flag or firewall rule in isolation does not prove approval, DNS, client reachability or the intended alternative access pattern. No network scans, client probes or remediation are performed.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Map each vault to its chosen private-endpoint or permitted service-endpoint/firewall access pattern and the workloads allowed to reach it.",
+        "For private endpoints, supply redacted approval, vault/subnet identity, private DNS resolution and client-route evidence; for firewall alternatives, supply default action, allowed subnet/IP rules and reviewed trusted-service bypasses.",
+        "Reviewer decision: do the exact relationships and intended access path restrict the vault appropriately, including any public-access or trusted-service exception?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-01",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "human-network-path-and-alternative-review"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -9502,7 +9635,38 @@
           "pointer": "/items/217",
           "item_sha256": "29c030d4d97026de36ab55497b77f819d43ce82ed1131acba2329ddbc41632e4",
           "guidance": "https://learn.microsoft.com/azure/key-vault/general/best-practices"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices",
+          "source_sha256": "3c35d8403bec2c00a480b2a6eb52b9c6074a50d9d2211e24f9e22ce6d22e5a22",
+          "revision": "8dfb50ed846e99053e32805d00bf6bd9eface9c4",
+          "retrieved_at": "2026-11-05T00:03:42.541583+00:00",
+          "pointer": "cdb3751a-b2ab-413a-ba6e-55d7d8a2adb1",
+          "guidance": "https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/2024-11-01/vaults",
+          "source_sha256": "f2da66424ab1c336b84ef7cb56f35330a22a377f216d72a010a237adb9a2d276",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-05T00:03:42.973137+00:00",
+          "pointer": "cdb3751a-b2ab-413a-ba6e-55d7d8a2adb1",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/2024-11-01/vaults"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/key_vault.html.markdown",
+          "source_sha256": "225c6dd855527be91b60a9d3f22f9c34a6ae89ed6b5a22b07700cbe9388853c7",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-05T00:03:45.517378+00:00",
+          "pointer": "cdb3751a-b2ab-413a-ba6e-55d7d8a2adb1",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/key_vault.html.markdown"
         }
+      ],
+      "review_resource_types": [
+        "Microsoft.KeyVault/vaults"
+      ],
+      "review_fact_paths": [
+        "publicNetworkAccess",
+        "networkAcls.defaultAction"
       ]
     },
     {
@@ -9523,14 +9687,15 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Metrics are collected automatically but resource audit logs require routed diagnostic settings. Workspace existence or a diagnostic-setting name cannot prove audit-category selection, the approved central destination or ingestion. No Log Analytics/data-plane queries are executed.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Map each in-scope vault's enabled AuditEvent/allLogs diagnostic category to its exact destination Log Analytics workspace identity.",
+        "Identify which workspace the platform owner has designated as central and provide redacted retained-log/ingestion evidence from the owner.",
+        "Reviewer decision: do all relevant vaults send audit usage to the approved central workspace, rather than only metrics or an unrelated destination?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-01",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "human-central-workspace-and-ingestion-review"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -9545,7 +9710,27 @@
           "pointer": "/items/218",
           "item_sha256": "521f48b6d44720025516cf5cc1442dd105b45fe942348e6d247f5df56a5b6657",
           "guidance": "https://learn.microsoft.com/azure/key-vault/general/monitor-key-vault"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/key-vault/general/monitor-key-vault",
+          "source_sha256": "c1fd1c38e816aadad1f1feae872ac09453400ab204f868c27e094337e2e938ae",
+          "revision": "cc9ac0f545a688e4f2016a1541f565f136e23129",
+          "retrieved_at": "2026-11-05T00:03:42.763121+00:00",
+          "pointer": "17d6326a-f625-4ca4-9e56-95f2223ace8c",
+          "guidance": "https://learn.microsoft.com/en-us/azure/key-vault/general/monitor-key-vault"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices",
+          "source_sha256": "3c35d8403bec2c00a480b2a6eb52b9c6074a50d9d2211e24f9e22ce6d22e5a22",
+          "revision": "8dfb50ed846e99053e32805d00bf6bd9eface9c4",
+          "retrieved_at": "2026-11-05T00:03:42.541583+00:00",
+          "pointer": "17d6326a-f625-4ca4-9e56-95f2223ace8c",
+          "guidance": "https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices"
         }
+      ],
+      "review_resource_types": [
+        "Microsoft.KeyVault/vaults",
+        "Microsoft.OperationalInsights/workspaces"
       ]
     },
     {
@@ -10298,19 +10483,29 @@
       ],
       "applicability_note": "Review recommendation conditions within selected scope.",
       "recommendation": "Enable container soft delete for the storage account to recover a deleted container and its contents.",
-      "automation": "assisted",
-      "method": "human-review",
-      "rule": null,
+      "automation": "automated",
+      "method": "explicit-blob-service-container-retention",
+      "rule": {
+        "resource_type": "Microsoft.Storage/storageAccounts/blobServices",
+        "property": "containerDeleteRetentionPolicy.enabled",
+        "expected": true,
+        "api_versions": [
+          "2023-05-01"
+        ],
+        "coverage": "Explicit container soft-delete enablement on the exact default blob-service child. Not blob soft delete, account deletion protection, recovery success or an owner-specific retention duration."
+      },
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Explicit configuration property is a candidate for bounded evaluation; applicability, provider mapping and positive/negative fixtures remain unverified.",
+      "rationale": "A known explicit true passes and false fails. Missing child configuration, unresolved/omitted/invalid retention days, unsupported versions, denied or stale evidence stay unknown. Terraform block omission is not inferred as false and provider-default days are not inferred. Every known storage account missing a child receives an unresolved child, not an absence-based N/A. No blob targets are N/A only for complete relevant inventory with no storage accounts/children. FileStorage capability is not inferred from absence or failed reads. The current recommendation is enablement only: a seven-day preference or retention adequacy is not silently imposed.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Actual default blob-service child containerDeleteRetentionPolicy.enabled boolean using reviewed API 2023-05-01; a storage-account secure-transfer flag or blob deleteRetentionPolicy is not a substitute.",
+        "ARM and existing no-restore Bicep support explicit child resources; raw Terraform and optional plan support an explicit single blob_properties.container_delete_retention_policy block with an explicitly valid days value from 1 through 365 on AzureRM 4.50.0.",
+        "Saved normalized observed evidence and injected scoped management-plane GET of the default child are supported; no storage data-plane endpoint is contacted."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-01",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "container-not-blob-soft-delete",
+        "no-retention-default-inference"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -10325,6 +10520,54 @@
           "pointer": "/items/236",
           "item_sha256": "0e222cfb53fd3fad449861599ba3cb97c4bae938ec36f66c44649f6a2dd73a31",
           "guidance": "https://learn.microsoft.com/azure/storage/blobs/data-protection-overview#recommendations-for-basic-data-protection"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/storage/blobs/data-protection-overview",
+          "source_sha256": "9e79d864f94332c8ab74552a8c51ad647a4a9669d7738dcff0aebeb7ecad9fbf",
+          "revision": "456398bb35f5b0e51b7b8e983e020271fa00b9cb",
+          "retrieved_at": "2026-11-05T00:03:43.644337+00:00",
+          "pointer": "159aac9f-863f-4f48-82cf-00c28fa97a0e",
+          "guidance": "https://learn.microsoft.com/en-us/azure/storage/blobs/data-protection-overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/storage/blobs/soft-delete-container-overview",
+          "source_sha256": "e9d077f819b31a685a3be53bc351e3529f93380e1179bab704dea4751b2b7918",
+          "revision": "0e760437c26f5e8693a40ed4344554540070850a",
+          "retrieved_at": "2026-11-05T00:03:43.429294+00:00",
+          "pointer": "159aac9f-863f-4f48-82cf-00c28fa97a0e",
+          "guidance": "https://learn.microsoft.com/en-us/azure/storage/blobs/soft-delete-container-overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts/blobservices",
+          "source_sha256": "421dae653d88c2cebb6cad525f6c457e0494299b83c9a012e4d87f77925b43b4",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-05T00:03:44.226308+00:00",
+          "pointer": "159aac9f-863f-4f48-82cf-00c28fa97a0e",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts/blobservices"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/rest/api/storagerp/blob-services/get-service-properties?view=rest-storagerp-2023-05-01",
+          "source_sha256": "74af85837a907b570ef32331b94a944bb9c91bfcc92d4fd3b5636bb66771a422",
+          "revision": "32821cd1483895df9ced6650a1317113e41a78ac",
+          "retrieved_at": "2026-11-05T00:03:44.984890+00:00",
+          "pointer": "159aac9f-863f-4f48-82cf-00c28fa97a0e",
+          "guidance": "https://learn.microsoft.com/en-us/rest/api/storagerp/blob-services/get-service-properties?view=rest-storagerp-2023-05-01"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown",
+          "source_sha256": "2497fd8c88453f99b82d2697bda7b7faee30f889693a1840fafc5bc59305219a",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-05T00:03:46.139803+00:00",
+          "pointer": "159aac9f-863f-4f48-82cf-00c28fa97a0e",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/storage/storage_account_resource.go",
+          "source_sha256": "ef29bb4bf1e83b3c3d039a10902ef7cda9ad151f4949375624d4d459c708913f",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-05T00:03:46.481880+00:00",
+          "pointer": "159aac9f-863f-4f48-82cf-00c28fa97a0e",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/storage/storage_account_resource.go"
         }
       ]
     },
@@ -10346,14 +10589,15 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "The checklist requests Azure Policy enforcement. A minimumTlsVersion flag alone is only local configuration and cannot pass this recommendation. Assignments without relevant definitions, effects, parameters and population coverage are insufficient; old compliance timestamps are not refreshed. No policy changes, scans or evaluations are triggered.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Provide the relevant TLS policy definition/initiative, assignment scope, enforcement mode, effect, parameter values, exclusions and active exemptions for the exact storage-account population.",
+        "Compare explicit storage-account minimumTlsVersion values with that policy intent and original-time compliance results; identify inherited or inaccessible policy-definition gaps.",
+        "Reviewer decision: is the intended minimum TLS version actually enforced by the relevant effective policy configuration, not just configured on one account?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-01",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "policy-enforcement-not-local-tls-flag"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -10368,7 +10612,45 @@
           "pointer": "/items/237",
           "item_sha256": "bf70176fa44dbaba59419e043fbc673191d3285618ff270517ae254d080607bd",
           "guidance": "https://learn.microsoft.com/azure/storage/blobs/data-protection-overview#recommendations-for-basic-data-protection"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/storage/blobs/data-protection-overview",
+          "source_sha256": "9e79d864f94332c8ab74552a8c51ad647a4a9669d7738dcff0aebeb7ecad9fbf",
+          "revision": "456398bb35f5b0e51b7b8e983e020271fa00b9cb",
+          "retrieved_at": "2026-11-05T00:03:43.644337+00:00",
+          "pointer": "31e77d70-f001-455b-93aa-6d05eea10968",
+          "guidance": "https://learn.microsoft.com/en-us/azure/storage/blobs/data-protection-overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/storage/common/transport-layer-security-configure-minimum-version",
+          "source_sha256": "e86a6d6e53a2cddac53f0294a405d3b25f321130276c0a74b63e6a8550917601",
+          "revision": "ac4bcb1eb41ca6e2ace58e626de7d186ea80bb00",
+          "retrieved_at": "2026-11-05T00:03:45.181979+00:00",
+          "pointer": "31e77d70-f001-455b-93aa-6d05eea10968",
+          "guidance": "https://learn.microsoft.com/en-us/azure/storage/common/transport-layer-security-configure-minimum-version"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts",
+          "source_sha256": "9916a17aea17e15fdef0f46afef4eed797f36d0b8bbf4c267de367e9b6673b23",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-05T00:23:55.949506+00:00",
+          "pointer": "31e77d70-f001-455b-93aa-6d05eea10968",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown",
+          "source_sha256": "2497fd8c88453f99b82d2697bda7b7faee30f889693a1840fafc5bc59305219a",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-05T00:03:46.139803+00:00",
+          "pointer": "31e77d70-f001-455b-93aa-6d05eea10968",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown"
         }
+      ],
+      "review_resource_types": [
+        "Microsoft.Storage/storageAccounts"
+      ],
+      "review_fact_paths": [
+        "minimumTlsVersion"
       ]
     },
     {
@@ -11111,26 +11393,64 @@
   "reviewed_at": "2026-11-04T13:25:57.057372+00:00",
   "reference_manifest_sha256": "c287f93a4ff4c94c577b0248345d813f44fb27dff66524408870095024305d30",
   "control_source_manifest_sha256": "d189615f2793f141a6ee6cd5a7f026556a4146fd44d65705e6f08d0e01f7debf",
-  "accepted_matrix_sha256": "f649b2293211c844d661ea93c6978fe2db948eff17237af01ca090809da8e1fb",
+  "accepted_matrix_sha256": "740bf069eca65ff1f094045bb0ea435229ac057902234f352616d78944041650",
   "wave_source_manifest_sha256": "617e66a497a1f6bb1ddf50f53b3f75f3ff2cec2989324d42496aeeb4d9d0ef38",
   "change_review": {
-    "base_sha256": "07e737eba2c91609527736b53a5f760b4ec2c9568fc9383b14cf34c288d20a82",
-    "matrix_sha256": "f649b2293211c844d661ea93c6978fe2db948eff17237af01ca090809da8e1fb",
-    "reviewed_at": "2026-11-04T20:28:32.560809+00:00",
-    "reviewer": "delegated-maintainer-matrix-review",
+    "base_sha256": "11dab1537b647abfcdaefdba3f337e1160aa33360e9f769ebb0424395c59c841",
+    "matrix_sha256": "740bf069eca65ff1f094045bb0ea435229ac057902234f352616d78944041650",
+    "reviewed_at": "2026-11-05T00:03:41.520637+00:00",
+    "reviewer": "owner-delegated-source-backed-batch-review",
     "changes": [
       {
-        "control_id": "ALZ-e9c8f584-6d5e-473b-8dc5-acc9fbaab4e3",
-        "before_sha256": "a0092a442deaf71590b2a6a7c1915cd9478116bfd2fd555df04373d136ea4c29",
-        "after_sha256": "2ac0e429a24ac7efcdd4eee7f00f305a965dfa3214e1cfb073c7090f932882f9",
-        "rationale": "LL-19 accepted exact local enum/SKU matrix; LL-21 collection verified."
+        "control_id": "ALZ-5017f154-e3ab-4369-9829-e7e316183687",
+        "before_sha256": "8bd076887dc44cc3090ed0d27c3a90f215b6ac47cb0cfd19fe645951ccb75b88",
+        "after_sha256": "0816b9fc2a40ce7a3d87d27264cfa9e0373a5c6eee05a300f71cf31a8040dba1",
+        "rationale": "Owner-delegated source-backed batch 01 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-b9d0dff5-bdd4-4cd8-88ed-5811610b2b2c",
-        "before_sha256": "cca682d9907f59d6eada02cf98668dea3bf8e7cf5936053e11dff65f45e86e77",
-        "after_sha256": "29e68cf5d7554fcb5b3076ab0624f2a8d54fcb15382454962fecd9b2cf00b6e8",
-        "rationale": "LL-19 accepted exact local enum/SKU matrix; LL-21 collection verified."
+        "control_id": "ALZ-a0477a20-9945-4bda-9333-4f2491163418",
+        "before_sha256": "5b59f22e9da388aedadde27f93047914e0231287541765c4dcf5257d708c4439",
+        "after_sha256": "a960b3780ac371546855d81475e33780f7fa4d7b41e6a5f60a021a8394bf33d7",
+        "rationale": "Owner-delegated source-backed batch 01 acceptance: manual"
+      },
+      {
+        "control_id": "ALZ-2ba52752-6944-4008-ae7d-7e4843276d8b",
+        "before_sha256": "dc2b5eb5ca789b3d432a7ff8fc562eac7d621af392a14305f07429a7b710bd2b",
+        "after_sha256": "5694b75cdc8baf900f10018591e707c1717563108cf07d1e54ecb97129533400",
+        "rationale": "Owner-delegated source-backed batch 01 acceptance: fully-automated-explicit-configuration"
+      },
+      {
+        "control_id": "ALZ-dc055bcf-619e-48a1-9f98-879525d62688",
+        "before_sha256": "e77b3ea49fc02854b4aeaa7c7baa75b91eb8c5279974f4ccdfb3b7c8a24e6496",
+        "after_sha256": "8d007d0d916e1369a7e4da9f21745dd4a2a7ca6e83734a290634defb63ac2424",
+        "rationale": "Owner-delegated source-backed batch 01 acceptance: assisted"
+      },
+      {
+        "control_id": "ALZ-cdb3751a-b2ab-413a-ba6e-55d7d8a2adb1",
+        "before_sha256": "e13402fcd76bd09643271e4a1c1a8d0762ecd3ef64fc07ed0c52669c79fe8e3d",
+        "after_sha256": "6af74db441911782170f79bcf48c151fc061476a07016341301471b6f004fc41",
+        "rationale": "Owner-delegated source-backed batch 01 acceptance: assisted"
+      },
+      {
+        "control_id": "ALZ-17d6326a-f625-4ca4-9e56-95f2223ace8c",
+        "before_sha256": "c8d571ba8f544cfa76ba0f2c2db66bd62004255ea0441c277f0010230f52e56f",
+        "after_sha256": "1729a5def910e5f2f6e9ec71a4dc7a72033890fb9c3d80e43d0e54d33a9b70dc",
+        "rationale": "Owner-delegated source-backed batch 01 acceptance: assisted"
+      },
+      {
+        "control_id": "ALZ-159aac9f-863f-4f48-82cf-00c28fa97a0e",
+        "before_sha256": "88fc4acb2045dc51038535ed81d345592407e2063f193a87e8c5b33cff743be1",
+        "after_sha256": "1469ce1db973eef241509b2b9e44bd2b1b50745294f19c0d1697f27d862b1678",
+        "rationale": "Owner-delegated source-backed batch 01 acceptance: fully-automated-explicit-configuration"
+      },
+      {
+        "control_id": "ALZ-31e77d70-f001-455b-93aa-6d05eea10968",
+        "before_sha256": "63bb9641a9a77b9013698611eac7cd18c08a494a0365d0aedad15d3f2f55b405",
+        "after_sha256": "abe556a569bc875c313e1d1249e4b99939cb8f47b7ebd7faa65f74a1c1e67290",
+        "rationale": "Owner-delegated source-backed batch 01 acceptance: assisted"
       }
     ]
-  }
+  },
+  "first_wave_matrix_sha256": "f649b2293211c844d661ea93c6978fe2db948eff17237af01ca090809da8e1fb",
+  "batch_source_manifest_sha256": "27edf226fad2cc7d790e606066cadcc69ee615bf3ba72f351d2acea09fc5c4d9"
 }

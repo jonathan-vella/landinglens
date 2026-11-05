@@ -203,6 +203,10 @@ def main() -> None:
     (target / "control-sources.json").write_bytes(
         (ROOT / "references" / "2026-11-04-controls" / "manifest.json").read_bytes(),
     )
+    if not args.slice:
+        from build_batches import main as build_batches
+
+        build_batches()
 
 
 if __name__ == "__main__":

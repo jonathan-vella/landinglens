@@ -4,7 +4,14 @@ from pathlib import Path
 from typing import Any
 
 from .contracts import canonical_id, digest, document, now, read_document, validate
-from .sources import PROVIDER_VERSION, TF_TYPES, file_hash, resource_scope, tf_properties
+from .sources import (
+    PROVIDER_VERSION,
+    TF_TYPES,
+    file_hash,
+    resource_scope,
+    tf_blob_service,
+    tf_properties,
+)
 from .terraform import InputError
 
 
@@ -109,6 +116,10 @@ def plan_source(
                     "properties": normalized if verified else {},
                 }
             )
+            if kind == "azurerm_storage_account":
+                records.append(tf_blob_service(records[-1], values))
+            if len(records) > 256:
+                raise InputError("Plan resource limit includes default blob-service children")
         for child in children:
             if not isinstance(child, dict):
                 raise InputError("Invalid plan child module")

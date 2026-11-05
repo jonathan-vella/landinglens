@@ -5,6 +5,25 @@ This backlog tracks the complete [implementation plan](plan.md) and
 issue status is the source of truth. Dependencies describe implementation
 order, not additional authorization to access Azure or publish a package.
 
+## Active: fixed 251-recommendation expansion
+
+The [active plan](plan.md#recommendation-expansion-active) and
+[fixed ledger](../../references/recommendation-batches/ledger.json) govern this
+owner-authorized increment. Baseline `2026-11-04.2` remains 4 automated /
+209 assisted / 42 manual; the target set never changes with later promotions.
+
+| Cohort | Scope | Dependencies | Acceptance/delivery |
+|---|---|---|---|
+| 01 / [#46](https://github.com/jonathan-vella/landinglens/issues/46) | G02.01-.04, G02.07-.08, G04.02-.03; fixed GUIDs in ledger | Delivered catalogs/contracts/local reviews; no new live access required | Source matrix, two predicates and six specific workflows verified locally and from installed wheel; CI/merge acceptance pending |
+| 02 onward | Remaining 243 GUIDs in 5-10-item cohorts | Explicit per-batch source/evidence prerequisites, recorded before work | Pending; no per-GUID completion or source review inferred from partitioning |
+
+Working successor: 6 automated / 206 assisted / 43 manual, all 255 visible.
+G02.02 is explicitly manual; unsupported Terraform vault soft-delete evidence
+remains unknown. Create ready batch issues as implementation proceeds, not 251
+bookkeeping issues. Continue after each merge; retain blockers and demonstrated
+versus undemonstrated runtime labels. Prior completion statements below refer
+only to their earlier increments.
+
 ## LL-26: automated local review session
 
 [#44](https://github.com/jonathan-vella/landinglens/issues/44) tracks the
@@ -128,7 +147,7 @@ and advisory/non-blocking behavior remain intact.
 LL-25 adds the installed licensed-corpus/review/replay/retirement workflow.
 The final local exact-wheel run passed 144 of 145 tests, with one Windows
 symlink-privilege skip; real existing Bicep, static/type/dependency checks passed.
-The current matrix has four automated predicates and all 255 entries. Six
+That increment's matrix has four automated predicates and all 255 entries. Six
 corpus controllers remain symbolic; no complete AVM/ALZ compatibility or
 live-control verification follows from these results. The reconciliation passed
 all eight actual checks and merged; #28 is closed. #40 remains separately tracked:

@@ -6,6 +6,26 @@ contracts. Each document requires an explicit supported version (`"1.0"` or
 Unsupported versions fail rather than being interpreted as current data.
 The same contracts are used by adapters, evaluation, comparison and rendering.
 
+Batch successor `2026-11-05.1` adds the narrowly typed 1.1 operation
+`vault-deletion-protection`: only `Microsoft.KeyVault/vaults`,
+`enableSoftDelete`, expected `true`, with the fixed second boolean
+`enablePurgeProtection`. Both facts must be explicit booleans. Result `fact`
+is the conjunction; `component_facts` retains both booleans for exact
+configuration comparison and replay witnesses. This is not a general expression
+engine. Existing boolean/firewall enum meanings are unchanged.
+
+Optional `review_resource_types` selects 1-10 explicit types for bounded
+inventory preparation, not applicability or outcome evaluation. It participates
+in the control content hash only when present, preserving historical hashes.
+Templates/editor show up to 100 matching identities/types/states, original
+collection time, inventory completeness, explicit truncation and whether
+normalized resource evidence is available. Optional content-bound
+`review_fact_paths` selects only the reviewed RBAC, network-access/default-action
+and minimum-TLS scalar vocabulary. These typed local facts are informational
+subchecks, never a least-privilege, reachable private path or effective-policy
+pass. Arbitrary raw properties and approvals are never copied. All original
+review bindings/expiry apply.
+
 | Kind | Required content and invariants |
 |---|---|
 | `catalog` | Version, canonical design areas, GUID-based local IDs, recommendation, related areas, applicability, method, automation disposition, evidence requirements, lifecycle and reviewed references. Tenant policy and organization extensions are separate mappings, not replacements for the recommendation baseline. |

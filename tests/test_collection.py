@@ -41,6 +41,12 @@ class CollectionTests(unittest.TestCase):
         )
 
     def transport(self, method, url):
+        if "/blobservices/default?" in url:
+            return Response(
+                200,
+                {"id": RESOURCE + "/blobServices/default", "properties": {}},
+                {},
+            )
         if "/descendants?" in url:
             return response(
                 [

@@ -34,13 +34,12 @@ def label(value: Any) -> str:
 def known_catalog(catalog: dict[str, Any]) -> dict[str, Any]:
     validate(catalog, "catalog")
     current = load_catalog()
-    historical = json.loads(
-        files("alz_assessor")
-        .joinpath("data")
-        .joinpath("catalog-2026-11-04.1.json")
-        .read_text("utf-8"),
-    )
-    if not any(digest(catalog) == digest(item) for item in (current, historical)):
+    historical = [
+        json.loads(item.read_text("utf-8"))
+        for item in files("alz_assessor").joinpath("data").iterdir()
+        if item.name.startswith("catalog-") and item.name.endswith(".json")
+    ]
+    if not any(digest(catalog) == digest(item) for item in [current, *historical]):
         raise InputError("Historical catalog is unavailable or differs from a packaged artifact")
     return catalog
 
@@ -54,14 +53,21 @@ def semantic(report: dict[str, Any]) -> str:
                     **{key: row.get(key) for key in ("control_id", "logical_id", "arm_id")},
                     **{
                         mode: {
-                            key: row[mode].get(key)
-                            for key in (
-                                "outcome",
-                                "fact",
-                                "freshness",
-                                "exception_disposition",
-                                "disposition_validity",
-                            )
+                            **{
+                                key: row[mode].get(key)
+                                for key in (
+                                    "outcome",
+                                    "fact",
+                                    "freshness",
+                                    "exception_disposition",
+                                    "disposition_validity",
+                                )
+                            },
+                            **(
+                                {"component_facts": row[mode]["component_facts"]}
+                                if "component_facts" in row[mode]
+                                else {}
+                            ),
                         }
                         if row.get(mode)
                         else None
@@ -101,6 +107,28 @@ def sanitize_evidence(bundle: dict[str, Any]) -> dict[str, Any]:
                 else "",
                 "source_location": "artifact://" + digest(resource["source_location"]),
                 "properties": {
+                    "enableSoftDelete": boolean(property_at(values, "enableSoftDelete")),
+                    "enablePurgeProtection": boolean(property_at(values, "enablePurgeProtection")),
+                    "enableRbacAuthorization": boolean(
+                        property_at(values, "enableRbacAuthorization")
+                    ),
+                    "publicNetworkAccess": enumeration(
+                        property_at(values, "publicNetworkAccess"),
+                        ("Enabled", "Disabled"),
+                    ),
+                    "networkAcls": {
+                        "defaultAction": enumeration(
+                            property_at(values, "networkAcls.defaultAction"), ("Allow", "Deny")
+                        )
+                    },
+                    "minimumTlsVersion": enumeration(
+                        property_at(values, "minimumTlsVersion"), ("TLS1_0", "TLS1_1", "TLS1_2")
+                    ),
+                    "containerDeleteRetentionPolicy": {
+                        "enabled": boolean(
+                            property_at(values, "containerDeleteRetentionPolicy.enabled")
+                        )
+                    },
                     "supportsHttpsTrafficOnly": boolean(
                         property_at(values, "supportsHttpsTrafficOnly")
                     ),

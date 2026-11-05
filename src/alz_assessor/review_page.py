@@ -39,6 +39,15 @@ function showRecord() {
   const row = state.controls.find(c => c.control_id === control.value);
   document.getElementById("technical").textContent =
     row ? `Original technical outcomes: ${row.results.join(", ")}` : "No unresolved controls.";
+  const preparation = document.getElementById("preparation");
+  preparation.replaceChildren();
+  for (const text of (row ? [...row.evidence_requirements, row.limitations] : [])) {
+    const item = document.createElement("li");
+    item.textContent = text;
+    preparation.appendChild(item);
+  }
+  document.getElementById("available-evidence").textContent =
+    row ? JSON.stringify(row.available_evidence, null, 2) : "";
   options(decision, (kind.value === "exceptions"
     ? ["accepted", "rejected", "pending"] : outcomes).map(v => [v, v]), true);
   const record = currentRecord();
@@ -173,6 +182,10 @@ and saved reports remain available without JavaScript.</noscript>
 <form id="review" class="card">
 <label for="control">Finding (scope-wide review, not just one resource)</label>
 <select id="control" required></select><p id="technical"></p>
+<details open><summary>Evidence to prepare and decision boundaries</summary>
+<ul id="preparation"></ul></details>
+<details><summary>Already available scoped inventory (not a decision)</summary>
+<pre id="available-evidence"></pre></details>
 <label for="kind">Review kind</label><select id="kind" required></select>
 <label for="decision">Your decision</label><select id="decision" required></select>
 <p id="record-status"></p>

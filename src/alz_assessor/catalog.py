@@ -28,8 +28,19 @@ def load_catalog(path: str | None = None) -> dict[str, Any]:
                 root.joinpath("wave-control-sources.json").read_bytes()
             ).hexdigest() != data["wave_source_manifest_sha256"] or digest(
                 json.loads(root.joinpath("accepted-matrix.json").read_text("utf-8"))
-            ) != data.get("accepted_matrix_sha256"):
+            ) != (
+                data.get("first_wave_matrix_sha256")
+                if data.get("batch_source_manifest_sha256")
+                else data.get("accepted_matrix_sha256")
+            ):
                 raise InputError("Packaged first-wave source or accepted-matrix hash mismatch")
+        if data.get("batch_source_manifest_sha256"):
+            if hashlib.sha256(
+                root.joinpath("batch-control-sources.json").read_bytes()
+            ).hexdigest() != data["batch_source_manifest_sha256"] or digest(
+                json.loads(root.joinpath("batch-matrix.json").read_text("utf-8"))
+            ) != data.get("accepted_matrix_sha256"):
+                raise InputError("Packaged batch source or accepted-matrix hash mismatch")
     return validate(data, "catalog")
 
 

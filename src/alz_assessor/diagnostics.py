@@ -92,6 +92,9 @@ REASONS = {
     "denied": ("transport_unavailable", "resource_configuration_unavailable"),
     "expression": (
         "property_unresolved_or_wrong_type",
+        "blob_service_configuration_not_supplied",
+        "blob_service_identity_not_default",
+        "terraform_vault_creation_or_import_not_established",
         "property_not_supplied",
         "boolean_missing_unresolved_or_invalid",
         "enum_missing_unresolved_or_invalid",

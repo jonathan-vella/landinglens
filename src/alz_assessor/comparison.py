@@ -8,6 +8,22 @@ from .engine import coverage
 from .terraform import InputError
 
 
+def comparable_fact(body: dict[str, Any]) -> Any:
+    value = body.get("fact")
+    if "component_facts" in body:
+        parts = body["component_facts"]
+        if (
+            type(value) is bool
+            and isinstance(parts, dict)
+            and set(parts) == {"enableSoftDelete", "enablePurgeProtection"}
+            and all(type(part) is bool for part in parts.values())
+            and value == (parts["enableSoftDelete"] and parts["enablePurgeProtection"])
+        ):
+            return (parts["enableSoftDelete"], parts["enablePurgeProtection"])
+        return None
+    return value if type(value) is bool or value in ("Alert", "Deny", "Off") else None
+
+
 def compare(
     planned: dict[str, Any], observed: dict[str, Any], at: str | None = None
 ) -> dict[str, Any]:
@@ -83,24 +99,18 @@ def compare(
             result["observed"] = other["observed"]
             if not same_meaning(row, other):
                 result["comparison_reason"] = "incompatible_control_or_rule"
+            planned_fact = comparable_fact(row["planned"])
+            observed_fact = comparable_fact(other["observed"])
             if (
                 identity
                 and same_meaning(row, other)
                 and row["planned"]["outcome"] in {"pass", "fail"}
                 and other["observed"]["outcome"] in {"pass", "fail"}
-                and type(row["planned"].get("fact")) is type(other["observed"].get("fact"))
-                and (
-                    type(row["planned"].get("fact")) is bool
-                    or (
-                        isinstance(row["planned"].get("fact"), str)
-                        and row["planned"]["fact"] in {"Alert", "Deny", "Off"}
-                        and other["observed"]["fact"] in {"Alert", "Deny", "Off"}
-                    )
-                )
+                and planned_fact is not None
+                and observed_fact is not None
+                and type(planned_fact) is type(observed_fact)
             ):
-                result["comparison"] = (
-                    "match" if row["planned"]["fact"] == other["observed"]["fact"] else "drift"
-                )
+                result["comparison"] = "match" if planned_fact == observed_fact else "drift"
                 result["comparison_reason"] = "canonical_identity_and_explicit_fact"
         elif identity:
             for bundle in observed["evidence"]:
