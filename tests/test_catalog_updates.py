@@ -145,7 +145,9 @@ class CatalogUpdateTests(unittest.TestCase):
                 return subprocess.CompletedProcess(args, 0, output, "")
 
             with patch.object(publisher, "command", side_effect=run):
-                result = publisher.publish(directory, "owner/repo", "123", workspace=root)
+                result = publisher.publish(
+                    directory, "owner/repo", "123", workspace=root, sleep=lambda _: None
+                )
             self.assertTrue(result["published"])
             self.assertFalse(result["auto_merge_requested"])
             self.assertIn("not all green", result["blocker"])
@@ -247,6 +249,11 @@ class CatalogUpdateTests(unittest.TestCase):
             self.assertEqual(json.loads(catalog.read_text()), self.catalog)
             self.assertEqual(
                 json.loads(index.read_text())["catalogs"][0]["sha256"], digest(self.catalog)
+            )
+            notice = Path(args[6])
+            self.assertEqual(notice.name, "reference.LICENSE")
+            self.assertEqual(
+                notice.read_bytes(), (ROOT / "src/alz_assessor/data/reference.LICENSE").read_bytes()
             )
             created.append(args)
             return subprocess.CompletedProcess(

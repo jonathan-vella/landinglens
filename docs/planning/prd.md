@@ -59,8 +59,18 @@ No external requests or horizontal overflow occurred; both listeners were stoppe
 FR-32 is now merged in #81 with 284 local/exact installed tests, one Windows
 privilege skip, eight platform checks and four exercised compiler artifacts.
 FR-35 documentation is reorganised locally into a quickstart, detailed usage and
-one evidence-limits page, with history retained in the plan. Link/delivery checks
-are pending.
+one evidence-limits page, with history retained in the plan, and merged in #82.
+The Windows short-path alias diagnostic found by CI was fixed and all supported
+checks reran green without weakening tests. FR-36's criterion reconciliation and
+integrated acceptance tests are implemented; final gates are pending.
+
+Independent efficiency implementation is delivered, with source-update operational
+PR/auto-merge acceptance still blocked in #78. Catalog dispositions remain
+7/205/43. Evidence-specific authored integration tiers are 7 Verified / 8 Signal /
+197 Needs decision / 43 manual, summing to 255; these are not live estate counts.
+The [delivery reconciliation](plan.md#assessor-efficiency-delivery-reconciliation-2026-11-05)
+records all criteria, counts, limits and minimum owner action. Tracking #53 remains
+open while the operational blocker is open.
 
 ### Requirements and acceptance
 

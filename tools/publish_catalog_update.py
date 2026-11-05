@@ -3,6 +3,8 @@
 import argparse
 import json
 import subprocess
+import time
+from collections.abc import Callable
 from pathlib import Path
 
 from alz_assessor.contracts import read_document
@@ -13,7 +15,12 @@ def command(*args: str) -> subprocess.CompletedProcess[str]:
 
 
 def publish(
-    directory: Path, repository: str, run_id: str, *, workspace: Path | None = None
+    directory: Path,
+    repository: str,
+    run_id: str,
+    *,
+    workspace: Path | None = None,
+    sleep: Callable[[float], None] = time.sleep,
 ) -> dict:
     if not run_id.isdigit():
         raise ValueError("Run ID must be numeric")
@@ -103,18 +110,45 @@ def publish(
                     "Repository auto-merge is disabled or unreadable; safe PR left open."
                 )
             else:
-                checks = command(
-                    "gh", "pr", "checks", "--repo", repository, status["pr"], "--json", "name,state"
-                )
-                actual = json.loads(checks.stdout) if checks.returncode == 0 else []
                 required = {
                     f"checks ({os}, {version})"
                     for os in ("ubuntu-latest", "windows-latest")
                     for version in ("3.12", "3.13")
                 }
-                if not required.issubset({item.get("name") for item in actual}) or any(
-                    item.get("state") != "SUCCESS" for item in actual
-                ):
+                ready = False
+                for attempt in range(30):
+                    checks = command(
+                        "gh",
+                        "pr",
+                        "checks",
+                        "--repo",
+                        repository,
+                        status["pr"],
+                        "--json",
+                        "name,state",
+                    )
+                    actual = (
+                        json.loads(checks.stdout)
+                        if checks.returncode in (0, 8) and checks.stdout.strip()
+                        else []
+                    )
+                    ready = required.issubset({item.get("name") for item in actual}) and all(
+                        item.get("state") == "SUCCESS" for item in actual
+                    )
+                    if ready or any(
+                        item.get("state")
+                        in {
+                            "FAILURE",
+                            "CANCELLED",
+                            "TIMED_OUT",
+                            "ACTION_REQUIRED",
+                        }
+                        for item in actual
+                    ):
+                        break
+                    if attempt < 29:
+                        sleep(20)
+                if not ready:
                     status["blocker"] = (
                         "Candidate platform checks are not all green. GITHUB_TOKEN-created PRs "
                         "do not trigger ordinary push/PR workflows; no auto-merge was requested."

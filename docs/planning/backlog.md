@@ -29,11 +29,11 @@ and operational blockers are recorded per row.
 | [LL-36 / #61](https://github.com/jonathan-vella/landinglens/issues/61) | Local triage workspace | LL-28, LL-29, LL-30, LL-31, LL-33, LL-34, LL-38 | FR-32 | Merged #81; issue closed |
 | [LL-37 / #65](https://github.com/jonathan-vella/landinglens/issues/65) | SARIF/PR summaries | LL-28, LL-29; execute after LL-35 | FR-33 | Merged #79; issue closed |
 | [LL-38 / #64](https://github.com/jonathan-vella/landinglens/issues/64) | Summary/tracker exports | LL-28, LL-29, LL-37 | FR-34 | Merged #80; issue closed |
-| [LL-39 / #67](https://github.com/jonathan-vella/landinglens/issues/67) | Documentation restructure | LL-32, LL-35, LL-36, LL-37, LL-38 | FR-35 | Local/exact installed/link/command checks pass; CI/merge pending |
-| [LL-40 / #66](https://github.com/jonathan-vella/landinglens/issues/66) | Reconcile delivery | LL-27-LL-39 merged or explicitly blocked | FR-36 | Pending; blockers do not satisfy criteria |
+| [LL-39 / #67](https://github.com/jonathan-vella/landinglens/issues/67) | Documentation restructure | LL-32, LL-35, LL-36, LL-37, LL-38 | FR-35 | Merged #82; issue closed |
+| [LL-40 / #66](https://github.com/jonathan-vella/landinglens/issues/66) | Reconcile delivery | LL-27-LL-39 merged or explicitly blocked | FR-36 | 288 local/exact installed tests and all static/link gates pass; CI/merge pending |
 
 Planning merged in #68 and LL-27 in #69. Current dependency-ready item:
-**LL-39 / #67**, then LL-40 reconciliation. LL-35 operational publication remains blocked in #78. Follow the
+**LL-40 / #66 reconciliation**. LL-35 operational publication remains blocked in #78. Follow the
 plan's explicit execution order; blocked GitHub publication does not prevent
 offline evidence/triage work. Do not change repository settings. Keep candidate
 artifacts/generated PR body when workflow PR creation or safe auto-merge is denied.
