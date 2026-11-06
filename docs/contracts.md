@@ -201,6 +201,12 @@ outcome, validates current scope/content/time through existing 1.1 reviews, and
 produces only a standard `manual` document. No inferred answer-to-outcome mapping,
 automated technical override, exception change or implicit reviewer exists.
 
+Bank `2026-11-06.5` adds the ten-GUID inbound/outbound/hybrid interview and
+includes the canonical scope in the requirements hash for every interview.
+Changing a prepared scope therefore invalidates the response rather than
+rebinding its decisions silently. Earlier bank versions require fresh preparation.
+The access interview and distinct duplicate display IDs remain available.
+
 All selected records validate before CLI output is opened exclusively; invalid/
 expired/duplicate/conflicting bindings cannot leave a partial output or overwrite
 existing records. Answer/field lengths and group sizes are bounded. The shared
