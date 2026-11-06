@@ -89,9 +89,11 @@ automation/reporting or agreement suitability. Support and mailbox decisions sta
 manual; all eight independent outcomes stay blank. No new live endpoint,
 directory/billing scope, permission or private payload retention. Exact `.15`,
 every non-own control, all146 preceding rows/seventeen receipts and original four
-full controls remain frozen. Counts stay12/200/43; delivery remains146/105 until
-checked implementation and guarded own-eight receipt publication. Source
-acceptance alone does not close #127. The historical independent preparation and
+full controls remain frozen. Counts stay12/200/43. Actual #134 passed exact-head
+eight-job/CodeQL/security/review and four fifteen-case compiler gates and merged
+normally. Guarded `deliveries.02` binds all eight GUIDs to actual head/merge/runs/
+583-test final wheel, recording154 delivered/97 pending on checked publication.
+Receipt publication and final-main CI still gate #127 closure. The historical independent preparation and
 invalidated-run/final post-install proofs remain recorded separately.
 
 Cohort23/#124 integrates seven immutable logging/support/service workflows in
