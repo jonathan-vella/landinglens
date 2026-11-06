@@ -1,0 +1,146 @@
+{
+  "batch": "29",
+  "review_state": "owner-delegated-source-backed-matrix",
+  "catalog_version": "2026-11-06.18",
+  "accepted_at": "2026-11-06T20:15:16.584+00:00",
+  "activation": "Explicit sole coordinator slot after actual02 implementation134/receipt135 and27 implementation137/receipt138, both completed issue closures, checked final main and independently verified162 own-GUID bindings. Accepted preparation is not delivery; checked implementation and guarded seven-own-GUID receipt publication still gate133closure.",
+  "integration_base_commit": "69cb9ea2ac209ed77bee34546a5b4723813d162a",
+  "preparation_commit": "ad7242a905f678555b8b245e57ee58676b21eb89",
+  "prerequisites": ["02", "27", "30"],
+  "preserved_catalog_bytes": {
+    "2026-11-06.17": "6a51028ca8e941add48618916168c093a77f1c03228d73ff0ae9b71397893194"
+  },
+  "preserved_crosswalk_bytes": {
+    "2026-11-06.17": "a96eeed0b98c404695b7ac53be552c320c84ce1dd7d9cabe426eb5187f5d6b4a"
+  },
+  "preserved_delivery_batches": ["01", "02", "04", "05", "08", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "22", "23", "27", "30"],
+  "preserved_delivery_receipts_sha256": "a5b356000e7da409249395b9ae9b6d9ef225e19199b96581f4d5afc7d8a4ab46",
+  "preserved_merged_recommendations_sha256": "998e69d081ecbb8a63c6689e1f98646b647ae10180edc1336354206edce645a1",
+  "issue": "https://github.com/jonathan-vella/landinglens/issues/133",
+  "preparation_base_commit": "35156dd37a43e6dd79c0c5d5ad8ab2b8f20bc1a5",
+  "acceptance_evidence": "Seven inherently manual platform-team, delivery and vending workflows share the existing evaluator, registered blank interview, reviews, tiers, reports, trackers, local sessions and packaged original-time replay. Source-specific requirements require independent attributable decisions, not classification-only delivery or operating assurance. Full local/installed and remote implementation/receipt gates remain explicit.",
+  "supported_modes": "Offline authored/saved/injected scoped human preparation only. Existing identity/governance/IaC/preflight/Signal context retains its limited configuration meaning. No new projection, synthetic resource, transport, collector scope, scanner, executable query, dependency, module or compiler fixture.",
+  "source_acquisition_notes": [
+    "Initial all-or-nothing capture refused an assumed Creative Commons marker on the Learn terms page and wrote no manifest. Inspection confirmed documentation may have separate explicit licenses; the corrected capture records the actual terms without asserting a universal content license."
+  ],
+  "activation_gates": [
+    "Explicit coordinator slot after actual cohort02 and cohort27 implementation and checked receipt delivery, subject to genuine gates",
+    "Reconcile then-current main and freeze its exact catalog/crosswalk bytes, original four controls, fixed251 membership and all earlier own-GUID receipts",
+    "Derive a unique reviewed successor with existing builders and activate this matrix and the existing-engine interview bank only in that slot",
+    "Own exact installed-wheel original-time replay, full static/platform/review/CodeQL and four actual exercised compiler proofs before normal exact-head merge",
+    "Guarded actual seven-own-GUID delivery receipts, checked counts/priority, final main CI and satisfied issue closure"
+  ],
+  "interview": {
+    "id": "platform-team-delivery-vending",
+    "question": "Reconcile actual cross-functional IT/security/compliance/business representation and ownership across platform design, build, maintenance and operations, then separately evidence assigned platform functions and interfaces rather than job titles or directory membership. Establish workload end-to-end application ownership, real self-service and escalation boundaries, policy guardrails and effective least-privileged RBAC including inherited/conditional permissions; adequate built-in roles are valid, custom roles need a specific justified gap and testing. Do not require centralized workload pipelines. Trace actual scoped IaC changes through CI triggers, builds, tests, previews, governed production-like deployment, release history, rollback and ongoing drift/failure response. Separately bind IaC AND application unit tests to agreed acceptance criteria/definition of done, relevant source revisions, failure handling and uncovered populations; syntax/compilation and test counts are not adequacy or a coverage threshold. Substantiate non-hardcoded secret handling via redacted references to approved secret variables/references, restricted deployment access, identity/network prerequisites, version/rotation/revocation and safe output handling. A vault, secure parameter, saved scan or no detected data proves no complete hygiene; never scan or fetch secrets. For vending, distinguish approved CCoE business logic and trackable validated intake from platform request/deployment automation, agreement/API-specific EA/MCA/MPA creation authority, configuration of existing subscriptions, offer/DevTest eligibility, IPAM/nonoverlap/networking, management-group policy placement, quotas/failure handling, least-privileged identities/RBAC, budgets/tags, reporting and actual workload handoff/operations. Budgets are not hard caps; DevTest is unavailable for MPA; the example Gitflow is not universal; Terraform per-subscription state and managed identity/OIDC are design considerations, not new execution authority. No alias, pipeline or configuration proves fulfilled vending governance. Use attributable redacted references only, not employee/team directory records, private code/pipeline content, secret literals/URIs, credentials or sensitive billing/request payloads. Supply seven separate outcomes, original-time scope/content binding, attribution and validity; exceptions remain independent and a shared narrative or humanConfirmed/Signal never manufactures Verified.",
+    "controls": [
+      "ALZ-e85f4226-bf06-4e35-8a8b-7aee4d2d633a",
+      "ALZ-634146bf-7085-4419-a7b5-f96d2726f6da",
+      "ALZ-a9e65070-c59e-4112-8bf6-c11364d4a2a5",
+      "ALZ-165eb5e9-b434-448a-9e24-178632186212",
+      "ALZ-0cadb8c7-8fa5-4fbf-8f39-d1fadb3b0460",
+      "ALZ-108d5099-a11d-4445-bd8b-e12a5e95412e",
+      "ALZ-a52e0c98-76b9-4a09-a1c9-6b2babf22ac4"
+    ]
+  },
+  "recommendations": [
+    {
+      "guid": "e85f4226-bf06-4e35-8a8b-7aee4d2d633a",
+      "upstream_id": "H01.01",
+      "classification": "manual",
+      "implemented_subclaim": "Prepare actual cross-functional platform lifecycle ownership review without team-directory ingestion.",
+      "sources": ["platform-automation-linked", "team-topology-linked"],
+      "evidence_requirements": [
+        "Bind the assessed platform/landing-zone population and original evidence time to redacted, attributable evidence of cross-functional IT, security, compliance and business representation and collaborative decisions. Review the agreed responsibilities without retaining employee names, team rosters or directory records.",
+        "Trace actual design, build, management, maintenance and evolution/operations responsibilities and handoffs, including gaps and time-bound enabling-team support where applicable. A named team, local repository, role assignment or organizational chart alone does not establish lifecycle ownership or execution.",
+        "Reviewer decision: does actual scoped operating evidence demonstrate a cross-functional platform team builds, manages and maintains this landing-zone architecture? Supply H01.01 independently from documented platform functions; outcome, reviewer, rationale, evidence and validity remain blank until explicitly supplied."
+      ],
+      "limitations": "No employee/team/directory discovery, new Graph resource or invented business responsibility. Current topology guidance informs attributable review, not a universal staffing template or machine predicate. Unknown, partial, denied, ambiguous, malformed, unsupported, over-bound or stale evidence is not a pass.",
+      "flags": ["manual-cross-functional-platform-ownership", "team-name-not-lifecycle-operation"]
+    },
+    {
+      "guid": "634146bf-7085-4419-a7b5-f96d2726f6da",
+      "upstream_id": "H01.02",
+      "classification": "manual",
+      "implemented_subclaim": "Prepare assigned platform functions, interfaces and operational execution independently of team composition.",
+      "sources": ["team-topology-linked"],
+      "evidence_requirements": [
+        "Bind agreed platform functions and actual responsibility boundaries to scope/time: governance/policy/security, subscription provisioning/delegation/platform-as-code, identity/RBAC, shared networking, central operations/automation identities, central key management, observability and cost. Reconcile applicability and omissions explicitly rather than inventing enterprise responsibilities.",
+        "Reference redacted evidence that function ownership, service interfaces, shared-service change/escalation paths and workload handoffs are understood and exercised. Distinguish workload-owned application resources, secrets, monitoring, costs and networking from central platform functions and temporary enabling support; a document alone does not prove actual operation.",
+        "Reviewer decision: are platform functions and platform/workload interfaces explicitly defined and supported by attributable scoped operating evidence? Decide H01.02 separately from H01.01 representation and H01.03 autonomy; leave all decision and attribution fields blank."
+      ],
+      "limitations": "No service-principal/Graph registration, key access, operations discovery or fabricated organization model. Published common functions are review prompts, not proof every enterprise assigns them identically. Configuration counts cannot establish ownership, service quality or completed responsibilities.",
+      "flags": ["manual-platform-functions-interfaces", "document-not-exercised-responsibility"]
+    },
+    {
+      "guid": "a9e65070-c59e-4112-8bf6-c11364d4a2a5",
+      "upstream_id": "H01.03",
+      "classification": "manual",
+      "implemented_subclaim": "Prepare actual workload autonomy and least-privileged effective RBAC boundary review with conditional custom roles.",
+      "sources": ["team-topology-linked", "rbac-best-practices", "rbac-custom-roles"],
+      "evidence_requirements": [
+        "Bind workload application-lifecycle responsibilities, self-service needs, platform contracts and actual routine-change/escalation experience to scope/time. Current guidance favors policy-driven guardrails and does not force centralized artifacts or provisioning pipelines; self-sufficiency is not absence of all platform collaboration.",
+        "Reference redacted effective access evidence for intended operations and boundaries, including assignment scope, inheritance, conditions, privileged/time-bound access and gaps. Prefer adequate built-in roles; justify and test custom roles only when built-ins do not meet specific needs, with least privilege and no broad wildcard inference. Role definitions or assignments alone do not prove usable or safely bounded autonomy.",
+        "Reviewer decision: do actual workload operation and effective permission evidence demonstrate the agreed autonomy without unapproved platform dependency or excess authority? Record H01.03 separately; frozen custom-role wording is not a universal custom-role mandate. Keep outcome, attribution, evidence and expiry unasserted."
+      ],
+      "limitations": "Existing saved identity/governance context is narrow support, never effective access or a full-process pass. No principal records, raw role actions, permission evaluation endpoint, role creation/assignment or tenant expansion. Unknown inherited/conditional access and partial populations remain explicit gaps.",
+      "flags": ["manual-workload-autonomy-rbac", "built-in-before-justified-custom", "assignments-not-effective-operation"]
+    },
+    {
+      "guid": "165eb5e9-b434-448a-9e24-178632186212",
+      "upstream_id": "H01.04",
+      "classification": "manual",
+      "implemented_subclaim": "Prepare actual IaC CI/CD operating practice and deployment-quality review, not pipeline presence detection.",
+      "sources": ["iac-linked", "lifecycle-linked", "platform-automation-linked"],
+      "evidence_requirements": [
+        "Bind the platform and workload IaC change/deployment population, selected tools, source/artifact revisions, CI triggers and accountable build/release responsibilities to explicit scope and original time. The linked implementation-options accelerator can bootstrap a delivery environment; installation or a workflow file does not establish adoption.",
+        "Reference redacted actual build/test outcomes, scoped service connections, change previews, governed production-like environment promotion, deployment traceability, rollback/recovery and failure/drift reconciliation. Distinguish planned configuration, syntax/compiler/preflight results and saved Signals from actual quality and deployment operation; no assumed approval policy or release threshold.",
+        "Reviewer decision: does attributable scoped evidence show CI/CD deploys maintained IaC and supports the agreed deployment/environment quality objectives? Decide H01.04 separately from H01.05 test discipline; keep every outcome and validity/attribution field blank until explicitly supplied."
+      ],
+      "limitations": "No private pipeline/code ingestion, DevOps synthetic resource, service connection read, user-estate workflow execution, what-if, deployment, Terraform init/plan/apply or restore. This assessor's CI and compiler prove only its own code checks, not assessed-team deployment quality.",
+      "flags": ["manual-iac-cicd-operation", "pipeline-not-deployment-quality"]
+    },
+    {
+      "guid": "0cadb8c7-8fa5-4fbf-8f39-d1fadb3b0460",
+      "upstream_id": "H01.05",
+      "classification": "manual",
+      "implemented_subclaim": "Prepare separate IaC and application unit-test discipline tied to actual builds and agreed acceptance criteria.",
+      "sources": ["lifecycle-linked", "landing-zone-tdd"],
+      "evidence_requirements": [
+        "Bind the complete scoped IaC AND application code/build populations to source revisions, original-time test runs, agreed acceptance criteria/definition of done, responsibilities and explicit uncovered areas. Review tests relevant to intended behavior; syntax/linter/toolkit checks are limited IaC validation, not application unit tests.",
+        "Reference redacted evidence that appropriate tests run as part of builds, failures block or receive explicitly governed disposition, changed behavior is checked and regressions/refactoring are reconciled. The TDD red/green process and controlled environment retesting illustrate purpose; do not invent a coverage percentage, test-count threshold or mandatory tool.",
+        "Reviewer decision: does attributable build/test evidence establish unit-test discipline for both IaC and application code against agreed criteria? Decide H01.05 independently of pipeline deployment, and leave all outcomes/attribution/evidence/validity blank. This repository's passing tests prove nothing about the assessed team's adequacy."
+      ],
+      "limitations": "No code/test discovery, coverage collection, test/scanner execution on user estates or dummy compiler fixture. Existing sixteen no-restore compiler cases retain only their genuine supported-IaC meaning; no compilation claim about operating discipline or complete coverage.",
+      "flags": ["manual-iac-and-application-unit-tests", "test-count-not-adequacy", "no-invented-coverage-threshold"]
+    },
+    {
+      "guid": "108d5099-a11d-4445-bd8b-e12a5e95412e",
+      "upstream_id": "H01.06",
+      "classification": "manual",
+      "implemented_subclaim": "Prepare secret-reference and non-hardcoding operating review without scanning, fetching or retaining secrets.",
+      "sources": ["lifecycle-linked", "secret-pipeline", "secret-template-reference"],
+      "evidence_requirements": [
+        "Bind scoped IaC/application/build/release sensitive-value handling and coverage gaps to original-time redacted evidence references. Review credentials, certificates and keys through approved Key Vault references or protected variables rather than hard-coded values; do not supply secret literals, secret URIs/names, vault identifiers, credentials or private source/pipeline content.",
+        "Reference attributable reviewed handling of deployment/runtime secret access, narrow identity/service-connection authority, vault network/access prerequisites, version selection/rotation/revocation and outputs/logs/artifacts. ARM template parameter references and secure parameter types differ from VM certificate installation and do not prove actual retrieval, safe use or complete hygiene.",
+        "Reviewer decision: does scoped content and operating evidence establish approved references/protected secret handling instead of hard-coding, with independent exceptions and uncovered areas? Absence of detected data, one vault/reference, masking flag or saved scan is not proof; leave H01.06 and all attribution/expiry fields independently blank."
+      ],
+      "limitations": "No secret access, scan, repository search, URI/value retention, vault data-plane request, credential/configuration change or new collector. Existing sanitized facts and preflight cannot certify complete secret hygiene; missing, denied or stale evidence remains unknown/manual rather than a success-shaped fallback.",
+      "flags": ["manual-secret-reference-hygiene", "no-secret-scanner-or-retention", "absence-not-hygiene"]
+    },
+    {
+      "guid": "a52e0c98-76b9-4a09-a1c9-6b2babf22ac4",
+      "upstream_id": "H01.07",
+      "classification": "manual",
+      "implemented_subclaim": "Prepare the actual subscription-vending approval, provisioning, governance and handoff operating model.",
+      "sources": ["vending-linked", "vending-implementation", "vending-agreements", "vending-ea", "vending-mca", "vending-mpa"],
+      "evidence_requirements": [
+        "Bind the assessed request/product-line/subscription population and original time to redacted evidence of approved CCoE business rules, authorization, trackable validated intake and platform fulfillment responsibilities. Review required classification, ownership, budget, networking and production/DevTest needs without retaining request bodies, billing scopes/amounts, directory records or commercial payloads.",
+        "Reconcile actual agreement/API-specific EA Enrollment Account/Enterprise Administrator, MCA invoice-section/billing-profile/account and MPA CSP Admin Agent prerequisites separately from Azure resource RBAC. Commercial creation authority differs from configuring existing subscriptions; MPA DevTest is unavailable and support plans are not programmatically created. Review IPAM/nonoverlap, network ownership, management-group/policy placement, quotas/limits/error handling, least-privileged managed identity/OIDC, one-request/subscription and Terraform state isolation, budgets/tags and validated fulfillment/reporting. Budgets are not hard caps and the example Gitflow is not mandatory.",
+        "Reviewer decision: do actual approved-request, automation/configuration, result validation and handoff evidence establish governed vending, with workload budget updates/deployment/operations and continuing platform governance distinguished? A subscription alias, module, pipeline or assigned owner proves none; leave H01.07 outcome, approval attribution, scope/content/time and expiry blank with separate exceptions."
+      ],
+      "limitations": "No subscription/billing/account/directory lookup, request payload, new alias predicate, financial/support action, subscription creation/move, identity/permission change, user-estate pipeline execution or module acquisition. Published agreement prerequisites and the MPA CLI/REST documentation inconsistency prove no actual entitlement or accepted transport.",
+      "flags": ["manual-subscription-vending-operation", "alias-not-governed-fulfillment", "agreement-and-resource-authority-distinct"]
+    }
+  ]
+}

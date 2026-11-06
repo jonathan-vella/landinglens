@@ -213,7 +213,10 @@ class PolicyStrategyBatchTests(unittest.TestCase):
         self.assertEqual({row["control_id"] for row in own}, CONTROLS)
         self.assertTrue(all(row["observed"]["outcome"] == "manual" for row in own))
         self.assertTrue(all(row["observed"]["evidence_tier"] != "verified" for row in own))
-        crosswalk = load_crosswalk(catalog=self.catalog)
+        crosswalk = load_crosswalk(
+            catalog=self.catalog,
+            path=Path(str(files("alz_assessor").joinpath("data", "crosswalk-2026-11-06.17.json"))),
+        )
         mapped = [row for row in crosswalk["entries"] if row["guid"] in GUIDS]
         self.assertEqual(len(mapped), 8)
         self.assertTrue(all(row["targets"] == [] for row in mapped))

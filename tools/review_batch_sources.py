@@ -3721,7 +3721,9 @@ def main() -> None:
     args = parser.parse_args()
     if args.vwan_supplement and (args.batch != "16" or not args.preparation_only):
         raise ValueError("The vWAN supplement is cohort16 preparation only")
-    if (args.batch in {"02", "05", "12", "16", "20", "23", "27", "29", "30"}) != args.preparation_only:
+    if (
+        args.batch in {"02", "05", "12", "16", "20", "23", "27", "29", "30"}
+    ) != args.preparation_only:
         raise ValueError(
             "Cohorts 02/05/12/16/20/23/27/29/30 source capture require --preparation-only; "
             "no activation"

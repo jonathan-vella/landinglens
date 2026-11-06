@@ -51,7 +51,9 @@ class PlatformDeliveryPreparationTests(unittest.TestCase):
         self.addCleanup(temporary.cleanup)
         self.root = Path(temporary.name)
         self.matrix = json.loads((REFERENCE / "preparation-29.json").read_text("utf-8"))
-        self.accepted = load_catalog()
+        self.accepted = load_catalog(
+            str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.15.json"))
+        )
         self.catalog = copy.deepcopy(self.accepted)
         updates = {row["guid"]: row for row in self.matrix["recommendations"]}
         for control in self.catalog["controls"]:
@@ -585,14 +587,44 @@ class PlatformDeliveryPreparationTests(unittest.TestCase):
     def test_all_146_earlier_rows_seventeen_receipts_and_baseline_bytes_preserved(self):
         ledger = json.loads((REFERENCE / "ledger.json").read_text("utf-8"))
         self.assertEqual(len(ledger["recommendations"]), 251)
-        self.assertEqual(len(ledger["deliveries"]), 17)
-        self.assertEqual(sum(r["status"] == "merged" for r in ledger["recommendations"]), 146)
+        earlier = {
+            "01",
+            "04",
+            "05",
+            "08",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "22",
+            "23",
+            "30",
+        }
+        receipts = {key: value for key, value in ledger["deliveries"].items() if key in earlier}
+        rows = [r for r in ledger["recommendations"] if r["batch"] in earlier]
+        self.assertEqual((len(rows), len(receipts)), (146, 17))
+        self.assertTrue(all(r["status"] == "merged" for r in rows))
         self.assertEqual(
-            digest(ledger), "61534653ba26055507878dd924a187c3565d3ffa9909c682fac4e6fcbf760a2e"
+            digest(receipts), "bc563dfa7d514c2c1d159669eef95e7ebe16cad98cdb965529b51ab4c1ecbe92"
+        )
+        self.assertEqual(
+            digest(rows), "b56f0606a0f368fd0a59c941183849f16059f5fab582616a247085f9f8193171"
         )
         for name, binding in (
-            ("catalog.json", "88bf9dffc2c9ae0efbd27acd2dcfefa34b7c15225a640cf35609ca4ea466321f"),
-            ("crosswalk.json", "287a4495171c2d72db362c97e1528767af231ffd4046e17410d2bf1a328a3323"),
+            (
+                "catalog-2026-11-06.15.json",
+                "88bf9dffc2c9ae0efbd27acd2dcfefa34b7c15225a640cf35609ca4ea466321f",
+            ),
+            (
+                "crosswalk-2026-11-06.15.json",
+                "287a4495171c2d72db362c97e1528767af231ffd4046e17410d2bf1a328a3323",
+            ),
         ):
             self.assertEqual(
                 hashlib.sha256(
@@ -600,10 +632,6 @@ class PlatformDeliveryPreparationTests(unittest.TestCase):
                 ).hexdigest(),
                 binding,
             )
-        self.assertNotIn("29", ledger["deliveries"])
-        self.assertTrue(
-            all(r["status"] != "merged" for r in ledger["recommendations"] if r["batch"] == "29")
-        )
         controls = {c["control_id"]: c for c in self.catalog["controls"]}
         targets = json.loads((REFERENCE / "targets.json").read_text("utf-8"))
         for identity, binding in targets["preserved_automated"].items():

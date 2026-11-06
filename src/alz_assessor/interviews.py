@@ -6,8 +6,49 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.17"
+BANK_VERSION = "2026-11-06.18"
 BANK = {
+    "platform-team-delivery-vending": {
+        "question": "Reconcile actual cross-functional IT/security/compliance/business "
+        "representation "
+        "and ownership across platform design, build, maintenance and operations, then separately "
+        "evidence assigned platform functions and interfaces rather than job titles or directory "
+        "membership. Establish workload end-to-end application ownership, real self-service and "
+        "escalation boundaries, policy guardrails and effective least-privileged RBAC including "
+        "inherited/conditional permissions; adequate built-in roles are valid, custom roles need "
+        "a specific justified gap and testing. Do not require centralized workload pipelines. "
+        "Trace actual scoped IaC changes through CI triggers, builds, tests, previews, governed "
+        "production-like deployment, release history, rollback and ongoing drift/failure response. "
+        "Separately bind IaC AND application unit tests to agreed acceptance criteria/definition "
+        "of done, relevant source revisions, failure handling and uncovered populations; "
+        "syntax/compilation and test counts are not adequacy or a coverage threshold. Substantiate "
+        "non-hardcoded secret handling via redacted references to approved secret variables/"
+        "references, restricted deployment access, identity/network prerequisites, version/"
+        "rotation/revocation and safe output handling. A vault, secure parameter, saved scan or "
+        "no detected data proves no complete hygiene; never scan or fetch secrets. For vending, "
+        "distinguish approved CCoE business logic and trackable validated intake from platform "
+        "request/deployment automation, agreement/API-specific EA/MCA/MPA creation authority, "
+        "configuration of existing subscriptions, offer/DevTest eligibility, IPAM/nonoverlap/"
+        "networking, management-group policy placement, quotas/failure handling, least-privileged "
+        "identities/RBAC, budgets/tags, reporting and actual workload handoff/operations. Budgets "
+        "are not hard caps; DevTest is unavailable for MPA; the example Gitflow is not universal; "
+        "Terraform per-subscription state and managed identity/OIDC are design considerations, "
+        "not new execution authority. No alias, pipeline or configuration proves fulfilled vending "
+        "governance. Use attributable redacted references only, not employee/team directory "
+        "records, private code/pipeline content, secret literals/URIs, credentials or sensitive "
+        "billing/request payloads. Supply seven separate outcomes, original-time scope/content "
+        "binding, attribution and validity; exceptions remain independent and a shared narrative "
+        "or humanConfirmed/Signal never manufactures Verified.",
+        "controls": [
+            "ALZ-e85f4226-bf06-4e35-8a8b-7aee4d2d633a",
+            "ALZ-634146bf-7085-4419-a7b5-f96d2726f6da",
+            "ALZ-a9e65070-c59e-4112-8bf6-c11364d4a2a5",
+            "ALZ-165eb5e9-b434-448a-9e24-178632186212",
+            "ALZ-0cadb8c7-8fa5-4fbf-8f39-d1fadb3b0460",
+            "ALZ-108d5099-a11d-4445-bd8b-e12a5e95412e",
+            "ALZ-a52e0c98-76b9-4a09-a1c9-6b2babf22ac4",
+        ],
+    },
     "policy-strategy-placement-delegation": {
         "question": "Supply eight separate decisions at the "
         "original evidence time. E01.01: "

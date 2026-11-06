@@ -33,11 +33,33 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.17` retains all 255 entries: 12 automated, 200 assisted
-and 43 manual. Crosswalk `2026-11-06.17` rebinds the unchanged 51-control,
+Current successor `2026-11-06.18` retains all 255 entries: 12 automated, 200 assisted
+and 43 manual. Crosswalk `2026-11-06.18` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-Exact predecessor `.6.16` is frozen; source-matrix acceptance alone is not delivery.
+Exact predecessor `.6.17` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
+
+### Cohort 29: platform teams, delivery discipline and subscription vending
+
+The [seven-GUID matrix](../references/recommendation-batches/batch-29.json) and
+[sixteen unchanged public-source captures](../references/recommendation-batches/batch-29-sources.json)
+follow the explicit slot after actual02/27 implementation and receipt delivery.
+All seven stay manual and all registered interview outcomes start independently
+blank. Specific evidence requirements distinguish cross-functional platform
+ownership, assigned functions, actual workload autonomy/effective least privilege,
+IaC CI/CD operating quality, IaC AND application unit-test discipline, non-hardcoded
+secret handling and governed subscription vending through handoff.
+
+Adequate built-in roles are valid; custom roles require specific unmet needs and
+testing. No repository, pipeline, test count, compiler, Key Vault or subscription
+alias proves the assessed operating model. No data detected is not secret hygiene.
+Vending creation authority depends on agreement/API, not resource RBAC; CCoE rules,
+request authorization, placement, networking/IPAM, quotas/error handling,
+identities, budgets/offers and workload operations remain separately evidenced.
+Budgets are not hard caps and MPA has no DevTest offer. No directory/private-code/
+pipeline/secret/billing payload, live operation, collector scope or transport is
+added. All162 older rows/nineteen receipts, exact `.17` bytes and every non-own
+control remain unchanged; acceptance alone is not delivery.
 
 ### Cohort 27: Policy strategy, placement and scoped delegation
 

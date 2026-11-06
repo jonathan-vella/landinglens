@@ -56,6 +56,14 @@ unresolved predicate population. Needs decision has no usable machine evidence.
 Manual disposition is counted separately regardless of human review status.
 A completed human attestation changes an allowed outcome, not the evidence tier.
 
+The accepted cohort29 platform-team/delivery/vending interview keeps seven
+independently blank manual decisions. It uses the same canonical GUID selection,
+catalog/control/requirements content hashes, explicit scope, attribution,
+original-time validity and atomic compilation/session publication as other
+interviews. A shared narrative never selects outcomes; exceptions remain separate.
+Current `.18` and frozen `.17` replay retain distinct reviewed requirements.
+No team, pipeline, secret or billing resource contract is introduced.
+
 `evidence_tiers` contains deterministic per-control identities/tiers and four
 nonnegative integer counts. Each GUID is counted once across all resource
 instances and planned/observed modes. Mixed Verified/unresolved targets are

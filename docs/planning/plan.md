@@ -1,12 +1,79 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 29 accepted integration: 2026-11-06
+
+The coordinator explicitly granted [#133](https://github.com/jonathan-vella/landinglens/issues/133)
+the sole delivery slot after checked02 implementation134/receipt135 and27
+implementation137/receipt138, completed #127/#130 and verified actual main
+`69cb9ea2ac209ed77bee34546a5b4723813d162a`. Preserved preparation `ad7242a`
+reconciles this baseline in merge `02fb550`, retaining every predecessor helper,
+all162 own-GUID bindings/nineteen receipts and all sixteen real compiler cases.
+
+The [seven-GUID matrix](../../references/recommendation-batches/batch-29.json)
+and [sixteen unchanged public-source captures](../../references/recommendation-batches/batch-29-sources.json)
+precede unique builder-derived catalog/crosswalk `2026-11-06.18`.
+Exact `.17` catalog SHA256:
+`6a51028ca8e941add48618916168c093a77f1c03228d73ff0ae9b71397893194`;
+crosswalk SHA256:
+`a96eeed0b98c404695b7ac53be552c320c84ce1dd7d9cabe426eb5187f5d6b4a`.
+All255 GUIDs, fixed251/original four hashes/full predecessor objects, every
+non-own control, prior strict predicates, historical bytes and receipts remain
+unchanged. Dispositions remain12 automated/200 assisted/43 manual and the
+crosswalk retains51 mapped controls/53 partial or related associations.
+
+All seven inherently manual workflows now share the existing engine, actual
+registered interview, reviews/tiers, reports/trackers, local sessions and packaged
+original-time replay. Independently blank scope/content/time/expiry-bound
+decisions separately review cross-functional lifecycle ownership, platform
+functions, workload autonomy/effective least privilege, IaC CI/CD operating quality,
+IaC AND application unit-test discipline, non-hardcoded secret handling and
+governed vending. Adequate built-ins are valid; custom roles require unmet needs.
+The IaC redirect, obsolete team-topology fragment, purpose-driven TDD, secret
+reference/access limits and agreement/API-specific vending boundaries remain
+explicit. Budgets are not hard caps; MPA DevTest is unavailable and its REST/CLI
+documentation inconsistency grants no transport or entitlement.
+
+A local repository/pipeline, compiler/test count, Key Vault or subscription alias
+cannot prove these operating decisions; no coverage threshold, responsibility
+model, authority or human outcome is invented. No detected data is not hygiene.
+No directory records, private code/pipeline contents, secret literals/URIs,
+credentials or sensitive billing/request payloads are collected. Existing
+configuration/preflight/Signals are narrow supporting evidence, never automatic
+Verified process assurance. There is no new resource projection, endpoint,
+collector/account scope, transport, executable query, scanner, dependency, dummy
+compiler fixture, live action, restore or module/compiler acquisition.
+
+Historical preparation remains distinct below. Its builder/capture guards and
+candidate replay refusal remain executable. The actual accepted bank and `.18`
+package replay are separately exercised, including original-time `.17` review
+invalidation. Delivery remains162 delivered/89 pending until checked exact-head
+implementation, four actual downloaded exercised compiler proofs, guarded
+seven-own-GUID receipt publication and final-main CI satisfy the remaining gates.
+
+Pre-delivery checkout and own exact installed-wheel suites each ran635 tests:
+634 passed with only the original Windows symlink-privilege skip. All24 cohort29
+preparation/accepted cases, format/lint, 45-source-file typing, dependency
+consistency and444 local documentation links pass. All sixteen genuine compiler
+cases exercise without restore or compiler skips. Own offline wheel SHA256:
+`a5417cf6aff38c0a9ead56af3f0c2ed7d5253363b9d2f8691af4b1d6b3d6f5b3`.
+All132 packaged code/data bytes match checkout and the dedicated minimal
+outside-checkout interpreter's own site-packages. Only this session's existing
+three reviewed pinned runtime wheels were installed offline; no dependency was
+added or acquired. The first accepted-suite run caught a stale bank-count
+assertion and a historical `.17` catalog compared to the new crosswalk; the
+tests now retain exact seventeen-question membership and explicitly select
+frozen `.17` crosswalk bytes rather than weakening binding validation.
+Local results are distinct from still-required remote platform/compiler/review
+and guarded implementation/receipt delivery gates.
+
 ## Cohort 29 independent preparation: 2026-11-06
 
 [#133](https://github.com/jonathan-vella/landinglens/issues/133) prepares seven
 immutable H01.01-.07 team/function/autonomy/CI/CD/unit-test/secret/vending
 decisions in the [preparation matrix](../../references/recommendation-batches/preparation-29.json)
 and [sixteen public-source captures](../../references/recommendation-batches/preparation-29-sources.json).
-This is not accepted catalog activation or delivery. Cohorts02 and27 retain the
+At this historical preparation stage, this was not accepted catalog activation
+or delivery. Cohorts02 and27 retained the
 earlier serialized slots; no successor, accepted bank, catalog, crosswalk,
 disposition/count, ledger/history, receipt or issue closure changes here.
 
