@@ -441,6 +441,23 @@ instances, working encryption or population completeness. Replay revalidates the
 same typed vocabulary. Keys, secret identifiers, certificates, tunnel addresses
 and backend/next-hop IPs are withheld.
 
+Successor `2026-11-06.3` adds typed `identitySummary`, `principalType` and
+`roleDefinitionId` preparation without new predicates. Supported explicit storage/
+Direct-port identity blocks retain only reviewed type and a count of at most
+100 uniquely bound canonical user-assigned identities; absent, sensitive,
+invalid, conflicting or duplicated bindings remain unknown, not zero. Direct
+ports support UserAssigned only. Replay retains no identity/principal/tenant IDs.
+Role assignments retain only User/Group/ServicePrincipal/ForeignGroup/Device
+and a canonical role-definition identity; names, principal IDs, conditions and
+arbitrary permission text are not exported. A local configuration fact is not
+an effective-access, identity-adoption or directory-enforcement result.
+
+Question bank `2026-11-06.3` adds `access-operating-model` with eight canonical
+GUIDs, preserving the two B03.02 meanings. The existing interview contract still
+requires explicit separate decisions, attribution, finite validity, scope,
+catalog/control and requirement hashes. Old bank-version drafts fail explicitly
+rather than being reinterpreted. No answer alone establishes an outcome.
+
 | Kind | Required content and invariants |
 |---|---|
 | `catalog` | Version, canonical design areas, GUID-based local IDs, recommendation, related areas, applicability, method, automation disposition, evidence requirements, lifecycle and reviewed references. Tenant policy and organization extensions are separate mappings, not replacements for the recommendation baseline. |

@@ -1,0 +1,146 @@
+{
+  "batch": "04",
+  "review_state": "reviewed",
+  "sources": [
+    {
+      "id": "rbac-operating-model",
+      "url": "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview",
+      "sha256": "3a90a17f7cc504c70d40071060e4119daa8f2693d33cc4978c7b9d591ef070a2",
+      "retrieved_at": "2026-11-06T08:24:40.318330+00:00",
+      "revision": "6f149e7671a4b97eba87ae54dd3263f72f2998a1",
+      "finding": "RBAC combines principal, role and scope with inheritance, additive grants, deny assignments and conditions. An assignment alone cannot establish operating-model alignment or effective least privilege; no principal identity/membership is inferred.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "managed-identity-adoption",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview",
+      "sha256": "080900b5b589f905d5c705d19357ba8052ac209a5d3822e7f3be460fa527f5cf",
+      "retrieved_at": "2026-11-06T08:24:40.610040+00:00",
+      "revision": "ad2392b54e54af312a83c1095d1532609ac46a05",
+      "finding": "Managed identities are special service principals. Attached identity configuration does not prove application credential use or absence of other service principals. Retain only explicit type/count context, never principal/tenant IDs or credentials.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "administrative-account-provenance",
+      "url": "https://learn.microsoft.com/azure/active-directory/roles/security-planning",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/security-planning",
+      "sha256": "a66e2fcbd8cfbe21c40281a3c3701f05b59903d1d882bd40a0b723470b9d23f2",
+      "retrieved_at": "2026-11-06T08:24:41.436649+00:00",
+      "revision": "71c5eed3578535b0614b574325d4c0c8c8dd866a",
+      "finding": "The legacy Azure AD URL redirects to Entra administrator security planning. Directory userType or an email suffix cannot authenticate an account's original identity source. Emergency-access exceptions require explicit evidence and decisions.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "group-based-access",
+      "url": "https://learn.microsoft.com/en-us/entra/fundamentals/how-to-manage-groups",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/fundamentals/how-to-manage-groups",
+      "sha256": "46e6e49d4fc7b0d35c46640af39083a6a82c3d6bb7793d25f7153e277182c250",
+      "retrieved_at": "2026-11-06T08:24:41.712295+00:00",
+      "revision": "bd700e840f49d4b2e406530d6640e3880f0c3b50",
+      "finding": "Group assignment, actual membership/transitivity, role-assignable group constraints and hybrid source of authority are separate. No group creation, membership expansion or synchronization is performed; Group principal type is only configuration context.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "conditional-access-enforcement",
+      "url": "https://learn.microsoft.com/azure/active-directory/conditional-access/overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/overview",
+      "sha256": "47976eb5efd53986645d87896bfa40867e93a4d1e97c041d47e95ce011e0099a",
+      "retrieved_at": "2026-11-06T08:24:42.490118+00:00",
+      "revision": "4994b152d89ef50cce69dbfa326c1b90933e385d",
+      "finding": "The legacy URL redirects to Entra. Enabled/report-only, included/excluded users/apps, grant logic and actual policy evaluation must be reconciled; policy presence or a successful sign-in alone never proves every Azure user's enforcement.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "mfa-enforcement",
+      "url": "https://learn.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/identity/authentication/concept-mfa-howitworks",
+      "sha256": "3d47616f86ae81012266fa0f2d6ea46e13f947f67c3ad4284ca81d7e70841a59",
+      "retrieved_at": "2026-11-06T08:24:43.144201+00:00",
+      "revision": "4d5ae24bc0e7250519985840a65535e7073daac4",
+      "finding": "The legacy URL redirects to Entra. Method registration, MFA requirement/enforcement, authentication strength, prior claims and emergency exceptions differ. Never equate a registered method, tenant default or one challenge with population coverage.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "central-delegated-responsibilities",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/manage/centralize-operations",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/manage/ready-cloud-operations",
+      "sha256": "0d82c6a15cc4c31da6fee6735e30498e1937514a1f025b0cd71bd4620f0f2f0a",
+      "retrieved_at": "2026-11-06T08:24:44.176269+00:00",
+      "revision": "9561869a68e27ba33c798cde19d7e562031c505a",
+      "finding": "The legacy page redirects to ready-cloud-operations and separates central/platform and workload ownership. Role scope alone cannot attest an agreed operating model, delegation, escalation responsibility or acceptance by accountable owners.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "privilege-eligibility-and-activation",
+      "url": "https://learn.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/id-governance/privileged-identity-management/pim-configure",
+      "sha256": "b3473f28ae8389953a3429af3f87cf66ff9a6490b113b73c3a24d5dc6dace0fb",
+      "retrieved_at": "2026-11-06T08:24:44.683786+00:00",
+      "revision": "f126bf975530aabaa9d76bb4e57106545ae12126",
+      "finding": "The legacy URL redirects to Entra governance. Eligible and active, permanent and time-bound grants, approvals/MFA and Azure-versus-directory roles are distinct. PIM presence is not zero standing access; no grant/activation or directory read occurs.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "role-assignment-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2022-04-01/roleassignments",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2022-04-01/roleassignments",
+      "sha256": "0ca1cab1afa107c6a9a2bb15717eee1d3ffde64ea233d6c01086712f02ec1eb5",
+      "retrieved_at": "2026-11-06T08:24:45.152825+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Project explicit principal-type enum and canonical role-definition ID only. No principal ID, name, account type, role permissions or condition text is retained. This is local assignment context, not an effective access computation.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "storage-identity-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts",
+      "sha256": "ee03bfb6fb8871be55d779257c3a064f67ff33642d79b924607f12b1ce31a17e",
+      "retrieved_at": "2026-11-06T08:24:45.579509+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Storage identity configuration exposes explicit type and user-assigned bindings; count/type alone cannot establish the consuming workload's authentication. IDs and arbitrary root identity properties are not exported.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-role-assignment",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/role_assignment.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/role_assignment.html.markdown",
+      "sha256": "a21d48890385aabc039c7172070c4a2292ca928a89cdd6ec078d550f14f21ba9",
+      "retrieved_at": "2026-11-06T08:24:45.911946+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned 4.50.0 explicit principal type/definition ID/scope are configuration only. Role names are not silently resolved and principal IDs or conditions are withheld.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-storage-identity",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown",
+      "sha256": "2497fd8c88453f99b82d2697bda7b7faee30f889693a1840fafc5bc59305219a",
+      "retrieved_at": "2026-11-06T08:24:46.219008+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned storage identity block is optional; missing/symbolic/invalid values do not become defaults. Count validated supplied user-assigned references without retaining IDs.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-expressroute-port",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/express_route_port.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/express_route_port.html.markdown",
+      "sha256": "bd81aa36a90fb8c0371fbd2db42020105f49249704ae0a5f28e32ffad84eca52",
+      "retrieved_at": "2026-11-06T08:24:46.502037+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider supports two link blocks; no cipher default or key is retained.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "port-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/expressrouteports",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/expressrouteports",
+      "sha256": "7a03aff549b8b554b8c38cbb84604a5242ddc62b849b18380bd186dd102d36ef",
+      "retrieved_at": "2026-11-06T08:24:46.818378+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Project bounded per-link cipher/SCI enums only; keys, secret identifiers, router labels and physical port details are withheld. Configuration is not link encryption.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    }
+  ]
+}

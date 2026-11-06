@@ -391,6 +391,9 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                             "virtualNetworkGateway1.id",
                             "virtualNetworkGateway2.id",
                             "virtualNetworkPrefixes",
+                            "identitySummary",
+                            "principalType",
+                            "roleDefinitionId",
                         }
                         for path in paths
                     )

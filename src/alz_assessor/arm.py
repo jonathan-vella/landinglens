@@ -53,6 +53,7 @@ API_VERSIONS = {
     "microsoft.network/loadbalancers/backendaddresspools": {"2024-05-01"},
     "microsoft.network/expressrouteports": {"2024-05-01"},
     "microsoft.network/connections": {"2024-05-01"},
+    "microsoft.authorization/roleassignments": {"2022-04-01"},
 }
 
 
@@ -63,6 +64,21 @@ def unresolved(value: Any) -> bool:
 
 
 def properties(
+    kind: str, values: Any, *, root: Any = None, observed: bool = False
+) -> dict[str, Any]:
+    from .identity_evidence import IDENTITY_KINDS, ROLE_KIND, identity_summary, role_properties
+
+    if isinstance(values, dict) and kind.lower() == ROLE_KIND:
+        return role_properties(values, terraform=False)
+    result = _properties(kind, values, root=root, observed=observed)
+    if kind.lower() in IDENTITY_KINDS and isinstance(root, dict) and "identity" in root:
+        result["identitySummary"] = identity_summary(
+            root["identity"], terraform=False, resource_type=kind
+        )
+    return result
+
+
+def _properties(
     kind: str, values: Any, *, root: Any = None, observed: bool = False
 ) -> dict[str, Any]:
     if not isinstance(values, dict):
@@ -441,6 +457,11 @@ def arm_source(
                             root={
                                 "zones": context.value(entry.get("zones")),
                                 "sku": context.value(entry.get("sku")),
+                                **(
+                                    {"identity": context.value(entry["identity"])}
+                                    if "identity" in entry
+                                    else {}
+                                ),
                             },
                         )
                         if state == "known"

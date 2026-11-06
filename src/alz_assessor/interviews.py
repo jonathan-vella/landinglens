@@ -6,8 +6,27 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-05.1"
+BANK_VERSION = "2026-11-06.3"
 BANK = {
+    "access-operating-model": {
+        "question": "Describe the approved RBAC scope/operating model and group source of "
+        "authority; actual managed-identity use; administrator work/school account provenance; "
+        "Conditional Access and MFA coverage, exclusions and evaluation evidence; and PIM "
+        "eligible/active/permanent grants, activation limits and accepted responsibilities. "
+        "Use redacted evidence references, not principal names, user records or credentials. "
+        "Decide each canonical GUID separately, including the two distinct B03.02 entries. "
+        "Configuration, one sign-in or an interview answer alone establishes no enforcement.",
+        "controls": [
+            "ALZ-348ef254-c27d-442e-abba-c7571559ab91",
+            "ALZ-4348bf81-7573-4512-8f46-9061cc198fea",
+            "ALZ-12e7f983-f630-4472-8dd6-9c5b5c2622f5",
+            "ALZ-4b69bad3-3aad-45e8-a68e-1d76667313b4",
+            "ALZ-53e8908a-e28c-484c-93b6-b7808b9fe5c4",
+            "ALZ-1049d403-a923-4c34-94d0-0018ac6a9e01",
+            "ALZ-e6a83de5-de32-4c19-a248-1607d5d1e4e6",
+            "ALZ-14658d35-58fd-4772-99b8-21112df27ee4",
+        ],
+    },
     "vault-operating-model": {
         "question": "Describe how applications use, partition, access, privately reach and audit "
         "Key Vault. Give redacted evidence references and record a separate decision for each "

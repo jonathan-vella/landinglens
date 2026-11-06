@@ -156,6 +156,26 @@ backend-health, circuit/router-end, reciprocal-topology or IPAM expansion occurs
 The [matrix](../references/recommendation-batches/batch-11.json) distinguishes
 local configuration, partial subchecks, manual requirements and runtime evidence.
 
+### Cohort-04 access and identity context
+
+Role assignments use reviewed **2022-04-01** management-plane detail schema
+and `Microsoft.Authorization/roleAssignments/read` on already supplied/inventoried
+resources only. No role, principal, directory, membership, inherited grant or
+condition expansion occurs. This adds no live permission or read authorization.
+Saved/injected transport tests exercise these projections and denial behavior.
+
+Supported existing storage **2023-05-01** and Direct-port **2024-05-01** detail
+projections additionally minimize explicit root identity blocks to type/count.
+Principal/tenant IDs, user-assigned identity IDs, credentials and arbitrary
+identity properties are withheld. These facts do not show application adoption
+or absence of separately configured credentials.
+
+The eight source-specific interviews require explicit accountable decisions;
+there is no Entra/Graph/sign-in/audit-log read, policy/MFA/PIM activation,
+authentication or permission change. Legacy source redirects and the precise
+unsupported enforcement claims are retained in the
+[matrix](../references/recommendation-batches/batch-04.json).
+
 The accepted first wave adds only explicit firewall-policy `sku.tier`,
 `threatIntelMode` and `intrusionDetection.mode` to the existing approved detail
 projection. It does not collect bypass lists, secrets or arbitrary properties.

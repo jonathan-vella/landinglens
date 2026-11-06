@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "kind": "catalog",
-  "catalog_version": "2026-11-06.2",
+  "catalog_version": "2026-11-06.3",
   "design_areas": [
     "Azure billing and Active Directory tenant",
     "Identity and access management",
@@ -706,14 +706,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Principal-type/role-definition configuration is not membership, evaluated permissions, inheritance or approved organizational responsibility. No directory/principal/role-definition expansion or permission change occurs.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Map complete direct/inherited management-group/subscription/resource grants, deny assignments, conditions and data actions to the approved operating model; supplied assignment subsets are not effective access.",
+        "Bind accountable central/workload responsibilities, approved role definitions and least-privilege scope to a redacted operating-model record with original-time evidence.",
+        "Reviewer decision: are actual grants aligned with that model, including exceptions, inherited/additive access, review/expiry and scope completeness?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-04",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "assignment-context-not-effective-access",
+        "operating-model-needs-owner"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -728,9 +730,48 @@
           "pointer": "/items/15",
           "item_sha256": "752bc3d9a0221984677472cb5f8839fc6c3071ae0308437d348a3da223ee8bef",
           "guidance": "https://learn.microsoft.com/azure/role-based-access-control/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview",
+          "source_sha256": "3a90a17f7cc504c70d40071060e4119daa8f2693d33cc4978c7b9d591ef070a2",
+          "revision": "6f149e7671a4b97eba87ae54dd3263f72f2998a1",
+          "retrieved_at": "2026-11-06T08:24:40.318330+00:00",
+          "pointer": "348ef254-c27d-442e-abba-c7571559ab91",
+          "guidance": "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/manage/centralize-operations",
+          "source_sha256": "0d82c6a15cc4c31da6fee6735e30498e1937514a1f025b0cd71bd4620f0f2f0a",
+          "revision": "9561869a68e27ba33c798cde19d7e562031c505a",
+          "retrieved_at": "2026-11-06T08:24:44.176269+00:00",
+          "pointer": "348ef254-c27d-442e-abba-c7571559ab91",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/manage/centralize-operations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2022-04-01/roleassignments",
+          "source_sha256": "0ca1cab1afa107c6a9a2bb15717eee1d3ffde64ea233d6c01086712f02ec1eb5",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T08:24:45.152825+00:00",
+          "pointer": "348ef254-c27d-442e-abba-c7571559ab91",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2022-04-01/roleassignments"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/role_assignment.html.markdown",
+          "source_sha256": "a21d48890385aabc039c7172070c4a2292ca928a89cdd6ec078d550f14f21ba9",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T08:24:45.911946+00:00",
+          "pointer": "348ef254-c27d-442e-abba-c7571559ab91",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/role_assignment.html.markdown"
         }
       ],
-      "severity": "High"
+      "severity": "High",
+      "review_resource_types": [
+        "Microsoft.Authorization/roleAssignments"
+      ],
+      "review_fact_paths": [
+        "principalType",
+        "roleDefinitionId"
+      ]
     },
     {
       "control_id": "ALZ-4348bf81-7573-4512-8f46-9061cc198fea",
@@ -750,15 +791,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Identity type/count is partial configuration only. No principal/tenant ID, user-assigned identity ID, credential, token, service-principal inventory or sign-in-log read is retained or performed. This GUID is distinct from the MSA account-provenance B03.02.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Distinguish attached system/user-assigned identity configuration from actual application credential selection, downstream authorization and supported workload coverage.",
+        "Reconcile the intended workload population and attributable redacted authentication evidence. Managed identities are special service principals, so the mere existence of a service principal is not a failure.",
+        "Reviewer decision: do supported workloads actually use approved managed identities instead of managed application secrets, with lifecycle/authorization and unsupported cases documented?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-04",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified",
-        "duplicate-upstream-display-id"
+        "identity-presence-not-usage",
+        "managed-identities-are-service-principals"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -774,9 +816,56 @@
           "pointer": "/items/16",
           "item_sha256": "b7c11555706d352d376c4ab5afb3bff1a340fbe154c5c1878835b96469910fe7",
           "guidance": "https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview",
+          "source_sha256": "080900b5b589f905d5c705d19357ba8052ac209a5d3822e7f3be460fa527f5cf",
+          "revision": "ad2392b54e54af312a83c1095d1532609ac46a05",
+          "retrieved_at": "2026-11-06T08:24:40.610040+00:00",
+          "pointer": "4348bf81-7573-4512-8f46-9061cc198fea",
+          "guidance": "https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts",
+          "source_sha256": "ee03bfb6fb8871be55d779257c3a064f67ff33642d79b924607f12b1ce31a17e",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T08:24:45.579509+00:00",
+          "pointer": "4348bf81-7573-4512-8f46-9061cc198fea",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown",
+          "source_sha256": "2497fd8c88453f99b82d2697bda7b7faee30f889693a1840fafc5bc59305219a",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T08:24:46.219008+00:00",
+          "pointer": "4348bf81-7573-4512-8f46-9061cc198fea",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/expressrouteports",
+          "source_sha256": "7a03aff549b8b554b8c38cbb84604a5242ddc62b849b18380bd186dd102d36ef",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T08:24:46.818378+00:00",
+          "pointer": "4348bf81-7573-4512-8f46-9061cc198fea",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/expressrouteports"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/express_route_port.html.markdown",
+          "source_sha256": "bd81aa36a90fb8c0371fbd2db42020105f49249704ae0a5f28e32ffad84eca52",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T08:24:46.502037+00:00",
+          "pointer": "4348bf81-7573-4512-8f46-9061cc198fea",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/express_route_port.html.markdown"
         }
       ],
-      "severity": "High"
+      "severity": "High",
+      "review_resource_types": [
+        "Microsoft.Storage/storageAccounts",
+        "Microsoft.Network/expressRoutePorts"
+      ],
+      "review_fact_paths": [
+        "identitySummary"
+      ]
     },
     {
       "control_id": "ALZ-12e7f983-f630-4472-8dd6-9c5b5c2622f5",
@@ -796,15 +885,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No Azure resource flag can authenticate account origin. This remains a specific human-evidence workflow; no directory user records, account names, Graph lookup, login or identity conversion occurs. It never aliases the managed-identity B03.02 GUID.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Use an attributable redacted record to identify the actual authentication origin of accounts with Azure administrative rights, including guests/external identities and inherited access.",
+        "Do not infer work/school identity from email suffix, display name, directory userType=Member or a role assignment. Reconcile explicit emergency-access and approved external-account exceptions.",
+        "Reviewer decision: does the complete applicable account population use the approved work/school authentication origin, with individually documented exceptions and finite review validity?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-04",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified",
-        "duplicate-upstream-display-id"
+        "account-origin-needs-attributable-evidence",
+        "duplicate-display-id-use-guid"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -820,6 +910,22 @@
           "pointer": "/items/17",
           "item_sha256": "bb351be53ef3107d498e775a7a2cf05cf4f155e456cb5b60fbea2791e6ee6d72",
           "guidance": "https://learn.microsoft.com/azure/active-directory/roles/security-planning#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/active-directory/roles/security-planning",
+          "source_sha256": "a66e2fcbd8cfbe21c40281a3c3701f05b59903d1d882bd40a0b723470b9d23f2",
+          "revision": "71c5eed3578535b0614b574325d4c0c8c8dd866a",
+          "retrieved_at": "2026-11-06T08:24:41.436649+00:00",
+          "pointer": "12e7f983-f630-4472-8dd6-9c5b5c2622f5",
+          "guidance": "https://learn.microsoft.com/azure/active-directory/roles/security-planning"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview",
+          "source_sha256": "3a90a17f7cc504c70d40071060e4119daa8f2693d33cc4978c7b9d591ef070a2",
+          "revision": "6f149e7671a4b97eba87ae54dd3263f72f2998a1",
+          "retrieved_at": "2026-11-06T08:24:40.318330+00:00",
+          "pointer": "12e7f983-f630-4472-8dd6-9c5b5c2622f5",
+          "guidance": "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview"
         }
       ],
       "severity": "Medium"
@@ -842,14 +948,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No group creation, membership expansion, synchronization, directory role assignment or effective-permission computation occurs. User/principal names, IDs and condition text are withheld.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reconcile complete group-based Azure assignments, actual transitive membership and exceptions to direct grants; Group principal type alone is insufficient.",
+        "Verify authoritative on-premises/cloud group management, synchronization/nesting constraints and role-assignable group requirements without assuming every nested or dynamic group is supported.",
+        "Reviewer decision: do approved groups and their managed memberships deliver the intended access, with ownership, periodic review and source-of-authority documented?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-04",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "group-type-not-membership-or-authorization",
+        "hybrid-group-authority-needs-review"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -864,9 +972,48 @@
           "pointer": "/items/18",
           "item_sha256": "de07a1cf6bdf719e9ff373ab1467f6da82bfba3e4268b88a31a460dc67a1c9ba",
           "guidance": "https://learn.microsoft.com/entra/fundamentals/how-to-manage-groups"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/entra/fundamentals/how-to-manage-groups",
+          "source_sha256": "46e6e49d4fc7b0d35c46640af39083a6a82c3d6bb7793d25f7153e277182c250",
+          "revision": "bd700e840f49d4b2e406530d6640e3880f0c3b50",
+          "retrieved_at": "2026-11-06T08:24:41.712295+00:00",
+          "pointer": "4b69bad3-3aad-45e8-a68e-1d76667313b4",
+          "guidance": "https://learn.microsoft.com/en-us/entra/fundamentals/how-to-manage-groups"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview",
+          "source_sha256": "3a90a17f7cc504c70d40071060e4119daa8f2693d33cc4978c7b9d591ef070a2",
+          "revision": "6f149e7671a4b97eba87ae54dd3263f72f2998a1",
+          "retrieved_at": "2026-11-06T08:24:40.318330+00:00",
+          "pointer": "4b69bad3-3aad-45e8-a68e-1d76667313b4",
+          "guidance": "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2022-04-01/roleassignments",
+          "source_sha256": "0ca1cab1afa107c6a9a2bb15717eee1d3ffde64ea233d6c01086712f02ec1eb5",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T08:24:45.152825+00:00",
+          "pointer": "4b69bad3-3aad-45e8-a68e-1d76667313b4",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2022-04-01/roleassignments"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/role_assignment.html.markdown",
+          "source_sha256": "a21d48890385aabc039c7172070c4a2292ca928a89cdd6ec078d550f14f21ba9",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T08:24:45.911946+00:00",
+          "pointer": "4b69bad3-3aad-45e8-a68e-1d76667313b4",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/role_assignment.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Authorization/roleAssignments"
+      ],
+      "review_fact_paths": [
+        "principalType",
+        "roleDefinitionId"
+      ]
     },
     {
       "control_id": "ALZ-53e8908a-e28c-484c-93b6-b7808b9fe5c4",
@@ -886,14 +1033,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No Graph/directory/sign-in-log request, What If/evaluation trigger, policy creation/change or authentication action occurs. This is a source-specific human-evidence workflow, not a policy-presence pass.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reconcile all applicable Azure users/roles/resources, policy conditions, included/excluded users/apps and emergency/service-account treatment against attributable original-time policy/evaluation records.",
+        "Distinguish enabled from report-only/disabled policies and actual grant/session logic; a policy's existence, one sign-in or a template does not establish universal enforcement.",
+        "Reviewer decision: is the intended Azure-access population actually governed by the approved Conditional Access controls, with coverage gaps and licensing/exception constraints explicit?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-04",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "conditional-access-presence-not-enforcement",
+        "report-only-and-exclusions-explicit"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -908,6 +1057,22 @@
           "pointer": "/items/19",
           "item_sha256": "4a9f3dc064d8728e06fdf4db626c6b9dd9b84b50402df3ef925fdd44399d2d2d",
           "guidance": "https://learn.microsoft.com/azure/active-directory/conditional-access/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/active-directory/conditional-access/overview",
+          "source_sha256": "47976eb5efd53986645d87896bfa40867e93a4d1e97c041d47e95ce011e0099a",
+          "revision": "4994b152d89ef50cce69dbfa326c1b90933e385d",
+          "retrieved_at": "2026-11-06T08:24:42.490118+00:00",
+          "pointer": "53e8908a-e28c-484c-93b6-b7808b9fe5c4",
+          "guidance": "https://learn.microsoft.com/azure/active-directory/conditional-access/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/active-directory/roles/security-planning",
+          "source_sha256": "a66e2fcbd8cfbe21c40281a3c3701f05b59903d1d882bd40a0b723470b9d23f2",
+          "revision": "71c5eed3578535b0614b574325d4c0c8c8dd866a",
+          "retrieved_at": "2026-11-06T08:24:41.436649+00:00",
+          "pointer": "53e8908a-e28c-484c-93b6-b7808b9fe5c4",
+          "guidance": "https://learn.microsoft.com/azure/active-directory/roles/security-planning"
         }
       ],
       "severity": "High"
@@ -930,14 +1095,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No user registration inventory, authentication method, biometric, phone, credential, sign-in record or challenge is collected or modified. A tenant default or self-reported registration cannot automatically pass this control.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reconcile the complete Azure-access user population with the actual MFA requirement path, applicable authentication strength, exclusions/emergency procedures and original-time evaluation evidence.",
+        "Distinguish a registered method or isolated challenge from enforced MFA, and understand prior/satisfied authentication claims rather than assuming every compliant session prompts again.",
+        "Reviewer decision: is MFA enforced for the approved applicable population with attributable coverage, finite validity and explicitly reviewed gaps/exceptions?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-04",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "mfa-registration-not-enforcement",
+        "no-authentication-action-or-personal-record"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -952,6 +1119,30 @@
           "pointer": "/items/20",
           "item_sha256": "4b52bd42f484fb4c466d064bb2ae465c60580191258065a4dc70e95f2963f513",
           "guidance": "https://learn.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks",
+          "source_sha256": "3d47616f86ae81012266fa0f2d6ea46e13f947f67c3ad4284ca81d7e70841a59",
+          "revision": "4d5ae24bc0e7250519985840a65535e7073daac4",
+          "retrieved_at": "2026-11-06T08:24:43.144201+00:00",
+          "pointer": "1049d403-a923-4c34-94d0-0018ac6a9e01",
+          "guidance": "https://learn.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/active-directory/conditional-access/overview",
+          "source_sha256": "47976eb5efd53986645d87896bfa40867e93a4d1e97c041d47e95ce011e0099a",
+          "revision": "4994b152d89ef50cce69dbfa326c1b90933e385d",
+          "retrieved_at": "2026-11-06T08:24:42.490118+00:00",
+          "pointer": "1049d403-a923-4c34-94d0-0018ac6a9e01",
+          "guidance": "https://learn.microsoft.com/azure/active-directory/conditional-access/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/active-directory/roles/security-planning",
+          "source_sha256": "a66e2fcbd8cfbe21c40281a3c3701f05b59903d1d882bd40a0b723470b9d23f2",
+          "revision": "71c5eed3578535b0614b574325d4c0c8c8dd866a",
+          "retrieved_at": "2026-11-06T08:24:41.436649+00:00",
+          "pointer": "1049d403-a923-4c34-94d0-0018ac6a9e01",
+          "guidance": "https://learn.microsoft.com/azure/active-directory/roles/security-planning"
         }
       ],
       "severity": "High"
@@ -974,14 +1165,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "An assignment scope is not organizational agreement, readiness or operational ownership. No RBAC change, directory enumeration, owner impersonation or fabricated acceptance is performed.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Document accountable central/platform and workload responsibilities for security, access, resource changes, operations, incident escalation and review using an accepted responsibility matrix.",
+        "Reconcile actual delegated scopes and least-privilege grants with those responsibilities, inherited/deny/conditional access and managed exceptions.",
+        "Reviewer decision: have responsible humans explicitly accepted and operationalized the centralized/delegated model for the applicable landing-zone population?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-04",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "delegated-scope-not-accepted-responsibility",
+        "central-and-workload-owners-explicit"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -996,9 +1189,40 @@
           "pointer": "/items/21",
           "item_sha256": "0a12f5f2eb8fd360cc2f41c6c05b2e6ea14cec8a0fa99fa76acd515a492e4e81",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/manage/centralize-operations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/manage/centralize-operations",
+          "source_sha256": "0d82c6a15cc4c31da6fee6735e30498e1937514a1f025b0cd71bd4620f0f2f0a",
+          "revision": "9561869a68e27ba33c798cde19d7e562031c505a",
+          "retrieved_at": "2026-11-06T08:24:44.176269+00:00",
+          "pointer": "e6a83de5-de32-4c19-a248-1607d5d1e4e6",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/manage/centralize-operations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview",
+          "source_sha256": "3a90a17f7cc504c70d40071060e4119daa8f2693d33cc4978c7b9d591ef070a2",
+          "revision": "6f149e7671a4b97eba87ae54dd3263f72f2998a1",
+          "retrieved_at": "2026-11-06T08:24:40.318330+00:00",
+          "pointer": "e6a83de5-de32-4c19-a248-1607d5d1e4e6",
+          "guidance": "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2022-04-01/roleassignments",
+          "source_sha256": "0ca1cab1afa107c6a9a2bb15717eee1d3ffde64ea233d6c01086712f02ec1eb5",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T08:24:45.152825+00:00",
+          "pointer": "e6a83de5-de32-4c19-a248-1607d5d1e4e6",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2022-04-01/roleassignments"
         }
       ],
-      "severity": "High"
+      "severity": "High",
+      "review_resource_types": [
+        "Microsoft.Authorization/roleAssignments"
+      ],
+      "review_fact_paths": [
+        "principalType",
+        "roleDefinitionId"
+      ]
     },
     {
       "control_id": "ALZ-14658d35-58fd-4772-99b8-21112df27ee4",
@@ -1018,14 +1242,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No PIM grant/activation, Graph/directory/audit request, role change or privileged action is performed. Configuration or eligibility alone is not activation enforcement, and directory roles do not imply Azure-resource access.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reconcile actual eligible, activated, permanent-active and time-bound assignments separately for Azure resource roles, Entra roles and relevant groups, including inherited access.",
+        "Verify least-privilege definitions, maximum activation duration, approval/MFA/justification, review/audit and attributable activation evidence; PIM presence does not establish zero standing privilege.",
+        "Reviewer decision: is standing privilege removed where intended, with explicitly justified emergency-access exceptions and accountable finite review rather than silently treating emergency permanent roles as compliant?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-04",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "pim-presence-not-zero-standing-access",
+        "eligible-active-permanent-distinct"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -1040,6 +1266,30 @@
           "pointer": "/items/22",
           "item_sha256": "2f419eb04cb203369b8c83f7cdbd47ded6c5fbe9e659939ee521ae97aa00360f",
           "guidance": "https://learn.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure",
+          "source_sha256": "b3473f28ae8389953a3429af3f87cf66ff9a6490b113b73c3a24d5dc6dace0fb",
+          "revision": "f126bf975530aabaa9d76bb4e57106545ae12126",
+          "retrieved_at": "2026-11-06T08:24:44.683786+00:00",
+          "pointer": "14658d35-58fd-4772-99b8-21112df27ee4",
+          "guidance": "https://learn.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/active-directory/roles/security-planning",
+          "source_sha256": "a66e2fcbd8cfbe21c40281a3c3701f05b59903d1d882bd40a0b723470b9d23f2",
+          "revision": "71c5eed3578535b0614b574325d4c0c8c8dd866a",
+          "retrieved_at": "2026-11-06T08:24:41.436649+00:00",
+          "pointer": "14658d35-58fd-4772-99b8-21112df27ee4",
+          "guidance": "https://learn.microsoft.com/azure/active-directory/roles/security-planning"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview",
+          "source_sha256": "3a90a17f7cc504c70d40071060e4119daa8f2693d33cc4978c7b9d591ef070a2",
+          "revision": "6f149e7671a4b97eba87ae54dd3263f72f2998a1",
+          "retrieved_at": "2026-11-06T08:24:40.318330+00:00",
+          "pointer": "14658d35-58fd-4772-99b8-21112df27ee4",
+          "guidance": "https://learn.microsoft.com/en-us/azure/role-based-access-control/overview"
         }
       ],
       "severity": "Medium"
@@ -13192,78 +13442,66 @@
   "reviewed_at": "2026-11-04T13:25:57.057372+00:00",
   "reference_manifest_sha256": "c287f93a4ff4c94c577b0248345d813f44fb27dff66524408870095024305d30",
   "control_source_manifest_sha256": "d189615f2793f141a6ee6cd5a7f026556a4146fd44d65705e6f08d0e01f7debf",
-  "accepted_matrix_sha256": "bba0b48d0a4a5896ba2251b5eb743e81474937120c4b590b0c2008b9d5cafcf3",
+  "accepted_matrix_sha256": "93de770658a5985135a0d345ea0eb545f4b934c53b62c85e76269f485e7498a5",
   "wave_source_manifest_sha256": "617e66a497a1f6bb1ddf50f53b3f75f3ff2cec2989324d42496aeeb4d9d0ef38",
   "change_review": {
-    "base_sha256": "46e9d381472a669f37bcc8284e401018b3e4b8d601be35a9c57d7498592dd034",
-    "matrix_sha256": "bba0b48d0a4a5896ba2251b5eb743e81474937120c4b590b0c2008b9d5cafcf3",
-    "reviewed_at": "2026-11-06T07:55:30.236676+00:00",
+    "base_sha256": "e663c5d337b364b2d3631a38a2e68e391e0fefff20643ef152ac8b0c3a06fc53",
+    "matrix_sha256": "93de770658a5985135a0d345ea0eb545f4b934c53b62c85e76269f485e7498a5",
+    "reviewed_at": "2026-11-06T08:25:33.761213+00:00",
     "reviewer": "owner-delegated-source-backed-batch-review",
     "changes": [
       {
-        "control_id": "ALZ-3d457936-e9b7-41eb-bdff-314b26450b12",
-        "before_sha256": "f0c7044765817741cfe5de6806782812f5eaab935fea4d663117e66d5d616c0c",
-        "after_sha256": "a35923cf776e176374a4fcf07efb51ffea67de495888912377cfee36e9cbabed",
-        "rationale": "Owner-delegated source-backed batch 11 acceptance: automated"
+        "control_id": "ALZ-348ef254-c27d-442e-abba-c7571559ab91",
+        "before_sha256": "a244e819a7c1ef3941427684f6255f8ddf32bb0719d10010a6e0b985111fb93f",
+        "after_sha256": "755a3c57e2892de44c4534ffc120e2ea60da2ae5c36d2e9cb338eb50bd4fd621",
+        "rationale": "Owner-delegated source-backed batch 04 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-c76cb5a2-abe2-11ed-afa1-0242ac120002",
-        "before_sha256": "11ef49dd05374e2707f8ede6cefd53582420e472a47fd9268dba1c8c0f7aff57",
-        "after_sha256": "daf2efa568e36fe04c20f4845f7e390e4f859d87f35a99d779a94f334b400f37",
-        "rationale": "Owner-delegated source-backed batch 11 acceptance: automated"
+        "control_id": "ALZ-4348bf81-7573-4512-8f46-9061cc198fea",
+        "before_sha256": "7ce5aaae1f8eec1707bea62a0481db4430cc77f4a2adbfe24a41f156b998d1a3",
+        "after_sha256": "d5781a9882a948bd9ae0dd2096af83b9885efde10142bab2eb778a755991e66b",
+        "rationale": "Owner-delegated source-backed batch 04 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-9dcd6250-9c4a-4382-aa9b-5b84c64fc1fe",
-        "before_sha256": "839d7cd0e457b5697a60ce90c742d75929be659993d28dbd3993f0d00e5fab90",
-        "after_sha256": "fae66a6c34475dc9218d0742a1e969f0cfaf895afce88eb0a890893137981a9c",
-        "rationale": "Owner-delegated source-backed batch 11 acceptance: assisted"
+        "control_id": "ALZ-12e7f983-f630-4472-8dd6-9c5b5c2622f5",
+        "before_sha256": "443ea61d620b27a5e3596ee7f372ee2307ac5076d5a40044db18be9756e7345a",
+        "after_sha256": "57dedf25944463d3e1f10c46b0c3a86ec448ac6e0bdf1fc5e5aa9caa1910bf22",
+        "rationale": "Owner-delegated source-backed batch 04 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-48682fb1-1e86-4458-a686-518ebd47393d",
-        "before_sha256": "f06001bd770c5fd49eac6298078b9697f2bcc9758e5d22c15584be5e37f2b763",
-        "after_sha256": "1453f5fc08a3b580b73319fcce227de7726b49d0f05065ff404d33010b9f6b20",
-        "rationale": "Owner-delegated source-backed batch 11 acceptance: assisted"
+        "control_id": "ALZ-4b69bad3-3aad-45e8-a68e-1d76667313b4",
+        "before_sha256": "8de5a8e8505d19e502e1b9af7a7d44fc6a2fc3c28fc9485254a6d1737e8e0d94",
+        "after_sha256": "293b79fa9c08651693d09e99c90463031e9ee092b86f162d5aaf75d3a8def965",
+        "rationale": "Owner-delegated source-backed batch 04 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-821a568d-c632-4693-ba76-e2751de35050",
-        "before_sha256": "0b7caef0288eac6285629f24204b1bd670af96045b59c250a37d78a89615c5d4",
-        "after_sha256": "6c001c35fbb7917e0a6b75696ab94035b147f2daac19a93e1bc8fd8f1558af0b",
-        "rationale": "Owner-delegated source-backed batch 11 acceptance: manual"
+        "control_id": "ALZ-53e8908a-e28c-484c-93b6-b7808b9fe5c4",
+        "before_sha256": "e78533d4ebea378ed880d270491e46e1f4827425036dde7297e70b928c69f1ec",
+        "after_sha256": "b6d2f1f6ea9e461a660c27bd32bb70c01d6adfd8f55ced300afdba584bb0d8cb",
+        "rationale": "Owner-delegated source-backed batch 04 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-de0d5973-cd4c-4d21-a088-137f5e6c4cfd",
-        "before_sha256": "7a0fce1b62cbb59b5c18ba6471ad298d9ba70dfd4c5e7ea013a2b5521fb33f76",
-        "after_sha256": "428194c696bec7696a2b263bdfc31619362fdeb50bb78a8f27f082176bf9bf40",
-        "rationale": "Owner-delegated source-backed batch 11 acceptance: assisted"
+        "control_id": "ALZ-1049d403-a923-4c34-94d0-0018ac6a9e01",
+        "before_sha256": "5263815ccfb50fcb8450ed5d85f913807155b7aa006d88946d7391366f50fb3b",
+        "after_sha256": "454fa955480c1e6429196d529d313a80e6c7c9e4afa06ceb0b9effe782dd21bc",
+        "rationale": "Owner-delegated source-backed batch 04 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-ed301d6e-872e-452e-9611-cc58b5a4b151",
-        "before_sha256": "db58a89e09bd633edc2bf5a122e601e01bb475034b625bd3ff9fd96db9fdcf9a",
-        "after_sha256": "dfc8a521a1d803721131787e50f0f929f89ce21b8787ea2201fbe526d97ed2e5",
-        "rationale": "Owner-delegated source-backed batch 11 acceptance: assisted"
+        "control_id": "ALZ-e6a83de5-de32-4c19-a248-1607d5d1e4e6",
+        "before_sha256": "99daca6af062bd441444e893c9ea0109e367c5fb9e752d477e885050f1f3136b",
+        "after_sha256": "9012fa6846744797530c7bfbdd156152647cf1d3161ea4b5e98a969bc86e2437",
+        "rationale": "Owner-delegated source-backed batch 04 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-558fd772-49b8-4211-82df-27ee412e7f98",
-        "before_sha256": "73ae2ab741adbbad242c1529132e82c626872b9c495bf9597eebd5913cf4e2de",
-        "after_sha256": "35a71c04b1975c34763147ec8f3b438a2a6b9ccb5232577d173c983743ce1ba7",
-        "rationale": "Owner-delegated source-backed batch 11 acceptance: assisted"
-      },
-      {
-        "control_id": "ALZ-3f630472-2dd6-49c5-a5c2-622f54b69bad",
-        "before_sha256": "b69aaedbbb2f8677e92ec3902c738c9a28b7812697f949a1f321821d6b2d590e",
-        "after_sha256": "fab4d34c47c6e33634575b707723ad4267bb33241ac57f9c087c157c1898e016",
-        "rationale": "Owner-delegated source-backed batch 11 acceptance: assisted"
-      },
-      {
-        "control_id": "ALZ-33aad5e8-c68e-41d7-9667-313b4f5664b5",
-        "before_sha256": "a1b97004bd8649c342ad808579d75d31ce4cb78ec55ce62d8fd003047ce0c59c",
-        "after_sha256": "89353f89096ed10981531610af4fb0569efd7fcca50736a152c245ec978a16e8",
-        "rationale": "Owner-delegated source-backed batch 11 acceptance: assisted"
+        "control_id": "ALZ-14658d35-58fd-4772-99b8-21112df27ee4",
+        "before_sha256": "c176c316acced0a9526e6e27cc268fc0a6705a1576fc3f759ac30e7fddc861da",
+        "after_sha256": "d5b3c5f28780a93336bd9b7db758edc03b170e47746fc2c72c911957455c4b5b",
+        "rationale": "Owner-delegated source-backed batch 04 acceptance: assisted"
       }
     ]
   },
   "first_wave_matrix_sha256": "f649b2293211c844d661ea93c6978fe2db948eff17237af01ca090809da8e1fb",
-  "batch_source_manifest_sha256": "79480d7024e3ac6a1c5c33f3a6ec8b704a8e8470d005b16e6dd3f708ab6496d8",
-  "batch_catalog_version": "2026-11-06.2",
+  "batch_source_manifest_sha256": "f6478d7717063f66691ecbea198dd77006690374a75073cbb1c5ce48b3ca2a8e",
+  "batch_catalog_version": "2026-11-06.3",
   "priority_manifest_sha256": "b42971f85b9110f71fdc5ae81695fe4be72c1f28022ec27aeb719140ed1475c0"
 }

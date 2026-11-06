@@ -1,0 +1,135 @@
+{
+  "batch": "04",
+  "catalog_version": "2026-11-06.3",
+  "review_state": "owner-delegated-source-backed-matrix",
+  "accepted_at": "2026-11-06T08:25:33.761213+00:00",
+  "prerequisites": ["11"],
+  "preserved_catalog_bytes": {
+    "2026-11-06.2": "674e9cfaae085ab079d92f8fdfceacd3c0af2b55a061185fb8750d1261168f4b"
+  },
+  "issue": "https://github.com/jonathan-vella/landinglens/issues/94",
+  "acceptance_evidence": "Actual source/schema review supports eight specific assisted workflows, not automatic directory-policy enforcement. Minimal role-assignment and supported managed-identity configuration is usable partial context; source-specific grouped interviews compile only explicitly attributed separate bound decisions. Both B03.02 GUIDs remain distinct.",
+  "supported_modes": "Explicit AzureRM 4.50.0 raw Terraform with supplied local snapshots and optional plan; reviewed ARM roleAssignments 2022-04-01 and storage 2023-05-01/ExpressRoute port 2024-05-01 with existing no-restore Bicep; saved normalized evidence and injected scoped management-plane details. No directory/Graph/sign-in-log read, membership expansion, policy evaluation or authentication action.",
+  "recommendations": [
+    {
+      "guid": "348ef254-c27d-442e-abba-c7571559ab91",
+      "upstream_id": "B03.01",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit assignment principal type/role-definition identity and scoped resource context supporting an approved operating-model interview, not effective authorization.",
+      "sources": ["rbac-operating-model", "central-delegated-responsibilities", "role-assignment-arm", "terraform-role-assignment"],
+      "review_resource_types": ["Microsoft.Authorization/roleAssignments"],
+      "review_fact_paths": ["principalType", "roleDefinitionId"],
+      "evidence_requirements": [
+        "Map complete direct/inherited management-group/subscription/resource grants, deny assignments, conditions and data actions to the approved operating model; supplied assignment subsets are not effective access.",
+        "Bind accountable central/workload responsibilities, approved role definitions and least-privilege scope to a redacted operating-model record with original-time evidence.",
+        "Reviewer decision: are actual grants aligned with that model, including exceptions, inherited/additive access, review/expiry and scope completeness?"
+      ],
+      "limitations": "Principal-type/role-definition configuration is not membership, evaluated permissions, inheritance or approved organizational responsibility. No directory/principal/role-definition expansion or permission change occurs.",
+      "flags": ["assignment-context-not-effective-access", "operating-model-needs-owner"]
+    },
+    {
+      "guid": "4348bf81-7573-4512-8f46-9061cc198fea",
+      "upstream_id": "B03.02",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit identity type and validated supplied user-assigned binding count on supported storage/Direct-port resources, plus a workload-authentication interview.",
+      "sources": ["managed-identity-adoption", "storage-identity-arm", "terraform-storage-identity", "port-arm", "terraform-expressroute-port"],
+      "review_resource_types": ["Microsoft.Storage/storageAccounts", "Microsoft.Network/expressRoutePorts"],
+      "review_fact_paths": ["identitySummary"],
+      "evidence_requirements": [
+        "Distinguish attached system/user-assigned identity configuration from actual application credential selection, downstream authorization and supported workload coverage.",
+        "Reconcile the intended workload population and attributable redacted authentication evidence. Managed identities are special service principals, so the mere existence of a service principal is not a failure.",
+        "Reviewer decision: do supported workloads actually use approved managed identities instead of managed application secrets, with lifecycle/authorization and unsupported cases documented?"
+      ],
+      "limitations": "Identity type/count is partial configuration only. No principal/tenant ID, user-assigned identity ID, credential, token, service-principal inventory or sign-in-log read is retained or performed. This GUID is distinct from the MSA account-provenance B03.02.",
+      "flags": ["identity-presence-not-usage", "managed-identities-are-service-principals"]
+    },
+    {
+      "guid": "12e7f983-f630-4472-8dd6-9c5b5c2622f5",
+      "upstream_id": "B03.02",
+      "classification": "assisted",
+      "implemented_subclaim": "Specific account-authentication-provenance interview with explicit population, emergency exceptions and separate canonical-GUID decision.",
+      "sources": ["administrative-account-provenance", "rbac-operating-model"],
+      "evidence_requirements": [
+        "Use an attributable redacted record to identify the actual authentication origin of accounts with Azure administrative rights, including guests/external identities and inherited access.",
+        "Do not infer work/school identity from email suffix, display name, directory userType=Member or a role assignment. Reconcile explicit emergency-access and approved external-account exceptions.",
+        "Reviewer decision: does the complete applicable account population use the approved work/school authentication origin, with individually documented exceptions and finite review validity?"
+      ],
+      "limitations": "No Azure resource flag can authenticate account origin. This remains a specific human-evidence workflow; no directory user records, account names, Graph lookup, login or identity conversion occurs. It never aliases the managed-identity B03.02 GUID.",
+      "flags": ["account-origin-needs-attributable-evidence", "duplicate-display-id-use-guid"]
+    },
+    {
+      "guid": "4b69bad3-3aad-45e8-a68e-1d76667313b4",
+      "upstream_id": "B03.03",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit role-assignment principal type with group-authority/membership interview, not effective transitive group permissions.",
+      "sources": ["group-based-access", "rbac-operating-model", "role-assignment-arm", "terraform-role-assignment"],
+      "review_resource_types": ["Microsoft.Authorization/roleAssignments"],
+      "review_fact_paths": ["principalType", "roleDefinitionId"],
+      "evidence_requirements": [
+        "Reconcile complete group-based Azure assignments, actual transitive membership and exceptions to direct grants; Group principal type alone is insufficient.",
+        "Verify authoritative on-premises/cloud group management, synchronization/nesting constraints and role-assignable group requirements without assuming every nested or dynamic group is supported.",
+        "Reviewer decision: do approved groups and their managed memberships deliver the intended access, with ownership, periodic review and source-of-authority documented?"
+      ],
+      "limitations": "No group creation, membership expansion, synchronization, directory role assignment or effective-permission computation occurs. User/principal names, IDs and condition text are withheld.",
+      "flags": ["group-type-not-membership-or-authorization", "hybrid-group-authority-needs-review"]
+    },
+    {
+      "guid": "53e8908a-e28c-484c-93b6-b7808b9fe5c4",
+      "upstream_id": "B03.04",
+      "classification": "assisted",
+      "implemented_subclaim": "Specific Conditional Access coverage/enforcement interview with explicit included/excluded populations, enabled versus report-only state and evaluation evidence.",
+      "sources": ["conditional-access-enforcement", "administrative-account-provenance"],
+      "evidence_requirements": [
+        "Reconcile all applicable Azure users/roles/resources, policy conditions, included/excluded users/apps and emergency/service-account treatment against attributable original-time policy/evaluation records.",
+        "Distinguish enabled from report-only/disabled policies and actual grant/session logic; a policy's existence, one sign-in or a template does not establish universal enforcement.",
+        "Reviewer decision: is the intended Azure-access population actually governed by the approved Conditional Access controls, with coverage gaps and licensing/exception constraints explicit?"
+      ],
+      "limitations": "No Graph/directory/sign-in-log request, What If/evaluation trigger, policy creation/change or authentication action occurs. This is a source-specific human-evidence workflow, not a policy-presence pass.",
+      "flags": ["conditional-access-presence-not-enforcement", "report-only-and-exclusions-explicit"]
+    },
+    {
+      "guid": "1049d403-a923-4c34-94d0-0018ac6a9e01",
+      "upstream_id": "B03.05",
+      "classification": "assisted",
+      "implemented_subclaim": "Specific MFA requirement/coverage interview separating method registration, actual enforcement, prior claims and explicit emergency exceptions.",
+      "sources": ["mfa-enforcement", "conditional-access-enforcement", "administrative-account-provenance"],
+      "evidence_requirements": [
+        "Reconcile the complete Azure-access user population with the actual MFA requirement path, applicable authentication strength, exclusions/emergency procedures and original-time evaluation evidence.",
+        "Distinguish a registered method or isolated challenge from enforced MFA, and understand prior/satisfied authentication claims rather than assuming every compliant session prompts again.",
+        "Reviewer decision: is MFA enforced for the approved applicable population with attributable coverage, finite validity and explicitly reviewed gaps/exceptions?"
+      ],
+      "limitations": "No user registration inventory, authentication method, biometric, phone, credential, sign-in record or challenge is collected or modified. A tenant default or self-reported registration cannot automatically pass this control.",
+      "flags": ["mfa-registration-not-enforcement", "no-authentication-action-or-personal-record"]
+    },
+    {
+      "guid": "e6a83de5-de32-4c19-a248-1607d5d1e4e6",
+      "upstream_id": "B03.06",
+      "classification": "assisted",
+      "implemented_subclaim": "Scoped role-assignment context and explicit central/workload responsibility interview, not inferred accepted delegation.",
+      "sources": ["central-delegated-responsibilities", "rbac-operating-model", "role-assignment-arm"],
+      "review_resource_types": ["Microsoft.Authorization/roleAssignments"],
+      "review_fact_paths": ["principalType", "roleDefinitionId"],
+      "evidence_requirements": [
+        "Document accountable central/platform and workload responsibilities for security, access, resource changes, operations, incident escalation and review using an accepted responsibility matrix.",
+        "Reconcile actual delegated scopes and least-privilege grants with those responsibilities, inherited/deny/conditional access and managed exceptions.",
+        "Reviewer decision: have responsible humans explicitly accepted and operationalized the centralized/delegated model for the applicable landing-zone population?"
+      ],
+      "limitations": "An assignment scope is not organizational agreement, readiness or operational ownership. No RBAC change, directory enumeration, owner impersonation or fabricated acceptance is performed.",
+      "flags": ["delegated-scope-not-accepted-responsibility", "central-and-workload-owners-explicit"]
+    },
+    {
+      "guid": "14658d35-58fd-4772-99b8-21112df27ee4",
+      "upstream_id": "B03.07",
+      "classification": "assisted",
+      "implemented_subclaim": "Specific PIM eligibility/active/permanent-access interview with time bounds, approvals, activation evidence and emergency exception reconciliation.",
+      "sources": ["privilege-eligibility-and-activation", "administrative-account-provenance", "rbac-operating-model"],
+      "evidence_requirements": [
+        "Reconcile actual eligible, activated, permanent-active and time-bound assignments separately for Azure resource roles, Entra roles and relevant groups, including inherited access.",
+        "Verify least-privilege definitions, maximum activation duration, approval/MFA/justification, review/audit and attributable activation evidence; PIM presence does not establish zero standing privilege.",
+        "Reviewer decision: is standing privilege removed where intended, with explicitly justified emergency-access exceptions and accountable finite review rather than silently treating emergency permanent roles as compliant?"
+      ],
+      "limitations": "No PIM grant/activation, Graph/directory/audit request, role change or privileged action is performed. Configuration or eligibility alone is not activation enforcement, and directory roles do not imply Azure-resource access.",
+      "flags": ["pim-presence-not-zero-standing-access", "eligible-active-permanent-distinct"]
+    }
+  ]
+}
