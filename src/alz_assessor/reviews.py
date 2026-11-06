@@ -117,8 +117,91 @@ def prepared_resource(
                     "virtualNetwork": parent,
                 }
             )
+            if any(path in facts for path in ("resolverIpConfigurations", "bastionSku")):
+                links[-1]["dnsResolverDelegation"] = review_fact(
+                    child["properties"], "dnsResolverDelegation"
+                )
+                if "resolverIpConfigurations" in facts:
+                    links[-1]["subchecks"].update(
+                        local_subchecks(
+                            {
+                                "addressPrefixes": prefixes,
+                                "dnsResolverDelegation": links[-1]["dnsResolverDelegation"],
+                            }
+                        )
+                    )
         prepared["linked_subnets"] = links
         prepared["links_truncated"] = len(refs) > 20
+    for path, target_kind, paths, maximum in (
+        (
+            "bastionVirtualNetworkId",
+            "microsoft.network/virtualnetworks",
+            ("dnsServerSummary", "resourceLocation"),
+            1,
+        ),
+        (
+            "dnsVirtualNetworkId",
+            "microsoft.network/virtualnetworks",
+            (
+                "dnsServerSummary",
+                "vnetEncryptionEnabled",
+                "vnetEncryptionEnforcement",
+                "resourceLocation",
+            ),
+            1,
+        ),
+        (
+            "bastionPublicIpIds",
+            "microsoft.network/publicipaddresses",
+            (
+                "publicIpSku",
+                "publicIpTier",
+                "publicIpAllocationMethod",
+                "publicIpVersion",
+                "configuredZones",
+                "resourceLocation",
+            ),
+            20,
+        ),
+        (
+            "resolverOutboundEndpointIds",
+            "microsoft.network/dnsresolvers/outboundendpoints",
+            ("subnetReferences", "resourceLocation"),
+            2,
+        ),
+    ):
+        if path not in facts:
+            continue
+        identities = (
+            [facts[path]]
+            if path in {"dnsVirtualNetworkId", "bastionVirtualNetworkId"}
+            else facts[path]
+        )
+        if not isinstance(identities, list):
+            prepared["linked_" + path] = {"unknown": "relationships_missing_or_invalid"}
+            continue
+        linked_resources = []
+        for identity in identities[:maximum]:
+            candidates = by_id.get(identity, []) if isinstance(identity, str) else []
+            if (
+                len(candidates) == 1
+                and candidates[0]["state"] == "known"
+                and candidates[0]["resource_type"].lower() == target_kind
+            ):
+                linked_resources.append(
+                    {
+                        "arm_id": identity,
+                        "facts": {p: review_fact(candidates[0]["properties"], p) for p in paths},
+                    }
+                )
+            else:
+                linked_resources.append(
+                    {
+                        "arm_id": identity if isinstance(identity, str) else None,
+                        "unknown": "referenced_configuration_not_unique_known",
+                    }
+                )
+        prepared["linked_" + path] = linked_resources
     return prepared
 
 

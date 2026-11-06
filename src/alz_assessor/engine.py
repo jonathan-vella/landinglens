@@ -63,6 +63,12 @@ def local_subchecks(properties: dict[str, Any]) -> dict[str, Any]:
             if known
             else unknown("explicit_ipv4_prefixes_required")
         )
+        if "dnsResolverDelegation" in properties:
+            result["supplied_dns_resolver_ipv4_prefixes_within_24_28"] = (
+                all(24 <= ip_network(value).prefixlen <= 28 for value in prefixes)
+                if known
+                else unknown("explicit_ipv4_prefixes_required")
+            )
     if "natRuleCollections" in properties:
         collections = nat_collections(properties["natRuleCollections"])
         restrictions = []

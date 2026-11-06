@@ -4,6 +4,8 @@ from ipaddress import ip_address, ip_network
 from typing import Any
 
 from .contracts import canonical_id, identity_type
+from .dns_evidence import KINDS as DNS_KINDS
+from .dns_evidence import PATHS as DNS_PATHS
 from .identity_evidence import PATHS as IDENTITY_PATHS
 from .protection_evidence import KINDS as PROTECTION_KINDS
 from .protection_evidence import PATHS as PROTECTION_PATHS
@@ -50,6 +52,7 @@ REVIEW_PATHS = (
     | ROUTING_PATHS
     | IDENTITY_PATHS
     | PROTECTION_PATHS
+    | DNS_PATHS
 )
 
 
@@ -495,6 +498,10 @@ def private_connections(values: dict[str, Any], *, terraform: bool) -> Any:
 
 
 def review_fact(properties: dict[str, Any], path: str) -> Any:
+    if path in DNS_PATHS:
+        from .dns_evidence import review_fact as dns_fact
+
+        return dns_fact(properties, path)
     if path in PROTECTION_PATHS:
         from .protection_evidence import review_fact as protection_fact
 
@@ -559,11 +566,14 @@ def projected_properties(
     root: Any = None,
     observed: bool = False,
 ) -> dict[str, Any]:
+    from .dns_evidence import projected_properties as dns_properties
     from .protection_evidence import projected_properties as protection_properties
 
-    return _projected_properties(
-        kind, values, terraform=terraform, root=root, observed=observed
-    ) | protection_properties(kind.lower(), values, terraform=terraform, root=root)
+    return (
+        _projected_properties(kind, values, terraform=terraform, root=root, observed=observed)
+        | protection_properties(kind.lower(), values, terraform=terraform, root=root)
+        | dns_properties(kind.lower(), values, terraform=terraform, root=root)
+    )
 
 
 def _projected_properties(
@@ -874,6 +884,7 @@ def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
         }
         | ROUTING_KINDS
         | PROTECTION_KINDS
+        | DNS_KINDS
     ):
         return {}
     result: dict[str, Any] = {}
