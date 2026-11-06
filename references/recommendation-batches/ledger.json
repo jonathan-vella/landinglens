@@ -604,6 +604,44 @@
       },
       "wheel_sha256": "3f500d0e70fc5b212e522b152f8dfe6d7c2674dfb07e3fd44a061c57fe534bff",
       "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
+    },
+    "10": {
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "merged_at": "2026-11-06T22:44:46Z",
+      "checked_head": "e93adc5bcbf00029256c41968809887488ebee22",
+      "checks": [
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42305687967",
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42305715112"
+      ],
+      "acceptance": "Actual push/PR runs on the merged head passed all eight supported jobs. All four downloaded PR compiler artifacts exercised the same integration cases without skips. Normal exact-head merge and other applicable checks were gated before recording; this receipt does not imply protected-branch enforcement.",
+      "compiler_integration_cases": [
+        "test_bicep.BicepTests.test_actual_installed_compiler_local_success_and_unrestored_failure",
+        "test_segmentation_batch.SegmentationBatchTests.test_real_bicep_nsg_gateway_subnet_flow_without_restore",
+        "test_routing_batch.RoutingBatchTests.test_real_bicep_routing_peering_lb_macsec_connection_no_restore",
+        "test_identity_batch.IdentityBatchTests.test_real_bicep_storage_identity_role_context_without_restore",
+        "test_protection_batch.ProtectionBatchTests.test_real_bicep_protection_outbound_hybrid_no_restore",
+        "test_security_batch.SecurityBatchTests.test_real_bicep_security_configuration_without_restore",
+        "test_expressroute_preparation.ExpressRoutePreparationTests.test_real_bicep_expressroute_cost_capacity_fastpath_without_restore",
+        "test_dns_batch.DnsBatchTests.test_real_bicep_dns_bastion_no_restore",
+        "test_monitoring_preparation.MonitoringPreparationTests.test_real_bicep_monitor_and_gateway_route_join_without_restore",
+        "test_governance_preparation.GovernancePreparationTests.test_real_bicep_governance_without_restore",
+        "test_virtual_wan_preparation.VirtualWanPreparationTests.test_real_bicep_virtual_wan_scoped_configuration_without_restore",
+        "test_identity_resilience_preparation.IdentityResiliencePreparationTests.test_real_bicep_identity_resilience_without_restore",
+        "test_network_policy_preparation.NetworkPolicyPreparationTests.test_real_bicep_policy_gateway_diagnostics_without_restore",
+        "test_logging_preparation.LoggingPreparationTests.test_real_bicep_logging_workspace_extensions_and_alerts_without_restore",
+        "test_tenant_preparation.TenantPreparationTests.test_real_bicep_tenant_configuration_without_restore",
+        "test_policy_strategy_preparation.PolicyStrategyPreparationTests.test_real_bicep_policy_strategy_without_restore",
+        "test_hybrid_identity_preparation.HybridIdentityPreparationTests.test_real_bicep_peering_and_vault_configuration_without_restore",
+        "test_topology_preparation.TopologyPreparationTests.test_real_bicep_vnet_routing_attachment_without_restore"
+      ],
+      "local_installed_suite": {
+        "tests": 694,
+        "passed": 693,
+        "skipped": 1
+      },
+      "wheel_sha256": "defe7f7f901a98fe77bba32522e1c52169802666e8e42e4b693cb9e7a58b5967",
+      "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
     }
   },
   "recommendations": [
@@ -2892,7 +2930,7 @@
       "baseline_control_sha256": "a664147125eb2fcda54282689c99b04aeed136a41743f7a6c23203dfa9bdd66b",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "373f482f-3e39-4d39-8aa4-7e566f6082b6",
         "upstream_id": "D01.01",
@@ -2909,9 +2947,13 @@
         "limitations": "Application security, approved standards and operating practice cannot be inferred from resource existence, WAF association or names."
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.10: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "e8bbac75-7155-49ab-a153-e8908ae28c84",
@@ -2921,7 +2963,7 @@
       "baseline_control_sha256": "61e3df0bffa4524be413d7a851db81e5529484dafd7d0c1f8786232b91ae3807",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "e8bbac75-7155-49ab-a153-e8908ae28c84",
         "upstream_id": "D01.02",
@@ -2951,9 +2993,13 @@
         "limitations": "A reciprocal configured peering is nontransitive; topology purpose, complete estate, granular effective routing and suitability remain human."
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.10: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "7bc1c396-2461-4698-b57f-30ca69525252",
@@ -2963,7 +3009,7 @@
       "baseline_control_sha256": "37b91f65773827622537bbbe48fb98014c55a5158e8f8124da23d88d22c00605",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "7bc1c396-2461-4698-b57f-30ca69525252",
         "upstream_id": "D01.03",
@@ -2996,9 +3042,13 @@
         "limitations": "Multiple location labels are not regional readiness, physical independence or failover. Private DNS zones are global; a selected inventory cannot prove complete deployment."
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.10: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "7dd61623-a364-4a90-9eca-e48ebd54cd7d",
@@ -3008,7 +3058,7 @@
       "baseline_control_sha256": "c1ee4a1d666f4a55d1a8a843b9fb9f927e9759aef45e043cbfa996d705b66871",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "7dd61623-a364-4a90-9eca-e48ebd54cd7d",
         "upstream_id": "D01.04",
@@ -3041,9 +3091,13 @@
         "limitations": "Shared subnet/VNet identity is not hub designation, required service completeness, NVA support or effective protection. No NVA inferred from VM names."
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.10: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "e2e8abac-3571-4559-ab91-53e89f89dc7b",
@@ -3053,7 +3107,7 @@
       "baseline_control_sha256": "983cedccf52b181c5db5f1423942ff62f657638327db505aa5fe0d66a19feb4c",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "e2e8abac-3571-4559-ab91-53e89f89dc7b",
         "upstream_id": "D01.06",
@@ -3070,9 +3124,13 @@
         "limitations": "Generic Microsoft patterns or a deployed appliance do not establish vendor approval/support, actual HA/performance or applicability."
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.10: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
@@ -3082,7 +3140,7 @@
       "baseline_control_sha256": "9ec74d770f7b2a672cab9ae3c55a22e7dc8b5e6a52dae8bc00a8b80b03fcb785",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
         "upstream_id": "D01.07",
@@ -3120,9 +3178,13 @@
         "limitations": "virtualHubs identity/SKU and branch flag alone designate neither Route Server nor Virtual WAN. Declared attachment/gateway settings are not complete/effective transit or authorization to change networking."
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.10: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
@@ -3132,7 +3194,7 @@
       "baseline_control_sha256": "2798f71d52063c6b921537d03618f7360d7fe6cf7429a05e775777efb9a715fa",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
         "upstream_id": "D01.08",
@@ -3164,9 +3226,13 @@
         "limitations": "Source-qualified sizing context is not a whole verdict. Reserved name, positive attachment or sufficiently large prefix does not prove service designation, dedicated use, current eligibility or operational support."
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.10: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "cc881471-607c-41cc-a0e6-14658dd558f9",
@@ -3176,7 +3242,7 @@
       "baseline_control_sha256": "d9e90e6ab792d91aea31d2b7bf59a73812c062c1c43582e12da96b2eac2cadc2",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "cc881471-607c-41cc-a0e6-14658dd558f9",
         "upstream_id": "D01.09",
@@ -3206,9 +3272,13 @@
         "limitations": "Different configured regions and reciprocal links are not designated hubs, working global connectivity or transitive spoke routing. Many-region managed/ER alternatives remain conditional."
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.10: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "4722d929-c1b1-4cd6-81f5-4b29bade39ad",
@@ -3218,7 +3288,7 @@
       "baseline_control_sha256": "0d11eb5020901890e013457a66d4286e0303c9db8bc1f792effb5711104f66c3",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "4722d929-c1b1-4cd6-81f5-4b29bade39ad",
         "upstream_id": "D01.10",
@@ -3249,9 +3319,13 @@
         "limitations": "Network Insights redirects to Network Watcher. No configuration is required for built-in views. Monitor/flow/alert association does not establish running tests, current health, end-to-end coverage or owner response; no live diagnostic/query authorized."
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.10: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "0e7c28ec-9366-4572-83b0-f4664b1d944a",
@@ -3261,7 +3335,7 @@
       "baseline_control_sha256": "3811add812557e830e8f09b9636ecb2ce08039a377796baee3e32d4bbe6e1a2e",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "0e7c28ec-9366-4572-83b0-f4664b1d944a",
         "upstream_id": "D01.11",
@@ -3295,9 +3369,13 @@
         "limitations": "Historical checklist numbers are immutable text, not current automatic limits. No complete estate, live quotas, direction-specific prefix advertisements, spare capacity or extra-hub need inferred from selected resource counts."
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.10: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "3d457936-e9b7-41eb-bdff-314b26450b12",
