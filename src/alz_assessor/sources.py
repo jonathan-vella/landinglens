@@ -124,6 +124,7 @@ def property_at(properties: Any, path: str) -> Any:
 def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     from .governance_evidence import projected_properties as governance_properties
     from .identity_evidence import IDENTITY_KINDS, identity_summary, role_properties
+    from .network_policy_evidence import projected_properties as network_policy_properties
     from .security_evidence import projected_properties as security_properties
 
     if kind == "azurerm_role_assignment":
@@ -139,6 +140,7 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
         )
     )
     result.update(governance_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
+    result.update(network_policy_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     return result
 
 

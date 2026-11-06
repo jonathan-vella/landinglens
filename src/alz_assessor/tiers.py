@@ -26,6 +26,7 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     from .governance_evidence import GUIDS as GOVERNANCE_GUIDS
     from .governance_evidence import resource_in_scope
     from .network_evidence import REVIEW_PATHS, review_fact
+    from .network_policy_evidence import GUIDS as NETWORK_POLICY_GUIDS
     from .sources import boolean, enumeration, property_at
 
     kinds = {kind.lower() for kind in control.get("review_resource_types", [])}
@@ -34,7 +35,9 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     for resource in bundle["resources"]:
         if resource["state"] != "known" or resource["resource_type"].lower() not in kinds:
             continue
-        if control["upstream_guid"] in GOVERNANCE_GUIDS and not resource_in_scope(resource, bundle):
+        if control[
+            "upstream_guid"
+        ] in GOVERNANCE_GUIDS | NETWORK_POLICY_GUIDS and not resource_in_scope(resource, bundle):
             continue
         for path in control.get("review_fact_paths", []):
             properties = resource["properties"]

@@ -2381,18 +2381,239 @@ SOURCES_30 = [
 ]
 
 
+SOURCES_16 = [
+    (
+        "gateway-diagnostics-linked",
+        "https://learn.microsoft.com/azure/vpn-gateway/"
+        "vpn-gateway-howto-setup-alerts-virtual-network-gateway-log",
+        ["VPN Gateway", "GatewayDiagnosticLog", "TunnelDiagnosticLog"],
+        "Actual D06.23 link redirects to VPN monitoring reference. Shared ARM resource type "
+        "does not make IKE, P2S or tunnel categories applicable to ExpressRoute gateways.",
+    ),
+    (
+        "expressroute-monitor-current",
+        LEARN + "azure/expressroute/monitor-expressroute",
+        ["diagnostic setting", "automatically", "gateway"],
+        "Platform metrics are automatic; resource logs need diagnostic routing. Gateway "
+        "metrics and actual ingestion/alert receipt must be reviewed separately from circuits.",
+    ),
+    (
+        "gateway-logs",
+        LEARN + "azure/azure-monitor/reference/supported-logs/"
+        "microsoft-network-virtualnetworkgateways-logs",
+        ["GatewayDiagnosticLog", "RouteDiagnosticLog", "IKEDiagnosticLog"],
+        "Shared virtualNetworkGateways category index includes VPN-only logs. Prepare "
+        "explicit categories/flags only, never infer ExpressRoute category support or health.",
+    ),
+    (
+        "gateway-metrics",
+        LEARN + "azure/azure-monitor/reference/supported-metrics/"
+        "microsoft-network-virtualnetworkgateways-metrics",
+        [
+            "ExpressRouteGatewayCpuUtilization",
+            "ExpressRouteGatewayBitsPerSecond",
+            "ExpressRouteGatewayCountOfRoutesLearnedFromPeer",
+        ],
+        "ExpressRoute gateway metrics have gateway scope/namespace, not circuit scope. "
+        "Dimension and export support differ. No default threshold or runtime result inferred.",
+    ),
+    (
+        "vnet-expressroute-linked",
+        "https://learn.microsoft.com/azure/expressroute/virtual-network-connectivity-guidance",
+        ["peering", "disabled", "by default"],
+        "Page recommends peering over gateway/MSEE paths but contains conflicting statements "
+        "about default VNet connectivity. Retain discrepancy; project explicit flags only.",
+    ),
+    (
+        "gateway-remote-traffic",
+        LEARN + "azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager",
+        ["Allow traffic from remote virtual networks", "route maps", "always allowed"],
+        "Current portal guidance says disabled by default; all applicable gateways need "
+        "configuration. A route-map-upgraded vWAN known issue can allow vWAN routes regardless "
+        "of flag. Explicit flags do not prove effective routing or absence of bypass.",
+    ),
+    (
+        "azure-local-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/scenarios/"
+        "azure-virtual-desktop/eslz-network-topology-and-connectivity",
+        ["Azure Virtual Desktop", "reverse connect", "TLS"],
+        "Original CAF workload link redirects to AVD connectivity, not a universal "
+        "inspection mandate. Preserve workload-specific reverse-connect/TLS context.",
+    ),
+    (
+        "interconnect-locations-linked",
+        LEARN + "azure/expressroute/expressroute-locations-providers?tabs=america%2Ca-c%2Ca-k",
+        ["two distinct", "peering locations", "geopolitical"],
+        "Azure regions and ExpressRoute meet-me locations differ. Neither resource location "
+        "nor equal/different peering labels proves physical transit or country/border crossing. "
+        "D06.26 remains a factual question, not a prohibition.",
+    ),
+    (
+        "peering-linked",
+        LEARN + "azure/virtual-network/virtual-network-peering-overview",
+        ["Global virtual network peering", "Microsoft backbone", "Service chaining"],
+        "Local/global peering and service chaining are supported. Configured endpoint "
+        "locations/access flags prove neither approved geography nor physical/transit paths.",
+    ),
+    (
+        "firewall-linked",
+        "https://learn.microsoft.com/azure/firewall/overview",
+        ["east-west", "north-south", "Basic"],
+        "Firewall capability/SKU is not actual outbound, non-HTTP/S inbound or conditional "
+        "east-west inspection. Organization requirements and actual routes need evidence.",
+    ),
+    (
+        "policy-linked",
+        "https://learn.microsoft.com/azure/firewall-manager/policy-overview",
+        ["same region", "NAT rule collections are not inherited", "DNS"],
+        "Policies can bind globally while parent and child must share a region. Network/"
+        "application rules inherit with parent priority; NAT does not. Names/associations "
+        "do not designate organization-wide policy or prove complete coverage/delegation.",
+    ),
+    (
+        "partner-linked",
+        "https://learn.microsoft.com/azure/firewall-manager/deploy-trusted-security-partner",
+        ["Zscaler", "VPN Gateway", "partner portal"],
+        "Current deployment guidance lists Zscaler, VPN tunnels and partner-portal rule "
+        "configuration. Binding/pending status is not a connected/filtering service. No "
+        "signup, credential exchange, role assignment or deployment performed.",
+    ),
+    (
+        "partner-current",
+        LEARN + "azure/firewall-manager/trusted-security-partners",
+        ["current supported security partner", "Zscaler", "Microsoft 365"],
+        "Reviewed current support lists only Zscaler. Older schema enums are not current "
+        "availability. No retirement date is established by these pages; other historical "
+        "values remain unsupported/unknown rather than silently dropping the target. "
+        "Microsoft 365 direct/local breakout has separate performance guidance.",
+    ),
+    (
+        "manager-current",
+        LEARN + "azure/firewall-manager/overview",
+        ["only with secured virtual hub", "static or custom routes", "Routing Intent"],
+        "Partner services/automatic routing require secured vWAN hubs, not hub VNets. "
+        "Routing Intent governs inter-hub/branch filtering; Firewall Manager can overwrite "
+        "custom/static routes. Existing binding is not topology or effective filtering.",
+    ),
+    (
+        "fqdn-linked",
+        "https://learn.microsoft.com/azure/firewall/fqdn-filtering-network-rules",
+        ["DNS Proxy", "wildcards", "MSSQL"],
+        "Prefer application FQDN rules for HTTP/S/MSSQL. Other TCP/UDP FQDN network rules "
+        "require DNS proxy and do not support wildcards; resolution is IP-based, not SNI.",
+    ),
+    (
+        "firewall-dns-current",
+        LEARN + "azure/firewall/dns-settings",
+        ["client virtual machines", "override", "Private DNS"],
+        "Policy DNS overrides standalone settings; child can override inherited DNS. "
+        "Clients must use the proxy for consistent resolution. Proxy flag proves neither "
+        "client use nor successful resolution; Private DNS upstream behavior differs.",
+    ),
+    (
+        "policy-provider",
+        RAW + "website/docs/r/firewall_policy.html.markdown",
+        ["base_policy_id", "proxy_enabled", "2024-05-01"],
+        "Pinned 4.50.0 exposes explicit base policy and DNS flag. Omitted optional defaults "
+        "do not prove root policy, disabled proxy or actual inherited configuration.",
+    ),
+    (
+        "policy-rules-provider",
+        RAW + "website/docs/r/firewall_policy_rule_collection_group.html.markdown",
+        ["destination_fqdns", "protocols", "network_rule_collection"],
+        "Bounded supplied rule counts/kinds/actions/protocols/FQDN counts can prepare "
+        "review without retaining addresses, FQDNs, ports, descriptions or rule names.",
+    ),
+    *[
+        (
+            "network-policy-spec-" + name,
+            SPEC_RAW + "specification/network/resource-manager/Microsoft.Network/Network/"
+            "stable/2024-05-01/" + filename,
+            markers,
+            finding,
+        )
+        for name, filename, markers, finding in [
+            (
+                "policy",
+                "firewallPolicy.json",
+                ["basePolicy", "enableProxy", "targetFqdns"],
+                "Pinned typed parent/DNS and rule collections; optional/read-only relationships "
+                "are not complete inventory, root designation or effective filtering.",
+            ),
+            (
+                "gateway",
+                "virtualNetworkGateway.json",
+                ["allowRemoteVnetTraffic", "allowVirtualWanTraffic"],
+                "Two distinct explicit booleans. VNet flag excludes vWAN; unknown/missing is "
+                "not a documented creation default or effective-route assertion.",
+            ),
+            (
+                "partner",
+                "securityPartnerProvider.json",
+                ["ZScaler", "IBoss", "CheckPoint"],
+                "Historical schema includes ZScaler/IBoss/CheckPoint; current reviewed Learn "
+                "guidance lists only Zscaler. Old enum presence is not current support.",
+            ),
+        ]
+    ],
+    *[
+        source
+        for source in SOURCES_15
+        if source[0]
+        in {
+            "metric-alert-arm",
+            "connection-arm",
+            "rest-spec-reuse",
+            "provider-reuse",
+            "learn-reuse",
+        }
+    ],
+    *[
+        source
+        for source in SOURCES_17
+        if source[0] in {"firewall-routing", "firewall-hierarchy", "subnet-arm"}
+    ],
+    (
+        "gateway-traffic-provider",
+        RAW + "website/docs/r/virtual_network_gateway.html.markdown",
+        ["remote_vnet_traffic_enabled", "virtual_wan_traffic_enabled"],
+        "Pinned 4.50.0 exposes two explicit distinct remote traffic flags. Documented "
+        "optional defaults are not inferred for raw/imported/planned configuration.",
+    ),
+    *[source for source in SOURCES_22 if source[0] in {"diagnostic-arm", "terraform-diagnostics"}],
+]
+SOURCES_16 = list({source[0]: source for source in SOURCES_16}.values())
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
     parser.add_argument("--preparation-only", action="store_true")
     parser.add_argument(
         "--batch",
-        choices=["01", "04", "08", "11", "12", "13", "14", "15", "17", "18", "19", "22", "30"],
+        choices=[
+            "01",
+            "04",
+            "08",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "22",
+            "30",
+        ],
         default="01",
     )
     args = parser.parse_args()
-    if (args.batch in {"12", "30"}) != args.preparation_only:
-        raise ValueError("Cohorts 12/30 source capture require --preparation-only; no activation")
+    if (args.batch in {"12", "16", "30"}) != args.preparation_only:
+        raise ValueError(
+            "Cohorts 12/16/30 source capture require --preparation-only; no activation"
+        )
     prefix = "preparation" if args.preparation_only else "batch"
     target = ROOT / "references" / "recommendation-batches" / f"{prefix}-{args.batch}-sources.json"
     if target.exists() and not args.append_new_sources:
@@ -2408,6 +2629,7 @@ def main() -> None:
         "13": SOURCES_13,
         "14": SOURCES_14,
         "15": SOURCES_15,
+        "16": SOURCES_16,
         "17": SOURCES_17,
         "18": SOURCES_18,
         "19": SOURCES_19,

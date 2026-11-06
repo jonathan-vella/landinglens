@@ -10,6 +10,7 @@ from .expressroute_evidence import CIRCUIT_KIND, PORT_KIND
 from .expressroute_evidence import PATHS as EXPRESSROUTE_PATHS
 from .governance_evidence import PATHS as GOVERNANCE_PATHS
 from .identity_evidence import PATHS as IDENTITY_PATHS
+from .network_policy_evidence import PATHS as NETWORK_POLICY_PATHS
 from .protection_evidence import KINDS as PROTECTION_KINDS
 from .protection_evidence import PATHS as PROTECTION_PATHS
 from .routing_evidence import KINDS as ROUTING_KINDS
@@ -61,6 +62,7 @@ REVIEW_PATHS = (
     | GOVERNANCE_PATHS
     | {"connectionMonitorSummary", "expressRouteAlertSummary"}
     | DNS_PATHS
+    | NETWORK_POLICY_PATHS
 )
 
 
@@ -506,6 +508,10 @@ def private_connections(values: dict[str, Any], *, terraform: bool) -> Any:
 
 
 def review_fact(properties: dict[str, Any], path: str) -> Any:
+    if path in NETWORK_POLICY_PATHS:
+        from .network_policy_evidence import review_fact as network_policy_fact
+
+        return network_policy_fact(properties, path)
     if path in GOVERNANCE_PATHS:
         from .governance_evidence import review_fact as governance_fact
 
@@ -592,6 +598,7 @@ def projected_properties(
 ) -> dict[str, Any]:
     from .dns_evidence import projected_properties as dns_properties
     from .monitoring_evidence import projected_properties as monitoring_properties
+    from .network_policy_evidence import projected_properties as network_policy_properties
     from .protection_evidence import projected_properties as protection_properties
 
     result = (
@@ -599,6 +606,7 @@ def projected_properties(
         | protection_properties(kind.lower(), values, terraform=terraform, root=root)
         | dns_properties(kind.lower(), values, terraform=terraform, root=root)
         | monitoring_properties(kind.lower(), values, terraform=terraform)
+        | network_policy_properties(kind, values, terraform=terraform)
     )
     if kind.lower() == "microsoft.network/connections":
         from .expressroute_evidence import fastpath_properties
@@ -922,6 +930,8 @@ def _projected_properties(
 def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     if kind.lower() not in {
         "microsoft.network/azurefirewalls",
+        "microsoft.network/firewallpolicies",
+        "microsoft.network/securitypartnerproviders",
         "microsoft.network/virtualnetworks/subnets",
         "microsoft.network/ipgroups",
         "microsoft.network/azurefirewalls/natrulecollections",

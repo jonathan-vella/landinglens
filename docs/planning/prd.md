@@ -169,6 +169,16 @@ was 71 merged / 180 pending; checked receipt #105 completed its reconciliation.
 No actual protection/retention/endpoint/patch/sovereign suitability or owner
 decision follows from configuration alone.
 
+Cohort16/#121 independently prepares nine fixed monitoring/sovereignty/firewall
+workflows without accepted catalog, count or receipt activation. Typed gateway
+flags, strict scoped policy/diagnostic/alert joins and minimized rule protocols
+are configuration context, not routes, inspection, physical geography, global
+coverage or delegation. The factual border question and approved geography/
+conditional inspection decisions remain separate and blank. Current source
+support lists only Zscaler; historical partner enums and redirected VPN/AVD
+guidance cannot establish broader applicability. The coordinator's explicit slot
+and then-current main reconciliation gate all final activation and delivery.
+
 The prior delivered successor was `2026-11-06.5`: cohort13 adds bounded protection,
 outbound and hybrid configuration preparation with ten distinct source-bound
 human decisions, left blank until explicitly supplied. D05.07 remains manual and its historical date is preserved

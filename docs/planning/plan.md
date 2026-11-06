@@ -1,5 +1,60 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 16 independent preparation: 2026-11-06
+
+[#121](https://github.com/jonathan-vella/landinglens/issues/121) prepares nine
+immutable network monitoring, sovereignty and firewall-policy targets in its
+[reviewed matrix](../../references/recommendation-batches/preparation-16.json)
+and [public-source capture](../../references/recommendation-batches/preparation-16-sources.json).
+This is not accepted catalog activation or delivery. Cohorts20/05 retain earlier
+serialized slots; no successor version, counts, crosswalk, history, receipts or
+issue closure is changed.
+
+Existing adapters now prepare explicit gateway remote-VNet/vWAN flags, typed
+base-policy links, bounded category/metric/protocol facts and strict scoped
+known unique gateway/diagnostic/alert and firewall/policy/local-rule-group joins.
+Cycles, denied/ambiguous/out-of-scope links and over-bound populations cannot
+produce complete coverage; a missing parent is not an inferred global root.
+Per-node DNS flags are explicit configuration, not effective inherited settings.
+No new transport, collector route, dependency, query execution or live operation
+is introduced. Rule destinations, ports, raw logs, contracts and principal records
+are withheld.
+
+The actual D06.23 link redirects to VPN monitoring, not ExpressRoute-specific
+category support. D06.24's page has conflicting default statements; explicit
+flags do not resolve actual routes, including the documented route-map-upgraded
+vWAN exception. D06.25's workload-specific CAF link redirects to AVD reverse
+connect/TLS guidance. Current partner pages list only Zscaler, while the pinned
+schema still includes IBoss/CheckPoint; those enums prove no current availability
+and the reviewed pages establish no retirement date. Partner integration requires
+secured vWAN hubs, not hub VNets.
+ARM/no-restore Bicep and saved evidence can prepare a historical partner-provider
+enum and typed virtual-hub reference, explicitly leaving current service support
+unknown. This adds no live Collector registration or Terraform partner adapter;
+known secured-hub/VPN/route integration waits for actual merged cohort20 models.
+
+D06.26 remains a factual border/country question, not a prohibition. Approved
+regions and conditional inspection requirements remain separate human decisions;
+locations, peering, policy and proxy flags prove no physical paths, global coverage,
+delegation, filtering, health or client DNS use. The prepared interview has nine
+separate blank decisions. Preparation tests exercise it locally without registering
+it in the accepted bank or weakening packaged-catalog replay guards. Final
+source/schema/bank activation, then-current main reconciliation and complete
+checked delivery remain gated on the coordinator's explicit slot.
+
+Preparation verification ran **477 tests in both the checkout and own clean
+installed wheel: 476 passed, one original Windows symlink-privilege skip**.
+All17 cohort tests, formatting/lint, 41-source-file typing, dependency consistency
+and 248 local documentation links passed. The existing Bicep0.47.16 compiler
+exercised all11 actual cases without restoration or compiler skips, including
+the new policy/gateway/diagnostics/partner fixture. Offline-built own wheel SHA256
+is `1fb33aaf61bb008b325a10e7760298eebc823f40d13d20f59d1621ed21756b13`;
+its outside-checkout interpreter imported only its site-packages package and
+matched all41 Python source files byte-for-byte. Missing clean runtime wheels
+were restored only after an actual offline missing-dependency failure; all three
+match the unchanged reviewed manifest. These are preparation proofs, not final
+then-current-main, CI, merge, own-GUID receipt or closure acceptance.
+
 ## Problem and approach
 
 Create a standalone, advisory-only CLI that compares planned or deployed Azure infrastructure with Microsoft Azure Landing Zones guidance. Organize the checklist and reports by the verified Microsoft design areas.

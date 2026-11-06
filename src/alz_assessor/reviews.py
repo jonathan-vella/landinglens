@@ -50,6 +50,7 @@ def prepared_resource(
     resource: dict[str, Any],
     control: dict[str, Any],
     by_id: dict[str, list[dict[str, Any]]],
+    bundle: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     facts: dict[str, Any] = {}
     for path in control.get("review_fact_paths", []):
@@ -73,6 +74,13 @@ def prepared_resource(
         "facts": facts,
         "subchecks": local_subchecks(facts),
     }
+    if bundle is not None:
+        from .network_policy_evidence import FIREWALL, GATEWAY, gateway_context, policy_context
+
+        if "basePolicy.id" in facts and resource["resource_type"].lower() == FIREWALL:
+            prepared["configured_policy_chain"] = policy_context(resource, bundle, by_id)
+        if "gatewayDiagnosticSummary" in facts and resource["resource_type"].lower() == GATEWAY:
+            prepared["configured_gateway_monitoring"] = gateway_context(resource, bundle, by_id)
     if (
         "disableBgpRoutePropagation" in control.get("review_fact_paths", [])
         and resource["resource_type"].lower() == "microsoft.network/virtualnetworkgateways"
@@ -348,9 +356,10 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     ]
     from .governance_evidence import GUIDS as GOVERNANCE_GUIDS
     from .governance_evidence import resource_in_scope
+    from .network_policy_evidence import GUIDS as NETWORK_POLICY_GUIDS
 
     unbound = 0
-    if control["upstream_guid"] in GOVERNANCE_GUIDS:
+    if control["upstream_guid"] in GOVERNANCE_GUIDS | NETWORK_POLICY_GUIDS:
         scoped = [resource for resource in matches if resource_in_scope(resource, bundle)]
         unbound, matches = len(matches) - len(scoped), scoped
     context = {
@@ -358,7 +367,9 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
         "collected_at": bundle["collected_at"],
         "inventory_complete": bundle["inventory_complete"],
         "normalized_resources_available": available,
-        "resources": [prepared_resource(resource, control, by_id) for resource in matches[:100]],
+        "resources": [
+            prepared_resource(resource, control, by_id, bundle) for resource in matches[:100]
+        ],
         "matching_resources": len(matches) if available else None,
         "truncated": len(matches) > 100,
         "warning": (
@@ -366,7 +377,7 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
             "complete relationships. No whole-recommendation outcome or current freshness inferred."
         ),
     }
-    if control["upstream_guid"] in GOVERNANCE_GUIDS:
+    if control["upstream_guid"] in GOVERNANCE_GUIDS | NETWORK_POLICY_GUIDS:
         context["unbound_resources"] = unbound
     if control["upstream_guid"] == "3a923c34-74d0-4001-aac6-a9e01e6a83de" and available:
         from .governance_evidence import hierarchy_context
