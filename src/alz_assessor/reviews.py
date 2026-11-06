@@ -10,6 +10,42 @@ from .sources import boolean, enumeration, property_at
 from .terraform import InputError
 
 
+def direct_port_context(identity: Any, by_id: dict[str, list[dict[str, Any]]]) -> dict[str, Any]:
+    from .expressroute_evidence import PORT_KIND
+
+    matches = by_id.get(identity, []) if isinstance(identity, str) else []
+    if (
+        len(matches) != 1
+        or matches[0]["state"] != "known"
+        or matches[0]["resource_type"].lower() != PORT_KIND
+    ):
+        return {
+            "arm_id": identity if isinstance(identity, str) else None,
+            "unknown": "referenced_direct_port_not_unique_known",
+        }
+    facts = {
+        path: review_fact(matches[0]["properties"], path)
+        for path in (
+            "directPortBandwidthGbps",
+            "directPortBillingType",
+            "directPortEncapsulation",
+            "peeringLocationConfigured",
+        )
+    }
+    bandwidth = facts["directPortBandwidthGbps"]
+    return {
+        "arm_id": identity,
+        "facts": facts,
+        "published_fastpath_port_ip_limit": {10: 100000, 100: 200000, 400: 200000}.get(
+            bandwidth, {"unknown": "reviewed_direct_port_capacity_required"}
+        )
+        if type(bandwidth) is int
+        else {"unknown": "reviewed_direct_port_capacity_required"},
+        "warning": "Published cumulative per-port IP limit only; no actual route population, "
+        "enrollment, region availability, capacity headroom or achieved FastPath performance.",
+    }
+
+
 def prepared_resource(
     resource: dict[str, Any],
     control: dict[str, Any],
@@ -119,6 +155,87 @@ def prepared_resource(
             )
         prepared["linked_subnets"] = links
         prepared["links_truncated"] = len(refs) > 20
+    if "virtualNetworkGateway1.id" in facts:
+        identity = facts["virtualNetworkGateway1.id"]
+        candidates = by_id.get(identity, []) if isinstance(identity, str) else []
+        gateway: dict[str, Any] = {
+            "arm_id": identity if isinstance(identity, str) else None,
+            "unknown": "referenced_gateway_not_unique_known",
+        }
+        if (
+            len(candidates) == 1
+            and candidates[0]["resource_type"].lower() == "microsoft.network/virtualnetworkgateways"
+            and candidates[0]["state"] == "known"
+        ):
+            child = candidates[0]
+            gateway_facts = {
+                path: review_fact(child["properties"], path)
+                for path in (
+                    "gatewayType",
+                    "gatewaySku",
+                    "activeActive",
+                    "gatewayScaleBounds",
+                    "gatewayPublicIpReferences",
+                )
+            }
+            gateway = {
+                "arm_id": identity,
+                "facts": gateway_facts,
+                "subchecks": local_subchecks(gateway_facts),
+            }
+            public_refs = gateway_facts["gatewayPublicIpReferences"]
+            public_ips = []
+            for public_id in public_refs if isinstance(public_refs, list) else []:
+                matches = by_id.get(public_id, []) if isinstance(public_id, str) else []
+                entry: dict[str, Any] = {
+                    "arm_id": public_id if isinstance(public_id, str) else None,
+                    "unknown": "referenced_public_ip_not_unique_known",
+                }
+                if (
+                    len(matches) == 1
+                    and matches[0]["resource_type"].lower() == "microsoft.network/publicipaddresses"
+                    and matches[0]["state"] == "known"
+                ):
+                    entry = {
+                        "arm_id": public_id,
+                        "publicIpSku": review_fact(matches[0]["properties"], "publicIpSku"),
+                        "configuredZones": review_fact(matches[0]["properties"], "configuredZones"),
+                    }
+                public_ips.append(entry)
+            gateway["public_ips"] = public_ips if isinstance(public_refs, list) else public_refs
+        prepared["linked_gateway"] = gateway
+    if "expressRoutePort.id" in facts:
+        prepared["linked_direct_port"] = direct_port_context(facts["expressRoutePort.id"], by_id)
+    if "expressRouteCircuitId" in facts:
+        identity = facts["expressRouteCircuitId"]
+        matches = by_id.get(identity, []) if isinstance(identity, str) else []
+        circuit: dict[str, Any] = {
+            "arm_id": identity if isinstance(identity, str) else None,
+            "unknown": "referenced_circuit_not_unique_known",
+        }
+        if (
+            len(matches) == 1
+            and matches[0]["state"] == "known"
+            and matches[0]["resource_type"].lower() == "microsoft.network/expressroutecircuits"
+        ):
+            circuit_facts = {
+                path: review_fact(matches[0]["properties"], path)
+                for path in (
+                    "circuitSku.tier",
+                    "circuitSku.family",
+                    "providerCircuitBandwidthMbps",
+                    "directCircuitBandwidthGbps",
+                    "expressRoutePort.id",
+                )
+            }
+            circuit = {
+                "arm_id": identity,
+                "facts": circuit_facts,
+                "linked_direct_port": direct_port_context(
+                    circuit_facts["expressRoutePort.id"], by_id
+                ),
+            }
+        prepared["linked_circuit"] = circuit
     return prepared
 
 

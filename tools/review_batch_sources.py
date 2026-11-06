@@ -1087,6 +1087,202 @@ SOURCES_13 = [
 ]
 
 
+SOURCES_14 = [
+    (
+        "scalable-gateway",
+        LEARN + "azure/expressroute/scalable-gateway",
+        ["maximum scale unit", "40", "fixed scaling", "West Europe"],
+        "ErGwScale bounds are 1-40; min=1 requires fixed max=1 and autoscale min starts at 2. "
+        "Private Link workloads should use fixed scaling; IPsec over ExpressRoute is unsupported. "
+        "The current source lists region exclusions including West Europe, "
+        "not blanket availability. Configured minimum>=10 is a FastPath prerequisite subcheck, "
+        "not actual scale or performance.",
+    ),
+    (
+        "expressroute-cost",
+        "https://learn.microsoft.com/azure/expressroute/plan-manage-cost",
+        ["Unlimited data plan", "monthly port fee", "Global Reach"],
+        "Local includes unlimited data; Standard/Premium offer different plans. Circuit, "
+        "gateway, Direct port, outbound transfer, Global Reach and provider charges must be "
+        "reconciled with actual demand and prices. No universal break-even threshold exists.",
+    ),
+    (
+        "expressroute-local",
+        "https://learn.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-local",
+        ["What is ExpressRoute Local", "peering location", "unlimited"],
+        "Local reach is tied to the actual peering location's supported nearby Azure regions, "
+        "not the circuit resource location or a Local SKU alone. FAQ Direct bandwidth text "
+        "lags the dedicated Direct page's conditional 400-Gbps offering.",
+    ),
+    (
+        "expressroute-gateway",
+        "https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways",
+        ["ErGwScale", "minimum 10 scale units", "auto-assigned"],
+        "Gateway performance values are estimates, not measured demand or throughput. "
+        "ErGwScale FastPath requires at least ten scale units; new auto-assigned public-IP "
+        "behavior differs from existing zonal deployments. SKU text cannot prove resilience.",
+    ),
+    (
+        "hybrid-demand-and-isolation",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/connectivity-to-azure",
+        ["higher than 10 Gbps", "routing domain", "share the bandwidth"],
+        "The checklist's >10-Gbps/latency/dedicated-port triggers require actual requirements. "
+        "VNets sharing a circuit share routing domain/bandwidth; different circuit declarations "
+        "alone cannot establish effective isolation or absence of shared port contention.",
+    ),
+    (
+        "fastpath",
+        "https://learn.microsoft.com/azure/expressroute/about-fastpath",
+        ["minimum of 10 scale units", "limited general availability", "25,000"],
+        "Provider circuits support IPv4 hub FastPath; Direct adds conditional peering, UDR, "
+        "IPv6 and enrolled limited-GA Private Link scenarios. Same-region/topology/service and "
+        "port-cumulative IP limits apply; exhaustion/fallback routes through the gateway. "
+        "Virtual WAN Direct defaults require five scale units and are a distinct resource model.",
+    ),
+    (
+        "zone-gateway-creation",
+        "https://learn.microsoft.com/azure/vpn-gateway/create-zone-redundant-vnet-gateway",
+        ["For zonal gateways", "All gateway instances", "Standard"],
+        "AZ SKU permits zonal as well as zone-redundant deployments. Public-IP configuration, "
+        "deployment history and actual supported region are required, not a substring test. "
+        "No creation, migration, public-IP fetch or regional API read is performed.",
+    ),
+    (
+        "onprem-vpn-redundancy",
+        "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable",
+        ["Multiple on-premises VPN devices", "BGP is required", "ECMP"],
+        "Azure active-active is not on-premises appliance redundancy. Multiple-device designs "
+        "require distinct device/connection bindings and appropriate BGP/ECMP/failover evidence; "
+        "two local gateway records or tunnels cannot count real independent appliances.",
+    ),
+    (
+        "expressroute-direct",
+        "https://learn.microsoft.com/azure/expressroute/expressroute-erdirect-about",
+        ["400-Gbps", "limited ExpressRoute peering locations", "QinQ", "billing type"],
+        "Direct now documents dual 10/100/400-Gbps ports; 400 Gbps is location/enrollment "
+        "conditional. Local/Standard/Premium, port billing and VLAN encapsulation remain "
+        "distinct. QinQ/Dot1Q configuration is not tested routing isolation or cost suitability.",
+    ),
+    (
+        "expressroute-architecture",
+        "https://learn.microsoft.com/azure/architecture/framework/services/networking/expressroute/reliability",
+        ["ExpressRoute", "service providers", "reliability testing"],
+        "The legacy reliability URL redirects to the current Well-Architected service guide. "
+        "Reconcile circuit, path, provider, peering-site and gateway failure domains and "
+        "business requirements; configuration/SKU/association evidence alone is not resilience.",
+    ),
+    (
+        "gateway-reliability",
+        LEARN + "azure/reliability/reliability-virtual-network-gateway",
+        ["might not be zone redundant", "ErGwScale", "Public IP addresses"],
+        "New supported gateways can be automatically zone redundant while existing resources "
+        "might not be. ExpressRoute ErGwScale is AZ-capable despite lacking AZ in its name. "
+        "VPN public IPs must be Standard and zone redundant; "
+        "operational topology remains separate.",
+    ),
+    (
+        "expressroute-locations",
+        LEARN + "azure/expressroute/expressroute-locations-providers",
+        ["two distinct", "East US", "Seattle", "Local"],
+        "Circuit resource region and physical peering location are different. The reviewed "
+        "public table is not live inventory, admission or regional availability evidence; "
+        "review exact Local target-region mapping and Direct port availability separately.",
+    ),
+    (
+        "circuit-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/expressroutecircuits",
+        ["bandwidthInGbps", "bandwidthInMbps", "expressRoutePort", "family"],
+        "Pinned ARM exposes explicit tier/family, provider Mbps versus Direct Gbps, port "
+        "reference and rate-limit flag. The generated page labels circuit Gbps int while "
+        "the exact REST schema says number; retain finite numeric facts "
+        "without claiming eligibility.",
+    ),
+    (
+        "circuit-rest-2024",
+        SPEC_RAW + "specification/network/resource-manager/Microsoft.Network/Network/"
+        "stable/2024-05-01/expressRouteCircuit.json",
+        ['"type": "number"', "ExpressRouteCircuitSku", "enableDirectPortRateLimit"],
+        "Exact GET/schema distinguishes circuit bandwidth number, provider integer Mbps, "
+        "SKU enums and port reference. Secret/service keys, addresses, stats "
+        "and notes are excluded.",
+    ),
+    (
+        "port-rest-2024",
+        SPEC_RAW + "specification/network/resource-manager/Microsoft.Network/Network/"
+        "stable/2024-05-01/expressRoutePort.json",
+        ["billingType", "bandwidthInGbps", "QinQ"],
+        "Port bandwidth is integer; billing and encapsulation are independent enums. "
+        "No arbitrary service keys, link identities, rack/interface values or secret references "
+        "are included in the cost/capacity facts.",
+    ),
+    (
+        "gateway-rest-2024",
+        SPEC_RAW + "specification/network/resource-manager/Microsoft.Network/Network/"
+        "stable/2024-05-01/virtualNetworkGateway.json",
+        ["expressRouteGatewayBypass", "enablePrivateLinkFastPath", "autoScaleConfiguration"],
+        "Pinned gateway/connection schema supports explicit bypass/Private Link booleans "
+        "and autoscale bounds. Omitted defaults, current scale, deployed zone population and "
+        "working routes are not inferred. Reuse merged predecessor gateway/connection helpers.",
+    ),
+    *[
+        source
+        for source in SOURCES_11
+        if source[0]
+        in {
+            "port-arm",
+            "connection-arm",
+            "terraform-expressroute-port",
+            "terraform-gateway-connection",
+        }
+    ],
+    (
+        "terraform-circuit",
+        RAW + "website/docs/r/express_route_circuit.html.markdown",
+        ["bandwidth_in_gbps", "bandwidth_in_mbps", "conflict", "rate_limiting_enabled"],
+        "AzureRM 4.50.0 distinguishes mutually exclusive provider and Direct fields. Explicit "
+        "single SKU block is required; Basic is an enum, not a justified regional/cost option. "
+        "No migration, provider execution or service-key retention occurs.",
+    ),
+    (
+        "terraform-gateway",
+        RAW + "website/docs/r/virtual_network_gateway.html.markdown",
+        ["active_active", "ErGw3AZ", "public_ip_address_id"],
+        "Pinned provider documents active-active and IP-config references but no ErGwScale "
+        "or autoscale field. Do not infer support from the newer ARM schema or invent a "
+        "Terraform scale block. Missing defaults remain unknown; reuse predecessor helpers.",
+    ),
+    (
+        "gateway-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/virtualnetworkgateways",
+        ["autoScaleConfiguration", "ErGwScale", "publicIPAddress"],
+        "ARM supports explicit autoscale min/max and gateway SKU/public-IP/subnet references. "
+        "Configured bounds do not measure actual scale or verify zone-redundant placement. "
+        "Pinned Terraform documentation does not expose the same autoscale capability.",
+    ),
+    (
+        "rest-spec-reuse",
+        SPEC_RAW + "LICENSE",
+        ["MIT", "Microsoft"],
+        "Pinned Microsoft REST schemas are MIT licensed; retain metadata and own factual findings.",
+    ),
+    (
+        "provider-reuse",
+        RAW + "LICENSE",
+        ["Mozilla Public License Version 2.0", "HashiCorp"],
+        "Pinned provider is MPL-2.0. No provider source, page content or licensed implementation "
+        "is redistributed in the preparation; retain attribution, hashes and own factual findings.",
+    ),
+    (
+        "learn-reuse",
+        LEARN + "legal/termsofuse",
+        ["Notice Specific to Documents", "explicit license terms", "informational"],
+        "Learn's general document reuse terms are constrained and explicit document licenses "
+        "can govern separately. Retain URL/revision/hash attribution and own factual findings "
+        "only; no Microsoft page text, graphics, layouts or assets are redistributed.",
+    ),
+]
+
+
 SOURCES_22 = [
     (
         "sovereign-external-keys",
@@ -1285,7 +1481,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
     parser.add_argument(
-        "--batch", choices=["01", "04", "11", "13", "17", "18", "19", "22"], default="01"
+        "--batch", choices=["01", "04", "11", "13", "14", "17", "18", "19", "22"], default="01"
     )
     args = parser.parse_args()
     target = ROOT / "references" / "recommendation-batches" / f"batch-{args.batch}-sources.json"
@@ -1298,6 +1494,7 @@ def main() -> None:
         "04": SOURCES_04,
         "11": SOURCES_11,
         "13": SOURCES_13,
+        "14": SOURCES_14,
         "17": SOURCES_17,
         "18": SOURCES_18,
         "19": SOURCES_19,

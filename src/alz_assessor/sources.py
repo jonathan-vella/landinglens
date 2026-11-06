@@ -43,6 +43,7 @@ TF_TYPES = {
     "azurerm_lb": "Microsoft.Network/loadBalancers",
     "azurerm_lb_backend_address_pool": "Microsoft.Network/loadBalancers/backendAddressPools",
     "azurerm_express_route_port": "Microsoft.Network/expressRoutePorts",
+    "azurerm_express_route_circuit": "Microsoft.Network/expressRouteCircuits",
     "azurerm_virtual_network_gateway_connection": "Microsoft.Network/connections",
     "azurerm_role_assignment": "Microsoft.Authorization/roleAssignments",
     "azurerm_security_center_subscription_pricing": "Microsoft.Security/pricings",

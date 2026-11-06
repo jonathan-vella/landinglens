@@ -78,6 +78,16 @@ records remain traceable under explicit lifecycle semantics.
 
 ## Active increment: fixed recommendation expansion
 
+Working `2026-11-06.7` integrates cohort14's nine assisted ExpressRoute workflows
+after actual cohort13/22 delivery and a sole coordinator slot grant. Explicit
+billing/capacity/connection/gateway facts and partial FastPath prerequisites
+share the existing adapters, tiers, review/interview/report/session/replay paths.
+ARM-only scaling is not inferred for pinned Terraform. Actual costs, Local
+regional reach, demand, performance, on-premises redundancy and routing isolation
+remain separately evidenced decisions. Exact `.6.6` and all older meanings/receipts
+are preserved. No actual merged cohort14 acceptance is counted before guarded
+receipts; the delivered ledger remains 71 merged / 180 pending.
+
 Delivered implementation successor `2026-11-06.6` integrates cohort22's eight assisted workflows
 after the coordinator granted its delivery slot. Planned-only pricing/HSM/VM
 versions, saved/injected diagnostic facts and a source-specific interview share

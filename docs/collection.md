@@ -11,6 +11,19 @@ can supply minimized routing categories and destinations through saved/injected
 evidence. They establish configuration only, never arriving logs or retention.
 No Azure, Entra, audit/log or data-plane request is performed for this acceptance.
 
+### Cohort-14 ExpressRoute context
+
+Reviewed circuit, Direct-port, connection, gateway and public-IP configuration
+uses ARM/REST 2024-05-01, raw/supplied-plan AzureRM 4.50.0 and saved/injected
+evidence through the existing adapters. Circuit tier/family, explicit numeric
+bandwidth, port billing/encapsulation and FastPath flags are configuration facts.
+ARM-only ErGwScale bounds have no invented Terraform equivalent. Scoped positive
+gateway/circuit/port/public-IP joins never fetch missing records or establish
+estate completeness, actual appliances, current regions, demand or working paths.
+Keys, addresses, secret/device identities and arbitrary notes are withheld.
+This acceptance performs no new live Azure, billing, traffic, health, regional,
+appliance, Graph or data-plane reads; the existing authorization boundary remains.
+
 ## Policy evidence reuse
 
 LL-30 consumes the existing scoped collector's separate assignments, exemptions

@@ -52,6 +52,7 @@ GATEWAY_SKUS = (
     "ErGw1AZ",
     "ErGw2AZ",
     "ErGw3AZ",
+    "ErGwScale",
     "VpnGw1",
     "VpnGw2",
     "VpnGw3",
@@ -536,6 +537,8 @@ def projected_properties(
         }
         if not terraform and result["gatewaySku"] in ("ErGw1Az", "ErGw2Az", "ErGw3Az"):
             result["gatewaySku"] = result["gatewaySku"][:-2] + "AZ"
+        if terraform and result["gatewaySku"] == "ErGwScale":
+            result["gatewaySku"] = unknown("terraform_ergwscale_not_reviewed")
     for path in set(result) & PATHS:
         result[path] = review_fact(result, path)
     return result

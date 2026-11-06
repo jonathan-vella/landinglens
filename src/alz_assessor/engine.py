@@ -42,6 +42,9 @@ def restricted_direct_sources(addresses: list[str]) -> bool:
 def local_subchecks(properties: dict[str, Any]) -> dict[str, Any]:
     """Original-time partial facts, never whole-recommendation outcomes."""
     result: dict[str, Any] = {}
+    from .expressroute_evidence import fastpath_subchecks
+
+    result.update(fastpath_subchecks(properties))
     if "virtualNetworkPrefixes" in properties:
         from .routing_evidence import address_subchecks
 
