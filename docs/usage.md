@@ -252,6 +252,13 @@ An answer alone never approves anything; a failed/expired/changed decision rejec
 the whole output. Import the completed document with the usual `assess --manual`.
 The local workspace integration is separately tracked, not delivered by this CLI.
 
+Use `--question network-monitoring-sovereignty-policy` for cohort16's nine
+separate diagnostic/routing/inspection/geography/global-policy/partner/DNS
+decisions. Its technical context is configuration only; border crossing is a
+factual question, not a blanket prohibition. Current partner support, actual
+paths/tunnels/filtering, approved regions, role delegation and client DNS use
+require separate attributable evidence. Every outcome starts blank.
+
 Use `--question inbound-outbound-hybrid` for cohort 13's ten separate GUID
 decisions, including DDoS logging and NIC public-IP policy as distinct D05.08
 recommendations. Its migration question preserves the frozen date and current

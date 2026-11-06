@@ -33,11 +33,42 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.13` retains all 255 entries: 12 automated, 200 assisted
-and 43 manual. Crosswalk `2026-11-06.13` rebinds the unchanged 51-control,
+Current successor `2026-11-06.14` retains all 255 entries: 12 automated, 200 assisted
+and 43 manual. Crosswalk `2026-11-06.14` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-Exact predecessor `.6.12` is frozen; source-matrix acceptance alone is not delivery.
+Exact predecessor `.6.13` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
+
+### Cohort 16: network monitoring, sovereignty and firewall policy
+
+The [nine-GUID matrix](../references/recommendation-batches/batch-16.json) and
+[35 preserved captures](../references/recommendation-batches/batch-16-sources.json)
+precede `.6.14`. Eight assisted workflows and the manual factual border/country
+question share existing adapters, review/tier/report/tracker/session mechanisms
+and exact packaged original-time replay. No new whole-recommendation predicate
+or live Collector route is added. Explicit gateway remote-VNet/vWAN flags,
+scoped unique diagnostic/metric-alert joins, bounded policy-chain/local-rule-group
+joins and minimized protocols/FQDN counts remain configuration context only.
+Missing parent references never designate a global root; cycles, ambiguity,
+denial, stale/partial/foreign and over-bound evidence cannot become a pass.
+
+Partner context reuses actual Virtual WAN hub/WAN/firewall/table/connection/intent
+models and requires explicit reciprocal vWAN VPN gateway references. VNet
+`virtualNetworkGateways` and vWAN `vpnGateways` are distinct. Firewall intent and
+local flags prove no partner default-route opt-in, actual tunnels, complete branch/
+VPN-connection population, health or effective filtering. Historical provider
+enums do not prove current support: reviewed current pages list only Zscaler and
+establish no retirement date. The linked VPN/ExpressRoute and redirected AVD
+applicability limits and contradictory connectivity defaults remain explicit.
+
+The registered `network-monitoring-sovereignty-policy` interview starts with
+nine separate blank decisions. Approved geography, physical/country paths,
+conditional east-west inspection, designated global policy, complete coverage,
+effective inheritance/delegation, partner support and real client/upstream DNS
+use need attributable evidence. D06.26 is not a blanket prohibition. Application
+rules for supported HTTP/S/MSSQL differ from TCP/UDP FQDN network rules requiring
+DNS proxy and no wildcard support. No rule destinations, raw logs/queries,
+provider contracts, principal records or secrets are retained by the new facts.
 
 ### Cohort 05: identity resilience, roles and emergency access
 

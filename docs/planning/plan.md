@@ -1,5 +1,147 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 16 accepted integration: 2026-11-06
+
+The coordinator granted [#121](https://github.com/jonathan-vella/landinglens/issues/121)
+the sole delivery slot after actual cohort05 implementation125/receipt126,
+#118 completed closure and verified130 own-GUID receipts. Preserved `2e2c679`
+and renewed `12a4a77` preparation reconcile actual main
+`4e0fdd9b899a8c155e20e6caf022279fe8c1b48a` in merge `666b9d1`.
+The [nine-GUID matrix](../../references/recommendation-batches/batch-16.json)
+and [35 reviewed captures](../../references/recommendation-batches/batch-16-sources.json)
+precede unique successor `2026-11-06.14`, derived with the existing offline
+batch/crosswalk builders. All32 original source rows and three supplemental rows
+retain their original revisions, hashes and times. Exact predecessor `.6.13`
+catalog bytes are frozen with SHA256
+`86381a5401b5b473f0c120de2cbee77fc393d562d5a02211834b4de22cd77322`;
+crosswalk bytes:
+`d0949529bb2e26e5b0583c58368fb65e79e5ab83b85456a60099cb4c437cb5db`.
+
+All255 GUIDs, fixed251 membership, original four predicates/full predecessor
+control objects, cohort15 propagation, actual vWAN models and every130 earlier
+own-GUID row/fifteen receipts remain unchanged. Current dispositions stay
+**12 automated / 200 assisted / 43 manual**. Eight assisted workflows and manual
+D06.26 add no whole-recommendation predicate. Typed scoped gateway diagnostics/
+alerts, remote-VNet/vWAN flags, policy-chain/local-rule-group and reciprocal
+partner/hub/WAN/VPN/routing context share the single engine and all review/tier/
+report/tracker/session and accepted-package original-time replay paths. The
+registered interview retains nine independently blank decisions.
+
+The preserved source contradictions/current partner uncertainty and all limits
+below still apply. Configuration never proves physical/country paths, approved
+geography, effective inspection/inheritance/delegation, health, partner support,
+complete global coverage or actual client DNS use. No live Collector route,
+tenant scope, transport, dependency, module/compiler acquisition, runtime query,
+network/identity action or human attestation is introduced. All twelve current
+actual compiler cases are retained and the relevant cohort16 fixture is the
+thirteenth. **130 delivered /121 pending** remains unchanged until normal
+exact-head implementation/platform/CodeQL/review/four matching exercised compiler
+proofs and guarded own-GUID receipt publication satisfy their gates. Source
+acceptance or implementation closure alone is not delivery.
+
+Pre-delivery checkout and own exact-installed suites each ran **534 tests**:
+533 passed with the original Windows symlink-privilege skip. All28 cohort16
+tests pass, including actual registered-bank sessions, privacy, strict joins,
+history/receipt preservation and accepted/historical original-time replay.
+All thirteen actual existing-compiler cases exercised without restoration or
+compiler skips. Format/lint, 42-source-file typing, dependency consistency and
+351 local documentation links passed. Exact own offline wheel SHA256 is
+`b59543508e922c5c332bdd7ff02cb7714bce3ffea00e1b60baadcccc0f5c4a2f`.
+Its clean outside-checkout interpreter imports its own site-packages package and
+matches all113 packaged Python/data/license artifacts byte-for-byte. The existing
+reviewed runtime wheels suffice; no dependency was added or restored. Historical
+cohort05 assertions retain exact `.13` and122 predecessor receipts; cohort20's
+CLI comparison explicitly selects its exact `.12` catalog instead of comparing
+different successors.
+
+## Historical cohort 16 independent preparation: 2026-11-06
+
+[#121](https://github.com/jonathan-vella/landinglens/issues/121) prepares nine
+immutable network monitoring, sovereignty and firewall-policy targets in its
+[reviewed matrix](../../references/recommendation-batches/preparation-16.json)
+and [public-source capture](../../references/recommendation-batches/preparation-16-sources.json).
+This is not accepted catalog activation or delivery. Actual cohort20 delivery
+is merged; cohort05 retains the earlier serialized slot. No cohort16 successor
+version, counts, crosswalk, history, receipts or issue closure is changed.
+
+Existing adapters now prepare explicit gateway remote-VNet/vWAN flags, typed
+base-policy links, bounded category/metric/protocol facts and strict scoped
+known unique gateway/diagnostic/alert and firewall/policy/local-rule-group joins.
+Cycles, denied/ambiguous/out-of-scope links and over-bound populations cannot
+produce complete coverage; a missing parent is not an inferred global root.
+Per-node DNS flags are explicit configuration, not effective inherited settings.
+No new transport, collector route, dependency, query execution or live operation
+is introduced. Rule destinations, ports, raw logs, contracts and principal records
+are withheld.
+
+The actual D06.23 link redirects to VPN monitoring, not ExpressRoute-specific
+category support. D06.24's page has conflicting default statements; explicit
+flags do not resolve actual routes, including the documented route-map-upgraded
+vWAN exception. D06.25's workload-specific CAF link redirects to AVD reverse
+connect/TLS guidance. Current partner pages list only Zscaler, while the pinned
+schema still includes IBoss/CheckPoint; those enums prove no current availability
+and the reviewed pages establish no retirement date. Partner integration requires
+secured vWAN hubs, not hub VNets.
+ARM/no-restore Bicep and saved evidence can prepare a historical partner-provider
+enum and typed virtual-hub reference, explicitly leaving current service support
+unknown. This adds no live Collector registration or Terraform partner adapter.
+The renewed preparation below reuses actual merged cohort20 models.
+
+D06.26 remains a factual border/country question, not a prohibition. Approved
+regions and conditional inspection requirements remain separate human decisions;
+locations, peering, policy and proxy flags prove no physical paths, global coverage,
+delegation, filtering, health or client DNS use. The prepared interview has nine
+separate blank decisions. Preparation tests exercise it locally without registering
+it in the accepted bank or weakening packaged-catalog replay guards. Final
+source/schema/bank activation, then-current main reconciliation and complete
+checked delivery remain gated on the coordinator's explicit slot.
+
+Preparation verification ran **477 tests in both the checkout and own clean
+installed wheel: 476 passed, one original Windows symlink-privilege skip**.
+All17 cohort tests, formatting/lint, 41-source-file typing, dependency consistency
+and 248 local documentation links passed. The existing Bicep0.47.16 compiler
+exercised all11 actual cases without restoration or compiler skips, including
+the new policy/gateway/diagnostics/partner fixture. Offline-built own wheel SHA256
+is `1fb33aaf61bb008b325a10e7760298eebc823f40d13d20f59d1621ed21756b13`;
+its outside-checkout interpreter imported only its site-packages package and
+matched all41 Python source files byte-for-byte. Missing clean runtime wheels
+were restored only after an actual offline missing-dependency failure; all three
+match the unchanged reviewed manifest. These are preparation proofs, not final
+then-current-main, CI, merge, own-GUID receipt or closure acceptance.
+
+Renewed preparation reconciles actual main
+`f2411afa0d43e7f25402b364b9721dccb26201cd` in merge `06b9402`, preserving
+preparation `2e2c679` and all32 original captures byte-for-byte. The
+[three-source supplement](../../references/recommendation-batches/preparation-16-vwan-sources.json)
+inspects the actual pinned `virtualWan.json` hub/VPN references, 2024-05-01
+VPN ARM schema and AzureRM4.50.0 provider. Virtual WAN `vpnGateways` are not
+VNet `virtualNetworkGateways`. Only explicit typed hub bindings are projected;
+no VPN connections, keys, BGP addresses, tunnel state or routing payloads remain.
+
+Partner review now requires unique known subscription/resource-group-scoped
+partner, hub and WAN before presenting joined context. It reuses cohort20's
+actual reciprocal hub/firewall and exact local connection/table/intent checks.
+A VPN binding additionally requires explicit reciprocal known hub/VPN references;
+raw Terraform's absent hub reverse reference stays unknown. Missing, denied,
+ambiguous, wrong-type, cross-scope or over-bound populations cannot establish a
+join or absence. Known local Firewall Internet intent and connection security
+flags do not establish partner default-route opt-in, actual tunnels, branch/VPN
+connection coverage, service availability, health or inspection. All prior source
+contradictions and physical/country/approved-geography limits remain. Accepted
+cohort20 catalog/crosswalk/receipts are unchanged; cohort16 activation still waits
+for an explicit slot after actual cohort05 delivery.
+
+Renewed checkout and fresh own installed-wheel suites each ran **514 tests**:
+513 passed, with only the original Windows symlink-privilege skip. All24 cohort16
+and 30 delivered-vWAN focused cases passed. Formatting/lint, 42-source-file typing,
+dependency consistency and 261 local documentation links passed. All11 current
+compiler cases plus the expanded cohort16 fixture exercised without restoration
+or skips. Own offline wheel SHA256 is
+`fce024ff7f86b89cc59cd52d76f413cbc92411034b84ac5b4b356ba864fd9030`;
+the fresh outside-checkout interpreter imported its own site-packages package and
+matched all42 Python source files. This is renewed independent preparation, not
+accepted cohort16 activation or final delivery proof.
+
 ## Problem and approach
 
 Create a standalone, advisory-only CLI that compares planned or deployed Azure infrastructure with Microsoft Azure Landing Zones guidance. Organize the checklist and reports by the verified Microsoft design areas.

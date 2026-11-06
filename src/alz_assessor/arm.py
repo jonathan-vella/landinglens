@@ -82,6 +82,8 @@ API_VERSIONS = {
     "microsoft.network/bastionhosts": {"2024-05-01"},
 }
 PLANNED_API_VERSIONS = API_VERSIONS | {
+    "microsoft.network/securitypartnerproviders": {"2024-05-01"},
+    "microsoft.network/vpngateways": {"2024-05-01"},
     "microsoft.network/virtualwans": {"2024-05-01"},
     "microsoft.network/virtualhubs": {"2024-05-01"},
     "microsoft.network/virtualhubs/hubvirtualnetworkconnections": {"2024-05-01"},
@@ -112,6 +114,7 @@ def properties(
     from .governance_evidence import projected_properties as governance_properties
     from .identity_evidence import IDENTITY_KINDS, ROLE_KIND, identity_summary, role_properties
     from .identity_evidence import projected_properties as identity_properties
+    from .network_policy_evidence import projected_properties as network_policy_properties
     from .security_evidence import projected_properties as security_properties
 
     if isinstance(values, dict) and kind.lower() == ROLE_KIND:
@@ -124,6 +127,7 @@ def properties(
     if isinstance(values, dict):
         result.update(security_properties(kind, values, root=root))
         result.update(governance_properties(kind, values, root=root))
+        result.update(network_policy_properties(kind, values))
         result.update(identity_properties(kind, values, root=root))
     return result
 

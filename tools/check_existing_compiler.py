@@ -46,6 +46,8 @@ if compiler:
         "test_real_bicep_virtual_wan_scoped_configuration_without_restore",
         "test_identity_resilience_preparation.IdentityResiliencePreparationTests."
         "test_real_bicep_identity_resilience_without_restore",
+        "test_network_policy_preparation.NetworkPolicyPreparationTests."
+        "test_real_bicep_policy_gateway_diagnostics_without_restore",
     ]
     suite = unittest.defaultTestLoader.loadTestsFromNames(cases)
     result = unittest.TextTestRunner(verbosity=2).run(suite)

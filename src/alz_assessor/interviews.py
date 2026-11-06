@@ -6,8 +6,46 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.13"
+BANK_VERSION = "2026-11-06.14"
 BANK = {
+    "network-monitoring-sovereignty-policy": {
+        "question": "Reconcile the exact ExpressRoute gateway with applicable diagnostics, "
+        "actual arriving logs, gateway-specific metrics, approved dimensions/thresholds/"
+        "actions and alert receipt, not the linked VPN instructions or circuit alerts. "
+        "Establish actual both-direction VNet/ExpressRoute and Azure-local inspection paths, "
+        "workload context and required exceptions; explicit remote-VNet/vWAN flags are not "
+        "effective routes and the route-map-upgraded vWAN exception needs review. Answer "
+        "whether interconnects cross borders/countries from attributable redacted physical/"
+        "provider evidence; this is a factual question, not a blanket prohibition. Supply "
+        "organization-approved geography and review peering, transit and alternate paths "
+        "without treating resource or meet-me locations as countries. Separately decide "
+        "required outbound, non-HTTP/S inbound and conditional east-west inspection, designated "
+        "global/base policy and complete estate associations, parent priority/NAT/DNS inheritance "
+        "exceptions, region constraints and actual least-privilege team delegation. For optional "
+        "partner services, current reviewed guidance lists only Zscaler in secured vWAN hubs "
+        "with VPN tunnels and partner-managed rules; historical IBoss/CheckPoint enums are not "
+        "present-day support, nor does the source establish a retirement date. Verify original-"
+        "time support, regional/cloud/service suitability and actual routing/filtering; no "
+        "signup or credential exchange. Known reciprocal hub/WAN/firewall/VPN and local "
+        "connection/table/intent joins remain configuration, not partner default-route opt-in, "
+        "actual tunnels or complete branch/VPN-connection coverage. Prefer application rules "
+        "for HTTP/S/MSSQL and FQDN tags where supported; other TCP/UDP FQDN network rules require "
+        "DNS proxy and consistent client/upstream resolution, without network-rule wildcards. "
+        "Local flags/rule counts and inherited references prove none of these whole outcomes. "
+        "Use redacted attributable references and supply nine separate decisions; never retain "
+        "raw destinations, logs, contracts, principal records or credentials.",
+        "controls": [
+            "ALZ-3f79ed00-203b-4c95-9efd-691505f5a1f9",
+            "ALZ-5234c93f-b651-41dd-80c1-234177b91ced",
+            "ALZ-8ac6a9e0-1e6a-483d-b5de-32c199248160",
+            "ALZ-4cc8ca4e-a503-4bac-9b1e-82283a711043",
+            "ALZ-8b517d94-c9d0-42c4-9803-d93ed0a46bc0",
+            "ALZ-e6c4cfd3-e504-4547-a244-7ec66138a720",
+            "ALZ-5a4b1511-e43a-458a-ac22-99c4d7b57d0c",
+            "ALZ-655562f2-b3e4-4563-a4d8-739748b662d6",
+            "ALZ-14d99880-2f88-47e8-a134-62a7d85c94af",
+        ],
+    },
     "identity-resilience-roles-emergency-access": {
         "question": "Reconcile actual least-privileged Entra directory authority and justified "
         "Global Administrator use independently of Azure RBAC; distinguish the permanent-active "
