@@ -244,7 +244,7 @@ class IdentityResiliencePreparationTests(unittest.TestCase):
             ),
         ):
             self.assertEqual(hashlib.sha256(data.joinpath(name).read_bytes()).hexdigest(), expected)
-        current = load_catalog()
+        current = load_catalog(str(data.joinpath("catalog-2026-11-06.13.json")))
         self.assertEqual(current["catalog_version"], "2026-11-06.13")
         self.assertEqual(
             {
@@ -271,14 +271,30 @@ class IdentityResiliencePreparationTests(unittest.TestCase):
             self.assertEqual(active[field], frozen[field])
         reference = ROOT / "references" / "recommendation-batches"
         ledger = json.loads((reference / "ledger.json").read_text())
-        old_rows = [
-            r for r in ledger["recommendations"] if r["batch"] != "05" and r["status"] == "merged"
-        ]
+        predecessor_batches = {
+            "01",
+            "04",
+            "08",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "17",
+            "18",
+            "19",
+            "20",
+            "22",
+            "30",
+        }
+        old_rows = [r for r in ledger["recommendations"] if r["batch"] in predecessor_batches]
         self.assertEqual(len(old_rows), 122)
         self.assertEqual(
             digest(old_rows), "612ffb79b99b05ef04b8a7d8991f3e96e47c6eff1c3f1653720117bfd2273703"
         )
-        receipts = {key: value for key, value in ledger["deliveries"].items() if key != "05"}
+        receipts = {
+            key: value for key, value in ledger["deliveries"].items() if key in predecessor_batches
+        }
         self.assertEqual(len(receipts), 14)
         self.assertEqual(
             digest(receipts), "0e854761945f5a853b8ef386234ee9a46fc47c76834e915f4af58ca96fa5bf46"
@@ -347,7 +363,10 @@ class IdentityResiliencePreparationTests(unittest.TestCase):
         self.assertTrue(all(r["status"] == "merged" for r in prefix))
 
     def test_registered_blank_interview_and_actual_accepted_package_replay(self):
-        catalog, bundle = load_catalog(), self.bundle()
+        catalog = load_catalog(
+            str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.13.json"))
+        )
+        bundle = self.bundle()
         report = assess(bundle, catalog, at=AT, evidence_tiers=True)
         response = prepare_interview(
             report, catalog, "identity-resilience-roles-emergency-access", SCOPE

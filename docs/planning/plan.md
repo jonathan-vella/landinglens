@@ -1,6 +1,60 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
-## Cohort 16 independent preparation: 2026-11-06
+## Cohort 16 accepted integration: 2026-11-06
+
+The coordinator granted [#121](https://github.com/jonathan-vella/landinglens/issues/121)
+the sole delivery slot after actual cohort05 implementation125/receipt126,
+#118 completed closure and verified130 own-GUID receipts. Preserved `2e2c679`
+and renewed `12a4a77` preparation reconcile actual main
+`4e0fdd9b899a8c155e20e6caf022279fe8c1b48a` in merge `666b9d1`.
+The [nine-GUID matrix](../../references/recommendation-batches/batch-16.json)
+and [35 reviewed captures](../../references/recommendation-batches/batch-16-sources.json)
+precede unique successor `2026-11-06.14`, derived with the existing offline
+batch/crosswalk builders. All32 original source rows and three supplemental rows
+retain their original revisions, hashes and times. Exact predecessor `.6.13`
+catalog bytes are frozen with SHA256
+`86381a5401b5b473f0c120de2cbee77fc393d562d5a02211834b4de22cd77322`;
+crosswalk bytes:
+`d0949529bb2e26e5b0583c58368fb65e79e5ab83b85456a60099cb4c437cb5db`.
+
+All255 GUIDs, fixed251 membership, original four predicates/full predecessor
+control objects, cohort15 propagation, actual vWAN models and every130 earlier
+own-GUID row/fifteen receipts remain unchanged. Current dispositions stay
+**12 automated / 200 assisted / 43 manual**. Eight assisted workflows and manual
+D06.26 add no whole-recommendation predicate. Typed scoped gateway diagnostics/
+alerts, remote-VNet/vWAN flags, policy-chain/local-rule-group and reciprocal
+partner/hub/WAN/VPN/routing context share the single engine and all review/tier/
+report/tracker/session and accepted-package original-time replay paths. The
+registered interview retains nine independently blank decisions.
+
+The preserved source contradictions/current partner uncertainty and all limits
+below still apply. Configuration never proves physical/country paths, approved
+geography, effective inspection/inheritance/delegation, health, partner support,
+complete global coverage or actual client DNS use. No live Collector route,
+tenant scope, transport, dependency, module/compiler acquisition, runtime query,
+network/identity action or human attestation is introduced. All twelve current
+actual compiler cases are retained and the relevant cohort16 fixture is the
+thirteenth. **130 delivered /121 pending** remains unchanged until normal
+exact-head implementation/platform/CodeQL/review/four matching exercised compiler
+proofs and guarded own-GUID receipt publication satisfy their gates. Source
+acceptance or implementation closure alone is not delivery.
+
+Pre-delivery checkout and own exact-installed suites each ran **534 tests**:
+533 passed with the original Windows symlink-privilege skip. All28 cohort16
+tests pass, including actual registered-bank sessions, privacy, strict joins,
+history/receipt preservation and accepted/historical original-time replay.
+All thirteen actual existing-compiler cases exercised without restoration or
+compiler skips. Format/lint, 42-source-file typing, dependency consistency and
+351 local documentation links passed. Exact own offline wheel SHA256 is
+`b59543508e922c5c332bdd7ff02cb7714bce3ffea00e1b60baadcccc0f5c4a2f`.
+Its clean outside-checkout interpreter imports its own site-packages package and
+matches all113 packaged Python/data/license artifacts byte-for-byte. The existing
+reviewed runtime wheels suffice; no dependency was added or restored. Historical
+cohort05 assertions retain exact `.13` and122 predecessor receipts; cohort20's
+CLI comparison explicitly selects its exact `.12` catalog instead of comparing
+different successors.
+
+## Historical cohort 16 independent preparation: 2026-11-06
 
 [#121](https://github.com/jonathan-vella/landinglens/issues/121) prepares nine
 immutable network monitoring, sovereignty and firewall-policy targets in its

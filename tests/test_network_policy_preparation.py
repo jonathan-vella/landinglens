@@ -6,6 +6,7 @@ import os
 import tempfile
 import unittest
 import zipfile
+from importlib.resources import files
 from pathlib import Path
 from unittest.mock import patch
 
@@ -13,7 +14,7 @@ from alz_assessor import interviews
 from alz_assessor.arm import API_VERSIONS, PLANNED_API_VERSIONS, arm_source, properties
 from alz_assessor.azure import Collector, Response
 from alz_assessor.catalog import load_catalog
-from alz_assessor.contracts import control_digest, document, validate
+from alz_assessor.contracts import control_digest, digest, document, validate
 from alz_assessor.engine import assess
 from alz_assessor.network_evidence import review_fact
 from alz_assessor.network_policy_evidence import (
@@ -71,7 +72,8 @@ class NetworkPolicyPreparationTests(unittest.TestCase):
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
         self.root = Path(temporary.name)
-        self.catalog = load_catalog()
+        frozen = files("alz_assessor").joinpath("data", "catalog-2026-11-06.14.json")
+        self.catalog = load_catalog(str(frozen)) if frozen.is_file() else load_catalog()
         self.matrix = json.loads(
             (ROOT / "references/recommendation-batches/preparation-16.json").read_text("utf-8")
         )
@@ -285,6 +287,154 @@ class NetworkPolicyPreparationTests(unittest.TestCase):
         bundle = bundle or self.partner_topology()
         return partner_context(bundle["resources"][7], bundle, self.by_id(bundle))
 
+    def test_accepted_successor_changes_only_nine_and_preserves_exact_predecessor_bytes(self):
+        root = ROOT / "references/recommendation-batches"
+        matrix = json.loads((root / "batch-16.json").read_text())
+        manifest = json.loads((root / "batch-16-sources.json").read_text())
+        before = load_catalog(
+            str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.13.json"))
+        )
+        original = load_catalog(
+            str(files("alz_assessor").joinpath("data", "catalog-2026-11-04.2.json"))
+        )
+        self.assertEqual(self.catalog["catalog_version"], "2026-11-06.14")
+        self.assertEqual(matrix["catalog_version"], "2026-11-06.14")
+        self.assertEqual(matrix["review_state"], "owner-delegated-source-backed-matrix")
+        self.assertEqual(len(self.catalog["controls"]), 255)
+        old = {row["control_id"]: row for row in before["controls"]}
+        baseline = {row["control_id"]: row for row in original["controls"]}
+        rows = {row["guid"]: row for row in matrix["recommendations"]}
+        for control in self.catalog["controls"]:
+            identity = control["control_id"]
+            if identity not in CONTROLS:
+                self.assertEqual(control, old[identity])
+            else:
+                row = rows[control["upstream_guid"]]
+                self.assertEqual(control["evidence_requirements"], row["evidence_requirements"])
+                self.assertEqual(control["rationale"], row["limitations"])
+                self.assertIsNone(control["rule"])
+                self.assertEqual(control.get("review_fact_paths"), row.get("review_fact_paths"))
+            if baseline[identity]["automation"] == "automated":
+                self.assertEqual(control, old[identity])
+                self.assertEqual(control_digest(control), control_digest(baseline[identity]))
+        for kind, expected in (
+            ("catalog", "86381a5401b5b473f0c120de2cbee77fc393d562d5a02211834b4de22cd77322"),
+            ("crosswalk", "d0949529bb2e26e5b0583c58368fb65e79e5ab83b85456a60099cb4c437cb5db"),
+        ):
+            content = (
+                files("alz_assessor").joinpath("data", kind + "-2026-11-06.13.json").read_bytes()
+            )
+            self.assertEqual(hashlib.sha256(content).hexdigest(), expected)
+        self.assertEqual(
+            {
+                key: sum(c["automation"] == key for c in self.catalog["controls"])
+                for key in ("automated", "assisted", "manual")
+            },
+            {"automated": 12, "assisted": 200, "manual": 43},
+        )
+        original_sources = json.loads((root / "preparation-16-sources.json").read_text())["sources"]
+        supplemental = json.loads((root / "preparation-16-vwan-sources.json").read_text())[
+            "sources"
+        ]
+        self.assertEqual(manifest["sources"], original_sources + supplemental)
+        self.assertEqual(len(manifest["sources"]), 35)
+        self.assertEqual(
+            matrix["interview"],
+            {
+                "id": "network-monitoring-sovereignty-policy",
+                **interviews.BANK["network-monitoring-sovereignty-policy"],
+            },
+        )
+
+    def test_accepted_matrix_retains_all130_preceding_own_guid_receipts(self):
+        root = ROOT / "references/recommendation-batches"
+        matrix = json.loads((root / "batch-16.json").read_text())
+        ledger = json.loads((root / "ledger.json").read_text())
+        batches = set(matrix["preserved_delivery_batches"])
+        receipts = {key: value for key, value in ledger["deliveries"].items() if key in batches}
+        rows = [row for row in ledger["recommendations"] if row["batch"] in batches]
+        self.assertEqual(len(rows), 130)
+        self.assertEqual(digest(receipts), matrix["preserved_delivery_receipts_sha256"])
+        self.assertEqual(digest(rows), matrix["preserved_merged_recommendations_sha256"])
+        self.assertEqual(len(ledger["recommendations"]), 251)
+        for row in rows:
+            self.assertEqual(row["status"], "merged")
+            self.assertEqual(row["pr"], receipts[row["batch"]]["pr"])
+            self.assertEqual(row["merge_commit"], receipts[row["batch"]]["merge_commit"])
+
+    def test_registered_source_bank_keeps_signals_reviews_and_exceptions_separate(self):
+        question = "network-monitoring-sovereignty-policy"
+        bundle = self.partner_topology()
+        report = assess(bundle, self.catalog, at=AT, evidence_tiers=True)
+        selected = [row for row in report["results"] if row["control_id"] in CONTROLS]
+        self.assertTrue(any(row["observed"]["evidence_tier"] == "signal" for row in selected))
+        self.assertTrue(all(row["observed"]["outcome"] != "pass" for row in selected))
+        response = interviews.prepare_interview(report, self.catalog, question, SCOPE)
+        self.assertEqual(len(response["decisions"]), 9)
+        self.assertTrue(all(row["outcome"] is None for row in response["decisions"]))
+        response.update(
+            answer="Authored fixture only, no real organization decision.",
+            reviewer="Fixture reviewer",
+            rationale="Nine independent fixture decisions.",
+            evidence="https://example.invalid/redacted",
+            valid_from=AT,
+            valid_until="2026-11-07T15:00:00Z",
+        )
+        for index, row in enumerate(response["decisions"]):
+            row["outcome"] = "pass" if index % 2 else "fail"
+        manual = interviews.compile_interview(response, self.catalog, at=AT)
+        report = assess(bundle, self.catalog, at=AT, evidence_tiers=True, manual=manual)
+        selected = [row for row in report["results"] if row["control_id"] in CONTROLS]
+        self.assertTrue(
+            all(row["observed"]["confidence"] == "human-attestation" for row in selected)
+        )
+        self.assertTrue(all(row["observed"]["evidence_tier"] != "verified" for row in selected))
+        for format in ("json", "markdown", "html", "csv", "sarif", "pr-summary"):
+            self.assertNotIn(PRIVATE, render(report, format))
+        directory = self.root / "accepted-replay"
+        export_bundle(directory, bundle, self.catalog, at=AT, evidence_tiers=True, manual=manual)
+        self.assertEqual(semantic(report), semantic(replay_bundle(directory)))
+        session = ReviewSession(
+            bundle,
+            self.catalog,
+            self.root / "accepted-session",
+            clock=lambda: AT,
+            evidence_tiers=True,
+        )
+        blank = next(row for row in session.state()["interviews"] if row["id"] == question)
+        self.assertTrue(all(row["outcome"] is None for row in blank["template"]["decisions"]))
+        pending = copy.deepcopy(response)
+        pending["decisions"][-1]["outcome"] = None
+        with self.assertRaises(InputError):
+            session.save_interview({"revision": 0, "response": pending, "replace_existing": []})
+        self.assertEqual(session.revision, 0)
+        session.save_interview({"revision": 0, "response": response, "replace_existing": []})
+        resumed = ReviewSession.resume(
+            session.directory / "revision-0001", self.root / "accepted-resumed", clock=lambda: AT
+        )
+        self.assertEqual(semantic(session.report), semantic(resumed.report))
+        self.assertEqual(len(resumed.state()["records"]), 9)
+
+    def test_accepted_and_historical_original_time_replay_preserve_exact_join_context(self):
+        bundle = self.partner_topology()
+        for version in ("2026-11-06.13", "2026-11-06.14"):
+            catalog = (
+                self.catalog
+                if version.endswith(".14")
+                else load_catalog(
+                    str(files("alz_assessor").joinpath("data", "catalog-" + version + ".json"))
+                )
+            )
+            directory = self.root / version
+            export_bundle(directory, bundle, catalog, at=AT, evidence_tiers=True)
+            self.assertEqual(
+                semantic(assess(bundle, catalog, at=AT, evidence_tiers=True)),
+                semantic(replay_bundle(directory)),
+            )
+            saved = json.loads((directory / "evidence.json").read_text())
+            self.assertEqual(self.partner_join(saved), self.partner_join(bundle))
+            self.assertNotIn(PRIVATE, json.dumps(saved))
+
     def test_partner_uses_merged_known_wan_hub_vpn_firewall_and_routing_models(self):
         context = self.partner_join()
         self.assertEqual(context["hub"]["wan_id"], WAN_ID.lower())
@@ -328,7 +478,9 @@ class NetworkPolicyPreparationTests(unittest.TestCase):
         self.assertEqual(self.matrix["reconciled_main"], "f2411afa0d43e7f25402b364b9721dccb26201cd")
         self.assertEqual(self.matrix["review_state"], "preparation-only-not-accepted")
         self.assertNotIn("catalog_version", self.matrix)
-        self.assertNotIn("network-monitoring-sovereignty-policy", interviews.BANK)
+        self.assertEqual(
+            set(interviews.BANK["network-monitoring-sovereignty-policy"]["controls"]), CONTROLS
+        )
 
     def test_partner_missing_ambiguous_denied_wrong_scope_or_types_stay_unknown(self):
         for index in (7, 8, 9):
@@ -507,7 +659,9 @@ class NetworkPolicyPreparationTests(unittest.TestCase):
         self.assertEqual(set(self.matrix["interview"]["controls"]), CONTROLS)
         self.assertNotIn("catalog_version", self.matrix)
         self.assertEqual(self.matrix["review_state"], "preparation-only-not-accepted")
-        self.assertNotIn("network-monitoring-sovereignty-policy", interviews.BANK)
+        self.assertEqual(
+            set(interviews.BANK["network-monitoring-sovereignty-policy"]["controls"]), CONTROLS
+        )
         sources = json.loads(
             (ROOT / "references/recommendation-batches/preparation-16-sources.json").read_text()
         )

@@ -4954,9 +4954,38 @@
       "baseline_control_sha256": "2c446b9746794f4745655fb1cac7e03f9b4bec4f6c65bb40f9da712f3e2bbae3",
       "design_area": "Network topology and connectivity",
       "batch": "16",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "3f79ed00-203b-4c95-9efd-691505f5a1f9",
+        "upstream_id": "D06.23",
+        "classification": "assisted",
+        "implemented_subclaim": "Strict unique known scoped ExpressRoute gateway to exact diagnostic targets and static gateway-metric alert scope references; minimized explicit log-category/enable flags, destinations, metric enums, aggregation and action references. Unbound/ambiguous/denied/over-bound monitoring populations stay explicit.",
+        "sources": [
+          "gateway-diagnostics-linked",
+          "expressroute-monitor-current",
+          "gateway-logs",
+          "gateway-metrics",
+          "metric-alert-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworkGateways",
+          "Microsoft.Insights/diagnosticSettings",
+          "Microsoft.Insights/metricAlerts"
+        ],
+        "review_fact_paths": [
+          "gatewayType",
+          "gatewayDiagnosticSummary",
+          "gatewayMetricAlertSummary",
+          "targetResourceId"
+        ],
+        "evidence_requirements": [
+          "Which categories are actually supported and arriving for this ExpressRoute gateway at the original time, rather than VPN-only IKE/P2S/tunnel logs or circuit PeeringRouteLog?",
+          "Are gateway metrics, instance/direction dimensions, approved demand-specific thresholds/actions and actual alert receipt covered? Static configuration and automatic platform metrics do not establish logging/monitoring health."
+        ],
+        "limitations": "Shared gateway category index does not establish ExpressRoute category applicability. Dynamic/multi-resource/log-query alerts are not executed or interpreted. No arbitrary threshold, log ingestion or alert delivery verdict.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/121",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -4969,9 +4998,42 @@
       "baseline_control_sha256": "85df73d68d2560bd73aeed7a56fc63e62d677e53b662b51601fe8192c90f4a9b",
       "design_area": "Network topology and connectivity",
       "batch": "16",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "5234c93f-b651-41dd-80c1-234177b91ced",
+        "upstream_id": "D06.24",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit separate allowRemoteVnetTraffic and allowVirtualWanTraffic booleans across existing ARM/raw/module/optional-plan adapters; reuse typed gateway/circuit, peering and route-table context.",
+        "sources": [
+          "vnet-expressroute-linked",
+          "gateway-remote-traffic",
+          "network-policy-spec-gateway",
+          "gateway-traffic-provider",
+          "peering-linked"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworkGateways",
+          "Microsoft.Network/connections",
+          "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+          "Microsoft.Network/routeTables"
+        ],
+        "review_fact_paths": [
+          "gatewayType",
+          "allowRemoteVnetTraffic",
+          "allowVirtualWanTraffic",
+          "expressRouteCircuitId",
+          "remoteVirtualNetwork.id",
+          "allowVirtualNetworkAccess",
+          "disableBgpRoutePropagation"
+        ],
+        "evidence_requirements": [
+          "Does actual both-direction VNet-to-VNet communication use the intended peering/backbone path rather than gateway/MSEE ExpressRoute paths?",
+          "Reconcile the linked page's conflicting default claims with explicit flags and the route-map-upgraded vWAN known exception; no missing default or disabled flag proves effective isolation."
+        ],
+        "limitations": "Narrow explicit configuration context only; gateway scope, peering routes, vWAN models and actual selected routes are distinct. No effective-path assertion.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/121",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -4984,9 +5046,40 @@
       "baseline_control_sha256": "aa80ede90fc887974a120510a37427e39fece1c63a581711d2ce492753fa7eb7",
       "design_area": "Network topology and connectivity",
       "batch": "16",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "8ac6a9e0-1e6a-483d-b5de-32c199248160",
+        "upstream_id": "D06.25",
+        "classification": "assisted",
+        "implemented_subclaim": "Reuse existing route/subnet/firewall/policy and explicit gateway-traffic context for Azure-local versus hybrid inspection design.",
+        "sources": [
+          "azure-local-linked",
+          "firewall-routing",
+          "firewall-linked",
+          "manager-current"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/azureFirewalls",
+          "Microsoft.Network/routeTables",
+          "Microsoft.Network/virtualNetworkGateways",
+          "Microsoft.Network/virtualNetworks/subnets"
+        ],
+        "review_fact_paths": [
+          "sku.name",
+          "firewallPolicy.id",
+          "routeTable.id",
+          "gatewayType",
+          "allowRemoteVnetTraffic",
+          "allowVirtualWanTraffic"
+        ],
+        "evidence_requirements": [
+          "Does Azure-origin communication remain on intended Azure/backbone inspection paths rather than hairpinning through hybrid sites, including both directions and bypasses?",
+          "Reconcile actual workload, latency, encryption and inspection requirements: the original workload-specific CAF URL now redirects to Azure Virtual Desktop reverse-connect/TLS guidance, not a universal inspection mandate."
+        ],
+        "limitations": "Azure Firewall deployment, UDRs and gateway flags cannot demonstrate actual forwarding or inspection. No packet/route/probe execution.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/121",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -4999,9 +5092,23 @@
       "baseline_control_sha256": "b7660b1d193996559498a293821e5df1d9aafd3c4c7126f79a1e3ea4fce99452",
       "design_area": "Network topology and connectivity",
       "batch": "16",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "4cc8ca4e-a503-4bac-9b1e-82283a711043",
+        "upstream_id": "D06.26",
+        "classification": "manual",
+        "implemented_subclaim": "Specific factual border/country interview preserves the original question and independent outcome; no location-to-country or blanket-prohibition predicate.",
+        "sources": [
+          "interconnect-locations-linked"
+        ],
+        "evidence_requirements": [
+          "Do any actual ExpressRoute, MPLS or other interconnect paths traverse borders or different countries at the original time, including provider, transit, redundant and failover paths?",
+          "Use attributable redacted physical/provider evidence; resource regions, geopolitical reach and equal/different meet-me labels are not actual transit/country evidence. Record any organizational requirement or exception separately."
+        ],
+        "limitations": "Manual factual question, not an invented ban on cross-border traffic. No raw provider contracts, physical inventories or fabricated country decisions retained.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/121",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -5014,9 +5121,36 @@
       "baseline_control_sha256": "d7c2f0143467512b4dbb401011e7c4f9e4592c8a54068d0fa1baa1f6f3ab3bb8",
       "design_area": "Network topology and connectivity",
       "batch": "16",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "8b517d94-c9d0-42c4-9803-d93ed0a46bc0",
+        "upstream_id": "D06.27",
+        "classification": "assisted",
+        "implemented_subclaim": "Reuse typed remote VNet references and per-direction explicit peering-access configuration; no invented approved-region list or location/country mapping.",
+        "sources": [
+          "peering-linked",
+          "interconnect-locations-linked",
+          "firewall-routing"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+          "Microsoft.Network/virtualNetworkGateways",
+          "Microsoft.Network/routeTables"
+        ],
+        "review_fact_paths": [
+          "remoteVirtualNetwork.id",
+          "allowVirtualNetworkAccess",
+          "allowRemoteVnetTraffic",
+          "allowVirtualWanTraffic"
+        ],
+        "evidence_requirements": [
+          "What exact organization-approved regions/geographies and exceptions apply to the selected scope and original time?",
+          "Do local/global peering, service chaining, gateway transit and alternate/return paths keep traffic within those approvals? Endpoint labels and configured access cannot prove actual physical/transit geography."
+        ],
+        "limitations": "Known peering references are partial configuration context, not complete route population or approved physical geography. Missing endpoints, scope or owner decisions remain unknown.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/121",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -5029,9 +5163,40 @@
       "baseline_control_sha256": "5baac734b4a561e56e6d2f09a556ad0dc19df039d0167138e8649f8352ade06d",
       "design_area": "Network topology and connectivity",
       "batch": "16",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "e6c4cfd3-e504-4547-a244-7ec66138a720",
+        "upstream_id": "D07.01",
+        "classification": "assisted",
+        "implemented_subclaim": "Reuse explicit Firewall SKU/model, policy association, subnet and NAT/egress-rule summaries; scoped policy chain preparation supplies bounded linked configuration.",
+        "sources": [
+          "firewall-linked",
+          "firewall-routing",
+          "manager-current",
+          "network-policy-spec-policy"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/azureFirewalls",
+          "Microsoft.Network/firewallPolicies/ruleCollectionGroups",
+          "Microsoft.Network/virtualNetworks/subnets"
+        ],
+        "review_fact_paths": [
+          "sku.tier",
+          "sku.name",
+          "firewallPolicy.id",
+          "basePolicy.id",
+          "subnetReferences",
+          "natRuleCollections",
+          "egressRules"
+        ],
+        "evidence_requirements": [
+          "Which outbound Internet and non-HTTP/S inbound flows require Azure Firewall governance, and does the organization require east-west filtering?",
+          "Bind the complete intended flows to actual both-direction routes and effective rules, including vWAN Routing Intent, bypasses, state/SNAT and application-specific exceptions. Capability, deployment and policy binding do not prove inspection."
+        ],
+        "limitations": "Conditional inspection requirements remain explicit human policy. No whole inspection verdict, topology conflation, traffic execution or invented east-west mandate.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/121",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -5044,9 +5209,37 @@
       "baseline_control_sha256": "102a7e6da254b55abefa6048571678e3faaf2e24a5bdd3856ea630fda375d111",
       "design_area": "Network topology and connectivity",
       "batch": "16",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "5a4b1511-e43a-458a-ac22-99c4d7b57d0c",
+        "upstream_id": "D07.02",
+        "classification": "assisted",
+        "implemented_subclaim": "Strict scoped unique known firewall-to-policy and parent-policy prefix joins, cycle/20-node bound checks, explicit per-node DNS values and exact local rule-group parent bindings. Missing parent never implies a designated root/global policy.",
+        "sources": [
+          "policy-linked",
+          "firewall-hierarchy",
+          "policy-provider",
+          "network-policy-spec-policy",
+          "firewall-dns-current"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/azureFirewalls",
+          "Microsoft.Network/firewallPolicies"
+        ],
+        "review_fact_paths": [
+          "firewallPolicy.id",
+          "basePolicy.id",
+          "dnsSettings.enableProxy",
+          "sku.tier"
+        ],
+        "evidence_requirements": [
+          "Which exact policy is designated as global/base, and is the complete intended firewall estate bound directly or through reviewed inherited policies, not merely similarly named resources?",
+          "Reconcile same-region parent/child constraints, globally bindable policies, parent rule priority, non-inherited NAT and overridable DNS settings; independently establish actual least-privilege regional-team RBAC delegation and exceptions without retaining principal records."
+        ],
+        "limitations": "Positive supplied chain prefixes are not complete root/global coverage or actual authority. Missing/ambiguous/denied/out-of-scope/cyclic/over-bound links remain explicit; DNS flags do not resolve effective inherited settings.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/121",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -5059,9 +5252,38 @@
       "baseline_control_sha256": "24ab2f22d1c2fb49bd6e8dc940f49c9b90d43550033d9f2c004d8c77075d4fbe",
       "design_area": "Network topology and connectivity",
       "batch": "16",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "655562f2-b3e4-4563-a4d8-739748b662d6",
+        "upstream_id": "D07.03",
+        "classification": "assisted",
+        "implemented_subclaim": "Bounded partner schema-provider enum and typed hub reference, strict known scoped partner/hub/WAN joins reusing delivered20 models, explicit reciprocal vWAN VPN gateway binding and bounded exact local VNet-connection/table/intent context. Existing20 hub/firewall reciprocity and routing helpers are reused; current-service support remains unknown. No Collector or Terraform partner resource is added.",
+        "sources": [
+          "partner-linked",
+          "partner-current",
+          "manager-current",
+          "network-policy-spec-partner",
+          "partner-vwan-vpn-rest",
+          "partner-vwan-vpn-arm",
+          "partner-vwan-vpn-provider"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/azureFirewalls",
+          "Microsoft.Network/securityPartnerProviders"
+        ],
+        "review_fact_paths": [
+          "sku.name",
+          "firewallPolicy.id",
+          "partnerConfiguration"
+        ],
+        "evidence_requirements": [
+          "Does the organization actually want partner SaaS protection, and is its named service supported for the original-time cloud, region and secured vWAN hub? Current reviewed Learn pages list only Zscaler, not historical IBoss/CheckPoint enum values.",
+          "Reconcile VPN tunnel prerequisites, partner-managed rule configuration, opted-in default routes and actual filtering/health with private-traffic inspection and Microsoft 365 local breakout. Neither binding nor pending/connected labels prove traffic protection; no retirement date is established by the reviewed pages."
+        ],
+        "limitations": "Historical recommendation retained. Old enum values are not current service availability; current support/reuse is source-bound, not a subscription/retirement guarantee. Configured known hub/WAN/firewall/VPN/local routing joins are not actual VPN tunnels, partner default-route opt-in, branch/VPN-connection coverage, route selection or filtering. Missing reciprocal hub VPN references remain unknown, including raw Terraform. No live service read, Terraform partner adapter, signup, credentials or paid action.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/121",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -5074,9 +5296,40 @@
       "baseline_control_sha256": "72f24c117e6a463f86a650f133e72b8231610dd200f9c440798f412b3bf1b3f1",
       "design_area": "Network topology and connectivity",
       "batch": "16",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "14d99880-2f88-47e8-a134-62a7d85c94af",
+        "upstream_id": "D07.04",
+        "classification": "assisted",
+        "implemented_subclaim": "Reuse minimized egress rule kinds/actions/FQDN/address counts with bounded explicit application/network protocol enums, exact policy/rule-group joins and per-node explicit DNS proxy flags; no destinations retained.",
+        "sources": [
+          "fqdn-linked",
+          "firewall-dns-current",
+          "policy-linked",
+          "policy-rules-provider",
+          "network-policy-spec-policy"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/azureFirewalls",
+          "Microsoft.Network/firewallPolicies",
+          "Microsoft.Network/firewallPolicies/ruleCollectionGroups"
+        ],
+        "review_fact_paths": [
+          "firewallPolicy.id",
+          "basePolicy.id",
+          "dnsSettings.enableProxy",
+          "fqdnRuleSummary",
+          "applicationRules",
+          "egressRules"
+        ],
+        "evidence_requirements": [
+          "Are supported HTTP/S/MSSQL flows filtered with application rules/FQDN tags where appropriate, and other supported TCP/UDP flows with non-wildcard FQDN network rules rather than assuming equal-IP FQDNs are distinguishable?",
+          "For network FQDN rules, reconcile effective policy/child DNS overrides, enabled proxy, actual client use and consistent upstream resolution/cache/Private DNS behavior; local rule counts/protocols and proxy flags do not prove enforcement, resolution or approved egress."
+        ],
+        "limitations": "Explicit bounded configuration only. No raw rules, FQDNs, ports, addresses, DNS requests or execution; unknown protocol/scope/association/defaults cannot pass the recommendation.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/121",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []

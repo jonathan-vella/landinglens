@@ -40,6 +40,25 @@ No current regional/port availability, achieved throughput/latency, working
 FastPath, operational redundancy or economic suitability follows from settings.
 ARM scale support does not imply the pinned Terraform provider supports it.
 
+## Cohort 16: network policy configuration, not path or sovereignty assurance
+
+The [nine-GUID matrix](../references/recommendation-batches/batch-16.json) adds
+gateway diagnostic/metric context, explicit remote-VNet/vWAN flags, strict scoped
+policy-chain/local-rule-group and partner/hub/WAN/VPN/routing joins, and minimized
+protocol/FQDN-count facts. None proves actual routes, inspection, logging health,
+physical/country paths, approved regions, global coverage, delegation or partner
+availability. Current guidance lists only Zscaler; old provider enums establish
+neither present-day support nor a retirement date. VNet and vWAN gateways remain
+distinct, and missing reciprocal references cannot establish partner integration.
+
+The factual border question stays manual, not an invented cross-border ban.
+Inspection requirements and geographic/global-role decisions remain separately
+blank. Proxy flags do not prove effective policy inheritance, client use or
+successful DNS resolution. The VPN/ExpressRoute, AVD redirect and connectivity
+default discrepancies are retained in the reviewed matrix. Original-time
+configuration Signals and bound human attestations never become technical
+Verified results for these nine recommendations.
+
 ## Cohort 05: identity configuration, not runtime assurance
 
 The [eight-GUID accepted matrix](../references/recommendation-batches/batch-05.json)
