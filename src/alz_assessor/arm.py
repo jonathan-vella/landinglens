@@ -72,6 +72,8 @@ API_VERSIONS = {
     "microsoft.insights/diagnosticsettings": {"2021-05-01-preview"},
 }
 PLANNED_API_VERSIONS = API_VERSIONS | {
+    "microsoft.network/networkwatchers/connectionmonitors": {"2024-05-01"},
+    "microsoft.insights/metricalerts": {"2018-03-01"},
     "microsoft.security/pricings": {"2024-01-01"},
     "microsoft.keyvault/managedhsms": {"2024-11-01"},
     "microsoft.compute/virtualmachines": {"2024-07-01"},

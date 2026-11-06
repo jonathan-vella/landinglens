@@ -19,6 +19,51 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## Cohort 15 independent preparation: 2026-11-06
+
+[#106](https://github.com/jonathan-vella/landinglens/issues/106) is the third
+isolated workstream, after cohort14's delivery slot and prepared cohort12.
+The [nine-GUID preparation matrix](../../references/recommendation-batches/batch-15-preparation.json)
+is deliberately outside accepted `batch-NN.json` builder activation. Its
+[30 source captures](../../references/recommendation-batches/batch-15-sources.json)
+retain actual revisions, hashes, redirects and reuse terms. No successor version,
+generated catalog/crosswalk, fixed count/history or receipt is changed.
+
+Prepared code minimizes explicit Connection Monitor endpoint types, test
+protocol/frequency, group disable/counts/reference resolution and workspace outputs;
+static ExpressRoute alert scope/metric/action configuration; and strict known
+gateway -> GatewaySubnet -> route-table propagation subchecks. Existing routing,
+subnet, protection and gateway helpers are reused. Missing flags/unknown or
+ambiguous joins never pass. Raw/optional-plan, reviewed ARM/no-restore Bicep and
+saved normalized replay share these facts; no live Collector registry expands.
+Current packaged historical catalogs still reject modified preparation fixtures.
+All nine decisions remain blank and unaccepted preparation creates no Verified tier.
+
+Actual linked monitoring guidance redirects to the metrics reference; Insights
+requires no enablement setup. The linked Connection Monitor instructions still
+recommend retired Log Analytics/MMA agents, contrary to current Arc/AMA guidance.
+BFD MSEE defaults differ by private/Microsoft and IPv4/IPv6 creation/reset date,
+including IPv6 before November 2025. Neither defaults nor configured monitors,
+alerts, locations or link counts prove edge BFD, health, ingestion, physical
+independence, convergence or failover. No operational threshold is invented.
+
+Circuit-location and multiple-gateway-binding integration awaits cohort14's
+actual merged contract. Source-bound interview/catalog/schema/matrix activation,
+the exact joined evaluator predicate, final platform/installed-wheel gates and
+own-GUID merged receipts remain coordinator-slot work, not completed delivery.
+
+Preparation verification ran 377 checkout and exact installed-wheel tests:
+376 passed with the original Windows symlink-privilege skip. The new 13 boundary
+tests pass, all seven existing/new compiler cases exercised with no restore or
+compiler skip, and format/lint, 37-file typing, dependency consistency and
+207 planning links pass. The own offline-built wheel SHA256 is
+`7b401ba3fe646b4ac030e1de3f85f04c1d9cb09c8cb05c2e18871767cff140dc`;
+every packaged Python source byte matches this preparation checkout. A new
+outside-checkout interpreter proves its own site-packages import. The three
+already reviewed runtime dependencies were restored only after its explicit
+missing-`lark` failure; no compiler/module or new dependency was acquired.
+These are preparation checks, not final merged/cohort14-integrated acceptance.
+
 ## Cohort 22 integration: 2026-11-06
 
 The coordinator granted [#100](https://github.com/jonathan-vella/landinglens/issues/100)

@@ -37,6 +37,13 @@ def prepared_resource(
         "facts": facts,
         "subchecks": local_subchecks(facts),
     }
+    if (
+        "disableBgpRoutePropagation" in control.get("review_fact_paths", [])
+        and resource["resource_type"].lower() == "microsoft.network/virtualnetworkgateways"
+    ):
+        from .routing_evidence import gateway_route_subchecks
+
+        prepared["gateway_route_subchecks"] = gateway_route_subchecks(resource, by_id)
     if "networkSecurityGroup.id" in facts:
         identity = facts["networkSecurityGroup.id"]
         candidates = by_id.get(identity, []) if isinstance(identity, str) else []

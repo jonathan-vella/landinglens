@@ -78,6 +78,15 @@ records remain traceable under explicit lifecycle semantics.
 
 ## Active increment: fixed recommendation expansion
 
+Cohort15/#106 independently prepares nine immutable ExpressRoute monitoring,
+propagation and failover workflows alongside cohort14/12. Its reviewed source
+matrix is not accepted catalog activation. Minimized configured-monitor/alert
+facts and exact known GatewaySubnet/table propagation subchecks never establish
+probe health, ingestion, physical edge independence, on-premises BFD/routing or
+actual recovery. The linked legacy-agent guidance discrepancy and current BFD
+date/peering conditions remain explicit. All owner decisions stay blank; unique
+successor activation and final delivery await the coordinator's sole slot.
+
 Delivered implementation successor `2026-11-06.6` integrates cohort22's eight assisted workflows
 after the coordinator granted its delivery slot. Planned-only pricing/HSM/VM
 versions, saved/injected diagnostic facts and a source-specific interview share

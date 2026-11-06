@@ -52,6 +52,7 @@ REVIEW_PATHS = (
     | IDENTITY_PATHS
     | SECURITY_PATHS
     | PROTECTION_PATHS
+    | {"connectionMonitorSummary", "expressRouteAlertSummary"}
 )
 
 
@@ -497,6 +498,10 @@ def private_connections(values: dict[str, Any], *, terraform: bool) -> Any:
 
 
 def review_fact(properties: dict[str, Any], path: str) -> Any:
+    if path in {"connectionMonitorSummary", "expressRouteAlertSummary"}:
+        from .monitoring_evidence import review_fact as monitoring_fact
+
+        return monitoring_fact(properties, path)
     if path in SECURITY_PATHS:
         from .security_evidence import review_fact as security_fact
 
@@ -565,11 +570,14 @@ def projected_properties(
     root: Any = None,
     observed: bool = False,
 ) -> dict[str, Any]:
+    from .monitoring_evidence import projected_properties as monitoring_properties
     from .protection_evidence import projected_properties as protection_properties
 
-    return _projected_properties(
-        kind, values, terraform=terraform, root=root, observed=observed
-    ) | protection_properties(kind.lower(), values, terraform=terraform, root=root)
+    return (
+        _projected_properties(kind, values, terraform=terraform, root=root, observed=observed)
+        | protection_properties(kind.lower(), values, terraform=terraform, root=root)
+        | (monitoring_properties(kind.lower(), values, terraform=terraform))
+    )
 
 
 def _projected_properties(
@@ -877,6 +885,8 @@ def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
             "microsoft.network/networksecuritygroups/securityrules",
             "microsoft.network/virtualnetworkgateways",
             "microsoft.network/networkwatchers/flowlogs",
+            "microsoft.network/networkwatchers/connectionmonitors",
+            "microsoft.insights/metricalerts",
         }
         | ROUTING_KINDS
         | PROTECTION_KINDS

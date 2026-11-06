@@ -422,6 +422,9 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                             "localNetworkGatewayId",
                             "gatewaySku",
                             "vpnGatewayGeneration",
+                            "disableBgpRoutePropagation",
+                            "connectionMonitorSummary",
+                            "expressRouteAlertSummary",
                         }
                         for path in paths
                     )
