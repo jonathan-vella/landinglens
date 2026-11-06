@@ -3343,6 +3343,155 @@ SOURCES_16_VWAN = [
 ]
 
 
+SOURCES_29 = [
+    (
+        "platform-automation-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/"
+        "design-area/platform-automation-devops",
+        ["lifecycle", "DevOps teams topologies", "Test-driven development"],
+        "Platform automation spans provisioning, management, evolution and operations. "
+        "An accelerator or repository is not evidence that an assessed cross-functional "
+        "team owns and operates that lifecycle.",
+    ),
+    (
+        "team-topology-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/"
+        "devops-teams-topologies#design-recommendations",
+        ["cross-functional", "business units", "Enabling teams", "policy-driven"],
+        "Current topology separates platform lifecycle, workload lifecycle and time-bound "
+        "enabling support. IT/security/compliance/business representation, explicit functions "
+        "and policy-driven workload autonomy require operating evidence. The old "
+        "design-recommendations fragment no longer identifies the current headings.",
+    ),
+    (
+        "iac-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/"
+        "infrastructure-as-code",
+        ["implementation options", "Bootstrap", "continuous"],
+        "The original IaC link redirects to platform implementation options. Accelerator "
+        "planning/prerequisite/bootstrap/run capabilities do not prove actual CI/CD use, "
+        "deployment quality or application-team adoption.",
+    ),
+    (
+        "lifecycle-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/"
+        "development-strategy-development-lifecycle#automated-builds",
+        ["unit tests", "Key Vault", "predeployment", "Rollback"],
+        "Lifecycle guidance distinguishes IaC/application build tests, limited service "
+        "connections, secret variables, production-like delivery, change previews and rollback. "
+        "A build file, green result or compiler cannot establish full operating discipline.",
+    ),
+    (
+        "landing-zone-tdd",
+        LEARN + "azure/cloud-adoption-framework/ready/considerations/"
+        "development-strategy-test-driven-development",
+        ["definition of done", "red/green", "not to create a suite of tests"],
+        "TDD ties tests to agreed acceptance criteria and repeats red/green/refactoring and "
+        "controlled test-environment validation. Test quantity, syntax checks and compiler "
+        "success are not adequacy, application coverage or an agreed definition of done.",
+    ),
+    (
+        "rbac-best-practices",
+        LEARN + "azure/role-based-access-control/best-practices",
+        ["least privilege", "conditions", "groups, not users", "wildcard"],
+        "Use least privilege at narrow scopes, review privileged/conditional access and "
+        "groups, and avoid broad wildcard custom permissions. Definitions/assignments alone "
+        "do not establish effective workload autonomy or actual operating boundaries.",
+    ),
+    (
+        "rbac-custom-roles",
+        LEARN + "azure/role-based-access-control/custom-roles",
+        ["built-in roles", "specific needs", "Test the custom role"],
+        "Custom roles are conditional on built-in roles not meeting specific needs, not a "
+        "universal requirement from frozen H01.03 shorthand. Test justified custom permissions "
+        "and actual effective scope without collecting directory or raw role-action records.",
+    ),
+    (
+        "secret-pipeline",
+        LEARN + "azure/devops/pipelines/release/key-vault-in-own-project?view=azure-devops",
+        ["service connection", "Managed Identity", "secrets"],
+        "Key Vault pipeline integration requires authentication, access and connectivity. "
+        "A sample tutorial or vault does not prove assessed code avoids literals or that "
+        "runtime variables/logs/artifacts remain safe. No tutorial actions are executed.",
+    ),
+    (
+        "secret-template-reference",
+        LEARN + "azure/azure-resource-manager/templates/key-vault-parameter",
+        ["enabledForTemplateDeployment", "deploy/action", "secretVersion"],
+        "ARM parameter references retrieve a secret at deployment, including optional version "
+        "selection and separate deployment access. Secure parameter type, reference or "
+        "vault existence proves neither complete secret hygiene nor VM certificate behavior. "
+        "No secret values, identifiers or deployment permissions are collected.",
+    ),
+    (
+        "vending-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/"
+        "design-area/subscription-vending",
+        ["CCoE", "IPAM", "commercial agreement", "aren't hard limits", "MPA"],
+        "CCoE defines business logic/approval; platform teams create/configure/govern and hand "
+        "off; workloads update budgets and operate. Intake, IPAM/networking, hierarchy, quotas, "
+        "identities, offer eligibility and failure handling are separate. Budgets are not hard "
+        "limits; DevTest is not available for MPA. An alias cannot prove this whole process.",
+    ),
+    (
+        "vending-implementation",
+        LEARN + "azure/architecture/landing-zones/subscription-vending",
+        ["trackable request", "dedicated state file", "OpenID Connect", "Post-deployment"],
+        "The request/source-control/deployment example is one approach, not a mandatory "
+        "Gitflow policy. Validate approved input, one request per subscription, isolated "
+        "Terraform state, least-privileged identity and result reporting/handoff. "
+        "Creation/configuration ends automation, not workload operations.",
+    ),
+    (
+        "vending-agreements",
+        LEARN + "azure/cost-management-billing/manage/programmatically-create-subscription",
+        [
+            "Enterprise Agreement",
+            "Microsoft Customer Agreement",
+            "Microsoft Partner Agreement",
+            "can't create support plans",
+        ],
+        "Programmatic creation covers EA/MCA/MPA with agreement/API-specific requirements. "
+        "It does not create support plans or authorize a financial, subscription or access action.",
+    ),
+    (
+        "vending-ea",
+        LEARN + "azure/cost-management-billing/manage/"
+        "programmatically-create-subscription-enterprise-agreement",
+        ["Enterprise Administrator", "Enrollment Account", "2019-10-01-preview"],
+        "EA creation requires Enterprise Administrator or Enrollment Account Owner authority; "
+        "service principal delegation and API-version prerequisites differ. Subscription "
+        "resource RBAC alone is not billing-plane creation authority.",
+    ),
+    (
+        "vending-mca",
+        LEARN + "azure/cost-management-billing/manage/"
+        "programmatically-create-subscription-microsoft-customer-agreement",
+        ["invoice section", "billing profile", "Azure subscription creator"],
+        "MCA requires qualifying invoice-section/billing-profile/billing-account authority; "
+        "legacy/latest API permissions can differ and cross-tenant creation has separate "
+        "guidance. No actual agreement, billing scope or authority is inferred.",
+    ),
+    (
+        "vending-mpa",
+        LEARN + "azure/cost-management-billing/manage/"
+        "programmatically-create-subscription-microsoft-partner-agreement",
+        ["Admin Agent", "cloud solution provider", "REST APIs"],
+        "MPA prerequisites name CSP Admin Agent. The text says REST examples and currently "
+        "unsupported CLI/PowerShell although later tabs refer to CLI; this inconsistency "
+        "does not establish an accepted executable client or actual customer eligibility.",
+    ),
+    (
+        "learn-terms",
+        LEARN + "legal/termsofuse",
+        ["documentation", "explicit license terms", "third party"],
+        "Retain attributed URLs, retrieved revisions/hashes and independently written factual "
+        "findings only. Do not redistribute article text, comments, images or sample scripts; "
+        "linked software and third-party material have separate terms.",
+    ),
+]
+
+
 SOURCES_27 = [
     (
         "policy-overview",
@@ -3564,6 +3713,7 @@ def main() -> None:
             "22",
             "27",
             "23",
+            "29",
             "30",
         ],
         default="01",
@@ -3571,9 +3721,11 @@ def main() -> None:
     args = parser.parse_args()
     if args.vwan_supplement and (args.batch != "16" or not args.preparation_only):
         raise ValueError("The vWAN supplement is cohort16 preparation only")
-    if (args.batch in {"02", "05", "12", "16", "20", "23", "27", "30"}) != args.preparation_only:
+    if (
+        args.batch in {"02", "05", "12", "16", "20", "23", "27", "29", "30"}
+    ) != args.preparation_only:
         raise ValueError(
-            "Cohorts 02/05/12/16/20/23/27/30 source capture require --preparation-only; "
+            "Cohorts 02/05/12/16/20/23/27/29/30 source capture require --preparation-only; "
             "no activation"
         )
     prefix = "preparation" if args.preparation_only else "batch"
@@ -3609,6 +3761,7 @@ def main() -> None:
         "22": SOURCES_22,
         "27": SOURCES_27,
         "23": SOURCES_23,
+        "29": SOURCES_29,
         "30": SOURCES_30,
     }[args.batch]
     for identity, url, markers, finding in (

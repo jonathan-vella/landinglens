@@ -99,6 +99,22 @@ records remain traceable under explicit lifecycle semantics.
 
 ## Active increment: fixed recommendation expansion
 
+Cohort29/[#133](https://github.com/jonathan-vella/landinglens/issues/133)
+integrates seven manual platform-team/function/autonomy/delivery/
+test/secret/vending workflows in the
+[accepted matrix](../../references/recommendation-batches/batch-29.json)
+after actual02/27 checked delivery and the explicit sole-slot grant.
+Source-specific blank decisions distinguish adequate built-in versus justified
+custom RBAC, actual IaC/application build quality, non-hardcoding evidence and
+agreement-qualified governed vending/handoff. A repository, compiler, passing
+test count, Key Vault or subscription alias proves none. Existing helpers are
+shared by the registered bank and packaged `.18` original-time replay; historical
+preparation/test-only bank injection remains separately pinned. Exact `.17`,
+every non-own control, all162 earlier rows/nineteen receipts and original four
+full objects remain unchanged. Counts stay12/200/43 and162 delivered/89 pending
+until checked implementation and guarded own receipts. Acceptance alone is not
+delivery or closure. See [integration boundaries](plan.md#cohort-29-accepted-integration-2026-11-06).
+
 Cohort02/[#127](https://github.com/jonathan-vella/landinglens/issues/127)
 integrates its eight immutable tenant/Lighthouse/support/cost/notification/
 hierarchy GUIDs from24 unchanged captures into reviewed successor `.16` after
