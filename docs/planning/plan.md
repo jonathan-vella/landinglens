@@ -19,6 +19,70 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## Cohort 30 independent preparation: 2026-11-06
+
+[#112](https://github.com/jonathan-vella/landinglens/issues/112) owns the seven
+fixed H02.01-.04/H03.01/H04.01/H05.01 GUIDs. The
+[preparation matrix](../../references/recommendation-batches/preparation-30.json)
+and [22 source captures](../../references/recommendation-batches/preparation-30-sources.json)
+are deliberately outside accepted builder discovery. No accepted successor
+version, catalog/crosswalk activation, delivery receipt or issue closure is
+asserted. Cohorts15/08 retain the preceding coordinator-serialized slots.
+
+All seven recommendations remain inherently manual. The draft interview and
+three source-specific evidence requirements per GUID cover actual version-control
+adoption, branch discipline, separate PR change control, emergency backlog/rework,
+platform and workload declarative lifecycle management, organizational DevSecOps,
+and separately bound agent/registry/base-image sovereignty. Every answer, outcome,
+reviewer, reference, rationale and validity starts blank. Preparation tests inject
+the draft question and reviewed requirements into the existing engine/review bank;
+production bank and accepted catalog remain unchanged until the explicit slot.
+All report/tracker formats, atomic session save/resume, independent exceptions,
+expiry/content/scope binding and refusal of unaccepted replay are exercised.
+Exact accepted successor replay remains a post-slot gate, not a test mock claim.
+
+The checklist IaC link now redirects to platform implementation options. The
+linked H02.04 management page concerns inventory/visibility; current CAF automation
+explicitly supplies quick-fix/backlog/debt guidance. Source metadata preserves
+actual redirects, hashes, revisions and reuse limits; articles/assets are not
+redistributed. Raw pinned GitHub templates and rendered reused content are captured
+separately, and rendered pages without published revision IDs stay `retrieved-page`.
+Failed supplemental URLs and the refused initial capture are recorded explicitly.
+
+Residency questions distinguish Azure Geo service/preview exceptions, Azure DevOps
+Services geography versus exact region, US macOS/token and Brazil DR/capacity
+fallback, and GitHub.com versus GHE.com residency. GitHub's current EU boundary
+includes EFTA Norway/Switzerland, unlike Azure DevOps' EU-only hosted-agent
+boundary; Australia/US/Japan and storage/telemetry/support/Copilot/secret-check
+exceptions are explicit. ACR all-replica eventual syncing/global routing differs
+from serving-region layer redirects. Premium dedicated task pools remain
+Linux-only preview with published regional limits and external dependencies.
+These are public-source boundaries, never an assessed estate's actual placement,
+legal determination or fabricated approval.
+
+No resource/registry/pipeline/organization/region reads, scanner/query execution,
+new transport, dependency, module/compiler acquisition, restore or deployment
+is introduced. The eight existing no-restore compiler cases retain their original
+technical scope; no dummy IaC fixture is added to verify a process.
+
+Preparation validation ran **413 local and exact-installed tests** in each suite:
+412 passed with the original Windows symlink-privilege skip. All 16 cohort tests
+passed. Formatting/lint, typing of 38 source files and dependency consistency
+passed. Both local and own-installed compiler records exercised all eight
+existing cases with no skips or restoration. All 49 tracked packaged-data and
+fixed-target/ledger files remain byte-identical to the starting commit.
+
+The own wheel was built offline without build isolation or dependency acquisition:
+SHA256 `f95c11470c21034f33222044e621c042637cf035b855a6c925ce6e416b40cd63`.
+Initial fresh-environment offline installation explicitly failed for missing
+`python-hcl2==8.1.4`; only the three already-reviewed runtime wheels were then
+restored to this session's own wheelhouse. Installation and full-suite execution
+used that exact wheel offline, outside checkout, with cleared `PYTHONPATH` and
+verified own `site-packages` import provenance. The first unscoped baseline test
+had found an older globally installed package; it was not counted as source
+validation, and the explicit checkout-source rerun passed. No global package,
+manifest, compiler or accepted catalog was changed.
+
 ## Cohort 12 integration: 2026-11-06
 
 The coordinator granted [#103](https://github.com/jonathan-vella/landinglens/issues/103)

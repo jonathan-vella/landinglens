@@ -1784,18 +1784,213 @@ def microsoft_site_terms(url: str) -> bool:
     )
 
 
+DOCS_REVISION = "c9d8b26db3b48d8d3e1d91f4cef575623ff12f83"
+DOCS_RAW = f"https://raw.githubusercontent.com/github/docs/{DOCS_REVISION}/"
+SOURCES_30 = [
+    (
+        "caf-iac-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/"
+        "infrastructure-as-code",
+        ["implementation options", "version control", "Bicep"],
+        "The actual checklist IaC link redirects to platform implementation options. AVM/"
+        "accelerator capability does not establish platform or workload adoption.",
+    ),
+    (
+        "caf-lifecycle-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/"
+        "development-strategy-development-lifecycle",
+        ["Repository strategy", "Branch strategy", "pull request", "squash"],
+        "CAF recommends Git, private landing-zone repositories, trunk-based development, "
+        "branch permissions/policies, separate PR review and squash merges. No fixed reviewer "
+        "count or branch lifetime is an organization-specific requirement.",
+    ),
+    (
+        "caf-management-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/"
+        "design-area/management-platform",
+        ["Inventory", "visibility", "monitoring"],
+        "The original H02.04 link now concerns inventory and visibility, not emergency-fix "
+        "backlog reconciliation. Preserve the original link and use current CAF automation "
+        "guidance for the actual quick-fix process.",
+    ),
+    (
+        "caf-security-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/"
+        "landing-zone-security#secure",
+        ["DevSecOps", "Secure the design", "Secure operations"],
+        "Security integration covers people and design/code/pipeline/operations throughout "
+        "the lifecycle. A passing scan or enabled workflow cannot attest integration, "
+        "risk ownership, remediation or operational feedback.",
+    ),
+    (
+        "azure-residency-linked",
+        "https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency",
+        ["Geo", "Preview", "authorization"],
+        "Azure's general Geo commitments have explicit service and preview exceptions. "
+        "Region, geography, storage and processing are distinct; these commitments cannot "
+        "be generalized to GitHub, Azure DevOps or every upstream package/image service.",
+    ),
+    (
+        "caf-iac-updates",
+        LEARN
+        + "azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code-updates",
+        ["declarative", "state management", "emergency", "human approval"],
+        "Declarative desired state differs from imperative scripts. Existing non-IaC "
+        "resources need explicit state alignment; platform/workload maintenance, drift, "
+        "reviewed changes and emergency reconciliation need attributable process evidence. "
+        "Neither an IaC file nor compilation proves lifecycle management.",
+    ),
+    (
+        "caf-automation",
+        LEARN + "azure/cloud-adoption-framework/ready/considerations/automation",
+        ["quick fixes", "backlog", "technical debt", "4-eyes"],
+        "CAF explicitly requires registering quick fixes in the backlog and later reworking "
+        "them to limit technical debt; emergency portal fixes must return to code. "
+        "A ticket or hotfix branch alone cannot prove this process was followed.",
+    ),
+    (
+        "azure-repos-branching",
+        LEARN + "azure/devops/repos/git/git-branching-guidance?view=azure-devops",
+        ["feature branches", "pull requests", "release branch"],
+        "Simple feature/main/PR discipline and release fix porting are supported strategies. "
+        "The article's suggested two reviewers is not a mandatory universal threshold; "
+        "actual protected branches, bypasses and review practices require scoped evidence.",
+    ),
+    (
+        "devops-residency",
+        LEARN + "azure/devops/organizations/security/data-location?view=azure-devops",
+        ["Token data", "Brazil", "macOS", "United States"],
+        "Azure DevOps Services customer data uses a selected geography with exceptions: "
+        "token data is US; profile/support/preview data have separate boundaries; "
+        "macOS jobs transfer data to GitHub's US datacenter; Brazil replicates to South "
+        "Central US. These are not Azure DevOps Server or exact-region guarantees.",
+    ),
+    (
+        "devops-hosted-agents",
+        LEARN + "azure/devops/pipelines/agents/hosted?view=azure-devops",
+        ["any of the regions", "Brazil South", "fallback", "macOS"],
+        "Windows/Linux agents can use any region in the organization's geography, not "
+        "necessarily its exact region. EU organizations stay within the EU boundary; "
+        "Brazil South has US capacity fallback; macOS agents always run in the US. "
+        "An OS/pool label is not evidence of an actual assessed job's location.",
+    ),
+    (
+        "acr-geo-replication",
+        LEARN + "azure/container-registry/container-registry-geo-replication",
+        ["all geo-replicas", "eventual consistency", "global endpoint", "Premium"],
+        "Premium ACR replicates content and metadata to all selected replicas with eventual "
+        "consistency. Global endpoints use network/health routing, not a residency promise. "
+        "Regional serving does not remove other stored copies or upstream dependencies.",
+    ),
+    (
+        "acr-data-endpoints",
+        LEARN + "azure/container-registry/container-registry-dedicated-data-endpoints",
+        ["307", "downloads", "same region", "Premium"],
+        "Dedicated data endpoints serve layer downloads, not uploads. The 307 layer redirect "
+        "stays in the serving replica's region; global replica selection and all stored "
+        "replicas still need review. No host-name-derived sovereignty pass is justified.",
+    ),
+    (
+        "acr-tasks",
+        LEARN + "azure/container-registry/container-registry-tasks-overview",
+        ["source code context", "base image", "diagnostic tracing"],
+        "Tasks can send source context to Azure and consume local, Git, remote tarball or "
+        "OCI contexts and public base images. Task/image presence does not prove execution "
+        "or upstream residency. Command-line/URI secrets can enter diagnostic tracing; "
+        "retain redacted references only, never context payloads, tokens or credentials.",
+    ),
+    (
+        "acr-task-agent-pools",
+        LEARN + "azure/container-registry/tasks-agent-pools",
+        ["preview", "Linux", "Windows", "precached"],
+        "Premium dedicated task pools are preview, Linux-only and limited to the published "
+        "regions, including listed public-cloud and USGov regions. The VNet/pool does not "
+        "bound all dependencies: service endpoints, diagnostics, package restores, external "
+        "registries and changing precached base images still require review. No preview "
+        "eligibility or actual pool residency is inferred from a registry location.",
+    ),
+    (
+        "github-flow",
+        DOCS_RAW + "content/get-started/using-github/github-flow.md",
+        ["lightweight", "branch", "review"],
+        "GitHub Flow is a lightweight branch-based strategy, not a mandated strategy for "
+        "every release model. Review, checks and protected-branch requirements are separate "
+        "from a local branch or PR's presence.",
+    ),
+    (
+        "github-residency",
+        DOCS_RAW + "content/admin/data-residency/"
+        "about-github-enterprise-cloud-with-data-residency.md",
+        ["USA", "GHE.com", "data residency"],
+        "GitHub.com defaults to US storage. Enterprise Cloud residency is a distinct "
+        "GHE.com deployment; current documented regions are EU including EFTA Norway/"
+        "Switzerland, Australia, US and Japan. This EU boundary differs from Azure "
+        "DevOps' EU-only hosted-agent boundary and is not country-level sovereignty.",
+    ),
+    (
+        "github-residency-storage",
+        DOCS_RAW + "content/admin/data-residency/about-storage-of-your-data-with-data-residency.md",
+        ["outside your region", "Copilot", "prodname_secret_scanning"],
+        "GHE.com stores customer content and identifiable Actions/BCDR data in-region, "
+        "with exceptions for pseudonymous telemetry, billing, support, optional secret "
+        "validity checks and Copilot. Current compliant-model policy changes Copilot's "
+        "boundary; do not infer enrollment or settings. External actions, caches, package "
+        "registries and upstream base images need independently attributable review.",
+    ),
+    (
+        "github-residency-rendered",
+        "https://docs.github.com/en/enterprise-cloud@latest/admin/data-residency/"
+        "about-github-enterprise-cloud-with-data-residency",
+        ["Norway", "Switzerland", "Japan", "GHE.com"],
+        "Rendered official page includes reused region content absent from the pinned "
+        "article file. Hash this actually reviewed EU/EFTA/Australia/US/Japan boundary; "
+        "retrieved-page means no published commit identity, not a fabricated revision.",
+    ),
+    (
+        "github-storage-rendered",
+        "https://docs.github.com/en/enterprise-cloud@latest/admin/data-residency/"
+        "about-storage-of-your-data-with-data-residency",
+        ["outside your region", "Copilot", "Secret scanning"],
+        "Rendered official storage exceptions complement the pinned template source. "
+        "Compliant Copilot inference is conditional on the specified policy; no actual "
+        "enterprise configuration or human authorization is asserted.",
+    ),
+    (
+        "github-docs-reuse",
+        DOCS_RAW + "LICENSE",
+        ["Attribution 4.0 International"],
+        "Pinned GitHub documentation uses CC-BY-4.0. Retain attribution, exact revision/"
+        "hash and original factual findings only; no page content or assets redistributed.",
+    ),
+    (
+        "learn-reuse",
+        LEARN + "legal/termsofuse",
+        ["Notice Specific to Documents", "explicit license terms"],
+        "Learn document terms are constrained; separately explicit licenses can govern. "
+        "Keep source metadata and original factual findings only, not article copies.",
+    ),
+    (
+        "microsoft-site-reuse",
+        "https://www.microsoft.com/en-us/legal/terms-of-use",
+        ["Documents", "Personal and Non-Commercial"],
+        "Microsoft site terms do not grant unrestricted reuse of Azure marketing pages. "
+        "Keep linked metadata, checksum and original factual findings, not page text/assets.",
+    ),
+]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
     parser.add_argument("--preparation-only", action="store_true")
     parser.add_argument(
         "--batch",
-        choices=["01", "04", "11", "12", "13", "14", "17", "18", "19", "22"],
+        choices=["01", "04", "11", "12", "13", "14", "17", "18", "19", "22", "30"],
         default="01",
     )
     args = parser.parse_args()
-    if (args.batch == "12") != args.preparation_only:
-        raise ValueError("Cohort 12 source capture requires --preparation-only; no activation")
+    if (args.batch in {"12", "30"}) != args.preparation_only:
+        raise ValueError("Cohorts 12/30 source capture require --preparation-only; no activation")
     prefix = "preparation" if args.preparation_only else "batch"
     target = ROOT / "references" / "recommendation-batches" / f"{prefix}-{args.batch}-sources.json"
     if target.exists() and not args.append_new_sources:
@@ -1813,6 +2008,7 @@ def main() -> None:
         "18": SOURCES_18,
         "19": SOURCES_19,
         "22": SOURCES_22,
+        "30": SOURCES_30,
     }[args.batch]:
         if identity in existing:
             if existing[identity]["url"] != url:
@@ -1845,6 +2041,8 @@ def main() -> None:
                 if url.startswith(ALZ_RAW)
                 else POLICY_REVISION
                 if url.startswith(POLICY_RAW)
+                else DOCS_REVISION
+                if url.startswith(DOCS_RAW)
                 else match.group(1)
                 if match
                 else "retrieved-page",
@@ -1855,9 +2053,12 @@ def main() -> None:
                 if url.startswith(SPEC_RAW)
                 else "MIT Azure policy/library: metadata and own factual findings only"
                 if url.startswith((ALZ_RAW, POLICY_RAW))
+                else "CC-BY-4.0 GitHub Docs: attributed metadata and own findings only; "
+                "no page content redistributed"
+                if url.startswith(DOCS_RAW) or urlsplit(url).netloc == "docs.github.com"
                 else "Microsoft site terms: linked metadata and own findings only; "
                 "no article/comments/sample scripts redistributed"
-                if microsoft_site_terms(url)
+                if microsoft_site_terms(url) or urlsplit(url).netloc == "azure.microsoft.com"
                 else (
                     "Microsoft Learn attribution: source metadata and own factual findings only; "
                     "no page content redistributed"

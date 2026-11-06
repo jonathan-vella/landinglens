@@ -1,0 +1,132 @@
+{
+  "batch": "30",
+  "review_state": "preparation-only-reviewed",
+  "issue": "https://github.com/jonathan-vella/landinglens/issues/112",
+  "preparation_base_commit": "a2e874f456717d6e5f7df2165d689b8b00d8d40a",
+  "acceptance_evidence": "Seven inherently manual process recommendations with source-specific evidence requirements and a grouped blank interview exercised through existing reviews, tiers, outputs, sessions and replay guards. Preparation is not accepted catalog activation or delivery. No successor version, receipt, merged implementation or human outcome is asserted.",
+  "supported_modes": "Explicit scoped blank human preparation and offline authored/saved/injected evidence only. Existing IaC/preflight/Signals retain their original bounded meaning; no new resource projections, transport, scanner, query execution, dependency or compiler fixture. No organization, account, pipeline, registry or live region reads.",
+  "activation_gates": [
+    "Explicit coordinator delivery slot after actual predecessor implementation and receipt merges",
+    "Reconcile then-current main and preserve its exact interfaces, historical catalog/crosswalk bytes and every earlier receipt",
+    "Derive unique source-reviewed successor with existing builders; activate this matrix and interview bank only then",
+    "Exact packaged historical replay, full own-wheel/platform/compiler checks, normal SHA-bound merge and guarded own-GUID delivery receipts"
+  ],
+  "source_acquisition_notes": [
+    "The attempted supplemental technical-debt URL returned HTTP 404; current CAF automation explicitly covers backlog, emergency fixes and debt instead.",
+    "The attempted container-registry-tasks-dedicated-agent-pools URL returned HTTP 404; the actually inspected official page is tasks-agent-pools.",
+    "An initial all-or-nothing capture refused a missing literal Secret scanning marker in the pinned GitHub template. Inspection showed a prodname_secret_scanning variable; the actual template and rendered page are captured separately, without assigning a commit revision to rendered pages."
+  ],
+  "interview": {
+    "id": "development-lifecycle-sovereignty",
+    "question": "Reconcile the scoped platform AND application source/IaC populations with actual version-control use, repository visibility/access and change history; the chosen GitHub Flow/trunk/release branch model, consistent naming, protection and fix porting; separate PR review, updated-head approvals, checks, merge and bypass practices; emergency code fixes, backlog registration and later review/debt/drift reconciliation; and declarative desired-state adoption, existing-resource state alignment, change previews, deployment and rollback responsibilities. Describe security participation in design, code, pipeline and operations, risk/remediation ownership and feedback, not merely enabled scans. For sovereignty, bind approved geographic and storage/processing requirements to actual build agents, registries/replicas, base-image and package origins, redirects, caches, logs and backups. Reconcile Azure Geo exceptions; Azure DevOps Services geography versus exact region, US macOS/Brazil fallback/token exceptions; GitHub.com versus GHE.com EU/EFTA/Australia/US/Japan and storage/telemetry/Copilot/secret-check exceptions; ACR all-replica syncing/global routing versus regional layer endpoints; and preview Linux-only dedicated-pool regions with external dependencies. Use redacted attributable references, not private source/pipeline payloads, identities, hosts, location inventories, registry credentials or secret values. Supply each of seven outcomes separately; one narrative, a local checkout, compiler, workflow, scan or resource location proves none.",
+    "controls": [
+      "ALZ-cfe363b5-f579-4284-bc56-a42153e4c10b",
+      "ALZ-c7245dd4-af8a-403a-8bb7-890c1a7cfa9d",
+      "ALZ-12aeea20-9165-4b3e-bdf2-6795fcd3cdbe",
+      "ALZ-2676ae46-65ca-444e-8695-fdddeace4cb1",
+      "ALZ-2cdc9d99-dbcc-4ad4-97f5-e7d358bdfa73",
+      "ALZ-cc87a3bc-c572-4ad2-92ed-8cabab66160f",
+      "ALZ-047c91e2-6bb4-4a42-a0ef-ab06ad0062c9"
+    ]
+  },
+  "recommendations": [
+    {
+      "guid": "cfe363b5-f579-4284-bc56-a42153e4c10b",
+      "upstream_id": "H02.01",
+      "classification": "manual",
+      "implemented_subclaim": "Prepare version-control adoption review for the complete scoped application and IaC populations, not this assessor's checkout.",
+      "sources": ["caf-iac-linked", "caf-lifecycle-linked", "caf-iac-updates", "caf-automation"],
+      "evidence_requirements": [
+        "Bind the assessed platform and workload source/IaC population, omissions, ownership responsibilities and actual version-control change history to the explicit assessment scope and original evidence time. Git is Microsoft's recommended option; a local .git directory or one saved repository is not organization-wide use.",
+        "Reference redacted evidence of the chosen mono/multirepo arrangement, visibility and contribution/access model. CAF recommends private landing-zone repositories and public sharing only for nonconfidential material; do not infer visibility, access or adoption from URLs, repository names or this project's GitHub settings.",
+        "Reviewer decision: does attributable population and operating evidence establish actual version-control adoption for both application code and IaC in this scope? Leave outcome, reviewer, evidence, rationale and validity blank until explicitly supplied."
+      ],
+      "limitations": "No repository discovery, clone, private source ingestion or organization-wide predicate. The original linked IaC page now redirects to platform implementation options; accelerator capability is not application adoption. Missing, partial, denied, malformed, unsupported or stale evidence cannot become a technical pass.",
+      "flags": ["manual-version-control-adoption", "local-checkout-not-assessed-estate"]
+    },
+    {
+      "guid": "c7245dd4-af8a-403a-8bb7-890c1a7cfa9d",
+      "upstream_id": "H02.02",
+      "classification": "manual",
+      "implemented_subclaim": "Prepare the selected branch model, collaboration and release-fix reconciliation review separately from PR strategy.",
+      "sources": ["caf-lifecycle-linked", "azure-repos-branching", "github-flow", "caf-iac-updates"],
+      "evidence_requirements": [
+        "Bind the team's chosen branch strategy and rationale, platform/application repositories, release/support needs, naming convention and actual collaboration history to scope and evidence time. CAF recommends trunk-based development; GitHub Flow and release branches are options to reconcile, not universal mandatory models.",
+        "Reference redacted protected-branch permissions/policies, actual feature/main integration and release-fix porting where applicable, plus explicit bypasses and unresolved gaps. A branch name, default branch or isolated PR does not establish a consistently followed operating strategy; no invented branch age or reviewer-count threshold.",
+        "Reviewer decision: does actual scoped collaboration and maintenance evidence show the chosen documented branch strategy is followed? Decide H02.02 independently from H02.03 and keep all decision and attribution fields blank until supplied."
+      ],
+      "limitations": "No Git history scan or branch/policy/settings read is introduced. Source recommendations inform human review; they do not authorize setting policies or imply existing approvals. Unknown strategy, uncovered repositories and stale evidence remain explicit.",
+      "flags": ["manual-branch-operating-strategy", "branch-presence-not-discipline"]
+    },
+    {
+      "guid": "12aeea20-9165-4b3e-bdf2-6795fcd3cdbe",
+      "upstream_id": "H02.03",
+      "classification": "manual",
+      "implemented_subclaim": "Prepare actual PR change-control review, retaining separate strategy, approvals, checks and bypass evidence.",
+      "sources": ["caf-lifecycle-linked", "azure-repos-branching", "github-flow", "caf-automation"],
+      "evidence_requirements": [
+        "Bind important branches and the actual application/IaC merge population to the explicit scope and original time. Reference the team's agreed author/reviewer responsibilities, intelligible change descriptions, peer review, comment resolution and chosen merge strategy; CAF recommends squash but this is not an assumed organization setting.",
+        "Reference redacted evidence that applicable PR checks and reviews cover the updated source head, required review policies are followed and bypasses/exceptions are separately recorded. A PR file/template, workflow, green build or old approval does not establish change-control adoption. The product guidance's suggested two reviewers is not a universal acceptance threshold.",
+        "Reviewer decision: does the complete scoped change evidence demonstrate the adopted PR strategy controls merges? Supply H02.03 separately from branching and DevSecOps decisions; a shared narrative never selects pass, fail or not-applicable."
+      ],
+      "limitations": "No GitHub/Azure DevOps transport, estate PR read, check dispatch, scan or policy change. Technical Verified outcomes on existing predicates do not confirm this process recommendation. Private code, personal reviewer identities and raw review payloads are not requested.",
+      "flags": ["manual-pr-change-control", "updated-head-review-not-template"]
+    },
+    {
+      "guid": "2676ae46-65ca-444e-8695-fdddeace4cb1",
+      "upstream_id": "H02.04",
+      "classification": "manual",
+      "implemented_subclaim": "Prepare emergency quick-fix/backlog/rework and drift reconciliation review using actual CAF automation guidance.",
+      "sources": ["caf-management-linked", "caf-automation", "caf-iac-updates"],
+      "evidence_requirements": [
+        "Bind the scoped emergency/quick-fix population and agreed code-first emergency process to original time, with redacted incident/change and code references. The original management-platform link now discusses inventory/visibility; current CAF automation explicitly covers quick fixes, backlog and technical debt.",
+        "Reference actual backlog registration for quick fixes, assigned rework responsibility and later reviewed reconciliation to maintained code, including emergency portal/CLI drift and supported release branches where applicable. A ticket, hotfix branch or unreviewed emergency commit alone does not prove rework or controlled debt; no invented remediation deadline.",
+        "Reviewer decision: does the scoped quick-fix evidence establish the registered backlog and subsequent code/review reconciliation process, with explicit remaining debt and independent exceptions? Keep the decision and its validity/attribution blank until supplied."
+      ],
+      "limitations": "No work-item/incident ingestion, backlog service access or automated debt score. Empty/denied emergency history is not proof that no fixes occurred; applicability needs an explicit bound human decision, not guessed absence.",
+      "flags": ["manual-quick-fix-reconciliation", "backlog-entry-not-completed-rework"]
+    },
+    {
+      "guid": "2cdc9d99-dbcc-4ad4-97f5-e7d358bdfa73",
+      "upstream_id": "H03.01",
+      "classification": "manual",
+      "implemented_subclaim": "Prepare separate platform/workload declarative desired-state adoption and lifecycle-maintenance review.",
+      "sources": ["caf-iac-linked", "caf-iac-updates", "caf-lifecycle-linked", "caf-automation"],
+      "evidence_requirements": [
+        "Bind platform and application landing-zone populations, the selected Bicep/ARM/Terraform desired-state definitions and coverage gaps to scope/time. Declarative infrastructure differs from imperative CLI/PowerShell actions; existing non-IaC resources require explicit desired-state/state-management alignment.",
+        "Reference attributable redacted evidence of versioned definitions, reviewed change previews, governed deployment responsibility, rollback/recovery and ongoing drift/emergency reconciliation. Existing file parsing, preflight, compiler, plans and planned/observed differences are limited configuration context, not proof of actual deployment or lifecycle adoption.",
+        "Reviewer decision: does the full scoped platform AND workload evidence establish that declarative IaC builds and maintains the architecture? Record omissions and independent exceptions explicitly; leave all human outcome/attribution/expiry fields blank until supplied."
+      ],
+      "limitations": "No new IaC handling or dummy Bicep fixture; no Terraform init/plan/apply, what-if/deployment, module acquisition or restore. Existing eight no-restore compiler tests retain their technical meaning and cannot verify an operating strategy.",
+      "flags": ["manual-declarative-iac-adoption", "compilation-not-lifecycle-management"]
+    },
+    {
+      "guid": "cc87a3bc-c572-4ad2-92ed-8cabab66160f",
+      "upstream_id": "H04.01",
+      "classification": "manual",
+      "implemented_subclaim": "Prepare lifecycle-wide security integration and risk/remediation ownership review, not scan-presence automation.",
+      "sources": ["caf-security-linked", "caf-lifecycle-linked", "caf-iac-updates"],
+      "evidence_requirements": [
+        "Bind the scoped innovation/workload/platform lifecycle and agreed risk objectives to original time. Reference redacted evidence of security participation in design/threat modeling and peer review, code risk discovery/remediation, pipeline security and production operations feedback, with responsibilities and coverage gaps.",
+        "Reconcile actual remediation and risk acceptance, production approval/change gates and operations lessons with development/operations responsibilities. CAF integration is organizational and incremental; a scanner installation, successful saved scan, workflow flag, hardened image or one secure deployment does not establish complete DevSecOps integration.",
+        "Reviewer decision: does attributable lifecycle and operating evidence demonstrate security is integrated into development and operations within this scope? Decide H04.01 separately from PR process and image sovereignty; keep outcome and approval details unasserted until supplied."
+      ],
+      "limitations": "No new scanner transport, security execution, live posture or invented organization policy/approval. Existing PSRule/SARIF/Policy/ARG evidence retains its limited Signal/predicate semantics; only exact already-reviewed executable queries remain allowlisted.",
+      "flags": ["manual-devsecops-integration", "scan-not-organizational-security"]
+    },
+    {
+      "guid": "047c91e2-6bb4-4a42-a0ef-ab06ad0062c9",
+      "upstream_id": "H05.01",
+      "classification": "manual",
+      "implemented_subclaim": "Prepare separately bound agent, registry, base-image and package storage/processing sovereignty review against explicit organizational requirements.",
+      "sources": ["azure-residency-linked", "devops-residency", "devops-hosted-agents", "github-residency", "github-residency-storage", "github-residency-rendered", "github-storage-rendered", "acr-geo-replication", "acr-data-endpoints", "acr-tasks", "acr-task-agent-pools"],
+      "evidence_requirements": [
+        "Bind approved country/region/geography and storage-versus-processing requirements to scope/time and the actual agent, package registry, base-image, build-context, upstream origin, redirect, cache/log/artifact/backup and replication population. Keep approvals blank; geography is not an exact region or a legal sovereignty determination. Use redacted references, never raw source/pipeline payloads, personal identities, credentials, tokens or unnecessary account/location inventories.",
+        "Reconcile current service boundaries independently: Azure Geo commitments have service/preview exceptions; Azure DevOps Services uses geography with US macOS/token and Brazil DR/capacity fallback; GitHub.com defaults US, while GHE.com offers EU including EFTA Norway/Switzerland, Australia, US and Japan with telemetry/support/billing/Copilot/optional secret-check exceptions. ACR syncs all configured replicas and global routing can select another replica; regional layer redirects remain within the serving replica, not necessarily every required boundary. Premium dedicated task pools are Linux-only preview in published regions and still consume external dependencies and changing precached images.",
+        "Reviewer decision: do attributable complete agent/registry/base-image/dependency storage AND execution/processing evidence satisfy the explicitly approved boundary, including documented exceptions? Leave outcome, scope-bound approval attribution, rationale and expiry blank until supplied; URL, runner label, registry/resource location or one image digest alone proves no sovereignty outcome."
+      ],
+      "limitations": "No estate/region/account/registry/agent lookup, upload, build task, package publication or fabricated residency/legal approval. Published availability is not actual location or eligibility. Unknown external services, partial copies, denied provenance and stale requirements remain explicit manual gaps.",
+      "flags": ["manual-build-supply-chain-sovereignty", "geo-storage-processing-distinct", "replicas-and-upstream-origins-required"]
+    }
+  ]
+}
