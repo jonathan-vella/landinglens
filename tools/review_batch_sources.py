@@ -2178,6 +2178,155 @@ SOURCES_15 += [
 ]
 
 
+SOURCES_20 = [
+    (
+        "vwan-any-to-any",
+        "https://learn.microsoft.com/azure/virtual-wan/scenario-any-to-any",
+        ["Standard", "Default route table", "branch-to-branch"],
+        "The actual scenario is unfiltered any-to-any with common association/propagation. "
+        "Standard inter-hub defaults are not evidence of business suitability or reachability.",
+    ),
+    (
+        "vwan-regional-design",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/"
+        "virtual-wan-network-topology#virtual-wan-network-design-recommendationst",
+        ["one or more", "same region", "connectivity subscription"],
+        "Current CAF permits multiple hubs per region for scale; not exactly one. The "
+        "original fragment is obsolete. Regions, complete workloads and limits need review.",
+    ),
+    (
+        "vwan-firewall",
+        "https://learn.microsoft.com/azure/virtual-wan/howto-firewall",
+        ["secured hub", "Availability Zones", "doesn't permit"],
+        "The linked portal conversion does not configure Firewall zones. Hub association "
+        "and AZFW_Hub SKU are configuration, not filtering, availability or policy enforcement.",
+    ),
+    (
+        "vwan-migration",
+        "https://learn.microsoft.com/azure/virtual-wan/migrate-from-hub-spoke-topology",
+        ["Standard SKU", "shared services", "migration"],
+        "The illustrated staged migration is scenario-specific. Shared services stay in "
+        "spokes; intended traffic, cutover, old routes and rollback need attributable review.",
+    ),
+    (
+        "vwan-insights",
+        "https://learn.microsoft.com/azure/virtual-wan/azure-monitor-insights",
+        ["pre-packaged", "preview", "Dependency"],
+        "The linked page labels the portal Insights view preview and describes a prepackaged "
+        "workbook; no enablement boolean. Saved resource facts do not prove workbook use, "
+        "health, metric arrivals or complete topology coverage.",
+    ),
+    (
+        "vwan-faq",
+        "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-faq",
+        ["enabled by default", "/23", "/22", "IPv6 isn't supported"],
+        "WAN branch traffic defaults enabled in guidance, but missing flags remain unknown. "
+        "Minimum hub /24, recommended /23 or larger; Firewall maximum scaling requires /22. "
+        "Address space is immutable, IPv6 unsupported. Regions are an external eligibility "
+        "review, not a guessed list. ER transit/Global Reach and routing intent differ.",
+    ),
+    (
+        "vwan-routing-preference",
+        "https://learn.microsoft.com/azure/virtual-wan/about-virtual-hub-routing-preference",
+        ["Longest Prefix Match", "default setting", "selected last"],
+        "ExpressRoute default, VPN and AS Path are explicit configurations. LPM/static "
+        "precedence and remote ER/private-intent exceptions prevent a shortest-path assurance.",
+    ),
+    (
+        "vwan-labels",
+        "https://learn.microsoft.com/azure/virtual-wan/about-virtual-hub-routing#labels",
+        ["Default", "If no label", "dynamic routing"],
+        "Default label spans hubs; omitted VNet propagation labels default to Default in "
+        "guidance but are not inferred from absent inputs. Dynamic, static and default-route "
+        "propagation differ; nonempty labels do not prove correct inter-hub connectivity.",
+    ),
+    (
+        "vwan-hub-capacity",
+        LEARN + "azure/virtual-wan/hub-settings",
+        ["routing infrastructure", "25 minutes", "/22", "10,000 routes"],
+        "RIUs differ from gateway scale units: 2 RIUs support 3 Gbps/2000 VMs; autoscaling "
+        "is not instant and does not prove headroom. Reviewed table 2..50 is an advisory "
+        "envelope, not API quota or guaranteed performance. /22 Firewall condition remains.",
+    ),
+    (
+        "vwan-routing-intent",
+        LEARN + "azure/virtual-wan/how-to-routing-policies",
+        ["21 Vianet", "custom route tables", "Internet"],
+        "Internet intent requires local security next hop; default routes do not cross hubs. "
+        "Custom routing configurations conflict with intent constructs; 21Vianet unsupported "
+        "and Government NVA/SaaS availability conditional. Exact local firewall join is only "
+        "configured intent, not actual inspection, filtering or route selection.",
+    ),
+    (
+        "vwan-rest",
+        SPEC_RAW + "specification/network/resource-manager/Microsoft.Network/Network/"
+        "stable/2024-05-01/virtualWan.json",
+        ["HubRoutingPreference", "ASPath", "routingPolicies", "allowBranchToBranchTraffic"],
+        "Pinned 2024-05-01 defines WAN and hub branch flags separately; hub ASPath/"
+        "ExpressRoute/VpnGateway, hubRouteTables labels and connection routing configuration. "
+        "Hub route tables are not Microsoft.Network/routeTables. Internet/PrivateTraffic "
+        "are a reviewed subset of free-form destination strings; others remain unsupported.",
+    ),
+    *[
+        (
+            f"terraform-{name}",
+            RAW + f"website/docs/r/{name}.html.markdown",
+            markers,
+            finding,
+        )
+        for name, markers, finding in [
+            (
+                "virtual_wan",
+                ["allow_branch_to_branch_traffic", "Standard", "2024-05-01"],
+                "4.50.0 WAN defaults branch=true/type=Standard. Raw missing defaults are "
+                "unknown; no hub flag substituted for the WAN-wide flag.",
+            ),
+            (
+                "virtual_hub",
+                ["branch_to_branch_traffic_enabled", "ASPath", "2024-05-01"],
+                "4.50.0 hub branch default=false differs from WAN default=true. Retain both "
+                "explicit booleans independently. Hub preference defaults ER, RIU minimum=2. "
+                "Address prefix changes recreate hub; no default or growth inference.",
+            ),
+            (
+                "virtual_hub_connection",
+                ["propagated_route_table", "labels", "internet_security_enabled"],
+                "Explicit routing/propagation blocks and child identity are preparable. "
+                "Computed or absent labels/IDs stay unknown; static next-hop addresses withheld.",
+            ),
+            (
+                "virtual_hub_route_table",
+                ["labels", "hubRouteTables", "alternatively"],
+                "Explicit labels support minimized equality only. Separately managed routes "
+                "mean inline count cannot prove complete route population; all routes withheld.",
+            ),
+            (
+                "virtual_hub_routing_intent",
+                ["Internet", "PrivateTraffic", "next_hop"],
+                "One or two unique named destination policies with exact typed firewall "
+                "references prepare local intent; NVA/SaaS forms remain unsupported/unknown.",
+            ),
+        ]
+    ],
+    (
+        "terraform-hub-implementation",
+        RAW + "internal/services/network/virtual_hub_resource.go",
+        ["AllowBranchToBranchTraffic", "Default:  false", "HubRoutingPreference"],
+        "Pinned implementation writes the hub-specific flag independently of the WAN. "
+        "Read pointer defaults cannot establish absent saved inputs; project explicit only.",
+    ),
+    (
+        "terraform-connection-implementation",
+        RAW + "internal/services/network/virtual_hub_connection_resource.go",
+        ["Computed: true", "PropagatedRouteTables", "EnableInternetSecurity"],
+        "Pinned routing and labels can be computed; expand maps supplied blocks to ARM "
+        "fields. Neither inferred labels nor internet-security flag proves effective routes.",
+    ),
+    *[s for s in SOURCES_17 if s[0] in {"firewall-arm", "terraform-firewall"}],
+    *[s for s in SOURCES_14 if s[0] in {"provider-reuse", "learn-reuse", "rest-spec-reuse"}],
+]
+
+
 def microsoft_site_terms(url: str) -> bool:
     parsed = urlsplit(url)
     return parsed.scheme == "https" and (
@@ -2604,15 +2753,16 @@ def main() -> None:
             "17",
             "18",
             "19",
+            "20",
             "22",
             "30",
         ],
         default="01",
     )
     args = parser.parse_args()
-    if (args.batch in {"12", "16", "30"}) != args.preparation_only:
+    if (args.batch in {"12", "16", "20", "30"}) != args.preparation_only:
         raise ValueError(
-            "Cohorts 12/16/30 source capture require --preparation-only; no activation"
+            "Cohorts 12/16/20/30 source capture require --preparation-only; no activation"
         )
     prefix = "preparation" if args.preparation_only else "batch"
     target = ROOT / "references" / "recommendation-batches" / f"{prefix}-{args.batch}-sources.json"
@@ -2633,6 +2783,7 @@ def main() -> None:
         "17": SOURCES_17,
         "18": SOURCES_18,
         "19": SOURCES_19,
+        "20": SOURCES_20,
         "22": SOURCES_22,
         "30": SOURCES_30,
     }[args.batch]:

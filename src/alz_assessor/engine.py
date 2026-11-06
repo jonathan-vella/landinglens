@@ -43,8 +43,10 @@ def local_subchecks(properties: dict[str, Any]) -> dict[str, Any]:
     """Original-time partial facts, never whole-recommendation outcomes."""
     result: dict[str, Any] = {}
     from .expressroute_evidence import fastpath_subchecks
+    from .virtual_wan_evidence import subchecks as vwan_subchecks
 
     result.update(fastpath_subchecks(properties))
+    result.update(vwan_subchecks(properties))
     if "virtualNetworkPrefixes" in properties:
         from .routing_evidence import address_subchecks
 
@@ -223,6 +225,7 @@ def assess(
             continue
         rule = control.get("rule")
         gateway_routes = bool(rule and rule.get("operation") == "gateway-route-propagation")
+        hub_preference = bool(rule and rule.get("operation") == "hub-routing-preference")
         prepared = evidence_tiers and not stale and prepared_signal(control, bundle)
         review_signal = (
             evidence_tiers
@@ -250,11 +253,13 @@ def assess(
                 if resource is None:
                     outcome = (
                         "not_applicable"
-                        if bundle["inventory_complete"] and not gateway_routes
+                        if bundle["inventory_complete"] and not (gateway_routes or hub_preference)
                         else "unknown"
                     )
                     reason = (
-                        "gateway_subnet_population_not_established"
+                        "vwan_hub_population_not_established"
+                        if hub_preference
+                        else "gateway_subnet_population_not_established"
                         if gateway_routes
                         else "no_applicable_resources"
                         if outcome == "not_applicable"
@@ -343,6 +348,27 @@ def assess(
                             else "complete_observed_rule_count_required",
                             None,
                         )
+                    elif hub_preference:
+                        from .virtual_wan_evidence import HUB, known_resource
+                        from .virtual_wan_evidence import review_fact as vwan_fact
+
+                        preference = vwan_fact(resource["properties"], "hubRoutingPreference")
+                        if known_resource(
+                            resource.get("arm_id"), HUB, by_id, bundle.get("scope")
+                        ) is not resource or not isinstance(preference, str):
+                            outcome, reason, fact = (
+                                "unknown",
+                                "vwan_hub_identity_or_preference_unresolved",
+                                None,
+                            )
+                        else:
+                            fact = preference
+                            outcome = "pass" if fact == "ASPath" else "fail"
+                            reason = (
+                                "explicit_hub_aspath_configured"
+                                if outcome == "pass"
+                                else "explicit_hub_other_preference"
+                            )
                     elif gateway_routes and fact is None:
                         outcome, reason = "unknown", "gateway_route_propagation_join_unresolved"
                     elif (

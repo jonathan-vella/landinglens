@@ -18,6 +18,8 @@ from .routing_evidence import PATHS as ROUTING_PATHS
 from .security_evidence import PATHS as SECURITY_PATHS
 from .sources import boolean, enumeration, property_at, unknown
 from .terraform import InputError
+from .virtual_wan_evidence import KINDS as VWAN_KINDS
+from .virtual_wan_evidence import PATHS as VWAN_PATHS
 
 REVIEW_PATHS = (
     {
@@ -63,6 +65,7 @@ REVIEW_PATHS = (
     | {"connectionMonitorSummary", "expressRouteAlertSummary"}
     | DNS_PATHS
     | NETWORK_POLICY_PATHS
+    | VWAN_PATHS
 )
 
 
@@ -512,6 +515,10 @@ def review_fact(properties: dict[str, Any], path: str) -> Any:
         from .network_policy_evidence import review_fact as network_policy_fact
 
         return network_policy_fact(properties, path)
+    if path in VWAN_PATHS:
+        from .virtual_wan_evidence import review_fact as vwan_fact
+
+        return vwan_fact(properties, path)
     if path in GOVERNANCE_PATHS:
         from .governance_evidence import review_fact as governance_fact
 
@@ -600,6 +607,7 @@ def projected_properties(
     from .monitoring_evidence import projected_properties as monitoring_properties
     from .network_policy_evidence import projected_properties as network_policy_properties
     from .protection_evidence import projected_properties as protection_properties
+    from .virtual_wan_evidence import projected_properties as vwan_properties
 
     result = (
         _projected_properties(kind, values, terraform=terraform, root=root, observed=observed)
@@ -607,6 +615,7 @@ def projected_properties(
         | dns_properties(kind.lower(), values, terraform=terraform, root=root)
         | monitoring_properties(kind.lower(), values, terraform=terraform)
         | network_policy_properties(kind, values, terraform=terraform)
+        | vwan_properties(kind.lower(), values, terraform=terraform, root=root)
     )
     if kind.lower() == "microsoft.network/connections":
         from .expressroute_evidence import fastpath_properties
@@ -945,7 +954,7 @@ def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
         "microsoft.network/networkwatchers/flowlogs",
         "microsoft.network/networkwatchers/connectionmonitors",
         "microsoft.insights/metricalerts",
-    } | ROUTING_KINDS | PROTECTION_KINDS | DNS_KINDS | {CIRCUIT_KIND, PORT_KIND}:
+    } | ROUTING_KINDS | PROTECTION_KINDS | DNS_KINDS | VWAN_KINDS | {CIRCUIT_KIND, PORT_KIND}:
         return {}
     result: dict[str, Any] = {}
     for path in sorted(REVIEW_PATHS - SECURITY_PATHS - GOVERNANCE_PATHS):

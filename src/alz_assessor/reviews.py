@@ -50,6 +50,7 @@ def prepared_resource(
     resource: dict[str, Any],
     control: dict[str, Any],
     by_id: dict[str, list[dict[str, Any]]],
+    scope: str | None = None,
     bundle: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     facts: dict[str, Any] = {}
@@ -81,6 +82,15 @@ def prepared_resource(
             prepared["configured_policy_chain"] = policy_context(resource, bundle, by_id)
         if "gatewayDiagnosticSummary" in facts and resource["resource_type"].lower() == GATEWAY:
             prepared["configured_gateway_monitoring"] = gateway_context(resource, bundle, by_id)
+    from .virtual_wan_evidence import PATHS as VWAN_PATHS
+    from .virtual_wan_evidence import WAN, hub_context, wan_hub_population
+
+    if VWAN_PATHS.intersection(facts):
+        prepared["virtual_wan_context"] = (
+            wan_hub_population(resource, by_id, scope)
+            if resource["resource_type"].lower() == WAN
+            else hub_context(resource, by_id, scope)
+        )
     if (
         "disableBgpRoutePropagation" in control.get("review_fact_paths", [])
         and resource["resource_type"].lower() == "microsoft.network/virtualnetworkgateways"
@@ -347,8 +357,7 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     allowed = {kind.lower() for kind in kinds}
     by_id: dict[str, list[dict[str, Any]]] = {}
     for resource in bundle.get("resources", []):
-        if resource.get("arm_id"):
-            by_id.setdefault(resource["arm_id"].lower(), []).append(resource)
+        by_id.setdefault((resource.get("arm_id") or "").lower(), []).append(resource)
     matches = [
         resource
         for resource in bundle.get("resources", [])
@@ -368,7 +377,8 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
         "inventory_complete": bundle["inventory_complete"],
         "normalized_resources_available": available,
         "resources": [
-            prepared_resource(resource, control, by_id, bundle) for resource in matches[:100]
+            prepared_resource(resource, control, by_id, bundle.get("scope"), bundle)
+            for resource in matches[:100]
         ],
         "matching_resources": len(matches) if available else None,
         "truncated": len(matches) > 100,

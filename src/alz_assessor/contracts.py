@@ -336,6 +336,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                     raise InputError("Review resource preparation requires 1-10 explicit types")
             if "review_fact_paths" in control:
                 from .dns_evidence import PATHS as DNS_PATHS
+                from .virtual_wan_evidence import PATHS as VWAN_PATHS
 
                 paths = require(control, "review_fact_paths", list)
                 if (
@@ -450,6 +451,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                                 "managementParentId",
                             }
                             | DNS_PATHS
+                            | VWAN_PATHS
                         )
                         for path in paths
                     )
@@ -485,6 +487,15 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                         or rule["property"] not in {"threatIntelMode", "intrusionDetection.mode"}
                     ):
                         raise InputError("Invalid reviewed enum/SKU applicability")
+                elif operation == "hub-routing-preference" and data["schema_version"] == "1.1":
+                    if (
+                        control.get("upstream_guid") != "d49ac006-6670-4bc9-9948-d3e0a3a94f4d"
+                        or rule["resource_type"] != "Microsoft.Network/virtualHubs"
+                        or rule["property"] != "hubRoutingPreference"
+                        or rule.get("expected") != "ASPath"
+                        or "applicable_skus" in rule
+                    ):
+                        raise InputError("Invalid reviewed explicit Virtual WAN ASPath predicate")
                 elif operation == "firewall-premium-sku" and data["schema_version"] == "1.1":
                     if (
                         rule["resource_type"] != "Microsoft.Network/azureFirewalls"

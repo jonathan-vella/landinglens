@@ -46,6 +46,11 @@ TF_TYPES = {
     "azurerm_lb_backend_address_pool": "Microsoft.Network/loadBalancers/backendAddressPools",
     "azurerm_express_route_port": "Microsoft.Network/expressRoutePorts",
     "azurerm_express_route_circuit": "Microsoft.Network/expressRouteCircuits",
+    "azurerm_virtual_wan": "Microsoft.Network/virtualWans",
+    "azurerm_virtual_hub": "Microsoft.Network/virtualHubs",
+    "azurerm_virtual_hub_connection": "Microsoft.Network/virtualHubs/hubVirtualNetworkConnections",
+    "azurerm_virtual_hub_route_table": "Microsoft.Network/virtualHubs/hubRouteTables",
+    "azurerm_virtual_hub_routing_intent": "Microsoft.Network/virtualHubs/routingIntent",
     "azurerm_virtual_network_gateway_connection": "Microsoft.Network/connections",
     "azurerm_role_assignment": "Microsoft.Authorization/roleAssignments",
     "azurerm_security_center_subscription_pricing": "Microsoft.Security/pricings",
@@ -288,6 +293,25 @@ def resource_scope(scope: str | None, properties: dict[str, Any]) -> str | None:
 
 def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str | None:
     name = values.get("name")
+    if kind in {
+        "azurerm_virtual_hub_connection",
+        "azurerm_virtual_hub_route_table",
+        "azurerm_virtual_hub_routing_intent",
+    }:
+        from .protection_evidence import typed_reference
+
+        parent = typed_reference(values.get("virtual_hub_id"), ("microsoft.network/virtualhubs",))
+        boundary = scope_id(scope) if scope else None
+        if (
+            boundary
+            and isinstance(parent, str)
+            and parent.startswith(boundary + "/")
+            and isinstance(name, str)
+            and name
+            and "/" not in name
+        ):
+            return canonical_id(parent + "/" + TF_TYPES[kind].rsplit("/", 1)[1] + "/" + name)
+        return None
     dns_parent = {
         "azurerm_private_dns_resolver_inbound_endpoint": (
             "private_dns_resolver_id",

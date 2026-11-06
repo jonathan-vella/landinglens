@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "kind": "catalog",
-  "catalog_version": "2026-11-06.11",
+  "catalog_version": "2026-11-06.12",
   "design_areas": [
     "Azure billing and Active Directory tenant",
     "Identity and access management",
@@ -11379,14 +11379,15 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Specific accountable scenario judgment remains required. Supplied counts and names prove neither requirements nor complete architecture, eligibility or effective global reachability.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Bind the approved complete workload/branch connectivity and isolation matrix to an explicitly documented routing design. Any-to-any specifically assumes unfiltered direct flows and common Default association/propagation; resource presence is not scenario suitability.",
+        "Separately reconcile Standard/Basic support, service/region eligibility, operational model, cost, scale and alternatives with attributable original-time evidence. Supply a bound decision; no business or topology outcome is prefilled."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-20",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "configuration-not-scenario-suitability",
+        "supplied-topology-subset-only"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -11401,9 +11402,59 @@
           "pointer": "/items/158",
           "item_sha256": "1a5032920550669c1f54469f46d237b0d2bedd8eff3e67bbeb6056c61023644d",
           "guidance": "https://learn.microsoft.com/azure/virtual-wan/scenario-any-to-any"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/virtual-wan/scenario-any-to-any",
+          "source_sha256": "b9e65613e007458eb3147bdbf214cf658cf2e4d61258c36a9f194e14e0d4896f",
+          "revision": "975b80952400a3000a2b8e80334a81adaf948848",
+          "retrieved_at": "2026-11-06T13:32:07.506787+00:00",
+          "pointer": "412e7f98-3f63-4047-82dd-69c5b5c2622f",
+          "guidance": "https://learn.microsoft.com/azure/virtual-wan/scenario-any-to-any"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/virtual-wan-network-topology#virtual-wan-network-design-recommendationst",
+          "source_sha256": "136cbe7297a336c213addecdfd85fa54330d130f69a0758ddd38ce27e3b3b4c3",
+          "revision": "1b71252cc095030dabc0dfb4bd2398885f46aaaa",
+          "retrieved_at": "2026-11-06T13:32:07.890345+00:00",
+          "pointer": "412e7f98-3f63-4047-82dd-69c5b5c2622f",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/virtual-wan-network-topology#virtual-wan-network-design-recommendationst"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json",
+          "source_sha256": "6220238b792ce425e1c117a4b69bb36f44072aac24820cf7ba4d2c95e553adc2",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T13:32:10.762328+00:00",
+          "pointer": "412e7f98-3f63-4047-82dd-69c5b5c2622f",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_wan.html.markdown",
+          "source_sha256": "23ef458e298491cab19e74151b3d51c0daaf2f754ec3e987d6c399f67f101b16",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T13:32:11.076756+00:00",
+          "pointer": "412e7f98-3f63-4047-82dd-69c5b5c2622f",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_wan.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub.html.markdown",
+          "source_sha256": "f7ea6df6a43384951912c46d317f1534de8c14bc6f8ce740c04b81caa9bd17b2",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T13:32:11.360574+00:00",
+          "pointer": "412e7f98-3f63-4047-82dd-69c5b5c2622f",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Network/virtualWans",
+        "Microsoft.Network/virtualHubs"
+      ],
+      "review_fact_paths": [
+        "virtualWanType",
+        "wanBranchTrafficAllowed",
+        "virtualWanId",
+        "resourceLocation"
+      ]
     },
     {
       "control_id": "ALZ-54b69bad-33aa-4d5e-ac68-e1d76667313b",
@@ -11423,14 +11474,15 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Supplied region strings/counts establish configuration only, not current product eligibility, complete regional coverage, physical diversity or actual reachability.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reconcile the complete intended workload/region inventory with one or more eligible regional hubs in the intended common Standard WAN. Current CAF allows multiple hubs in one region for single-hub scale limits, not exactly one.",
+        "Review subscription/RG and portal constraints, actual quotas, regional eligibility, failure domains and supported connection paths. Supply an attributable scoped decision independently of supplied distinct hub/region counts."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-20",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "multiple-hubs-per-region-allowed",
+        "counts-not-complete-coverage"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -11445,9 +11497,51 @@
           "pointer": "/items/159",
           "item_sha256": "aaa301a79ab3db909be62eeb9449cd077661e51a33ae55358eec310d1ead0b21",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/virtual-wan-network-topology#virtual-wan-network-design-recommendationst"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/virtual-wan-network-topology#virtual-wan-network-design-recommendationst",
+          "source_sha256": "136cbe7297a336c213addecdfd85fa54330d130f69a0758ddd38ce27e3b3b4c3",
+          "revision": "1b71252cc095030dabc0dfb4bd2398885f46aaaa",
+          "retrieved_at": "2026-11-06T13:32:07.890345+00:00",
+          "pointer": "54b69bad-33aa-4d5e-ac68-e1d76667313b",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/virtual-wan-network-topology#virtual-wan-network-design-recommendationst"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/virtual-wan/hub-settings",
+          "source_sha256": "a33a5b86bbba968f34b049cbfa3b6d06205f2087b3458a0de0f4f27ff4a7fa1d",
+          "revision": "8a916a7601334517d863bc72d2059b2e76e2612f",
+          "retrieved_at": "2026-11-06T13:32:10.397508+00:00",
+          "pointer": "54b69bad-33aa-4d5e-ac68-e1d76667313b",
+          "guidance": "https://learn.microsoft.com/en-us/azure/virtual-wan/hub-settings"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-faq",
+          "source_sha256": "7129cf99b11d29f6ea634f385fb702bf85aa4425589b1865800b07a1df8a9af6",
+          "revision": "8a916a7601334517d863bc72d2059b2e76e2612f",
+          "retrieved_at": "2026-11-06T13:32:09.468730+00:00",
+          "pointer": "54b69bad-33aa-4d5e-ac68-e1d76667313b",
+          "guidance": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-faq"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json",
+          "source_sha256": "6220238b792ce425e1c117a4b69bb36f44072aac24820cf7ba4d2c95e553adc2",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T13:32:10.762328+00:00",
+          "pointer": "54b69bad-33aa-4d5e-ac68-e1d76667313b",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Network/virtualWans",
+        "Microsoft.Network/virtualHubs"
+      ],
+      "review_fact_paths": [
+        "virtualWanId",
+        "virtualWanType",
+        "resourceLocation",
+        "hubRouterMinCapacity"
+      ]
     },
     {
       "control_id": "ALZ-7d5d1e4e-6146-458d-9558-fd77249b8211",
@@ -11467,14 +11561,15 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "NVA/SaaS next hops stay unsupported in the Azure Firewall join. Missing Terraform reverse-hub reference stays unknown. Configuration never proves effective filtering, inspection, availability or ingestion.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Bind every applicable hub to its supported local security solution, intended Internet/PrivateTraffic policy and actual effective routes, rules, filtering and log arrivals. Default Internet routes do not cross hubs; flags/references alone do not prove protection.",
+        "Reconcile custom-route conflicts, bypass/forced-tunnel requirements, cloud/region/NVA constraints, Firewall zones and maximum-scale /22 hub requirement. The linked portal conversion does not configure Firewall zones. Supply a separate scoped decision."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-20",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "local-firewall-intent-only",
+        "configuration-not-filtering"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -11489,9 +11584,81 @@
           "pointer": "/items/160",
           "item_sha256": "c808c57d5da710aac4ff43973c8bebaa9f4ebb89b716ed415f2f5fa0f4e3d8a8",
           "guidance": "https://learn.microsoft.com/azure/virtual-wan/howto-firewall"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/virtual-wan/howto-firewall",
+          "source_sha256": "9005352c0b01a9bbcbda604602fb2ea0f4b78520841df2e42f654f89017899b3",
+          "revision": "975b80952400a3000a2b8e80334a81adaf948848",
+          "retrieved_at": "2026-11-06T13:32:08.285490+00:00",
+          "pointer": "7d5d1e4e-6146-458d-9558-fd77249b8211",
+          "guidance": "https://learn.microsoft.com/azure/virtual-wan/howto-firewall"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/virtual-wan/how-to-routing-policies",
+          "source_sha256": "b40fd134227402e510b4931ab9121e4efbedc206979b53555baffe9f81d6ff53",
+          "revision": "6f66dce23b3c4c7df791985c83d28d16e25eee29",
+          "retrieved_at": "2026-11-06T13:32:10.570017+00:00",
+          "pointer": "7d5d1e4e-6146-458d-9558-fd77249b8211",
+          "guidance": "https://learn.microsoft.com/en-us/azure/virtual-wan/how-to-routing-policies"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/virtual-wan/hub-settings",
+          "source_sha256": "a33a5b86bbba968f34b049cbfa3b6d06205f2087b3458a0de0f4f27ff4a7fa1d",
+          "revision": "8a916a7601334517d863bc72d2059b2e76e2612f",
+          "retrieved_at": "2026-11-06T13:32:10.397508+00:00",
+          "pointer": "7d5d1e4e-6146-458d-9558-fd77249b8211",
+          "guidance": "https://learn.microsoft.com/en-us/azure/virtual-wan/hub-settings"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json",
+          "source_sha256": "6220238b792ce425e1c117a4b69bb36f44072aac24820cf7ba4d2c95e553adc2",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T13:32:10.762328+00:00",
+          "pointer": "7d5d1e4e-6146-458d-9558-fd77249b8211",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/azurefirewalls",
+          "source_sha256": "57797903b7e04c271992a30c87b1fff97fb896ccda9def2d87b6ac09d405f5fb",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T13:32:13.152233+00:00",
+          "pointer": "7d5d1e4e-6146-458d-9558-fd77249b8211",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/azurefirewalls"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/firewall.html.markdown",
+          "source_sha256": "9135af603a68c738c117055bfcfa60b0581b220f49336c715011eecbee20e037",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T13:32:13.546256+00:00",
+          "pointer": "7d5d1e4e-6146-458d-9558-fd77249b8211",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/firewall.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub_routing_intent.html.markdown",
+          "source_sha256": "68388b38ed549acdc6849d71c4a3c8dc42a6fc00afd828f0d6a50838ba0eb1f4",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T13:32:12.194144+00:00",
+          "pointer": "7d5d1e4e-6146-458d-9558-fd77249b8211",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub_routing_intent.html.markdown"
         }
       ],
-      "severity": "High"
+      "severity": "High",
+      "review_resource_types": [
+        "Microsoft.Network/virtualHubs",
+        "Microsoft.Network/azureFirewalls",
+        "Microsoft.Network/virtualHubs/routingIntent",
+        "Microsoft.Network/virtualHubs/hubVirtualNetworkConnections"
+      ],
+      "review_fact_paths": [
+        "virtualWanId",
+        "hubFirewallId",
+        "virtualWanHubId",
+        "sku.name",
+        "firewallPolicy.id",
+        "hubRoutingPolicies",
+        "hubInternetSecurityEnabled",
+        "egressRules"
+      ]
     },
     {
       "control_id": "ALZ-6667313b-4f56-464b-9e98-4a859c773e7d",
@@ -11511,14 +11678,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No migration state, architecture suitability or accepted cutover is inferred from configuration or resource names.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Identify the approved target architecture and staged migration for local/inter-region/branch/user/Internet flows, security/isolation and supported Standard capabilities. Shared services remain in dedicated spokes.",
+        "Reference attributable old-hub/coexistence routing, controlled cutover, rollback and acceptance evidence. An illustrative migration and configured connections do not establish rollout completion; supply the decision independently."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-20",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "configuration-not-completed-migration"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -11533,9 +11700,53 @@
           "pointer": "/items/161",
           "item_sha256": "4ca9698c919803cb2b17815612f19cba9b0e00d56e709f9d6804a6c52d80a27f",
           "guidance": "https://learn.microsoft.com/azure/virtual-wan/migrate-from-hub-spoke-topology"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/virtual-wan/migrate-from-hub-spoke-topology",
+          "source_sha256": "22e80b919792ca2e15cc838184003884a729ee169302829866b42da098d780c9",
+          "revision": "975b80952400a3000a2b8e80334a81adaf948848",
+          "retrieved_at": "2026-11-06T13:32:08.669039+00:00",
+          "pointer": "6667313b-4f56-464b-9e98-4a859c773e7d",
+          "guidance": "https://learn.microsoft.com/azure/virtual-wan/migrate-from-hub-spoke-topology"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/virtual-wan/scenario-any-to-any",
+          "source_sha256": "b9e65613e007458eb3147bdbf214cf658cf2e4d61258c36a9f194e14e0d4896f",
+          "revision": "975b80952400a3000a2b8e80334a81adaf948848",
+          "retrieved_at": "2026-11-06T13:32:07.506787+00:00",
+          "pointer": "6667313b-4f56-464b-9e98-4a859c773e7d",
+          "guidance": "https://learn.microsoft.com/azure/virtual-wan/scenario-any-to-any"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/virtual-wan/how-to-routing-policies",
+          "source_sha256": "b40fd134227402e510b4931ab9121e4efbedc206979b53555baffe9f81d6ff53",
+          "revision": "6f66dce23b3c4c7df791985c83d28d16e25eee29",
+          "retrieved_at": "2026-11-06T13:32:10.570017+00:00",
+          "pointer": "6667313b-4f56-464b-9e98-4a859c773e7d",
+          "guidance": "https://learn.microsoft.com/en-us/azure/virtual-wan/how-to-routing-policies"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub_connection.html.markdown",
+          "source_sha256": "ccea4deec20f99f7e94e2b6a8fdad8164f8dee1ad8e72077518af73f99ab9c99",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T13:32:11.638970+00:00",
+          "pointer": "6667313b-4f56-464b-9e98-4a859c773e7d",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub_connection.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Network/virtualWans",
+        "Microsoft.Network/virtualHubs",
+        "Microsoft.Network/virtualHubs/hubVirtualNetworkConnections"
+      ],
+      "review_fact_paths": [
+        "virtualWanType",
+        "virtualWanId",
+        "resourceLocation",
+        "hubRemoteVirtualNetworkId",
+        "hubConnectionRouting"
+      ]
     },
     {
       "control_id": "ALZ-261623a7-65a9-417e-8f34-8ef254c27d42",
@@ -11555,14 +11766,15 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No workbook/query/metric execution or arbitrary threshold. No monitoring coverage, collection, ingestion or runtime-health verdict from saved configuration.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reference accountable actual Insights dependency-map and detailed WAN/hub/gateway/connection workbook use for the relevant original-time period and complete intended population.",
+        "Reconcile the linked page's preview label, actual metric/status availability and arriving alert/output evidence against approved capacity/incident requirements. Supply the decision; configured resources and RIUs are not monitoring use or health."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-20",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "insights-use-needs-evidence",
+        "no-enable-flag-invented"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -11577,9 +11789,43 @@
           "pointer": "/items/162",
           "item_sha256": "97ff90d734e24f419f951f99416d8485c92c6ee0fe72bd575de1eed8a7414117",
           "guidance": "https://learn.microsoft.com/azure/virtual-wan/azure-monitor-insights"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/virtual-wan/azure-monitor-insights",
+          "source_sha256": "07cc2008c719e922f7419ede31ea2886b43fda98dea66f4c92f6f0583bb9536e",
+          "revision": "975b80952400a3000a2b8e80334a81adaf948848",
+          "retrieved_at": "2026-11-06T13:32:09.060607+00:00",
+          "pointer": "261623a7-65a9-417e-8f34-8ef254c27d42",
+          "guidance": "https://learn.microsoft.com/azure/virtual-wan/azure-monitor-insights"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/virtual-wan/hub-settings",
+          "source_sha256": "a33a5b86bbba968f34b049cbfa3b6d06205f2087b3458a0de0f4f27ff4a7fa1d",
+          "revision": "8a916a7601334517d863bc72d2059b2e76e2612f",
+          "retrieved_at": "2026-11-06T13:32:10.397508+00:00",
+          "pointer": "261623a7-65a9-417e-8f34-8ef254c27d42",
+          "guidance": "https://learn.microsoft.com/en-us/azure/virtual-wan/hub-settings"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/virtual-wan-network-topology#virtual-wan-network-design-recommendationst",
+          "source_sha256": "136cbe7297a336c213addecdfd85fa54330d130f69a0758ddd38ce27e3b3b4c3",
+          "revision": "1b71252cc095030dabc0dfb4bd2398885f46aaaa",
+          "retrieved_at": "2026-11-06T13:32:07.890345+00:00",
+          "pointer": "261623a7-65a9-417e-8f34-8ef254c27d42",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/virtual-wan-network-topology#virtual-wan-network-design-recommendationst"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Network/virtualWans",
+        "Microsoft.Network/virtualHubs"
+      ],
+      "review_fact_paths": [
+        "virtualWanId",
+        "virtualWanType",
+        "resourceLocation",
+        "hubRouterMinCapacity"
+      ]
     },
     {
       "control_id": "ALZ-727c77e1-b9aa-4a37-a024-129d042422c1",
@@ -11599,14 +11845,15 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Conditional flow-blocking requirements prevent a whole-recommendation boolean predicate. No flag disagreement or missing default becomes a technical pass, approved exception or effective path.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Is WAN-wide branch traffic explicitly enabled for intended VPN/ExpressRoute/User VPN flows, or is disabling supported by a separate approved attributable requirement to block those flows? Supply the conditional decision without fabricating an exception.",
+        "Keep hub and WAN flags distinct: pinned provider defaults hub=false and WAN=true. Missing flags stay unknown; reconcile routing/security/Global Reach conditions independently. Neither flag proves actual branch reachability."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-20",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "branch-exceptions-require-human-evidence",
+        "wan-hub-flags-distinct"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -11621,9 +11868,67 @@
           "pointer": "/items/163",
           "item_sha256": "b7d03afb90d8dd7b4eb0f97e0bb48e1a6fc028636b58b0758a42fc4bd2744522",
           "guidance": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-faq#is-branch-to-branch-connectivity-allowed-in-virtual-wan"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-faq",
+          "source_sha256": "7129cf99b11d29f6ea634f385fb702bf85aa4425589b1865800b07a1df8a9af6",
+          "revision": "8a916a7601334517d863bc72d2059b2e76e2612f",
+          "retrieved_at": "2026-11-06T13:32:09.468730+00:00",
+          "pointer": "727c77e1-b9aa-4a37-a024-129d042422c1",
+          "guidance": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-faq"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/virtual-wan/scenario-any-to-any",
+          "source_sha256": "b9e65613e007458eb3147bdbf214cf658cf2e4d61258c36a9f194e14e0d4896f",
+          "revision": "975b80952400a3000a2b8e80334a81adaf948848",
+          "retrieved_at": "2026-11-06T13:32:07.506787+00:00",
+          "pointer": "727c77e1-b9aa-4a37-a024-129d042422c1",
+          "guidance": "https://learn.microsoft.com/azure/virtual-wan/scenario-any-to-any"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json",
+          "source_sha256": "6220238b792ce425e1c117a4b69bb36f44072aac24820cf7ba4d2c95e553adc2",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T13:32:10.762328+00:00",
+          "pointer": "727c77e1-b9aa-4a37-a024-129d042422c1",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_wan.html.markdown",
+          "source_sha256": "23ef458e298491cab19e74151b3d51c0daaf2f754ec3e987d6c399f67f101b16",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T13:32:11.076756+00:00",
+          "pointer": "727c77e1-b9aa-4a37-a024-129d042422c1",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_wan.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub.html.markdown",
+          "source_sha256": "f7ea6df6a43384951912c46d317f1534de8c14bc6f8ce740c04b81caa9bd17b2",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T13:32:11.360574+00:00",
+          "pointer": "727c77e1-b9aa-4a37-a024-129d042422c1",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/network/virtual_hub_resource.go",
+          "source_sha256": "5ae706f100d16f9dfecd4e12648e11d74dbbbc3698a8dc2eb38d45ecf915d724",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T13:32:12.502809+00:00",
+          "pointer": "727c77e1-b9aa-4a37-a024-129d042422c1",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/network/virtual_hub_resource.go"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Network/virtualWans",
+        "Microsoft.Network/virtualHubs"
+      ],
+      "review_fact_paths": [
+        "virtualWanType",
+        "wanBranchTrafficAllowed",
+        "virtualWanId",
+        "hubBranchTrafficAllowed"
+      ]
     },
     {
       "control_id": "ALZ-d49ac006-6670-4bc9-9948-d3e0a3a94f4d",
@@ -11638,19 +11943,25 @@
       ],
       "applicability_note": "Review recommendation conditions within selected scope.",
       "recommendation": "Use AS-Path as hub routing preference, since it is more flexible than ExpressRoute or VPN.",
-      "automation": "assisted",
-      "method": "human-review",
-      "rule": null,
+      "automation": "automated",
+      "method": "scoped-explicit-hub-preference",
+      "rule": {
+        "resource_type": "Microsoft.Network/virtualHubs",
+        "property": "hubRoutingPreference",
+        "operation": "hub-routing-preference",
+        "expected": "ASPath"
+      },
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Explicit configuration only, not an effective-route or shortest-path guarantee. No complete/empty inventory creates applicability or a pass without a known scoped hub.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "The technical predicate tests only literal reviewed hubRoutingPreference=ASPath on a unique known typed hub inside an explicit subscription/resource-group evidence scope. ExpressRoute defaults are never inferred; absence remains unknown.",
+        "Independently review LPM/static precedence, local/remote tie breakers, remote ExpressRoute selected-last, private-intent exceptions, bow-tie paths and on-premises prepending. Verified configuration does not establish selected routes, suitability, reachability or failover."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-20",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "explicit-configuration-only",
+        "aspath-not-effective-route-selection"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -11665,9 +11976,56 @@
           "pointer": "/items/164",
           "item_sha256": "b342b64b57e06255341ad373a3ac53bbd925d20bda06954fa625dac3243d7146",
           "guidance": "https://learn.microsoft.com/azure/virtual-wan/about-virtual-hub-routing-preference"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/virtual-wan/about-virtual-hub-routing-preference",
+          "source_sha256": "7fcc37449eadbbf8dbefe6bd9b5690a2243b6b6dcb594a448437f816e06c8b56",
+          "revision": "975b80952400a3000a2b8e80334a81adaf948848",
+          "retrieved_at": "2026-11-06T13:32:09.873394+00:00",
+          "pointer": "d49ac006-6670-4bc9-9948-d3e0a3a94f4d",
+          "guidance": "https://learn.microsoft.com/azure/virtual-wan/about-virtual-hub-routing-preference"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-faq",
+          "source_sha256": "7129cf99b11d29f6ea634f385fb702bf85aa4425589b1865800b07a1df8a9af6",
+          "revision": "8a916a7601334517d863bc72d2059b2e76e2612f",
+          "retrieved_at": "2026-11-06T13:32:09.468730+00:00",
+          "pointer": "d49ac006-6670-4bc9-9948-d3e0a3a94f4d",
+          "guidance": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-faq"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json",
+          "source_sha256": "6220238b792ce425e1c117a4b69bb36f44072aac24820cf7ba4d2c95e553adc2",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T13:32:10.762328+00:00",
+          "pointer": "d49ac006-6670-4bc9-9948-d3e0a3a94f4d",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub.html.markdown",
+          "source_sha256": "f7ea6df6a43384951912c46d317f1534de8c14bc6f8ce740c04b81caa9bd17b2",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T13:32:11.360574+00:00",
+          "pointer": "d49ac006-6670-4bc9-9948-d3e0a3a94f4d",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/network/virtual_hub_resource.go",
+          "source_sha256": "5ae706f100d16f9dfecd4e12648e11d74dbbbc3698a8dc2eb38d45ecf915d724",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T13:32:12.502809+00:00",
+          "pointer": "d49ac006-6670-4bc9-9948-d3e0a3a94f4d",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/network/virtual_hub_resource.go"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Network/virtualHubs"
+      ],
+      "review_fact_paths": [
+        "virtualWanId",
+        "hubRoutingPreference"
+      ]
     },
     {
       "control_id": "ALZ-2586b854-237e-47f1-84a1-d45d4cd2310d",
@@ -11687,14 +12045,15 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Prepared VNet connection/table subset only; branch forms stay unsupported. Ordinary GatewaySubnet tables are never used. Label hashes retain associations and are not anonymity, correct propagation or connectivity proof.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reference actual same-WAN tables and all intended VNet/VPN/ExpressRoute/P2S connections with consistent label-based dynamic propagation and associated tables matching the approved complete connectivity matrix.",
+        "Default labels span hubs; omitted VNet labels default Default in guidance, not missing evidence. Distinguish explicit empty labels, None isolation, static routes, local-only default routes and routing-intent constraints. Supply the decision independently of label count or equality."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-20",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "label-equality-not-connectivity",
+        "branch-connection-forms-not-projected"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -11709,9 +12068,74 @@
           "pointer": "/items/165",
           "item_sha256": "c1de57297e9857f3b454febf5dd1caa39e2c617cfbc6e7d65d2211a33efefce8",
           "guidance": "https://learn.microsoft.com/azure/virtual-wan/about-virtual-hub-routing#labels"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/virtual-wan/about-virtual-hub-routing#labels",
+          "source_sha256": "527c0ae89a282609516cc39a8550555486f9e0d9417ff111dc3f74db8b100f66",
+          "revision": "975b80952400a3000a2b8e80334a81adaf948848",
+          "retrieved_at": "2026-11-06T13:32:10.243425+00:00",
+          "pointer": "2586b854-237e-47f1-84a1-d45d4cd2310d",
+          "guidance": "https://learn.microsoft.com/azure/virtual-wan/about-virtual-hub-routing#labels"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/virtual-wan/scenario-any-to-any",
+          "source_sha256": "b9e65613e007458eb3147bdbf214cf658cf2e4d61258c36a9f194e14e0d4896f",
+          "revision": "975b80952400a3000a2b8e80334a81adaf948848",
+          "retrieved_at": "2026-11-06T13:32:07.506787+00:00",
+          "pointer": "2586b854-237e-47f1-84a1-d45d4cd2310d",
+          "guidance": "https://learn.microsoft.com/azure/virtual-wan/scenario-any-to-any"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/virtual-wan/how-to-routing-policies",
+          "source_sha256": "b40fd134227402e510b4931ab9121e4efbedc206979b53555baffe9f81d6ff53",
+          "revision": "6f66dce23b3c4c7df791985c83d28d16e25eee29",
+          "retrieved_at": "2026-11-06T13:32:10.570017+00:00",
+          "pointer": "2586b854-237e-47f1-84a1-d45d4cd2310d",
+          "guidance": "https://learn.microsoft.com/en-us/azure/virtual-wan/how-to-routing-policies"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json",
+          "source_sha256": "6220238b792ce425e1c117a4b69bb36f44072aac24820cf7ba4d2c95e553adc2",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T13:32:10.762328+00:00",
+          "pointer": "2586b854-237e-47f1-84a1-d45d4cd2310d",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub_connection.html.markdown",
+          "source_sha256": "ccea4deec20f99f7e94e2b6a8fdad8164f8dee1ad8e72077518af73f99ab9c99",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T13:32:11.638970+00:00",
+          "pointer": "2586b854-237e-47f1-84a1-d45d4cd2310d",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub_connection.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub_route_table.html.markdown",
+          "source_sha256": "c984043f9fd58834694c12a7321166a25cb0b72251f11c000994aed0996dbd2d",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T13:32:11.923615+00:00",
+          "pointer": "2586b854-237e-47f1-84a1-d45d4cd2310d",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub_route_table.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/network/virtual_hub_connection_resource.go",
+          "source_sha256": "a1eeae82dcfd63d100bd8be2dcde1f422becf0b2690409dfe3b28b251b5cbed1",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T13:32:12.776664+00:00",
+          "pointer": "2586b854-237e-47f1-84a1-d45d4cd2310d",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/network/virtual_hub_connection_resource.go"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Network/virtualHubs/hubRouteTables",
+        "Microsoft.Network/virtualHubs/hubVirtualNetworkConnections"
+      ],
+      "review_fact_paths": [
+        "hubRouteLabels",
+        "hubConnectionRouting",
+        "hubRemoteVirtualNetworkId"
+      ]
     },
     {
       "control_id": "ALZ-9c75dfef-573c-461c-a698-68598595581a",
@@ -11731,14 +12155,15 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "IPv6, host-bit CIDR, dotted masks, missing/symbolic prefix and malformed summaries stay unknown. Prefix shape is not address suitability, complete overlap analysis, actual free space, quota or performance; VNet-gateway scale models are not reused.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reference each hub's valid nonoverlapping IPv4 space of /23 or larger, accounting for current /22 Firewall maximum-scale and NVA-specific allocations, complete connected/on-premises populations and actual service suitability.",
+        "Hub space cannot change after creation. Review intended services, actual allocations/growth, regional quota and capacity, RIU-versus-gateway scale and noninstant autoscaling. Supply an attributable decision; prefix size and published RIU limits do not prove free growth capacity."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-20",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "prefix-shape-not-available-capacity",
+        "firewall-22-condition-explicit"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -11753,9 +12178,60 @@
           "pointer": "/items/166",
           "item_sha256": "316c1f0dcabb5dd91160790c3fe019812c1ebc4a7111f6b26dfe2460801865b2",
           "guidance": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-faq#what-is-the-recommended-hub-address-space-during-hub-creation"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-faq",
+          "source_sha256": "7129cf99b11d29f6ea634f385fb702bf85aa4425589b1865800b07a1df8a9af6",
+          "revision": "8a916a7601334517d863bc72d2059b2e76e2612f",
+          "retrieved_at": "2026-11-06T13:32:09.468730+00:00",
+          "pointer": "9c75dfef-573c-461c-a698-68598595581a",
+          "guidance": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-faq"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/virtual-wan/hub-settings",
+          "source_sha256": "a33a5b86bbba968f34b049cbfa3b6d06205f2087b3458a0de0f4f27ff4a7fa1d",
+          "revision": "8a916a7601334517d863bc72d2059b2e76e2612f",
+          "retrieved_at": "2026-11-06T13:32:10.397508+00:00",
+          "pointer": "9c75dfef-573c-461c-a698-68598595581a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/virtual-wan/hub-settings"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json",
+          "source_sha256": "6220238b792ce425e1c117a4b69bb36f44072aac24820cf7ba4d2c95e553adc2",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T13:32:10.762328+00:00",
+          "pointer": "9c75dfef-573c-461c-a698-68598595581a",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub.html.markdown",
+          "source_sha256": "f7ea6df6a43384951912c46d317f1534de8c14bc6f8ce740c04b81caa9bd17b2",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T13:32:11.360574+00:00",
+          "pointer": "9c75dfef-573c-461c-a698-68598595581a",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub.html.markdown"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/virtual-wan/howto-firewall",
+          "source_sha256": "9005352c0b01a9bbcbda604602fb2ea0f4b78520841df2e42f654f89017899b3",
+          "revision": "975b80952400a3000a2b8e80334a81adaf948848",
+          "retrieved_at": "2026-11-06T13:32:08.285490+00:00",
+          "pointer": "9c75dfef-573c-461c-a698-68598595581a",
+          "guidance": "https://learn.microsoft.com/azure/virtual-wan/howto-firewall"
         }
       ],
-      "severity": "High"
+      "severity": "High",
+      "review_resource_types": [
+        "Microsoft.Network/virtualHubs",
+        "Microsoft.Network/azureFirewalls"
+      ],
+      "review_fact_paths": [
+        "virtualWanId",
+        "hubPrefixSummary",
+        "hubRouterMinCapacity",
+        "hubFirewallId",
+        "virtualWanHubId"
+      ]
     },
     {
       "control_id": "ALZ-5c986cb2-9131-456a-8247-6e49f541acdc",
@@ -16557,60 +17033,72 @@
   "reviewed_at": "2026-11-04T13:25:57.057372+00:00",
   "reference_manifest_sha256": "c287f93a4ff4c94c577b0248345d813f44fb27dff66524408870095024305d30",
   "control_source_manifest_sha256": "d189615f2793f141a6ee6cd5a7f026556a4146fd44d65705e6f08d0e01f7debf",
-  "accepted_matrix_sha256": "b7430fd2a9327ff3b49f05e78ebcce75b69307cd7cd65f3d2b71a2868d68eb17",
+  "accepted_matrix_sha256": "58bdeadbc652f08a4eb9968e16be850ef09423bf1c8a400065f02f86c4d86f34",
   "wave_source_manifest_sha256": "617e66a497a1f6bb1ddf50f53b3f75f3ff2cec2989324d42496aeeb4d9d0ef38",
   "change_review": {
-    "base_sha256": "8cebdac5426a927f9d301dd4d04dee39ef223228e2bce06aa3c2cc2473d98cce",
-    "matrix_sha256": "b7430fd2a9327ff3b49f05e78ebcce75b69307cd7cd65f3d2b71a2868d68eb17",
-    "reviewed_at": "2026-11-06T14:06:05.117199+00:00",
+    "base_sha256": "72c83d874818d102894c41ee935cd6560a751b66985d4e869f859b32462c1ec2",
+    "matrix_sha256": "58bdeadbc652f08a4eb9968e16be850ef09423bf1c8a400065f02f86c4d86f34",
+    "reviewed_at": "2026-11-06T14:47:37.8111913Z",
     "reviewer": "owner-delegated-source-backed-batch-review",
     "changes": [
       {
-        "control_id": "ALZ-cfe363b5-f579-4284-bc56-a42153e4c10b",
-        "before_sha256": "ed1272f7cd3e90d5c290b7ce87b18a463bf5980effe914c1d61f3a08889ba189",
-        "after_sha256": "ba05718382ccba0cf74f71a7c3ab9b9e09d2e24606b738c058bef36402c022a3",
-        "rationale": "Owner-delegated source-backed batch 30 acceptance: manual"
+        "control_id": "ALZ-412e7f98-3f63-4047-82dd-69c5b5c2622f",
+        "before_sha256": "bf424e1fb22de80059c05bd132d73e96bb81ecdba7cd49bff5827461e4e1eaf7",
+        "after_sha256": "12e4f6f7b0a68e83653e500da8a2e8c67096a5b5a3c6f4c5503849dd3259b629",
+        "rationale": "Owner-delegated source-backed batch 20 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-c7245dd4-af8a-403a-8bb7-890c1a7cfa9d",
-        "before_sha256": "43ca441adf7d9ee2542226beec8a5cb8ddb1757059d7b84e6f3828f3a17acbc4",
-        "after_sha256": "3f2fbc6720bd123c288a92df8ad1c1e0277e5801878d5c00e109993bc2729663",
-        "rationale": "Owner-delegated source-backed batch 30 acceptance: manual"
+        "control_id": "ALZ-54b69bad-33aa-4d5e-ac68-e1d76667313b",
+        "before_sha256": "7cabd5b47ff34ccc88b60e1d132462f15c14aef9c6b298b0a801e60cdeaf10c3",
+        "after_sha256": "e1495da03dab75e698765a80ab4d6977363fbd6002fb2105c186068a6edd0115",
+        "rationale": "Owner-delegated source-backed batch 20 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-12aeea20-9165-4b3e-bdf2-6795fcd3cdbe",
-        "before_sha256": "1f2f804e955a0ebc8dcdfa30aac16cc444ebf00ff5bce7db89a3272b66abb837",
-        "after_sha256": "76ed9defeef90e3065effdd09ef1b381f01a9834afc45e9c6816034c6ad28a2e",
-        "rationale": "Owner-delegated source-backed batch 30 acceptance: manual"
+        "control_id": "ALZ-7d5d1e4e-6146-458d-9558-fd77249b8211",
+        "before_sha256": "8b3bb787852c4c40926741d8c2809a339cec6d1e49f22484a46314fe8d1e1bd8",
+        "after_sha256": "293f4658fd49986b7b40e660c4497f46fd6025a9975c2a97645d413f962cd0de",
+        "rationale": "Owner-delegated source-backed batch 20 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-2676ae46-65ca-444e-8695-fdddeace4cb1",
-        "before_sha256": "8a15d3e700f0902c19a5f5aa92cd90c09b4b91cce62d65a0727c2796e0f8d92c",
-        "after_sha256": "30f18898554755eb35edbbda4b9486c0e6c01deeb22ea7bed7294d055f8f3946",
-        "rationale": "Owner-delegated source-backed batch 30 acceptance: manual"
+        "control_id": "ALZ-6667313b-4f56-464b-9e98-4a859c773e7d",
+        "before_sha256": "6ee9a889d0f31a815341bed36a67c55be9128e1f1fef10f1570743a0c950d059",
+        "after_sha256": "b93db6f3a818120746e042e8dbf00f6919bbd6945105d1a60b82331fba7d3105",
+        "rationale": "Owner-delegated source-backed batch 20 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-2cdc9d99-dbcc-4ad4-97f5-e7d358bdfa73",
-        "before_sha256": "44f313b4186eac14268b7c80a1652d48d202fcd5d9bee0bbdfeecdcab053b8f1",
-        "after_sha256": "2d36e6d6f3121decee1a935fccc69316b0f86b56db21d370f55ad81062b7bbb6",
-        "rationale": "Owner-delegated source-backed batch 30 acceptance: manual"
+        "control_id": "ALZ-261623a7-65a9-417e-8f34-8ef254c27d42",
+        "before_sha256": "877408da6409819e09036ea8a8ca1367202700aca01f7c9dc70d359090f2940c",
+        "after_sha256": "aa9a1c381fbbf231b37a6d725d11b9f8cb890d476d41ab8de1b8186bc0264105",
+        "rationale": "Owner-delegated source-backed batch 20 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-cc87a3bc-c572-4ad2-92ed-8cabab66160f",
-        "before_sha256": "a1b9027eb723e936460ea9957a5d0742d4401c3a2f840dfed655b8462500d105",
-        "after_sha256": "bcb64ee2a095f3f2d912b63992ef6485a829a2f28a47458ee07ebc68d3cd2fad",
-        "rationale": "Owner-delegated source-backed batch 30 acceptance: manual"
+        "control_id": "ALZ-727c77e1-b9aa-4a37-a024-129d042422c1",
+        "before_sha256": "f143a5e51c0ac9e28756d2e3c1857131b7635e403068e228dd928666cf0044fb",
+        "after_sha256": "435684cce6a00d52486bd14c4de1d9a340e2cc8fde4ee83f41d46d5de94318a5",
+        "rationale": "Owner-delegated source-backed batch 20 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-047c91e2-6bb4-4a42-a0ef-ab06ad0062c9",
-        "before_sha256": "5e3d808424df7f03c2ec7d75f155968494b88a845c82ea9023ba9b4b70d8b529",
-        "after_sha256": "25b9760629affdf4acbfe05535e56250ceef26ffc55241ffc47c808ee600dc40",
-        "rationale": "Owner-delegated source-backed batch 30 acceptance: manual"
+        "control_id": "ALZ-d49ac006-6670-4bc9-9948-d3e0a3a94f4d",
+        "before_sha256": "d55dfc28108af75ece4bf1069b5d13014a309c79f4907f2340109c564194ce9f",
+        "after_sha256": "2d146ebc21281ba5cfd06467956d865ea13ee9b773ca52862c2f03a13b039f08",
+        "rationale": "Owner-delegated source-backed batch 20 acceptance: automated"
+      },
+      {
+        "control_id": "ALZ-2586b854-237e-47f1-84a1-d45d4cd2310d",
+        "before_sha256": "3303a13c7463cdebec3e2cac95167d92c169c3251c72e05422a56345a4f53bf5",
+        "after_sha256": "f52a30132a4ac75ea7b13cc285a6de33a4caaecd1c594395eaa16a022424e283",
+        "rationale": "Owner-delegated source-backed batch 20 acceptance: assisted"
+      },
+      {
+        "control_id": "ALZ-9c75dfef-573c-461c-a698-68598595581a",
+        "before_sha256": "eb101d4c31ba1e15356285de07335c09a106c70cee62fc07a774346d2a8359a0",
+        "after_sha256": "888e332f7f6b1e4226ef9a290029ee16be8cfe572225ab73bb5236ea2220ccb2",
+        "rationale": "Owner-delegated source-backed batch 20 acceptance: assisted"
       }
     ]
   },
   "first_wave_matrix_sha256": "f649b2293211c844d661ea93c6978fe2db948eff17237af01ca090809da8e1fb",
-  "batch_source_manifest_sha256": "9d945a932b16578e409d8d7e3ea34c19fe7f5dbd52429d7e2c4ae0dec4216d9b",
-  "batch_catalog_version": "2026-11-06.11",
+  "batch_source_manifest_sha256": "676e5d22ece63339f9e76be141870d93a8895532d2291d6e7594d0ad2fa997f9",
+  "batch_catalog_version": "2026-11-06.12",
   "priority_manifest_sha256": "b42971f85b9110f71fdc5ae81695fe4be72c1f28022ec27aeb719140ed1475c0"
 }
