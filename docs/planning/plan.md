@@ -19,7 +19,7 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
-## Cohort 13 implementation: 2026-11-06
+## Cohort 13 delivery: 2026-11-06
 
 [#97](https://github.com/jonathan-vella/landinglens/issues/97) owns exactly the
 ten fixed inbound/outbound/hybrid GUIDs, including both D05.08 meanings.
@@ -54,9 +54,9 @@ from fixed targets and actual receipts, and verifies in-progress rows against
 their exact reviewed matrix rather than assuming all future work is pending.
 
 The existing compiler coverage gains a fifth actual case for all new ARM/Bicep
-surfaces, with restoration disabled. Implementation delivery remains pending
-until actual local/exact-installed, eight CI-job and four compiler-artifact gates,
-normal exact-head merge and own-GUID receipts. No live Azure/directory/log/traffic
+surfaces, with restoration disabled. Actual local/exact-installed, eight CI-job
+and four compiler-artifact gates passed before normal exact-head merge and
+own-GUID recording. No live Azure/directory/log/traffic
 operation, policy trigger, deployment, module/compiler acquisition, new dependency
 or owner attestation is introduced.
 
@@ -77,6 +77,29 @@ cohort13 retains the sole catalog activation/merge/receipt slot. The coordinator
 grants later delivery slots only after this cohort's complete reconciliation;
 parallel preparation does not authorize concurrent catalog activation or erase
 source/history/CI/receipt gates.
+
+[#101](https://github.com/jonathan-vella/landinglens/pull/101) merged normally as
+`bd96c207ebda2f1b09a3be599d5b802c2ac7edf6` at 2026-11-06T09:40:16Z.
+Exact checked head `1c4a76ac0d507612568dae72a95e2d5c7518f881` passed all eight
+supported jobs in push/PR runs `42196032713` / `42196061317`, plus CodeQL run
+`42196058109`. PR compiler artifact IDs are `13492371204` (Ubuntu 3.12),
+`13491894045` (Ubuntu 3.13), `13491064790` (Windows 3.12) and `13491709446`
+(Windows 3.13). All four downloaded records report exercised, no skips and the
+same five integration cases. JSON SHA256 is
+`93ea99f38a5d1bd178b8443c150ed78dca0f669fd1d2b5fe87b0ee2ee2cf99ed`
+on Ubuntu and
+`fd408dca3a05d14e7ff956260f1eb27c3ace1edbc6bb09e84c65f0aec9ebad20`
+on Windows.
+
+The guarded recorder re-read the actual merged PR/base/head, both complete runs
+and all four compiler downloads, then bound each of the ten GUIDs to its own
+`deliveries.13` receipt and exact own-wheel hash. All earlier receipts and
+historical catalog bytes remain unchanged. The fixed ledger becomes
+**63 merged / 188 pending** after this receipt reconciliation is merged.
+Catalog/crosswalk are `2026-11-06.5`, still 10 automated / 202 assisted / 43 manual.
+Cohort22 is the next review priority; the coordinator owns subsequent activation
+slots. #97 closure waits for this normal checked reconciliation merge.
+No branch protection/ruleset/review gate was changed or bypassed.
 
 ## Cohort 04 delivered: 2026-11-06
 
