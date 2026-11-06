@@ -42,6 +42,10 @@ def restricted_direct_sources(addresses: list[str]) -> bool:
 def local_subchecks(properties: dict[str, Any]) -> dict[str, Any]:
     """Original-time partial facts, never whole-recommendation outcomes."""
     result: dict[str, Any] = {}
+    if "virtualNetworkPrefixes" in properties:
+        from .routing_evidence import address_subchecks
+
+        result.update(address_subchecks(properties["virtualNetworkPrefixes"]))
     if "addressPrefixes" in properties:
         prefixes = address_list(properties["addressPrefixes"], prefix_only=True)
         known = (
@@ -262,20 +266,34 @@ def assess(
                         )
                     enum = rule.get("operation") == "enum-equals"
                     premium = rule.get("operation") == "firewall-premium-sku"
-                    capacity = rule.get("operation") == "nsg-rule-capacity"
+                    capacity = rule.get("operation") in {"nsg-rule-capacity", "route-capacity"}
+                    route_capacity = rule.get("operation") == "route-capacity"
                     sku = property_at(resource["properties"], "sku.tier") if enum else None
                     if capacity and bundle["mode"] != "observed":
                         outcome, reason, fact = (
                             "unknown",
-                            "complete_observed_rule_count_required",
+                            "complete_observed_route_count_required"
+                            if route_capacity
+                            else "complete_observed_rule_count_required",
                             None,
                         )
-                    elif capacity and type(bounded_count(fact, 2000)) is int:
+                    elif (
+                        capacity
+                        and type(bounded_count(fact, 1000 if route_capacity else 2000)) is int
+                    ):
                         outcome = "pass" if fact <= rule["expected"] else "fail"
                         reason = (
-                            "within_checklist_rule_target"
-                            if outcome == "pass"
-                            else ("exceeds_checklist_rule_target")
+                            (
+                                "within_checklist_route_target"
+                                if outcome == "pass"
+                                else "exceeds_checklist_route_target"
+                            )
+                            if route_capacity
+                            else (
+                                "within_checklist_rule_target"
+                                if outcome == "pass"
+                                else "exceeds_checklist_rule_target"
+                            )
                         )
                     elif (
                         premium

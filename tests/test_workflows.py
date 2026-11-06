@@ -64,7 +64,18 @@ class WorkflowTests(unittest.TestCase):
                 for row in self.catalog["controls"]
                 if row["automation"] == "automated"
             },
-            {"G04.01", "D07.18", "D07.06", "D07.07", "G02.03", "G04.02", "D07.05", "D09.07"},
+            {
+                "G04.01",
+                "D07.18",
+                "D07.06",
+                "D07.07",
+                "G02.03",
+                "G04.02",
+                "D07.05",
+                "D09.07",
+                "D01.12",
+                "D01.13",
+            },
         )
         for control in self.catalog["controls"]:
             self.assertTrue(control["references"][0]["item_sha256"])

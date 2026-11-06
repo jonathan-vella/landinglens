@@ -1,0 +1,994 @@
+{
+  "batches": [
+    {
+      "batch": "01",
+      "review_state": "reviewed",
+      "sources": [
+        {
+          "id": "vault-overview",
+          "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/overview",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/key-vault/general/overview",
+          "sha256": "190cd7236a92956f6d89932b89b09ae4e36c8322253b26c0c6250be392bd063a",
+          "retrieved_at": "2026-11-05T00:03:41.520637+00:00",
+          "revision": "8dfb50ed846e99053e32805d00bf6bd9eface9c4",
+          "finding": "Vault storage capability and application integration are distinct; existence is not adoption.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "vault-throttling",
+          "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/overview-throttling",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/key-vault/general/overview-throttling",
+          "sha256": "adb86ea8c2876670295b3188af1a9bc47d0916dbebf3eda04e7ce921b8b43f75",
+          "retrieved_at": "2026-11-05T00:03:42.079798+00:00",
+          "revision": "bdb26e62f581710e3c6a59994e8b564e60c1a861",
+          "finding": "Vault partitioning depends on application security/availability domains and transaction demand.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "vault-security",
+          "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/key-vault/general/secure-key-vault",
+          "sha256": "3c35d8403bec2c00a480b2a6eb52b9c6074a50d9d2211e24f9e22ce6d22e5a22",
+          "retrieved_at": "2026-11-05T00:03:42.541583+00:00",
+          "revision": "8dfb50ed846e99053e32805d00bf6bd9eface9c4",
+          "finding": "The linked page redirects to secure-key-vault. Separately enable soft delete and purge protection; PIM, access boundaries, network alternatives and audit integration require distinct evidence.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "vault-monitor",
+          "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/monitor-key-vault",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/key-vault/general/monitor-key-vault",
+          "sha256": "c1fd1c38e816aadad1f1feae872ac09453400ab204f868c27e094337e2e938ae",
+          "retrieved_at": "2026-11-05T00:03:42.763121+00:00",
+          "revision": "cc9ac0f545a688e4f2016a1541f565f136e23129",
+          "finding": "Resource logs require diagnostic routing; automatic metrics do not prove audit logging or a central destination.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "vault-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/2024-11-01/vaults",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/2024-11-01/vaults",
+          "sha256": "f2da66424ab1c336b84ef7cb56f35330a22a377f216d72a010a237adb9a2d276",
+          "retrieved_at": "2026-11-05T00:03:42.973137+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "2024-11-01 exposes two separate boolean properties. Omitted documented creation defaults are not inferred.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "vault-rest",
+          "url": "https://learn.microsoft.com/en-us/rest/api/keyvault/keyvault/vaults/get?view=rest-keyvault-keyvault-2024-11-01",
+          "resolved_url": "https://learn.microsoft.com/en-us/rest/api/keyvault/keyvault/vaults/get?view=rest-keyvault-keyvault-2024-11-01",
+          "sha256": "f5867ea7614df301e9fbd4d74b6d76d17677ef78ab6b24f25176d748b3dfb5d9",
+          "retrieved_at": "2026-11-05T00:03:43.193834+00:00",
+          "revision": "55b16f163141af68329f44c87dd2580df8c6829a",
+          "finding": "Scoped ARM GET retrieves one vault. The initially attempted 2023-07-01 Learn REST view falls back to 2024-11-01; only the actually reviewed 2024-11-01 API is accepted.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "container-guidance",
+          "url": "https://learn.microsoft.com/en-us/azure/storage/blobs/soft-delete-container-overview",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/storage/blobs/soft-delete-container-overview",
+          "sha256": "e9d077f819b31a685a3be53bc351e3529f93380e1179bab704dea4751b2b7918",
+          "retrieved_at": "2026-11-05T00:03:43.429294+00:00",
+          "revision": "0e760437c26f5e8693a40ed4344554540070850a",
+          "finding": "Container protection differs from blob and account deletion protection. The supported retention range is 1-365; adequacy is workload-specific.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "storage-data-protection",
+          "url": "https://learn.microsoft.com/en-us/azure/storage/blobs/data-protection-overview",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/storage/blobs/data-protection-overview",
+          "sha256": "9e79d864f94332c8ab74552a8c51ad647a4a9669d7738dcff0aebeb7ecad9fbf",
+          "retrieved_at": "2026-11-05T00:03:43.644337+00:00",
+          "revision": "456398bb35f5b0e51b7b8e983e020271fa00b9cb",
+          "finding": "Actual checklist-linked overview recommends enabling container and blob soft delete separately. Its link on G04.03 is insufficient policy-specific mapping; supplement it with TLS policy guidance.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "blob-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts/blobservices",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts/blobservices",
+          "sha256": "421dae653d88c2cebb6cad525f6c457e0494299b83c9a012e4d87f77925b43b4",
+          "retrieved_at": "2026-11-05T00:03:44.226308+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "The explicit container retention enabled boolean belongs to the default blob-service child, not the storage-account or blob-retention flag.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "blob-rest",
+          "url": "https://learn.microsoft.com/en-us/rest/api/storagerp/blob-services/get-service-properties?view=rest-storagerp-2023-05-01",
+          "resolved_url": "https://learn.microsoft.com/en-us/rest/api/storagerp/blob-services/get-service-properties?view=rest-storagerp-2023-05-01",
+          "sha256": "74af85837a907b570ef32331b94a944bb9c91bfcc92d4fd3b5636bb66771a422",
+          "retrieved_at": "2026-11-05T00:03:44.984890+00:00",
+          "revision": "32821cd1483895df9ced6650a1317113e41a78ac",
+          "finding": "Scoped management.azure.com GET retrieves the exact default child. It is not a storage data-plane call and its omission of container retention remains unknown.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "storage-tls",
+          "url": "https://learn.microsoft.com/en-us/azure/storage/common/transport-layer-security-configure-minimum-version",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/storage/common/transport-layer-security-configure-minimum-version",
+          "sha256": "e86a6d6e53a2cddac53f0294a405d3b25f321130276c0a74b63e6a8550917601",
+          "retrieved_at": "2026-11-05T00:03:45.181979+00:00",
+          "revision": "ac4bcb1eb41ca6e2ace58e626de7d186ea80bb00",
+          "finding": "Local minimum TLS configuration differs from definition/assignment/effect/parameter/exemption-backed policy enforcement.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "terraform-vault",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/key_vault.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/key_vault.html.markdown",
+          "sha256": "225c6dd855527be91b60a9d3f22f9c34a6ae89ed6b5a22b07700cbe9388853c7",
+          "retrieved_at": "2026-11-05T00:03:45.517378+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "AzureRM 4.50.0 exposes purge protection and retention days but no independent soft-delete enabled attribute.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "terraform-vault-implementation",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/keyvault/key_vault_resource.go",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/keyvault/key_vault_resource.go",
+          "sha256": "549dbdd65446a051a1e9f5c3f76199118819a5712400022d1f81e9a551d699b8",
+          "retrieved_at": "2026-11-05T00:03:45.828828+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "The provider explicitly sets soft delete during creation. That creation-only fact does not prove imported/updated vault configuration from raw or planned values.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "terraform-storage",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown",
+          "sha256": "2497fd8c88453f99b82d2697bda7b7faee30f889693a1840fafc5bc59305219a",
+          "retrieved_at": "2026-11-05T00:03:46.139803+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "An explicit single container retention block with valid explicit days configures container retention; omitted default days are not inferred.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "terraform-storage-implementation",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/storage/storage_account_resource.go",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/storage/storage_account_resource.go",
+          "sha256": "ef29bb4bf1e83b3c3d039a10902ef7cda9ad151f4949375624d4d459c708913f",
+          "retrieved_at": "2026-11-05T00:03:46.481880+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "Provider expandAccountBlobContainerDeleteRetentionPolicy at lines 2962-2975 sets Enabled=true and Days for a present block. Only explicit valid days are projected; omitted defaults are not inferred.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "storage-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts",
+          "sha256": "9916a17aea17e15fdef0f46afef4eed797f36d0b8bbf4c267de367e9b6673b23",
+          "retrieved_at": "2026-11-05T00:23:55.949506+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "2023-05-01 declares minimum TLS enum values, including TLS1_3 while its description says 1.3 minimum is unsupported. Only explicit TLS1_0/1/2 are projected; TLS1_3 stays unknown. Local TLS is not policy enforcement.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        }
+      ]
+    },
+    {
+      "batch": "17",
+      "review_state": "reviewed",
+      "sources": [
+        {
+          "id": "firewall-premium",
+          "url": "https://learn.microsoft.com/en-us/azure/firewall/premium-features",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/firewall/premium-features",
+          "sha256": "b6522a1d4cde5dabd66d522109b30e10d27d91e840f4c236e7d5094a6c0b8c7b",
+          "retrieved_at": "2026-11-05T00:50:58.189923+00:00",
+          "revision": "de1064d9bede157e513beec6dc0a2fbb9b3e44a4",
+          "finding": "Premium is a deployed SKU capability, not proof that TLS inspection, IDPS, categories or traffic inspection are enabled.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "firewall-routing",
+          "url": "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview",
+          "sha256": "6abdcc42969826c37e2527b9e4f30ccac04eb9c2c811427b562870bc82fdcd59",
+          "retrieved_at": "2026-11-05T00:50:58.410993+00:00",
+          "revision": "e60c7dd7c775becfd72486cfd4ff4440c7d875d4",
+          "finding": "Configured UDRs, association, route selection and actual next-hop inspection are distinct. Dynamic/effective paths require evidence.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "firewall-logging",
+          "url": "https://learn.microsoft.com/en-us/azure/firewall/firewall-structured-logs",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/firewall/monitor-firewall",
+          "sha256": "ff72396f0ace05793776617499604a8b680bfe7feb325e990f8b9b4efbe1fc41",
+          "retrieved_at": "2026-11-05T00:50:58.824907+00:00",
+          "revision": "e4da0a4c0828f639d3baa173f95b2e41c20bc8c5",
+          "finding": "The checklist link redirects to Monitor Azure Firewall; diagnostic routing and resource-specific destination are not proof of ingestion.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "firewall-migration",
+          "url": "https://learn.microsoft.com/en-us/azure/firewall-manager/migrate-to-policy",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/firewall-manager/migrate-to-policy",
+          "sha256": "c6d20d7c99ae375bccf88ed793a3d8d0fb3f8c2f02f3240ded9bc92b991b57e8",
+          "retrieved_at": "2026-11-05T00:50:59.044794+00:00",
+          "revision": "a77764938986929534981761557d4ca6a9578175",
+          "finding": "Migration converts collections and associates policy. A policy reference does not prove rule equivalence or completed migration.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "firewall-subnet",
+          "url": "https://learn.microsoft.com/en-us/azure/firewall/firewall-faq",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/firewall/firewall-faq",
+          "sha256": "e5b31b743f2cd9c3322e71ba2bb301237b036f45eec931fc74fb824ec0f94a08",
+          "retrieved_at": "2026-11-05T00:50:59.268271+00:00",
+          "revision": "059c203dfdbf03fb0ded07a97689c1d9f0524619",
+          "finding": "FAQ explains /26 scaling capacity; pinned provider guidance permits /26 or larger and documents a /24 example. Names alone do not identify use.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "firewall-hierarchy",
+          "url": "https://learn.microsoft.com/en-us/azure/firewall-manager/rule-hierarchy",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/firewall-manager/rule-hierarchy",
+          "sha256": "3b9c33f19653eb61c6bbb5c0121d47dddb4b77d5ea1161fe40decb095f7a0c1a",
+          "retrieved_at": "2026-11-05T00:50:59.580422+00:00",
+          "revision": "8eaca753712335449515b3fc1f4ee905b1fe3a70",
+          "finding": "Inherited collection priority and ownership are relevant; collection presence does not establish frequency-based organization.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "firewall-ipgroups",
+          "url": "https://learn.microsoft.com/en-us/azure/firewall/ip-groups",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/firewall/ip-groups",
+          "sha256": "c9cb36ba3f7e5d2a553cea4b56de9a86753ac5e69f9e285d5392396063b67454",
+          "retrieved_at": "2026-11-05T00:50:59.800471+00:00",
+          "revision": "059c203dfdbf03fb0ded07a97689c1d9f0524619",
+          "finding": "Groups support addresses, prefixes and ranges. Empty groups skip referencing rules; group presence is not utilization, reduction or source restriction.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "firewall-dnat",
+          "url": "https://learn.microsoft.com/en-us/azure/firewall/tutorial-firewall-dnat",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/firewall/tutorial-firewall-dnat",
+          "sha256": "1c07a8376856e1ec460cb097f580a4befc57003824f0c9f5c83c5c1d58f8cd04",
+          "retrieved_at": "2026-11-05T00:51:00.021161+00:00",
+          "revision": "b67b2844ac69bb5002724af18d5b20e2e7534557",
+          "finding": "Guidance explicitly avoids wildcard DNAT sources and distinguishes classic configuration from preferred Firewall Policy.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "firewall-snat",
+          "url": "https://learn.microsoft.com/en-us/azure/firewall/integrate-with-nat-gateway",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/firewall/integrate-with-nat-gateway",
+          "sha256": "7f53885126c0a52c8f2182e1d3e304ca64d6edc64e430826fdb9809b3ed16e21",
+          "retrieved_at": "2026-11-05T00:51:00.403183+00:00",
+          "revision": "a280a1aef1e18e06d4ad796d3d745d5f277b2c49",
+          "finding": "NAT association, demand, port allocation, workload routes and failover evidence are separate. No arbitrary exhaustion threshold is inferred.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "firewall-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/azurefirewalls",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/azurefirewalls",
+          "sha256": "d9247cd686a43dbfa848e97d4be8a465f0230694bf0e7e82947eea1ffb028bf2",
+          "retrieved_at": "2026-11-05T00:51:00.741383+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "Versioned SKU tier/name, explicit subnet/policy references and classic NAT structures are reviewed. Missing values and unexpanded IP Groups are not safe-source evidence.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "terraform-firewall",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/firewall.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/firewall.html.markdown",
+          "sha256": "9135af603a68c738c117055bfcfa60b0581b220f49336c715011eecbee20e037",
+          "retrieved_at": "2026-11-05T00:51:01.042932+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "4.50.0 declares Basic/Standard/Premium, exactly one data subnet reference and optional management configuration. Both subnet kinds need minimum /26 capacity; defaults are not inferred.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "terraform-subnet",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subnet.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subnet.html.markdown",
+          "sha256": "81efb15b9b422afa08a21b346e5e81bcd7d8f250a1a138db02627f798653c824",
+          "retrieved_at": "2026-11-05T00:51:01.371161+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "4.50.0 supports explicit prefixes or IPAM pool, not both. IPAM allocation does not establish actual prefixes. Inline/standalone subnet mixing is unsupported by the provider.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "terraform-nat",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/firewall_nat_rule_collection.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/firewall_nat_rule_collection.html.markdown",
+          "sha256": "4f209d860f0544b88b24b52feababfd64f44fdce000d801155f89a1de50036ea",
+          "retrieved_at": "2026-11-05T00:51:01.702786+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "4.50.0 classic NAT collections have actual child identities, Dnat/Snat actions and address/group source alternatives; absent direct addresses do not mean no sources.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "terraform-diagnostics",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/monitor_diagnostic_setting.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/monitor_diagnostic_setting.html.markdown",
+          "sha256": "095f0692015969113d6d296e881e77e3728fff89da7eb123ab98f49235df2db6",
+          "retrieved_at": "2026-11-05T00:51:02.001151+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "Dedicated is meaningful only with a workspace; enabled_log and metric blocks differ. Terraform's imported pipe ID is not an ARM identity and must not be copied as one.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "subnet-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/subnets",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/subnets",
+          "sha256": "acd11e13d1c3b6b613501899f1cb86e993a5dbc27e515f02ff8c01f3de13dc6e",
+          "retrieved_at": "2026-11-05T00:56:45.700442+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "Explicit IPv4 prefixes and typed route-table/NAT references are preparable. IPAM allocation, missing/mixed prefix forms and unavailable joins do not establish capacity or effective routes.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "ipgroup-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/ipgroups",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/ipgroups",
+          "sha256": "157d55182135fd7bbbb99b559a9808de0a4deb56f7a0cb006b6a7440e8a8e375",
+          "retrieved_at": "2026-11-05T00:56:46.133912+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "IP group membership is a string array; only reviewed IPv4 address/prefix/range values are projected, with bounded lists.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "terraform-ipgroup",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/ip_group.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/ip_group.html.markdown",
+          "sha256": "5fc9b676ab85da9e8767945940f5ff40307e774c69c8128642cacd6d5b33fd0b",
+          "retrieved_at": "2026-11-05T00:56:46.412763+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "4.50.0 cidrs is an optional membership list; absent cidrs can mean separately managed membership and is not an empty group.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        }
+      ]
+    },
+    {
+      "batch": "18",
+      "review_state": "reviewed",
+      "sources": [
+        {
+          "id": "premium-inspection-categories",
+          "url": "https://learn.microsoft.com/en-us/azure/firewall/premium-features",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/firewall/premium-features",
+          "sha256": "9519f45a6cac5283c54a710176a138625f705cfc6b006fa3044f7268da44c770",
+          "retrieved_at": "2026-11-05T01:20:36.557014+00:00",
+          "revision": "de1064d9bede157e513beec6dc0a2fbb9b3e44a4",
+          "finding": "TLS inspection requires application rules and CA/client trust, not Premium SKU alone. Current Learn guidance says categories also exist on Standard; the pinned provider's Premium restriction cannot establish universal SKU applicability.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "gateway-before-firewall",
+          "url": "https://learn.microsoft.com/en-us/azure/architecture/example-scenario/gateway/application-gateway-before-azure-firewall",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/architecture/example-scenario/gateway/application-gateway-before-azure-firewall",
+          "sha256": "00c6fc9c0cf2442dce3bf81077610674996ff901caadb41885274b36550f2ef3",
+          "retrieved_at": "2026-11-05T01:20:36.794278+00:00",
+          "revision": "653d994c5f9546631a73704163252d9f058c3260",
+          "finding": "Gateway-to-firewall inspection needs matching Host/DNS, port 443, trusted CA and an actual routed flow. Co-located resources or enabled TLS fields do not prove this chain.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "firewall-backup-operations",
+          "url": "https://learn.microsoft.com/en-us/azure/well-architected/service-guides/azure-firewall",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/well-architected/service-guides/azure-firewall",
+          "sha256": "c00d3a21749a54c94d04f3635432cb5c757a4e45db14b79d55a0cc098f0ef918",
+          "retrieved_at": "2026-11-05T01:20:36.992901+00:00",
+          "revision": "0b2ef1fcf0d93f4ec84a1ef2cd61b1a50fffdc83",
+          "finding": "Maintain versioned policy/rule backups or a companion backup mechanism. Current assessment/replay exports are minimized facts, not complete restorable rule backups. The guidance also excludes Virtual WAN from hub-VNet DDoS-plan recommendations.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "firewall-managed-zone-redundancy",
+          "url": "https://learn.microsoft.com/en-us/azure/firewall/deploy-availability-zone-powershell",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/firewall/deploy-availability-zone-powershell",
+          "sha256": "baf53f409811df7fec3dc64d88f75e4ddcf91f7c187d8900fe845fa0752f8add",
+          "retrieved_at": "2026-11-05T01:20:37.303720+00:00",
+          "revision": "6334f6f9f6cd40e6b06d54dc17148ba66d6d0ec3",
+          "finding": "The 2026-11-04 revision says omit explicit zones in compatible regions. Backend migration is not necessarily reflected in ARM/JSON/ARG. Empty or single configured zone lists cannot establish backend nonredundancy; explicit zone counts are facts only.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "ddos-overview",
+          "url": "https://learn.microsoft.com/en-gb/azure/ddos-protection/ddos-protection-overview",
+          "resolved_url": "https://learn.microsoft.com/en-gb/azure/ddos-protection/ddos-protection-overview",
+          "sha256": "d4fc024768028574c5f659b297da800548ff3d3d4270a72f63f9d8b65d223d2f",
+          "retrieved_at": "2026-11-05T01:20:38.118270+00:00",
+          "revision": "3018333ed1a03524e2f765eeaba9278da829d48e",
+          "finding": "Network-plan protection and per-IP protection differ. A supplied VNet flag/plan is configuration evidence, not proof of firewall applicability or mitigation effectiveness.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "injected-service-networking",
+          "url": "https://learn.microsoft.com/en-us/azure/virtual-network/vnet-integration-for-azure-services",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-network/vnet-integration-for-azure-services",
+          "sha256": "8d6510e60db227e83b5096779f8dceb9070de882cbeef483386a075ff18f1aa8",
+          "retrieved_at": "2026-11-05T01:20:38.371843+00:00",
+          "revision": "a96eb393ee50b26b38845d3baaa553f217cf9c17",
+          "finding": "Injected services have service-specific subnet, route and NSG requirements. Generic default-route or NSG presence cannot prove control-plane reachability or breakage.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "private-link-overview",
+          "url": "https://learn.microsoft.com/en-us/azure/private-link/private-link-overview",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/private-link/private-link-overview",
+          "sha256": "e97fdd4c413cc363d9320d0f170dd30eecd8554bbcf1a365824cb9f2cb89d655",
+          "retrieved_at": "2026-11-05T01:20:38.720741+00:00",
+          "revision": "43660cb4991de8ff1c998d1ec2b957c96a4cac86",
+          "finding": "Private Link supports on-premises private-peering access. Service availability, subresources, DNS and actual routes still require specific evidence; no packet test.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "private-endpoint-overview",
+          "url": "https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview",
+          "sha256": "87f4b7be68299741f142508d580be42f2dc700477d7ede3abcd621c1f0e62a7f",
+          "retrieved_at": "2026-11-05T01:20:38.925634+00:00",
+          "revision": "2adca016cbf84f1ab273801f1ad5ed141219bfdc",
+          "finding": "Only approved connections can carry traffic, but approval alone does not establish DNS, private routing or disabled public access. A Terraform private IP can exist even for rejected requests; manual=false is not approval evidence.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "vnet-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks",
+          "sha256": "09bac533046636b271208e46805bf8ebf5490b834c1f993182207ee6d31f606b",
+          "retrieved_at": "2026-11-05T01:20:39.189747+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "Versioned VNet DDoS flag and canonical plan reference are separate typed fields; missing flags and absent plan data are unknown, not disabled or nonexistent.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "private-endpoint-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/privateendpoints",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/privateendpoints",
+          "sha256": "05456a6d67db7b18b0594903aa1c2c74d8a52a33f23de8326f6c3ff23a4db479",
+          "retrieved_at": "2026-11-05T01:20:39.433740+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "Versioned automatic/manual connection arrays contain target IDs and explicit states; retain only reviewed typed fields, not messages, DNS names, aliases or addresses.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "application-rules-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/firewallpolicies/rulecollectiongroups",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/firewallpolicies/rulecollectiongroups",
+          "sha256": "421cfaa665fc790bfa613b5ea33ce54bcc224c88f875757e6c88f1479e20ccdb",
+          "retrieved_at": "2026-11-05T01:20:39.654294+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "Application rule TLS booleans and supplied category counts are partial facts only. Do not retain rule descriptions, headers, destinations or category labels, or infer policy inheritance, effective ordering or traffic coverage.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "terraform-vnet",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network.html.markdown",
+          "sha256": "17416f03d3d471c85f2364428c8c6e3c4e312ba18272262537986d1f788a9fd7",
+          "retrieved_at": "2026-11-05T01:20:39.979256+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "Pinned 4.50.0 explicit DDoS block has required ID and boolean enable. Omitted blocks do not establish a default. Inline/standalone subnet mixing remains unsupported.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "terraform-private-endpoint",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/private_endpoint.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/private_endpoint.html.markdown",
+          "sha256": "28241b838e4315effc25685a59e5f9946530ce7266c53c47ea061ec23796af4a",
+          "retrieved_at": "2026-11-05T01:20:40.291902+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "Pinned 4.50.0 has one explicit service-connection block and target ID or alias. It does not export approval state; neither manual=false nor private IP proves approval. Aliases remain unresolved rather than being converted to ARM IDs.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "terraform-application-rules",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/firewall_policy_rule_collection_group.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/firewall_policy_rule_collection_group.html.markdown",
+          "sha256": "1816bd38b34b247d7f81964e912cba527d502582ab3b1e927b551efebb583b7c",
+          "retrieved_at": "2026-11-05T01:20:40.583404+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "Pinned 4.50.0 collection action and rule TLS/categories are explicit fields. It documents Premium requirements that differ from current general feature guidance; no effective category/SKU or inherited-policy verdict is inferred.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "subnet-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/subnets",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/subnets",
+          "sha256": "a0a4881f2ec1ba112978dad3532d51e5f5e09524e608c4055170df7a46cf3dc5",
+          "retrieved_at": "2026-11-05T01:20:40.790462+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "Explicit IPv4 prefixes and typed route-table/NAT references are preparable. IPAM allocation, missing/mixed prefix forms and unavailable joins do not establish capacity or effective routes.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "firewall-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/azurefirewalls",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/azurefirewalls",
+          "sha256": "735c4f22bf1f0e2ef1c25b28c5889e28b10e5e7bda5d9d494e9fdff13e471491",
+          "retrieved_at": "2026-11-05T01:20:41.260094+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "Versioned SKU tier/name, explicit subnet/policy references and classic NAT structures are reviewed. Missing values and unexpanded IP Groups are not safe-source evidence.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "terraform-firewall",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/firewall.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/firewall.html.markdown",
+          "sha256": "9135af603a68c738c117055bfcfa60b0581b220f49336c715011eecbee20e037",
+          "retrieved_at": "2026-11-05T01:20:41.534638+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "4.50.0 declares Basic/Standard/Premium, exactly one data subnet reference and optional management configuration. Both subnet kinds need minimum /26 capacity; defaults are not inferred.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "terraform-subnet",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subnet.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subnet.html.markdown",
+          "sha256": "81efb15b9b422afa08a21b346e5e81bcd7d8f250a1a138db02627f798653c824",
+          "retrieved_at": "2026-11-05T01:20:41.820834+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "4.50.0 supports explicit prefixes or IPAM pool, not both. IPAM allocation does not establish actual prefixes. Inline/standalone subnet mixing is unsupported by the provider.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        }
+      ]
+    },
+    {
+      "batch": "19",
+      "review_state": "reviewed",
+      "sources": [
+        {
+          "id": "service-endpoint-intent",
+          "url": "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview",
+          "sha256": "54281656304087acd0fe673c8fd451bfe5c361f30e16eacaca137a3e88d05924",
+          "retrieved_at": "2026-11-05T01:42:09.350298+00:00",
+          "revision": "b64fe083ef4b04a6bd39a8f7d06d9c9a7fbfa27f",
+          "finding": "Service endpoints are deliberately configured per subnet/service and may bypass an inspection route. Presence/absence does not establish intent, access restriction or exfiltration prevention. Current standard-service-endpoint preview is not inferred from pinned classic provider fields.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "private-endpoint-egress-inspection",
+          "url": "https://learn.microsoft.com/en-us/azure/private-link/inspect-traffic-with-azure-firewall",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/private-link/inspect-traffic-with-azure-firewall",
+          "sha256": "3d1282959f9271c835687c904b5b0a6c613e93b1f1cf3c5fa4b9c26d47b1e4e1",
+          "retrieved_at": "2026-11-05T01:42:09.554535+00:00",
+          "revision": "01f2a7e8a8dd7920f88a4e509241eb6f2cbd1187",
+          "finding": "The checklist relative guidance is resolved to the actual Learn page. FQDN/application rules, routing, subnet endpoint policies and SNAT symmetry must be reconciled; local FQDN counts or a private endpoint do not establish an inspected exclusive path.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "gateway-subnet-capacity",
+          "url": "https://learn.microsoft.com/en-us/azure/expressroute/expressroute-howto-add-gateway-resource-manager",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/expressroute/expressroute-howto-add-gateway-resource-manager",
+          "sha256": "f309b3f30babd8607460b4f4d33e6c3fd72eee6d4d23facf25e5d5702d661b5d",
+          "retrieved_at": "2026-11-05T01:42:09.764168+00:00",
+          "revision": "80641cd00ceaad36bdaeae3721f5b0a4ec3156d0",
+          "finding": "Minimum /27 means capacity at least /27, not exact prefix equality. Sixteen ExpressRoute circuits require /26 or larger; actual gateway references and workload requirements matter. No gateway deployment or circuit enumeration is executed.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "virtualnetwork-tag-scope",
+          "url": "https://learn.microsoft.com/en-us/azure/virtual-network/service-tags-overview",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-network/service-tags-overview",
+          "sha256": "cb1350ecb999d0742feeab41811e0b022851ffd3cccfd7ede371383b61c08333",
+          "retrieved_at": "2026-11-05T01:42:09.846029+00:00",
+          "revision": "438c68ee21f7ea890f0f6805f0879899e3fa87e7",
+          "finding": "VirtualNetwork includes connected on-premises, peering, gateway and route prefixes and can contain default routes. A tag/default allow rule is not an isolation boundary or proof of effective segmentation.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "landing-zone-segmentation",
+          "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-landing-zone-network-segmentation",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-landing-zone-network-segmentation",
+          "sha256": "c057c66ebb0f18354d18bb55f4fe2d76d9d203c20a2a7510b64ea89676bbb21d",
+          "retrieved_at": "2026-11-05T01:42:10.037596+00:00",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "finding": "Subnet ownership is organizational evidence, distinct from PaaS subnet delegations. NSG/ASG protection needs exact traffic/association/priority context. Virtual WAN firewall guidance is conditional, not a blanket prohibition of central appliances.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "nsg-effective-processing",
+          "url": "https://learn.microsoft.com/en-us/azure/virtual-network/network-security-group-how-it-works",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-network/network-security-group-how-it-works",
+          "sha256": "fe437dd056763647f1afba938db013b8fbc40dfc2606392fda707a53acf2a88b",
+          "retrieved_at": "2026-11-05T01:42:10.238184+00:00",
+          "revision": "1527f53005c001d53efa18c5a147c06b8d08c65e",
+          "finding": "Subnet and NIC NSGs interact in direction-specific order, including intra-subnet traffic. Configured rules/associations do not prove an effective allowed/denied path.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "asg-membership",
+          "url": "https://learn.microsoft.com/en-us/azure/virtual-network/application-security-groups",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-network/application-security-groups",
+          "sha256": "0fdb6e07bfbc19657afd16cd68376b481e8232a91c7ffd46b329685cddc33ccb",
+          "retrieved_at": "2026-11-05T01:42:10.436111+00:00",
+          "revision": "f6915eda5c3c2fd2425673efa304ad0c7f2b14de",
+          "finding": "ASG rule presence is not membership or enforcement. Source/destination memberships must be in the applicable same VNet; higher-priority rules and other NSGs matter.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "vnet-flow-log-coverage",
+          "url": "https://learn.microsoft.com/en-us/azure/network-watcher/vnet-flow-logs-overview",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/network-watcher/vnet-flow-logs-overview",
+          "sha256": "99a0f9b549481d060d4cb9e445386d862ba4e00e462ed101fe40f60421d86650",
+          "retrieved_at": "2026-11-05T01:42:10.521768+00:00",
+          "revision": "1d0b93ef19bb0828f1c6fae226f485b631826be7",
+          "finding": "VNet flow-log enabled configuration is not ingestion, supported-workload coverage or analytics usefulness. Storage/region/unsupported-service and ExpressRoute FastPath limitations remain human evidence questions; no flow data is read.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "traffic-analytics-pipeline",
+          "url": "https://learn.microsoft.com/en-us/azure/network-watcher/traffic-analytics",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/network-watcher/traffic-analytics",
+          "sha256": "f04b1201b5e01e00af84566a2351b34c96c5117557939b2d78e2d7fb46ee436d",
+          "retrieved_at": "2026-11-05T01:42:10.631237+00:00",
+          "revision": "18b9d761020f6c1ce3c64ff01abf5084c5b366a1",
+          "finding": "Analytics needs flow data, a compatible workspace/region and actual processing, not just enabled=true. No workspace logs, permissions or billing are queried.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "network-service-limits",
+          "url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits",
+          "sha256": "41b9675895a4548cbcd6156a4290cd1ecd798fec73589b33fca90bd5a38ac3d6",
+          "retrieved_at": "2026-11-05T01:42:10.737873+00:00",
+          "revision": "b925adaad71e273e5a1379e52d082568ef8fbf6f",
+          "finding": "Current ARM networking table lists 2,000 NSG rules, whereas the frozen checklist's 900 recommendation cites a 1,000 limit. Keep the explicit checklist target distinct from current quota and from the separate classic-deployment table.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "nsg-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/networksecuritygroups",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/networksecuritygroups",
+          "sha256": "cf1974b46c641e32b93f65a45ed816a26d5f4adfb6d0c42403a20c69f981b023",
+          "retrieved_at": "2026-11-05T01:42:10.812487+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "Explicit declared custom rules are distinct from defaults, child declarations and complete observed configuration. Required rule fields are protocol/access/priority/direction. Rule previews must not expose names, descriptions, ports or addresses.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "nsg-get-learn-fallback",
+          "url": "https://learn.microsoft.com/en-us/rest/api/virtualnetwork/network-security-groups/get?view=rest-virtualnetwork-2024-05-01",
+          "resolved_url": "https://learn.microsoft.com/en-us/rest/api/virtualnetwork/network-security-groups/get?view=rest-virtualnetwork-2026-01-01&viewFallbackFrom=rest-virtualnetwork-2024-05-01",
+          "sha256": "1c0beb2ddd3f2d41e844295f86cae874fd64427b2469ebe37c14664015bc9b36",
+          "retrieved_at": "2026-11-05T01:42:10.912494+00:00",
+          "revision": "bdad299c8efb26b13efcff2ce9dd409fecdc2d87",
+          "finding": "The requested 2024-05-01 Learn REST view falls back to 2026-01-01. It is not evidence for the accepted 2024 GET; the separately pinned actual 2024 swagger supplies that.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "nsg-rest-2024",
+          "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/networkSecurityGroup.json",
+          "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/networkSecurityGroup.json",
+          "sha256": "a3fd3c3c14ed16d37ac484714d11b9873703cbde1889304431a0169d557e4099",
+          "retrieved_at": "2026-11-05T01:42:11.049865+00:00",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "finding": "The exact 2024 GET returns NetworkSecurityGroup with separate custom/default arrays. This is not a paginated list. Whole-rule capacity requires a successful original-time complete custom-rule array, not inline Terraform or declared parent-only lists.",
+          "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+        },
+        {
+          "id": "rest-spec-reuse",
+          "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/LICENSE",
+          "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/LICENSE",
+          "sha256": "b37363bf2295aa0acde60ce78a60034a71a0955075fc01aa09cc23eadff44436",
+          "retrieved_at": "2026-11-05T01:42:11.358111+00:00",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "finding": "Reviewed MIT reuse terms for the pinned Microsoft REST specification. Retain metadata and own factual findings only; no substantial upstream schema is redistributed.",
+          "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+        },
+        {
+          "id": "gateway-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworkgateways",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworkgateways",
+          "sha256": "e0c11d0fb8afd12bd15079a7545de9c289b6a8b7044ca659dfe2a2d18f60f082",
+          "retrieved_at": "2026-11-05T01:42:11.875109+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "Explicit gateway type and IP-configuration subnet IDs identify positive capacity review links. No resource-name inference, certificate or RADIUS material is retained.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "flow-log-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/networkwatchers/flowlogs",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/networkwatchers/flowlogs",
+          "sha256": "72e918074cd06e93215c1348383a5aa04fcc3d82e64755bbd0ec1fd652ebbecd",
+          "retrieved_at": "2026-11-05T01:42:12.322805+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "Versioned fields expose enabled, target/storage/workspace IDs and analytics settings. The target description says NSG while the same page's VNet example uses a VNet: validate canonical target type rather than assume VNet coverage. Filters are not copied and enabled configuration never establishes ingestion.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "terraform-nsg",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/network_security_group.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/network_security_group.html.markdown",
+          "sha256": "8a0c54bc45fa6ee4c43780232fbf0a87600242cfc05a65815f516418dde22b0d",
+          "retrieved_at": "2026-11-05T01:42:12.612760+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "Pinned 4.50.0 allows inline and separately managed rules but warns not to mix them. Omission does not establish empty configuration. Whole counts remain unknown for raw/plan rather than assuming all rule resources are represented by one parent.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "terraform-nsg-rule",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/network_security_rule.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/network_security_rule.html.markdown",
+          "sha256": "a717a223995298d817c2adef0c8fc03a4fc4b0ea93981b6a05a9e685983eb83e",
+          "retrieved_at": "2026-11-05T01:42:12.904055+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "Pinned standalone rule has explicit parent name/group and typed rule/ASG references; its presence does not establish complete parent rules or effective segmentation.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "terraform-gateway",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_gateway.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_gateway.html.markdown",
+          "sha256": "abec37ea2fa768bf6bbb030d76837f21a40d9700587a67ad4d87a99d313caf2d",
+          "retrieved_at": "2026-11-05T01:42:13.204072+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "Pinned gateway configuration supports up to three explicit subnet-bearing IP configs. Keep typed gateway kind/IDs only, never VPN certificates, RADIUS secrets or addresses.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "terraform-flow-log",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/network_watcher_flow_log.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/network_watcher_flow_log.html.markdown",
+          "sha256": "13a8af706567b83dd007a595916b7aeaff83651f34337dda22272a2bb1189afc",
+          "retrieved_at": "2026-11-05T01:42:13.496235+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "Pinned flow-log fields have explicit target/storage IDs, enabled bool and optional analytics block. Its NSG example is stale for new deployments after July 2025; do not recommend creating NSG flow logs or execute provider lifecycle side effects.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "subnet-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/subnets",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/subnets",
+          "sha256": "a0a4881f2ec1ba112978dad3532d51e5f5e09524e608c4055170df7a46cf3dc5",
+          "retrieved_at": "2026-11-05T01:42:13.604328+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "Explicit IPv4 prefixes and typed route-table/NAT references are preparable. IPAM allocation, missing/mixed prefix forms and unavailable joins do not establish capacity or effective routes.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "terraform-subnet",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subnet.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subnet.html.markdown",
+          "sha256": "81efb15b9b422afa08a21b346e5e81bcd7d8f250a1a138db02627f798653c824",
+          "retrieved_at": "2026-11-05T01:42:13.720671+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "4.50.0 supports explicit prefixes or IPAM pool, not both. IPAM allocation does not establish actual prefixes. Inline/standalone subnet mixing is unsupported by the provider.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "terraform-application-rules",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/firewall_policy_rule_collection_group.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/firewall_policy_rule_collection_group.html.markdown",
+          "sha256": "1816bd38b34b247d7f81964e912cba527d502582ab3b1e927b551efebb583b7c",
+          "retrieved_at": "2026-11-05T01:42:14.012848+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "Pinned 4.50.0 collection action and rule TLS/categories are explicit fields. It documents Premium requirements that differ from current general feature guidance; no effective category/SKU or inherited-policy verdict is inferred.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "application-rules-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/firewallpolicies/rulecollectiongroups",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/firewallpolicies/rulecollectiongroups",
+          "sha256": "421cfaa665fc790bfa613b5ea33ce54bcc224c88f875757e6c88f1479e20ccdb",
+          "retrieved_at": "2026-11-05T01:45:59.915643+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "Application rule TLS booleans and supplied category counts are partial facts only. Do not retain rule descriptions, headers, destinations or category labels, or infer policy inheritance, effective ordering or traffic coverage.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        }
+      ]
+    },
+    {
+      "batch": "11",
+      "review_state": "reviewed",
+      "sources": [
+        {
+          "id": "peering-access",
+          "url": "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-manage-peering",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-manage-peering",
+          "sha256": "755d80e84e940066b118ec0e2ce82699492820c4ee3d81de5bd6eacea35c7402",
+          "retrieved_at": "2026-11-06T07:52:44.658602+00:00",
+          "revision": "bc7263ae7eed82b28fa7e4f44cecfc337dba9928",
+          "finding": "Explicit allowVirtualNetworkAccess is a per-direction configuration setting, not reciprocal connectivity, NSG isolation, gateway transit or forwarding proof.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "load-balancer-reliability",
+          "url": "https://learn.microsoft.com/en-us/azure/reliability/reliability-load-balancer",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/reliability/reliability-load-balancer",
+          "sha256": "0cb6ebf8d7c5e672e5c1824c74cd93728965e547ac549f41356d511f2776bdf9",
+          "retrieved_at": "2026-11-06T07:52:44.981648+00:00",
+          "revision": "41cb49cce5c499aac71f8a3b82b74d1d6205712e",
+          "finding": "Zone redundancy belongs to each frontend or its public IP, independently of backend placement and health. Standard SKU or two supplied backend entries does not establish operational or regional resilience.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "expressroute-macsec",
+          "url": "https://learn.microsoft.com/en-us/azure/expressroute/expressroute-howto-macsec",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/expressroute/expressroute-howto-macsec",
+          "sha256": "6e982e414fc6670de9adef68714ab28f9e4a325d52c0c2d16d10bb5ed35eca6e",
+          "retrieved_at": "2026-11-06T07:52:45.305336+00:00",
+          "revision": "409967478de1c17f693545a4134a215ec403f855",
+          "finding": "ExpressRoute Direct has two links. Configured cipher/SCI fields are not negotiated encryption; key availability, identities, port applicability and both ends require separate evidence. Never retain CAK/CKN values or secret identifiers.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "vpn-private-peering",
+          "url": "https://learn.microsoft.com/en-us/azure/vpn-gateway/site-to-site-vpn-private-peering",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/vpn-gateway/site-to-site-vpn-private-peering",
+          "sha256": "a450aa3e8b868cfa3470a6f203caf22caae7f4035f908bd46a8b0b6347e46fc2",
+          "retrieved_at": "2026-11-06T07:52:45.586587+00:00",
+          "revision": "62aed15bb140123905d570acfb8691add323557c",
+          "finding": "Private-IP VPN connections need a functioning private circuit and preferred encrypted routes in both directions. Equal prefixes can prefer unencrypted ExpressRoute; a connection or IPsec policy is not encrypted-path proof.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "ip-address-planning",
+          "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-ip-addressing",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-ip-addressing",
+          "sha256": "6d38c852b407a871d32da101b40a42e43e87ec24ac719effa904d6f266e2a3fb",
+          "retrieved_at": "2026-11-06T07:52:45.956538+00:00",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "finding": "Review the complete Azure/on-premises allocation and approved growth requirements. Local RFC1918 and pairwise IPv4 overlap subchecks do not prove global nonoverlap or appropriate sizing; IPv6 and NAT remain explicit unsupported context.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "route-rest-2024",
+          "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/routeTable.json",
+          "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/routeTable.json",
+          "sha256": "a467a618249052d33f9e8cac2b4f21ff2510c7da7f482286a97909276f9bdad9",
+          "retrieved_at": "2026-11-06T07:52:46.233540+00:00",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "finding": "The pinned GET returns the route table's custom routes separately from effective BGP/system routing. Only a successful explicit complete observed array can support the checklist 400 target; child declarations and service tags need no expansion.",
+          "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+        },
+        {
+          "id": "route-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/routetables",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/routetables",
+          "sha256": "d231230d50e1bc1919ca768c8c07f33c2b714730aa0a34a17905ef013f7c696d",
+          "retrieved_at": "2026-11-06T07:52:46.589875+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "Declared custom routes do not establish completeness when child routes are managed separately. Next-hop types and count context are retained, not next-hop IPs.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "peering-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/virtualnetworkpeerings",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/virtualnetworkpeerings",
+          "sha256": "6635d27c6a2808153695e4cac7201dc67fa5295dbe6b0b649b5d0d66d77ac4ce",
+          "retrieved_at": "2026-11-06T07:52:47.080235+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "Explicit boolean access is distinct from forwarding/transit and remote topology. Missing boolean is unknown; no portal/provider default is inferred.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "lb-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/loadbalancers",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/loadbalancers",
+          "sha256": "a9453f3e07fdfdd9a9f6218aba05ede6a0d0ba2639e65de2a900682969662c57",
+          "retrieved_at": "2026-11-06T07:52:47.816366+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "Frontend zone/public-IP references and bounded supplied backend counts are partial facts. Unknown memberships, VMSS expansion, probes and public-IP zones need review.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "port-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/expressrouteports",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/expressrouteports",
+          "sha256": "8e755971ac1f5335b2d614f283ff18e9a096b5a6e1e303f09b5fd3acf7edecbf",
+          "retrieved_at": "2026-11-06T07:52:48.298327+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "Project bounded per-link cipher/SCI enums only; keys, secret identifiers, router labels and physical port details are withheld. Configuration is not link encryption.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "connection-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/connections",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/connections",
+          "sha256": "e5a1ea8d8da6b275e9bed324a17ec0997f65fbb6bd547225424e0ad42951c1fa",
+          "retrieved_at": "2026-11-06T07:52:48.990119+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "Connection type/private-IP boolean and canonical gateway IDs support review only; shared/authorization keys, IKE details and tunnel addresses are not exported.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "terraform-route-table",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/route_table.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/route_table.html.markdown",
+          "sha256": "795f1fe98706fa928d1044f0ebf14facb1f494ad76736b00846ee56912b25422",
+          "retrieved_at": "2026-11-06T07:52:49.289957+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "Inline and separately managed routes cannot prove a complete custom population.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "terraform-peering",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_peering.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_peering.html.markdown",
+          "sha256": "686d4bd40d5c9698485adb54ad226c97cbffbc4605b7811dfb3b04ec6db48721",
+          "retrieved_at": "2026-11-06T07:52:49.598405+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "Only explicit per-direction booleans are evaluated.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "terraform-load-balancer",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/lb.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/lb.html.markdown",
+          "sha256": "f937278d47622bb4ae8aa4381628850c7fe1659a360f7c512c48408c5ec9fe73",
+          "retrieved_at": "2026-11-06T07:52:49.914568+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "Standard SKU and explicit frontend context do not prove zone or backend resilience.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "terraform-backend-pool",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/lb_backend_address_pool.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/lb_backend_address_pool.html.markdown",
+          "sha256": "98ca76e29d84467ff09b4486d3089eff3f6303cee48ba14cf331ae5525d5a7ba",
+          "retrieved_at": "2026-11-06T07:52:50.216943+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "Pool declarations alone cannot count distinct healthy backend instances.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "terraform-expressroute-port",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/express_route_port.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/express_route_port.html.markdown",
+          "sha256": "bd81aa36a90fb8c0371fbd2db42020105f49249704ae0a5f28e32ffad84eca52",
+          "retrieved_at": "2026-11-06T07:52:50.472834+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "Pinned provider supports two link blocks; no cipher default or key is retained.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "terraform-gateway-connection",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_gateway_connection.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_gateway_connection.html.markdown",
+          "sha256": "2713c60f167abe176d065621f63ae24cfec366b4c8e819ceb58df2caabe0a84c",
+          "retrieved_at": "2026-11-06T07:52:50.756259+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "Private-IP intent is not a preferred, working encrypted private-peering path.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        },
+        {
+          "id": "network-service-limits",
+          "url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits",
+          "sha256": "fd819227755ab9290bd91e022d2980edc7d4150e84305f65221237b5e5c6a1cc",
+          "retrieved_at": "2026-11-06T07:52:51.006156+00:00",
+          "revision": "b925adaad71e273e5a1379e52d082568ef8fbf6f",
+          "finding": "Current ARM networking table lists 2,000 NSG rules, whereas the frozen checklist's 900 recommendation cites a 1,000 limit. Keep the explicit checklist target distinct from current quota and from the separate classic-deployment table.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "rest-spec-reuse",
+          "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/LICENSE",
+          "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/LICENSE",
+          "sha256": "b37363bf2295aa0acde60ce78a60034a71a0955075fc01aa09cc23eadff44436",
+          "retrieved_at": "2026-11-06T07:52:51.302283+00:00",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "finding": "Reviewed MIT reuse terms for the pinned Microsoft REST specification. Retain metadata and own factual findings only; no substantial upstream schema is redistributed.",
+          "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+        },
+        {
+          "id": "vnet-arm",
+          "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks",
+          "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks",
+          "sha256": "af81e07bec1a4c3321ce5d462f826218d98232d0617d9dfd12cec36a02ecc8a4",
+          "retrieved_at": "2026-11-06T07:52:51.798144+00:00",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "finding": "Versioned VNet DDoS flag and canonical plan reference are separate typed fields; missing flags and absent plan data are unknown, not disabled or nonexistent.",
+          "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+        },
+        {
+          "id": "terraform-vnet",
+          "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network.html.markdown",
+          "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network.html.markdown",
+          "sha256": "17416f03d3d471c85f2364428c8c6e3c4e312ba18272262537986d1f788a9fd7",
+          "retrieved_at": "2026-11-06T07:52:52.131602+00:00",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "finding": "Pinned 4.50.0 explicit DDoS block has required ID and boolean enable. Omitted blocks do not establish a default. Inline/standalone subnet mixing remains unsupported.",
+          "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+        }
+      ]
+    }
+  ]
+}

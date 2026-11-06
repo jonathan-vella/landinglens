@@ -47,7 +47,7 @@ class DeliveryTests(unittest.TestCase):
             self.assertEqual(original["coverage"]["controls"], 255)
             self.assertFalse(original["coverage"]["inventory_complete"])
             automated = [r for r in original["results"] if r["automation"] == "automated"]
-            self.assertEqual(len(automated), 8)
+            self.assertEqual(len(automated), 10)
             self.assertTrue(all(r["planned"]["outcome"] == "unknown" for r in automated))
             evidence = json.loads(normalized.read_text())
             self.assertEqual(len(evidence["diagnostics"]), 6)

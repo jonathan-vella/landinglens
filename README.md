@@ -2,12 +2,12 @@
 
 Offline-first, advisory Azure Landing Zones CLI for assessing supplied IaC or
 saved observed evidence. All 255 checklist GUIDs remain visible. The current
-catalog has 8 accepted configuration predicates, 204 assisted recommendations
+catalog has 10 accepted configuration predicates, 202 assisted recommendations
 and 43 manual recommendations.
 
-The NSG rule-count predicate is observed-only. Declared rules do not establish
-the complete custom-rule population; configured segmentation is not proof of
-effective traffic isolation.
+The NSG and route-count predicates are observed-only. Declared rules/routes do
+not establish complete custom populations. Peering access is an explicit setting,
+not proof of reachability; configured segmentation is not effective isolation.
 
 Read [what LandingLens does and doesn't prove](docs/what-landinglens-proves.md)
 before interpreting results. [Detailed workflows](docs/usage.md),

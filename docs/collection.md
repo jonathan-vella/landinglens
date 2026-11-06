@@ -138,6 +138,24 @@ and [24 reviewed sources](../references/recommendation-batches/batch-19-sources.
 Flow-log enablement is not ingestion, and the workflow does not recommend
 creating new NSG flow logs after Microsoft's July 2025 cutoff.
 
+### Cohort-11 routing and transport preparation
+
+The existing per-inventoried-resource detail path additionally recognizes route
+tables, VNet peerings, load balancers/backend pools, ExpressRoute Direct ports and
+gateway connections at **2024-05-01**, with their exact management-plane `read`
+operations. Verification is saved/injected only; no new live access is authorized
+or claimed. Existing request/scope/origin/byte/identity guards still apply.
+
+Only complete Succeeded route-table custom arrays can support the observed <=400
+checklist predicate. Peering access is an explicit boolean, not traffic flow.
+Other typed projections retain bounded frontend/backend context, per-link
+MACsec cipher/SCI, connection type/private-IP intent, gateway IDs and VNet IPv4
+prefixes. They never collect keys/secret identifiers, credentials, tunnel/next-hop
+addresses, actual backend IPs or arbitrary raw properties. No effective-route,
+backend-health, circuit/router-end, reciprocal-topology or IPAM expansion occurs.
+The [matrix](../references/recommendation-batches/batch-11.json) distinguishes
+local configuration, partial subchecks, manual requirements and runtime evidence.
+
 The accepted first wave adds only explicit firewall-policy `sku.tier`,
 `threatIntelMode` and `intrusionDetection.mode` to the existing approved detail
 projection. It does not collect bypass lists, secrets or arbitrary properties.

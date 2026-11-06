@@ -379,6 +379,18 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                             "trafficAnalytics.enabled",
                             "trafficAnalytics.workspaceResourceId",
                             "filteringConfigured",
+                            "routeCount",
+                            "allowVirtualNetworkAccess",
+                            "remoteVirtualNetwork.id",
+                            "loadBalancerSku",
+                            "frontendSummary",
+                            "backendSummary",
+                            "macsecLinks",
+                            "connectionType",
+                            "useLocalAzureIpAddress",
+                            "virtualNetworkGateway1.id",
+                            "virtualNetworkGateway2.id",
+                            "virtualNetworkPrefixes",
                         }
                         for path in paths
                     )
@@ -431,6 +443,15 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                         or "applicable_skus" in rule
                     ):
                         raise InputError("Invalid reviewed observed NSG <=900 predicate")
+                elif operation == "route-capacity" and data["schema_version"] == "1.1":
+                    if (
+                        rule["resource_type"] != "Microsoft.Network/routeTables"
+                        or rule["property"] != "routeCount"
+                        or type(rule.get("expected")) is not int
+                        or rule["expected"] != 400
+                        or "applicable_skus" in rule
+                    ):
+                        raise InputError("Invalid reviewed observed route <=400 predicate")
                 else:
                     raise InputError("Unsupported rule operation or contract version")
             elif control.get("rule") is not None:

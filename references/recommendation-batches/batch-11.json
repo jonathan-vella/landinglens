@@ -1,0 +1,178 @@
+{
+  "batch": "11",
+  "catalog_version": "2026-11-06.2",
+  "review_state": "owner-delegated-source-backed-matrix",
+  "accepted_at": "2026-11-06T07:55:30.236676+00:00",
+  "prerequisites": ["19"],
+  "preserved_catalog_bytes": {
+    "2026-11-06.1": "5b7cd54ac21f525ef3dd5bbb6544dc96a821dbf7d2ab34c25bc45e2335f68603"
+  },
+  "issue": "https://github.com/jonathan-vella/landinglens/issues/92",
+  "acceptance_evidence": "Actual reviewed sources support two explicit local configuration predicates and eight specific assisted workflows. Configuration and supplied-subset checks never establish complete topology, operational resilience, working encryption, approved requirements or appropriate sizing. Implementation and merged acceptance remain separate ledger facts.",
+  "supported_modes": "Explicit AzureRM 4.50.0 raw Terraform with supplied local snapshots and optional plan; reviewed ARM 2024-05-01 and existing no-restore Bicep; saved normalized evidence and injected scoped management-plane detail reads. Complete route counts are observed-only. No new Azure access or traffic/encryption tests.",
+  "recommendations": [
+    {
+      "guid": "3d457936-e9b7-41eb-bdff-314b26450b12",
+      "upstream_id": "D01.12",
+      "classification": "automated",
+      "implemented_subclaim": "Complete successful observed custom-route count <=400 per supplied route table, independent of effective BGP/system routes and current service-limit options.",
+      "sources": ["network-service-limits", "route-rest-2024", "rest-spec-reuse", "route-arm", "terraform-route-table"],
+      "review_resource_types": ["Microsoft.Network/routeTables"],
+      "review_fact_paths": ["routeCount"],
+      "method": "Observed-only complete custom route count against the explicit checklist <=400 target.",
+      "rule": {"operation": "route-capacity", "resource_type": "Microsoft.Network/routeTables", "property": "routeCount", "expected": 400},
+      "evidence_requirements": [
+        "Require an original-time Succeeded observed route table with explicit complete custom routes, unique names, typed prefix and next-hop fields, bounded to 1000.",
+        "Evaluate the exact frozen checklist target independently of current Azure Virtual Network Manager or service quota options. Exclude effective system/BGP routes.",
+        "Missing, symbolic, malformed, duplicate, transient, over-bound, stale or denied snapshots remain unknown. Declared/raw/planned lists do not establish all separately managed child routes."
+      ],
+      "limitations": "One resource's explicit custom configuration is not estate completeness, effective routing or remaining service quota. No child-list expansion, BGP/route query or extra Azure read occurs.",
+      "flags": ["fixed-checklist-400-not-service-quota", "observed-complete-custom-routes-only"]
+    },
+    {
+      "guid": "c76cb5a2-abe2-11ed-afa1-0242ac120002",
+      "upstream_id": "D01.13",
+      "classification": "automated",
+      "implemented_subclaim": "Explicit allowVirtualNetworkAccess=true on each supplied peering direction; false fails and missing/wrong-type/defaulted values stay unknown.",
+      "sources": ["peering-access", "peering-arm", "terraform-peering"],
+      "review_resource_types": ["Microsoft.Network/virtualNetworks/virtualNetworkPeerings"],
+      "review_fact_paths": ["allowVirtualNetworkAccess", "remoteVirtualNetwork.id"],
+      "method": "Explicit per-direction virtual-network peering access boolean, not traffic reachability.",
+      "rule": {"resource_type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings", "property": "allowVirtualNetworkAccess", "expected": true},
+      "evidence_requirements": [
+        "Bind each supplied peering to its explicit local identity, remote VNet and original-time allowVirtualNetworkAccess boolean.",
+        "Assess each direction separately; missing reciprocal inventory is not inferred. No portal or provider default is used."
+      ],
+      "limitations": "The accepted claim is the literal peering setting only. It does not prove connected state, reciprocal topology, gateway transit, forwarding, NSG isolation, route correctness or a reachable path.",
+      "flags": ["peering-setting-not-reachability", "no-reciprocal-presence-inference"]
+    },
+    {
+      "guid": "9dcd6250-9c4a-4382-aa9b-5b84c64fc1fe",
+      "upstream_id": "D01.14",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit load-balancer SKU and bounded frontend zones/public-IP/subnet context, not a zone/region resilience verdict.",
+      "sources": ["load-balancer-reliability", "lb-arm", "terraform-load-balancer"],
+      "review_resource_types": ["Microsoft.Network/loadBalancers"],
+      "review_fact_paths": ["loadBalancerSku", "frontendSummary", "backendSummary"],
+      "evidence_requirements": [
+        "Reconcile Standard SKU and every frontend's actual zone or public-IP zone configuration against supported region and current defaults; missing zone arrays are not a nonredundancy verdict.",
+        "Verify backend placement, health probes, traffic rules and recovery/failover evidence independently. A regional frontend is not global or region-failure resilience.",
+        "Reviewer decision: does the supported deployed topology meet the stated zone/region objectives? Supply attributable evidence, not an SLA inferred from SKU."
+      ],
+      "limitations": "Standard SKU and frontend configuration alone cannot establish workload availability, healthy backend distribution or operational failover. No public-IP fetch, probe, region scan or failover test occurs.",
+      "flags": ["frontend-not-backend-resilience", "sku-not-sla"]
+    },
+    {
+      "guid": "48682fb1-1e86-4458-a686-518ebd47393d",
+      "upstream_id": "D01.15",
+      "classification": "assisted",
+      "implemented_subclaim": "Bounded counts of explicitly supplied backend address/IP-configuration entries, not distinct healthy backend instances.",
+      "sources": ["load-balancer-reliability", "lb-arm", "terraform-backend-pool"],
+      "review_resource_types": ["Microsoft.Network/loadBalancers", "Microsoft.Network/loadBalancers/backendAddressPools"],
+      "review_fact_paths": ["backendSummary", "frontendSummary"],
+      "evidence_requirements": [
+        "Resolve all applicable backend pools and separate membership resources to distinct real instances, including VMSS expansion, multiple NIC/IP configurations and unknown relationships.",
+        "Verify at least two appropriately independent healthy instances using original-time health/probe and deployment evidence; supplied entry counts are partial preparation only.",
+        "Reviewer decision: is the intended population resilient without a single-instance or single-zone dependency?"
+      ],
+      "limitations": "Two configured entries can refer to one instance or unhealthy members. Raw/plan pool declarations often omit separately managed members; no missing membership is defaulted to zero and no operational health read occurs.",
+      "flags": ["backend-entry-count-not-instances", "health-and-failure-domains-unverified"]
+    },
+    {
+      "guid": "821a568d-c632-4693-ba76-e2751de35050",
+      "upstream_id": "D02.01",
+      "classification": "manual",
+      "implemented_subclaim": "Explicit Direct-link/connection configuration alongside a specific business requirement and encryption-boundary interview.",
+      "sources": ["expressroute-macsec", "vpn-private-peering", "port-arm", "connection-arm", "terraform-expressroute-port", "terraform-gateway-connection"],
+      "review_resource_types": ["Microsoft.Network/expressRoutePorts", "Microsoft.Network/connections"],
+      "review_fact_paths": ["macsecLinks", "connectionType", "useLocalAzureIpAddress"],
+      "evidence_requirements": [
+        "Record the accountable owner's explicit requirement for confidentiality, threat boundary, regulatory constraints and required transport coverage; resource presence cannot decide policy.",
+        "Distinguish MACsec's edge-to-MSEE layer-two protection from end-to-end IPsec and application encryption, including provider/non-Direct applicability.",
+        "Reviewer decision: is the encryption requirement documented, approved and mapped to an appropriate tested design? Leave the decision blank until supplied."
+      ],
+      "limitations": "No Azure setting can authenticate a business/security requirement. No key, secret identifier, owner confirmation or effective encryption outcome is inferred or fabricated.",
+      "flags": ["encryption-requirement-needs-owner", "macsec-boundary-not-end-to-end"]
+    },
+    {
+      "guid": "de0d5973-cd4c-4d21-a088-137f5e6c4cfd",
+      "upstream_id": "D02.02",
+      "classification": "assisted",
+      "implemented_subclaim": "Bounded explicit per-link MACsec cipher/SCI enums on supplied ExpressRoute Direct ports, without keys or negotiation claims.",
+      "sources": ["expressroute-macsec", "port-arm", "terraform-expressroute-port"],
+      "review_resource_types": ["Microsoft.Network/expressRoutePorts"],
+      "review_fact_paths": ["macsecLinks"],
+      "evidence_requirements": [
+        "Bind both physical Direct links and both router ends to an approved supported cipher/line-rate configuration; omission does not establish a default or successful encryption.",
+        "Verify key availability/rotation and managed-identity authorization through redacted evidence without retaining CAK/CKN values or their secret identifiers.",
+        "Reviewer decision: is MACsec negotiated and protecting both intended edge-to-MSEE links with operational evidence?"
+      ],
+      "limitations": "Cipher/SCI configuration is not negotiated encryption or end-to-end privacy. The pinned provider's cipher enum differs from current higher-bandwidth XPN guidance; no unsupported provider default is inferred.",
+      "flags": ["macsec-config-not-negotiation", "keys-and-secret-identifiers-withheld"]
+    },
+    {
+      "guid": "ed301d6e-872e-452e-9611-cc58b5a4b151",
+      "upstream_id": "D02.03",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit IPsec connection type/private-IP intent and gateway references, not the preferred working encrypted path.",
+      "sources": ["vpn-private-peering", "connection-arm", "terraform-gateway-connection"],
+      "review_resource_types": ["Microsoft.Network/connections", "Microsoft.Network/virtualNetworkGateways"],
+      "review_fact_paths": ["connectionType", "useLocalAzureIpAddress", "virtualNetworkGateway1.id", "gatewayType", "subnetReferences"],
+      "evidence_requirements": [
+        "Confirm standard-IP gateway/private-peering prerequisites and exact VPN/circuit binding; connection type and private-IP intent alone are insufficient.",
+        "Review route preference in both directions. Equal prefixes may select direct ExpressRoute without IPsec; reconcile more-specific/disjoint prefixes and alternate paths.",
+        "Reviewer decision: does attributable original-time tunnel and path evidence establish required encrypted transport without an unencrypted bypass?"
+      ],
+      "limitations": "No tunnel, effective-route, packet or key query occurs. Shared/authorization keys, IKE secrets and private tunnel addresses are never retained.",
+      "flags": ["ipsec-connection-not-preferred-path", "no-secret-or-traffic-probe"]
+    },
+    {
+      "guid": "558fd772-49b8-4211-82df-27ee412e7f98",
+      "upstream_id": "D03.01",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit bounded VNet IPv4 prefixes and local overlap subchecks; a scoped supplied subset is not the global Azure/on-premises allocation.",
+      "sources": ["ip-address-planning", "vnet-arm", "terraform-vnet"],
+      "review_resource_types": ["Microsoft.Network/virtualNetworks"],
+      "review_fact_paths": ["virtualNetworkPrefixes"],
+      "evidence_requirements": [
+        "Reconcile complete Azure regional, peering, on-premises and planned allocations using an attributable IPAM/allocation record; disclose missing populations and NAT/IPv6 context.",
+        "Use supplied-prefix overlap subchecks only for their exact bounded subset, not as evidence that unobserved/on-premises networks cannot overlap.",
+        "Reviewer decision: is the complete intended routable allocation nonoverlapping, with exceptions and NAT boundaries explicitly accepted?"
+      ],
+      "limitations": "Per-VNet supplied IPv4 checks do not establish cross-region/on-premises coverage, usable routing or complete allocation. Mixed IPv6/unresolved/over-bound prefixes remain unknown.",
+      "flags": ["local-prefixes-not-global-ipam", "nat-and-ipv6-context-needs-review"]
+    },
+    {
+      "guid": "3f630472-2dd6-49c5-a5c2-622f54b69bad",
+      "upstream_id": "D03.02",
+      "classification": "assisted",
+      "implemented_subclaim": "Strict supplied IPv4 containment in the three RFC1918 ranges, not generic is_private or IPv6/public-range applicability.",
+      "sources": ["ip-address-planning", "vnet-arm", "terraform-vnet"],
+      "review_resource_types": ["Microsoft.Network/virtualNetworks"],
+      "review_fact_paths": ["virtualNetworkPrefixes"],
+      "evidence_requirements": [
+        "Compare explicit supplied IPv4 prefixes only against 10/8, 172.16/12 and 192.168/16; loopback, link-local, CGNAT and documentation ranges are not RFC1918.",
+        "Reconcile approved owned-public, dual-stack/IPv6 and nonroutable exhaustion designs with complete actual allocations before a whole recommendation decision.",
+        "Reviewer decision: is addressing appropriate for the supported design, with attributable exceptions and ownership?"
+      ],
+      "limitations": "The local RFC1918 subcheck is not a blanket IPv6 prohibition, ownership proof or global allocation verdict. No DNS, network, ownership or external IPAM query occurs.",
+      "flags": ["rfc1918-subcheck-not-whole-allocation", "no-is-private-shortcut"]
+    },
+    {
+      "guid": "33aad5e8-c68e-41d7-9667-313b4f5664b5",
+      "upstream_id": "D03.03",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit supplied VNet prefixes supporting workload/required-capacity review, without an arbitrary /16 compliance threshold.",
+      "sources": ["ip-address-planning", "vnet-arm", "terraform-vnet"],
+      "review_resource_types": ["Microsoft.Network/virtualNetworks", "Microsoft.Network/virtualNetworks/subnets"],
+      "review_fact_paths": ["virtualNetworkPrefixes", "addressPrefixes"],
+      "evidence_requirements": [
+        "Bind address sizing to approved workload demand, growth, dedicated service subnets, five reserved subnet addresses and IPAM allocation records.",
+        "Review utilization and staged expansion without assuming that every /16 wastes addresses or that smaller configured prefixes meet future needs.",
+        "Reviewer decision: is the chosen allocation justified for the actual workload and service requirements, with accountable approval?"
+      ],
+      "limitations": "No utilization, billing, workload capacity or future demand is inferred from CIDR size. A source example is not an arbitrary numeric predicate and no allocation is changed.",
+      "flags": ["cidr-size-not-demand-or-waste", "sizing-needs-workload-evidence"]
+    }
+  ]
+}

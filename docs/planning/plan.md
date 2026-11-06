@@ -19,6 +19,46 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## Continuing all remaining cohorts: 2026-11-06
+
+The owner instructed "keep going and dont stop until done". Continue all 216
+undelivered fixed targets under the existing source/matrix/implementation,
+full installed/CI/compiler, normal exact-head merge and own-receipt gates.
+No new scope or permission is implied. A genuine missing owner decision or
+external capability can block its affected work, not erase targets or justify
+classifying an implementation as delivered.
+
+Cohort 11 [#92](https://github.com/jonathan-vella/landinglens/issues/92) is next
+in the existing priority order. Its ten-GUID matrix and 21 actual source captures
+precede working successor `2026-11-06.2`. Exact predecessor `.6.1` bytes are frozen
+as `catalog-2026-11-06.1.json`, SHA256
+`5b7cd54ac21f525ef3dd5bbb6544dc96a821dbf7d2ab34c25bc45e2335f68603`.
+Two source-backed local predicates evaluate complete observed custom-route
+count <=400 and explicit per-direction peering access. Seven workflows remain
+assisted; D02.01 retains its manual encryption-requirement meaning. Current
+counts are 10 automated / 202 assisted / 43 manual, all 255 entries visible.
+
+Source findings distinguish frontend/public-IP zone configuration from backend
+resilience, configured backend entries from distinct healthy instances,
+MACsec edge-to-MSEE scope from end-to-end privacy, and IPsec/private-IP intent
+from route preference. RFC1918/local-overlap subchecks are not global IPAM or
+arbitrary sizing rules. The existing ARM adapter now explicitly supplies the
+reviewed root SKU, as well as zones, instead of losing load-balancer SKU during
+normalization. Old evidence/catalog meanings and earlier receipts are preserved.
+No new Azure reads, keys, secrets, traffic/health/encryption tests, external IPAM,
+IaC execution or module/compiler acquisition occurs. Implementation remains
+undelivered until actual checked merge and per-GUID receipts.
+
+Pre-delivery verification passed 320 local and exact-installed tests: 319 passed
+and one explicit Windows symlink-privilege skip. All 11 new routing tests passed;
+format/lint, 33-source-file type checks and dependency consistency passed.
+The installed compiler exercised three cases, including the new routing/peering/
+load-balancer/MACsec/connection fixture, without restoration or compiler skips.
+Exact installed wheel SHA256:
+`08d51969241d61c00ab0f8021d623e99a133102ab9bb07d96bb08a4cb7eaec7f`.
+Earlier catalog bytes/controls and delivery receipts are unchanged; no new
+dependency, live Azure access or owner decision was introduced.
+
 ## Cohort 19 resumed: 2026-11-06
 
 The owner resumed [#52](https://github.com/jonathan-vella/landinglens/issues/52)
