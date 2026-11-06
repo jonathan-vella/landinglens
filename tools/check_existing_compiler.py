@@ -54,6 +54,8 @@ if compiler:
         "test_real_bicep_tenant_configuration_without_restore",
         "test_policy_strategy_preparation.PolicyStrategyPreparationTests."
         "test_real_bicep_policy_strategy_without_restore",
+        "test_platform_health_preparation.PlatformHealthPreparationTests."
+        "test_real_bicep_platform_health_configuration_without_restore",
     ]
     suite = unittest.defaultTestLoader.loadTestsFromNames(cases)
     result = unittest.TextTestRunner(verbosity=2).run(suite)

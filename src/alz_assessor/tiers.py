@@ -30,6 +30,8 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     from .logging_evidence import resource_paths, scoped_identity
     from .network_evidence import REVIEW_PATHS, review_fact
     from .network_policy_evidence import GUIDS as NETWORK_POLICY_GUIDS
+    from .platform_health_evidence import GUIDS as PLATFORM_HEALTH_GUIDS
+    from .platform_health_evidence import resource_paths as platform_paths
     from .policy_strategy_evidence import GUIDS as POLICY_STRATEGY_GUIDS
     from .policy_strategy_evidence import unique_known as policy_unique_known
     from .sources import boolean, enumeration, property_at
@@ -43,9 +45,12 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
         return False
     vwan = control["upstream_guid"] in VWAN_GUIDS
     logging = control["upstream_guid"] in LOGGING_GUIDS
+    platform = control["upstream_guid"] in PLATFORM_HEALTH_GUIDS
     by_id: dict[str, list[dict[str, Any]]] = {}
-    policy = control["upstream_guid"] in POLICY_STRATEGY_GUIDS
-    if vwan or policy or logging or control["upstream_guid"] in TENANT_GUIDS:
+    policy = control["upstream_guid"] in POLICY_STRATEGY_GUIDS | {
+        "aa45be6a-8f2d-4896-b0e3-775e6e94e610"
+    }
+    if vwan or policy or logging or platform or control["upstream_guid"] in TENANT_GUIDS:
         for resource in bundle["resources"]:
             by_id.setdefault((resource.get("arm_id") or "").lower(), []).append(resource)
     for resource in bundle["resources"]:
@@ -63,7 +68,7 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
             resource, bundle
         ):
             continue
-        if logging:
+        if logging or (platform and not policy):
             identity = scoped_identity(resource, bundle.get("scope"))
             if not identity or len(by_id.get(identity, [])) != 1:
                 continue
@@ -80,6 +85,8 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
             continue
         for path in control.get("review_fact_paths", []):
             if logging and path not in resource_paths(resource["resource_type"]):
+                continue
+            if platform and path not in platform_paths(resource["resource_type"]):
                 continue
             properties = resource["properties"]
             if path in REVIEW_PATHS:

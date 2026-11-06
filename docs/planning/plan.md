@@ -1,5 +1,28 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 25 independent preparation: 2026-11-06
+
+[#142](https://github.com/jonathan-vella/landinglens/issues/142) is preparation
+only from actual main `7ae946c13ec65d944cb53b202767c6291f24dfe1`.
+The [nine-GUID candidate matrix](../../references/recommendation-batches/preparation-25.json)
+and [actual source captures](../../references/recommendation-batches/preparation-25-sources.json)
+preserve immutable F01.10-F01.18 wording and eight assisted/one manual
+classifications. Minimized offline activity-alert/action-group/static metric and
+exact storage-SKU context reuse workspace/log-alert/Policy helpers and strict
+supplied relationships. Nine independent source-specific reviews remain blank;
+no operating requirements, runtime success or no-export assurance is invented.
+Current WAD/LAD retirement requires conditional applicability/migration review,
+not supported legacy deployment. Exact SKUs are configuration, not recovery,
+availability or residency guarantees.
+
+The coordinator retains serialized06/10/25 delivery. No successor registration,
+accepted bank/catalog/crosswalk/count/history activation, PR, merge, receipt or
+#142 closure occurs in preparation. Then-current predecessor reconciliation,
+accepted replay, exact installed-wheel/platform/compiler/review gates, normal
+SHA-bound implementation merge, guarded own-GUID receipt publication and actual
+final-main checks remain deferred to an explicit grant. Existing255/fixed251,
+all169 deliveries/twenty receipts and frozen historical bytes remain unchanged.
+
 ## Cohort 29 accepted integration: 2026-11-06
 
 The coordinator explicitly granted [#133](https://github.com/jonathan-vella/landinglens/issues/133)

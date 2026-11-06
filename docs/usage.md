@@ -41,6 +41,28 @@ redaction and bounded expansion without adding a test dependency.
 
 ## Assessment workflows
 
+Cohort25's [preparation matrix](../references/recommendation-batches/preparation-25.json)
+and [captured source findings](../references/recommendation-batches/preparation-25-sources.json)
+are independent preparation, not accepted delivery. They define nine separate
+F01.10-F01.18 reviews without activating the catalog or interview bank. The
+offline adapters prepare activity-alert category/scope/action metadata, action-group
+enabled/global-processing/channel counts, static single-resource metric-alert
+metadata and exact storage redundancy SKUs. Existing workspace/log-alert and
+Policy configuration helpers are reused. Unknown flags, missing receiver arrays,
+unsupported versions/forms and ambiguous/out-of-scope relationships stay explicit;
+recipient identities, contacts, webhook URLs, query/log contents and secrets are
+not retained.
+
+Configuration never proves event emission, delivery/response, Logs ingestion or
+report quality, absence of raw-log export, AMBA origin/version/remediation or
+complete monitoring coverage. Exact redundancy SKU classification does not prove
+kind/service/region support, actual availability, completed conversion, failover
+or residency. F01.16 requirements remain manual. Current Microsoft guidance says
+WAD/LAD retired March 31, 2026: F01.14 preserves its immutable conditional wording
+but requires applicability and supported migration review, not new legacy
+deployments. No live collection, alert/contact tests, query, deployment, compiler
+acquisition or module restore is added.
+
 For Terraform, prefer a separately prepared plan JSON with
 `--input terraform-plan --provider-version 4.50.0 --scope ARM_SCOPE`.
 LandingLens only reads the supplied JSON; it never runs Terraform to produce it.
