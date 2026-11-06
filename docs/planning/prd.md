@@ -1,5 +1,25 @@
 # LandingLens product requirements
 
+## Cohort 25 accepted boundary
+
+The explicit sole slot after actual06/10 implementation, checked receipt and
+final-main delivery activates [nine workflows](../../references/recommendation-batches/batch-25.json)
+in builder-derived catalog/crosswalk `2026-11-06.21`. Original255/fixed251,
+four complete original automated controls, every non-own object, all187 prior
+own-GUID rows/22 receipts and exact `.20` bytes remain preserved.
+
+Eight assisted decisions distinguish Service Health/Resource Health,
+configured actions versus actual notification/response, raw-log export
+boundaries, Logs reporting usage, conditional retired WAD/LAD storage and
+supported migration, operational alert types, AMBA origin/version/remediation,
+and qualified storage redundancy. F01.16 business requirements remain manual.
+No live collector route, query, contact test, deployment, second Policy
+interpreter or runtime assurance is added. All nine independently blank
+decisions use existing evaluator, tiers, reports/trackers, CLI/local session and
+original-time private replay. Counts remain12/200/43; guarded implementation
+merge/receipt publication/final-main checks, not activation, gate delivery and
+satisfied #142 closure.
+
 ## Cohort 10 accepted boundary
 
 After actual29/06 implementation/receipt delivery and the explicit sole-slot

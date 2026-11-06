@@ -1,5 +1,66 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 25 accepted integration: 2026-11-06
+
+The coordinator explicitly granted [#142](https://github.com/jonathan-vella/landinglens/issues/142)
+the sole slot after actual06 implementation143/receipt144 and10
+implementation146/receipt147, satisfied issues and checked final main
+`c953eee1fc66dbd013c59dc27e8616a5001f9630`. Preparation `6870778` reconciles
+that baseline in `bae3716`, preserving strict06 identity/RG shape,10 topology,
+29 manual-bank and27 Policy behavior. All18 actual predecessor compiler cases
+remain before the new health-configuration case; no synthetic AMBA/operations
+compiler proof is added.
+
+Exact `.20` catalog and crosswalk bytes are frozen before existing builders
+derive unique `2026-11-06.21`, its source/matrix bindings and registered nine-way
+blank interview. All255 GUIDs/fixed251/original four complete objects, every
+non-own control, all187 earlier own-GUID rows/22 receipts and historical source/
+catalog/crosswalk bytes remain unchanged. Eight assisted/one manual
+classifications stay12/200/43; activation is not delivery. Implementation
+review/eight-job/security/CodeQL/four downloaded exercised compiler gates,
+normal SHA-bound merge, guarded own-GUID receipt publication and actual
+final-main CI still gate #142 completion.
+
+Preparation's exact own-wheel655-test result (654 pass/original Windows
+symlink-privilege skip),46 Python/133 member byteproof and17 exercised compiler
+cases remain historical, not post-slot acceptance. The earlier in-progress652
+run failed during capture/test corrections and is not green evidence. Missing
+`lark` in the clean isolated environment preceded restoration of only the three
+exact manifest/hash-reviewed runtime wheels; no shared environment changed.
+Current retirement/source qualifications and no-live-operation boundaries are
+preserved throughout acceptance.
+
+The first post-slot721-test own-wheel run failed only the current-bank count
+assertion (19 versus the actual20 registered questions); its720 other outcomes
+include the original Windows symlink-privilege skip. The assertion is updated
+to the exact new count, not removed or weakened. Implementation head `d326f79`
+and its push `42310955297` / PR `42310977972` runs are invalidated for acceptance;
+the corrected head requires fresh complete gates. Earlier preparation proofs
+and this failed attempt are retained, never presented as green delivery.
+
+## Historical cohort 25 independent preparation: 2026-11-06
+
+[#142](https://github.com/jonathan-vella/landinglens/issues/142) is preparation
+only from actual main `7ae946c13ec65d944cb53b202767c6291f24dfe1`.
+The [nine-GUID candidate matrix](../../references/recommendation-batches/preparation-25.json)
+and [actual source captures](../../references/recommendation-batches/preparation-25-sources.json)
+preserve immutable F01.10-F01.18 wording and eight assisted/one manual
+classifications. Minimized offline activity-alert/action-group/static metric and
+exact storage-SKU context reuse workspace/log-alert/Policy helpers and strict
+supplied relationships. Nine independent source-specific reviews remain blank;
+no operating requirements, runtime success or no-export assurance is invented.
+Current WAD/LAD retirement requires conditional applicability/migration review,
+not supported legacy deployment. Exact SKUs are configuration, not recovery,
+availability or residency guarantees.
+
+The coordinator retains serialized06/10/25 delivery. No successor registration,
+accepted bank/catalog/crosswalk/count/history activation, PR, merge, receipt or
+#142 closure occurs in preparation. Then-current predecessor reconciliation,
+accepted replay, exact installed-wheel/platform/compiler/review gates, normal
+SHA-bound implementation merge, guarded own-GUID receipt publication and actual
+final-main checks remain deferred to an explicit grant. Existing255/fixed251,
+all169 deliveries/twenty receipts and frozen historical bytes remain unchanged.
+
 ## Cohort 10 accepted integration: 2026-11-06
 
 The coordinator explicitly granted [#139](https://github.com/jonathan-vella/landinglens/issues/139)

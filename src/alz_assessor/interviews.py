@@ -6,8 +6,49 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.20"
+BANK_VERSION = "2026-11-06.21"
 BANK = {
+    "platform-health-alerts-log-boundaries-redundancy": {
+        "question": "Decide each of the nine monitoring recommendations independently "
+        "from attributable "
+        "redacted evidence. Reconcile separate Service Health service/region/event populations "
+        "and Resource Health resource/status/transition/reason populations, including clouds, "
+        "tenant preview versus subscription scope, original-time events and accountable response. "
+        "Verify directly attached, enabled Global action groups for applicable Service Health "
+        "alerts; receiver counts and configuration do not verify contacts, current email OTP, "
+        "delivery, acknowledgement or escalation. Review every Azure-born raw-log export route "
+        "and on-premises boundary, allowing critical-alert integration only as the immutable "
+        "guidance describes; Sentinel onboarding and workspace location cannot prove no export. "
+        "Demonstrate actual Azure Monitor Logs ingestion and useful insight/report usage, "
+        "independently of metrics or workspace existence. F01.14 is conditional legacy wording: "
+        "WAD/LAD retired March 31, 2026; record applicability, existing shared-storage "
+        "boundaries, AMA/DCR destination-specific migration, parity and cutover without "
+        "recommending new legacy deployments or treating boot diagnostics as the extension. "
+        "Review operational metric, activity and log-query rule criteria, data arrival, enabled "
+        "configuration, actions and actual end-to-end response separately. Supply the approved "
+        "business monitoring requirements, owners, measurable "
+        "health/availability/performance/security/retention/residency objectives and justified "
+        "exceptions; never invent an SLA or threshold. For AMBA, bind the actual reviewed "
+        "origin/version to complete intended platform populations, "
+        "initiatives/assignments/parameters/exclusions, brownfield remediation and tests; generic "
+        "Policy references prove none. For storage, assess exact SKU plus kind/service/region "
+        "support, zone versus asynchronous geo protection, read access, "
+        "conversions/synchronization, RPO/RTO, failover and residency with accountable "
+        "requirements and exceptions. No probes, queries, deployments, contact tests, log/query "
+        "contents, recipient addresses, phones, webhook URLs, keys, billing or personal identity "
+        "payloads. Signals and human confirmations never manufacture Verified.",
+        "controls": [
+            "ALZ-e5695f22-23ac-4e8c-a123-08ca5017f154",
+            "ALZ-d5f345bf-97ab-41a7-819c-6104baa7d48c",
+            "ALZ-e3ab3693-829e-47e3-8618-3687a0477a20",
+            "ALZ-6944008b-e7d7-4e48-9327-6d8bdc055bcf",
+            "ALZ-619e8a13-f988-4795-85d6-26886d70ba6c",
+            "ALZ-97be9951-9048-4384-9c98-6cb2913156a1",
+            "ALZ-859c3900-4514-41eb-b010-475d695abd74",
+            "ALZ-aa45be6a-8f2d-4896-b0e3-775e6e94e610",
+            "ALZ-0d83fd81-952c-4d47-a6cb-3a930925ef2e",
+        ],
+    },
     "hub-spoke-route-server-monitoring": {
         "question": "Provide ten independently attributable original-time decisions and "
         "exceptions, "

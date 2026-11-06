@@ -339,6 +339,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                 from .identity_evidence import PATHS as IDENTITY_PATHS
                 from .logging_evidence import PATHS as LOGGING_PATHS
                 from .network_policy_evidence import PATHS as NETWORK_POLICY_PATHS
+                from .platform_health_evidence import PATHS as PLATFORM_HEALTH_PATHS
                 from .policy_strategy_evidence import PATHS as POLICY_STRATEGY_PATHS
                 from .tenant_evidence import PATHS as TENANT_PATHS
                 from .topology_evidence import PATHS as TOPOLOGY_PATHS
@@ -463,6 +464,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                             | VWAN_PATHS
                             | POLICY_STRATEGY_PATHS
                             | LOGGING_PATHS
+                            | PLATFORM_HEALTH_PATHS
                             | TOPOLOGY_PATHS
                         )
                         for path in paths
