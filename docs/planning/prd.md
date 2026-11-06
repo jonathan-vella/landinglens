@@ -78,6 +78,20 @@ records remain traceable under explicit lifecycle semantics.
 
 ## Active increment: fixed recommendation expansion
 
+Cohort23/#124 integrates seven immutable logging/support/service workflows in
+[accepted successor `.15`](../../references/recommendation-batches/batch-23.json)
+after actual16 implementation128/receipt129 and the coordinator's explicit slot.
+Bounded workspace/onboarding/log-alert/custom-topic metric facts and strict local
+joins are not ingestion, correlation, real-time delivery or tenant coverage.
+Actual linked Event Grid metric guidance and separate Azure/M365 Lockbox
+eligibility/enablement/approver/audit/exclusion boundaries remain explicit.
+Separate account use and the two different operating plans stay manual; all seven
+registered decisions remain blank and source/content/scope/time bound. Exact
+`.14`, all139 prior own-GUID rows/sixteen receipts and original four full controls
+remain unchanged. Dispositions stay12/200/43; delivery remains139/112 until actual
+checked implementation and guarded own receipts. See
+[integration boundaries](plan.md#cohort-23-accepted-integration-2026-11-06).
+
 Reviewed successor `2026-11-06.13` integrates cohort05/
 [#118](https://github.com/jonathan-vella/landinglens/issues/118) after the sole
 coordinator grant and actual cohort20 implementation122/receipt123 delivery.

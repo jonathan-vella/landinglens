@@ -1,0 +1,226 @@
+{
+  "batch": "23",
+  "review_state": "reviewed",
+  "sources": [
+    {
+      "id": "central-workspace-linked",
+      "url": "https://learn.microsoft.com/azure/azure-monitor/logs/design-logs-deployment",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/workspace-design",
+      "sha256": "ce9f165d6b036cc475de330358fd1670aeef8b32e75114e439ed1e93eb3cce79",
+      "retrieved_at": "2026-11-06T15:37:41.565468+00:00",
+      "revision": "52bb405da89c17f0eeda6cb32945cc94f7698e62",
+      "finding": "Legacy link redirects to workspace-design. Start with one workspace, then use the fewest meeting tenant, region/residency, ownership, access, retention, cost and resilience requirements; central does not mean one universal workspace.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "correlated-threats-linked",
+      "url": "https://learn.microsoft.com/azure/well-architected/security/monitor-threats#centralized-threat-detection-with-correlated-logs",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/well-architected/security/monitor-threats",
+      "sha256": "4807d145df37251eff4563c7260ad5a0f162ab1dbfb731ac7428e5f0b40b8ee7",
+      "retrieved_at": "2026-11-06T15:37:42.454597+00:00",
+      "revision": "bb2e40b7f88c35b52263e5303880b7911f726d4a",
+      "finding": "SIEM consolidation needs actual normalized/correlated data, synchronized time, detections and SecOps response. Onboarding/routing configuration proves none. Defender alerting alone may lack data aggregation. No query or threat test is run.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "azure-lockbox-linked",
+      "url": "https://learn.microsoft.com/en-gb/azure/security/fundamentals/customer-lockbox-overview",
+      "resolved_url": "https://learn.microsoft.com/en-gb/azure/security/fundamentals/customer-lockbox-overview",
+      "sha256": "2fecabb491587ba0b4b3cb1532387d48a991e394129448858daf8a3b0da98e11",
+      "retrieved_at": "2026-11-06T15:37:42.984788+00:00",
+      "revision": "eb6ae832313160a3f8f00d5b7f329155fc469336",
+      "finding": "Azure enablement is tenant administration, not subscription feature registration. Minimum Developer support, actual supported service/cloud population, subscription versus tenant approvers/logs, unsupported MG role scope and break-glass/incidental/legal-demand exclusions must be reviewed. Azure pending requests expire in four days.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "m365-lockbox",
+      "url": "https://learn.microsoft.com/en-us/purview/customer-lockbox-requests",
+      "resolved_url": "https://learn.microsoft.com/en-us/purview/customer-lockbox-requests",
+      "sha256": "2e3423ecde5e249540c7d9d7f1c4ab536408d3277ae83190333ab116ffd29f12",
+      "retrieved_at": "2026-11-06T15:37:43.229979+00:00",
+      "revision": "7a83fe926aa8fd68a12acd15c6b63c8dbb049359",
+      "finding": "M365 is separate tenant enablement/licensing: E5/G5 or qualifying add-on and supported Exchange/SharePoint/OneDrive/Teams/Windows365; Copilot interactions are covered through Exchange. Approver/admin and audit setup differ; requests expire after 12 hours without approval. No Azure resource establishes this.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "event-grid-alerts-linked",
+      "url": "https://learn.microsoft.com/azure/event-grid/set-alerts",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/event-grid/set-alerts",
+      "sha256": "7746a6f607da5be21e5afb1366ff28293720930c3b57c8d429bd695eee2a065b",
+      "retrieved_at": "2026-11-06T15:37:43.739495+00:00",
+      "revision": "bad6207c878b7359c6fa1a1de7666d771bdf7a4c",
+      "finding": "Actual link describes Event Grid service metric/activity alerts, not general log queries or proof of a log-oriented real-time solution. System topics use Metrics. The sample dead-letter threshold of ten is not a universal control requirement.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "alert-types",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-types",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-types",
+      "sha256": "545a8d28e53b0b7a81ed1b23597207d07f2dc3996ffa4a321e587649f2114b0f",
+      "retrieved_at": "2026-11-06T15:37:44.147285+00:00",
+      "revision": "7c382a303b0eebef5827ccbafd383110ea307bc3",
+      "finding": "Metric, activity-log, scheduled log-query and simple log alerts are distinct. Regular log evaluation and ingestion introduce latency; a configured frequency is not end-to-end real-time delivery. New preview metric types are not supported.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "separate-accounts-linked",
+      "url": "https://learn.microsoft.com/azure/active-directory/roles/security-planning",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/security-planning",
+      "sha256": "0c8cbfa641586a40c6e055483e5bca715339cd34b6f0d13c50085edb6d3fe964",
+      "retrieved_at": "2026-11-06T15:37:45.200817+00:00",
+      "revision": "71c5eed3578535b0614b574325d4c0c8c8dd866a",
+      "finding": "Legacy AAD link redirects to Entra security-planning. Separate everyday versus privileged use, individual accountability, emergency/automation exceptions, protection and actual operating evidence require manual review; counts of assignments/principals cannot establish separate-account use.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "service-enablement-linked",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/service-enablement-framework",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/service-enablement-framework",
+      "sha256": "bc6256f6a3886438ea46cc2c81e31290110872bd8c355a5dad7f3356028cb00b",
+      "retrieved_at": "2026-11-06T15:37:46.171633+00:00",
+      "revision": "654cfe6e1028ffb4a8b5af62887349e6d5839652",
+      "finding": "CAF provides service-readiness questions spanning network/data, identity, governance, operations, compliance, SKUs/availability and SLAs. G06.01 needs an approved new-service design/onboarding plan; distinct G06.02 needs request intake, authorization, fulfillment, validation/escalation and accountable service-specific criteria. The source supplies no universal approval or SLA.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "diagnostic-settings",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/diagnostic-settings",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/data-collection/diagnostic-settings",
+      "sha256": "95c75ca8fac99029d86f35f03c55f0d0058774dd8e8df01cdb6f22cdcbdaf060",
+      "retrieved_at": "2026-11-06T15:37:47.130050+00:00",
+      "revision": "a2e2f0dd741847fe6a9d9af7b42e03f6f9914eff",
+      "finding": "Resource logs require diagnostics; automatic metrics/activity logs differ. Cross-subscription or Lighthouse destinations require separate access/tenant evidence. Local joins intentionally require supplied in-bound typed workspaces and do not broaden tenant/scope to infer supported cross-boundary routing.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "sentinel-onboarding",
+      "url": "https://learn.microsoft.com/en-us/azure/sentinel/quickstart-onboard",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/sentinel/quickstart-onboard",
+      "sha256": "cd106ec46a67d54cd2f436f5a715212b827c7403bb0553fb228ff3b9a392f709",
+      "retrieved_at": "2026-11-06T15:37:47.557093+00:00",
+      "revision": "030b9c1d697b4bbb618a1f74d38370ead5215f8e",
+      "finding": "Onboarding, content/connectors and actual ingestion are separate. A workspace or default onboarding state does not establish correlation, active detections, all-service coverage, response, health or non-Sentinel SIEM adoption.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "workspace-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.operationalinsights/2023-09-01/workspaces",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.operationalinsights/2023-09-01/workspaces",
+      "sha256": "285cb583c52f86f475d97fdcccf16da6f0b647db607dd7e69eb04bcb4c50ed63",
+      "retrieved_at": "2026-11-06T15:37:47.960612+00:00",
+      "revision": "a80a6ca0ce31aae2ff0424e8453153664e18bc8b",
+      "finding": "2023-09-01 has explicit SKU, default retention and network configuration. Only these bounded fields are retained; they are not table overrides, effective retention, ingest availability or completeness.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "onboarding-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.securityinsights/2024-03-01/onboardingstates",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.securityinsights/2024-03-01/onboardingstates",
+      "sha256": "72076e65eded0522b4b766519b322e0402e0065d1fa65c92abf8b3b3bdce1b47",
+      "retrieved_at": "2026-11-06T15:37:48.446790+00:00",
+      "revision": "a80a6ca0ce31aae2ff0424e8453153664e18bc8b",
+      "finding": "2024-03-01 is a real workspace extension with customerManagedKey boolean. Only the exact default child joins a unique supplied workspace; no synthetic M365/Graph/Lockbox ARM types or universal SIEM predicate are added.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "log-alert-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/2023-12-01/scheduledqueryrules",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/2023-12-01/scheduledqueryrules",
+      "sha256": "4cad5ba3040030b4244473c172ebba26c888fa8865632740ebba67ec977a5f1b",
+      "retrieved_at": "2026-11-06T15:37:48.803669+00:00",
+      "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+      "finding": "Only explicit LogAlert configuration with bounded supplied workspace IDs, enabled/frequency/window/condition count and typed action IDs is prepared. LogToMetric, nonworkspace scopes and new kinds stay unsupported. No KQL, dimensions, descriptions, rule bodies or action payloads are retained/executed.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "topic-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.eventgrid/2022-06-15/topics",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.eventgrid/2022-06-15/topics",
+      "sha256": "83ccb893c07e06c88e6267bf3b42d0f977622679450cbe6fd367b9645188f5e8",
+      "retrieved_at": "2026-11-06T15:37:49.351290+00:00",
+      "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+      "finding": "Only explicit input-schema and public-network enum context for custom topics. No endpoint, key, IP mask, identity, schema mapping or event payload retained.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "topic-metrics",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/reference/supported-metrics/microsoft-eventgrid-topics-metrics",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/reference/supported-metrics/microsoft-eventgrid-topics-metrics",
+      "sha256": "6c83ffc55453bbb696f6e1365f2d6a851ff1c50a20e70b439f6600f5f76112fc",
+      "retrieved_at": "2026-11-06T15:37:49.899407+00:00",
+      "revision": "6826eb8f500267014038df72b1cfc5e559191f41",
+      "finding": "Prepared static Total topic criteria use these three actual REST metric names. Display names are not API names. Service metrics never become log-query proof.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "metric-alert-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/2018-03-01/metricalerts",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/2018-03-01/metricalerts",
+      "sha256": "19be049356a3288432a5c01beb713e45986e380433edd26f1cceedc10513eafe",
+      "retrieved_at": "2026-11-06T15:37:50.313259+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Reuse monitoring15's pinned metric API without altering its ExpressRoute semantics. Only single custom-topic static criteria are prepared; dynamic/multi-resource criteria remain unsupported, and action references are not delivery evidence.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "diagnostic-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/2021-05-01-preview/diagnosticsettings",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/2021-05-01-preview/diagnosticsettings",
+      "sha256": "f0ff0224314663dfed322e2f91a07d0196f0f70fda6c40ff81a5fecce2654f81",
+      "retrieved_at": "2026-11-06T15:37:50.682596+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Reuse security22 diagnostic projection and typed destinations. Category groups and log selection are separate from metrics, default configuration coverage, actual category support, delivered ingestion, correlation and retention.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-workspace",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/log_analytics_workspace.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/log_analytics_workspace.html.markdown",
+      "sha256": "241918b71949554ce92012eb9af5a59c95a45c2006b1a73b8845c248dca4c945",
+      "retrieved_at": "2026-11-06T15:37:50.985398+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned 4.50.0 explicit SKU, retention 30-730 and Internet flags normalize without inferring defaults; shared keys/customer IDs and arbitrary tags are withheld. Workspace retention is not every table's actual retention.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-onboarding",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/sentinel_log_analytics_workspace_onboarding.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/sentinel_log_analytics_workspace_onboarding.html.markdown",
+      "sha256": "86c2768dd6c4c572eb6811ca294602e0a186d99864b16c1acdd051238f2a8052",
+      "retrieved_at": "2026-11-06T15:37:51.272684+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider supports workspace-bound Sentinel onboarding; omitted CMK does not default false in evidence. Documentation import plural defaults is corrected by the actual implementation's literal default; no operational success inferred.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-onboarding-implementation",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/sentinel/sentinel_log_analytics_workspace_onboarding_resource.go",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/sentinel/sentinel_log_analytics_workspace_onboarding_resource.go",
+      "sha256": "7cfc87e337c7d2964629730f7e4e5921e1595e154dde614467dc58db7a364dbc",
+      "retrieved_at": "2026-11-06T15:37:51.555535+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Actual 4.50.0 implementation constructs workspace extension onboardingStates/default using 2022-11-01. Strict parent IDs, not name heuristics, bind raw/plan evidence. No provider run, state polling, onboarding or default-value inference occurs.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "learn-reuse",
+      "url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "resolved_url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "sha256": "642c27d53e7fd313701bbdb8bac21e86b7e81e3ccb01c9b5e338d8ba500ccb44",
+      "retrieved_at": "2026-11-06T15:37:51.952126+00:00",
+      "revision": "9fd90ed833034800434458aef187ba08d8dc9d5b",
+      "finding": "Retain attributed URL/revision/hash and original factual findings only, not article copies, screenshot assets, sample scripts or private request contents.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "provider-license",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "sha256": "4e2bb185ebd706f76329206869ccb348b92b6236100cfb07775fe31530dab0d5",
+      "retrieved_at": "2026-11-06T15:37:52.239978+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider uses MPL-2.0. Only attributed metadata and original factual schema findings are retained; no implementation source is redistributed.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    }
+  ]
+}

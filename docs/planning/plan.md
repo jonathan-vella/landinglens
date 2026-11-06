@@ -1,5 +1,64 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 23 accepted integration: 2026-11-06
+
+The coordinator granted [#124](https://github.com/jonathan-vella/landinglens/issues/124)
+the sole slot after actual cohort16 implementation128/receipt129, #121 completed
+closure and139 independently verified own-GUID receipts. Preserved preparation
+`3204291` was reconciled with actual main
+`3dc42b209a74a11f0be8fabfa17795177bd9a097` in `cfa973e`.
+The [seven-GUID matrix](../../references/recommendation-batches/batch-23.json)
+and [22 original captures](../../references/recommendation-batches/batch-23-sources.json)
+precede unique successor `2026-11-06.15` through existing offline builders.
+Exact `.14` catalog bytes:
+`cff4272bf75497cede26b9683feb21a78a4416f40bbae825998c04e3c5e19a41`;
+crosswalk bytes:
+`34faf24ee323ead3c3cc6e5b7a0af2bedc71f67b84c58c18e7e397050a4db26a`.
+All255 GUIDs, fixed251/original four full controls, all139 earlier rows/sixteen
+receipts, ASPath and joined GatewaySubnet predicates remain unchanged.
+
+Four assisted workflows prepare literal workspace, Sentinel default onboarding,
+workspace log-alert and distinct Event Grid custom-topic metric configuration.
+Strict known unique typed subscription/RG-local joins and kind-specific facts/
+Signals never prove tenant equivalence, ingestion, correlation/detection, health,
+latency or complete coverage. The linked Event Grid page concerns metrics/activity
+alerts, not a general log-oriented real-time solution. Azure Lockbox uses tenant
+administration, not feature registration; Azure support/service/cloud/approver/
+audit/exclusion conditions differ from M365 licensing/tenant/service/approver/
+audit conditions. No synthetic Lockbox/Graph/M365 resource or support approval is
+invented. Separate account use and two different service operating plans remain
+three manual recommendations. All seven registered decisions remain independently
+blank and content/scope/expiry bound.
+
+The existing evaluator, CLI, tiers, reports/trackers, local session and actual
+packaged `.15` original-time replay are exercised. Historical `.12` preparation
+and `.14` semantics stay pinned; executable guards reject direct preparation
+matrix activation and unguarded source recapture. A tightly coupled malformed
+gateway-alert scope normalization keeps unrelated Event Grid metric context
+unknown and replay-idempotent, not a gateway criterion or new predicate.
+All thirteen actual predecessor compiler cases remain; the relevant logging
+fixture is the fourteenth. There are no new dependencies, live endpoints,
+collection/queries/scans/events/alerts, permissions/settings, requests, approvals,
+deployments, module/compiler acquisition or fabricated human outcomes.
+
+Dispositions remain **12 automated /200 assisted /43 manual**; crosswalk remains
+51 controls/53 static partial/related associations. The cohort's one query
+association is not an executable test; only the existing exact D07.06/.07
+allowlist remains executable. Delivery stays **139 delivered /112 pending** until
+normal exact-head implementation/platform/CodeQL/review/four matching exercised
+compiler proofs and guarded seven-own-GUID receipt publication satisfy their gates.
+
+Pre-delivery checkout and own exact installed-wheel suites each ran **559 tests**:
+558 passed with only the original Windows symlink-privilege skip. All24 cohort
+preparation/accepted cases, format/lint, 43-source-file typing, dependency
+consistency and399 local documentation links pass. All fourteen existing-compiler
+cases are included with no compiler skip or restore. Own offline wheel SHA256:
+`4e4b0b4f95f513cbb562339b584eac202a1457ebabe573f5ae06d6c52d364023`.
+All118 packaged code/data bytes match checkout, and the dedicated minimal
+outside-checkout interpreter proves its own site-packages `.15` import.
+No new dependency, alternate session environment, package publication or live
+runtime evidence is substituted for these local results.
+
 ## Cohort 16 accepted integration: 2026-11-06
 
 The coordinator granted [#121](https://github.com/jonathan-vella/landinglens/issues/121)
@@ -195,6 +254,53 @@ Original research basis: an earlier report retained in the planning session,
 not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
+
+## Cohort 23 independent preparation: 2026-11-06
+
+[#124](https://github.com/jonathan-vella/landinglens/issues/124) owns seven fixed
+central logging, SIEM, conditional Azure/M365 Lockbox, Event Grid/log-alert,
+separate-account and two distinct service-plan GUIDs. The
+[preparation matrix](../../references/recommendation-batches/preparation-23.json)
+and [22 source captures](../../references/recommendation-batches/preparation-23-sources.json)
+are deliberately outside accepted builders. No successor version, catalog/
+crosswalk history, ledger/count, registered interview bank, delivery receipt or
+issue closure is activated during independent work.
+
+Literal workspace configuration, default Sentinel workspace extensions,
+workspace-scoped scheduled LogAlert metadata and custom-topic static metric
+criteria reuse existing adapters and diagnostic/security/monitoring helpers.
+Strict unique known typed in-bound source/target joins remain original-time
+preparation, not ingestion, correlation/detection, health, complete coverage,
+tenant equivalence or delivery latency. No KQL, rule body, raw event/log,
+support/private request, personal identity, webhook or credential is retained.
+The actual Event Grid link covers metrics/activity alerts; it cannot establish
+the frozen log-oriented real-time claim. Azure and M365 Lockbox require separate
+eligibility, tenant enablement, supported service/cloud, approver, audit and
+exclusion evidence; Azure feature registration proves neither plane. Three
+organizational decisions remain manual and all seven candidate outcomes blank.
+
+The candidate matrix/interview is exercised without registering an accepted
+successor. Real packaged predecessor replay and an additional actual no-restore
+compiler fixture preserve existing compiler cases and evaluator meanings.
+Final reconciliation, accepted source/schema/bank/catalog activation, checked
+implementation/receipt PRs and closure await the parent's explicit slot after
+05/16. No successor is launched here; no cloud/M365 access is implied.
+
+Preparation checkout and its own exact installed wheel each ran **509 tests**:
+508 passed with the original Windows symlink-privilege skip. All19 cohort cases,
+format/lint, 42-source-file typing, dependency consistency and366 local links pass.
+All twelve actual existing-compiler cases exercised without skips or restore;
+the first eleven are preserved and the twelfth checks real workspace extensions
+and distinct log/metric alert preparation. Compiler proof SHA256:
+`b34cca912cd5b348cc3b3cd04e2eeb8d3e2c3ef8a030c6dbe6b77ec90d2ff0a8`.
+Own offline wheel SHA256:
+`57f0460119d88dbf23b9375010c793fc2120458e9716e0440b19763e1c8b5d9a`.
+All105 packaged code/data bytes match checkout and a fresh outside-checkout
+interpreter proves its own site-packages import. Only the original three reviewed
+runtime wheels were restored from hash-checked local cache after explicit
+missing-`hcl2` failure. No accepted data/ledger bytes changed. These local
+preparation proofs are not accepted-successor replay, platform/CodeQL/PR delivery,
+four matching downloaded compiler artifacts, own-GUID receipts or #124 completion.
 
 ## Cohort 05 granted integration: 2026-11-06
 

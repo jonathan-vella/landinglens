@@ -2721,6 +2721,192 @@ SOURCES_30 = [
 ]
 
 
+SOURCES_23 = [
+    (
+        "central-workspace-linked",
+        "https://learn.microsoft.com/azure/azure-monitor/logs/design-logs-deployment",
+        ["fewest number of workspaces", "Microsoft Entra tenants", "Data retention"],
+        "Legacy link redirects to workspace-design. Start with one workspace, then use "
+        "the fewest meeting tenant, region/residency, ownership, access, retention, cost "
+        "and resilience requirements; central does not mean one universal workspace.",
+    ),
+    (
+        "correlated-threats-linked",
+        "https://learn.microsoft.com/azure/well-architected/security/monitor-threats"
+        "#centralized-threat-detection-with-correlated-logs",
+        ["correlated and normalized", "accurate timekeeping", "validation of logging"],
+        "SIEM consolidation needs actual normalized/correlated data, synchronized time, "
+        "detections and SecOps response. Onboarding/routing configuration proves none. "
+        "Defender alerting alone may lack data aggregation. No query or threat test is run.",
+    ),
+    (
+        "azure-lockbox-linked",
+        "https://learn.microsoft.com/en-gb/azure/security/fundamentals/customer-lockbox-overview",
+        ["Developer", "Global Administrator", "management groups", "Exclusions"],
+        "Azure enablement is tenant administration, not subscription feature registration. "
+        "Minimum Developer support, actual supported service/cloud population, subscription "
+        "versus tenant approvers/logs, unsupported MG role scope and break-glass/incidental/"
+        "legal-demand exclusions must be reviewed. Azure pending requests expire in four days.",
+    ),
+    (
+        "m365-lockbox",
+        LEARN + "purview/customer-lockbox-requests",
+        ["Windows 365", "12 hours", "E5", "G5"],
+        "M365 is separate tenant enablement/licensing: E5/G5 or qualifying add-on and "
+        "supported Exchange/SharePoint/OneDrive/Teams/Windows365; Copilot interactions "
+        "are covered through Exchange. Approver/admin and audit setup differ; requests "
+        "expire after 12 hours without approval. No Azure resource establishes this.",
+    ),
+    (
+        "event-grid-alerts-linked",
+        "https://learn.microsoft.com/azure/event-grid/set-alerts",
+        ["metrics and activity log operations", "dead-lettered", "Metrics"],
+        "Actual link describes Event Grid service metric/activity alerts, not general log "
+        "queries or proof of a log-oriented real-time solution. System topics use Metrics. "
+        "The sample dead-letter threshold of ten is not a universal control requirement.",
+    ),
+    (
+        "alert-types",
+        LEARN + "azure/azure-monitor/alerts/alerts-types",
+        ["Log search alert", "more latent", "Simple log search"],
+        "Metric, activity-log, scheduled log-query and simple log alerts are distinct. "
+        "Regular log evaluation and ingestion introduce latency; a configured frequency "
+        "is not end-to-end real-time delivery. New preview metric types are not supported.",
+    ),
+    (
+        "separate-accounts-linked",
+        "https://learn.microsoft.com/azure/active-directory/roles/security-planning",
+        ["dedicated accounts", "non-administrative", "emergency access"],
+        "Legacy AAD link redirects to Entra security-planning. Separate everyday versus "
+        "privileged use, individual accountability, emergency/automation exceptions, "
+        "protection and actual operating evidence require manual review; counts of "
+        "assignments/principals cannot establish separate-account use.",
+    ),
+    (
+        "service-enablement-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/"
+        "design-area/service-enablement-framework",
+        ["Segregation of duties", "Service availability", "Service-level agreements"],
+        "CAF provides service-readiness questions spanning network/data, identity, "
+        "governance, operations, compliance, SKUs/availability and SLAs. G06.01 needs "
+        "an approved new-service design/onboarding plan; distinct G06.02 needs request "
+        "intake, authorization, fulfillment, validation/escalation and accountable "
+        "service-specific criteria. The source supplies no universal approval or SLA.",
+    ),
+    (
+        "diagnostic-settings",
+        LEARN + "azure/azure-monitor/essentials/diagnostic-settings",
+        ["Aren't collected by default", "Azure Lighthouse", "latency"],
+        "Resource logs require diagnostics; automatic metrics/activity logs differ. "
+        "Cross-subscription or Lighthouse destinations require separate access/tenant "
+        "evidence. Local joins intentionally require supplied in-bound typed workspaces "
+        "and do not broaden tenant/scope to infer supported cross-boundary routing.",
+    ),
+    (
+        "sentinel-onboarding",
+        LEARN + "azure/sentinel/quickstart-onboard",
+        ["paid service", "data connector", "Onboarding States"],
+        "Onboarding, content/connectors and actual ingestion are separate. A workspace "
+        "or default onboarding state does not establish correlation, active detections, "
+        "all-service coverage, response, health or non-Sentinel SIEM adoption.",
+    ),
+    (
+        "workspace-arm",
+        LEARN + "azure/templates/microsoft.operationalinsights/2023-09-01/workspaces",
+        ["retentionInDays", "publicNetworkAccessForIngestion", "PerGB2018"],
+        "2023-09-01 has explicit SKU, default retention and network configuration. "
+        "Only these bounded fields are retained; they are not table overrides, "
+        "effective retention, ingest availability or completeness.",
+    ),
+    (
+        "onboarding-arm",
+        LEARN + "azure/templates/microsoft.securityinsights/2024-03-01/onboardingstates",
+        ["customerManagedKey", "scope", "extension resource"],
+        "2024-03-01 is a real workspace extension with customerManagedKey boolean. "
+        "Only the exact default child joins a unique supplied workspace; no synthetic "
+        "M365/Graph/Lockbox ARM types or universal SIEM predicate are added.",
+    ),
+    (
+        "log-alert-arm",
+        LEARN + "azure/templates/microsoft.insights/2023-12-01/scheduledqueryrules",
+        ["LogAlert", "LogToMetric", "evaluationFrequency", "actionGroups"],
+        "Only explicit LogAlert configuration with bounded supplied workspace IDs, "
+        "enabled/frequency/window/condition count and typed action IDs is prepared. "
+        "LogToMetric, nonworkspace scopes and new kinds stay unsupported. No KQL, "
+        "dimensions, descriptions, rule bodies or action payloads are retained/executed.",
+    ),
+    (
+        "topic-arm",
+        LEARN + "azure/templates/microsoft.eventgrid/2022-06-15/topics",
+        ["inputSchema", "CloudEventSchemaV1_0", "publicNetworkAccess"],
+        "Only explicit input-schema and public-network enum context for custom topics. "
+        "No endpoint, key, IP mask, identity, schema mapping or event payload retained.",
+    ),
+    (
+        "topic-metrics",
+        LEARN
+        + "azure/azure-monitor/reference/supported-metrics/microsoft-eventgrid-topics-metrics",
+        ["DeadLetteredCount", "DeliveryAttemptFailCount", "PublishFailCount"],
+        "Prepared static Total topic criteria use these three actual REST metric names. "
+        "Display names are not API names. Service metrics never become log-query proof.",
+    ),
+    (
+        "metric-alert-arm",
+        LEARN + "azure/templates/microsoft.insights/2018-03-01/metricalerts",
+        ["SingleResourceMultipleMetricCriteria", "StaticThresholdCriterion", "actionGroupId"],
+        "Reuse monitoring15's pinned metric API without altering its ExpressRoute semantics. "
+        "Only single custom-topic static criteria are prepared; dynamic/multi-resource "
+        "criteria remain unsupported, and action references are not delivery evidence.",
+    ),
+    (
+        "diagnostic-arm",
+        LEARN + "azure/templates/microsoft.insights/2021-05-01-preview/diagnosticsettings",
+        ["workspaceId", "categoryGroup", "enabled"],
+        "Reuse security22 diagnostic projection and typed destinations. Category groups "
+        "and log selection are separate from metrics, default configuration coverage, "
+        "actual category support, delivered ingestion, correlation and retention.",
+    ),
+    (
+        "terraform-workspace",
+        RAW + "website/docs/r/log_analytics_workspace.html.markdown",
+        ["retention_in_days", "internet_ingestion_enabled", "2022-10-01"],
+        "Pinned 4.50.0 explicit SKU, retention 30-730 and Internet flags normalize without "
+        "inferring defaults; shared keys/customer IDs and arbitrary tags are withheld. "
+        "Workspace retention is not every table's actual retention.",
+    ),
+    (
+        "terraform-onboarding",
+        RAW + "website/docs/r/sentinel_log_analytics_workspace_onboarding.html.markdown",
+        ["workspace_id", "customer_managed_key_enabled", "2022-11-01"],
+        "Pinned provider supports workspace-bound Sentinel onboarding; omitted CMK does "
+        "not default false in evidence. Documentation import plural defaults is corrected "
+        "by the actual implementation's literal default; no operational success inferred.",
+    ),
+    (
+        "terraform-onboarding-implementation",
+        RAW + "internal/services/sentinel/sentinel_log_analytics_workspace_onboarding_resource.go",
+        ['"default"', "2022-11-01", "CustomerManagedKey"],
+        "Actual 4.50.0 implementation constructs workspace extension onboardingStates/default "
+        "using 2022-11-01. Strict parent IDs, not name heuristics, bind raw/plan evidence. "
+        "No provider run, state polling, onboarding or default-value inference occurs.",
+    ),
+    (
+        "learn-reuse",
+        LEARN + "legal/termsofuse",
+        ["Notice Specific to Documents", "explicit license terms"],
+        "Retain attributed URL/revision/hash and original factual findings only, not "
+        "article copies, screenshot assets, sample scripts or private request contents.",
+    ),
+    (
+        "provider-license",
+        RAW + "LICENSE",
+        ["Mozilla Public License", "2.0"],
+        "Pinned provider uses MPL-2.0. Only attributed metadata and original factual "
+        "schema findings are retained; no implementation source is redistributed.",
+    ),
+]
+
+
 SOURCES_16 = [
     (
         "gateway-diagnostics-linked",
@@ -2974,6 +3160,7 @@ def main() -> None:
             "19",
             "20",
             "22",
+            "23",
             "30",
         ],
         default="01",
@@ -2981,9 +3168,9 @@ def main() -> None:
     args = parser.parse_args()
     if args.vwan_supplement and (args.batch != "16" or not args.preparation_only):
         raise ValueError("The vWAN supplement is cohort16 preparation only")
-    if (args.batch in {"05", "12", "16", "20", "30"}) != args.preparation_only:
+    if (args.batch in {"05", "12", "16", "20", "23", "30"}) != args.preparation_only:
         raise ValueError(
-            "Cohorts 05/12/16/20/30 source capture require --preparation-only; no activation"
+            "Cohorts 05/12/16/20/23/30 source capture require --preparation-only; no activation"
         )
     prefix = "preparation" if args.preparation_only else "batch"
     suffix = "-vwan" if args.vwan_supplement else ""
@@ -3015,6 +3202,7 @@ def main() -> None:
         "19": SOURCES_19,
         "20": SOURCES_20,
         "22": SOURCES_22,
+        "23": SOURCES_23,
         "30": SOURCES_30,
     }[args.batch]
     for identity, url, markers, finding in (

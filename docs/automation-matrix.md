@@ -33,11 +33,40 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.14` retains all 255 entries: 12 automated, 200 assisted
-and 43 manual. Crosswalk `2026-11-06.14` rebinds the unchanged 51-control,
+Current successor `2026-11-06.15` retains all 255 entries: 12 automated, 200 assisted
+and 43 manual. Crosswalk `2026-11-06.15` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
 Exact predecessor `.6.13` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
+
+### Cohort 23: central logging, support access and service enablement
+
+The [seven-GUID accepted matrix](../references/recommendation-batches/batch-23.json)
+and [22 unchanged source captures](../references/recommendation-batches/batch-23-sources.json)
+follow the explicit coordinator slot and actual cohort16 implementation/receipt
+delivery. Exact `.14` catalog/crosswalk bytes, all139 earlier own-GUID rows and
+sixteen receipts remain frozen. Source acceptance is not merged delivery.
+
+| Target | Bounded evidence | Separate decision |
+|---|---|---|
+| G03.08 | Explicit workspace SKU/default retention/network enums and reused diagnostic groups/destinations; strict known typed local workspace joins | Actual default-resource coverage, arriving resource logs and approved central architecture across tenant/residency/access/retention/resilience boundaries |
+| G03.09 | Literal Sentinel `onboardingStates/default` workspace extension and explicit CMK setting | Actual SIEM connectors, normalization/time synchronization, cross-service correlation, detections and SecOps response; other SIEMs remain valid |
+| G03.10 | Conditional source-specific two-plane review, no synthetic resource predicate | Azure and M365 tenant enablement, eligibility, supported services/clouds, distinct approvers/audit sources, actual approvals and exclusions |
+| G03.11 | Workspace-scoped `LogAlert` metadata versus single-custom-topic static service-metric criteria | Actual Event Grid-based log-oriented architecture and measured end-to-end alert delivery; the linked metric/activity tutorial does not establish log-query capability |
+| G05.01 | Manual | Actual separate everyday/privileged account use and protected accountable administration |
+| G06.01 | Manual | Approved new-service readiness/adoption plan and accountable review |
+| G06.02 | Manual | Separate request intake, authorization, fulfillment, validation/escalation and closure plan |
+
+Supported planned APIs are workspace `2023-09-01`, Sentinel onboarding
+`2024-03-01`, scheduled query rules `2023-12-01`, custom topics `2022-06-15`,
+plus existing diagnostics/metric alerts. AzureRM4.50.0 raw/supplied-module/plan
+support adds explicit workspace and Sentinel onboarding context only; raw
+resource-computed IDs remain unresolved. No defaults, unsupported kinds/versions,
+nonworkspace log scopes, multi-resource/dynamic metric criteria or cross-boundary
+tenant relationships are inferred. Missing/denied/ambiguous/stale/over-bound
+facts remain explicit. All seven registered interview outcomes start blank.
+No logs, KQL/rule bodies, ticket/private request content, identities, webhook
+URLs or credentials are retained, and no new live read or execution is added.
 
 ### Cohort 16: network monitoring, sovereignty and firewall policy
 

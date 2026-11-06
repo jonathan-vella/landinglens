@@ -110,7 +110,8 @@ def gateway_alert_facts(value: Any) -> Any:
             any(not isinstance(ref, str) for ref in refs)
             or len(set(ref for ref in refs if isinstance(ref, str))) != len(refs)
         ):
-            result["gatewayIds"] = unknown("gateway_alert_scope_invalid_or_duplicate")
+            result["gatewayIds"] = unknown("alert_scopes_missing_invalid_empty_or_over_100")
+            result["criteria"] = unknown("alert_criteria_missing_or_unsupported")
     return result
 
 

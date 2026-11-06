@@ -137,6 +137,30 @@ is retained, and no configuration becomes a resolution/security/resilience pass.
 
 ## Tiers and counts
 
+Cohort23's [accepted matrix](../references/recommendation-batches/batch-23.json)
+is included in successor `2026-11-06.15` after the coordinator's explicit slot.
+Its [22 reviewed sources](../references/recommendation-batches/batch-23-sources.json)
+separate central workspace/routing configuration from ingestion, Sentinel
+onboarding from SIEM correlation/detection, and Event Grid service metric alerts
+from log-query alerting and measured end-to-end latency. The existing offline
+adapters prepare only explicit bounded fields and unique known typed
+subscription/RG-local joins; they do not prove tenant equivalence or broaden
+cross-boundary collection. Raw Terraform resource-computed IDs remain unresolved;
+literal supplied parent IDs are required for its onboarding joins.
+
+Azure Lockbox uses tenant administration and requires at least Developer support;
+Azure feature registration is not tenant enablement. M365 has distinct tenant
+enablement, E5/G5 or qualifying add-on licensing, supported services and approver/
+audit responsibilities. Actual service/cloud availability and exclusions need
+review in each plane. Neither an Azure flag nor an imagined ARM/Graph type
+establishes M365 coverage or actual support approvals. Separate privileged-account
+use, new-service readiness and request fulfillment remain three different manual
+decisions. All seven candidate decisions start blank. Preparation adds no live
+reads, queries, alert/event execution, requests, approvals or settings changes.
+The registered interview and actual packaged successor replay share these limits.
+Source acceptance is not exact-head implementation delivery or guarded own-GUID
+receipt publication; those gates remain separate.
+
 Cohort20's [Virtual WAN matrix](../references/recommendation-batches/batch-20.json)
 adds one strict scoped ASPath configuration predicate and eight separate
 assisted decisions. Explicit WAN/hub branch flags, Internet-intent/local-firewall

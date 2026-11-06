@@ -26,6 +26,8 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     from .governance_evidence import GUIDS as GOVERNANCE_GUIDS
     from .governance_evidence import resource_in_scope
     from .identity_evidence import RESILIENCE_GUIDS
+    from .logging_evidence import GUIDS as LOGGING_GUIDS
+    from .logging_evidence import resource_paths, scoped_identity
     from .network_evidence import REVIEW_PATHS, review_fact
     from .network_policy_evidence import GUIDS as NETWORK_POLICY_GUIDS
     from .sources import boolean, enumeration, property_at
@@ -36,8 +38,9 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     if not kinds or not control.get("review_fact_paths"):
         return False
     vwan = control["upstream_guid"] in VWAN_GUIDS
+    logging = control["upstream_guid"] in LOGGING_GUIDS
     by_id: dict[str, list[dict[str, Any]]] = {}
-    if vwan:
+    if vwan or logging:
         for resource in bundle["resources"]:
             by_id.setdefault((resource.get("arm_id") or "").lower(), []).append(resource)
     for resource in bundle["resources"]:
@@ -49,6 +52,10 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
             resource, bundle
         ):
             continue
+        if logging:
+            identity = scoped_identity(resource, bundle.get("scope"))
+            if not identity or len(by_id.get(identity, [])) != 1:
+                continue
         if (
             vwan
             and known_resource(
@@ -61,6 +68,8 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
         ):
             continue
         for path in control.get("review_fact_paths", []):
+            if logging and path not in resource_paths(resource["resource_type"]):
+                continue
             properties = resource["properties"]
             if path in REVIEW_PATHS:
                 fact = review_fact(properties, path)

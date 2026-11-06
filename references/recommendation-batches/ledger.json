@@ -7697,9 +7697,43 @@
       "baseline_control_sha256": "13fd7a6823eb22edce18786da7655d9742d20be6bb7398129e27bac74f3b5e75",
       "design_area": "Security",
       "batch": "23",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "e5f8d79f-2e87-4768-924c-516775c6ea95",
+        "upstream_id": "G03.08",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit workspace SKU/default retention/network enums and reused diagnostic target/routing facts; exact known in-scope workspace joins, not successful log collection.",
+        "sources": [
+          "central-workspace-linked",
+          "diagnostic-settings",
+          "workspace-arm",
+          "diagnostic-arm",
+          "terraform-workspace"
+        ],
+        "review_resource_types": [
+          "Microsoft.OperationalInsights/workspaces",
+          "Microsoft.Insights/diagnosticSettings"
+        ],
+        "review_fact_paths": [
+          "logWorkspaceSummary",
+          "targetResourceId",
+          "workspaceId",
+          "activityLogRouting",
+          "logAnalyticsDestinationType"
+        ],
+        "evidence_requirements": [
+          "Reconcile every applicable platform/application resource and default deployment configuration against the approved central workspace architecture, with explicit tenant, region/residency, ownership, access, cost, retention and resilience boundaries. Current guidance starts with one workspace but permits multiple; do not impose one universal workspace.",
+          "Verify applicable resource-log categories/groups, actual source-to-workspace binding, original-time arriving data, required agents/DCRs and default-resource onboarding coverage using redacted evidence. Metrics/activity logs differ from resource logs; unsupported categories, cross-boundary routing and missing/denied/stale inventory remain explicit.",
+          "Reviewer decision: are intended default configurations connected to the appropriate central Log Analytics workspace(s), with accountable coverage gaps and approved exceptions? Supplied routing joins, network flags and workspace default retention do not establish ingestion health, all-resource coverage, table retention or compliance."
+        ],
+        "limitations": "Configuration preparation only. No raw logs, KQL, shared keys, customer IDs, endpoints or private payloads retained; no data-plane call, ingestion/query test or new live collection. Joins deliberately do not expand beyond explicit subscription/RG scope or assert tenant equivalence.",
+        "flags": [
+          "workspace-routing-not-ingestion",
+          "central-not-one-universal-workspace",
+          "table-retention-not-workspace-default"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/124",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -7712,9 +7746,41 @@
       "baseline_control_sha256": "962f410ea5bddd374a5e2c6b9d24daeb386d86aff17fa5fb75c156d42e72c11e",
       "design_area": "Security",
       "batch": "23",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "a56888b2-7e83-4404-bd31-b886528502d1",
+        "upstream_id": "G03.09",
+        "classification": "assisted",
+        "implemented_subclaim": "Literal Sentinel workspace onboarding default-child and explicit CMK setting as optional SIEM configuration context, joined to one known supplied workspace.",
+        "sources": [
+          "correlated-threats-linked",
+          "sentinel-onboarding",
+          "onboarding-arm",
+          "workspace-arm",
+          "terraform-onboarding",
+          "terraform-onboarding-implementation"
+        ],
+        "review_resource_types": [
+          "Microsoft.SecurityInsights/onboardingStates",
+          "Microsoft.OperationalInsights/workspaces"
+        ],
+        "review_fact_paths": [
+          "sentinelOnboardingSummary",
+          "logWorkspaceSummary"
+        ],
+        "evidence_requirements": [
+          "Identify the actual SIEM solution and complete intended security-source/service population, tenant/workspace boundaries, ownership, costs and connector/onboarding dependencies. Sentinel is optional; a non-Sentinel SIEM is not a failure or inferred absence.",
+          "Substantiate original-time successful ingestion, normalization, synchronized timestamps and cross-service correlation with redacted attributable evidence; review maintained threat-intelligence/detection logic, coverage and gaps without supplying raw logs, rule bodies or queries.",
+          "Reviewer decision: does central threat detection actually correlate the intended services and deliver useful detections into accountable triage/incident response, with demonstrated tests and explicit exceptions? Workspace/onboarding presence, CMK boolean, defender pricing or alert counts are not detection, health or response assurance."
+        ],
+        "limitations": "No connectors, analytic rule bodies, threat events, queries or scans are collected/executed. Provider documentation import says defaults but actual pinned implementation constructs default. Only exact default workspace extension is joined; CMK is not onboarding success or correlation proof.",
+        "flags": [
+          "onboarding-not-correlation",
+          "other-siem-not-inferred-absent",
+          "default-not-documentation-defaults"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/124",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -7727,9 +7793,31 @@
       "baseline_control_sha256": "597e2c1402ada7dd8d21aa959cfb4fafaabfe5b85647e92fc5a12bcc574b62b2",
       "design_area": "Security",
       "batch": "23",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "d21a922d-5ca7-427a-82a6-35f7b21f1bfc",
+        "upstream_id": "G03.10",
+        "classification": "assisted",
+        "implemented_subclaim": "Source-specific conditional two-plane Lockbox review, not an invented Azure/M365 registration or approval predicate.",
+        "sources": [
+          "azure-lockbox-linked",
+          "m365-lockbox",
+          "service-enablement-linked"
+        ],
+        "evidence_requirements": [
+          "Decide sovereign/applicability and build separate actual Azure and M365 tenant/service/cloud populations. Azure requires at least Developer support; M365 requires E5/G5 or a qualifying add-on and only supported Exchange/SharePoint/OneDrive/Teams/Windows365 services, with Copilot through Exchange. Record unavailable/unsupported services and licensing gaps explicitly.",
+          "Substantiate Azure tenant administration enablement separately from M365 organization enablement and their distinct approver/audit responsibilities. Azure subscription requests use subscription Owner/Lockbox Approver and activity logs; tenant requests use Global Administrator and Entra logs; MG-scoped roles are unsupported. M365 approver and audit setup differ. Feature registration or Azure role assignment is not M365 evidence.",
+          "Reviewer decision: is customer-controlled support access appropriately enabled for all supported applicable services in each plane, with redacted attributable operating/approval evidence and documented exclusions? Azure pending requests expire after four days, M365 after twelve hours; emergency/incidental access and legal demands are exceptions, not universal approvals. Do not invent support requests, licensing, decisions or coverage."
+        ],
+        "limitations": "No synthetic Lockbox ARM/Graph/M365 resource, tenant read, support ticket/log content, identity, approval action or access/settings change. Azure feature registration cannot establish tenant-wide enablement, M365 coverage or actual approved access. Pure human evidence stays distinct from resource Signals.",
+        "flags": [
+          "conditional-sovereign-lockbox",
+          "azure-m365-separate-planes",
+          "registration-not-tenant-enablement",
+          "supported-services-and-exclusions-explicit"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/124",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -7742,9 +7830,43 @@
       "baseline_control_sha256": "92c5b74da9af33c020338825db15fa25b370279106b0459caa7f5191425a5b84",
       "design_area": "Security",
       "batch": "23",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "874a748b-662d-46d1-9051-2a66498f6dfe",
+        "upstream_id": "G03.11",
+        "classification": "assisted",
+        "implemented_subclaim": "Separate bounded workspace-scoped LogAlert configuration and single custom-topic static service-metric criteria, with strict supplied target joins; neither is a real-time log-oriented solution.",
+        "sources": [
+          "event-grid-alerts-linked",
+          "alert-types",
+          "log-alert-arm",
+          "topic-arm",
+          "topic-metrics",
+          "metric-alert-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Insights/scheduledQueryRules",
+          "Microsoft.Insights/metricAlerts",
+          "Microsoft.EventGrid/topics"
+        ],
+        "review_fact_paths": [
+          "logAlertSummary",
+          "eventGridMetricAlertSummary",
+          "eventGridTopicSummary"
+        ],
+        "evidence_requirements": [
+          "Resolve the linked guidance mismatch: Event Grid set-alerts describes service publish/delivery metrics and activity-log operations, not general log-query alerts. Identify the actual log-oriented detection/event/action architecture and approved applicability, rather than treating event subscription or metric-rule presence as fulfillment.",
+          "Reconcile supported log-search versus metric/activity semantics, actual log sources, queries/actions and end-to-end failure/retry/dead-letter behavior using redacted references only. Workspace LogAlert kinds and custom-topic static metrics are distinct bounded configuration contexts; no query text, endpoints, action payloads or rule bodies are needed.",
+          "Reviewer decision: does the intended Event Grid-based log-oriented solution actually deliver actionable alerts within an approved measured end-to-end requirement, with original-time tests, accountable response and exceptions? Ingestion/evaluation/processing introduce latency; configured frequency, sample thresholds, topic schema and action-group references do not prove real-time delivery."
+        ],
+        "limitations": "No alert/query/event execution, webhook, credentials, raw events, KQL, criterion bodies or private actions retained. Only explicit LogAlert and one custom-topic static criterion form are prepared; LogToMetric, dynamic/multi-resource forms, other topic types and nonworkspace log scopes stay visibly unsupported.",
+        "flags": [
+          "linked-metric-alert-not-log-query",
+          "configured-frequency-not-real-time",
+          "event-subscription-not-log-alert"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/124",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -7757,9 +7879,27 @@
       "baseline_control_sha256": "a9b5ba70adcd109ed04f41b6c06b93c5435363f8daa098fb5340c178cc464af1",
       "design_area": "Security",
       "batch": "23",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "6f704104-85c1-441f-96d3-c9819911645e",
+        "upstream_id": "G05.01",
+        "classification": "manual",
+        "implemented_subclaim": "Separate attributable account-use operating decision; no inferred personal account inventory or role-count predicate.",
+        "sources": [
+          "separate-accounts-linked"
+        ],
+        "evidence_requirements": [
+          "Identify the approved Azure administrative account-use policy, applicable privileged work and individual accountability using redacted process references, not user names, account IDs or sign-in records.",
+          "Substantiate actual separation of everyday/email/browser activity from protected privileged administration, lifecycle/reviews and justified emergency or automation exceptions. Azure role assignments, PIM configuration or a count of principals cannot establish account-use separation.",
+          "Reviewer decision: are separate privileged administrator accounts actually used for Azure administrative tasks with accountable protection, operating evidence and approved exceptions? Keep this manual even when machine identity context exists; no account, forwarding, MFA, permission or credential changes are performed."
+        ],
+        "limitations": "Organizational practice cannot be established from IaC or fabricated attestation. No directory/account/log reads, personal identities, credentials, role changes or generic assignment Signals answer this GUID.",
+        "flags": [
+          "separate-account-use-manual",
+          "assignment-not-operating-practice"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/124",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -7772,9 +7912,27 @@
       "baseline_control_sha256": "2fbeef034ce304ec0f0cc77b6a0a747080840022f2f0e292f04d036bb4fc2f51",
       "design_area": "Security",
       "batch": "23",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "9a19bf39-c95d-444c-9c89-19ca1f6d5215",
+        "upstream_id": "G06.01",
+        "classification": "manual",
+        "implemented_subclaim": "Specific new-service readiness/adoption plan review, distinct from request fulfillment.",
+        "sources": [
+          "service-enablement-linked"
+        ],
+        "evidence_requirements": [
+          "Reference the approved new-Azure-service adoption/readiness plan and accountable decision owners, covering service purpose, security review, network/control/data planes, encryption, exfiltration, identity/segregation and support-data access.",
+          "Reconcile privacy/residency, monitoring/audit, backup/recovery, patch/configuration and capacity/SKU/region/GA/compliance/SLA criteria with actual service capability, onboarding tests, change/rollback and accepted risks. CAF questions are a framework, not evidence that the organization approved or implemented a plan.",
+          "Reviewer decision: is there an approved, maintained and usable plan for implementing new Azure services with evidence of responsible review and explicit exceptions? Keep this distinct from G06.02 service-request intake/fulfillment; no registration, paid enablement, deployment or approval occurs."
+        ],
+        "limitations": "Manual organizational plan decision; IaC, service/provider availability or a source checklist is not adoption approval. No private request content, invented plan, business policy, licensing or SLA is manufactured.",
+        "flags": [
+          "new-service-readiness-plan-manual",
+          "adoption-not-request-fulfillment"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/124",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -7787,9 +7945,27 @@
       "baseline_control_sha256": "a0e6f06ce1fab167d705c7a23310fad6f51564dff723a0b27c411fc470842bf9",
       "design_area": "Security",
       "batch": "23",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "ae514b93-3d45-485e-8112-9bd7ba012f7b",
+        "upstream_id": "G06.02",
+        "classification": "manual",
+        "implemented_subclaim": "Specific service-request fulfillment operating-plan review, distinct from new-service approval.",
+        "sources": [
+          "service-enablement-linked"
+        ],
+        "evidence_requirements": [
+          "Reference the approved Azure service-request fulfillment plan with supported service catalog, request intake/eligibility, authorization/segregation, accountable fulfillment owners and security/governance criteria. Use redacted plan references, never real tickets or personal requester data.",
+          "Reconcile service-specific targets and capacity/region/SKU constraints, required approvals, validation, communication, escalation, recovery/rollback and closure/feedback with actual operating evidence. Do not invent an organizational SLA, approval chain, fulfillment test or service enablement.",
+          "Reviewer decision: is the maintained plan usable to fulfill Azure service requests with accountable evidence and exceptions? G06.01 new-service readiness and a registered provider do not establish this separate request-to-closure process."
+        ],
+        "limitations": "Manual workflow decision only. No support/service request, ticket read, connector, account, permission, paid-service enablement, deployment or fabricated fulfillment is performed.",
+        "flags": [
+          "request-fulfillment-plan-manual",
+          "request-process-not-service-registration"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/124",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []

@@ -96,6 +96,10 @@ PLANNED_API_VERSIONS = API_VERSIONS | {
     "microsoft.compute/virtualmachines": {"2024-07-01"},
     "microsoft.portal/dashboards": {"2020-09-01-preview"},
     "microsoft.management/managementgroups": {"2020-05-01"},
+    "microsoft.operationalinsights/workspaces": {"2023-09-01"},
+    "microsoft.securityinsights/onboardingstates": {"2024-03-01"},
+    "microsoft.insights/scheduledqueryrules": {"2023-12-01"},
+    "microsoft.eventgrid/topics": {"2022-06-15"},
     "microsoft.compute/availabilitysets": {"2024-07-01"},
     "microsoft.authorization/roledefinitions": {"2022-04-01"},
     "microsoft.aad/domainservices": {"2022-12-01"},
@@ -114,6 +118,7 @@ def properties(
     from .governance_evidence import projected_properties as governance_properties
     from .identity_evidence import IDENTITY_KINDS, ROLE_KIND, identity_summary, role_properties
     from .identity_evidence import projected_properties as identity_properties
+    from .logging_evidence import projected_properties as logging_properties
     from .network_policy_evidence import projected_properties as network_policy_properties
     from .security_evidence import projected_properties as security_properties
 
@@ -127,6 +132,7 @@ def properties(
     if isinstance(values, dict):
         result.update(security_properties(kind, values, root=root))
         result.update(governance_properties(kind, values, root=root))
+        result.update(logging_properties(kind, values, root=root))
         result.update(network_policy_properties(kind, values))
         result.update(identity_properties(kind, values, root=root))
     return result
@@ -502,6 +508,7 @@ def arm_source(
                 ):
                     state = "unknown"
                 binding = target_scope
+                onboarding_target = None
                 diagnostic_target = (
                     target_scope
                     if arm_type.lower() == "microsoft.insights/diagnosticsettings"
@@ -510,7 +517,10 @@ def arm_source(
                 )
                 if "scope" in entry:
                     explicit_scope = context.value(entry["scope"])
-                    if arm_type.lower() == "microsoft.insights/diagnosticsettings":
+                    if arm_type.lower() in {
+                        "microsoft.insights/diagnosticsettings",
+                        "microsoft.securityinsights/onboardingstates",
+                    }:
                         if isinstance(explicit_scope, str):
                             if explicit_scope.startswith("Microsoft."):
                                 parts = explicit_scope.split("/")
@@ -520,13 +530,26 @@ def arm_source(
                                     "/".join(parts[2::2]),
                                 )
                             if isinstance(explicit_scope, str):
-                                diagnostic_target = canonical_id(explicit_scope)
+                                if (
+                                    arm_type.lower()
+                                    == "microsoft.securityinsights/onboardingstates"
+                                ):
+                                    from .protection_evidence import typed_reference
+
+                                    target = typed_reference(
+                                        explicit_scope,
+                                        ("microsoft.operationalinsights/workspaces",),
+                                    )
+                                    onboarding_target = target if isinstance(target, str) else None
+                                else:
+                                    diagnostic_target = canonical_id(explicit_scope)
+                        extension_target = onboarding_target or diagnostic_target
                         if not (
                             target_scope
-                            and diagnostic_target
+                            and extension_target
                             and (
-                                diagnostic_target == target_scope.lower()
-                                or diagnostic_target.startswith(target_scope.lower() + "/")
+                                extension_target == target_scope.lower()
+                                or extension_target.startswith(target_scope.lower() + "/")
                             )
                         ):
                             binding, state = None, "unknown"
@@ -534,8 +557,17 @@ def arm_source(
                         binding = (
                             scope_id(explicit_scope) if isinstance(explicit_scope, str) else None
                         )
+                if arm_type.lower() == "microsoft.securityinsights/onboardingstates" and (
+                    not onboarding_target or name != "default"
+                ):
+                    binding, state = None, "unknown"
                 identity = (
                     canonical_id(
+                        onboarding_target
+                        + "/providers/Microsoft.SecurityInsights/onboardingStates/default"
+                    )
+                    if onboarding_target and state == "known"
+                    else canonical_id(
                         diagnostic_target
                         + "/providers/Microsoft.Insights/diagnosticSettings/"
                         + name
@@ -565,6 +597,7 @@ def arm_source(
                                 "name": name,
                                 "zones": context.value(entry.get("zones")),
                                 "sku": context.value(entry.get("sku")),
+                                "kind": context.value(entry.get("kind")),
                                 **(
                                     {"tags": context.value(entry["tags"])}
                                     if "tags" in entry
