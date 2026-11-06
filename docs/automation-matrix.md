@@ -64,7 +64,8 @@ Those declared/planned modes cannot prove complete NSG rule populations. Saved
 observed and injected scoped-detail evidence exercise the count; all missing,
 wrong-type, duplicate, transient, partial, denied, stale and over-bound cases
 remain explicit. Replay retains original times. Old catalog meanings and the
-fixed 251-GUID membership are unchanged; implementation is not merged acceptance.
+fixed 251-GUID membership are unchanged. #90 passed normal exact-head CI/compiler
+gates and merged; `deliveries.19` records each of its nine GUIDs' actual acceptance.
 
 Crosswalk `2026-11-05.1` binds catalog `2026-11-05.3` without changing its
 7 automated / 205 assisted / 43 manual dispositions or the fixed 251-target

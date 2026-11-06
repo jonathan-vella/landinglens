@@ -56,11 +56,11 @@ owner-authorized increment. Baseline `2026-11-04.2` remains 4 automated /
 | 01 / [#46](https://github.com/jonathan-vella/landinglens/issues/46) | G02.01-.04, G02.07-.08, G04.02-.03; fixed GUIDs in ledger | Delivered catalogs/contracts/local reviews; no new live access required | [#47](https://github.com/jonathan-vella/landinglens/pull/47) merged; all eight checks passed, exact installed suite and all four CI compiler integrations exercised; issue closed |
 | 17 / [#48](https://github.com/jonathan-vella/landinglens/issues/48) | Nine firewall GUIDs; duplicate D07.12 entries remain distinct | Merged cohort 01, actual source review, reviewed network schemas | [#49](https://github.com/jonathan-vella/landinglens/pull/49) merged; all eight checks passed, exact installed suite and all four CI compiler integrations exercised; issue closed |
 | 18 / [#50](https://github.com/jonathan-vella/landinglens/issues/50) | Nine TLS/resilience/private-connectivity GUIDs | Merged cohort 17; 18 actual source captures and reviewed versioned schemas | [#51](https://github.com/jonathan-vella/landinglens/pull/51) merged; all eight checks passed, exact installed suite and all four compiler integrations exercised; issue closed |
-| 19 / [#52](https://github.com/jonathan-vella/landinglens/issues/52) | Nine service-endpoint/subnet/segmentation GUIDs | Merged cohort 18 and reconciled `.5` efficiency foundations | Resumed 2026-11-06; working successor `2026-11-06.1`, eight assisted workflows and one observed-only <=900 custom-rule predicate; actual delivery gates pending |
+| 19 / [#52](https://github.com/jonathan-vella/landinglens/issues/52) | Nine service-endpoint/subnet/segmentation GUIDs | Merged cohort 18 and reconciled `.5` efficiency foundations | [#90](https://github.com/jonathan-vella/landinglens/pull/90) merged; all eight jobs, CodeQL and four compiler artifacts passed; `deliveries.19` binds each GUID to actual acceptance |
 | Other cohorts | Other 216 GUIDs in unchanged 5-10-item cohorts | Evidence foundations, then LL-34 severity/crosswalk priority with per-batch source requirements | Pending; partitioning/tiering is not delivery |
 
-Working successor `2026-11-06.1`: 8 automated / 204 assisted / 43 manual, all 255 visible.
-Twenty-six fixed targets are merged and 225 undelivered, including resumed cohort 19; classification
+Delivered successor `2026-11-06.1`: 8 automated / 204 assisted / 43 manual, all 255 visible.
+Thirty-five fixed targets are merged and 216 undelivered; classification
 alone is not delivery.
 G02.02 is explicitly manual; unsupported Terraform vault soft-delete evidence
 remains unknown. Create ready batch issues as implementation proceeds, not 251
@@ -84,7 +84,6 @@ reconciled against the new foundations when resumed on 2026-11-06.
 | 04 | 8 | 5 / 3 / 0 | 2 |
 | 13 | 10 | 5 / 4 / 1 | 1 |
 | 22 | 8 | 4 / 4 / 0 | 0 |
-| 19 | 9 | 3 / 6 / 0 | 6 |
 | 14 | 9 | 3 / 6 / 0 | 4 |
 | 12 | 10 | 3 / 5 / 2 | 2 |
 | 15 | 9 | 3 / 6 / 0 | 2 |
@@ -108,8 +107,9 @@ reconciled against the new foundations when resumed on 2026-11-06.
 | 21 | 8 | 0 / 8 / 0 | 0 |
 | 28 | 8 | 0 / 8 / 0 | 0 |
 
-These remain 225 undelivered GUIDs. No membership, original baseline hash,
-receipt, issue completion or pending status changes through reprioritisation.
+These remain 216 undelivered GUIDs. Cohort 19 left the pending table only after
+actual #90 delivery and its per-GUID receipt. No membership or original baseline
+hash changes through reprioritisation.
 
 ## LL-26: automated local review session
 
