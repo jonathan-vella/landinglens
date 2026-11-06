@@ -241,6 +241,16 @@ Guidance links require HTTPS and only navigate when explicitly selected.
 
 ### Identity, manual evidence and optional plans
 
+Use `--question central-logging-support-service-enablement` for cohort23's
+seven distinct decisions. Review actual central logging/ingestion and SIEM
+correlation separately; workspace routing or Sentinel onboarding does not prove
+either. Azure and M365 Lockbox require separate tenant/service/license/approver/
+audit evidence. The linked Event Grid metric/activity tutorial is not general
+log-query alerting or measured real-time delivery. Separate privileged-account
+use, new-service readiness and service-request fulfillment remain manual, not
+inferred from resource presence. Supply redacted references, never log/query/rule
+bodies, support/private request contents, identities, endpoints or credentials.
+
 `interview inspect` lists versioned, specific multi-control questions and each
 control's evidence requirements. `interview prepare assessment.json --question
 private-service-paths --scope ARM_SCOPE --output response.json` prepares a blank

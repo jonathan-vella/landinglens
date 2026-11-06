@@ -1,5 +1,64 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 23 accepted integration: 2026-11-06
+
+The coordinator granted [#124](https://github.com/jonathan-vella/landinglens/issues/124)
+the sole slot after actual cohort16 implementation128/receipt129, #121 completed
+closure and139 independently verified own-GUID receipts. Preserved preparation
+`3204291` was reconciled with actual main
+`3dc42b209a74a11f0be8fabfa17795177bd9a097` in `cfa973e`.
+The [seven-GUID matrix](../../references/recommendation-batches/batch-23.json)
+and [22 original captures](../../references/recommendation-batches/batch-23-sources.json)
+precede unique successor `2026-11-06.15` through existing offline builders.
+Exact `.14` catalog bytes:
+`cff4272bf75497cede26b9683feb21a78a4416f40bbae825998c04e3c5e19a41`;
+crosswalk bytes:
+`34faf24ee323ead3c3cc6e5b7a0af2bedc71f67b84c58c18e7e397050a4db26a`.
+All255 GUIDs, fixed251/original four full controls, all139 earlier rows/sixteen
+receipts, ASPath and joined GatewaySubnet predicates remain unchanged.
+
+Four assisted workflows prepare literal workspace, Sentinel default onboarding,
+workspace log-alert and distinct Event Grid custom-topic metric configuration.
+Strict known unique typed subscription/RG-local joins and kind-specific facts/
+Signals never prove tenant equivalence, ingestion, correlation/detection, health,
+latency or complete coverage. The linked Event Grid page concerns metrics/activity
+alerts, not a general log-oriented real-time solution. Azure Lockbox uses tenant
+administration, not feature registration; Azure support/service/cloud/approver/
+audit/exclusion conditions differ from M365 licensing/tenant/service/approver/
+audit conditions. No synthetic Lockbox/Graph/M365 resource or support approval is
+invented. Separate account use and two different service operating plans remain
+three manual recommendations. All seven registered decisions remain independently
+blank and content/scope/expiry bound.
+
+The existing evaluator, CLI, tiers, reports/trackers, local session and actual
+packaged `.15` original-time replay are exercised. Historical `.12` preparation
+and `.14` semantics stay pinned; executable guards reject direct preparation
+matrix activation and unguarded source recapture. A tightly coupled malformed
+gateway-alert scope normalization keeps unrelated Event Grid metric context
+unknown and replay-idempotent, not a gateway criterion or new predicate.
+All thirteen actual predecessor compiler cases remain; the relevant logging
+fixture is the fourteenth. There are no new dependencies, live endpoints,
+collection/queries/scans/events/alerts, permissions/settings, requests, approvals,
+deployments, module/compiler acquisition or fabricated human outcomes.
+
+Dispositions remain **12 automated /200 assisted /43 manual**; crosswalk remains
+51 controls/53 static partial/related associations. The cohort's one query
+association is not an executable test; only the existing exact D07.06/.07
+allowlist remains executable. Delivery stays **139 delivered /112 pending** until
+normal exact-head implementation/platform/CodeQL/review/four matching exercised
+compiler proofs and guarded seven-own-GUID receipt publication satisfy their gates.
+
+Pre-delivery checkout and own exact installed-wheel suites each ran **559 tests**:
+558 passed with only the original Windows symlink-privilege skip. All24 cohort
+preparation/accepted cases, format/lint, 43-source-file typing, dependency
+consistency and399 local documentation links pass. All fourteen existing-compiler
+cases are included with no compiler skip or restore. Own offline wheel SHA256:
+`4e4b0b4f95f513cbb562339b584eac202a1457ebabe573f5ae06d6c52d364023`.
+All118 packaged code/data bytes match checkout, and the dedicated minimal
+outside-checkout interpreter proves its own site-packages `.15` import.
+No new dependency, alternate session environment, package publication or live
+runtime evidence is substituted for these local results.
+
 ## Cohort 16 accepted integration: 2026-11-06
 
 The coordinator granted [#121](https://github.com/jonathan-vella/landinglens/issues/121)
