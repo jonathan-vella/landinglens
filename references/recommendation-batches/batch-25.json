@@ -1,0 +1,183 @@
+{
+  "batch": "25",
+  "review_state": "owner-delegated-source-backed-matrix",
+  "catalog_version": "2026-11-06.21",
+  "accepted_at": "2026-11-06T23:08:14.225Z",
+  "baseline_main": "c953eee1fc66dbd013c59dc27e8616a5001f9630",
+  "preparation_commit": "6870778a0db23df19046b9a7305a9d87aed0d56c",
+  "reconciliation_commit": "bae3716688511aac7d718f5ad50c5e622745e82e",
+  "prerequisites": ["06", "10", "27", "29"],
+  "preserved_catalog_bytes": {
+    "2026-11-06.20": "60879f04b6856cd2cf5f42154fb39e6366d09f44ebd9548dda48778a474b596c"
+  },
+  "preserved_crosswalk_bytes": {
+    "2026-11-06.20": "5a293a82b50b865a166fbd74082a428d79c6eac4804ea91ba092b43ecf106d99"
+  },
+  "preserved_delivery_batches": ["01", "02", "04", "05", "06", "08", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "22", "23", "27", "29", "30"],
+  "preserved_delivery_receipts_sha256": "2c846a8341e8365a2feae65b1fc41187af22095d53c8425be59874ac58f08dfe",
+  "preserved_merged_recommendations_sha256": "7a04b289efe49f0afddfe14a43779c22d94619b83de9f41592b41bc22dc37f1c",
+  "issue": "https://github.com/jonathan-vella/landinglens/issues/142",
+  "preparation_base_commit": "7ae946c13ec65d944cb53b202767c6291f24dfe1",
+  "activation": "Explicit sole coordinator grant after actual06 implementation143/receipt144 and10 implementation146/receipt147, checked final main c953eee and completed issues. Preparation6870778 reconciled in bae3716; exact .20 frozen before existing builders derive unique .21. Accepted source/workflows are not delivery; exact-head implementation checks/normal merge, guarded own-GUID receipt publication and actual final-main CI remain mandatory.",
+  "supported_modes": "Offline raw Terraform including explicitly supplied local modules and optional plan with explicit AzureRM 4.50.0; planned ARM and existing no-restore Bicep activityLogAlerts 2020-10-01, actionGroups 2023-01-01, metricAlerts 2018-03-01 and storageAccounts 2023-05-01. Reuse workspace, scheduled log-alert and Policy facts without a second interpreter or built-in fetch. Saved/injected normalized input and original-time sanitized replay share these projections. No new Collector registry, endpoint, query execution or live authorization.",
+  "acceptance_evidence": "Nine distinct source-specific decisions, independently blank and exceptable. Eight assisted workflows retain human applicability/requirements/coverage/operating judgments; F01.16 stays manual. Exact redundancy SKU classification is a configuration subclaim only, never automatic whole-guidance pass or Verified. Missing, partial, denied, ambiguous, stale, unsupported and over-bound input remains explicit.",
+  "interview": {
+    "id": "platform-health-alerts-log-boundaries-redundancy",
+    "question": "Decide each of the nine monitoring recommendations independently from attributable redacted evidence. Reconcile separate Service Health service/region/event populations and Resource Health resource/status/transition/reason populations, including clouds, tenant preview versus subscription scope, original-time events and accountable response. Verify directly attached, enabled Global action groups for applicable Service Health alerts; receiver counts and configuration do not verify contacts, current email OTP, delivery, acknowledgement or escalation. Review every Azure-born raw-log export route and on-premises boundary, allowing critical-alert integration only as the immutable guidance describes; Sentinel onboarding and workspace location cannot prove no export. Demonstrate actual Azure Monitor Logs ingestion and useful insight/report usage, independently of metrics or workspace existence. F01.14 is conditional legacy wording: WAD/LAD retired March 31, 2026; record applicability, existing shared-storage boundaries, AMA/DCR destination-specific migration, parity and cutover without recommending new legacy deployments or treating boot diagnostics as the extension. Review operational metric, activity and log-query rule criteria, data arrival, enabled configuration, actions and actual end-to-end response separately. Supply the approved business monitoring requirements, owners, measurable health/availability/performance/security/retention/residency objectives and justified exceptions; never invent an SLA or threshold. For AMBA, bind the actual reviewed origin/version to complete intended platform populations, initiatives/assignments/parameters/exclusions, brownfield remediation and tests; generic Policy references prove none. For storage, assess exact SKU plus kind/service/region support, zone versus asynchronous geo protection, read access, conversions/synchronization, RPO/RTO, failover and residency with accountable requirements and exceptions. No probes, queries, deployments, contact tests, log/query contents, recipient addresses, phones, webhook URLs, keys, billing or personal identity payloads. Signals and human confirmations never manufacture Verified.",
+    "controls": [
+      "ALZ-e5695f22-23ac-4e8c-a123-08ca5017f154",
+      "ALZ-d5f345bf-97ab-41a7-819c-6104baa7d48c",
+      "ALZ-e3ab3693-829e-47e3-8618-3687a0477a20",
+      "ALZ-6944008b-e7d7-4e48-9327-6d8bdc055bcf",
+      "ALZ-619e8a13-f988-4795-85d6-26886d70ba6c",
+      "ALZ-97be9951-9048-4384-9c98-6cb2913156a1",
+      "ALZ-859c3900-4514-41eb-b010-475d695abd74",
+      "ALZ-aa45be6a-8f2d-4896-b0e3-775e6e94e610",
+      "ALZ-0d83fd81-952c-4d47-a6cb-3a930925ef2e"
+    ]
+  },
+  "recommendations": [
+    {
+      "guid": "e5695f22-23ac-4e8c-a123-08ca5017f154",
+      "upstream_id": "F01.10",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit activity-alert category, enabled, condition count, scopes and typed action references, never actual Service/Resource Health.",
+      "sources": ["service-health-linked", "resource-health", "activity-alert-spec", "terraform-monitor_activity_log_alert"],
+      "review_resource_types": ["Microsoft.Insights/activityLogAlerts", "Microsoft.Insights/actionGroups"],
+      "review_fact_paths": ["activityAlertSummary", "actionGroupSummary"],
+      "evidence_requirements": [
+        "Identify complete intended platform services/regions/subscriptions and resources. Treat ServiceHealth and ResourceHealth as separate categories: service incident/maintenance/advisory filters differ from individual resource status, transition and reason filters. Current Service Health guidance limits support to public clouds/global; tenant-level preview needs separate applicability review.",
+        "Reconcile every actual alert scope and complete condition logic with approved coverage and original-time health-event evidence. The prepared category equality and condition count deliberately omit other filter values and cannot establish filter correctness or complete event coverage; missing/denied/partial/stale inventory is unresolved.",
+        "Reviewer decision: are both applicable service and resource health events part of the overall monitoring solution, with accountable event handling, response evidence and approved exceptions? Enabled rules and supplied action-group links are configuration only, not healthy resources, emitted events or delivered notifications."
+      ],
+      "limitations": "No health status/events, event payloads, query execution or live reads. Unsupported or ambiguous category forms stay unknown. Individual condition values and contact/action payloads are withheld.",
+      "flags": ["service-health-not-resource-health", "configured-category-not-emission", "partial-criteria-not-complete-coverage"]
+    },
+    {
+      "guid": "d5f345bf-97ab-41a7-819c-6104baa7d48c",
+      "upstream_id": "F01.11",
+      "classification": "assisted",
+      "implemented_subclaim": "Strict unique known typed in-scope alert-to-action-group links with enabled/global-processing and explicit per-channel counts only.",
+      "sources": ["action-groups-linked", "service-health-linked", "activity-alert-spec", "action-group-spec", "terraform-monitor_action_group"],
+      "review_resource_types": ["Microsoft.Insights/activityLogAlerts", "Microsoft.Insights/actionGroups"],
+      "review_fact_paths": ["activityAlertSummary", "actionGroupSummary"],
+      "evidence_requirements": [
+        "Reconcile applicable ServiceHealth rules, subscriptions/clouds and directly attached action groups with approved notification ownership. Service Health requires Global action groups in current guidance and does not support alert processing rules; another alert category or indirect processing-rule reference is not equivalent.",
+        "Review actual enabled rule/group configuration, appropriate channels and verified recipients using redacted evidence. Counts are not valid recipient configuration, subscriptions or successful delivery; current email OTP verification, rate limiting, suppression, retries and failure paths need separate operating evidence without contacting anyone.",
+        "Reviewer decision: can actual Service Health alerts/issues reach accountable responders and be actioned, with original-time end-to-end test/incident evidence, acknowledgement/escalation and exceptions? No enabled flag, Global setting, receiver count or supplied relationship proves delivery or response."
+      ],
+      "limitations": "No recipient names/addresses/phones, webhook/function URLs, ITSM contents, credentials or identity/billing data retained. No action-group test, notification or subscription change. Missing receiver arrays are unknown, not zero.",
+      "flags": ["global-service-health-actions", "receiver-count-not-verified-recipient", "direct-link-not-delivery"]
+    },
+    {
+      "guid": "e3ab3693-829e-47e3-8618-3687a0477a20",
+      "upstream_id": "F01.12",
+      "classification": "assisted",
+      "implemented_subclaim": "Reused minimized workspace configuration as optional context for a separate log-flow and on-premises SIEM architecture decision.",
+      "sources": ["sentinel-linked", "workspace-arm", "terraform-workspace"],
+      "review_resource_types": ["Microsoft.OperationalInsights/workspaces"],
+      "review_fact_paths": ["logWorkspaceSummary"],
+      "evidence_requirements": [
+        "Map complete Azure-born log sources, approved Azure destinations, export/streaming/agent/integration paths and actual on-premises monitoring/SIEM boundaries with redacted architecture references. The actual linked Sentinel onboarding page is not a no-export specification or proof of this immutable checklist principle.",
+        "If on-premises SIEM integration is required, substantiate that it receives the intended critical alerts rather than raw log entries, including payload classification, routing, ownership and independently evidenced complete export paths. No supplied configuration facts or absent exports may be interpreted as proof that raw logs never leave Azure.",
+        "Reviewer decision: does the actual architecture keep Azure-born raw logs in Azure and restrict required on-premises integration to critical alerts, with explicit exceptions and accountable evidence? Workspace/Sentinel presence, network flags, location and missing facts prove neither an on-premises boundary nor absence of raw-log export."
+      ],
+      "limitations": "No raw logs, export payloads, KQL, endpoints or SIEM connectors collected; no geographic, tenant or no-export inference from configuration. This architecture decision remains independently blank.",
+      "flags": ["linked-onboarding-not-no-export", "no-facts-not-absence", "azure-location-not-data-boundary"]
+    },
+    {
+      "guid": "6944008b-e7d7-4e48-9327-6d8bdc055bcf",
+      "upstream_id": "F01.13",
+      "classification": "assisted",
+      "implemented_subclaim": "Reused explicit workspace SKU/default retention/network context, separate from actual Logs insights and reporting.",
+      "sources": ["logs-reporting-linked", "workspace-arm", "terraform-workspace"],
+      "review_resource_types": ["Microsoft.OperationalInsights/workspaces"],
+      "review_fact_paths": ["logWorkspaceSummary"],
+      "evidence_requirements": [
+        "Identify intended operational insights and reporting use cases, audiences, owners, approved Azure Monitor Logs sources and workspace boundaries. Distinguish metric visualizations and resource presence from actual Logs usage.",
+        "Substantiate original-time arriving log data, meaningful analysis and maintained useful reports/workbooks/dashboards with attributable redacted references. Review coverage, timeliness, quality, access, table-specific retention and operational use without retaining query text, log rows or report payloads.",
+        "Reviewer decision: are Azure Monitor Logs actually used for the required insights and reporting, with evidenced quality/usage and explicit exceptions? Workspace existence, default retention, network flags, report resource count or a metric alert cannot establish this."
+      ],
+      "limitations": "No queries, ingestion tests, log content, report contents or fabricated analysis. Workspace default retention is not every table's effective retention or data quality.",
+      "flags": ["workspace-not-ingestion", "logs-not-metrics", "report-presence-not-useful-insight"]
+    },
+    {
+      "guid": "619e8a13-f988-4795-85d6-26886d70ba6c",
+      "upstream_id": "F01.14",
+      "classification": "assisted",
+      "implemented_subclaim": "Source-specific conditional legacy diagnostic-extension/migration review with optional exact storage configuration context, not legacy support.",
+      "sources": ["diagnostics-extension-linked", "diagnostics-migration", "storage-arm", "terraform-storage_account"],
+      "review_resource_types": ["Microsoft.Storage/storageAccounts"],
+      "review_fact_paths": ["storageRedundancySummary"],
+      "evidence_requirements": [
+        "Decide whether the immutable 'when necessary' legacy diagnostic-extension storage guidance applies to the actual landing-zone population. WAD/LAD retired March 31, 2026 and are no longer supported: do not recommend new deployments or silently rewrite the checklist. Boot diagnostics is a separate native feature, not this extension.",
+        "For existing applicable legacy use, document actual shared account/landing-zone ownership, access, isolation, destinations, retention and residual risks with redacted references. Review destination-specific migration to AMA/DCR, Auxiliary tables, export or current OpenTelemetry alternatives, supported OS/network prerequisites, original-time data parity and controlled cutover; the ADX/Fabric preview destination retired September 1, 2026.",
+        "Reviewer decision: is conditional legacy shared-storage use justified and safely governed with an accountable supported migration/exception disposition, or is it not applicable? A storage account/SKU, VM or agent reference establishes neither extension usage, necessity, successful collection nor completed migration."
+      ],
+      "limitations": "No legacy extension deployment, synthetic extension support, settings/XML, protected settings, storage keys, log contents or data-plane access. Actual applicability and migration decisions remain human and separately exceptable.",
+      "flags": ["conditional-immutable-legacy-wording", "wad-lad-retired-2026-03-31", "storage-not-extension", "boot-diagnostics-distinct"]
+    },
+    {
+      "guid": "97be9951-9048-4384-9c98-6cb2913156a1",
+      "upstream_id": "F01.15",
+      "classification": "assisted",
+      "implemented_subclaim": "Separate activity, static single-resource metric and reused workspace LogAlert configuration, with supplied action-group joins; no operational generation assertion.",
+      "sources": ["operational-alerts-linked", "activity-alert-spec", "action-group-spec", "log-alert-arm", "metric-alert-arm", "terraform-monitor_metric_alert"],
+      "review_resource_types": ["Microsoft.Insights/activityLogAlerts", "Microsoft.Insights/metricAlerts", "Microsoft.Insights/scheduledQueryRules", "Microsoft.Insights/actionGroups"],
+      "review_fact_paths": ["activityAlertSummary", "operationalMetricAlertSummary", "logAlertSummary", "actionGroupSummary"],
+      "evidence_requirements": [
+        "Map operational failure scenarios and complete intended resources to approved alert types, severities, ownership, criteria and response targets. Distinguish activity events, metric thresholds and scheduled log-search data/queries; one type does not establish another.",
+        "Review explicit enabled scopes, complete criteria, data arrival, evaluation/window choices, actions and processing/suppression rules with redacted references. Prepared counts omit criteria bodies and cannot validate thresholds or business suitability; dynamic/web-test/multi-resource metric forms and nonworkspace log scopes remain unsupported, not absent or passing.",
+        "Reviewer decision: do actual Azure Monitor alerts generate actionable operational alerts with original-time end-to-end evidence of firing, notification, acknowledgement/escalation and accepted gaps? Configured frequency/window, enabled rules or action links alone prove none of these runtime outcomes."
+      ],
+      "limitations": "No metric/log/query/event/alert/action execution; no KQL, threshold/dimension payloads or contacts retained. Existing ExpressRoute/Event Grid alert semantics are preserved; generic metadata does not broaden them.",
+      "flags": ["metrics-logs-activity-distinct", "configuration-not-generation", "frequency-not-delivery-latency"]
+    },
+    {
+      "guid": "859c3900-4514-41eb-b010-475d695abd74",
+      "upstream_id": "F01.16",
+      "classification": "manual",
+      "implemented_subclaim": "Independent approved monitoring requirements and applied-configuration decision, not an IaC-derived requirement or arbitrary threshold.",
+      "sources": ["monitoring-requirements-linked"],
+      "evidence_requirements": [
+        "Reference the approved monitoring requirements assessment and accountable business/platform/application owners, identifying health, availability, performance, security/privacy, audit, usage and diagnostic scenarios plus service dependencies and applicable populations.",
+        "Reconcile measurable organization-approved objectives, collection/retention/residency/cost constraints, alert priorities, response/escalation ownership, validation, change/review cadence and justified exceptions with actual appropriate configurations and operating evidence. Do not invent an SLA, RPO/RTO, threshold, scope population or approval from generic architecture guidance.",
+        "Reviewer decision: have actual monitoring requirements been assessed and appropriate data collection and alerting configurations applied, with attributable evidence and accepted gaps? Keep this manual even when configuration Signals or other recommendations have human confirmations."
+      ],
+      "limitations": "No machine fact or shared narrative answers organizational requirements. No fabricated owner decision, runtime assurance or business policy; independent blank outcome and exception binding required.",
+      "flags": ["monitoring-requirements-manual", "no-invented-sla", "configuration-not-approved-requirements"]
+    },
+    {
+      "guid": "aa45be6a-8f2d-4896-b0e3-775e6e94e610",
+      "upstream_id": "F01.17",
+      "classification": "assisted",
+      "implemented_subclaim": "Reuse existing bounded Policy definition/initiative/assignment configuration and strict supplied joins without interpreting policy rules or recognizing AMBA by names.",
+      "sources": ["amba-linked", "operational-alerts-linked", "policy-spec-policyDefinitions", "policy-spec-policySetDefinitions", "policy-spec-policyAssignments"],
+      "review_resource_types": ["Microsoft.Authorization/policyDefinitions", "Microsoft.Authorization/policySetDefinitions", "Microsoft.Authorization/policyAssignments"],
+      "review_fact_paths": ["policyDefinitionSummary", "policyInitiativeSummary", "policyAssignmentSummary"],
+      "evidence_requirements": [
+        "Bind actual AMBA repository origin, reviewed release/version and selected landing-zone pattern to the complete intended platform service/resource population and management-group/subscription hierarchy. Generic Policy IDs, names, baseline alerts or a DeployIfNotExists effect cannot identify AMBA or its version.",
+        "Reconcile actual initiatives/assignments/parameters/scopes/exclusions/exemptions and deployed alerts/action groups against that reviewed AMBA release, including brownfield remediation and new-resource behavior. Use existing saved Policy configuration/compliance context without fetching built-ins or a second interpreter; references and compliance Signals alone prove neither remediation nor complete coverage.",
+        "Reviewer decision: is AMBA actually deployed and appropriately configured/tested for the intended platform components with accountable response and exceptions? Verify original-time remediation and end-to-end tests independently; Service Health must have direct action groups, and source framework capability is not runtime assurance."
+      ],
+      "limitations": "No implicit definition acquisition, policy execution, compliance scan, remediation, AMBA deployment or origin/version heuristic. Reused Policy joins disclose missing/ambiguous/out-of-scope definitions; human source binding remains required.",
+      "flags": ["policy-reference-not-amba-origin", "assignment-not-remediation", "subset-not-complete-platform-coverage"]
+    },
+    {
+      "guid": "0d83fd81-952c-4d47-a6cb-3a930925ef2e",
+      "upstream_id": "F01.18",
+      "classification": "assisted",
+      "implemented_subclaim": "Exact eight-SKU classification of explicitly configured local/zone/region/combined redundancy, with explicit kind context; no substring/default or service guarantee.",
+      "sources": ["redundancy-linked", "storage-redundancy", "storage-arm", "terraform-storage_account"],
+      "review_resource_types": ["Microsoft.Storage/storageAccounts"],
+      "review_fact_paths": ["storageRedundancySummary"],
+      "evidence_requirements": [
+        "Reconcile complete intended storage accounts and approved durability/availability/residency/recovery requirements with exact SKU, account kind, service, region and feature support. ZRS protects primary zones, GRS asynchronously replicates to a secondary region and GZRS combines these; RA adds secondary read access, not synchronous geo replication. LRS is not zone/geo redundant.",
+        "Substantiate service/region eligibility, conversion status, cross-region synchronization, read/failover paths, approved RPO/RTO, application retry/recovery and residency constraints with original-time redacted evidence. Redundancy is not backup or protection from deletion; a configured SKU or location is not actual availability, completed conversion, successful failover or legal data residency.",
+        "Reviewer decision: are applicable accounts appropriately zone or region redundant for actual requirements, with accountable evidence and explicit justified exceptions/cost tradeoffs? Exact configuration classification is a narrow assisted subclaim, not an automatic pass for every kind/region/service combination or whole-guidance Verified outcome."
+      ],
+      "limitations": "Only exact Standard_LRS/ZRS/GRS/RAGRS/GZRS/RAGZRS and Premium_LRS/ZRS are classified. Missing, case-altered, substring, unsupported Premium geo and new SKU values remain unknown. No data-plane probe, conversion, failover, backup or paid/support action.",
+      "flags": ["exact-qualified-sku-only", "sku-not-failover-or-residency", "geo-is-asynchronous", "redundancy-not-backup"]
+    }
+  ]
+}

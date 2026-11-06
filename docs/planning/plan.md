@@ -1,6 +1,36 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
-## Cohort 25 independent preparation: 2026-11-06
+## Cohort 25 accepted integration: 2026-11-06
+
+The coordinator explicitly granted [#142](https://github.com/jonathan-vella/landinglens/issues/142)
+the sole slot after actual06 implementation143/receipt144 and10
+implementation146/receipt147, satisfied issues and checked final main
+`c953eee1fc66dbd013c59dc27e8616a5001f9630`. Preparation `6870778` reconciles
+that baseline in `bae3716`, preserving strict06 identity/RG shape,10 topology,
+29 manual-bank and27 Policy behavior. All18 actual predecessor compiler cases
+remain before the new health-configuration case; no synthetic AMBA/operations
+compiler proof is added.
+
+Exact `.20` catalog and crosswalk bytes are frozen before existing builders
+derive unique `2026-11-06.21`, its source/matrix bindings and registered nine-way
+blank interview. All255 GUIDs/fixed251/original four complete objects, every
+non-own control, all187 earlier own-GUID rows/22 receipts and historical source/
+catalog/crosswalk bytes remain unchanged. Eight assisted/one manual
+classifications stay12/200/43; activation is not delivery. Implementation
+review/eight-job/security/CodeQL/four downloaded exercised compiler gates,
+normal SHA-bound merge, guarded own-GUID receipt publication and actual
+final-main CI still gate #142 completion.
+
+Preparation's exact own-wheel655-test result (654 pass/original Windows
+symlink-privilege skip),46 Python/133 member byteproof and17 exercised compiler
+cases remain historical, not post-slot acceptance. The earlier in-progress652
+run failed during capture/test corrections and is not green evidence. Missing
+`lark` in the clean isolated environment preceded restoration of only the three
+exact manifest/hash-reviewed runtime wheels; no shared environment changed.
+Current retirement/source qualifications and no-live-operation boundaries are
+preserved throughout acceptance.
+
+## Historical cohort 25 independent preparation: 2026-11-06
 
 [#142](https://github.com/jonathan-vella/landinglens/issues/142) is preparation
 only from actual main `7ae946c13ec65d944cb53b202767c6291f24dfe1`.

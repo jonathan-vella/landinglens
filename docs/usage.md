@@ -41,10 +41,12 @@ redaction and bounded expansion without adding a test dependency.
 
 ## Assessment workflows
 
-Cohort25's [preparation matrix](../references/recommendation-batches/preparation-25.json)
-and [captured source findings](../references/recommendation-batches/preparation-25-sources.json)
-are independent preparation, not accepted delivery. They define nine separate
-F01.10-F01.18 reviews without activating the catalog or interview bank. The
+Cohort25's [accepted matrix](../references/recommendation-batches/batch-25.json)
+and [captured source findings](../references/recommendation-batches/batch-25-sources.json)
+define nine separate F01.10-F01.18 reviews and a registered blank interview in
+catalog `2026-11-06.21`, following the explicit slot after checked06/10 delivery.
+Original [preparation](../references/recommendation-batches/preparation-25.json)
+is retained separately; source acceptance alone is not delivery. The
 offline adapters prepare activity-alert category/scope/action metadata, action-group
 enabled/global-processing/channel counts, static single-resource metric-alert
 metadata and exact storage redundancy SKUs. Existing workspace/log-alert and

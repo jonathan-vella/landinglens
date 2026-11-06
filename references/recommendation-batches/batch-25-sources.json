@@ -1,0 +1,306 @@
+{
+  "batch": "25",
+  "review_state": "preparation-only-reviewed",
+  "sources": [
+    {
+      "id": "service-health-linked",
+      "url": "https://learn.microsoft.com/azure/service-health/alerts-activity-log-service-notifications-portal",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/service-health/alerts-activity-log-service-notifications-portal",
+      "sha256": "0ba26e5f0cdd0aa86ea8867c45135cb9ce6f15c726edcdc2e171df45ecaacf92",
+      "retrieved_at": "2026-11-06T21:19:45.116897+00:00",
+      "revision": "659fbbda66e1c77d192809662715051f52bc0bf6",
+      "finding": "Service Health and Resource Health events are distinct. Current guidance limits Service Health alerts to public clouds/global and requires Global action groups. Subscription/tenant preview and event filters need separate coverage review.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "action-groups-linked",
+      "url": "https://learn.microsoft.com/azure/azure-monitor/alerts/action-groups",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/action-groups",
+      "sha256": "e3f7f14bfc58c7847cba3384ba50a0cfc4f12b8031158008c09bfe89742c66f6",
+      "retrieved_at": "2026-11-06T21:19:45.754768+00:00",
+      "revision": "fc8248caf17cae612988f515ce527e778865af63",
+      "finding": "Enabled receiver configuration is not verified recipients, delivery or response. Global and regional processing differ; current email OTP enforcement requires operating evidence. No recipients, endpoints, secrets or contact tests are retained.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "sentinel-linked",
+      "url": "https://learn.microsoft.com/azure/sentinel/quickstart-onboard",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/sentinel/quickstart-onboard",
+      "sha256": "81478345078bc17bc7284224d37c2baf7422392bc924459bea51f61cd661a397",
+      "retrieved_at": "2026-11-06T21:19:46.333002+00:00",
+      "revision": "030b9c1d697b4bbb618a1f74d38370ead5215f8e",
+      "finding": "This linked Sentinel onboarding page does not itself specify the checklist's no-raw-log-export principle. Onboarding/workspace configuration cannot establish all export paths or an on-premises boundary; require independent architecture review.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "logs-reporting-linked",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/monitoring-reporting?tabs=AzureMonitor",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-setup-guide/monitoring-reporting?tabs=AzureMonitor",
+      "sha256": "1111eba3167c5f7430b009c47566270226bb8a808da9e434c097936d9072705b",
+      "retrieved_at": "2026-11-06T21:19:47.044840+00:00",
+      "revision": "234bce4d2cd85c4503a66bddf62cd6840c860b60",
+      "finding": "CAF describes collection, insights, visualization and response. Workspace existence does not establish ingestion, useful reports, use of Logs or report quality.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "diagnostics-extension-linked",
+      "url": "https://learn.microsoft.com/azure/azure-monitor/agents/diagnostics-extension-overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/agents/diagnostics-extension-overview",
+      "sha256": "5c6b0143ddd9af933ea9ec7815c4e054a00c11ede8baa3ac134a414711a3e2a2",
+      "retrieved_at": "2026-11-06T21:19:47.712872+00:00",
+      "revision": "96d971bd45769620bb3cf0320af925118776a6b9",
+      "finding": "WAD/LAD retired March 31, 2026; the current page explicitly forbids new deployments. Preserve immutable conditional wording but review legacy applicability, migration, shared-storage boundaries and alternatives, not an invented supported extension.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "diagnostics-migration",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-migration-wad-lad",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-migration-wad-lad",
+      "sha256": "1cb4eed36fc857f5482f56bacd235e5884579d2648c52d16c6e57059bdde2b8c",
+      "retrieved_at": "2026-11-06T21:19:48.142053+00:00",
+      "revision": "f04cb4a06359ca7dafa747593eee266c67f88dfd",
+      "finding": "AMA/DCR and destination-specific replacements require parity and cutover evidence. The ADX/Fabric preview destination also retired September 1, 2026. Do not copy stale deployment steps or infer migration from agent/storage presence.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "operational-alerts-linked",
+      "url": "https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-overview",
+      "sha256": "6b154d972da5401af694761e6209ed3c7cc98e6d2e6a72e277081096c860ea62",
+      "retrieved_at": "2026-11-06T21:19:48.742644+00:00",
+      "revision": "7c382a303b0eebef5827ccbafd383110ea307bc3",
+      "finding": "Metric, scheduled log-query and activity alerts are distinct configuration types. Configured enabled criteria/actions do not prove actual firing, notification, acknowledgement, escalation or an approved operational response requirement.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "monitoring-requirements-linked",
+      "url": "https://learn.microsoft.com/azure/architecture/best-practices/monitoring",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/architecture/best-practices/monitoring",
+      "sha256": "fa8d187441065a114833e7f786718bf72d40c10698350e6e12e12794fb773beb",
+      "retrieved_at": "2026-11-06T21:19:49.297383+00:00",
+      "revision": "03e41c0834abe627d4dd8eee64da60a03bb8ef58",
+      "finding": "Requirements depend on business health, availability, performance, security and operating scenarios. No generic rule count, frequency or fabricated SLA answers the independently manual requirements assessment.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "amba-linked",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-monitor",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-monitor",
+      "sha256": "d0880017cb6121920bcc643cc5a2daadf96cfebd6de1465b555b40f8263f8f4d",
+      "retrieved_at": "2026-11-06T21:19:50.235897+00:00",
+      "revision": "4bf323df8e12910d67ea437ab9c598132e64848a",
+      "finding": "CAF separates AMBA policy/initiative import, assignment, brownfield remediation and tests. Service Health needs direct action groups, not processing rules. Saved Policy references cannot prove AMBA origin/version or complete deployment.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "redundancy-linked",
+      "url": "https://learn.microsoft.com/en-gb/azure/storage/common/redundancy-migration?tabs=portal",
+      "resolved_url": "https://learn.microsoft.com/en-gb/azure/storage/common/redundancy-migration?tabs=portal",
+      "sha256": "804f86fabccdeafe256943a6af4956b17941f6ad4ed926ec6e1de687e94b1db8",
+      "retrieved_at": "2026-11-06T21:19:50.695205+00:00",
+      "revision": "bb1d1e73491cb8e06ca8785acfe505dd9df7e9ca",
+      "finding": "Replication changes have account/service restrictions, conversion and synchronization requirements; configuration does not prove conversion completion or ready failover. No migration, support request, paid change or data-plane access is performed.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "storage-redundancy",
+      "url": "https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy",
+      "sha256": "8c6983d7140e5ce5c33616d980bdda6cd472622da59af2bff6a1d285366bebef",
+      "retrieved_at": "2026-11-06T21:19:50.869424+00:00",
+      "revision": "600b459b67367f93f8426065bac787d0b7766c3e",
+      "finding": "ZRS protects primary zones; GRS protects a secondary region asynchronously, and GZRS combines them. Read-access is distinct. LRS is not zone/geo redundancy. SKU is not actual availability, RPO/RTO, backup, failover readiness or residency.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "resource-health",
+      "url": "https://learn.microsoft.com/en-us/azure/service-health/resource-health-alert-monitor-guide",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/service-health/resource-health-alert-monitor-guide",
+      "sha256": "8f4d64ec082aca4c174ad399f58e52c6eb17fb0f1fd772a65b7aa087825ac380",
+      "retrieved_at": "2026-11-06T21:19:51.248188+00:00",
+      "revision": "0a07c3cacea9c40220439c41d88754af7755e267",
+      "finding": "Resource Health is individual-resource status/transition/reason monitoring; Service Health is broader service incidents. Do not substitute either population or a configured status filter for actual health or all-resource event coverage.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "activity-alert-spec",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/monitor/resource-manager/Microsoft.Insights/Insights/stable/2020-10-01/activityLogAlerts_API.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/monitor/resource-manager/Microsoft.Insights/Insights/stable/2020-10-01/activityLogAlerts_API.json",
+      "sha256": "5c215e4ae7b67ed5be47db5bf456b967f772b6cc690115386dd488781ea509cd",
+      "retrieved_at": "2026-11-06T21:19:51.500338+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned 2020-10-01 defines allOf/anyOf/leaf criteria and explicit enabled, scope and action references. Only literal single category equality is classified; other condition payloads are withheld and remain incomplete.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "action-group-spec",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/monitor/resource-manager/Microsoft.Insights/Insights/stable/2023-01-01/actionGroups_API.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/monitor/resource-manager/Microsoft.Insights/Insights/stable/2023-01-01/actionGroups_API.json",
+      "sha256": "56e94b8d366f0c426b8ee76cd702173de8c17fc9080c9fda6f7f1211d85f918b",
+      "retrieved_at": "2026-11-06T21:19:51.758160+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned 2023-01-01 exposes receiver arrays, explicit enabled and location. Retain bounded per-type counts only, never receiver identities or secrets. Absent arrays/flags/location are unknown, not empty/enabled/global defaults.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-monitor_activity_log_alert",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/monitor_activity_log_alert.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/monitor_activity_log_alert.html.markdown",
+      "sha256": "b736cc2eab309b2a1a85639650e37b0fbdfd52b4e6b5511a6a00a43e59d2c581",
+      "retrieved_at": "2026-11-06T21:19:52.046057+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "4.50.0 explicit category, scopes, enabled and action references normalize without defaults. Only category equality is interpreted; filter block presence/count is not semantic matching or actual health assurance.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-monitor_action_group",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/monitor_action_group.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/monitor_action_group.html.markdown",
+      "sha256": "4888c84130db1b34ce588ba6d0ad38f9223a30cbdf8e1fcfab5ac3743645a815",
+      "retrieved_at": "2026-11-06T21:19:52.358020+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "4.50.0 receiver blocks normalize to bounded counts; enabled and location must be explicit. Default true/global is never evidence. No contacts retained.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-monitor_metric_alert",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/monitor_metric_alert.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/monitor_metric_alert.html.markdown",
+      "sha256": "b7c7a05d237f8bb677e64d371c9784203b98eb017f958936519df9f340c74cbf",
+      "retrieved_at": "2026-11-06T21:19:52.645712+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "4.50.0 static metric criteria counts are configuration context only; dynamic/web-test/multi-resource forms remain unsupported. No metric name, dimension, threshold payload or notification content is retained.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-storage_account",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown",
+      "sha256": "2497fd8c88453f99b82d2697bda7b7faee30f889693a1840fafc5bc59305219a",
+      "retrieved_at": "2026-11-06T21:19:52.952509+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "4.50.0 explicit tier plus replication type forms an exact reviewed SKU, never substring matching or a default. Unsupported Premium geo forms and omitted values remain unknown; kind is separately explicit context.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "storage-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts",
+      "sha256": "3578f1f219e03e878d40499b97def37db84c52547e882555546cbaec5fe9d859",
+      "retrieved_at": "2026-11-06T21:19:53.348462+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Pinned 2023-05-01 root SKU and kind are separate from storage properties. Accept only its eight exact SKUs for configuration classification, not a guarantee that a kind/region/service combination is supported or operating.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "workspace-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.operationalinsights/2023-09-01/workspaces",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.operationalinsights/2023-09-01/workspaces",
+      "sha256": "b67f6b552ad1ff85bda701251fbe2eb26ebb1c9e27846d9a9f33e2cbfec2b3ef",
+      "retrieved_at": "2026-11-06T21:19:53.674988+00:00",
+      "revision": "a80a6ca0ce31aae2ff0424e8453153664e18bc8b",
+      "finding": "2023-09-01 has explicit SKU, default retention and network configuration. Only these bounded fields are retained; they are not table overrides, effective retention, ingest availability or completeness.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "log-alert-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/2023-12-01/scheduledqueryrules",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/2023-12-01/scheduledqueryrules",
+      "sha256": "b142954751bc21442df27a05b9df0fc652d147718cdfadce7753b2c73e8b39e8",
+      "retrieved_at": "2026-11-06T21:19:54.075780+00:00",
+      "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+      "finding": "Only explicit LogAlert configuration with bounded supplied workspace IDs, enabled/frequency/window/condition count and typed action IDs is prepared. LogToMetric, nonworkspace scopes and new kinds stay unsupported. No KQL, dimensions, descriptions, rule bodies or action payloads are retained/executed.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "metric-alert-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/2018-03-01/metricalerts",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/2018-03-01/metricalerts",
+      "sha256": "862c08449b4cfcf951d69826f70744a38848511afd04feafc9720122dc2d9204",
+      "retrieved_at": "2026-11-06T21:19:54.444134+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Reuse monitoring15's pinned metric API without altering its ExpressRoute semantics. Only single custom-topic static criteria are prepared; dynamic/multi-resource criteria remain unsupported, and action references are not delivery evidence.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-workspace",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/log_analytics_workspace.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/log_analytics_workspace.html.markdown",
+      "sha256": "241918b71949554ce92012eb9af5a59c95a45c2006b1a73b8845c248dca4c945",
+      "retrieved_at": "2026-11-06T21:19:54.738763+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned 4.50.0 explicit SKU, retention 30-730 and Internet flags normalize without inferring defaults; shared keys/customer IDs and arbitrary tags are withheld. Workspace retention is not every table's actual retention.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "learn-reuse",
+      "url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "resolved_url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "sha256": "0af57ecccaf8275169795becc7966c136503c32d735bdd49660b7743485eea5e",
+      "retrieved_at": "2026-11-06T21:19:55.069206+00:00",
+      "revision": "9fd90ed833034800434458aef187ba08d8dc9d5b",
+      "finding": "Retain attributed URL/revision/hash and original factual findings only, not article copies, screenshot assets, sample scripts or private request contents.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "provider-license",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "sha256": "4e2bb185ebd706f76329206869ccb348b92b6236100cfb07775fe31530dab0d5",
+      "retrieved_at": "2026-11-06T21:19:55.388646+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider uses MPL-2.0. Only attributed metadata and original factual schema findings are retained; no implementation source is redistributed.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "rest-spec-reuse",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/LICENSE",
+      "sha256": "b37363bf2295aa0acde60ce78a60034a71a0955075fc01aa09cc23eadff44436",
+      "retrieved_at": "2026-11-06T21:19:55.672101+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned Microsoft REST schemas are MIT licensed; retain metadata and own factual findings.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "policy-spec-policyDefinitions",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json",
+      "sha256": "9d707ad996174330367c811461f5f3b2e1c710b63e5b171e804ad058850d9ad6",
+      "retrieved_at": "2026-11-06T21:29:14.598468+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned2023-04-01 custom subscription/MG definitions versus global built-ins. Minimize type, explicit supported mode, exact version and literal effect; withhold rule/parameters/metadata and never fetch referenced definitions.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "policy-spec-policySetDefinitions",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json",
+      "sha256": "a75b99bf469062e594abc1468aea4f473c5f070b21311e894c4b1e3a86d89e48",
+      "retrieved_at": "2026-11-06T21:29:14.902959+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned2023-04-01 initiative references with per-member versions and unique reference IDs. Retain typed IDs, hashed member labels and bounded group counts only; no group names, regulatory mapping, parameter values or recursive evaluation.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "policy-spec-policyAssignments",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json",
+      "sha256": "85934922ce8fe3e200fe0642df802f38b72ad153d66807ad874fdf78ee443989",
+      "retrieved_at": "2026-11-06T21:29:15.280533+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned2023-04-01 assignment scope is ID prefix; scope property is readOnly. Minimized references/exclusions and counts preserve missing inputs as unknown. Selectors/overrides/parameters/identity bodies are not retained or interpreted.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "policy-spec-license",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/LICENSE",
+      "sha256": "b37363bf2295aa0acde60ce78a60034a71a0955075fc01aa09cc23eadff44436",
+      "retrieved_at": "2026-11-06T21:29:15.553029+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned REST-spec MIT terms reviewed; only own findings and source metadata retained.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    }
+  ]
+}
