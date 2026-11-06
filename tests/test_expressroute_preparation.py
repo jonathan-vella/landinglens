@@ -14,7 +14,7 @@ from alz_assessor.arm import properties as arm_properties
 from alz_assessor.azure import Collector, Response
 from alz_assessor.bicep import compile_bicep
 from alz_assessor.catalog import load_catalog
-from alz_assessor.contracts import document, validate
+from alz_assessor.contracts import control_digest, document, validate
 from alz_assessor.engine import assess, local_subchecks
 from alz_assessor.expressroute_evidence import (
     PATHS,
@@ -82,9 +82,7 @@ class ExpressRoutePreparationTests(unittest.TestCase):
     def acceptance_catalog(self):
         catalog = copy.deepcopy(load_catalog())
         matrix = json.loads(
-            (
-                ROOT / "references" / "recommendation-batches" / "batch-14-preparation.json"
-            ).read_text()
+            (ROOT / "references" / "recommendation-batches" / "batch-14.json").read_text()
         )
         rows = {row["guid"]: row for row in matrix["recommendations"]}
         # In-memory authored acceptance fixture; no successor version or catalog file is created.
@@ -198,20 +196,41 @@ class ExpressRoutePreparationTests(unittest.TestCase):
             ],
         )
 
-    def test_fixed_nine_guid_matrix_sources_and_no_activation(self):
+    def test_fixed_nine_guid_matrix_sources_and_exact_history(self):
         root = ROOT / "references" / "recommendation-batches"
-        matrix = json.loads((root / "batch-14-preparation.json").read_text("utf-8"))
+        matrix = json.loads((root / "batch-14.json").read_text("utf-8"))
         targets = json.loads((root / "targets.json").read_text("utf-8"))["targets"]
         manifest = json.loads((root / "batch-14-sources.json").read_text("utf-8"))
         self.assertEqual(
             {t["upstream_id"]: t["guid"] for t in targets if t["batch"] == "14"}, GUIDS
         )
         self.assertEqual({r["upstream_id"]: r["guid"] for r in matrix["recommendations"]}, GUIDS)
-        self.assertNotIn("catalog_version", matrix)
-        self.assertNotIn("accepted_at", matrix)
+        self.assertEqual(matrix["catalog_version"], "2026-11-06.7")
+        self.assertTrue(matrix["accepted_at"])
+        self.assertEqual(matrix["review_state"], "owner-delegated-source-backed-matrix")
+        data = ROOT / "src" / "alz_assessor" / "data"
+        predecessor = (data / "catalog-2026-11-06.6.json").read_bytes()
         self.assertEqual(
-            matrix["review_state"], "source-reviewed-preparation-not-accepted-or-delivered"
+            hashlib.sha256(predecessor).hexdigest(),
+            "b5620f2e88cbce8c7d53178626931406975b604d0cb5f4b3e5e9ba41470098b8",
         )
+        self.assertEqual(
+            hashlib.sha256((data / "crosswalk-2026-11-06.6.json").read_bytes()).hexdigest(),
+            "ffcc95726458a4acf9302c4a5d7c2d721df06cab6d292b1ea53c470a45810705",
+        )
+        self.assertEqual(len(load_catalog()["controls"]), 255)
+        before = {c["upstream_guid"]: c for c in json.loads(predecessor)["controls"]}
+        after = load_catalog()
+        self.assertEqual(after["catalog_version"], "2026-11-06.7")
+        for control in after["controls"]:
+            if control["upstream_guid"] not in GUIDS.values():
+                self.assertEqual(
+                    control_digest(control), control_digest(before[control["upstream_guid"]])
+                )
+        previous_crosswalk = json.loads((data / "crosswalk-2026-11-06.6.json").read_text())
+        current_crosswalk = json.loads((data / "crosswalk.json").read_text())
+        self.assertEqual(current_crosswalk["entries"], previous_crosswalk["entries"])
+        self.assertEqual(current_crosswalk["sources"], previous_crosswalk["sources"])
         sources = {s["id"]: s for s in manifest["sources"]}
         self.assertEqual(len(sources), 26)
         for source in sources.values():
@@ -769,9 +788,7 @@ class ExpressRoutePreparationTests(unittest.TestCase):
         row = next(
             r
             for r in json.loads(
-                (
-                    ROOT / "references" / "recommendation-batches" / "batch-14-preparation.json"
-                ).read_text()
+                (ROOT / "references" / "recommendation-batches" / "batch-14.json").read_text()
             )["recommendations"]
             if r["upstream_id"] == "D06.08"
         )
@@ -868,9 +885,7 @@ class ExpressRoutePreparationTests(unittest.TestCase):
         report = assess(bundle, catalog, at=AT, evidence_tiers=True)
         question = "authored-fixture-expressroute"
         matrix = json.loads(
-            (
-                ROOT / "references" / "recommendation-batches" / "batch-14-preparation.json"
-            ).read_text()
+            (ROOT / "references" / "recommendation-batches" / "batch-14.json").read_text()
         )
         template = {
             "question": " ".join(
@@ -889,6 +904,27 @@ class ExpressRoutePreparationTests(unittest.TestCase):
             self.assertIsNone(response["answer"])
             with self.assertRaises(InputError):
                 compile_interview(response, catalog, at=AT)
+            completed = copy.deepcopy(response)
+            completed.update(
+                answer="Authored fixture only, not an owner decision.",
+                reviewer="Fixture reviewer",
+                rationale="Nine explicitly separate fixture decisions.",
+                evidence="https://example.invalid/expressroute",
+                valid_from=AT,
+                valid_until="2026-11-07T09:00:00Z",
+            )
+            for entry in completed["decisions"]:
+                entry["outcome"] = "fail"
+            explicit = compile_interview(completed, catalog, at=AT)
+            self.assertEqual(len(explicit["entries"]), 9)
+            reviewed = assess(bundle, catalog, at=AT, evidence_tiers=True, manual=explicit)
+            self.assertTrue(
+                all(
+                    r["observed"]["outcome"] == "fail"
+                    for r in reviewed["results"]
+                    if r["upstream_id"] in GUIDS
+                )
+            )
             completed = copy.deepcopy(response)
             completed.update(
                 answer="Authored acceptance fixture only, not an owner decision.",
@@ -944,6 +980,53 @@ class ExpressRoutePreparationTests(unittest.TestCase):
         self.assertTrue(has_fact(1.5))
         self.assertFalse(has_fact(float("nan")))
         self.assertFalse(has_fact(float("inf")))
+
+    def test_accepted_nine_guid_bank_reports_replay_and_positive_direct_bindings(self):
+        catalog, bundle = load_catalog(), self.acceptance_bundle()
+        report = assess(bundle, catalog, at=AT, evidence_tiers=True)
+        own = [r for r in report["results"] if r["upstream_id"] in GUIDS]
+        self.assertEqual(len(own), 9)
+        self.assertTrue(all(r["observed"]["outcome"] == "manual" for r in own))
+        self.assertTrue(all(r["observed"]["evidence_tier"] == "signal" for r in own))
+        response = prepare_interview(report, catalog, "expressroute-cost-resilience", SCOPE)
+        self.assertEqual(
+            {r["control_id"] for r in response["decisions"]},
+            {"ALZ-" + guid for guid in GUIDS.values()},
+        )
+        self.assertTrue(all(r["outcome"] is None for r in response["decisions"]))
+        self.assertIsNone(response["answer"])
+        with self.assertRaises(InputError):
+            compile_interview(response, catalog, at=AT)
+        control = next(c for c in catalog["controls"] if c["upstream_id"] == "D06.08")
+        context = review_context(control, bundle)
+        connection = next(
+            r for r in context["resources"] if r["facts"].get("connectionType") == "ExpressRoute"
+        )
+        port = connection["linked_circuit"]["linked_direct_port"]
+        self.assertEqual(port["facts"]["directPortBandwidthGbps"], 100)
+        self.assertEqual(port["published_fastpath_port_ip_limit"], 200000)
+        missing = copy.deepcopy(bundle)
+        missing["resources"][1]["state"] = "inaccessible"
+        missing["resources"][1]["reason"] = "access_denied"
+        context = review_context(control, missing)
+        connection = next(
+            r for r in context["resources"] if r["facts"].get("connectionType") == "ExpressRoute"
+        )
+        self.assertIn("unknown", connection["linked_circuit"]["linked_direct_port"])
+        for format in ("json", "markdown", "html", "csv", "sarif", "pr-summary"):
+            self.assertNotIn(SENTINEL, render(report, format))
+        with zipfile.ZipFile(BytesIO(render_xlsx(report))) as archive:
+            self.assertNotIn(
+                SENTINEL, "".join(archive.read(n).decode() for n in archive.namelist())
+            )
+        export_bundle(self.root / "cohort14-accepted", bundle, catalog, at=AT, evidence_tiers=True)
+        replayed = replay_bundle(self.root / "cohort14-accepted")
+        self.assertEqual(semantic(replayed), semantic(report))
+        self.assertEqual(replayed["evidence"][0]["collected_at"], AT)
+        session = ReviewSession(
+            bundle, catalog, self.root / "cohort14-session", clock=lambda: AT, evidence_tiers=True
+        )
+        self.assertEqual(session.state()["records"], [])
 
     @unittest.skipUnless(os.environ.get("BICEP_COMPILER"), "existing Bicep compiler not supplied")
     def test_real_bicep_expressroute_cost_capacity_fastpath_without_restore(self):

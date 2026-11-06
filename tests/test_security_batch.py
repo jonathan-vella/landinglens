@@ -4,6 +4,7 @@ import json
 import os
 import tempfile
 import unittest
+from importlib.resources import files
 from pathlib import Path
 from unittest.mock import patch
 
@@ -43,7 +44,9 @@ class SecurityBatchTests(unittest.TestCase):
         self.root = Path(temp.name)
         reviews = ROOT / "references" / "recommendation-batches"
         self.matrix = json.loads((reviews / "batch-22.json").read_text())
-        self.catalog = load_catalog()
+        self.catalog = load_catalog(
+            str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.6.json"))
+        )
 
     def candidate(self):
         candidate = copy.deepcopy(self.catalog)

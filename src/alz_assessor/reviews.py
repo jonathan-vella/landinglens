@@ -10,6 +10,42 @@ from .sources import boolean, enumeration, property_at
 from .terraform import InputError
 
 
+def direct_port_context(identity: Any, by_id: dict[str, list[dict[str, Any]]]) -> dict[str, Any]:
+    from .expressroute_evidence import PORT_KIND
+
+    matches = by_id.get(identity, []) if isinstance(identity, str) else []
+    if (
+        len(matches) != 1
+        or matches[0]["state"] != "known"
+        or matches[0]["resource_type"].lower() != PORT_KIND
+    ):
+        return {
+            "arm_id": identity if isinstance(identity, str) else None,
+            "unknown": "referenced_direct_port_not_unique_known",
+        }
+    facts = {
+        path: review_fact(matches[0]["properties"], path)
+        for path in (
+            "directPortBandwidthGbps",
+            "directPortBillingType",
+            "directPortEncapsulation",
+            "peeringLocationConfigured",
+        )
+    }
+    bandwidth = facts["directPortBandwidthGbps"]
+    return {
+        "arm_id": identity,
+        "facts": facts,
+        "published_fastpath_port_ip_limit": {10: 100000, 100: 200000, 400: 200000}.get(
+            bandwidth, {"unknown": "reviewed_direct_port_capacity_required"}
+        )
+        if type(bandwidth) is int
+        else {"unknown": "reviewed_direct_port_capacity_required"},
+        "warning": "Published cumulative per-port IP limit only; no actual route population, "
+        "enrollment, region availability, capacity headroom or achieved FastPath performance.",
+    }
+
+
 def prepared_resource(
     resource: dict[str, Any],
     control: dict[str, Any],
@@ -168,6 +204,38 @@ def prepared_resource(
                 public_ips.append(entry)
             gateway["public_ips"] = public_ips if isinstance(public_refs, list) else public_refs
         prepared["linked_gateway"] = gateway
+    if "expressRoutePort.id" in facts:
+        prepared["linked_direct_port"] = direct_port_context(facts["expressRoutePort.id"], by_id)
+    if "expressRouteCircuitId" in facts:
+        identity = facts["expressRouteCircuitId"]
+        matches = by_id.get(identity, []) if isinstance(identity, str) else []
+        circuit: dict[str, Any] = {
+            "arm_id": identity if isinstance(identity, str) else None,
+            "unknown": "referenced_circuit_not_unique_known",
+        }
+        if (
+            len(matches) == 1
+            and matches[0]["state"] == "known"
+            and matches[0]["resource_type"].lower() == "microsoft.network/expressroutecircuits"
+        ):
+            circuit_facts = {
+                path: review_fact(matches[0]["properties"], path)
+                for path in (
+                    "circuitSku.tier",
+                    "circuitSku.family",
+                    "providerCircuitBandwidthMbps",
+                    "directCircuitBandwidthGbps",
+                    "expressRoutePort.id",
+                )
+            }
+            circuit = {
+                "arm_id": identity,
+                "facts": circuit_facts,
+                "linked_direct_port": direct_port_context(
+                    circuit_facts["expressRoutePort.id"], by_id
+                ),
+            }
+        prepared["linked_circuit"] = circuit
     return prepared
 
 

@@ -1,11 +1,18 @@
 {
   "batch": "14",
-  "review_state": "source-reviewed-preparation-not-accepted-or-delivered",
+  "catalog_version": "2026-11-06.7",
+  "review_state": "owner-delegated-source-backed-matrix",
+  "accepted_at": "2026-11-06T10:37:08.5648090Z",
+  "preserved_catalog_bytes": {
+    "2026-11-06.6": "b5620f2e88cbce8c7d53178626931406975b604d0cb5f4b3e5e9ba41470098b8"
+  },
+  "preserved_crosswalk_bytes": {
+    "2026-11-06.6": "ffcc95726458a4acf9302c4a5d7c2d721df06cab6d292b1ea53c470a45810705"
+  },
   "issue": "https://github.com/jonathan-vella/landinglens/issues/99",
   "prerequisites": ["13", "22"],
-  "activation": "Deferred until the coordinator grants the catalog/delivery slot; no successor version chosen.",
-  "acceptance_preparation": "Authored in-memory nine-GUID fixtures exercise Signal-not-pass tiers, all reports, blank review sessions and scoped/content/expiry-bound atomic interviews without changing the runtime question bank. Historical replay deliberately rejects the unaccepted fixture; exact packaged-catalog replay retains original time and sanitized facts. Finite fractional circuit Gbps is a supported numeric fact and can prepare a Signal; NaN/infinity/invalid bandwidth cannot.",
-  "supported_modes": "Circuit/port and explicit connection FastPath facts normalize through the existing reviewed ARM/REST 2024-05-01, existing no-restore Bicep, AzureRM 4.50.0 raw/supplied-plan and saved/injected paths, with typed review/replay projection. Merged cohort13 owns gateway SKU/type/BGP/active-active and connection bindings. Additional ARM-only scale bounds and gateway public-IP references supply partial original-time review/subchecks, not outcomes. GUID-specific catalog, interview, tier and report activation awaits the coordinator slot.",
+  "acceptance_evidence": "Nine GUID-specific assisted workflows with typed billing/capacity/zone/connection context and literal FastPath prerequisite subchecks. Configuration never establishes current region/port availability, actual demand or costs, achieved throughput/latency, deployed gateway resilience, real on-premises appliances or effective routing isolation. Separate source-bound decisions remain blank; actual checked merge and guarded receipts are distinct from source-matrix acceptance.",
+  "supported_modes": "Circuit/port and explicit connection FastPath facts normalize through reviewed ARM/REST 2024-05-01, existing no-restore Bicep, AzureRM 4.50.0 raw/supplied-plan and saved/injected paths. Merged cohort13 owns gateway SKU/type/BGP/active-active and circuit/local-gateway bindings; cohort22 security behavior is retained. ARM-only scale bounds and typed gateway public-IP references supply partial original-time review/subchecks. Finite numeric circuit Gbps can prepare a Signal, never a pass. All reports, tiers, review sessions, interviews and exact packaged-catalog replay use the single evaluator. No new live Azure/cost/traffic/health/region queries, scans, credentials, module restoration or deployments.",
   "shared_interface_needs": [
     "Merged cohort13 gateway SKU, gatewayType, activeActive, enableBgp, subnet relationships and connection circuit/local-network-gateway relationships are reused without duplicate facts.",
     "Original-time and scoped evidence guards remain unchanged. Explicit FastPath booleans extend the merged connection projection; unique known gateway/public-IP joins remain partial review context.",
@@ -81,7 +88,7 @@
       "guid": "c2299c4d-7b57-4d0c-9555-62f2b3e4563a",
       "upstream_id": "D06.08",
       "classification": "assisted",
-      "implemented_subclaim": "Strict separate bypass/Private Link booleans and reused gateway/circuit binding plus literal gateway-SKU/minimum-scale and flag-consistency subchecks, not runtime eligibility or performance.",
+      "implemented_subclaim": "Strict separate bypass/Private Link booleans, unique known gateway/circuit/Direct-port bindings and published cumulative port IP limit, plus literal gateway-SKU/minimum-scale and flag-consistency subchecks; no runtime eligibility, usage or performance verdict.",
       "sources": ["fastpath", "expressroute-gateway", "gateway-rest-2024", "connection-arm", "terraform-gateway-connection", "scalable-gateway"],
       "review_resource_types": ["Microsoft.Network/connections", "Microsoft.Network/expressRoutePorts", "Microsoft.Network/virtualNetworkGateways"],
       "review_fact_paths": ["connectionType", "virtualNetworkGateway1.id", "expressRouteCircuitId", "expressRouteGatewayBypass", "enablePrivateLinkFastPath", "gatewaySku", "gatewayScaleBounds", "directPortBandwidthGbps"],
