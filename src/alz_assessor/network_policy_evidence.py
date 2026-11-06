@@ -12,6 +12,7 @@ GATEWAY = "microsoft.network/virtualnetworkgateways"
 DIAGNOSTIC = "microsoft.insights/diagnosticsettings"
 ALERT = "microsoft.insights/metricalerts"
 PARTNER = "microsoft.network/securitypartnerproviders"
+VPN = "microsoft.network/vpngateways"
 GUIDS = {
     "3f79ed00-203b-4c95-9efd-691505f5a1f9",
     "5234c93f-b651-41dd-80c1-234177b91ced",
@@ -32,6 +33,7 @@ PATHS = {
     "gatewayMetricAlertSummary",
     "fqdnRuleSummary",
     "partnerConfiguration",
+    "hubVpnGatewayId",
 }
 GATEWAY_METRICS = (
     "ExpressRouteGatewayBitsPerSecond",
@@ -193,6 +195,8 @@ def review_fact(properties: dict[str, Any], path: str) -> Any:
         return fqdn_facts(value)
     if path == "partnerConfiguration":
         return partner_facts(value)
+    if path == "hubVpnGatewayId":
+        return typed_reference(value, (VPN,))
     return boolean(value)
 
 
@@ -200,6 +204,19 @@ def projected_properties(
     kind: str, values: dict[str, Any], *, terraform: bool = False
 ) -> dict[str, Any]:
     kind = kind.lower()
+    if kind == "microsoft.network/virtualhubs":
+        return {
+            "hubVpnGatewayId": unknown("terraform_hub_vpn_binding_not_explicit")
+            if terraform
+            else typed_reference(property_at(values, "vpnGateway.id"), (VPN,))
+        }
+    if kind == VPN:
+        return {
+            "virtualWanHubId": typed_reference(
+                values.get("virtual_hub_id") if terraform else property_at(values, "virtualHub.id"),
+                ("microsoft.network/virtualhubs",),
+            )
+        }
     if kind == PARTNER and not terraform:
         return {
             "partnerConfiguration": partner_facts(
@@ -255,6 +272,70 @@ def projected_properties(
             )
         }
     return {}
+
+
+def partner_context(
+    partner: dict[str, Any],
+    bundle: dict[str, Any],
+    by_id: dict[str, list[dict[str, Any]]],
+) -> dict[str, Any]:
+    from .virtual_wan_evidence import CONNECTION, HUB, INTENT, hub_context, known_resource
+    from .virtual_wan_evidence import review_fact as vwan_fact
+
+    scope = bundle.get("scope")
+    if known_resource(partner.get("arm_id"), PARTNER, by_id, scope) is not partner:
+        return unknown("partner_not_unique_known_typed_scoped")
+    fact = partner_facts(property_at(partner["properties"], "partnerConfiguration"))
+    hub_id = fact.get("virtualHubId")
+    hub = known_resource(hub_id, HUB, by_id, scope)
+    if hub is None:
+        return unknown("partner_hub_not_unique_known_typed_scoped")
+    context = hub_context(hub, by_id, scope)
+    if "unknown" in context:
+        return context
+    vpn_id = review_fact(hub["properties"], "hubVpnGatewayId")
+    vpn = known_resource(vpn_id, VPN, by_id, scope)
+    vpn_binding = (
+        vpn_id
+        if vpn is not None and vwan_fact(vpn["properties"], "virtualWanHubId") == hub_id
+        else unknown("explicit_reciprocal_known_local_vwan_vpn_gateway_required")
+    )
+    children = [
+        row for row in bundle["resources"] if row["resource_type"].lower() in (CONNECTION, INTENT)
+    ]
+    routes: Any = unknown("partner_hub_routing_population_over_100")
+    unresolved: Any = unknown("partner_hub_routing_population_not_evaluated")
+    if len(children) <= 100:
+        routes = []
+        unresolved = 0
+        for row in children:
+            kind = row["resource_type"].lower()
+            ref = typed_reference(row.get("arm_id"), (kind,))
+            if known_resource(ref, kind, by_id, scope) is not row:
+                unresolved += 1
+            elif isinstance(ref, str) and ref.rsplit("/", 2)[0] == hub_id:
+                routes.append(
+                    {
+                        "arm_id": ref,
+                        "configuration": hub_context(row, by_id, scope),
+                        "internet_security_enabled": vwan_fact(
+                            row["properties"], "hubInternetSecurityEnabled"
+                        )
+                        if kind == CONNECTION
+                        else unknown("connection_flag_not_applicable_to_intent"),
+                    }
+                )
+    return {
+        "hub": context,
+        "vpn_gateway_binding": vpn_binding,
+        "supplied_local_routing": routes,
+        "unresolved_routing_resources": unresolved,
+        "service_support": unknown("historical_schema_enum_not_current_service_support"),
+        "coverage": unknown("configured_bindings_not_tunnels_partner_opt_in_or_effective_routes"),
+        "warning": "Supplied configuration only. Firewall intent is not partner default-route "
+        "opt-in; branch/VPN connection routes, actual tunnels, health, support and filtering "
+        "require separate evidence. Hub/region labels prove no physical/country paths.",
+    }
 
 
 def unique_known(

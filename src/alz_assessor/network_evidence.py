@@ -941,6 +941,7 @@ def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
         "microsoft.network/azurefirewalls",
         "microsoft.network/firewallpolicies",
         "microsoft.network/securitypartnerproviders",
+        "microsoft.network/vpngateways",
         "microsoft.network/virtualnetworks/subnets",
         "microsoft.network/ipgroups",
         "microsoft.network/azurefirewalls/natrulecollections",

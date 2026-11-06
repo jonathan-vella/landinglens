@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import io
 import json
 import os
@@ -23,10 +24,12 @@ from alz_assessor.network_policy_evidence import (
     GUIDS,
     PARTNER,
     POLICY,
+    VPN,
     diagnostic_facts,
     fqdn_facts,
     gateway_alert_facts,
     gateway_context,
+    partner_context,
     partner_facts,
     policy_context,
 )
@@ -38,6 +41,7 @@ from alz_assessor.review_session import ReviewSession
 from alz_assessor.reviews import prepare_reviews, review_context
 from alz_assessor.sources import terraform_source, tf_properties
 from alz_assessor.terraform import InputError, tree_hash
+from alz_assessor.virtual_wan_evidence import CONNECTION, HUB, INTENT, TABLE, WAN
 
 ROOT = Path(__file__).resolve().parents[1]
 SCOPE = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/network"
@@ -51,6 +55,12 @@ LOG = GW + "/providers/Microsoft.Insights/diagnosticSettings/logs"
 METRIC = SCOPE + "/providers/Microsoft.Insights/metricAlerts/gateway-cpu"
 WORKSPACE = SCOPE + "/providers/Microsoft.OperationalInsights/workspaces/logs"
 ACTION = SCOPE + "/providers/Microsoft.Insights/actionGroups/operators"
+PARTNER_ID = NETWORK + "securityPartnerProviders/partner"
+HUB_ID = NETWORK + "virtualHubs/hub"
+WAN_ID = NETWORK + "virtualWans/wan"
+VPN_ID = NETWORK + "vpnGateways/vpn"
+HUB_FW = NETWORK + "azureFirewalls/hubfirewall"
+TABLE_ID = HUB_ID + "/hubRouteTables/defaultRouteTable"
 PRIVATE = "PRIVATE-NETWORK-POLICY-RULE-PROVIDER-SECRET"
 AT = "2026-11-06T15:00:00Z"
 CONTROLS = {"ALZ-" + guid for guid in GUIDS}
@@ -202,6 +212,290 @@ class NetworkPolicyPreparationTests(unittest.TestCase):
     def monitoring(self, bundle=None):
         bundle = bundle or self.bundle()
         return gateway_context(bundle["resources"][4], bundle, self.by_id(bundle))
+
+    def partner_topology(self):
+        bundle = self.bundle()
+        bundle["resources"].extend(
+            [
+                self.record(
+                    PARTNER,
+                    PARTNER_ID,
+                    {
+                        "securityProviderName": "ZScaler",
+                        "virtualHub": {"id": HUB_ID},
+                    },
+                ),
+                self.record(WAN, WAN_ID, {"type": "Standard"}),
+                self.record(
+                    HUB,
+                    HUB_ID,
+                    {
+                        "virtualWan": {"id": WAN_ID},
+                        "azureFirewall": {"id": HUB_FW},
+                        "vpnGateway": {"id": VPN_ID},
+                        "addressPrefix": "10.12.0.0/22",
+                    },
+                ),
+                self.record(VPN, VPN_ID, {"virtualHub": {"id": HUB_ID}, "sharedKey": PRIVATE}),
+                self.record(
+                    FIREWALL,
+                    HUB_FW,
+                    {
+                        "sku": {"name": "AZFW_Hub", "tier": "Standard"},
+                        "virtualHub": {"id": HUB_ID},
+                    },
+                ),
+                self.record(
+                    TABLE,
+                    TABLE_ID,
+                    {
+                        "labels": ["Default", PRIVATE],
+                        "routes": [{"nextHop": PRIVATE, "destinations": [PRIVATE]}],
+                    },
+                ),
+                self.record(
+                    CONNECTION,
+                    HUB_ID + "/hubVirtualNetworkConnections/connection",
+                    {
+                        "enableInternetSecurity": True,
+                        "routingConfiguration": {
+                            "associatedRouteTable": {"id": TABLE_ID},
+                            "propagatedRouteTables": {
+                                "ids": [{"id": TABLE_ID}],
+                                "labels": ["Default"],
+                            },
+                            "vnetRoutes": {"staticRoutes": [{"nextHopIpAddress": PRIVATE}]},
+                        },
+                    },
+                ),
+                self.record(
+                    INTENT,
+                    HUB_ID + "/routingIntent/intent",
+                    {
+                        "routingPolicies": [
+                            {"name": "Internet", "destinations": ["Internet"], "nextHop": HUB_FW}
+                        ],
+                    },
+                ),
+            ]
+        )
+        return bundle
+
+    def partner_join(self, bundle=None):
+        bundle = bundle or self.partner_topology()
+        return partner_context(bundle["resources"][7], bundle, self.by_id(bundle))
+
+    def test_partner_uses_merged_known_wan_hub_vpn_firewall_and_routing_models(self):
+        context = self.partner_join()
+        self.assertEqual(context["hub"]["wan_id"], WAN_ID.lower())
+        self.assertEqual(context["hub"]["local_azure_firewall_join"], HUB_FW.lower())
+        self.assertEqual(context["vpn_gateway_binding"], VPN_ID.lower())
+        routes = context["supplied_local_routing"]
+        self.assertEqual(len(routes), 2)
+        self.assertTrue(routes[0]["configuration"]["associated_local_hub_table_known"])
+        self.assertTrue(routes[0]["configuration"]["supplied_propagation_tables_known_local"])
+        self.assertTrue(
+            routes[1]["configuration"]["explicit_internet_intent_to_joined_local_firewall"]
+        )
+        self.assertIn("unknown", context["service_support"])
+        self.assertIn("unknown", context["coverage"])
+        self.assertNotIn(PRIVATE, json.dumps(context))
+        prepared = self.context("D07.03", self.partner_topology())
+        row = next(r for r in prepared["resources"] if r["arm_id"] == PARTNER_ID.lower())
+        self.assertEqual(row["configured_partner_hub"], context)
+
+    def test_vwan_supplement_preserves_original_captures_without_accepted_activation(self):
+        root = ROOT / "references/recommendation-batches"
+        original = root / "preparation-16-sources.json"
+        self.assertEqual(
+            hashlib.sha256(original.read_bytes()).hexdigest(),
+            "aab4e0fd627f921fc24420a0d081a87803306f0ec86febc3a68453643209cb69",
+        )
+        supplement = json.loads((root / self.matrix["supplemental_source_manifest"]).read_text())
+        self.assertEqual(supplement["review_state"], "preparation-only-reviewed")
+        self.assertEqual(
+            {row["id"] for row in supplement["sources"]},
+            {
+                "partner-vwan-vpn-rest",
+                "partner-vwan-vpn-arm",
+                "partner-vwan-vpn-provider",
+            },
+        )
+        for source in supplement["sources"]:
+            self.assertRegex(source["sha256"], r"^[0-9a-f]{64}$")
+            self.assertRegex(source["revision"], r"^[0-9a-f]{40}$")
+            self.assertTrue(source["reuse"])
+        self.assertEqual(self.matrix["reconciled_main"], "f2411afa0d43e7f25402b364b9721dccb26201cd")
+        self.assertEqual(self.matrix["review_state"], "preparation-only-not-accepted")
+        self.assertNotIn("catalog_version", self.matrix)
+        self.assertNotIn("network-monitoring-sovereignty-policy", interviews.BANK)
+
+    def test_partner_missing_ambiguous_denied_wrong_scope_or_types_stay_unknown(self):
+        for index in (7, 8, 9):
+            for state in ("unknown", "error"):
+                bundle = self.partner_topology()
+                bundle["resources"][index]["state"] = state
+                self.assertIn("unknown", self.partner_join(bundle))
+            bundle = self.partner_topology()
+            bundle["resources"].append(copy.deepcopy(bundle["resources"][index]))
+            self.assertIn("unknown", self.partner_join(bundle))
+        bundle = self.partner_topology()
+        bundle["resources"][7]["arm_id"] = PARTNER_ID.replace(SCOPE, OTHER)
+        self.assertIn("unknown", self.partner_join(bundle))
+        bundle = self.partner_topology()
+        bundle["resources"][7]["properties"]["partnerConfiguration"]["virtualHubId"] = GW
+        self.assertIn("unknown", self.partner_join(bundle))
+        bundle = self.partner_topology()
+        bundle["resources"][9]["properties"]["virtualWanId"] = WAN_ID.replace(SCOPE, OTHER)
+        bundle["resources"][8]["arm_id"] = WAN_ID.replace(SCOPE, OTHER)
+        self.assertIn("unknown", self.partner_join(bundle))
+
+    def test_vwan_vpn_is_not_vnet_gateway_and_requires_known_reciprocal_binding(self):
+        self.assertNotIn(VPN, API_VERSIONS)
+        self.assertEqual(PLANNED_API_VERSIONS[VPN], {"2024-05-01"})
+        for index in (9, 10):
+            bundle = self.partner_topology()
+            key = "hubVpnGatewayId" if index == 9 else "virtualWanHubId"
+            bundle["resources"][index]["properties"][key] = GW if index == 9 else HUB_ID + "-other"
+            self.assertIn("unknown", self.partner_join(bundle)["vpn_gateway_binding"])
+        for state in ("unknown", "error"):
+            bundle = self.partner_topology()
+            bundle["resources"][10]["state"] = state
+            self.assertIn("unknown", self.partner_join(bundle)["vpn_gateway_binding"])
+        bundle = self.partner_topology()
+        bundle["resources"].append(copy.deepcopy(bundle["resources"][10]))
+        self.assertIn("unknown", self.partner_join(bundle)["vpn_gateway_binding"])
+        bundle = self.partner_topology()
+        del bundle["resources"][9]["properties"]["hubVpnGatewayId"]
+        self.assertIn("unknown", self.partner_join(bundle)["vpn_gateway_binding"])
+        path = self.root / "unsupported-vpn.json"
+        path.write_text(
+            json.dumps(
+                {
+                    "resources": [
+                        {
+                            "type": "Microsoft.Network/vpnGateways",
+                            "apiVersion": "1900-01-01",
+                            "name": "vpn",
+                            "properties": {"virtualHub": {"id": HUB_ID}},
+                        }
+                    ]
+                }
+            )
+        )
+        unsupported = arm_source(path, scope=SCOPE)
+        self.assertEqual(unsupported["resources"][0]["state"], "unknown")
+
+    def test_partner_local_route_tables_firewalls_and_population_are_strict(self):
+        for index, field in ((11, "virtualWanHubId"), (12, None)):
+            bundle = self.partner_topology()
+            if field:
+                bundle["resources"][index]["properties"][field] = HUB_ID + "-other"
+                self.assertIn(
+                    "unknown", self.partner_join(bundle)["hub"]["local_azure_firewall_join"]
+                )
+            else:
+                bundle["resources"][index]["state"] = "error"
+                routes = self.partner_join(bundle)["supplied_local_routing"]
+                self.assertIn(
+                    "unknown", routes[0]["configuration"]["associated_local_hub_table_known"]
+                )
+        bundle = self.partner_topology()
+        bundle["resources"][13]["arm_id"] = HUB_ID.lower() + "-other/hubvirtualnetworkconnections/c"
+        self.assertEqual(len(self.partner_join(bundle)["supplied_local_routing"]), 1)
+        bundle = self.partner_topology()
+        bundle["resources"].append(copy.deepcopy(bundle["resources"][13]))
+        self.assertEqual(self.partner_join(bundle)["unresolved_routing_resources"], 2)
+        bundle["resources"].extend(copy.deepcopy(bundle["resources"][13]) for _ in range(99))
+        self.assertIn("unknown", self.partner_join(bundle)["supplied_local_routing"])
+
+    def test_partner_join_original_time_replay_preserves_minimized_unresolved_context(self):
+        for missing in (False, True):
+            bundle = self.partner_topology()
+            if missing:
+                bundle["resources"][10]["state"] = "error"
+                bundle["resources"][10]["reason"] = "detail_denied"
+            directory = self.root / str(missing)
+            export_bundle(directory, bundle, self.catalog, at=AT, evidence_tiers=True)
+            saved = json.loads((directory / "evidence.json").read_text())
+            self.assertEqual(self.partner_join(bundle), self.partner_join(saved))
+            self.assertEqual(
+                semantic(assess(bundle, self.catalog, at=AT, evidence_tiers=True)),
+                semantic(replay_bundle(directory)),
+            )
+            self.assertNotIn(PRIVATE, json.dumps(saved))
+            self.assertEqual(saved["collected_at"], AT)
+
+    def test_vpn_gateway_raw_module_and_plan_use_only_explicit_hub_reference(self):
+        module = self.root / "vpnmodule"
+        module.mkdir()
+        (module / "main.tf").write_text(
+            'resource "azurerm_vpn_gateway" "vpn" {\nname="vpn"\n'
+            f'resource_group_name="network"\nvirtual_hub_id="{HUB_ID}"\n'
+            "}\n"
+        )
+        raw = terraform_source(module, scope=SCOPE, provider_version="4.50.0")
+        self.assertEqual(raw["resources"][0]["resource_type"].lower(), VPN)
+        self.assertEqual(raw["resources"][0]["properties"]["virtualWanHubId"], HUB_ID.lower())
+        wrapper = self.root / "vpnwrapper"
+        wrapper.mkdir()
+        (wrapper / "main.tf").write_text(
+            'module "vpn" {\nsource="example.invalid/vpn/gateway/azurerm"\nversion="1.0.0"\n}\n'
+        )
+        manifest = self.root / "vpn-snapshots.json"
+        manifest.write_text(
+            json.dumps(
+                {
+                    "modules": [
+                        {
+                            "source": "example.invalid/vpn/gateway/azurerm",
+                            "version": "1.0.0",
+                            "subdirectory": "",
+                            "path": "vpnmodule",
+                            "sha256": tree_hash(module),
+                        }
+                    ]
+                }
+            )
+        )
+        supplied = terraform_source(
+            wrapper,
+            scope=SCOPE,
+            provider_version="4.50.0",
+            snapshots=manifest,
+            authorized_roots=[module],
+        )
+        self.assertEqual(supplied["resources"][0]["properties"]["virtualWanHubId"], HUB_ID.lower())
+        plan = self.root / "vpn-plan.json"
+        plan.write_text(
+            json.dumps(
+                {
+                    "format_version": "1.2",
+                    "planned_values": {
+                        "root_module": {
+                            "resources": [
+                                {
+                                    "mode": "managed",
+                                    "type": "azurerm_vpn_gateway",
+                                    "address": "azurerm_vpn_gateway.vpn",
+                                    "values": {
+                                        "name": "vpn",
+                                        "resource_group_name": "network",
+                                        "virtual_hub_id": HUB_ID,
+                                        "shared_key": PRIVATE,
+                                    },
+                                    "sensitive_values": {"virtual_hub_id": True},
+                                }
+                            ],
+                        }
+                    },
+                }
+            )
+        )
+        normalized = plan_source(plan, scope=SCOPE, provider_version="4.50.0")
+        self.assertIn("unknown", normalized["resources"][0]["properties"]["virtualWanHubId"])
+        self.assertNotIn(PRIVATE, json.dumps(normalized))
+        self.assertIn("unknown", tf_properties("azurerm_virtual_hub", {})["hubVpnGatewayId"])
 
     def test_exact_fixed_matrix_source_revision_limits_and_inactive_guards(self):
         targets = json.loads((ROOT / "references/recommendation-batches/targets.json").read_text())
@@ -828,7 +1122,7 @@ class NetworkPolicyPreparationTests(unittest.TestCase):
         )
         validate(evidence, "evidence")
         by_id = self.by_id(evidence)
-        firewall = next(r for r in evidence["resources"] if r["resource_type"].lower() == FIREWALL)
+        firewall = next(r for r in evidence["resources"] if r["arm_id"] == FW.lower())
         gateway = next(r for r in evidence["resources"] if r["resource_type"].lower() == GATEWAY)
         self.assertEqual(len(policy_context(firewall, evidence, by_id)["policies"]), 2)
         self.assertIs(gateway["properties"]["allowRemoteVnetTraffic"], False)
@@ -844,6 +1138,10 @@ class NetworkPolicyPreparationTests(unittest.TestCase):
         self.assertIn(
             "unknown", partner["properties"]["partnerConfiguration"]["current_service_support"]
         )
+        context = partner_context(partner, evidence, by_id)
+        self.assertEqual(context["vpn_gateway_binding"], VPN_ID.lower())
+        self.assertEqual(context["hub"]["local_azure_firewall_join"], HUB_FW.lower())
+        self.assertEqual(len(context["supplied_local_routing"]), 2)
         self.assertNotIn("authored.example.invalid", json.dumps(evidence))
         report = assess(evidence, self.catalog, at=evidence["collected_at"], evidence_tiers=True)
         self.assertTrue(

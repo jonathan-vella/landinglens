@@ -37,6 +37,7 @@ TF_TYPES = {
     "azurerm_network_security_group": "Microsoft.Network/networkSecurityGroups",
     "azurerm_network_security_rule": "Microsoft.Network/networkSecurityGroups/securityRules",
     "azurerm_virtual_network_gateway": "Microsoft.Network/virtualNetworkGateways",
+    "azurerm_vpn_gateway": "Microsoft.Network/vpnGateways",
     "azurerm_network_watcher_flow_log": "Microsoft.Network/networkWatchers/flowLogs",
     "azurerm_network_connection_monitor": "Microsoft.Network/networkWatchers/connectionMonitors",
     "azurerm_application_security_group": "Microsoft.Network/applicationSecurityGroups",

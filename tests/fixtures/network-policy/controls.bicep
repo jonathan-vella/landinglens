@@ -13,6 +13,66 @@ resource partner 'Microsoft.Network/securityPartnerProviders@2024-05-01' = {
   }
 }
 
+resource wan 'Microsoft.Network/virtualWans@2024-05-01' = {
+  name: 'wan'
+  location: 'westeurope'
+  properties: { type: 'Standard', allowBranchToBranchTraffic: true }
+}
+
+resource hub 'Microsoft.Network/virtualHubs@2024-05-01' = {
+  name: 'hub'
+  location: 'westeurope'
+  properties: {
+    virtualWan: { id: wan.id }
+    azureFirewall: { id: resourceId('Microsoft.Network/azureFirewalls', 'hubfirewall') }
+    vpnGateway: { id: resourceId('Microsoft.Network/vpnGateways', 'vpn') }
+    addressPrefix: '10.12.0.0/22'
+    hubRoutingPreference: 'ASPath'
+  }
+}
+
+resource vpn 'Microsoft.Network/vpnGateways@2024-05-01' = {
+  name: 'vpn'
+  location: 'westeurope'
+  properties: { virtualHub: { id: hub.id } }
+}
+
+resource hubFirewall 'Microsoft.Network/azureFirewalls@2024-05-01' = {
+  name: 'hubfirewall'
+  location: 'westeurope'
+  properties: {
+    sku: { name: 'AZFW_Hub', tier: 'Standard' }
+    virtualHub: { id: hub.id }
+  }
+}
+
+resource table 'Microsoft.Network/virtualHubs/hubRouteTables@2024-05-01' = {
+  name: 'hub/defaultRouteTable'
+  properties: { labels: ['Default'], routes: [] }
+}
+
+resource connection 'Microsoft.Network/virtualHubs/hubVirtualNetworkConnections@2024-05-01' = {
+  name: 'hub/connection'
+  properties: {
+    enableInternetSecurity: true
+    routingConfiguration: {
+      associatedRouteTable: { id: table.id }
+      propagatedRouteTables: { ids: [{ id: table.id }], labels: ['Default'] }
+    }
+  }
+}
+
+resource intent 'Microsoft.Network/virtualHubs/routingIntent@2024-05-01' = {
+  name: 'hub/intent'
+  properties: {
+    routingPolicies: [{
+      name: 'Internet'
+      destinations: ['Internet']
+      nextHop: hubFirewall.id
+    }]
+  }
+}
+
 resource base 'Microsoft.Network/firewallPolicies@2024-05-01' = {
   name: 'base'
   location: 'westeurope'
@@ -40,8 +100,7 @@ resource firewall 'Microsoft.Network/azureFirewalls@2024-05-01' = {
 }
 
 resource group 'Microsoft.Network/firewallPolicies/ruleCollectionGroups@2024-05-01' = {
-  parent: child
-  name: 'egress'
+  name: 'child/egress'
   properties: {
     priority: 200
     ruleCollections: [

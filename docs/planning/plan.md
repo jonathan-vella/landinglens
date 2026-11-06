@@ -6,9 +6,9 @@
 immutable network monitoring, sovereignty and firewall-policy targets in its
 [reviewed matrix](../../references/recommendation-batches/preparation-16.json)
 and [public-source capture](../../references/recommendation-batches/preparation-16-sources.json).
-This is not accepted catalog activation or delivery. Cohorts20/05 retain earlier
-serialized slots; no successor version, counts, crosswalk, history, receipts or
-issue closure is changed.
+This is not accepted catalog activation or delivery. Actual cohort20 delivery
+is merged; cohort05 retains the earlier serialized slot. No cohort16 successor
+version, counts, crosswalk, history, receipts or issue closure is changed.
 
 Existing adapters now prepare explicit gateway remote-VNet/vWAN flags, typed
 base-policy links, bounded category/metric/protocol facts and strict scoped
@@ -30,8 +30,8 @@ and the reviewed pages establish no retirement date. Partner integration require
 secured vWAN hubs, not hub VNets.
 ARM/no-restore Bicep and saved evidence can prepare a historical partner-provider
 enum and typed virtual-hub reference, explicitly leaving current service support
-unknown. This adds no live Collector registration or Terraform partner adapter;
-known secured-hub/VPN/route integration waits for actual merged cohort20 models.
+unknown. This adds no live Collector registration or Terraform partner adapter.
+The renewed preparation below reuses actual merged cohort20 models.
 
 D06.26 remains a factual border/country question, not a prohibition. Approved
 regions and conditional inspection requirements remain separate human decisions;
@@ -54,6 +54,39 @@ matched all41 Python source files byte-for-byte. Missing clean runtime wheels
 were restored only after an actual offline missing-dependency failure; all three
 match the unchanged reviewed manifest. These are preparation proofs, not final
 then-current-main, CI, merge, own-GUID receipt or closure acceptance.
+
+Renewed preparation reconciles actual main
+`f2411afa0d43e7f25402b364b9721dccb26201cd` in merge `06b9402`, preserving
+preparation `2e2c679` and all32 original captures byte-for-byte. The
+[three-source supplement](../../references/recommendation-batches/preparation-16-vwan-sources.json)
+inspects the actual pinned `virtualWan.json` hub/VPN references, 2024-05-01
+VPN ARM schema and AzureRM4.50.0 provider. Virtual WAN `vpnGateways` are not
+VNet `virtualNetworkGateways`. Only explicit typed hub bindings are projected;
+no VPN connections, keys, BGP addresses, tunnel state or routing payloads remain.
+
+Partner review now requires unique known subscription/resource-group-scoped
+partner, hub and WAN before presenting joined context. It reuses cohort20's
+actual reciprocal hub/firewall and exact local connection/table/intent checks.
+A VPN binding additionally requires explicit reciprocal known hub/VPN references;
+raw Terraform's absent hub reverse reference stays unknown. Missing, denied,
+ambiguous, wrong-type, cross-scope or over-bound populations cannot establish a
+join or absence. Known local Firewall Internet intent and connection security
+flags do not establish partner default-route opt-in, actual tunnels, branch/VPN
+connection coverage, service availability, health or inspection. All prior source
+contradictions and physical/country/approved-geography limits remain. Accepted
+cohort20 catalog/crosswalk/receipts are unchanged; cohort16 activation still waits
+for an explicit slot after actual cohort05 delivery.
+
+Renewed checkout and fresh own installed-wheel suites each ran **514 tests**:
+513 passed, with only the original Windows symlink-privilege skip. All24 cohort16
+and 30 delivered-vWAN focused cases passed. Formatting/lint, 42-source-file typing,
+dependency consistency and 261 local documentation links passed. All11 current
+compiler cases plus the expanded cohort16 fixture exercised without restoration
+or skips. Own offline wheel SHA256 is
+`fce024ff7f86b89cc59cd52d76f413cbc92411034b84ac5b4b356ba864fd9030`;
+the fresh outside-checkout interpreter imported its own site-packages package and
+matched all42 Python source files. This is renewed independent preparation, not
+accepted cohort16 activation or final delivery proof.
 
 ## Problem and approach
 

@@ -76,12 +76,21 @@ def prepared_resource(
         "subchecks": local_subchecks(facts),
     }
     if bundle is not None:
-        from .network_policy_evidence import FIREWALL, GATEWAY, gateway_context, policy_context
+        from .network_policy_evidence import (
+            FIREWALL,
+            GATEWAY,
+            PARTNER,
+            gateway_context,
+            partner_context,
+            policy_context,
+        )
 
         if "basePolicy.id" in facts and resource["resource_type"].lower() == FIREWALL:
             prepared["configured_policy_chain"] = policy_context(resource, bundle, by_id)
         if "gatewayDiagnosticSummary" in facts and resource["resource_type"].lower() == GATEWAY:
             prepared["configured_gateway_monitoring"] = gateway_context(resource, bundle, by_id)
+        if "partnerConfiguration" in facts and resource["resource_type"].lower() == PARTNER:
+            prepared["configured_partner_hub"] = partner_context(resource, bundle, by_id)
     from .virtual_wan_evidence import PATHS as VWAN_PATHS
     from .virtual_wan_evidence import WAN, hub_context, wan_hub_population
 

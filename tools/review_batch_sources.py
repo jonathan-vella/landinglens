@@ -2732,12 +2732,39 @@ SOURCES_16 = [
     *[source for source in SOURCES_22 if source[0] in {"diagnostic-arm", "terraform-diagnostics"}],
 ]
 SOURCES_16 = list({source[0]: source for source in SOURCES_16}.values())
+SOURCES_16_VWAN = [
+    (
+        "partner-vwan-vpn-rest",
+        SPEC_RAW + "specification/network/resource-manager/Microsoft.Network/Network/"
+        "stable/2024-05-01/virtualWan.json",
+        ["VirtualHubProperties", "vpnGateway", "VpnGatewayProperties", "virtualHub"],
+        "Actual pinned virtualWan.json, not nonexistent virtualHub.json/vpnGateway.json, "
+        "defines hub.vpnGateway and VPN gateway.virtualHub references. This vWAN vpnGateways "
+        "type differs from VNet virtualNetworkGateways. Configuration is not tunnel health.",
+    ),
+    (
+        "partner-vwan-vpn-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/vpngateways",
+        ["virtualHub", "2024-05-01", "sharedKey"],
+        "2024-05-01 vWAN VPN gateway has explicit virtualHub binding. Project only that "
+        "typed ID; do not retain connections, addresses, keys, BGP or tunnel records.",
+    ),
+    (
+        "partner-vwan-vpn-provider",
+        RAW + "website/docs/r/vpn_gateway.html.markdown",
+        ["virtual_hub_id", "2024-05-01", "Site-to-Site"],
+        "Pinned 4.50.0 azurerm_vpn_gateway exposes required virtual_hub_id. A supplied "
+        "positive reference is configuration only; hub's missing reciprocal reference "
+        "cannot be inferred from provider defaults or a name.",
+    ),
+]
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
     parser.add_argument("--preparation-only", action="store_true")
+    parser.add_argument("--vwan-supplement", action="store_true")
     parser.add_argument(
         "--batch",
         choices=[
@@ -2760,17 +2787,25 @@ def main() -> None:
         default="01",
     )
     args = parser.parse_args()
+    if args.vwan_supplement and (args.batch != "16" or not args.preparation_only):
+        raise ValueError("The vWAN supplement is cohort16 preparation only")
     if (args.batch in {"12", "16", "20", "30"}) != args.preparation_only:
         raise ValueError(
             "Cohorts 12/16/20/30 source capture require --preparation-only; no activation"
         )
     prefix = "preparation" if args.preparation_only else "batch"
-    target = ROOT / "references" / "recommendation-batches" / f"{prefix}-{args.batch}-sources.json"
+    suffix = "-vwan" if args.vwan_supplement else ""
+    target = (
+        ROOT
+        / "references"
+        / "recommendation-batches"
+        / f"{prefix}-{args.batch}{suffix}-sources.json"
+    )
     if target.exists() and not args.append_new_sources:
         raise ValueError("Frozen source review exists; do not silently recollect or redate it")
     sources = json.loads(target.read_text("utf-8"))["sources"] if target.exists() else []
     existing = {source["id"]: source for source in sources}
-    for identity, url, markers, finding in {
+    selected_sources = {
         "01": SOURCES,
         "04": SOURCES_04,
         "08": SOURCES_08,
@@ -2786,7 +2821,10 @@ def main() -> None:
         "20": SOURCES_20,
         "22": SOURCES_22,
         "30": SOURCES_30,
-    }[args.batch]:
+    }[args.batch]
+    for identity, url, markers, finding in (
+        SOURCES_16_VWAN if args.vwan_supplement else selected_sources
+    ):
         if identity in existing:
             if existing[identity]["url"] != url:
                 raise ValueError("A captured source URL changed; use a new reviewed identity")

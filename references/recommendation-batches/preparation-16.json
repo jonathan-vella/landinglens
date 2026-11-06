@@ -3,6 +3,9 @@
   "review_state": "preparation-only-not-accepted",
   "issue": "https://github.com/jonathan-vella/landinglens/issues/121",
   "source_manifest": "preparation-16-sources.json",
+  "supplemental_source_manifest": "preparation-16-vwan-sources.json",
+  "reconciled_main": "f2411afa0d43e7f25402b364b9721dccb26201cd",
+  "reused_vwan_sources": "batch-20-sources.json",
   "prerequisites": ["11", "13", "14", "15", "17"],
   "activation_gate": "Explicit coordinator slot after actual20/05 delivery; reconcile then-current main, freeze exact predecessor and derive a unique reviewed successor. No accepted version, count, crosswalk, history, receipt or closure changes during preparation.",
   "supported_modes": "Existing 2024-05-01 networking ARM/no-restore Bicep, 2021-05-01-preview diagnostics and 2018-03-01 static single-resource metric alerts; AzureRM4.50.0 raw/supplied local modules/optional plans for existing firewall, policy/rule-group, gateway and diagnostics types; saved/injected normalized evidence. No new Collector registrations, runtime queries or live reads.",
@@ -123,7 +126,7 @@
       "guid": "655562f2-b3e4-4563-a4d8-739748b662d6",
       "upstream_id": "D07.03",
       "classification": "assisted",
-      "implemented_subclaim": "Bounded ARM/no-restore Bicep/saved partner schema-provider enum and typed virtual-hub reference, explicitly unknown current-service support; source-specific conditional workflow and existing firewall model/context. No Collector or Terraform partner resource is added.",
+      "implemented_subclaim": "Bounded partner schema-provider enum and typed hub reference, strict known scoped partner/hub/WAN joins reusing delivered20 models, explicit reciprocal vWAN VPN gateway binding and bounded exact local VNet-connection/table/intent context. Existing20 hub/firewall reciprocity and routing helpers are reused; current-service support remains unknown. No Collector or Terraform partner resource is added.",
       "sources": ["partner-linked", "partner-current", "manager-current", "network-policy-spec-partner"],
       "review_resource_types": ["Microsoft.Network/azureFirewalls", "Microsoft.Network/securityPartnerProviders"],
       "review_fact_paths": ["sku.name", "firewallPolicy.id", "partnerConfiguration"],
@@ -131,7 +134,7 @@
         "Does the organization actually want partner SaaS protection, and is its named service supported for the original-time cloud, region and secured vWAN hub? Current reviewed Learn pages list only Zscaler, not historical IBoss/CheckPoint enum values.",
         "Reconcile VPN tunnel prerequisites, partner-managed rule configuration, opted-in default routes and actual filtering/health with private-traffic inspection and Microsoft 365 local breakout. Neither binding nor pending/connected labels prove traffic protection; no retirement date is established by the reviewed pages."
       ],
-      "limitations": "Historical recommendation retained. Old enum values are not current service availability; current support/reuse is source-bound, not a subscription/retirement guarantee. Typed hub reference is not a known secured-hub/VPN/route join; integrate actual merged cohort20 models only after slot grant. No live service read, Terraform partner adapter, signup, credentials or paid action."
+      "limitations": "Historical recommendation retained. Old enum values are not current service availability; current support/reuse is source-bound, not a subscription/retirement guarantee. Configured known hub/WAN/firewall/VPN/local routing joins are not actual VPN tunnels, partner default-route opt-in, branch/VPN-connection coverage, route selection or filtering. Missing reciprocal hub VPN references remain unknown, including raw Terraform. No live service read, Terraform partner adapter, signup, credentials or paid action."
     },
     {
       "guid": "14d99880-2f88-47e8-a134-62a7d85c94af",

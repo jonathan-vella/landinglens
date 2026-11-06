@@ -83,6 +83,7 @@ API_VERSIONS = {
 }
 PLANNED_API_VERSIONS = API_VERSIONS | {
     "microsoft.network/securitypartnerproviders": {"2024-05-01"},
+    "microsoft.network/vpngateways": {"2024-05-01"},
     "microsoft.network/virtualwans": {"2024-05-01"},
     "microsoft.network/virtualhubs": {"2024-05-01"},
     "microsoft.network/virtualhubs/hubvirtualnetworkconnections": {"2024-05-01"},
