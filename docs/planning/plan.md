@@ -81,6 +81,40 @@ runtime wheels, hash-checked against the manifest, were restored offline after
 the new interpreter's explicit missing-`hcl2` probe. Platform and merge/receipt
 proofs remain delivery gates, not implied by these local results.
 
+[#122](https://github.com/jonathan-vella/landinglens/pull/122) merged normally as
+`c63dd9b8de4927b72558643551e0eee229b2074d` at 2026-11-06T15:12:55Z.
+Exact checked head `e816aa6a2d68ff2aba45b01211f9989fef2ebb37` passed all eight
+supported push/PR jobs in `42239817936` / `42239859771`, CodeQL `42239851877`
+and Advanced Security `42239863304`. Fresh actual head/main/reviews/checks were
+verified immediately before the normal SHA-bound merge; no admin/force/bypass,
+branch protection change or auto-merge was used.
+
+Four actual downloaded PR artifacts matched all eleven integration cases and
+exercised them without skips: `13513627157` (Ubuntu3.12),
+`13515166906` (Ubuntu3.13), `13514687228` (Windows3.12),
+`13514127442` (Windows3.13). Compiler JSON SHA256:
+`7a7b23b5b66b095e6ac3a2fcb251b832e0a684f48faadcf448d72302465bd297` on Ubuntu;
+`bfffb9ec5eb21047b0c5bc28da07baad4250e657f0c98f090bb219f679ad64ff` on Windows.
+The guarded recorder independently reread the actual merged PR/head, both
+complete four-job runs and all compiler artifacts before binding each of the
+nine GUIDs to `deliveries.20` and the exact implementation wheel above.
+All113 predecessor rows/thirteen receipts remain unchanged.
+
+This reconciliation records **122 delivered / 129 pending** with unchanged
+catalog/crosswalk `.6.12`,12 automated/200 assisted/43 manual. Checked receipt
+publication gates #115 closure and delivery-slot release; implementation merge
+alone is not delivery. Cohort05 is next in the unchanged priority ordering, not
+an automatic source/dependency grant or a successor launched by this session.
+
+Receipt reconciliation adds an executable actual-own-GUID binding assertion.
+Checkout and exact installed implementation-wheel suites each ran **490 tests**:
+489 passed with the same original Windows privilege skip. All thirty vWAN
+preparation/accepted/receipt cases, full static/type/dependency checks and
+357 documentation links pass. All104 implementation code/data members remain
+byte-for-byte unchanged; no replacement wheel or altered historical receipt is
+substituted. These receipt-branch results are distinct from the original489-case
+implementation acceptance recorded by `deliveries.20`.
+
 ## Cohort 20 independent preparation: 2026-11-06
 
 [#115](https://github.com/jonathan-vella/landinglens/issues/115) owns the third
