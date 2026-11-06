@@ -83,6 +83,39 @@ No source revision/timestamp, accepted catalog, dependency or wheel byte changed
 The corrected exact head must pass fresh platform/CodeQL/artifact gates; the
 earlier successful platform runs cannot authorize its merge.
 
+[#110](https://github.com/jonathan-vella/landinglens/pull/110) merged normally as
+`a57906768b2cafb2ba20c7ed6df59695ca18b017` at 2026-11-06T11:57:05Z.
+Corrected checked head `98b1b39323bc0bb7ebd161139ca5f0c6578b3a4a` passed all eight
+supported jobs in push/PR runs `42213324429` / `42213333056`, CodeQL run
+`42213328063` and Advanced Security run `42213335161`. CodeQL's original finding
+was corrected, not dismissed or bypassed; its inline thread resolved after
+the corrected checks. Four downloaded artifact IDs are `13499139626`,
+`13499257987`, `13499569130` and `13500675727`, each with the identical eight
+exercised compiler cases and no skips. JSON SHA256 is
+`d6b641c35cd027e66c7b52d20ef23ccd49bd3c9c778d2b5ba6128ba57266bbee`
+on Ubuntu and
+`0717b3e497827bc4288fdde5ee54e41c5c3944b2f5fd480c54f87251e8973b96`
+on Windows. Actual head/main/checks/reviews were refreshed immediately before
+normal SHA-bound merge. No branch rule or review gate was changed or bypassed.
+
+The guarded recorder re-read the actual merged PR, both exact-head runs and
+four matching compiler downloads, then bound all ten GUIDs to `deliveries.12`
+and the actual own-wheel hash. Every earlier receipt and all 80 earlier rows
+remain unchanged. The reconciliation ledger is **90 merged / 161 pending**;
+cohort15 is next in unchanged source/severity/crosswalk priority. Checked receipt
+publication and satisfied #103 closure remain the final gate. This is offline/
+source/saved/injected and installed acceptance, not new Azure/DNS/guest reads,
+operational failover, security enforcement or a fabricated human decision.
+
+The receipt follow-up passed **397 local and exact-installed tests**:
+396 passed with the same Windows privilege skip. The new invariant freezes
+all 80 prior rows/nine cohort receipts and checks the ten GUIDs' own receipt,
+checked head, merge, original 396-test implementation proof and unchanged wheel.
+The backlog assertion derives pending membership from the actual guarded ledger,
+not a stale hardcoded global count. Format/lint, typing and dependency checks
+remain green. No runtime/package code or actual implementation receipt was
+rewritten by this reconciliation.
+
 ## Cohort 14 integration: 2026-11-06
 
 The coordinator granted [#99](https://github.com/jonathan-vella/landinglens/issues/99)

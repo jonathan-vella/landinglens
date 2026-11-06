@@ -183,4 +183,7 @@ class InterviewTests(unittest.TestCase):
             )
         ]
         self.assertEqual(actual, expected)
-        self.assertEqual(sum(row[1] for row in actual), 171)
+        self.assertEqual(
+            sum(row[1] for row in actual),
+            sum(entry["status"] != "merged" for entry in ledger["recommendations"]),
+        )
