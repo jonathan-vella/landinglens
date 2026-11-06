@@ -6,8 +6,38 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.10"
+BANK_VERSION = "2026-11-06.11"
 BANK = {
+    "development-lifecycle-sovereignty": {
+        "question": "Reconcile the scoped platform AND application source/IaC populations with "
+        "actual version-control use, repository visibility/access and change history; the "
+        "chosen GitHub Flow/trunk/release branch model, consistent naming, protection and fix "
+        "porting; separate PR review, updated-head approvals, checks, merge and bypass "
+        "practices; emergency code fixes, backlog registration and later review/debt/drift "
+        "reconciliation; and declarative desired-state adoption, existing-resource state "
+        "alignment, change previews, deployment and rollback responsibilities. Describe "
+        "security participation in design, code, pipeline and operations, risk/remediation "
+        "ownership and feedback, not merely enabled scans. For sovereignty, bind approved "
+        "geographic and storage/processing requirements to actual build agents, registries/"
+        "replicas, base-image and package origins, redirects, caches, logs and backups. "
+        "Reconcile Azure Geo exceptions; Azure DevOps Services geography versus exact region, "
+        "US macOS/Brazil fallback/token exceptions; GitHub.com versus GHE.com EU/EFTA/Australia/"
+        "US/Japan and storage/telemetry/Copilot/secret-check exceptions; ACR all-replica syncing/"
+        "global routing versus regional layer endpoints; and preview Linux-only dedicated-pool "
+        "regions with external dependencies. Use redacted attributable references, not private "
+        "source/pipeline payloads, identities, hosts, location inventories, registry credentials "
+        "or secret values. Supply each of seven outcomes separately; one narrative, a local "
+        "checkout, compiler, workflow, scan or resource location proves none.",
+        "controls": [
+            "ALZ-cfe363b5-f579-4284-bc56-a42153e4c10b",
+            "ALZ-c7245dd4-af8a-403a-8bb7-890c1a7cfa9d",
+            "ALZ-12aeea20-9165-4b3e-bdf2-6795fcd3cdbe",
+            "ALZ-2676ae46-65ca-444e-8695-fdddeace4cb1",
+            "ALZ-2cdc9d99-dbcc-4ad4-97f5-e7d358bdfa73",
+            "ALZ-cc87a3bc-c572-4ad2-92ed-8cabab66160f",
+            "ALZ-047c91e2-6bb4-4a42-a0ef-ab06ad0062c9",
+        ],
+    },
     "resource-cost-governance": {
         "question": "Describe the scoped process that communicates owner responsibilities and "
         "demonstrates access, budget and policy reviews and remediation. Separately establish "
