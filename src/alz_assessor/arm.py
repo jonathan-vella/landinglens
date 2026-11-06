@@ -89,6 +89,9 @@ PLANNED_API_VERSIONS = API_VERSIONS | {
     "microsoft.compute/virtualmachines": {"2024-07-01"},
     "microsoft.portal/dashboards": {"2020-09-01-preview"},
     "microsoft.management/managementgroups": {"2020-05-01"},
+    "microsoft.compute/availabilitysets": {"2024-07-01"},
+    "microsoft.authorization/roledefinitions": {"2022-04-01"},
+    "microsoft.aad/domainservices": {"2022-12-01"},
 }
 
 
@@ -103,6 +106,7 @@ def properties(
 ) -> dict[str, Any]:
     from .governance_evidence import projected_properties as governance_properties
     from .identity_evidence import IDENTITY_KINDS, ROLE_KIND, identity_summary, role_properties
+    from .identity_evidence import projected_properties as identity_properties
     from .security_evidence import projected_properties as security_properties
 
     if isinstance(values, dict) and kind.lower() == ROLE_KIND:
@@ -115,6 +119,7 @@ def properties(
     if isinstance(values, dict):
         result.update(security_properties(kind, values, root=root))
         result.update(governance_properties(kind, values, root=root))
+        result.update(identity_properties(kind, values, root=root))
     return result
 
 
@@ -475,6 +480,14 @@ def arm_source(
                     if condition is True and known_count and (supported or not applicable)
                     else "unknown"
                 )
+                if arm_type.lower() == "microsoft.aadiam/diagnosticsettings":
+                    state = "unknown"
+                    diagnostics.append(
+                        {
+                            "reason": "tenant_directory_diagnostics_scope_unsupported",
+                            "address": logical,
+                        }
+                    )
                 if arm_type.lower() == "microsoft.storage/storageaccounts/blobservices" and (
                     not isinstance(name, str) or name.split("/")[-1] != "default"
                 ):

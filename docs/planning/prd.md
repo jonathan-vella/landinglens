@@ -78,6 +78,16 @@ records remain traceable under explicit lifecycle semantics.
 
 ## Active increment: fixed recommendation expansion
 
+Cohort05/[#118](https://github.com/jonathan-vella/landinglens/issues/118)
+independently prepares eight identity-resilience/role/emergency workflows under
+the coordinator's serialized delivery gate. Its source-reviewed matrix is not an
+accepted catalog, registered interview or receipt. Minimized typed VM/set/role/
+replica facts reuse existing adapters and review/replay paths; directory
+authority, DC designation/local resolution, compatibility, replica health,
+tenant log ingestion and emergency operating/authentication evidence remain
+separate decisions. Tenant-only Entra diagnostics do not broaden assessment
+scope. B03.12 stays manual; no new predicate, live route or owner approval.
+
 Reviewed successor `2026-11-06.10` integrates cohort08/#109 after actual
 cohort15 delivery and the coordinator's sole slot grant. Four assisted scoped
 tag/dashboard/capacity/hierarchy workflows and three manual ownership/quota/

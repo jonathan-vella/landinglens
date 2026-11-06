@@ -88,7 +88,51 @@ def plan_source(
             verified = provider_version == PROVIDER_VERSION
             candidate = tf_resource_id(scope, kind, values) if verified else None
             explicit_id = values.get("id")
-            if kind == "azurerm_monitor_diagnostic_setting":
+            if kind in {"azurerm_role_definition", "azurerm_active_directory_domain_service"}:
+                from uuid import UUID
+
+                from .contracts import identity_type
+
+                key = (
+                    "role_definition_resource_id"
+                    if kind == "azurerm_role_definition"
+                    else "resource_id"
+                )
+                actual_id = values.get(key)
+                identity = (
+                    canonical_id(actual_id) if verified and isinstance(actual_id, str) else None
+                )
+                if identity and identity_type(identity) != arm_type.lower():
+                    raise InputError("Provider ARM resource identity has the wrong resource type")
+                if identity and kind == "azurerm_role_definition":
+                    target = values.get("scope")
+                    if (
+                        not isinstance(target, str)
+                        or identity.rsplit(
+                            "/providers/microsoft.authorization/roledefinitions/", 1
+                        )[0]
+                        != target.lower()
+                    ):
+                        raise InputError("Role-definition ARM identity conflicts with its scope")
+                if identity and isinstance(explicit_id, str):
+                    if kind == "azurerm_role_definition":
+                        expected = identity + "|" + str(values.get("scope")).lower()
+                        if explicit_id.lower() != expected:
+                            raise InputError(
+                                "Role-definition composite ID conflicts with ARM binding"
+                            )
+                    else:
+                        prefix = identity + "/initialreplicasetid/"
+                        suffix = explicit_id.lower().removeprefix(prefix)
+                        try:
+                            UUID(suffix)
+                        except (ValueError, AttributeError) as exc:
+                            raise InputError("Domain-service composite ID is not bound") from exc
+                        if not explicit_id.lower().startswith(prefix):
+                            raise InputError(
+                                "Domain-service composite ID conflicts with ARM binding"
+                            )
+            elif kind == "azurerm_monitor_diagnostic_setting":
                 identity = candidate
                 if (
                     isinstance(explicit_id, str)

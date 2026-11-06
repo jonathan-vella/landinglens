@@ -336,6 +336,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                     raise InputError("Review resource preparation requires 1-10 explicit types")
             if "review_fact_paths" in control:
                 from .dns_evidence import PATHS as DNS_PATHS
+                from .identity_evidence import PATHS as IDENTITY_PATHS
 
                 paths = require(control, "review_fact_paths", list)
                 if (
@@ -450,6 +451,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                                 "managementParentId",
                             }
                             | DNS_PATHS
+                            | IDENTITY_PATHS
                         )
                         for path in paths
                     )

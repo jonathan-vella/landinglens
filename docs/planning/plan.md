@@ -19,6 +19,67 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## Cohort 05 independent preparation: 2026-11-06
+
+[#118](https://github.com/jonathan-vella/landinglens/issues/118) owns exactly the
+eight immutable B03.08-B03.15 GUIDs. Its
+[reviewed matrix](../../references/preparation/batch-05.json) and
+[25 captured sources](../../references/preparation/batch-05-sources.json) are
+outside accepted builder inputs. Baseline main is
+`949de0cad9bda19095069a22addf38bd78474dec`. Cohort30 and cohort20 retain their
+preceding delivery slots; this preparation neither chooses a successor nor
+activates catalog/crosswalk/count/history, registers an interview, records
+receipts, merges or closes the issue.
+
+Existing adapters now prepare minimized explicit VM placement, typed availability
+sets and fault/update counts, Azure role types and supported assignable-scope
+counts, and managed Domain Services SKU/embedded replica configuration. Saved
+and injected records retain original time; planned ARM and pinned Terraform
+raw/supplied-module/optional-plan paths use the same projections. Provider
+composite IDs require actual typed ARM bindings rather than invented child
+resources. Unique known scoped joins supply partial context only. Shared
+contracts, reviews, tiers, reports, local sessions and original-time replay
+retain unknown/denied/partial/stale/foreign/unbound/ambiguous limits. The existing
+ten compiler cases remain and an eleventh compiles the authored identity fixture
+without restoration.
+
+Current guidance favors adequate built-in roles before custom roles. Azure RBAC
+never establishes Entra directory authority or team responsibility. VM names,
+tags and type never identify DCs or their full population. Managed Domain Services
+replicas share one AD site and require appropriate SKU, supported regions,
+full-mesh networking and redundant workloads; configured replicas prove no health
+or recovery. B03.12 compatibility stays manual. Actual Entra diagnostic settings
+are tenant-only and remain unsupported in this assessor's existing scope model;
+no subscription diagnostic resource or workspace manufactures tenant log routing
+or ingestion. Emergency operating and phishing-resistant authentication decisions
+remain separate and blank. Current phased MFA and emergency guidance supersede
+the frozen October2024 generalization without altering historical checklist text.
+No directory/guest/log payload, principal/account name, role action content,
+credential or certificate material is projected. No live route, permission,
+dependency, compiler acquisition, cloud operation or owner decision is added.
+
+Preparation verification ran **455 tests** in both the checkout and own exact
+installed wheel: 454 passed and the original Windows symlink-privilege case
+skipped. All13 cohort05 cases passed. All11 actual existing-compiler integrations
+exercised without skips or restoration, retaining the ten delivered cases.
+Formatting/lint, 40-source-file typing, dependency consistency and338 local
+documentation links passed. The own wheel was built offline and installed into
+a fresh own environment outside checkout; all95 package source/data members
+matched the checkout, and site-packages import was asserted. After the initial
+missing-`hcl2` probe, only the three exact reviewed runtime wheels were restored
+from pip's local cache with `docs/dependencies.json` SHA256 verification and no
+network installation or borrowed environment.
+Wheel SHA256:
+`8c2d566f004ec9971034b4b97f70cac5e7e68c33eaef98bb2aa8f14c2f673556`.
+Local compiler proof SHA256:
+`796a1d0b5c8db9c7e25d0d67b9a94fdc51e15d6e23624023c427d3da95e3f6d6`.
+These are preparation proofs, not platform CI, accepted successor replay or
+merged delivery. Then-current-main reconciliation, accepted source/matrix/bank
+activation, four matching exercised platform compiler proofs, exact-head normal
+implementation merge, guarded own-GUID receipts and checked reconciliation remain
+deferred until the coordinator grants the slot. All eight ledger rows remain
+pending; current catalog/crosswalk and older receipts are unchanged.
+
 ## Cohort 08 granted integration: 2026-11-06
 
 The coordinator granted [#109](https://github.com/jonathan-vella/landinglens/issues/109)

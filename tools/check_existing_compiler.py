@@ -42,6 +42,8 @@ if compiler:
         "test_real_bicep_monitor_and_gateway_route_join_without_restore",
         "test_governance_preparation.GovernancePreparationTests."
         "test_real_bicep_governance_without_restore",
+        "test_identity_resilience_preparation.IdentityResiliencePreparationTests."
+        "test_real_bicep_identity_resilience_without_restore",
     ]
     suite = unittest.defaultTestLoader.loadTestsFromNames(cases)
     result = unittest.TextTestRunner(verbosity=2).run(suite)
