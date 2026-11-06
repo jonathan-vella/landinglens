@@ -5,6 +5,8 @@ from typing import Any
 
 from .contracts import canonical_id, identity_type
 from .identity_evidence import PATHS as IDENTITY_PATHS
+from .protection_evidence import KINDS as PROTECTION_KINDS
+from .protection_evidence import PATHS as PROTECTION_PATHS
 from .routing_evidence import KINDS as ROUTING_KINDS
 from .routing_evidence import PATHS as ROUTING_PATHS
 from .security_evidence import PATHS as SECURITY_PATHS
@@ -49,6 +51,7 @@ REVIEW_PATHS = (
     | ROUTING_PATHS
     | IDENTITY_PATHS
     | SECURITY_PATHS
+    | PROTECTION_PATHS
 )
 
 
@@ -498,6 +501,10 @@ def review_fact(properties: dict[str, Any], path: str) -> Any:
         from .security_evidence import review_fact as security_fact
 
         return security_fact(properties, path)
+    if path in PROTECTION_PATHS:
+        from .protection_evidence import review_fact as protection_fact
+
+        return protection_fact(properties, path)
     if path in IDENTITY_PATHS:
         from .identity_evidence import review_fact as identity_fact
 
@@ -557,6 +564,21 @@ def projected_properties(
     terraform: bool = False,
     root: Any = None,
     observed: bool = False,
+) -> dict[str, Any]:
+    from .protection_evidence import projected_properties as protection_properties
+
+    return _projected_properties(
+        kind, values, terraform=terraform, root=root, observed=observed
+    ) | protection_properties(kind.lower(), values, terraform=terraform, root=root)
+
+
+def _projected_properties(
+    kind: str,
+    values: dict[str, Any],
+    *,
+    terraform: bool,
+    root: Any,
+    observed: bool,
 ) -> dict[str, Any]:
     kind = kind.lower()
     if kind == "microsoft.network/azurefirewalls":
@@ -784,7 +806,15 @@ def projected_properties(
     if kind == "microsoft.insights/diagnosticsettings":
         return {
             "targetResourceId": reference(
-                values.get("target_resource_id") if terraform else values.get("targetResourceId")
+                values.get("target_resource_id")
+                if terraform
+                else root.get("scope")
+                if isinstance(root, dict) and root.get("scope")
+                else root.get("id", "").rsplit("/providers/Microsoft.Insights/", 1)[0]
+                if isinstance(root, dict)
+                and isinstance(root.get("id"), str)
+                and "/providers/Microsoft.Insights/" in root["id"]
+                else values.get("targetResourceId")
             ),
             "workspaceId": reference(
                 values.get("log_analytics_workspace_id") if terraform else values.get("workspaceId")
@@ -849,6 +879,7 @@ def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
             "microsoft.network/networkwatchers/flowlogs",
         }
         | ROUTING_KINDS
+        | PROTECTION_KINDS
     ):
         return {}
     result: dict[str, Any] = {}

@@ -49,6 +49,16 @@ TF_TYPES = {
     "azurerm_key_vault_managed_hardware_security_module": "Microsoft.KeyVault/managedHSMs",
     "azurerm_linux_virtual_machine": "Microsoft.Compute/virtualMachines",
     "azurerm_windows_virtual_machine": "Microsoft.Compute/virtualMachines",
+    "azurerm_cdn_frontdoor_firewall_policy": (
+        "Microsoft.Network/FrontDoorWebApplicationFirewallPolicies"
+    ),
+    "azurerm_cdn_frontdoor_security_policy": "Microsoft.Cdn/profiles/securityPolicies",
+    "azurerm_application_gateway": "Microsoft.Network/applicationGateways",
+    "azurerm_web_application_firewall_policy": (
+        "Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies"
+    ),
+    "azurerm_public_ip": "Microsoft.Network/publicIPAddresses",
+    "azurerm_network_interface": "Microsoft.Network/networkInterfaces",
     "azurerm_firewall_policy_rule_collection_group": (
         "Microsoft.Network/firewallPolicies/ruleCollectionGroups"
     ),
@@ -257,6 +267,23 @@ def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str 
         plan = values.get("resource_type")
         if boundary and boundary.count("/") == 2 and isinstance(plan, str) and plan in PLANS:
             return canonical_id(boundary + "/providers/Microsoft.Security/pricings/" + plan)
+        return None
+    if kind == "azurerm_cdn_frontdoor_security_policy":
+        from .protection_evidence import typed_reference
+
+        parent = typed_reference(
+            values.get("cdn_frontdoor_profile_id"), ("microsoft.cdn/profiles",)
+        )
+        boundary = scope_id(scope) if scope else None
+        if (
+            boundary
+            and isinstance(parent, str)
+            and parent.startswith(boundary + "/")
+            and isinstance(name, str)
+            and name
+            and "/" not in name
+        ):
+            return canonical_id(parent + "/securityPolicies/" + name)
         return None
     if kind == "azurerm_role_assignment":
         from .network_evidence import reference

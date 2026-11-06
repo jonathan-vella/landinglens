@@ -9,7 +9,16 @@ from lark import Lark, Token, Tree
 from lark.exceptions import LarkError
 
 from .bicep import compile_bicep
-from .contracts import derive_id, digest, document, now, read_document, scope_id, validate
+from .contracts import (
+    canonical_id,
+    derive_id,
+    digest,
+    document,
+    now,
+    read_document,
+    scope_id,
+    validate,
+)
 from .sources import boolean, enumeration, file_hash, unknown
 from .terraform import InputError, Unknown, exact_equal
 
@@ -54,6 +63,13 @@ API_VERSIONS = {
     "microsoft.network/expressrouteports": {"2024-05-01"},
     "microsoft.network/connections": {"2024-05-01"},
     "microsoft.authorization/roleassignments": {"2022-04-01"},
+    "microsoft.network/frontdoorwebapplicationfirewallpolicies": {"2024-02-01"},
+    "microsoft.cdn/profiles/securitypolicies": {"2024-02-01"},
+    "microsoft.network/applicationgateways": {"2024-05-01"},
+    "microsoft.network/applicationgatewaywebapplicationfirewallpolicies": {"2024-05-01"},
+    "microsoft.network/publicipaddresses": {"2024-05-01"},
+    "microsoft.network/networkinterfaces": {"2024-05-01"},
+    "microsoft.insights/diagnosticsettings": {"2021-05-01-preview"},
 }
 
 
@@ -443,10 +459,45 @@ def arm_source(
                 ):
                     state = "unknown"
                 binding = target_scope
+                diagnostic_target = None
                 if "scope" in entry:
                     explicit_scope = context.value(entry["scope"])
-                    binding = scope_id(explicit_scope) if isinstance(explicit_scope, str) else None
-                identity = derive_id(binding, kind, name) if state == "known" else None
+                    if arm_type.lower() == "microsoft.insights/diagnosticsettings":
+                        if isinstance(explicit_scope, str):
+                            if explicit_scope.startswith("Microsoft."):
+                                parts = explicit_scope.split("/")
+                                explicit_scope = derive_id(
+                                    target_scope,
+                                    "/".join([parts[0], *parts[1::2]]),
+                                    "/".join(parts[2::2]),
+                                )
+                            if isinstance(explicit_scope, str):
+                                diagnostic_target = canonical_id(explicit_scope)
+                        if not (
+                            target_scope
+                            and diagnostic_target
+                            and diagnostic_target.startswith(target_scope.lower() + "/")
+                        ):
+                            binding, state = None, "unknown"
+                    else:
+                        binding = (
+                            scope_id(explicit_scope) if isinstance(explicit_scope, str) else None
+                        )
+                identity = (
+                    canonical_id(
+                        diagnostic_target
+                        + "/providers/Microsoft.Insights/diagnosticSettings/"
+                        + name
+                    )
+                    if diagnostic_target
+                    and state == "known"
+                    and isinstance(name, str)
+                    and name
+                    and "/" not in name
+                    else derive_id(binding, kind, name)
+                    if state == "known"
+                    else None
+                )
                 records.append(
                     {
                         "logical_id": logical,
@@ -458,6 +509,7 @@ def arm_source(
                             arm_type,
                             context.value(entry.get("properties", {})),
                             root={
+                                "scope": diagnostic_target,
                                 "zones": context.value(entry.get("zones")),
                                 "sku": context.value(entry.get("sku")),
                                 **(

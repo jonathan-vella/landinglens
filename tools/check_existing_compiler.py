@@ -31,6 +31,8 @@ if compiler:
         "test_real_bicep_routing_peering_lb_macsec_connection_no_restore",
         "test_identity_batch.IdentityBatchTests."
         "test_real_bicep_storage_identity_role_context_without_restore",
+        "test_protection_batch.ProtectionBatchTests."
+        "test_real_bicep_protection_outbound_hybrid_no_restore",
     ]
     suite = unittest.defaultTestLoader.loadTestsFromNames(cases)
     result = unittest.TextTestRunner(verbosity=2).run(suite)

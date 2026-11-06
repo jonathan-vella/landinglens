@@ -52,7 +52,7 @@ class InterviewTests(unittest.TestCase):
 
     def test_bank_specific_requirements_and_blank_explicit_decisions(self):
         bank = question_bank(self.catalog)
-        self.assertEqual(len(bank["questions"]), 3)
+        self.assertEqual(len(bank["questions"]), 4)
         for question in bank["questions"]:
             self.assertTrue(question["question"])
             self.assertTrue(
@@ -183,4 +183,4 @@ class InterviewTests(unittest.TestCase):
             )
         ]
         self.assertEqual(actual, expected)
-        self.assertEqual(sum(row[1] for row in actual), 198)
+        self.assertEqual(sum(row[1] for row in actual), 188)

@@ -33,10 +33,57 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.3` retains all 255 entries: 10 automated, 202 assisted
-and 43 manual. Crosswalk `2026-11-06.3` rebinds the unchanged 51-control,
+Current successor `2026-11-06.5` retains all 255 entries: 10 automated, 202 assisted
+and 43 manual. Crosswalk `2026-11-06.5` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
 The history below remains version-specific.
+
+### Cohort 13: inbound protection, outbound migration and hybrid connectivity
+
+The [ten-GUID matrix](../references/recommendation-batches/batch-13.json) and
+[42 actual source captures](../references/recommendation-batches/batch-13-sources.json)
+precede `.6.5`. Exact delivered `.6.3` catalog/crosswalk bytes are frozen; `.6.4`
+is not used. No new whole predicate is justified from the permitted inputs:
+nine useful partial workflows remain assisted and D05.07 remains inherently manual.
+
+| Recommendation | Preparation and explicit decision boundary |
+|---|---|
+| D05.03 | WAF enabled/mode/SKU and bounded custom/managed counts, typed policy/domain associations and explicit all-path marker; not global coverage or effective actions |
+| D05.04 | Gateway/WAF/subnet links, minimized FDID condition shapes and source-tag/port summaries; require both backend filtering and exact-profile header rejection, including alternate paths |
+| D05.05 | Gateway subnet and configured backend counts; require actual workload/VNet placement and accepted ownership, not hostnames or entry-count inference |
+| D05.06 | Public-IP protection mode/plan and positive NIC links; inherited mode, service support and complete operational coverage remain separate |
+| D05.07 | Explicit default-outbound flag and existing NAT/route links support an accountable migration plan; no configuration flag authenticates an approved strategy |
+| D05.08 (`b1c82a3f...`) | Three exact DDoS category flags and typed workspace/storage destination/target; not all protected IPs or arriving/retained logs |
+| D05.08 (`3c5a808d...`) | Exact NIC-deny source identity, existing minimized saved policy/exemption context and positive NIC/VM/IP links; not actual enforcement or approved exceptions |
+| D06.01 | Gateway/circuit/local-gateway connection kinds/links; actual maintained primary/backup topology and workload suitability need evidence |
+| D06.02 | Strict explicit connection weight 0..32000 and BGP context; direction, prefix specificity, local preference and actual selected routes stay distinct |
+| D06.03 | Explicit supported gateway SKU/generation; require measured workload demand, performance and failure headroom rather than benchmark/SKU inference |
+
+Current Learn revision `e8c3f40845eb970c6a231bf67fbdd8132fe63e79` describes
+APIs released after March 31, 2026 defaulting **new VNets** to private subnets,
+with earlier API and existing-VNet behavior unchanged. The frozen checklist's
+September 30, 2025 wording is preserved, not asserted as current guidance.
+The announcement link returned a dynamic shell without its timeline; it is not
+independent date proof. Migration planning must reconcile deallocation,
+dependencies, delegated/managed-subnet limits and Internet-next-hop exceptions;
+no change is executed.
+
+Pinned ALZ corp includes `Deny-Public-IP-On-NIC`, built-in `83a86a26` version
+1.0.0 with fixed deny on the NIC public-IP alias. The separate deny-all-public-IP
+assignment is not equivalent. Source query hashes and template assignments do not
+create new crosswalk equivalence or actual enforcement claims.
+S2S backup guidance excludes latency-sensitive/mission-critical/bandwidth-intensive
+workloads; both-direction routing and maintained failover must be evidenced.
+Current scalable ExpressRoute SKU is outside the pinned provider's SKU support.
+
+All supported planned/raw/supplied-module/ARM/existing no-restore Bicep and
+saved/injected details feed the same typed evaluator/review/tier/replay paths.
+Actual diagnostic extension scopes are resolved within the selected boundary;
+missing/wrong-type/version/sensitive/over-bound values stay unknown.
+Header values, hosts, private/backend/peer addresses, certificates and keys are
+withheld. The ten-GUID interview keeps decisions blank and binds requirements
+to the explicit scope as well as catalog/content/time. No traffic/health/DNS/
+encryption/log query, policy trigger, IaC execution or new access is performed.
 
 ### Cohort 19: service endpoints, subnet capacity and segmentation
 

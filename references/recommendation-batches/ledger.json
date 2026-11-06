@@ -135,6 +135,31 @@
       },
       "wheel_sha256": "a50824859e6d50ac9c8381792f568dab891257e83cfe2f27c8580871d581b24e",
       "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
+    },
+    "13": {
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/101",
+      "merge_commit": "bd96c207ebda2f1b09a3be599d5b802c2ac7edf6",
+      "merged_at": "2026-11-06T09:40:16Z",
+      "checked_head": "1c4a76ac0d507612568dae72a95e2d5c7518f881",
+      "checks": [
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42196032713",
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42196061317"
+      ],
+      "acceptance": "Actual push/PR runs on the merged head passed all eight supported jobs. All four downloaded PR compiler artifacts exercised the same integration cases without skips. Normal exact-head merge and other applicable checks were gated before recording; this receipt does not imply protected-branch enforcement.",
+      "compiler_integration_cases": [
+        "test_bicep.BicepTests.test_actual_installed_compiler_local_success_and_unrestored_failure",
+        "test_segmentation_batch.SegmentationBatchTests.test_real_bicep_nsg_gateway_subnet_flow_without_restore",
+        "test_routing_batch.RoutingBatchTests.test_real_bicep_routing_peering_lb_macsec_connection_no_restore",
+        "test_identity_batch.IdentityBatchTests.test_real_bicep_storage_identity_role_context_without_restore",
+        "test_protection_batch.ProtectionBatchTests.test_real_bicep_protection_outbound_hybrid_no_restore"
+      ],
+      "local_installed_suite": {
+        "tests": 349,
+        "passed": 348,
+        "skipped": 1
+      },
+      "wheel_sha256": "a54740504f8d5ce093065b371ae8a3ebb2ca856b4a56b7a655342e063c22b7c4",
+      "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
     }
   },
   "recommendations": [
@@ -2439,12 +2464,51 @@
       "baseline_control_sha256": "10cbe2d006bae942068b4f390f031f8245735b17e16c2b7ddb5f84abd2427350",
       "design_area": "Network topology and connectivity",
       "batch": "13",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "1d7aa9b6-4704-4489-a804-2d88e79d17b7",
+        "upstream_id": "D05.03",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit Front Door WAF mode/state/SKU and supplied managed/custom rule counts, typed WAF association and domain/endpoint IDs with an explicit all-path marker.",
+        "sources": [
+          "frontdoor-waf",
+          "frontdoor-policy-arm",
+          "frontdoor-security-arm",
+          "terraform-frontdoor-policy",
+          "terraform-frontdoor-security"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/FrontDoorWebApplicationFirewallPolicies",
+          "Microsoft.Cdn/profiles/securityPolicies"
+        ],
+        "review_fact_paths": [
+          "wafMode",
+          "wafEnabled",
+          "frontDoorSku",
+          "customRuleCount",
+          "managedRuleSetCount",
+          "wafPolicyId",
+          "wafAssociations"
+        ],
+        "evidence_requirements": [
+          "Reconcile every exposed domain, endpoint, route, origin and region with actual policy attachment and scope precedence; the reviewed 2024 schema does not represent newer profile/route scope semantics.",
+          "Review explicit enabled Prevention versus Detection, rule actions, custom Allow short-circuiting, rule versions, exclusions and Standard versus Premium capabilities. Counts or SKU alone never establish blocking protection.",
+          "Reviewer decision: does attributable original-time path and operational evidence establish the intended global inbound HTTP/S protection without bypass? Keep outcome blank until supplied."
+        ],
+        "limitations": "Bounded configured attachments and flags are not actual requests, health, effective WAF actions or complete region/path coverage. Classic Front Door and newer unsupported APIs remain unsupported, not silently converted.",
+        "flags": [
+          "waf-configuration-not-global-protection",
+          "attachment-scope-version-bound"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/97",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/101",
+      "merge_commit": "bd96c207ebda2f1b09a3be599d5b802c2ac7edf6",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.13: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "3b22a5a6-7e7a-48ed-9b30-e38c3f29812b",
@@ -2454,12 +2518,55 @@
       "baseline_control_sha256": "3b7e34d3e0f66b259dd351528d63f5deaf87a323f3a3145b3604c509ac7f42fe",
       "design_area": "Network topology and connectivity",
       "batch": "13",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "3b22a5a6-7e7a-48ed-9b30-e38c3f29812b",
+        "upstream_id": "D05.04",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit gateway/WAF/subnet links and minimized FDID custom-condition shapes alongside source-tag/port rule summaries.",
+        "sources": [
+          "application-gateway-waf",
+          "origin-security",
+          "application-gateway-arm",
+          "gateway-waf-arm",
+          "terraform-application-gateway",
+          "terraform-gateway-waf",
+          "subnet-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/applicationGateways",
+          "Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
+          "Microsoft.Network/networkSecurityGroups",
+          "Microsoft.Network/virtualNetworks/subnets"
+        ],
+        "review_fact_paths": [
+          "subnetReferences",
+          "firewallPolicy.id",
+          "networkSecurityGroup.id",
+          "wafMode",
+          "wafEnabled",
+          "fdidRuleSummary",
+          "inboundRuleSummary"
+        ],
+        "evidence_requirements": [
+          "For public origins verify both AzureFrontDoor.Backend filtering and rejection of absent/wrong X-Azure-FDID for the exact intended profile; a header rule candidate alone or a shared service tag is insufficient.",
+          "Reconcile effective NSG priorities, protocols, source/destination/port coverage, required management traffic and gateway/listener/path WAF policies. Withheld header values must be checked using redacted external evidence.",
+          "Reviewer decision: are all alternate origin endpoints blocked, including public bypass when Private Link is used, with attributable exclusivity evidence?"
+        ],
+        "limitations": "No rule interpreter, packet test, DNS/health request or actual header value is retained. A literal condition/action summary is not exact-profile validation or effective origin lockdown.",
+        "flags": [
+          "service-tag-and-exact-header-both-required",
+          "origin-bypass-unverified"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/97",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/101",
+      "merge_commit": "bd96c207ebda2f1b09a3be599d5b802c2ac7edf6",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.13: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "2363cefe-179b-4599-be0d-5973cd4cd21b",
@@ -2469,12 +2576,46 @@
       "baseline_control_sha256": "40ac2e4b97e5d679bffe7f91203722056749fc8e31b94614731eeb83898c4405",
       "design_area": "Network topology and connectivity",
       "batch": "13",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "2363cefe-179b-4599-be0d-5973cd4cd21b",
+        "upstream_id": "D05.05",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit gateway subnet placement, WAF reference and bounded configured backend entry counts without hosts or addresses.",
+        "sources": [
+          "application-gateway-waf",
+          "application-gateway-arm",
+          "terraform-application-gateway",
+          "subnet-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/applicationGateways",
+          "Microsoft.Network/virtualNetworks/subnets"
+        ],
+        "review_fact_paths": [
+          "subnetReferences",
+          "firewallPolicy.id",
+          "applicationBackendSummary"
+        ],
+        "evidence_requirements": [
+          "Bind the proxy subnets and all real backends to the approved workload landing-zone/VNet ownership and exposure model. Configured names, entry counts or one subnet do not establish co-location.",
+          "Reconcile service-specific placement, DNS/TLS, actual routes, shared-versus-workload responsibility and health independently; Front Door itself is global, not deployed into a workload VNet.",
+          "Reviewer decision: is required reverse-proxy placement workload-aligned with attributable actual backend and ownership evidence?"
+        ],
+        "limitations": "Backend hosts and private addresses are withheld. Supplied entries are not distinct instances, complete membership, health or accepted workload architecture.",
+        "flags": [
+          "placement-needs-workload-binding",
+          "backend-count-not-workload-ownership"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/97",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/101",
+      "merge_commit": "bd96c207ebda2f1b09a3be599d5b802c2ac7edf6",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.13: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "088137f5-e6c4-4cfd-9e50-4547c2447ec6",
@@ -2484,12 +2625,50 @@
       "baseline_control_sha256": "9532c764867db9c57ee50506865ab42472c65a36ff675bc9c44760144171e6c9",
       "design_area": "Network topology and connectivity",
       "batch": "13",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "088137f5-e6c4-4cfd-9e50-4547c2447ec6",
+        "upstream_id": "D05.06",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit per-public-IP DDoS mode/plan and positive IP-configuration relationships alongside existing VNet plan context.",
+        "sources": [
+          "ddos-architectures",
+          "public-ip-arm",
+          "terraform-public-ip",
+          "nic-arm",
+          "terraform-nic"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/publicIPAddresses",
+          "Microsoft.Network/virtualNetworks",
+          "Microsoft.Network/networkInterfaces"
+        ],
+        "review_fact_paths": [
+          "ddosProtectionMode",
+          "ddosProtectionPlan.id",
+          "enableDdosProtection",
+          "ipConfigurationId",
+          "nicIpConfigurations"
+        ],
+        "evidence_requirements": [
+          "Inventory every supported public endpoint and resolve IP Protection versus NetworkInherited protection to the actual protected VNet/plan and attached service.",
+          "Reconcile supported endpoint/SKU/region constraints and exclusions: the reviewed architecture excludes NAT Gateway and Virtual WAN; platform Front Door protection is not protection of an exposed origin.",
+          "Reviewer decision: does original-time coverage and operational mitigation evidence cover every applicable application/platform public endpoint?"
+        ],
+        "limitations": "Configured mode and positive references are not effective mitigation or full-population coverage. No plan lookup, traffic probe, attack simulation or new Azure read occurs.",
+        "flags": [
+          "ddos-mode-not-runtime-coverage",
+          "supported-endpoint-population-required"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/97",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/101",
+      "merge_commit": "bd96c207ebda2f1b09a3be599d5b802c2ac7edf6",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.13: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "b034c01e-110b-463a-b36e-e3346e57f225",
@@ -2499,12 +2678,45 @@
       "baseline_control_sha256": "2b49a9d1a829e93382579e72d99c317c433b177d57e8934efbc1b895ab500b2e",
       "design_area": "Network topology and connectivity",
       "batch": "13",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "b034c01e-110b-463a-b36e-e3346e57f225",
+        "upstream_id": "D05.07",
+        "classification": "manual",
+        "implemented_subclaim": "Retained manual outbound migration strategy with explicit defaultOutboundAccess, NAT/route associations and versioned current-versus-frozen retirement findings.",
+        "sources": [
+          "default-outbound-current",
+          "default-outbound-announcement",
+          "subnet-arm",
+          "terraform-subnet"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks/subnets"
+        ],
+        "review_fact_paths": [
+          "defaultOutboundAccess",
+          "natGateway.id",
+          "routeTable.id"
+        ],
+        "evidence_requirements": [
+          "The frozen checklist says September 30, 2025; inspected Learn revision e8c3f408 instead describes APIs released after March 31, 2026 for new VNets, earlier-API behavior and unchanged existing VNets. The dynamic announcement shell did not expose its timeline. Preserve both findings, never assert blanket shutdown.",
+          "Document accountable migration owner, affected existing/new/API/delegated-subnet populations, explicit NAT/LB/firewall egress paths, dependencies, Internet-next-hop exceptions, SNAT demand, rollback and maintenance/stop-deallocation requirements without executing them.",
+          "Reviewer decision: is the explicit outbound strategy and migration plan approved and backed by attributable dependency/path evidence? A private flag or NAT reference does not establish a plan or connectivity."
+        ],
+        "limitations": "An approved business migration strategy is inherently manual. No owner approval, VM stop, route change, deployment or egress test is fabricated; the original recommendation and manual disposition remain intact.",
+        "flags": [
+          "frozen-retirement-date-differs-from-current-guidance",
+          "manual-strategy-not-private-subnet-flag"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/97",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/101",
+      "merge_commit": "bd96c207ebda2f1b09a3be599d5b802c2ac7edf6",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.13: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "b1c82a3f-2320-4dfa-8972-7ae4823c8930",
@@ -2514,12 +2726,50 @@
       "baseline_control_sha256": "cc81a5efc9dfd1643c6d6b42cae678bfa1a0617155042428f5d6a43630784cd0",
       "design_area": "Network topology and connectivity",
       "batch": "13",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "b1c82a3f-2320-4dfa-8972-7ae4823c8930",
+        "upstream_id": "D05.08",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit three-category DDoS log configuration and typed workspace/storage destination with exact diagnostic target binding.",
+        "sources": [
+          "ddos-architectures",
+          "ddos-logging-redirect",
+          "ddos-log-categories",
+          "diagnostics-arm",
+          "terraform-diagnostics",
+          "builtin-ddos-logging"
+        ],
+        "review_resource_types": [
+          "Microsoft.Insights/diagnosticSettings",
+          "Microsoft.Network/publicIPAddresses"
+        ],
+        "review_fact_paths": [
+          "targetResourceId",
+          "ddosLogCategories",
+          "workspaceId",
+          "diagnosticStorageId",
+          "ddosProtectionMode"
+        ],
+        "evidence_requirements": [
+          "Resolve each setting's exact protected public-IP target and explicit DDoSProtectionNotifications, DDoSMitigationFlowLogs and DDoSMitigationReports enabled values; metrics-only, wrong targets or missing arrays do not establish logs.",
+          "Reconcile category groups, alternative Event Hub destinations, retention/access, routing and every protected-IP population. Unsupported or missing destination details remain unknown rather than absent.",
+          "Reviewer decision: are DDoS logs configured for all applicable protected IPs and demonstrably arriving/retained at the approved destination with original-time evidence?"
+        ],
+        "limitations": "Per-setting category flags or built-in compliance are not ingestion or all-IP coverage. Event Hub destination interpretation and actual log reads remain outside this implementation.",
+        "flags": [
+          "distinct-ddos-logging-d05-08",
+          "diagnostic-configuration-not-ingestion"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/97",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/101",
+      "merge_commit": "bd96c207ebda2f1b09a3be599d5b802c2ac7edf6",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.13: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "3c5a808d-c695-4c14-a63c-c7ab7a510e41",
@@ -2529,12 +2779,48 @@
       "baseline_control_sha256": "1404ec07f8e58f07c5732f9771568be2e76f46ec9ee3c10ba9ec195c90c85cad",
       "design_area": "Network topology and connectivity",
       "batch": "13",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "3c5a808d-c695-4c14-a63c-c7ab7a510e41",
+        "upstream_id": "D05.08",
+        "classification": "assisted",
+        "implemented_subclaim": "Existing minimized saved assignment/exemption context, exact source-backed NIC policy identity and bounded positive VM/NIC/public-IP relationships in review preparation.",
+        "sources": [
+          "alz-policy-wiki",
+          "alz-policy-site",
+          "alz-corp",
+          "alz-nic-assignment",
+          "alz-deny-public-ip",
+          "builtin-nic-public-ip",
+          "nic-arm",
+          "terraform-nic"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/networkInterfaces"
+        ],
+        "review_fact_paths": [
+          "virtualMachineId",
+          "nicIpConfigurations"
+        ],
+        "evidence_requirements": [
+          "Pinned corp includes Deny-Public-IP-On-NIC, built-in 83a86a26-fd1f-447c-b59d-e51f44264114 version 1.0.0 with fixed deny and NIC-array alias logic. Distinguish it from deny-all-public-IP resource creation and from display-name matches.",
+          "Reconcile actual assignments at inherited/applicable scopes, definition versions, Default versus DoNotEnforce, selectors, overrides and exact notScopes/exemptions, expiry and approved exception evidence. Saved context hashes alone cannot decide effect or enforcement.",
+          "Reviewer decision: does attributable actual policy/evaluation and exception evidence establish the intended VM/NIC attachment governance without uncovered scopes or fabricated exclusions?"
+        ],
+        "limitations": "Existing saved policy metadata intentionally withholds raw parameters and effective logic. Crosswalk associations remain unchanged; no new policy mapping/pass, policy trigger, remediation or permission change occurs.",
+        "flags": [
+          "distinct-public-ip-policy-d05-08",
+          "assignment-not-enforcement"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/97",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/101",
+      "merge_commit": "bd96c207ebda2f1b09a3be599d5b802c2ac7edf6",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.13: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "359c373e-7dd6-4162-9a36-4a907ecae48e",
@@ -2544,12 +2830,52 @@
       "baseline_control_sha256": "3ed4f56d25002a46608d47989fdbf77ef82ba160c294fbb21ff0787235eae909",
       "design_area": "Network topology and connectivity",
       "batch": "13",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "359c373e-7dd6-4162-9a36-4a907ecae48e",
+        "upstream_id": "D06.01",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit connection kinds, typed gateway/circuit/local-gateway links, BGP/active-active flags and gateway subnet context.",
+        "sources": [
+          "connectivity-to-azure",
+          "expressroute-backup",
+          "connection-arm",
+          "terraform-gateway-connection",
+          "gateway-arm",
+          "terraform-gateway"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/connections",
+          "Microsoft.Network/virtualNetworkGateways"
+        ],
+        "review_fact_paths": [
+          "connectionType",
+          "virtualNetworkGateway1.id",
+          "expressRouteCircuitId",
+          "localNetworkGatewayId",
+          "enableBgp",
+          "gatewayType",
+          "subnetReferences"
+        ],
+        "evidence_requirements": [
+          "Resolve actual ExpressRoute and S2S connections to the same intended network/site topology, supported coexistence/gateway/subnet constraints and independent failure domains.",
+          "Review both-direction steady-state route preference, equal versus more-specific prefixes, backup maintenance and actual failover/recovery evidence. S2S backup is not recommended for latency-sensitive, mission-critical or bandwidth-intensive workloads.",
+          "Reviewer decision: is primary ExpressRoute/backup VPN appropriate and demonstrably maintained for the actual workload, or is a documented multi-site ExpressRoute design required?"
+        ],
+        "limitations": "Two resource kinds or activeActive=true cannot establish supported topology, route preference, health or resilient failover. No tunnel/route/traffic query occurs.",
+        "flags": [
+          "connection-presence-not-resilient-topology",
+          "vpn-backup-workload-conditions"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/97",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/101",
+      "merge_commit": "bd96c207ebda2f1b09a3be599d5b802c2ac7edf6",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.13: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "f29812b2-363c-4efe-879b-599de0d5973c",
@@ -2559,12 +2885,49 @@
       "baseline_control_sha256": "00ab7ca6895b7bd6cda47dbae3f5833c5275d22d7c6f46c4a1c4adb0fa9a77aa",
       "design_area": "Network topology and connectivity",
       "batch": "13",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "f29812b2-363c-4efe-879b-599de0d5973c",
+        "upstream_id": "D06.02",
+        "classification": "assisted",
+        "implemented_subclaim": "Strict explicit routing weight 0..32000 and BGP flags bound to typed circuit/gateway references.",
+        "sources": [
+          "expressroute-routing",
+          "expressroute-optimization",
+          "connection-arm",
+          "terraform-gateway-connection",
+          "connection-weight-implementation"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/connections",
+          "Microsoft.Network/virtualNetworkGateways"
+        ],
+        "review_fact_paths": [
+          "routingWeight",
+          "enableBgp",
+          "connectionType",
+          "expressRouteCircuitId",
+          "virtualNetworkGateway1.id"
+        ],
+        "evidence_requirements": [
+          "Identify every applicable circuit/site/prefix and intended direction, then reconcile on-premises local preference, communities, AS PATH and Azure connection weight using attributable saved configuration/route evidence.",
+          "Weight is considered before AS-path length for Azure outbound, not a generic customer local-preference setting. Microsoft peering removes private ASNs and does not honor arbitrary received communities; prefix specificity and asymmetry still matter.",
+          "Reviewer decision: does actual route/path evidence establish optimized preference in both directions and under failures? No arbitrary minimum weight or default of 10 is a compliance predicate."
+        ],
+        "limitations": "Weight/BGP configuration never proves the winning route or latency. Peer addresses, router labels, full route tables and secrets are withheld; no BGP/effective-route query or router change occurs.",
+        "flags": [
+          "routing-weight-not-selected-route",
+          "bgp-direction-and-peering-specific"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/97",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/101",
+      "merge_commit": "bd96c207ebda2f1b09a3be599d5b802c2ac7edf6",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.13: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "d4cd21b0-8813-47f5-b6c4-cfd3e504547c",
@@ -2574,12 +2937,50 @@
       "baseline_control_sha256": "04991136746b91eefa205678238ec4e6872596ae54db408380c33ded460bd4e1",
       "design_area": "Network topology and connectivity",
       "batch": "13",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "d4cd21b0-8813-47f5-b6c4-cfd3e504547c",
+        "upstream_id": "D06.03",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit reviewed gateway SKU, generation and kind alongside topology context, without numeric demand or throughput inference.",
+        "sources": [
+          "expressroute-sizing",
+          "vpn-sizing",
+          "gateway-arm",
+          "terraform-gateway"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworkGateways",
+          "Microsoft.Network/connections"
+        ],
+        "review_fact_paths": [
+          "gatewaySku",
+          "vpnGatewayGeneration",
+          "gatewayType",
+          "activeActive",
+          "enableBgp",
+          "subnetReferences",
+          "connectionType"
+        ],
+        "evidence_requirements": [
+          "Bind SKU/generation to actual workload bandwidth, packets/flows, latency, tunnel/P2S mix, cipher, circuit capacity, growth, region availability and resilience objectives.",
+          "Current ExpressRoute scalable SKU is not supported by pinned AzureRM 4.50.0; unknown SKU/casing remains unknown. Published throughput is estimated/benchmark, not guaranteed; maintenance and private endpoints can reduce capacity.",
+          "Reviewer decision: does measured original-time demand and accepted capacity/failure headroom justify the supported selected SKU and current migration status?"
+        ],
+        "limitations": "SKU/count/active-active does not establish bandwidth demand, SLA, measured throughput or appropriate sizing. No benchmark, billing read, deployment or gateway migration occurs.",
+        "flags": [
+          "gateway-sku-not-demand-or-throughput",
+          "provider-and-current-guidance-differ"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/97",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/101",
+      "merge_commit": "bd96c207ebda2f1b09a3be599d5b802c2ac7edf6",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.13: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "7025b442-f6e9-4af6-b11f-c9574916016f",
