@@ -705,3 +705,51 @@ class DevelopmentPreparationTests(unittest.TestCase):
         with patch.object(sys, "argv", [str(script), "--batch", "30", "--preparation-only"]):
             with self.assertRaisesRegex(ValueError, "Frozen source review"):
                 runpy.run_path(str(script), run_name="__main__")
+
+    def test_all_106_prior_delivered_rows_and_twelve_receipts_remain_exact(self):
+        ledger = json.loads((REVIEWS / "ledger.json").read_text("utf-8"))
+        earlier = {"01", "04", "08", "11", "12", "13", "14", "15", "17", "18", "19", "22"}
+        rows = [r for r in ledger["recommendations"] if r["batch"] in earlier]
+        receipts = {key: value for key, value in ledger["deliveries"].items() if key in earlier}
+        self.assertEqual(len(rows), 106)
+        self.assertEqual(len(receipts), 12)
+        self.assertTrue(all(r["status"] == "merged" for r in rows))
+        self.assertEqual(
+            digest(rows), "3e061f7b53f5c30032dc967f61277e62d9ebd8849820fcb23243b1c3e024893f"
+        )
+        self.assertEqual(
+            digest(receipts), "f97b5463dfbfdf15fc39be0251d5b328230d85721a26ae4ad3f72ea5cf215493"
+        )
+
+    def test_actual_cohort30_own_receipt_binds_all_seven_and_historical_count(self):
+        ledger = json.loads((REVIEWS / "ledger.json").read_text("utf-8"))
+        receipt = ledger["deliveries"]["30"]
+        self.assertEqual(receipt["pr"], "https://github.com/jonathan-vella/landinglens/pull/119")
+        self.assertEqual(receipt["checked_head"], "84463f566855351e5aa985b09feaaaf6c68f6e9c")
+        self.assertEqual(receipt["merge_commit"], "b1dc6a4898781a7f4238f110e2e13d321f81a484")
+        self.assertEqual(
+            receipt["checks"],
+            [
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42232134247",
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42232181318",
+            ],
+        )
+        self.assertEqual(
+            receipt["local_installed_suite"], {"tests": 458, "passed": 457, "skipped": 1}
+        )
+        self.assertEqual(
+            receipt["wheel_sha256"],
+            "683714ac1d1edb586ab813d08f2dfd0aaf73c3dc85b398f2cfc42e490360e2fb",
+        )
+        self.assertEqual(len(receipt["compiler_integration_cases"]), 10)
+        rows = [r for r in ledger["recommendations"] if r["batch"] == "30"]
+        self.assertEqual({r["upstream_id"]: r["guid"] for r in rows}, GUIDS)
+        for row in rows:
+            self.assertEqual(row["status"], "merged")
+            self.assertEqual(row["pr"], receipt["pr"])
+            self.assertEqual(row["merge_commit"], receipt["merge_commit"])
+            self.assertIn("deliveries.30", " ".join(row["runtime_evidence"]))
+        completed = {"01", "04", "08", "11", "12", "13", "14", "15", "17", "18", "19", "22", "30"}
+        prefix = [r for r in ledger["recommendations"] if r["batch"] in completed]
+        self.assertEqual(len(prefix), 113)
+        self.assertTrue(all(r["status"] == "merged" for r in prefix))
