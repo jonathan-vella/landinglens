@@ -38,6 +38,32 @@ and its push `42310955297` / PR `42310977972` runs are invalidated for acceptanc
 the corrected head requires fresh complete gates. Earlier preparation proofs
 and this failed attempt are retained, never presented as green delivery.
 
+Corrected implementation [#149](https://github.com/jonathan-vella/landinglens/pull/149)
+merged normally at `2026-11-06T23:32:02Z` as
+`194040109091d5d75db0ac997103459295c17b77`, exactly checked head
+`9800339ba61eef5195557d76281bfb8ab57be13e`. Push `42311350021` and PR
+`42311354091` passed all eight Ubuntu/Windows Python3.12/3.13 jobs; CodeQL
+`42311348309` and Advanced Security `42311356109` passed. Fresh live head/base/
+main, comments/reviews/requests/threads and open CodeQL findings were checked
+before ready and SHA-bound merge; there was no feedback to leave unresolved.
+
+The four downloaded PR compiler artifacts `13549546082`, `13549061511`,
+`13548731540`, `13547894323` bind that run/head and exercise the same19 actual
+cases without skips. Own exact isolated installed wheel passed721 tests:
+720 pass, only the original Windows symlink-privilege skip. All47 Python files/
+146 package members byte-match source/wheel/installed copies; wheel SHA256 is
+`63ca38d6d5aeaf4f860d72308cde3c0d083b987aa07e62b6d80aa581315278ea`.
+Ruff/format/types/dependencies/486 local documentation links and accepted plus
+predecessor private original-time replay are verified. No new Azure access,
+runtime probe or fabricated human decision substitutes for these proofs.
+
+The guarded recorder independently verified the real merged PR, both actual
+exact-head four-job runs, four downloaded matching exercised compiler proofs
+and own wheel before adding `deliveries.25`. All nine actual own-GUID rows bind
+that receipt, deriving196 delivered/55 pending and23 receipts; all187 earlier
+rows/22 receipts remain unchanged. Checked receipt publication and actual
+final-main CI still gate satisfied #142 closure and sole-slot release.
+
 ## Historical cohort 25 independent preparation: 2026-11-06
 
 [#142](https://github.com/jonathan-vella/landinglens/issues/142) is preparation
