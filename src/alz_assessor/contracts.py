@@ -418,6 +418,21 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                             "localNetworkGatewayId",
                             "gatewaySku",
                             "vpnGatewayGeneration",
+                            "circuitSku.tier",
+                            "circuitSku.family",
+                            "providerCircuitBandwidthMbps",
+                            "directCircuitBandwidthGbps",
+                            "expressRoutePort.id",
+                            "directPortRateLimit",
+                            "directPortBandwidthGbps",
+                            "directPortBillingType",
+                            "directPortEncapsulation",
+                            "peeringLocationConfigured",
+                            "expressRouteGatewayBypass",
+                            "enablePrivateLinkFastPath",
+                            "gatewayScaleBounds",
+                            "gatewayPublicIpReferences",
+                            "publicIpSku",
                         }
                         for path in paths
                     )

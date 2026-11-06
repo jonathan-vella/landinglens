@@ -4,6 +4,7 @@
   "issue": "https://github.com/jonathan-vella/landinglens/issues/99",
   "prerequisites": ["13", "22"],
   "activation": "Deferred until the coordinator grants the catalog/delivery slot; no successor version chosen.",
+  "acceptance_preparation": "Authored in-memory nine-GUID fixtures exercise Signal-not-pass tiers, all reports, blank review sessions and scoped/content/expiry-bound atomic interviews without changing the runtime question bank. Historical replay deliberately rejects the unaccepted fixture; exact packaged-catalog replay retains original time and sanitized facts. Finite fractional circuit Gbps is a supported numeric fact and can prepare a Signal; NaN/infinity/invalid bandwidth cannot.",
   "supported_modes": "Circuit/port and explicit connection FastPath facts normalize through the existing reviewed ARM/REST 2024-05-01, existing no-restore Bicep, AzureRM 4.50.0 raw/supplied-plan and saved/injected paths, with typed review/replay projection. Merged cohort13 owns gateway SKU/type/BGP/active-active and connection bindings. Additional ARM-only scale bounds and gateway public-IP references supply partial original-time review/subchecks, not outcomes. GUID-specific catalog, interview, tier and report activation awaits the coordinator slot.",
   "shared_interface_needs": [
     "Merged cohort13 gateway SKU, gatewayType, activeActive, enableBgp, subnet relationships and connection circuit/local-network-gateway relationships are reused without duplicate facts.",

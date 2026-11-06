@@ -4,6 +4,8 @@ import json
 import os
 import tempfile
 import unittest
+import zipfile
+from io import BytesIO
 from pathlib import Path
 from unittest.mock import patch
 
@@ -11,8 +13,9 @@ from alz_assessor.arm import arm_source
 from alz_assessor.arm import properties as arm_properties
 from alz_assessor.azure import Collector, Response
 from alz_assessor.bicep import compile_bicep
-from alz_assessor.contracts import validate
-from alz_assessor.engine import local_subchecks
+from alz_assessor.catalog import load_catalog
+from alz_assessor.contracts import document, validate
+from alz_assessor.engine import assess, local_subchecks
 from alz_assessor.expressroute_evidence import (
     PATHS,
     bandwidth,
@@ -24,17 +27,22 @@ from alz_assessor.expressroute_evidence import (
     review_fact,
     scale_bounds,
 )
+from alz_assessor.interviews import BANK, compile_interview, prepare_interview
 from alz_assessor.network_evidence import review_fact as network_fact
 from alz_assessor.plan import plan_source
-from alz_assessor.replay import sanitize_evidence
+from alz_assessor.replay import export_bundle, replay_bundle, sanitize_evidence, semantic
+from alz_assessor.reports import render, render_xlsx
+from alz_assessor.review_session import ReviewSession
 from alz_assessor.reviews import review_context
 from alz_assessor.sources import terraform_source, tf_properties, tf_resource_id
 from alz_assessor.terraform import InputError, tree_hash
+from alz_assessor.tiers import has_fact
 
 ROOT = Path(__file__).resolve().parents[1]
 SCOPE = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/expressroute"
 PORT = SCOPE + "/providers/Microsoft.Network/expressRoutePorts/direct"
 SENTINEL = "PRIVATE-NOT-FOR-REPORTING"
+AT = "2026-11-06T09:00:00Z"
 GUIDS = {
     "D06.04": "7025b442-f6e9-4af6-b11f-c9574916016f",
     "D06.05": "f4e7926a-ec35-476e-a412-5dd17136bd62",
@@ -70,6 +78,125 @@ class ExpressRoutePreparationTests(unittest.TestCase):
             "service_key": SENTINEL,
             "peerings": [{"shared_key": SENTINEL}],
         }
+
+    def acceptance_catalog(self):
+        catalog = copy.deepcopy(load_catalog())
+        matrix = json.loads(
+            (
+                ROOT / "references" / "recommendation-batches" / "batch-14-preparation.json"
+            ).read_text()
+        )
+        rows = {row["guid"]: row for row in matrix["recommendations"]}
+        # In-memory authored acceptance fixture; no successor version or catalog file is created.
+        catalog["review_state"] = "authored-in-memory-fixture-not-published"
+        for control in catalog["controls"]:
+            if control["upstream_guid"] in rows:
+                row = rows[control["upstream_guid"]]
+                for field in (
+                    "review_resource_types",
+                    "review_fact_paths",
+                    "evidence_requirements",
+                ):
+                    control[field] = copy.deepcopy(row[field])
+                control["rationale"] = row["limitations"]
+        return validate(catalog, "catalog")
+
+    def acceptance_bundle(self):
+        network = SCOPE + "/providers/Microsoft.Network/"
+        gateway, public = (
+            network + "virtualNetworkGateways/gateway",
+            network + "publicIPAddresses/gateway",
+        )
+        inputs = [
+            (
+                "expressRouteCircuits",
+                "local",
+                {
+                    "bandwidthInGbps": 10,
+                    "expressRoutePort": {"id": PORT},
+                    "enableDirectPortRateLimit": True,
+                    "serviceKey": SENTINEL,
+                },
+                {"sku": {"tier": "Local", "family": "UnlimitedData"}},
+            ),
+            (
+                "expressRoutePorts",
+                "direct",
+                {
+                    "bandwidthInGbps": 100,
+                    "billingType": "MeteredData",
+                    "encapsulation": "QinQ",
+                    "peeringLocation": "Amsterdam",
+                },
+                {},
+            ),
+            (
+                "connections",
+                "fastpath",
+                {
+                    "connectionType": "ExpressRoute",
+                    "virtualNetworkGateway1": {"id": gateway},
+                    "peer": {"id": network + "expressRouteCircuits/local"},
+                    "expressRouteGatewayBypass": True,
+                    "enablePrivateLinkFastPath": True,
+                    "sharedKey": SENTINEL,
+                },
+                {},
+            ),
+            (
+                "connections",
+                "ipsec",
+                {
+                    "connectionType": "IPsec",
+                    "virtualNetworkGateway1": {"id": gateway},
+                    "localNetworkGateway2": {"id": network + "localNetworkGateways/declared"},
+                    "enableBgp": True,
+                },
+                {},
+            ),
+            (
+                "virtualNetworkGateways",
+                "gateway",
+                {
+                    "gatewayType": "ExpressRoute",
+                    "sku": {"name": "ErGw3AZ"},
+                    "ipConfigurations": [{"properties": {"publicIPAddress": {"id": public}}}],
+                },
+                {},
+            ),
+            (
+                "publicIPAddresses",
+                "gateway",
+                {"ipAddress": SENTINEL},
+                {
+                    "sku": {"name": "Standard"},
+                    "zones": ["1", "2", "3"],
+                },
+            ),
+        ]
+        return document(
+            "evidence",
+            schema_version="1.1",
+            mode="observed",
+            source="saved",
+            collected_at=AT,
+            scope=SCOPE,
+            inventory_complete=False,
+            artifact_hashes={"authored-fixture": "0" * 64},
+            diagnostics=[],
+            resources=[
+                {
+                    "logical_id": (network + kind + "/" + name).lower(),
+                    "arm_id": (network + kind + "/" + name).lower(),
+                    "resource_type": "Microsoft.Network/" + kind,
+                    "state": "known",
+                    "reason": "",
+                    "source_location": "fixture://cohort14-authored",
+                    "properties": arm_properties("Microsoft.Network/" + kind, values, root=root),
+                }
+                for kind, name, values, root in inputs
+            ],
+        )
 
     def test_fixed_nine_guid_matrix_sources_and_no_activation(self):
         root = ROOT / "references" / "recommendation-batches"
@@ -697,6 +824,126 @@ class ExpressRoutePreparationTests(unittest.TestCase):
         self.assertIn(
             "unknown", network_fact({"gatewayPublicIpReferences": []}, "gatewayPublicIpReferences")
         )
+
+    def test_authored_all_surface_fixture_is_signal_not_pass_or_verified(self):
+        catalog, bundle = self.acceptance_catalog(), self.acceptance_bundle()
+        report = assess(bundle, catalog, at=AT, evidence_tiers=True)
+        selected = [row for row in report["results"] if row["upstream_id"] in GUIDS]
+        self.assertEqual(len(selected), 9)
+        self.assertTrue(all(row["observed"]["outcome"] == "manual" for row in selected))
+        self.assertTrue(all(row["observed"]["evidence_tier"] == "signal" for row in selected))
+        self.assertEqual(sum(report["evidence_tiers"]["counts"].values()), 255)
+        for format in ("json", "markdown", "html", "csv", "sarif", "pr-summary"):
+            self.assertNotIn(SENTINEL, render(report, format))
+        with zipfile.ZipFile(BytesIO(render_xlsx(report))) as archive:
+            self.assertNotIn(
+                SENTINEL, "".join(archive.read(n).decode() for n in archive.namelist())
+            )
+        with self.assertRaisesRegex(InputError, "differs from a packaged artifact"):
+            export_bundle(
+                self.root / "authored-replay", bundle, catalog, at=AT, evidence_tiers=True
+            )
+        packaged = load_catalog()
+        live_report = assess(bundle, packaged, at=AT, evidence_tiers=True)
+        export_bundle(self.root / "accepted-replay", bundle, packaged, at=AT, evidence_tiers=True)
+        replayed = replay_bundle(self.root / "accepted-replay")
+        self.assertEqual(semantic(replayed), semantic(live_report))
+        self.assertEqual(replayed["evidence"][0]["collected_at"], AT)
+        session = ReviewSession(
+            bundle, catalog, self.root / "authored-session", clock=lambda: AT, evidence_tiers=True
+        )
+        self.assertEqual(session.state()["records"], [])
+        for collected in ("2000-01-01T00:00:00Z", "2026-11-07T09:00:00Z"):
+            changed = copy.deepcopy(bundle)
+            changed["collected_at"] = collected
+            stale = assess(changed, catalog, at=AT, evidence_tiers=True)
+            own = [row for row in stale["results"] if row["upstream_id"] in GUIDS]
+            self.assertTrue(
+                all(row["observed"]["evidence_tier"] == "needs_decision" for row in own)
+            )
+            self.assertTrue(all(row["observed"]["outcome"] != "pass" for row in own))
+
+    def test_authored_interview_nine_blank_atomic_bound_decisions_no_bank_activation(self):
+        catalog, bundle = self.acceptance_catalog(), self.acceptance_bundle()
+        report = assess(bundle, catalog, at=AT, evidence_tiers=True)
+        question = "authored-fixture-expressroute"
+        matrix = json.loads(
+            (
+                ROOT / "references" / "recommendation-batches" / "batch-14-preparation.json"
+            ).read_text()
+        )
+        template = {
+            "question": " ".join(
+                q
+                for row in matrix["recommendations"]
+                for q in row["evidence_requirements"]
+                if q.startswith("Reviewer decision:")
+            ),
+            "controls": ["ALZ-" + guid for guid in GUIDS.values()],
+        }
+        before = copy.deepcopy(BANK)
+        with patch.dict(BANK, {question: template}):
+            response = prepare_interview(report, catalog, question, SCOPE)
+            self.assertEqual(len(response["decisions"]), 9)
+            self.assertTrue(all(row["outcome"] is None for row in response["decisions"]))
+            self.assertIsNone(response["answer"])
+            with self.assertRaises(InputError):
+                compile_interview(response, catalog, at=AT)
+            completed = copy.deepcopy(response)
+            completed.update(
+                answer="Authored acceptance fixture only, not an owner decision.",
+                reviewer="Fixture reviewer",
+                rationale="Nine explicit independent fixture decisions.",
+                evidence="https://example.invalid/authored-fixture",
+                valid_from=AT,
+                valid_until="2026-11-07T09:00:00Z",
+            )
+            for decision in completed["decisions"]:
+                decision["outcome"] = "fail"
+            record = compile_interview(completed, catalog, at=AT)
+            self.assertEqual(len(record["entries"]), 9)
+            updated = assess(bundle, catalog, at=AT, evidence_tiers=True, manual=record)
+            own = [row for row in updated["results"] if row["upstream_id"] in GUIDS]
+            self.assertTrue(all(row["observed"]["outcome"] == "fail" for row in own))
+            self.assertTrue(all(row["observed"]["evidence_tier"] != "verified" for row in own))
+            for field, value in (
+                ("scope", SCOPE.replace("expressroute", "another")),
+                ("catalog_sha256", "0" * 64),
+                ("requirements_sha256", "0" * 64),
+                ("valid_until", "2000-01-01T00:00:00Z"),
+            ):
+                changed = copy.deepcopy(completed)
+                changed[field] = value
+                with self.assertRaises(InputError):
+                    compile_interview(changed, catalog, at=AT)
+            changed = copy.deepcopy(completed)
+            changed["decisions"][-1]["outcome"] = None
+            with self.assertRaises(InputError):
+                compile_interview(changed, catalog, at=AT)
+        self.assertEqual(BANK, before)
+        self.assertNotIn(question, BANK)
+
+    def test_only_reviewed_fractional_direct_capacity_is_a_signal(self):
+        catalog = self.acceptance_catalog()
+        control = next(c for c in catalog["controls"] if c["upstream_id"] == "D06.07")
+        control["review_fact_paths"] = ["directCircuitBandwidthGbps"]
+        for value, expected in (
+            (1.5, "signal"),
+            (float("nan"), "needs_decision"),
+            (0.0, "needs_decision"),
+        ):
+            bundle = self.acceptance_bundle()
+            bundle["resources"] = [bundle["resources"][0]]
+            bundle["resources"][0]["properties"] = arm_properties(
+                "Microsoft.Network/expressRouteCircuits", {"bandwidthInGbps": value}
+            )
+            report = assess(bundle, catalog, at=AT, evidence_tiers=True)
+            row = next(r for r in report["results"] if r["upstream_id"] == "D06.07")
+            self.assertEqual(row["observed"]["evidence_tier"], expected)
+            self.assertNotEqual(row["observed"]["outcome"], "pass")
+        self.assertTrue(has_fact(1.5))
+        self.assertFalse(has_fact(float("nan")))
+        self.assertFalse(has_fact(float("inf")))
 
     @unittest.skipUnless(os.environ.get("BICEP_COMPILER"), "existing Bicep compiler not supplied")
     def test_real_bicep_expressroute_cost_capacity_fastpath_without_restore(self):
