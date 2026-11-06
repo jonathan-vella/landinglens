@@ -33,11 +33,32 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.8` retains all 255 entries: 10 automated, 202 assisted
-and 43 manual. Crosswalk `2026-11-06.8` rebinds the unchanged 51-control,
+Current successor `2026-11-06.9` retains all 255 entries: 11 automated, 201 assisted
+and 43 manual. Crosswalk `2026-11-06.9` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-Exact predecessor `.6.7` is frozen; source-matrix acceptance alone is not delivery.
+Exact predecessor `.6.8` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
+
+### Cohort 15: ExpressRoute monitoring, routing and failover
+
+The [nine-GUID matrix](../references/recommendation-batches/batch-15.json) and
+[39 source captures](../references/recommendation-batches/batch-15-sources.json)
+precede `.6.9`. All 30 preparation captures retain their original rows/times.
+D06.17 alone becomes an automated literal configuration predicate: each known
+scoped VPN/ExpressRoute gateway must explicitly join to known GatewaySubnet and
+unique known route tables with `disableBgpRoutePropagation=false`. True fails;
+missing/default/unbound/ambiguous/out-of-scope/truncated joins, absent populations
+and stale/denied inputs never pass. This is not effective routes or availability.
+
+Eight source-specific decisions stay blank. Connection Monitor group/reference
+configuration, static alert scope/metric/action context and exact gateway/circuit/
+Direct-port joins are minimized partial evidence, not operational outcomes.
+Location fingerprints compare explicit labels only, not canonical sites,
+anonymity or physical independence. Linked MMA instructions conflict with current
+Arc/AMA guidance; BFD retains both peering kinds and IPv4/IPv6 creation/reset dates.
+No arbitrary latency/load/failover threshold, monitor execution, edge BFD test or
+live collection expansion occurs. Earlier predicates, source meanings and receipts
+remain frozen; implementation/receipt delivery is separately checked.
 
 ### Cohort 12: DR addressing, DNS and Bastion
 

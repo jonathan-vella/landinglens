@@ -1776,6 +1776,210 @@ SOURCES_22 = [
 ]
 
 
+SOURCES_15 = [
+    (
+        "expressroute-gateway-propagation",
+        LEARN + "azure/expressroute/expressroute-about-virtual-network-gateways",
+        ["route propagation", "won't function", "same peering location"],
+        "ExpressRoute-specific guidance also requires GatewaySubnet BGP propagation. "
+        "Explicit joined flag is a configuration subclaim, not learned routes or uptime. "
+        "SKU/location circuit maxima and subnet size are separate from two-site resilience.",
+    ),
+    (
+        "expressroute-monitoring",
+        "https://learn.microsoft.com/azure/expressroute/expressroute-monitoring-metrics-alerts",
+        ["ArpAvailability", "BgpAvailability", "BitsInPerSecond"],
+        "Actual checklist link redirects to monitoring data reference. Automatic platform "
+        "metrics and diagnostic export support do not establish Insights use or ingestion.",
+    ),
+    (
+        "expressroute-insights",
+        LEARN + "azure/expressroute/expressroute-network-insights",
+        ["extra setup", "primary and secondary", "maintenance"],
+        "Insights needs no extra setup. Review original-time availability/utilization for "
+        "both links, peering and gateway; maintenance can lower reported BGP availability "
+        "while the customer-edge session remains up. No enablement boolean is invented.",
+    ),
+    (
+        "connection-monitor-linked",
+        "https://learn.microsoft.com/azure/expressroute/how-to-configure-connection-monitor",
+        ["Log Analytics agent", "test groups", "thresholds"],
+        "Checklist-linked page still instructs installing Log Analytics/MMA agents. "
+        "This conflicts with current Network Watcher guidance; do not implement or endorse "
+        "legacy agent installation. Test configuration is not successful probing.",
+    ),
+    (
+        "connection-monitor-current",
+        LEARN + "azure/network-watcher/connection-monitor-overview",
+        ["Log Analytics agent is no longer supported", "Arc", "destination"],
+        "Current guidance requires Arc-enabled on-premises source hosts and Azure Monitor "
+        "Agent; Azure VM/VMSS sources require Network Watcher extension. Destination "
+        "requirements differ. ARM/provider legacy endpoint enums are not current support.",
+    ),
+    (
+        "expressroute-disaster-recovery",
+        "https://learn.microsoft.com/azure/expressroute/"
+        "designing-for-disaster-recovery-with-expressroute-privatepeering",
+        ["different peering locations", "same metro", "180 seconds", "Connection Weight"],
+        "Different peering locations can share a metro/failure domain. Different metros, "
+        "provider/customer diversity, supported geopolitical/Premium reach and both-direction "
+        "routing need review. Up to 180 seconds under some failures is not a promised SLO.",
+    ),
+    (
+        "expressroute-coexistence",
+        "https://learn.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager",
+        ["route-based", "Basic", "longest prefix", "private peering"],
+        "S2S coexistence requires route-based non-Basic VPN and supported GatewaySubnet; "
+        "backup applies to private, not Microsoft, peering. Equal-prefix preference and "
+        "longest-prefix selection differ; configuration does not demonstrate failover.",
+    ),
+    (
+        "gateway-subnet-propagation",
+        "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsub",
+        ["GatewaySubnet", "route propagation", "won't function"],
+        "VPN-specific page requires BGP propagation on GatewaySubnet. Explicit "
+        "disableBgpRoutePropagation=false must be joined to the actual known gateway subnet "
+        "and table, not any table flag. NSG/UDR restrictions and availability are separate.",
+    ),
+    (
+        "expressroute-high-availability",
+        "https://learn.microsoft.com/azure/expressroute/"
+        "designing-for-high-availability-with-expressroute#active-active-connections",
+        ["same Customer Premises Equipment", "active-passive", "stateless"],
+        "Both links need distinct customer edge devices and end-to-end failure domains. "
+        "Active-active is recommended, active-passive supported with maintained routes; "
+        "stateful/NAT effects and maintenance draining need operational evidence.",
+    ),
+    (
+        "expressroute-bfd",
+        "https://learn.microsoft.com/azure/expressroute/expressroute-bfd",
+        ["Microsoft peering", "November 2025", "echo mode", "both your primary and secondary"],
+        "Current BFD supports private and Microsoft peering. MSEE defaults depend on "
+        "creation/reset and IPv4/IPv6 dates (IPv6 November 2025); customer/provider must "
+        "configure interface and BGP linkage on both devices. Disable echo as advised. "
+        "MSEE defaults/timer examples never prove edge configuration or failover SLO.",
+    ),
+    (
+        "connection-monitor-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/networkwatchers/connectionmonitors",
+        ["testConfigurations", "testGroups", "disable", "workspaceResourceId"],
+        "2024-05-01 supplies endpoint/configuration/group/output structures. Validate "
+        "exact unique group references before minimizing names/addresses. Explicit "
+        "disable=false and configured frequency/thresholds are not executing health tests.",
+    ),
+    (
+        "metric-alert-arm",
+        LEARN + "azure/templates/microsoft.insights/2018-03-01/metricalerts",
+        ["enabled", "scopes", "metricNamespace", "actionGroupId"],
+        "2018-03-01 metric alerts expose explicit scopes, enabled and criteria/actions. "
+        "Only supplied ExpressRoute static criterion names and typed circuit scopes are "
+        "prepared; dynamic/web-test/multiple-resource forms stay visibly unsupported.",
+    ),
+    (
+        "terraform-connection-monitor",
+        RAW + "website/docs/r/network_connection_monitor.html.markdown",
+        ["test_configuration_names", "output_workspace_resource_ids", "2024-05-01"],
+        "4.50.0 supports v2 only and explicit group endpoint/config references. Missing "
+        "enabled/frequency defaults are not inferred; legacy endpoint enums do not "
+        "establish supported Arc migration. Withhold addresses, headers, paths and notes.",
+    ),
+    (
+        "terraform-connection-monitor-implementation",
+        RAW + "internal/services/network/network_connection_monitor_resource.go",
+        ["test_frequency_in_seconds", "test_group", "ChecksFailedPercent"],
+        "Pinned implementation expands supplied groups/configurations/outputs into "
+        "2024-05-01 structures. Provider creation defaults do not establish raw/import "
+        "configuration and connection monitor creation is not an execution result.",
+    ),
+    *[
+        source
+        for source in SOURCES_11
+        if source[0]
+        in {"route-arm", "terraform-route-table", "connection-arm", "terraform-gateway-connection"}
+    ],
+    *[source for source in SOURCES_17 if source[0] in {"subnet-arm", "terraform-subnet"}],
+    *[source for source in SOURCES_19 if source[0] in {"gateway-arm", "terraform-gateway"}],
+    *[source for source in SOURCES_13 if source[0] == "expressroute-backup"],
+    (
+        "route-table-provider-implementation",
+        RAW + "internal/services/network/route_table_resource.go",
+        ["bgp_route_propagation_enabled", "DisableBgpRoutePropagation"],
+        "Provider inverts explicit bgp_route_propagation_enabled into the ARM disable "
+        "flag. Missing values remain unknown; subnet association must be known separately.",
+    ),
+    (
+        "terraform-subnet-route-association",
+        RAW + "website/docs/r/subnet_route_table_association.html.markdown",
+        ["subnet_id", "route_table_id"],
+        "Association is separately managed. Raw subnet/table presence cannot establish "
+        "a join; reuse explicit supplied normalized subnet routeTable.id rather than "
+        "defaulting missing associations or guessing names.",
+    ),
+    (
+        "rest-spec-reuse",
+        SPEC_RAW + "LICENSE",
+        ["MIT License"],
+        "Pinned REST specification reuse is MIT; retain metadata and own findings only.",
+    ),
+    *[
+        (
+            "rest-" + name,
+            SPEC_RAW + "specification/network/resource-manager/Microsoft.Network/Network/"
+            "stable/2024-05-01/" + filename,
+            markers,
+            finding,
+        )
+        for name, filename, markers, finding in [
+            (
+                "monitor",
+                "networkWatcher.json",
+                ["ConnectionMonitorTestGroup", "testFrequencySec"],
+                "Pinned schema defines explicit groups, endpoint enums and configuration, "
+                "including obsolete endpoint forms. Schema presence is not current support.",
+            ),
+            (
+                "route",
+                "routeTable.json",
+                ["disableBgpRoutePropagation", "boolean"],
+                "Pinned schema declares disableBgpRoutePropagation boolean. Omission is unknown.",
+            ),
+            (
+                "subnet",
+                "virtualNetwork.json",
+                ["routeTable", "SubnetPropertiesFormat"],
+                "Actual subnet properties carry route-table references; bind explicit identities.",
+            ),
+            (
+                "gateway",
+                "virtualNetworkGateway.json",
+                ["peer", "virtualNetworkGateway1"],
+                "Actual connection peer.id binds an ExpressRoute circuit; reuse cohort13's "
+                "typed circuit/gateway facts and future merged cohort14 circuit metadata.",
+            ),
+        ]
+    ],
+]
+
+
+SOURCES_15 += [
+    source
+    for source in SOURCES_14
+    if source[0]
+    in {
+        "circuit-arm",
+        "circuit-rest-2024",
+        "port-arm",
+        "port-rest-2024",
+        "terraform-circuit",
+        "terraform-expressroute-port",
+        "connection-arm",
+        "gateway-rest-2024",
+        "provider-reuse",
+        "learn-reuse",
+    }
+]
+
+
 def microsoft_site_terms(url: str) -> bool:
     parsed = urlsplit(url)
     return parsed.scheme == "https" and (
@@ -1790,7 +1994,7 @@ def main() -> None:
     parser.add_argument("--preparation-only", action="store_true")
     parser.add_argument(
         "--batch",
-        choices=["01", "04", "11", "12", "13", "14", "17", "18", "19", "22"],
+        choices=["01", "04", "11", "12", "13", "14", "15", "17", "18", "19", "22"],
         default="01",
     )
     args = parser.parse_args()
@@ -1809,6 +2013,7 @@ def main() -> None:
         "12": SOURCES_12,
         "13": SOURCES_13,
         "14": SOURCES_14,
+        "15": SOURCES_15,
         "17": SOURCES_17,
         "18": SOURCES_18,
         "19": SOURCES_19,

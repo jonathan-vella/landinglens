@@ -18,6 +18,7 @@ PATHS = {
     "virtualNetworkGateway1.id",
     "virtualNetworkGateway2.id",
     "virtualNetworkPrefixes",
+    "disableBgpRoutePropagation",
 }
 KINDS = {
     "microsoft.network/routetables",
@@ -114,7 +115,11 @@ def review_fact(properties: dict[str, Any], path: str) -> Any:
     value = property_at(properties, path)
     if path == "routeCount":
         return bounded_count(value, 1000)
-    if path in {"allowVirtualNetworkAccess", "useLocalAzureIpAddress"}:
+    if path in {
+        "allowVirtualNetworkAccess",
+        "useLocalAzureIpAddress",
+        "disableBgpRoutePropagation",
+    }:
         return boolean(value)
     if path == "loadBalancerSku":
         return enumeration(value, ("Basic", "Standard", "Gateway"))
@@ -141,6 +146,61 @@ def count_entries(value: Any) -> Any:
     return len(value)
 
 
+def gateway_route_subchecks(
+    resource: dict[str, Any], by_id: dict[str, list[dict[str, Any]]]
+) -> dict[str, Any]:
+    from .network_evidence import references
+    from .protection_evidence import typed_reference
+
+    identity = typed_reference(
+        resource.get("arm_id"), ("microsoft.network/virtualnetworkgateways",)
+    )
+    if (
+        resource.get("state") != "known"
+        or resource.get("resource_type", "").lower() != "microsoft.network/virtualnetworkgateways"
+        or not isinstance(identity, str)
+        or len(by_id.get(identity, [])) != 1
+    ):
+        return {"unknown": "gateway_not_unique_known"}
+    refs = references(resource["properties"].get("subnetReferences"))
+    if not isinstance(refs, list) or not refs:
+        return {"unknown": "gateway_subnet_references_not_explicit"}
+    links: list[dict[str, Any]] = []
+    for ref in refs[:20]:
+        subnet_id = typed_reference(ref, ("microsoft.network/virtualnetworks/subnets",))
+        subnets = by_id.get(subnet_id, []) if isinstance(subnet_id, str) else []
+        if (
+            not isinstance(subnet_id, str)
+            or not subnet_id.endswith("/subnets/gatewaysubnet")
+            or len(subnets) != 1
+            or subnets[0]["state"] != "known"
+            or subnets[0]["resource_type"].lower() != "microsoft.network/virtualnetworks/subnets"
+        ):
+            links.append({"unknown": "gateway_subnet_not_unique_known"})
+            continue
+        table_id = typed_reference(
+            property_at(subnets[0]["properties"], "routeTable.id"),
+            ("microsoft.network/routetables",),
+        )
+        tables = by_id.get(table_id, []) if isinstance(table_id, str) else []
+        propagation: Any = unknown("gateway_route_table_not_unique_known")
+        if (
+            len(tables) == 1
+            and tables[0]["state"] == "known"
+            and tables[0]["resource_type"].lower() == "microsoft.network/routetables"
+        ):
+            disabled = boolean(tables[0]["properties"].get("disableBgpRoutePropagation"))
+            propagation = not disabled if type(disabled) is bool else disabled
+        links.append(
+            {
+                "subnet_id": subnet_id,
+                "route_table_id": table_id,
+                "route_propagation_enabled": propagation,
+            }
+        )
+    return {"gateway_subnet_routes": links, "truncated": len(refs) > 20}
+
+
 def projected_properties(
     kind: str,
     values: dict[str, Any],
@@ -152,7 +212,15 @@ def projected_properties(
     from .network_evidence import reference
 
     if kind == "microsoft.network/routetables":
-        return {"routeCount": observed_route_count(values, observed and not terraform)}
+        enabled = values.get("bgp_route_propagation_enabled")
+        return {
+            "routeCount": observed_route_count(values, observed and not terraform),
+            "disableBgpRoutePropagation": boolean(not enabled)
+            if terraform and type(enabled) is bool
+            else unknown("terraform_bgp_propagation_not_explicit")
+            if terraform
+            else boolean(values.get("disableBgpRoutePropagation")),
+        }
     if kind == "microsoft.network/virtualnetworks/virtualnetworkpeerings":
         return {
             "allowVirtualNetworkAccess": boolean(

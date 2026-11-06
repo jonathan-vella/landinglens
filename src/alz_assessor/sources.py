@@ -37,6 +37,7 @@ TF_TYPES = {
     "azurerm_network_security_rule": "Microsoft.Network/networkSecurityGroups/securityRules",
     "azurerm_virtual_network_gateway": "Microsoft.Network/virtualNetworkGateways",
     "azurerm_network_watcher_flow_log": "Microsoft.Network/networkWatchers/flowLogs",
+    "azurerm_network_connection_monitor": "Microsoft.Network/networkWatchers/connectionMonitors",
     "azurerm_application_security_group": "Microsoft.Network/applicationSecurityGroups",
     "azurerm_route_table": "Microsoft.Network/routeTables",
     "azurerm_virtual_network_peering": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
@@ -328,11 +329,13 @@ def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str 
         if boundary and boundary.count("/") == 2 and isinstance(plan, str) and plan in PLANS:
             return canonical_id(boundary + "/providers/Microsoft.Security/pricings/" + plan)
         return None
-    if kind == "azurerm_cdn_frontdoor_security_policy":
+    if kind in {"azurerm_cdn_frontdoor_security_policy", "azurerm_network_connection_monitor"}:
         from .protection_evidence import typed_reference
 
+        monitor = kind == "azurerm_network_connection_monitor"
         parent = typed_reference(
-            values.get("cdn_frontdoor_profile_id"), ("microsoft.cdn/profiles",)
+            values.get("network_watcher_id" if monitor else "cdn_frontdoor_profile_id"),
+            ("microsoft.network/networkwatchers",) if monitor else ("microsoft.cdn/profiles",),
         )
         boundary = scope_id(scope) if scope else None
         if (
@@ -343,7 +346,9 @@ def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str 
             and name
             and "/" not in name
         ):
-            return canonical_id(parent + "/securityPolicies/" + name)
+            return canonical_id(
+                parent + ("/connectionMonitors/" if monitor else "/securityPolicies/") + name
+            )
         return None
     if kind == "azurerm_role_assignment":
         from .network_evidence import reference

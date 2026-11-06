@@ -227,6 +227,16 @@ existing records. Answer/field lengths and group sizes are bounded. The shared
 narrative becomes attributable rationale, not machine evidence or a Verified tier.
 Original single-control workflows and historical replay remain unchanged.
 
+Bank `2026-11-06.9` adds eight distinct ExpressRoute monitoring/routing/failover
+decisions. D06.17 instead has the guarded 1.1 `gateway-route-propagation`
+operation: exact own GUID, gateway resource type, `subnetReferences` property and
+`expected=true`, with known GatewaySubnet/table joins and explicit scoped flags.
+It cannot be retargeted to arbitrary route tables or overridden by human review.
+Unknown/failed technical results allow independent exception disposition only.
+Typed monitor/alert summaries and lower-case 64-hex location fingerprints are
+minimized original-time facts; fingerprints are not verified sites or anonymity.
+Replay retains exact packaged catalog/source bindings and all historical meanings.
+
 ### Allowlisted query evidence
 
 The separate packaged `query-allowlist` 1.0 accounts for all 49 frozen audited

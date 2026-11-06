@@ -40,6 +40,15 @@ No current regional/port availability, achieved throughput/latency, working
 FastPath, operational redundancy or economic suitability follows from settings.
 ARM scale support does not imply the pinned Terraform provider supports it.
 
+Cohort15's GatewaySubnet propagation predicate is a strictly joined scoped
+configuration check, not a gateway uptime or effective-route verdict. A table
+flag alone, missing association/default or empty inventory cannot pass.
+Monitoring/alert configuration and supplied location-label fingerprints remain
+Signals awaiting eight separate decisions, never health, ingestion, verified
+peering sites, physical edge independence, customer/provider BFD or actual
+convergence/failover. Unsupported/ambiguous populations stay visible; linked
+legacy-agent and current BFD date/peering conditions are not silently simplified.
+
 Cohort12 prepares DR prefixes, public-IP configuration, private DNS links,
 Resolver endpoint/rule shapes and Bastion settings. Public-IP empty zones cannot
 alone establish nonredundancy; registration applies only to VM primary NICs.

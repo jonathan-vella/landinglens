@@ -73,6 +73,13 @@ def prepared_resource(
         "facts": facts,
         "subchecks": local_subchecks(facts),
     }
+    if (
+        "disableBgpRoutePropagation" in control.get("review_fact_paths", [])
+        and resource["resource_type"].lower() == "microsoft.network/virtualnetworkgateways"
+    ):
+        from .routing_evidence import gateway_route_subchecks
+
+        prepared["gateway_route_subchecks"] = gateway_route_subchecks(resource, by_id)
     if "networkSecurityGroup.id" in facts:
         identity = facts["networkSecurityGroup.id"]
         candidates = by_id.get(identity, []) if isinstance(identity, str) else []
@@ -352,6 +359,36 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
             "complete relationships. No whole-recommendation outcome or current freshness inferred."
         ),
     }
+    if "expressRouteCircuitId" in control.get("review_fact_paths", []) and available:
+        from .expressroute_evidence import (
+            CIRCUIT_KIND,
+            circuit_location_subchecks,
+            gateway_circuit_subchecks,
+        )
+
+        if control["upstream_guid"] == "e0d5973c-d4cd-421b-8881-37f5e6c4cfd3":
+            context["circuit_location_subchecks"] = circuit_location_subchecks(
+                [
+                    resource
+                    for resource in bundle["resources"]
+                    if resource["resource_type"].lower() == CIRCUIT_KIND
+                ],
+                by_id,
+            )
+        if control["upstream_guid"] == "669b215a-ce43-4371-8f6f-11047f6490f1":
+            gateways = [
+                resource
+                for resource in bundle["resources"]
+                if resource["resource_type"].lower() == "microsoft.network/virtualnetworkgateways"
+            ]
+            context["gateway_circuit_subchecks"] = [
+                {
+                    "arm_id": resource.get("arm_id"),
+                    "subchecks": gateway_circuit_subchecks(resource, bundle["resources"], by_id),
+                }
+                for resource in gateways[:100]
+            ]
+            context["gateways_truncated"] = len(gateways) > 100
     if control["upstream_guid"] == "f348ef25-4c27-4d42-b8bb-ac7571559ab9":
         from .routing_evidence import address_subchecks
 

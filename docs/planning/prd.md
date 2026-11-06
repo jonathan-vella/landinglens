@@ -78,6 +78,29 @@ records remain traceable under explicit lifecycle semantics.
 
 ## Active increment: fixed recommendation expansion
 
+Working `2026-11-06.9` integrates cohort15 after its explicit slot grant and
+actual cohort12 implementation/receipt delivery. Exact `.6.8` bytes and all90
+preceding own-GUID rows/ten receipts remain frozen. One strictly joined scoped
+GatewaySubnet propagation predicate and eight separate assisted decisions retain
+all255 GUIDs, **11 automated / 201 assisted / 43 manual**. Missing/default/absent/
+ambiguous/denied/stale joins never pass; configuration and location labels prove
+no operational health, ingestion, edge BFD, physical independence or recovery.
+The ledger stays90 delivered /161 pending until actual implementation and
+guarded receipt acceptance; source/matrix activation is not delivery.
+
+Cohort15/#106 independently prepares nine immutable ExpressRoute monitoring,
+propagation and failover workflows after actual cohort14 delivery, alongside cohort12. Its reviewed source
+matrix is not accepted catalog activation. Minimized configured-monitor/alert
+facts and exact known GatewaySubnet/table propagation subchecks never establish
+probe health, ingestion, physical edge independence, on-premises BFD/routing or
+actual recovery. The linked legacy-agent guidance discrepancy and current BFD
+date/peering conditions remain explicit. All owner decisions stay blank; unique
+successor activation and final delivery await the coordinator's sole slot.
+Actual merged circuit/port contracts now support strict supplied-subset
+location-label and exact gateway/distinct-circuit joins, using minimized
+fingerprints rather than raw peering-location labels. They prove neither
+canonical site identity nor physical/operational independence; missing or
+ambiguous bindings cannot create a positive check or a Verified tier.
 Delivered implementation `2026-11-06.8` integrates cohort12/#103 after the coordinator's
 slot grant and actual cohort14 receipt delivery. Eight bounded DR/DNS/Bastion
 configuration/advisory workflows and manual workload/failover decisions add no
