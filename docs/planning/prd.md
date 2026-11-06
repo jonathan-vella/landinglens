@@ -20,6 +20,13 @@ original-time private replay. Counts remain12/200/43; guarded implementation
 merge/receipt publication/final-main checks, not activation, gate delivery and
 satisfied #142 closure.
 
+Implementation #149 merged normally after exact checked-head eight jobs,
+CodeQL/security/review and four downloaded matching19-case compiler proofs.
+The guarded `deliveries.25` receipt binds each actual GUID to that head/merge/
+runs and own721-test wheel, deriving196 delivered/55 pending and23 receipts.
+All187 earlier rows/22 receipts remain unchanged. Checked publication and actual
+final-main CI still gate satisfied closure, not classification or merge alone.
+
 ## Cohort 10 accepted boundary
 
 After actual29/06 implementation/receipt delivery and the explicit sole-slot
