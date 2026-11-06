@@ -33,11 +33,40 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.7` retains all 255 entries: 10 automated, 202 assisted
-and 43 manual. Crosswalk `2026-11-06.7` rebinds the unchanged 51-control,
+Current successor `2026-11-06.8` retains all 255 entries: 10 automated, 202 assisted
+and 43 manual. Crosswalk `2026-11-06.8` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-Exact predecessor `.6.6` is frozen; source-matrix acceptance alone is not delivery.
+Exact predecessor `.6.7` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
+
+### Cohort 12: DR addressing, DNS and Bastion
+
+The [ten-GUID matrix](../references/recommendation-batches/batch-12.json) and
+[43 source captures](../references/recommendation-batches/batch-12-sources.json)
+precede `.6.8`. Eight useful assisted workflows and manual D03.08/D03.10 retain
+their exact meanings. All earlier catalog/crosswalk bytes and own receipts remain
+unchanged. Ten scope/content/expiry-bound decisions stay blank.
+
+| Recommendation | Bounded preparation and necessary decision |
+|---|---|
+| D03.04 | Reused supplied IPv4/RFC1918/overlap summaries; complete production/DR populations and approved whole-subnet IP-retention exceptions need evidence |
+| D03.05 | Standard/tier/allocation/version/region and reused zones; empty zones can now be redundant, but region/API/service and backend resilience need review |
+| D03.06 | Zone identity, typed VNet links, completion/policy and minimized DNS-server count; delegation and actual default/custom resolution remain unverified |
+| D03.07 | Resolver/VNet/endpoint/ruleset links, allocation, rule/target shape and delegated-subnet range subchecks; authority, regional limits, exclusivity and loop-free both-direction resolution need evidence |
+| D03.08 | Manual workload/vendor DNS suitability, not workload inference from names or settings |
+| D03.09 | Explicit VM-primary-NIC registration flag; one registration zone per VNet and independent non-VM/PTR lifecycles remain conditional |
+| D03.10 | Manual service-specific multi-region/failover DNS plan, including ownership, updates, TTL/cache and rollback |
+| D03.11 | Actual UDP SOURCE port 65330 advisory and specific Windows/container exclusion question; no guest probe, OS change or destination-port substitute |
+| D05.01 | Bastion SKU/features/scaling and typed subnet/IP/Developer VNet links; approved access, bypass, NSG/route/DNS/audit evidence remains separate |
+| D05.02 | Actual host/subnet binding and reused /26-capacity subcheck; Developer, private-only, pre-2021-11-02 /27 and exclusive occupancy need review |
+
+Resolver endpoint subnets require IPv4 /24 through /28 and exclusive delegation;
+ruleset links are regional, target order/suffix matching and inbound loops matter,
+and Azure-provided DNS cannot be a forwarding target. Missing port is not default
+53. New Bastion dual-stack preview wording differs from the IPv4-only FAQ/older
+schemas. No DNS record/domain/target IP, ACL address or recording secret is retained.
+Configured links, zones, registration or Bastion never establish effective
+resolution, security, resilience or workload suitability.
 
 ### Cohort 14: ExpressRoute cost, FastPath and gateway resilience
 

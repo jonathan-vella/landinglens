@@ -37,6 +37,7 @@ if compiler:
         "test_real_bicep_security_configuration_without_restore",
         "test_expressroute_preparation.ExpressRoutePreparationTests."
         "test_real_bicep_expressroute_cost_capacity_fastpath_without_restore",
+        "test_dns_batch.DnsBatchTests.test_real_bicep_dns_bastion_no_restore",
     ]
     suite = unittest.defaultTestLoader.loadTestsFromNames(cases)
     result = unittest.TextTestRunner(verbosity=2).run(suite)

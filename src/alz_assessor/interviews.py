@@ -6,8 +6,33 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.7"
+BANK_VERSION = "2026-11-06.8"
 BANK = {
+    "dr-dns-bastion": {
+        "question": "Reconcile complete production/DR address populations and any Site Recovery "
+        "IP-retention/subnet-move exception; actual public-IP SKU/region/API/zone and attached-"
+        "service suitability; Azure-only zone ownership/delegation and default/custom DNS; "
+        "both-direction hybrid Resolver endpoints, exclusive delegated subnets, rules, regional "
+        "links and loop avoidance; workload-specific DNS; VM-primary-NIC-only registration and "
+        "other record lifecycles; multi-region failover ownership/TTL/cache/update/rollback "
+        "evidence; Windows/container UDP SOURCE port 65330 exclusion evidence; and Bastion "
+        "SKU/private-only/legacy subnet/access/bypass/NSG/route/DNS exceptions. Use redacted "
+        "evidence references, not DNS records, raw destinations, host inventories, credentials "
+        "or recording URLs. Decide all ten GUIDs separately; configuration and one narrative "
+        "do not establish outcomes.",
+        "controls": [
+            "ALZ-f348ef25-4c27-4d42-b8bb-ac7571559ab9",
+            "ALZ-0c47f486-656d-4699-8c30-edef5b8a93c4",
+            "ALZ-153e8908-ae28-4c84-a33b-6b7808b9fe5c",
+            "ALZ-41049d40-3a92-43c3-974d-00018ac6a9e0",
+            "ALZ-1e6a83de-5de3-42c1-a924-81607d5d1e4e",
+            "ALZ-614658d3-558f-4d77-849b-821112df27ee",
+            "ALZ-18c80eb0-582a-4198-bf5c-d8800b2d263b",
+            "ALZ-baac3ecb-a94c-4ac4-8c79-cdf27c0d78df",
+            "ALZ-ee1ac551-c4d5-46cf-b035-d0a3c50d87ad",
+            "ALZ-6eab9eb6-762b-485e-8ea8-15aa5dba0bd0",
+        ],
+    },
     "expressroute-cost-resilience": {
         "question": "Describe the attributable actual outbound demand and full metered/unlimited/"
         "Direct-port/circuit/gateway/provider cost comparison, including Local reach and Global "
