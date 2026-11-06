@@ -361,6 +361,38 @@
       },
       "wheel_sha256": "8701d4f9e06619acd3dfb3e1489d9b56b7c78d74d698072b8fe3a0e7dd23be37",
       "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
+    },
+    "05": {
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/125",
+      "merge_commit": "29ac2110f6493a123af68519701b5e2c6f5996ca",
+      "merged_at": "2026-11-06T15:54:37Z",
+      "checked_head": "cd9563cfdfb5411e0ac98518e53e664780bad1ea",
+      "checks": [
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42246208657",
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42246243947"
+      ],
+      "acceptance": "Actual push/PR runs on the merged head passed all eight supported jobs. All four downloaded PR compiler artifacts exercised the same integration cases without skips. Normal exact-head merge and other applicable checks were gated before recording; this receipt does not imply protected-branch enforcement.",
+      "compiler_integration_cases": [
+        "test_bicep.BicepTests.test_actual_installed_compiler_local_success_and_unrestored_failure",
+        "test_segmentation_batch.SegmentationBatchTests.test_real_bicep_nsg_gateway_subnet_flow_without_restore",
+        "test_routing_batch.RoutingBatchTests.test_real_bicep_routing_peering_lb_macsec_connection_no_restore",
+        "test_identity_batch.IdentityBatchTests.test_real_bicep_storage_identity_role_context_without_restore",
+        "test_protection_batch.ProtectionBatchTests.test_real_bicep_protection_outbound_hybrid_no_restore",
+        "test_security_batch.SecurityBatchTests.test_real_bicep_security_configuration_without_restore",
+        "test_expressroute_preparation.ExpressRoutePreparationTests.test_real_bicep_expressroute_cost_capacity_fastpath_without_restore",
+        "test_dns_batch.DnsBatchTests.test_real_bicep_dns_bastion_no_restore",
+        "test_monitoring_preparation.MonitoringPreparationTests.test_real_bicep_monitor_and_gateway_route_join_without_restore",
+        "test_governance_preparation.GovernancePreparationTests.test_real_bicep_governance_without_restore",
+        "test_virtual_wan_preparation.VirtualWanPreparationTests.test_real_bicep_virtual_wan_scoped_configuration_without_restore",
+        "test_identity_resilience_preparation.IdentityResiliencePreparationTests.test_real_bicep_identity_resilience_without_restore"
+      ],
+      "local_installed_suite": {
+        "tests": 505,
+        "passed": 504,
+        "skipped": 1
+      },
+      "wheel_sha256": "1c88f19cbd87a13ebc033b701bf01de30444c21814cfacbc5823c7956c672017",
+      "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
     }
   },
   "recommendations": [
@@ -1313,7 +1345,7 @@
       "baseline_control_sha256": "e184dce8180583c01c166cb26c8c5cffba4f4ecc213ba94e2d93be1ef151db55",
       "design_area": "Identity and access management",
       "batch": "05",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "upstream_id": "B03.08",
         "guid": "d98d954d-7d1c-4a07-92a7-cf3afe8dcbd2",
@@ -1332,9 +1364,13 @@
         "flags": []
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/118",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/125",
+      "merge_commit": "29ac2110f6493a123af68519701b5e2c6f5996ca",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.05: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "1559ab91-53e8-4908-ae28-c84c33b6b780",
@@ -1344,7 +1380,7 @@
       "baseline_control_sha256": "e944ede74b44ef5f52293816a5611e567aaaa3ffd5b0cea84eb42f5d79e875fc",
       "design_area": "Identity and access management",
       "batch": "05",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "upstream_id": "B03.09",
         "guid": "1559ab91-53e8-4908-ae28-c84c33b6b780",
@@ -1377,9 +1413,13 @@
         "flags": []
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/118",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/125",
+      "merge_commit": "29ac2110f6493a123af68519701b5e2c6f5996ca",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.05: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "e8aa1e41-870d-4968-94c6-77be14f510ac",
@@ -1389,7 +1429,7 @@
       "baseline_control_sha256": "4bafd5d69276742be899f140ee12ac29205990b099cf56550522bd3ab993e5ea",
       "design_area": "Identity and access management",
       "batch": "05",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "upstream_id": "B03.10",
         "guid": "e8aa1e41-870d-4968-94c6-77be14f510ac",
@@ -1419,9 +1459,13 @@
         "flags": []
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/118",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/125",
+      "merge_commit": "29ac2110f6493a123af68519701b5e2c6f5996ca",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.05: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "f5664b5e-984a-4859-a773-e7d261623a76",
@@ -1431,7 +1475,7 @@
       "baseline_control_sha256": "a13f1a79a5525071e3f56b123f21d7f2c911b6cc8fcdde600135a1908b6c63ae",
       "design_area": "Identity and access management",
       "batch": "05",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "upstream_id": "B03.11",
         "guid": "f5664b5e-984a-4859-a773-e7d261623a76",
@@ -1462,9 +1506,13 @@
         "flags": []
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/118",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/125",
+      "merge_commit": "29ac2110f6493a123af68519701b5e2c6f5996ca",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.05: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "8b9fe5c4-1049-4d40-9a92-3c3474d00018",
@@ -1474,7 +1522,7 @@
       "baseline_control_sha256": "2d89fd6f543b019f30415ecfdc14533ec848e03f6d2546028ccd3bcc9114f221",
       "design_area": "Identity and access management",
       "batch": "05",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "upstream_id": "B03.12",
         "guid": "8b9fe5c4-1049-4d40-9a92-3c3474d00018",
@@ -1493,9 +1541,13 @@
         "flags": []
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/118",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/125",
+      "merge_commit": "29ac2110f6493a123af68519701b5e2c6f5996ca",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.05: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "0dd4e625-9c4b-4a56-b54a-4357bac12761",
@@ -1505,7 +1557,7 @@
       "baseline_control_sha256": "cacdfec577b4f616d0429cf3e3d951f3655a298d4a2c978a9a883c463ba0ca6c",
       "design_area": "Identity and access management",
       "batch": "05",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "upstream_id": "B03.13",
         "guid": "0dd4e625-9c4b-4a56-b54a-4357bac12761",
@@ -1534,9 +1586,13 @@
         "flags": []
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/118",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/125",
+      "merge_commit": "29ac2110f6493a123af68519701b5e2c6f5996ca",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.05: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "1cf0b8da-70bd-44d0-94af-8d99cfc89ae1",
@@ -1546,7 +1602,7 @@
       "baseline_control_sha256": "e7936895043325d9c670c54ae6e3fb99e44fef91185818c8fcdc484ea4ca9c1f",
       "design_area": "Identity and access management",
       "batch": "05",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "upstream_id": "B03.14",
         "guid": "1cf0b8da-70bd-44d0-94af-8d99cfc89ae1",
@@ -1566,9 +1622,13 @@
         "flags": []
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/118",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/125",
+      "merge_commit": "29ac2110f6493a123af68519701b5e2c6f5996ca",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.05: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "984a859c-773e-47d2-9162-3a765a917e1f",
@@ -1578,7 +1638,7 @@
       "baseline_control_sha256": "2d1e78d8a3ab0d49d8ea5a86930894f827d55e3490440f436625d45af4083558",
       "design_area": "Identity and access management",
       "batch": "05",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "upstream_id": "B03.15",
         "guid": "984a859c-773e-47d2-9162-3a765a917e1f",
@@ -1598,9 +1658,13 @@
         "flags": []
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/118",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/125",
+      "merge_commit": "29ac2110f6493a123af68519701b5e2c6f5996ca",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.05: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "cd163e39-84a5-4b39-97b7-6973abd70d94",

@@ -67,6 +67,44 @@ Final wheel SHA256:
 Earlier preparation wheels/local compiler proofs are not substituted for final
 platform CI or downloaded artifacts. No merged delivery is inferred yet.
 
+[#125](https://github.com/jonathan-vella/landinglens/pull/125) merged normally as
+`29ac2110f6493a123af68519701b5e2c6f5996ca` at 2026-11-06T15:54:37Z.
+Exact checked head `cd9563cfdfb5411e0ac98518e53e664780bad1ea` passed all eight
+supported jobs in push/PR runs `42246208657` / `42246243947`, CodeQL
+`42246238293` and Advanced Security `42246250926`. Actual head/base/main,
+check-runs, reviews and threads were refreshed immediately before ready
+transition and normal SHA-bound merge. No required review, branch protection
+or ruleset was configured or bypassed.
+
+All four downloaded PR compiler artifacts exercised identical twelve-case
+coverage with no skips: `13519320862`, `13519296245`, `13518871554`,
+`13518051743`. Compiler JSON SHA256:
+`93e8aa55cfe40467861b0df5821111ec0ca7091e44d226c310be7d9ff36d4051`
+on Ubuntu and
+`de2d350bd17a68a324a82510876097e6c91020df7d439746044fe709e7b6d0ad`
+on Windows. Earlier head/preparation proofs were not reused for acceptance.
+
+The guarded recorder independently reread the actual merged PR/head, both
+complete four-job runs and all downloaded compiler artifacts before recording
+`deliveries.05` against the exact final wheel above. Every own GUID binds that
+receipt; all122 preceding rows/fourteen receipts remain exact. The reconciliation
+ledger becomes **130 delivered /121 pending**; cohort16 is the next source/
+severity/crosswalk review priority, not an automatic slot grant. Checked receipt
+publication remains required before #118 closure and sole-slot release.
+No actual directory, DC, runtime, log-ingestion or emergency-access decision is
+claimed from implementation or receipts.
+
+Receipt reconciliation passed **506 tests** in both the checkout and own exact
+installed environment: 505 passed with the same original Windows privilege
+skip. The new assertion pins all eight own GUIDs to actual #125/head/merge/runs/
+wheel and preserves all122 older rows/fourteen receipts. All16 identity cases
+passed. The completed-cohort historical prefix is130, not a global count
+redefined by future delivery. Format/lint, 41-source-file typing, dependency
+consistency and371 documentation links pass. Package code/data and the exact
+final implementation wheel remain unchanged. Actual ledger/severity/crosswalk
+recomputation confirms121 pending, cohort16 next (nine targets, two High and one
+mapped), followed by23. Checked receipt merge remains the closure gate.
+
 ## Cohort 05 historical independent preparation: 2026-11-06
 
 [#118](https://github.com/jonathan-vella/landinglens/issues/118) owns exactly the
