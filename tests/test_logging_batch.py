@@ -115,9 +115,9 @@ class LoggingBatchTests(unittest.TestCase):
     def test_real_registered_bank_keeps_all_seven_blank_bound_and_separate(self):
         question = self.matrix["interview"]
         self.assertEqual(question, {"id": question["id"], **BANK[question["id"]]})
-        self.assertEqual(BANK_VERSION, "2026-11-06.15")
         report = self.fixture.report()
         blank = prepare_interview(report, self.catalog, question["id"], SCOPE)
+        self.assertEqual(blank["bank_version"], BANK_VERSION)
         self.assertEqual({row["control_id"] for row in blank["decisions"]}, IDS)
         self.assertTrue(all(row["outcome"] is None for row in blank["decisions"]))
         with self.assertRaises(InputError):
@@ -197,3 +197,37 @@ class LoggingBatchTests(unittest.TestCase):
             all(target["strength"] == "related" for row in mapped for target in row["targets"])
         )
         self.assertNotIn("query_signals", report)
+
+    def test_actual_own_seven_receipts_bind_merged_head_runs_wheel_and_original_suite(self):
+        ledger = json.loads((REFERENCE / "ledger.json").read_text("utf-8"))
+        receipt = ledger["deliveries"]["23"]
+        self.assertEqual(receipt["pr"], "https://github.com/jonathan-vella/landinglens/pull/131")
+        self.assertEqual(receipt["checked_head"], "aca60f824174c493f66f90e2c0b75426d878820c")
+        self.assertEqual(receipt["merge_commit"], "32d40747b185921a27ab46f562ef4db35c4b804b")
+        self.assertEqual(receipt["merged_at"], "2026-11-06T17:59:06Z")
+        self.assertEqual(
+            receipt["wheel_sha256"],
+            "4e4b0b4f95f513cbb562339b584eac202a1457ebabe573f5ae06d6c52d364023",
+        )
+        self.assertEqual(
+            receipt["local_installed_suite"], {"tests": 559, "passed": 558, "skipped": 1}
+        )
+        self.assertEqual(
+            receipt["checks"],
+            [
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42265371359",
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42265396588",
+            ],
+        )
+        self.assertEqual(len(receipt["compiler_integration_cases"]), 14)
+        self.assertEqual(
+            receipt["compiler_integration_cases"][:-1],
+            ledger["deliveries"]["16"]["compiler_integration_cases"],
+        )
+        own = [row for row in ledger["recommendations"] if row["batch"] == "23"]
+        self.assertEqual({row["guid"] for row in own}, GUIDS)
+        for row in own:
+            self.assertEqual(row["status"], "merged")
+            self.assertEqual(row["pr"], receipt["pr"])
+            self.assertEqual(row["merge_commit"], receipt["merge_commit"])
+            self.assertIn("deliveries.23:", " ".join(row["runtime_evidence"]))

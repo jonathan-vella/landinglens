@@ -59,6 +59,42 @@ outside-checkout interpreter proves its own site-packages `.15` import.
 No new dependency, alternate session environment, package publication or live
 runtime evidence is substituted for these local results.
 
+[#131](https://github.com/jonathan-vella/landinglens/pull/131) merged normally as
+`32d40747b185921a27ab46f562ef4db35c4b804b` at 2026-11-06T17:59:06Z.
+Exact checked head `aca60f824174c493f66f90e2c0b75426d878820c` passed all eight
+supported push/PR jobs in `42265371359` / `42265396588`, CodeQL `42265391904`
+and Advanced Security `42265405397`. Fresh head/main/checks/comments/reviews were
+verified immediately before the normal SHA-bound merge; zero review comments,
+reviews or threads required disposition. No admin/force/bypass, auto-merge or
+protection/settings change was used.
+
+Four actual downloaded PR artifacts matched all fourteen cases and exercised
+them without skips: `13526762919` (Ubuntu3.12), `13526763215` (Ubuntu3.13),
+`13525874513` (Windows3.12), `13527635167` (Windows3.13). Compiler JSON SHA256:
+`d535f774c1ba5221a36fd56649045f6a3b6a4d9bea1caa3548d30756de545f77` on Ubuntu;
+`b2cb7c4cb72994fb2ad964544da558172fc5791443c3f0b1602e8f2d4de0c4e7` on Windows.
+The guarded recorder independently reread actual merge/head, both complete runs
+and all four compiler artifacts before binding all seven GUIDs to `deliveries.23`
+and the exact implementation wheel above. Every139 earlier row/sixteen receipt
+remains unchanged.
+
+Reconciliation records **146 delivered /105 pending** with unchanged catalog/
+crosswalk `.15` and12/200/43 dispositions. The pending priority table is derived
+from the real ledger; cohort02 is next, not an automatic source/dependency grant
+or a successor launched here. Checked receipt publication and final-main CI still
+gate #124 satisfied closure and sole-slot release; implementation merge alone is
+not delivery.
+
+Receipt reconciliation adds an executable actual-own-seven-GUID binding assertion.
+Checkout and exact installed implementation-wheel suites each ran **560 tests**:
+559 passed with the same original Windows privilege skip. All25 cohort cases,
+full static/type/dependency checks and400 local documentation links pass.
+All118 implementation code/data members remain byte-for-byte unchanged; no
+replacement wheel or altered historical receipt is substituted. Receipt-branch
+results are distinct from the original559-case acceptance in `deliveries.23`.
+Actual implementation-merge main CI `42266567867` also succeeded on
+`32d40747b185921a27ab46f562ef4db35c4b804b`.
+
 ## Cohort 16 accepted integration: 2026-11-06
 
 The coordinator granted [#121](https://github.com/jonathan-vella/landinglens/issues/121)
