@@ -1,5 +1,59 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 10 independent preparation: 2026-11-06
+
+[#139](https://github.com/jonathan-vella/landinglens/issues/139) prepares the
+[exact ten-GUID matrix](../../references/recommendation-batches/preparation-10.json)
+and [32 actual public-source captures](../../references/recommendation-batches/preparation-10-sources.json)
+on main `69cb9ea2ac209ed77bee34546a5b4723813d162a`. Cohorts29/06 retain the
+preceding delivery slots. This does not register an accepted successor or
+interview, activate catalog/crosswalk/history/counts, record delivery or close #139.
+The eight assisted and two manual decisions remain independently blank.
+
+Existing adapters/evaluator/review/report/session/replay paths now prepare
+strict unique-known selected-scope VNet/subnet/IP-configuration/peering
+relationships. New facts retain prefix lengths and explicit flags, not IPs,
+partner payloads or inferred hub purpose. Genuine VNet routing attachment is
+separate from Virtual WAN: both services use `Microsoft.Network/virtualHubs`,
+and the resource type/SKU alone cannot distinguish them. Gateway transit
+preparation distinguishes active-active VPN ASN65515, route-based/non-Basic
+coexistence and optional VPN BGP; S2S is not P2S or ER-to-ER transit.
+No new live route, query, scanner, quota lookup, compiler acquisition or restore.
+
+The actual D01.08 link redirects to a quickstart requiring **/26 or larger**,
+while immutable checklist and pinned AzureRM4.50.0 wording still say /27.
+Only a source-qualified conditional single-IPv4 sizing subcheck compares <=26;
+dedicated use, service designation, NSG/UDR restrictions and whole judgment
+remain human. The current service table lists **650 peerings/VNet**, not the
+historical500; historical400 spokes is not a universal threshold. ExpressRoute
+prefix limits remain direction/family/SKU specific, alongside separate Route
+Server limits. Supplied-subset counts are not current quota/headroom evidence.
+Network Insights redirects to Network Watcher and offers built-in topology/
+health/metrics without configuration; existing monitoring facts do not prove
+executed tests, complete coverage, ingestion or operation.
+
+Preparation includes raw/supplied-module/plan/ARM/saved evidence, original-time
+minimization, blank interviews and independent exceptions, binding/selection/
+scope/time/expiry/attribution/atomicity, CLI/output/tracker/session and accepted
+predecessor replay/candidate rejection. All16 predecessor compiler cases remain;
+the seventeenth exercises real VNet/subnet/routing IP-configuration facts using
+the existing no-restore compiler, not architectural intent or monitoring.
+Final preparation proofs are local/offline, not accepted successor replay,
+cross-platform exact-head CI, PR review, merged delivery or guarded receipts.
+Those gates must be repeated after an explicit slot and then-current-main reconcile.
+
+Final own installed-wheel suite outside the checkout ran **633 tests:632 passed,
+one original Windows symlink-privilege skip**. All22 cohort cases passed.
+All17 actual existing-compiler cases exercised without skips/restoration.
+Format/lint,46-source-file typing, dependency consistency and437 local links passed.
+All129 packaged members matched both checkout and dedicated installed bytes;
+all85 accepted-data/fixed-target/ledger files remain byte-identical.
+Wheel SHA256: `ba498aeb5f79dac4503526fbdf06800953fe4e0d05a1e4d3d97e3f607f32cd2e`.
+Compiler proof SHA256: `76b3a087f88c5c81668508ba244dd7d208bf7ad87367cdcf2bb5796b951be74a`.
+The isolated environment initially lacked `hcl2`; only the three exact reviewed,
+manifest-hash-verified runtime wheels were restored. The subsequent complete
+installed suite and byte checks, not the failed import, are the final proof.
+
 ## Cohort 27 accepted integration: 2026-11-06
 
 The coordinator explicitly granted [#130](https://github.com/jonathan-vella/landinglens/issues/130)

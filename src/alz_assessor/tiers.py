@@ -35,6 +35,9 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     from .sources import boolean, enumeration, property_at
     from .tenant_evidence import GUIDS as TENANT_GUIDS
     from .tenant_evidence import prepared_signal as tenant_signal
+    from .topology_evidence import GUIDS as TOPOLOGY_GUIDS
+    from .topology_evidence import resource_paths as topology_paths
+    from .topology_evidence import unique_known as topology_unique_known
     from .virtual_wan_evidence import GUIDS as VWAN_GUIDS
     from .virtual_wan_evidence import known_resource
 
@@ -45,13 +48,16 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     logging = control["upstream_guid"] in LOGGING_GUIDS
     by_id: dict[str, list[dict[str, Any]]] = {}
     policy = control["upstream_guid"] in POLICY_STRATEGY_GUIDS
-    if vwan or policy or logging or control["upstream_guid"] in TENANT_GUIDS:
+    topology = control["upstream_guid"] in TOPOLOGY_GUIDS
+    if vwan or policy or logging or topology or control["upstream_guid"] in TENANT_GUIDS:
         for resource in bundle["resources"]:
             by_id.setdefault((resource.get("arm_id") or "").lower(), []).append(resource)
     for resource in bundle["resources"]:
         if resource["state"] != "known" or resource["resource_type"].lower() not in kinds:
             continue
         if policy and not policy_unique_known(resource, bundle, by_id):
+            continue
+        if topology and not topology_unique_known(resource, bundle, by_id):
             continue
         if control["upstream_guid"] in TENANT_GUIDS:
             if tenant_signal(resource, by_id, bundle):
@@ -79,6 +85,8 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
         ):
             continue
         for path in control.get("review_fact_paths", []):
+            if topology and path not in topology_paths(resource["resource_type"]):
+                continue
             if logging and path not in resource_paths(resource["resource_type"]):
                 continue
             properties = resource["properties"]

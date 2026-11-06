@@ -1,5 +1,18 @@
 # LandingLens product requirements
 
+## Cohort 10 preparation boundary
+
+Cohort10/#139 independently prepares [ten specific workflows](../../references/recommendation-batches/preparation-10.json)
+without accepted catalog/interview activation or delivery. New typed routing/
+peering context requires unique known selected-scope relationships, not names,
+presence or resource-type/SKU equality. Immutable /27 and400/500/1000 checklist
+wording is preserved alongside actual current /26-or-larger Route Server
+quickstart and650-peering service-table qualifications. Whole topology,
+regional readiness/independence, shared-service purpose, partner support,
+effective transit, monitoring operation and actual quotas stay separate blank
+human decisions. The [preparation record](plan.md#cohort-10-independent-preparation-2026-11-06)
+retains source/adapter/privacy/proof boundaries; cohorts29/06 precede activation.
+
 ## Cohort 27 integration
 
 Reviewed successor `2026-11-06.17` follows the explicit coordinator slot after

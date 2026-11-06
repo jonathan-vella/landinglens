@@ -86,6 +86,7 @@ PLANNED_API_VERSIONS = API_VERSIONS | {
     "microsoft.network/vpngateways": {"2024-05-01"},
     "microsoft.network/virtualwans": {"2024-05-01"},
     "microsoft.network/virtualhubs": {"2024-05-01"},
+    "microsoft.network/virtualhubs/ipconfigurations": {"2024-05-01"},
     "microsoft.network/virtualhubs/hubvirtualnetworkconnections": {"2024-05-01"},
     "microsoft.network/virtualhubs/hubroutetables": {"2024-05-01"},
     "microsoft.network/virtualhubs/routingintent": {"2024-05-01"},
@@ -129,6 +130,7 @@ def properties(
     from .policy_strategy_evidence import projected_properties as policy_strategy_properties
     from .security_evidence import projected_properties as security_properties
     from .tenant_evidence import projected_properties as tenant_properties
+    from .topology_evidence import projected_properties as topology_properties
 
     if isinstance(values, dict) and kind.lower() == ROLE_KIND:
         return role_properties(values, terraform=False)
@@ -145,6 +147,7 @@ def properties(
         result.update(identity_properties(kind, values, root=root))
         result.update(policy_strategy_properties(kind, values))
         result.update(tenant_properties(kind, values))
+        result.update(topology_properties(kind, values))
     return result
 
 
