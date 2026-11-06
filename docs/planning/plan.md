@@ -19,6 +19,45 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## Cohort 04 in progress: 2026-11-06
+
+After checked cohort11 and receipt merges, the next existing priority is
+[#94](https://github.com/jonathan-vella/landinglens/issues/94). Its eight-GUID
+matrix and 14 actual source captures precede working `2026-11-06.3`. Legacy
+AAD/operations URLs resolve to current Entra/CAF guidance. Both B03.02 entries
+remain distinct and all eight remain assisted; no directory-policy pass is
+inferred from Azure resource configuration.
+
+Typed supported identity type/count and assignment principal-type/role-definition
+context feeds the same review/tier/replay paths. Root identity values are minimized;
+principal/tenant/user-assigned IDs, condition text, credentials and raw directory
+records are withheld. A shared source-specific access interview prepares eight
+separate blank decisions and preserves scope/content/expiry/attribution guards.
+CA report-only/exclusions, MFA registration versus enforcement, account origin,
+actual group membership/authority, accepted platform/workload responsibility and
+PIM eligibility/active/permanent access remain explicit human-evidence questions.
+No directory/Graph/sign-in/audit read, access test, activation or permission change
+is authorized or performed.
+
+Exact predecessor `.6.2` bytes are frozen with SHA256
+`674e9cfaae085ab079d92f8fdfceacd3c0af2b55a061185fb8750d1261168f4b`.
+All 255 entries, ten existing predicates, 202 assisted/43 manual dispositions,
+severity, prior catalogs/receipts and unchanged crosswalk associations are retained;
+the crosswalk is rebound to the exact new catalog. Nine targeted tests exercise
+raw/supplied-module/plan, ARM/existing no-restore Bicep, saved/injected detail
+projection/denial, strict types/counts/sensitivity/scopes, duplicate B03.02
+selection, all-or-nothing explicit interview decisions, expiry/bindings, tiers,
+all outputs, original-time replay/privacy and blank session records.
+
+Pre-delivery verification passed 335 local and exact-installed tests: 334 passed
+with one explicit Windows symlink-privilege skip. All nine cohort-specific tests,
+format/lint, 34-source-file type checks and dependency consistency passed.
+The installed compiler exercised four actual cases, including the new identity/
+role fixture, without restoration or compiler skips. Wheel SHA256:
+`a50824859e6d50ac9c8381792f568dab891257e83cfe2f27c8580871d581b24e`.
+Every earlier catalog byte and own-cohort receipt is unchanged; no new
+dependency, live Azure/directory access or human decision was introduced.
+
 ## Continuing all remaining cohorts: 2026-11-06
 
 The owner instructed "keep going and dont stop until done". Continue all 216

@@ -44,6 +44,7 @@ TF_TYPES = {
     "azurerm_lb_backend_address_pool": "Microsoft.Network/loadBalancers/backendAddressPools",
     "azurerm_express_route_port": "Microsoft.Network/expressRoutePorts",
     "azurerm_virtual_network_gateway_connection": "Microsoft.Network/connections",
+    "azurerm_role_assignment": "Microsoft.Authorization/roleAssignments",
     "azurerm_firewall_policy_rule_collection_group": (
         "Microsoft.Network/firewallPolicies/ruleCollectionGroups"
     ),
@@ -83,6 +84,19 @@ def property_at(properties: Any, path: str) -> Any:
 
 
 def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
+    from .identity_evidence import IDENTITY_KINDS, identity_summary, role_properties
+
+    if kind == "azurerm_role_assignment":
+        return role_properties(properties, terraform=True)
+    result = _tf_properties(kind, properties)
+    if TF_TYPES.get(kind, "").lower() in IDENTITY_KINDS and "identity" in properties:
+        result["identitySummary"] = identity_summary(
+            properties["identity"], terraform=True, resource_type=TF_TYPES[kind]
+        )
+    return result
+
+
+def _tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     if kind == "azurerm_storage_account":
         return {
             "supportsHttpsTrafficOnly": boolean(properties.get("https_traffic_only_enabled")),
@@ -226,6 +240,23 @@ def resource_scope(scope: str | None, properties: dict[str, Any]) -> str | None:
 
 def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str | None:
     name = values.get("name")
+    if kind == "azurerm_role_assignment":
+        from .network_evidence import reference
+
+        target = reference(values.get("scope"))
+        boundary = scope_id(scope) if scope else None
+        if (
+            boundary
+            and isinstance(target, str)
+            and (target == boundary or target.startswith(boundary + "/"))
+            and isinstance(name, str)
+            and name
+            and "/" not in name
+        ):
+            return canonical_id(
+                target + "/providers/Microsoft.Authorization/roleAssignments/" + name
+            )
+        return None
     if kind == "azurerm_firewall_policy_rule_collection_group":
         from .network_evidence import reference
 

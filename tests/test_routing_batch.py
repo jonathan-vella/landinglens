@@ -50,7 +50,9 @@ class RoutingBatchTests(unittest.TestCase):
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
         self.root = Path(temporary.name)
-        self.catalog = load_catalog()
+        self.catalog = load_catalog(
+            str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.2.json"))
+        )
 
     def write(self, name, value):
         path = self.root / name

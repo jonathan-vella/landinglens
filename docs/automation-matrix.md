@@ -33,8 +33,8 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.2` retains all 255 entries: 10 automated, 202 assisted
-and 43 manual. Crosswalk `2026-11-06.2` rebinds the unchanged 51-control,
+Current successor `2026-11-06.3` retains all 255 entries: 10 automated, 202 assisted
+and 43 manual. Crosswalk `2026-11-06.3` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
 The history below remains version-specific.
 
@@ -93,6 +93,34 @@ RFC1918 subchecks use exactly 10/8, 172.16/12 and 192.168/16, not the broader
 Azure/on-premises nonoverlap or appropriate capacity. IPv6/mixed, unresolved and
 over-bound lists remain unknown; workload/IPAM/growth evidence stays explicit.
 No traffic, encryption, key, health, DNS, on-premises or external IPAM query occurs.
+
+### Cohort 04: access, managed identity and Entra controls
+
+The [eight-GUID matrix](../references/recommendation-batches/batch-04.json) and
+[14 actual sources](../references/recommendation-batches/batch-04-sources.json)
+resolve legacy Azure AD/operations redirects to current Entra/CAF guidance.
+Both B03.02 GUIDs remain distinct: managed-identity adoption and work/school
+account provenance are different recommendations. All eight remain assisted;
+no directory-policy enforcement predicate is invented.
+
+Supported storage and ExpressRoute Direct port identity blocks expose only
+explicit identity type and validated user-assigned binding count. IDs, tenant/
+principal identifiers, keys and credentials are withheld. Attached configuration
+is not actual application credential usage; managed identities themselves use
+special service principals. Role assignments expose only explicit principal-type
+enums and canonical role-definition IDs. Assignment presence/type/scope is not
+membership, inherited/additive/deny/conditional effective access or agreed ownership.
+
+The source-specific access-operating-model interview collects one redacted
+narrative with eight separate explicit scope/content/expiry-bound decisions.
+It distinguishes account origin from email/userType, group source of authority
+from membership, CA report-only/exclusions from enforcement, MFA registration
+from requirements/coverage, platform/workload responsibilities from assignment
+scope, and PIM eligible/active/permanent grants from zero standing access.
+Emergency-access exceptions remain explicit. Answers alone never pass a control,
+and no human attestation becomes Verified machine evidence. No directory,
+Graph, sign-in/audit-log, policy evaluation, PIM activation or authentication
+operation occurs.
 
 Crosswalk `2026-11-05.1` binds catalog `2026-11-05.3` without changing its
 7 automated / 205 assisted / 43 manual dispositions or the fixed 251-target

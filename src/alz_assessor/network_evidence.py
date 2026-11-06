@@ -4,45 +4,50 @@ from ipaddress import ip_address, ip_network
 from typing import Any
 
 from .contracts import canonical_id, identity_type
+from .identity_evidence import PATHS as IDENTITY_PATHS
 from .routing_evidence import KINDS as ROUTING_KINDS
 from .routing_evidence import PATHS as ROUTING_PATHS
 from .sources import boolean, enumeration, property_at, unknown
 from .terraform import InputError
 
-REVIEW_PATHS = {
-    "sku.tier",
-    "sku.name",
-    "subnetReferences",
-    "firewallPolicy.id",
-    "addressPrefixes",
-    "routeTable.id",
-    "natGateway.id",
-    "targetResourceId",
-    "workspaceId",
-    "logAnalyticsDestinationType",
-    "natRuleCollections",
-    "ipAddresses",
-    "configuredZones",
-    "applicationRules",
-    "enableDdosProtection",
-    "ddosProtectionPlan.id",
-    "privateConnections",
-    "subnet.id",
-    "networkSecurityGroup.id",
-    "serviceEndpointCount",
-    "serviceEndpointNetworkIdentifiers",
-    "privateEndpointNetworkPolicies",
-    "gatewayType",
-    "securityRuleCount",
-    "securityRuleSummary",
-    "defaultRuleSummary",
-    "egressRules",
-    "enabled",
-    "storageId",
-    "trafficAnalytics.enabled",
-    "trafficAnalytics.workspaceResourceId",
-    "filteringConfigured",
-} | ROUTING_PATHS
+REVIEW_PATHS = (
+    {
+        "sku.tier",
+        "sku.name",
+        "subnetReferences",
+        "firewallPolicy.id",
+        "addressPrefixes",
+        "routeTable.id",
+        "natGateway.id",
+        "targetResourceId",
+        "workspaceId",
+        "logAnalyticsDestinationType",
+        "natRuleCollections",
+        "ipAddresses",
+        "configuredZones",
+        "applicationRules",
+        "enableDdosProtection",
+        "ddosProtectionPlan.id",
+        "privateConnections",
+        "subnet.id",
+        "networkSecurityGroup.id",
+        "serviceEndpointCount",
+        "serviceEndpointNetworkIdentifiers",
+        "privateEndpointNetworkPolicies",
+        "gatewayType",
+        "securityRuleCount",
+        "securityRuleSummary",
+        "defaultRuleSummary",
+        "egressRules",
+        "enabled",
+        "storageId",
+        "trafficAnalytics.enabled",
+        "trafficAnalytics.workspaceResourceId",
+        "filteringConfigured",
+    }
+    | ROUTING_PATHS
+    | IDENTITY_PATHS
+)
 
 
 def bounded_count(value: Any, maximum: int) -> Any:
@@ -487,6 +492,10 @@ def private_connections(values: dict[str, Any], *, terraform: bool) -> Any:
 
 
 def review_fact(properties: dict[str, Any], path: str) -> Any:
+    if path in IDENTITY_PATHS:
+        from .identity_evidence import review_fact as identity_fact
+
+        return identity_fact(properties, path)
     if path in ROUTING_PATHS:
         from .routing_evidence import review_fact as routing_fact
 

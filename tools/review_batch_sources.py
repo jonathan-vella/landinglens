@@ -695,10 +695,110 @@ SOURCES_11 += [
 SOURCES_11 += [source for source in SOURCES_18 if source[0] in {"vnet-arm", "terraform-vnet"}]
 
 
+SOURCES_04 = [
+    (
+        "rbac-operating-model",
+        LEARN + "azure/role-based-access-control/overview",
+        ["role definition, and scope", "additive", "deny assignments"],
+        "RBAC combines principal, role and scope with inheritance, additive grants, deny "
+        "assignments and conditions. An assignment alone cannot establish operating-model "
+        "alignment or effective least privilege; no principal identity/membership is inferred.",
+    ),
+    (
+        "managed-identity-adoption",
+        LEARN + "entra/identity/managed-identities-azure-resources/overview",
+        ["special type", "Service code", "system-assigned", "user-assigned"],
+        "Managed identities are special service principals. Attached identity configuration "
+        "does not prove application credential use or absence of other service principals. "
+        "Retain only explicit type/count context, never principal/tenant IDs or credentials.",
+    ),
+    (
+        "administrative-account-provenance",
+        "https://learn.microsoft.com/azure/active-directory/roles/security-planning",
+        ["Microsoft accounts", "work or school", "emergency access"],
+        "The legacy Azure AD URL redirects to Entra administrator security planning. "
+        "Directory userType or an email suffix cannot authenticate an account's original "
+        "identity source. Emergency-access exceptions require explicit evidence and decisions.",
+    ),
+    (
+        "group-based-access",
+        LEARN + "entra/fundamentals/how-to-manage-groups",
+        ["permissions", "nested", "membership"],
+        "Group assignment, actual membership/transitivity, role-assignable group constraints "
+        "and hybrid source of authority are separate. No group creation, membership expansion "
+        "or synchronization is performed; Group principal type is only configuration context.",
+    ),
+    (
+        "conditional-access-enforcement",
+        "https://learn.microsoft.com/azure/active-directory/conditional-access/overview",
+        ["report-only", "after first-factor", "multifactor authentication"],
+        "The legacy URL redirects to Entra. Enabled/report-only, included/excluded users/apps, "
+        "grant logic and actual policy evaluation must be reconciled; policy presence or "
+        "a successful sign-in alone never proves every Azure user's enforcement.",
+    ),
+    (
+        "mfa-enforcement",
+        "https://learn.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks",
+        ["registered", "Conditional Access", "security defaults"],
+        "The legacy URL redirects to Entra. Method registration, MFA requirement/enforcement, "
+        "authentication strength, prior claims and emergency exceptions differ. Never equate "
+        "a registered method, tenant default or one challenge with population coverage.",
+    ),
+    (
+        "central-delegated-responsibilities",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/manage/centralize-operations",
+        ["Central (platform)", "Workload", "Assign responsibility"],
+        "The legacy page redirects to ready-cloud-operations and separates central/platform "
+        "and workload ownership. Role scope alone cannot attest an agreed operating model, "
+        "delegation, escalation responsibility or acceptance by accountable owners.",
+    ),
+    (
+        "privilege-eligibility-and-activation",
+        "https://learn.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure",
+        ["permanent active", "eligible", "time-bound", "activation"],
+        "The legacy URL redirects to Entra governance. Eligible and active, permanent and "
+        "time-bound grants, approvals/MFA and Azure-versus-directory roles are distinct. "
+        "PIM presence is not zero standing access; no grant/activation or directory read occurs.",
+    ),
+    (
+        "role-assignment-arm",
+        LEARN + "azure/templates/microsoft.authorization/2022-04-01/roleassignments",
+        ["principalType", "roleDefinitionId", "Group", "conditionVersion"],
+        "Project explicit principal-type enum and canonical role-definition ID only. No "
+        "principal ID, name, account type, role permissions or condition text is retained. "
+        "This is local assignment context, not an effective access computation.",
+    ),
+    (
+        "storage-identity-arm",
+        LEARN + "azure/templates/microsoft.storage/2023-05-01/storageaccounts",
+        ["userAssignedIdentities", "SystemAssigned", "identity"],
+        "Storage identity configuration exposes explicit type and user-assigned bindings; "
+        "count/type alone cannot establish the consuming workload's authentication. IDs "
+        "and arbitrary root identity properties are not exported.",
+    ),
+    (
+        "terraform-role-assignment",
+        RAW + "website/docs/r/role_assignment.html.markdown",
+        ["principal_type", "role_definition_id", "scope"],
+        "Pinned 4.50.0 explicit principal type/definition ID/scope are configuration only. "
+        "Role names are not silently resolved and principal IDs or conditions are withheld.",
+    ),
+    (
+        "terraform-storage-identity",
+        RAW + "website/docs/r/storage_account.html.markdown",
+        ["identity_ids", "SystemAssigned", "UserAssigned"],
+        "Pinned storage identity block is optional; missing/symbolic/invalid values do not "
+        "become defaults. Count validated supplied user-assigned references without retaining IDs.",
+    ),
+    *[source for source in SOURCES_11 if source[0] == "terraform-expressroute-port"],
+    *[source for source in SOURCES_11 if source[0] == "port-arm"],
+]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
-    parser.add_argument("--batch", choices=["01", "11", "17", "18", "19"], default="01")
+    parser.add_argument("--batch", choices=["01", "04", "11", "17", "18", "19"], default="01")
     args = parser.parse_args()
     target = ROOT / "references" / "recommendation-batches" / f"batch-{args.batch}-sources.json"
     if target.exists() and not args.append_new_sources:
@@ -707,6 +807,7 @@ def main() -> None:
     existing = {source["id"]: source for source in sources}
     for identity, url, markers, finding in {
         "01": SOURCES,
+        "04": SOURCES_04,
         "11": SOURCES_11,
         "17": SOURCES_17,
         "18": SOURCES_18,
