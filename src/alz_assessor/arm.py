@@ -103,6 +103,9 @@ PLANNED_API_VERSIONS = API_VERSIONS | {
     "microsoft.compute/availabilitysets": {"2024-07-01"},
     "microsoft.authorization/roledefinitions": {"2022-04-01"},
     "microsoft.aad/domainservices": {"2022-12-01"},
+    "microsoft.authorization/policydefinitions": {"2023-04-01"},
+    "microsoft.authorization/policysetdefinitions": {"2023-04-01"},
+    "microsoft.authorization/policyassignments": {"2023-04-01"},
     "microsoft.managedservices/registrationdefinitions": {"2022-10-01"},
     "microsoft.managedservices/registrationassignments": {"2022-10-01"},
     "microsoft.costmanagement/views": {"2019-11-01"},
@@ -123,6 +126,7 @@ def properties(
     from .identity_evidence import projected_properties as identity_properties
     from .logging_evidence import projected_properties as logging_properties
     from .network_policy_evidence import projected_properties as network_policy_properties
+    from .policy_strategy_evidence import projected_properties as policy_strategy_properties
     from .security_evidence import projected_properties as security_properties
     from .tenant_evidence import projected_properties as tenant_properties
 
@@ -139,6 +143,7 @@ def properties(
         result.update(logging_properties(kind, values, root=root))
         result.update(network_policy_properties(kind, values))
         result.update(identity_properties(kind, values, root=root))
+        result.update(policy_strategy_properties(kind, values))
         result.update(tenant_properties(kind, values))
     return result
 

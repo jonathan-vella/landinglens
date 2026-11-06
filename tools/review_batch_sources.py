@@ -3343,6 +3343,201 @@ SOURCES_16_VWAN = [
 ]
 
 
+SOURCES_27 = [
+    (
+        "policy-overview",
+        LEARN + "azure/governance/policy/overview",
+        ["initiative", "Resource Policy Contributor", "audit"],
+        "Actual E01.01/.03/.04/.05/.07/.08/.09 link. Initiatives group rules; definition "
+        "placement and assignment scopes differ. Begin with audit and review as code. "
+        "The current overview now discusses identity-aware policies; that is not an "
+        "implemented interpreter, entitlement check or blanket replacement for RBAC.",
+    ),
+    (
+        "approved-services",
+        LEARN + "security/benchmark/azure/mcsb-asset-management#am-2-use-only-approved-services",
+        ["AM-2", "approved", "Azure Policy"],
+        "Actual E01.06 link requires organization-approved services and audit/restriction. "
+        "It supplies no universal approved taxonomy or evidence that a referenced rule "
+        "enforces one. ARG/Monitor suggestions are not additional execution authorization.",
+    ),
+    (
+        "policy-scope",
+        LEARN + "azure/governance/policy/concepts/scope",
+        ["Definition location", "notScopes", "exempt/Action"],
+        "Custom definitions live at management groups or subscriptions, not resource groups. "
+        "Assignment must be at that location or a descendant. Exclusions omit evaluation/"
+        "compliance counting; tracked exemptions are separate objects with extra permissions.",
+    ),
+    (
+        "policy-assignment",
+        LEARN + "azure/governance/policy/concepts/assignment-structure",
+        ["DoNotEnforce", "definitionVersion", "resourceSelectors", "overrides"],
+        "ID creation scope, excluded scopes, selectors, overrides, parameters, versions and "
+        "enforcement mode are independent applicability/effect constraints. Missing/default/"
+        "wildcard/effective versions are not exact supplied-version joins. DoNotEnforce "
+        "does not disable evaluation; Default is not effective enforcement proof.",
+    ),
+    (
+        "policy-exemption",
+        LEARN + "azure/governance/policy/concepts/exemption-structure",
+        ["expiresOn", "assignmentScopeValidation", "policyDefinitionReferenceId"],
+        "Exemptions can select initiative members and resource/identity subsets, expire "
+        "without object deletion and relax assignment-scope validation. Saved references "
+        "alone cannot establish effective exemption, approval or complete coverage.",
+    ),
+    (
+        "policy-effects",
+        LEARN + "azure/governance/policy/concepts/effect-basics",
+        ["disabled", "manual", "cumulative most restrictive"],
+        "Explicit literal then.effect is a configuration fact only. Parameterized effects, "
+        "conditions, effect-specific details, overrides, modes and independent cumulative "
+        "assignments are not interpreted; existing resources and remediation differ.",
+    ),
+    (
+        "policy-regulatory",
+        LEARN + "azure/governance/policy/concepts/regulatory-compliance",
+        ["Preview", "Customer", "Shared", "policyMetadata"],
+        "Current page calls regulatory initiative grouping Preview. Groups/counts/reference "
+        "metadata are not an arbitrary legal-control mapping, legal compliance verdict "
+        "or customer/Microsoft/shared responsibility acceptance.",
+    ),
+    (
+        "management-hierarchy",
+        LEARN + "azure/governance/management-groups/overview",
+        ["one parent", "tenant ID", "must have"],
+        "Tenant root is directory-bound, not a name or the highest visible selected node. "
+        "Use positive saved parent paths only; missing parents or incomplete trees prove "
+        "no root identity or effective inherited policy/role outcome.",
+    ),
+    (
+        "landing-zone-hierarchy",
+        LEARN + "azure/cloud-adoption-framework/ready/landing-zone/design-area/"
+        "resource-org-management-groups",
+        ["Intermediate root", "Limit the number", "workload teams"],
+        "Intermediate root is below tenant root with ALZ-wide parent purpose, requiring "
+        "explicit designation. Root assignments should be limited but no numeric cap is "
+        "specified. Workload RBAC is normally subscription/resource-group scoped, unlike "
+        "platform-team MG access controlled through PIM. Initial management-group URL "
+        "without resource-org prefix returned404; this actual page is the reviewed source.",
+    ),
+    (
+        "resource-policy-contributor",
+        LEARN + "azure/role-based-access-control/built-in-roles/management-and-governance"
+        "#resource-policy-contributor",
+        ["36243c78-bf99-498c-9df9-86d9f8d28608", "policyenrollments", "*/read"],
+        "Role GUID36243c78-bf99-498c-9df9-86d9f8d28608 includes control-plane */read, "
+        "Policy/PolicyInsights, deployments/support; current page also includes enrollments. "
+        "It has no roleAssignments/write or dataActions. Reference/principalType alone "
+        "does not prove application-team designation, active membership/PIM, absence of "
+        "deny/conditions or effective least privilege/remediation-identity authority.",
+    ),
+    *[
+        (
+            "policy-spec-" + stem,
+            SPEC_RAW + "specification/resources/resource-manager/Microsoft.Authorization/"
+            "policy/stable/2023-04-01/" + stem + ".json",
+            markers,
+            finding,
+        )
+        for stem, markers, finding in [
+            (
+                "policyDefinitions",
+                ["policyType", "policyRule", "version"],
+                "Pinned2023-04-01 custom subscription/MG definitions versus global built-ins. "
+                "Minimize type, explicit supported mode, exact version and literal effect; "
+                "withhold rule/parameters/metadata and never fetch referenced definitions.",
+            ),
+            (
+                "policySetDefinitions",
+                ["PolicyDefinitionReference", "definitionVersion", "groupNames"],
+                "Pinned2023-04-01 initiative references with per-member versions and unique "
+                "reference IDs. Retain typed IDs, hashed member labels and bounded group counts "
+                "only; no group names, regulatory mapping, parameter values "
+                "or recursive evaluation.",
+            ),
+            (
+                "policyAssignments",
+                ["notScopes", "enforcementMode", "resourceSelectors"],
+                "Pinned2023-04-01 assignment scope is ID prefix; scope property is readOnly. "
+                "Minimized references/exclusions and counts preserve missing inputs as unknown. "
+                "Selectors/overrides/parameters/identity bodies are not retained or interpreted.",
+            ),
+        ]
+    ],
+    *[
+        (
+            "policy-provider-" + stem,
+            RAW + "website/docs/r/" + stem + ".html.markdown",
+            markers,
+            finding,
+        )
+        for stem, markers, finding in [
+            (
+                "policy_definition",
+                ["management_group_id", "policy_rule", "policy_type"],
+                "PinnedAzureRM4.50.0 explicit subscription/MG definitions; JSON-string rule "
+                "is bounded/duplicate-checked before extracting literal effect only. "
+                "Metadata version is not an effective or REST version; no join synthesized.",
+            ),
+            (
+                "policy_set_definition",
+                ["policy_definition_reference", "reference_id", "version"],
+                "PinnedAzureRM4.50.0 subscription initiative references; member version optional, "
+                "so absent/unresolved versions cannot make an exact supplied-version join. "
+                "This resource has no management_group_id argument.",
+            ),
+            (
+                "management_group_policy_assignment",
+                ["management_group_id", "enforce", "not_scopes"],
+                "PinnedAzureRM4.50.0 MG assignment with exact explicit target binding. "
+                "Omitted enforce, exclusions, selectors or overrides are not inferred defaults.",
+            ),
+            (
+                "subscription_policy_assignment",
+                ["subscription_id", "enforce", "resource_selectors"],
+                "PinnedAzureRM4.50.0 subscription assignment. Separate scope-specific provider "
+                "resources share one minimized model; unsupported resource assignments "
+                "stay unsupported.",
+            ),
+            (
+                "resource_group_policy_assignment",
+                ["resource_group_id", "enforce", "overrides"],
+                "PinnedAzureRM4.50.0 RG assignment with explicit typed target; no subscription/"
+                "MG promotion, service approval or automatic inheritance claim.",
+            ),
+        ]
+    ],
+    (
+        "policy-role-arm",
+        LEARN + "azure/templates/microsoft.authorization/2022-04-01/roleassignments",
+        ["roleDefinitionId", "principalType", "conditionVersion"],
+        "Existing versioned2022-04-01 role-assignment model is reused, without personal "
+        "principals/condition bodies or new identity/role collection. Exact assignment "
+        "scope and recognized role reference are not effective delegation.",
+    ),
+    (
+        "learn-terms",
+        LEARN + "legal/termsofuse",
+        ["Personal and Non-Commercial", "DOCUMENTATION", "License"],
+        "Reviewed Learn terms and documentation-specific terms; retain source metadata, "
+        "URLs/revisions/hashes and own factual findings only, not articles/sample scripts.",
+    ),
+    (
+        "policy-spec-license",
+        SPEC_RAW + "LICENSE",
+        ["MIT", "copyright"],
+        "Pinned REST-spec MIT terms reviewed; only own findings and source metadata retained.",
+    ),
+    (
+        "policy-provider-license",
+        RAW + "LICENSE",
+        ["Mozilla Public License", "2.0"],
+        "Pinned provider MPL2.0 terms reviewed; no provider source code redistributed.",
+    ),
+]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
@@ -3367,6 +3562,7 @@ def main() -> None:
             "19",
             "20",
             "22",
+            "27",
             "23",
             "30",
         ],
@@ -3375,9 +3571,10 @@ def main() -> None:
     args = parser.parse_args()
     if args.vwan_supplement and (args.batch != "16" or not args.preparation_only):
         raise ValueError("The vWAN supplement is cohort16 preparation only")
-    if (args.batch in {"02", "05", "12", "16", "20", "23", "30"}) != args.preparation_only:
+    if (args.batch in {"02", "05", "12", "16", "20", "23", "27", "30"}) != args.preparation_only:
         raise ValueError(
-            "Cohorts 02/05/12/16/20/23/30 source capture require --preparation-only; no activation"
+            "Cohorts 02/05/12/16/20/23/27/30 source capture require --preparation-only; "
+            "no activation"
         )
     prefix = "preparation" if args.preparation_only else "batch"
     suffix = "-vwan" if args.vwan_supplement else ""
@@ -3410,6 +3607,7 @@ def main() -> None:
         "19": SOURCES_19,
         "20": SOURCES_20,
         "22": SOURCES_22,
+        "27": SOURCES_27,
         "23": SOURCES_23,
         "30": SOURCES_30,
     }[args.batch]

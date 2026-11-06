@@ -12,6 +12,7 @@ from .governance_evidence import PATHS as GOVERNANCE_PATHS
 from .identity_evidence import PATHS as IDENTITY_PATHS
 from .logging_evidence import PATHS as LOGGING_PATHS
 from .network_policy_evidence import PATHS as NETWORK_POLICY_PATHS
+from .policy_strategy_evidence import PATHS as POLICY_STRATEGY_PATHS
 from .protection_evidence import KINDS as PROTECTION_KINDS
 from .protection_evidence import PATHS as PROTECTION_PATHS
 from .routing_evidence import KINDS as ROUTING_KINDS
@@ -69,6 +70,7 @@ REVIEW_PATHS = (
     | DNS_PATHS
     | NETWORK_POLICY_PATHS
     | VWAN_PATHS
+    | POLICY_STRATEGY_PATHS
     | LOGGING_PATHS
 )
 
@@ -515,6 +517,10 @@ def private_connections(values: dict[str, Any], *, terraform: bool) -> Any:
 
 
 def review_fact(properties: dict[str, Any], path: str) -> Any:
+    if path in POLICY_STRATEGY_PATHS:
+        from .policy_strategy_evidence import review_fact as policy_strategy_fact
+
+        return policy_strategy_fact(properties, path)
     if path in TENANT_PATHS:
         from .tenant_evidence import review_fact as tenant_fact
 
@@ -971,7 +977,12 @@ def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
         return {}
     result: dict[str, Any] = {}
     for path in sorted(
-        REVIEW_PATHS - SECURITY_PATHS - GOVERNANCE_PATHS - LOGGING_PATHS - TENANT_PATHS
+        REVIEW_PATHS
+        - SECURITY_PATHS
+        - GOVERNANCE_PATHS
+        - LOGGING_PATHS
+        - TENANT_PATHS
+        - POLICY_STRATEGY_PATHS
     ):
         parts = path.split(".")
         target = result

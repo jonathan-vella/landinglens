@@ -88,7 +88,18 @@ def plan_source(
             verified = provider_version == PROVIDER_VERSION
             candidate = tf_resource_id(scope, kind, values) if verified else None
             explicit_id = values.get("id")
-            if kind in {"azurerm_role_definition", "azurerm_active_directory_domain_service"}:
+            from .policy_strategy_evidence import TF_SCOPES
+
+            if kind in TF_SCOPES or kind in {
+                "azurerm_policy_definition",
+                "azurerm_policy_set_definition",
+            }:
+                identity = candidate
+                if isinstance(explicit_id, str) and (
+                    candidate is None or canonical_id(explicit_id) != candidate
+                ):
+                    raise InputError("Policy plan ID conflicts with explicit typed scope/name")
+            elif kind in {"azurerm_role_definition", "azurerm_active_directory_domain_service"}:
                 from uuid import UUID
 
                 from .contracts import identity_type
