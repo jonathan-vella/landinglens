@@ -46,7 +46,9 @@ class IdentityBatchTests(unittest.TestCase):
         temp = tempfile.TemporaryDirectory()
         self.addCleanup(temp.cleanup)
         self.root = Path(temp.name)
-        self.catalog = load_catalog()
+        self.catalog = load_catalog(
+            str(files("alz_assessor").joinpath("data").joinpath("catalog-2026-11-06.3.json"))
+        )
 
     def write(self, name, value):
         path = self.root / name

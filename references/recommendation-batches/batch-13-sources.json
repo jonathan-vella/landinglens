@@ -1,0 +1,426 @@
+{
+  "batch": "13",
+  "review_state": "reviewed",
+  "sources": [
+    {
+      "id": "frontdoor-waf",
+      "url": "https://learn.microsoft.com/azure/web-application-firewall/afds/afds-overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/web-application-firewall/afds/afds-overview",
+      "sha256": "11f4403a60feb4ec12fcb0842126d92224d7c445ed1ec95f3d366d390cee239e",
+      "retrieved_at": "2026-11-06T09:15:54.462097+00:00",
+      "revision": "69a6b9416c998fe7bcae0a1e9d65df061de97397",
+      "finding": "Front Door is global; Standard supports custom rules only. Detection, Prevention, rule actions, exclusions and profile/domain/route precedence differ. Reviewed 2024 schemas do not expose all newer attachment scopes; no global coverage inferred.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "application-gateway-waf",
+      "url": "https://learn.microsoft.com/azure/web-application-firewall/ag/ag-overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/web-application-firewall/ag/ag-overview",
+      "sha256": "8459d93147b7352bff01fed71238504cb76f1b13011f2d64f2daf014a3bb6f95",
+      "retrieved_at": "2026-11-06T09:15:55.051742+00:00",
+      "revision": "3018333ed1a03524e2f765eeaba9278da829d48e",
+      "finding": "Gateway/listener/path policies have distinct scope. WAF_v2 supports policy associations; SKU or a policy reference alone does not establish inspection.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "origin-security",
+      "url": "https://learn.microsoft.com/en-us/azure/frontdoor/origin-security",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/frontdoor/origin-security",
+      "sha256": "26c25e9d445c97015069fd270a7150bd104cf1f7f6cfa66198908d7007133a98",
+      "retrieved_at": "2026-11-06T09:15:55.353649+00:00",
+      "revision": "5c413010f321bfa6758b7c00157c61c6622a1a98",
+      "finding": "Public origins require both Front Door backend address filtering and validation of the exact profile header. Service tag presence or any header rule alone is insufficient. Private Link also requires disallowing alternate public paths.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "ddos-architectures",
+      "url": "https://learn.microsoft.com/azure/ddos-protection/ddos-protection-reference-architectures",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/ddos-protection/ddos-protection-reference-architectures",
+      "sha256": "83ad7213d948dc9f8722f8afe1f5b27d0ee7e94ec966ed98dc89fe92f81827bc",
+      "retrieved_at": "2026-11-06T09:15:55.876175+00:00",
+      "revision": "74d618cd9a1e3f0b7cc3c9eda25fee82794a67ed",
+      "finding": "Network and per-IP protection differ; reconcile supported endpoints and every positive association. NAT Gateway and Virtual WAN are unsupported in this source. Configured protection never establishes mitigation readiness or estate coverage.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "default-outbound-current",
+      "url": "https://learn.microsoft.com/azure/virtual-network/ip-services/default-outbound-access",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/default-outbound-access",
+      "sha256": "d1caeff77adab37a6f7d7b26913d53eceafc4cbb40c3951a338344a62aad77c7",
+      "retrieved_at": "2026-11-06T09:15:56.329390+00:00",
+      "revision": "e8c3f40845eb970c6a231bf67fbdd8132fe63e79",
+      "finding": "Revision e8c3f408 says APIs released after March 31, 2026 default new VNets to private subnets; earlier APIs and existing VNets retain prior behavior. This is not the frozen September 30, 2025 blanket retirement statement. Existing VM stop/deallocation, managed/delegated-subnet limits and Internet UDR exceptions need migration planning, never execution. Preserve historical wording.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "default-outbound-announcement",
+      "url": "https://azure.microsoft.com/updates/default-outbound-access-for-vms-in-azure-will-be-retired-transition-to-a-new-method-of-internet-access/",
+      "resolved_url": "https://azure.microsoft.com/en-us/updates?id=default-outbound-access-for-vms-in-azure-will-be-retired-transition-to-a-new-method-of-internet-access",
+      "sha256": "d4e7ea5a04b919e5574c0f5ff4e799a4379275c1aaa705580b1ac4a78ec80faa",
+      "retrieved_at": "2026-11-06T09:16:23.955739+00:00",
+      "revision": "retrieved-page",
+      "finding": "The announcement link resolves to the dynamic Azure Updates shell. Captured HTML does not expose its item timeline, so no independent date verification is claimed; current scope/date findings are bound to the inspected Learn revision instead.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "ddos-logging-redirect",
+      "url": "https://learn.microsoft.com/en-us/azure/ddos-protection/diagnostic-logging",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/data-collection/tutorial-resource-logs",
+      "sha256": "c0fa4be8d7af72bd9a0aec9e3201c32d4c1e4e8d4b9f378ab58e225174504e79",
+      "retrieved_at": "2026-11-06T09:16:24.794891+00:00",
+      "revision": "a2e2f0dd741847fe6a9d9af7b42e03f6f9914eff",
+      "finding": "Legacy DDoS logging redirects to a general Azure Monitor resource-log tutorial. Diagnostic routing and actual ingestion are distinct; use actual IP log reference.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "ddos-log-categories",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/reference/supported-logs/microsoft-network-publicipaddresses-logs",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/reference/supported-logs/microsoft-network-publicipaddresses-logs",
+      "sha256": "2ae4a7df0e542fb48eca8d89ff88b9087b732e9aa01fcc681b73f3618599b907",
+      "retrieved_at": "2026-11-06T09:16:25.112344+00:00",
+      "revision": "5a27272360316be63f1f0f5c927e0a65046e8532",
+      "finding": "The public-IP reference lists three exact DDoS categories. Project only their explicit enabled flags and bounded destination references, never raw log records.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "alz-policy-wiki",
+      "url": "https://github.com/Azure/Enterprise-Scale/wiki/ALZ-Policies",
+      "resolved_url": "https://github.com/Azure/Enterprise-Scale/wiki/ALZ-Policies",
+      "sha256": "d5fd0540662ff2172a670eeb086531ba0b752f1fd9900ec97cf775360dbdd94e",
+      "retrieved_at": "2026-11-06T09:16:25.836922+00:00",
+      "revision": "retrieved-page",
+      "finding": "The exact checklist wiki is a migration notice, not a current corp policy list. Follow the central policy site and inspect pinned actual library assignment.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "alz-policy-site",
+      "url": "https://azure.github.io/Azure-Landing-Zones/policy/",
+      "resolved_url": "https://azure.github.io/Azure-Landing-Zones/policy/",
+      "sha256": "3f04c609ebbe7a8465f6caebcd05332606e6320761c054b79086757f2433cc23",
+      "retrieved_at": "2026-11-06T09:16:26.274845+00:00",
+      "revision": "retrieved-page",
+      "finding": "ALZ includes custom and built-in definitions and sometimes preview defaults. Library presence is not an actual assignment or an enforcement outcome.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "alz-corp",
+      "url": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/4eae565287844360a61545f9799400431adb6d0a/platform/alz/archetype_definitions/corp.alz_archetype_definition.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/4eae565287844360a61545f9799400431adb6d0a/platform/alz/archetype_definitions/corp.alz_archetype_definition.json",
+      "sha256": "570174389f5ced54ed482fb7da8152fd09b86f0b5a94f2dd41e7c9578b4397d7",
+      "retrieved_at": "2026-11-06T09:16:26.553646+00:00",
+      "revision": "4eae565287844360a61545f9799400431adb6d0a",
+      "finding": "Pinned corp explicitly includes Deny-Public-IP-On-NIC, not the separate deny-all public-IP assignment. Archetype templates are not deployed governance evidence.",
+      "reuse": "MIT Azure policy/library: metadata and own factual findings only"
+    },
+    {
+      "id": "alz-nic-assignment",
+      "url": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/4eae565287844360a61545f9799400431adb6d0a/platform/alz/policy_assignments/Deny-Public-IP-On-NIC.alz_policy_assignment.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/4eae565287844360a61545f9799400431adb6d0a/platform/alz/policy_assignments/Deny-Public-IP-On-NIC.alz_policy_assignment.json",
+      "sha256": "d9e00b514e49f467d97b6e11cb2ce1ea927e9066d8a5727f18faf1f79222fac4",
+      "retrieved_at": "2026-11-06T09:16:26.986491+00:00",
+      "revision": "4eae565287844360a61545f9799400431adb6d0a",
+      "finding": "Actual library assignment binds built-in 83a86a26 version 1.*.* with Default enforcement, placeholder MG scope and explicit empty notScopes. Validate actual scope/inheritance/version, overrides/selectors/exemptions independently.",
+      "reuse": "MIT Azure policy/library: metadata and own factual findings only"
+    },
+    {
+      "id": "alz-deny-public-ip",
+      "url": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/4eae565287844360a61545f9799400431adb6d0a/platform/alz/policy_assignments/Deny-Public-IP.alz_policy_assignment.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/4eae565287844360a61545f9799400431adb6d0a/platform/alz/policy_assignments/Deny-Public-IP.alz_policy_assignment.json",
+      "sha256": "4860cc572eb35be8bfba09ef54c4f1ed441c613e79c64a496e470769182411b0",
+      "retrieved_at": "2026-11-06T09:16:27.278181+00:00",
+      "revision": "4eae565287844360a61545f9799400431adb6d0a",
+      "finding": "The separate deny resource-types assignment forbids public-IP creation; this is not equivalent to denying NIC attachments, and is not included in pinned corp.",
+      "reuse": "MIT Azure policy/library: metadata and own factual findings only"
+    },
+    {
+      "id": "builtin-nic-public-ip",
+      "url": "https://raw.githubusercontent.com/Azure/azure-policy/f096d8de10fb25e71dd7f82b78ded110ec711d73/built-in-policies/policyDefinitions/Network/NetworkPublicIPNic_Deny.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-policy/f096d8de10fb25e71dd7f82b78ded110ec711d73/built-in-policies/policyDefinitions/Network/NetworkPublicIPNic_Deny.json",
+      "sha256": "141b8055e609abd29e2a38914c28d8cef51e7e1aed3dabf4c45b6ee978f198a5",
+      "retrieved_at": "2026-11-06T09:16:27.553517+00:00",
+      "revision": "f096d8de10fb25e71dd7f82b78ded110ec711d73",
+      "finding": "Built-in 83a86a26 version 1.0.0 has Indexed NIC-array alias logic and fixed deny, no effect parameter. It covers NICs, not just VMs. Saved assignment/exception context is preparation only; no alias evaluation, trigger or remediation occurs.",
+      "reuse": "MIT Azure policy/library: metadata and own factual findings only"
+    },
+    {
+      "id": "builtin-ddos-logging",
+      "url": "https://raw.githubusercontent.com/Azure/azure-policy/f096d8de10fb25e71dd7f82b78ded110ec711d73/built-in-policies/policyDefinitions/Monitoring/PublicIpDdosLogging_Audit.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-policy/f096d8de10fb25e71dd7f82b78ded110ec711d73/built-in-policies/policyDefinitions/Monitoring/PublicIpDdosLogging_Audit.json",
+      "sha256": "b9c9ddcd75bfb22e9afaf3a834b5060f65e1fd2f01e0b6365338109fdea4e9d5",
+      "retrieved_at": "2026-11-06T09:16:27.837193+00:00",
+      "revision": "f096d8de10fb25e71dd7f82b78ded110ec711d73",
+      "finding": "Built-in 752154a7 version 1.0.1 supports AuditIfNotExists/DeployIfNotExists/Disabled and has parameter-dependent log/workspace existence logic. Its assignment or compliance cannot prove whole-population DDoS logging or actual ingestion.",
+      "reuse": "MIT Azure policy/library: metadata and own factual findings only"
+    },
+    {
+      "id": "connectivity-to-azure",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/connectivity-to-azure",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/connectivity-to-azure",
+      "sha256": "acb2896626c6b93398ca6ad0af90160f519753d01d6eb093ff97cc375861a8ac",
+      "retrieved_at": "2026-11-06T09:16:28.386876+00:00",
+      "revision": "c47f8917bd4e0c9929286fbfa835ccadc00317fb",
+      "finding": "CAF recommends primary ExpressRoute, backup VPN and independent circuit locations, but workload suitability and maintained backup need separate evidence.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "expressroute-backup",
+      "url": "https://learn.microsoft.com/en-us/azure/expressroute/use-s2s-vpn-as-backup-for-expressroute-privatepeering",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/expressroute/use-s2s-vpn-as-backup-for-expressroute-privatepeering",
+      "sha256": "71ae79f5ea7a45c1ccd6e1dc6cde76694d7a0823d8861ab664b9351d012e863b",
+      "retrieved_at": "2026-11-06T09:16:28.678189+00:00",
+      "revision": "0ef3cf3268b789ebb92275201536ac68cec75b84",
+      "finding": "S2S backup is not recommended for latency-sensitive/mission-critical/bandwidth-intensive workloads. Equal-prefix preference, more-specific VPN routes, both directions and active maintenance matter. Presence never establishes failover.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "expressroute-routing",
+      "url": "https://learn.microsoft.com/azure/expressroute/expressroute-routing",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/expressroute/expressroute-routing",
+      "sha256": "36b4ebffd8b012e3bf194dbc03f0e3b9d339e3d7631e21588376758b996d61dc",
+      "retrieved_at": "2026-11-06T09:16:29.195175+00:00",
+      "revision": "d41c2ac70a6669be91e7a145802c5d39bfa79689",
+      "finding": "Reconcile private/Microsoft peering, both BGP sessions, prefix limits and route attributes. Microsoft removes private ASNs on Microsoft peering and does not honor arbitrary received communities. Never infer preference from BGP enabled.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "expressroute-optimization",
+      "url": "https://learn.microsoft.com/en-us/azure/expressroute/expressroute-optimize-routing",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/expressroute/expressroute-optimize-routing",
+      "sha256": "0d4b0ce9aeb45bc4c2f211903c4aba467872992db9d09376eaa195e822743654",
+      "retrieved_at": "2026-11-06T09:16:29.503629+00:00",
+      "revision": "b163398b134f2251d2a24bfdba02ed6e0551d16e",
+      "finding": "Customer local preference, AS PATH prepending and Azure connection weight have different directions/scope. Weight is considered before AS-path length for Azure outbound; a numeric value alone never establishes the selected route.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "expressroute-sizing",
+      "url": "https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways?source=recommendations#gwsku",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/expressroute/expressroute-about-virtual-network-gateways?source=recommendations",
+      "sha256": "92ebf165d81c076f9e23c50662a42f4f0c88ccfa6eabc64d39d5cf83d3a44d91",
+      "retrieved_at": "2026-11-06T09:16:30.226816+00:00",
+      "revision": "85c4c477040178eb023f500c1eac2239372424d9",
+      "finding": "Current ExpressRoute guidance includes scalable SKU and maintenance/private-endpoint performance limits. Pinned provider lacks ErGwScale; configuration is not bandwidth demand, effective throughput or regional SKU availability.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "vpn-sizing",
+      "url": "https://learn.microsoft.com/en-us/azure/vpn-gateway/about-gateway-skus",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/vpn-gateway/about-gateway-skus",
+      "sha256": "b70988529183c31a7fd182683265513687f5a6161662c01d993dfd160a68e43c",
+      "retrieved_at": "2026-11-06T09:16:30.411491+00:00",
+      "revision": "7d43c39a6c9b7c0517b6ac93c4bcd4d31f333be1",
+      "finding": "VPN throughput is benchmarked, not guaranteed; generation, algorithm, tunnel/P2S mix and non-AZ migration matter. No demand or measured performance inferred.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "frontdoor-policy-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-02-01/frontdoorwebapplicationfirewallpolicies",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-02-01/frontdoorwebapplicationfirewallpolicies",
+      "sha256": "433e3b65eeb3167e95cd2dc120b51e8b279472e5b7398959c8cc7216aba2775e",
+      "retrieved_at": "2026-11-06T09:16:30.728207+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Reviewed 2024-02-01 exposes mode/enabledState and supplied custom/managed arrays. Attempted Network 2024-05-01 URL returned 404; it is not an accepted API.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "frontdoor-security-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.cdn/2024-02-01/profiles/securitypolicies",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.cdn/2024-02-01/profiles/securitypolicies",
+      "sha256": "452cfa17d9c8b76d1a0fed2a5bff6627681d2c043d7464070d00535cc75af8de",
+      "retrieved_at": "2026-11-06T09:16:31.178137+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Project typed WAF ID, exact domain/endpoint IDs and explicit all-paths marker within each supplied association; bounded subset is not profile/route coverage.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "application-gateway-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/applicationgateways",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/applicationgateways",
+      "sha256": "f50772d47a138a23b2ba2dfd99ceb00a91ca499acbc3127069a74d6a606c4863",
+      "retrieved_at": "2026-11-06T09:16:31.844721+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Project explicit gateway subnets, WAF references and bounded configured backend counts, withholding hostnames/certificates. Placement and exclusivity need review.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "gateway-waf-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/applicationgatewaywebapplicationfirewallpolicies",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/applicationgatewaywebapplicationfirewallpolicies",
+      "sha256": "ae8389e1b8b615b2d3c4237a5ab9021319e21008f9ba2152dcc770b8d2c1612c",
+      "retrieved_at": "2026-11-06T09:16:32.386957+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Gateway custom conditions use the actual misspelled negationConditon API key. Retain header-shape/count/action/priority only, never FDID or other match values.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "public-ip-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/publicipaddresses",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/publicipaddresses",
+      "sha256": "6e94a8344e71e8a96fd46e182cf1ae5a7e9d6eee73d51980574c1ecfd32a538b",
+      "retrieved_at": "2026-11-06T09:16:32.753544+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "IP protection mode and plan binding are distinct. Inherited mode needs actual supported VNet attachment. Addresses/DNS labels are withheld.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "nic-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/networkinterfaces",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/networkinterfaces",
+      "sha256": "ad5b457de2e7d59e297dc000d93383888aade5bb84690f4eb903227a0577f79b",
+      "retrieved_at": "2026-11-06T09:16:33.154116+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Supplied IP-configuration/subnet/public-IP and VM references are bounded positive links only. Missing references are not absence or effective policy enforcement.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "diagnostics-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/2021-05-01-preview/diagnosticsettings",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/2021-05-01-preview/diagnosticsettings",
+      "sha256": "6a6c9ccc739d6736a956d4d8cc00ede122ff9cf55bfebf296bcfa21db81035a3",
+      "retrieved_at": "2026-11-06T09:16:33.453590+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Explicit log category flags and typed workspace/storage destination IDs are configuration only. Extension target comes from actual scope/ID, not resource name.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "connection-weight-implementation",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/network/virtual_network_gateway_connection_resource.go",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/network/virtual_network_gateway_connection_resource.go",
+      "sha256": "452f90a865034fb2d27d8b031ead6a558664b626cb5d572ea655790e9c25f0e8",
+      "retrieved_at": "2026-11-06T09:16:33.751297+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Actual pinned provider validates connection weight 0..32000 and exposes computed fields; preserve explicit values only, with shared/authorization keys withheld.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-frontdoor-security",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/cdn_frontdoor_security_policy.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/cdn_frontdoor_security_policy.html.markdown",
+      "sha256": "8fcac746f8e4345ce6d3043d17f4235d2942895cfe188a8ce2ad307aef6b7728",
+      "retrieved_at": "2026-11-06T09:16:34.024982+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned single firewall association nests in security_policies/firewall; domain active is computed, not defaulted. Profile parent ID is explicit.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-frontdoor-policy",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/cdn_frontdoor_firewall_policy.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/cdn_frontdoor_firewall_policy.html.markdown",
+      "sha256": "63f2dd610786a89d3a7d9b6f89789f395adc094ecf50434b4d0b5fd19555147e",
+      "retrieved_at": "2026-11-06T09:16:34.303277+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider supports Standard/Premium and explicit enabled/mode; missing custom/managed arrays do not become zero. Rule counts are not blocking efficacy.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-application-gateway",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/application_gateway.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/application_gateway.html.markdown",
+      "sha256": "a5395c0bd0aacdb6c15752d70c0cb6d33d67cfef54a7e0d118715c9f7ea8ce16",
+      "retrieved_at": "2026-11-06T09:16:34.595279+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Project explicit subnet/WAF links and supplied address/FQDN counts only; withhold actual hosts, private addresses, certificates and rule paths.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-gateway-waf",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/web_application_firewall_policy.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/web_application_firewall_policy.html.markdown",
+      "sha256": "1cf4b41ce089ccfa438df150241ec79a1ff03c928e3958c9833e0b6cabefa106",
+      "retrieved_at": "2026-11-06T09:16:34.895114+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned gateway policy supports explicit policy_settings/custom_rules; header configuration is only a candidate, not verified exact-profile filtering.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-public-ip",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/public_ip.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/public_ip.html.markdown",
+      "sha256": "5dde154432ab09df5916e20e2c75f65c664a1c6adc6e3d10a32e0b5e66cf37d1",
+      "retrieved_at": "2026-11-06T09:16:35.162266+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned IP mode defaults are not inferred; explicit mode/plan only. Historical provider zone prose differs from current guidance, so no resilience verdict.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-nic",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/network_interface.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/network_interface.html.markdown",
+      "sha256": "9b47b2765311668e3e30c09bd39ddaaee0e208d2a80ee840f3485480cd989e67",
+      "retrieved_at": "2026-11-06T09:16:35.908323+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Project explicit subnet/public-IP and computed VM links only; raw missing VM binding remains unknown rather than assuming an unattached interface.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "subnet-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/subnets",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/subnets",
+      "sha256": "1660ac1392a4e1c588a08d592cfd95586ba264f2171c06b2ee7fc8380a584be1",
+      "retrieved_at": "2026-11-06T09:16:36.224054+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Explicit IPv4 prefixes and typed route-table/NAT references are preparable. IPAM allocation, missing/mixed prefix forms and unavailable joins do not establish capacity or effective routes.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-subnet",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subnet.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subnet.html.markdown",
+      "sha256": "81efb15b9b422afa08a21b346e5e81bcd7d8f250a1a138db02627f798653c824",
+      "retrieved_at": "2026-11-06T09:16:36.519868+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "4.50.0 supports explicit prefixes or IPAM pool, not both. IPAM allocation does not establish actual prefixes. Inline/standalone subnet mixing is unsupported by the provider.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-diagnostics",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/monitor_diagnostic_setting.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/monitor_diagnostic_setting.html.markdown",
+      "sha256": "095f0692015969113d6d296e881e77e3728fff89da7eb123ab98f49235df2db6",
+      "retrieved_at": "2026-11-06T09:16:36.813627+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Dedicated is meaningful only with a workspace; enabled_log and metric blocks differ. Terraform's imported pipe ID is not an ARM identity and must not be copied as one.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "gateway-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworkgateways",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworkgateways",
+      "sha256": "3765ac62dcd92244f185fda4827a331c17f1382b170e44f9f4d099f70c721d25",
+      "retrieved_at": "2026-11-06T09:16:37.137087+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Explicit gateway type and IP-configuration subnet IDs identify positive capacity review links. No resource-name inference, certificate or RADIUS material is retained.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-gateway",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_gateway.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_gateway.html.markdown",
+      "sha256": "abec37ea2fa768bf6bbb030d76837f21a40d9700587a67ad4d87a99d313caf2d",
+      "retrieved_at": "2026-11-06T09:16:37.484403+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned gateway configuration supports up to three explicit subnet-bearing IP configs. Keep typed gateway kind/IDs only, never VPN certificates, RADIUS secrets or addresses.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "connection-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/connections",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/connections",
+      "sha256": "8d4280075503b9d1f0832a065a0847ba78cfcd8673166b862fcfc810288062b0",
+      "retrieved_at": "2026-11-06T09:16:37.908060+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Connection type/private-IP boolean and canonical gateway IDs support review only; shared/authorization keys, IKE details and tunnel addresses are not exported.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-gateway-connection",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_gateway_connection.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_gateway_connection.html.markdown",
+      "sha256": "2713c60f167abe176d065621f63ae24cfec366b4c8e819ceb58df2caabe0a84c",
+      "retrieved_at": "2026-11-06T09:16:38.208370+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Private-IP intent is not a preferred, working encrypted private-peering path.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    }
+  ]
+}

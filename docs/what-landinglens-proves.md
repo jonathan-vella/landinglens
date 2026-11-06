@@ -22,6 +22,15 @@ pass or absence. Not-applicable needs established applicability; not-comparable
 is never drift. Planned and observed outcomes stay separate. Original evaluation
 times are not refreshed by collection, rendering, review saving or resume.
 
+Cohort 13 prepares WAF attachments/modes, origin-rule shapes, public-IP DDoS/log
+configuration, explicit outbound flags, saved NIC-policy context and hybrid
+gateway/connection facts. None establishes effective protection, exclusive origin
+access, arriving diagnostics, enforcement, selected routes, failover or measured
+demand. D05.07 remains manual and both D05.08 GUIDs remain distinct.
+The frozen default-outbound retirement wording differs from the inspected current
+Learn guidance for new VNets and later APIs; see the
+[versioned findings](automation-matrix.md#cohort-13-inbound-protection-outbound-migration-and-hybrid-connectivity).
+
 ## Tiers and counts
 
 With explicit assessment 1.2, Verified means sufficient current evidence for an

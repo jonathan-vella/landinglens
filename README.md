@@ -8,6 +8,9 @@ and 43 manual recommendations.
 The NSG and route-count predicates are observed-only. Declared rules/routes do
 not establish complete custom populations. Peering access is an explicit setting,
 not proof of reachability; configured segmentation is not effective isolation.
+The current cohort also prepares WAF/origin, DDoS/logging, explicit outbound and
+hybrid-path evidence. Those facts are not protection, ingestion, enforcement,
+failover or measured demand. Both D05.08 recommendations stay distinct.
 
 Read [what LandingLens does and doesn't prove](docs/what-landinglens-proves.md)
 before interpreting results. [Detailed workflows](docs/usage.md),

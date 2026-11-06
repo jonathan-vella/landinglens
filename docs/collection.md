@@ -176,6 +176,27 @@ authentication or permission change. Legacy source redirects and the precise
 unsupported enforcement claims are retained in the
 [matrix](../references/recommendation-batches/batch-04.json).
 
+### Cohort-13 protection and hybrid context
+
+The same already-inventoried detail path supports Front Door WAF policies and
+CDN profile security policies at **2024-02-01**; Application Gateway/WAF,
+public IPs and NICs at **2024-05-01**; and diagnostic settings at
+**2021-05-01-preview**. Only existing scoped `read` operations are exercised
+through injected transport. No new live access or permission is authorized.
+The attempted Front Door Network 2024-05-01 schema was unavailable and is not
+accepted.
+
+Explicit WAF mode/state and bounded rule/association shapes, actual diagnostic
+targets/categories, public-IP/NIC relationships, default-outbound flags and
+gateway SKU/generation/connection weights are preparation only. Existing saved
+policy-export metadata supplies minimized exact NIC-deny assignment/exception
+references; version/effect/enforcement still need external attributable evidence.
+No new policy interpreter, definition lookup or evaluation trigger is added.
+Header values, hosts, private/backend/peer addresses, certificates and shared/
+authorization keys are withheld. No packet/DNS/health/log/encryption/failover
+test or IaC execution occurs. The
+[matrix](../references/recommendation-batches/batch-13.json) states each claim.
+
 The accepted first wave adds only explicit firewall-policy `sku.tier`,
 `threatIntelMode` and `intrusionDetection.mode` to the existing approved detail
 projection. It does not collect bypass lists, secrets or arbitrary properties.

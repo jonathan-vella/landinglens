@@ -58,6 +58,9 @@ def prepared_resource(
                 "defaultRuleSummary": review_fact(
                     candidates[0]["properties"], "defaultRuleSummary"
                 ),
+                "inboundRuleSummary": review_fact(
+                    candidates[0]["properties"], "inboundRuleSummary"
+                ),
             }
         prepared["linked_network_security_group"] = linked
     refs = facts.get("subnetReferences")
@@ -136,7 +139,7 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
         for resource in bundle.get("resources", [])
         if resource["resource_type"].lower() in allowed
     ]
-    return {
+    context = {
         "mode": bundle["mode"],
         "collected_at": bundle["collected_at"],
         "inventory_complete": bundle["inventory_complete"],
@@ -149,6 +152,47 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
             "complete relationships. No whole-recommendation outcome or current freshness inferred."
         ),
     }
+    if control["upstream_guid"] == "3c5a808d-c695-4c14-a63c-c7ab7a510e41" and available:
+        from .policy_evidence import project_policy_metadata
+
+        metadata = project_policy_metadata(bundle.get("metadata") or {})
+        definition = (
+            "/providers/microsoft.authorization/policydefinitions/"
+            "83a86a26-fd1f-447c-b59d-e51f44264114"
+        )
+        assignments = metadata.get("policy_assignments")
+        selected = (
+            [
+                entry
+                for entry in assignments
+                if isinstance(entry, dict)
+                and entry.get("definition_id") == definition
+                and isinstance(entry.get("id"), str)
+            ]
+            if isinstance(assignments, list)
+            else []
+        )
+        exemptions = metadata.get("policy_exemptions")
+        ids = {entry["id"] for entry in selected}
+        context["saved_nic_policy_context"] = {
+            "assignments": selected[:100],
+            "exemptions": [
+                entry
+                for entry in exemptions
+                if isinstance(entry, dict)
+                and isinstance(entry.get("id"), str)
+                and entry.get("assignment_id") in ids
+            ][:100]
+            if isinstance(exemptions, list)
+            else None,
+            "assignments_available": isinstance(assignments, list),
+            "exemptions_available": isinstance(exemptions, list),
+            "truncated": len(selected) > 100,
+            "warning": "Original-time minimized references only; actual version, effect, "
+            "enforcement, inherited scope, selectors/overrides and approved exceptions need "
+            "separate evidence. Empty/unavailable is not enforcement or absence.",
+        }
+    return context
 
 
 def prepare_reviews(

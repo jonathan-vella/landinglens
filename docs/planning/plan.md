@@ -19,6 +19,65 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## Cohort 13 implementation: 2026-11-06
+
+[#97](https://github.com/jonathan-vella/landinglens/issues/97) owns exactly the
+ten fixed inbound/outbound/hybrid GUIDs, including both D05.08 meanings.
+The [matrix](../../references/recommendation-batches/batch-13.json) and
+[42 inspected source captures](../../references/recommendation-batches/batch-13-sources.json)
+precede `2026-11-06.5`. Exact delivered `.6.3` bytes are frozen with SHA256
+`9cb7425513ee5a2e94a3ad7f5b2d44729fdb455e15975974d1cd1d5ff319a5c2`.
+The exact prior crosswalk is also frozen; all 255 GUIDs, fixed 251 membership,
+ten existing predicates, severity and 51-control/53-association bindings remain.
+
+Nine workflows gain useful bounded configuration preparation; D05.07 retains
+its manual strategy meaning and original retirement wording. Actual current Learn
+revision `e8c3f40845eb970c6a231bf67fbdd8132fe63e79` describes APIs released after
+March 31, 2026 for new VNets, not blanket loss of existing-network outbound access.
+The announcement URL returned a dynamic shell without independent timeline proof.
+ALZ corp's actual NIC-deny assignment binds built-in `83a86a26` 1.0.0; the separate
+deny-all-public-IP assignment is not equivalent. Origin filtering needs both
+backend restrictions and exact-profile header validation. Current S2S backup
+guidance is workload-conditional; weight/SKU/count never establishes preference,
+maintained topology, throughput or demand.
+
+Shared typed projections prepare WAF rules/attachments, gateway/subnet/backend
+context, public-IP/NIC/DDoS/logging configuration and hybrid connection/SKU facts.
+Actual diagnostic extension scopes stay inside the selected boundary; missing/
+wrong-type/version/sensitive/over-bound inputs stay unknown. Saved policy metadata
+is minimized reference context, not policy evaluation. The new ten-GUID interview
+keeps every owner decision blank. Its requirements hash also binds scope, closing
+a shared response scope-rebinding gap without a new contract field.
+Historical identity tests use exact `.6.3` instead of comparing later meanings
+against a frozen predecessor. The ledger test now derives delivery membership
+from fixed targets and actual receipts, and verifies in-progress rows against
+their exact reviewed matrix rather than assuming all future work is pending.
+
+The existing compiler coverage gains a fifth actual case for all new ARM/Bicep
+surfaces, with restoration disabled. Implementation delivery remains pending
+until actual local/exact-installed, eight CI-job and four compiler-artifact gates,
+normal exact-head merge and own-GUID receipts. No live Azure/directory/log/traffic
+operation, policy trigger, deployment, module/compiler acquisition, new dependency
+or owner attestation is introduced.
+
+Pre-delivery local and exact-installed suites each ran 349 tests: 348 passed
+with one explicit Windows symlink-privilege skip. All 13 cohort tests, format/
+lint, 35-source-file typing and dependency consistency passed. The existing
+compiler exercised all five integration cases without compiler skips.
+Exact own wheel SHA256:
+`a54740504f8d5ce093065b371ae8a3ebb2ca856b4a56b7a655342e063c22b7c4`.
+The clean interpreter imported under its own site-packages outside the checkout.
+Missing reviewed validators/build backend and clean runtime dependencies were
+restored only after actual missing-tool/dependency failures; no manifest change
+or new dependency was introduced.
+
+The owner subsequently asked "can we run some items in parallel?" Cohorts
+22/#100 and 14/#99 now prepare independently in isolated worktrees while
+cohort13 retains the sole catalog activation/merge/receipt slot. The coordinator
+grants later delivery slots only after this cohort's complete reconciliation;
+parallel preparation does not authorize concurrent catalog activation or erase
+source/history/CI/receipt gates.
+
 ## Cohort 04 delivered: 2026-11-06
 
 After checked cohort11 and receipt merges, the next existing priority is

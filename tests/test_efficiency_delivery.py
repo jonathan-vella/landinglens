@@ -262,7 +262,15 @@ class EfficiencyDeliveryTests(unittest.TestCase):
             (repository / "references/recommendation-batches/ledger.json").read_text()
         )
         self.assertEqual(len(ledger["recommendations"]), 251)
-        self.assertEqual(sum(row["status"] == "merged" for row in ledger["recommendations"]), 53)
+        delivered = {
+            target["guid"]
+            for target in targets["targets"]
+            if target["batch"] in ledger["deliveries"]
+        }
+        self.assertEqual(
+            {row["guid"] for row in ledger["recommendations"] if row["status"] == "merged"},
+            delivered,
+        )
         self.assertEqual(
             {row["batch"] for row in ledger["recommendations"] if row["status"] == "merged"},
             set(ledger["deliveries"]),
@@ -274,5 +282,18 @@ class EfficiencyDeliveryTests(unittest.TestCase):
                     (row["pr"], row["merge_commit"]), (receipt["pr"], receipt["merge_commit"])
                 )
             else:
-                self.assertEqual(row["status"], "pending")
+                if row["status"] == "implementation-in-progress":
+                    matrix = json.loads(
+                        (
+                            repository
+                            / "references/recommendation-batches"
+                            / f"batch-{row['batch']}.json"
+                        ).read_text()
+                    )
+                    review = next(r for r in matrix["recommendations"] if r["guid"] == row["guid"])
+                    self.assertEqual(row["review"], review)
+                    self.assertNotIn(row["batch"], ledger["deliveries"])
+                    self.assertIsNone(row["pr"])
+                else:
+                    self.assertEqual(row["status"], "pending")
                 self.assertIsNone(row["merge_commit"])
