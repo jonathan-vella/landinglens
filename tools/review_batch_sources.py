@@ -7,6 +7,7 @@ import re
 import urllib.request
 from datetime import UTC, datetime
 from pathlib import Path
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 PROVIDER = "211156b6c9c3c4721a2a4631998a6bd08433a9ee"
@@ -1087,6 +1088,304 @@ SOURCES_13 = [
 ]
 
 
+SOURCES_12 = [
+    (
+        "site-recovery-addresses",
+        "https://learn.microsoft.com/azure/site-recovery/concepts-on-premises-to-azure-networking#retain-ip-addresses",
+        ["Retain IP addresses", "entire subnet", "address overlap"],
+        "IP retention is possible but overlapping simultaneously connected sites cannot use "
+        "VPN/ExpressRoute. Whole-subnet failover, route changes and DNS updates need an "
+        "approved original-time plan; local prefix comparisons are not a complete DR inventory.",
+    ),
+    (
+        "public-ip-zones",
+        "https://learn.microsoft.com/azure/virtual-network/ip-services/public-ip-addresses#availability-zone",
+        ["formerly", "no zones", "Standard v2"],
+        "Current guidance makes formerly non-zonal Standard IPs zone-redundant in supported "
+        "regions; empty zones alone cannot fail. Standard v2 is currently NAT Gateway v2 only "
+        "and absent from the reviewed 2024 ARM/provider enum. Region, API and actual service "
+        "compatibility require review; IP zone configuration is not backend resilience.",
+    ),
+    (
+        "private-dns-quickstart",
+        "https://learn.microsoft.com/azure/dns/private-dns-getstarted-portal",
+        ["global resource", "autoregistration", "virtual network link"],
+        "Zone/link configuration prepares Azure-only design review, not delegation or actual "
+        "resolution. Global zones can link multiple regions; custom DNS and Resolver paths differ.",
+    ),
+    (
+        "resolver-overview",
+        "https://learn.microsoft.com/azure/dns/dns-private-resolver-overview",
+        ["1000", "/28", "/24", "encryption", "6"],
+        "Resolver/VNet must share region; endpoints require separate exclusively delegated "
+        "IPv4 subnets /24 through /28. No encrypted VNet, IPv6, FastPath or cross-tenant "
+        "ruleset linking. Current limits: 5 endpoints each direction, 2 outbound endpoints "
+        "per ruleset, 1000 rules, 500 links and 6 target DNS servers per rule.",
+    ),
+    (
+        "workload-dns",
+        "https://learn.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances",
+        ["DNS suffix", "Customer-managed", "App Service"],
+        "Workload/service-specific DNS choice, suffixes and authoritative zones remain manual. "
+        "Azure-provided DNS is VNet scoped; custom DNS bypasses the default resolution path.",
+    ),
+    (
+        "autoregistration",
+        "https://learn.microsoft.com/azure/dns/private-dns-autoregistration",
+        ["primary", "only one", "PTR"],
+        "Auto-registration applies only to VM primary NIC A records, one registration zone "
+        "per VNet, not private endpoints, load balancers or PTR records. An enabled link is "
+        "a literal partial fact, not correct lifecycle or universally required configuration.",
+    ),
+    (
+        "multi-region-dns",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/private-link-and-dns-integration-at-scale#private-link-and-dns-integration-in-hub-and-spoke-network-architectures",
+        ["multiple regions", "manual maintenance", "lifecycle"],
+        "Regional private endpoints and service-specific failover DNS need explicit record "
+        "lifecycle/ownership and original-time tests. Global zone or multiple links alone "
+        "is not an approved multi-region failover strategy.",
+    ),
+    (
+        "windows-65330",
+        "https://techcommunity.microsoft.com/blog/coreinfrastructureandsecurityblog/"
+        "unmasking-dns-timeouts-the-hidden-culprit-in-azure-virtual-networks/4250444",
+        ["65330", "Source", "Disclaimer", "65530"],
+        "Article concerns reserved ephemeral UDP SOURCE port 65330 on Windows hosts/containers, "
+        "not DNS destination port 53. Intro also says 65530 and its probability arithmetic "
+        "is not adopted. Unsupported AS-IS sample commands are not executed or redistributed. "
+        "IaC DNS/NSG configuration does not establish guest exclusions or full host coverage.",
+    ),
+    (
+        "bastion-overview",
+        "https://learn.microsoft.com/azure/bastion/bastion-overview",
+        ["Developer", "Premium", "private-only"],
+        "Developer is shared dev/test infrastructure; dedicated Basic/Standard/Premium use "
+        "AzureBastionSubnet, while Premium private-only has no public IP. Configuration "
+        "cannot prove effective secure access, permitted identity or blocked bypass.",
+    ),
+    (
+        "bastion-faq",
+        "https://learn.microsoft.com/azure/bastion/bastion-faq#subnet",
+        ["November 2, 2021", "UDR", "national clouds", "force-tunneling"],
+        "New dedicated deployments require /26 or larger; pre-2021-11-02 /27 is grandfathered. "
+        "UDRs/default-route force tunneling, exact internal DNS zone collisions, national "
+        "cloud DNS and cross-tenant peering need separate review. FAQ IPv4-only wording "
+        "differs from newer configuration preview; do not silently accept dual-stack.",
+    ),
+    (
+        "bastion-settings",
+        LEARN + "azure/bastion/configuration-settings",
+        ["Private-only", "Static", "IPv6 dual stack", "preview"],
+        "Developer/private-only are public-IP exceptions; dedicated subnet requirements "
+        "remain. Premium recording and Standard-or-higher connection features are explicit "
+        "flags only. Newer dual-stack preview and zone preview vary from FAQ/old schemas.",
+    ),
+    (
+        "resolver-endpoints",
+        LEARN + "azure/dns/private-resolver-endpoints-rulesets",
+        ["loop", "168.63.129.16", "500", "same region"],
+        "Ruleset links are regional, need no peering, and outbound endpoints must share "
+        "a resolver. Longest-suffix/ordered-target processing, public wildcard resolution, "
+        "inbound-loop avoidance and linked authoritative zones need separate evidence. "
+        "Azure-provided DNS cannot be a forwarding target; dynamic inbound IP can change "
+        "on reprovisioning. No domain names or raw target addresses are retained.",
+    ),
+    (
+        "vnet-reserved-port",
+        LEARN + "azure/virtual-network/virtual-networks-faq",
+        ["65330", "UDP"],
+        "VNet FAQ independently identifies reserved UDP port 65330. This is advisory "
+        "source evidence, not permission for a guest probe or OS exclusion change.",
+    ),
+    *[
+        (identity, LEARN + "azure/templates/microsoft.network/" + path, markers, finding)
+        for identity, path, markers, finding in [
+            (
+                "private-zone-arm",
+                "2024-06-01/privatednszones",
+                ["PrivateZoneProperties"],
+                "Reviewed zone schema has no configurable record inventory or delegation verdict.",
+            ),
+            (
+                "private-link-arm",
+                "2024-06-01/privatednszones/virtualnetworklinks",
+                ["registrationEnabled", "resolutionPolicy", "NxDomainRedirect"],
+                "Explicit typed VNet link, registration boolean and resolution policy. Public "
+                "fallback applies only to Private Link zone A/AAAA/CNAME NXDOMAIN; "
+                "not resolution proof.",
+            ),
+            (
+                "resolver-arm",
+                "2022-07-01/dnsresolvers",
+                ["virtualNetwork", "SubResource"],
+                "Immutable typed VNet reference and root region, not effective hybrid resolution.",
+            ),
+            (
+                "inbound-arm",
+                "2022-07-01/dnsresolvers/inboundendpoints",
+                ["privateIpAllocationMethod", "ipConfigurations"],
+                "Bounded configured subnet/allocation summaries only; "
+                "private endpoint IP withheld.",
+            ),
+            (
+                "outbound-arm",
+                "2022-07-01/dnsresolvers/outboundendpoints",
+                ["subnet"],
+                "Explicit endpoint subnet reference; outbound endpoint has no inbound VIP.",
+            ),
+            (
+                "ruleset-arm",
+                "2022-07-01/dnsforwardingrulesets",
+                ["dnsResolverOutboundEndpoints"],
+                "Typed positive outbound endpoint relationships, not exhaustive rules or links.",
+            ),
+            (
+                "forwarding-rule-arm",
+                "2022-07-01/dnsforwardingrulesets/forwardingrules",
+                ["forwardingRuleState", "domainName", "targetDnsServers"],
+                "Literal state and minimized domain/target shape; no records/raw destinations "
+                "or inference of precedence, loop freedom or destination responsiveness.",
+            ),
+            (
+                "ruleset-link-arm",
+                "2022-07-01/dnsforwardingrulesets/virtualnetworklinks",
+                ["virtualNetwork", "metadata"],
+                "Typed VNet relationship only; arbitrary metadata is withheld.",
+            ),
+            (
+                "bastion-arm",
+                "2024-05-01/bastionhosts",
+                ["enablePrivateOnlyBastion", "Developer", "scaleUnits"],
+                "Explicit SKU/private-only/connection/recording flags and typed subnet/public-IP "
+                "links, 2..50 scale units. FQDN/ACL raw addresses withheld; no access verdict.",
+            ),
+        ]
+    ],
+    *[
+        (identity, RAW + "website/docs/r/" + resource + ".html.markdown", markers, finding)
+        for identity, resource, markers, finding in [
+            (
+                "terraform-private-zone",
+                "private_dns_zone",
+                ["soa_record"],
+                "Zone resource does not establish delegation, DNS records or service suitability.",
+            ),
+            (
+                "terraform-private-link",
+                "private_dns_zone_virtual_network_link",
+                ["registration_enabled", "resolution_policy", "2024-06-01"],
+                "Explicit booleans/policy only; omitted registration false default "
+                "is not inferred.",
+            ),
+            (
+                "terraform-resolver",
+                "private_dns_resolver",
+                ["virtual_network_id", "2022-07-01"],
+                "Typed VNet and literal location, no provider creation or runtime execution.",
+            ),
+            (
+                "terraform-inbound",
+                "private_dns_resolver_inbound_endpoint",
+                ["ip_configurations", "private_ip_allocation_method"],
+                "Provider has one configuration block. Missing Dynamic default is not inferred; "
+                "private_ip_address withheld.",
+            ),
+            (
+                "terraform-outbound",
+                "private_dns_resolver_outbound_endpoint",
+                ["subnet_id"],
+                "Typed parent/subnet references; exclusive subnet population remains unverified.",
+            ),
+            (
+                "terraform-ruleset",
+                "private_dns_resolver_dns_forwarding_ruleset",
+                ["private_dns_resolver_outbound_endpoint_ids"],
+                "Up to two explicitly typed endpoint references; no automatic "
+                "inventory completeness.",
+            ),
+            (
+                "terraform-forwarding-rule",
+                "private_dns_resolver_forwarding_rule",
+                ["domain_name", "enabled", "target_dns_servers"],
+                "Explicit enabled value only, not default true. Target ports/IPv4 shape minimized; "
+                "namespace and IPs withheld.",
+            ),
+            (
+                "terraform-ruleset-link",
+                "private_dns_resolver_virtual_network_link",
+                ["dns_forwarding_ruleset_id", "virtual_network_id"],
+                "Typed parent and VNet links; supplied metadata withheld.",
+            ),
+            (
+                "terraform-bastion",
+                "bastion_host",
+                ["Developer", "Premium", "session_recording_enabled", "2024-01-01"],
+                "Provider 4.50 supports four SKUs but lacks private-only input. Its /27 example "
+                "differs from /26 notes/current requirements. Do not infer Basic, false flags, "
+                "2 scale units or public-only defaults. Readable dns_name withheld.",
+            ),
+        ]
+    ],
+    *[source for source in SOURCES_13 if source[0] in {"public-ip-arm", "terraform-public-ip"}],
+    *[source for source in SOURCES_17 if source[0] in {"subnet-arm", "terraform-subnet"}],
+    (
+        "learn-terms",
+        LEARN + "legal/termsofuse",
+        ["Documents", "AS IS"],
+        "Keep attribution, links, exact hashes and own factual findings, not copied Learn pages.",
+    ),
+    (
+        "microsoft-terms",
+        "https://www.microsoft.com/en-us/legal/terms-of-use",
+        ["Non-Commercial", "Documents", "copyright"],
+        "TechCommunity remains linked advisory evidence; no article, comments or unsupported "
+        "sample scripts redistributed. Site terms are not a software execution authorization.",
+    ),
+    (
+        "provider-license",
+        RAW + "LICENSE",
+        ["Mozilla Public License Version 2.0"],
+        "Pinned provider is MPL-2.0; use metadata/own schema findings, not copied source code.",
+    ),
+    (
+        "vnet-dns-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/virtualnetworks",
+        ["dnsServers", "encryption", "enabled"],
+        "Explicit DNS server list count and encryption boolean, with no server IPs retained. "
+        "Missing DNS list cannot establish use of default DNS.",
+    ),
+    (
+        "terraform-rule-implementation",
+        RAW
+        + "internal/services/privatednsresolver/private_dns_resolver_forwarding_rule_resource.go",
+        ["expandTargetDnsServerModel", "Default:  true", "Port:"],
+        "Provider stores explicit enabled/target list; port has no reviewed default 53. "
+        "Omitted/zero/invalid port remains unknown, never silently rewritten.",
+    ),
+    (
+        "terraform-bastion-implementation",
+        RAW + "internal/services/network/bastion_host_resource.go",
+        ["MaxItems: 1", "IntBetween(2, 50)", "DisableCopyPaste", "Developer"],
+        "One IP block, 2..50 units, copy-paste boolean inversion and SKU-conditioned features "
+        "are verified. No private-only schema field; never infer false from its absence.",
+    ),
+    (
+        "private-zone-links",
+        LEARN + "azure/dns/private-dns-virtual-network-links",
+        ["Completed", "one registration zone", "classic"],
+        "Only one link per zone/VNet; link completion is distinct from provisioning and "
+        "actual resolution. Missing/transient statuses remain unverified.",
+    ),
+    (
+        "terraform-vnet-dns",
+        RAW + "website/docs/r/virtual_network.html.markdown",
+        ["dns_servers", "enforcement", "virtual_network_dns_servers"],
+        "Explicit supplied DNS count only; separately managed DNS-server resources remain "
+        "unknown. Encryption block exposes enforcement, not an independent enabled boolean.",
+    ),
+]
+
+
 SOURCES_14 = [
     (
         "scalable-gateway",
@@ -1662,16 +1961,28 @@ SOURCES_15 = [
 ]
 
 
+def microsoft_site_terms(url: str) -> bool:
+    parsed = urlsplit(url)
+    return parsed.scheme == "https" and (
+        parsed.netloc == "techcommunity.microsoft.com"
+        or (parsed.netloc == "www.microsoft.com" and parsed.path.startswith("/en-us/legal/"))
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
+    parser.add_argument("--preparation-only", action="store_true")
     parser.add_argument(
         "--batch",
-        choices=["01", "04", "11", "13", "14", "15", "17", "18", "19", "22"],
+        choices=["01", "04", "11", "12", "13", "14", "15", "17", "18", "19", "22"],
         default="01",
     )
     args = parser.parse_args()
-    target = ROOT / "references" / "recommendation-batches" / f"batch-{args.batch}-sources.json"
+    if (args.batch == "12") != args.preparation_only:
+        raise ValueError("Cohort 12 source capture requires --preparation-only; no activation")
+    prefix = "preparation" if args.preparation_only else "batch"
+    target = ROOT / "references" / "recommendation-batches" / f"{prefix}-{args.batch}-sources.json"
     if target.exists() and not args.append_new_sources:
         raise ValueError("Frozen source review exists; do not silently recollect or redate it")
     sources = json.loads(target.read_text("utf-8"))["sources"] if target.exists() else []
@@ -1680,6 +1991,7 @@ def main() -> None:
         "01": SOURCES,
         "04": SOURCES_04,
         "11": SOURCES_11,
+        "12": SOURCES_12,
         "13": SOURCES_13,
         "14": SOURCES_14,
         "15": SOURCES_15,
@@ -1729,6 +2041,9 @@ def main() -> None:
                 if url.startswith(SPEC_RAW)
                 else "MIT Azure policy/library: metadata and own factual findings only"
                 if url.startswith((ALZ_RAW, POLICY_RAW))
+                else "Microsoft site terms: linked metadata and own findings only; "
+                "no article/comments/sample scripts redistributed"
+                if microsoft_site_terms(url)
                 else (
                     "Microsoft Learn attribution: source metadata and own factual findings only; "
                     "no page content redistributed"
@@ -1737,7 +2052,16 @@ def main() -> None:
         )
         print(identity, sources[-1]["revision"], sources[-1]["sha256"])
     target.write_text(
-        json.dumps({"batch": args.batch, "review_state": "reviewed", "sources": sources}, indent=2)
+        json.dumps(
+            {
+                "batch": args.batch,
+                "review_state": "preparation-only-reviewed"
+                if args.preparation_only
+                else "reviewed",
+                "sources": sources,
+            },
+            indent=2,
+        )
         + "\n",
         encoding="utf-8",
     )

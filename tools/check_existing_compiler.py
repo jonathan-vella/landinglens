@@ -37,6 +37,7 @@ if compiler:
         "test_real_bicep_security_configuration_without_restore",
         "test_expressroute_preparation.ExpressRoutePreparationTests."
         "test_real_bicep_expressroute_cost_capacity_fastpath_without_restore",
+        "test_dns_batch.DnsBatchTests.test_real_bicep_dns_bastion_no_restore",
         "test_monitoring_preparation.MonitoringPreparationTests."
         "test_real_bicep_monitor_and_gateway_route_join_without_restore",
     ]

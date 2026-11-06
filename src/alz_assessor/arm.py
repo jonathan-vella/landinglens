@@ -71,6 +71,15 @@ API_VERSIONS = {
     "microsoft.network/publicipaddresses": {"2024-05-01"},
     "microsoft.network/networkinterfaces": {"2024-05-01"},
     "microsoft.insights/diagnosticsettings": {"2021-05-01-preview"},
+    "microsoft.network/privatednszones": {"2024-06-01"},
+    "microsoft.network/privatednszones/virtualnetworklinks": {"2024-06-01"},
+    "microsoft.network/dnsresolvers": {"2022-07-01"},
+    "microsoft.network/dnsresolvers/inboundendpoints": {"2022-07-01"},
+    "microsoft.network/dnsresolvers/outboundendpoints": {"2022-07-01"},
+    "microsoft.network/dnsforwardingrulesets": {"2022-07-01"},
+    "microsoft.network/dnsforwardingrulesets/forwardingrules": {"2022-07-01"},
+    "microsoft.network/dnsforwardingrulesets/virtualnetworklinks": {"2022-07-01"},
+    "microsoft.network/bastionhosts": {"2024-05-01"},
 }
 PLANNED_API_VERSIONS = API_VERSIONS | {
     "microsoft.network/networkwatchers/connectionmonitors": {"2024-05-01"},
@@ -525,6 +534,7 @@ def arm_source(
                             arm_type,
                             context.value(entry.get("properties", {})),
                             root={
+                                "location": context.value(entry.get("location")),
                                 "scope": diagnostic_target,
                                 "name": name,
                                 "zones": context.value(entry.get("zones")),

@@ -4,6 +4,8 @@ from ipaddress import ip_address, ip_network
 from typing import Any
 
 from .contracts import canonical_id, identity_type
+from .dns_evidence import KINDS as DNS_KINDS
+from .dns_evidence import PATHS as DNS_PATHS
 from .expressroute_evidence import CIRCUIT_KIND, PORT_KIND
 from .expressroute_evidence import PATHS as EXPRESSROUTE_PATHS
 from .identity_evidence import PATHS as IDENTITY_PATHS
@@ -56,6 +58,7 @@ REVIEW_PATHS = (
     | SECURITY_PATHS
     | PROTECTION_PATHS
     | {"connectionMonitorSummary", "expressRouteAlertSummary"}
+    | DNS_PATHS
 )
 
 
@@ -505,6 +508,10 @@ def review_fact(properties: dict[str, Any], path: str) -> Any:
         from .monitoring_evidence import review_fact as monitoring_fact
 
         return monitoring_fact(properties, path)
+    if path in DNS_PATHS:
+        from .dns_evidence import review_fact as dns_fact
+
+        return dns_fact(properties, path)
     if path in EXPRESSROUTE_PATHS:
         from .expressroute_evidence import review_fact as expressroute_fact
 
@@ -577,13 +584,16 @@ def projected_properties(
     root: Any = None,
     observed: bool = False,
 ) -> dict[str, Any]:
+    from .dns_evidence import projected_properties as dns_properties
     from .monitoring_evidence import projected_properties as monitoring_properties
     from .protection_evidence import projected_properties as protection_properties
 
-    result = _projected_properties(
-        kind, values, terraform=terraform, root=root, observed=observed
-    ) | protection_properties(kind.lower(), values, terraform=terraform, root=root)
-    result.update(monitoring_properties(kind.lower(), values, terraform=terraform))
+    result = (
+        _projected_properties(kind, values, terraform=terraform, root=root, observed=observed)
+        | protection_properties(kind.lower(), values, terraform=terraform, root=root)
+        | dns_properties(kind.lower(), values, terraform=terraform, root=root)
+        | monitoring_properties(kind.lower(), values, terraform=terraform)
+    )
     if kind.lower() == "microsoft.network/connections":
         from .expressroute_evidence import fastpath_properties
 
@@ -919,7 +929,7 @@ def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
         "microsoft.network/networkwatchers/flowlogs",
         "microsoft.network/networkwatchers/connectionmonitors",
         "microsoft.insights/metricalerts",
-    } | ROUTING_KINDS | PROTECTION_KINDS | {CIRCUIT_KIND, PORT_KIND}:
+    } | ROUTING_KINDS | PROTECTION_KINDS | DNS_KINDS | {CIRCUIT_KIND, PORT_KIND}:
         return {}
     result: dict[str, Any] = {}
     for path in sorted(REVIEW_PATHS - SECURITY_PATHS):

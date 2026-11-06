@@ -40,6 +40,16 @@ No current regional/port availability, achieved throughput/latency, working
 FastPath, operational redundancy or economic suitability follows from settings.
 ARM scale support does not imply the pinned Terraform provider supports it.
 
+Cohort12 prepares DR prefixes, public-IP configuration, private DNS links,
+Resolver endpoint/rule shapes and Bastion settings. Public-IP empty zones cannot
+alone establish nonredundancy; registration applies only to VM primary NICs.
+Resolver subnets, regional links and loop avoidance need distinct evidence.
+Bastion Developer/private-only and pre-2021-11-02 /27 exceptions remain explicit.
+The port-65330 guidance concerns a Windows UDP source port, not DNS destination
+port 53; no guest read or OS change occurs. Workload-specific DNS and multi-region
+failover plans remain manual. No DNS record, raw destination or recording secret
+is retained, and no configuration becomes a resolution/security/resilience pass.
+
 ## Tiers and counts
 
 With explicit assessment 1.2, Verified means sufficient current evidence for an

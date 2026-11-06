@@ -54,6 +54,7 @@ owner-authorized increment. Baseline `2026-11-04.2` remains 4 automated /
 | Cohort | Scope | Dependencies | Acceptance/delivery |
 |---|---|---|---|
 | 15 / [#106](https://github.com/jonathan-vella/landinglens/issues/106) | Nine fixed ExpressRoute monitoring/routing/failover GUIDs | Merged cohort14 circuit contract; coordinator slot after actual12 delivery | Independent [source/fact/test preparation](../../references/recommendation-batches/batch-15-preparation.json), including strict distinct-location/gateway joins; no accepted15 activation, merge, receipt or closure |
+| 12 / [#103](https://github.com/jonathan-vella/landinglens/issues/103) | Ten DR-addressing/DNS/Bastion GUIDs; workload/failover meanings remain manual | Actual cohort14 implementation/receipt merge; sole coordinator slot granted | [#110](https://github.com/jonathan-vella/landinglens/pull/110) merged after corrected eight-job/CodeQL/four eight-case compiler gates; guarded own-GUID `deliveries.12` receipt |
 | 14 / [#99](https://github.com/jonathan-vella/landinglens/issues/99) | Nine ExpressRoute cost/Local/Direct/FastPath/gateway/appliance/isolation GUIDs | Actual cohort13/22 implementation and receipt merges; sole coordinator slot granted | [#107](https://github.com/jonathan-vella/landinglens/pull/107) merged after eight jobs, CodeQL and four seven-case compiler proofs; guarded own-GUID `deliveries.14` receipts |
 | 22 / [#100](https://github.com/jonathan-vella/landinglens/issues/100) | Eight sovereign-key/audit/Defender/endpoint/patch GUIDs | Merged cohort13, actual source review and unchanged live boundary | [#104](https://github.com/jonathan-vella/landinglens/pull/104) merged after eight jobs, CodeQL and four six-case compiler proofs; guarded own-GUID `deliveries.22` receipt |
 | 13 / [#97](https://github.com/jonathan-vella/landinglens/issues/97) | Ten protection/outbound/hybrid GUIDs, including distinct D05.08 entries | Merged cohort04, actual source review and existing evidence foundations | [#101](https://github.com/jonathan-vella/landinglens/pull/101) merged after eight jobs, CodeQL and four five-case compiler proofs; own-GUID `deliveries.13` receipt |
@@ -63,12 +64,12 @@ owner-authorized increment. Baseline `2026-11-04.2` remains 4 automated /
 | 17 / [#48](https://github.com/jonathan-vella/landinglens/issues/48) | Nine firewall GUIDs; duplicate D07.12 entries remain distinct | Merged cohort 01, actual source review, reviewed network schemas | [#49](https://github.com/jonathan-vella/landinglens/pull/49) merged; all eight checks passed, exact installed suite and all four CI compiler integrations exercised; issue closed |
 | 18 / [#50](https://github.com/jonathan-vella/landinglens/issues/50) | Nine TLS/resilience/private-connectivity GUIDs | Merged cohort 17; 18 actual source captures and reviewed versioned schemas | [#51](https://github.com/jonathan-vella/landinglens/pull/51) merged; all eight checks passed, exact installed suite and all four compiler integrations exercised; issue closed |
 | 19 / [#52](https://github.com/jonathan-vella/landinglens/issues/52) | Nine service-endpoint/subnet/segmentation GUIDs | Merged cohort 18 and reconciled `.5` efficiency foundations | [#90](https://github.com/jonathan-vella/landinglens/pull/90) merged; all eight jobs, CodeQL and four compiler artifacts passed; `deliveries.19` binds each GUID to actual acceptance |
-| Other cohorts | Other 171 GUIDs in unchanged 5-10-item cohorts | Evidence foundations, then LL-34 severity/crosswalk priority with per-batch source requirements | Pending; partitioning/tiering is not delivery |
+| Other cohorts | Other 161 GUIDs in unchanged 5-10-item cohorts | Evidence foundations, then LL-34 severity/crosswalk priority with per-batch source requirements | Pending; partitioning/tiering is not delivery |
 
-Delivered implementation successor `2026-11-06.7`: 10 automated / 202 assisted /
-43 manual, all 255 visible. Exact `.6.6` and earlier bytes/receipts remain frozen.
-Eighty fixed targets have actual merged-implementation receipts and 171 remain
-undelivered. All nine cohort14 GUIDs bind their own guarded receipt; closure
+Delivered implementation successor `2026-11-06.8`: 10 automated / 202 assisted /
+43 manual, all 255 visible. Exact `.6.7` and earlier bytes/receipts remain frozen.
+Ninety fixed targets have actual merged-implementation receipts and 161 remain
+undelivered. All ten cohort12 GUIDs bind their own guarded receipt; closure
 requires checked receipt publication. Classification alone is not delivery.
 G02.02 is explicitly manual; unsupported Terraform vault soft-delete evidence
 remains unknown. Create ready batch issues as implementation proceeds, not 251
@@ -88,7 +89,6 @@ reconciled against the new foundations when resumed on 2026-11-06.
 
 | Cohort | Undelivered GUIDs | High / Medium / Low | Controls with associations |
 |---|---|---|---|
-| 12 | 10 | 3 / 5 / 2 | 2 |
 | 15 | 9 | 3 / 6 / 0 | 2 |
 | 08 | 7 | 3 / 4 / 0 | 1 |
 | 30 | 7 | 3 / 3 / 1 | 0 |
@@ -110,14 +110,14 @@ reconciled against the new foundations when resumed on 2026-11-06.
 | 21 | 8 | 0 / 8 / 0 | 0 |
 | 28 | 8 | 0 / 8 / 0 | 0 |
 
-These remain 171 undelivered GUIDs. Cohorts 19/11/04/13/22/14 left the pending table only after
-actual #90/#93/#96/#101/#104/#107 implementation delivery and their guarded per-GUID receipts.
+These remain 161 undelivered GUIDs. Cohorts 19/11/04/13/22/14/12 left the pending table only after
+actual #90/#93/#96/#101/#104/#107/#110 implementation delivery and their guarded per-GUID receipts.
 No membership or original baseline
 hash changes through reprioritisation.
 
-The owner asked for parallel work. After cohort13's implementation/receipt merges,
-cohort22/#100 owns the granted delivery slot while isolated cohort14/#99
-preparation continues, reusing shared helpers.
+The owner asked for parallel work. After cohort14's checked receipt delivery,
+cohort12/#103 owns the granted delivery slot while isolated successor preparation
+continues under the coordinator, reusing shared helpers.
 Catalog activation, exact-head merges and receipt reconciliation stay serialized
 under coordinator-granted slots; preparation alone is not delivery.
 

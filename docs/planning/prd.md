@@ -91,6 +91,16 @@ location-label and exact gateway/distinct-circuit joins, using minimized
 fingerprints rather than raw peering-location labels. They prove neither
 canonical site identity nor physical/operational independence; missing or
 ambiguous bindings cannot create a positive check or a Verified tier.
+Delivered implementation `2026-11-06.8` integrates cohort12/#103 after the coordinator's
+slot grant and actual cohort14 receipt delivery. Eight bounded DR/DNS/Bastion
+configuration/advisory workflows and manual workload/failover decisions add no
+whole predicates. Current IP-zone, registration, Resolver and Bastion exceptions
+and the Windows UDP-source-65330 limits remain explicit. All ten human outcomes
+stay blank. Exact `.6.7` bytes and every earlier receipt are frozen.
+#110 merged after the corrected exact-head eight-job, CodeQL and four eight-case
+compiler gates. The guarded `deliveries.12` receipt binds all ten own GUIDs;
+checked reconciliation publishes 90 merged / 161 pending targets. No actual
+resolution, security or failover outcome is inferred.
 
 Delivered implementation `2026-11-06.7` integrates cohort14's nine assisted ExpressRoute workflows
 after actual cohort13/22 delivery and a sole coordinator slot grant. Explicit

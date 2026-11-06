@@ -88,6 +88,102 @@ restored after an explicit missing-`hcl2` probe; all earlier artifacts remain
 preserved. Accepted `.6.7`, 80 delivered / 171 pending and the accepted bank,
 earlier source capture times and receipts remain unchanged. Cohort12 retains
 the sole slot; this work is still unaccepted preparation, not cohort15 delivery.
+## Cohort 12 integration: 2026-11-06
+
+The coordinator granted [#103](https://github.com/jonathan-vella/landinglens/issues/103)
+the sole delivery slot after actual cohort14 implementation/receipt delivery.
+Preserved preparation `ab33a39` was reconciled with actual main
+`3b71e2666e26c63dfb2b75e89371b7c543d217e2`. The
+[ten-GUID matrix](../../references/recommendation-batches/batch-12.json) and
+[43 source captures](../../references/recommendation-batches/batch-12-sources.json)
+precede working `2026-11-06.8`. Exact delivered `.6.7` catalog bytes are frozen:
+`3e69f21126f9cf94e06d39f7eff2797c3ba1d575d1a89a040ac7ddffdf2572fa`.
+Crosswalk bytes are frozen as
+`90c0d4e3caf23069f2f7bd7938ce0e6c81d7df49d25266dbfdb316675b12fed4`.
+All 255 GUIDs, immutable 251 targets/original hashes, ten predicates, prior
+catalog/crosswalk meanings and every earlier own-GUID receipt are preserved.
+
+Eight source-backed partial configuration/advisory workflows and manual
+D03.08/D03.10 share the existing evaluator, typed review, tiers, outputs,
+tracker, sessions, interviews and packaged original-time replay. Routing overlap/
+RFC1918, subnet capacity, public-IP configuration, hybrid helpers and finite-
+numeric tier handling are reused. Source-backed facts distinguish current
+empty Standard-IP zone semantics from regional/API/service eligibility;
+VM-primary-NIC registration from other record lifecycles; Resolver endpoint/
+rule/link configuration from effective authority, regional limits, exclusivity
+and loop-free resolution; and Bastion Developer/private-only/grandfathered /27/
+preview exceptions from secure access. UDP 65330 is a Windows source-port advisory,
+not a DNS destination-port or NSG predicate. Whole-subnet Site Recovery IP
+retention requires a separate approved plan and complete populations.
+
+The accepted eight-path review bound remains unchanged; grouped Bastion facts
+remain minimized and typed. Ten independent decisions stay blank until supplied
+with scope/content/expiry/attribution binding. No DNS record/domain/target IP,
+recording secret, guest probe, OS change, traffic/health read, scanner, dependency,
+module/compiler acquisition or fabricated owner attestation is introduced.
+All seven predecessor compiler cases are retained; an eighth exercises the
+authored DNS/Bastion fixture with restoration disabled. Actual checked merge
+and guarded own receipts remain required. Before reconciliation, the fixed
+ledger is **80 merged / 171 pending**, not delivered by source acceptance alone.
+
+Pre-delivery local and exact own-installed suites each ran **395 tests**:
+394 passed and the existing Windows symlink-privilege skip remained explicit.
+All 13 DNS/Bastion tests passed, including bounded cross-VNet comparisons,
+eight-path review contracts, seven-question bank, original-time accepted `.6.8`
+replay, explicit blank decisions and all reporting surfaces. Format/lint,
+38-source-file typing and dependency consistency passed. The existing compiler
+exercised all eight cases without skips or restoration. Own wheel SHA256:
+`733592b2b07633d8b6f576097fee66bdf69f2a81c51f333d3d74e8f6b73c7b08`.
+The wheel was built offline and installed into a fresh own interpreter using
+previously staged reviewed dependencies. Its site-packages import and full suite
+outside checkout were proven after clearing the source-path environment; an
+initial in-checkout install had detected source metadata rather than installing
+the package, so it was not counted as installed proof. No dependency or compiler
+acquisition was introduced. Platform, exact-head merge and guarded receipt gates
+remain required.
+
+Initial implementation CI passed all eight platform jobs and all four eight-case
+compiler proofs, but CodeQL reported substring-based source-URL classification.
+The correction requires an exact HTTPS authority and legal path, with hostile
+host/path/query/userinfo regression cases. Both corrected local and unchanged
+exact-installed-wheel suites ran **396 tests**: 395 passed with the original
+Windows privilege skip. All 14 cohort tests, format/lint and typing passed.
+No source revision/timestamp, accepted catalog, dependency or wheel byte changed.
+The corrected exact head must pass fresh platform/CodeQL/artifact gates; the
+earlier successful platform runs cannot authorize its merge.
+
+[#110](https://github.com/jonathan-vella/landinglens/pull/110) merged normally as
+`a57906768b2cafb2ba20c7ed6df59695ca18b017` at 2026-11-06T11:57:05Z.
+Corrected checked head `98b1b39323bc0bb7ebd161139ca5f0c6578b3a4a` passed all eight
+supported jobs in push/PR runs `42213324429` / `42213333056`, CodeQL run
+`42213328063` and Advanced Security run `42213335161`. CodeQL's original finding
+was corrected, not dismissed or bypassed; its inline thread resolved after
+the corrected checks. Four downloaded artifact IDs are `13499139626`,
+`13499257987`, `13499569130` and `13500675727`, each with the identical eight
+exercised compiler cases and no skips. JSON SHA256 is
+`d6b641c35cd027e66c7b52d20ef23ccd49bd3c9c778d2b5ba6128ba57266bbee`
+on Ubuntu and
+`0717b3e497827bc4288fdde5ee54e41c5c3944b2f5fd480c54f87251e8973b96`
+on Windows. Actual head/main/checks/reviews were refreshed immediately before
+normal SHA-bound merge. No branch rule or review gate was changed or bypassed.
+
+The guarded recorder re-read the actual merged PR, both exact-head runs and
+four matching compiler downloads, then bound all ten GUIDs to `deliveries.12`
+and the actual own-wheel hash. Every earlier receipt and all 80 earlier rows
+remain unchanged. The reconciliation ledger is **90 merged / 161 pending**;
+cohort15 is next in unchanged source/severity/crosswalk priority. Checked receipt
+publication and satisfied #103 closure remain the final gate. This is offline/
+source/saved/injected and installed acceptance, not new Azure/DNS/guest reads,
+operational failover, security enforcement or a fabricated human decision.
+
+The receipt follow-up passed **397 local and exact-installed tests**:
+396 passed with the same Windows privilege skip. The new invariant freezes
+all 80 prior rows/nine cohort receipts and checks the ten GUIDs' own receipt,
+checked head, merge, original 396-test implementation proof and unchanged wheel.
+The backlog assertion derives pending membership from the actual guarded ledger,
+not a stale hardcoded global count. Format/lint, typing and dependency checks
+remain green. No runtime/package code or actual implementation receipt was
+rewritten by this reconciliation.
 
 ## Cohort 14 integration: 2026-11-06
 

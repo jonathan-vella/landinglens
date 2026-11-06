@@ -160,8 +160,91 @@ def prepared_resource(
                     "virtualNetwork": parent,
                 }
             )
+            if any(path in facts for path in ("resolverIpConfigurations", "bastionSku")):
+                links[-1]["dnsResolverDelegation"] = review_fact(
+                    child["properties"], "dnsResolverDelegation"
+                )
+                if "resolverIpConfigurations" in facts:
+                    links[-1]["subchecks"].update(
+                        local_subchecks(
+                            {
+                                "addressPrefixes": prefixes,
+                                "dnsResolverDelegation": links[-1]["dnsResolverDelegation"],
+                            }
+                        )
+                    )
         prepared["linked_subnets"] = links
         prepared["links_truncated"] = len(refs) > 20
+    for path, target_kind, paths, maximum in (
+        (
+            "bastionVirtualNetworkId",
+            "microsoft.network/virtualnetworks",
+            ("dnsServerSummary", "resourceLocation"),
+            1,
+        ),
+        (
+            "dnsVirtualNetworkId",
+            "microsoft.network/virtualnetworks",
+            (
+                "dnsServerSummary",
+                "vnetEncryptionEnabled",
+                "vnetEncryptionEnforcement",
+                "resourceLocation",
+            ),
+            1,
+        ),
+        (
+            "bastionPublicIpIds",
+            "microsoft.network/publicipaddresses",
+            (
+                "publicIpSku",
+                "publicIpTier",
+                "publicIpAllocationMethod",
+                "publicIpVersion",
+                "configuredZones",
+                "resourceLocation",
+            ),
+            20,
+        ),
+        (
+            "resolverOutboundEndpointIds",
+            "microsoft.network/dnsresolvers/outboundendpoints",
+            ("subnetReferences", "resourceLocation"),
+            2,
+        ),
+    ):
+        if path not in facts:
+            continue
+        identities = (
+            [facts[path]]
+            if path in {"dnsVirtualNetworkId", "bastionVirtualNetworkId"}
+            else facts[path]
+        )
+        if not isinstance(identities, list):
+            prepared["linked_" + path] = {"unknown": "relationships_missing_or_invalid"}
+            continue
+        linked_resources = []
+        for identity in identities[:maximum]:
+            candidates = by_id.get(identity, []) if isinstance(identity, str) else []
+            if (
+                len(candidates) == 1
+                and candidates[0]["state"] == "known"
+                and candidates[0]["resource_type"].lower() == target_kind
+            ):
+                linked_resources.append(
+                    {
+                        "arm_id": identity,
+                        "facts": {p: review_fact(candidates[0]["properties"], p) for p in paths},
+                    }
+                )
+            else:
+                linked_resources.append(
+                    {
+                        "arm_id": identity if isinstance(identity, str) else None,
+                        "unknown": "referenced_configuration_not_unique_known",
+                    }
+                )
+        prepared["linked_" + path] = linked_resources
     if "virtualNetworkGateway1.id" in facts:
         identity = facts["virtualNetworkGateway1.id"]
         candidates = by_id.get(identity, []) if isinstance(identity, str) else []
@@ -306,6 +389,30 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
                 for resource in gateways[:100]
             ]
             context["gateways_truncated"] = len(gateways) > 100
+    if control["upstream_guid"] == "f348ef25-4c27-4d42-b8bb-ac7571559ab9":
+        from .routing_evidence import address_subchecks
+
+        prefixes: Any = []
+        if not available or not matches or len(matches) > 100:
+            prefixes = None
+        else:
+            for resource in matches:
+                values = review_fact(resource["properties"], "virtualNetworkPrefixes")
+                if (
+                    resource["state"] != "known"
+                    or not isinstance(values, list)
+                    or not values
+                    or any(not isinstance(value, str) for value in values)
+                    or len(prefixes) + len(values) > 100
+                ):
+                    prefixes = None
+                    break
+                prefixes.extend(values)
+        context["supplied_vnet_population_subchecks"] = {
+            "subchecks": address_subchecks(prefixes),
+            "warning": "Only the supplied bounded VNet population, not complete production/DR "
+            "roles, estate inventory or approved subnet-move exceptions.",
+        }
     if control["upstream_guid"] == "3c5a808d-c695-4c14-a63c-c7ab7a510e41" and available:
         from .policy_evidence import project_policy_metadata
 
