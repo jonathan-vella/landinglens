@@ -88,8 +88,11 @@ eligibility/enablement/approver/audit/exclusion boundaries remain explicit.
 Separate account use and the two different operating plans stay manual; all seven
 registered decisions remain blank and source/content/scope/time bound. Exact
 `.14`, all139 prior own-GUID rows/sixteen receipts and original four full controls
-remain unchanged. Dispositions stay12/200/43; delivery remains139/112 until actual
-checked implementation and guarded own receipts. See
+remain unchanged. #131 passed exact-head platform/CodeQL/security/review and four
+fourteen-case compiler gates and merged normally. Guarded `deliveries.23` binds
+all seven GUIDs to that actual head/merge/runs/559-test wheel, recording146 delivered/
+105 pending on checked publication. Dispositions stay12/200/43; receipt publication
+and final-main CI still gate #124 closure. See
 [integration boundaries](plan.md#cohort-23-accepted-integration-2026-11-06).
 
 Reviewed successor `2026-11-06.13` integrates cohort05/
