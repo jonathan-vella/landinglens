@@ -70,6 +70,32 @@ The compiled monitoring fixture also evaluates the exact accepted D06.17
 predicate through the single engine; unresolved joins expose explicit
 GatewaySubnet binding/flag guidance without executing suggested operations.
 
+[#113](https://github.com/jonathan-vella/landinglens/pull/113) merged normally as
+`1e69870dd77739a3f38d3ac443b75edfd18c1775` at 2026-11-06T13:07:16Z.
+Final head `18d5b70731d5f36a5bc38a81d2261548c3cdd7d9` passed every supported
+job in push/PR runs `42221888863` / `42221895767`, CodeQL `42221890898` and
+applicable AI-findings `42221897836`. All reviews/head/main/check-runs were
+refreshed immediately before the normal SHA-bound merge. No configured branch
+protection/ruleset/required review was bypassed or changed.
+
+Four actual downloaded PR artifacts exercised matching nine-case coverage with
+no skips: `13504436527` (Ubuntu3.12), `13504441246` (Ubuntu3.13),
+`13504461336` (Windows3.12), `13504426695` (Windows3.13).
+Their JSON SHA256 is
+`fa62fb6040b24c18921322077d7f89a131c87b47daa9b6a7bb042f88e73eab6e` on Ubuntu and
+`497e2c58e13c6ee5eb19b1e46203f5b5262837f9078e9d0162d54bc60ac9d462` on Windows.
+Earlier head checks and preparation wheels were not reused as final acceptance.
+
+The guarded recorder independently reread the merged PR/head, both complete
+four-job runs and all compiler artifacts before binding each of the nine GUIDs
+to `deliveries.15` and the exact final wheel above. All90 earlier rows/ten
+receipts remain unchanged. The reconciliation branch records **99 merged /
+152 pending**; checked receipt publication remains required before #106 closure
+and delivery-slot release. Current catalog/crosswalk remains `.6.9`, 11/201/43;
+cohort08 is the next source/severity/crosswalk review priority, not an automatic
+source/dependency or delivery-slot grant. No new operational/tenant verification
+or human decision is claimed.
+
 ## Historical cohort 15 independent preparation: 2026-11-06
 
 [#106](https://github.com/jonathan-vella/landinglens/issues/106) is the third

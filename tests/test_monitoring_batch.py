@@ -110,6 +110,46 @@ class MonitoringBatchTests(unittest.TestCase):
         self.assertEqual(len(rows), 90)
         self.assertTrue(all(row["status"] == "merged" for row in rows))
 
+    def test_actual_cohort15_receipt_binds_all_nine_own_guids(self):
+        ledger = json.loads((ROOT / "references/recommendation-batches/ledger.json").read_text())
+        receipt = ledger["deliveries"]["15"]
+        self.assertEqual(receipt["pr"], "https://github.com/jonathan-vella/landinglens/pull/113")
+        self.assertEqual(receipt["checked_head"], "18d5b70731d5f36a5bc38a81d2261548c3cdd7d9")
+        self.assertEqual(receipt["merge_commit"], "1e69870dd77739a3f38d3ac443b75edfd18c1775")
+        self.assertEqual(
+            receipt["checks"],
+            [
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42221888863",
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42221895767",
+            ],
+        )
+        self.assertEqual(
+            receipt["local_installed_suite"], {"tests": 423, "passed": 422, "skipped": 1}
+        )
+        self.assertEqual(
+            receipt["wheel_sha256"],
+            "d0fcb7941178c76168e3316d43dc06c86693e17ea7fc42684b5a5f177d98696c",
+        )
+        self.assertEqual(len(receipt["compiler_integration_cases"]), 9)
+        own = [row for row in ledger["recommendations"] if row["batch"] == "15"]
+        self.assertEqual({row["guid"] for row in own}, set(GUIDS))
+        self.assertTrue(
+            all(
+                row["status"] == "merged"
+                and row["pr"] == receipt["pr"]
+                and row["merge_commit"] == receipt["merge_commit"]
+                for row in own
+            )
+        )
+        completed = {"01", "04", "11", "12", "13", "14", "15", "17", "18", "19", "22"}
+        self.assertEqual(
+            sum(
+                row["status"] == "merged" and row["batch"] in completed
+                for row in ledger["recommendations"]
+            ),
+            99,
+        )
+
     def test_strict_joined_true_false_configuration_in_both_modes(self):
         for mode in ("planned", "observed"):
             for disabled in (False, True):
