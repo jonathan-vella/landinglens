@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "kind": "catalog",
-  "catalog_version": "2026-11-06.12",
+  "catalog_version": "2026-11-06.13",
   "design_areas": [
     "Azure billing and Active Directory tenant",
     "Identity and access management",
@@ -1312,15 +1312,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Directory configuration, effective authority, privilege need and actual emergency-only use remain human-evidenced. No Graph resource, directory read, role/group/PIM operation or inferred Entra privilege from Azure RBAC.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: reviewed current Entra-role guidance and precise directory questions only; Azure role assignments, role definitions, policy/query associations and managed identities cannot establish Entra directory authority or least privilege.",
+        "Reviewer decision: cite separately authorized redacted directory-role scope, active/eligible assignment and privilege review evidence against actual responsibilities and least-privileged built-in alternatives; no principal names or directory records.",
+        "Reviewer decision: justify every Global Administrator use that cannot be handled by another existing role, distinguishing normal administration from the separately governed permanent-active emergency access exception. No invented blanket custom-role policy."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-05",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -1334,6 +1333,30 @@
           "pointer": "/items/23",
           "item_sha256": "3c5e4f3362d8bb008fdd7c8b8ef399b81cb85bb4cd2b8d490dab0af343c77c35",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones#microsoft-entra-id-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones#microsoft-entra-id-recommendations",
+          "source_sha256": "c404ee1e9de6b12c178d91aa2d96d2706240fc5983d0284956700710aaf8c671",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T14:10:29.244137+00:00",
+          "pointer": "d98d954d-7d1c-4a07-92a7-cf3afe8dcbd2",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones#microsoft-entra-id-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access#prerequisites-for-a-landing-zone---design-recommendations",
+          "source_sha256": "1fcbf8207858e6cf0122e38fd8eec4c39f8ae50764525b295e2aea81e2ab5123",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T14:10:30.489047+00:00",
+          "pointer": "d98d954d-7d1c-4a07-92a7-cf3afe8dcbd2",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access#prerequisites-for-a-landing-zone---design-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/active-directory/roles/security-emergency-access",
+          "source_sha256": "b4604f3682c37777252e75a7aaba647142ecfea255a2e86176dc9870bb0deb7e",
+          "revision": "149f9bd83afb633f3c3672127255a095e6561bf2",
+          "retrieved_at": "2026-11-06T14:10:33.264161+00:00",
+          "pointer": "d98d954d-7d1c-4a07-92a7-cf3afe8dcbd2",
+          "guidance": "https://learn.microsoft.com/azure/active-directory/roles/security-emergency-access"
         }
       ],
       "severity": "Medium"
@@ -1356,15 +1379,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No DC discovery, guest inspection, SKU/zone availability read, health/failover probe or automatic applicability. Missing/null/duplicate/wrong-type/foreign/denied/partial/stale evidence is not a pass. An empty explicit zone list means only nonzonal supplied configuration.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: explicit scoped VM zone/location and typed availability-set reference with known unique scoped set fault/update-domain counts. No inferred placement defaults or current regional availability.",
+        "Reviewer decision: independently identify the complete applicable AD DS controller population with redacted authorized evidence; VM names, tags, resource type, OS, extensions and location do not identify domain controllers.",
+        "Reviewer decision: demonstrate at least two actual controllers across different available zones, or a suitable availability set where zones are unavailable in that specific region, and substantiate operating health/replication independently. Supplied VM/set configuration is not complete inventory or resilience proof."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-05",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -1378,9 +1400,68 @@
           "pointer": "/items/24",
           "item_sha256": "107407a75f7659c14592e882af778b8571f71a85bc52d3116aedd08fff768397",
           "guidance": "https://learn.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain#vm-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain#vm-recommendations",
+          "source_sha256": "e1a35ff902019e1f1567d457ef14cf6aa87b19451c07c2794cc451a7aa1a80cd",
+          "revision": "317c21f64e5270088105ad6d42b59ad26e40241c",
+          "retrieved_at": "2026-11-06T14:10:29.716371+00:00",
+          "pointer": "1559ab91-53e8-4908-ae28-c84c33b6b780",
+          "guidance": "https://learn.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain#vm-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/virtualmachines",
+          "source_sha256": "f0ccc77f7363841b73bd37ac4c391068edc64dc53ce73db36a9cda0d95b6a3c7",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T14:10:34.289325+00:00",
+          "pointer": "1559ab91-53e8-4908-ae28-c84c33b6b780",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/virtualmachines"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/availabilitysets",
+          "source_sha256": "93c1c513d259ed27a4dc5b212f3d6b534ca7049e7ad74493864682d9ceb4bc84",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T14:10:35.280356+00:00",
+          "pointer": "1559ab91-53e8-4908-ae28-c84c33b6b780",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/availabilitysets"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/linux_virtual_machine.html.markdown",
+          "source_sha256": "eb59c9fd48961e1a80e9fe31c0ed66ef3f04674e76706d66ae3820362c58a560",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T14:10:37.097268+00:00",
+          "pointer": "1559ab91-53e8-4908-ae28-c84c33b6b780",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/linux_virtual_machine.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/windows_virtual_machine.html.markdown",
+          "source_sha256": "98109d65ccb47b5d3665b7c5232ad262782f3dc79dd08d69b3ab6f625ad397c7",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T14:10:37.485287+00:00",
+          "pointer": "1559ab91-53e8-4908-ae28-c84c33b6b780",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/windows_virtual_machine.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/availability_set.html.markdown",
+          "source_sha256": "4707c497632da0b55f719444123e132ad793fc14b994b36b0312fbe2146c7ec3",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T14:10:37.744626+00:00",
+          "pointer": "1559ab91-53e8-4908-ae28-c84c33b6b780",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/availability_set.html.markdown"
         }
       ],
-      "severity": "High"
+      "severity": "High",
+      "review_resource_types": [
+        "Microsoft.Compute/virtualMachines",
+        "Microsoft.Compute/availabilitySets"
+      ],
+      "review_fact_paths": [
+        "resourceLocation",
+        "configuredZones",
+        "availabilitySetId",
+        "platformFaultDomainCount",
+        "platformUpdateDomainCount"
+      ]
     },
     {
       "control_id": "ALZ-e8aa1e41-870d-4968-94c6-77be14f510ac",
@@ -1400,15 +1481,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Entra ID global services, regional AD DS, and managed Domain Services are different. VM/region/subnet labels and configured replicas prove neither DC roles nor site association, local resolution, replication health or regional recovery. No AD/guest/network probe or directory payload.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: supplied scoped VM locations and bounded explicit managed-domain replica subnet/location configurations. Resource metadata locations are not region availability or identity-resource designation; Terraform supplies only its initial replica subset.",
+        "Reviewer decision: identify applicable identity services, required workload/recovery regions and complete authorized service population, then reconcile actual multi-region service and workload placement with approved recovery requirements.",
+        "Reviewer decision: for self-managed AD DS, substantiate regional sites/subnets, replication and actual local DC locator/resolution/use with redacted dated references. Managed Domain Services replicas all share one AD site and do not support separate AD sites or replication settings; review its full-mesh connectivity and workload design separately."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-05",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -1422,9 +1502,65 @@
           "pointer": "/items/25",
           "item_sha256": "8fbf003be6915b79038d338a3c06da5d5164c6a4aeb9596de07bd3d53b2d2983",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/regions#identity"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/regions#identity",
+          "source_sha256": "ce47a47950eb35b9b254c2ea6be3411f7cff9e2c9112a38a0b2a8e765492f6bc",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T14:10:30.106031+00:00",
+          "pointer": "e8aa1e41-870d-4968-94c6-77be14f510ac",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/regions#identity"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain#vm-recommendations",
+          "source_sha256": "e1a35ff902019e1f1567d457ef14cf6aa87b19451c07c2794cc451a7aa1a80cd",
+          "revision": "317c21f64e5270088105ad6d42b59ad26e40241c",
+          "retrieved_at": "2026-11-06T14:10:29.716371+00:00",
+          "pointer": "e8aa1e41-870d-4968-94c6-77be14f510ac",
+          "guidance": "https://learn.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain#vm-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/entra/identity/domain-services/concepts-replica-sets",
+          "source_sha256": "2df791164b92a9af491c202c6b184a82023e97fd70283f8c79fc8f59389aecfe",
+          "revision": "69a56c38b7648a749bafed889ec84349faacfef4",
+          "retrieved_at": "2026-11-06T14:10:31.201541+00:00",
+          "pointer": "e8aa1e41-870d-4968-94c6-77be14f510ac",
+          "guidance": "https://learn.microsoft.com/en-us/entra/identity/domain-services/concepts-replica-sets"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/virtualmachines",
+          "source_sha256": "f0ccc77f7363841b73bd37ac4c391068edc64dc53ce73db36a9cda0d95b6a3c7",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T14:10:34.289325+00:00",
+          "pointer": "e8aa1e41-870d-4968-94c6-77be14f510ac",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/virtualmachines"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.aad/2022-12-01/domainservices",
+          "source_sha256": "394b086e66fca504d2774789ccd6d7ac92c6191dae4fe62167ac5fb50b09fad3",
+          "revision": "a80a6ca0ce31aae2ff0424e8453153664e18bc8b",
+          "retrieved_at": "2026-11-06T14:10:36.363651+00:00",
+          "pointer": "e8aa1e41-870d-4968-94c6-77be14f510ac",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.aad/2022-12-01/domainservices"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/active_directory_domain_service.html.markdown",
+          "source_sha256": "5b048ccb2052db2826f021b71f3cbba1909488c97be580fe580074f34c1d3869",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T14:10:38.347340+00:00",
+          "pointer": "e8aa1e41-870d-4968-94c6-77be14f510ac",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/active_directory_domain_service.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Compute/virtualMachines",
+        "Microsoft.AAD/domainServices"
+      ],
+      "review_fact_paths": [
+        "resourceLocation",
+        "replicaConfiguration"
+      ]
     },
     {
       "control_id": "ALZ-f5664b5e-984a-4859-a773-e7d261623a76",
@@ -1444,15 +1580,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Role type/scope count or joined definition existence proves neither least privilege, correct team alignment, effective access nor complete assignment population. Unsupported assignable scopes and generated/unbound Terraform role IDs remain explicit. No permissions changes or raw role actions.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: existing minimized assignment principal type/typed role definition plus explicit Azure role type and validated supported assignable-scope count, with unique known scoped joins only. No action content, principal IDs, role display names or descriptions.",
+        "Reviewer decision: reconcile approved platform/network/security/subscription/application responsibilities and separation of duties with actual effective Azure permissions, inheritance, conditions, eligibility, exclusions and independently attributable team ownership.",
+        "Reviewer decision: prefer adequate built-in roles and justify custom roles only where required by actual needs under current guidance, explicitly resolving the frozen checklist's blanket custom-role wording. An Azure role grants no Entra directory authority."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-05",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -1466,9 +1601,59 @@
           "pointer": "/items/26",
           "item_sha256": "e44d8c18de740fa55a33ce3ece046b0263672059a222679d8a224bc7e779885e",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access#prerequisites-for-a-landing-zone---design-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones#microsoft-entra-id-recommendations",
+          "source_sha256": "c404ee1e9de6b12c178d91aa2d96d2706240fc5983d0284956700710aaf8c671",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T14:10:29.244137+00:00",
+          "pointer": "f5664b5e-984a-4859-a773-e7d261623a76",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones#microsoft-entra-id-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access#prerequisites-for-a-landing-zone---design-recommendations",
+          "source_sha256": "1fcbf8207858e6cf0122e38fd8eec4c39f8ae50764525b295e2aea81e2ab5123",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T14:10:30.489047+00:00",
+          "pointer": "f5664b5e-984a-4859-a773-e7d261623a76",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access#prerequisites-for-a-landing-zone---design-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2022-04-01/roledefinitions",
+          "source_sha256": "5b9c3fe56695154b467c041183fe7d5adeb21d3e3e2c30a7ca3573c657263838",
+          "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+          "retrieved_at": "2026-11-06T14:10:35.570587+00:00",
+          "pointer": "f5664b5e-984a-4859-a773-e7d261623a76",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2022-04-01/roledefinitions"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/role_definition.html.markdown",
+          "source_sha256": "5f40c3f64d3fdcd7e256e099c5c3feefae6da53db1fb7904e6a5d5ca78a58b31",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T14:10:38.038996+00:00",
+          "pointer": "f5664b5e-984a-4859-a773-e7d261623a76",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/role_definition.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/authorization/role_definition_resource.go",
+          "source_sha256": "c3cad21e6969659b7b6f9e0659936aeb175e5a780ddc00fd4c42bc0651e6cba7",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T14:11:46.793283+00:00",
+          "pointer": "f5664b5e-984a-4859-a773-e7d261623a76",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/authorization/role_definition_resource.go"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Authorization/roleAssignments",
+        "Microsoft.Authorization/roleDefinitions"
+      ],
+      "review_fact_paths": [
+        "principalType",
+        "roleDefinitionId",
+        "azureRoleType",
+        "assignableScopeCount"
+      ]
     },
     {
       "control_id": "ALZ-8b9fe5c4-1049-4d40-9a92-3c3474d00018",
@@ -1488,15 +1673,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Requires organizational decision/process evidence outside IaC alone.",
+      "rationale": "Inherently manual workload compatibility and migration judgment remains manual. Neither service existence nor provider support is a tested compatibility outcome; no domain join, account, credential, trust, deployment or workload test is executed.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: reviewed capability and migration questions only; no runtime compatibility inference from domain resource, SKU, role, subnet or replica configuration.",
+        "Reviewer decision: independently inventory every applicable workload and its domain-join, LDAP bind/read/write, Kerberos/NTLM, Group Policy, schema/privilege and trust dependencies; cite redacted compatibility assessments and attributable actual test references.",
+        "Reviewer decision: reconcile the stand-alone managed-domain model, one-way identity synchronization, writes restricted for synchronized objects, external identities, trust/forest limitations and migration/rollback acceptance for all applicable workloads. Modern Entra-native applications and legacy domain dependencies differ."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-05",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -1510,6 +1694,30 @@
           "pointer": "/items/27",
           "item_sha256": "873cdb3fa7afac24b3a93972cbd36f56547e07a6e0847b39dc61bcddef4eec94",
           "guidance": "https://learn.microsoft.com/entra/identity/domain-services/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/entra/identity/domain-services/overview",
+          "source_sha256": "4250a05db8df25888c103e8d011612211130d93025488894d986de02cf132d6b",
+          "revision": "76d8519a36873870b93851b1fb585953871016ba",
+          "retrieved_at": "2026-11-06T14:10:30.880054+00:00",
+          "pointer": "8b9fe5c4-1049-4d40-9a92-3c3474d00018",
+          "guidance": "https://learn.microsoft.com/entra/identity/domain-services/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/entra/identity/domain-services/concepts-replica-sets",
+          "source_sha256": "2df791164b92a9af491c202c6b184a82023e97fd70283f8c79fc8f59389aecfe",
+          "revision": "69a56c38b7648a749bafed889ec84349faacfef4",
+          "retrieved_at": "2026-11-06T14:10:31.201541+00:00",
+          "pointer": "8b9fe5c4-1049-4d40-9a92-3c3474d00018",
+          "guidance": "https://learn.microsoft.com/en-us/entra/identity/domain-services/concepts-replica-sets"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/active_directory_domain_service.html.markdown",
+          "source_sha256": "5b048ccb2052db2826f021b71f3cbba1909488c97be580fe580074f34c1d3869",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T14:10:38.347340+00:00",
+          "pointer": "8b9fe5c4-1049-4d40-9a92-3c3474d00018",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/active_directory_domain_service.html.markdown"
         }
       ],
       "severity": "Medium"
@@ -1532,15 +1740,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No configured count, SKU, region label or subnet binding proves healthy replicas, supported current capacity, complete population or application recovery. Raw domain names, IPs, diagnostics, notifications, certificates and trust/password material are withheld. No new live route.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: RG-scoped Microsoft.AAD/domainServices explicit SKU and at most five embedded replicas, each with normalized configured location and typed unique subnet. Known scoped subnet/VNet joins are partial configuration context only.",
+        "Reviewer decision: reconcile the full replica population and actual supported regions/subscriptions, Enterprise/Premium requirement for multiple replicas, full-mesh VNet connectivity and required redundant regional workload placement.",
+        "Reviewer decision: substantiate actual replication/service health and geographical recovery separately. All managed replicas share one AD site. Terraform's initial_replica_set is explicitly a supplied subset; separately managed provider replicas are not invented ARM child resources or absence evidence."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-05",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -1554,9 +1761,64 @@
           "pointer": "/items/28",
           "item_sha256": "0f3d1d2c1d25f5febad18a56b4f65db22255c2ab479befad0dd7756c0189a98a",
           "guidance": "https://learn.microsoft.com/entra/identity/domain-services/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/entra/identity/domain-services/overview",
+          "source_sha256": "4250a05db8df25888c103e8d011612211130d93025488894d986de02cf132d6b",
+          "revision": "76d8519a36873870b93851b1fb585953871016ba",
+          "retrieved_at": "2026-11-06T14:10:30.880054+00:00",
+          "pointer": "0dd4e625-9c4b-4a56-b54a-4357bac12761",
+          "guidance": "https://learn.microsoft.com/entra/identity/domain-services/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/entra/identity/domain-services/concepts-replica-sets",
+          "source_sha256": "2df791164b92a9af491c202c6b184a82023e97fd70283f8c79fc8f59389aecfe",
+          "revision": "69a56c38b7648a749bafed889ec84349faacfef4",
+          "retrieved_at": "2026-11-06T14:10:31.201541+00:00",
+          "pointer": "0dd4e625-9c4b-4a56-b54a-4357bac12761",
+          "guidance": "https://learn.microsoft.com/en-us/entra/identity/domain-services/concepts-replica-sets"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.aad/2022-12-01/domainservices",
+          "source_sha256": "394b086e66fca504d2774789ccd6d7ac92c6191dae4fe62167ac5fb50b09fad3",
+          "revision": "a80a6ca0ce31aae2ff0424e8453153664e18bc8b",
+          "retrieved_at": "2026-11-06T14:10:36.363651+00:00",
+          "pointer": "0dd4e625-9c4b-4a56-b54a-4357bac12761",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.aad/2022-12-01/domainservices"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/active_directory_domain_service.html.markdown",
+          "source_sha256": "5b048ccb2052db2826f021b71f3cbba1909488c97be580fe580074f34c1d3869",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T14:10:38.347340+00:00",
+          "pointer": "0dd4e625-9c4b-4a56-b54a-4357bac12761",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/active_directory_domain_service.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/domainservices/active_directory_domain_service_resource.go",
+          "source_sha256": "4723dc59b82c2277a8e08193dc0b39b2e5a7d226fda449801a2d39cda80ce274",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T14:11:46.696365+00:00",
+          "pointer": "0dd4e625-9c4b-4a56-b54a-4357bac12761",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/domainservices/active_directory_domain_service_resource.go"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/active_directory_domain_service_replica_set.html.markdown",
+          "source_sha256": "566e5a9ef5533b0a5ab5ab773ada33814c8b3950ca7341925ae0674edc9f1bb5",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T14:10:38.638112+00:00",
+          "pointer": "0dd4e625-9c4b-4a56-b54a-4357bac12761",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/active_directory_domain_service_replica_set.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.AAD/domainServices"
+      ],
+      "review_fact_paths": [
+        "domainServiceSku",
+        "replicaConfiguration"
+      ]
     },
     {
       "control_id": "ALZ-1cf0b8da-70bd-44d0-94af-8d99cfc89ae1",
@@ -1576,15 +1838,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Tenant diagnostics are unsupported within the existing assessment/collection boundary and remain an explicit human-evidence gap. No Graph/Entra/log read, query execution, raw sign-in/audit record, fabricated category or data-plane payload.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: current Entra integration/prerequisite questions and explicit tenant-plane limitation. Actual microsoft.aadiam/diagnosticSettings is tenant-only, unlike Microsoft.Insights/diagnosticSettings; no subscription-scope synthetic directory diagnostic record or new tenant scope.",
+        "Reviewer decision: cite independently authorized, redacted directory AuditLogs/SignInLogs category routing and actual platform-central workspace ownership/destination configuration, with separate directory Security Administrator and workspace/data-access authorization.",
+        "Reviewer decision: demonstrate successful arriving tenant log coverage, time window, agreed retention, query/alert suitability and operating responsibilities with attributable references. Azure activity/resource diagnostics, a workspace or configured route alone cannot establish Entra ingestion or central integration."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-05",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -1598,6 +1859,38 @@
           "pointer": "/items/29",
           "item_sha256": "b5af0b8e1dc080aa6f20ab847ee8044d2854632b9c41d944a8e934814a5220ec",
           "guidance": "https://learn.microsoft.com/azure/active-directory/reports-monitoring/concept-activity-logs-azure-monitor"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/active-directory/reports-monitoring/concept-activity-logs-azure-monitor",
+          "source_sha256": "9f700f3a0a6a30a6853080f0f969b77bc48a4d4d28719c32338063bedb1c42b0",
+          "revision": "ad2392b54e54af312a83c1095d1532609ac46a05",
+          "retrieved_at": "2026-11-06T14:10:32.289213+00:00",
+          "pointer": "1cf0b8da-70bd-44d0-94af-8d99cfc89ae1",
+          "guidance": "https://learn.microsoft.com/azure/active-directory/reports-monitoring/concept-activity-logs-azure-monitor"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/entra/identity/monitoring-health/howto-integrate-activity-logs-with-azure-monitor-logs",
+          "source_sha256": "1a723bf80bdfff98ed9c1733a659628d6befbe2b834bc6b5db748a67cf978e09",
+          "revision": "ad2392b54e54af312a83c1095d1532609ac46a05",
+          "retrieved_at": "2026-11-06T14:10:32.581114+00:00",
+          "pointer": "1cf0b8da-70bd-44d0-94af-8d99cfc89ae1",
+          "guidance": "https://learn.microsoft.com/en-us/entra/identity/monitoring-health/howto-integrate-activity-logs-with-azure-monitor-logs"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.aadiam/2017-04-01/diagnosticsettings",
+          "source_sha256": "9966dcf00c7f3e464212dced160bd99dccce67f2f2f328c68d0df968b4e96654",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T14:10:36.802552+00:00",
+          "pointer": "1cf0b8da-70bd-44d0-94af-8d99cfc89ae1",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.aadiam/2017-04-01/diagnosticsettings"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones#microsoft-entra-id-recommendations",
+          "source_sha256": "c404ee1e9de6b12c178d91aa2d96d2706240fc5983d0284956700710aaf8c671",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T14:10:29.244137+00:00",
+          "pointer": "1cf0b8da-70bd-44d0-94af-8d99cfc89ae1",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones#microsoft-entra-id-recommendations"
         }
       ],
       "severity": "Medium"
@@ -1620,15 +1913,15 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Emergency account operations and strong-authentication suitability remain separate blank decisions, never Azure RBAC or configured-flag outcomes. No account creation, permission/PIM/MFA/CA/credential operation, login, validation drill or claim of current tenant rollout.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: current source-backed emergency operating and authentication questions only; the frozen October 2024 statement is historical, not universal current tenant enforcement.",
+        "Reviewer decision: separately substantiate the scoped emergency account operating model, at least two cloud-only accounts, permanent-active emergency GA exception, no federation dependency, authorized shared-versus-individual model, safe separate custody, secure workstations, use alerts, post-use review and at-least-90-day validation using redacted dated references.",
+        "Reviewer decision: separately substantiate phishing-resistant passkey/FIDO2 or appropriate certificate-based MFA, independent dependencies from normal admin methods and non-expiring/non-cleaned credentials/devices. Reconcile blocking/restricting Conditional Access exclusions separately from report-only policies and mandatory MFA; neither configuration nor an exception invents authentication success.",
+        "Reviewer decision: reconcile applicable enforcement phase and tenant rollout: phase 1 portals CRUD from October 2024, phase 2 gradually from October 1 2025 CLI/PowerShell/IaC/control-plane create/update/delete with read operations excluded; workload identities are unaffected. No account identifiers, method registrations, credential/passkey/certificate data or test sign-ins."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-05",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -1642,6 +1935,30 @@
           "pointer": "/items/30",
           "item_sha256": "09f9b64c8858890e8b018304da9eb66a974456cb98464258b4b1dd8bb2a37c6e",
           "guidance": "https://learn.microsoft.com/azure/active-directory/roles/security-emergency-access"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/active-directory/roles/security-emergency-access",
+          "source_sha256": "b4604f3682c37777252e75a7aaba647142ecfea255a2e86176dc9870bb0deb7e",
+          "revision": "149f9bd83afb633f3c3672127255a095e6561bf2",
+          "retrieved_at": "2026-11-06T14:10:33.264161+00:00",
+          "pointer": "984a859c-773e-47d2-9162-3a765a917e1f",
+          "guidance": "https://learn.microsoft.com/azure/active-directory/roles/security-emergency-access"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/entra/identity/authentication/concept-mandatory-multifactor-authentication",
+          "source_sha256": "986fffe0fa00297860d2a6e76c79f9050454a46ffe9582ffe7c7fc55cb08a529",
+          "revision": "12cb62ac91e33e82c48d712b8cb2936f3e15b2b8",
+          "retrieved_at": "2026-11-06T14:10:33.578634+00:00",
+          "pointer": "984a859c-773e-47d2-9162-3a765a917e1f",
+          "guidance": "https://learn.microsoft.com/en-us/entra/identity/authentication/concept-mandatory-multifactor-authentication"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones#microsoft-entra-id-recommendations",
+          "source_sha256": "c404ee1e9de6b12c178d91aa2d96d2706240fc5983d0284956700710aaf8c671",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T14:10:29.244137+00:00",
+          "pointer": "984a859c-773e-47d2-9162-3a765a917e1f",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones#microsoft-entra-id-recommendations"
         }
       ],
       "severity": "High"
@@ -17033,72 +17350,66 @@
   "reviewed_at": "2026-11-04T13:25:57.057372+00:00",
   "reference_manifest_sha256": "c287f93a4ff4c94c577b0248345d813f44fb27dff66524408870095024305d30",
   "control_source_manifest_sha256": "d189615f2793f141a6ee6cd5a7f026556a4146fd44d65705e6f08d0e01f7debf",
-  "accepted_matrix_sha256": "58bdeadbc652f08a4eb9968e16be850ef09423bf1c8a400065f02f86c4d86f34",
+  "accepted_matrix_sha256": "73e09cac093984643d44d1a08f7d77589855a1a95ccd4a5d7a33f0931cd2586d",
   "wave_source_manifest_sha256": "617e66a497a1f6bb1ddf50f53b3f75f3ff2cec2989324d42496aeeb4d9d0ef38",
   "change_review": {
-    "base_sha256": "72c83d874818d102894c41ee935cd6560a751b66985d4e869f859b32462c1ec2",
-    "matrix_sha256": "58bdeadbc652f08a4eb9968e16be850ef09423bf1c8a400065f02f86c4d86f34",
-    "reviewed_at": "2026-11-06T14:47:37.8111913Z",
+    "base_sha256": "8ea4a83d539860c37b29c7a030be0a1cde40286f4e3c97f75dc824d020af97c0",
+    "matrix_sha256": "73e09cac093984643d44d1a08f7d77589855a1a95ccd4a5d7a33f0931cd2586d",
+    "reviewed_at": "2026-11-06T15:32:39.758Z",
     "reviewer": "owner-delegated-source-backed-batch-review",
     "changes": [
       {
-        "control_id": "ALZ-412e7f98-3f63-4047-82dd-69c5b5c2622f",
-        "before_sha256": "bf424e1fb22de80059c05bd132d73e96bb81ecdba7cd49bff5827461e4e1eaf7",
-        "after_sha256": "12e4f6f7b0a68e83653e500da8a2e8c67096a5b5a3c6f4c5503849dd3259b629",
-        "rationale": "Owner-delegated source-backed batch 20 acceptance: assisted"
+        "control_id": "ALZ-d98d954d-7d1c-4a07-92a7-cf3afe8dcbd2",
+        "before_sha256": "e184dce8180583c01c166cb26c8c5cffba4f4ecc213ba94e2d93be1ef151db55",
+        "after_sha256": "37c696ca795f6c1ffa2146d7941b3c435a5c600c30033caaa67f8d682fd8fe06",
+        "rationale": "Owner-delegated source-backed batch 05 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-54b69bad-33aa-4d5e-ac68-e1d76667313b",
-        "before_sha256": "7cabd5b47ff34ccc88b60e1d132462f15c14aef9c6b298b0a801e60cdeaf10c3",
-        "after_sha256": "e1495da03dab75e698765a80ab4d6977363fbd6002fb2105c186068a6edd0115",
-        "rationale": "Owner-delegated source-backed batch 20 acceptance: assisted"
+        "control_id": "ALZ-1559ab91-53e8-4908-ae28-c84c33b6b780",
+        "before_sha256": "e944ede74b44ef5f52293816a5611e567aaaa3ffd5b0cea84eb42f5d79e875fc",
+        "after_sha256": "947fca4271d6ffb85714b5f2bf1d3400655402f5364e7d323b3f31946d882233",
+        "rationale": "Owner-delegated source-backed batch 05 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-7d5d1e4e-6146-458d-9558-fd77249b8211",
-        "before_sha256": "8b3bb787852c4c40926741d8c2809a339cec6d1e49f22484a46314fe8d1e1bd8",
-        "after_sha256": "293f4658fd49986b7b40e660c4497f46fd6025a9975c2a97645d413f962cd0de",
-        "rationale": "Owner-delegated source-backed batch 20 acceptance: assisted"
+        "control_id": "ALZ-e8aa1e41-870d-4968-94c6-77be14f510ac",
+        "before_sha256": "4bafd5d69276742be899f140ee12ac29205990b099cf56550522bd3ab993e5ea",
+        "after_sha256": "fe39ed848a35190cd4b53a0a1f7db70559fdaad4edaa389279b565a83d7303fb",
+        "rationale": "Owner-delegated source-backed batch 05 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-6667313b-4f56-464b-9e98-4a859c773e7d",
-        "before_sha256": "6ee9a889d0f31a815341bed36a67c55be9128e1f1fef10f1570743a0c950d059",
-        "after_sha256": "b93db6f3a818120746e042e8dbf00f6919bbd6945105d1a60b82331fba7d3105",
-        "rationale": "Owner-delegated source-backed batch 20 acceptance: assisted"
+        "control_id": "ALZ-f5664b5e-984a-4859-a773-e7d261623a76",
+        "before_sha256": "a13f1a79a5525071e3f56b123f21d7f2c911b6cc8fcdde600135a1908b6c63ae",
+        "after_sha256": "d4d573096c88fa71bb1239bf19cd5e326377aa65c05a08e1a4ab305a32b08bd9",
+        "rationale": "Owner-delegated source-backed batch 05 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-261623a7-65a9-417e-8f34-8ef254c27d42",
-        "before_sha256": "877408da6409819e09036ea8a8ca1367202700aca01f7c9dc70d359090f2940c",
-        "after_sha256": "aa9a1c381fbbf231b37a6d725d11b9f8cb890d476d41ab8de1b8186bc0264105",
-        "rationale": "Owner-delegated source-backed batch 20 acceptance: assisted"
+        "control_id": "ALZ-8b9fe5c4-1049-4d40-9a92-3c3474d00018",
+        "before_sha256": "2d89fd6f543b019f30415ecfdc14533ec848e03f6d2546028ccd3bcc9114f221",
+        "after_sha256": "75df996486a9101dbada1f15cf831ec8af52b86a48eeea074bcfa8185625de4d",
+        "rationale": "Owner-delegated source-backed batch 05 acceptance: manual"
       },
       {
-        "control_id": "ALZ-727c77e1-b9aa-4a37-a024-129d042422c1",
-        "before_sha256": "f143a5e51c0ac9e28756d2e3c1857131b7635e403068e228dd928666cf0044fb",
-        "after_sha256": "435684cce6a00d52486bd14c4de1d9a340e2cc8fde4ee83f41d46d5de94318a5",
-        "rationale": "Owner-delegated source-backed batch 20 acceptance: assisted"
+        "control_id": "ALZ-0dd4e625-9c4b-4a56-b54a-4357bac12761",
+        "before_sha256": "cacdfec577b4f616d0429cf3e3d951f3655a298d4a2c978a9a883c463ba0ca6c",
+        "after_sha256": "3197fa60bb5f1c71c805902dbc860998b59a26981e3a6be69f7058a05ed148ab",
+        "rationale": "Owner-delegated source-backed batch 05 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-d49ac006-6670-4bc9-9948-d3e0a3a94f4d",
-        "before_sha256": "d55dfc28108af75ece4bf1069b5d13014a309c79f4907f2340109c564194ce9f",
-        "after_sha256": "2d146ebc21281ba5cfd06467956d865ea13ee9b773ca52862c2f03a13b039f08",
-        "rationale": "Owner-delegated source-backed batch 20 acceptance: automated"
+        "control_id": "ALZ-1cf0b8da-70bd-44d0-94af-8d99cfc89ae1",
+        "before_sha256": "e7936895043325d9c670c54ae6e3fb99e44fef91185818c8fcdc484ea4ca9c1f",
+        "after_sha256": "a46d7111e5f8aaefb258b735afecb200ef41034cea9ab798c2b776193ec0acb9",
+        "rationale": "Owner-delegated source-backed batch 05 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-2586b854-237e-47f1-84a1-d45d4cd2310d",
-        "before_sha256": "3303a13c7463cdebec3e2cac95167d92c169c3251c72e05422a56345a4f53bf5",
-        "after_sha256": "f52a30132a4ac75ea7b13cc285a6de33a4caaecd1c594395eaa16a022424e283",
-        "rationale": "Owner-delegated source-backed batch 20 acceptance: assisted"
-      },
-      {
-        "control_id": "ALZ-9c75dfef-573c-461c-a698-68598595581a",
-        "before_sha256": "eb101d4c31ba1e15356285de07335c09a106c70cee62fc07a774346d2a8359a0",
-        "after_sha256": "888e332f7f6b1e4226ef9a290029ee16be8cfe572225ab73bb5236ea2220ccb2",
-        "rationale": "Owner-delegated source-backed batch 20 acceptance: assisted"
+        "control_id": "ALZ-984a859c-773e-47d2-9162-3a765a917e1f",
+        "before_sha256": "2d1e78d8a3ab0d49d8ea5a86930894f827d55e3490440f436625d45af4083558",
+        "after_sha256": "e93c494b0375e6660a06e1f78d93ff17cd0cacfe13d52089c3a46c67f9fc9025",
+        "rationale": "Owner-delegated source-backed batch 05 acceptance: assisted"
       }
     ]
   },
   "first_wave_matrix_sha256": "f649b2293211c844d661ea93c6978fe2db948eff17237af01ca090809da8e1fb",
-  "batch_source_manifest_sha256": "676e5d22ece63339f9e76be141870d93a8895532d2291d6e7594d0ad2fa997f9",
-  "batch_catalog_version": "2026-11-06.12",
+  "batch_source_manifest_sha256": "2b2fa6a2098ad60dee10c52d923ac6a11bc5caa2a10a415cebe657eb03fed830",
+  "batch_catalog_version": "2026-11-06.13",
   "priority_manifest_sha256": "b42971f85b9110f71fdc5ae81695fe4be72c1f28022ec27aeb719140ed1475c0"
 }

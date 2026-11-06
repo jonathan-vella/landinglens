@@ -6,8 +6,51 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.12"
+BANK_VERSION = "2026-11-06.13"
 BANK = {
+    "identity-resilience-roles-emergency-access": {
+        "question": "Reconcile actual least-privileged Entra directory authority and justified "
+        "Global Administrator use independently of Azure RBAC; distinguish the permanent-active "
+        "emergency exception. Identify the complete actual AD DS controller population with "
+        "redacted references, not VM names/tags/types. Review two actual controllers across "
+        "supported available zones, or an appropriate availability set where zones are "
+        "unavailable; configured placement is not health. Bind required workload/recovery "
+        "regions to actual identity services and independently demonstrate AD DS sites/subnets "
+        "and local DC locator/resolution/use. Managed Domain Services replicas instead share "
+        "one AD site: review complete same-subscription replica population, Enterprise/Premium "
+        "for additional sets, eligible regions, full-mesh connectivity, redundant workloads "
+        "and actual replication/recovery. Terraform initial replicas are a subset, not absence "
+        "of separately managed sets. Reconcile platform/network/security/subscription/application "
+        "responsibilities and effective inherited/conditional permissions; prefer adequate "
+        "built-in Azure roles and justify custom roles only where needed. Evaluate every "
+        "applicable workload's LDAP write, Kerberos/NTLM, join, schema/privilege and trust "
+        "dependencies, one-way sync, stand-alone domain and migration/rollback acceptance; "
+        "compatibility stays manual. Cite independently authorized tenant AuditLogs/SignInLogs "
+        "routing to the approved central workspace and actual arriving coverage/retention. "
+        "Tenant-only microsoft.aadiam diagnostic settings remain unsupported in this scope; "
+        "subscription diagnostics or workspace existence cannot prove tenant integration. "
+        "Separately evidence emergency operating decisions: two or more cloud-only accounts, "
+        "federation independence, permanent-active GA, approved shared/individual model, safe "
+        "separate custody, secure workstations, alerts/post-use review and at-least-90-day "
+        "validation. Separately evidence phishing-resistant passkey/FIDO2 or appropriate "
+        "certificate-based MFA, independent dependencies, nonexpiry/cleanup and blocking CA "
+        "exclusions versus report-only. Reconcile actual phased MFA applicability/rollout, "
+        "not frozen universal October2024 enforcement: phase2 from October1 2025 excludes reads "
+        "and workload identities are unaffected. Use redacted attributable references only, "
+        "never principal/tenant/user/account names, raw directory/guest/log records, credential/"
+        "passkey/certificate material or raw role actions. Decide all eight canonical GUIDs "
+        "independently; one narrative, Signal, exception or humanConfirmed flag proves none.",
+        "controls": [
+            "ALZ-d98d954d-7d1c-4a07-92a7-cf3afe8dcbd2",
+            "ALZ-1559ab91-53e8-4908-ae28-c84c33b6b780",
+            "ALZ-e8aa1e41-870d-4968-94c6-77be14f510ac",
+            "ALZ-f5664b5e-984a-4859-a773-e7d261623a76",
+            "ALZ-8b9fe5c4-1049-4d40-9a92-3c3474d00018",
+            "ALZ-0dd4e625-9c4b-4a56-b54a-4357bac12761",
+            "ALZ-1cf0b8da-70bd-44d0-94af-8d99cfc89ae1",
+            "ALZ-984a859c-773e-47d2-9162-3a765a917e1f",
+        ],
+    },
     "virtual-wan-topology-routing-capacity": {
         "question": "Bind the approved connectivity matrix to a documented Virtual WAN design "
         "and staged migration, actual workload/branch populations, shared services, cutover "

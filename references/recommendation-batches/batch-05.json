@@ -1,0 +1,138 @@
+{
+  "batch": "05",
+  "issue": "https://github.com/jonathan-vella/landinglens/issues/118",
+  "catalog_version": "2026-11-06.13",
+  "review_state": "owner-delegated-source-backed-matrix",
+  "accepted_at": "2026-11-06T15:32:39.758Z",
+  "baseline_main": "f2411afa0d43e7f25402b364b9721dccb26201cd",
+  "prerequisites": ["08", "15", "30", "20"],
+  "preserved_catalog_bytes": {
+    "2026-11-06.12": "ce02d3d63cf078637e7702a6cbb7b47f2858eeb9320da002784c2a0fcf7ad4ed"
+  },
+  "preserved_crosswalk_bytes": {
+    "2026-11-06.12": "93808594a67f5439ab7075a3dcc52d69ced8a67ea9fec62a4d17e054f5b9e79f"
+  },
+  "acceptance_evidence": "Coordinator granted the sole slot after actual cohort20 implementation122/receipt123 and issue115 completed closure. Preserved03442eb and all25 original source rows/times, reconciled actual mainf2411afa. Seven assisted workflows and manual compatibility reuse typed scoped configuration and independently blank bound human decisions; no whole identity/resilience/ingestion/authentication predicate. Actual exact-head implementation and guarded own-GUID receipts remain separate final delivery gates.",
+  "supported_modes": "Reviewed ARM VM/availabilitySet2024-07-01, Azure roleDefinition2022-04-01 and DomainServices2022-12-01; existing no-restore Bicep; pinned AzureRM4.50.0 raw/supplied-module/optional saved plan with real composite/ARM identity binding; saved/injected normalized evidence and exact accepted-package original-time replay. No new live Collector route, tenant scope, directory/guest/log read, query/probe/scanner execution, dependency, compiler/module acquisition or operation.",
+  "limitations": "Azure RBAC is not directory authority, team alignment or least privilege. VM names/tags/type never establish DC roles or complete populations. Configuration, region labels, zones, sets and replicas prove no regional availability, local AD site resolution, health, compatibility or recovery. Actual Entra diagnostic settings remain unsupported tenant-only resources within this assessor boundary. Emergency account operations and authentication remain separately evidenced blank decisions; B03.12 stays manual.",
+  "recommendations": [
+    {
+      "upstream_id": "B03.08",
+      "guid": "d98d954d-7d1c-4a07-92a7-cf3afe8dcbd2",
+      "classification": "assisted",
+      "sources": ["landing-zone-roles", "identity-team-boundaries", "emergency-access"],
+      "evidence_requirements": [
+        "Preparation: reviewed current Entra-role guidance and precise directory questions only; Azure role assignments, role definitions, policy/query associations and managed identities cannot establish Entra directory authority or least privilege.",
+        "Reviewer decision: cite separately authorized redacted directory-role scope, active/eligible assignment and privilege review evidence against actual responsibilities and least-privileged built-in alternatives; no principal names or directory records.",
+        "Reviewer decision: justify every Global Administrator use that cannot be handled by another existing role, distinguishing normal administration from the separately governed permanent-active emergency access exception. No invented blanket custom-role policy."
+      ],
+      "limitations": "Directory configuration, effective authority, privilege need and actual emergency-only use remain human-evidenced. No Graph resource, directory read, role/group/PIM operation or inferred Entra privilege from Azure RBAC.",
+      "flags": []
+    },
+    {
+      "upstream_id": "B03.09",
+      "guid": "1559ab91-53e8-4908-ae28-c84c33b6b780",
+      "classification": "assisted",
+      "sources": ["ad-ds-availability", "vm-placement-arm", "availability-set-arm", "terraform-linux-placement", "terraform-windows-placement", "terraform-availability-set"],
+      "review_resource_types": ["Microsoft.Compute/virtualMachines", "Microsoft.Compute/availabilitySets"],
+      "review_fact_paths": ["resourceLocation", "configuredZones", "availabilitySetId", "platformFaultDomainCount", "platformUpdateDomainCount"],
+      "evidence_requirements": [
+        "Preparation: explicit scoped VM zone/location and typed availability-set reference with known unique scoped set fault/update-domain counts. No inferred placement defaults or current regional availability.",
+        "Reviewer decision: independently identify the complete applicable AD DS controller population with redacted authorized evidence; VM names, tags, resource type, OS, extensions and location do not identify domain controllers.",
+        "Reviewer decision: demonstrate at least two actual controllers across different available zones, or a suitable availability set where zones are unavailable in that specific region, and substantiate operating health/replication independently. Supplied VM/set configuration is not complete inventory or resilience proof."
+      ],
+      "limitations": "No DC discovery, guest inspection, SKU/zone availability read, health/failover probe or automatic applicability. Missing/null/duplicate/wrong-type/foreign/denied/partial/stale evidence is not a pass. An empty explicit zone list means only nonzonal supplied configuration.",
+      "flags": []
+    },
+    {
+      "upstream_id": "B03.10",
+      "guid": "e8aa1e41-870d-4968-94c6-77be14f510ac",
+      "classification": "assisted",
+      "sources": ["identity-regions", "ad-ds-availability", "domain-services-replicas", "vm-placement-arm", "domain-services-arm", "terraform-domain-services"],
+      "review_resource_types": ["Microsoft.Compute/virtualMachines", "Microsoft.AAD/domainServices"],
+      "review_fact_paths": ["resourceLocation", "replicaConfiguration"],
+      "evidence_requirements": [
+        "Preparation: supplied scoped VM locations and bounded explicit managed-domain replica subnet/location configurations. Resource metadata locations are not region availability or identity-resource designation; Terraform supplies only its initial replica subset.",
+        "Reviewer decision: identify applicable identity services, required workload/recovery regions and complete authorized service population, then reconcile actual multi-region service and workload placement with approved recovery requirements.",
+        "Reviewer decision: for self-managed AD DS, substantiate regional sites/subnets, replication and actual local DC locator/resolution/use with redacted dated references. Managed Domain Services replicas all share one AD site and do not support separate AD sites or replication settings; review its full-mesh connectivity and workload design separately."
+      ],
+      "limitations": "Entra ID global services, regional AD DS, and managed Domain Services are different. VM/region/subnet labels and configured replicas prove neither DC roles nor site association, local resolution, replication health or regional recovery. No AD/guest/network probe or directory payload.",
+      "flags": []
+    },
+    {
+      "upstream_id": "B03.11",
+      "guid": "f5664b5e-984a-4859-a773-e7d261623a76",
+      "classification": "assisted",
+      "sources": ["landing-zone-roles", "identity-team-boundaries", "role-definition-arm", "terraform-role-definition", "terraform-role-definition-implementation"],
+      "review_resource_types": ["Microsoft.Authorization/roleAssignments", "Microsoft.Authorization/roleDefinitions"],
+      "review_fact_paths": ["principalType", "roleDefinitionId", "azureRoleType", "assignableScopeCount"],
+      "evidence_requirements": [
+        "Preparation: existing minimized assignment principal type/typed role definition plus explicit Azure role type and validated supported assignable-scope count, with unique known scoped joins only. No action content, principal IDs, role display names or descriptions.",
+        "Reviewer decision: reconcile approved platform/network/security/subscription/application responsibilities and separation of duties with actual effective Azure permissions, inheritance, conditions, eligibility, exclusions and independently attributable team ownership.",
+        "Reviewer decision: prefer adequate built-in roles and justify custom roles only where required by actual needs under current guidance, explicitly resolving the frozen checklist's blanket custom-role wording. An Azure role grants no Entra directory authority."
+      ],
+      "limitations": "Role type/scope count or joined definition existence proves neither least privilege, correct team alignment, effective access nor complete assignment population. Unsupported assignable scopes and generated/unbound Terraform role IDs remain explicit. No permissions changes or raw role actions.",
+      "flags": []
+    },
+    {
+      "upstream_id": "B03.12",
+      "guid": "8b9fe5c4-1049-4d40-9a92-3c3474d00018",
+      "classification": "manual",
+      "sources": ["domain-services-overview", "domain-services-replicas", "terraform-domain-services"],
+      "evidence_requirements": [
+        "Preparation: reviewed capability and migration questions only; no runtime compatibility inference from domain resource, SKU, role, subnet or replica configuration.",
+        "Reviewer decision: independently inventory every applicable workload and its domain-join, LDAP bind/read/write, Kerberos/NTLM, Group Policy, schema/privilege and trust dependencies; cite redacted compatibility assessments and attributable actual test references.",
+        "Reviewer decision: reconcile the stand-alone managed-domain model, one-way identity synchronization, writes restricted for synchronized objects, external identities, trust/forest limitations and migration/rollback acceptance for all applicable workloads. Modern Entra-native applications and legacy domain dependencies differ."
+      ],
+      "limitations": "Inherently manual workload compatibility and migration judgment remains manual. Neither service existence nor provider support is a tested compatibility outcome; no domain join, account, credential, trust, deployment or workload test is executed.",
+      "flags": []
+    },
+    {
+      "upstream_id": "B03.13",
+      "guid": "0dd4e625-9c4b-4a56-b54a-4357bac12761",
+      "classification": "assisted",
+      "sources": ["domain-services-overview", "domain-services-replicas", "domain-services-arm", "terraform-domain-services", "terraform-domain-services-implementation", "terraform-replica-resource"],
+      "review_resource_types": ["Microsoft.AAD/domainServices"],
+      "review_fact_paths": ["domainServiceSku", "replicaConfiguration"],
+      "evidence_requirements": [
+        "Preparation: RG-scoped Microsoft.AAD/domainServices explicit SKU and at most five embedded replicas, each with normalized configured location and typed unique subnet. Known scoped subnet/VNet joins are partial configuration context only.",
+        "Reviewer decision: reconcile the full replica population and actual supported regions/subscriptions, Enterprise/Premium requirement for multiple replicas, full-mesh VNet connectivity and required redundant regional workload placement.",
+        "Reviewer decision: substantiate actual replication/service health and geographical recovery separately. All managed replicas share one AD site. Terraform's initial_replica_set is explicitly a supplied subset; separately managed provider replicas are not invented ARM child resources or absence evidence."
+      ],
+      "limitations": "No configured count, SKU, region label or subnet binding proves healthy replicas, supported current capacity, complete population or application recovery. Raw domain names, IPs, diagnostics, notifications, certificates and trust/password material are withheld. No new live route.",
+      "flags": []
+    },
+    {
+      "upstream_id": "B03.14",
+      "guid": "1cf0b8da-70bd-44d0-94af-8d99cfc89ae1",
+      "classification": "assisted",
+      "sources": ["entra-log-integration", "entra-log-prerequisites", "entra-diagnostics-tenant-schema", "landing-zone-roles"],
+      "evidence_requirements": [
+        "Preparation: current Entra integration/prerequisite questions and explicit tenant-plane limitation. Actual microsoft.aadiam/diagnosticSettings is tenant-only, unlike Microsoft.Insights/diagnosticSettings; no subscription-scope synthetic directory diagnostic record or new tenant scope.",
+        "Reviewer decision: cite independently authorized, redacted directory AuditLogs/SignInLogs category routing and actual platform-central workspace ownership/destination configuration, with separate directory Security Administrator and workspace/data-access authorization.",
+        "Reviewer decision: demonstrate successful arriving tenant log coverage, time window, agreed retention, query/alert suitability and operating responsibilities with attributable references. Azure activity/resource diagnostics, a workspace or configured route alone cannot establish Entra ingestion or central integration."
+      ],
+      "limitations": "Tenant diagnostics are unsupported within the existing assessment/collection boundary and remain an explicit human-evidence gap. No Graph/Entra/log read, query execution, raw sign-in/audit record, fabricated category or data-plane payload.",
+      "flags": []
+    },
+    {
+      "upstream_id": "B03.15",
+      "guid": "984a859c-773e-47d2-9162-3a765a917e1f",
+      "classification": "assisted",
+      "sources": ["emergency-access", "mandatory-mfa-current", "landing-zone-roles"],
+      "evidence_requirements": [
+        "Preparation: current source-backed emergency operating and authentication questions only; the frozen October 2024 statement is historical, not universal current tenant enforcement.",
+        "Reviewer decision: separately substantiate the scoped emergency account operating model, at least two cloud-only accounts, permanent-active emergency GA exception, no federation dependency, authorized shared-versus-individual model, safe separate custody, secure workstations, use alerts, post-use review and at-least-90-day validation using redacted dated references.",
+        "Reviewer decision: separately substantiate phishing-resistant passkey/FIDO2 or appropriate certificate-based MFA, independent dependencies from normal admin methods and non-expiring/non-cleaned credentials/devices. Reconcile blocking/restricting Conditional Access exclusions separately from report-only policies and mandatory MFA; neither configuration nor an exception invents authentication success.",
+        "Reviewer decision: reconcile applicable enforcement phase and tenant rollout: phase 1 portals CRUD from October 2024, phase 2 gradually from October 1 2025 CLI/PowerShell/IaC/control-plane create/update/delete with read operations excluded; workload identities are unaffected. No account identifiers, method registrations, credential/passkey/certificate data or test sign-ins."
+      ],
+      "limitations": "Emergency account operations and strong-authentication suitability remain separate blank decisions, never Azure RBAC or configured-flag outcomes. No account creation, permission/PIM/MFA/CA/credential operation, login, validation drill or claim of current tenant rollout.",
+      "flags": []
+    }
+  ],
+  "source_acquisition_notes": [
+    "Initial overview marker checks encountered a Unicode nonbreaking hyphen in stand-alone wording. Only content markers changed; no source URL or factual finding was inferred from the mismatch.",
+    "Initial guessed provider domainservices/domain_service_resource.go returned HTTP 404. The actual pinned active_directory_domain_service_resource.go was located and reviewed; only that successful source is captured.",
+    "Only attribution, source metadata and independently authored factual findings are redistributed; no upstream articles, provider implementations, sample credentials or log payloads are copied."
+  ]
+}

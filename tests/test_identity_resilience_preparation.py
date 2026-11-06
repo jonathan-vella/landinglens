@@ -4,13 +4,14 @@ import json
 import os
 import tempfile
 import unittest
+from importlib.resources import files
 from pathlib import Path
 from unittest.mock import patch
 
 from alz_assessor.arm import API_VERSIONS, PLANNED_API_VERSIONS, arm_source, properties
 from alz_assessor.bicep import compile_bicep
 from alz_assessor.catalog import load_catalog
-from alz_assessor.contracts import control_digest, document, validate
+from alz_assessor.contracts import control_digest, digest, document, validate
 from alz_assessor.engine import assess
 from alz_assessor.identity_evidence import (
     DEFINITION_KIND,
@@ -193,7 +194,9 @@ class IdentityResiliencePreparationTests(unittest.TestCase):
         self.assertEqual(matrix["review_state"], "source-reviewed-preparation-not-accepted")
         self.assertNotIn("catalog_version", matrix)
         self.assertNotIn("accepted_at", matrix)
-        self.assertFalse((fixed.parent / "batch-05.json").exists())
+        accepted = json.loads((fixed.parent / "batch-05.json").read_text())
+        self.assertEqual(accepted["review_state"], "owner-delegated-source-backed-matrix")
+        self.assertEqual(accepted["recommendations"], matrix["recommendations"])
         rows = matrix["recommendations"]
         self.assertEqual({r["upstream_id"]: r["guid"] for r in rows}, GUIDS)
         sources = json.loads((PREPARATION / "batch-05-sources.json").read_text())["sources"]
@@ -215,14 +218,102 @@ class IdentityResiliencePreparationTests(unittest.TestCase):
             )
             self.assertNotIn("rule", row)
             self.assertTrue(row["limitations"])
-        current = load_catalog()
-        self.assertEqual(len(current["controls"]), 255)
-        for control in current["controls"]:
+        historical = load_catalog(
+            str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.10.json"))
+        )
+        self.assertEqual(len(historical["controls"]), 255)
+        for control in historical["controls"]:
             if control["upstream_guid"] in GUIDS.values():
                 self.assertIsNone(control["rule"])
                 self.assertNotIn("review_fact_paths", control)
-        self.assertFalse(
-            any(set(q["controls"]) & {"ALZ-" + g for g in GUIDS.values()} for q in BANK.values())
+        registered = BANK["identity-resilience-roles-emergency-access"]
+        self.assertEqual(set(registered["controls"]), {"ALZ-" + g for g in GUIDS.values()})
+        self.assertIn("Separately evidence emergency operating", registered["question"])
+        self.assertIn("Separately evidence phishing-resistant", registered["question"])
+
+    def test_exact_predecessor_objects_sources_counts_and_122_prior_receipts(self):
+        data = files("alz_assessor").joinpath("data")
+        for name, expected in (
+            (
+                "catalog-2026-11-06.12.json",
+                "ce02d3d63cf078637e7702a6cbb7b47f2858eeb9320da002784c2a0fcf7ad4ed",
+            ),
+            (
+                "crosswalk-2026-11-06.12.json",
+                "93808594a67f5439ab7075a3dcc52d69ced8a67ea9fec62a4d17e054f5b9e79f",
+            ),
+        ):
+            self.assertEqual(hashlib.sha256(data.joinpath(name).read_bytes()).hexdigest(), expected)
+        current = load_catalog()
+        self.assertEqual(current["catalog_version"], "2026-11-06.13")
+        self.assertEqual(
+            {
+                key: sum(c["automation"] == key for c in current["controls"])
+                for key in ("automated", "assisted", "manual")
+            },
+            {"automated": 12, "assisted": 200, "manual": 43},
+        )
+        previous = load_catalog(str(data.joinpath("catalog-2026-11-06.12.json")))
+        before = {c["upstream_guid"]: c for c in previous["controls"]}
+        for control in current["controls"]:
+            if control["upstream_guid"] not in GUIDS.values():
+                self.assertEqual(control, before[control["upstream_guid"]])
+        original = load_catalog(str(data.joinpath("catalog-2026-11-04.2.json")))
+        by_id = {c["control_id"]: c for c in current["controls"]}
+        for control in original["controls"]:
+            if control["automation"] == "automated":
+                self.assertEqual(
+                    control_digest(control), control_digest(by_id[control["control_id"]])
+                )
+        frozen = json.loads(data.joinpath("crosswalk-2026-11-06.12.json").read_text())
+        active = json.loads(data.joinpath("crosswalk.json").read_text())
+        for field in ("entries", "sources"):
+            self.assertEqual(active[field], frozen[field])
+        reference = ROOT / "references" / "recommendation-batches"
+        ledger = json.loads((reference / "ledger.json").read_text())
+        old_rows = [
+            r for r in ledger["recommendations"] if r["batch"] != "05" and r["status"] == "merged"
+        ]
+        self.assertEqual(len(old_rows), 122)
+        self.assertEqual(
+            digest(old_rows), "612ffb79b99b05ef04b8a7d8991f3e96e47c6eff1c3f1653720117bfd2273703"
+        )
+        receipts = {key: value for key, value in ledger["deliveries"].items() if key != "05"}
+        self.assertEqual(len(receipts), 14)
+        self.assertEqual(
+            digest(receipts), "0e854761945f5a853b8ef386234ee9a46fc47c76834e915f4af58ca96fa5bf46"
+        )
+        self.assertEqual(
+            json.loads((reference / "batch-05-sources.json").read_text())["sources"],
+            json.loads((PREPARATION / "batch-05-sources.json").read_text())["sources"],
+        )
+
+    def test_registered_blank_interview_and_actual_accepted_package_replay(self):
+        catalog, bundle = load_catalog(), self.bundle()
+        report = assess(bundle, catalog, at=AT, evidence_tiers=True)
+        response = prepare_interview(
+            report, catalog, "identity-resilience-roles-emergency-access", SCOPE
+        )
+        self.assertEqual(len(response["decisions"]), 8)
+        self.assertTrue(all(d["outcome"] is None for d in response["decisions"]))
+        for field in ("answer", "reviewer", "rationale", "evidence", "valid_from", "valid_until"):
+            self.assertIsNone(response[field])
+        with self.assertRaises(InputError):
+            compile_interview(response, catalog, at=AT)
+        self.assertEqual(
+            ReviewSession(bundle, catalog, self.root / "accepted-session").state()["records"], []
+        )
+        export_bundle(self.root / "accepted-successor", bundle, catalog, at=AT, evidence_tiers=True)
+        replayed = replay_bundle(self.root / "accepted-successor")
+        self.assertEqual(replayed["catalog_version"], "2026-11-06.13")
+        self.assertEqual(semantic(replayed), semantic(report))
+        for display in ("B03.09", "B03.10", "B03.11", "B03.13"):
+            control = next(c for c in catalog["controls"] if c["upstream_id"] == display)
+            self.assertEqual(
+                review_context(control, bundle), review_context(control, sanitize_evidence(bundle))
+            )
+        self.assertTrue(
+            all(r["observed"]["evidence_tier"] != "verified" for r in self.own(replayed))
         )
 
     def test_minimized_vm_zones_availability_sets_and_explicit_counts(self):

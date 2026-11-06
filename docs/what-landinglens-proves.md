@@ -40,11 +40,11 @@ No current regional/port availability, achieved throughput/latency, working
 FastPath, operational redundancy or economic suitability follows from settings.
 ARM scale support does not imply the pinned Terraform provider supports it.
 
-## Cohort 05: identity preparation, not accepted delivery
+## Cohort 05: identity configuration, not runtime assurance
 
-The [eight-GUID preparation matrix](../references/preparation/batch-05.json)
-and [25 source captures](../references/preparation/batch-05-sources.json) do not
-activate an accepted catalog or interview. Explicit VM zones/location,
+The [eight-GUID accepted matrix](../references/recommendation-batches/batch-05.json)
+and [25 preserved captures](../references/recommendation-batches/batch-05-sources.json)
+precede `.6.13`; activation alone is not merged delivery. Explicit VM zones/location,
 availability-set bindings/domain counts, Azure role types/assignable-scope counts
 and managed-domain replica subnet/location configurations are partial context
 only. Terraform's initial replica is a supplied subset; separate provider replica

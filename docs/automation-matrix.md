@@ -33,11 +33,41 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.12` retains all 255 entries: 12 automated, 200 assisted
-and 43 manual. Crosswalk `2026-11-06.12` rebinds the unchanged 51-control,
+Current successor `2026-11-06.13` retains all 255 entries: 12 automated, 200 assisted
+and 43 manual. Crosswalk `2026-11-06.13` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-Exact predecessor `.6.11` is frozen; source-matrix acceptance alone is not delivery.
+Exact predecessor `.6.12` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
+
+### Cohort 05: identity resilience, roles and emergency access
+
+The [eight-GUID matrix](../references/recommendation-batches/batch-05.json) and
+[25 preserved source captures](../references/recommendation-batches/batch-05-sources.json)
+precede `.6.13`. Seven assisted recommendations and inherently manual B03.12
+reuse existing adapters, reviews, tiers, reports, local sessions, interviews and
+original-time packaged replay. No new whole-recommendation predicate is added.
+Explicit VM zone/location and availability-set counts, Azure role types and
+supported assignable-scope counts, and embedded managed-domain replica subnet/
+location configurations are bounded preparation. Provider composite IDs must
+match actual typed ARM identities; only unique known in-scope bindings can
+supply linked context. Terraform's initial replica remains a supplied subset.
+
+Azure RBAC does not establish Entra authority or effective team access; adequate
+built-in roles precede custom roles in current guidance. Names/tags/VM type
+cannot identify DCs or their full population. Self-managed AD DS sites and local
+DC use need independent evidence; managed Domain Services replicas all share one
+AD site and require suitable SKU/subscription/region/full-mesh/workload design.
+Configuration proves neither health, compatibility nor recovery.
+
+Actual Entra diagnostic settings are tenant-only and remain unsupported within
+the assessor's existing scope; subscription resource diagnostics and a workspace
+cannot manufacture directory log routing or ingestion. Emergency operating and
+phishing-resistant authentication evidence remain separate blank decisions.
+Current phase-specific mandatory MFA and emergency guidance replace the frozen
+October2024 generalization for review, not historical text. All eight outcomes
+stay blank until explicitly supplied with content/scope/time-bound attribution.
+No live directory/guest/log read, query/probe, identity/credential operation,
+raw role actions or personal/credential/certificate material is introduced.
 
 ### Cohort 20: Virtual WAN topology, routing and capacity
 
