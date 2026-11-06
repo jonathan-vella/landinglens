@@ -1,5 +1,71 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 06 accepted integration: 2026-11-06
+
+The coordinator explicitly granted [#136](https://github.com/jonathan-vella/landinglens/issues/136)
+the sole slot after actual27 implementation137/receipt138 and29
+implementation140/receipt141, completed issues and checked final-main CI.
+Preserved preparation `a236efa` reconciles actual main
+`7ae946c13ec65d944cb53b202767c6291f24dfe1` in merge `2715602`, retaining
+Policy strategy and platform-delivery bank interfaces and all sixteen preceding
+actual compiler cases. The [eight-GUID matrix](../../references/recommendation-batches/batch-06.json)
+and [20 unchanged captures](../../references/recommendation-batches/batch-06-sources.json)
+activate unique successor `2026-11-06.19` through existing offline builders.
+Exact `.18` catalog bytes:
+`a58150914707743c01ee8cbb757398121dbd33391ba60c36be8503d894d01a47`;
+crosswalk bytes:
+`7334d784b5eb6b6273fff9b690da7c9fb8f36b4f443e01bfc0de2729e1974fae`.
+Every non-own full control, original four controls/hashes, fixed251/all255,
+all169 older own rows and twenty receipts remain unchanged.
+
+Seven assisted workflows and manual B05.01 reuse existing engine/adapters,
+scope/content/time/expiry-bound reviews/interviews, tiers, reports/trackers,
+CLI/local-session and packaged original-time replay. Only explicit scoped vault
+RBAC configuration and typed peering-to-two-VNet context provide Signals.
+Missing/duplicate/wrong-kind/denied/foreign/self-linked/over-bound inputs remain
+unknown. No VNet/VM name establishes identity/hub/DC designation, connectivity
+flags prove no runtime isolation/authentication, and vault configuration proves
+no effective data access or storage/SQL authority. All eight outcomes stay blank;
+exceptions and humanConfirmed never manufacture technical Verified.
+
+Actual source qualifications preserve Connect's maintained active-passive/manual
+switch and password catch-up, cloud-native Entra roles and separate synced-account
+exceptions, the legacy App Proxy404/current overview and connector HA, service-
+specific data planes/new-vault API defaults, PIM start snapshots/coverage/
+completion/application/group differences, EA account versus subscription authority/
+upcoming WSA rule and manual sovereignty/location limitations. No directory/PIM/
+Connect/App Proxy/billing/employee-location transport, new live route, permission,
+query execution, operational decision, dependency or compiler acquisition occurs.
+The new genuine peering/VNet/vault compiler case is seventeenth, not a dummy
+directory/manual fixture. Dispositions stay12/200/43 and crosswalk stays51/53.
+Delivery remains169 delivered/82 pending until actual checked implementation,
+guarded own-eight receipt publication and final-main CI satisfy their gates.
+
+The first accepted full checkout run exposed an actual source-scope defect:
+a subscription-level synthetic vault ID could receive the new data-plane Signal.
+The helper now requires the reviewed RG-scoped resource shape for vaults, VNets
+and peering children; executable subscription-level/unsupported-child negative
+cases and the original workspace cases pass without changing their expectations.
+The first663-test run's two failures, interrupted superseded installed run and
+wheel `d073deb4acee1092449d7692d84e83558b7ecab9df17ee30197975c82924fcc6`
+remain invalidated history, not acceptance. Corrected local compiler proof
+exercises all seventeen genuine cases without skips or restore.
+
+Corrected checkout and own exact installed-wheel suites each ran **663 tests**:
+662 passed with only the original Windows symlink-privilege skip. All27 cohort06
+preparation/accepted cases pass, including actual registered blank decisions,
+accepted-package original-time replay and predecessor rejection of new review
+meaning. Format/lint,45-source-file typing, dependency consistency and460 local
+documentation links pass. Final offline wheel SHA256:
+`3f500d0e70fc5b212e522b152f8dfe6d7c2674dfb07e3fd44a061c57fe534bff`.
+All136 package members match checkout and the dedicated own outside-checkout
+`site-packages` `.19` installation. This final implementation wheel, not either
+earlier preparation or invalidated accepted wheel, is the later recorder input.
+No new dependency was acquired; the own environment uses the three previously
+manifest/hash-reviewed runtime wheels, offline. Exact-head remote platform/
+CodeQL/security/review and four downloaded exercised compiler proofs still
+gate the normal implementation merge.
+
 ## Cohort 06 independent preparation: 2026-11-06
 
 [#136](https://github.com/jonathan-vella/landinglens/issues/136) owns the fixed

@@ -6,8 +6,43 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.18"
+BANK_VERSION = "2026-11-06.19"
 BANK = {
+    "hybrid-identity-entitlements-sovereignty": {
+        "question": "Decide all eight GUIDs independently using attributable redacted evidence "
+        "and the control-specific requirements. For Connect Sync, distinguish maintained "
+        "active/passive staging, pending-export checks and actual recovery, isolate the former "
+        "active server and review password catch-up; do not assume Cloud Sync equivalence. "
+        "Establish Entra role identity provenance and independently justify every required "
+        "synced-account exception, not Azure RBAC or VM naming. Substantiate central Application "
+        "Proxy ownership, workload handoffs, connector groups, independent outbound failure "
+        "domains, updates and actual SSO/availability; the old link is unavailable and current "
+        "reviewed replacements apply. Identify actual identity services and approved VNet/hub "
+        "boundaries, then substantiate both-direction effective segmentation and authentication, "
+        "not peering flags. Review resource-specific vault/storage/SQL data-plane permissions "
+        "and actual use independently of control-plane Owner and newer API defaults. Establish "
+        "PIM populations, licensing, active/eligible and group coverage, cadence and actual "
+        "snapshot-bound completed/applied reviews, not recurrence configuration. Establish "
+        "actual EA enrollment account owners and least privilege, not subscription Owner "
+        "counts; distinguish one owner per account from an invented enrollment threshold and "
+        "the upcoming WSA rule from existing MSA assignments. Separately establish organization-"
+        "approved sovereign administrator eligibility, service/task/country boundaries, real "
+        "enforcement and support/emergency exceptions; IP/GPS signals and the FSI example are "
+        "not nationality or complete sovereignty assurance. Retain no principal/contact/secret/"
+        "query/billing/employee-location payloads. Leave all eight outcomes independently blank "
+        "until explicit scope/content/time/expiry-bound confirmation. B05.01 remains manual; "
+        "Signals, exceptions and humanConfirmed never manufacture Verified.",
+        "controls": [
+            "ALZ-cd163e39-84a5-4b39-97b7-6973abd70d94",
+            "ALZ-35037e68-9349-4c15-b371-228514f4cdff",
+            "ALZ-d5d1e4e6-1465-48d3-958f-d77249b82111",
+            "ALZ-9cf5418b-1520-4b7b-add7-88eb28f833e8",
+            "ALZ-d4d1ad54-1abc-4919-b267-3f342d3b49e4",
+            "ALZ-d505ebcb-79b1-4274-9c0d-a27c8bea489c",
+            "ALZ-0ce74f19-9abb-47e4-ae95-6b057a1d2be9",
+            "ALZ-1770a2ac-c194-4e5c-ade4-82939d38a510",
+        ],
+    },
     "platform-team-delivery-vending": {
         "question": "Reconcile actual cross-functional IT/security/compliance/business "
         "representation "

@@ -40,12 +40,14 @@ No current regional/port availability, achieved throughput/latency, working
 FastPath, operational redundancy or economic suitability follows from settings.
 ARM scale support does not imply the pinned Terraform provider supports it.
 
-## Cohort 06: preparation, not accepted identity or sovereignty assurance
+## Cohort 06: configuration and decisions, not identity or sovereignty assurance
 
-The [eight-GUID preparation matrix](../references/preparation/batch-06.json)
-and [20 reviewed captures](../references/preparation/batch-06-sources.json)
-are independent preparation for [#136](https://github.com/jonathan-vella/landinglens/issues/136),
-not accepted catalog, interview-bank activation or delivery. Existing typed peering
+The [eight-GUID accepted matrix](../references/recommendation-batches/batch-06.json)
+and [20 unchanged captures](../references/recommendation-batches/batch-06-sources.json)
+activate `.19` after [#136](https://github.com/jonathan-vella/landinglens/issues/136)
+receives the explicit sole slot following checked27/29 delivery. Original
+preparation and invalidated/final proofs remain historical, not delivery.
+Existing typed peering
 flags require unique known in-bound source/remote VNets; explicit vault RBAC flags
 describe only the supplied data-plane model. No VNet is inferred to be an identity
 network or hub, and neither configuration proves authentication, isolation,
@@ -62,7 +64,8 @@ the upcoming2026-11-16 EA WSA rule does not retroactively invalidate existing MS
 No directory/PIM/Connect/App Proxy/billing/employee-location transport, new live
 read, query, permission change, operational approval or human decision is added.
 All eight outcomes stay independent; Signals and exceptions never create Verified.
-Activation, merged implementation and guarded receipts remain separately gated.
+Accepted support, merged implementation and guarded receipts remain distinct;
+checked receipt publication and final-main CI still gate delivery and closure.
 
 ## Cohort 29: manual platform operation, not local configuration assurance
 

@@ -204,8 +204,9 @@ class HybridIdentityPreparationTests(unittest.TestCase):
         )
         self.assertTrue(
             all(
-                not {"ALZ-" + guid for guid in HYBRID_GUIDS}.intersection(q["controls"])
-                for q in BANK.values()
+                not c.get("review_fact_paths")
+                for c in predecessor["controls"]
+                if c["upstream_guid"] in HYBRID_GUIDS
             )
         )
 
@@ -308,6 +309,13 @@ class HybridIdentityPreparationTests(unittest.TestCase):
         self.assertEqual(context["matching_resources"], 101)
 
     def test_vault_boolean_types_no_default_and_no_cross_kind_fact(self):
+        for identity in (
+            VAULT.replace("/resourcegroups/authored", ""),
+            VAULT + "/secrets/unsupported",
+        ):
+            bundle = self.bundle()
+            bundle["resources"][3]["arm_id"] = identity
+            self.assertIn("unknown", self.context(bundle, 3))
         for value in (True, False, None, "true", 1, [], {"unknown": "denied"}):
             bundle = self.bundle()
             bundle["resources"][3]["properties"]["enableRbacAuthorization"] = value

@@ -67,9 +67,14 @@ def hybrid_context(
 
     def known(identity: Any, kind: str) -> dict[str, Any] | None:
         ref = typed_reference(identity, (kind,))
+        parts = ref.split("/") if isinstance(ref, str) else []
         matches = by_id.get(ref, []) if isinstance(ref, str) else []
         if (
-            len(matches) != 1
+            len(parts) != (11 if kind == PEERING_KIND else 9)
+            or parts[1] != "subscriptions"
+            or parts[3] != "resourcegroups"
+            or parts[5] != "providers"
+            or len(matches) != 1
             or matches[0].get("state") != "known"
             or matches[0].get("resource_type", "").lower() != kind
             or typed_reference(matches[0].get("arm_id"), (kind,)) != ref

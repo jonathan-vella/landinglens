@@ -100,13 +100,16 @@ records remain traceable under explicit lifecycle semantics.
 ## Active increment: fixed recommendation expansion
 
 Cohort06/[#136](https://github.com/jonathan-vella/landinglens/issues/136)
-independently prepares eight fixed hybrid identity/data-access/review/enrollment/
-sovereignty workflows from20 reviewed public captures. Only bounded existing
-peering/VNet and explicit vault RBAC context is machine-prepared; directory/
-operational/ownership/eligible-country decisions remain independently blank and
-B05.01 stays manual. No accepted catalog/bank/crosswalk/count/history activation
-or delivery is claimed before the explicit coordinator slot after27/29.
-See [preparation boundaries](plan.md#cohort-06-independent-preparation-2026-11-06).
+integrates eight fixed hybrid identity/data-access/review/enrollment/sovereignty
+workflows in reviewed successor `.19` after the explicit slot and actual27/29
+checked delivery. All20 preparation captures/times remain unchanged. Only bounded
+existing peering/two-VNet joins and explicit vault RBAC context provide Signals;
+directory/operational/ownership/eligible-country decisions stay independently
+blank and B05.01 stays manual. Exact `.18`, every non-own full control, all169
+older rows/twenty receipts and original four controls remain frozen.
+Counts stay12/200/43; actual checked implementation/guarded receipt publication/
+final-main CI still gate delivery and closure.
+See [integration boundaries](plan.md#cohort-06-accepted-integration-2026-11-06).
 
 Cohort29/[#133](https://github.com/jonathan-vella/landinglens/issues/133)
 integrates seven manual platform-team/function/autonomy/delivery/
