@@ -262,7 +262,7 @@ class EfficiencyDeliveryTests(unittest.TestCase):
             (repository / "references/recommendation-batches/ledger.json").read_text()
         )
         self.assertEqual(len(ledger["recommendations"]), 251)
-        self.assertEqual(sum(row["status"] == "merged" for row in ledger["recommendations"]), 45)
+        self.assertEqual(sum(row["status"] == "merged" for row in ledger["recommendations"]), 53)
         self.assertEqual(
             {row["batch"] for row in ledger["recommendations"] if row["status"] == "merged"},
             set(ledger["deliveries"]),
@@ -273,9 +273,6 @@ class EfficiencyDeliveryTests(unittest.TestCase):
                 self.assertEqual(
                     (row["pr"], row["merge_commit"]), (receipt["pr"], receipt["merge_commit"])
                 )
-            elif row["batch"] == "04":
-                self.assertEqual(row["status"], "implementation-in-progress")
-                self.assertIsNone(row["merge_commit"])
             else:
                 self.assertEqual(row["status"], "pending")
                 self.assertIsNone(row["merge_commit"])

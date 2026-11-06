@@ -19,7 +19,7 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
-## Cohort 04 in progress: 2026-11-06
+## Cohort 04 delivered: 2026-11-06
 
 After checked cohort11 and receipt merges, the next existing priority is
 [#94](https://github.com/jonathan-vella/landinglens/issues/94). Its eight-GUID
@@ -57,6 +57,24 @@ role fixture, without restoration or compiler skips. Wheel SHA256:
 `a50824859e6d50ac9c8381792f568dab891257e83cfe2f27c8580871d581b24e`.
 Every earlier catalog byte and own-cohort receipt is unchanged; no new
 dependency, live Azure/directory access or human decision was introduced.
+
+[#96](https://github.com/jonathan-vella/landinglens/pull/96) merged as
+`89376e16db6d125a2d73a22a09b994679d4ea1ff` at 2026-11-06T08:45:59Z.
+Exact checked head `443f8e9f335eac77011741138285ced1c1e4cb94` passed all eight
+supported jobs in runs `42189483791`/`42189513347` plus applicable CodeQL.
+All four downloaded compiler artifacts exercised the same four actual cases
+without skips. The guarded recorder verified the actual merged PR/head/runs/
+artifacts and bound all eight GUIDs to their own `deliveries.04` receipt.
+No review/protection/ruleset was configured or bypassed. The fixed ledger is
+**53 merged / 198 pending**; cohort13 is next in the source/dependency review
+priority. This is source/fixture/saved/injected and installed-CLI verified, not
+new directory-policy, access, authentication or live Azure verification.
+The final receipt/formatting follow-up passed 336 local and exact-installed tests,
+335 passed and the original Windows privilege skip, with format/lint/type/
+dependency checks green. One installed-suite attempt encountered a Windows
+temporary-directory rename `PermissionError` in unchanged review-session setup;
+the same 12 review-session tests and full installed suite then passed unchanged.
+No catch, retry path, permission change or weakened test was added to hide it.
 
 ## Continuing all remaining cohorts: 2026-11-06
 
@@ -113,10 +131,12 @@ and all eight jobs, downloads all four PR compiler artifacts and rejects skipped
 missing or inconsistent cases before atomically replacing ledger content.
 It validates fixed membership and earlier own-cohort receipts, records the actual
 wheel hash/local totals and refuses to replace a different historical receipt.
-Six executable tests cover successful/idempotent recording and unchanged-ledger
+Seven executable tests cover successful/idempotent recording and unchanged-ledger
 failure on unmerged/wrong-base/wrong-head/failed/missing/other-workflow jobs,
 unexercised compiler cases, changed targets, changed historical receipts and
 concurrent external edits with targeted temporary-file cleanup.
+Existing ledger line endings are preserved so a receipt does not rewrite unrelated
+historical record formatting.
 It grants no permissions and performs no merge or Azure operation.
 The receipt/recorder follow-up passed 326 local and exact-installed tests:
 325 passed and the same explicit Windows privilege skip. Format/lint, type and

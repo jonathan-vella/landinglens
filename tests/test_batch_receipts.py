@@ -175,3 +175,12 @@ class BatchReceiptTests(unittest.TestCase):
             self.tool.record("11", 93, [1, 2], self.wheel, 320, 1, root=self.root, run=concurrent)
         self.assertEqual(target.read_bytes(), external)
         self.assertEqual(list(self.review.glob(".ledger-*.tmp")), [])
+
+    def test_preserves_existing_ledger_line_endings(self):
+        target = self.review / "ledger.json"
+        text = json.dumps(self.ledger, indent=2) + "\n"
+        target.write_bytes(text.replace("\n", "\r\n").encode("utf-8"))
+        self.record()
+        content = target.read_bytes()
+        self.assertIn(b"\r\n", content)
+        self.assertNotIn(b"\n", content.replace(b"\r\n", b""))
