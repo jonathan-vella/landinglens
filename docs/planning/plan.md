@@ -30,6 +30,14 @@ exact manifest/hash-reviewed runtime wheels; no shared environment changed.
 Current retirement/source qualifications and no-live-operation boundaries are
 preserved throughout acceptance.
 
+The first post-slot721-test own-wheel run failed only the current-bank count
+assertion (19 versus the actual20 registered questions); its720 other outcomes
+include the original Windows symlink-privilege skip. The assertion is updated
+to the exact new count, not removed or weakened. Implementation head `d326f79`
+and its push `42310955297` / PR `42310977972` runs are invalidated for acceptance;
+the corrected head requires fresh complete gates. Earlier preparation proofs
+and this failed attempt are retained, never presented as green delivery.
+
 ## Historical cohort 25 independent preparation: 2026-11-06
 
 [#142](https://github.com/jonathan-vella/landinglens/issues/142) is preparation
