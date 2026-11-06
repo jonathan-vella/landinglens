@@ -73,6 +73,37 @@ Exact wheel SHA256:
 Platform CI, downloaded compiler artifacts, normal checked merge and actual
 own-GUID receipts remain delivery gates, not assumed from these local results.
 
+[#107](https://github.com/jonathan-vella/landinglens/pull/107) merged normally as
+`64d18c84fe5831d90423f06984d73dd2fc671028` at 2026-11-06T11:03:49Z.
+Exact checked head `da4dfa054cd3e44348c53d4a53289066e48f5aae` passed all eight
+supported jobs in push/PR runs `42206494462` / `42206544372`, CodeQL run
+`42206542315` and the applicable AI-findings run `42206548556`.
+All four downloaded compiler artifacts exercised identical seven-case coverage
+without skips: IDs `13496484161`, `13497625015`, `13497375707`, `13495834551`.
+Their JSON SHA256 is
+`0152e4ac902d26dd275fb5ac5c5d8aad9e00def9543343123e082d6acab95d7f`
+on Ubuntu and
+`66e99709547173e16a6107fd02bcd4dc52fab987a7ffb14051ea7e41ed54cf50`
+on Windows. Exact head, actual main, all check-runs and reviews were refreshed
+immediately before normal SHA-bound merge. No required review, branch protection
+or ruleset was configured or bypassed.
+
+The guarded recorder reverified actual merged PR/head/runs/compiler artifacts
+and the own installed wheel, then bound all nine GUIDs to `deliveries.14`.
+All 71 earlier receipt rows and all eight earlier cohort receipts are unchanged.
+The actual ledger is **80 merged / 171 pending**; cohort12 is next by current
+severity/crosswalk priority. Checked receipt publication remains the closure
+gate. This is source/fixture/saved/injected and installed-CLI acceptance, not
+new live Azure, demand, regional availability, costs, routing, performance,
+on-premises redundancy or an invented human decision.
+
+The receipt/invariant follow-up passed **382 local and exact-installed tests**:
+381 passed with the same original Windows privilege skip. The exact implementation
+wheel above is unchanged. A new own-GUID receipt assertion freezes all 71 prior
+rows and eight prior cohort receipts; cohort22's historical count remains 71
+within its exact completed cohorts, not redefined as the new global total.
+Format/lint, 37-source-file type checks and dependency consistency passed.
+
 ## Cohort 22 integration: 2026-11-06
 
 The coordinator granted [#100](https://github.com/jonathan-vella/landinglens/issues/100)

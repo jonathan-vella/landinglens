@@ -14,7 +14,7 @@ from alz_assessor.arm import properties as arm_properties
 from alz_assessor.azure import Collector, Response
 from alz_assessor.bicep import compile_bicep
 from alz_assessor.catalog import load_catalog
-from alz_assessor.contracts import control_digest, document, validate
+from alz_assessor.contracts import control_digest, digest, document, validate
 from alz_assessor.engine import assess, local_subchecks
 from alz_assessor.expressroute_evidence import (
     PATHS,
@@ -1027,6 +1027,45 @@ class ExpressRoutePreparationTests(unittest.TestCase):
             bundle, catalog, self.root / "cohort14-session", clock=lambda: AT, evidence_tiers=True
         )
         self.assertEqual(session.state()["records"], [])
+
+    def test_actual_own_guid_receipts_and_unchanged_prior_71_records(self):
+        ledger = json.loads(
+            (ROOT / "references" / "recommendation-batches" / "ledger.json").read_text()
+        )
+        receipt = ledger["deliveries"]["14"]
+        self.assertEqual(receipt["pr"], "https://github.com/jonathan-vella/landinglens/pull/107")
+        self.assertEqual(receipt["merge_commit"], "64d18c84fe5831d90423f06984d73dd2fc671028")
+        self.assertEqual(receipt["checked_head"], "da4dfa054cd3e44348c53d4a53289066e48f5aae")
+        self.assertEqual(
+            receipt["wheel_sha256"],
+            "df723f455bd646a432fd911015df5d53fba4e043d720dfa596d83d562875b851",
+        )
+        self.assertEqual(
+            receipt["local_installed_suite"], {"tests": 381, "passed": 380, "skipped": 1}
+        )
+        self.assertEqual(len(receipt["compiler_integration_cases"]), 7)
+        own = [row for row in ledger["recommendations"] if row["batch"] == "14"]
+        self.assertEqual({row["guid"] for row in own}, set(GUIDS.values()))
+        self.assertTrue(
+            all(
+                row["status"] == "merged"
+                and row["pr"] == receipt["pr"]
+                and row["merge_commit"] == receipt["merge_commit"]
+                for row in own
+            )
+        )
+        batches = ("01", "04", "11", "13", "17", "18", "19", "22")
+        self.assertEqual(
+            digest({key: ledger["deliveries"][key] for key in batches}),
+            "c006a7b3be4ae4976c13f2263d299b6a4ec72e755da53d2a239a36a2704f41bd",
+        )
+        previous = {
+            row["guid"]: row for row in ledger["recommendations"] if row["batch"] in batches
+        }
+        self.assertEqual(len(previous), 71)
+        self.assertEqual(
+            digest(previous), "cfef9bbfb0b52083501d31a5f16a457be4e98f6c571b2c045545b0cac4a89748"
+        )
 
     @unittest.skipUnless(os.environ.get("BICEP_COMPILER"), "existing Bicep compiler not supplied")
     def test_real_bicep_expressroute_cost_capacity_fastpath_without_restore(self):

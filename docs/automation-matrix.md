@@ -33,10 +33,10 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Working successor `2026-11-06.7` retains all 255 entries: 10 automated, 202 assisted
+Current successor `2026-11-06.7` retains all 255 entries: 10 automated, 202 assisted
 and 43 manual. Crosswalk `2026-11-06.7` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-The delivered predecessor is `.6.6`; source-matrix acceptance is not delivery.
+Exact predecessor `.6.6` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
 
 ### Cohort 14: ExpressRoute cost, FastPath and gateway resilience
