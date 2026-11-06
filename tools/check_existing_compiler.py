@@ -54,6 +54,10 @@ if compiler:
         "test_real_bicep_tenant_configuration_without_restore",
         "test_policy_strategy_preparation.PolicyStrategyPreparationTests."
         "test_real_bicep_policy_strategy_without_restore",
+        "test_hybrid_identity_preparation.HybridIdentityPreparationTests."
+        "test_real_bicep_peering_and_vault_configuration_without_restore",
+        "test_topology_preparation.TopologyPreparationTests."
+        "test_real_bicep_vnet_routing_attachment_without_restore",
         "test_platform_health_preparation.PlatformHealthPreparationTests."
         "test_real_bicep_platform_health_configuration_without_restore",
     ]

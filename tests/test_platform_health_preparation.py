@@ -61,7 +61,8 @@ class PlatformHealthPreparationTests(unittest.TestCase):
         self.addCleanup(temporary.cleanup)
         self.root = Path(temporary.name)
         self.matrix = json.loads((REFERENCE / "preparation-25.json").read_text("utf-8"))
-        self.accepted = load_catalog()
+        predecessor = files("alz_assessor").joinpath("data", "catalog-2026-11-06.20.json")
+        self.accepted = load_catalog(str(predecessor)) if predecessor.is_file() else load_catalog()
         self.catalog = copy.deepcopy(self.accepted)
         for control in self.catalog["controls"]:
             row = next(
@@ -759,7 +760,11 @@ class PlatformHealthPreparationTests(unittest.TestCase):
         )
         with self.assertRaises(InputError):
             export_bundle(self.root / "candidate", bundle, self.catalog, at=AT, evidence_tiers=True)
-        self.assertEqual(digest(self.accepted), digest(load_catalog()))
+        predecessor = files("alz_assessor").joinpath("data", "catalog-2026-11-06.20.json")
+        self.assertEqual(
+            digest(self.accepted),
+            digest(load_catalog(str(predecessor)) if predecessor.is_file() else load_catalog()),
+        )
 
     def test_amba_reuses_policy_joins_at_subscription_and_management_group_scope(self):
         for boundary in (SUB, "/providers/Microsoft.Management/managementGroups/authored"):

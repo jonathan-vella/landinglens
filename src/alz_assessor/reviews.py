@@ -58,11 +58,25 @@ def prepared_resource(
     from .platform_health_evidence import GUIDS as PLATFORM_HEALTH_GUIDS
     from .platform_health_evidence import linked_context as platform_context
     from .platform_health_evidence import resource_paths as platform_paths
+    from .topology_evidence import GUIDS as TOPOLOGY_GUIDS
+    from .topology_evidence import configuration_context as topology_context
+    from .topology_evidence import resource_paths as topology_paths
+    from .topology_evidence import unique_known as topology_unique_known
 
     facts: dict[str, Any] = {}
     for path in control.get("review_fact_paths", []):
         if resource["state"] != "known":
             facts[path] = {"unknown": "resource_not_known"}
+        elif (
+            bundle is not None
+            and control["upstream_guid"] in TOPOLOGY_GUIDS
+            and not topology_unique_known(resource, bundle, by_id)
+        ):
+            facts[path] = {"unknown": "topology_resource_not_unique_known_in_scope"}
+        elif control["upstream_guid"] in TOPOLOGY_GUIDS and path not in topology_paths(
+            resource["resource_type"]
+        ):
+            facts[path] = {"unknown": "fact_not_applicable_to_resource_type"}
         elif control["upstream_guid"] in LOGGING_GUIDS and path not in resource_paths(
             resource["resource_type"]
         ):
@@ -100,6 +114,8 @@ def prepared_resource(
             "microsoft.insights/scheduledqueryrules",
         }:
             prepared["logging_context"] = linked_context(resource, by_id, scope)
+    if bundle is not None and control["upstream_guid"] in TOPOLOGY_GUIDS:
+        prepared["topology_configuration"] = topology_context(resource, bundle, by_id)
     if bundle is not None:
         from .policy_strategy_evidence import GUIDS as POLICY_STRATEGY_GUIDS
         from .policy_strategy_evidence import configuration_context
@@ -126,7 +142,7 @@ def prepared_resource(
     from .virtual_wan_evidence import PATHS as VWAN_PATHS
     from .virtual_wan_evidence import WAN, hub_context, wan_hub_population
 
-    if VWAN_PATHS.intersection(facts):
+    if VWAN_PATHS.intersection(facts) and control["upstream_guid"] not in TOPOLOGY_GUIDS:
         prepared["virtual_wan_context"] = (
             wan_hub_population(resource, by_id, scope)
             if resource["resource_type"].lower() == WAN
@@ -166,6 +182,8 @@ def prepared_resource(
             }
         prepared["linked_network_security_group"] = linked
     refs = facts.get("subnetReferences")
+    if control["upstream_guid"] in TOPOLOGY_GUIDS:
+        refs = None
     replica = facts.get("replicaConfiguration")
     if isinstance(replica, dict) and "unknown" not in replica:
         refs = [entry["subnetId"] for entry in replica["replicas"]]
@@ -417,21 +435,29 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     ]
     from .governance_evidence import GUIDS as GOVERNANCE_GUIDS
     from .governance_evidence import resource_in_scope
-    from .identity_evidence import RESILIENCE_GUIDS
+    from .identity_evidence import HYBRID_GUIDS, RESILIENCE_GUIDS, hybrid_context
     from .logging_evidence import GUIDS as LOGGING_GUIDS
     from .logging_evidence import scoped_identity
     from .network_policy_evidence import GUIDS as NETWORK_POLICY_GUIDS
     from .platform_health_evidence import GUIDS as PLATFORM_HEALTH_GUIDS
     from .policy_strategy_evidence import GUIDS as POLICY_STRATEGY_GUIDS
     from .tenant_evidence import GUIDS as TENANT_GUIDS
+    from .topology_evidence import GUIDS as TOPOLOGY_GUIDS
 
     unbound = 0
     policy_prepared = control["upstream_guid"] in POLICY_STRATEGY_GUIDS | {
         "aa45be6a-8f2d-4896-b0e3-775e6e94e610"
     } and bool(control.get("review_fact_paths"))
-    scoped_guids = GOVERNANCE_GUIDS | RESILIENCE_GUIDS | NETWORK_POLICY_GUIDS | TENANT_GUIDS
+    scoped_guids = (
+        GOVERNANCE_GUIDS
+        | RESILIENCE_GUIDS
+        | HYBRID_GUIDS
+        | NETWORK_POLICY_GUIDS
+        | TENANT_GUIDS
+        | TOPOLOGY_GUIDS
+    )
     if policy_prepared:
-        scoped_guids |= POLICY_STRATEGY_GUIDS
+        scoped_guids |= POLICY_STRATEGY_GUIDS | {"aa45be6a-8f2d-4896-b0e3-775e6e94e610"}
     if control["upstream_guid"] in LOGGING_GUIDS | PLATFORM_HEALTH_GUIDS and not policy_prepared:
         scoped = [
             resource for resource in matches if scoped_identity(resource, bundle.get("scope"))
@@ -463,6 +489,12 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     }
     if control["upstream_guid"] in scoped_guids | LOGGING_GUIDS | PLATFORM_HEALTH_GUIDS:
         context["unbound_resources"] = unbound
+    if control["upstream_guid"] in HYBRID_GUIDS:
+        for prepared, resource in zip(context["resources"], matches[:100], strict=True):
+            configuration = hybrid_context(resource, by_id, bundle)
+            prepared["hybrid_configuration"] = configuration
+            prepared["facts"] = configuration.get("facts", configuration)
+            prepared["subchecks"] = {}
     if policy_prepared and available:
         from .policy_strategy_evidence import population_context
 

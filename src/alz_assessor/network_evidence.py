@@ -22,6 +22,7 @@ from .security_evidence import PATHS as SECURITY_PATHS
 from .sources import boolean, enumeration, property_at, unknown
 from .tenant_evidence import PATHS as TENANT_PATHS
 from .terraform import InputError
+from .topology_evidence import PATHS as TOPOLOGY_PATHS
 from .virtual_wan_evidence import KINDS as VWAN_KINDS
 from .virtual_wan_evidence import PATHS as VWAN_PATHS
 
@@ -74,6 +75,7 @@ REVIEW_PATHS = (
     | POLICY_STRATEGY_PATHS
     | LOGGING_PATHS
     | PLATFORM_HEALTH_PATHS
+    | TOPOLOGY_PATHS
 )
 
 
@@ -523,6 +525,10 @@ def review_fact(properties: dict[str, Any], path: str) -> Any:
         from .platform_health_evidence import review_fact as platform_health_fact
 
         return platform_health_fact(properties, path)
+    if path in TOPOLOGY_PATHS:
+        from .topology_evidence import review_fact as topology_fact
+
+        return topology_fact(properties, path)
     if path in POLICY_STRATEGY_PATHS:
         from .policy_strategy_evidence import review_fact as policy_strategy_fact
 
@@ -990,6 +996,7 @@ def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
         - PLATFORM_HEALTH_PATHS
         - TENANT_PATHS
         - POLICY_STRATEGY_PATHS
+        - TOPOLOGY_PATHS
     ):
         parts = path.split(".")
         target = result

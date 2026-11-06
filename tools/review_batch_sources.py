@@ -3343,6 +3343,138 @@ SOURCES_16_VWAN = [
 ]
 
 
+SOURCES_06 = [
+    (
+        "connect-staging-linked",
+        "https://learn.microsoft.com/azure/active-directory/hybrid/"
+        "how-to-connect-sync-staging-server",
+        ["Active-Passive", "password writeback", "pending exports", "catch-up"],
+        "Legacy link redirects to Connect Sync operations. Staging imports/synchronizes but "
+        "does not normally export or run password sync/writeback; switching is an explicit "
+        "active-passive procedure, never automatic active-active failover. Keep configuration "
+        "aligned, verify pending exports/deletion protection and isolate the old active "
+        "server before promotion. Password catch-up can take hours; do not restart during "
+        "catch-up. This is not Cloud Sync equivalence or evidence of tested recovery.",
+    ),
+    (
+        "synced-role-accounts-linked",
+        "https://learn.microsoft.com/azure/active-directory/roles/best-practices",
+        ["cloud native accounts", "on-premises synced accounts", "least privilege"],
+        "Current redirected Entra guidance avoids synced accounts for directory roles "
+        "because on-premises compromise can reach cloud authority. Any checklist exception "
+        "requires separate justified, scoped, time-bound human evidence, not Azure role "
+        "principalType, VM naming, managed identity or a fabricated synchronization flag.",
+    ),
+    (
+        "app-proxy-current",
+        LEARN + "entra/identity/app-proxy/overview-what-is-app-proxy",
+        ["private network connector", "outbound", "internal users"],
+        "The original application-proxy URL now redirects to a 404. Current overview "
+        "describes Entra's cloud service and private network connectors for remote web "
+        "application access, not an ARM proxy resource or general internal-user VPN. "
+        "Central platform ownership, application onboarding and actual SSO remain decisions.",
+    ),
+    (
+        "app-proxy-ha",
+        LEARN + "entra/identity/app-proxy/application-proxy-high-availability-load-balancing",
+        ["at least two connectors", "Three connectors", "different outbound connections"],
+        "At least two connectors per group, preferably three, separate outbound failure "
+        "domains and automatic updates are current HA guidance. Backend session persistence "
+        "and connector/service operation need separate evidence. VM counts/names do not "
+        "establish connector groups, configuration, platform ownership or availability.",
+    ),
+    (
+        "identity-network-rbac-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/"
+        "design-area/identity-access-landing-zones",
+        ["virtual network peered", "data plane", "regularly validate resource entitlements"],
+        "Current reference architecture optionally deploys identity services in a dedicated "
+        "subscription/VNet peered to the platform hub. Entra-native applications may need "
+        "none. Secure identity boundaries and workload access separately. Data-plane RBAC "
+        "is service-specific, not generic Owner authority. PIM review operation differs "
+        "from configured assignments and the historical section anchors have changed.",
+    ),
+    (
+        "pim-review-linked",
+        "https://learn.microsoft.com/azure/active-directory/privileged-identity-management/"
+        "pim-create-roles-and-resource-roles-review",
+        ["snapshot", "eligible assignments", "Applied", "group"],
+        "Current redirected PIM review guidance distinguishes Entra PRA from resource "
+        "Owner/UAA prerequisites, licensing and active/eligible/all selection. Each instance "
+        "captures a start-time snapshot; recurring configuration is not completion or "
+        "applied revocation. Entra role-assignable groups are reviewed as groups; Azure "
+        "group-member denial does not remove group membership and nested-group limits "
+        "need review. Service-principal reviews have additional Workload ID Premium terms.",
+    ),
+    (
+        "enrollment-owners-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/"
+        "design-area/azure-billing-enterprise-agreement",
+        ["minimize the number of account owners", "February 15, 2024", "account owner"],
+        "EA account owners can own subscriptions created under their account; other EA "
+        "roles do not by themselves confer subscription/directory authority. Minimize "
+        "actual enrollment account-owner authority, not a subscription Owner count. "
+        "The EA portal retired in 2024; agreement applicability and exceptions need review.",
+    ),
+    (
+        "ea-role-qualification",
+        LEARN + "azure/cost-management-billing/manage/understand-ea-roles",
+        ["November 16, 2026", "one account owner per account", "individual user accounts"],
+        "EA billing roles differ from Azure RBAC and support individual users, not DG/SG "
+        "assignment. One owner per account is a service constraint, not a universal "
+        "enrollment-wide least-privilege threshold. Starting 2026-11-16 new billing role "
+        "assignments require WSA; existing MSA assignments are not yet impacted.",
+    ),
+    (
+        "sovereign-location-linked",
+        LEARN + "industry/financial-services/architecture/location-based-access-content",
+        ["GPS", "authentication context", "exports or downloads"],
+        "This FSI example uses application-integrated authentication context and named "
+        "GPS locations, with PIM access a possible use case. It does not define an "
+        "organization's eligible administrator countries, nationality, legal sovereignty "
+        "or blanket coverage for exported data. Those remain independently manual.",
+    ),
+    (
+        "location-qualification",
+        LEARN + "entra/identity/conditional-access/location-condition",
+        ["Network", "unknown countries", "public IP address", "GPS"],
+        "Location condition is now Network. Public-IP mapping or consented Authenticator "
+        "GPS are access signals, not nationality or complete sovereignty assurance. "
+        "Unknown locations, policy scope/exclusions and application integration need "
+        "independent review. No employee location or sign-in data is collected.",
+    ),
+    (
+        "vault-data-plane",
+        LEARN + "azure/key-vault/general/rbac-guide",
+        ["2026-02-01", "control plane", "data plane", "invalidates all access policies"],
+        "Vault control/data planes are independent; Key Vault Contributor does not grant "
+        "secret/key access. New API2026-02-01 defaults do not fill missing pinned2024-11-01 "
+        "evidence. Explicit RBAC flag prepares only the configured vault model. HSM differs; "
+        "changing model can cause outages without equivalent roles. No migration occurs.",
+    ),
+    (
+        "storage-data-plane",
+        LEARN + "azure/storage/blobs/authorize-access-azure-active-directory",
+        ["data access", "Owner", "Contributor", "Reader"],
+        "Blob data roles and token authorization differ from control-plane Owner/"
+        "Contributor/Reader roles. Service support, effective permissions and actual "
+        "authentication must be independently reviewed; account presence is insufficient.",
+    ),
+    (
+        "sql-data-plane",
+        LEARN + "azure/azure-sql/database/authentication-aad-overview",
+        ["Create SQL principals", "Microsoft Entra administrator", "database"],
+        "Azure SQL Entra authentication requires service-specific administrator and SQL "
+        "principal/permission configuration. Do not equate generic Azure resource Owner "
+        "or a Key Vault RBAC flag to SQL database authorization or every database service.",
+    ),
+    *[source for source in SOURCES_05 if source[0] == "identity-team-boundaries"],
+    *[source for source in SOURCES if source[0] in {"vault-arm", "terraform-vault"}],
+    *[source for source in SOURCES_11 if source[0] in {"peering-arm", "terraform-peering"}],
+    *[source for source in SOURCES_02 if source[0] in {"learn-terms", "provider-license"}],
+]
+
+
 SOURCES_29 = [
     (
         "platform-automation-linked",
@@ -3875,6 +4007,196 @@ SOURCES_25 = [
 ]
 
 
+SOURCES_10 = [
+    (
+        "application-delivery",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/"
+        "azure-best-practices/plan-for-app-delivery",
+        ["spoke", "Front Door", "WAF"],
+        "Application delivery is workload-owned; Application Gateway belongs with the "
+        "application, not as a shared hub service. A documented standard, actual WAF "
+        "operation and Front Door origin restriction remain human decisions.",
+    ),
+    (
+        "network-design",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/"
+        "enterprise-scale/network-topology-and-connectivity",
+        ["Connectivity", "Corp", "Online"],
+        "Redirects to landing-zone/design-area. Align networking with actual traffic "
+        "and hybrid requirements; MG/resource names do not designate hub or spoke purpose.",
+    ),
+    (
+        "landing-zone-regions",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/regions",
+        ["multiple regions", "DNS zones are global", "Connectivity"],
+        "Prepare platform connectivity for regional expansion and DR. Supplied locations "
+        "are not independent failure domains, complete regional services or exercised DR. "
+        "Private DNS zones are global, not another regional deployment.",
+    ),
+    (
+        "traditional-topology",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/"
+        "azure-best-practices/traditional-azure-networking-topology",
+        ["aren't transitive", "minimal shared services", "partner vendor", "more than two"],
+        "Traditional hub-spoke is scenario-dependent. Minimal gateways/firewall/NVAs and "
+        "conditional DNS belong in a designated hub, not shared L7 ingress. Global peering "
+        "is nontransitive; direct spoke paths can bypass inspection. More-than-two-region "
+        "global transit has Virtual WAN/ExpressRoute alternatives, not a universal peering rule.",
+    ),
+    (
+        "partner-nva",
+        "https://learn.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha",
+        ["vendor", "Convergence time", "Traffic symmetry"],
+        "Redirects to networking/guide/network-virtual-appliance-high-availability. Vendor "
+        "validation, actual version/topology/support, convergence, SNAT/symmetry and "
+        "failover require partner evidence. Generic Azure patterns do not prove support.",
+    ),
+    (
+        "coexisting-gateways",
+        "https://learn.microsoft.com/azure/expressroute/"
+        "expressroute-howto-coexist-resource-manager"
+        "#to-enable-transit-routing-between-expressroute-and-azure-vpn",
+        ["65515", "Basic", "/27", "Route Server"],
+        "Conditional ER/S2S VPN coexistence needs route-based non-Basic VPN. GatewaySubnet "
+        "/27-or-larger is not RouteServerSubnet sizing. Backup is private, not Microsoft, "
+        "peering; equal-prefix preference differs from longest-prefix selection.",
+    ),
+    (
+        "route-server-quickstart",
+        "https://learn.microsoft.com/azure/route-server/"
+        "quickstart-configure-route-server-portal#create-a-route-server-1",
+        ["RouteServerSubnet", "minimum of /26 or larger", "Standard"],
+        "Actual redirect quickstart-create-route-server-portal now requires /26 or larger. "
+        "Immutable D01.08 and pinned AzureRM4.50.0 still say /27; preserve that discrepancy "
+        "and qualify any sizing subcheck by this captured current source, not a whole verdict.",
+    ),
+    (
+        "route-server-transit",
+        LEARN + "azure/route-server/expressroute-vpn-support",
+        ["active-active", "65515", "same virtual network", "isn't supported"],
+        "Route exchange must be explicitly enabled; VPN active-active/ASN65515 are required, "
+        "VPN BGP is not. All gateways must share the Route Server VNet. No ER-to-ER "
+        "circuit transit or runtime route/health proof follows from configuration.",
+    ),
+    (
+        "route-server-faq",
+        LEARN + "azure/route-server/route-server-faq",
+        ["S2S", "P2S", "4,000", "50,000", "10,000", "isn't an Azure Virtual WAN"],
+        "VNet Route Server uses virtualHubs ARM identity but is not Virtual WAN. Transit "
+        "excludes P2S. Current limits include16 BGP peers,4000 routes/peer,500 VNets,"
+        "50000 VMs (capacity-dependent),10000 total prefixes; combined VNet/Route Server "
+        "advertisements to ER remain1000. Updates count against peer limits; no estate "
+        "count, entitlement or capacity is inferred from selected supplied records.",
+    ),
+    (
+        "global-peering",
+        "https://learn.microsoft.com/azure/virtual-network/virtual-networks-faq"
+        "#can-i-create-a-peering-connection-to-a-vnet-in-a-different-region",
+        ["Transitive peering is not supported", "different regions", "Connected"],
+        "Global peering connects different regions; both directional links are required. "
+        "Nontransitive and Basic Load Balancer/global-peering restrictions apply. Location "
+        "inequality and reciprocal references do not establish hub designation or working paths.",
+    ),
+    (
+        "network-insights",
+        "https://learn.microsoft.com/azure/azure-monitor/insights/network-insights-overview",
+        ["without requiring any configuration", "Connection monitor", "Diagnostic Toolkit"],
+        "Redirects to Network Watcher Network Insights. Built-in topology/health/metrics "
+        "need no configuration; monitor/flow/alert settings do not prove end-to-end "
+        "operation, coverage, ingestion, owner response or executed diagnostic tests.",
+    ),
+    (
+        "network-limits",
+        "https://learn.microsoft.com/azure/azure-resource-manager/management/"
+        "azure-subscription-service-limits?toc=/azure/virtual-network/toc.json"
+        "#azure-resource-manager-virtual-networking-limits",
+        ["650", "Route advertisement limits", "4,000", "10,000", "1,000"],
+        "Actual current table lists650 peerings/VNet, not immutable historical500. "
+        "Historical400 spokes is not a current universal threshold. ER private-peering "
+        "Azure-to-onprem IPv4 gateway routes1000 (both SKUs), IPv6 100; incoming IPv4 "
+        "onprem routes4000 Local/Standard or10000 Premium. Direction, family, SKU, "
+        "Route Server limits, summarization and actual authorized quotas/complete counts "
+        "require separate review; no live quota lookup or automatic headroom verdict.",
+    ),
+    (
+        "route-server-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/virtualhubs",
+        ["allowBranchToBranchTraffic", "sku", "virtualWan"],
+        "Shared virtualHubs type and SKU alone do not designate Route Server. Preserve "
+        "explicit branch flag/preference separately from positively joined VNet attachment.",
+    ),
+    (
+        "routing-ipconfiguration-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/virtualhubs/ipconfigurations",
+        ["subnet", "publicIPAddress"],
+        "Separate virtualHubs/ipConfigurations child supplies typed subnet/public-IP "
+        "relationships. Parent ipConfigurations is read-only references in the REST spec; "
+        "do not invent embedded configuration bodies or retain private IPs.",
+    ),
+    (
+        "route-server-provider",
+        RAW + "website/docs/r/route_server.html.markdown",
+        ["branch_to_branch_traffic_enabled", "subnet_id", "/27", "2024-05-01"],
+        "AzureRM4.50.0 explicit azurerm_route_server maps to virtualHubs and separately "
+        "creates its IP configuration. Omitted branch flag/preference defaults are not "
+        "inferred; pinned /27 sizing guidance conflicts with current portal /26 guidance.",
+    ),
+    (
+        "route-server-provider-implementation",
+        RAW + "internal/services/network/route_server_resource.go",
+        ["HubIPConfiguration", "AllowBranchToBranchTraffic", "VirtualHubIPConfiguration"],
+        "Provider creates parent then separate ipConfig1 child with subnet/public-IP IDs. "
+        "Explicit Terraform resource type prepares declared attachment without fabricating "
+        "ARM kind=RouteServer or a child identity in normalized evidence.",
+    ),
+    (
+        "routing-rest-spec",
+        SPEC_RAW + "specification/network/resource-manager/Microsoft.Network/Network/"
+        "stable/2024-05-01/virtualWan.json",
+        ["HubIPConfigurationPropertiesFormat", "ipConfigurations", "allowBranchToBranchTraffic"],
+        "Pinned REST defines separate HubIPConfiguration subnet/public-IP and parent "
+        "read-only child references. No private IP/ASN/partner payloads are retained.",
+    ),
+    (
+        "peering-rest-spec",
+        SPEC_RAW + "specification/network/resource-manager/Microsoft.Network/Network/"
+        "stable/2024-05-01/virtualNetwork.json",
+        ["allowGatewayTransit", "useRemoteGateways", "peerCompleteVnets"],
+        "Explicit peering flags have separate directional meanings. No missing defaults, "
+        "effective transit, subnet-peering completeness or remote gateway inferred.",
+    ),
+    *[source for source in SOURCES_11 if source[0] in {"peering-arm", "terraform-peering"}],
+    *[source for source in SOURCES_17 if source[0] in {"subnet-arm", "terraform-subnet"}],
+    *[source for source in SOURCES_19 if source[0] in {"gateway-arm", "terraform-gateway"}],
+    *[
+        source
+        for source in SOURCES_15
+        if source[0]
+        in {
+            "connection-monitor-arm",
+            "metric-alert-arm",
+            "terraform-connection-monitor",
+            "learn-reuse",
+            "provider-reuse",
+            "rest-spec-reuse",
+        }
+    ],
+    (
+        "learn-terms",
+        LEARN + "legal/termsofuse",
+        ["Notice Specific to Documents", "explicit license terms"],
+        "Reviewed document terms; retain attributed metadata and own factual findings only, "
+        "not article text, screenshots, samples or private comments.",
+    ),
+    (
+        "provider-license",
+        RAW + "LICENSE",
+        ["Mozilla Public License", "2.0"],
+        "Pinned provider MPL2.0; only own findings and source metadata retained.",
+    ),
+]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
@@ -3887,7 +4209,9 @@ def main() -> None:
             "02",
             "04",
             "05",
+            "06",
             "08",
+            "10",
             "11",
             "12",
             "13",
@@ -3911,10 +4235,11 @@ def main() -> None:
     if args.vwan_supplement and (args.batch != "16" or not args.preparation_only):
         raise ValueError("The vWAN supplement is cohort16 preparation only")
     if (
-        args.batch in {"02", "05", "12", "16", "20", "23", "25", "27", "29", "30"}
+        args.batch in {"02", "05", "06", "10", "12", "16", "20", "23", "25", "27", "29", "30"}
     ) != args.preparation_only:
         raise ValueError(
-            "Cohorts 02/05/12/16/20/23/25/27/29/30 source capture require --preparation-only; "
+            "Cohorts 02/05/06/10/12/16/20/23/25/27/29/30 source capture "
+            "require --preparation-only; "
             "no activation"
         )
     prefix = "preparation" if args.preparation_only else "batch"
@@ -3925,7 +4250,7 @@ def main() -> None:
         / "recommendation-batches"
         / f"{prefix}-{args.batch}{suffix}-sources.json"
     )
-    if args.batch in {"02", "05"}:
+    if args.batch in {"02", "05", "06"}:
         target = ROOT / "references" / "preparation" / f"batch-{args.batch}-sources.json"
     if target.exists() and not args.append_new_sources:
         raise ValueError("Frozen source review exists; do not silently recollect or redate it")
@@ -3936,7 +4261,9 @@ def main() -> None:
         "02": SOURCES_02,
         "04": SOURCES_04,
         "05": SOURCES_05,
+        "06": SOURCES_06,
         "08": SOURCES_08,
+        "10": SOURCES_10,
         "11": SOURCES_11,
         "12": SOURCES_12,
         "13": SOURCES_13,

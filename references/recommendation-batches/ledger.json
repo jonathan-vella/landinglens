@@ -567,6 +567,81 @@
       },
       "wheel_sha256": "a5417cf6aff38c0a9ead56af3f0c2ed7d5253363b9d2f8691af4b1d6b3d6f5b3",
       "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
+    },
+    "06": {
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/143",
+      "merge_commit": "2a4de9a3cde1ba6990bd8eaff520e3b991e834b0",
+      "merged_at": "2026-11-06T21:45:03Z",
+      "checked_head": "55711230d3d957a520d2b6a0d8bc5368e2b667c2",
+      "checks": [
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42297876607",
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42297912078"
+      ],
+      "acceptance": "Actual push/PR runs on the merged head passed all eight supported jobs. All four downloaded PR compiler artifacts exercised the same integration cases without skips. Normal exact-head merge and other applicable checks were gated before recording; this receipt does not imply protected-branch enforcement.",
+      "compiler_integration_cases": [
+        "test_bicep.BicepTests.test_actual_installed_compiler_local_success_and_unrestored_failure",
+        "test_segmentation_batch.SegmentationBatchTests.test_real_bicep_nsg_gateway_subnet_flow_without_restore",
+        "test_routing_batch.RoutingBatchTests.test_real_bicep_routing_peering_lb_macsec_connection_no_restore",
+        "test_identity_batch.IdentityBatchTests.test_real_bicep_storage_identity_role_context_without_restore",
+        "test_protection_batch.ProtectionBatchTests.test_real_bicep_protection_outbound_hybrid_no_restore",
+        "test_security_batch.SecurityBatchTests.test_real_bicep_security_configuration_without_restore",
+        "test_expressroute_preparation.ExpressRoutePreparationTests.test_real_bicep_expressroute_cost_capacity_fastpath_without_restore",
+        "test_dns_batch.DnsBatchTests.test_real_bicep_dns_bastion_no_restore",
+        "test_monitoring_preparation.MonitoringPreparationTests.test_real_bicep_monitor_and_gateway_route_join_without_restore",
+        "test_governance_preparation.GovernancePreparationTests.test_real_bicep_governance_without_restore",
+        "test_virtual_wan_preparation.VirtualWanPreparationTests.test_real_bicep_virtual_wan_scoped_configuration_without_restore",
+        "test_identity_resilience_preparation.IdentityResiliencePreparationTests.test_real_bicep_identity_resilience_without_restore",
+        "test_network_policy_preparation.NetworkPolicyPreparationTests.test_real_bicep_policy_gateway_diagnostics_without_restore",
+        "test_logging_preparation.LoggingPreparationTests.test_real_bicep_logging_workspace_extensions_and_alerts_without_restore",
+        "test_tenant_preparation.TenantPreparationTests.test_real_bicep_tenant_configuration_without_restore",
+        "test_policy_strategy_preparation.PolicyStrategyPreparationTests.test_real_bicep_policy_strategy_without_restore",
+        "test_hybrid_identity_preparation.HybridIdentityPreparationTests.test_real_bicep_peering_and_vault_configuration_without_restore"
+      ],
+      "local_installed_suite": {
+        "tests": 663,
+        "passed": 662,
+        "skipped": 1
+      },
+      "wheel_sha256": "3f500d0e70fc5b212e522b152f8dfe6d7c2674dfb07e3fd44a061c57fe534bff",
+      "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
+    },
+    "10": {
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "merged_at": "2026-11-06T22:44:46Z",
+      "checked_head": "e93adc5bcbf00029256c41968809887488ebee22",
+      "checks": [
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42305687967",
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42305715112"
+      ],
+      "acceptance": "Actual push/PR runs on the merged head passed all eight supported jobs. All four downloaded PR compiler artifacts exercised the same integration cases without skips. Normal exact-head merge and other applicable checks were gated before recording; this receipt does not imply protected-branch enforcement.",
+      "compiler_integration_cases": [
+        "test_bicep.BicepTests.test_actual_installed_compiler_local_success_and_unrestored_failure",
+        "test_segmentation_batch.SegmentationBatchTests.test_real_bicep_nsg_gateway_subnet_flow_without_restore",
+        "test_routing_batch.RoutingBatchTests.test_real_bicep_routing_peering_lb_macsec_connection_no_restore",
+        "test_identity_batch.IdentityBatchTests.test_real_bicep_storage_identity_role_context_without_restore",
+        "test_protection_batch.ProtectionBatchTests.test_real_bicep_protection_outbound_hybrid_no_restore",
+        "test_security_batch.SecurityBatchTests.test_real_bicep_security_configuration_without_restore",
+        "test_expressroute_preparation.ExpressRoutePreparationTests.test_real_bicep_expressroute_cost_capacity_fastpath_without_restore",
+        "test_dns_batch.DnsBatchTests.test_real_bicep_dns_bastion_no_restore",
+        "test_monitoring_preparation.MonitoringPreparationTests.test_real_bicep_monitor_and_gateway_route_join_without_restore",
+        "test_governance_preparation.GovernancePreparationTests.test_real_bicep_governance_without_restore",
+        "test_virtual_wan_preparation.VirtualWanPreparationTests.test_real_bicep_virtual_wan_scoped_configuration_without_restore",
+        "test_identity_resilience_preparation.IdentityResiliencePreparationTests.test_real_bicep_identity_resilience_without_restore",
+        "test_network_policy_preparation.NetworkPolicyPreparationTests.test_real_bicep_policy_gateway_diagnostics_without_restore",
+        "test_logging_preparation.LoggingPreparationTests.test_real_bicep_logging_workspace_extensions_and_alerts_without_restore",
+        "test_tenant_preparation.TenantPreparationTests.test_real_bicep_tenant_configuration_without_restore",
+        "test_policy_strategy_preparation.PolicyStrategyPreparationTests.test_real_bicep_policy_strategy_without_restore",
+        "test_hybrid_identity_preparation.HybridIdentityPreparationTests.test_real_bicep_peering_and_vault_configuration_without_restore",
+        "test_topology_preparation.TopologyPreparationTests.test_real_bicep_vnet_routing_attachment_without_restore"
+      ],
+      "local_installed_suite": {
+        "tests": 694,
+        "passed": 693,
+        "skipped": 1
+      },
+      "wheel_sha256": "defe7f7f901a98fe77bba32522e1c52169802666e8e42e4b693cb9e7a58b5967",
+      "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
     }
   },
   "recommendations": [
@@ -2042,12 +2117,30 @@
       "baseline_control_sha256": "f14f245101a88fd29605014514e783bafddce0880f29e4e369c3563b970b71c9",
       "design_area": "Identity and access management",
       "batch": "06",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "B03.16",
+        "guid": "cd163e39-84a5-4b39-97b7-6973abd70d94",
+        "classification": "assisted",
+        "sources": [
+          "connect-staging-linked"
+        ],
+        "evidence_requirements": [
+          "Preparation: current Connect Sync staging and recovery questions only. No directory, Connect scheduler, guest, password or synchronization transport; a VM or role cannot identify an active/staging server.",
+          "Reviewer decision: establish Connect Sync applicability separately from Cloud Sync or other architectures; cite redacted authorized evidence for the actual active/passive server population, maintained configuration parity, scheduler/recent synchronization, pending-export verification and accidental-deletion protection.",
+          "Reviewer decision: substantiate an approved and actually validated recovery procedure with attributable dated references, isolating the previous active server before promotion and allowing only one active exporter. Staging normally does not export or run password sync/writeback; review password backlog/catch-up, business downtime tolerances and recovery dependencies separately. Do not restart sync services during password catch-up."
+        ],
+        "limitations": "Staging is not automatic active-active failover, Cloud Sync equivalence, actual recovery, password freshness or a health outcome. No commands, exports, account data, sign-ins, service changes or recovery drill are executed.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/136",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/143",
+      "merge_commit": "2a4de9a3cde1ba6990bd8eaff520e3b991e834b0",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.06: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "35037e68-9349-4c15-b371-228514f4cdff",
@@ -2057,12 +2150,31 @@
       "baseline_control_sha256": "8df7cf041d4a11409567ee8f1c8b5db4a5bfb470fe0391bf30253f870ac64fc9",
       "design_area": "Identity and access management",
       "batch": "06",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "B03.17",
+        "guid": "35037e68-9349-4c15-b371-228514f4cdff",
+        "classification": "assisted",
+        "sources": [
+          "synced-role-accounts-linked",
+          "identity-network-rbac-linked"
+        ],
+        "evidence_requirements": [
+          "Preparation: current Entra guidance avoids on-premises synced accounts for Entra directory roles; Azure RBAC principalType, managed identities, VM names and resource roles cannot establish synchronization origin or directory privilege.",
+          "Reviewer decision: cite separately authorized, redacted evidence for complete applicable Entra role assignments, direct/group-mediated and active/eligible scope, cloud-native versus synced identity provenance, actual required authority and protection against on-premises compromise.",
+          "Reviewer decision: justify every specifically required synced-account exception independently, including business need, least-privileged alternatives, compensating controls, accountable approval and expiry/review references. The frozen checklist exception is not a current general recommendation to use synced administrators; an accepted exception is separate from the control outcome."
+        ],
+        "limitations": "No Graph/directory read, principal payload, synchronization inference or fabricated exception. Resource role assignment configuration does not prove Entra role membership, cloud-native accounts, least privilege or an exception approval.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/136",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/143",
+      "merge_commit": "2a4de9a3cde1ba6990bd8eaff520e3b991e834b0",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.06: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "d5d1e4e6-1465-48d3-958f-d77249b82111",
@@ -2072,12 +2184,32 @@
       "baseline_control_sha256": "b2041c7187824e5a7ee0c3f42af48789f06cbd221efd52003e47548580b9900d",
       "design_area": "Identity and access management",
       "batch": "06",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "B03.18",
+        "guid": "d5d1e4e6-1465-48d3-958f-d77249b82111",
+        "classification": "assisted",
+        "sources": [
+          "app-proxy-current",
+          "app-proxy-ha",
+          "identity-team-boundaries"
+        ],
+        "evidence_requirements": [
+          "Preparation: the legacy Application Proxy link returns 404; use the current reviewed Entra application proxy overview and connector HA guidance. The cloud service and private network connectors are not synthetic ARM proxy resources.",
+          "Reviewer decision: establish actual remote web-application applicability and platform service ownership, separating central connector/security/update/monitoring/recovery responsibilities from workload onboarding, backend access, authentication/SSO and support responsibilities, with redacted approved references.",
+          "Reviewer decision: reconcile actual connector groups, at least two connectors per group (three preferred), independent outbound failure domains, automatic updates, backend session-persistence design and attributable operating/availability evidence. Connector names, VM counts or resource Owner cannot establish platform ownership or functioning access; proxy is not intended for routine internal-user traffic."
+        ],
+        "limitations": "No App Proxy/connector/Graph transport, URL/principal/contact payload, registration, login, proxy configuration or live authentication test. Service capability and authored plans do not establish organization ownership or operational availability.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/136",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/143",
+      "merge_commit": "2a4de9a3cde1ba6990bd8eaff520e3b991e834b0",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.06: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "9cf5418b-1520-4b7b-add7-88eb28f833e8",
@@ -2087,12 +2219,40 @@
       "baseline_control_sha256": "ac7904e745fb2477229b54a067a855d2af03211aec456cb2f97208a9fc2cf3c0",
       "design_area": "Identity and access management",
       "batch": "06",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "B04.01",
+        "guid": "9cf5418b-1520-4b7b-add7-88eb28f833e8",
+        "classification": "assisted",
+        "sources": [
+          "identity-network-rbac-linked",
+          "identity-team-boundaries",
+          "peering-arm",
+          "terraform-peering"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks/virtualNetworkPeerings"
+        ],
+        "review_fact_paths": [
+          "allowVirtualNetworkAccess",
+          "remoteVirtualNetwork.id"
+        ],
+        "evidence_requirements": [
+          "Preparation: explicit per-direction peering access boolean and typed remote-VNet reference joined only to unique known supplied source/remote VNets inside the selected boundary. Missing, wrong-type, duplicate, denied, foreign, self-linked or unsupported joins remain explicit unknown; no name-based hub or identity designation.",
+          "Reviewer decision: identify applicable actual identity services/controllers and approved identity-subscription/VNet/hub ownership and security boundaries independently. Entra-native applications may not require identity VNet services; VM names, region labels and network presence do not identify DCs or prove applicability.",
+          "Reviewer decision: substantiate complete intended and actual both-direction connectivity, segmentation controls, authentication/DNS/service reachability, required workload access and isolation with redacted dated references. Peering allow flags and local VNet joins are supplied configuration only, not runtime authentication, effective routes, healthy DCs or isolation."
+        ],
+        "limitations": "No traffic, route, DNS, authentication or directory probe; no new live read or assumed reciprocal peering. Partial/stale/missing inventory cannot establish absence, complete topology, identity designation, segmentation or recovery.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/136",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/143",
+      "merge_commit": "2a4de9a3cde1ba6990bd8eaff520e3b991e834b0",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.06: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "d4d1ad54-1abc-4919-b267-3f342d3b49e4",
@@ -2102,12 +2262,41 @@
       "baseline_control_sha256": "3eb3876f615d295f15fb8c6008669e5913ac1eaf5e5de81ba41b4f89a0fe75dc",
       "design_area": "Identity and access management",
       "batch": "06",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "B04.02",
+        "guid": "d4d1ad54-1abc-4919-b267-3f342d3b49e4",
+        "classification": "assisted",
+        "sources": [
+          "identity-network-rbac-linked",
+          "vault-data-plane",
+          "storage-data-plane",
+          "sql-data-plane",
+          "vault-arm",
+          "terraform-vault"
+        ],
+        "review_resource_types": [
+          "Microsoft.KeyVault/vaults"
+        ],
+        "review_fact_paths": [
+          "enableRbacAuthorization"
+        ],
+        "evidence_requirements": [
+          "Preparation: unique known scoped vault's explicit enableRbacAuthorization boolean via existing pinned ARM2024-11-01/AzureRM4.50.0 adapters; false is explicit legacy-model context, omission is unknown. Current API2026-02-01 new-vault defaults are not inferred for older or missing evidence; HSM differs.",
+          "Reviewer decision: inventory applicable resource-specific data-plane endpoints and supported authorization models separately from control-plane roles. Cite redacted evidence for actual least-privileged data-role permissions/scope, inheritance, conditions, exclusions and effective access; generic Owner/Contributor/Reader or Key Vault Contributor does not automatically grant data access.",
+          "Reviewer decision: reconcile vault RBAC versus legacy policies and equivalent-permission/migration outage risk; storage blob data roles and actual token authorization; and SQL's Entra administrator, SQL principals and database permission model. Do not generalize a vault flag to storage/database authorization or every service. Substantiate actual application use separately without secrets, keys, query text or identity payloads."
+        ],
+        "limitations": "Configuration is not effective data access, complete assignment coverage, successful authentication or least privilege. No secret/data/SQL/Graph/billing read, credential, policy migration, permission change or fabricated role evidence. No new whole-recommendation predicate.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/136",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/143",
+      "merge_commit": "2a4de9a3cde1ba6990bd8eaff520e3b991e834b0",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.06: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "d505ebcb-79b1-4274-9c0d-a27c8bea489c",
@@ -2117,12 +2306,32 @@
       "baseline_control_sha256": "8dafe6129bbf051b773354d500cb3d948e054710e58338ff57c9b5ab439782b0",
       "design_area": "Identity and access management",
       "batch": "06",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "B04.03",
+        "guid": "d505ebcb-79b1-4274-9c0d-a27c8bea489c",
+        "classification": "assisted",
+        "sources": [
+          "pim-review-linked",
+          "identity-network-rbac-linked",
+          "synced-role-accounts-linked"
+        ],
+        "evidence_requirements": [
+          "Preparation: current PIM access-review questions only, not an ARM/Graph/PIM review resource. Azure assignments and definitions cannot establish PIM eligibility, review settings, review execution or applied revocation.",
+          "Reviewer decision: establish applicable Entra/resource-role populations, scope, prerequisites and licensing (including extra service-principal Workload ID Premium terms), active/eligible/all selection, direct/group/nested-group coverage, accountable reviewers, cadence, nonresponse and completion/application policy with redacted authorized references.",
+          "Reviewer decision: separately substantiate actual dated review instances, their start-time snapshots and coverage changes, independent decisions, completed versus applying/applied outcomes and remediation follow-through. Entra role-assignable groups are reviewed as groups; Azure group-member denial does not remove membership, and nested-group limitations require explicit reconciliation. Recurrence configuration or recommended approvals are not completed reviews."
+        ],
+        "limitations": "No PIM/directory/sign-in/audit transport, review creation, approval, role/group removal or actual entitlement decision. Missing/partial/outdated evidence remains unknown; saved Azure RBAC and subscription Owner are not review-operation proof.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/136",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/143",
+      "merge_commit": "2a4de9a3cde1ba6990bd8eaff520e3b991e834b0",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.06: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "0ce74f19-9abb-47e4-ae95-6b057a1d2be9",
@@ -2132,12 +2341,31 @@
       "baseline_control_sha256": "977354eea4c83df6b830467a14f9888629b8726242d3a52ec070f4e438c369f9",
       "design_area": "Identity and access management",
       "batch": "06",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "B04.04",
+        "guid": "0ce74f19-9abb-47e4-ae95-6b057a1d2be9",
+        "classification": "assisted",
+        "sources": [
+          "enrollment-owners-linked",
+          "ea-role-qualification"
+        ],
+        "evidence_requirements": [
+          "Preparation: EA enrollment account-owner authority questions only. Billing roles differ from Azure RBAC and Entra roles; subscription Owner counts do not identify enrollment account owners or agreement applicability.",
+          "Reviewer decision: establish actual EA applicability and authorized complete account-owner population/responsibilities, linked subscription-creation/ownership authority, least-privileged alternatives, approval/removal/review process and each justified exception using redacted dated references. One account owner per account is a service constraint, not an invented enrollment-wide numeric threshold.",
+          "Reviewer decision: reconcile the actual account authentication model and tenant association without identifiers. Current guidance requires WSA for new billing role assignments from 2026-11-16, not retroactively for existing MSAs; EA billing roles are individual-user roles, not DG/SG assignments. Distinct MCA/CSP agreements require their own applicability decision, not an EA assumption."
+        ],
+        "limitations": "No billing transport, private agreement/account/principal/contact/cost payload, subscription creation/transfer, financial or access action. Account-owner minimization is not inferred from Azure RBAC, an empty inventory or source classification.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/136",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/143",
+      "merge_commit": "2a4de9a3cde1ba6990bd8eaff520e3b991e834b0",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.06: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "1770a2ac-c194-4e5c-ade4-82939d38a510",
@@ -2147,12 +2375,32 @@
       "baseline_control_sha256": "3d4052b54f93713aa3999562789b3b705a63aa615e817786688abdd9394ce7ea",
       "design_area": "Identity and access management",
       "batch": "06",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "B05.01",
+        "guid": "1770a2ac-c194-4e5c-ade4-82939d38a510",
+        "classification": "manual",
+        "sources": [
+          "sovereign-location-linked",
+          "location-qualification",
+          "identity-team-boundaries"
+        ],
+        "evidence_requirements": [
+          "Preparation: inherently manual administrator eligibility/sovereignty workflow. The linked FSI location-based authentication-context example supplies no approved country list, nationality/employee eligibility or universal sovereign-administration guarantee.",
+          "Reviewer decision: cite organization-approved jurisdiction, service/cloud, administrative task and privilege boundaries and separately authorized redacted assurance that actual platform administrators and delegated/support/emergency/automation exceptions meet those requirements, including accountable approval, periodic review and expiry.",
+          "Reviewer decision: reconcile actual enforcement scope, access paths, named-location/IP/GPS uncertainty, unknown countries, exclusions, application authentication-context integration, exported/downloaded data and exception controls against applicable requirements. Resource region, identity role, policy label or a location signal is not nationality, authorized personnel eligibility or complete sovereignty assurance."
+        ],
+        "limitations": "Manual remains manual. No employee location/nationality/contact/identity payload, sign-in/GPS read, Conditional Access/PIM operation, legal conclusion or fabricated eligible-country/owner approval. Neither configuration nor humanConfirmed can manufacture Verified.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/136",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/143",
+      "merge_commit": "2a4de9a3cde1ba6990bd8eaff520e3b991e834b0",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.06: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "cacf55bc-e4e4-46be-96bc-57a5f23a269a",
@@ -2682,12 +2930,30 @@
       "baseline_control_sha256": "a664147125eb2fcda54282689c99b04aeed136a41743f7a6c23203dfa9bdd66b",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "373f482f-3e39-4d39-8aa4-7e566f6082b6",
+        "upstream_id": "D01.01",
+        "classification": "manual",
+        "flags": [],
+        "implemented_subclaim": "Specific application-delivery standard workflow with blank decision and independent exceptions; no presence-based standard predicate.",
+        "sources": [
+          "application-delivery",
+          "traditional-topology"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Is the approved internal/external application-delivery standard implemented with workload-owned spoke Application Gateway v2/WAF, global Front Door/WAF and restricted origins, with justified protocol/partner alternatives and ownership?"
+        ],
+        "limitations": "Application security, approved standards and operating practice cannot be inferred from resource existence, WAF association or names."
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.10: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "e8bbac75-7155-49ab-a153-e8908ae28c84",
@@ -2697,12 +2963,43 @@
       "baseline_control_sha256": "61e3df0bffa4524be413d7a851db81e5529484dafd7d0c1f8786232b91ae3807",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "e8bbac75-7155-49ab-a153-e8908ae28c84",
+        "upstream_id": "D01.02",
+        "classification": "assisted",
+        "flags": [],
+        "implemented_subclaim": "Strict unique-known selected-scope local/remote VNet and reciprocal peering relationships, explicit directional flags and minimized locations support topology review.",
+        "sources": [
+          "network-design",
+          "traditional-topology",
+          "peering-arm",
+          "peering-rest-spec",
+          "terraform-peering"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks",
+          "Microsoft.Network/virtualNetworks/virtualNetworkPeerings"
+        ],
+        "review_fact_paths": [
+          "resourceLocation",
+          "allowVirtualNetworkAccess",
+          "remoteVirtualNetwork.id",
+          "peeringTransitSummary"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Which VNets are explicitly designated hubs/spokes, and why does traditional hub-spoke satisfy required flexibility, traffic, isolation and transit better than managed alternatives?"
+        ],
+        "limitations": "A reciprocal configured peering is nontransitive; topology purpose, complete estate, granular effective routing and suitability remain human."
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.10: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "7bc1c396-2461-4698-b57f-30ca69525252",
@@ -2712,12 +3009,46 @@
       "baseline_control_sha256": "37b91f65773827622537bbbe48fb98014c55a5158e8f8124da23d88d22c00605",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "7bc1c396-2461-4698-b57f-30ca69525252",
+        "upstream_id": "D01.03",
+        "classification": "assisted",
+        "flags": [],
+        "implemented_subclaim": "Existing location and explicit gateway/firewall/DNS VNet attachment context prepare review of supplied regional configuration only.",
+        "sources": [
+          "landing-zone-regions",
+          "traditional-topology",
+          "gateway-arm",
+          "terraform-gateway",
+          "subnet-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks",
+          "Microsoft.Network/virtualNetworkGateways",
+          "Microsoft.Network/azureFirewalls",
+          "Microsoft.Network/dnsResolvers"
+        ],
+        "review_fact_paths": [
+          "resourceLocation",
+          "subnetReferences",
+          "dnsVirtualNetworkId",
+          "dnsServerSummary",
+          "gatewayType"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Do the required regions have complete connectivity, DNS, identity and management readiness for multi-region workloads and exercised DR across real independent failure domains?"
+        ],
+        "limitations": "Multiple location labels are not regional readiness, physical independence or failover. Private DNS zones are global; a selected inventory cannot prove complete deployment."
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.10: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "7dd61623-a364-4a90-9eca-e48ebd54cd7d",
@@ -2727,12 +3058,46 @@
       "baseline_control_sha256": "c1ee4a1d666f4a55d1a8a843b9fb9f927e9759aef45e043cbfa996d705b66871",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "7dd61623-a364-4a90-9eca-e48ebd54cd7d",
+        "upstream_id": "D01.04",
+        "classification": "assisted",
+        "flags": [],
+        "implemented_subclaim": "Typed unique-known gateway/firewall subnet-to-VNet joins and existing DNS reference context prepare explicit shared-service placement review.",
+        "sources": [
+          "traditional-topology",
+          "landing-zone-regions",
+          "gateway-arm",
+          "terraform-gateway",
+          "subnet-arm",
+          "terraform-subnet"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks",
+          "Microsoft.Network/virtualNetworkGateways",
+          "Microsoft.Network/azureFirewalls",
+          "Microsoft.Network/dnsResolvers"
+        ],
+        "review_fact_paths": [
+          "subnetReferences",
+          "dnsVirtualNetworkId",
+          "gatewayType",
+          "resourceLocation"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Are the required ER/VPN gateways, firewall or supported partner NVAs and conditional DNS services in the explicitly designated central hub with proper ownership/effective inspection, while L7 workload ingress stays workload-owned?"
+        ],
+        "limitations": "Shared subnet/VNet identity is not hub designation, required service completeness, NVA support or effective protection. No NVA inferred from VM names."
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.10: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "e2e8abac-3571-4559-ab91-53e89f89dc7b",
@@ -2742,12 +3107,30 @@
       "baseline_control_sha256": "983cedccf52b181c5db5f1423942ff62f657638327db505aa5fe0d66a19feb4c",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "e2e8abac-3571-4559-ab91-53e89f89dc7b",
+        "upstream_id": "D01.06",
+        "classification": "manual",
+        "flags": [],
+        "implemented_subclaim": "Specific conditional partner/version/topology/HA/symmetry/support workflow, independent blank decision and exceptions without private partner payloads.",
+        "sources": [
+          "partner-nva",
+          "traditional-topology"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: If partner networking applies, does the exact vendor/version support this design and its HA/convergence, symmetry/SNAT, performance and Azure compatibility, with attributable current partner evidence?"
+        ],
+        "limitations": "Generic Microsoft patterns or a deployed appliance do not establish vendor approval/support, actual HA/performance or applicability."
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.10: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
@@ -2757,12 +3140,51 @@
       "baseline_control_sha256": "9ec74d770f7b2a672cab9ae3c55a22e7dc8b5e6a52dae8bc00a8b80b03fcb785",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
+        "upstream_id": "D01.07",
+        "classification": "assisted",
+        "flags": [],
+        "implemented_subclaim": "Explicit branch exchange/preference, genuine virtualHubs IP-configuration/subnet relationships and existing minimized gateway type/active-active/ASN facts; no effective-transit predicate.",
+        "sources": [
+          "coexisting-gateways",
+          "route-server-transit",
+          "route-server-faq",
+          "route-server-arm",
+          "routing-ipconfiguration-arm",
+          "routing-rest-spec",
+          "route-server-provider",
+          "route-server-provider-implementation"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualHubs",
+          "Microsoft.Network/virtualHubs/ipConfigurations",
+          "Microsoft.Network/virtualNetworkGateways"
+        ],
+        "review_fact_paths": [
+          "routingSubnetReferences",
+          "routingIpConfigurationIds",
+          "routingSubnetId",
+          "hubBranchTrafficAllowed",
+          "subnetReferences",
+          "gatewayType",
+          "activeActive",
+          "gatewayTransitSummary"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Is ER/S2S VPN transit required, with Route Server and same-VNet gateways, explicit branch exchange and active-active route-based non-Basic VPN ASN65515, plus actual route/failover evidence? VPN BGP is not required; P2S and ER-to-ER transit are excluded."
+        ],
+        "limitations": "virtualHubs identity/SKU and branch flag alone designate neither Route Server nor Virtual WAN. Declared attachment/gateway settings are not complete/effective transit or authorization to change networking."
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.10: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
@@ -2772,12 +3194,45 @@
       "baseline_control_sha256": "2798f71d52063c6b921537d03618f7360d7fe6cf7429a05e775777efb9a715fa",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
+        "upstream_id": "D01.08",
+        "classification": "assisted",
+        "flags": [],
+        "implemented_subclaim": "Positively joined configured subnet/VNet and IPv4 prefix-length-only comparison to captured current <=26 minimum; missing, dual-stack, multiple/invalid/over-bound prefixes remain unknown.",
+        "sources": [
+          "route-server-quickstart",
+          "route-server-provider",
+          "route-server-faq",
+          "subnet-arm",
+          "terraform-subnet",
+          "routing-rest-spec"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualHubs",
+          "Microsoft.Network/virtualHubs/ipConfigurations",
+          "Microsoft.Network/virtualNetworks/subnets"
+        ],
+        "review_fact_paths": [
+          "routingSubnetReferences",
+          "routingIpConfigurationIds",
+          "routingSubnetId",
+          "routingSubnetPrefixSummary"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: After acknowledging immutable /27 and older provider wording versus the current linked /26-or-larger requirement, is this a dedicated applicable RouteServerSubnet with current capacity, no NSG/UDR association and justified source/version exceptions?"
+        ],
+        "limitations": "Source-qualified sizing context is not a whole verdict. Reserved name, positive attachment or sufficiently large prefix does not prove service designation, dedicated use, current eligibility or operational support."
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.10: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "cc881471-607c-41cc-a0e6-14658dd558f9",
@@ -2787,12 +3242,43 @@
       "baseline_control_sha256": "d9e90e6ab792d91aea31d2b7bf59a73812c062c1c43582e12da96b2eac2cadc2",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "cc881471-607c-41cc-a0e6-14658dd558f9",
+        "upstream_id": "D01.09",
+        "classification": "assisted",
+        "flags": [],
+        "implemented_subclaim": "Unique-known distinct local/remote VNets, explicit configured locations and reciprocal directional peering context without runtime state or hub purpose inference.",
+        "sources": [
+          "global-peering",
+          "traditional-topology",
+          "peering-arm",
+          "peering-rest-spec",
+          "terraform-peering"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+          "Microsoft.Network/virtualNetworks"
+        ],
+        "review_fact_paths": [
+          "remoteVirtualNetwork.id",
+          "allowVirtualNetworkAccess",
+          "peeringTransitSummary",
+          "resourceLocation"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: For explicitly designated regional hubs, is bidirectional global peering or a justified alternative appropriate, respecting nontransitivity, Basic Load Balancer restrictions and cross-region inspection without bypass?"
+        ],
+        "limitations": "Different configured regions and reciprocal links are not designated hubs, working global connectivity or transitive spoke routing. Many-region managed/ER alternatives remain conditional."
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.10: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "4722d929-c1b1-4cd6-81f5-4b29bade39ad",
@@ -2802,12 +3288,44 @@
       "baseline_control_sha256": "0d11eb5020901890e013457a66d4286e0303c9db8bc1f792effb5711104f66c3",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "4722d929-c1b1-4cd6-81f5-4b29bade39ad",
+        "upstream_id": "D01.10",
+        "classification": "assisted",
+        "flags": [],
+        "implemented_subclaim": "Reuse existing bounded monitor/flow/alert facts for original-time preparation; built-in Network Insights topology/health/metrics needs no fabricated enablement flag.",
+        "sources": [
+          "network-insights",
+          "connection-monitor-arm",
+          "metric-alert-arm",
+          "terraform-connection-monitor"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/networkWatchers/connectionMonitors",
+          "Microsoft.Network/networkWatchers/flowLogs",
+          "Microsoft.Insights/metricAlerts"
+        ],
+        "review_fact_paths": [
+          "connectionMonitorSummary",
+          "expressRouteAlertSummary",
+          "enabled",
+          "trafficAnalytics.enabled",
+          "trafficAnalytics.workspaceResourceId"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Is actual Network Insights topology/health/metrics visibility and required connectivity/traffic/alerts operation complete, fresh and owned, with attributable ingestion and response evidence rather than configured resource presence?"
+        ],
+        "limitations": "Network Insights redirects to Network Watcher. No configuration is required for built-in views. Monitor/flow/alert association does not establish running tests, current health, end-to-end coverage or owner response; no live diagnostic/query authorized."
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.10: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "0e7c28ec-9366-4572-83b0-f4664b1d944a",
@@ -2817,12 +3335,47 @@
       "baseline_control_sha256": "3811add812557e830e8f09b9636ecb2ce08039a377796baee3e32d4bbe6e1a2e",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "0e7c28ec-9366-4572-83b0-f4664b1d944a",
+        "upstream_id": "D01.11",
+        "classification": "assisted",
+        "flags": [],
+        "implemented_subclaim": "Supplied typed VNet/peering/routing attachment and existing gateway metadata prepare scale review; no selected-subset count is compared to whole-estate service quotas.",
+        "sources": [
+          "network-limits",
+          "route-server-faq",
+          "traditional-topology",
+          "peering-arm",
+          "gateway-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks",
+          "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+          "Microsoft.Network/virtualHubs",
+          "Microsoft.Network/virtualNetworkGateways"
+        ],
+        "review_fact_paths": [
+          "resourceLocation",
+          "remoteVirtualNetwork.id",
+          "routingSubnetReferences",
+          "routingIpConfigurationIds",
+          "gatewaySku",
+          "gatewayType"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Reconcile historical400-spoke/500-peering/1000-prefix wording with current650 peerings/VNet and Route Server/ER direction/family/SKU limits, authorized actual quotas, complete regional/advertised populations, summarization and growth/exception plans."
+        ],
+        "limitations": "Historical checklist numbers are immutable text, not current automatic limits. No complete estate, live quotas, direction-specific prefix advertisements, spare capacity or extra-hub need inferred from selected resource counts."
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/146",
+      "merge_commit": "a58982cc48652a6277d9b7bfcf89baf36f8cb621",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.10: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "3d457936-e9b7-41eb-bdff-314b26450b12",

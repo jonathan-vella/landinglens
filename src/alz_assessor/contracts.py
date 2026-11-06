@@ -342,6 +342,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                 from .platform_health_evidence import PATHS as PLATFORM_HEALTH_PATHS
                 from .policy_strategy_evidence import PATHS as POLICY_STRATEGY_PATHS
                 from .tenant_evidence import PATHS as TENANT_PATHS
+                from .topology_evidence import PATHS as TOPOLOGY_PATHS
                 from .virtual_wan_evidence import PATHS as VWAN_PATHS
 
                 paths = require(control, "review_fact_paths", list)
@@ -464,6 +465,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                             | POLICY_STRATEGY_PATHS
                             | LOGGING_PATHS
                             | PLATFORM_HEALTH_PATHS
+                            | TOPOLOGY_PATHS
                         )
                         for path in paths
                     )
