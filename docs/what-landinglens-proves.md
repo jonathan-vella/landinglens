@@ -31,6 +31,15 @@ The frozen default-outbound retirement wording differs from the inspected curren
 Learn guidance for new VNets and later APIs; see the
 [versioned findings](automation-matrix.md#cohort-13-inbound-protection-outbound-migration-and-hybrid-connectivity).
 
+Cohort14 supplies typed ExpressRoute circuit/port billing and capacity, FastPath
+flags, source-specific gateway scale/zone context and scoped positive relationships.
+Nine explicit decisions distinguish actual requirements/costs, Local reach,
+deployed resilience, real on-premises devices and effective routing isolation.
+The published FastPath IP limit is not observed usage or available headroom.
+No current regional/port availability, achieved throughput/latency, working
+FastPath, operational redundancy or economic suitability follows from settings.
+ARM scale support does not imply the pinned Terraform provider supports it.
+
 ## Tiers and counts
 
 With explicit assessment 1.2, Verified means sufficient current evidence for an
@@ -103,3 +112,27 @@ different verification labels. This efficiency increment has no new live Azure
 run; the earlier narrowly scoped pilot is not proof of every control or a tenant.
 See [collection](collection.md), [contracts](contracts.md) and
 [detailed workflows](usage.md) for precise supported cases and bounds.
+
+## Cohort 22: security configuration and explicit review
+
+The [eight-GUID matrix](../references/recommendation-batches/batch-22.json)
+and [25 captured sources](../references/recommendation-batches/batch-22-sources.json)
+record source review and offline typed configuration support. Successor `.6.6`
+preserves the exact delivered `.6.5` catalog/crosswalk and all earlier receipts.
+Catalog integration is not delivery; the ledger changes only after checked merge.
+Terraform/supplied-plan and direct ARM-property helpers prepare allowlisted
+Defender plan fields, activity-log routing, Managed HSM settings and VM patch
+configuration. The source-specific interview prepares eight separate blank
+scope/content/time-bound decisions through existing review, tier and replay paths.
+The extra ARM versions are planned-only; live Collector routes are unchanged.
+
+Managed HSM stores HSM-protected cryptographic keys, not secrets or credentials.
+External KEK custody adds customer-operated HSM/proxy responsibilities and is not
+inferred from HSM presence. Legacy Entra and Security Center links resolve to
+current monitoring/Defender guidance. Patch recommendations now use Update Manager,
+not deprecated MMA collection. Pricing, diagnostic destinations and periodic
+assessment configuration prove neither fleet-wide protection nor successful
+ingestion, retained data, endpoint enforcement, OS compliance or sovereign
+suitability. Retention, costs and acceptable patch drift require explicit
+requirements and attributable redacted operational evidence; no threshold,
+private audit record or human decision is invented.

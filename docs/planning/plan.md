@@ -19,6 +19,167 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## Cohort 14 integration: 2026-11-06
+
+The coordinator granted [#99](https://github.com/jonathan-vella/landinglens/issues/99)
+its sole slot after actual cohort22 implementation/receipt merges. Preserved
+preparation `60951de` was reconciled with delivered main
+`4f2cb6d72897c6e135dbfd52b500554872ae149c`. The
+[nine-GUID matrix](../../references/recommendation-batches/batch-14.json) and
+[26 actual source captures](../../references/recommendation-batches/batch-14-sources.json)
+precede working `2026-11-06.7`. Exact `.6.6` catalog bytes are frozen with SHA256
+`b5620f2e88cbce8c7d53178626931406975b604d0cb5f4b3e5e9ba41470098b8`.
+All 255 GUIDs, immutable 251 membership/original hashes, ten existing predicates,
+old catalog/crosswalk meanings and every earlier own-GUID receipt are retained.
+
+All nine recommendations remain assisted. Explicit circuit tier/family, separate
+provider Mbps/Direct numeric Gbps, port billing/encapsulation, FastPath flags and
+ARM-only scale/public-IP context reuse merged gateway/connection helpers.
+Scoped positive circuit/port/gateway/public-IP joins and literal FastPath
+prerequisite/published-limit subchecks are partial original-time preparation,
+not actual demand, current availability, costs, working paths or resilience.
+Finite fractional circuit bandwidth can prepare a Signal; invalid/nonfinite
+values cannot. Pinned Terraform has no invented ErGwScale/autoscale support.
+
+Current sources distinguish Local reach from resource location, port billing
+from circuit billing and AZ-capable SKUs from zonal/zone-redundant deployment.
+Conditional Direct 400-Gbps and FastPath provider/Direct/IPv6/UDR/Private Link
+support, cumulative port IP limits and fallback remain explicit review constraints.
+ErGwScale has bounds 1-40, fixed-scale Private Link guidance, regional exclusions
+and no IPsec-over-ExpressRoute support. No arbitrary cost, traffic or latency
+threshold, on-premises appliance count or environment-name isolation is inferred.
+
+The single evaluator's adapters, review contexts, all reports, tiers, sessions,
+interviews and exact packaged replay are wired. Nine source-bound decisions stay
+blank until explicitly supplied. Historical unaccepted/tampered replay remains
+refused. The existing six compiler cases are preserved and a seventh exercises
+the ExpressRoute fixture without restoration. No new live Azure/cost/traffic/
+health/region/directory reads, login, probes, scan, deployment, module/compiler
+acquisition, permission change, dependency or human approval is introduced.
+Checked implementation delivery and guarded actual receipts remain required;
+the fixed ledger is still **71 merged / 180 pending** before that reconciliation.
+
+Pre-delivery local and own exact-installed suites each ran **381 tests**:
+380 passed and the original Windows symlink-privilege case was explicitly skipped.
+All 17 cohort-specific cases passed, including actual packaged `.6.7` replay,
+all output formats, blank sessions and nine separate source-bound decisions.
+Format/lint, 37-source-file type checks and dependency consistency passed.
+All seven existing-compiler cases exercised without skips or restoration.
+The final wheel was built offline and installed into a fresh own environment
+outside checkout using staged reviewed runtime wheels; import provenance was
+asserted under site-packages. No dependency manifest or compiler acquisition changed.
+Exact wheel SHA256:
+`df723f455bd646a432fd911015df5d53fba4e043d720dfa596d83d562875b851`.
+Platform CI, downloaded compiler artifacts, normal checked merge and actual
+own-GUID receipts remain delivery gates, not assumed from these local results.
+
+[#107](https://github.com/jonathan-vella/landinglens/pull/107) merged normally as
+`64d18c84fe5831d90423f06984d73dd2fc671028` at 2026-11-06T11:03:49Z.
+Exact checked head `da4dfa054cd3e44348c53d4a53289066e48f5aae` passed all eight
+supported jobs in push/PR runs `42206494462` / `42206544372`, CodeQL run
+`42206542315` and the applicable AI-findings run `42206548556`.
+All four downloaded compiler artifacts exercised identical seven-case coverage
+without skips: IDs `13496484161`, `13497625015`, `13497375707`, `13495834551`.
+Their JSON SHA256 is
+`0152e4ac902d26dd275fb5ac5c5d8aad9e00def9543343123e082d6acab95d7f`
+on Ubuntu and
+`66e99709547173e16a6107fd02bcd4dc52fab987a7ffb14051ea7e41ed54cf50`
+on Windows. Exact head, actual main, all check-runs and reviews were refreshed
+immediately before normal SHA-bound merge. No required review, branch protection
+or ruleset was configured or bypassed.
+
+The guarded recorder reverified actual merged PR/head/runs/compiler artifacts
+and the own installed wheel, then bound all nine GUIDs to `deliveries.14`.
+All 71 earlier receipt rows and all eight earlier cohort receipts are unchanged.
+The actual ledger is **80 merged / 171 pending**; cohort12 is next by current
+severity/crosswalk priority. Checked receipt publication remains the closure
+gate. This is source/fixture/saved/injected and installed-CLI acceptance, not
+new live Azure, demand, regional availability, costs, routing, performance,
+on-premises redundancy or an invented human decision.
+
+The receipt/invariant follow-up passed **382 local and exact-installed tests**:
+381 passed with the same original Windows privilege skip. The exact implementation
+wheel above is unchanged. A new own-GUID receipt assertion freezes all 71 prior
+rows and eight prior cohort receipts; cohort22's historical count remains 71
+within its exact completed cohorts, not redefined as the new global total.
+Format/lint, 37-source-file type checks and dependency consistency passed.
+
+## Cohort 22 integration: 2026-11-06
+
+The coordinator granted [#100](https://github.com/jonathan-vella/landinglens/issues/100)
+its sole delivery slot after actual cohort13 implementation/receipt merges and
+#97 closure. Preparation commit `71e4e0d` was reconciled with actual main
+`8fbd1a1dff9d384d1df015da85f0fc2d32c07815`, not an assumed `.6.4`.
+The [eight-GUID matrix](../../references/recommendation-batches/batch-22.json)
+and [25 reviewed sources](../../references/recommendation-batches/batch-22-sources.json)
+precede working successor `2026-11-06.6`. Exact delivered `.6.5` bytes are frozen:
+`cf9e27745068f5ec3d2d0701d07445951e9cbed31aeeed0657e2c022c7cd23f9`.
+All 255 entries, fixed 251 membership/original hashes, ten predicates, earlier
+catalog/crosswalk bytes and own-GUID receipts are retained.
+
+All eight workflows remain assisted. Explicit scope-local pricing tier/subplan/
+extension strings, diagnostic categories and typed destinations, HSM network/
+purge settings and OS-specific assessment/patch enums prepare useful review.
+They never establish all-resource protection, arriving/retained logs, endpoint
+enforcement, OS compliance or sovereign suitability. Actual source redirects
+distinguish Managed HSM keys from unsupported secrets/credentials; external KEK
+custody from HSM presence; Entra audit reports from Azure activity logs; and
+current Update Manager assessments from deprecated MMA. No retention, cost,
+health or patch-drift threshold is invented.
+
+The single evaluator and shared typed review/tier/report/replay paths are reused,
+including cohort13's typed-reference helper and scope-bound interview hash.
+Eight separate source-specific decisions remain blank until explicitly supplied.
+Pricing/HSM/VM API support is planned-only, so the live Collector registry is
+unchanged. Existing five compiler cases are preserved and a sixth exercises both
+new security fixtures with no restoration. No new Azure/Entra/log/data-plane read,
+login, policy/query/scanner run, key operation, dependency or human approval occurs.
+Actual merged delivery and guarded receipts remain required; the fixed ledger is
+still **63 merged / 188 pending** until that reconciliation.
+
+Pre-delivery local and exact clean-installed suites each ran 363 tests:
+362 passed and one explicit original Windows symlink-privilege skip.
+All 14 security tests, format/lint, 36-source-file type checks and dependency
+consistency passed. The existing compiler exercised all six cases, including
+both new security fixtures, without compiler skips or restoration.
+Exact wheel SHA256:
+`1043f7f9d4de9251ec18ac83e9ffa935b78fb5fcc2f2d92f6ba561b660592cf3`.
+The clean interpreter imported from its own site-packages outside the checkout;
+only existing cached reviewed runtime wheels were used, with no network
+installation or module/compiler acquisition.
+
+[#104](https://github.com/jonathan-vella/landinglens/pull/104) merged normally as
+`4929eae302ea2019d067862f17bdfb2ed5fc25a5` at 2026-11-06T10:18:16Z.
+Exact checked head `09612a164d4e502f32ac25b083f265d93f4fe098` passed every
+supported job in push/PR runs `42200949166` / `42200977240`, CodeQL run
+`42200972959`, and the applicable Advanced Security check. Reviews, head,
+actual main and all check-runs were refreshed immediately before normal
+SHA-bound merge; no required review/protection/ruleset was configured or bypassed.
+
+All four downloaded PR compiler artifacts exercised the same six cases with no
+skips: IDs `13493598932` (Ubuntu 3.12), `13494931110` (Ubuntu 3.13),
+`13494367856` (Windows 3.12) and `13495070402` (Windows 3.13).
+Compiler JSON SHA256 is
+`423661b21725a4592f5d055594ca3e1678eb1dc72bcde605ca5497a4cba2a573`
+on Ubuntu and
+`04c6cdedbac395fa1f99a7de7f90c7f5effa955b150b0cce69257c4318293960`
+on Windows.
+
+The guarded recorder independently re-read the actual merged PR/head/base,
+both complete runs and every compiler artifact before binding all eight GUIDs
+to their own `deliveries.22` receipt and the exact wheel above. Every earlier
+own-GUID receipt and fixed target remains unchanged. The ledger becomes
+**71 merged / 180 pending** on checked receipt reconciliation. Catalog/crosswalk
+remain `.6.6`, 10 automated / 202 assisted / 43 manual; cohort14 is the highest
+remaining source/dependency review priority. #100 closure is gated on the checked
+receipt merge. This is source/fixture/saved/injected and exact installed-CLI
+acceptance, not new live Azure or operational protection/retention/compliance proof.
+
+Final receipt reconciliation passed 364 checkout and exact-installed tests:
+363 passed with the same original Windows symlink-privilege skip. Format/lint,
+36-file typing and dependency checks remain green. The exact implementation
+wheel above is unchanged; receipt/docs/tests add no package-source dependency.
+
 ## Cohort 13 delivery: 2026-11-06
 
 [#97](https://github.com/jonathan-vella/landinglens/issues/97) owns exactly the

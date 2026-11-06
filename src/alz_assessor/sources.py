@@ -43,8 +43,13 @@ TF_TYPES = {
     "azurerm_lb": "Microsoft.Network/loadBalancers",
     "azurerm_lb_backend_address_pool": "Microsoft.Network/loadBalancers/backendAddressPools",
     "azurerm_express_route_port": "Microsoft.Network/expressRoutePorts",
+    "azurerm_express_route_circuit": "Microsoft.Network/expressRouteCircuits",
     "azurerm_virtual_network_gateway_connection": "Microsoft.Network/connections",
     "azurerm_role_assignment": "Microsoft.Authorization/roleAssignments",
+    "azurerm_security_center_subscription_pricing": "Microsoft.Security/pricings",
+    "azurerm_key_vault_managed_hardware_security_module": "Microsoft.KeyVault/managedHSMs",
+    "azurerm_linux_virtual_machine": "Microsoft.Compute/virtualMachines",
+    "azurerm_windows_virtual_machine": "Microsoft.Compute/virtualMachines",
     "azurerm_cdn_frontdoor_firewall_policy": (
         "Microsoft.Network/FrontDoorWebApplicationFirewallPolicies"
     ),
@@ -116,6 +121,7 @@ def property_at(properties: Any, path: str) -> Any:
 
 def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     from .identity_evidence import IDENTITY_KINDS, identity_summary, role_properties
+    from .security_evidence import projected_properties as security_properties
 
     if kind == "azurerm_role_assignment":
         return role_properties(properties, terraform=True)
@@ -124,6 +130,11 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
         result["identitySummary"] = identity_summary(
             properties["identity"], terraform=True, resource_type=TF_TYPES[kind]
         )
+    result.update(
+        security_properties(
+            TF_TYPES.get(kind, kind), properties, terraform=True, terraform_kind=kind
+        )
+    )
     return result
 
 
@@ -308,6 +319,14 @@ def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str 
             and "/" not in name
         ):
             return canonical_id(parent + "/" + child_kind + "/" + name)
+        return None
+    if kind == "azurerm_security_center_subscription_pricing":
+        from .security_evidence import PLANS
+
+        boundary = scope_id(scope) if scope else None
+        plan = values.get("resource_type")
+        if boundary and boundary.count("/") == 2 and isinstance(plan, str) and plan in PLANS:
+            return canonical_id(boundary + "/providers/Microsoft.Security/pricings/" + plan)
         return None
     if kind == "azurerm_cdn_frontdoor_security_policy":
         from .protection_evidence import typed_reference

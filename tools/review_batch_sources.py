@@ -1385,12 +1385,404 @@ SOURCES_12 = [
 ]
 
 
+SOURCES_14 = [
+    (
+        "scalable-gateway",
+        LEARN + "azure/expressroute/scalable-gateway",
+        ["maximum scale unit", "40", "fixed scaling", "West Europe"],
+        "ErGwScale bounds are 1-40; min=1 requires fixed max=1 and autoscale min starts at 2. "
+        "Private Link workloads should use fixed scaling; IPsec over ExpressRoute is unsupported. "
+        "The current source lists region exclusions including West Europe, "
+        "not blanket availability. Configured minimum>=10 is a FastPath prerequisite subcheck, "
+        "not actual scale or performance.",
+    ),
+    (
+        "expressroute-cost",
+        "https://learn.microsoft.com/azure/expressroute/plan-manage-cost",
+        ["Unlimited data plan", "monthly port fee", "Global Reach"],
+        "Local includes unlimited data; Standard/Premium offer different plans. Circuit, "
+        "gateway, Direct port, outbound transfer, Global Reach and provider charges must be "
+        "reconciled with actual demand and prices. No universal break-even threshold exists.",
+    ),
+    (
+        "expressroute-local",
+        "https://learn.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-local",
+        ["What is ExpressRoute Local", "peering location", "unlimited"],
+        "Local reach is tied to the actual peering location's supported nearby Azure regions, "
+        "not the circuit resource location or a Local SKU alone. FAQ Direct bandwidth text "
+        "lags the dedicated Direct page's conditional 400-Gbps offering.",
+    ),
+    (
+        "expressroute-gateway",
+        "https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways",
+        ["ErGwScale", "minimum 10 scale units", "auto-assigned"],
+        "Gateway performance values are estimates, not measured demand or throughput. "
+        "ErGwScale FastPath requires at least ten scale units; new auto-assigned public-IP "
+        "behavior differs from existing zonal deployments. SKU text cannot prove resilience.",
+    ),
+    (
+        "hybrid-demand-and-isolation",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/connectivity-to-azure",
+        ["higher than 10 Gbps", "routing domain", "share the bandwidth"],
+        "The checklist's >10-Gbps/latency/dedicated-port triggers require actual requirements. "
+        "VNets sharing a circuit share routing domain/bandwidth; different circuit declarations "
+        "alone cannot establish effective isolation or absence of shared port contention.",
+    ),
+    (
+        "fastpath",
+        "https://learn.microsoft.com/azure/expressroute/about-fastpath",
+        ["minimum of 10 scale units", "limited general availability", "25,000"],
+        "Provider circuits support IPv4 hub FastPath; Direct adds conditional peering, UDR, "
+        "IPv6 and enrolled limited-GA Private Link scenarios. Same-region/topology/service and "
+        "port-cumulative IP limits apply; exhaustion/fallback routes through the gateway. "
+        "Virtual WAN Direct defaults require five scale units and are a distinct resource model.",
+    ),
+    (
+        "zone-gateway-creation",
+        "https://learn.microsoft.com/azure/vpn-gateway/create-zone-redundant-vnet-gateway",
+        ["For zonal gateways", "All gateway instances", "Standard"],
+        "AZ SKU permits zonal as well as zone-redundant deployments. Public-IP configuration, "
+        "deployment history and actual supported region are required, not a substring test. "
+        "No creation, migration, public-IP fetch or regional API read is performed.",
+    ),
+    (
+        "onprem-vpn-redundancy",
+        "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable",
+        ["Multiple on-premises VPN devices", "BGP is required", "ECMP"],
+        "Azure active-active is not on-premises appliance redundancy. Multiple-device designs "
+        "require distinct device/connection bindings and appropriate BGP/ECMP/failover evidence; "
+        "two local gateway records or tunnels cannot count real independent appliances.",
+    ),
+    (
+        "expressroute-direct",
+        "https://learn.microsoft.com/azure/expressroute/expressroute-erdirect-about",
+        ["400-Gbps", "limited ExpressRoute peering locations", "QinQ", "billing type"],
+        "Direct now documents dual 10/100/400-Gbps ports; 400 Gbps is location/enrollment "
+        "conditional. Local/Standard/Premium, port billing and VLAN encapsulation remain "
+        "distinct. QinQ/Dot1Q configuration is not tested routing isolation or cost suitability.",
+    ),
+    (
+        "expressroute-architecture",
+        "https://learn.microsoft.com/azure/architecture/framework/services/networking/expressroute/reliability",
+        ["ExpressRoute", "service providers", "reliability testing"],
+        "The legacy reliability URL redirects to the current Well-Architected service guide. "
+        "Reconcile circuit, path, provider, peering-site and gateway failure domains and "
+        "business requirements; configuration/SKU/association evidence alone is not resilience.",
+    ),
+    (
+        "gateway-reliability",
+        LEARN + "azure/reliability/reliability-virtual-network-gateway",
+        ["might not be zone redundant", "ErGwScale", "Public IP addresses"],
+        "New supported gateways can be automatically zone redundant while existing resources "
+        "might not be. ExpressRoute ErGwScale is AZ-capable despite lacking AZ in its name. "
+        "VPN public IPs must be Standard and zone redundant; "
+        "operational topology remains separate.",
+    ),
+    (
+        "expressroute-locations",
+        LEARN + "azure/expressroute/expressroute-locations-providers",
+        ["two distinct", "East US", "Seattle", "Local"],
+        "Circuit resource region and physical peering location are different. The reviewed "
+        "public table is not live inventory, admission or regional availability evidence; "
+        "review exact Local target-region mapping and Direct port availability separately.",
+    ),
+    (
+        "circuit-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/expressroutecircuits",
+        ["bandwidthInGbps", "bandwidthInMbps", "expressRoutePort", "family"],
+        "Pinned ARM exposes explicit tier/family, provider Mbps versus Direct Gbps, port "
+        "reference and rate-limit flag. The generated page labels circuit Gbps int while "
+        "the exact REST schema says number; retain finite numeric facts "
+        "without claiming eligibility.",
+    ),
+    (
+        "circuit-rest-2024",
+        SPEC_RAW + "specification/network/resource-manager/Microsoft.Network/Network/"
+        "stable/2024-05-01/expressRouteCircuit.json",
+        ['"type": "number"', "ExpressRouteCircuitSku", "enableDirectPortRateLimit"],
+        "Exact GET/schema distinguishes circuit bandwidth number, provider integer Mbps, "
+        "SKU enums and port reference. Secret/service keys, addresses, stats "
+        "and notes are excluded.",
+    ),
+    (
+        "port-rest-2024",
+        SPEC_RAW + "specification/network/resource-manager/Microsoft.Network/Network/"
+        "stable/2024-05-01/expressRoutePort.json",
+        ["billingType", "bandwidthInGbps", "QinQ"],
+        "Port bandwidth is integer; billing and encapsulation are independent enums. "
+        "No arbitrary service keys, link identities, rack/interface values or secret references "
+        "are included in the cost/capacity facts.",
+    ),
+    (
+        "gateway-rest-2024",
+        SPEC_RAW + "specification/network/resource-manager/Microsoft.Network/Network/"
+        "stable/2024-05-01/virtualNetworkGateway.json",
+        ["expressRouteGatewayBypass", "enablePrivateLinkFastPath", "autoScaleConfiguration"],
+        "Pinned gateway/connection schema supports explicit bypass/Private Link booleans "
+        "and autoscale bounds. Omitted defaults, current scale, deployed zone population and "
+        "working routes are not inferred. Reuse merged predecessor gateway/connection helpers.",
+    ),
+    *[
+        source
+        for source in SOURCES_11
+        if source[0]
+        in {
+            "port-arm",
+            "connection-arm",
+            "terraform-expressroute-port",
+            "terraform-gateway-connection",
+        }
+    ],
+    (
+        "terraform-circuit",
+        RAW + "website/docs/r/express_route_circuit.html.markdown",
+        ["bandwidth_in_gbps", "bandwidth_in_mbps", "conflict", "rate_limiting_enabled"],
+        "AzureRM 4.50.0 distinguishes mutually exclusive provider and Direct fields. Explicit "
+        "single SKU block is required; Basic is an enum, not a justified regional/cost option. "
+        "No migration, provider execution or service-key retention occurs.",
+    ),
+    (
+        "terraform-gateway",
+        RAW + "website/docs/r/virtual_network_gateway.html.markdown",
+        ["active_active", "ErGw3AZ", "public_ip_address_id"],
+        "Pinned provider documents active-active and IP-config references but no ErGwScale "
+        "or autoscale field. Do not infer support from the newer ARM schema or invent a "
+        "Terraform scale block. Missing defaults remain unknown; reuse predecessor helpers.",
+    ),
+    (
+        "gateway-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/virtualnetworkgateways",
+        ["autoScaleConfiguration", "ErGwScale", "publicIPAddress"],
+        "ARM supports explicit autoscale min/max and gateway SKU/public-IP/subnet references. "
+        "Configured bounds do not measure actual scale or verify zone-redundant placement. "
+        "Pinned Terraform documentation does not expose the same autoscale capability.",
+    ),
+    (
+        "rest-spec-reuse",
+        SPEC_RAW + "LICENSE",
+        ["MIT", "Microsoft"],
+        "Pinned Microsoft REST schemas are MIT licensed; retain metadata and own factual findings.",
+    ),
+    (
+        "provider-reuse",
+        RAW + "LICENSE",
+        ["Mozilla Public License Version 2.0", "HashiCorp"],
+        "Pinned provider is MPL-2.0. No provider source, page content or licensed implementation "
+        "is redistributed in the preparation; retain attribution, hashes and own factual findings.",
+    ),
+    (
+        "learn-reuse",
+        LEARN + "legal/termsofuse",
+        ["Notice Specific to Documents", "explicit license terms", "informational"],
+        "Learn's general document reuse terms are constrained and explicit document licenses "
+        "can govern separately. Retain URL/revision/hash attribution and own factual findings "
+        "only; no Microsoft page text, graphics, layouts or assets are redistributed.",
+    ),
+]
+
+
+SOURCES_22 = [
+    (
+        "sovereign-external-keys",
+        LEARN
+        + "industry/sovereign-cloud/sovereign-public-cloud/capabilities/external-key-management",
+        ["external", "proxy", "availability"],
+        "Legacy sovereign guidance redirects to Azure sovereign clouds. Managed HSM keys "
+        "and external customer-operated HSM KEK custody differ; EKM requires a hard "
+        "physical-custody mandate and introduces proxy/HSM availability responsibilities.",
+    ),
+    (
+        "hsm-overview",
+        LEARN + "azure/key-vault/managed-hsm/overview",
+        ["cryptographic keys", "single-tenant", "external key"],
+        "Managed HSM is a cryptographic-key service. Its presence or public-network "
+        "configuration cannot prove key use, external custody or sovereign suitability.",
+    ),
+    (
+        "hsm-object-types",
+        LEARN + "azure/key-vault/general/about-keys-secrets-certificates",
+        ["Secrets", "Not supported", "Managed HSM"],
+        "Managed HSM supports HSM-protected keys, not secrets, certificates or storage "
+        "account keys. Frozen G02.13 secrets/credentials wording is not current capability.",
+    ),
+    (
+        "hsm-ekm-architecture",
+        LEARN + "azure/key-vault/managed-hsm/external-key-management-overview",
+        ["generally available", "preview", "No end-to-end", "KEK"],
+        "EKM is GA; Private Link integration is preview. External KEK never leaves the "
+        "external HSM; unwrap returns the DEK to the service. Compatible CMK services, "
+        "mTLS, proxy operations, costs and end-to-end SLA exclusions require human review.",
+    ),
+    (
+        "entra-audit-reporting",
+        "https://learn.microsoft.com/azure/active-directory/reports-monitoring/overview-reports",
+        ["Audit logs", "Sign-in logs", "Provisioning logs"],
+        "Legacy AAD link redirects to Entra monitoring and health. Directory audit, "
+        "sign-in and provisioning logs answer different questions; Azure activity "
+        "diagnostics or role assignments do not prove an access-control audit report.",
+    ),
+    (
+        "activity-export",
+        "https://learn.microsoft.com/azure/azure-monitor/logs/logs-data-export?tabs=portal",
+        ["new data", "12 hours", "discarded"],
+        "Workspace export covers selected tables' new arrivals, not historical data. "
+        "Unavailable destinations can cause discarded records after retries; configuration "
+        "does not prove successful ingestion/export, completeness, retention or low cost.",
+    ),
+    (
+        "activity-log",
+        LEARN + "azure/azure-monitor/essentials/activity-log",
+        ["90 days", "control plane", "diagnostic setting"],
+        "Activity log retains management events for 90 days by default; resource/data-plane "
+        "and Entra audit records differ. Subscription diagnostics and destinations are "
+        "partial routing facts, not delivered retention or complete subscription coverage.",
+    ),
+    (
+        "log-retention",
+        LEARN + "azure/azure-monitor/logs/data-retention-configure",
+        ["12 years", "total retention", "particular table"],
+        "Current total table retention supports up to 12 years; analytics and total "
+        "retention differ. Per-table overrides, privacy obligations, search/recovery "
+        "and storage lifecycle/immutability require review, not an invented minimum.",
+    ),
+    (
+        "defender-cspm",
+        "https://learn.microsoft.com/azure/defender-for-cloud/concept-cloud-security-posture-management",
+        ["Foundational CSPM", "Defender CSPM", "billable"],
+        "Foundational and paid Defender CSPM differ; billable types are not the whole "
+        "protection population. Feature components, connectors, exclusions and regional "
+        "support require evidence beyond a CloudPosture Standard pricing record.",
+    ),
+    (
+        "defender-servers",
+        "https://learn.microsoft.com/azure/defender-for-cloud/plan-defender-for-servers-select-plan",
+        ["Plan 1", "Plan 2", "resource level"],
+        "Servers P1/P2 differ. Subscription recommendation has resource-level opt-outs "
+        "and P1 overrides; plan configuration is not every server's protection or health.",
+    ),
+    (
+        "defender-workloads",
+        "https://learn.microsoft.com/azure/defender-for-cloud/connect-azure-subscription",
+        ["workload protection", "coverage workbook", "paid plans"],
+        "Workload plans and their required monitoring components differ. Review actual "
+        "subscription/resource coverage and workload suitability, not the count of "
+        "pricing records, a trial, or an Enable all description as runtime proof.",
+    ),
+    (
+        "endpoint-protection",
+        "https://learn.microsoft.com/mem/configmgr/protect/deploy-use/endpoint-protection",
+        ["Configuration Manager", "antimalware", "monitor compliance"],
+        "Legacy MEM URL redirects to Intune Configuration Manager. Installed antivirus, "
+        "antimalware policy assignment, MDE onboarding, EDR and actual enforced endpoint "
+        "health are distinct. Plan/agent presence is not enforcement.",
+    ),
+    (
+        "legacy-security-center",
+        "https://learn.microsoft.com/azure/security-center/",
+        ["Defender for Cloud", "Workload protection"],
+        "Legacy Security Center URL redirects to the Defender documentation landing page, "
+        "not a patch-drift predicate. Supplement with current Update Manager guidance.",
+    ),
+    (
+        "patch-assessment",
+        LEARN + "azure/defender-for-cloud/enable-periodic-system-updates",
+        ["Azure Update Manager", "deprecated", "Plan 2"],
+        "Defender update recommendations use Update Manager; old MMA collection is "
+        "deprecated. Explicit periodic-assessment mode is not successful assessment, "
+        "missing-update compliance, alert routing or an approved patch-drift tolerance.",
+    ),
+    (
+        "pricing-arm",
+        LEARN + "azure/templates/microsoft.security/2024-01-01/pricings",
+        ["pricingTier", "subPlan", "enforce", "isEnabled"],
+        "2024-01-01 has scope-local tier/subplan and string True/False extension/enforce "
+        "fields. Do not coerce booleans or infer an omitted subplan, coverage or cost.",
+    ),
+    (
+        "pricing-rest",
+        SPEC_RAW + "specification/security/resource-manager/Microsoft.Security/Security/"
+        "stable/2024-01-01/pricings.json",
+        ["resourcesCoverageStatus", "misalignment", "additionalExtensionProperties"],
+        "Pinned REST explicitly distinguishes subscription plan status from resource "
+        "coverage. Retain allowlisted configuration only; exclude arbitrary extension "
+        "properties, exclusion tags, operation messages and protection-health claims.",
+    ),
+    (
+        "hsm-arm",
+        LEARN + "azure/templates/microsoft.keyvault/2024-11-01/managedhsms",
+        ["publicNetworkAccess", "enablePurgeProtection", "initialAdminObjectIds"],
+        "Project explicit public-network/purge settings only; admin/tenant identities, "
+        "security domains, credentials and key URIs are withheld. No activation is performed.",
+    ),
+    (
+        "diagnostic-arm",
+        LEARN + "azure/templates/microsoft.insights/2021-05-01-preview/diagnosticsettings",
+        ["categoryGroup", "enabled", "workspaceId", "storageAccountId"],
+        "Explicit category/group plus boolean enabled and typed destinations are routing "
+        "configuration. Metrics, empty/invalid arrays or storage retentionPolicy cannot "
+        "establish activity export, delivered ingestion or retention adequacy.",
+    ),
+    (
+        "vm-patch-rest",
+        SPEC_RAW + "specification/compute/resource-manager/Microsoft.Compute/Compute/"
+        "stable/2024-07-01/computeRPCommon.json",
+        ["LinuxPatchSettings", "assessmentMode", "AutomaticByPlatform", "Manual"],
+        "Linux and Windows patch-mode enums differ. Only one explicit OS configuration "
+        "and its assessment/patch enums and agent boolean are projected; osProfile "
+        "credentials, custom data, SSH material and OS compliance records are withheld.",
+    ),
+    (
+        "terraform-pricing",
+        RAW + "website/docs/r/security_center_subscription_pricing.html.markdown",
+        ["CloudPosture", "subplan", "extension", "2023-01-01"],
+        "Pinned AzureRM 4.50.0 uses pricing API 2023-01-01, explicit tier/resource_type/"
+        "subplan and extension blocks; do not infer its default VirtualMachines target.",
+    ),
+    (
+        "terraform-pricing-implementation",
+        RAW + "internal/services/securitycenter/security_center_subscription_pricing_resource.go",
+        ["extensionStatuses[input", "IsEnabledTrue", "only keep enabled extensions"],
+        "Pinned expand sets supplied named extensions True; read flattens enabled ones "
+        "only. No absent extension becomes disabled, no omitted defaults are projected, "
+        "and arbitrary additional properties remain withheld.",
+    ),
+    (
+        "terraform-hsm",
+        RAW + "website/docs/r/key_vault_managed_hardware_security_module.html.markdown",
+        ["public_network_access_enabled", "security_domain_encrypted_data", "2023-07-01"],
+        "4.50.0 HSM uses 2023-07-01. Explicit public-network/purge booleans are preparable, "
+        "not secrets storage, activation or EKM. Security-domain data and IDs are excluded.",
+    ),
+    (
+        "terraform-diagnostics",
+        RAW + "website/docs/r/monitor_diagnostic_setting.html.markdown",
+        ["enabled_log", "Exactly one", "storage_account_id"],
+        "4.50.0 enabled_log presence configures enabled logs; category and category_group "
+        "are mutually exclusive. Missing/malformed values remain unknown; metrics do "
+        "not imply logs, and no diagnostic category/data-plane read is performed.",
+    ),
+    *[
+        (
+            f"terraform-{os}-patch",
+            RAW + f"website/docs/r/{os}_virtual_machine.html.markdown",
+            ["patch_assessment_mode", "patch_mode", "provision_vm_agent"],
+            f"Pinned {os} VM documentation supports explicit OS-specific patch and "
+            "assessment enums with an agent boolean, not patch success/compliance. "
+            "Default values, administrator data, custom data and secrets are not retained.",
+        )
+        for os in ("linux", "windows")
+    ],
+]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
     parser.add_argument("--preparation-only", action="store_true")
     parser.add_argument(
-        "--batch", choices=["01", "04", "11", "12", "13", "17", "18", "19"], default="01"
+        "--batch",
+        choices=["01", "04", "11", "12", "13", "14", "17", "18", "19", "22"],
+        default="01",
     )
     args = parser.parse_args()
     if (args.batch == "12") != args.preparation_only:
@@ -1407,9 +1799,11 @@ def main() -> None:
         "11": SOURCES_11,
         "12": SOURCES_12,
         "13": SOURCES_13,
+        "14": SOURCES_14,
         "17": SOURCES_17,
         "18": SOURCES_18,
         "19": SOURCES_19,
+        "22": SOURCES_22,
     }[args.batch]:
         if identity in existing:
             if existing[identity]["url"] != url:

@@ -290,7 +290,8 @@ class ProtectionBatchTests(unittest.TestCase):
         source_ids = {source["id"] for source in matrix["sources"][-1]["sources"]}
         for row in batch["recommendations"]:
             self.assertLessEqual(set(row["sources"]), source_ids)
-        for control in self.catalog["controls"]:
+        cohort13 = json.loads(data.joinpath("catalog-2026-11-06.5.json").read_text())
+        for control in cohort13["controls"]:
             if control["upstream_guid"] not in GUIDS:
                 self.assertEqual(
                     control_digest(control), control_digest(before[control["upstream_guid"]])

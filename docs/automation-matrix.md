@@ -33,10 +33,78 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.5` retains all 255 entries: 10 automated, 202 assisted
-and 43 manual. Crosswalk `2026-11-06.5` rebinds the unchanged 51-control,
+Current successor `2026-11-06.7` retains all 255 entries: 10 automated, 202 assisted
+and 43 manual. Crosswalk `2026-11-06.7` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
+Exact predecessor `.6.6` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
+
+### Cohort 14: ExpressRoute cost, FastPath and gateway resilience
+
+The [nine-GUID matrix](../references/recommendation-batches/batch-14.json) and
+[26 source captures](../references/recommendation-batches/batch-14-sources.json)
+precede `.6.7`. Exact `.6.6` catalog/crosswalk bytes and every prior receipt are
+preserved. All nine remain assisted; no setting can establish the whole recommendation.
+
+| Recommendation | Bounded preparation and necessary decision |
+|---|---|
+| D06.04 | Circuit tier/family and provider Mbps versus Direct Gbps; actual outbound demand, negotiated prices and total costs justify unlimited billing |
+| D06.05 | Positive circuit/connection/port bindings; actual peering location must support all required Local workload and recovery regions |
+| D06.06 | Gateway SKU/type and explicit Standard public-IP/zone context; AZ-capable is not deployed zone-redundant placement |
+| D06.07 | Direct port/circuit bandwidth and binding; actual throughput/latency or dedicated-port demand justifies Direct, not configured capacity |
+| D06.08 | Separate bypass/Private Link flags, literal gateway-SKU/minimum-scale prerequisites and published Direct-port IP limit; actual topology, enrollment, supported traffic and fallback remain separate |
+| D06.09 | VPN type/SKU, active-active and public-IP zone facts; actual supported regional zone-redundant placement needs evidence |
+| D06.10 | IPsec/local-gateway bindings and BGP/active-active context; real independent on-premises appliances and failover cannot be counted from Azure declarations |
+| D06.11 | Direct port billing is distinct from circuit family; review Local reach and full demand-dependent cost choices |
+| D06.12 | Circuit/port/encapsulation/rate-limit facts; explicit isolation requirements and effective routing domains/shared contention remain human-reviewed |
+
+Current Direct guidance includes conditional 400-Gbps offerings beyond older
+10/100-Gbps summaries. FastPath provider circuits have narrower IPv4/hub support;
+Direct peering/UDR/IPv6 and enrolled limited-GA Private Link have distinct limits.
+ErGwScale requires configured minimum ten units for the FastPath subcheck,
+supports bounds 1-40, and recommends fixed scaling for Private Link. Its current
+source lists regional exclusions and does not support IPsec over ExpressRoute.
+ARM supports these scale fields; pinned AzureRM 4.50.0 does not, and stays unknown.
+Configured bounds, published port IP limits and bypass flags never prove actual
+scale, route population, eligibility, latency or achieved throughput.
+
+All adapters, partial subchecks, review contexts, tiers, reports, sessions and
+packaged replay use the existing engine. Source-bound interviews leave nine
+independent decisions blank. No prices, traffic, health, live regions, appliance
+inventory, routing/packet probes, scanner/query execution or new permissions are used.
+
+### Cohort 22: sovereign keys, auditing and workload protection
+
+The [eight-GUID matrix](../references/recommendation-batches/batch-22.json) and
+[25 source captures](../references/recommendation-batches/batch-22-sources.json)
+precede `.6.6`. Exact `.6.5` catalog/crosswalk bytes are frozen; all eight remain
+assisted. No whole recommendation follows from configuration alone.
+
+| Recommendation | Bounded preparation and necessary decision |
+|---|---|
+| G02.13 | Explicit HSM network/purge settings; reconcile key versus secret capability, real CMK adoption, external KEK custody and sovereign requirements |
+| G03.01 | Specific attributable Entra access-audit report, population, period and follow-up; Azure diagnostics are not a directory report |
+| G03.02 | Explicit activity category/group enabled flags and typed destinations/target; verify actual ingestion/export and table/storage retention against approved requirements |
+| G03.03 | CloudPosture tier/extension context; paid CSPM versus Foundational and actual resource/component coverage remain distinct |
+| G03.04 | VirtualMachines tier/P1/P2 and scope context; reconcile server population, overrides, onboarding and effective protection |
+| G03.05 | Distinct allowlisted workload plan/subplan/extension records; no record count establishes all-subscription protection |
+| G03.06 | Specific endpoint enforcement/health review with optional server-plan context; installed agent/antivirus or pricing never proves enforcement |
+| G03.07 | Explicit Linux/Windows assessment/patch mode and agent boolean; verify successful Update Manager assessments, baseline drift and accountable monitoring |
+
+Current sovereign guidance distinguishes Managed HSM cryptographic keys from
+secrets/credentials, which Managed HSM does not support. External-key management
+is GA, while Private Link integration is preview; customer-operated HSM/proxy
+availability and SLA responsibilities require explicit review. Legacy Entra and
+Security Center URLs resolve to current monitoring/Defender guidance. Current
+patch recommendations use Update Manager, not deprecated MMA collection.
+
+All paths share the existing evaluator, context, tiers, reports, reviews and replay.
+The new eight-GUID interview retains separate blank attributable decisions and
+scope-bound requirements hashes. Existing interview meanings and all historical
+controls remain unchanged. Additional pricing/HSM/VM ARM versions are planned-only,
+not new Collector calls. Missing/denied/partial/stale/malformed/ambiguous/over-bound
+evidence stays visible; no private audit records, credentials, key/security-domain
+material, invented retention/cost/health threshold or live query is introduced.
 
 ### Cohort 13: inbound protection, outbound migration and hybrid connectivity
 

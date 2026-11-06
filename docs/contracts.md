@@ -207,6 +207,20 @@ Changing a prepared scope therefore invalidates the response rather than
 rebinding its decisions silently. Earlier bank versions require fresh preparation.
 The access interview and distinct duplicate display IDs remain available.
 
+Bank `2026-11-06.6` adds eight separate sovereign-key/audit/workload-protection
+decisions. It preserves every earlier question and the scope-bound requirements
+hash; the narrative cannot substitute for original-time coverage/operational
+evidence. Managed HSM secrets, pricing-based fleet protection, diagnostic-based
+retention and mode-based patch compliance are never inferred.
+
+Bank `2026-11-06.7` adds nine separate ExpressRoute cost/region/demand/FastPath/
+gateway/appliance/isolation decisions. Port and circuit billing stay distinct;
+finite numeric circuit Gbps can prepare a Signal, while NaN/infinity and invalid
+values cannot. Typed positive relationships and published limits are partial
+original-time context only. ARM-only scale bounds remain unsupported in pinned
+Terraform. No SKU, flag, zone list or declared circuit population creates a pass,
+live regional eligibility, cost suitability, operational resilience or isolation.
+
 All selected records validate before CLI output is opened exclusively; invalid/
 expired/duplicate/conflicting bindings cannot leave a partial output or overwrite
 existing records. Answer/field lengths and group sizes are bounded. The shared

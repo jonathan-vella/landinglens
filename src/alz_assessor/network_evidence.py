@@ -6,11 +6,14 @@ from typing import Any
 from .contracts import canonical_id, identity_type
 from .dns_evidence import KINDS as DNS_KINDS
 from .dns_evidence import PATHS as DNS_PATHS
+from .expressroute_evidence import CIRCUIT_KIND, PORT_KIND
+from .expressroute_evidence import PATHS as EXPRESSROUTE_PATHS
 from .identity_evidence import PATHS as IDENTITY_PATHS
 from .protection_evidence import KINDS as PROTECTION_KINDS
 from .protection_evidence import PATHS as PROTECTION_PATHS
 from .routing_evidence import KINDS as ROUTING_KINDS
 from .routing_evidence import PATHS as ROUTING_PATHS
+from .security_evidence import PATHS as SECURITY_PATHS
 from .sources import boolean, enumeration, property_at, unknown
 from .terraform import InputError
 
@@ -51,6 +54,8 @@ REVIEW_PATHS = (
     }
     | ROUTING_PATHS
     | IDENTITY_PATHS
+    | EXPRESSROUTE_PATHS
+    | SECURITY_PATHS
     | PROTECTION_PATHS
     | DNS_PATHS
 )
@@ -502,6 +507,14 @@ def review_fact(properties: dict[str, Any], path: str) -> Any:
         from .dns_evidence import review_fact as dns_fact
 
         return dns_fact(properties, path)
+    if path in EXPRESSROUTE_PATHS:
+        from .expressroute_evidence import review_fact as expressroute_fact
+
+        return expressroute_fact(properties, path)
+    if path in SECURITY_PATHS:
+        from .security_evidence import review_fact as security_fact
+
+        return security_fact(properties, path)
     if path in PROTECTION_PATHS:
         from .protection_evidence import review_fact as protection_fact
 
@@ -569,11 +582,28 @@ def projected_properties(
     from .dns_evidence import projected_properties as dns_properties
     from .protection_evidence import projected_properties as protection_properties
 
-    return (
+    result = (
         _projected_properties(kind, values, terraform=terraform, root=root, observed=observed)
         | protection_properties(kind.lower(), values, terraform=terraform, root=root)
         | dns_properties(kind.lower(), values, terraform=terraform, root=root)
     )
+    if kind.lower() == "microsoft.network/connections":
+        from .expressroute_evidence import fastpath_properties
+
+        result.update(fastpath_properties(values, terraform=terraform))
+    if kind.lower() == "microsoft.network/virtualnetworkgateways":
+        from .expressroute_evidence import gateway_properties
+
+        result.update(gateway_properties(values, terraform=terraform))
+    if kind.lower() == "microsoft.network/publicipaddresses":
+        result["publicIpSku"] = enumeration(
+            values.get("sku") if terraform else property_at(root, "sku.name"),
+            ("Basic", "Standard"),
+        )
+        result["configuredZones"] = configured_zones(
+            values.get("zones") if terraform else property_at(root, "zones")
+        )
+    return result
 
 
 def _projected_properties(
@@ -862,33 +892,38 @@ def _projected_properties(
         }
     from .routing_evidence import projected_properties as routing_properties
 
+    if kind == CIRCUIT_KIND:
+        from .expressroute_evidence import circuit_properties
+
+        return circuit_properties(values, terraform=terraform, root=root)
+    if kind == PORT_KIND:
+        from .expressroute_evidence import port_properties
+
+        return {
+            **routing_properties(kind, values, terraform=terraform, observed=observed, root=root),
+            **port_properties(values, terraform=terraform),
+        }
     return routing_properties(kind, values, terraform=terraform, observed=observed, root=root)
 
 
 def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
-    if (
-        kind.lower()
-        not in {
-            "microsoft.network/azurefirewalls",
-            "microsoft.network/virtualnetworks/subnets",
-            "microsoft.network/ipgroups",
-            "microsoft.network/azurefirewalls/natrulecollections",
-            "microsoft.insights/diagnosticsettings",
-            "microsoft.network/virtualnetworks",
-            "microsoft.network/privateendpoints",
-            "microsoft.network/firewallpolicies/rulecollectiongroups",
-            "microsoft.network/networksecuritygroups",
-            "microsoft.network/networksecuritygroups/securityrules",
-            "microsoft.network/virtualnetworkgateways",
-            "microsoft.network/networkwatchers/flowlogs",
-        }
-        | ROUTING_KINDS
-        | PROTECTION_KINDS
-        | DNS_KINDS
-    ):
+    if kind.lower() not in {
+        "microsoft.network/azurefirewalls",
+        "microsoft.network/virtualnetworks/subnets",
+        "microsoft.network/ipgroups",
+        "microsoft.network/azurefirewalls/natrulecollections",
+        "microsoft.insights/diagnosticsettings",
+        "microsoft.network/virtualnetworks",
+        "microsoft.network/privateendpoints",
+        "microsoft.network/firewallpolicies/rulecollectiongroups",
+        "microsoft.network/networksecuritygroups",
+        "microsoft.network/networksecuritygroups/securityrules",
+        "microsoft.network/virtualnetworkgateways",
+        "microsoft.network/networkwatchers/flowlogs",
+    } | ROUTING_KINDS | PROTECTION_KINDS | DNS_KINDS | {CIRCUIT_KIND, PORT_KIND}:
         return {}
     result: dict[str, Any] = {}
-    for path in sorted(REVIEW_PATHS):
+    for path in sorted(REVIEW_PATHS - SECURITY_PATHS):
         parts = path.split(".")
         target = result
         for part in parts[:-1]:

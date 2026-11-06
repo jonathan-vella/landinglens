@@ -243,14 +243,6 @@ def projected_properties(
         )
     if kind == "microsoft.network/publicipaddresses":
         result |= {
-            "configuredZones": configured_zones(
-                values.get("zones")
-                if terraform
-                else root.get("zones")
-                if isinstance(root, dict)
-                else None
-            ),
-            "publicIpSku": values.get("sku") if terraform else property_at(root, "sku.name"),
             "publicIpTier": values.get("sku_tier") if terraform else property_at(root, "sku.tier"),
             "publicIpAllocationMethod": values.get(
                 "allocation_method" if terraform else "publicIPAllocationMethod"

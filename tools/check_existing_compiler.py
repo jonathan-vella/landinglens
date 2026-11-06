@@ -33,6 +33,10 @@ if compiler:
         "test_real_bicep_storage_identity_role_context_without_restore",
         "test_protection_batch.ProtectionBatchTests."
         "test_real_bicep_protection_outbound_hybrid_no_restore",
+        "test_security_batch.SecurityBatchTests."
+        "test_real_bicep_security_configuration_without_restore",
+        "test_expressroute_preparation.ExpressRoutePreparationTests."
+        "test_real_bicep_expressroute_cost_capacity_fastpath_without_restore",
         "test_dns_batch.DnsBatchTests.test_real_bicep_dns_bastion_no_restore",
     ]
     suite = unittest.defaultTestLoader.loadTestsFromNames(cases)

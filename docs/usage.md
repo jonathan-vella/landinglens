@@ -259,6 +259,20 @@ API/existing-network scope distinction. Preparation leaves every decision blank.
 The scope is included in the requirements hash; changed scope, bank, content or
 validity requires fresh preparation, not editing a binding.
 
+Use `--question sovereign-audit-workload-protection` for cohort22's eight distinct
+key-custody, Entra audit, activity-retention, CSPM/Servers/workload, endpoint and
+patch-drift decisions. Only references/redacted attestations are appropriate:
+never enter key/credential/security-domain material or private audit records.
+Configuration facts are review context, not proof of coverage or compliance.
+
+Use `--question expressroute-cost-resilience` for cohort14's nine independent
+cost, Local-region, gateway-placement, actual-demand, FastPath, on-premises VPN
+and routing-isolation decisions. Supply redacted attributable requirements and
+operational references, not keys, addresses or private appliance identities.
+Configured bandwidth and published limits are not measured demand or headroom;
+SKU/zone/bypass settings are not resilience, current availability or performance.
+Preparation leaves all outcomes blank and retains scope/content/expiry guards.
+
 For the automated local workflow, start from saved **normalized evidence**, not
 a rendered or minimized assessment:
 
