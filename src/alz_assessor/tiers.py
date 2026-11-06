@@ -25,6 +25,7 @@ def has_fact(value: Any) -> bool:
 def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     from .governance_evidence import GUIDS as GOVERNANCE_GUIDS
     from .governance_evidence import resource_in_scope
+    from .identity_evidence import RESILIENCE_GUIDS
     from .network_evidence import REVIEW_PATHS, review_fact
     from .sources import boolean, enumeration, property_at
     from .virtual_wan_evidence import GUIDS as VWAN_GUIDS
@@ -41,7 +42,9 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     for resource in bundle["resources"]:
         if resource["state"] != "known" or resource["resource_type"].lower() not in kinds:
             continue
-        if control["upstream_guid"] in GOVERNANCE_GUIDS and not resource_in_scope(resource, bundle):
+        if control[
+            "upstream_guid"
+        ] in GOVERNANCE_GUIDS | RESILIENCE_GUIDS and not resource_in_scope(resource, bundle):
             continue
         if (
             vwan

@@ -19,6 +19,115 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## Cohort 05 granted integration: 2026-11-06
+
+The coordinator granted [#118](https://github.com/jonathan-vella/landinglens/issues/118)
+the sole slot after actual cohort20 implementation122/receipt123 and #115 closure.
+Preserved `03442eb` was reconciled with main
+`f2411afa0d43e7f25402b364b9721dccb26201cd`, retaining the manual cohort30 bank,
+Virtual WAN predicate/interfaces and all eleven delivered compiler cases.
+Exact `.6.12` catalog bytes:
+`ce02d3d63cf078637e7702a6cbb7b47f2858eeb9320da002784c2a0fcf7ad4ed`;
+crosswalk bytes:
+`93808594a67f5439ab7075a3dcc52d69ced8a67ea9fec62a4d17e054f5b9e79f`.
+The [accepted eight-GUID matrix](../../references/recommendation-batches/batch-05.json)
+and [25 unchanged captures](../../references/recommendation-batches/batch-05-sources.json)
+precede unique reviewed successor `2026-11-06.13` using existing offline builders.
+All255 GUIDs, fixed251/original four hashes, every predecessor control object
+outside the eight own GUIDs, all122 prior receipt rows and all14 receipts remain
+unchanged. Counts stay **12 automated /200 assisted /43 manual**; delivery stays
+**122 delivered /129 pending** until guarded own-GUID receipt reconciliation.
+
+Typed VM/set/role/replica preparation and eight separate blank decisions use the
+same evaluator, adapters, review/tier/report/session/interview and accepted-package
+original-time replay paths. The actual Entra tenant diagnostic boundary is not
+broadened. VM labels/type do not identify DCs; Azure RBAC grants no directory
+authority; managed replicas share one AD site; B03.12 stays manual; emergency
+operations and authentication remain separately evidenced. The twelfth actual
+no-restore compiler case exercises the identity fixture. No new live route,
+permission, dependency, compiler acquisition, cloud operation or owner decision.
+Final platform/CodeQL/review/compiler gates, exact-head normal implementation
+merge and guarded receipt publication remain required before #118 closure.
+
+Pre-delivery checkout and own exact-installed suites each ran **505 tests**:
+504 passed and the original Windows symlink-privilege case skipped. All15
+identity cases passed. All12 actual existing-compiler cases exercised with no
+skips/restoration. Format/lint, 41-source-file typing, dependency consistency and
+370 local documentation links passed. The first full run exposed an old bank
+count assertion (11 instead of the actual12 questions); the exact assertion was
+updated and both full suites rerun successfully.
+
+The final wheel was built offline and installed in a fresh own outside-checkout
+environment; import from its `site-packages` and `.6.13` catalog were asserted.
+All108 package source/data members match the checkout, and exact frozen `.6.12`
+bytes match delivered main. Only the already hash-reviewed staged runtime wheels
+were restored after the fresh environment's missing-`hcl2` probe.
+Final wheel SHA256:
+`1c88f19cbd87a13ebc033b701bf01de30444c21814cfacbc5823c7956c672017`.
+Earlier preparation wheels/local compiler proofs are not substituted for final
+platform CI or downloaded artifacts. No merged delivery is inferred yet.
+
+## Cohort 05 historical independent preparation: 2026-11-06
+
+[#118](https://github.com/jonathan-vella/landinglens/issues/118) owns exactly the
+eight immutable B03.08-B03.15 GUIDs. Its
+[reviewed matrix](../../references/preparation/batch-05.json) and
+[25 captured sources](../../references/preparation/batch-05-sources.json) are
+outside accepted builder inputs. Baseline main is
+`949de0cad9bda19095069a22addf38bd78474dec`. Cohort30 and cohort20 retain their
+preceding delivery slots; this preparation neither chooses a successor nor
+activates catalog/crosswalk/count/history, registers an interview, records
+receipts, merges or closes the issue.
+
+Existing adapters now prepare minimized explicit VM placement, typed availability
+sets and fault/update counts, Azure role types and supported assignable-scope
+counts, and managed Domain Services SKU/embedded replica configuration. Saved
+and injected records retain original time; planned ARM and pinned Terraform
+raw/supplied-module/optional-plan paths use the same projections. Provider
+composite IDs require actual typed ARM bindings rather than invented child
+resources. Unique known scoped joins supply partial context only. Shared
+contracts, reviews, tiers, reports, local sessions and original-time replay
+retain unknown/denied/partial/stale/foreign/unbound/ambiguous limits. The existing
+ten compiler cases remain and an eleventh compiles the authored identity fixture
+without restoration.
+
+Current guidance favors adequate built-in roles before custom roles. Azure RBAC
+never establishes Entra directory authority or team responsibility. VM names,
+tags and type never identify DCs or their full population. Managed Domain Services
+replicas share one AD site and require appropriate SKU, supported regions,
+full-mesh networking and redundant workloads; configured replicas prove no health
+or recovery. B03.12 compatibility stays manual. Actual Entra diagnostic settings
+are tenant-only and remain unsupported in this assessor's existing scope model;
+no subscription diagnostic resource or workspace manufactures tenant log routing
+or ingestion. Emergency operating and phishing-resistant authentication decisions
+remain separate and blank. Current phased MFA and emergency guidance supersede
+the frozen October2024 generalization without altering historical checklist text.
+No directory/guest/log payload, principal/account name, role action content,
+credential or certificate material is projected. No live route, permission,
+dependency, compiler acquisition, cloud operation or owner decision is added.
+
+Preparation verification ran **455 tests** in both the checkout and own exact
+installed wheel: 454 passed and the original Windows symlink-privilege case
+skipped. All13 cohort05 cases passed. All11 actual existing-compiler integrations
+exercised without skips or restoration, retaining the ten delivered cases.
+Formatting/lint, 40-source-file typing, dependency consistency and338 local
+documentation links passed. The own wheel was built offline and installed into
+a fresh own environment outside checkout; all95 package source/data members
+matched the checkout, and site-packages import was asserted. After the initial
+missing-`hcl2` probe, only the three exact reviewed runtime wheels were restored
+from pip's local cache with `docs/dependencies.json` SHA256 verification and no
+network installation or borrowed environment.
+Wheel SHA256:
+`8c2d566f004ec9971034b4b97f70cac5e7e68c33eaef98bb2aa8f14c2f673556`.
+Local compiler proof SHA256:
+`796a1d0b5c8db9c7e25d0d67b9a94fdc51e15d6e23624023c427d3da95e3f6d6`.
+These are preparation proofs, not platform CI, accepted successor replay or
+merged delivery. Then-current-main reconciliation, accepted source/matrix/bank
+activation, four matching exercised platform compiler proofs, exact-head normal
+implementation merge, guarded own-GUID receipts and checked reconciliation remain
+deferred until the coordinator grants the slot. All eight ledger rows remain
+pending; current catalog/crosswalk and older receipts are unchanged.
+
 ## Cohort 20 accepted integration: 2026-11-06
 
 The parent granted [#115](https://github.com/jonathan-vella/landinglens/issues/115)
