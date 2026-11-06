@@ -87,6 +87,8 @@ PLANNED_API_VERSIONS = API_VERSIONS | {
     "microsoft.security/pricings": {"2024-01-01"},
     "microsoft.keyvault/managedhsms": {"2024-11-01"},
     "microsoft.compute/virtualmachines": {"2024-07-01"},
+    "microsoft.portal/dashboards": {"2020-09-01-preview"},
+    "microsoft.management/managementgroups": {"2020-05-01"},
 }
 
 
@@ -99,6 +101,7 @@ def unresolved(value: Any) -> bool:
 def properties(
     kind: str, values: Any, *, root: Any = None, observed: bool = False
 ) -> dict[str, Any]:
+    from .governance_evidence import projected_properties as governance_properties
     from .identity_evidence import IDENTITY_KINDS, ROLE_KIND, identity_summary, role_properties
     from .security_evidence import projected_properties as security_properties
 
@@ -111,6 +114,7 @@ def properties(
         )
     if isinstance(values, dict):
         result.update(security_properties(kind, values, root=root))
+        result.update(governance_properties(kind, values, root=root))
     return result
 
 
@@ -539,6 +543,11 @@ def arm_source(
                                 "name": name,
                                 "zones": context.value(entry.get("zones")),
                                 "sku": context.value(entry.get("sku")),
+                                **(
+                                    {"tags": context.value(entry["tags"])}
+                                    if "tags" in entry
+                                    else {}
+                                ),
                                 **(
                                     {"identity": context.value(entry["identity"])}
                                     if "identity" in entry

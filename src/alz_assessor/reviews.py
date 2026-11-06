@@ -346,6 +346,13 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
         for resource in bundle.get("resources", [])
         if resource["resource_type"].lower() in allowed
     ]
+    from .governance_evidence import GUIDS as GOVERNANCE_GUIDS
+    from .governance_evidence import resource_in_scope
+
+    unbound = 0
+    if control["upstream_guid"] in GOVERNANCE_GUIDS:
+        scoped = [resource for resource in matches if resource_in_scope(resource, bundle)]
+        unbound, matches = len(matches) - len(scoped), scoped
     context = {
         "mode": bundle["mode"],
         "collected_at": bundle["collected_at"],
@@ -359,6 +366,12 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
             "complete relationships. No whole-recommendation outcome or current freshness inferred."
         ),
     }
+    if control["upstream_guid"] in GOVERNANCE_GUIDS:
+        context["unbound_resources"] = unbound
+    if control["upstream_guid"] == "3a923c34-74d0-4001-aac6-a9e01e6a83de" and available:
+        from .governance_evidence import hierarchy_context
+
+        context["saved_management_hierarchy"] = hierarchy_context(bundle)
     if "expressRouteCircuitId" in control.get("review_fact_paths", []) and available:
         from .expressroute_evidence import (
             CIRCUIT_KIND,

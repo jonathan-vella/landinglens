@@ -280,6 +280,16 @@ Configured bandwidth and published limits are not measured demand or headroom;
 SKU/zone/bypass settings are not resilience, current availability or performance.
 Preparation leaves all outcomes blank and retains scope/content/expiry guards.
 
+Use `--question resource-cost-governance` for cohort08's seven separate ownership,
+quota, reservation/capacity, dashboard, operating-plan, identity-placement and
+billing-tag decisions. Provide redacted attributable references, not tag values,
+raw dashboard queries/content, financial amounts, usage histories or personal
+owner/directory records. A Reserved Instance discount is not a capacity guarantee;
+resource tags do not automatically inherit, and Cost Management tag inheritance
+changes usage records under distinct agreement/scope/time conditions. Explicit
+resource identities or positive saved MG parent bindings are required for scoped
+machine context; names and bare scope metadata never designate identity roles.
+
 For the automated local workflow, start from saved **normalized evidence**, not
 a rendered or minimized assessment:
 

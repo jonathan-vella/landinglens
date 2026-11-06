@@ -33,11 +33,35 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.9` retains all 255 entries: 11 automated, 201 assisted
-and 43 manual. Crosswalk `2026-11-06.9` rebinds the unchanged 51-control,
+Current successor `2026-11-06.10` retains all 255 entries: 11 automated, 201 assisted
+and 43 manual. Crosswalk `2026-11-06.10` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-Exact predecessor `.6.8` is frozen; source-matrix acceptance alone is not delivery.
+Exact predecessor `.6.9` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
+
+### Cohort 08: resource ownership, quotas and cost governance
+
+The [seven-GUID matrix](../references/recommendation-batches/batch-08.json)
+and [24 preserved source captures](../references/recommendation-batches/batch-08-sources.json)
+precede `.6.10`. C02.08/.09/.12 remain manual: owner accountability and
+access/budget/policy/remediation reviews, quota awareness/provisioning effects,
+and an operating cost-management plan require attributable human evidence.
+The registered `resource-cost-governance` interview leaves all seven outcomes
+blank and validates independent scope/content/expiry-bound decisions.
+
+| Recommendation | Literal preparation and independent decision boundary |
+|---|---|
+| C02.10 | Typed capacity-group reference from a scoped VM; Reserved Instance matching-usage discounts do not guarantee capacity. Actual reservation acceptance, quota, SKU/region/zone/SLA conditions and financial suitability need separate review. |
+| C02.11 | Bounded lens/tile and exact reviewed metrics-chart/markdown/other counts, not CPU/guest-memory/free-disk coverage, telemetry health or operational use. ARM arrays and pinned Terraform objects are handled separately; opaque content is withheld. |
+| C02.13 | Explicit scoped MG parent and unique rooted saved MG/subscription edges; dedicated identity subscription/MG designation, actual hosting/isolation and regional AD DS sites/subnets/locator use are separately evidenced, never inferred from names. |
+| C02.14 | Validated explicit tag-pair counts only, never keys/values. Approved taxonomy, effective billing allocation and agreement/scope/access/inheritance/conflict/current-month conditions are separate; resource tags do not automatically inherit. |
+
+Machine preparation requires an explicit in-scope ARM identity or a positive
+saved MG parent binding. Bare names, `metadata.scopes`, unbound/foreign/denied/
+malformed/ambiguous/stale/over-bound evidence cannot supply a Signal or pass.
+Earlier predicates, all 255 GUIDs, fixed251/original hashes, `.6.9` bytes and
+every older own-GUID receipt are unchanged. No new cloud/directory/billing/quota
+read, financial action, arbitrary threshold, taxonomy or human approval is added.
 
 ### Cohort 15: ExpressRoute monitoring, routing and failover
 

@@ -444,6 +444,10 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                                 "connectionMonitorSummary",
                                 "expressRouteAlertSummary",
                                 "peeringLocationFingerprint",
+                                "tagCount",
+                                "dashboardSummary",
+                                "capacityReservationGroupId",
+                                "managementParentId",
                             }
                             | DNS_PATHS
                         )

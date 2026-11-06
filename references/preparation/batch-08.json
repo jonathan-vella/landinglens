@@ -1,0 +1,116 @@
+{
+  "batch": "08",
+  "issue": 109,
+  "review_state": "source-reviewed-preparation-not-accepted",
+  "activation": "Deferred until the coordinator grants the slot after actual cohort12 and cohort15 delivery; this directory is not an accepted build_batches input.",
+  "baseline_main": "3b71e2666e26c63dfb2b75e89371b7c543d217e2",
+  "recommendations": [
+    {
+      "upstream_id": "C02.08",
+      "guid": "49b82111-2df2-47ee-912e-7f983f630472",
+      "classification": "manual",
+      "sources": ["owner-access-reviews", "cost-operating-plan", "billing-tags"],
+      "review_resource_types": ["Microsoft.Authorization/roleAssignments"],
+      "review_fact_paths": ["principalType", "roleDefinitionId"],
+      "evidence_requirements": [
+        "Preparation: existing minimized assignment type/role and original-time policy context can orient a review; no personal principals, access-review records or owner identities are collected.",
+        "Reviewer decision: cite the approved scoped accountability/communication process and redacted acknowledgement evidence; identify who is responsible without retaining personal records.",
+        "Reviewer decision: separately substantiate recurring access review, budget review, policy-compliance review and remediation/escalation with attributable dated references and agreed cadence; assignment presence proves none."
+      ],
+      "limitations": "Manual awareness and operating effectiveness. No role, tag, inherited scope, policy assignment or budget proves that resource owners understand or carry out responsibilities. No new Entra/access/cost reads, required cadence or organizational responsibility is invented.",
+      "flags": []
+    },
+    {
+      "upstream_id": "C02.09",
+      "guid": "2dd69c5b-5c26-422f-94b6-9bad33aad5e8",
+      "classification": "manual",
+      "sources": ["subscription-limits", "capacity-not-quota-or-discount"],
+      "evidence_requirements": [
+        "Preparation: reviewed service-specific quota guidance distinguishes adjustable limits, fixed constraints, subscription offers, regional vCPU-family/total limits and physical capacity; no live quota or usage is collected.",
+        "Reviewer decision: cite the subscription owners' and core IT team's explicit quota-awareness process, scoped service/region requirements and dated communication/training references.",
+        "Reviewer decision: reconcile provisioning impact, lead time and escalation with actual separately authorized quota/capacity evidence; a published maximum or granted quota does not guarantee regional capacity or provisioning success."
+      ],
+      "limitations": "Manual awareness and planning. No universal quota threshold, headroom, regional availability or increase approval is inferred. Missing quota, usage or capacity evidence remains unavailable, not zero or sufficient.",
+      "flags": []
+    },
+    {
+      "upstream_id": "C02.10",
+      "guid": "c68e1d76-6673-413b-9f56-64b5e984a859",
+      "classification": "assisted",
+      "sources": ["reservation-discounts", "capacity-not-quota-or-discount", "vm-capacity-arm", "terraform-linux-capacity", "terraform-windows-capacity"],
+      "review_resource_types": ["Microsoft.Compute/virtualMachines"],
+      "review_fact_paths": ["capacityReservationGroupId"],
+      "evidence_requirements": [
+        "Preparation: only an explicit typed VM capacity-reservation-group reference; this is on-demand capacity configuration, not a Reserved Instance purchase/discount or proof of reserved availability.",
+        "Reviewer decision: reconcile separately authorized redacted demand and SKU/region/scope/term matching with reservation discount suitability, financial commitment and alternatives; no utilization or break-even threshold is imposed.",
+        "Reviewer decision: independently review accepted capacity reservation and matching VM/SKU/region/zone association, available quota, support restrictions and SLA conditions. Explicitly correct the checklist's conflation of Reserved Instance discounts with capacity guarantees."
+      ],
+      "limitations": "Reserved Instances provide matching-usage billing discounts only; on-demand capacity reservations address capacity under distinct quota/availability/SLA conditions. A configured reference proves neither actual reservation acceptance/capacity nor business/cost suitability. No billing amounts, usage history, purchase or cancellation.",
+      "flags": []
+    },
+    {
+      "upstream_id": "C02.11",
+      "guid": "c773e7d2-6162-43a7-95a9-17e1f348ef25",
+      "classification": "assisted",
+      "sources": ["portal-dashboards", "dashboard-structure", "dashboard-arm", "terraform-dashboard", "terraform-dashboard-implementation"],
+      "review_resource_types": ["Microsoft.Portal/dashboards"],
+      "review_fact_paths": ["dashboardSummary"],
+      "evidence_requirements": [
+        "Preparation: explicit bounded lens/tile and exact reviewed metrics-chart/markdown/other counts only; ARM array and pinned Terraform object representations are distinct. Private dashboards and other visualization tools may be outside inventory.",
+        "Reviewer decision: demonstrate actual appropriate compute/storage targets, CPU, guest memory and free-disk capacity coverage, time window, current telemetry and intended operational use with redacted evidence references.",
+        "Reviewer decision: distinguish disk I/O from free disk space, tile presence from configuration/health and monitoring coverage from agreed capacity action requirements; no raw queries, markdown, inputs or metric readings are retained."
+      ],
+      "limitations": "Structural dashboard facts are partial review preparation only. A metrics tile can be unconfigured, inaccessible, stale or target the wrong resource; arbitrary or markdown tiles do not prove capacity monitoring. No metric/query execution, health conclusion, utilization threshold or raw payload retention.",
+      "flags": []
+    },
+    {
+      "upstream_id": "C02.12",
+      "guid": "ae28c84c-33b6-4b78-88b9-fe5c41049d40",
+      "classification": "manual",
+      "sources": ["cost-operating-plan", "cost-plan-current", "billing-tags", "cost-tag-inheritance"],
+      "evidence_requirements": [
+        "Preparation: the checklist's manage-costs URL redirects to broader manage/administer guidance; current setup-guide cost planning and billing/tag conditions supplement it without claiming a deployed plan.",
+        "Reviewer decision: cite the approved scoped cost-management operating plan covering accountable roles, budget/forecast, allocation, agreed reporting/review cadence, optimization and corrective/escalation actions.",
+        "Reviewer decision: substantiate actual dated operation and business alignment with attributable redacted references; no tag, dashboard, reservation or shared narrative establishes the plan or approval."
+      ],
+      "limitations": "Inherently manual operating-plan and effectiveness judgment. No billing records, budget amount, usage history, financial authority, required threshold or organizational role is invented. Technical configuration alone is not an operating process.",
+      "flags": []
+    },
+    {
+      "upstream_id": "C02.13",
+      "guid": "3a923c34-74d0-4001-aac6-a9e01e6a83de",
+      "classification": "assisted",
+      "sources": ["management-hierarchy", "identity-placement", "regional-domain-controllers", "management-arm", "terraform-management"],
+      "review_resource_types": ["Microsoft.Management/managementGroups"],
+      "review_fact_paths": ["managementParentId"],
+      "evidence_requirements": [
+        "Preparation: explicit typed MG parent and existing bounded saved Collector parent relationships retain original time, selected scope and completeness. Omitted parents, root designation, subscription purpose and out-of-scope ancestry are not inferred.",
+        "Reviewer decision: confirm whether server-based identity services are applicable and identify the explicitly approved identity subscription/MG using redacted architecture evidence, not names, labels or tags.",
+        "Reviewer decision: substantiate dedicated isolation and actual identity-service hosting; separately review required regional AD DS sites/subnets and domain-controller locator/use or managed Domain Services replica design. Co-location, region strings and DNS settings alone prove none."
+      ],
+      "limitations": "Configuration and positive parent edges are partial facts, not a dedicated identity-role designation, complete inherited governance, root access, billing visibility or actual regional DC use. Entra ID, managed Domain Services and self-managed AD DS differ. Tenant deployments, directory records, DC discovery and network tests stay out of scope.",
+      "flags": []
+    },
+    {
+      "upstream_id": "C02.14",
+      "guid": "5de32c19-9248-4160-9d5d-1e4e614658d3",
+      "classification": "assisted",
+      "sources": ["billing-tags", "tag-rules", "cost-tag-inheritance", "terraform-linux-capacity", "terraform-windows-capacity"],
+      "review_resource_types": ["Microsoft.Compute/virtualMachines", "Microsoft.Storage/storageAccounts", "Microsoft.Portal/dashboards", "Microsoft.Resources/resourceGroups", "Microsoft.Resources/subscriptions"],
+      "review_fact_paths": ["tagCount"],
+      "evidence_requirements": [
+        "Preparation: explicit validated tag-pair count only for reviewed resource types, with no tag keys or values. Empty is zero supplied pairs, missing/unresolved/malformed/ambiguous/over-bound is unknown. MGs do not support tags.",
+        "Reviewer decision: confirm the organization's approved billing/cost allocation taxonomy, consistency and actual usage-record/cost-report attribution with redacted references; example tag keys are not mandatory requirements.",
+        "Reviewer decision: reconcile supported service/billing agreement/scope, access and effective Cost Management tag inheritance/conflict settings and current-month processing delay. Resource tags do not automatically inherit; billing inheritance affects usage records, not resources or all history."
+      ],
+      "limitations": "Presence/count cannot prove billing support, relevant classification, effective cost allocation, inherited tags or actual ownership. No invented required key set, tag values, cost/usage records, policy execution or financial action. Unreviewed resource types remain unsupported.",
+      "flags": []
+    }
+  ],
+  "source_acquisition_notes": [
+    "Initial guessed identity-access-active-directory-hybrid and manage/optimize-cost URLs returned HTTP 404; actual verified hybrid-identity and setup-guide sources replace them.",
+    "Initial guessed provider dashboard_resource.go returned HTTP 404; exact pinned portal_dashboard_resource.go was located and reviewed.",
+    "GitHub API specification/compute directory request returned HTTP 403 (organization SAML enforcement). No reauthentication attempted; actual pinned-version public Microsoft Learn ARM definitions are the reviewed schema sources.",
+    "Only attribution, source metadata and independently authored factual findings are redistributed; no upstream guidance, provider implementation or dashboard payload is copied."
+  ]
+}

@@ -19,6 +19,96 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## Cohort 08 granted integration: 2026-11-06
+
+The coordinator granted [#109](https://github.com/jonathan-vella/landinglens/issues/109)
+the sole slot after actual cohort15 implementation113/receipt114 and #106 closure.
+Preserved `ef6aae3` was reconciled with actual main
+`21f95422a3700328afeacd9d29402cd3facf417c`. Exact `.6.9` catalog bytes are frozen:
+`5f678970f45fcd9ac635576d31cfe0f896c97199d11552d2061886aaa441004c`;
+crosswalk bytes:
+`9cc735acb396ba27bfccc2a017ec1cc1c1a1ea6eba9f3f86185814fea5c6b519`.
+The [seven-GUID matrix](../../references/recommendation-batches/batch-08.json)
+and [24 preserved source captures](../../references/recommendation-batches/batch-08-sources.json)
+precede unique reviewed successor `2026-11-06.10`. All255 GUIDs, fixed251/original
+four hashes, all predecessor control objects and all99 prior own-GUID receipt rows
+remain unchanged. Counts remain11 automated /201 assisted /43 manual; ledger
+delivery remains99 merged /152 pending before checked cohort08 reconciliation.
+
+Typed scoped tag/dashboard/capacity/MG-parent facts and seven separate registered
+`resource-cost-governance` interview decisions share the existing evaluator,
+review/tier/report/session/replay surfaces. A current in-scope resource identity
+or positive saved parent chain is required for machine preparation; names, bare
+scope metadata, unbound/foreign/denied/stale/malformed/ambiguous/over-bound input
+cannot create a Signal or pass. Owner responsibility, quota awareness and an
+operating cost plan remain manual. Reservations/quotas do not guarantee capacity;
+dashboard counts do not prove telemetry coverage/health; tags do not automatically
+inherit or prove billing allocation; MG names do not designate identity roles.
+All decisions remain blank until supplied independently.
+
+The nine delivered compiler cases are preserved and the tenth exercises the
+reviewed governance fixture with no restoration. No new cloud/directory/billing/
+quota reads, financial action, permissions, dependency, threshold, required tag
+taxonomy or fabricated owner decision is introduced. Actual platform/review/
+CodeQL/compiler, exact-head normal implementation merge, guarded own-GUID receipts
+and checked reconciliation remain the delivery gates.
+
+Local and own exact-installed verification each ran **441 tests**: 440 passed
+and the original Windows symlink-privilege case skipped. All17 governance cases
+passed, including scoped/foreign/unbound privacy and accepted package replay.
+Formatting/lint, 40-source-file type checks, dependency consistency and327 local
+documentation links passed. All ten existing-compiler integrations exercised
+without skips or restoration. The final wheel was built and installed offline
+into a fresh own environment outside checkout using already staged reviewed
+runtime wheels; site-packages and `.6.10` catalog provenance were asserted.
+Wheel SHA256:
+`6a0c87ea08b6a2cba085d777b1a028fb609c37de056c2d3b0682529d35692116`.
+Platform/CodeQL/review checks, downloaded compiler proofs and actual normal
+implementation/receipt merges are not inferred from these local results.
+
+## Cohort 08 independent preparation: 2026-11-06
+
+[#109](https://github.com/jonathan-vella/landinglens/issues/109) owns exactly the
+seven immutable C02.08-C02.14 GUIDs. Preparation is isolated from accepted batch
+inputs in [its matrix](../../references/preparation/batch-08.json) and
+[24 actual source captures](../../references/preparation/batch-08-sources.json).
+It begins from actual main `3b71e2666e26c63dfb2b75e89371b7c543d217e2`.
+No successor, catalog/crosswalk/count/history activation, bank registration,
+receipt, merge or issue closure occurs before the coordinator grants its slot.
+Then-current cohort12/15 interfaces and exact delivered history must be reconciled
+before activation; preparation is not a delivery receipt.
+
+Explicit tag counts, structural dashboard counts, VM capacity-group references
+and MG parent IDs reuse existing ARM/Terraform/plan and review/tier/report/session/
+replay machinery. Existing saved Collector parent relationships are minimized,
+scope-bound and checked for ambiguous/cyclic/unbound edges, without any new live
+route. The existing seven no-restore compiler cases are retained and an eighth
+exercises the authored governance fixture. The three manual awareness/operating
+recommendations stay manual; seven independent human decisions stay blank.
+
+The source review distinguishes Reserved Instance discounts from on-demand
+capacity reservation and quota from available capacity. It records the original
+cost-plan URL's redirect to `manage/administer`, supplemented by current cost
+planning guidance. Resource tags do not automatically inherit; Cost Management
+inheritance affects usage records under agreement/scope/conflict/time conditions.
+No tag key set, cost/utilization/quota threshold, responsibility, identity purpose,
+dashboard health or regional DC usage is inferred. No sensitive tile content,
+tag values, personal owner/directory records, financial records, new Azure read,
+financial action, dependency or human approval is introduced.
+
+Preparation verification ran **395 local and exact-installed tests** in each
+environment: 394 passed and the original Windows symlink-privilege case skipped.
+All 13 governance cases passed. Formatting/lint, 38-source-file type checks,
+dependency consistency and local documentation links passed. The own wheel was
+built offline and installed into a fresh environment outside checkout, with
+site-packages provenance asserted; the initially missing runtime dependencies
+were satisfied from exact reviewed wheels already in pip's local HTTP cache,
+without network installation or a shared environment. Wheel SHA256:
+`0f0ce02060b8042b24ca36d3cc85273ea8017b8acf1b3fc0c16724e6d372219a`.
+All eight existing-compiler cases exercised without skips or restoration.
+These are preparation proofs, not activated-catalog, platform CI, merged-delivery
+or own-GUID receipt acceptance; those gates remain deferred to the granted slot.
+
 ## Cohort 15 granted integration: 2026-11-06
 
 The coordinator granted [#106](https://github.com/jonathan-vella/landinglens/issues/106)

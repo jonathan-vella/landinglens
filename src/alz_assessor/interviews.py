@@ -6,8 +6,39 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.9"
+BANK_VERSION = "2026-11-06.10"
 BANK = {
+    "resource-cost-governance": {
+        "question": "Describe the scoped process that communicates owner responsibilities and "
+        "demonstrates access, budget and policy reviews and remediation. Separately establish "
+        "subscription-owner/core-team quota awareness and provisioning impact: quota is not "
+        "available regional capacity. Reconcile financial suitability and matching-usage "
+        "Reserved Instance discounts separately from accepted on-demand capacity reservation, "
+        "VM/SKU/region/zone association and SLA conditions; discounts do not guarantee capacity. "
+        "Demonstrate working dashboards or other visualizations covering appropriate CPU, "
+        "guest-memory and free-disk capacity, targets and original-time telemetry; tile counts "
+        "and disk I/O are not coverage or health. Cite the approved operating cost plan, "
+        "accountability, forecast/budget, allocation, agreed reviews and corrective actions. "
+        "If server-based identity is applicable, explicitly designate the dedicated identity "
+        "subscription/MG and substantiate hosting/isolation and regional AD DS sites/subnets/"
+        "locator use or managed Domain Services design; names and parent edges prove no role. "
+        "Reconcile approved billing/cost taxonomy and attributable allocation with supported "
+        "service/agreement/scope/access and actual tag-inheritance/conflict/time conditions. "
+        "Resource tags do not automatically inherit; Cost Management inheritance changes "
+        "usage records, not resources or all history. Use redacted references only, never "
+        "personal owner/directory records, tag values, raw dashboard queries/content, "
+        "billing amounts, usage histories or credentials. Decide all seven canonical GUIDs "
+        "separately; configuration or a shared answer alone establishes none.",
+        "controls": [
+            "ALZ-49b82111-2df2-47ee-912e-7f983f630472",
+            "ALZ-2dd69c5b-5c26-422f-94b6-9bad33aad5e8",
+            "ALZ-c68e1d76-6673-413b-9f56-64b5e984a859",
+            "ALZ-c773e7d2-6162-43a7-95a9-17e1f348ef25",
+            "ALZ-ae28c84c-33b6-4b78-88b9-fe5c41049d40",
+            "ALZ-3a923c34-74d0-4001-aac6-a9e01e6a83de",
+            "ALZ-5de32c19-9248-4160-9d5d-1e4e614658d3",
+        ],
+    },
     "expressroute-monitoring-routing-failover": {
         "question": "Reconcile actual Insights availability/utilization for both links, peering "
         "and gateway with maintenance interpretation and arriving alerts/output; configured "
