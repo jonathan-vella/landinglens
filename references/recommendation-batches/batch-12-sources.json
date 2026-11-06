@@ -1,0 +1,436 @@
+{
+  "batch": "12",
+  "review_state": "reviewed",
+  "sources": [
+    {
+      "id": "site-recovery-addresses",
+      "url": "https://learn.microsoft.com/azure/site-recovery/concepts-on-premises-to-azure-networking#retain-ip-addresses",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/site-recovery/concepts-on-premises-to-azure-networking",
+      "sha256": "a84b04d402d6a5a12980b3db1e9abb971ab40197b1b7345ecefdd161ea7f6171",
+      "retrieved_at": "2026-11-06T10:06:38.208565+00:00",
+      "revision": "5c4f1012b31d7dfddc0839ccdaa33ba4d06b3fa9",
+      "finding": "IP retention is possible but overlapping simultaneously connected sites cannot use VPN/ExpressRoute. Whole-subnet failover, route changes and DNS updates need an approved original-time plan; local prefix comparisons are not a complete DR inventory.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "public-ip-zones",
+      "url": "https://learn.microsoft.com/azure/virtual-network/ip-services/public-ip-addresses#availability-zone",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/public-ip-addresses",
+      "sha256": "cdd65592e48776fafcc7cf65c759d7f129aefbaff5af89e983e12ce55710fe6a",
+      "retrieved_at": "2026-11-06T10:06:38.602175+00:00",
+      "revision": "b5d5aac386a4ccf7ce2b17724287294ae14eaab2",
+      "finding": "Current guidance makes formerly non-zonal Standard IPs zone-redundant in supported regions; empty zones alone cannot fail. Standard v2 is currently NAT Gateway v2 only and absent from the reviewed 2024 ARM/provider enum. Region, API and actual service compatibility require review; IP zone configuration is not backend resilience.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "private-dns-quickstart",
+      "url": "https://learn.microsoft.com/azure/dns/private-dns-getstarted-portal",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/dns/private-dns-getstarted-portal",
+      "sha256": "7aed926a8e2ff98ed162af1ebd12f288bea0b2fa2cafc706ab5683573a46cbda",
+      "retrieved_at": "2026-11-06T10:06:38.955882+00:00",
+      "revision": "ffa96ee5f77c4999f25d5d3ddf1bc958121d4423",
+      "finding": "Zone/link configuration prepares Azure-only design review, not delegation or actual resolution. Global zones can link multiple regions; custom DNS and Resolver paths differ.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "resolver-overview",
+      "url": "https://learn.microsoft.com/azure/dns/dns-private-resolver-overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/dns/dns-private-resolver-overview",
+      "sha256": "1a66a7da03ad32d0970e5062927b5103dbef0412ae108affcb759b4e38bb765b",
+      "retrieved_at": "2026-11-06T10:06:39.348653+00:00",
+      "revision": "730f100d04bf7be59b1499ebc1be22bbbc8164f8",
+      "finding": "Resolver/VNet must share region; endpoints require separate exclusively delegated IPv4 subnets /24 through /28. No encrypted VNet, IPv6, FastPath or cross-tenant ruleset linking. Current limits: 5 endpoints each direction, 2 outbound endpoints per ruleset, 1000 rules, 500 links and 6 target DNS servers per rule.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "workload-dns",
+      "url": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances",
+      "sha256": "3b3a0cfa36b1c141af283f33a4a0a4d0de6477b9f3fc42dd2badc939580a05d1",
+      "retrieved_at": "2026-11-06T10:06:39.747576+00:00",
+      "revision": "b45d67ee9f8f07d8c2f2a9a9f9a6f0955c00a76b",
+      "finding": "Workload/service-specific DNS choice, suffixes and authoritative zones remain manual. Azure-provided DNS is VNet scoped; custom DNS bypasses the default resolution path.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "autoregistration",
+      "url": "https://learn.microsoft.com/azure/dns/private-dns-autoregistration",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/dns/private-dns-autoregistration",
+      "sha256": "a631652c70e2d1d2a2aed4a9569a5a74369a4fc4ee85cca512e24dc43ad8280d",
+      "retrieved_at": "2026-11-06T10:06:40.127923+00:00",
+      "revision": "bb4c009527d8abe7053f6be426e4f02be4255971",
+      "finding": "Auto-registration applies only to VM primary NIC A records, one registration zone per VNet, not private endpoints, load balancers or PTR records. An enabled link is a literal partial fact, not correct lifecycle or universally required configuration.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "multi-region-dns",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/private-link-and-dns-integration-at-scale#private-link-and-dns-integration-in-hub-and-spoke-network-architectures",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/private-link-and-dns-integration-at-scale",
+      "sha256": "84ba70a7e11579810fd4f1b4c288f85b99d2472ca1d647e310b10931523a30b5",
+      "retrieved_at": "2026-11-06T10:06:40.508951+00:00",
+      "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+      "finding": "Regional private endpoints and service-specific failover DNS need explicit record lifecycle/ownership and original-time tests. Global zone or multiple links alone is not an approved multi-region failover strategy.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "windows-65330",
+      "url": "https://techcommunity.microsoft.com/blog/coreinfrastructureandsecurityblog/unmasking-dns-timeouts-the-hidden-culprit-in-azure-virtual-networks/4250444",
+      "resolved_url": "https://techcommunity.microsoft.com/blog/coreinfrastructureandsecurityblog/unmasking-dns-timeouts-the-hidden-culprit-in-azure-virtual-networks/4250444",
+      "sha256": "0519da63a156c86f377fc58144a7a88f2b1f110f3f39a01a8c29a06a40b857f6",
+      "retrieved_at": "2026-11-06T10:06:47.481719+00:00",
+      "revision": "retrieved-page",
+      "finding": "Article concerns reserved ephemeral UDP SOURCE port 65330 on Windows hosts/containers, not DNS destination port 53. Intro also says 65530 and its probability arithmetic is not adopted. Unsupported AS-IS sample commands are not executed or redistributed. IaC DNS/NSG configuration does not establish guest exclusions or full host coverage.",
+      "reuse": "Microsoft site terms: linked metadata and own findings only; no article/comments/sample scripts redistributed"
+    },
+    {
+      "id": "bastion-overview",
+      "url": "https://learn.microsoft.com/azure/bastion/bastion-overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/bastion/bastion-overview",
+      "sha256": "60f9245bd459f490c8d8fc013126231e0e330ba53e27ff061cf4dfad8564c6ea",
+      "retrieved_at": "2026-11-06T10:06:47.868250+00:00",
+      "revision": "55ac9d3889f2ffb813e88ef5699c4b1f670d7cf6",
+      "finding": "Developer is shared dev/test infrastructure; dedicated Basic/Standard/Premium use AzureBastionSubnet, while Premium private-only has no public IP. Configuration cannot prove effective secure access, permitted identity or blocked bypass.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "bastion-faq",
+      "url": "https://learn.microsoft.com/azure/bastion/bastion-faq#subnet",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/bastion/bastion-faq",
+      "sha256": "7f999b90ae7792dcdb18ea9397e03390c2b59e778e87e8d41fbcba8cfd7db0a7",
+      "retrieved_at": "2026-11-06T10:06:48.265727+00:00",
+      "revision": "55ac9d3889f2ffb813e88ef5699c4b1f670d7cf6",
+      "finding": "New dedicated deployments require /26 or larger; pre-2021-11-02 /27 is grandfathered. UDRs/default-route force tunneling, exact internal DNS zone collisions, national cloud DNS and cross-tenant peering need separate review. FAQ IPv4-only wording differs from newer configuration preview; do not silently accept dual-stack.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "bastion-settings",
+      "url": "https://learn.microsoft.com/en-us/azure/bastion/configuration-settings",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/bastion/configuration-settings",
+      "sha256": "0129041a82dcb34786fa0275aa67aa25ba78a391d033388e51cfabb0c3f84154",
+      "retrieved_at": "2026-11-06T10:06:48.438780+00:00",
+      "revision": "174e38ceee1a3075b86a9816e1edd19440192966",
+      "finding": "Developer/private-only are public-IP exceptions; dedicated subnet requirements remain. Premium recording and Standard-or-higher connection features are explicit flags only. Newer dual-stack preview and zone preview vary from FAQ/old schemas.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "resolver-endpoints",
+      "url": "https://learn.microsoft.com/en-us/azure/dns/private-resolver-endpoints-rulesets",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/dns/private-resolver-endpoints-rulesets",
+      "sha256": "3067e0d8c317584391547f188b806ab199dc13a6e22d7fc36b265e20faf3aa12",
+      "retrieved_at": "2026-11-06T10:06:48.591558+00:00",
+      "revision": "fb2bffef7c187084d68e891abfcef957fb752117",
+      "finding": "Ruleset links are regional, need no peering, and outbound endpoints must share a resolver. Longest-suffix/ordered-target processing, public wildcard resolution, inbound-loop avoidance and linked authoritative zones need separate evidence. Azure-provided DNS cannot be a forwarding target; dynamic inbound IP can change on reprovisioning. No domain names or raw target addresses are retained.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "vnet-reserved-port",
+      "url": "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq",
+      "sha256": "f641292dfcc2c23d364502c7225a912b79120a0d48ac369ef76a5487cc3571bf",
+      "retrieved_at": "2026-11-06T10:06:48.773832+00:00",
+      "revision": "68e89fc78da465edc51c2971c2eff4579723e1c2",
+      "finding": "VNet FAQ independently identifies reserved UDP port 65330. This is advisory source evidence, not permission for a guest probe or OS exclusion change.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "private-zone-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-06-01/privatednszones",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-06-01/privatednszones",
+      "sha256": "0598a629f6f87ec46d999d669d650ad8c8c4ebd84d5a5e43ddc8007bc9857228",
+      "retrieved_at": "2026-11-06T10:06:48.965176+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Reviewed zone schema has no configurable record inventory or delegation verdict.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "private-link-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-06-01/privatednszones/virtualnetworklinks",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-06-01/privatednszones/virtualnetworklinks",
+      "sha256": "77fb7bc99a79fc5cc6912c17e67f6f732a2e383b4271ebcf490ffe2ae0657403",
+      "retrieved_at": "2026-11-06T10:06:49.149608+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Explicit typed VNet link, registration boolean and resolution policy. Public fallback applies only to Private Link zone A/AAAA/CNAME NXDOMAIN; not resolution proof.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "resolver-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2022-07-01/dnsresolvers",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2022-07-01/dnsresolvers",
+      "sha256": "0ee7415a03a4623443852e2f2459334de6a36e0a66e14c565b28ac3f2f02be6e",
+      "retrieved_at": "2026-11-06T10:06:49.292744+00:00",
+      "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+      "finding": "Immutable typed VNet reference and root region, not effective hybrid resolution.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "inbound-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2022-07-01/dnsresolvers/inboundendpoints",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2022-07-01/dnsresolvers/inboundendpoints",
+      "sha256": "33c5e475de31eefa1685730d4c382364d5c5d72927c50cd9dbb7ed4fa4b0c4ba",
+      "retrieved_at": "2026-11-06T10:06:49.440213+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Bounded configured subnet/allocation summaries only; private endpoint IP withheld.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "outbound-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2022-07-01/dnsresolvers/outboundendpoints",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2022-07-01/dnsresolvers/outboundendpoints",
+      "sha256": "6efd5fa96ce0989737b8ba4d3fbbb453f6d2d90f8e15bec1fe48aa2cd23263f8",
+      "retrieved_at": "2026-11-06T10:06:49.585558+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Explicit endpoint subnet reference; outbound endpoint has no inbound VIP.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "ruleset-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2022-07-01/dnsforwardingrulesets",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2022-07-01/dnsforwardingrulesets",
+      "sha256": "8bcf2cf7fbc883ea1d366e23fefef8e1c7c9e2f2ead00fc04478371b0b57171c",
+      "retrieved_at": "2026-11-06T10:06:49.731845+00:00",
+      "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+      "finding": "Typed positive outbound endpoint relationships, not exhaustive rules or links.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "forwarding-rule-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2022-07-01/dnsforwardingrulesets/forwardingrules",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2022-07-01/dnsforwardingrulesets/forwardingrules",
+      "sha256": "77c2358fe103e8cdcdb1a6357915544afce4c3ee48d107e475fdcc69f34888aa",
+      "retrieved_at": "2026-11-06T10:06:49.878617+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Literal state and minimized domain/target shape; no records/raw destinations or inference of precedence, loop freedom or destination responsiveness.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "ruleset-link-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2022-07-01/dnsforwardingrulesets/virtualnetworklinks",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2022-07-01/dnsforwardingrulesets/virtualnetworklinks",
+      "sha256": "d6b94efcb52db7dc0ea83ab94a67c54b27ae342b11fcb4509e20d1bb00e5e5ca",
+      "retrieved_at": "2026-11-06T10:06:50.041168+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Typed VNet relationship only; arbitrary metadata is withheld.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "bastion-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/bastionhosts",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/bastionhosts",
+      "sha256": "d908bae9be639839002eb2259429446504224a622747ed680ead5bfbce2259e5",
+      "retrieved_at": "2026-11-06T10:06:50.215048+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Explicit SKU/private-only/connection/recording flags and typed subnet/public-IP links, 2..50 scale units. FQDN/ACL raw addresses withheld; no access verdict.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-private-zone",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/private_dns_zone.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/private_dns_zone.html.markdown",
+      "sha256": "e14b5fd02c7fa1ec8ada31daac4afe04aa00bae7b9622ff62203b2e0c33b4be9",
+      "retrieved_at": "2026-11-06T10:06:50.313787+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Zone resource does not establish delegation, DNS records or service suitability.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-private-link",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/private_dns_zone_virtual_network_link.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/private_dns_zone_virtual_network_link.html.markdown",
+      "sha256": "68cb23706454bc1a5c5863a2df35dd82c71eb39f6a556dc024bc10f3ddbdccb9",
+      "retrieved_at": "2026-11-06T10:06:50.420378+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Explicit booleans/policy only; omitted registration false default is not inferred.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-resolver",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/private_dns_resolver.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/private_dns_resolver.html.markdown",
+      "sha256": "f97b195b109db3dff2b5807d0c542fbfe8b66ad5c7adc32f34ee1a770122c486",
+      "retrieved_at": "2026-11-06T10:06:50.516073+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Typed VNet and literal location, no provider creation or runtime execution.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-inbound",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/private_dns_resolver_inbound_endpoint.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/private_dns_resolver_inbound_endpoint.html.markdown",
+      "sha256": "3c80f97876c34cc5b770b86575d8d9e5b1cbdd64c9a97a32d6017213e1b3165c",
+      "retrieved_at": "2026-11-06T10:06:50.607882+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Provider has one configuration block. Missing Dynamic default is not inferred; private_ip_address withheld.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-outbound",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/private_dns_resolver_outbound_endpoint.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/private_dns_resolver_outbound_endpoint.html.markdown",
+      "sha256": "8673cfc38b0bf236a10dc2f0e830910ac8a3e95b5eb5c7242e7f5fa1b4c05e73",
+      "retrieved_at": "2026-11-06T10:06:50.706975+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Typed parent/subnet references; exclusive subnet population remains unverified.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-ruleset",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/private_dns_resolver_dns_forwarding_ruleset.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/private_dns_resolver_dns_forwarding_ruleset.html.markdown",
+      "sha256": "32b9a909e3e71634df9424836c1ed3d06652a330b2fba241b97529ce900fb91e",
+      "retrieved_at": "2026-11-06T10:06:50.793982+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Up to two explicitly typed endpoint references; no automatic inventory completeness.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-forwarding-rule",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/private_dns_resolver_forwarding_rule.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/private_dns_resolver_forwarding_rule.html.markdown",
+      "sha256": "f214b6e2c3e0303d26713ceaa62972ff9b0bde4d58da4fbf82a5e5fe2b6d2763",
+      "retrieved_at": "2026-11-06T10:06:50.890559+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Explicit enabled value only, not default true. Target ports/IPv4 shape minimized; namespace and IPs withheld.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-ruleset-link",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/private_dns_resolver_virtual_network_link.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/private_dns_resolver_virtual_network_link.html.markdown",
+      "sha256": "f4f43128891f1441c5b6ce3f28e8da2ff0f80a8bd03d9310d8f458add5a1aaf1",
+      "retrieved_at": "2026-11-06T10:06:50.997835+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Typed parent and VNet links; supplied metadata withheld.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-bastion",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/bastion_host.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/bastion_host.html.markdown",
+      "sha256": "33f6246325d36adc4a8b276b77efba4a60d6aeff25ebac1ca5efb27dc6717ca4",
+      "retrieved_at": "2026-11-06T10:06:51.087600+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Provider 4.50 supports four SKUs but lacks private-only input. Its /27 example differs from /26 notes/current requirements. Do not infer Basic, false flags, 2 scale units or public-only defaults. Readable dns_name withheld.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "public-ip-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/publicipaddresses",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/publicipaddresses",
+      "sha256": "19ae70bbd346ebe535c2ba3ffce6ba627a48fa8930626ae0616d23e350572737",
+      "retrieved_at": "2026-11-06T10:06:51.324149+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "IP protection mode and plan binding are distinct. Inherited mode needs actual supported VNet attachment. Addresses/DNS labels are withheld.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-public-ip",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/public_ip.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/public_ip.html.markdown",
+      "sha256": "5dde154432ab09df5916e20e2c75f65c664a1c6adc6e3d10a32e0b5e66cf37d1",
+      "retrieved_at": "2026-11-06T10:06:51.411890+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned IP mode defaults are not inferred; explicit mode/plan only. Historical provider zone prose differs from current guidance, so no resilience verdict.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "subnet-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/subnets",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/subnets",
+      "sha256": "56897375f7e225bc87f35a8aa4d3b7b4a148bdbebd3439ef25c04430b4d3b2de",
+      "retrieved_at": "2026-11-06T10:06:51.593677+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Explicit IPv4 prefixes and typed route-table/NAT references are preparable. IPAM allocation, missing/mixed prefix forms and unavailable joins do not establish capacity or effective routes.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-subnet",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subnet.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subnet.html.markdown",
+      "sha256": "81efb15b9b422afa08a21b346e5e81bcd7d8f250a1a138db02627f798653c824",
+      "retrieved_at": "2026-11-06T10:06:51.673400+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "4.50.0 supports explicit prefixes or IPAM pool, not both. IPAM allocation does not establish actual prefixes. Inline/standalone subnet mixing is unsupported by the provider.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "learn-terms",
+      "url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "resolved_url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "sha256": "fe5c87b8dd791001fc640c9ad515acb9a090ac6a88935d2ccdef9b61f7427692",
+      "retrieved_at": "2026-11-06T10:06:51.822218+00:00",
+      "revision": "9fd90ed833034800434458aef187ba08d8dc9d5b",
+      "finding": "Keep attribution, links, exact hashes and own factual findings, not copied Learn pages.",
+      "reuse": "Microsoft site terms: linked metadata and own findings only; no article/comments/sample scripts redistributed"
+    },
+    {
+      "id": "microsoft-terms",
+      "url": "https://www.microsoft.com/en-us/legal/terms-of-use",
+      "resolved_url": "https://www.microsoft.com/en-us/legal/terms-of-use",
+      "sha256": "d47a2cf35d08a50a18173f86b71681ccd29c25a7fd65342a9e5be613519fa3dc",
+      "retrieved_at": "2026-11-06T10:06:53.309946+00:00",
+      "revision": "retrieved-page",
+      "finding": "TechCommunity remains linked advisory evidence; no article, comments or unsupported sample scripts redistributed. Site terms are not a software execution authorization.",
+      "reuse": "Microsoft site terms: linked metadata and own findings only; no article/comments/sample scripts redistributed"
+    },
+    {
+      "id": "provider-license",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "sha256": "4e2bb185ebd706f76329206869ccb348b92b6236100cfb07775fe31530dab0d5",
+      "retrieved_at": "2026-11-06T10:06:53.566808+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider is MPL-2.0; use metadata/own schema findings, not copied source code.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "vnet-dns-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks",
+      "sha256": "15d4960981e1e71c42af5a6c298c80af9bcca0d373010b1f80c4249ef5d81ad6",
+      "retrieved_at": "2026-11-06T10:06:53.848169+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Explicit DNS server list count and encryption boolean, with no server IPs retained. Missing DNS list cannot establish use of default DNS.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-rule-implementation",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/privatednsresolver/private_dns_resolver_forwarding_rule_resource.go",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/privatednsresolver/private_dns_resolver_forwarding_rule_resource.go",
+      "sha256": "7e517535c20d2748ce3763c6865643409e46419420197a9de191e69dee2f7031",
+      "retrieved_at": "2026-11-06T10:06:54.114182+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Provider stores explicit enabled/target list; port has no reviewed default 53. Omitted/zero/invalid port remains unknown, never silently rewritten.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-bastion-implementation",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/network/bastion_host_resource.go",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/network/bastion_host_resource.go",
+      "sha256": "20e5b0979b7e886e6e70fcd1ed86a5d32dafc10b4d6e84da21603dd6de9d944d",
+      "retrieved_at": "2026-11-06T10:06:54.432734+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "One IP block, 2..50 units, copy-paste boolean inversion and SKU-conditioned features are verified. No private-only schema field; never infer false from its absence.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "private-zone-links",
+      "url": "https://learn.microsoft.com/en-us/azure/dns/private-dns-virtual-network-links",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/dns/private-dns-virtual-network-links",
+      "sha256": "aba4994aafb34080263f5a1bae82eae10989923f5eca5141b7424a155e794bd6",
+      "retrieved_at": "2026-11-06T10:06:54.740015+00:00",
+      "revision": "bc062b96a81fe65089d6f3f50e703e3834b0c604",
+      "finding": "Only one link per zone/VNet; link completion is distinct from provisioning and actual resolution. Missing/transient statuses remain unverified.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-vnet-dns",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network.html.markdown",
+      "sha256": "17416f03d3d471c85f2364428c8c6e3c4e312ba18272262537986d1f788a9fd7",
+      "retrieved_at": "2026-11-06T10:09:09.063745+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Explicit supplied DNS count only; separately managed DNS-server resources remain unknown. Encryption block exposes enforcement, not an independent enabled boolean.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    }
+  ]
+}

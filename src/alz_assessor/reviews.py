@@ -352,6 +352,30 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
             "complete relationships. No whole-recommendation outcome or current freshness inferred."
         ),
     }
+    if control["upstream_guid"] == "f348ef25-4c27-4d42-b8bb-ac7571559ab9":
+        from .routing_evidence import address_subchecks
+
+        prefixes: Any = []
+        if not available or not matches or len(matches) > 100:
+            prefixes = None
+        else:
+            for resource in matches:
+                values = review_fact(resource["properties"], "virtualNetworkPrefixes")
+                if (
+                    resource["state"] != "known"
+                    or not isinstance(values, list)
+                    or not values
+                    or any(not isinstance(value, str) for value in values)
+                    or len(prefixes) + len(values) > 100
+                ):
+                    prefixes = None
+                    break
+                prefixes.extend(values)
+        context["supplied_vnet_population_subchecks"] = {
+            "subchecks": address_subchecks(prefixes),
+            "warning": "Only the supplied bounded VNet population, not complete production/DR "
+            "roles, estate inventory or approved subnet-move exceptions.",
+        }
     if control["upstream_guid"] == "3c5a808d-c695-4c14-a63c-c7ab7a510e41" and available:
         from .policy_evidence import project_policy_metadata
 

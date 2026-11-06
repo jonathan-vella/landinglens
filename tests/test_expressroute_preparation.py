@@ -220,7 +220,7 @@ class ExpressRoutePreparationTests(unittest.TestCase):
         )
         self.assertEqual(len(load_catalog()["controls"]), 255)
         before = {c["upstream_guid"]: c for c in json.loads(predecessor)["controls"]}
-        after = load_catalog()
+        after = load_catalog(str(data / "catalog-2026-11-06.7.json"))
         self.assertEqual(after["catalog_version"], "2026-11-06.7")
         for control in after["controls"]:
             if control["upstream_guid"] not in GUIDS.values():
@@ -228,7 +228,7 @@ class ExpressRoutePreparationTests(unittest.TestCase):
                     control_digest(control), control_digest(before[control["upstream_guid"]])
                 )
         previous_crosswalk = json.loads((data / "crosswalk-2026-11-06.6.json").read_text())
-        current_crosswalk = json.loads((data / "crosswalk.json").read_text())
+        current_crosswalk = json.loads((data / "crosswalk-2026-11-06.7.json").read_text())
         self.assertEqual(current_crosswalk["entries"], previous_crosswalk["entries"])
         self.assertEqual(current_crosswalk["sources"], previous_crosswalk["sources"])
         sources = {s["id"]: s for s in manifest["sources"]}

@@ -2367,9 +2367,35 @@
       "baseline_control_sha256": "3a1d198464ee71747e5d19225e056f6f0b3e4b6a0557ee98d53d09709c17869b",
       "design_area": "Network topology and connectivity",
       "batch": "12",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "f348ef25-4c27-4d42-b8bb-ac7571559ab9",
+        "upstream_id": "D03.04",
+        "classification": "assisted",
+        "implemented_subclaim": "Reuse typed supplied VNet IPv4 prefix/RFC1918/local overlap summaries, with explicit selected-inventory incompleteness and a complete-estate production/DR review question.",
+        "sources": [
+          "site-recovery-addresses",
+          "vnet-dns-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks"
+        ],
+        "review_fact_paths": [
+          "virtualNetworkPrefixes",
+          "resourceLocation"
+        ],
+        "evidence_requirements": [
+          "Bind complete production and DR populations, on-premises sites, VNets, peerings, VPN/ExpressRoute, reserved ranges and recovery networks to the exact assessment scope and evidence time. Names, local overlaps or inventory_complete do not identify estate roles or complete the DR inventory.",
+          "Site Recovery permits IP retention only with whole-subnet failover and route changes so that the overlapping subnet is not simultaneously present at both connected sites. Reconcile independent approved exception, recovery ordering, address availability and required DNS updates.",
+          "Reviewer decision: do complete original-time production/DR and recovery-plan evidence establish no conflicting simultaneous connected address use? Keep the decision blank until explicitly supplied."
+        ],
+        "limitations": "Bounded IPv4-only supplied comparisons are not global IPAM, production/DR classification, route reachability or a tested subnet move. IPv6/unresolved/absent populations stay unknown.",
+        "flags": [
+          "local-prefixes-not-complete-dr-population",
+          "ip-retention-needs-subnet-move-review"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/103",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2382,9 +2408,41 @@
       "baseline_control_sha256": "6281c1e951ef2a060189e6939ace05f91b2d88d6f2325d142bedbb9019a0af9b",
       "design_area": "Network topology and connectivity",
       "batch": "12",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "0c47f486-656d-4699-8c30-edef5b8a93c4",
+        "upstream_id": "D03.05",
+        "classification": "assisted",
+        "implemented_subclaim": "Literal public-IP SKU/tier/allocation/version, reused validated configuredZones and root region, without guessing default zones or regional capabilities.",
+        "sources": [
+          "public-ip-zones",
+          "public-ip-arm",
+          "terraform-public-ip"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/publicIPAddresses"
+        ],
+        "review_fact_paths": [
+          "publicIpSku",
+          "publicIpTier",
+          "publicIpAllocationMethod",
+          "publicIpVersion",
+          "configuredZones",
+          "resourceLocation",
+          "ipConfigurationId"
+        ],
+        "evidence_requirements": [
+          "Current source revision b5d5aac3 states formerly non-zonal Standard IPs with empty zones are zone-redundant in supported regions. Reconcile actual region availability, API/resource state, zonal intent and attached service; never fail merely because zones are empty.",
+          "Review Standard versus retired Basic, Regional versus Global and actual attached service compatibility. Standard v2 is currently NAT Gateway v2 only and outside the reviewed 2024 ARM/AzureRM enum; unsupported versions remain unknown.",
+          "Reviewer decision: are Standard and applicable zone-redundant public IPs correctly used throughout the actual endpoint population, with independent backend/service resilience evidence?"
+        ],
+        "limitations": "Literal SKU or zones is only configuration, not regional support, runtime redundancy, a complete public-IP estate, service health or backend availability. Missing defaults are not inferred.",
+        "flags": [
+          "empty-zones-not-nonredundancy",
+          "sku-region-api-service-review-required"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/103",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2397,9 +2455,45 @@
       "baseline_control_sha256": "2cc8979f90047fb6bb222ed439b46cb4214df63a2177a7d2f2979a2cd91baf0c",
       "design_area": "Network topology and connectivity",
       "batch": "12",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "153e8908-ae28-4c84-a33b-6b7808b9fe5c",
+        "upstream_id": "D03.06",
+        "classification": "assisted",
+        "implemented_subclaim": "Private-zone identity, typed VNet links, explicit link completion/resolution-policy and minimized supplied DNS-server count/default-versus-custom marker.",
+        "sources": [
+          "private-dns-quickstart",
+          "private-zone-links",
+          "private-zone-arm",
+          "private-link-arm",
+          "terraform-private-zone",
+          "terraform-private-link",
+          "workload-dns"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/privateDnsZones",
+          "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+          "Microsoft.Network/virtualNetworks"
+        ],
+        "review_fact_paths": [
+          "dnsVirtualNetworkId",
+          "registrationEnabled",
+          "dnsLinkState",
+          "resolutionPolicy",
+          "dnsServerSummary"
+        ],
+        "evidence_requirements": [
+          "Confirm Azure-only requirements, authoritative namespace/ownership/delegation and every client VNet's default/custom DNS path. Private zones are global resources; presence or region alone does not establish the required namespace design.",
+          "Reconcile exact zone/VNet links and Completed state, explicit custom-DNS bypass/forwarding, suffixes and any NxDomainRedirect fallback (Private Link A/AAAA/CNAME only). Missing links/status/DNS lists remain unknown.",
+          "Reviewer decision: does redacted original-time design and actual resolution evidence establish the required Azure-only delegated private DNS solution?"
+        ],
+        "limitations": "No domain/record content or queries are retained/run. Configured links and server counts are not effective resolution, delegation, availability or suitability.",
+        "flags": [
+          "zone-link-not-resolution",
+          "custom-dns-path-and-delegation-human"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/103",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2412,9 +2506,67 @@
       "baseline_control_sha256": "1ed85af715745d9cdd2adba782756a0a3b347bb7ebdb19dc76b9e07a90d7f9fe",
       "design_area": "Network topology and connectivity",
       "batch": "12",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "41049d40-3a92-43c3-974d-00018ac6a9e0",
+        "upstream_id": "D03.07",
+        "classification": "assisted",
+        "implemented_subclaim": "Typed Resolver/VNet, inbound subnet/allocation summaries, outbound subnet/ruleset links, explicit forwarding state, minimized domain/target shape and DNS-only subnet delegation.",
+        "sources": [
+          "resolver-overview",
+          "resolver-endpoints",
+          "resolver-arm",
+          "inbound-arm",
+          "outbound-arm",
+          "ruleset-arm",
+          "forwarding-rule-arm",
+          "ruleset-link-arm",
+          "terraform-resolver",
+          "terraform-inbound",
+          "terraform-outbound",
+          "terraform-ruleset",
+          "terraform-forwarding-rule",
+          "terraform-ruleset-link",
+          "terraform-rule-implementation",
+          "subnet-arm",
+          "terraform-subnet",
+          "vnet-dns-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/dnsResolvers",
+          "Microsoft.Network/dnsResolvers/inboundEndpoints",
+          "Microsoft.Network/dnsResolvers/outboundEndpoints",
+          "Microsoft.Network/dnsForwardingRulesets",
+          "Microsoft.Network/dnsForwardingRulesets/forwardingRules",
+          "Microsoft.Network/dnsForwardingRulesets/virtualNetworkLinks",
+          "Microsoft.Network/virtualNetworks/subnets",
+          "Microsoft.Network/virtualNetworks",
+          "Microsoft.Network/privateDnsZones/virtualNetworkLinks"
+        ],
+        "review_fact_paths": [
+          "dnsVirtualNetworkId",
+          "resourceLocation",
+          "resolverIpConfigurations",
+          "resolverOutboundEndpointIds",
+          "subnetReferences",
+          "forwardingRuleState",
+          "forwardingDomainSummary",
+          "forwardingTargetSummary"
+        ],
+        "evidence_requirements": [
+          "Confirm hybrid need and lack of an already appropriate enterprise DNS service. Reconcile actual Azure-to-on-premises and on-premises-to-Azure forwarding/authority and existing connectivity independently.",
+          "Resolver/VNet and ruleset links must satisfy current regional/tenant limits. Dedicated exclusively Microsoft.Network/dnsResolvers-delegated IPv4 endpoint subnets must be /24 through /28 and not shared; encryption, IPv6, FastPath and Lighthouse restrictions need review.",
+          "Up to two outbound endpoint references must share one Resolver; current bounds are five endpoints per direction, 1000 rules, 500 links and six targets per rule. Supplied counts are not complete service populations or quotas verified against runtime.",
+          "Check enabled longest-suffix rules, ordered target ports, wildcard public resolution, authoritative private-zone links and no loop back to an inbound endpoint's own VNet. 168.63.129.16 cannot be a forwarding target. Dynamic inbound IP can change on reprovisioning. Private target addresses/domains are withheld; inspect redacted separate evidence.",
+          "Reviewer decision: does scoped original-time configuration plus actual both-direction resolution and operational evidence establish the suitable hybrid Resolver design?"
+        ],
+        "limitations": "No forwarding evaluator, raw target/domain retention, DNS probe or region registry inferred. Terraform lacks a separate encryption enabled flag; omitted target port is not defaulted to 53. Missing/partial/unsupported details remain unknown.",
+        "flags": [
+          "resolver-config-not-hybrid-resolution",
+          "regional-links-exclusive-subnets-and-loop-review"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/103",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2427,9 +2579,31 @@
       "baseline_control_sha256": "414fb80d6b0dba2fbd0e5e1ae5a9ccc25459757ac0be38d36deee4bc3575c4e4",
       "design_area": "Network topology and connectivity",
       "batch": "12",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "1e6a83de-5de3-42c1-a924-81607d5d1e4e",
+        "upstream_id": "D03.08",
+        "classification": "manual",
+        "implemented_subclaim": "Retained inherently manual workload-specific DNS requirement and vendor-supported design question, accompanied only by minimized supplied DNS path context.",
+        "sources": [
+          "workload-dns"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks"
+        ],
+        "review_fact_paths": [
+          "dnsServerSummary"
+        ],
+        "evidence_requirements": [
+          "Identify each special workload and its supported vendor/version DNS authority, suffix, conditional-forwarding, cluster and lifecycle requirements; do not infer OpenShift or any workload from resource names or one VNet DNS setting.",
+          "Reviewer decision: is the selected preferred DNS solution approved and supported for every relevant workload, with attributable redacted vendor/design and operational evidence? Keep this manual decision blank."
+        ],
+        "limitations": "No generic infrastructure flag can establish a preferred workload DNS solution. Configuration does not invent workload identity, vendor approval or a human decision.",
+        "flags": [
+          "manual-workload-specific-dns-suitability"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/103",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2442,9 +2616,38 @@
       "baseline_control_sha256": "f5926aec82fb36cf1b234acaefaaf3f983d9933e3b603d13eb08764118db48dd",
       "design_area": "Network topology and connectivity",
       "batch": "12",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "614658d3-558f-4d77-849b-821112df27ee",
+        "upstream_id": "D03.09",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit link registrationEnabled boolean and typed VNet/link completion, never unconditional required=true or proof of record lifecycle.",
+        "sources": [
+          "autoregistration",
+          "private-zone-links",
+          "private-link-arm",
+          "terraform-private-link"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/privateDnsZones/virtualNetworkLinks"
+        ],
+        "review_fact_paths": [
+          "registrationEnabled",
+          "dnsVirtualNetworkId",
+          "dnsLinkState"
+        ],
+        "evidence_requirements": [
+          "Auto-registration covers VM primary NIC A records only, one registration zone per VNet. It does not cover private endpoints, internal load balancers, extra NICs or PTR records; reconcile those independent lifecycle mechanisms.",
+          "Bind the actual relevant VNet/zone population and workload requirements. Explicit disabled registration may be appropriate for resolution-only/Private Link/reverse zones; an enabled link does not prove created, updated or removed records.",
+          "Reviewer decision: is auto-registration correctly enabled where applicable and do attributable lifecycle evidence and independent non-VM mechanisms cover all required records?"
+        ],
+        "limitations": "Conditional recommendation, not a universal boolean predicate. Missing link status or false default is not inferred; no DNS records are read or retained.",
+        "flags": [
+          "registration-vm-primary-nic-only",
+          "resolution-only-links-not-failures"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/103",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2457,9 +2660,38 @@
       "baseline_control_sha256": "f86d998ee2c07d10a3073a86e80cf4ad5df87d93e604853f481155e00e741116",
       "design_area": "Network topology and connectivity",
       "batch": "12",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "18c80eb0-582a-4198-bf5c-d8800b2d263b",
+        "upstream_id": "D03.10",
+        "classification": "manual",
+        "implemented_subclaim": "Retained inherently manual multi-region/failover strategy, with regional configured Resolver and positive zone/VNet-link context only.",
+        "sources": [
+          "multi-region-dns",
+          "resolver-endpoints",
+          "private-dns-quickstart",
+          "site-recovery-addresses"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/dnsResolvers",
+          "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+          "Microsoft.Network/dnsForwardingRulesets/virtualNetworkLinks"
+        ],
+        "review_fact_paths": [
+          "resourceLocation",
+          "dnsVirtualNetworkId"
+        ],
+        "evidence_requirements": [
+          "Document accountable service-specific multi-region DNS ownership, authoritative zones, regional endpoints/resolvers, record-update sequence, TTL/cache behavior, failover/failback dependencies, health decisions and rollback. Global zones or multiple links alone do not constitute a plan.",
+          "Reconcile Private Link regional-record maintenance and each service's actual geo-failover semantics. A single global private endpoint and multiple regional private endpoints have different routing and lifecycle tradeoffs.",
+          "Reviewer decision: is the multi-region/failover DNS plan approved and supported by attributable original-time exercises and service-specific evidence? Keep this manual strategy decision blank."
+        ],
+        "limitations": "No health, DNS, routing or failover execution. Region/link context cannot establish resilient resolution, tested restoration, record selection or owner approval.",
+        "flags": [
+          "manual-multi-region-failover-plan"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/103",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2472,9 +2704,29 @@
       "baseline_control_sha256": "409b99ec85ed96827ed8f3b6bf321868017394293086e93cc7a2552232c7f066",
       "design_area": "Network topology and connectivity",
       "batch": "12",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "baac3ecb-a94c-4ac4-8c79-cdf27c0d78df",
+        "upstream_id": "D03.11",
+        "classification": "assisted",
+        "implemented_subclaim": "Actual reviewed Windows ephemeral UDP source-port advisory and a specific host/container exclusion-evidence question; no IaC substitute or generated command.",
+        "sources": [
+          "windows-65330",
+          "vnet-reserved-port",
+          "microsoft-terms"
+        ],
+        "evidence_requirements": [
+          "The actual TechCommunity article and VNet FAQ identify reserved UDP SOURCE port 65330. DNS destination port 53, an NSG deny or configured DNS server does not establish guest exclusion. Article intro also says 65530; its probability arithmetic is not adopted.",
+          "Reconcile the complete relevant Windows VM/container host population, IPv4 scope, persistent UDP excluded-range evidence, current ownership and independent exceptions using separately supplied attributable redacted evidence. Never read guests or alter OS/network settings here.",
+          "Reviewer decision: does original-time host/container configuration evidence establish the reviewed 65330 exclusion where applicable? Unsupported AS-IS article samples are advisory only; leave outcome blank until explicit evidence is supplied."
+        ],
+        "limitations": "Permitted management-plane IaC/saved resource configuration cannot establish this guest property. No source article/sample commands are redistributed, no port/packet/DNS probe or remediation is executed.",
+        "flags": [
+          "udp-source-65330-not-dns-destination",
+          "guest-evidence-unavailable-from-iac"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/103",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2487,9 +2739,51 @@
       "baseline_control_sha256": "7c0d004dfd321bb039024a65fb314377b24df213e67ac54111d6e90896f3b170",
       "design_area": "Network topology and connectivity",
       "batch": "12",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "ee1ac551-c4d5-46cf-b035-d0a3c50d87ad",
+        "upstream_id": "D05.01",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit Bastion SKU, private-only, feature/recording flags, scale units, zones and typed subnet/public-IP/Developer VNet references.",
+        "sources": [
+          "bastion-overview",
+          "bastion-settings",
+          "bastion-faq",
+          "bastion-arm",
+          "terraform-bastion",
+          "terraform-bastion-implementation",
+          "public-ip-zones",
+          "public-ip-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/bastionHosts",
+          "Microsoft.Network/publicIPAddresses",
+          "Microsoft.Network/networkInterfaces",
+          "Microsoft.Network/virtualNetworks/subnets"
+        ],
+        "review_fact_paths": [
+          "bastionSku",
+          "bastionFeatureSummary",
+          "bastionVirtualNetworkId",
+          "subnetReferences",
+          "bastionPublicIpIds",
+          "configuredZones",
+          "resourceLocation",
+          "nicIpConfigurations"
+        ],
+        "evidence_requirements": [
+          "Confirm dedicated production versus shared dev/test Developer, Premium private-only versus public Standard Static IPv4 entrypoint, permitted identity/RBAC/guest access and approved connection features. Provider lacks private-only input; missing is unknown.",
+          "Reconcile actual every-VM/VNet/peering topology, direct public RDP/SSH bypass, effective NSG/route constraints, default-route/UDR/force-tunneling restrictions and exact conflicting internal private DNS zones. VM public-IP links do not establish effective exposure or secure access.",
+          "Review recording/SAS storage/access separately without retaining URLs, current region/zone support and IPv6 dual-stack preview (newer configuration guide differs from IPv4-only FAQ/old schemas). Counts/features are not runtime security or resilient sessions.",
+          "Reviewer decision: is Bastion the approved secure access path with attributable operational access, bypass and audit evidence for all applicable networks?"
+        ],
+        "limitations": "No live login, access test, guest credentials, host FQDN, ACL raw address or recording secret is retained. Bastion presence/SKU cannot prove secure access or suitability.",
+        "flags": [
+          "bastion-presence-not-secure-access",
+          "developer-private-only-and-preview-exceptions"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/103",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2502,9 +2796,46 @@
       "baseline_control_sha256": "8b0e044896b65f638a526eb43dddd43c8c24c588bf0b9f694f8d676a45b824ed",
       "design_area": "Network topology and connectivity",
       "batch": "12",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "6eab9eb6-762b-485e-8ea8-15aa5dba0bd0",
+        "upstream_id": "D05.02",
+        "classification": "assisted",
+        "implemented_subclaim": "Typed actual Bastion-to-subnet links, reused supplied IPv4 /26-capacity subcheck and explicit SKU/private-only/deployment-era exceptions, not name-only acceptance.",
+        "sources": [
+          "bastion-faq",
+          "bastion-settings",
+          "bastion-arm",
+          "terraform-bastion",
+          "terraform-bastion-implementation",
+          "subnet-arm",
+          "terraform-subnet"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/bastionHosts",
+          "Microsoft.Network/virtualNetworks/subnets"
+        ],
+        "review_fact_paths": [
+          "bastionSku",
+          "enablePrivateOnlyBastion",
+          "bastionVirtualNetworkId",
+          "subnetReferences",
+          "addressPrefixes",
+          "networkSecurityGroup.id",
+          "routeTable.id"
+        ],
+        "evidence_requirements": [
+          "Dedicated non-Developer resources deployed on/after 2021-11-02 require exclusive AzureBastionSubnet in the same VNet/resource group, /26 or larger. Positive typed host/subnet binding is required; a matching subnet name alone does not identify use.",
+          "Pre-2021-11-02 /27 deployments remain supported, with /26 recommended for scaling. Developer has no dedicated-subnet requirement; Premium private-only still does. Reconcile actual SKU, original deployment evidence, independent approved exceptions, subnet exclusivity, IPv4/preview constraints and effective NSG/routes.",
+          "Reviewer decision: does actual deployment-era/topology/occupancy evidence establish the applicable subnet requirements? A narrow capacity subcheck neither verifies dedicated occupancy nor rejects the grandfathered /27 case."
+        ],
+        "limitations": "No whole predicate is defensible without SKU/deployment-era/exclusive-population evidence. Missing/ambiguous linked subnet and IPv6/mixed/unresolved prefixes remain unknown, never a name-based pass.",
+        "flags": [
+          "capacity-subcheck-not-bastion-deployment-acceptance",
+          "legacy-27-and-developer-conditions"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/103",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []

@@ -1,9 +1,11 @@
 import copy
+import hashlib
 import json
 import os
 import tempfile
 import unittest
 import zipfile
+from importlib.resources import files
 from io import BytesIO
 from pathlib import Path
 from unittest.mock import patch
@@ -266,8 +268,28 @@ class DnsBatchTests(unittest.TestCase):
                 self.assertEqual(
                     control_digest(old), control_digest(self.control(old["upstream_guid"]))
                 )
-        self.assertNotIn(self.matrix["interview"]["id"], BANK)
+        self.assertEqual(
+            BANK[self.matrix["interview"]["id"]]["controls"],
+            ["ALZ-" + guid for guid in GUIDS],
+        )
         self.assertNotIn("catalog_version", self.matrix)
+        data = files("alz_assessor").joinpath("data")
+        prior = data.joinpath("catalog-2026-11-06.7.json").read_bytes()
+        self.assertEqual(
+            hashlib.sha256(prior).hexdigest(),
+            "3e69f21126f9cf94e06d39f7eff2797c3ba1d575d1a89a040ac7ddffdf2572fa",
+        )
+        before = {c["upstream_guid"]: c for c in json.loads(prior)["controls"]}
+        for control in baseline["controls"]:
+            if control["upstream_guid"] not in GUIDS:
+                self.assertEqual(
+                    control_digest(control), control_digest(before[control["upstream_guid"]])
+                )
+        self.assertEqual(baseline["catalog_version"], "2026-11-06.8")
+        self.assertEqual(
+            hashlib.sha256(data.joinpath("crosswalk-2026-11-06.7.json").read_bytes()).hexdigest(),
+            "90c0d4e3caf23069f2f7bd7938ce0e6c81d7df49d25266dbfdb316675b12fed4",
+        )
 
     def test_minimized_dns_public_ip_bastion_and_preserved_literal_facts(self):
         bundle = self.bundle()
@@ -409,6 +431,32 @@ class DnsBatchTests(unittest.TestCase):
         # The deliberately shared fixture is configuration, not an exclusive/deployable subnet.
         self.assertNotIn("outcome", host["linked_subnets"][0])
 
+    def test_supplied_vnet_population_overlap_never_establishes_complete_dr_roles(self):
+        bundle = self.bundle()
+        second = copy.deepcopy(bundle["resources"][0])
+        second["logical_id"] = second["arm_id"] = VNET.lower() + "-second"
+        bundle["resources"].append(second)
+        key = "supplied_vnet_ipv4_prefixes_do_not_overlap"
+
+        def checks(value):
+            return review_context(self.control(GUIDS[0]), value)[
+                "supplied_vnet_population_subchecks"
+            ]["subchecks"]
+
+        self.assertIs(checks(bundle)[key], False)
+        second["properties"]["virtualNetworkPrefixes"] = ["10.1.0.0/16"]
+        self.assertIs(checks(bundle)[key], True)
+        second.update(state="inaccessible", reason="fixture denial")
+        self.assertIn("unknown", checks(bundle)[key])
+        over_bound = self.bundle()
+        over_bound["resources"] = []
+        for index in range(101):
+            resource = copy.deepcopy(self.bundle()["resources"][0])
+            resource["logical_id"] = resource["arm_id"] = VNET.lower() + str(index)
+            over_bound["resources"].append(resource)
+        self.assertIn("unknown", checks(over_bound)[key])
+        self.assertIn("unknown", checks({**bundle, "resources": []})[key])
+
     def test_positive_typed_links_missing_denied_and_wrong_type_never_prove_topology(self):
         bundle = self.bundle()
         bundle["resources"][-1]["properties"]["bastionSku"] = "Developer"
@@ -459,8 +507,10 @@ class DnsBatchTests(unittest.TestCase):
             self.assertNotIn(
                 SENTINEL, "".join(archive.read(n).decode() for n in archive.namelist())
             )
+        tampered = copy.deepcopy(self.catalog)
+        tampered["controls"][0]["rationale"] += " altered"
         with self.assertRaisesRegex(InputError, "Historical catalog"):
-            export_bundle(self.root / "unaccepted-replay", bundle, self.catalog, at=AT)
+            export_bundle(self.root / "unaccepted-replay", bundle, tampered, at=AT)
         accepted = load_catalog()
         accepted_report = assess(bundle, accepted, at=AT, evidence_tiers=True)
         export_bundle(self.root / "replay", bundle, accepted, at=AT, evidence_tiers=True)
@@ -518,7 +568,7 @@ class DnsBatchTests(unittest.TestCase):
             changed["decisions"][2]["outcome"] = None
             with self.assertRaises(InputError):
                 compile_interview(changed, self.catalog, at=AT)
-        self.assertNotIn(question["id"], BANK)
+        self.assertIn(question["id"], BANK)
 
     def tf_values(self):
         return {
