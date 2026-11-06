@@ -18,6 +18,13 @@ estate or actual quota assurance is inferred. Counts remain12/200/43; guarded
 merged delivery, not activation, changes177 delivered/74 pending. See the
 [integration evidence](plan.md#cohort-10-accepted-integration-2026-11-06).
 
+Implementation #146 merged normally after exact-head8-job/CodeQL/security/
+review and four exercised18-case compiler gates. Guarded `deliveries.10` binds
+each GUID to that actual head/merge/runs/694-test own wheel, recording187
+delivered/64 pending and22 receipts on checked publication. All177 earlier
+rows/21 receipts remain unchanged; receipt publication/final-main CI still
+gate satisfied #139 closure, not classification or implementation merge alone.
+
 ## Historical cohort 10 preparation boundary
 
 Cohort10/#139 independently prepares [ten specific workflows](../../references/recommendation-batches/preparation-10.json)

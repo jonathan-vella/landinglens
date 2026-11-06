@@ -250,3 +250,49 @@ class TopologyBatchTests(unittest.TestCase):
         for control in self.catalog["controls"]:
             if control["upstream_guid"] in GUIDS:
                 self.assertIsNone(control["rule"])
+
+    def test_actual_ten_own_receipts_bind_merged_head_runs_wheel_and_suite(self):
+        ledger = json.loads((REFERENCE / "ledger.json").read_text("utf-8"))
+        receipt = ledger["deliveries"]["10"]
+        self.assertEqual(receipt["pr"], "https://github.com/jonathan-vella/landinglens/pull/146")
+        self.assertEqual(receipt["checked_head"], "e93adc5bcbf00029256c41968809887488ebee22")
+        self.assertEqual(receipt["merge_commit"], "a58982cc48652a6277d9b7bfcf89baf36f8cb621")
+        self.assertEqual(receipt["merged_at"], "2026-11-06T22:44:46Z")
+        self.assertEqual(
+            receipt["wheel_sha256"],
+            "defe7f7f901a98fe77bba32522e1c52169802666e8e42e4b693cb9e7a58b5967",
+        )
+        self.assertEqual(
+            receipt["local_installed_suite"], {"tests": 694, "passed": 693, "skipped": 1}
+        )
+        self.assertEqual(
+            receipt["checks"],
+            [
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42305687967",
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42305715112",
+            ],
+        )
+        self.assertEqual(len(receipt["compiler_integration_cases"]), 18)
+        self.assertEqual(
+            receipt["compiler_integration_cases"][-2:],
+            [
+                "test_hybrid_identity_preparation.HybridIdentityPreparationTests."
+                "test_real_bicep_peering_and_vault_configuration_without_restore",
+                "test_topology_preparation.TopologyPreparationTests."
+                "test_real_bicep_vnet_routing_attachment_without_restore",
+            ],
+        )
+        own = [r for r in ledger["recommendations"] if r["batch"] == "10"]
+        self.assertEqual({r["guid"] for r in own}, GUIDS)
+        self.assertEqual(len(own), 10)
+        for row in own:
+            self.assertEqual(row["status"], "merged")
+            self.assertEqual(row["pr"], receipt["pr"])
+            self.assertEqual(row["merge_commit"], receipt["merge_commit"])
+            self.assertIn(
+                "deliveries.10: all eight CI jobs and four compiler artifacts verified",
+                row["runtime_evidence"],
+            )
+        prefix = set(self.matrix["preserved_delivery_batches"]) | {"10"}
+        self.assertEqual(sum(r["batch"] in prefix for r in ledger["recommendations"]), 187)
+        self.assertEqual(len([key for key in ledger["deliveries"] if key in prefix]), 22)
