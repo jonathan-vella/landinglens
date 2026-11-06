@@ -214,7 +214,12 @@ All255 GUIDs, 12/200/43 dispositions, exact `.6.13` bytes, original predicates
 and130 preceding own-GUID receipts remain unchanged. Configuration proves no
 paths, inspection, physical geography, global coverage, delegation, partner
 support or client DNS use; original source contradictions remain explicit.
-Final checked implementation and guarded receipt delivery still gate #121 closure.
+Implementation #128 passed actual exact-head platform/security/CodeQL/review and
+four thirteen-case exercised compiler gates and merged normally. Guarded
+`deliveries.16` binds all nine GUIDs to that head/merge, 534-test proof and own
+wheel. The reconciled ledger records139 delivered /112 pending; all130 earlier
+rows/fifteen receipts remain unchanged. Checked receipt publication still gates
+#121 closure; source activation or implementation closure alone is not delivery.
 
 Historically, cohort16/#121 independently prepared nine fixed monitoring/sovereignty/firewall
 workflows without accepted catalog, count or receipt activation. Typed gateway
