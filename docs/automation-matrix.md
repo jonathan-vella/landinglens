@@ -33,11 +33,58 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.16` retains all 255 entries: 12 automated, 200 assisted
-and 43 manual. Crosswalk `2026-11-06.16` rebinds the unchanged 51-control,
+Current successor `2026-11-06.18` retains all 255 entries: 12 automated, 200 assisted
+and 43 manual. Crosswalk `2026-11-06.18` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-Exact predecessor `.6.15` is frozen; source-matrix acceptance alone is not delivery.
+Exact predecessor `.6.17` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
+
+### Cohort 29: platform teams, delivery discipline and subscription vending
+
+The [seven-GUID matrix](../references/recommendation-batches/batch-29.json) and
+[sixteen unchanged public-source captures](../references/recommendation-batches/batch-29-sources.json)
+follow the explicit slot after actual02/27 implementation and receipt delivery.
+All seven stay manual and all registered interview outcomes start independently
+blank. Specific evidence requirements distinguish cross-functional platform
+ownership, assigned functions, actual workload autonomy/effective least privilege,
+IaC CI/CD operating quality, IaC AND application unit-test discipline, non-hardcoded
+secret handling and governed subscription vending through handoff.
+
+Adequate built-in roles are valid; custom roles require specific unmet needs and
+testing. No repository, pipeline, test count, compiler, Key Vault or subscription
+alias proves the assessed operating model. No data detected is not secret hygiene.
+Vending creation authority depends on agreement/API, not resource RBAC; CCoE rules,
+request authorization, placement, networking/IPAM, quotas/error handling,
+identities, budgets/offers and workload operations remain separately evidenced.
+Budgets are not hard caps and MPA has no DevTest offer. No directory/private-code/
+pipeline/secret/billing payload, live operation, collector scope or transport is
+added. All162 older rows/nineteen receipts, exact `.17` bytes and every non-own
+control remain unchanged; acceptance alone is not delivery.
+
+### Cohort 27: Policy strategy, placement and scoped delegation
+
+The [eight-GUID matrix](../references/recommendation-batches/batch-27.json) and
+[22 unchanged captures](../references/recommendation-batches/batch-27-sources.json)
+follow the explicit slot after actual02 delivery. Eight assisted workflows add
+no whole predicate. Typed definition mode/type/literal effect/version, initiative
+member-reference fingerprints, assignment/exclusion/selector/override context
+and existing role references prepare eight separate blank decisions.
+
+Custom joins require unique known in-scope supplied records, a subscription/MG
+definition location, exact matching supplied versions and positive placement
+ancestry. Global built-ins remain unfetched global references. Missing parents
+or selected trees do not identify tenant/intermediate root; no numeric root cap
+or universal approved-service taxonomy is invented. Saved exemptions remain
+separate original-time qualified references, not effective exclusions.
+
+Configuration proves neither evaluated conditions, enforcement/inheritance,
+appropriate scope, regulatory compliance, built-in suitability, approved services
+nor active least-privilege team delegation. Raw rules, parameter/selector/override
+bodies and values, private labels, regulatory mappings and personal principals
+are withheld. Existing Policy/query Signals and human confirmations never become
+Verified by association. All154 preceding own-GUID rows/eighteen receipts, exact
+`.16` bytes and every non-own control remain unchanged; acceptance alone is not
+delivery.
 
 ### Cohort 02: tenant, Lighthouse and agreement-specific billing governance
 

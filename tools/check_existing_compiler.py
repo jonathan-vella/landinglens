@@ -52,6 +52,8 @@ if compiler:
         "test_real_bicep_logging_workspace_extensions_and_alerts_without_restore",
         "test_tenant_preparation.TenantPreparationTests."
         "test_real_bicep_tenant_configuration_without_restore",
+        "test_policy_strategy_preparation.PolicyStrategyPreparationTests."
+        "test_real_bicep_policy_strategy_without_restore",
         "test_hybrid_identity_preparation.HybridIdentityPreparationTests."
         "test_real_bicep_peering_and_vault_configuration_without_restore",
     ]

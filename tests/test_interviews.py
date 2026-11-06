@@ -52,7 +52,7 @@ class InterviewTests(unittest.TestCase):
 
     def test_bank_specific_requirements_and_blank_explicit_decisions(self):
         bank = question_bank(self.catalog)
-        self.assertEqual(len(bank["questions"]), 15)
+        self.assertEqual(len(bank["questions"]), 17)
         for question in bank["questions"]:
             self.assertTrue(question["question"])
             self.assertTrue(

@@ -6,8 +6,128 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.16"
+BANK_VERSION = "2026-11-06.18"
 BANK = {
+    "platform-team-delivery-vending": {
+        "question": "Reconcile actual cross-functional IT/security/compliance/business "
+        "representation "
+        "and ownership across platform design, build, maintenance and operations, then separately "
+        "evidence assigned platform functions and interfaces rather than job titles or directory "
+        "membership. Establish workload end-to-end application ownership, real self-service and "
+        "escalation boundaries, policy guardrails and effective least-privileged RBAC including "
+        "inherited/conditional permissions; adequate built-in roles are valid, custom roles need "
+        "a specific justified gap and testing. Do not require centralized workload pipelines. "
+        "Trace actual scoped IaC changes through CI triggers, builds, tests, previews, governed "
+        "production-like deployment, release history, rollback and ongoing drift/failure response. "
+        "Separately bind IaC AND application unit tests to agreed acceptance criteria/definition "
+        "of done, relevant source revisions, failure handling and uncovered populations; "
+        "syntax/compilation and test counts are not adequacy or a coverage threshold. Substantiate "
+        "non-hardcoded secret handling via redacted references to approved secret variables/"
+        "references, restricted deployment access, identity/network prerequisites, version/"
+        "rotation/revocation and safe output handling. A vault, secure parameter, saved scan or "
+        "no detected data proves no complete hygiene; never scan or fetch secrets. For vending, "
+        "distinguish approved CCoE business logic and trackable validated intake from platform "
+        "request/deployment automation, agreement/API-specific EA/MCA/MPA creation authority, "
+        "configuration of existing subscriptions, offer/DevTest eligibility, IPAM/nonoverlap/"
+        "networking, management-group policy placement, quotas/failure handling, least-privileged "
+        "identities/RBAC, budgets/tags, reporting and actual workload handoff/operations. Budgets "
+        "are not hard caps; DevTest is unavailable for MPA; the example Gitflow is not universal; "
+        "Terraform per-subscription state and managed identity/OIDC are design considerations, "
+        "not new execution authority. No alias, pipeline or configuration proves fulfilled vending "
+        "governance. Use attributable redacted references only, not employee/team directory "
+        "records, private code/pipeline content, secret literals/URIs, credentials or sensitive "
+        "billing/request payloads. Supply seven separate outcomes, original-time scope/content "
+        "binding, attribution and validity; exceptions remain independent and a shared narrative "
+        "or humanConfirmed/Signal never manufactures Verified.",
+        "controls": [
+            "ALZ-e85f4226-bf06-4e35-8a8b-7aee4d2d633a",
+            "ALZ-634146bf-7085-4419-a7b5-f96d2726f6da",
+            "ALZ-a9e65070-c59e-4112-8bf6-c11364d4a2a5",
+            "ALZ-165eb5e9-b434-448a-9e24-178632186212",
+            "ALZ-0cadb8c7-8fa5-4fbf-8f39-d1fadb3b0460",
+            "ALZ-108d5099-a11d-4445-bd8b-e12a5e95412e",
+            "ALZ-a52e0c98-76b9-4a09-a1c9-6b2babf22ac4",
+        ],
+    },
+    "policy-strategy-placement-delegation": {
+        "question": "Supply eight separate decisions at the "
+        "original evidence time. E01.01: "
+        "identify approved governance "
+        "objectives, initiative grouping and "
+        "reviewed Policy-as-code "
+        "rollout/maintenance; an initiative "
+        "count or literal effect is not "
+        "strategy or enforcement. E01.03: bind "
+        "applicable regulatory obligations, "
+        "customer/Microsoft/shared "
+        "responsibilities and exact Policy/RBAC "
+        "controls using attributable redacted "
+        "evidence; built-in regulatory "
+        "groupings, including current Preview "
+        "status, are not a legal-compliance "
+        "verdict. E01.04: explicitly designate "
+        "the intermediate root below the actual "
+        "tenant root and prove complete "
+        "intended assignment ancestry; no name "
+        "or missing parent establishes either "
+        "root. Global built-ins are distinct "
+        "from custom "
+        "management-group/subscription "
+        "definitions. E01.05: decide the "
+        "highest appropriate scope for each "
+        "control and justified lower-scope "
+        "exclusions versus tracked exemptions; "
+        "review conditions, mode, versions, "
+        "overrides, resource/identity "
+        "selectors, expiry and "
+        "evaluation/remediation evidence "
+        "separately. E01.06: provide the "
+        "organization-approved services and "
+        "exceptions and show the applicable "
+        "audit/restriction controls; no generic "
+        "allowed-service taxonomy is assumed. "
+        "E01.07: compare actual built-in "
+        "scope/cloud/version/parameter/effect "
+        "suitability with custom alternatives "
+        "and maintenance cost; a global GUID "
+        "reference is not fetched content, "
+        "existence or suitability. E01.08: "
+        "identify the application team and "
+        "least-privilege scope, actual active "
+        "membership/PIM, conditions/deny "
+        "assignments and remediation-identity "
+        "grants; Resource Policy "
+        "Contributor36243c78-bf99-498c-9df9-86d9f8d28608 "
+        "includes control-plane read, "
+        "PolicyInsights, deployments/support, "
+        "not role-assignment write or "
+        "dataActions. Workload RBAC is normally "
+        "subscription/resource-group scoped; no "
+        "reference/principal-type/count proves "
+        "effective delegation. E01.09: "
+        "explicitly establish tenant-root "
+        "identity and review only must-have "
+        "root assignments, exclusions and "
+        "debugging/maintenance complexity "
+        "against complete attributable "
+        "inventory; no numeric assignment cap "
+        "is prescribed and a selected tree is "
+        "not complete. Use redacted supporting "
+        "references, not rule bodies, principal "
+        "records, service-list contents or "
+        "fabricated organizational/legal "
+        "decisions.",
+        "controls": [
+            "ALZ-5c986cb2-9131-456a-8247-6e49f541acdc",
+            "ALZ-d8a2adb1-17d6-4326-af62-5ca44e5695f2",
+            "ALZ-223ace8c-b123-408c-a501-7f154e3ab369",
+            "ALZ-3829e7e3-1618-4368-9a04-77a209945bda",
+            "ALZ-43334f24-9116-4341-a2ba-527526944008",
+            "ALZ-be7d7e48-4327-46d8-adc0-55bcf619e8a1",
+            "ALZ-3f988795-25d6-4268-a6d7-0ba6c97be995",
+            "ALZ-19048384-5c98-46cb-8913-156a12476e49",
+        ],
+    },
     "tenant-lighthouse-billing-governance": {
         "question": "Decide all eight tenant/billing GUIDs independently using redacted "
         "attributable references. Justify a single corporate tenant or the specific regulatory/"

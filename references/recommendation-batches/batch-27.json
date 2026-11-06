@@ -1,0 +1,289 @@
+{
+  "batch": "27",
+  "review_state": "owner-delegated-source-backed-matrix",
+  "issue": "https://github.com/jonathan-vella/landinglens/issues/130",
+  "source_manifest": "preparation-27-sources.json",
+  "supported_modes": "Existing single evaluator and ARM/no-restore Bicep2023-04-01 definitions, initiatives and assignments; pinned AzureRM4.50.0 definition/subscription-initiative and MG/subscription/RG assignments through raw/supplied local modules/optional plans; normalized saved/injected evidence. Exact supplied-version custom joins require explicit REST versions: provider metadata is not synthesized into a version. No new Collector routes, definition/module acquisition, Policy evaluation or query execution.",
+  "privacy": "Only typed resource references, supported enums, exact semantic versions, bounded counts and member-reference hashes. No rule/parameter/selector/override bodies or values, group labels, regulatory mappings, principal identities or organization labels. References are identifiers, not anonymous data.",
+  "interview": {
+    "id": "policy-strategy-placement-delegation",
+    "question": "Supply eight separate decisions at the original evidence time. E01.01: identify approved governance objectives, initiative grouping and reviewed Policy-as-code rollout/maintenance; an initiative count or literal effect is not strategy or enforcement. E01.03: bind applicable regulatory obligations, customer/Microsoft/shared responsibilities and exact Policy/RBAC controls using attributable redacted evidence; built-in regulatory groupings, including current Preview status, are not a legal-compliance verdict. E01.04: explicitly designate the intermediate root below the actual tenant root and prove complete intended assignment ancestry; no name or missing parent establishes either root. Global built-ins are distinct from custom management-group/subscription definitions. E01.05: decide the highest appropriate scope for each control and justified lower-scope exclusions versus tracked exemptions; review conditions, mode, versions, overrides, resource/identity selectors, expiry and evaluation/remediation evidence separately. E01.06: provide the organization-approved services and exceptions and show the applicable audit/restriction controls; no generic allowed-service taxonomy is assumed. E01.07: compare actual built-in scope/cloud/version/parameter/effect suitability with custom alternatives and maintenance cost; a global GUID reference is not fetched content, existence or suitability. E01.08: identify the application team and least-privilege scope, actual active membership/PIM, conditions/deny assignments and remediation-identity grants; Resource Policy Contributor36243c78-bf99-498c-9df9-86d9f8d28608 includes control-plane read, PolicyInsights, deployments/support, not role-assignment write or dataActions. Workload RBAC is normally subscription/resource-group scoped; no reference/principal-type/count proves effective delegation. E01.09: explicitly establish tenant-root identity and review only must-have root assignments, exclusions and debugging/maintenance complexity against complete attributable inventory; no numeric assignment cap is prescribed and a selected tree is not complete. Use redacted supporting references, not rule bodies, principal records, service-list contents or fabricated organizational/legal decisions.",
+    "controls": [
+      "ALZ-5c986cb2-9131-456a-8247-6e49f541acdc",
+      "ALZ-d8a2adb1-17d6-4326-af62-5ca44e5695f2",
+      "ALZ-223ace8c-b123-408c-a501-7f154e3ab369",
+      "ALZ-3829e7e3-1618-4368-9a04-77a209945bda",
+      "ALZ-43334f24-9116-4341-a2ba-527526944008",
+      "ALZ-be7d7e48-4327-46d8-adc0-55bcf619e8a1",
+      "ALZ-3f988795-25d6-4268-a6d7-0ba6c97be995",
+      "ALZ-19048384-5c98-46cb-8913-156a12476e49"
+    ]
+  },
+  "recommendations": [
+    {
+      "guid": "5c986cb2-9131-456a-8247-6e49f541acdc",
+      "upstream_id": "E01.01",
+      "classification": "assisted",
+      "implemented_subclaim": "Minimized explicit definition type/mode/literal effect and initiative member references; unique known in-scope custom definition joins require exact matching supplied versions and positive placement ancestry. No recursive evaluation or implicit fetch.",
+      "sources": [
+        "policy-overview",
+        "policy-effects",
+        "policy-spec-policyDefinitions",
+        "policy-spec-policySetDefinitions",
+        "policy-provider-policy_definition",
+        "policy-provider-policy_set_definition"
+      ],
+      "review_resource_types": [
+        "Microsoft.Authorization/policyDefinitions",
+        "Microsoft.Authorization/policySetDefinitions",
+        "Microsoft.Authorization/policyAssignments"
+      ],
+      "review_fact_paths": [
+        "policyDefinitionSummary",
+        "policyInitiativeSummary",
+        "policyAssignmentSummary"
+      ],
+      "evidence_requirements": [
+        "Reviewer decision: Are the approved governance objectives represented by appropriate initiative groups, reviewed changes, staged audit/enforcement and a maintained operating strategy?"
+      ],
+      "limitations": "Literal effect and grouped references are configuration, not evaluated conditions, valid parameter/effect combinations, complete coverage, remediation or organizational strategy.",
+      "flags": []
+    },
+    {
+      "guid": "d8a2adb1-17d6-4326-af62-5ca44e5695f2",
+      "upstream_id": "E01.03",
+      "classification": "assisted",
+      "implemented_subclaim": "Bounded initiative group counts and hashed member labels, definition/assignment references and existing minimized role context prepare independent Policy/RBAC mapping review without retaining any regulatory mapping.",
+      "sources": [
+        "policy-overview",
+        "policy-regulatory",
+        "policy-spec-policySetDefinitions",
+        "policy-role-arm"
+      ],
+      "review_resource_types": [
+        "Microsoft.Authorization/policyDefinitions",
+        "Microsoft.Authorization/policySetDefinitions",
+        "Microsoft.Authorization/policyAssignments",
+        "Microsoft.Authorization/roleAssignments"
+      ],
+      "review_fact_paths": [
+        "policyDefinitionSummary",
+        "policyInitiativeSummary",
+        "policyAssignmentSummary",
+        "principalType",
+        "roleDefinitionId"
+      ],
+      "evidence_requirements": [
+        "Reviewer decision: Which obligations and customer/Microsoft/shared responsibilities apply, and what exact attributable Policy/RBAC mapping and independent supporting controls satisfy them?"
+      ],
+      "limitations": "Current regulatory grouping guidance calls the feature Preview. Mapping, assignment, member count and saved compliance Signals prove neither legal compliance nor effective RBAC.",
+      "flags": []
+    },
+    {
+      "guid": "223ace8c-b123-408c-a501-7f154e3ab369",
+      "upstream_id": "E01.04",
+      "classification": "assisted",
+      "implemented_subclaim": "Exact custom management-group/subscription definition locations and supplied positive hierarchy paths distinguish valid local placement from unbound ancestry; global built-in references stay global, unfetched and unjoined.",
+      "sources": [
+        "policy-overview",
+        "policy-scope",
+        "management-hierarchy",
+        "landing-zone-hierarchy",
+        "policy-spec-policyDefinitions",
+        "policy-spec-policySetDefinitions"
+      ],
+      "review_resource_types": [
+        "Microsoft.Authorization/policyDefinitions",
+        "Microsoft.Authorization/policySetDefinitions",
+        "Microsoft.Authorization/policyAssignments",
+        "Microsoft.Management/managementGroups"
+      ],
+      "review_fact_paths": [
+        "policyDefinitionSummary",
+        "policyInitiativeSummary",
+        "policyAssignmentSummary",
+        "managementParentId"
+      ],
+      "evidence_requirements": [
+        "Reviewer decision: Is the explicitly designated intermediate root directly below the actual tenant root, and does each custom definition location cover every intended assignment through attributable complete ancestry?"
+      ],
+      "limitations": "Names, absence of visible parents, a selected MG tree or definition references establish no tenant/intermediate-root designation, complete hierarchy or effective inherited result. Resource-group custom definitions are unsupported locations.",
+      "flags": []
+    },
+    {
+      "guid": "3829e7e3-1618-4368-9a04-77a209945bda",
+      "upstream_id": "E01.05",
+      "classification": "assisted",
+      "implemented_subclaim": "Exact assignment-ID scope, explicit exclusions with positive descendant checks, version-bound custom definition context, separate enforcement/selector/override counts and separately qualified saved exemption references.",
+      "sources": [
+        "policy-overview",
+        "policy-scope",
+        "policy-assignment",
+        "policy-exemption",
+        "policy-effects",
+        "policy-spec-policyAssignments",
+        "policy-provider-management_group_policy_assignment",
+        "policy-provider-subscription_policy_assignment",
+        "policy-provider-resource_group_policy_assignment"
+      ],
+      "review_resource_types": [
+        "Microsoft.Authorization/policyDefinitions",
+        "Microsoft.Authorization/policySetDefinitions",
+        "Microsoft.Authorization/policyAssignments"
+      ],
+      "review_fact_paths": [
+        "policyDefinitionSummary",
+        "policyInitiativeSummary",
+        "policyAssignmentSummary"
+      ],
+      "evidence_requirements": [
+        "Reviewer decision: Is this the highest appropriate assignment scope, with justified lower exclusions versus tracked time/member/selector-bound exemptions, complete intended coverage and actual effect/evaluation/remediation evidence?"
+      ],
+      "limitations": "Default enforcementMode, nonempty assignment inventory or ancestor linkage cannot prove enforcement. DoNotEnforce still permits evaluation. Missing arrays remain unknown, not empty; selector/override bodies and conditions are never interpreted.",
+      "flags": []
+    },
+    {
+      "guid": "43334f24-9116-4341-a2ba-527526944008",
+      "upstream_id": "E01.06",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit supported mode/literal effect and scoped assignment/definition references prepare audit/restriction review, withholding all service-list/parameter/rule contents.",
+      "sources": [
+        "approved-services",
+        "policy-effects",
+        "policy-scope",
+        "policy-spec-policyDefinitions",
+        "policy-spec-policyAssignments"
+      ],
+      "review_resource_types": [
+        "Microsoft.Authorization/policyDefinitions",
+        "Microsoft.Authorization/policyAssignments"
+      ],
+      "review_fact_paths": [
+        "policyDefinitionSummary",
+        "policyAssignmentSummary"
+      ],
+      "evidence_requirements": [
+        "Reviewer decision: What services and exceptions has the organization approved, and which applicable controls actually audit/restrict provisioning across the authorized scope?"
+      ],
+      "limitations": "No universal approved-service taxonomy exists in AM-2. A deny/audit literal does not identify a service allowlist, enforce it or authorize a new ARG query/scan.",
+      "flags": []
+    },
+    {
+      "guid": "be7d7e48-4327-46d8-adc0-55bcf619e8a1",
+      "upstream_id": "E01.07",
+      "classification": "assisted",
+      "implemented_subclaim": "Definition policyType and reference namespace distinguish explicit custom configuration from globally identified built-in references; unsupported/missing/versioned/wildcard bindings remain unknown rather than fetching or treating a GUID as content.",
+      "sources": [
+        "policy-overview",
+        "policy-scope",
+        "policy-assignment",
+        "policy-spec-policyDefinitions",
+        "policy-spec-policySetDefinitions"
+      ],
+      "review_resource_types": [
+        "Microsoft.Authorization/policyDefinitions",
+        "Microsoft.Authorization/policySetDefinitions",
+        "Microsoft.Authorization/policyAssignments"
+      ],
+      "review_fact_paths": [
+        "policyDefinitionSummary",
+        "policyInitiativeSummary",
+        "policyAssignmentSummary"
+      ],
+      "evidence_requirements": [
+        "Reviewer decision: Are actual original-time built-ins suitable for the required cloud/scope/mode/version/parameters/effects, and is any custom alternative justified against maintenance overhead?"
+      ],
+      "limitations": "A global built-in reference is not a custom intermediate-root definition, a fetched version, evidence of existence/effect or suitability. Provider metadata does not synthesize an exact effective version.",
+      "flags": []
+    },
+    {
+      "guid": "3f988795-25d6-4268-a6d7-0ba6c97be995",
+      "upstream_id": "E01.08",
+      "classification": "assisted",
+      "implemented_subclaim": "Reuse existing unique known scoped role assignment principal-type and typed role-definition reference; recognize the exact Resource Policy Contributor GUID without retaining personal principals or interpreting permissions.",
+      "sources": [
+        "policy-overview",
+        "resource-policy-contributor",
+        "policy-role-arm",
+        "landing-zone-hierarchy"
+      ],
+      "review_resource_types": [
+        "Microsoft.Authorization/roleAssignments"
+      ],
+      "review_fact_paths": [
+        "principalType",
+        "roleDefinitionId"
+      ],
+      "evidence_requirements": [
+        "Reviewer decision: Is the intended application team actively and appropriately delegated at the least-privilege subscription/resource-group scope, considering PIM/membership, conditions/deny assignments, broad control-plane read and separate remediation-identity grants?"
+      ],
+      "limitations": "Role reference is not actual team identity, active effective authority, proper scope or roleAssignments/write. No new assignment/grant, identity read or permission interpreter is added.",
+      "flags": []
+    },
+    {
+      "guid": "19048384-5c98-46cb-8913-156a12476e49",
+      "upstream_id": "E01.09",
+      "classification": "assisted",
+      "implemented_subclaim": "Supplied-subset scoped assignment/exclusion counts, unresolved/truncated populations and positive saved MG parent edges prepare root-complexity review without automatically naming the tenant root.",
+      "sources": [
+        "policy-overview",
+        "landing-zone-hierarchy",
+        "management-hierarchy",
+        "policy-assignment",
+        "policy-exemption"
+      ],
+      "review_resource_types": [
+        "Microsoft.Authorization/policyAssignments",
+        "Microsoft.Management/managementGroups"
+      ],
+      "review_fact_paths": [
+        "policyAssignmentSummary",
+        "managementParentId"
+      ],
+      "evidence_requirements": [
+        "Reviewer decision: After explicitly establishing tenant-root identity and complete inventory, are only justified must-have assignments placed there, with manageable inherited exclusions/exemptions and debugging/maintenance complexity?"
+      ],
+      "limitations": "The guidance supplies no numeric root-assignment cap. Missing parent does not establish tenant root, zero supplied assignments does not establish absence, and selected inventory cannot establish organizational appropriateness.",
+      "flags": []
+    }
+  ],
+  "catalog_version": "2026-11-06.17",
+  "accepted_at": "2026-11-06T19:12:56.926229+00:00",
+  "activation": "Explicit sole coordinator slot after actual02 implementation134/receipt135, 127 completed closure and verified maincb4db6b1bd724816104fd2597ca745f46c29f8f3. Acceptance alone is not delivery; checked implementation and guarded own8 receipts still gate130closure.",
+  "integration_base_commit": "cb4db6b1bd724816104fd2597ca745f46c29f8f3",
+  "preparation_commit": "36698ceb960238c721510d035aab5f69681d7b66",
+  "prerequisites": [
+    "02",
+    "08",
+    "16",
+    "23"
+  ],
+  "preserved_catalog_bytes": {
+    "2026-11-06.16": "91ee617376f5273090d2f19fdf508acbfca452b363b83c15b22898a29e44bbc4"
+  },
+  "preserved_crosswalk_bytes": {
+    "2026-11-06.16": "302282eaeda255f468c4677aed7c968db7407cc27acd420e13986bc5ecd35b68"
+  },
+  "preserved_delivery_batches": [
+    "01",
+    "17",
+    "18",
+    "19",
+    "11",
+    "04",
+    "13",
+    "22",
+    "14",
+    "12",
+    "15",
+    "08",
+    "30",
+    "20",
+    "05",
+    "16",
+    "23",
+    "02"
+  ],
+  "preserved_delivery_receipts_sha256": "41a42be6c9e973f64af833a10163100fd432f7622b4af18b39d10b83645f9777",
+  "preserved_merged_recommendations_sha256": "e9d21b3de0af7ab5bf660a988e000c5e6d3da80efc861ee3ed9c34b7f0a8db7d"
+}

@@ -64,6 +64,51 @@ read, query, permission change, operational approval or human decision is added.
 All eight outcomes stay independent; Signals and exceptions never create Verified.
 Activation, merged implementation and guarded receipts remain separately gated.
 
+## Cohort 29: manual platform operation, not local configuration assurance
+
+The [seven-GUID matrix](../references/recommendation-batches/batch-29.json)
+adds specific attributable review workflows through the existing engine,
+registered blank interview, reports/trackers, sessions and original-time replay.
+All seven stay manual even after an explicit human decision. Composition,
+assigned functions, workload autonomy/effective RBAC, actual IaC delivery,
+IaC/application test adequacy, secret-reference hygiene and governed vending
+are separate decisions with content/scope/time/expiry bindings and independent
+exceptions. Existing technical Verified facts and Signals cannot confirm them.
+
+Current guidance permits adequate built-ins rather than mandating custom roles.
+Compilation, this project's green CI or test counts do not prove assessed-team
+quality or coverage; no threshold is invented. Vault presence, a secure parameter,
+reference or no detected data does not establish complete hygiene. No scanner,
+secret fetch or secret URI/value retention is introduced. Vending requires
+agreement-qualified creation authority, authorized validated intake, configuration/
+governance and actual handoff; an alias does not prove fulfillment. Budgets are not
+hard limits; MPA DevTest is unavailable. No directory records, private source/
+pipeline content, sensitive billing/request payloads or real organization decisions
+are fabricated or collected.
+
+## Cohort 27: Policy configuration, not governance assurance
+
+The [eight-GUID accepted matrix](../references/recommendation-batches/batch-27.json)
+follows the explicit slot after cohort02 delivery. Activation alone is not delivery.
+Bounded literal definition/initiative/
+assignment facts, exact supplied-version custom joins and original-time positive
+hierarchy paths prepare eight independent decisions. They prove no effective
+conditions, inheritance/enforcement, legal compliance, approved-service list,
+built-in suitability, appropriate organizational scope or actual delegation.
+Global built-ins remain unfetched references; custom definitions are scoped to
+management groups/subscriptions, not resource groups.
+
+The reviewer must explicitly establish tenant/intermediate-root identity and
+purpose. A name, missing parent or the highest visible selected node is not root
+evidence. Root-assignment guidance supplies no numeric cap. Exclusions and tracked
+expiring/member/selector-bound exemptions differ; selector/override counts and
+`Default` enforcement do not prove an outcome, and `DoNotEnforce` still permits
+evaluation. Resource Policy Contributor includes broad control-plane read and
+PolicyInsights/deployments/support, not role-assignment write or dataActions.
+A reference and principal type do not establish active team membership,
+least privilege or remediation-identity grants. No new cloud read or action,
+rule interpreter, service taxonomy or organizational/regulatory decision is added.
+
 ## Cohort 02: tenant and billing configuration, not organizational assurance
 
 The [eight-GUID accepted matrix](../references/recommendation-batches/batch-02.json) and

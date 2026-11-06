@@ -30,6 +30,8 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     from .logging_evidence import resource_paths, scoped_identity
     from .network_evidence import REVIEW_PATHS, review_fact
     from .network_policy_evidence import GUIDS as NETWORK_POLICY_GUIDS
+    from .policy_strategy_evidence import GUIDS as POLICY_STRATEGY_GUIDS
+    from .policy_strategy_evidence import unique_known as policy_unique_known
     from .sources import boolean, enumeration, property_at
     from .tenant_evidence import GUIDS as TENANT_GUIDS
     from .tenant_evidence import prepared_signal as tenant_signal
@@ -42,7 +44,8 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     vwan = control["upstream_guid"] in VWAN_GUIDS
     logging = control["upstream_guid"] in LOGGING_GUIDS
     by_id: dict[str, list[dict[str, Any]]] = {}
-    if vwan or logging or control["upstream_guid"] in TENANT_GUIDS | HYBRID_GUIDS:
+    policy = control["upstream_guid"] in POLICY_STRATEGY_GUIDS
+    if vwan or policy or logging or control["upstream_guid"] in TENANT_GUIDS | HYBRID_GUIDS:
         for resource in bundle["resources"]:
             by_id.setdefault((resource.get("arm_id") or "").lower(), []).append(resource)
     for resource in bundle["resources"]:
@@ -52,6 +55,8 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
             context = hybrid_context(resource, by_id, bundle)
             if has_fact(context.get("facts", {})):
                 return True
+            continue
+        if policy and not policy_unique_known(resource, bundle, by_id):
             continue
         if control["upstream_guid"] in TENANT_GUIDS:
             if tenant_signal(resource, by_id, bundle):
