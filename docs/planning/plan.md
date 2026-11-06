@@ -19,6 +19,49 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## Cohort 08 independent preparation: 2026-11-06
+
+[#109](https://github.com/jonathan-vella/landinglens/issues/109) owns exactly the
+seven immutable C02.08-C02.14 GUIDs. Preparation is isolated from accepted batch
+inputs in [its matrix](../../references/preparation/batch-08.json) and
+[24 actual source captures](../../references/preparation/batch-08-sources.json).
+It begins from actual main `3b71e2666e26c63dfb2b75e89371b7c543d217e2`.
+No successor, catalog/crosswalk/count/history activation, bank registration,
+receipt, merge or issue closure occurs before the coordinator grants its slot.
+Then-current cohort12/15 interfaces and exact delivered history must be reconciled
+before activation; preparation is not a delivery receipt.
+
+Explicit tag counts, structural dashboard counts, VM capacity-group references
+and MG parent IDs reuse existing ARM/Terraform/plan and review/tier/report/session/
+replay machinery. Existing saved Collector parent relationships are minimized,
+scope-bound and checked for ambiguous/cyclic/unbound edges, without any new live
+route. The existing seven no-restore compiler cases are retained and an eighth
+exercises the authored governance fixture. The three manual awareness/operating
+recommendations stay manual; seven independent human decisions stay blank.
+
+The source review distinguishes Reserved Instance discounts from on-demand
+capacity reservation and quota from available capacity. It records the original
+cost-plan URL's redirect to `manage/administer`, supplemented by current cost
+planning guidance. Resource tags do not automatically inherit; Cost Management
+inheritance affects usage records under agreement/scope/conflict/time conditions.
+No tag key set, cost/utilization/quota threshold, responsibility, identity purpose,
+dashboard health or regional DC usage is inferred. No sensitive tile content,
+tag values, personal owner/directory records, financial records, new Azure read,
+financial action, dependency or human approval is introduced.
+
+Preparation verification ran **395 local and exact-installed tests** in each
+environment: 394 passed and the original Windows symlink-privilege case skipped.
+All 13 governance cases passed. Formatting/lint, 38-source-file type checks,
+dependency consistency and local documentation links passed. The own wheel was
+built offline and installed into a fresh environment outside checkout, with
+site-packages provenance asserted; the initially missing runtime dependencies
+were satisfied from exact reviewed wheels already in pip's local HTTP cache,
+without network installation or a shared environment. Wheel SHA256:
+`0f0ce02060b8042b24ca36d3cc85273ea8017b8acf1b3fc0c16724e6d372219a`.
+All eight existing-compiler cases exercised without skips or restoration.
+These are preparation proofs, not activated-catalog, platform CI, merged-delivery
+or own-GUID receipt acceptance; those gates remain deferred to the granted slot.
+
 ## Cohort 14 integration: 2026-11-06
 
 The coordinator granted [#99](https://github.com/jonathan-vella/landinglens/issues/99)

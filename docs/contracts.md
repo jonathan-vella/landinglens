@@ -395,6 +395,26 @@ normalized resource evidence is available. Optional content-bound
 `review_fact_paths` selects only the reviewed RBAC, network-access/default-action
 and minimum-TLS scalar vocabulary, plus reviewed network SKU, canonical
 relationship, IPv4 prefix/address and classic DNAT source facts.
+
+Cohort08's unaccepted preparation adds four typed vocabulary entries without
+changing any packaged catalog or bank version: `tagCount` (explicit 0-50 pairs,
+no keys/values), `dashboardSummary` (0-20 lenses and at most 100 total parts,
+exact metrics-chart/markdown/other counts), `capacityReservationGroupId` (a
+canonical Compute capacity-reservation-group ID) and `managementParentId`
+(a canonical MG ID). Only reviewed resource types receive these projections.
+Missing, ambiguous, unsupported, wrong-type or over-bound values remain unknown.
+Literal Terraform dashboard JSON is bounded to 100,000 UTF-8 bytes and rejects
+duplicate keys/nonfinite values. Its object-keyed collections and the pinned
+ARM array collections are normalized separately. Opaque tile contents never
+enter the normalized facts.
+
+Existing saved MG parent edges are bounded to 100, typed, unique and positively
+connected to the selected MG; self-links, cycles and unbound ancestors remain
+explicitly unusable. Review context preserves collection time and separately
+reports completeness, never an identity designation. Replay retains only valid
+canonical edges and refuses malformed/ambiguous/over-bound saved hierarchy.
+Authored in-memory preparation catalogs remain refused by packaged replay.
+
 Successor `2026-11-05.3` permits 1-8 reviewed paths, including top-level configured
 firewall zones, explicit VNet DDoS flag/plan ID, subnet NSG references, private
 endpoint target/state and minimal application-rule action/TLS/category-count

@@ -269,6 +269,10 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
             "complete relationships. No whole-recommendation outcome or current freshness inferred."
         ),
     }
+    if control["upstream_guid"] == "3a923c34-74d0-4001-aac6-a9e01e6a83de" and available:
+        from .governance_evidence import hierarchy_context
+
+        context["saved_management_hierarchy"] = hierarchy_context(bundle)
     if control["upstream_guid"] == "3c5a808d-c695-4c14-a63c-c7ab7a510e41" and available:
         from .policy_evidence import project_policy_metadata
 

@@ -1,0 +1,246 @@
+{
+  "batch": "08",
+  "review_state": "reviewed",
+  "sources": [
+    {
+      "id": "owner-access-reviews",
+      "url": "https://learn.microsoft.com/entra/id-governance/access-reviews-overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/id-governance/access-reviews-overview",
+      "sha256": "4fe78877250410f75917c6997c8bcbe297ac168dd271a99e2b64ba35e6f7adbd",
+      "retrieved_at": "2026-11-06T11:35:39.912971+00:00",
+      "revision": "6e7ecfff94c6d6f8a591ff86432aba71cf888354",
+      "finding": "Access reviews require recurring resource-owner engagement and explicit access decisions. An Azure role assignment cannot prove awareness, responsibility, budget or policy review, remediation, or the organization's operating process.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "subscription-limits",
+      "url": "https://learn.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits",
+      "sha256": "72b088b4ca91e6cc4bc404a839ca686d07e2ef9470e6614495cdfdd57a75cc2a",
+      "retrieved_at": "2026-11-06T11:35:40.419415+00:00",
+      "revision": "b925adaad71e273e5a1379e52d082568ef8fbf6f",
+      "finding": "Service-specific adjustable and fixed limits differ; regional quota increases do not propagate to other regions. Public limits are not a subscription's actual quota, available capacity, provisioning success or owner awareness.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "reservation-discounts",
+      "url": "https://learn.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/reservations/save-compute-costs-reservations",
+      "sha256": "0b57ae481f11868112db091990b4911fda5b35dcfe4b99994260f618d8745781",
+      "retrieved_at": "2026-11-06T11:35:40.936385+00:00",
+      "revision": "a96eb393ee50b26b38845d3baaa553f217cf9c17",
+      "finding": "Reservations discount matching usage based on SKU, applicable region and scope; suitability needs attributable baseline demand and financial comparison. They do not change resource runtime state or establish available compute capacity.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "capacity-not-quota-or-discount",
+      "url": "https://learn.microsoft.com/en-us/azure/virtual-machines/capacity-reservation-overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-machines/capacity-reservation-overview",
+      "sha256": "6ba318a091b3c24bf083f8540fd7c9a1fa7c7a5b96c7684da5f6cf53c14e1f31",
+      "retrieved_at": "2026-11-06T11:35:41.110249+00:00",
+      "revision": "df3374f199244806e2eb8f52b25fcd3afd9c3f8c",
+      "finding": "On-demand capacity reservation is distinct from Reserved Instance billing discounts. Creation needs both quota and available capacity; matching VM association and applicable SKU/region/zone/SLA conditions matter. A configured group reference alone is neither accepted capacity nor cost suitability. No purchase or capacity read.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "portal-dashboards",
+      "url": "https://learn.microsoft.com/azure/azure-portal/azure-portal-dashboards",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-portal/azure-portal-dashboards",
+      "sha256": "0128af5f078305a6551ef3c4fef8f06d771d80d0f9bc9de4fbd642449961db42",
+      "retrieved_at": "2026-11-06T11:35:41.544566+00:00",
+      "revision": "3d85d7056df816507ec4a79577e2213b68ba310c",
+      "finding": "Shared dashboards are subscription resources while private dashboards need not be in resource inventory. Tile presence is not configured CPU/memory/free-disk coverage, correct target/time window, working telemetry, operational health or actual use.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "dashboard-structure",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-portal/azure-portal-dashboards-structure",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-portal/azure-portal-dashboards-structure",
+      "sha256": "99b7a3c7c2ef3c19f73874e3b3df8c1a62553d9f6bfb244670c6cbc9fc019e7d",
+      "retrieved_at": "2026-11-06T11:35:41.720671+00:00",
+      "revision": "4af71ce19b8c8d37e11b9b7c11631e5d4928c08b",
+      "finding": "Reviewed lenses/parts and exact MetricsChartPart/MarkdownPart type strings support only minimized structural counts. Disk I/O is not free disk space. Inputs, queries, titles, markdown, metric values and arbitrary tile payloads are never retained.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "cost-operating-plan",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/get-started/manage-costs",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/manage/administer",
+      "sha256": "688c6efc77e7cb36ffcb3adb3085a0a9139cb767ab85221f3d99eb649c835f59",
+      "retrieved_at": "2026-11-06T11:35:42.318537+00:00",
+      "revision": "9561869a68e27ba33c798cde19d7e562031c505a",
+      "finding": "The original manage-costs link now redirects to manage/administer. Its broader operating guidance does not establish a detailed cost plan; reviewer must reconcile accountability, budget/forecast, allocation, review cadence and corrective actions.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "cost-plan-current",
+      "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-setup-guide/manage-costs",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-setup-guide/manage-costs",
+      "sha256": "0c0933b914342f97ecab96718a9680616b3ee678e168fa7ac92b2eaac95f6af8",
+      "retrieved_at": "2026-11-06T11:35:42.476883+00:00",
+      "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+      "finding": "Current cost optimization guidance supplements the redirected checklist link. A documented and operating process, agreed requirements and attributable reviews remain manual; no fixed budget, utilization threshold or responsibility is invented.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "management-hierarchy",
+      "url": "https://learn.microsoft.com/azure/governance/management-groups/overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+      "sha256": "bb30d27670dc556550edad7b0de3d0905c055d31d0995b11957d0b165e4012ea",
+      "retrieved_at": "2026-11-06T11:35:42.917694+00:00",
+      "revision": "84d6ae283915e42535dac6184ccce6d8a1969027",
+      "finding": "MGs provide policy/access inheritance, not resource-tag inheritance or unrestricted billing visibility. Each MG/subscription has one parent; MCA cost-management support differs. Names/display names never designate an approved identity role.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "identity-placement",
+      "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups",
+      "sha256": "2451db6e25d435da08d95c0d2e814aba91e8ecb65042c667f01f9263afb734e3",
+      "retrieved_at": "2026-11-06T11:35:43.123273+00:00",
+      "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+      "finding": "The reference Identity MG contains a dedicated identity subscription under Platform. That conditional architecture is not proved by an identity-like name, VM location, parent ID or subscription membership; application identity requirements need review.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "regional-domain-controllers",
+      "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-active-directory-hybrid-identity",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-active-directory-hybrid-identity",
+      "sha256": "d5638a9bfc74f8f6bcef741555f59b035f81a52fea1808e36245761fc73f0718",
+      "retrieved_at": "2026-11-06T11:35:43.546387+00:00",
+      "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+      "finding": "Current hybrid identity guidance places domain controllers in an isolated Identity platform subscription. AD DS sites/subnets and locator behavior support regional use; same-region VMs, DNS settings or labels alone do not prove DC role or usage. Entra ID, managed Domain Services and self-managed AD DS remain distinct.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "billing-tags",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/track-costs",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/track-costs",
+      "sha256": "e2af3299ea72a01a20dfb0d259bbc13fdeb0696b12b2d711a7307d572fb412f8",
+      "retrieved_at": "2026-11-06T11:35:44.280507+00:00",
+      "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+      "finding": "Example business/cost tags are organization-dependent, not a required key set. Billing agreement, supported scope, authorized visibility and allocation semantics must be reviewed independently of tag presence or role assignment.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "tag-rules",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources",
+      "sha256": "88f5f89c4c5a0c715f4b19b69df115c9a0e337836b1cfb300df1434d2125b702",
+      "retrieved_at": "2026-11-06T11:35:44.599181+00:00",
+      "revision": "fa91c9dd975e99eba2d8e105d639bc2b20edc200",
+      "finding": "Resources/RGs/subscriptions support tags subject to provider limits; MGs do not. Keys are case-insensitive, values case-sensitive. Resource tags do not automatically inherit. Retain only validated explicit pair count, never keys/values or defaults.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "cost-tag-inheritance",
+      "url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/enable-tag-inheritance",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/enable-tag-inheritance",
+      "sha256": "99472e2f5c716f7e4734e5d660bce26c37ec1a04deb6b083d276f119fb349235",
+      "retrieved_at": "2026-11-06T11:35:45.076651+00:00",
+      "revision": "41cb5173716c2cf6f1f38563aaa1919fc6ec258f",
+      "finding": "Cost Management inheritance is opt-in and agreement/scope/permission dependent (EA/MCA/MPA Azure plan). It changes usage records, not resources, within the current month after processing; conflict precedence is configurable. Resource-tag counts do not attest billing allocation, actual inheritance setting or historical coverage.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "dashboard-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.portal/2020-09-01-preview/dashboards",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.portal/2020-09-01-preview/dashboards",
+      "sha256": "395554fb09e07d61a7e16a064eb631689b7b1b0c9802e86c3820a554e4855607",
+      "retrieved_at": "2026-11-06T11:35:45.592549+00:00",
+      "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+      "finding": "Pinned planned-only 2020-09-01-preview exposes lens/part arrays and opaque metadata. Only structural counts and reviewed exact type classifications are projected. Unsupported shapes and malformed/over-bound content remain explicit unknowns.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "management-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups",
+      "sha256": "b9f92328d68a65e792a4962215c5ca22ac4929423078f295e057ff5dfe6d5191",
+      "retrieved_at": "2026-11-06T11:35:46.017866+00:00",
+      "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+      "finding": "Pinned 2020-05-01 exposes explicit details.parent.id. Omitted parent is not guessed as root; tenant-scope creation is outside this assessor's scope model. Existing saved descendant relationships are context only, not a role-designation predicate.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "vm-capacity-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/virtualmachines",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/virtualmachines",
+      "sha256": "1792612e9a5cb9da230d1706930779eab6dc3e259dac76e7e2753122b8f929a2",
+      "retrieved_at": "2026-11-06T11:35:46.755112+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Project only an explicit typed capacityReservation.capacityReservationGroup.id reference. Exclude credentials/OS data, reservation prices, consumption and capacity claims; resource-group/region/SKU matching requires separate review.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-dashboard",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/portal_dashboard.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/portal_dashboard.html.markdown",
+      "sha256": "368af2868b22a71fc8e2810759557ce469b6080de102057cfc62c3fce49f380e",
+      "retrieved_at": "2026-11-06T11:35:47.017829+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned 4.50.0 dashboard_properties is JSON with object-keyed lenses/parts in its example, unlike the ARM array shape. Bounded literal JSON is normalized separately; symbolic/malformed/duplicate-key input is unknown. Titles, tags and content withheld.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-management",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group.html.markdown",
+      "sha256": "2e3970ddbac4377de21efea78d27889e0a2d165cff4f27b5ae29426657cd4b22",
+      "retrieved_at": "2026-11-06T11:35:47.284541+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned 4.50.0 supports an explicit parent MG ID and subscription UUID list; membership conflicts with standalone associations. Omitted/computed parents, subscription purpose, inherited policy and regional DC use are not inferred.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-dashboard-implementation",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/portal/portal_dashboard_resource.go",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/portal/portal_dashboard_resource.go",
+      "sha256": "8d0b93b8d1ab24f529b728a8b3685ce53247eec701e6bbecb29bababeb151044",
+      "retrieved_at": "2026-11-06T11:35:47.577596+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "The pinned provider uses 2019-01-01-preview and parses literal dashboard JSON. Do not claim its object-keyed schema is the ARM 2020 array schema; both bounded representations are separately tested. No provider or Terraform is executed.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-linux-capacity",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/linux_virtual_machine.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/linux_virtual_machine.html.markdown",
+      "sha256": "eb59c9fd48961e1a80e9fe31c0ed66ef3f04674e76706d66ae3820362c58a560",
+      "retrieved_at": "2026-11-06T11:35:47.907105+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned linux VM supports explicit capacity_reservation_group_id and tags. Only typed group reference and validated tag pair count are preparable, not a Reserved Instance discount, financial suitability or available capacity.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-windows-capacity",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/windows_virtual_machine.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/windows_virtual_machine.html.markdown",
+      "sha256": "98109d65ccb47b5d3665b7c5232ad262782f3dc79dd08d69b3ab6f625ad397c7",
+      "retrieved_at": "2026-11-06T11:35:48.242974+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned windows VM supports explicit capacity_reservation_group_id and tags. Only typed group reference and validated tag pair count are preparable, not a Reserved Instance discount, financial suitability or available capacity.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "learn-reuse-terms",
+      "url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "resolved_url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "sha256": "b7a28d07f2888379213dc3d2776ef47eab0eb32022e6fa79252fbdd4f9e9e02b",
+      "retrieved_at": "2026-11-06T11:36:37.475237+00:00",
+      "revision": "9fd90ed833034800434458aef187ba08d8dc9d5b",
+      "finding": "Reviewed Learn Terms of Use; preserve attribution and URLs/hashes/revisions with independently authored factual findings only. No upstream page text, images, samples or dashboard contents are redistributed.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "provider-reuse-terms",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "sha256": "4e2bb185ebd706f76329206869ccb348b92b6236100cfb07775fe31530dab0d5",
+      "retrieved_at": "2026-11-06T11:36:37.796021+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider license is MPL-2.0. No provider implementation is copied; retain metadata, attribution and independently authored mapping findings only.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    }
+  ]
+}

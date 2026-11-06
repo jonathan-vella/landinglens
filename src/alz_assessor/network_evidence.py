@@ -6,6 +6,7 @@ from typing import Any
 from .contracts import canonical_id, identity_type
 from .expressroute_evidence import CIRCUIT_KIND, PORT_KIND
 from .expressroute_evidence import PATHS as EXPRESSROUTE_PATHS
+from .governance_evidence import PATHS as GOVERNANCE_PATHS
 from .identity_evidence import PATHS as IDENTITY_PATHS
 from .protection_evidence import KINDS as PROTECTION_KINDS
 from .protection_evidence import PATHS as PROTECTION_PATHS
@@ -55,6 +56,7 @@ REVIEW_PATHS = (
     | EXPRESSROUTE_PATHS
     | SECURITY_PATHS
     | PROTECTION_PATHS
+    | GOVERNANCE_PATHS
 )
 
 
@@ -500,6 +502,10 @@ def private_connections(values: dict[str, Any], *, terraform: bool) -> Any:
 
 
 def review_fact(properties: dict[str, Any], path: str) -> Any:
+    if path in GOVERNANCE_PATHS:
+        from .governance_evidence import review_fact as governance_fact
+
+        return governance_fact(properties, path)
     if path in EXPRESSROUTE_PATHS:
         from .expressroute_evidence import review_fact as expressroute_fact
 
@@ -913,7 +919,7 @@ def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     } | ROUTING_KINDS | PROTECTION_KINDS | {CIRCUIT_KIND, PORT_KIND}:
         return {}
     result: dict[str, Any] = {}
-    for path in sorted(REVIEW_PATHS - SECURITY_PATHS):
+    for path in sorted(REVIEW_PATHS - SECURITY_PATHS - GOVERNANCE_PATHS):
         parts = path.split(".")
         target = result
         for part in parts[:-1]:

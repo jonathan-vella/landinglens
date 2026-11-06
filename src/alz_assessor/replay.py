@@ -14,6 +14,7 @@ from .catalog import load_catalog
 from .contracts import digest, document, hashes, parse_document, require, scope_id, validate
 from .diagnostics import REASONS
 from .engine import assess
+from .governance_evidence import replay_properties as governance_properties
 from .identity_evidence import replay_properties as identity_properties
 from .network_evidence import replay_properties
 from .security_evidence import replay_properties as security_properties
@@ -168,11 +169,21 @@ def sanitize_evidence(bundle: dict[str, Any]) -> dict[str, Any]:
                     **replay_properties(resource["resource_type"], values),
                     **identity_properties(resource["resource_type"], values),
                     **security_properties(resource["resource_type"], values),
+                    **governance_properties(resource["resource_type"], values),
                 },
             }
         )
     metadata: dict[str, Any] = {"replay_sanitized": True}
     original = bundle.get("metadata") or {}
+    if "relationships" in original and (bundle.get("scope") or "").lower().startswith(
+        "/providers/microsoft.management/managementgroups/"
+    ):
+        from .governance_evidence import hierarchy_context
+
+        hierarchy = hierarchy_context(bundle)
+        if "unknown" in hierarchy:
+            raise InputError("Cannot replay malformed, ambiguous or over-bound saved hierarchy")
+        metadata["relationships"] = hierarchy["relationships"]
     if "query_evidence" in original:
         from .query_signals import validate_query_evidence
 

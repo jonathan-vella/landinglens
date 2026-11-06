@@ -40,6 +40,34 @@ No current regional/port availability, achieved throughput/latency, working
 FastPath, operational redundancy or economic suitability follows from settings.
 ARM scale support does not imply the pinned Terraform provider supports it.
 
+## Cohort 08 preparation (not accepted delivery)
+
+The [seven-GUID preparation matrix](../references/preparation/batch-08.json)
+and [24 source captures](../references/preparation/batch-08-sources.json) are
+outside the accepted batch builder. They do not select a successor version,
+register an interview, change delivery counts or establish merged acceptance.
+The existing adapters prepare explicit tag-pair counts, bounded dashboard
+structure, typed VM capacity-reservation-group references and MG parent IDs.
+Existing saved Collector parent relationships can supply original-time scoped
+context; no new Collector route, billing, quota or directory read is added.
+
+Reserved Instances provide matching-usage billing discounts, not guaranteed
+capacity. On-demand capacity reservation is distinct and subject to actual
+acceptance, quota, matching configuration and SLA conditions. Neither a reference
+nor a public quota limit proves available regional capacity or cost suitability.
+Dashboard counts do not prove CPU, guest memory or free-disk monitoring; disk I/O
+is not free space, and tiles may be unconfigured or unavailable. No queries,
+markdown, input payloads, metric readings, tag keys/values or financial records
+are retained by these projections.
+
+Resource tags do not automatically inherit. Cost Management inheritance changes
+usage records, not resources, and depends on agreement, scope, access, conflict
+settings and current-month processing. No required tag key set is invented.
+MG names or parent edges do not designate identity subscriptions or establish
+regional domain-controller use. Owner responsibility, quota awareness and the
+cost-management operating plan remain three separate manual recommendations;
+all seven preparation decisions remain blank.
+
 ## Tiers and counts
 
 With explicit assessment 1.2, Verified means sufficient current evidence for an

@@ -437,6 +437,10 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                             "gatewayScaleBounds",
                             "gatewayPublicIpReferences",
                             "publicIpSku",
+                            "tagCount",
+                            "dashboardSummary",
+                            "capacityReservationGroupId",
+                            "managementParentId",
                         }
                         for path in paths
                     )
