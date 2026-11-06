@@ -1,0 +1,206 @@
+{
+  "batch": "06",
+  "review_state": "preparation-only-reviewed",
+  "sources": [
+    {
+      "id": "connect-staging-linked",
+      "url": "https://learn.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-staging-server",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/how-to-connect-sync-staging-server",
+      "sha256": "bec26d8e52ce74ffabfbaab3d86a35e19153f6d83c0a7675beda25f30c39c62d",
+      "retrieved_at": "2026-11-06T19:14:32.442601+00:00",
+      "revision": "e67ed0b5a6a8a14dcd70310c00c67023efa31f3b",
+      "finding": "Legacy link redirects to Connect Sync operations. Staging imports/synchronizes but does not normally export or run password sync/writeback; switching is an explicit active-passive procedure, never automatic active-active failover. Keep configuration aligned, verify pending exports/deletion protection and isolate the old active server before promotion. Password catch-up can take hours; do not restart during catch-up. This is not Cloud Sync equivalence or evidence of tested recovery.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "synced-role-accounts-linked",
+      "url": "https://learn.microsoft.com/azure/active-directory/roles/best-practices",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/best-practices",
+      "sha256": "334eac86e52421072fb2a614013b731149f786bde2dbf2abb23e16ad8b34cc53",
+      "retrieved_at": "2026-11-06T19:14:33.365901+00:00",
+      "revision": "4475afbc261ef5a6b4664ecfd2440841592dd774",
+      "finding": "Current redirected Entra guidance avoids synced accounts for directory roles because on-premises compromise can reach cloud authority. Any checklist exception requires separate justified, scoped, time-bound human evidence, not Azure role principalType, VM naming, managed identity or a fabricated synchronization flag.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "app-proxy-current",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/app-proxy/overview-what-is-app-proxy",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/identity/app-proxy/overview-what-is-app-proxy",
+      "sha256": "97670ce87124949f548aa102f69d5838f723f1399af7a3de7ba9674a330650ff",
+      "retrieved_at": "2026-11-06T19:14:33.687295+00:00",
+      "revision": "c0ce60e8fb1e13213c2d0085bb256e8ef511c756",
+      "finding": "The original application-proxy URL now redirects to a 404. Current overview describes Entra's cloud service and private network connectors for remote web application access, not an ARM proxy resource or general internal-user VPN. Central platform ownership, application onboarding and actual SSO remain decisions.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "app-proxy-ha",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/app-proxy/application-proxy-high-availability-load-balancing",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/identity/app-proxy/application-proxy-high-availability-load-balancing",
+      "sha256": "03a6243543a0067d960373a49973d04631bebb94c6a917d2908409c894a996fa",
+      "retrieved_at": "2026-11-06T19:14:34.067646+00:00",
+      "revision": "d61625e6fed0c4fb80b074c025f51c7c7e2357db",
+      "finding": "At least two connectors per group, preferably three, separate outbound failure domains and automatic updates are current HA guidance. Backend session persistence and connector/service operation need separate evidence. VM counts/names do not establish connector groups, configuration, platform ownership or availability.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "identity-network-rbac-linked",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones",
+      "sha256": "ec62d866dbcec8637e8132801d26962b6230e5ffe695e76ff444281a3c7ead8a",
+      "retrieved_at": "2026-11-06T19:14:34.671238+00:00",
+      "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+      "finding": "Current reference architecture optionally deploys identity services in a dedicated subscription/VNet peered to the platform hub. Entra-native applications may need none. Secure identity boundaries and workload access separately. Data-plane RBAC is service-specific, not generic Owner authority. PIM review operation differs from configured assignments and the historical section anchors have changed.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "pim-review-linked",
+      "url": "https://learn.microsoft.com/azure/active-directory/privileged-identity-management/pim-create-roles-and-resource-roles-review",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/id-governance/privileged-identity-management/pim-create-roles-and-resource-roles-review",
+      "sha256": "2103d65ed4ea957db05cecf0f3b5388901469853c9c7799f52c04fe970f7dd04",
+      "retrieved_at": "2026-11-06T19:14:35.493182+00:00",
+      "revision": "e556cacaf8c1da11f108a0cdf61d0f406926df85",
+      "finding": "Current redirected PIM review guidance distinguishes Entra PRA from resource Owner/UAA prerequisites, licensing and active/eligible/all selection. Each instance captures a start-time snapshot; recurring configuration is not completion or applied revocation. Entra role-assignable groups are reviewed as groups; Azure group-member denial does not remove group membership and nested-group limits need review. Service-principal reviews have additional Workload ID Premium terms.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "enrollment-owners-linked",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement",
+      "sha256": "a8b1043da2dfdbf05510927c0586f169db0ea5b0c995e19356ae9e1007f6b8be",
+      "retrieved_at": "2026-11-06T19:14:36.115876+00:00",
+      "revision": "3bebc7ff1c27a170d5fb41b9df844cc5b9a8fa7a",
+      "finding": "EA account owners can own subscriptions created under their account; other EA roles do not by themselves confer subscription/directory authority. Minimize actual enrollment account-owner authority, not a subscription Owner count. The EA portal retired in 2024; agreement applicability and exceptions need review.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "ea-role-qualification",
+      "url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/understand-ea-roles",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/understand-ea-roles",
+      "sha256": "561b8e202aa2541038fb137913bab0263c4790230f583bb1d4e62168fcfafb80",
+      "retrieved_at": "2026-11-06T19:14:36.404629+00:00",
+      "revision": "5d7b54becda7c50aa7277f0188038fb3003e7fc2",
+      "finding": "EA billing roles differ from Azure RBAC and support individual users, not DG/SG assignment. One owner per account is a service constraint, not a universal enrollment-wide least-privilege threshold. Starting 2026-11-16 new billing role assignments require WSA; existing MSA assignments are not yet impacted.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "sovereign-location-linked",
+      "url": "https://learn.microsoft.com/en-us/industry/financial-services/architecture/location-based-access-content",
+      "resolved_url": "https://learn.microsoft.com/en-us/industry/financial-services/architecture/location-based-access-content",
+      "sha256": "3cc0f468964dc8f69a86f3c39fc5b9d69d2d93a589254598f0a110199fec0fa1",
+      "retrieved_at": "2026-11-06T19:14:36.720704+00:00",
+      "revision": "5fd119f1c8da761c0bcecc0829ed88148953b009",
+      "finding": "This FSI example uses application-integrated authentication context and named GPS locations, with PIM access a possible use case. It does not define an organization's eligible administrator countries, nationality, legal sovereignty or blanket coverage for exported data. Those remain independently manual.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "location-qualification",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/location-condition",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-assignment-network",
+      "sha256": "2be6d5372333940757ac170cbf5f7e5d28ff57dff52590b8d39b06dd198a90fb",
+      "retrieved_at": "2026-11-06T19:14:37.405347+00:00",
+      "revision": "4dd074c2a3413ee006bbbe7488e0591e452825db",
+      "finding": "Location condition is now Network. Public-IP mapping or consented Authenticator GPS are access signals, not nationality or complete sovereignty assurance. Unknown locations, policy scope/exclusions and application integration need independent review. No employee location or sign-in data is collected.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "vault-data-plane",
+      "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide",
+      "sha256": "f172b501557be3c631a97b8165a8f48c2d13abd74f4a6967a033f68dd152a31f",
+      "retrieved_at": "2026-11-06T19:14:37.824959+00:00",
+      "revision": "6502b5a33690f91073651cbd073ebd42edae2634",
+      "finding": "Vault control/data planes are independent; Key Vault Contributor does not grant secret/key access. New API2026-02-01 defaults do not fill missing pinned2024-11-01 evidence. Explicit RBAC flag prepares only the configured vault model. HSM differs; changing model can cause outages without equivalent roles. No migration occurs.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "storage-data-plane",
+      "url": "https://learn.microsoft.com/en-us/azure/storage/blobs/authorize-access-azure-active-directory",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/storage/blobs/authorize-access-azure-active-directory",
+      "sha256": "c890fbb1b8d1bd4f43448d0d0f9c7272bc2938745b6fbaa78fd3f58015dc35ed",
+      "retrieved_at": "2026-11-06T19:14:38.151337+00:00",
+      "revision": "99ea6b4bf72db19a72caba74818eead4a2043db7",
+      "finding": "Blob data roles and token authorization differ from control-plane Owner/Contributor/Reader roles. Service support, effective permissions and actual authentication must be independently reviewed; account presence is insufficient.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "sql-data-plane",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-overview?view=azuresql",
+      "sha256": "2d9caa80d387aa8d987a6f078d98dc58161f2d48bbe0b3945a0c93d21be6a8df",
+      "retrieved_at": "2026-11-06T19:14:38.834619+00:00",
+      "revision": "c1d92c9d18596d6c14dae6a3dfef2afeb3896a30",
+      "finding": "Azure SQL Entra authentication requires service-specific administrator and SQL principal/permission configuration. Do not equate generic Azure resource Owner or a Key Vault RBAC flag to SQL database authorization or every database service.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "identity-team-boundaries",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access#prerequisites-for-a-landing-zone---design-recommendations",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access",
+      "sha256": "e16b6f20f9a04f2f76fb908593f29991859b08b6a7b39fd7360e1b168e908443",
+      "retrieved_at": "2026-11-06T19:14:39.471572+00:00",
+      "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+      "finding": "Current overview delegates centralized directory services to platform identity teams and application access to workload administrators. Actual organizational responsibilities and least privilege need independently approved evidence.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "vault-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/2024-11-01/vaults",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/2024-11-01/vaults",
+      "sha256": "39d8f8af40da78c957a1f25315cfa956a9ee60aa0dfca968f4b4cafca272628d",
+      "retrieved_at": "2026-11-06T19:14:39.855914+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "2024-11-01 exposes two separate boolean properties. Omitted documented creation defaults are not inferred.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-vault",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/key_vault.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/key_vault.html.markdown",
+      "sha256": "225c6dd855527be91b60a9d3f22f9c34a6ae89ed6b5a22b07700cbe9388853c7",
+      "retrieved_at": "2026-11-06T19:14:40.169749+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "AzureRM 4.50.0 exposes purge protection and retention days but no independent soft-delete enabled attribute.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "peering-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/virtualnetworkpeerings",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/virtualnetworkpeerings",
+      "sha256": "07f247c6ddb0d8297abeb4a3cb9e6e6f8c04752019ca6ae891907b5adf33b29d",
+      "retrieved_at": "2026-11-06T19:14:40.483321+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Explicit boolean access is distinct from forwarding/transit and remote topology. Missing boolean is unknown; no portal/provider default is inferred.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-peering",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_peering.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_peering.html.markdown",
+      "sha256": "686d4bd40d5c9698485adb54ad226c97cbffbc4605b7811dfb3b04ec6db48721",
+      "retrieved_at": "2026-11-06T19:14:40.853825+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Only explicit per-direction booleans are evaluated.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "learn-terms",
+      "url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "resolved_url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "sha256": "1ce25ccb5fc97851c3d8db1f2084b8bc123172f4b22391fe6ab12bee802cedae",
+      "retrieved_at": "2026-11-06T19:14:41.043087+00:00",
+      "revision": "9fd90ed833034800434458aef187ba08d8dc9d5b",
+      "finding": "Retain attributed links, revision/hash/redirect metadata and independently authored findings only. Do not redistribute articles, samples, provider implementation or private tenant, billing, partner and contact data.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "provider-license",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "sha256": "4e2bb185ebd706f76329206869ccb348b92b6236100cfb07775fe31530dab0d5",
+      "retrieved_at": "2026-11-06T19:14:41.359464+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider is MPL-2.0; only metadata and independently authored findings are redistributed, with no upstream implementation copied.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    }
+  ]
+}

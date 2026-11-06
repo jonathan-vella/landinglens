@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "kind": "catalog",
-  "catalog_version": "2026-11-06.18",
+  "catalog_version": "2026-11-06.19",
   "design_areas": [
     "Azure billing and Active Directory tenant",
     "Identity and access management",
@@ -2303,15 +2303,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Staging is not automatic active-active failover, Cloud Sync equivalence, actual recovery, password freshness or a health outcome. No commands, exports, account data, sign-ins, service changes or recovery drill are executed.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: current Connect Sync staging and recovery questions only. No directory, Connect scheduler, guest, password or synchronization transport; a VM or role cannot identify an active/staging server.",
+        "Reviewer decision: establish Connect Sync applicability separately from Cloud Sync or other architectures; cite redacted authorized evidence for the actual active/passive server population, maintained configuration parity, scheduler/recent synchronization, pending-export verification and accidental-deletion protection.",
+        "Reviewer decision: substantiate an approved and actually validated recovery procedure with attributable dated references, isolating the previous active server before promotion and allowing only one active exporter. Staging normally does not export or run password sync/writeback; review password backlog/catch-up, business downtime tolerances and recovery dependencies separately. Do not restart sync services during password catch-up."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-06",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -2324,6 +2323,14 @@
           "retrieved_at": "2026-11-04T12:49:42.300152+00:00",
           "pointer": "/items/31",
           "item_sha256": "b10f59c9e84cc1042aa04f5ec903568e17af51dca8640388097e0d4a8f9f5fac",
+          "guidance": "https://learn.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-staging-server"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-staging-server",
+          "source_sha256": "bec26d8e52ce74ffabfbaab3d86a35e19153f6d83c0a7675beda25f30c39c62d",
+          "revision": "e67ed0b5a6a8a14dcd70310c00c67023efa31f3b",
+          "retrieved_at": "2026-11-06T19:14:32.442601+00:00",
+          "pointer": "cd163e39-84a5-4b39-97b7-6973abd70d94",
           "guidance": "https://learn.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-staging-server"
         }
       ],
@@ -2347,15 +2354,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No Graph/directory read, principal payload, synchronization inference or fabricated exception. Resource role assignment configuration does not prove Entra role membership, cloud-native accounts, least privilege or an exception approval.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: current Entra guidance avoids on-premises synced accounts for Entra directory roles; Azure RBAC principalType, managed identities, VM names and resource roles cannot establish synchronization origin or directory privilege.",
+        "Reviewer decision: cite separately authorized, redacted evidence for complete applicable Entra role assignments, direct/group-mediated and active/eligible scope, cloud-native versus synced identity provenance, actual required authority and protection against on-premises compromise.",
+        "Reviewer decision: justify every specifically required synced-account exception independently, including business need, least-privileged alternatives, compensating controls, accountable approval and expiry/review references. The frozen checklist exception is not a current general recommendation to use synced administrators; an accepted exception is separate from the control outcome."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-06",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -2369,6 +2375,22 @@
           "pointer": "/items/32",
           "item_sha256": "6f12e85130b48aad722cd2bfee4f125acdd750c5e7fc110a2f3e7928c535380b",
           "guidance": "https://learn.microsoft.com/azure/active-directory/roles/best-practices"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/active-directory/roles/best-practices",
+          "source_sha256": "334eac86e52421072fb2a614013b731149f786bde2dbf2abb23e16ad8b34cc53",
+          "revision": "4475afbc261ef5a6b4664ecfd2440841592dd774",
+          "retrieved_at": "2026-11-06T19:14:33.365901+00:00",
+          "pointer": "35037e68-9349-4c15-b371-228514f4cdff",
+          "guidance": "https://learn.microsoft.com/azure/active-directory/roles/best-practices"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones",
+          "source_sha256": "ec62d866dbcec8637e8132801d26962b6230e5ffe695e76ff444281a3c7ead8a",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T19:14:34.671238+00:00",
+          "pointer": "35037e68-9349-4c15-b371-228514f4cdff",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones"
         }
       ],
       "severity": "Medium"
@@ -2391,15 +2413,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No App Proxy/connector/Graph transport, URL/principal/contact payload, registration, login, proxy configuration or live authentication test. Service capability and authored plans do not establish organization ownership or operational availability.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: the legacy Application Proxy link returns 404; use the current reviewed Entra application proxy overview and connector HA guidance. The cloud service and private network connectors are not synthetic ARM proxy resources.",
+        "Reviewer decision: establish actual remote web-application applicability and platform service ownership, separating central connector/security/update/monitoring/recovery responsibilities from workload onboarding, backend access, authentication/SSO and support responsibilities, with redacted approved references.",
+        "Reviewer decision: reconcile actual connector groups, at least two connectors per group (three preferred), independent outbound failure domains, automatic updates, backend session-persistence design and attributable operating/availability evidence. Connector names, VM counts or resource Owner cannot establish platform ownership or functioning access; proxy is not intended for routine internal-user traffic."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-06",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -2413,6 +2434,30 @@
           "pointer": "/items/33",
           "item_sha256": "834c28b5584d4fe9e579e0de646b05f95ff7aa4eefb0fe351c747189c182dfa6",
           "guidance": "https://learn.microsoft.com/azure/active-directory/app-proxy/application-proxy"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/entra/identity/app-proxy/overview-what-is-app-proxy",
+          "source_sha256": "97670ce87124949f548aa102f69d5838f723f1399af7a3de7ba9674a330650ff",
+          "revision": "c0ce60e8fb1e13213c2d0085bb256e8ef511c756",
+          "retrieved_at": "2026-11-06T19:14:33.687295+00:00",
+          "pointer": "d5d1e4e6-1465-48d3-958f-d77249b82111",
+          "guidance": "https://learn.microsoft.com/en-us/entra/identity/app-proxy/overview-what-is-app-proxy"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/entra/identity/app-proxy/application-proxy-high-availability-load-balancing",
+          "source_sha256": "03a6243543a0067d960373a49973d04631bebb94c6a917d2908409c894a996fa",
+          "revision": "d61625e6fed0c4fb80b074c025f51c7c7e2357db",
+          "retrieved_at": "2026-11-06T19:14:34.067646+00:00",
+          "pointer": "d5d1e4e6-1465-48d3-958f-d77249b82111",
+          "guidance": "https://learn.microsoft.com/en-us/entra/identity/app-proxy/application-proxy-high-availability-load-balancing"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access#prerequisites-for-a-landing-zone---design-recommendations",
+          "source_sha256": "e16b6f20f9a04f2f76fb908593f29991859b08b6a7b39fd7360e1b168e908443",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T19:14:39.471572+00:00",
+          "pointer": "d5d1e4e6-1465-48d3-958f-d77249b82111",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access#prerequisites-for-a-landing-zone---design-recommendations"
         }
       ],
       "severity": "Medium"
@@ -2435,15 +2480,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No traffic, route, DNS, authentication or directory probe; no new live read or assumed reciprocal peering. Partial/stale/missing inventory cannot establish absence, complete topology, identity designation, segmentation or recovery.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: explicit per-direction peering access boolean and typed remote-VNet reference joined only to unique known supplied source/remote VNets inside the selected boundary. Missing, wrong-type, duplicate, denied, foreign, self-linked or unsupported joins remain explicit unknown; no name-based hub or identity designation.",
+        "Reviewer decision: identify applicable actual identity services/controllers and approved identity-subscription/VNet/hub ownership and security boundaries independently. Entra-native applications may not require identity VNet services; VM names, region labels and network presence do not identify DCs or prove applicability.",
+        "Reviewer decision: substantiate complete intended and actual both-direction connectivity, segmentation controls, authentication/DNS/service reachability, required workload access and isolation with redacted dated references. Peering allow flags and local VNet joins are supplied configuration only, not runtime authentication, effective routes, healthy DCs or isolation."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-06",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -2457,9 +2501,48 @@
           "pointer": "/items/34",
           "item_sha256": "d1adfd8cb66a6605f482239300e5be524c7563e75f34dab8b77aa5df9022cce9",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones#identity-and-access-management-in-the-azure-landing-zone-accelerator"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones",
+          "source_sha256": "ec62d866dbcec8637e8132801d26962b6230e5ffe695e76ff444281a3c7ead8a",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T19:14:34.671238+00:00",
+          "pointer": "9cf5418b-1520-4b7b-add7-88eb28f833e8",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access#prerequisites-for-a-landing-zone---design-recommendations",
+          "source_sha256": "e16b6f20f9a04f2f76fb908593f29991859b08b6a7b39fd7360e1b168e908443",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T19:14:39.471572+00:00",
+          "pointer": "9cf5418b-1520-4b7b-add7-88eb28f833e8",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access#prerequisites-for-a-landing-zone---design-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/virtualnetworkpeerings",
+          "source_sha256": "07f247c6ddb0d8297abeb4a3cb9e6e6f8c04752019ca6ae891907b5adf33b29d",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T19:14:40.483321+00:00",
+          "pointer": "9cf5418b-1520-4b7b-add7-88eb28f833e8",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/virtualnetworkpeerings"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_peering.html.markdown",
+          "source_sha256": "686d4bd40d5c9698485adb54ad226c97cbffbc4605b7811dfb3b04ec6db48721",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T19:14:40.853825+00:00",
+          "pointer": "9cf5418b-1520-4b7b-add7-88eb28f833e8",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_peering.html.markdown"
         }
       ],
-      "severity": "High"
+      "severity": "High",
+      "review_resource_types": [
+        "Microsoft.Network/virtualNetworks/virtualNetworkPeerings"
+      ],
+      "review_fact_paths": [
+        "allowVirtualNetworkAccess",
+        "remoteVirtualNetwork.id"
+      ]
     },
     {
       "control_id": "ALZ-d4d1ad54-1abc-4919-b267-3f342d3b49e4",
@@ -2479,15 +2562,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Configuration is not effective data access, complete assignment coverage, successful authentication or least privilege. No secret/data/SQL/Graph/billing read, credential, policy migration, permission change or fabricated role evidence. No new whole-recommendation predicate.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: unique known scoped vault's explicit enableRbacAuthorization boolean via existing pinned ARM2024-11-01/AzureRM4.50.0 adapters; false is explicit legacy-model context, omission is unknown. Current API2026-02-01 new-vault defaults are not inferred for older or missing evidence; HSM differs.",
+        "Reviewer decision: inventory applicable resource-specific data-plane endpoints and supported authorization models separately from control-plane roles. Cite redacted evidence for actual least-privileged data-role permissions/scope, inheritance, conditions, exclusions and effective access; generic Owner/Contributor/Reader or Key Vault Contributor does not automatically grant data access.",
+        "Reviewer decision: reconcile vault RBAC versus legacy policies and equivalent-permission/migration outage risk; storage blob data roles and actual token authorization; and SQL's Entra administrator, SQL principals and database permission model. Do not generalize a vault flag to storage/database authorization or every service. Substantiate actual application use separately without secrets, keys, query text or identity payloads."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-06",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -2501,9 +2583,63 @@
           "pointer": "/items/35",
           "item_sha256": "9353c34639585a60096a1109174f3aa2fd79393b9ca8079861c34363d55a37eb",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones#rbac-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones",
+          "source_sha256": "ec62d866dbcec8637e8132801d26962b6230e5ffe695e76ff444281a3c7ead8a",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T19:14:34.671238+00:00",
+          "pointer": "d4d1ad54-1abc-4919-b267-3f342d3b49e4",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide",
+          "source_sha256": "f172b501557be3c631a97b8165a8f48c2d13abd74f4a6967a033f68dd152a31f",
+          "revision": "6502b5a33690f91073651cbd073ebd42edae2634",
+          "retrieved_at": "2026-11-06T19:14:37.824959+00:00",
+          "pointer": "d4d1ad54-1abc-4919-b267-3f342d3b49e4",
+          "guidance": "https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/storage/blobs/authorize-access-azure-active-directory",
+          "source_sha256": "c890fbb1b8d1bd4f43448d0d0f9c7272bc2938745b6fbaa78fd3f58015dc35ed",
+          "revision": "99ea6b4bf72db19a72caba74818eead4a2043db7",
+          "retrieved_at": "2026-11-06T19:14:38.151337+00:00",
+          "pointer": "d4d1ad54-1abc-4919-b267-3f342d3b49e4",
+          "guidance": "https://learn.microsoft.com/en-us/azure/storage/blobs/authorize-access-azure-active-directory"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-overview",
+          "source_sha256": "2d9caa80d387aa8d987a6f078d98dc58161f2d48bbe0b3945a0c93d21be6a8df",
+          "revision": "c1d92c9d18596d6c14dae6a3dfef2afeb3896a30",
+          "retrieved_at": "2026-11-06T19:14:38.834619+00:00",
+          "pointer": "d4d1ad54-1abc-4919-b267-3f342d3b49e4",
+          "guidance": "https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/2024-11-01/vaults",
+          "source_sha256": "39d8f8af40da78c957a1f25315cfa956a9ee60aa0dfca968f4b4cafca272628d",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T19:14:39.855914+00:00",
+          "pointer": "d4d1ad54-1abc-4919-b267-3f342d3b49e4",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/2024-11-01/vaults"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/key_vault.html.markdown",
+          "source_sha256": "225c6dd855527be91b60a9d3f22f9c34a6ae89ed6b5a22b07700cbe9388853c7",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T19:14:40.169749+00:00",
+          "pointer": "d4d1ad54-1abc-4919-b267-3f342d3b49e4",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/key_vault.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.KeyVault/vaults"
+      ],
+      "review_fact_paths": [
+        "enableRbacAuthorization"
+      ]
     },
     {
       "control_id": "ALZ-d505ebcb-79b1-4274-9c0d-a27c8bea489c",
@@ -2523,15 +2659,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No PIM/directory/sign-in/audit transport, review creation, approval, role/group removal or actual entitlement decision. Missing/partial/outdated evidence remains unknown; saved Azure RBAC and subscription Owner are not review-operation proof.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: current PIM access-review questions only, not an ARM/Graph/PIM review resource. Azure assignments and definitions cannot establish PIM eligibility, review settings, review execution or applied revocation.",
+        "Reviewer decision: establish applicable Entra/resource-role populations, scope, prerequisites and licensing (including extra service-principal Workload ID Premium terms), active/eligible/all selection, direct/group/nested-group coverage, accountable reviewers, cadence, nonresponse and completion/application policy with redacted authorized references.",
+        "Reviewer decision: separately substantiate actual dated review instances, their start-time snapshots and coverage changes, independent decisions, completed versus applying/applied outcomes and remediation follow-through. Entra role-assignable groups are reviewed as groups; Azure group-member denial does not remove membership, and nested-group limitations require explicit reconciliation. Recurrence configuration or recommended approvals are not completed reviews."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-06",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -2545,6 +2680,30 @@
           "pointer": "/items/36",
           "item_sha256": "0513b1b3a85e78b4db33588f317e36909706adc8ccb48fe130ac150740871120",
           "guidance": "https://learn.microsoft.com/azure/active-directory/privileged-identity-management/pim-create-roles-and-resource-roles-review"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/active-directory/privileged-identity-management/pim-create-roles-and-resource-roles-review",
+          "source_sha256": "2103d65ed4ea957db05cecf0f3b5388901469853c9c7799f52c04fe970f7dd04",
+          "revision": "e556cacaf8c1da11f108a0cdf61d0f406926df85",
+          "retrieved_at": "2026-11-06T19:14:35.493182+00:00",
+          "pointer": "d505ebcb-79b1-4274-9c0d-a27c8bea489c",
+          "guidance": "https://learn.microsoft.com/azure/active-directory/privileged-identity-management/pim-create-roles-and-resource-roles-review"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones",
+          "source_sha256": "ec62d866dbcec8637e8132801d26962b6230e5ffe695e76ff444281a3c7ead8a",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T19:14:34.671238+00:00",
+          "pointer": "d505ebcb-79b1-4274-9c0d-a27c8bea489c",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/active-directory/roles/best-practices",
+          "source_sha256": "334eac86e52421072fb2a614013b731149f786bde2dbf2abb23e16ad8b34cc53",
+          "revision": "4475afbc261ef5a6b4664ecfd2440841592dd774",
+          "retrieved_at": "2026-11-06T19:14:33.365901+00:00",
+          "pointer": "d505ebcb-79b1-4274-9c0d-a27c8bea489c",
+          "guidance": "https://learn.microsoft.com/azure/active-directory/roles/best-practices"
         }
       ],
       "severity": "Medium"
@@ -2567,15 +2726,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No billing transport, private agreement/account/principal/contact/cost payload, subscription creation/transfer, financial or access action. Account-owner minimization is not inferred from Azure RBAC, an empty inventory or source classification.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: EA enrollment account-owner authority questions only. Billing roles differ from Azure RBAC and Entra roles; subscription Owner counts do not identify enrollment account owners or agreement applicability.",
+        "Reviewer decision: establish actual EA applicability and authorized complete account-owner population/responsibilities, linked subscription-creation/ownership authority, least-privileged alternatives, approval/removal/review process and each justified exception using redacted dated references. One account owner per account is a service constraint, not an invented enrollment-wide numeric threshold.",
+        "Reviewer decision: reconcile the actual account authentication model and tenant association without identifiers. Current guidance requires WSA for new billing role assignments from 2026-11-16, not retroactively for existing MSAs; EA billing roles are individual-user roles, not DG/SG assignments. Distinct MCA/CSP agreements require their own applicability decision, not an EA assumption."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-06",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -2589,6 +2747,22 @@
           "pointer": "/items/37",
           "item_sha256": "180e59ca90a7a58a7231f69d9afec0241be14131915fec2d87f02e2cbb49d0dc",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement",
+          "source_sha256": "a8b1043da2dfdbf05510927c0586f169db0ea5b0c995e19356ae9e1007f6b8be",
+          "revision": "3bebc7ff1c27a170d5fb41b9df844cc5b9a8fa7a",
+          "retrieved_at": "2026-11-06T19:14:36.115876+00:00",
+          "pointer": "0ce74f19-9abb-47e4-ae95-6b057a1d2be9",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/understand-ea-roles",
+          "source_sha256": "561b8e202aa2541038fb137913bab0263c4790230f583bb1d4e62168fcfafb80",
+          "revision": "5d7b54becda7c50aa7277f0188038fb3003e7fc2",
+          "retrieved_at": "2026-11-06T19:14:36.404629+00:00",
+          "pointer": "0ce74f19-9abb-47e4-ae95-6b057a1d2be9",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/understand-ea-roles"
         }
       ],
       "severity": "Medium"
@@ -2611,15 +2785,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Requires organizational decision/process evidence outside IaC alone.",
+      "rationale": "Manual remains manual. No employee location/nationality/contact/identity payload, sign-in/GPS read, Conditional Access/PIM operation, legal conclusion or fabricated eligible-country/owner approval. Neither configuration nor humanConfirmed can manufacture Verified.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: inherently manual administrator eligibility/sovereignty workflow. The linked FSI location-based authentication-context example supplies no approved country list, nationality/employee eligibility or universal sovereign-administration guarantee.",
+        "Reviewer decision: cite organization-approved jurisdiction, service/cloud, administrative task and privilege boundaries and separately authorized redacted assurance that actual platform administrators and delegated/support/emergency/automation exceptions meet those requirements, including accountable approval, periodic review and expiry.",
+        "Reviewer decision: reconcile actual enforcement scope, access paths, named-location/IP/GPS uncertainty, unknown countries, exclusions, application authentication-context integration, exported/downloaded data and exception controls against applicable requirements. Resource region, identity role, policy label or a location signal is not nationality, authorized personnel eligibility or complete sovereignty assurance."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-06",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -2633,6 +2806,30 @@
           "pointer": "/items/38",
           "item_sha256": "05d7a75d6380fea290e0caee164a9b9911e582987006e7eaa546a4d5b9da39d9",
           "guidance": "https://learn.microsoft.com/en-us/industry/financial-services/architecture/location-based-access-content"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/industry/financial-services/architecture/location-based-access-content",
+          "source_sha256": "3cc0f468964dc8f69a86f3c39fc5b9d69d2d93a589254598f0a110199fec0fa1",
+          "revision": "5fd119f1c8da761c0bcecc0829ed88148953b009",
+          "retrieved_at": "2026-11-06T19:14:36.720704+00:00",
+          "pointer": "1770a2ac-c194-4e5c-ade4-82939d38a510",
+          "guidance": "https://learn.microsoft.com/en-us/industry/financial-services/architecture/location-based-access-content"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/location-condition",
+          "source_sha256": "2be6d5372333940757ac170cbf5f7e5d28ff57dff52590b8d39b06dd198a90fb",
+          "revision": "4dd074c2a3413ee006bbbe7488e0591e452825db",
+          "retrieved_at": "2026-11-06T19:14:37.405347+00:00",
+          "pointer": "1770a2ac-c194-4e5c-ade4-82939d38a510",
+          "guidance": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/location-condition"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access#prerequisites-for-a-landing-zone---design-recommendations",
+          "source_sha256": "e16b6f20f9a04f2f76fb908593f29991859b08b6a7b39fd7360e1b168e908443",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T19:14:39.471572+00:00",
+          "pointer": "1770a2ac-c194-4e5c-ade4-82939d38a510",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access#prerequisites-for-a-landing-zone---design-recommendations"
         }
       ],
       "severity": "Medium"
@@ -18879,60 +19076,66 @@
   "reviewed_at": "2026-11-04T13:25:57.057372+00:00",
   "reference_manifest_sha256": "c287f93a4ff4c94c577b0248345d813f44fb27dff66524408870095024305d30",
   "control_source_manifest_sha256": "d189615f2793f141a6ee6cd5a7f026556a4146fd44d65705e6f08d0e01f7debf",
-  "accepted_matrix_sha256": "cfcf1c91e4922d8114ea004124e20dea063a7b5d846a0fdcfac7b34b0893ab54",
+  "accepted_matrix_sha256": "3928a207674262ec736245039a13b64c1458cb1b9a9614befb68c4df3a0517ec",
   "wave_source_manifest_sha256": "617e66a497a1f6bb1ddf50f53b3f75f3ff2cec2989324d42496aeeb4d9d0ef38",
   "change_review": {
-    "base_sha256": "7bfa6076c34281378f3c6d437c8bdb5a75c11ef0a86b1a9c7d9e9c85eb088164",
-    "matrix_sha256": "cfcf1c91e4922d8114ea004124e20dea063a7b5d846a0fdcfac7b34b0893ab54",
-    "reviewed_at": "2026-11-06T20:15:16.584+00:00",
+    "base_sha256": "96599cc920854070333a2b9ad789aab6f4483566fb1a3e469d1c7bfdb4ab206d",
+    "matrix_sha256": "3928a207674262ec736245039a13b64c1458cb1b9a9614befb68c4df3a0517ec",
+    "reviewed_at": "2026-11-06T21:17:12.7071128Z",
     "reviewer": "owner-delegated-source-backed-batch-review",
     "changes": [
       {
-        "control_id": "ALZ-e85f4226-bf06-4e35-8a8b-7aee4d2d633a",
-        "before_sha256": "f662122557079b940873d9ed8dafc1fd071eed3f79bb7773a5d6f4f17fe4e9c9",
-        "after_sha256": "871f8ddb92fce736bf4e4f6c7e1dacf79822c8c1344d37768451bf2eae604230",
-        "rationale": "Owner-delegated source-backed batch 29 acceptance: manual"
+        "control_id": "ALZ-cd163e39-84a5-4b39-97b7-6973abd70d94",
+        "before_sha256": "f14f245101a88fd29605014514e783bafddce0880f29e4e369c3563b970b71c9",
+        "after_sha256": "1919b00251d01fad4f8c9f631d8467b00514d80d2abb9a3fb029b5d43c6d421c",
+        "rationale": "Owner-delegated source-backed batch 06 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-634146bf-7085-4419-a7b5-f96d2726f6da",
-        "before_sha256": "a1d905b1cf24d12449c5889ff8f4f8a38c5b58a5185879d930c79d451b944b3c",
-        "after_sha256": "c9a9365bc1100e2acd44f44022c23531a1ba263e3662e10cf4ff692d90fb14e1",
-        "rationale": "Owner-delegated source-backed batch 29 acceptance: manual"
+        "control_id": "ALZ-35037e68-9349-4c15-b371-228514f4cdff",
+        "before_sha256": "8df7cf041d4a11409567ee8f1c8b5db4a5bfb470fe0391bf30253f870ac64fc9",
+        "after_sha256": "39d319edb7d00e203e75d4edd475672699005062713f16d97ee52f601c4c8b4f",
+        "rationale": "Owner-delegated source-backed batch 06 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-a9e65070-c59e-4112-8bf6-c11364d4a2a5",
-        "before_sha256": "0756d244a3f685b8a66352f837a22a025a5c8e427e02dcebe3f3216d5520809b",
-        "after_sha256": "fe74e49d227a34a17a8bc7c79c0466d92e21abf765e2993432e0ec8822a9ec14",
-        "rationale": "Owner-delegated source-backed batch 29 acceptance: manual"
+        "control_id": "ALZ-d5d1e4e6-1465-48d3-958f-d77249b82111",
+        "before_sha256": "b2041c7187824e5a7ee0c3f42af48789f06cbd221efd52003e47548580b9900d",
+        "after_sha256": "467bcf2d92a306835039388e136797731c75201ed2050fe6487d0056cc0d5679",
+        "rationale": "Owner-delegated source-backed batch 06 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-165eb5e9-b434-448a-9e24-178632186212",
-        "before_sha256": "a8f86186df4ec47ae625994c41c82489da4fd69f47b629d3929bb720eccdf6cb",
-        "after_sha256": "ceeb13991582c85ffcbed9f8a8bb0adc673c1643810a8ddb30658bde5fadb807",
-        "rationale": "Owner-delegated source-backed batch 29 acceptance: manual"
+        "control_id": "ALZ-9cf5418b-1520-4b7b-add7-88eb28f833e8",
+        "before_sha256": "ac7904e745fb2477229b54a067a855d2af03211aec456cb2f97208a9fc2cf3c0",
+        "after_sha256": "610401f5432b458f338d8bfeb705b30a0c9663ec28ce6eaad6dbb4542d720a37",
+        "rationale": "Owner-delegated source-backed batch 06 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-0cadb8c7-8fa5-4fbf-8f39-d1fadb3b0460",
-        "before_sha256": "2aa0cf833516983f79a276fb70748e8ba01ba3f47c5f1a033645761173ea47fe",
-        "after_sha256": "ed1b676ef4d9e3145774cf0ce8c1834856c8b2220ece7655844e437eefff1068",
-        "rationale": "Owner-delegated source-backed batch 29 acceptance: manual"
+        "control_id": "ALZ-d4d1ad54-1abc-4919-b267-3f342d3b49e4",
+        "before_sha256": "3eb3876f615d295f15fb8c6008669e5913ac1eaf5e5de81ba41b4f89a0fe75dc",
+        "after_sha256": "db43a7fc4fc14d538e0d3df0ac034448795a00fd7a34d9a5142019c9d1396d25",
+        "rationale": "Owner-delegated source-backed batch 06 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-108d5099-a11d-4445-bd8b-e12a5e95412e",
-        "before_sha256": "fd7d9ebbc0443748bfca9473ca61c12c918ec18b31b21d875bfb37e026dbb095",
-        "after_sha256": "0b189e6d548d7ce85e9832dc967129781d97765341b0c266c867afa33ec108e8",
-        "rationale": "Owner-delegated source-backed batch 29 acceptance: manual"
+        "control_id": "ALZ-d505ebcb-79b1-4274-9c0d-a27c8bea489c",
+        "before_sha256": "8dafe6129bbf051b773354d500cb3d948e054710e58338ff57c9b5ab439782b0",
+        "after_sha256": "f32349b1af63f4a3efcfcb5999be9bb4f6baee7228a18506256a604583e4a0c5",
+        "rationale": "Owner-delegated source-backed batch 06 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-a52e0c98-76b9-4a09-a1c9-6b2babf22ac4",
-        "before_sha256": "d0a0e38105eaf1d486d24ad50ffb6c749e1ac2dacd60a179365b60372855d1a3",
-        "after_sha256": "265980e662772736e536d3e2319899702840ed86c861053b565fba591d5fbd45",
-        "rationale": "Owner-delegated source-backed batch 29 acceptance: manual"
+        "control_id": "ALZ-0ce74f19-9abb-47e4-ae95-6b057a1d2be9",
+        "before_sha256": "977354eea4c83df6b830467a14f9888629b8726242d3a52ec070f4e438c369f9",
+        "after_sha256": "41085ddefa7b9561148a9d3efca741ad536c605edb39e494848ce89e6f569382",
+        "rationale": "Owner-delegated source-backed batch 06 acceptance: assisted"
+      },
+      {
+        "control_id": "ALZ-1770a2ac-c194-4e5c-ade4-82939d38a510",
+        "before_sha256": "3d4052b54f93713aa3999562789b3b705a63aa615e817786688abdd9394ce7ea",
+        "after_sha256": "2902914b85c0e77c23c1b982afae9ebda9f80c992eeec7d498378a0aff4b0e24",
+        "rationale": "Owner-delegated source-backed batch 06 acceptance: manual"
       }
     ]
   },
   "first_wave_matrix_sha256": "f649b2293211c844d661ea93c6978fe2db948eff17237af01ca090809da8e1fb",
-  "batch_source_manifest_sha256": "3f8788855f293da453dddb2e5c802b429607e2ca541b6d819f0ce391f9fedec5",
-  "batch_catalog_version": "2026-11-06.18",
+  "batch_source_manifest_sha256": "28fb3969b39705b0a936c90d2cf4886c9c8ff8bbffa1dc3b9a23d923ca2ac94b",
+  "batch_catalog_version": "2026-11-06.19",
   "priority_manifest_sha256": "b42971f85b9110f71fdc5ae81695fe4be72c1f28022ec27aeb719140ed1475c0"
 }

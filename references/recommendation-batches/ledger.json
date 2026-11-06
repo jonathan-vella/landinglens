@@ -2042,9 +2042,23 @@
       "baseline_control_sha256": "f14f245101a88fd29605014514e783bafddce0880f29e4e369c3563b970b71c9",
       "design_area": "Identity and access management",
       "batch": "06",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "upstream_id": "B03.16",
+        "guid": "cd163e39-84a5-4b39-97b7-6973abd70d94",
+        "classification": "assisted",
+        "sources": [
+          "connect-staging-linked"
+        ],
+        "evidence_requirements": [
+          "Preparation: current Connect Sync staging and recovery questions only. No directory, Connect scheduler, guest, password or synchronization transport; a VM or role cannot identify an active/staging server.",
+          "Reviewer decision: establish Connect Sync applicability separately from Cloud Sync or other architectures; cite redacted authorized evidence for the actual active/passive server population, maintained configuration parity, scheduler/recent synchronization, pending-export verification and accidental-deletion protection.",
+          "Reviewer decision: substantiate an approved and actually validated recovery procedure with attributable dated references, isolating the previous active server before promotion and allowing only one active exporter. Staging normally does not export or run password sync/writeback; review password backlog/catch-up, business downtime tolerances and recovery dependencies separately. Do not restart sync services during password catch-up."
+        ],
+        "limitations": "Staging is not automatic active-active failover, Cloud Sync equivalence, actual recovery, password freshness or a health outcome. No commands, exports, account data, sign-ins, service changes or recovery drill are executed.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/136",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2057,9 +2071,24 @@
       "baseline_control_sha256": "8df7cf041d4a11409567ee8f1c8b5db4a5bfb470fe0391bf30253f870ac64fc9",
       "design_area": "Identity and access management",
       "batch": "06",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "upstream_id": "B03.17",
+        "guid": "35037e68-9349-4c15-b371-228514f4cdff",
+        "classification": "assisted",
+        "sources": [
+          "synced-role-accounts-linked",
+          "identity-network-rbac-linked"
+        ],
+        "evidence_requirements": [
+          "Preparation: current Entra guidance avoids on-premises synced accounts for Entra directory roles; Azure RBAC principalType, managed identities, VM names and resource roles cannot establish synchronization origin or directory privilege.",
+          "Reviewer decision: cite separately authorized, redacted evidence for complete applicable Entra role assignments, direct/group-mediated and active/eligible scope, cloud-native versus synced identity provenance, actual required authority and protection against on-premises compromise.",
+          "Reviewer decision: justify every specifically required synced-account exception independently, including business need, least-privileged alternatives, compensating controls, accountable approval and expiry/review references. The frozen checklist exception is not a current general recommendation to use synced administrators; an accepted exception is separate from the control outcome."
+        ],
+        "limitations": "No Graph/directory read, principal payload, synchronization inference or fabricated exception. Resource role assignment configuration does not prove Entra role membership, cloud-native accounts, least privilege or an exception approval.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/136",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2072,9 +2101,25 @@
       "baseline_control_sha256": "b2041c7187824e5a7ee0c3f42af48789f06cbd221efd52003e47548580b9900d",
       "design_area": "Identity and access management",
       "batch": "06",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "upstream_id": "B03.18",
+        "guid": "d5d1e4e6-1465-48d3-958f-d77249b82111",
+        "classification": "assisted",
+        "sources": [
+          "app-proxy-current",
+          "app-proxy-ha",
+          "identity-team-boundaries"
+        ],
+        "evidence_requirements": [
+          "Preparation: the legacy Application Proxy link returns 404; use the current reviewed Entra application proxy overview and connector HA guidance. The cloud service and private network connectors are not synthetic ARM proxy resources.",
+          "Reviewer decision: establish actual remote web-application applicability and platform service ownership, separating central connector/security/update/monitoring/recovery responsibilities from workload onboarding, backend access, authentication/SSO and support responsibilities, with redacted approved references.",
+          "Reviewer decision: reconcile actual connector groups, at least two connectors per group (three preferred), independent outbound failure domains, automatic updates, backend session-persistence design and attributable operating/availability evidence. Connector names, VM counts or resource Owner cannot establish platform ownership or functioning access; proxy is not intended for routine internal-user traffic."
+        ],
+        "limitations": "No App Proxy/connector/Graph transport, URL/principal/contact payload, registration, login, proxy configuration or live authentication test. Service capability and authored plans do not establish organization ownership or operational availability.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/136",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2087,9 +2132,33 @@
       "baseline_control_sha256": "ac7904e745fb2477229b54a067a855d2af03211aec456cb2f97208a9fc2cf3c0",
       "design_area": "Identity and access management",
       "batch": "06",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "upstream_id": "B04.01",
+        "guid": "9cf5418b-1520-4b7b-add7-88eb28f833e8",
+        "classification": "assisted",
+        "sources": [
+          "identity-network-rbac-linked",
+          "identity-team-boundaries",
+          "peering-arm",
+          "terraform-peering"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks/virtualNetworkPeerings"
+        ],
+        "review_fact_paths": [
+          "allowVirtualNetworkAccess",
+          "remoteVirtualNetwork.id"
+        ],
+        "evidence_requirements": [
+          "Preparation: explicit per-direction peering access boolean and typed remote-VNet reference joined only to unique known supplied source/remote VNets inside the selected boundary. Missing, wrong-type, duplicate, denied, foreign, self-linked or unsupported joins remain explicit unknown; no name-based hub or identity designation.",
+          "Reviewer decision: identify applicable actual identity services/controllers and approved identity-subscription/VNet/hub ownership and security boundaries independently. Entra-native applications may not require identity VNet services; VM names, region labels and network presence do not identify DCs or prove applicability.",
+          "Reviewer decision: substantiate complete intended and actual both-direction connectivity, segmentation controls, authentication/DNS/service reachability, required workload access and isolation with redacted dated references. Peering allow flags and local VNet joins are supplied configuration only, not runtime authentication, effective routes, healthy DCs or isolation."
+        ],
+        "limitations": "No traffic, route, DNS, authentication or directory probe; no new live read or assumed reciprocal peering. Partial/stale/missing inventory cannot establish absence, complete topology, identity designation, segmentation or recovery.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/136",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2102,9 +2171,34 @@
       "baseline_control_sha256": "3eb3876f615d295f15fb8c6008669e5913ac1eaf5e5de81ba41b4f89a0fe75dc",
       "design_area": "Identity and access management",
       "batch": "06",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "upstream_id": "B04.02",
+        "guid": "d4d1ad54-1abc-4919-b267-3f342d3b49e4",
+        "classification": "assisted",
+        "sources": [
+          "identity-network-rbac-linked",
+          "vault-data-plane",
+          "storage-data-plane",
+          "sql-data-plane",
+          "vault-arm",
+          "terraform-vault"
+        ],
+        "review_resource_types": [
+          "Microsoft.KeyVault/vaults"
+        ],
+        "review_fact_paths": [
+          "enableRbacAuthorization"
+        ],
+        "evidence_requirements": [
+          "Preparation: unique known scoped vault's explicit enableRbacAuthorization boolean via existing pinned ARM2024-11-01/AzureRM4.50.0 adapters; false is explicit legacy-model context, omission is unknown. Current API2026-02-01 new-vault defaults are not inferred for older or missing evidence; HSM differs.",
+          "Reviewer decision: inventory applicable resource-specific data-plane endpoints and supported authorization models separately from control-plane roles. Cite redacted evidence for actual least-privileged data-role permissions/scope, inheritance, conditions, exclusions and effective access; generic Owner/Contributor/Reader or Key Vault Contributor does not automatically grant data access.",
+          "Reviewer decision: reconcile vault RBAC versus legacy policies and equivalent-permission/migration outage risk; storage blob data roles and actual token authorization; and SQL's Entra administrator, SQL principals and database permission model. Do not generalize a vault flag to storage/database authorization or every service. Substantiate actual application use separately without secrets, keys, query text or identity payloads."
+        ],
+        "limitations": "Configuration is not effective data access, complete assignment coverage, successful authentication or least privilege. No secret/data/SQL/Graph/billing read, credential, policy migration, permission change or fabricated role evidence. No new whole-recommendation predicate.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/136",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2117,9 +2211,25 @@
       "baseline_control_sha256": "8dafe6129bbf051b773354d500cb3d948e054710e58338ff57c9b5ab439782b0",
       "design_area": "Identity and access management",
       "batch": "06",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "upstream_id": "B04.03",
+        "guid": "d505ebcb-79b1-4274-9c0d-a27c8bea489c",
+        "classification": "assisted",
+        "sources": [
+          "pim-review-linked",
+          "identity-network-rbac-linked",
+          "synced-role-accounts-linked"
+        ],
+        "evidence_requirements": [
+          "Preparation: current PIM access-review questions only, not an ARM/Graph/PIM review resource. Azure assignments and definitions cannot establish PIM eligibility, review settings, review execution or applied revocation.",
+          "Reviewer decision: establish applicable Entra/resource-role populations, scope, prerequisites and licensing (including extra service-principal Workload ID Premium terms), active/eligible/all selection, direct/group/nested-group coverage, accountable reviewers, cadence, nonresponse and completion/application policy with redacted authorized references.",
+          "Reviewer decision: separately substantiate actual dated review instances, their start-time snapshots and coverage changes, independent decisions, completed versus applying/applied outcomes and remediation follow-through. Entra role-assignable groups are reviewed as groups; Azure group-member denial does not remove membership, and nested-group limitations require explicit reconciliation. Recurrence configuration or recommended approvals are not completed reviews."
+        ],
+        "limitations": "No PIM/directory/sign-in/audit transport, review creation, approval, role/group removal or actual entitlement decision. Missing/partial/outdated evidence remains unknown; saved Azure RBAC and subscription Owner are not review-operation proof.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/136",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2132,9 +2242,24 @@
       "baseline_control_sha256": "977354eea4c83df6b830467a14f9888629b8726242d3a52ec070f4e438c369f9",
       "design_area": "Identity and access management",
       "batch": "06",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "upstream_id": "B04.04",
+        "guid": "0ce74f19-9abb-47e4-ae95-6b057a1d2be9",
+        "classification": "assisted",
+        "sources": [
+          "enrollment-owners-linked",
+          "ea-role-qualification"
+        ],
+        "evidence_requirements": [
+          "Preparation: EA enrollment account-owner authority questions only. Billing roles differ from Azure RBAC and Entra roles; subscription Owner counts do not identify enrollment account owners or agreement applicability.",
+          "Reviewer decision: establish actual EA applicability and authorized complete account-owner population/responsibilities, linked subscription-creation/ownership authority, least-privileged alternatives, approval/removal/review process and each justified exception using redacted dated references. One account owner per account is a service constraint, not an invented enrollment-wide numeric threshold.",
+          "Reviewer decision: reconcile the actual account authentication model and tenant association without identifiers. Current guidance requires WSA for new billing role assignments from 2026-11-16, not retroactively for existing MSAs; EA billing roles are individual-user roles, not DG/SG assignments. Distinct MCA/CSP agreements require their own applicability decision, not an EA assumption."
+        ],
+        "limitations": "No billing transport, private agreement/account/principal/contact/cost payload, subscription creation/transfer, financial or access action. Account-owner minimization is not inferred from Azure RBAC, an empty inventory or source classification.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/136",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2147,9 +2272,25 @@
       "baseline_control_sha256": "3d4052b54f93713aa3999562789b3b705a63aa615e817786688abdd9394ce7ea",
       "design_area": "Identity and access management",
       "batch": "06",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "upstream_id": "B05.01",
+        "guid": "1770a2ac-c194-4e5c-ade4-82939d38a510",
+        "classification": "manual",
+        "sources": [
+          "sovereign-location-linked",
+          "location-qualification",
+          "identity-team-boundaries"
+        ],
+        "evidence_requirements": [
+          "Preparation: inherently manual administrator eligibility/sovereignty workflow. The linked FSI location-based authentication-context example supplies no approved country list, nationality/employee eligibility or universal sovereign-administration guarantee.",
+          "Reviewer decision: cite organization-approved jurisdiction, service/cloud, administrative task and privilege boundaries and separately authorized redacted assurance that actual platform administrators and delegated/support/emergency/automation exceptions meet those requirements, including accountable approval, periodic review and expiry.",
+          "Reviewer decision: reconcile actual enforcement scope, access paths, named-location/IP/GPS uncertainty, unknown countries, exclusions, application authentication-context integration, exported/downloaded data and exception controls against applicable requirements. Resource region, identity role, policy label or a location signal is not nationality, authorized personnel eligibility or complete sovereignty assurance."
+        ],
+        "limitations": "Manual remains manual. No employee location/nationality/contact/identity payload, sign-in/GPS read, Conditional Access/PIM operation, legal conclusion or fabricated eligible-country/owner approval. Neither configuration nor humanConfirmed can manufacture Verified.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/136",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []

@@ -40,6 +40,33 @@ No current regional/port availability, achieved throughput/latency, working
 FastPath, operational redundancy or economic suitability follows from settings.
 ARM scale support does not imply the pinned Terraform provider supports it.
 
+## Cohort 06: configuration and decisions, not identity or sovereignty assurance
+
+The [eight-GUID accepted matrix](../references/recommendation-batches/batch-06.json)
+and [20 unchanged captures](../references/recommendation-batches/batch-06-sources.json)
+activate `.19` after [#136](https://github.com/jonathan-vella/landinglens/issues/136)
+receives the explicit sole slot following checked27/29 delivery. Original
+preparation and invalidated/final proofs remain historical, not delivery.
+Existing typed peering
+flags require unique known in-bound source/remote VNets; explicit vault RBAC flags
+describe only the supplied data-plane model. No VNet is inferred to be an identity
+network or hub, and neither configuration proves authentication, isolation,
+effective access, storage/SQL authorization or a whole-recommendation outcome.
+
+Separate blank decisions cover Connect Sync active/passive recovery and password
+catch-up, synced Entra-role exceptions, platform Application Proxy ownership,
+actual identity segmentation, resource-specific data access, executed/applied PIM
+reviews, minimized EA account-owner authority and manual sovereign administrator
+eligibility. The legacy Application Proxy link returns 404; current reviewed
+overview/HA sources replace that evidence gap without inventing ARM resources.
+Current API2026-02-01 vault defaults do not fill missing older pinned evidence;
+the upcoming2026-11-16 EA WSA rule does not retroactively invalidate existing MSAs.
+No directory/PIM/Connect/App Proxy/billing/employee-location transport, new live
+read, query, permission change, operational approval or human decision is added.
+All eight outcomes stay independent; Signals and exceptions never create Verified.
+Accepted support, merged implementation and guarded receipts remain distinct;
+checked receipt publication and final-main CI still gate delivery and closure.
+
 ## Cohort 29: manual platform operation, not local configuration assurance
 
 The [seven-GUID matrix](../references/recommendation-batches/batch-29.json)

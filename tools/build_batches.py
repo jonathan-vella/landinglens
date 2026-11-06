@@ -91,7 +91,10 @@ def apply_batch(
     batches: list[dict[str, Any]],
     manifests: list[dict[str, Any]],
 ) -> dict[str, Any]:
-    if batch.get("review_state") == "preparation-only-reviewed":
+    if batch.get("review_state") in {
+        "preparation-only-reviewed",
+        "source-reviewed-preparation-not-accepted",
+    }:
         raise ValueError("Preparation matrices cannot activate an accepted catalog successor")
     catalog = copy.deepcopy(previous)
     identity = batch["batch"]
