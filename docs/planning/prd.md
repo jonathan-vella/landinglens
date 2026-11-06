@@ -78,9 +78,9 @@ records remain traceable under explicit lifecycle semantics.
 
 ## Active increment: fixed recommendation expansion
 
-The current delivered successor is `2026-11-06.2`: 255 retained GUIDs, 10 automated,
-202 assisted and 43 manual. Cohorts 01, 17, 18, 19 and 11 are merged (45 fixed targets);
-206 remain pending. Cohort 19/#90 reconciled the saved draft against exact
+The current delivered successor is `2026-11-06.3`: 255 retained GUIDs, 10 automated,
+202 assisted and 43 manual. Cohorts 01, 17, 18, 19, 11 and 04 are merged (53 fixed targets);
+198 remain pending. Cohort 19/#90 reconciled the saved draft against exact
 delivered `.5` foundations and passed normal exact-head delivery gates.
 Only complete successful observed custom NSG snapshots can evaluate
 the explicit <=900 checklist target. Declared/raw/planned rule lists remain
@@ -89,6 +89,9 @@ The same boundary applies to cohort11's <=400 custom-route target; per-direction
 peering access is an explicit setting, not a reachability verdict. Other routing,
 resilience, encryption and allocation questions retain their specific human
 evidence requirements, including the manual business encryption requirement.
+Cohort04 adds minimal identity/assignment context and separate source-bound
+interview decisions, not directory-policy, identity-adoption or authentication
+enforcement predicates. All earlier meanings and receipts remain unchanged.
 Configured zones do
 not establish backend redundancy; rule TLS/category fields and approved private
 endpoints do not establish effective inspection or connectivity. This is not exhaustive

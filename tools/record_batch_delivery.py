@@ -162,7 +162,10 @@ def record(
                 f"deliveries.{batch}: all eight CI jobs and four compiler artifacts verified",
             ],
         )
-    content = (json.dumps(ledger, indent=2, ensure_ascii=True) + "\n").encode("utf-8")
+    text = json.dumps(ledger, indent=2, ensure_ascii=True) + "\n"
+    if b"\r\n" in base:
+        text = text.replace("\n", "\r\n")
+    content = text.encode("utf-8")
     descriptor, name = tempfile.mkstemp(prefix=".ledger-", suffix=".tmp", dir=target.parent)
     temporary = Path(name)
     try:
