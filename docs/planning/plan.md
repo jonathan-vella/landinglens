@@ -19,6 +19,60 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## Cohort 30 accepted integration: 2026-11-06
+
+The coordinator granted [#112](https://github.com/jonathan-vella/landinglens/issues/112)
+the sole delivery slot after actual cohort08 implementation116/receipt117 and
+#109 closure. Preserved preparation `9df8401` was reconciled with delivered main
+`949de0cad9bda19095069a22addf38bd78474dec`; both predecessor cohorts' source-bound
+interfaces, ten compiler cases, bank and history are retained. The
+[seven-GUID matrix](../../references/recommendation-batches/batch-30.json) and
+[22 unchanged captures](../../references/recommendation-batches/batch-30-sources.json)
+derive reviewed successor `2026-11-06.11` through the existing builders.
+Exact delivered `.6.10` catalog SHA256 is
+`fc697fd2e384b8216cf074ace62f5d950f76dac3a463aeef757a72e609586884`;
+crosswalk SHA256 is
+`08dd03194246589c7a61a43b37022762f68d2cae4afd3a7c7649a333ecc41874`.
+All 255 GUIDs, immutable 251/original four, old catalog/crosswalk meanings
+and all 106 delivered rows/twelve own-GUID receipts are preserved.
+
+All seven decisions remain manual; totals remain 11 automated / 201 assisted /
+43 manual. The actual registered `development-lifecycle-sovereignty` interview
+and source-specific requirements now serve the CLI, individual reviews, local
+session, reports/trackers and exact packaged successor original-time replay.
+Tests use the real accepted catalog and bank, not the preparatory injection.
+Blank separate outcomes and scope/content/time/expiry/attribution bindings remain
+mandatory; human Confirmed disposition is never a technical Verified result.
+Earlier accepted replay and unaccepted/tampered fixture refusals stay intact.
+There is no new runtime ingestion format, transport, resource type, predicate,
+scanner, dependency or dummy compiler case.
+
+Reviewed source limits from the preserved preparation below remain explicit,
+including actual CAF redirects, Azure/DevOps/GitHub service-specific geographic
+exceptions, ACR replicas versus serving endpoints and preview/external-dependency
+limits. No assessed-organization policy, approval, adoption, execution location or
+legal sovereignty determination is fabricated. Existing IaC and Signals retain
+their bounded meaning; no new estate reads or scans are authorized.
+
+Before actual implementation merge and guarded own-receipt reconciliation,
+the delivered fixed ledger remains **106 merged / 145 pending**. Source acceptance
+and manual classification are not delivery; exact-head platform/security/
+compiler gates and checked receipt publication remain required before #112 closure.
+
+Final pre-delivery local and own exact-installed suites each ran **458 tests**:
+457 passed with the same original Windows privilege skip. All 16 cohort cases,
+including real accepted `.6.11` original-time replay and prior `.6.10` preservation,
+passed. Formatting/lint, typing of 40 source files and dependency consistency
+passed. Both compiler records exercised the same ten predecessor cases without
+skips or restore. No new compiler case asserts an operating process.
+The final own wheel SHA256 is
+`683714ac1d1edb586ab813d08f2dfd0aaf73c3dc85b398f2cfc42e490360e2fb`.
+It was built and installed offline into a fresh own interpreter outside checkout
+using this session's already reviewed runtime wheelhouse; cleared source-path
+environment and own `site-packages` import were verified. All 248 non-cohort
+control objects, 106 earlier delivered rows and twelve receipts remain unchanged.
+These local proofs do not substitute for exact-head CI, normal merge or receipts.
+
 ## Cohort 30 independent preparation: 2026-11-06
 
 [#112](https://github.com/jonathan-vella/landinglens/issues/112) owns the seven

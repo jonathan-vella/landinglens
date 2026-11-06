@@ -1,5 +1,6 @@
 import contextlib
 import copy
+import hashlib
 import io
 import json
 import runpy
@@ -16,7 +17,7 @@ from alz_assessor import interviews
 from alz_assessor.arm import properties
 from alz_assessor.catalog import load_catalog
 from alz_assessor.cli import main
-from alz_assessor.contracts import control_digest, digest, document, validate
+from alz_assessor.contracts import control_digest, digest, document
 from alz_assessor.engine import assess
 from alz_assessor.interviews import compile_interview, prepare_interview, question_bank
 from alz_assessor.replay import export_bundle, replay_bundle, sanitize_evidence, semantic
@@ -50,53 +51,19 @@ class DevelopmentPreparationTests(unittest.TestCase):
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
         self.root = Path(temporary.name)
-        self.matrix = json.loads((REVIEWS / "preparation-30.json").read_text("utf-8"))
-        self.sources = json.loads((REVIEWS / "preparation-30-sources.json").read_text("utf-8"))
-        self.accepted = load_catalog()
-        self.catalog = self.candidate()
+        self.matrix = json.loads((REVIEWS / "batch-30.json").read_text("utf-8"))
+        self.sources = json.loads((REVIEWS / "batch-30-sources.json").read_text("utf-8"))
+        self.accepted = load_catalog(
+            str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.10.json"))
+        )
+        self.catalog = load_catalog(
+            str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.11.json"))
+        )
         question = self.matrix["interview"]
         self.question = question["id"]
-        bank_patch = patch.dict(
-            interviews.BANK,
-            {self.question: {key: question[key] for key in ("question", "controls")}},
-        )
-        bank_patch.start()
-        self.addCleanup(bank_patch.stop)
-        version_patch = patch.object(interviews, "BANK_VERSION", "cohort30-preparation")
-        version_patch.start()
-        self.addCleanup(version_patch.stop)
         network = patch("urllib.request.urlopen", side_effect=AssertionError("network forbidden"))
         network.start()
         self.addCleanup(network.stop)
-
-    def candidate(self):
-        candidate = copy.deepcopy(self.accepted)
-        rows = {row["guid"]: row for row in self.matrix["recommendations"]}
-        sources = {source["id"]: source for source in self.sources["sources"]}
-        for control in candidate["controls"]:
-            if control["upstream_guid"] not in rows:
-                continue
-            row = rows[control["upstream_guid"]]
-            control.update(
-                automation=row["classification"],
-                evidence_requirements=row["evidence_requirements"],
-                rationale=row["limitations"],
-                flags=row["flags"],
-                mapping_state="preparation-only-batch-30",
-            )
-            for identity in row["sources"]:
-                source = sources[identity]
-                control["references"].append(
-                    {
-                        "source_url": source["url"],
-                        "source_sha256": source["sha256"],
-                        "revision": source["revision"],
-                        "retrieved_at": source["retrieved_at"],
-                        "pointer": control["upstream_guid"],
-                        "guidance": source["url"],
-                    }
-                )
-        return validate(candidate, "catalog")
 
     def bundle(self, *, mode="observed", complete=False, collected_at=AT, state="known"):
         return document(
@@ -162,7 +129,7 @@ class DevelopmentPreparationTests(unittest.TestCase):
     def rows(self, report):
         return [row for row in report["results"] if row["control_id"] in CONTROLS]
 
-    def test_exact_seven_fixed_guids_manual_sources_and_nonactivation(self):
+    def test_exact_seven_fixed_guids_manual_sources_and_predecessor_preservation(self):
         targets = json.loads((REVIEWS / "targets.json").read_text("utf-8"))
         fixed = [row for row in targets["targets"] if row["batch"] == "30"]
         self.assertEqual({row["upstream_id"]: row["guid"] for row in fixed}, GUIDS)
@@ -170,11 +137,22 @@ class DevelopmentPreparationTests(unittest.TestCase):
             {row["upstream_id"]: row["guid"] for row in self.matrix["recommendations"]}, GUIDS
         )
         self.assertEqual(set(self.matrix["interview"]["controls"]), CONTROLS)
-        self.assertEqual(self.matrix["review_state"], "preparation-only-reviewed")
-        self.assertNotIn("catalog_version", self.matrix)
-        self.assertNotIn("accepted_at", self.matrix)
-        self.assertFalse((REVIEWS / "batch-30.json").exists())
-        self.assertFalse((REVIEWS / "batch-30-sources.json").exists())
+        self.assertEqual(self.matrix["review_state"], "owner-delegated-source-backed-matrix")
+        self.assertEqual(self.matrix["catalog_version"], "2026-11-06.11")
+        self.assertEqual(self.catalog["catalog_version"], "2026-11-06.11")
+        self.assertTrue(self.matrix["accepted_at"])
+        for name, expected in (
+            ("catalog", "fc697fd2e384b8216cf074ace62f5d950f76dac3a463aeef757a72e609586884"),
+            ("crosswalk", "08dd03194246589c7a61a43b37022762f68d2cae4afd3a7c7649a333ecc41874"),
+        ):
+            self.assertEqual(
+                hashlib.sha256(
+                    files("alz_assessor")
+                    .joinpath("data", name + "-2026-11-06.10.json")
+                    .read_bytes()
+                ).hexdigest(),
+                expected,
+            )
         self.assertEqual(len(self.catalog["controls"]), 255)
         before = {c["control_id"]: c for c in self.accepted["controls"]}
         for control in self.catalog["controls"]:
@@ -184,6 +162,13 @@ class DevelopmentPreparationTests(unittest.TestCase):
                 self.assertFalse(control.get("review_resource_types"))
                 self.assertFalse(control.get("review_fact_paths"))
                 self.assertEqual(len(control["evidence_requirements"]), 3)
+                row = next(
+                    r
+                    for r in self.matrix["recommendations"]
+                    if r["guid"] == control["upstream_guid"]
+                )
+                self.assertEqual(control["evidence_requirements"], row["evidence_requirements"])
+                self.assertEqual(control["rationale"], row["limitations"])
             else:
                 self.assertEqual(
                     control_digest(control), control_digest(before[control["control_id"]])
@@ -200,7 +185,7 @@ class DevelopmentPreparationTests(unittest.TestCase):
         ledger = json.loads((REVIEWS / "ledger.json").read_text("utf-8"))
         self.assertTrue(
             all(
-                row["status"] == "pending"
+                row["status"] in {"implementation-in-progress", "merged"}
                 for row in ledger["recommendations"]
                 if row["batch"] == "30"
             )
@@ -530,7 +515,7 @@ class DevelopmentPreparationTests(unittest.TestCase):
             )
         self.assertEqual(session.state(), saved)
 
-    def test_original_time_accepted_replay_and_unaccepted_preparation_guard(self):
+    def test_original_time_successor_and_predecessor_replay_with_unaccepted_guard(self):
         accepted_response = prepare_interview(
             assess(self.bundle(), self.accepted, at=AT, evidence_tiers=True),
             self.accepted,
@@ -561,8 +546,25 @@ class DevelopmentPreparationTests(unittest.TestCase):
         for path in (self.root / "accepted").iterdir():
             self.assertNotIn("Authored fixture reviewer", path.read_text("utf-8"))
             self.assertNotIn(PRIVATE, path.read_text("utf-8"))
+        current_manual = compile_interview(self.completed(), self.catalog, at=AT)
+        export_bundle(
+            self.root / "successor",
+            self.bundle(),
+            self.catalog,
+            at=AT,
+            manual=current_manual,
+            evidence_tiers=True,
+        )
+        current = replay_bundle(self.root / "successor")
+        self.assertEqual(semantic(current), semantic(self.report(manual=current_manual)))
+        self.assertEqual(current["catalog_version"], "2026-11-06.11")
+        self.assertEqual(current["evidence"][0]["collected_at"], AT)
+        unaccepted = copy.deepcopy(self.catalog)
+        next(c for c in unaccepted["controls"] if c["control_id"] in CONTROLS)[
+            "evidence_requirements"
+        ][0] += " Unaccepted changed requirement."
         with self.assertRaises(InputError):
-            export_bundle(self.root / "unaccepted", self.bundle(), self.catalog, at=AT)
+            export_bundle(self.root / "unaccepted", self.bundle(), unaccepted, at=AT)
         self.assertFalse((self.root / "unaccepted").exists())
         self.assertNotIn(PRIVATE, json.dumps(sanitize_evidence(self.bundle())))
 
@@ -654,7 +656,7 @@ class DevelopmentPreparationTests(unittest.TestCase):
         self.assertEqual(invoke(apply), 2)
         self.assertEqual(output.read_bytes(), before)
 
-    def test_prepared_bank_is_not_registered_in_accepted_runtime_or_builder(self):
+    def test_actual_bank_and_packaged_matrix_preserve_all_predecessor_questions(self):
         packaged = files("alz_assessor").joinpath("data")
         matrix = json.loads(
             packaged.joinpath(
@@ -663,10 +665,32 @@ class DevelopmentPreparationTests(unittest.TestCase):
         )
         self.assertNotIn("30", {row["batch"] for row in matrix["batches"]})
         self.assertNotEqual(digest(self.catalog), digest(self.accepted))
-        with patch.dict(interviews.BANK, clear=True):
-            self.assertFalse(question_bank(self.accepted)["questions"])
-        source = (ROOT / "src" / "alz_assessor" / "interviews.py").read_text("utf-8")
-        self.assertNotIn(self.question, source)
+        successor = json.loads(
+            packaged.joinpath("batch-matrix-2026-11-06.11.json").read_text("utf-8")
+        )
+        self.assertEqual(successor["batches"][:-1], matrix["batches"])
+        self.assertEqual(successor["sources"][:-1], matrix["sources"])
+        self.assertEqual(successor["batches"][-1], self.matrix)
+        self.assertEqual(successor["sources"][-1], self.sources)
+        self.assertEqual(
+            interviews.BANK[self.question],
+            {key: self.matrix["interview"][key] for key in ("question", "controls")},
+        )
+        self.assertTrue(
+            {
+                "resource-cost-governance",
+                "expressroute-monitoring-routing-failover",
+                "dr-dns-bastion",
+                "expressroute-cost-resilience",
+                "sovereign-audit-workload-protection",
+                "inbound-outbound-hybrid",
+                "access-operating-model",
+                "vault-operating-model",
+                "private-service-paths",
+                self.question,
+            }
+            <= {q["id"] for q in question_bank(self.catalog)["questions"]}
+        )
         targets = json.loads((REVIEWS / "targets.json").read_text("utf-8"))
         controls = {c["control_id"]: c for c in self.catalog["controls"]}
         for identity, binding in targets["preserved_automated"].items():
