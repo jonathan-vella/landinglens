@@ -276,6 +276,36 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
             "complete relationships. No whole-recommendation outcome or current freshness inferred."
         ),
     }
+    if "expressRouteCircuitId" in control.get("review_fact_paths", []) and available:
+        from .expressroute_evidence import (
+            CIRCUIT_KIND,
+            circuit_location_subchecks,
+            gateway_circuit_subchecks,
+        )
+
+        if control["upstream_guid"] == "e0d5973c-d4cd-421b-8881-37f5e6c4cfd3":
+            context["circuit_location_subchecks"] = circuit_location_subchecks(
+                [
+                    resource
+                    for resource in bundle["resources"]
+                    if resource["resource_type"].lower() == CIRCUIT_KIND
+                ],
+                by_id,
+            )
+        if control["upstream_guid"] == "669b215a-ce43-4371-8f6f-11047f6490f1":
+            gateways = [
+                resource
+                for resource in bundle["resources"]
+                if resource["resource_type"].lower() == "microsoft.network/virtualnetworkgateways"
+            ]
+            context["gateway_circuit_subchecks"] = [
+                {
+                    "arm_id": resource.get("arm_id"),
+                    "subchecks": gateway_circuit_subchecks(resource, bundle["resources"], by_id),
+                }
+                for resource in gateways[:100]
+            ]
+            context["gateways_truncated"] = len(gateways) > 100
     if control["upstream_guid"] == "3c5a808d-c695-4c14-a63c-c7ab7a510e41" and available:
         from .policy_evidence import project_policy_metadata
 

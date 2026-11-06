@@ -12,6 +12,11 @@ from alz_assessor.arm import API_VERSIONS, arm_source, properties
 from alz_assessor.catalog import load_catalog
 from alz_assessor.contracts import control_digest, document, validate
 from alz_assessor.engine import assess
+from alz_assessor.expressroute_evidence import (
+    circuit_location_subchecks,
+    gateway_circuit_subchecks,
+    location_fingerprint,
+)
 from alz_assessor.monitoring_evidence import alert_facts, monitor_facts
 from alz_assessor.network_evidence import review_fact
 from alz_assessor.plan import plan_source
@@ -161,8 +166,241 @@ class MonitoringPreparationTests(unittest.TestCase):
     def by_id(self, bundle):
         result = {}
         for row in bundle["resources"]:
-            result.setdefault(row["arm_id"], []).append(row)
+            identity = row["arm_id"].lower() if isinstance(row["arm_id"], str) else None
+            result.setdefault(identity, []).append(row)
         return result
+
+    def topology(self, second_location="Amsterdam2"):
+        bundle = self.bundle()
+        bundle["resources"].extend(
+            [
+                self.record(
+                    "Microsoft.Network/expressRouteCircuits",
+                    CIRCUIT,
+                    {
+                        "serviceProviderProperties": {
+                            "peeringLocation": "Amsterdam",
+                            "bandwidthInMbps": 1000,
+                        },
+                        "serviceKey": PRIVATE,
+                    },
+                ),
+                self.record(
+                    "Microsoft.Network/expressRoutePorts",
+                    NETWORK + "expressRoutePorts/direct",
+                    {
+                        "peeringLocation": second_location,
+                        "bandwidthInGbps": 100,
+                        "encapsulation": "Dot1Q",
+                        "billingType": "MeteredData",
+                    },
+                ),
+                self.record(
+                    "Microsoft.Network/expressRouteCircuits",
+                    CIRCUIT + "-direct",
+                    {
+                        "expressRoutePort": {"id": NETWORK + "expressRoutePorts/direct"},
+                        "bandwidthInGbps": 10,
+                    },
+                ),
+                *[
+                    self.record(
+                        "Microsoft.Network/connections",
+                        NETWORK + "connections/" + name,
+                        {
+                            "connectionType": "ExpressRoute",
+                            "virtualNetworkGateway1": {"id": GATEWAY},
+                            "peer": {"id": circuit},
+                            "sharedKey": PRIVATE,
+                        },
+                    )
+                    for name, circuit in (("first", CIRCUIT), ("second", CIRCUIT + "-direct"))
+                ],
+            ]
+        )
+        return bundle
+
+    def circuits(self, bundle):
+        return [
+            row
+            for row in bundle["resources"]
+            if row["resource_type"].lower() == "microsoft.network/expressroutecircuits"
+        ]
+
+    def test_location_fingerprints_use_real_provider_and_direct_port_contracts(self):
+        self.assertEqual(location_fingerprint(" Amsterdam "), location_fingerprint("amsterdam"))
+        for value in (None, False, 1, "", " ", "[parameters('location')]", "x" * 129, "\nsecret"):
+            self.assertIn("unknown", location_fingerprint(value))
+        bundle = self.topology()
+        result = circuit_location_subchecks(self.circuits(bundle), self.by_id(bundle))
+        self.assertEqual(
+            result,
+            {
+                "supplied_distinct_circuit_count": 2,
+                "supplied_distinct_configured_location_count": 2,
+                "supplied_circuits_include_different_location_labels": True,
+            },
+        )
+        self.assertNotIn("Amsterdam", json.dumps(bundle))
+        self.assertNotIn(PRIVATE, json.dumps(bundle))
+        tf = tf_properties(
+            "azurerm_express_route_circuit",
+            {
+                "peering_location": "Amsterdam",
+                "bandwidth_in_mbps": 1000,
+            },
+        )
+        self.assertEqual(tf["peeringLocationFingerprint"], location_fingerprint("Amsterdam"))
+        conflict = tf_properties(
+            "azurerm_express_route_circuit",
+            {
+                "peering_location": "Amsterdam",
+                "express_route_port_id": NETWORK + "expressRoutePorts/direct",
+            },
+        )
+        self.assertIn("unknown", conflict["peeringLocationFingerprint"])
+        for value in (True, False, {}, "Amsterdam", PRIVATE, "0" * 63):
+            self.assertIn(
+                "unknown",
+                review_fact({"peeringLocationFingerprint": value}, "peeringLocationFingerprint"),
+            )
+        rejected = copy.deepcopy(self.catalog)
+        rejected["controls"][0]["review_fact_paths"] = ["peeringLocationFingerprint"]
+        with self.assertRaisesRegex(InputError, "reviewed typed paths"):
+            validate(rejected, "catalog")
+
+    def test_same_locations_and_duplicate_connections_do_not_inflate_redundancy(self):
+        for location, expected in (("Amsterdam2", True), ("amsterdam", False)):
+            bundle = self.topology(location)
+            result = gateway_circuit_subchecks(
+                bundle["resources"][0], bundle["resources"], self.by_id(bundle)
+            )
+            self.assertEqual(result["supplied_distinct_circuit_count"], 2)
+            self.assertEqual(
+                result["supplied_circuits_include_different_location_labels"], expected
+            )
+        bundle = self.topology()
+        bundle["resources"][-1]["properties"]["expressRouteCircuitId"] = CIRCUIT.lower()
+        result = gateway_circuit_subchecks(
+            bundle["resources"][0], bundle["resources"], self.by_id(bundle)
+        )
+        self.assertEqual(result["supplied_gateway_connection_count"], 2)
+        self.assertEqual(result["supplied_distinct_circuit_count"], 1)
+        self.assertFalse(result["supplied_circuits_include_different_location_labels"])
+        bundle["resources"][-1]["properties"]["virtualNetworkGateway1"]["id"] = (
+            GATEWAY.lower() + "-other"
+        )
+        result = gateway_circuit_subchecks(
+            bundle["resources"][0], bundle["resources"], self.by_id(bundle)
+        )
+        self.assertEqual(result["supplied_gateway_connection_count"], 1)
+        self.assertFalse(result["supplied_circuits_include_different_location_labels"])
+        bundle["resources"][0]["arm_id"] = GATEWAY
+        self.assertEqual(
+            gateway_circuit_subchecks(
+                bundle["resources"][0], bundle["resources"], self.by_id(bundle)
+            ),
+            result,
+        )
+
+    def test_circuit_joins_require_every_supplied_binding_and_location_to_be_known(self):
+        for index in (0, 5, 6, 7, 8, 9):
+            for state in ("unknown", "inaccessible", "error"):
+                bundle = self.topology()
+                bundle["resources"][index].update(state=state, reason="resource_unavailable")
+                self.assertIn(
+                    "unknown",
+                    gateway_circuit_subchecks(
+                        bundle["resources"][0], bundle["resources"], self.by_id(bundle)
+                    ),
+                )
+            bundle = self.topology()
+            bundle["resources"].append(copy.deepcopy(bundle["resources"][index]))
+            self.assertIn(
+                "unknown",
+                gateway_circuit_subchecks(
+                    bundle["resources"][0], bundle["resources"], self.by_id(bundle)
+                ),
+            )
+        for path, value in (
+            ("expressRouteCircuitId", WORKSPACE),
+            ("expressRouteCircuitId", None),
+            ("connectionType", {"unknown": "unavailable"}),
+            ("virtualNetworkGateway1", {"id": None}),
+        ):
+            bundle = self.topology()
+            bundle["resources"][-1]["properties"][path] = value
+            self.assertIn(
+                "unknown",
+                gateway_circuit_subchecks(
+                    bundle["resources"][0], bundle["resources"], self.by_id(bundle)
+                ),
+            )
+        for value in (None, True, "Amsterdam", {"unknown": PRIVATE}):
+            bundle = self.topology()
+            bundle["resources"][6]["properties"]["peeringLocationFingerprint"] = value
+            self.assertIn(
+                "unknown", circuit_location_subchecks(self.circuits(bundle), self.by_id(bundle))
+            )
+        bundle = self.topology()
+        bundle["resources"][7]["properties"]["peeringLocationFingerprint"] = location_fingerprint(
+            "other"
+        )
+        self.assertIn(
+            "unknown", circuit_location_subchecks(self.circuits(bundle), self.by_id(bundle))
+        )
+        bundle = self.topology()
+        self.assertIn("unknown", circuit_location_subchecks([], self.by_id(bundle)))
+        self.assertIn(
+            "unknown", circuit_location_subchecks(self.circuits(bundle) * 51, self.by_id(bundle))
+        )
+
+    def test_circuit_review_and_original_time_replay_share_only_minimized_partial_checks(self):
+        bundle = self.topology()
+        controls = []
+        for guid in (GUIDS[2], GUIDS[8]):
+            control = copy.deepcopy(
+                next(row for row in self.catalog["controls"] if row["upstream_guid"] == guid)
+            )
+            control.update(
+                review_resource_types=["Microsoft.Network/virtualNetworkGateways"],
+                review_fact_paths=[
+                    "expressRouteCircuitId",
+                    "virtualNetworkGateway1.id",
+                    "gatewayType",
+                ],
+            )
+            controls.append(control)
+        contexts = [review_context(control, bundle) for control in controls]
+        self.assertTrue(
+            contexts[0]["circuit_location_subchecks"][
+                "supplied_circuits_include_different_location_labels"
+            ]
+        )
+        self.assertTrue(
+            contexts[1]["gateway_circuit_subchecks"][0]["subchecks"][
+                "supplied_circuits_include_different_location_labels"
+            ]
+        )
+        directory = self.root / "circuit-replay"
+        export_bundle(directory, bundle, self.catalog, at=AT, evidence_tiers=True)
+        replayed = replay_bundle(directory)
+        self.assertEqual(
+            semantic(replayed), semantic(assess(bundle, self.catalog, at=AT, evidence_tiers=True))
+        )
+        saved = json.loads((directory / "evidence.json").read_text())
+        for control, expected in zip(controls, contexts, strict=True):
+            context = review_context(control, saved)
+            key = (
+                "circuit_location_subchecks"
+                if control["upstream_guid"] == GUIDS[2]
+                else "gateway_circuit_subchecks"
+            )
+            self.assertEqual(context[key], expected[key])
+            self.assertEqual(context["collected_at"], AT)
+        for output in (bundle, contexts, saved):
+            self.assertNotIn(PRIVATE, json.dumps(output))
+            self.assertNotIn("Amsterdam", json.dumps(output))
 
     def test_fixed_membership_sources_and_no_catalog_activation(self):
         root = Path(__file__).resolve().parents[1]
@@ -640,6 +878,9 @@ class MonitoringPreparationTests(unittest.TestCase):
             alert["properties"]["expressRouteAlertSummary"]["criteria"][0]["metricName"],
             "BgpAvailability",
         )
+        joined = gateway_circuit_subchecks(gateway, resources, self.by_id(evidence))
+        self.assertEqual(joined["supplied_distinct_circuit_count"], 2)
+        self.assertTrue(joined["supplied_circuits_include_different_location_labels"])
 
 
 if __name__ == "__main__":

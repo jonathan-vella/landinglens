@@ -114,3 +114,74 @@ resource alert 'Microsoft.Insights/metricAlerts@2018-03-01' = {
     ]
   }
 }
+
+resource providerCircuit 'Microsoft.Network/expressRouteCircuits@2024-05-01' = {
+  name: 'provider'
+  location: 'westeurope'
+  sku: {
+    name: 'Standard_MeteredData'
+    tier: 'Standard'
+    family: 'MeteredData'
+  }
+  properties: {
+    serviceProviderProperties: {
+      serviceProviderName: 'reviewed-provider'
+      peeringLocation: 'Amsterdam'
+      bandwidthInMbps: 1000
+    }
+  }
+}
+
+resource port 'Microsoft.Network/expressRoutePorts@2024-05-01' = {
+  name: 'direct'
+  location: 'westeurope'
+  properties: {
+    peeringLocation: 'Amsterdam2'
+    bandwidthInGbps: 100
+    encapsulation: 'Dot1Q'
+  }
+}
+
+resource directCircuit 'Microsoft.Network/expressRouteCircuits@2024-05-01' = {
+  name: 'direct'
+  location: 'westeurope'
+  sku: {
+    name: 'Standard_MeteredData'
+    tier: 'Standard'
+    family: 'MeteredData'
+  }
+  properties: {
+    expressRoutePort: {
+      id: port.id
+    }
+    bandwidthInGbps: 10
+  }
+}
+
+resource firstConnection 'Microsoft.Network/connections@2024-05-01' = {
+  name: 'first'
+  location: 'westeurope'
+  properties: {
+    connectionType: 'ExpressRoute'
+    virtualNetworkGateway1: {
+      id: gateway.id
+    }
+    peer: {
+      id: providerCircuit.id
+    }
+  }
+}
+
+resource secondConnection 'Microsoft.Network/connections@2024-05-01' = {
+  name: 'second'
+  location: 'westeurope'
+  properties: {
+    connectionType: 'ExpressRoute'
+    virtualNetworkGateway1: {
+      id: gateway.id
+    }
+    peer: {
+      id: directCircuit.id
+    }
+  }
+}

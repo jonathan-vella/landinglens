@@ -79,13 +79,18 @@ records remain traceable under explicit lifecycle semantics.
 ## Active increment: fixed recommendation expansion
 
 Cohort15/#106 independently prepares nine immutable ExpressRoute monitoring,
-propagation and failover workflows alongside cohort14/12. Its reviewed source
+propagation and failover workflows after actual cohort14 delivery, alongside cohort12. Its reviewed source
 matrix is not accepted catalog activation. Minimized configured-monitor/alert
 facts and exact known GatewaySubnet/table propagation subchecks never establish
 probe health, ingestion, physical edge independence, on-premises BFD/routing or
 actual recovery. The linked legacy-agent guidance discrepancy and current BFD
 date/peering conditions remain explicit. All owner decisions stay blank; unique
 successor activation and final delivery await the coordinator's sole slot.
+Actual merged circuit/port contracts now support strict supplied-subset
+location-label and exact gateway/distinct-circuit joins, using minimized
+fingerprints rather than raw peering-location labels. They prove neither
+canonical site identity nor physical/operational independence; missing or
+ambiguous bindings cannot create a positive check or a Verified tier.
 
 Delivered implementation `2026-11-06.7` integrates cohort14's nine assisted ExpressRoute workflows
 after actual cohort13/22 delivery and a sole coordinator slot grant. Explicit

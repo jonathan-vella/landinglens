@@ -6,6 +6,10 @@
   "activation_gate": "Coordinator delivery-slot grant, then actual merged cohort14/12 reconciliation and unique reviewed catalog/crosswalk successor. No version chosen during preparation.",
   "supported_modes": "Public-source/offline only. Reviewed 2024-05-01 ARM/no-restore Bicep connection monitors, 2018-03-01 ARM metric alerts, explicit AzureRM 4.50.0 raw/local supplied modules/optional plans for connection monitors and existing routing/subnet/gateway/connection facts, saved/injected normalized evidence. No new Collector registrations or reads.",
   "source_manifest": "batch-15-sources.json",
+  "reconciled_main": "3b71e2666e26c63dfb2b75e89371b7c543d217e2",
+  "reused_source_manifest": "batch-14-sources.json",
+  "reused_sources": ["circuit-arm", "circuit-rest-2024", "port-arm", "port-rest-2024", "terraform-circuit", "terraform-expressroute-port", "connection-arm", "gateway-rest-2024"],
+  "location_comparison": "Supplement the merged configured-location boolean with a minimized SHA256 fingerprint of the explicit trimmed/case-folded label. This supports original-time equality comparison, not canonical location verification, physical independence or anonymity. No accepted catalog/schema path is registered for it during preparation.",
   "recommendations": [
     {
       "guid": "b30e38c3-f298-412b-8363-cefe179b599d",
@@ -41,16 +45,16 @@
       "guid": "e0d5973c-d4cd-421b-8881-37f5e6c4cfd3",
       "upstream_id": "D06.15",
       "classification": "assisted",
-      "implemented_subclaim": "Existing typed configured circuit/gateway associations prepare scope-specific topology; different peering locations require the merged cohort14 metadata.",
+      "implemented_subclaim": "Reuse merged circuit/port projections and strict unique known provider-circuit or Direct-circuit-to-port joins. Bounded explicit location-label fingerprints support whether the complete supplied subset contains at least two distinct circuits and distinct configured labels; any unknown or ambiguous member keeps the subcheck unknown.",
       "sources": ["expressroute-disaster-recovery", "expressroute-high-availability", "connection-arm", "rest-gateway"],
-      "review_resource_types": ["Microsoft.Network/connections", "Microsoft.Network/virtualNetworkGateways"],
+      "review_resource_types": ["Microsoft.Network/connections", "Microsoft.Network/virtualNetworkGateways", "Microsoft.Network/expressRouteCircuits", "Microsoft.Network/expressRoutePorts"],
       "review_fact_paths": ["expressRouteCircuitId", "virtualNetworkGateway1.id", "gatewayType", "routingWeight"],
       "evidence_requirements": [
         "Are actual independent circuits in different peering locations connected to the intended networks, with provider/customer failure-domain diversity and supported regional/Premium reach?",
         "Different locations in one metro are not regional disaster independence. Reconcile path latency/asymmetry and real tested recovery against approved objectives without inferring a failover SLO from guidance examples."
       ],
       "limitations": "Configured IDs/location labels do not prove independent physical paths or actual geo-failover.",
-      "deferred_integration": "Reconcile actual cohort14 circuit location contract and add strict supplied-subset location/binding checks."
+      "deferred_integration": "Only accepted source-bound catalog/bank/matrix activation and final slot-gated delivery remain; configured labels are not verified independent physical peering sites."
     },
     {
       "guid": "cf3fe65c-fec0-495a-8edc-9675200f2add",
@@ -131,7 +135,7 @@
       "guid": "669b215a-ce43-4371-8f6f-11047f6490f1",
       "upstream_id": "D06.22",
       "classification": "assisted",
-      "implemented_subclaim": "Existing typed connection circuit/gateway IDs support exact gateway binding preparation; multiple resources alone do not establish two distinct circuits at different locations.",
+      "implemented_subclaim": "Strict unique known ExpressRoute gateway -> explicit known ExpressRoute connections -> distinct unique known circuits -> provider location or unique known Direct port location. Duplicate connections, unknown types/bindings, unsupported locations and ambiguous circuits never inflate circuit/location counts or create a positive subcheck.",
       "sources": ["expressroute-disaster-recovery", "connection-arm", "rest-gateway", "terraform-gateway-connection"],
       "review_resource_types": ["Microsoft.Network/connections", "Microsoft.Network/virtualNetworkGateways"],
       "review_fact_paths": ["connectionType", "expressRouteCircuitId", "virtualNetworkGateway1.id", "gatewayType", "routingWeight"],
@@ -140,7 +144,7 @@
         "Reconcile incomplete/ambiguous joins, regional/geo/Premium reach, failure domains and both-direction routing/recovery against the intended complete topology. Configured redundancy is not proven resiliency."
       ],
       "limitations": "Supplied positive joins are not complete estate or operational failover evidence.",
-      "deferred_integration": "Add strict unique known gateway/connection/circuit joins with actual merged cohort14 location contract, avoiding duplicate circuit/port helpers."
+      "deferred_integration": "Only accepted source-bound catalog/bank/matrix activation and final slot-gated delivery remain. Whole-topology physical/operational resilience still requires independent attributable evidence."
     }
   ]
 }
