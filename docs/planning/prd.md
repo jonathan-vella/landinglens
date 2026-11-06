@@ -78,6 +78,18 @@ records remain traceable under explicit lifecycle semantics.
 
 ## Active increment: fixed recommendation expansion
 
+Cohort29/[#133](https://github.com/jonathan-vella/landinglens/issues/133)
+independently prepares seven manual platform-team/function/autonomy/delivery/
+test/secret/vending workflows in an
+[unaccepted matrix](../../references/recommendation-batches/preparation-29.json).
+Source-specific blank decisions distinguish adequate built-in versus justified
+custom RBAC, actual IaC/application build quality, non-hardcoding evidence and
+agreement-qualified governed vending/handoff. A repository, compiler, passing
+test count, Key Vault or subscription alias proves none. Existing helpers are
+exercised with authored candidate/test-only bank injection; no accepted bank,
+successor, counts, ledger, receipt or closure changes before the coordinator's
+slot after02/27. See [preparation boundaries](plan.md#cohort-29-independent-preparation-2026-11-06).
+
 Cohort23/#124 integrates seven immutable logging/support/service workflows in
 [accepted successor `.15`](../../references/recommendation-batches/batch-23.json)
 after actual16 implementation128/receipt129 and the coordinator's explicit slot.

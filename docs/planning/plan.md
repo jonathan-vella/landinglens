@@ -1,5 +1,60 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 29 independent preparation: 2026-11-06
+
+[#133](https://github.com/jonathan-vella/landinglens/issues/133) prepares seven
+immutable H01.01-.07 team/function/autonomy/CI/CD/unit-test/secret/vending
+decisions in the [preparation matrix](../../references/recommendation-batches/preparation-29.json)
+and [sixteen public-source captures](../../references/recommendation-batches/preparation-29-sources.json).
+This is not accepted catalog activation or delivery. Cohorts02 and27 retain the
+earlier serialized slots; no successor, accepted bank, catalog, crosswalk,
+disposition/count, ledger/history, receipt or issue closure changes here.
+
+Current topology separates cross-functional representation, assigned platform
+functions, workload lifecycle autonomy and time-bound enabling support. Current
+RBAC guidance permits adequate built-ins and requires custom roles only for
+specific unmet needs; assignments do not prove effective autonomy. The original
+IaC link redirects to implementation options. Actual IaC CI/CD operating quality
+and IaC/application unit-test adequacy require separate scoped evidence, not
+this repository's pipeline, passing tests, preflight or compiler. No coverage
+threshold or organization policy is invented.
+
+Secret references/protected variables and deployment access are not complete
+non-hardcoding or output hygiene; no data detected is not assurance. No secret
+values/URIs, private code/pipeline contents or employee/team directory records
+are requested or retained. Vending review distinguishes CCoE rules/intake,
+platform fulfillment/governance and workload handoff/operations, agreement/API
+creation authority versus resource RBAC, existing-subscription configuration,
+IPAM/networking, hierarchy, quotas/error handling, identities, budgets and offers.
+Budgets are not hard caps; MPA does not offer DevTest. The MPA source's REST versus
+CLI-tab inconsistency establishes no supported new transport or entitlement.
+
+All seven decisions remain independently blank and attributable
+scope/content/original-time/expiry bound, with independent exceptions. Existing
+engine/interview/review/tier/report/tracker/session/replay helpers are exercised
+using an authored candidate and test-only bank injection, never accepted replay
+registration. Accepted `.15` original-time replay still works and candidate
+export is rejected. All146 earlier own-GUID rows/seventeen receipts, fixed251,
+255 GUIDs, original four hashes and exact current catalog/crosswalk bytes remain
+unchanged. All fourteen genuine compiler cases are retained; no dummy fixture,
+scanner, synthetic resource, executable query, live read/action, dependency,
+module/compiler acquisition or inferred human outcome is added.
+
+Preparation checkout and own exact installed-wheel suites each ran575 tests:
+574 passed with only the original Windows symlink-privilege skip. All15 new
+preparation cases, format/lint, 43-source-file typing, dependency consistency and
+408 local documentation links pass. All fourteen actual existing-compiler cases
+exercise without skips or restore in both interpreters. Own offline wheel SHA256:
+`437f5373a5563df86e0e41158962fd7aef7f77a629e060c326f1c891b2874678`.
+All118 packaged code/data members match checkout and the dedicated minimal
+outside-checkout interpreter's own site-packages. Initial offline installation
+explicitly failed on missing `python-hcl2==8.1.4`; only the three already-reviewed
+manifest-pinned runtime wheels were then restored into this session's own
+environment and installed offline. No dependency manifest changed or alternate
+session environment was used. Accepted registration, current-main reconciliation,
+four remote platform/compiler proofs, normal exact-head implementation merge,
+guarded receipts and final closure remain deferred to the explicit delivery slot.
+
 ## Cohort 23 accepted integration: 2026-11-06
 
 The coordinator granted [#124](https://github.com/jonathan-vella/landinglens/issues/124)
