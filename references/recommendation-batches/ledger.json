@@ -2892,9 +2892,23 @@
       "baseline_control_sha256": "a664147125eb2fcda54282689c99b04aeed136a41743f7a6c23203dfa9bdd66b",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "373f482f-3e39-4d39-8aa4-7e566f6082b6",
+        "upstream_id": "D01.01",
+        "classification": "manual",
+        "flags": [],
+        "implemented_subclaim": "Specific application-delivery standard workflow with blank decision and independent exceptions; no presence-based standard predicate.",
+        "sources": [
+          "application-delivery",
+          "traditional-topology"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Is the approved internal/external application-delivery standard implemented with workload-owned spoke Application Gateway v2/WAF, global Front Door/WAF and restricted origins, with justified protocol/partner alternatives and ownership?"
+        ],
+        "limitations": "Application security, approved standards and operating practice cannot be inferred from resource existence, WAF association or names."
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2907,9 +2921,36 @@
       "baseline_control_sha256": "61e3df0bffa4524be413d7a851db81e5529484dafd7d0c1f8786232b91ae3807",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "e8bbac75-7155-49ab-a153-e8908ae28c84",
+        "upstream_id": "D01.02",
+        "classification": "assisted",
+        "flags": [],
+        "implemented_subclaim": "Strict unique-known selected-scope local/remote VNet and reciprocal peering relationships, explicit directional flags and minimized locations support topology review.",
+        "sources": [
+          "network-design",
+          "traditional-topology",
+          "peering-arm",
+          "peering-rest-spec",
+          "terraform-peering"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks",
+          "Microsoft.Network/virtualNetworks/virtualNetworkPeerings"
+        ],
+        "review_fact_paths": [
+          "resourceLocation",
+          "allowVirtualNetworkAccess",
+          "remoteVirtualNetwork.id",
+          "peeringTransitSummary"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Which VNets are explicitly designated hubs/spokes, and why does traditional hub-spoke satisfy required flexibility, traffic, isolation and transit better than managed alternatives?"
+        ],
+        "limitations": "A reciprocal configured peering is nontransitive; topology purpose, complete estate, granular effective routing and suitability remain human."
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2922,9 +2963,39 @@
       "baseline_control_sha256": "37b91f65773827622537bbbe48fb98014c55a5158e8f8124da23d88d22c00605",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "7bc1c396-2461-4698-b57f-30ca69525252",
+        "upstream_id": "D01.03",
+        "classification": "assisted",
+        "flags": [],
+        "implemented_subclaim": "Existing location and explicit gateway/firewall/DNS VNet attachment context prepare review of supplied regional configuration only.",
+        "sources": [
+          "landing-zone-regions",
+          "traditional-topology",
+          "gateway-arm",
+          "terraform-gateway",
+          "subnet-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks",
+          "Microsoft.Network/virtualNetworkGateways",
+          "Microsoft.Network/azureFirewalls",
+          "Microsoft.Network/dnsResolvers"
+        ],
+        "review_fact_paths": [
+          "resourceLocation",
+          "subnetReferences",
+          "dnsVirtualNetworkId",
+          "dnsServerSummary",
+          "gatewayType"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Do the required regions have complete connectivity, DNS, identity and management readiness for multi-region workloads and exercised DR across real independent failure domains?"
+        ],
+        "limitations": "Multiple location labels are not regional readiness, physical independence or failover. Private DNS zones are global; a selected inventory cannot prove complete deployment."
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2937,9 +3008,39 @@
       "baseline_control_sha256": "c1ee4a1d666f4a55d1a8a843b9fb9f927e9759aef45e043cbfa996d705b66871",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "7dd61623-a364-4a90-9eca-e48ebd54cd7d",
+        "upstream_id": "D01.04",
+        "classification": "assisted",
+        "flags": [],
+        "implemented_subclaim": "Typed unique-known gateway/firewall subnet-to-VNet joins and existing DNS reference context prepare explicit shared-service placement review.",
+        "sources": [
+          "traditional-topology",
+          "landing-zone-regions",
+          "gateway-arm",
+          "terraform-gateway",
+          "subnet-arm",
+          "terraform-subnet"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks",
+          "Microsoft.Network/virtualNetworkGateways",
+          "Microsoft.Network/azureFirewalls",
+          "Microsoft.Network/dnsResolvers"
+        ],
+        "review_fact_paths": [
+          "subnetReferences",
+          "dnsVirtualNetworkId",
+          "gatewayType",
+          "resourceLocation"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Are the required ER/VPN gateways, firewall or supported partner NVAs and conditional DNS services in the explicitly designated central hub with proper ownership/effective inspection, while L7 workload ingress stays workload-owned?"
+        ],
+        "limitations": "Shared subnet/VNet identity is not hub designation, required service completeness, NVA support or effective protection. No NVA inferred from VM names."
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2952,9 +3053,23 @@
       "baseline_control_sha256": "983cedccf52b181c5db5f1423942ff62f657638327db505aa5fe0d66a19feb4c",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "e2e8abac-3571-4559-ab91-53e89f89dc7b",
+        "upstream_id": "D01.06",
+        "classification": "manual",
+        "flags": [],
+        "implemented_subclaim": "Specific conditional partner/version/topology/HA/symmetry/support workflow, independent blank decision and exceptions without private partner payloads.",
+        "sources": [
+          "partner-nva",
+          "traditional-topology"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: If partner networking applies, does the exact vendor/version support this design and its HA/convergence, symmetry/SNAT, performance and Azure compatibility, with attributable current partner evidence?"
+        ],
+        "limitations": "Generic Microsoft patterns or a deployed appliance do not establish vendor approval/support, actual HA/performance or applicability."
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2967,9 +3082,44 @@
       "baseline_control_sha256": "9ec74d770f7b2a672cab9ae3c55a22e7dc8b5e6a52dae8bc00a8b80b03fcb785",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
+        "upstream_id": "D01.07",
+        "classification": "assisted",
+        "flags": [],
+        "implemented_subclaim": "Explicit branch exchange/preference, genuine virtualHubs IP-configuration/subnet relationships and existing minimized gateway type/active-active/ASN facts; no effective-transit predicate.",
+        "sources": [
+          "coexisting-gateways",
+          "route-server-transit",
+          "route-server-faq",
+          "route-server-arm",
+          "routing-ipconfiguration-arm",
+          "routing-rest-spec",
+          "route-server-provider",
+          "route-server-provider-implementation"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualHubs",
+          "Microsoft.Network/virtualHubs/ipConfigurations",
+          "Microsoft.Network/virtualNetworkGateways"
+        ],
+        "review_fact_paths": [
+          "routingSubnetReferences",
+          "routingIpConfigurationIds",
+          "routingSubnetId",
+          "hubBranchTrafficAllowed",
+          "subnetReferences",
+          "gatewayType",
+          "activeActive",
+          "gatewayTransitSummary"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Is ER/S2S VPN transit required, with Route Server and same-VNet gateways, explicit branch exchange and active-active route-based non-Basic VPN ASN65515, plus actual route/failover evidence? VPN BGP is not required; P2S and ER-to-ER transit are excluded."
+        ],
+        "limitations": "virtualHubs identity/SKU and branch flag alone designate neither Route Server nor Virtual WAN. Declared attachment/gateway settings are not complete/effective transit or authorization to change networking."
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2982,9 +3132,38 @@
       "baseline_control_sha256": "2798f71d52063c6b921537d03618f7360d7fe6cf7429a05e775777efb9a715fa",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
+        "upstream_id": "D01.08",
+        "classification": "assisted",
+        "flags": [],
+        "implemented_subclaim": "Positively joined configured subnet/VNet and IPv4 prefix-length-only comparison to captured current <=26 minimum; missing, dual-stack, multiple/invalid/over-bound prefixes remain unknown.",
+        "sources": [
+          "route-server-quickstart",
+          "route-server-provider",
+          "route-server-faq",
+          "subnet-arm",
+          "terraform-subnet",
+          "routing-rest-spec"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualHubs",
+          "Microsoft.Network/virtualHubs/ipConfigurations",
+          "Microsoft.Network/virtualNetworks/subnets"
+        ],
+        "review_fact_paths": [
+          "routingSubnetReferences",
+          "routingIpConfigurationIds",
+          "routingSubnetId",
+          "routingSubnetPrefixSummary"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: After acknowledging immutable /27 and older provider wording versus the current linked /26-or-larger requirement, is this a dedicated applicable RouteServerSubnet with current capacity, no NSG/UDR association and justified source/version exceptions?"
+        ],
+        "limitations": "Source-qualified sizing context is not a whole verdict. Reserved name, positive attachment or sufficiently large prefix does not prove service designation, dedicated use, current eligibility or operational support."
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2997,9 +3176,36 @@
       "baseline_control_sha256": "d9e90e6ab792d91aea31d2b7bf59a73812c062c1c43582e12da96b2eac2cadc2",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "cc881471-607c-41cc-a0e6-14658dd558f9",
+        "upstream_id": "D01.09",
+        "classification": "assisted",
+        "flags": [],
+        "implemented_subclaim": "Unique-known distinct local/remote VNets, explicit configured locations and reciprocal directional peering context without runtime state or hub purpose inference.",
+        "sources": [
+          "global-peering",
+          "traditional-topology",
+          "peering-arm",
+          "peering-rest-spec",
+          "terraform-peering"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+          "Microsoft.Network/virtualNetworks"
+        ],
+        "review_fact_paths": [
+          "remoteVirtualNetwork.id",
+          "allowVirtualNetworkAccess",
+          "peeringTransitSummary",
+          "resourceLocation"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: For explicitly designated regional hubs, is bidirectional global peering or a justified alternative appropriate, respecting nontransitivity, Basic Load Balancer restrictions and cross-region inspection without bypass?"
+        ],
+        "limitations": "Different configured regions and reciprocal links are not designated hubs, working global connectivity or transitive spoke routing. Many-region managed/ER alternatives remain conditional."
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -3012,9 +3218,37 @@
       "baseline_control_sha256": "0d11eb5020901890e013457a66d4286e0303c9db8bc1f792effb5711104f66c3",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "4722d929-c1b1-4cd6-81f5-4b29bade39ad",
+        "upstream_id": "D01.10",
+        "classification": "assisted",
+        "flags": [],
+        "implemented_subclaim": "Reuse existing bounded monitor/flow/alert facts for original-time preparation; built-in Network Insights topology/health/metrics needs no fabricated enablement flag.",
+        "sources": [
+          "network-insights",
+          "connection-monitor-arm",
+          "metric-alert-arm",
+          "terraform-connection-monitor"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/networkWatchers/connectionMonitors",
+          "Microsoft.Network/networkWatchers/flowLogs",
+          "Microsoft.Insights/metricAlerts"
+        ],
+        "review_fact_paths": [
+          "connectionMonitorSummary",
+          "expressRouteAlertSummary",
+          "enabled",
+          "trafficAnalytics.enabled",
+          "trafficAnalytics.workspaceResourceId"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Is actual Network Insights topology/health/metrics visibility and required connectivity/traffic/alerts operation complete, fresh and owned, with attributable ingestion and response evidence rather than configured resource presence?"
+        ],
+        "limitations": "Network Insights redirects to Network Watcher. No configuration is required for built-in views. Monitor/flow/alert association does not establish running tests, current health, end-to-end coverage or owner response; no live diagnostic/query authorized."
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -3027,9 +3261,40 @@
       "baseline_control_sha256": "3811add812557e830e8f09b9636ecb2ce08039a377796baee3e32d4bbe6e1a2e",
       "design_area": "Network topology and connectivity",
       "batch": "10",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "0e7c28ec-9366-4572-83b0-f4664b1d944a",
+        "upstream_id": "D01.11",
+        "classification": "assisted",
+        "flags": [],
+        "implemented_subclaim": "Supplied typed VNet/peering/routing attachment and existing gateway metadata prepare scale review; no selected-subset count is compared to whole-estate service quotas.",
+        "sources": [
+          "network-limits",
+          "route-server-faq",
+          "traditional-topology",
+          "peering-arm",
+          "gateway-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks",
+          "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+          "Microsoft.Network/virtualHubs",
+          "Microsoft.Network/virtualNetworkGateways"
+        ],
+        "review_fact_paths": [
+          "resourceLocation",
+          "remoteVirtualNetwork.id",
+          "routingSubnetReferences",
+          "routingIpConfigurationIds",
+          "gatewaySku",
+          "gatewayType"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Reconcile historical400-spoke/500-peering/1000-prefix wording with current650 peerings/VNet and Route Server/ER direction/family/SKU limits, authorized actual quotas, complete regional/advertised populations, summarization and growth/exception plans."
+        ],
+        "limitations": "Historical checklist numbers are immutable text, not current automatic limits. No complete estate, live quotas, direction-specific prefix advertisements, spare capacity or extra-hub need inferred from selected resource counts."
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []

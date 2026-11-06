@@ -58,33 +58,44 @@ def hybrid_paths(kind: str) -> tuple[str, ...]:
     }.get(kind.lower(), ())
 
 
+def known_scoped_resource(
+    identity: Any,
+    kind: str,
+    by_id: dict[str, list[dict[str, Any]]],
+    bundle: dict[str, Any],
+) -> dict[str, Any] | None:
+    from .governance_evidence import resource_in_scope
+    from .protection_evidence import typed_reference
+
+    ref = typed_reference(identity, (kind,))
+    parts = ref.split("/") if isinstance(ref, str) else []
+    matches = by_id.get(ref, []) if isinstance(ref, str) else []
+    if (
+        len(parts) != 5 + 2 * len(kind.split("/"))
+        or parts[1] != "subscriptions"
+        or parts[3] != "resourcegroups"
+        or parts[5] != "providers"
+        or len(matches) != 1
+        or matches[0].get("state") != "known"
+        or matches[0].get("resource_type", "").lower() != kind
+        or typed_reference(matches[0].get("arm_id"), (kind,)) != ref
+        or not resource_in_scope(matches[0], bundle)
+    ):
+        return None
+    return matches[0]
+
+
 def hybrid_context(
     resource: dict[str, Any], by_id: dict[str, list[dict[str, Any]]], bundle: dict[str, Any]
 ) -> dict[str, Any]:
-    from .governance_evidence import resource_in_scope
     from .protection_evidence import typed_reference
     from .sources import boolean
 
-    def known(identity: Any, kind: str) -> dict[str, Any] | None:
-        ref = typed_reference(identity, (kind,))
-        parts = ref.split("/") if isinstance(ref, str) else []
-        matches = by_id.get(ref, []) if isinstance(ref, str) else []
-        if (
-            len(parts) != (11 if kind == PEERING_KIND else 9)
-            or parts[1] != "subscriptions"
-            or parts[3] != "resourcegroups"
-            or parts[5] != "providers"
-            or len(matches) != 1
-            or matches[0].get("state") != "known"
-            or matches[0].get("resource_type", "").lower() != kind
-            or typed_reference(matches[0].get("arm_id"), (kind,)) != ref
-            or not resource_in_scope(matches[0], bundle)
-        ):
-            return None
-        return matches[0]
-
     kind = resource["resource_type"].lower()
-    if not hybrid_paths(kind) or known(resource.get("arm_id"), kind) is not resource:
+    if (
+        not hybrid_paths(kind)
+        or known_scoped_resource(resource.get("arm_id"), kind, by_id, bundle) is not resource
+    ):
         return unknown("hybrid_configuration_not_unique_known_typed_scoped")
     if sum(r["resource_type"].lower() == kind for r in bundle["resources"]) > 100:
         return unknown("hybrid_configuration_population_over_100")
@@ -97,7 +108,11 @@ def hybrid_context(
         }
     source = canonical_id(resource["arm_id"]).rsplit("/", 2)[0]
     remote = typed_reference(property_at(values, "remoteVirtualNetwork.id"), (VNET_KIND,))
-    if source == remote or known(source, VNET_KIND) is None or known(remote, VNET_KIND) is None:
+    if (
+        source == remote
+        or known_scoped_resource(source, VNET_KIND, by_id, bundle) is None
+        or known_scoped_resource(remote, VNET_KIND, by_id, bundle) is None
+    ):
         return unknown("peering_vnet_joins_not_unique_known_typed_scoped_or_self_linked")
     return {
         "facts": {

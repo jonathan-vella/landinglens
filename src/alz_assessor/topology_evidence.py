@@ -3,9 +3,8 @@
 from ipaddress import ip_network
 from typing import Any
 
-from .contracts import identity_type
 from .dns_evidence import location, typed_references
-from .governance_evidence import resource_in_scope
+from .identity_evidence import known_scoped_resource
 from .protection_evidence import block, typed_reference
 from .sources import boolean, enumeration, property_at, unknown
 
@@ -211,13 +210,11 @@ def resource_paths(kind: str) -> set[str]:
 def unique_known(
     resource: dict[str, Any], bundle: dict[str, Any], by_id: dict[str, list[dict[str, Any]]]
 ) -> bool:
-    identity = resource.get("arm_id")
     return (
-        resource.get("state") == "known"
-        and isinstance(identity, str)
-        and identity_type(identity) == resource["resource_type"].lower()
-        and len(by_id.get(identity.lower(), [])) == 1
-        and resource_in_scope(resource, bundle)
+        known_scoped_resource(
+            resource.get("arm_id"), resource["resource_type"].lower(), by_id, bundle
+        )
+        is resource
     )
 
 

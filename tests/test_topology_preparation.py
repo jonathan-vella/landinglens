@@ -6,6 +6,7 @@ import os
 import tempfile
 import unittest
 import zipfile
+from importlib.resources import files
 from pathlib import Path
 from unittest.mock import patch
 
@@ -59,6 +60,10 @@ PRIVATE = "PRIVATE-NVA-PARTNER-PAYLOAD"
 CONTROLS = {"ALZ-" + guid for guid in GUIDS}
 
 
+def previous_catalog():
+    return load_catalog(str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.19.json")))
+
+
 class TopologyPreparationTests(unittest.TestCase):
     def setUp(self):
         temporary = tempfile.TemporaryDirectory()
@@ -67,7 +72,7 @@ class TopologyPreparationTests(unittest.TestCase):
         self.matrix = json.loads(
             (ROOT / "references/recommendation-batches/preparation-10.json").read_text("utf-8")
         )
-        self.catalog = copy.deepcopy(load_catalog())
+        self.catalog = copy.deepcopy(previous_catalog())
         self.catalog["review_state"] = "authored-in-memory-fixture-not-accepted"
         rows = {row["guid"]: row for row in self.matrix["recommendations"]}
         for control in self.catalog["controls"]:
@@ -169,7 +174,7 @@ class TopologyPreparationTests(unittest.TestCase):
         self.assertEqual(set(fixed.values()), GUIDS)
         self.assertNotIn("D01.05", fixed)
         self.assertEqual(set(self.matrix["interview"]["controls"]), CONTROLS)
-        self.assertNotIn(self.matrix["interview"]["id"], interviews.BANK)
+        self.assertEqual(self.matrix["source_manifest"], "preparation-10-sources.json")
         self.assertNotIn("catalog_version", self.matrix)
         self.assertEqual(self.matrix["review_state"], "preparation-only-not-accepted")
         for row in self.matrix["recommendations"]:
@@ -179,7 +184,7 @@ class TopologyPreparationTests(unittest.TestCase):
                 row["classification"],
                 "manual" if row["upstream_id"] in {"D01.01", "D01.06"} else "assisted",
             )
-        for control in load_catalog()["controls"]:
+        for control in previous_catalog()["controls"]:
             if control["upstream_guid"] in GUIDS:
                 self.assertNotIn("review_fact_paths", control)
                 self.assertIsNone(control["rule"])

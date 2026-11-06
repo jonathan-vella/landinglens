@@ -1,6 +1,61 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
-## Cohort 10 independent preparation: 2026-11-06
+## Cohort 10 accepted integration: 2026-11-06
+
+The coordinator explicitly granted [#139](https://github.com/jonathan-vella/landinglens/issues/139)
+the sole slot after actual29 implementation140/receipt141 and06
+implementation143/receipt144, completed issues and checked final main
+`a3686afb9e24ca70eb1f9efcc69b16e8dad10a4a`. Preparation `b4b92ac` reconciles
+that baseline in `cba7bf8`, preserving the29 manual bank,27 Policy workflows,
+06 hybrid-identity helper and all17 predecessor compiler cases. The new
+eighteenth compiler case exercises actual VNet/subnet/routing IP-configuration
+facts, not monitoring, topology intent or operational assurance.
+
+The [accepted ten-GUID matrix](../../references/recommendation-batches/batch-10.json)
+and [32 byte-preserved captures](../../references/recommendation-batches/batch-10-sources.json)
+precede builder-derived catalog/crosswalk `2026-11-06.20`. Exact `.19` catalog
+SHA256 is `8da27e4849f887b68129a19ce5f814b2b3d66186f364524755011983647baf33`;
+crosswalk SHA256 is `a077b38749f189a479eb07bc1a9794977f44203005f637f98d018b12062d470d`.
+All255 GUIDs, fixed251 membership, original four complete objects, every
+non-own predecessor control and all177 earlier own-GUID rows/21 receipts
+remain unchanged. Counts remain12 automated/200 assisted/43 manual.
+Registered interviews retain ten independent blank outcomes and separate
+exceptions; neither human confirmation nor Signals become Verified.
+
+Unique-known selected-scope relationships now reuse06's strict RG identity
+validation. No names, count/equality, SKU or `virtualHubs` identity designate
+hubs/spokes or conflate VNet Route Server with Virtual WAN. Current-source
+single-IPv4 subnet sizing uses <=26 while preserving immutable/provider /27
+wording. Current650 peerings/VNet remains separate from historical400/500/1000
+and direction/family/SKU-specific ExpressRoute and Route Server limits;
+complete populations and current authorized quotas stay human. Existing
+monitoring facts are preparation, not operation or executed tests.
+
+Accepted bank/session/output/CLI and packaged original-time successor replay
+are exercised separately from the historical preparation fixture, now pinned
+to exact `.19`. Predecessor replay retains old meaning and cannot acquire new
+bound reviews. No live route/query/scanner/quota read, acquisition, restoration,
+deployment, package publication or fabricated owner assurance is introduced.
+Checked implementation and guarded ten-own-GUID receipt publication/final-main
+CI remain delivery and closure gates; activation alone leaves177 delivered/74 pending.
+
+Final source and own exact installed-wheel suites each ran **694 tests:693 passed,
+one original Windows symlink-privilege skip**. All30 cohort10 preparation/accepted
+cases pass. All18 actual existing-compiler cases exercised without skips/restore,
+including06 before the topology case. Ruff/format,46-file mypy, dependency
+consistency and473 local links pass. All141 packaged members match checkout and
+the dedicated outside-checkout interpreter's own installed bytes.
+Wheel SHA256: `defe7f7f901a98fe77bba32522e1c52169802666e8e42e4b693cb9e7a58b5967`.
+Compiler proof SHA256: `5a4f7fec3e60a5c5544b378d3b7358d29574efad0b73d838114a742b0842606d`.
+Initial broad runs exposed a renamed historical documentation anchor and the
+old exact18-question bank assertion; both were corrected without weakening
+bindings or replacing exact counts. The first isolated import lacked `hcl2`;
+only the three unchanged manifest-hash-verified runtime wheels were restored.
+The subsequent full suites and18-case proof are final, not those failed runs
+or the historical633-test preparation wheel. Exact-head remote platform/
+CodeQL/security/review and four downloaded compiler proofs still gate merge.
+
+## Historical cohort 10 independent preparation: 2026-11-06
 
 [#139](https://github.com/jonathan-vella/landinglens/issues/139) prepares the
 [exact ten-GUID matrix](../../references/recommendation-batches/preparation-10.json)

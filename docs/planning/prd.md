@@ -1,6 +1,24 @@
 # LandingLens product requirements
 
-## Cohort 10 preparation boundary
+## Cohort 10 accepted boundary
+
+After actual29/06 implementation/receipt delivery and the explicit sole-slot
+grant, cohort10/#139 integrates [ten workflows](../../references/recommendation-batches/batch-10.json)
+in builder-derived `2026-11-06.20`. All255 GUIDs, fixed251/original four full
+objects, every non-own predecessor control and all177 earlier rows/21 receipts
+are preserved. Exact `.19` bytes remain packaged. Eight assisted and two manual
+workflows share the existing evaluator/adapters/tiers/reports/CLI/session and
+original-time replay; all ten registered decisions stay independently blank.
+Strict06 RG-shape identity binding is reused, not relaxed.
+
+Immutable /27 and400/500/1000 wording remains distinct from current linked
+/26-or-larger and650-peering qualifications. No service/purpose, effective
+transit, regional independence, partner support, operating monitoring, complete
+estate or actual quota assurance is inferred. Counts remain12/200/43; guarded
+merged delivery, not activation, changes177 delivered/74 pending. See the
+[integration evidence](plan.md#cohort-10-accepted-integration-2026-11-06).
+
+## Historical cohort 10 preparation boundary
 
 Cohort10/#139 independently prepares [ten specific workflows](../../references/recommendation-batches/preparation-10.json)
 without accepted catalog/interview activation or delivery. New typed routing/
@@ -10,7 +28,7 @@ wording is preserved alongside actual current /26-or-larger Route Server
 quickstart and650-peering service-table qualifications. Whole topology,
 regional readiness/independence, shared-service purpose, partner support,
 effective transit, monitoring operation and actual quotas stay separate blank
-human decisions. The [preparation record](plan.md#cohort-10-independent-preparation-2026-11-06)
+human decisions. The [preparation record](plan.md#historical-cohort-10-independent-preparation-2026-11-06)
 retains source/adapter/privacy/proof boundaries; cohorts29/06 precede activation.
 
 ## Cohort 27 integration
