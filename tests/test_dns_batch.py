@@ -309,6 +309,51 @@ class DnsBatchTests(unittest.TestCase):
             "90c0d4e3caf23069f2f7bd7938ce0e6c81d7df49d25266dbfdb316675b12fed4",
         )
 
+    def test_actual_cohort12_receipt_preserves_all_80_previous_rows_and_nine_receipts(self):
+        ledger = json.loads((REFERENCES / "ledger.json").read_text())
+        earlier_receipts = {
+            key: value for key, value in ledger["deliveries"].items() if key != "12"
+        }
+        earlier_rows = [
+            row
+            for row in ledger["recommendations"]
+            if row["status"] == "merged" and row["batch"] != "12"
+        ]
+        for value, expected in (
+            (earlier_receipts, "1da5f99a9d027f6d687464c67d4c69926e1bcb3dce8c0704f2bb36754c4624d2"),
+            (earlier_rows, "468e0d431bd3c48f7ee3242a7f0af841a6c136fff824e91c25149c069f144889"),
+        ):
+            self.assertEqual(
+                hashlib.sha256(
+                    json.dumps(
+                        value, sort_keys=True, separators=(",", ":"), ensure_ascii=True
+                    ).encode()
+                ).hexdigest(),
+                expected,
+            )
+        receipt = ledger["deliveries"]["12"]
+        self.assertEqual(receipt["checked_head"], "98b1b39323bc0bb7ebd161139ca5f0c6578b3a4a")
+        self.assertEqual(receipt["merge_commit"], "a57906768b2cafb2ba20c7ed6df59695ca18b017")
+        self.assertEqual(
+            receipt["local_installed_suite"], {"tests": 396, "passed": 395, "skipped": 1}
+        )
+        self.assertEqual(
+            receipt["wheel_sha256"],
+            "733592b2b07633d8b6f576097fee66bdf69f2a81c51f333d3d74e8f6b73c7b08",
+        )
+        self.assertEqual(len(receipt["compiler_integration_cases"]), 8)
+        own = [row for row in ledger["recommendations"] if row["batch"] == "12"]
+        self.assertEqual({row["guid"] for row in own}, set(GUIDS))
+        self.assertTrue(
+            all(
+                row["status"] == "merged"
+                and row["pr"] == receipt["pr"]
+                and row["merge_commit"] == receipt["merge_commit"]
+                for row in own
+            )
+        )
+        self.assertEqual(sum(row["status"] == "merged" for row in ledger["recommendations"]), 90)
+
     def test_minimized_dns_public_ip_bastion_and_preserved_literal_facts(self):
         bundle = self.bundle()
         for secret in (SENTINEL, DOMAIN, DESTINATION):
