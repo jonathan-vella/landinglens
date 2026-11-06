@@ -1,0 +1,135 @@
+{
+  "batch": "24",
+  "review_state": "preparation-only-not-accepted",
+  "issue": "https://github.com/jonathan-vella/landinglens/issues/148",
+  "source_manifest": "preparation-24-sources.json",
+  "activation_gate": "Explicit coordinator slot after actual25/09 checked delivery; reconcile then-current main and derive a unique reviewed successor using existing builders. No accepted source/matrix/catalog/crosswalk/bank/count/history activation, PR, merge, receipt or issue closure during preparation.",
+  "supported_modes": "Existing single evaluator and raw/supplied-local-module/optional saved plan AzureRM4.50.0; exact reviewed ARM and existing no-restore Bicep; saved/injected normalized configuration. AzureRM Arc exposes no patch fields and remains explicitly unknown. No new Collector routes, built-in fetch, second Policy interpreter or live operations.",
+  "privacy": "Typed IDs, booleans, enums, explicit day units and bounded export-table fingerprints only. No log/query/guest/package/patch/traffic/secret/private payloads, notes, principals or content URIs retained. Identity-bearing resource IDs and table fingerprints are not anonymization.",
+  "source_qualifications": {
+    "workspace": "Start with one and use the fewest meeting independent tenant/RBAC/ownership/retention/geography/resilience/cost requirements. Regional link redirects to workspace-design. Resource diagnostic-setting egress differs from VM bandwidth. Configuration/count/location is not ingestion or approved architecture.",
+    "retention": "Linked archive page redirects to data-retention-configure. Workspace30-730 days is not per-table retention. Analytics4-730 and total4-4383 days/12 years are separate; ARM -1 is inheritance, never actual days. Basic current30-day guidance conflicts with pinned provider eight-day wording, so Basic analytics stays unknown. Provider total values above730 are discrete1095/1460/1826/2191/2556/2922/3288/3653/4018/4383. CLI documented2556 differs from portal/REST4383. Thirty-day workspace retention can retain31 without separate immediate purge.",
+    "export": "Continuous export applies to supported selected tables and new arrivals, not historical data or every required source. Explicit storage-account reference does not identify export container or bind its effective WORM policy. Same-region eligibility, transforms, delivery, recovery and legal adequacy remain human. Immutability time interval1-146000 days; locked/unlocked, legal holds and container/version policies differ.",
+    "machine": "Machine Configuration overview redirects to overview/01-overview-concepts. Audit/Apply configuration assignments differ from Policy definitions and completed guest audits. Current OS/client/ARM64/VMSS restrictions and November2026 Linux PowerShell compatibility require review; no package or report inspected.",
+    "patch": "Update Manager serves Azure and outside-Azure Arc servers without Log Analytics/Automation dependency. Periodic24-hour assessment is not installed patching; separate eligibility, source/extension health, maintenance/BC schedules, scopes, results and exceptions remain human.",
+    "watcher": "Linked monitoring overview redirects to Network Watcher overview. Regional automatic enablement and flow definitions are not executed monitoring. No new NSG flow logs; retirement2027-09-30 requires VNet flow migration review, not rewritten immutable guidance.",
+    "locks": "Locks restrict control-plane not data-plane operations; do not prevent subscription cancellation. No management-group locks despite generic ARM scope list. Scope/level presence does not prove criticality, complete inherited population, applicability, side effects or effective protection.",
+    "deny": "Policy deny rejects matching create/update requests and can mark existing resources noncompliant; not remediation or an RBAC deny assignment. Current customer-managed RBAC denies are private preview. Existing version-bound custom definition joins are context, not evaluation of conditions, parameters, exclusions, exemptions or complete role authority."
+  },
+  "interview": {
+    "id": "log-retention-machine-resource-guardrails",
+    "question": "Provide nine independently attributable original-time decisions and exceptions, not a shared approval. F01.01: identify the approved central workspace and justify separate tenant, RBAC, ownership, sovereignty and per-resource same-table retention exceptions, with complete ingestion evidence. F01.02: approve single versus regional workspaces against required geography/resilience, VM bandwidth versus diagnostic-setting egress, access and cost; location labels/counts do not establish suitable design. F01.03: specify each required dataset's retention/recovery/privacy obligations and source-qualified analytics versus total day periods, acknowledging current4383-day/12-year total, ARM inheritance, Basic30 versus old provider8 and CLI2556 differences; if longer or tamper protection is required, show supported selected-table new-data export, historical coverage, actual same-region destination/container delivery and suitable locked/version/container WORM/legal hold interval, not settings-only legal assurance. F01.04: identify required Azure/Arc OS configuration drift audits, current OS/client/architecture and November2026 compatibility, prerequisite identity/extension and exact Policy/guest assignment scope/mode, then attributable completed audit/freshness/coverage evidence; assignments are not executed audits. F01.05: demonstrate actual Windows/Linux Azure VM Update Manager adoption, eligibility, extension/source health, maintenance and business-continuity schedules, complete patch results and exceptions; assessmentMode/patchMode are not installed updates. F01.06: separately demonstrate outside-Azure Arc server enrollment/support/connectivity, extension/source health, schedules, scope and actual patch results/exceptions; AzureRM4.50.0 Arc has no patch fields, and Log Analytics/Automation is not a prerequisite. F01.07: show required Network Watcher flow/traffic analytics operation, VNet migration from NSG flow logs (no new creation; retirement2027-09-30), actual supported targets, arriving storage/analytics, freshness/coverage and owned response; regional enablement or definitions are not executed traffic analysis. F01.08: independently designate critical shared services and review actual lock scope/level, full ancestor coverage, removal authority, control-plane/data-plane limits, side effects and exceptions; no management-group or subscription-cancellation protection inferred. F01.09: demonstrate appropriate Policy deny plus role-assignment guardrails with exact definitions/versions/conditions/parameters, assignment/enforcement, scope/inheritance/exemptions and actual permitted/blocked operations; distinguish RBAC deny assignments/private preview, no generic literal effect or role presence proves effective enforcement.",
+    "controls": [
+      "ALZ-67e7a8ed-4b30-4e38-a3f2-9812b2363cef",
+      "ALZ-7418ada9-4199-4c28-8286-d15e9433e8f3",
+      "ALZ-5e6c4cfd-3e50-4454-9c24-47ec66138a72",
+      "ALZ-e7d7e484-3276-4d8b-bc05-5bcf619e8a13",
+      "ALZ-f9887952-5d62-4688-9d70-ba6c97be9951",
+      "ALZ-c806c048-26b7-4ddf-b4c2-b4f0c476925d",
+      "ALZ-90483845-c986-4cb2-a131-56a12476e49f",
+      "ALZ-541acdce-9793-477b-adb3-751ab2ab13ad",
+      "ALZ-a6e55d7d-8a2a-4db1-87d6-326af625ca44"
+    ]
+  },
+  "recommendations": [
+    {
+      "guid": "67e7a8ed-4b30-4e38-a3f2-9812b2363cef",
+      "upstream_id": "F01.01",
+      "classification": "assisted",
+      "implemented_subclaim": "Existing minimized workspace SKU/default retention/network facts and explicit location, with strict unique-known selected-scope identity, prepare centralization and exceptions review.",
+      "sources": ["workspace-design-linked", "workspace-arm", "terraform-workspace"],
+      "review_resource_types": ["Microsoft.OperationalInsights/workspaces"],
+      "review_fact_paths": ["logWorkspaceSummary", "resourceLocation"],
+      "evidence_requirements": ["Reviewer decision: Is the approved central workspace appropriate, with independently justified tenant/RBAC/ownership/sovereignty/retention exceptions and complete arriving data coverage?"],
+      "limitations": "Workspace configuration is not complete ingestion, organization-wide central ownership, suitable access or legal/residency design."
+    },
+    {
+      "guid": "7418ada9-4199-4c28-8286-d15e9433e8f3",
+      "upstream_id": "F01.02",
+      "classification": "assisted",
+      "implemented_subclaim": "Supplied workspace locations/configuration support explicit single-versus-regional design review, without inferring cost or completeness from selected counts.",
+      "sources": ["regional-workspace-linked", "workspace-design-linked", "workspace-arm", "terraform-workspace"],
+      "review_resource_types": ["Microsoft.OperationalInsights/workspaces"],
+      "review_fact_paths": ["resourceLocation", "logWorkspaceSummary"],
+      "evidence_requirements": ["Reviewer decision: Does the single/regional workspace design meet required geography, resilience, access, retention and justified VM bandwidth/commitment-cost tradeoffs, distinguishing diagnostic-setting egress?"],
+      "limitations": "Location labels and selected workspace counts prove neither physical independence, sovereignty, complete regions nor cost suitability."
+    },
+    {
+      "guid": "5e6c4cfd-3e50-4454-9c24-47ec66138a72",
+      "upstream_id": "F01.03",
+      "classification": "assisted",
+      "implemented_subclaim": "Source-qualified explicit table day periods/inheritance, bounded hashed export selection and storage destination, container immutability days/state/append flags and typed workspace/storage joins prepare retention/export review.",
+      "sources": ["retention-linked", "export-current", "immutable-current", "table-arm", "export-arm", "immutable-arm", "operations-provider-log_analytics_workspace_table", "operations-provider-log_analytics_data_export_rule", "operations-provider-storage_container_immutability_policy"],
+      "review_resource_types": ["Microsoft.OperationalInsights/workspaces", "Microsoft.OperationalInsights/workspaces/tables", "Microsoft.OperationalInsights/workspaces/dataExports", "Microsoft.Storage/storageAccounts/blobServices/containers/immutabilityPolicies"],
+      "review_fact_paths": ["logWorkspaceSummary", "operationsTableRetention", "operationsExport", "operationsImmutability"],
+      "evidence_requirements": ["Reviewer decision: For each required dataset, are source-qualified analytics/total retention and privacy/recovery requirements satisfied, including conditional >12-year export, historical/new-data coverage, actual destination/container delivery and legally suitable locked WORM/legal holds?"],
+      "limitations": "Basic current30-day versus provider8 and CLI2556 versus REST4383 remain distinct. No omitted defaults, effective inheritance, complete required data, delivered export, container linkage or legal WORM sufficiency inferred."
+    },
+    {
+      "guid": "e7d7e484-3276-4d8b-bc05-5bcf619e8a13",
+      "upstream_id": "F01.04",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit minimized guest assignment mode/kind joined to one known selected-scope VM/Arc machine, plus existing Policy assignment/version-bound custom context, prepare drift-audit review.",
+      "sources": ["machine-configuration-linked", "operational-compliance-linked", "guest-arm", "operations-provider-policy_virtual_machine_configuration_assignment", "policy-spec-policyAssignments"],
+      "review_resource_types": ["Microsoft.GuestConfiguration/guestConfigurationAssignments", "Microsoft.Authorization/policyAssignments"],
+      "review_fact_paths": ["operationsGuestAssignment", "policyAssignmentSummary"],
+      "evidence_requirements": ["Reviewer decision: Are required supported Azure/Arc OS drift audits correctly scoped and enabled with prerequisites/current compatibility, and do fresh attributable completed audit results establish coverage and exceptions?"],
+      "limitations": "Assignment is not completed guest audit; Apply modes are not Audit. No content/parameters/package/report inspected, downloaded or retained; no implicit built-in definition fetch or guest-policy interpreter."
+    },
+    {
+      "guid": "f9887952-5d62-4688-9d70-ba6c97be9951",
+      "upstream_id": "F01.05",
+      "classification": "assisted",
+      "implemented_subclaim": "Reuse existing source-qualified OS/agent/assessmentMode/patchMode facts for strictly bound Azure VMs and a specific independent patch-adoption workflow.",
+      "sources": ["operational-compliance-linked", "update-manager-current", "vm-patch-rest", "terraform-linux-patch", "terraform-windows-patch"],
+      "review_resource_types": ["Microsoft.Compute/virtualMachines"],
+      "review_fact_paths": ["patchConfiguration"],
+      "evidence_requirements": ["Reviewer decision: Does Azure VM Update Manager adoption cover eligible Windows/Linux machines, extension/update-source health, owned maintenance/BC schedules, actual installed patch results and explicit exclusions?"],
+      "limitations": "Periodic assessment or patch mode is not completed patching, fleet compliance or authorization to install updates. Log Analytics and Automation are not required dependencies."
+    },
+    {
+      "guid": "c806c048-26b7-4ddf-b4c2-b4f0c476925d",
+      "upstream_id": "F01.06",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit single-OS Arc profile/assessment/patch-mode summary for reviewed ARM2024-07-10 or saved normalized evidence; pinned Terraform Arc patch fields stay unsupported unknown.",
+      "sources": ["operational-compliance-linked", "update-manager-current", "arc-arm", "operations-provider-arc_machine"],
+      "review_resource_types": ["Microsoft.HybridCompute/machines"],
+      "review_fact_paths": ["operationsArcPatch"],
+      "evidence_requirements": ["Reviewer decision: Is outside-Azure Arc Windows/Linux Update Manager adoption supported and connected, with extension/source health, complete schedule/scope/results coverage and exceptions independent of Azure VM evidence?"],
+      "limitations": "Arc existence, OS settings or periodic assessment do not prove enrollment health, installed patches or fleet compliance. Terraform4.50.0 has no patch fields; invented arguments and resource identity cannot fill the gap."
+    },
+    {
+      "guid": "90483845-c986-4cb2-a131-56a12476e49f",
+      "upstream_id": "F01.07",
+      "classification": "assisted",
+      "implemented_subclaim": "Reuse explicit bounded flow-log target/storage/analytics configuration and strict selected-scope storage/workspace joins for a lifecycle-aware traffic workflow.",
+      "sources": ["watcher-linked", "vnet-flow-log-coverage", "traffic-analytics-pipeline", "flow-log-arm", "terraform-flow-log"],
+      "review_resource_types": ["Microsoft.Network/networkWatchers/flowLogs"],
+      "review_fact_paths": ["enabled", "storageId", "targetResourceId", "trafficAnalytics.enabled", "trafficAnalytics.workspaceResourceId"],
+      "evidence_requirements": ["Reviewer decision: Is proactive Network Watcher traffic/flow analysis actually operating with supported VNet migration, arriving storage/analytics, fresh complete coverage and owned response, acknowledging NSG creation withdrawal/2027-09-30 retirement?"],
+      "limitations": "Definition or regional enablement is not executed traffic analysis. No probes, packet captures, traffic payloads, diagnostics, log/query execution or new live route."
+    },
+    {
+      "guid": "541acdce-9793-477b-adb3-751ab2ab13ad",
+      "upstream_id": "F01.08",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit supported lock level and identity-derived subscription/RG/resource scope prepare critical-shared-service deletion protection review, never a presence pass.",
+      "sources": ["locks-linked", "lock-arm", "operations-provider-management_lock"],
+      "review_resource_types": ["Microsoft.Authorization/locks"],
+      "review_fact_paths": ["operationsLock"],
+      "evidence_requirements": ["Reviewer decision: Which shared services are independently critical, and do actual locks/ancestor coverage/removal authority provide appropriate control-plane protection after applicability/side effects/data-plane/cancellation exceptions?"],
+      "limitations": "No management-group locks or data/cancellation protection. Presence does not establish inherited complete protection, human criticality or effective applicability."
+    },
+    {
+      "guid": "a6e55d7d-8a2a-4db1-87d6-326af625ca44",
+      "upstream_id": "F01.09",
+      "classification": "assisted",
+      "implemented_subclaim": "Reuse existing bounded Policy definition/assignment and minimized role context with unique typed scope/version joins, distinct from RBAC deny assignments.",
+      "sources": ["deny-linked", "rbac-deny-distinction", "policy-spec-policyDefinitions", "policy-spec-policyAssignments", "policy-provider-policy_definition", "policy-provider-subscription_policy_assignment", "role-assignment-arm", "terraform-role-assignment"],
+      "review_resource_types": ["Microsoft.Authorization/policyDefinitions", "Microsoft.Authorization/policyAssignments", "Microsoft.Authorization/roleAssignments"],
+      "review_fact_paths": ["policyDefinitionSummary", "policyAssignmentSummary", "principalType", "roleDefinitionId"],
+      "evidence_requirements": ["Reviewer decision: Do exact scoped/versioned Policy deny rules and role authority enforce appropriate actual operations after conditions/parameters/enforcement/inheritance/exemptions, separately from RBAC deny/private-preview behavior?"],
+      "limitations": "Literal effect, assignment or role presence cannot prove appropriate/effective guardrails. No new Policy interpreter, built-in fetch, access evaluation or principal retention."
+    }
+  ]
+}

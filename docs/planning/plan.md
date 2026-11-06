@@ -1,5 +1,62 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 24 independent preparation: 2026-11-07
+
+[#148](https://github.com/jonathan-vella/landinglens/issues/148) prepares the
+[nine immutable F01.01-.09 workflows](../../references/recommendation-batches/preparation-24.json)
+and [42 actual public-source captures](../../references/recommendation-batches/preparation-24-sources.json)
+on main `c953eee1fc66dbd013c59dc27e8616a5001f9630`. Cohorts25/09 retain the
+preceding delivery slots. Accepted sources/matrices, catalog/crosswalk/history,
+bank, counts, fixed targets, receipts and issue state remain unchanged.
+
+Existing workspace, patch, flow-log, Policy and role helpers are reused.
+New minimized table/export/immutability/guest/Arc/lock facts use explicit units
+and typed unique-known selected-scope relationships. Nine source-specific
+decisions and exceptions stay independently blank in the preparation fixture;
+the accepted interview bank is not registered. No generic resource presence,
+human confirmation or Signal becomes Verified or a whole-guidance pass.
+
+Source distinctions include current4383-day/12-year total versus730-day
+analytics retention, explicit ARM inheritance, provider discrete annual values,
+Basic current30 versus older provider8-day wording, CLI2556 versus REST4383,
+and workspace30 potentially retaining31. Export configuration is not historical
+backfill or identified-container WORM. Guest assignments, Azure/Arc patch modes,
+and flow definitions prove no completed audit, installed patches or traffic
+analysis. NSG flow creation is withdrawn and retirement is2027-09-30.
+Locks apply to control-plane operations, not data or subscription cancellation;
+generic ARM scope lists do not establish supported management-group locks.
+Policy deny and RBAC deny assignments/private preview remain distinct.
+
+The existing no-restore compiler fixture exercises real workspace/table/export/
+storage/lock declarations, not runtime operations. No new Collector route,
+query execution, guest/package/report payload, definition fetch, second Policy
+interpreter, acquisition, restore, deployment or Azure read is introduced.
+Then-current-main reconciliation, accepted successor/bank/package replay,
+exact-head remote checks/review/compiler proofs, normal merged implementation,
+guarded own receipt publication and final-main CI remain deferred slot gates.
+
+Source and own exact installed-wheel suites each ran **711 tests:710 passed,
+one original Windows symlink-privilege skip**. All16 cohort preparation cases
+are included; both source and own installed-compiler proofs exercise all19
+cases without skips/restore, preserving the18 predecessor cases. Final format/
+lint,47-source-file mypy, dependency consistency and484 local links pass.
+All142 package members match checkout and the dedicated outside-checkout
+installation. All97 accepted-data/fixed-target/ledger files remain byte-identical.
+Wheel SHA256:
+`95c8cc36ba995ebc55e3ece5e2dfbb3b3c0b15e837692a65c5a442ac91ee999a`.
+Both compiler-proof JSON SHA256:
+`84fd90ab7318b3eba8ee188c1932d036fd27f7c13a1fa60c478bc8dba54b39b6`.
+
+Initial targeted runs exposed fixture-call/duplicate-contract expectations and
+missing saved-plan Arc identity; these were corrected without weakening
+validation. An initial static run caught an optional flow-target variable type,
+fixed before the final clean static and installed proofs. The first isolated
+import lacked `hcl2`; only the three unchanged manifest-hash-verified runtime
+wheels were restored. Wheel
+`9267cd6abcf6824daac889f78d2e166366d8b91edcd1dc4778f454343368ec19`
+is superseded, not the final preparation proof. These local preparation checks
+are not accepted successor replay, remote exact-head gates or merged delivery.
+
 ## Cohort 10 accepted integration: 2026-11-06
 
 The coordinator explicitly granted [#139](https://github.com/jonathan-vella/landinglens/issues/139)

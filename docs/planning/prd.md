@@ -1,5 +1,19 @@
 # LandingLens product requirements
 
+## Cohort 24 preparation boundary
+
+The [nine F01.01-.09 workflows](../../references/recommendation-batches/preparation-24.json)
+for [#148](https://github.com/jonathan-vella/landinglens/issues/148) prepare
+workspace architecture, source-qualified retention/export/immutability,
+Machine Configuration, distinct Azure/Arc patching, Network Watcher and
+lock/Policy-role review without accepted activation or delivery. Cohorts25/09
+precede its coordinator-granted slot. All nine human decisions and exceptions
+remain independent and blank; source/provider conflicts remain visible rather
+than becoming defaults or relaxed predicates. Supplied settings establish no
+ingestion, sovereignty, legal WORM sufficiency, completed audit/patch/traffic
+operation, criticality or effective protection/access. See the
+[preparation boundaries](plan.md#cohort-24-independent-preparation-2026-11-07).
+
 ## Cohort 10 accepted boundary
 
 After actual29/06 implementation/receipt delivery and the explicit sole-slot

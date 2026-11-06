@@ -8,6 +8,16 @@ are in the [plan](planning/plan.md).
 
 ## Evidence and outcomes
 
+Cohort24's [independent preparation](../references/recommendation-batches/preparation-24.json)
+does not activate the accepted catalog or interview bank. Its nine workflows
+keep workspace exceptions/design, source-specific retention, actual export and
+legal WORM sufficiency, completed guest audits, Azure/Arc patch results, operating
+traffic analysis and effective lock/Policy-role protection as separate human
+decisions. Current Basic30-day versus pinned provider8-day wording is not
+silently reconciled. A configured day interval, guest assignment, patch mode,
+flow definition, lock level or literal deny effect is context, not a pass.
+No new live operation or private log/guest/patch/traffic payload is introduced.
+
 | Evidence | What it establishes | What it does not establish |
 |---|---|---|
 | Accepted explicit configuration predicate | The stated typed property test for the supplied resource and time | Effective inheritance, runtime routing/protection, recovery success or estate completeness |

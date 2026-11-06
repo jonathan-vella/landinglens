@@ -20,6 +20,18 @@ from .terraform import Analyzer, InputError
 
 PROVIDER_VERSION = "4.50.0"
 TF_TYPES = {
+    "azurerm_log_analytics_workspace_table": "Microsoft.OperationalInsights/workspaces/tables",
+    "azurerm_log_analytics_data_export_rule": (
+        "Microsoft.OperationalInsights/workspaces/dataExports"
+    ),
+    "azurerm_policy_virtual_machine_configuration_assignment": (
+        "Microsoft.GuestConfiguration/guestConfigurationAssignments"
+    ),
+    "azurerm_storage_container_immutability_policy": (
+        "Microsoft.Storage/storageAccounts/blobServices/containers/immutabilityPolicies"
+    ),
+    "azurerm_management_lock": "Microsoft.Authorization/locks",
+    "azurerm_arc_machine": "Microsoft.HybridCompute/machines",
     "azurerm_storage_account": "Microsoft.Storage/storageAccounts",
     "azurerm_firewall_policy": "Microsoft.Network/firewallPolicies",
     "azurerm_resource_group": "Microsoft.Resources/resourceGroups",
@@ -147,6 +159,7 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     from .identity_evidence import projected_properties as identity_properties
     from .logging_evidence import projected_properties as logging_properties
     from .network_policy_evidence import projected_properties as network_policy_properties
+    from .operations_evidence import projected_properties as operations_properties
     from .policy_strategy_evidence import projected_properties as policy_strategy_properties
     from .security_evidence import projected_properties as security_properties
     from .tenant_evidence import projected_properties as tenant_properties
@@ -170,6 +183,7 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     result.update(identity_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(policy_strategy_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(tenant_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
+    result.update(operations_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(
         topology_properties(
             TF_TYPES.get(kind, kind), properties, terraform=True, terraform_kind=kind
@@ -321,6 +335,10 @@ def resource_scope(scope: str | None, properties: dict[str, Any]) -> str | None:
 
 
 def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str | None:
+    from .operations_evidence import TF_KINDS, terraform_identity
+
+    if kind in TF_KINDS:
+        return terraform_identity(scope, kind, values)
     if kind in {"azurerm_lighthouse_definition", "azurerm_lighthouse_assignment"}:
         from .tenant_evidence import resource_parent, uuid_literal
 
