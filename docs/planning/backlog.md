@@ -53,18 +53,18 @@ owner-authorized increment. Baseline `2026-11-04.2` remains 4 automated /
 
 | Cohort | Scope | Dependencies | Acceptance/delivery |
 |---|---|---|---|
-| 13 / [#97](https://github.com/jonathan-vella/landinglens/issues/97) | Ten protection/outbound/hybrid GUIDs, including distinct D05.08 entries | Merged cohort04, actual source review and existing evidence foundations | Source-backed `.6.5` implemented; checked merge and own-GUID receipts pending |
+| 13 / [#97](https://github.com/jonathan-vella/landinglens/issues/97) | Ten protection/outbound/hybrid GUIDs, including distinct D05.08 entries | Merged cohort04, actual source review and existing evidence foundations | [#101](https://github.com/jonathan-vella/landinglens/pull/101) merged after eight jobs, CodeQL and four five-case compiler proofs; own-GUID `deliveries.13` receipt |
 | 11 / [#92](https://github.com/jonathan-vella/landinglens/issues/92) | Ten routing/peering/resilience/encryption/addressing GUIDs | Merged cohort 19 and existing priority foundations | [#93](https://github.com/jonathan-vella/landinglens/pull/93) merged; eight jobs, CodeQL and all four three-case compiler proofs passed; own-GUID `deliveries.11` receipt |
 | 04 / [#94](https://github.com/jonathan-vella/landinglens/issues/94) | Eight access/managed-identity/Entra-control GUIDs, including distinct B03.02 entries | Merged cohort 11 and existing review foundations | [#96](https://github.com/jonathan-vella/landinglens/pull/96) merged; eight jobs, CodeQL and four four-case compiler proofs passed; each GUID binds `deliveries.04` |
 | 01 / [#46](https://github.com/jonathan-vella/landinglens/issues/46) | G02.01-.04, G02.07-.08, G04.02-.03; fixed GUIDs in ledger | Delivered catalogs/contracts/local reviews; no new live access required | [#47](https://github.com/jonathan-vella/landinglens/pull/47) merged; all eight checks passed, exact installed suite and all four CI compiler integrations exercised; issue closed |
 | 17 / [#48](https://github.com/jonathan-vella/landinglens/issues/48) | Nine firewall GUIDs; duplicate D07.12 entries remain distinct | Merged cohort 01, actual source review, reviewed network schemas | [#49](https://github.com/jonathan-vella/landinglens/pull/49) merged; all eight checks passed, exact installed suite and all four CI compiler integrations exercised; issue closed |
 | 18 / [#50](https://github.com/jonathan-vella/landinglens/issues/50) | Nine TLS/resilience/private-connectivity GUIDs | Merged cohort 17; 18 actual source captures and reviewed versioned schemas | [#51](https://github.com/jonathan-vella/landinglens/pull/51) merged; all eight checks passed, exact installed suite and all four compiler integrations exercised; issue closed |
 | 19 / [#52](https://github.com/jonathan-vella/landinglens/issues/52) | Nine service-endpoint/subnet/segmentation GUIDs | Merged cohort 18 and reconciled `.5` efficiency foundations | [#90](https://github.com/jonathan-vella/landinglens/pull/90) merged; all eight jobs, CodeQL and four compiler artifacts passed; `deliveries.19` binds each GUID to actual acceptance |
-| Other cohorts | Other 198 GUIDs in unchanged 5-10-item cohorts | Evidence foundations, then LL-34 severity/crosswalk priority with per-batch source requirements | Pending; partitioning/tiering is not delivery |
+| Other cohorts | Other 188 GUIDs in unchanged 5-10-item cohorts | Evidence foundations, then LL-34 severity/crosswalk priority with per-batch source requirements | Pending; partitioning/tiering is not delivery |
 
-Working successor `2026-11-06.5`: 10 automated / 202 assisted / 43 manual, all 255 visible.
-Delivered `.6.3` bytes and earlier receipts remain frozen until cohort13 delivery.
-Fifty-three fixed targets are merged and 198 undelivered; classification
+Delivered successor `2026-11-06.5`: 10 automated / 202 assisted / 43 manual, all 255 visible.
+Exact `.6.3` bytes and all earlier receipts remain frozen.
+Sixty-three fixed targets are merged and 188 undelivered; classification
 alone is not delivery.
 G02.02 is explicitly manual; unsupported Terraform vault soft-delete evidence
 remains unknown. Create ready batch issues as implementation proceeds, not 251
@@ -84,7 +84,6 @@ reconciled against the new foundations when resumed on 2026-11-06.
 
 | Cohort | Undelivered GUIDs | High / Medium / Low | Controls with associations |
 |---|---|---|---|
-| 13 | 10 | 5 / 4 / 1 | 1 |
 | 22 | 8 | 4 / 4 / 0 | 0 |
 | 14 | 9 | 3 / 6 / 0 | 4 |
 | 12 | 10 | 3 / 5 / 2 | 2 |
@@ -109,9 +108,14 @@ reconciled against the new foundations when resumed on 2026-11-06.
 | 21 | 8 | 0 / 8 / 0 | 0 |
 | 28 | 8 | 0 / 8 / 0 | 0 |
 
-These remain 198 undelivered GUIDs. Cohorts 19/11/04 left the pending table only after
-actual #90/#93/#96 delivery and their per-GUID receipts. No membership or original baseline
+These remain 188 undelivered GUIDs. Cohorts 19/11/04/13 left the pending table only after
+actual #90/#93/#96/#101 delivery and their per-GUID receipts. No membership or original baseline
 hash changes through reprioritisation.
+
+The owner asked for parallel work. Isolated cohort22/#100 and cohort14/#99
+preparation now runs alongside cohort13 delivery, reusing shared helpers.
+Catalog activation, exact-head merges and receipt reconciliation stay serialized
+under coordinator-granted slots; preparation alone is not delivery.
 
 ## LL-26: automated local review session
 
