@@ -5,6 +5,11 @@ saved observed evidence. All 255 checklist GUIDs remain visible. The current
 catalog has 11 accepted configuration predicates, 201 assisted recommendations
 and 43 manual recommendations.
 
+Resource/cost governance prepares scoped tag counts, dashboard structure,
+capacity-group references and hierarchy context with seven separate blank
+decisions. These do not establish cost attribution, monitoring health, identity
+roles or available capacity; owner awareness and operating plans remain manual.
+
 The NSG and route-count predicates are observed-only. Declared rules/routes do
 not establish complete custom populations. Peering access is an explicit setting,
 not proof of reachability; configured segmentation is not effective isolation.

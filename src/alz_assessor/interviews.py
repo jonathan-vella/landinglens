@@ -6,8 +6,69 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.9"
+BANK_VERSION = "2026-11-06.11"
 BANK = {
+    "development-lifecycle-sovereignty": {
+        "question": "Reconcile the scoped platform AND application source/IaC populations with "
+        "actual version-control use, repository visibility/access and change history; the "
+        "chosen GitHub Flow/trunk/release branch model, consistent naming, protection and fix "
+        "porting; separate PR review, updated-head approvals, checks, merge and bypass "
+        "practices; emergency code fixes, backlog registration and later review/debt/drift "
+        "reconciliation; and declarative desired-state adoption, existing-resource state "
+        "alignment, change previews, deployment and rollback responsibilities. Describe "
+        "security participation in design, code, pipeline and operations, risk/remediation "
+        "ownership and feedback, not merely enabled scans. For sovereignty, bind approved "
+        "geographic and storage/processing requirements to actual build agents, registries/"
+        "replicas, base-image and package origins, redirects, caches, logs and backups. "
+        "Reconcile Azure Geo exceptions; Azure DevOps Services geography versus exact region, "
+        "US macOS/Brazil fallback/token exceptions; GitHub.com versus GHE.com EU/EFTA/Australia/"
+        "US/Japan and storage/telemetry/Copilot/secret-check exceptions; ACR all-replica syncing/"
+        "global routing versus regional layer endpoints; and preview Linux-only dedicated-pool "
+        "regions with external dependencies. Use redacted attributable references, not private "
+        "source/pipeline payloads, identities, hosts, location inventories, registry credentials "
+        "or secret values. Supply each of seven outcomes separately; one narrative, a local "
+        "checkout, compiler, workflow, scan or resource location proves none.",
+        "controls": [
+            "ALZ-cfe363b5-f579-4284-bc56-a42153e4c10b",
+            "ALZ-c7245dd4-af8a-403a-8bb7-890c1a7cfa9d",
+            "ALZ-12aeea20-9165-4b3e-bdf2-6795fcd3cdbe",
+            "ALZ-2676ae46-65ca-444e-8695-fdddeace4cb1",
+            "ALZ-2cdc9d99-dbcc-4ad4-97f5-e7d358bdfa73",
+            "ALZ-cc87a3bc-c572-4ad2-92ed-8cabab66160f",
+            "ALZ-047c91e2-6bb4-4a42-a0ef-ab06ad0062c9",
+        ],
+    },
+    "resource-cost-governance": {
+        "question": "Describe the scoped process that communicates owner responsibilities and "
+        "demonstrates access, budget and policy reviews and remediation. Separately establish "
+        "subscription-owner/core-team quota awareness and provisioning impact: quota is not "
+        "available regional capacity. Reconcile financial suitability and matching-usage "
+        "Reserved Instance discounts separately from accepted on-demand capacity reservation, "
+        "VM/SKU/region/zone association and SLA conditions; discounts do not guarantee capacity. "
+        "Demonstrate working dashboards or other visualizations covering appropriate CPU, "
+        "guest-memory and free-disk capacity, targets and original-time telemetry; tile counts "
+        "and disk I/O are not coverage or health. Cite the approved operating cost plan, "
+        "accountability, forecast/budget, allocation, agreed reviews and corrective actions. "
+        "If server-based identity is applicable, explicitly designate the dedicated identity "
+        "subscription/MG and substantiate hosting/isolation and regional AD DS sites/subnets/"
+        "locator use or managed Domain Services design; names and parent edges prove no role. "
+        "Reconcile approved billing/cost taxonomy and attributable allocation with supported "
+        "service/agreement/scope/access and actual tag-inheritance/conflict/time conditions. "
+        "Resource tags do not automatically inherit; Cost Management inheritance changes "
+        "usage records, not resources or all history. Use redacted references only, never "
+        "personal owner/directory records, tag values, raw dashboard queries/content, "
+        "billing amounts, usage histories or credentials. Decide all seven canonical GUIDs "
+        "separately; configuration or a shared answer alone establishes none.",
+        "controls": [
+            "ALZ-49b82111-2df2-47ee-912e-7f983f630472",
+            "ALZ-2dd69c5b-5c26-422f-94b6-9bad33aad5e8",
+            "ALZ-c68e1d76-6673-413b-9f56-64b5e984a859",
+            "ALZ-c773e7d2-6162-43a7-95a9-17e1f348ef25",
+            "ALZ-ae28c84c-33b6-4b78-88b9-fe5c41049d40",
+            "ALZ-3a923c34-74d0-4001-aac6-a9e01e6a83de",
+            "ALZ-5de32c19-9248-4160-9d5d-1e4e614658d3",
+        ],
+    },
     "expressroute-monitoring-routing-failover": {
         "question": "Reconcile actual Insights availability/utilization for both links, peering "
         "and gateway with maintenance interpretation and arriving alerts/output; configured "

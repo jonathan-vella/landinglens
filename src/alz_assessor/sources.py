@@ -26,6 +26,7 @@ TF_TYPES = {
     "azurerm_log_analytics_workspace": "Microsoft.OperationalInsights/workspaces",
     "azurerm_virtual_network": "Microsoft.Network/virtualNetworks",
     "azurerm_management_group": "Microsoft.Management/managementGroups",
+    "azurerm_portal_dashboard": "Microsoft.Portal/dashboards",
     "azurerm_key_vault": "Microsoft.KeyVault/vaults",
     "azurerm_firewall": "Microsoft.Network/azureFirewalls",
     "azurerm_subnet": "Microsoft.Network/virtualNetworks/subnets",
@@ -126,6 +127,7 @@ def property_at(properties: Any, path: str) -> Any:
 
 
 def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
+    from .governance_evidence import projected_properties as governance_properties
     from .identity_evidence import IDENTITY_KINDS, identity_summary, role_properties
     from .security_evidence import projected_properties as security_properties
 
@@ -141,6 +143,7 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
             TF_TYPES.get(kind, kind), properties, terraform=True, terraform_kind=kind
         )
     )
+    result.update(governance_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     return result
 
 

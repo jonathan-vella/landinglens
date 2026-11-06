@@ -1776,6 +1776,204 @@ SOURCES_22 = [
 ]
 
 
+SOURCES_08 = [
+    (
+        "learn-reuse-terms",
+        LEARN + "legal/termsofuse",
+        ["Personal and Non-Commercial", "Microsoft Learn"],
+        "Reviewed Learn Terms of Use; preserve attribution and URLs/hashes/revisions "
+        "with independently authored factual findings only. No upstream page text, "
+        "images, samples or dashboard contents are redistributed.",
+    ),
+    (
+        "provider-reuse-terms",
+        RAW + "LICENSE",
+        ["Mozilla Public License Version 2.0", "Covered Software"],
+        "Pinned provider license is MPL-2.0. No provider implementation is copied; "
+        "retain metadata, attribution and independently authored mapping findings only.",
+    ),
+    (
+        "owner-access-reviews",
+        "https://learn.microsoft.com/entra/id-governance/access-reviews-overview",
+        ["resource owners", "regularly", "role assignments"],
+        "Access reviews require recurring resource-owner engagement and explicit access "
+        "decisions. An Azure role assignment cannot prove awareness, responsibility, budget "
+        "or policy review, remediation, or the organization's operating process.",
+    ),
+    (
+        "subscription-limits",
+        "https://learn.microsoft.com/azure/azure-resource-manager/management/"
+        "azure-subscription-service-limits",
+        ["regional level", "adjustable limits", "Free Azure trial"],
+        "Service-specific adjustable and fixed limits differ; regional quota increases do "
+        "not propagate to other regions. Public limits are not a subscription's actual "
+        "quota, available capacity, provisioning success or owner awareness.",
+    ),
+    (
+        "reservation-discounts",
+        "https://learn.microsoft.com/azure/cost-management-billing/reservations/"
+        "save-compute-costs-reservations",
+        ["billing discount", "consistent", "scope"],
+        "Reservations discount matching usage based on SKU, applicable region and scope; "
+        "suitability needs attributable baseline demand and financial comparison. They "
+        "do not change resource runtime state or establish available compute capacity.",
+    ),
+    (
+        "capacity-not-quota-or-discount",
+        LEARN + "azure/virtual-machines/capacity-reservation-overview",
+        ["Quota and capacity are separate", "don't guarantee capacity", "SLA"],
+        "On-demand capacity reservation is distinct from Reserved Instance billing discounts. "
+        "Creation needs both quota and available capacity; matching VM association and "
+        "applicable SKU/region/zone/SLA conditions matter. A configured group reference alone "
+        "is neither accepted capacity nor cost suitability. No purchase or capacity read.",
+    ),
+    (
+        "portal-dashboards",
+        "https://learn.microsoft.com/azure/azure-portal/azure-portal-dashboards",
+        ["private", "Metrics chart", "configuration"],
+        "Shared dashboards are subscription resources while private dashboards need not be "
+        "in resource inventory. Tile presence is not configured CPU/memory/free-disk coverage, "
+        "correct target/time window, working telemetry, operational health or actual use.",
+    ),
+    (
+        "dashboard-structure",
+        LEARN + "azure/azure-portal/azure-portal-dashboards-structure",
+        ["lenses", "MetricsChartPart", "MarkdownPart", "Disk Read Operations"],
+        "Reviewed lenses/parts and exact MetricsChartPart/MarkdownPart type strings support "
+        "only minimized structural counts. Disk I/O is not free disk space. Inputs, queries, "
+        "titles, markdown, metric values and arbitrary tile payloads are never retained.",
+    ),
+    (
+        "cost-operating-plan",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/get-started/manage-costs",
+        ["cost", "responsibilities", "business"],
+        "The original manage-costs link now redirects to manage/administer. Its broader "
+        "operating guidance does not establish a detailed cost plan; reviewer must reconcile "
+        "accountability, budget/forecast, allocation, review cadence and corrective actions.",
+    ),
+    (
+        "cost-plan-current",
+        LEARN + "azure/cloud-adoption-framework/ready/azure-setup-guide/manage-costs",
+        ["cost", "budget"],
+        "Current cost optimization guidance supplements the redirected checklist link. "
+        "A documented and operating process, agreed requirements and attributable reviews "
+        "remain manual; no fixed budget, utilization threshold or responsibility is invented.",
+    ),
+    (
+        "management-hierarchy",
+        "https://learn.microsoft.com/azure/governance/management-groups/overview",
+        ["only one parent", "root management group", "Microsoft Customer Agreement"],
+        "MGs provide policy/access inheritance, not resource-tag inheritance or unrestricted "
+        "billing visibility. Each MG/subscription has one parent; MCA cost-management support "
+        "differs. Names/display names never designate an approved identity role.",
+    ),
+    (
+        "identity-placement",
+        LEARN + "azure/cloud-adoption-framework/ready/landing-zone/design-area/"
+        "resource-org-management-groups",
+        ["Identity", "dedicated subscription", "platform"],
+        "The reference Identity MG contains a dedicated identity subscription under Platform. "
+        "That conditional architecture is not proved by an identity-like name, VM location, "
+        "parent ID or subscription membership; application identity requirements need review.",
+    ),
+    (
+        "regional-domain-controllers",
+        LEARN + "azure/cloud-adoption-framework/ready/landing-zone/design-area/"
+        "identity-access-active-directory-hybrid-identity",
+        ["site design", "same Azure region", "Identity subscription"],
+        "Current hybrid identity guidance places domain controllers in an isolated Identity "
+        "platform subscription. AD DS sites/subnets and locator behavior support regional "
+        "use; same-region VMs, DNS settings or labels alone do not prove DC role or usage. "
+        "Entra ID, managed Domain Services and self-managed AD DS remain distinct.",
+    ),
+    (
+        "billing-tags",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/"
+        "azure-best-practices/track-costs",
+        ["tagging strategy", "billing", "Scope"],
+        "Example business/cost tags are organization-dependent, not a required key set. "
+        "Billing agreement, supported scope, authorized visibility and allocation semantics "
+        "must be reviewed independently of tag presence or role assignment.",
+    ),
+    (
+        "tag-rules",
+        LEARN + "azure/azure-resource-manager/management/tag-resources",
+        ["not to management groups", "don't inherit", "plain text", "50"],
+        "Resources/RGs/subscriptions support tags subject to provider limits; MGs do not. "
+        "Keys are case-insensitive, values case-sensitive. Resource tags do not automatically "
+        "inherit. Retain only validated explicit pair count, never keys/values or defaults.",
+    ),
+    (
+        "cost-tag-inheritance",
+        LEARN + "azure/cost-management-billing/costs/enable-tag-inheritance",
+        ["usage records", "not the resources", "current month", "24 hours"],
+        "Cost Management inheritance is opt-in and agreement/scope/permission dependent "
+        "(EA/MCA/MPA Azure plan). It changes usage records, not resources, within the current "
+        "month after processing; conflict precedence is configurable. Resource-tag counts "
+        "do not attest billing allocation, actual inheritance setting or historical coverage.",
+    ),
+    (
+        "dashboard-arm",
+        LEARN + "azure/templates/microsoft.portal/2020-09-01-preview/dashboards",
+        ["DashboardLens", "DashboardParts", "lenses", "tags"],
+        "Pinned planned-only 2020-09-01-preview exposes lens/part arrays and opaque metadata. "
+        "Only structural counts and reviewed exact type classifications are projected. "
+        "Unsupported shapes and malformed/over-bound content remain explicit unknowns.",
+    ),
+    (
+        "management-arm",
+        LEARN + "azure/templates/microsoft.management/2020-05-01/managementgroups",
+        ["details", "parent", "tenant"],
+        "Pinned 2020-05-01 exposes explicit details.parent.id. Omitted parent is not guessed "
+        "as root; tenant-scope creation is outside this assessor's scope model. Existing "
+        "saved descendant relationships are context only, not a role-designation predicate.",
+    ),
+    (
+        "vm-capacity-arm",
+        LEARN + "azure/templates/microsoft.compute/2024-07-01/virtualmachines",
+        ["capacityReservationGroup", "capacityReservation", "id"],
+        "Project only an explicit typed capacityReservation.capacityReservationGroup.id "
+        "reference. Exclude credentials/OS data, reservation prices, consumption and "
+        "capacity claims; resource-group/region/SKU matching requires separate review.",
+    ),
+    (
+        "terraform-dashboard",
+        RAW + "website/docs/r/portal_dashboard.html.markdown",
+        ["dashboard_properties", "lenses", "parts", "hidden-title"],
+        "Pinned 4.50.0 dashboard_properties is JSON with object-keyed lenses/parts in its "
+        "example, unlike the ARM array shape. Bounded literal JSON is normalized separately; "
+        "symbolic/malformed/duplicate-key input is unknown. Titles, tags and content withheld.",
+    ),
+    (
+        "terraform-management",
+        RAW + "website/docs/r/management_group.html.markdown",
+        ["parent_management_group_id", "subscription_ids", "2020-05-01"],
+        "Pinned 4.50.0 supports an explicit parent MG ID and subscription UUID list; "
+        "membership conflicts with standalone associations. Omitted/computed parents, "
+        "subscription purpose, inherited policy and regional DC use are not inferred.",
+    ),
+    (
+        "terraform-dashboard-implementation",
+        RAW + "internal/services/portal/portal_dashboard_resource.go",
+        ["2019-01-01-preview", "json.Unmarshal", "dashboard_properties"],
+        "The pinned provider uses 2019-01-01-preview and parses literal dashboard JSON. "
+        "Do not claim its object-keyed schema is the ARM 2020 array schema; both bounded "
+        "representations are separately tested. No provider or Terraform is executed.",
+    ),
+    *[
+        (
+            f"terraform-{os}-capacity",
+            RAW + f"website/docs/r/{os}_virtual_machine.html.markdown",
+            ["capacity_reservation_group_id", "tags"],
+            f"Pinned {os} VM supports explicit capacity_reservation_group_id and tags. "
+            "Only typed group reference and validated tag pair count are preparable, "
+            "not a Reserved Instance discount, financial suitability or available capacity.",
+        )
+        for os in ("linux", "windows")
+    ],
+]
+
+
 SOURCES_15 = [
     (
         "expressroute-gateway-propagation",
@@ -2137,18 +2335,230 @@ def microsoft_site_terms(url: str) -> bool:
     )
 
 
+DOCS_REVISION = "c9d8b26db3b48d8d3e1d91f4cef575623ff12f83"
+DOCS_RAW = f"https://raw.githubusercontent.com/github/docs/{DOCS_REVISION}/"
+SOURCES_30 = [
+    (
+        "caf-iac-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/"
+        "infrastructure-as-code",
+        ["implementation options", "version control", "Bicep"],
+        "The actual checklist IaC link redirects to platform implementation options. AVM/"
+        "accelerator capability does not establish platform or workload adoption.",
+    ),
+    (
+        "caf-lifecycle-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/"
+        "development-strategy-development-lifecycle",
+        ["Repository strategy", "Branch strategy", "pull request", "squash"],
+        "CAF recommends Git, private landing-zone repositories, trunk-based development, "
+        "branch permissions/policies, separate PR review and squash merges. No fixed reviewer "
+        "count or branch lifetime is an organization-specific requirement.",
+    ),
+    (
+        "caf-management-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/"
+        "design-area/management-platform",
+        ["Inventory", "visibility", "monitoring"],
+        "The original H02.04 link now concerns inventory and visibility, not emergency-fix "
+        "backlog reconciliation. Preserve the original link and use current CAF automation "
+        "guidance for the actual quick-fix process.",
+    ),
+    (
+        "caf-security-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/"
+        "landing-zone-security#secure",
+        ["DevSecOps", "Secure the design", "Secure operations"],
+        "Security integration covers people and design/code/pipeline/operations throughout "
+        "the lifecycle. A passing scan or enabled workflow cannot attest integration, "
+        "risk ownership, remediation or operational feedback.",
+    ),
+    (
+        "azure-residency-linked",
+        "https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency",
+        ["Geo", "Preview", "authorization"],
+        "Azure's general Geo commitments have explicit service and preview exceptions. "
+        "Region, geography, storage and processing are distinct; these commitments cannot "
+        "be generalized to GitHub, Azure DevOps or every upstream package/image service.",
+    ),
+    (
+        "caf-iac-updates",
+        LEARN
+        + "azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code-updates",
+        ["declarative", "state management", "emergency", "human approval"],
+        "Declarative desired state differs from imperative scripts. Existing non-IaC "
+        "resources need explicit state alignment; platform/workload maintenance, drift, "
+        "reviewed changes and emergency reconciliation need attributable process evidence. "
+        "Neither an IaC file nor compilation proves lifecycle management.",
+    ),
+    (
+        "caf-automation",
+        LEARN + "azure/cloud-adoption-framework/ready/considerations/automation",
+        ["quick fixes", "backlog", "technical debt", "4-eyes"],
+        "CAF explicitly requires registering quick fixes in the backlog and later reworking "
+        "them to limit technical debt; emergency portal fixes must return to code. "
+        "A ticket or hotfix branch alone cannot prove this process was followed.",
+    ),
+    (
+        "azure-repos-branching",
+        LEARN + "azure/devops/repos/git/git-branching-guidance?view=azure-devops",
+        ["feature branches", "pull requests", "release branch"],
+        "Simple feature/main/PR discipline and release fix porting are supported strategies. "
+        "The article's suggested two reviewers is not a mandatory universal threshold; "
+        "actual protected branches, bypasses and review practices require scoped evidence.",
+    ),
+    (
+        "devops-residency",
+        LEARN + "azure/devops/organizations/security/data-location?view=azure-devops",
+        ["Token data", "Brazil", "macOS", "United States"],
+        "Azure DevOps Services customer data uses a selected geography with exceptions: "
+        "token data is US; profile/support/preview data have separate boundaries; "
+        "macOS jobs transfer data to GitHub's US datacenter; Brazil replicates to South "
+        "Central US. These are not Azure DevOps Server or exact-region guarantees.",
+    ),
+    (
+        "devops-hosted-agents",
+        LEARN + "azure/devops/pipelines/agents/hosted?view=azure-devops",
+        ["any of the regions", "Brazil South", "fallback", "macOS"],
+        "Windows/Linux agents can use any region in the organization's geography, not "
+        "necessarily its exact region. EU organizations stay within the EU boundary; "
+        "Brazil South has US capacity fallback; macOS agents always run in the US. "
+        "An OS/pool label is not evidence of an actual assessed job's location.",
+    ),
+    (
+        "acr-geo-replication",
+        LEARN + "azure/container-registry/container-registry-geo-replication",
+        ["all geo-replicas", "eventual consistency", "global endpoint", "Premium"],
+        "Premium ACR replicates content and metadata to all selected replicas with eventual "
+        "consistency. Global endpoints use network/health routing, not a residency promise. "
+        "Regional serving does not remove other stored copies or upstream dependencies.",
+    ),
+    (
+        "acr-data-endpoints",
+        LEARN + "azure/container-registry/container-registry-dedicated-data-endpoints",
+        ["307", "downloads", "same region", "Premium"],
+        "Dedicated data endpoints serve layer downloads, not uploads. The 307 layer redirect "
+        "stays in the serving replica's region; global replica selection and all stored "
+        "replicas still need review. No host-name-derived sovereignty pass is justified.",
+    ),
+    (
+        "acr-tasks",
+        LEARN + "azure/container-registry/container-registry-tasks-overview",
+        ["source code context", "base image", "diagnostic tracing"],
+        "Tasks can send source context to Azure and consume local, Git, remote tarball or "
+        "OCI contexts and public base images. Task/image presence does not prove execution "
+        "or upstream residency. Command-line/URI secrets can enter diagnostic tracing; "
+        "retain redacted references only, never context payloads, tokens or credentials.",
+    ),
+    (
+        "acr-task-agent-pools",
+        LEARN + "azure/container-registry/tasks-agent-pools",
+        ["preview", "Linux", "Windows", "precached"],
+        "Premium dedicated task pools are preview, Linux-only and limited to the published "
+        "regions, including listed public-cloud and USGov regions. The VNet/pool does not "
+        "bound all dependencies: service endpoints, diagnostics, package restores, external "
+        "registries and changing precached base images still require review. No preview "
+        "eligibility or actual pool residency is inferred from a registry location.",
+    ),
+    (
+        "github-flow",
+        DOCS_RAW + "content/get-started/using-github/github-flow.md",
+        ["lightweight", "branch", "review"],
+        "GitHub Flow is a lightweight branch-based strategy, not a mandated strategy for "
+        "every release model. Review, checks and protected-branch requirements are separate "
+        "from a local branch or PR's presence.",
+    ),
+    (
+        "github-residency",
+        DOCS_RAW + "content/admin/data-residency/"
+        "about-github-enterprise-cloud-with-data-residency.md",
+        ["USA", "GHE.com", "data residency"],
+        "GitHub.com defaults to US storage. Enterprise Cloud residency is a distinct "
+        "GHE.com deployment; current documented regions are EU including EFTA Norway/"
+        "Switzerland, Australia, US and Japan. This EU boundary differs from Azure "
+        "DevOps' EU-only hosted-agent boundary and is not country-level sovereignty.",
+    ),
+    (
+        "github-residency-storage",
+        DOCS_RAW + "content/admin/data-residency/about-storage-of-your-data-with-data-residency.md",
+        ["outside your region", "Copilot", "prodname_secret_scanning"],
+        "GHE.com stores customer content and identifiable Actions/BCDR data in-region, "
+        "with exceptions for pseudonymous telemetry, billing, support, optional secret "
+        "validity checks and Copilot. Current compliant-model policy changes Copilot's "
+        "boundary; do not infer enrollment or settings. External actions, caches, package "
+        "registries and upstream base images need independently attributable review.",
+    ),
+    (
+        "github-residency-rendered",
+        "https://docs.github.com/en/enterprise-cloud@latest/admin/data-residency/"
+        "about-github-enterprise-cloud-with-data-residency",
+        ["Norway", "Switzerland", "Japan", "GHE.com"],
+        "Rendered official page includes reused region content absent from the pinned "
+        "article file. Hash this actually reviewed EU/EFTA/Australia/US/Japan boundary; "
+        "retrieved-page means no published commit identity, not a fabricated revision.",
+    ),
+    (
+        "github-storage-rendered",
+        "https://docs.github.com/en/enterprise-cloud@latest/admin/data-residency/"
+        "about-storage-of-your-data-with-data-residency",
+        ["outside your region", "Copilot", "Secret scanning"],
+        "Rendered official storage exceptions complement the pinned template source. "
+        "Compliant Copilot inference is conditional on the specified policy; no actual "
+        "enterprise configuration or human authorization is asserted.",
+    ),
+    (
+        "github-docs-reuse",
+        DOCS_RAW + "LICENSE",
+        ["Attribution 4.0 International"],
+        "Pinned GitHub documentation uses CC-BY-4.0. Retain attribution, exact revision/"
+        "hash and original factual findings only; no page content or assets redistributed.",
+    ),
+    (
+        "learn-reuse",
+        LEARN + "legal/termsofuse",
+        ["Notice Specific to Documents", "explicit license terms"],
+        "Learn document terms are constrained; separately explicit licenses can govern. "
+        "Keep source metadata and original factual findings only, not article copies.",
+    ),
+    (
+        "microsoft-site-reuse",
+        "https://www.microsoft.com/en-us/legal/terms-of-use",
+        ["Documents", "Personal and Non-Commercial"],
+        "Microsoft site terms do not grant unrestricted reuse of Azure marketing pages. "
+        "Keep linked metadata, checksum and original factual findings, not page text/assets.",
+    ),
+]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
     parser.add_argument("--preparation-only", action="store_true")
     parser.add_argument(
         "--batch",
-        choices=["01", "04", "11", "12", "13", "14", "15", "17", "18", "19", "20", "22"],
+        choices=[
+            "01",
+            "04",
+            "08",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "17",
+            "18",
+            "19",
+            "20",
+            "22",
+            "30",
+        ],
         default="01",
     )
     args = parser.parse_args()
-    if (args.batch in {"12", "20"}) != args.preparation_only:
-        raise ValueError("Cohorts 12/20 source capture require --preparation-only; no activation")
+    if (args.batch in {"12", "20", "30"}) != args.preparation_only:
+        raise ValueError(
+            "Cohorts 12/20/30 source capture require --preparation-only; no activation"
+        )
     prefix = "preparation" if args.preparation_only else "batch"
     target = ROOT / "references" / "recommendation-batches" / f"{prefix}-{args.batch}-sources.json"
     if target.exists() and not args.append_new_sources:
@@ -2158,6 +2568,7 @@ def main() -> None:
     for identity, url, markers, finding in {
         "01": SOURCES,
         "04": SOURCES_04,
+        "08": SOURCES_08,
         "11": SOURCES_11,
         "12": SOURCES_12,
         "13": SOURCES_13,
@@ -2168,6 +2579,7 @@ def main() -> None:
         "19": SOURCES_19,
         "20": SOURCES_20,
         "22": SOURCES_22,
+        "30": SOURCES_30,
     }[args.batch]:
         if identity in existing:
             if existing[identity]["url"] != url:
@@ -2200,6 +2612,8 @@ def main() -> None:
                 if url.startswith(ALZ_RAW)
                 else POLICY_REVISION
                 if url.startswith(POLICY_RAW)
+                else DOCS_REVISION
+                if url.startswith(DOCS_RAW)
                 else match.group(1)
                 if match
                 else "retrieved-page",
@@ -2210,9 +2624,12 @@ def main() -> None:
                 if url.startswith(SPEC_RAW)
                 else "MIT Azure policy/library: metadata and own factual findings only"
                 if url.startswith((ALZ_RAW, POLICY_RAW))
+                else "CC-BY-4.0 GitHub Docs: attributed metadata and own findings only; "
+                "no page content redistributed"
+                if url.startswith(DOCS_RAW) or urlsplit(url).netloc == "docs.github.com"
                 else "Microsoft site terms: linked metadata and own findings only; "
                 "no article/comments/sample scripts redistributed"
-                if microsoft_site_terms(url)
+                if microsoft_site_terms(url) or urlsplit(url).netloc == "azure.microsoft.com"
                 else (
                     "Microsoft Learn attribution: source metadata and own factual findings only; "
                     "no page content redistributed"

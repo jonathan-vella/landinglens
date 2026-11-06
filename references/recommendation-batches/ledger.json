@@ -270,6 +270,66 @@
       },
       "wheel_sha256": "d0fcb7941178c76168e3316d43dc06c86693e17ea7fc42684b5a5f177d98696c",
       "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
+    },
+    "08": {
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/116",
+      "merge_commit": "2fe56d0c5d43c00b1924f84c5119ff7a297bf1dd",
+      "merged_at": "2026-11-06T13:45:25Z",
+      "checked_head": "60613e671665a45aad6919903415a3dda7cafd7f",
+      "checks": [
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42227197426",
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42227223772"
+      ],
+      "acceptance": "Actual push/PR runs on the merged head passed all eight supported jobs. All four downloaded PR compiler artifacts exercised the same integration cases without skips. Normal exact-head merge and other applicable checks were gated before recording; this receipt does not imply protected-branch enforcement.",
+      "compiler_integration_cases": [
+        "test_bicep.BicepTests.test_actual_installed_compiler_local_success_and_unrestored_failure",
+        "test_segmentation_batch.SegmentationBatchTests.test_real_bicep_nsg_gateway_subnet_flow_without_restore",
+        "test_routing_batch.RoutingBatchTests.test_real_bicep_routing_peering_lb_macsec_connection_no_restore",
+        "test_identity_batch.IdentityBatchTests.test_real_bicep_storage_identity_role_context_without_restore",
+        "test_protection_batch.ProtectionBatchTests.test_real_bicep_protection_outbound_hybrid_no_restore",
+        "test_security_batch.SecurityBatchTests.test_real_bicep_security_configuration_without_restore",
+        "test_expressroute_preparation.ExpressRoutePreparationTests.test_real_bicep_expressroute_cost_capacity_fastpath_without_restore",
+        "test_dns_batch.DnsBatchTests.test_real_bicep_dns_bastion_no_restore",
+        "test_monitoring_preparation.MonitoringPreparationTests.test_real_bicep_monitor_and_gateway_route_join_without_restore",
+        "test_governance_preparation.GovernancePreparationTests.test_real_bicep_governance_without_restore"
+      ],
+      "local_installed_suite": {
+        "tests": 441,
+        "passed": 440,
+        "skipped": 1
+      },
+      "wheel_sha256": "6a0c87ea08b6a2cba085d777b1a028fb609c37de056c2d3b0682529d35692116",
+      "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
+    },
+    "30": {
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/119",
+      "merge_commit": "b1dc6a4898781a7f4238f110e2e13d321f81a484",
+      "merged_at": "2026-11-06T14:23:00Z",
+      "checked_head": "84463f566855351e5aa985b09feaaaf6c68f6e9c",
+      "checks": [
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42232134247",
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42232181318"
+      ],
+      "acceptance": "Actual push/PR runs on the merged head passed all eight supported jobs. All four downloaded PR compiler artifacts exercised the same integration cases without skips. Normal exact-head merge and other applicable checks were gated before recording; this receipt does not imply protected-branch enforcement.",
+      "compiler_integration_cases": [
+        "test_bicep.BicepTests.test_actual_installed_compiler_local_success_and_unrestored_failure",
+        "test_segmentation_batch.SegmentationBatchTests.test_real_bicep_nsg_gateway_subnet_flow_without_restore",
+        "test_routing_batch.RoutingBatchTests.test_real_bicep_routing_peering_lb_macsec_connection_no_restore",
+        "test_identity_batch.IdentityBatchTests.test_real_bicep_storage_identity_role_context_without_restore",
+        "test_protection_batch.ProtectionBatchTests.test_real_bicep_protection_outbound_hybrid_no_restore",
+        "test_security_batch.SecurityBatchTests.test_real_bicep_security_configuration_without_restore",
+        "test_expressroute_preparation.ExpressRoutePreparationTests.test_real_bicep_expressroute_cost_capacity_fastpath_without_restore",
+        "test_dns_batch.DnsBatchTests.test_real_bicep_dns_bastion_no_restore",
+        "test_monitoring_preparation.MonitoringPreparationTests.test_real_bicep_monitor_and_gateway_route_join_without_restore",
+        "test_governance_preparation.GovernancePreparationTests.test_real_bicep_governance_without_restore"
+      ],
+      "local_installed_suite": {
+        "tests": 458,
+        "passed": 457,
+        "skipped": 1
+      },
+      "wheel_sha256": "683714ac1d1edb586ab813d08f2dfd0aaf73c3dc85b398f2cfc42e490360e2fb",
+      "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
     }
   },
   "recommendations": [
@@ -1582,12 +1642,40 @@
       "baseline_control_sha256": "75d813d3cb2157cab2f2458ca182e70347d85274bb78e5c971df9d375a5e80fd",
       "design_area": "Resource organization",
       "batch": "08",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "C02.08",
+        "guid": "49b82111-2df2-47ee-912e-7f983f630472",
+        "classification": "manual",
+        "implemented_subclaim": "Scoped existing minimized assignment types/role definitions prepare a specific accountability/access/budget/policy/remediation review; no personal principals or invented process attestation.",
+        "sources": [
+          "owner-access-reviews",
+          "cost-operating-plan",
+          "billing-tags"
+        ],
+        "review_resource_types": [
+          "Microsoft.Authorization/roleAssignments"
+        ],
+        "review_fact_paths": [
+          "principalType",
+          "roleDefinitionId"
+        ],
+        "evidence_requirements": [
+          "Preparation: existing minimized assignment type/role and original-time policy context can orient a review; no personal principals, access-review records or owner identities are collected.",
+          "Reviewer decision: cite the approved scoped accountability/communication process and redacted acknowledgement evidence; identify who is responsible without retaining personal records.",
+          "Reviewer decision: separately substantiate recurring access review, budget review, policy-compliance review and remediation/escalation with attributable dated references and agreed cadence; assignment presence proves none."
+        ],
+        "limitations": "Manual awareness and operating effectiveness. No role, tag, inherited scope, policy assignment or budget proves that resource owners understand or carry out responsibilities. No new Entra/access/cost reads, required cadence or organizational responsibility is invented.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/109",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/116",
+      "merge_commit": "2fe56d0c5d43c00b1924f84c5119ff7a297bf1dd",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.08: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "2dd69c5b-5c26-422f-94b6-9bad33aad5e8",
@@ -1597,12 +1685,32 @@
       "baseline_control_sha256": "2e2404a4fd569a0a9e8c6edc662d5b14bd79621d201fe20d6c14d2de96955aaa",
       "design_area": "Resource organization",
       "batch": "08",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "C02.09",
+        "guid": "2dd69c5b-5c26-422f-94b6-9bad33aad5e8",
+        "classification": "manual",
+        "implemented_subclaim": "Source-reviewed service/region/offer-specific quota and provisioning questions distinguish public limits from actual quota and available capacity without invented headroom or awareness.",
+        "sources": [
+          "subscription-limits",
+          "capacity-not-quota-or-discount"
+        ],
+        "evidence_requirements": [
+          "Preparation: reviewed service-specific quota guidance distinguishes adjustable limits, fixed constraints, subscription offers, regional vCPU-family/total limits and physical capacity; no live quota or usage is collected.",
+          "Reviewer decision: cite the subscription owners' and core IT team's explicit quota-awareness process, scoped service/region requirements and dated communication/training references.",
+          "Reviewer decision: reconcile provisioning impact, lead time and escalation with actual separately authorized quota/capacity evidence; a published maximum or granted quota does not guarantee regional capacity or provisioning success."
+        ],
+        "limitations": "Manual awareness and planning. No universal quota threshold, headroom, regional availability or increase approval is inferred. Missing quota, usage or capacity evidence remains unavailable, not zero or sufficient.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/109",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/116",
+      "merge_commit": "2fe56d0c5d43c00b1924f84c5119ff7a297bf1dd",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.08: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "c68e1d76-6673-413b-9f56-64b5e984a859",
@@ -1612,12 +1720,41 @@
       "baseline_control_sha256": "55ae3b65e8ed0d87ab08d7b0a8907c8e44683749ac6c4dccbf27faf62f57c61e",
       "design_area": "Resource organization",
       "batch": "08",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "C02.10",
+        "guid": "c68e1d76-6673-413b-9f56-64b5e984a859",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit typed in-scope VM capacity-reservation-group reference prepares separate capacity-versus-discount and financial-suitability decisions; no availability or savings predicate.",
+        "sources": [
+          "reservation-discounts",
+          "capacity-not-quota-or-discount",
+          "vm-capacity-arm",
+          "terraform-linux-capacity",
+          "terraform-windows-capacity"
+        ],
+        "review_resource_types": [
+          "Microsoft.Compute/virtualMachines"
+        ],
+        "review_fact_paths": [
+          "capacityReservationGroupId"
+        ],
+        "evidence_requirements": [
+          "Preparation: only an explicit typed VM capacity-reservation-group reference; this is on-demand capacity configuration, not a Reserved Instance purchase/discount or proof of reserved availability.",
+          "Reviewer decision: reconcile separately authorized redacted demand and SKU/region/scope/term matching with reservation discount suitability, financial commitment and alternatives; no utilization or break-even threshold is imposed.",
+          "Reviewer decision: independently review accepted capacity reservation and matching VM/SKU/region/zone association, available quota, support restrictions and SLA conditions. Explicitly correct the checklist's conflation of Reserved Instance discounts with capacity guarantees."
+        ],
+        "limitations": "Reserved Instances provide matching-usage billing discounts only; on-demand capacity reservations address capacity under distinct quota/availability/SLA conditions. A configured reference proves neither actual reservation acceptance/capacity nor business/cost suitability. No billing amounts, usage history, purchase or cancellation.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/109",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/116",
+      "merge_commit": "2fe56d0c5d43c00b1924f84c5119ff7a297bf1dd",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.08: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "c773e7d2-6162-43a7-95a9-17e1f348ef25",
@@ -1627,12 +1764,41 @@
       "baseline_control_sha256": "2b475c5b30d4a5426c9b590f71fecc4b993e01625c21b903620b1173c149fa06",
       "design_area": "Resource organization",
       "batch": "08",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "C02.11",
+        "guid": "c773e7d2-6162-43a7-95a9-17e1f348ef25",
+        "classification": "assisted",
+        "implemented_subclaim": "In-scope dashboard lens/tile and exact reviewed metrics-chart/markdown/other counts, with typed bounds and separate ARM-array/Terraform-object normalization, retain no opaque tile payload.",
+        "sources": [
+          "portal-dashboards",
+          "dashboard-structure",
+          "dashboard-arm",
+          "terraform-dashboard",
+          "terraform-dashboard-implementation"
+        ],
+        "review_resource_types": [
+          "Microsoft.Portal/dashboards"
+        ],
+        "review_fact_paths": [
+          "dashboardSummary"
+        ],
+        "evidence_requirements": [
+          "Preparation: explicit bounded lens/tile and exact reviewed metrics-chart/markdown/other counts only; ARM array and pinned Terraform object representations are distinct. Private dashboards and other visualization tools may be outside inventory.",
+          "Reviewer decision: demonstrate actual appropriate compute/storage targets, CPU, guest memory and free-disk capacity coverage, time window, current telemetry and intended operational use with redacted evidence references.",
+          "Reviewer decision: distinguish disk I/O from free disk space, tile presence from configuration/health and monitoring coverage from agreed capacity action requirements; no raw queries, markdown, inputs or metric readings are retained."
+        ],
+        "limitations": "Structural dashboard facts are partial review preparation only. A metrics tile can be unconfigured, inaccessible, stale or target the wrong resource; arbitrary or markdown tiles do not prove capacity monitoring. No metric/query execution, health conclusion, utilization threshold or raw payload retention.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/109",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/116",
+      "merge_commit": "2fe56d0c5d43c00b1924f84c5119ff7a297bf1dd",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.08: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "ae28c84c-33b6-4b78-88b9-fe5c41049d40",
@@ -1642,12 +1808,34 @@
       "baseline_control_sha256": "3c2ab184ce96ca45038c59897ce10d9621133f6d322ac11b6213bd4637d8e9e2",
       "design_area": "Resource organization",
       "batch": "08",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "C02.12",
+        "guid": "ae28c84c-33b6-4b78-88b9-fe5c41049d40",
+        "classification": "manual",
+        "implemented_subclaim": "Specific operating-plan workflow covers accountability, budgets/forecast, allocation, agreed reviews, optimization and corrective actions using redacted dated references; no technical flag attests a process.",
+        "sources": [
+          "cost-operating-plan",
+          "cost-plan-current",
+          "billing-tags",
+          "cost-tag-inheritance"
+        ],
+        "evidence_requirements": [
+          "Preparation: the checklist's manage-costs URL redirects to broader manage/administer guidance; current setup-guide cost planning and billing/tag conditions supplement it without claiming a deployed plan.",
+          "Reviewer decision: cite the approved scoped cost-management operating plan covering accountable roles, budget/forecast, allocation, agreed reporting/review cadence, optimization and corrective/escalation actions.",
+          "Reviewer decision: substantiate actual dated operation and business alignment with attributable redacted references; no tag, dashboard, reservation or shared narrative establishes the plan or approval."
+        ],
+        "limitations": "Inherently manual operating-plan and effectiveness judgment. No billing records, budget amount, usage history, financial authority, required threshold or organizational role is invented. Technical configuration alone is not an operating process.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/109",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/116",
+      "merge_commit": "2fe56d0c5d43c00b1924f84c5119ff7a297bf1dd",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.08: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "3a923c34-74d0-4001-aac6-a9e01e6a83de",
@@ -1657,12 +1845,41 @@
       "baseline_control_sha256": "a9855c2cde5ad3b96fe45103428fa9936e289d5659ee034310c594cc40d5a4bd",
       "design_area": "Resource organization",
       "batch": "08",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "C02.13",
+        "guid": "3a923c34-74d0-4001-aac6-a9e01e6a83de",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit typed MG parent and existing saved unique rooted MG/subscription edges provide original-time scoped placement context; dedicated identity role and actual regional DC use remain separate decisions.",
+        "sources": [
+          "management-hierarchy",
+          "identity-placement",
+          "regional-domain-controllers",
+          "management-arm",
+          "terraform-management"
+        ],
+        "review_resource_types": [
+          "Microsoft.Management/managementGroups"
+        ],
+        "review_fact_paths": [
+          "managementParentId"
+        ],
+        "evidence_requirements": [
+          "Preparation: explicit typed MG parent and existing bounded saved Collector parent relationships retain original time, selected scope and completeness. Omitted parents, root designation, subscription purpose and out-of-scope ancestry are not inferred.",
+          "Reviewer decision: confirm whether server-based identity services are applicable and identify the explicitly approved identity subscription/MG using redacted architecture evidence, not names, labels or tags.",
+          "Reviewer decision: substantiate dedicated isolation and actual identity-service hosting; separately review required regional AD DS sites/subnets and domain-controller locator/use or managed Domain Services replica design. Co-location, region strings and DNS settings alone prove none."
+        ],
+        "limitations": "Configuration and positive parent edges are partial facts, not a dedicated identity-role designation, complete inherited governance, root access, billing visibility or actual regional DC use. Entra ID, managed Domain Services and self-managed AD DS differ. Tenant deployments, directory records, DC discovery and network tests stay out of scope.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/109",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/116",
+      "merge_commit": "2fe56d0c5d43c00b1924f84c5119ff7a297bf1dd",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.08: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "5de32c19-9248-4160-9d5d-1e4e614658d3",
@@ -1672,12 +1889,45 @@
       "baseline_control_sha256": "9453387bf7643533a774739e2dc3692286d7a82612fcce0ab5b42893bf2f1e13",
       "design_area": "Resource organization",
       "batch": "08",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "C02.14",
+        "guid": "5de32c19-9248-4160-9d5d-1e4e614658d3",
+        "classification": "assisted",
+        "implemented_subclaim": "Validated explicit pair count for reviewed in-scope resource types, never keys/values; distinguish empty supplied tags from missing/malformed input and organization-specific cost taxonomy/billing inheritance.",
+        "sources": [
+          "billing-tags",
+          "tag-rules",
+          "cost-tag-inheritance",
+          "terraform-linux-capacity",
+          "terraform-windows-capacity"
+        ],
+        "review_resource_types": [
+          "Microsoft.Compute/virtualMachines",
+          "Microsoft.Storage/storageAccounts",
+          "Microsoft.Portal/dashboards",
+          "Microsoft.Resources/resourceGroups",
+          "Microsoft.Resources/subscriptions"
+        ],
+        "review_fact_paths": [
+          "tagCount"
+        ],
+        "evidence_requirements": [
+          "Preparation: explicit validated tag-pair count only for reviewed resource types, with no tag keys or values. Empty is zero supplied pairs, missing/unresolved/malformed/ambiguous/over-bound is unknown. MGs do not support tags.",
+          "Reviewer decision: confirm the organization's approved billing/cost allocation taxonomy, consistency and actual usage-record/cost-report attribution with redacted references; example tag keys are not mandatory requirements.",
+          "Reviewer decision: reconcile supported service/billing agreement/scope, access and effective Cost Management tag inheritance/conflict settings and current-month processing delay. Resource tags do not automatically inherit; billing inheritance affects usage records, not resources or all history."
+        ],
+        "limitations": "Presence/count cannot prove billing support, relevant classification, effective cost allocation, inherited tags or actual ownership. No invented required key set, tag values, cost/usage records, policy execution or financial action. Unreviewed resource types remain unsupported.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/109",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/116",
+      "merge_commit": "2fe56d0c5d43c00b1924f84c5119ff7a297bf1dd",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.08: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "6cc0ea22-42bb-441e-a345-804ab0a09666",
@@ -7366,12 +7616,37 @@
       "baseline_control_sha256": "ed1272f7cd3e90d5c290b7ce87b18a463bf5980effe914c1d61f3a08889ba189",
       "design_area": "Platform automation and DevOps",
       "batch": "30",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "cfe363b5-f579-4284-bc56-a42153e4c10b",
+        "upstream_id": "H02.01",
+        "classification": "manual",
+        "implemented_subclaim": "Prepare version-control adoption review for the complete scoped application and IaC populations, not this assessor's checkout.",
+        "sources": [
+          "caf-iac-linked",
+          "caf-lifecycle-linked",
+          "caf-iac-updates",
+          "caf-automation"
+        ],
+        "evidence_requirements": [
+          "Bind the assessed platform and workload source/IaC population, omissions, ownership responsibilities and actual version-control change history to the explicit assessment scope and original evidence time. Git is Microsoft's recommended option; a local .git directory or one saved repository is not organization-wide use.",
+          "Reference redacted evidence of the chosen mono/multirepo arrangement, visibility and contribution/access model. CAF recommends private landing-zone repositories and public sharing only for nonconfidential material; do not infer visibility, access or adoption from URLs, repository names or this project's GitHub settings.",
+          "Reviewer decision: does attributable population and operating evidence establish actual version-control adoption for both application code and IaC in this scope? Leave outcome, reviewer, evidence, rationale and validity blank until explicitly supplied."
+        ],
+        "limitations": "No repository discovery, clone, private source ingestion or organization-wide predicate. The original linked IaC page now redirects to platform implementation options; accelerator capability is not application adoption. Missing, partial, denied, malformed, unsupported or stale evidence cannot become a technical pass.",
+        "flags": [
+          "manual-version-control-adoption",
+          "local-checkout-not-assessed-estate"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/112",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/119",
+      "merge_commit": "b1dc6a4898781a7f4238f110e2e13d321f81a484",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.30: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "c7245dd4-af8a-403a-8bb7-890c1a7cfa9d",
@@ -7381,12 +7656,37 @@
       "baseline_control_sha256": "43ca441adf7d9ee2542226beec8a5cb8ddb1757059d7b84e6f3828f3a17acbc4",
       "design_area": "Platform automation and DevOps",
       "batch": "30",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "c7245dd4-af8a-403a-8bb7-890c1a7cfa9d",
+        "upstream_id": "H02.02",
+        "classification": "manual",
+        "implemented_subclaim": "Prepare the selected branch model, collaboration and release-fix reconciliation review separately from PR strategy.",
+        "sources": [
+          "caf-lifecycle-linked",
+          "azure-repos-branching",
+          "github-flow",
+          "caf-iac-updates"
+        ],
+        "evidence_requirements": [
+          "Bind the team's chosen branch strategy and rationale, platform/application repositories, release/support needs, naming convention and actual collaboration history to scope and evidence time. CAF recommends trunk-based development; GitHub Flow and release branches are options to reconcile, not universal mandatory models.",
+          "Reference redacted protected-branch permissions/policies, actual feature/main integration and release-fix porting where applicable, plus explicit bypasses and unresolved gaps. A branch name, default branch or isolated PR does not establish a consistently followed operating strategy; no invented branch age or reviewer-count threshold.",
+          "Reviewer decision: does actual scoped collaboration and maintenance evidence show the chosen documented branch strategy is followed? Decide H02.02 independently from H02.03 and keep all decision and attribution fields blank until supplied."
+        ],
+        "limitations": "No Git history scan or branch/policy/settings read is introduced. Source recommendations inform human review; they do not authorize setting policies or imply existing approvals. Unknown strategy, uncovered repositories and stale evidence remain explicit.",
+        "flags": [
+          "manual-branch-operating-strategy",
+          "branch-presence-not-discipline"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/112",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/119",
+      "merge_commit": "b1dc6a4898781a7f4238f110e2e13d321f81a484",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.30: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "12aeea20-9165-4b3e-bdf2-6795fcd3cdbe",
@@ -7396,12 +7696,37 @@
       "baseline_control_sha256": "1f2f804e955a0ebc8dcdfa30aac16cc444ebf00ff5bce7db89a3272b66abb837",
       "design_area": "Platform automation and DevOps",
       "batch": "30",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "12aeea20-9165-4b3e-bdf2-6795fcd3cdbe",
+        "upstream_id": "H02.03",
+        "classification": "manual",
+        "implemented_subclaim": "Prepare actual PR change-control review, retaining separate strategy, approvals, checks and bypass evidence.",
+        "sources": [
+          "caf-lifecycle-linked",
+          "azure-repos-branching",
+          "github-flow",
+          "caf-automation"
+        ],
+        "evidence_requirements": [
+          "Bind important branches and the actual application/IaC merge population to the explicit scope and original time. Reference the team's agreed author/reviewer responsibilities, intelligible change descriptions, peer review, comment resolution and chosen merge strategy; CAF recommends squash but this is not an assumed organization setting.",
+          "Reference redacted evidence that applicable PR checks and reviews cover the updated source head, required review policies are followed and bypasses/exceptions are separately recorded. A PR file/template, workflow, green build or old approval does not establish change-control adoption. The product guidance's suggested two reviewers is not a universal acceptance threshold.",
+          "Reviewer decision: does the complete scoped change evidence demonstrate the adopted PR strategy controls merges? Supply H02.03 separately from branching and DevSecOps decisions; a shared narrative never selects pass, fail or not-applicable."
+        ],
+        "limitations": "No GitHub/Azure DevOps transport, estate PR read, check dispatch, scan or policy change. Technical Verified outcomes on existing predicates do not confirm this process recommendation. Private code, personal reviewer identities and raw review payloads are not requested.",
+        "flags": [
+          "manual-pr-change-control",
+          "updated-head-review-not-template"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/112",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/119",
+      "merge_commit": "b1dc6a4898781a7f4238f110e2e13d321f81a484",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.30: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "2676ae46-65ca-444e-8695-fdddeace4cb1",
@@ -7411,12 +7736,36 @@
       "baseline_control_sha256": "8a15d3e700f0902c19a5f5aa92cd90c09b4b91cce62d65a0727c2796e0f8d92c",
       "design_area": "Platform automation and DevOps",
       "batch": "30",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "2676ae46-65ca-444e-8695-fdddeace4cb1",
+        "upstream_id": "H02.04",
+        "classification": "manual",
+        "implemented_subclaim": "Prepare emergency quick-fix/backlog/rework and drift reconciliation review using actual CAF automation guidance.",
+        "sources": [
+          "caf-management-linked",
+          "caf-automation",
+          "caf-iac-updates"
+        ],
+        "evidence_requirements": [
+          "Bind the scoped emergency/quick-fix population and agreed code-first emergency process to original time, with redacted incident/change and code references. The original management-platform link now discusses inventory/visibility; current CAF automation explicitly covers quick fixes, backlog and technical debt.",
+          "Reference actual backlog registration for quick fixes, assigned rework responsibility and later reviewed reconciliation to maintained code, including emergency portal/CLI drift and supported release branches where applicable. A ticket, hotfix branch or unreviewed emergency commit alone does not prove rework or controlled debt; no invented remediation deadline.",
+          "Reviewer decision: does the scoped quick-fix evidence establish the registered backlog and subsequent code/review reconciliation process, with explicit remaining debt and independent exceptions? Keep the decision and its validity/attribution blank until supplied."
+        ],
+        "limitations": "No work-item/incident ingestion, backlog service access or automated debt score. Empty/denied emergency history is not proof that no fixes occurred; applicability needs an explicit bound human decision, not guessed absence.",
+        "flags": [
+          "manual-quick-fix-reconciliation",
+          "backlog-entry-not-completed-rework"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/112",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/119",
+      "merge_commit": "b1dc6a4898781a7f4238f110e2e13d321f81a484",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.30: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "2cdc9d99-dbcc-4ad4-97f5-e7d358bdfa73",
@@ -7426,12 +7775,37 @@
       "baseline_control_sha256": "44f313b4186eac14268b7c80a1652d48d202fcd5d9bee0bbdfeecdcab053b8f1",
       "design_area": "Platform automation and DevOps",
       "batch": "30",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "2cdc9d99-dbcc-4ad4-97f5-e7d358bdfa73",
+        "upstream_id": "H03.01",
+        "classification": "manual",
+        "implemented_subclaim": "Prepare separate platform/workload declarative desired-state adoption and lifecycle-maintenance review.",
+        "sources": [
+          "caf-iac-linked",
+          "caf-iac-updates",
+          "caf-lifecycle-linked",
+          "caf-automation"
+        ],
+        "evidence_requirements": [
+          "Bind platform and application landing-zone populations, the selected Bicep/ARM/Terraform desired-state definitions and coverage gaps to scope/time. Declarative infrastructure differs from imperative CLI/PowerShell actions; existing non-IaC resources require explicit desired-state/state-management alignment.",
+          "Reference attributable redacted evidence of versioned definitions, reviewed change previews, governed deployment responsibility, rollback/recovery and ongoing drift/emergency reconciliation. Existing file parsing, preflight, compiler, plans and planned/observed differences are limited configuration context, not proof of actual deployment or lifecycle adoption.",
+          "Reviewer decision: does the full scoped platform AND workload evidence establish that declarative IaC builds and maintains the architecture? Record omissions and independent exceptions explicitly; leave all human outcome/attribution/expiry fields blank until supplied."
+        ],
+        "limitations": "No new IaC handling or dummy Bicep fixture; no Terraform init/plan/apply, what-if/deployment, module acquisition or restore. Existing eight no-restore compiler tests retain their technical meaning and cannot verify an operating strategy.",
+        "flags": [
+          "manual-declarative-iac-adoption",
+          "compilation-not-lifecycle-management"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/112",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/119",
+      "merge_commit": "b1dc6a4898781a7f4238f110e2e13d321f81a484",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.30: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "cc87a3bc-c572-4ad2-92ed-8cabab66160f",
@@ -7441,12 +7815,36 @@
       "baseline_control_sha256": "a1b9027eb723e936460ea9957a5d0742d4401c3a2f840dfed655b8462500d105",
       "design_area": "Platform automation and DevOps",
       "batch": "30",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "cc87a3bc-c572-4ad2-92ed-8cabab66160f",
+        "upstream_id": "H04.01",
+        "classification": "manual",
+        "implemented_subclaim": "Prepare lifecycle-wide security integration and risk/remediation ownership review, not scan-presence automation.",
+        "sources": [
+          "caf-security-linked",
+          "caf-lifecycle-linked",
+          "caf-iac-updates"
+        ],
+        "evidence_requirements": [
+          "Bind the scoped innovation/workload/platform lifecycle and agreed risk objectives to original time. Reference redacted evidence of security participation in design/threat modeling and peer review, code risk discovery/remediation, pipeline security and production operations feedback, with responsibilities and coverage gaps.",
+          "Reconcile actual remediation and risk acceptance, production approval/change gates and operations lessons with development/operations responsibilities. CAF integration is organizational and incremental; a scanner installation, successful saved scan, workflow flag, hardened image or one secure deployment does not establish complete DevSecOps integration.",
+          "Reviewer decision: does attributable lifecycle and operating evidence demonstrate security is integrated into development and operations within this scope? Decide H04.01 separately from PR process and image sovereignty; keep outcome and approval details unasserted until supplied."
+        ],
+        "limitations": "No new scanner transport, security execution, live posture or invented organization policy/approval. Existing PSRule/SARIF/Policy/ARG evidence retains its limited Signal/predicate semantics; only exact already-reviewed executable queries remain allowlisted.",
+        "flags": [
+          "manual-devsecops-integration",
+          "scan-not-organizational-security"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/112",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/119",
+      "merge_commit": "b1dc6a4898781a7f4238f110e2e13d321f81a484",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.30: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "047c91e2-6bb4-4a42-a0ef-ab06ad0062c9",
@@ -7456,12 +7854,45 @@
       "baseline_control_sha256": "5e3d808424df7f03c2ec7d75f155968494b88a845c82ea9023ba9b4b70d8b529",
       "design_area": "Platform automation and DevOps",
       "batch": "30",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "047c91e2-6bb4-4a42-a0ef-ab06ad0062c9",
+        "upstream_id": "H05.01",
+        "classification": "manual",
+        "implemented_subclaim": "Prepare separately bound agent, registry, base-image and package storage/processing sovereignty review against explicit organizational requirements.",
+        "sources": [
+          "azure-residency-linked",
+          "devops-residency",
+          "devops-hosted-agents",
+          "github-residency",
+          "github-residency-storage",
+          "github-residency-rendered",
+          "github-storage-rendered",
+          "acr-geo-replication",
+          "acr-data-endpoints",
+          "acr-tasks",
+          "acr-task-agent-pools"
+        ],
+        "evidence_requirements": [
+          "Bind approved country/region/geography and storage-versus-processing requirements to scope/time and the actual agent, package registry, base-image, build-context, upstream origin, redirect, cache/log/artifact/backup and replication population. Keep approvals blank; geography is not an exact region or a legal sovereignty determination. Use redacted references, never raw source/pipeline payloads, personal identities, credentials, tokens or unnecessary account/location inventories.",
+          "Reconcile current service boundaries independently: Azure Geo commitments have service/preview exceptions; Azure DevOps Services uses geography with US macOS/token and Brazil DR/capacity fallback; GitHub.com defaults US, while GHE.com offers EU including EFTA Norway/Switzerland, Australia, US and Japan with telemetry/support/billing/Copilot/optional secret-check exceptions. ACR syncs all configured replicas and global routing can select another replica; regional layer redirects remain within the serving replica, not necessarily every required boundary. Premium dedicated task pools are Linux-only preview in published regions and still consume external dependencies and changing precached images.",
+          "Reviewer decision: do attributable complete agent/registry/base-image/dependency storage AND execution/processing evidence satisfy the explicitly approved boundary, including documented exceptions? Leave outcome, scope-bound approval attribution, rationale and expiry blank until supplied; URL, runner label, registry/resource location or one image digest alone proves no sovereignty outcome."
+        ],
+        "limitations": "No estate/region/account/registry/agent lookup, upload, build task, package publication or fabricated residency/legal approval. Published availability is not actual location or eligibility. Unknown external services, partial copies, denied provenance and stale requirements remain explicit manual gaps.",
+        "flags": [
+          "manual-build-supply-chain-sovereignty",
+          "geo-storage-processing-distinct",
+          "replicas-and-upstream-origins-required"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/112",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/119",
+      "merge_commit": "b1dc6a4898781a7f4238f110e2e13d321f81a484",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.30: all eight CI jobs and four compiler artifacts verified"
+      ]
     }
   ]
 }
