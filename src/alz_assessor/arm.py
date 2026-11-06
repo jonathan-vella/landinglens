@@ -67,6 +67,7 @@ def properties(
     kind: str, values: Any, *, root: Any = None, observed: bool = False
 ) -> dict[str, Any]:
     from .identity_evidence import IDENTITY_KINDS, ROLE_KIND, identity_summary, role_properties
+    from .security_evidence import projected_properties as security_properties
 
     if isinstance(values, dict) and kind.lower() == ROLE_KIND:
         return role_properties(values, terraform=False)
@@ -75,6 +76,8 @@ def properties(
         result["identitySummary"] = identity_summary(
             root["identity"], terraform=False, resource_type=kind
         )
+    if isinstance(values, dict):
+        result.update(security_properties(kind, values, root=root))
     return result
 
 

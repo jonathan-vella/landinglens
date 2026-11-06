@@ -7,6 +7,7 @@ from .contracts import canonical_id, identity_type
 from .identity_evidence import PATHS as IDENTITY_PATHS
 from .routing_evidence import KINDS as ROUTING_KINDS
 from .routing_evidence import PATHS as ROUTING_PATHS
+from .security_evidence import PATHS as SECURITY_PATHS
 from .sources import boolean, enumeration, property_at, unknown
 from .terraform import InputError
 
@@ -47,6 +48,7 @@ REVIEW_PATHS = (
     }
     | ROUTING_PATHS
     | IDENTITY_PATHS
+    | SECURITY_PATHS
 )
 
 
@@ -492,6 +494,10 @@ def private_connections(values: dict[str, Any], *, terraform: bool) -> Any:
 
 
 def review_fact(properties: dict[str, Any], path: str) -> Any:
+    if path in SECURITY_PATHS:
+        from .security_evidence import review_fact as security_fact
+
+        return security_fact(properties, path)
     if path in IDENTITY_PATHS:
         from .identity_evidence import review_fact as identity_fact
 
@@ -846,7 +852,7 @@ def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     ):
         return {}
     result: dict[str, Any] = {}
-    for path in sorted(REVIEW_PATHS):
+    for path in sorted(REVIEW_PATHS - SECURITY_PATHS):
         parts = path.split(".")
         target = result
         for part in parts[:-1]:

@@ -94,3 +94,25 @@ different verification labels. This efficiency increment has no new live Azure
 run; the earlier narrowly scoped pilot is not proof of every control or a tenant.
 See [collection](collection.md), [contracts](contracts.md) and
 [detailed workflows](usage.md) for precise supported cases and bounds.
+
+## Cohort 22 preparation, not delivered
+
+The [eight-GUID preparation matrix](../references/recommendation-batches/batch-22-preparation.json)
+and [25 captured sources](../references/recommendation-batches/batch-22-sources.json)
+record source review and offline typed configuration support only. No successor
+catalog, crosswalk, delivery receipt or new live Collector API is activated.
+Terraform/supplied-plan and direct ARM-property helpers prepare allowlisted
+Defender plan fields, activity-log routing, Managed HSM settings and VM patch
+configuration. Current accepted controls retain their earlier meanings; the
+specific questions/context remain candidate-only until serialized integration.
+
+Managed HSM stores HSM-protected cryptographic keys, not secrets or credentials.
+External KEK custody adds customer-operated HSM/proxy responsibilities and is not
+inferred from HSM presence. Legacy Entra and Security Center links resolve to
+current monitoring/Defender guidance. Patch recommendations now use Update Manager,
+not deprecated MMA collection. Pricing, diagnostic destinations and periodic
+assessment configuration prove neither fleet-wide protection nor successful
+ingestion, retained data, endpoint enforcement, OS compliance or sovereign
+suitability. Retention, costs and acceptable patch drift require explicit
+requirements and attributable redacted operational evidence; no threshold,
+private audit record or human decision is invented.
