@@ -78,6 +78,15 @@ records remain traceable under explicit lifecycle semantics.
 
 ## Active increment: fixed recommendation expansion
 
+Cohort06/[#136](https://github.com/jonathan-vella/landinglens/issues/136)
+independently prepares eight fixed hybrid identity/data-access/review/enrollment/
+sovereignty workflows from20 reviewed public captures. Only bounded existing
+peering/VNet and explicit vault RBAC context is machine-prepared; directory/
+operational/ownership/eligible-country decisions remain independently blank and
+B05.01 stays manual. No accepted catalog/bank/crosswalk/count/history activation
+or delivery is claimed before the explicit coordinator slot after27/29.
+See [preparation boundaries](plan.md#cohort-06-independent-preparation-2026-11-06).
+
 Cohort02/[#127](https://github.com/jonathan-vella/landinglens/issues/127)
 integrates its eight immutable tenant/Lighthouse/support/cost/notification/
 hierarchy GUIDs from24 unchanged captures into reviewed successor `.16` after

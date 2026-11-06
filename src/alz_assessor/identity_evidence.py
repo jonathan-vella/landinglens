@@ -36,6 +36,73 @@ RESILIENCE_GUIDS = {
     "1cf0b8da-70bd-44d0-94af-8d99cfc89ae1",
     "984a859c-773e-47d2-9162-3a765a917e1f",
 }
+HYBRID_GUIDS = {
+    "cd163e39-84a5-4b39-97b7-6973abd70d94",
+    "35037e68-9349-4c15-b371-228514f4cdff",
+    "d5d1e4e6-1465-48d3-958f-d77249b82111",
+    "9cf5418b-1520-4b7b-add7-88eb28f833e8",
+    "d4d1ad54-1abc-4919-b267-3f342d3b49e4",
+    "d505ebcb-79b1-4274-9c0d-a27c8bea489c",
+    "0ce74f19-9abb-47e4-ae95-6b057a1d2be9",
+    "1770a2ac-c194-4e5c-ade4-82939d38a510",
+}
+PEERING_KIND = "microsoft.network/virtualnetworks/virtualnetworkpeerings"
+VNET_KIND = "microsoft.network/virtualnetworks"
+VAULT_KIND = "microsoft.keyvault/vaults"
+
+
+def hybrid_paths(kind: str) -> tuple[str, ...]:
+    return {
+        PEERING_KIND: ("allowVirtualNetworkAccess", "remoteVirtualNetwork.id"),
+        VAULT_KIND: ("enableRbacAuthorization",),
+    }.get(kind.lower(), ())
+
+
+def hybrid_context(
+    resource: dict[str, Any], by_id: dict[str, list[dict[str, Any]]], bundle: dict[str, Any]
+) -> dict[str, Any]:
+    from .governance_evidence import resource_in_scope
+    from .protection_evidence import typed_reference
+    from .sources import boolean
+
+    def known(identity: Any, kind: str) -> dict[str, Any] | None:
+        ref = typed_reference(identity, (kind,))
+        matches = by_id.get(ref, []) if isinstance(ref, str) else []
+        if (
+            len(matches) != 1
+            or matches[0].get("state") != "known"
+            or matches[0].get("resource_type", "").lower() != kind
+            or typed_reference(matches[0].get("arm_id"), (kind,)) != ref
+            or not resource_in_scope(matches[0], bundle)
+        ):
+            return None
+        return matches[0]
+
+    kind = resource["resource_type"].lower()
+    if not hybrid_paths(kind) or known(resource.get("arm_id"), kind) is not resource:
+        return unknown("hybrid_configuration_not_unique_known_typed_scoped")
+    if sum(r["resource_type"].lower() == kind for r in bundle["resources"]) > 100:
+        return unknown("hybrid_configuration_population_over_100")
+    values = resource["properties"]
+    if kind == VAULT_KIND:
+        return {
+            "facts": {"enableRbacAuthorization": boolean(values.get("enableRbacAuthorization"))},
+            "warning": "Explicit vault data-plane model only, not effective authority, actual "
+            "application use, storage/SQL authorization or a whole-recommendation result.",
+        }
+    source = canonical_id(resource["arm_id"]).rsplit("/", 2)[0]
+    remote = typed_reference(property_at(values, "remoteVirtualNetwork.id"), (VNET_KIND,))
+    if source == remote or known(source, VNET_KIND) is None or known(remote, VNET_KIND) is None:
+        return unknown("peering_vnet_joins_not_unique_known_typed_scoped_or_self_linked")
+    return {
+        "facts": {
+            "allowVirtualNetworkAccess": boolean(values.get("allowVirtualNetworkAccess")),
+            "remoteVirtualNetwork.id": remote,
+        },
+        "source_vnet_id": source,
+        "warning": "One supplied peering direction only; neither VNet is designated identity "
+        "or hub. No reciprocal connectivity, DC role, runtime authentication or isolation proof.",
+    }
 
 
 def explicit_count(value: Any, maximum: int) -> Any:

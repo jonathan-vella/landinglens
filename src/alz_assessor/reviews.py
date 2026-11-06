@@ -394,7 +394,7 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     ]
     from .governance_evidence import GUIDS as GOVERNANCE_GUIDS
     from .governance_evidence import resource_in_scope
-    from .identity_evidence import RESILIENCE_GUIDS
+    from .identity_evidence import HYBRID_GUIDS, RESILIENCE_GUIDS, hybrid_context
     from .logging_evidence import GUIDS as LOGGING_GUIDS
     from .logging_evidence import scoped_identity
     from .network_policy_evidence import GUIDS as NETWORK_POLICY_GUIDS
@@ -407,7 +407,7 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
         ]
         unbound, matches = len(matches) - len(scoped), scoped
     elif control["upstream_guid"] in (
-        GOVERNANCE_GUIDS | RESILIENCE_GUIDS | NETWORK_POLICY_GUIDS | TENANT_GUIDS
+        GOVERNANCE_GUIDS | RESILIENCE_GUIDS | HYBRID_GUIDS | NETWORK_POLICY_GUIDS | TENANT_GUIDS
     ):
         scoped = [resource for resource in matches if resource_in_scope(resource, bundle)]
         unbound, matches = len(matches) - len(scoped), scoped
@@ -433,9 +433,20 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
         ),
     }
     if control["upstream_guid"] in (
-        GOVERNANCE_GUIDS | LOGGING_GUIDS | RESILIENCE_GUIDS | NETWORK_POLICY_GUIDS | TENANT_GUIDS
+        GOVERNANCE_GUIDS
+        | LOGGING_GUIDS
+        | RESILIENCE_GUIDS
+        | HYBRID_GUIDS
+        | NETWORK_POLICY_GUIDS
+        | TENANT_GUIDS
     ):
         context["unbound_resources"] = unbound
+    if control["upstream_guid"] in HYBRID_GUIDS:
+        for prepared, resource in zip(context["resources"], matches[:100], strict=True):
+            configuration = hybrid_context(resource, by_id, bundle)
+            prepared["hybrid_configuration"] = configuration
+            prepared["facts"] = configuration.get("facts", configuration)
+            prepared["subchecks"] = {}
     if control["upstream_guid"] in TENANT_GUIDS:
         from .tenant_evidence import resource_context
 

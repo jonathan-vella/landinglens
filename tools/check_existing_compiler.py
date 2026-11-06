@@ -52,6 +52,8 @@ if compiler:
         "test_real_bicep_logging_workspace_extensions_and_alerts_without_restore",
         "test_tenant_preparation.TenantPreparationTests."
         "test_real_bicep_tenant_configuration_without_restore",
+        "test_hybrid_identity_preparation.HybridIdentityPreparationTests."
+        "test_real_bicep_peering_and_vault_configuration_without_restore",
     ]
     suite = unittest.defaultTestLoader.loadTestsFromNames(cases)
     result = unittest.TextTestRunner(verbosity=2).run(suite)

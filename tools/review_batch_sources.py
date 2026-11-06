@@ -3343,6 +3343,138 @@ SOURCES_16_VWAN = [
 ]
 
 
+SOURCES_06 = [
+    (
+        "connect-staging-linked",
+        "https://learn.microsoft.com/azure/active-directory/hybrid/"
+        "how-to-connect-sync-staging-server",
+        ["Active-Passive", "password writeback", "pending exports", "catch-up"],
+        "Legacy link redirects to Connect Sync operations. Staging imports/synchronizes but "
+        "does not normally export or run password sync/writeback; switching is an explicit "
+        "active-passive procedure, never automatic active-active failover. Keep configuration "
+        "aligned, verify pending exports/deletion protection and isolate the old active "
+        "server before promotion. Password catch-up can take hours; do not restart during "
+        "catch-up. This is not Cloud Sync equivalence or evidence of tested recovery.",
+    ),
+    (
+        "synced-role-accounts-linked",
+        "https://learn.microsoft.com/azure/active-directory/roles/best-practices",
+        ["cloud native accounts", "on-premises synced accounts", "least privilege"],
+        "Current redirected Entra guidance avoids synced accounts for directory roles "
+        "because on-premises compromise can reach cloud authority. Any checklist exception "
+        "requires separate justified, scoped, time-bound human evidence, not Azure role "
+        "principalType, VM naming, managed identity or a fabricated synchronization flag.",
+    ),
+    (
+        "app-proxy-current",
+        LEARN + "entra/identity/app-proxy/overview-what-is-app-proxy",
+        ["private network connector", "outbound", "internal users"],
+        "The original application-proxy URL now redirects to a 404. Current overview "
+        "describes Entra's cloud service and private network connectors for remote web "
+        "application access, not an ARM proxy resource or general internal-user VPN. "
+        "Central platform ownership, application onboarding and actual SSO remain decisions.",
+    ),
+    (
+        "app-proxy-ha",
+        LEARN + "entra/identity/app-proxy/application-proxy-high-availability-load-balancing",
+        ["at least two connectors", "Three connectors", "different outbound connections"],
+        "At least two connectors per group, preferably three, separate outbound failure "
+        "domains and automatic updates are current HA guidance. Backend session persistence "
+        "and connector/service operation need separate evidence. VM counts/names do not "
+        "establish connector groups, configuration, platform ownership or availability.",
+    ),
+    (
+        "identity-network-rbac-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/"
+        "design-area/identity-access-landing-zones",
+        ["virtual network peered", "data plane", "regularly validate resource entitlements"],
+        "Current reference architecture optionally deploys identity services in a dedicated "
+        "subscription/VNet peered to the platform hub. Entra-native applications may need "
+        "none. Secure identity boundaries and workload access separately. Data-plane RBAC "
+        "is service-specific, not generic Owner authority. PIM review operation differs "
+        "from configured assignments and the historical section anchors have changed.",
+    ),
+    (
+        "pim-review-linked",
+        "https://learn.microsoft.com/azure/active-directory/privileged-identity-management/"
+        "pim-create-roles-and-resource-roles-review",
+        ["snapshot", "eligible assignments", "Applied", "group"],
+        "Current redirected PIM review guidance distinguishes Entra PRA from resource "
+        "Owner/UAA prerequisites, licensing and active/eligible/all selection. Each instance "
+        "captures a start-time snapshot; recurring configuration is not completion or "
+        "applied revocation. Entra role-assignable groups are reviewed as groups; Azure "
+        "group-member denial does not remove group membership and nested-group limits "
+        "need review. Service-principal reviews have additional Workload ID Premium terms.",
+    ),
+    (
+        "enrollment-owners-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/"
+        "design-area/azure-billing-enterprise-agreement",
+        ["minimize the number of account owners", "February 15, 2024", "account owner"],
+        "EA account owners can own subscriptions created under their account; other EA "
+        "roles do not by themselves confer subscription/directory authority. Minimize "
+        "actual enrollment account-owner authority, not a subscription Owner count. "
+        "The EA portal retired in 2024; agreement applicability and exceptions need review.",
+    ),
+    (
+        "ea-role-qualification",
+        LEARN + "azure/cost-management-billing/manage/understand-ea-roles",
+        ["November 16, 2026", "one account owner per account", "individual user accounts"],
+        "EA billing roles differ from Azure RBAC and support individual users, not DG/SG "
+        "assignment. One owner per account is a service constraint, not a universal "
+        "enrollment-wide least-privilege threshold. Starting 2026-11-16 new billing role "
+        "assignments require WSA; existing MSA assignments are not yet impacted.",
+    ),
+    (
+        "sovereign-location-linked",
+        LEARN + "industry/financial-services/architecture/location-based-access-content",
+        ["GPS", "authentication context", "exports or downloads"],
+        "This FSI example uses application-integrated authentication context and named "
+        "GPS locations, with PIM access a possible use case. It does not define an "
+        "organization's eligible administrator countries, nationality, legal sovereignty "
+        "or blanket coverage for exported data. Those remain independently manual.",
+    ),
+    (
+        "location-qualification",
+        LEARN + "entra/identity/conditional-access/location-condition",
+        ["Network", "unknown countries", "public IP address", "GPS"],
+        "Location condition is now Network. Public-IP mapping or consented Authenticator "
+        "GPS are access signals, not nationality or complete sovereignty assurance. "
+        "Unknown locations, policy scope/exclusions and application integration need "
+        "independent review. No employee location or sign-in data is collected.",
+    ),
+    (
+        "vault-data-plane",
+        LEARN + "azure/key-vault/general/rbac-guide",
+        ["2026-02-01", "control plane", "data plane", "invalidates all access policies"],
+        "Vault control/data planes are independent; Key Vault Contributor does not grant "
+        "secret/key access. New API2026-02-01 defaults do not fill missing pinned2024-11-01 "
+        "evidence. Explicit RBAC flag prepares only the configured vault model. HSM differs; "
+        "changing model can cause outages without equivalent roles. No migration occurs.",
+    ),
+    (
+        "storage-data-plane",
+        LEARN + "azure/storage/blobs/authorize-access-azure-active-directory",
+        ["data access", "Owner", "Contributor", "Reader"],
+        "Blob data roles and token authorization differ from control-plane Owner/"
+        "Contributor/Reader roles. Service support, effective permissions and actual "
+        "authentication must be independently reviewed; account presence is insufficient.",
+    ),
+    (
+        "sql-data-plane",
+        LEARN + "azure/azure-sql/database/authentication-aad-overview",
+        ["Create SQL principals", "Microsoft Entra administrator", "database"],
+        "Azure SQL Entra authentication requires service-specific administrator and SQL "
+        "principal/permission configuration. Do not equate generic Azure resource Owner "
+        "or a Key Vault RBAC flag to SQL database authorization or every database service.",
+    ),
+    *[source for source in SOURCES_05 if source[0] == "identity-team-boundaries"],
+    *[source for source in SOURCES if source[0] in {"vault-arm", "terraform-vault"}],
+    *[source for source in SOURCES_11 if source[0] in {"peering-arm", "terraform-peering"}],
+    *[source for source in SOURCES_02 if source[0] in {"learn-terms", "provider-license"}],
+]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
@@ -3355,6 +3487,7 @@ def main() -> None:
             "02",
             "04",
             "05",
+            "06",
             "08",
             "11",
             "12",
@@ -3375,9 +3508,10 @@ def main() -> None:
     args = parser.parse_args()
     if args.vwan_supplement and (args.batch != "16" or not args.preparation_only):
         raise ValueError("The vWAN supplement is cohort16 preparation only")
-    if (args.batch in {"02", "05", "12", "16", "20", "23", "30"}) != args.preparation_only:
+    if (args.batch in {"02", "05", "06", "12", "16", "20", "23", "30"}) != args.preparation_only:
         raise ValueError(
-            "Cohorts 02/05/12/16/20/23/30 source capture require --preparation-only; no activation"
+            "Cohorts 02/05/06/12/16/20/23/30 source capture require "
+            "--preparation-only; no activation"
         )
     prefix = "preparation" if args.preparation_only else "batch"
     suffix = "-vwan" if args.vwan_supplement else ""
@@ -3387,7 +3521,7 @@ def main() -> None:
         / "recommendation-batches"
         / f"{prefix}-{args.batch}{suffix}-sources.json"
     )
-    if args.batch in {"02", "05"}:
+    if args.batch in {"02", "05", "06"}:
         target = ROOT / "references" / "preparation" / f"batch-{args.batch}-sources.json"
     if target.exists() and not args.append_new_sources:
         raise ValueError("Frozen source review exists; do not silently recollect or redate it")
@@ -3398,6 +3532,7 @@ def main() -> None:
         "02": SOURCES_02,
         "04": SOURCES_04,
         "05": SOURCES_05,
+        "06": SOURCES_06,
         "08": SOURCES_08,
         "11": SOURCES_11,
         "12": SOURCES_12,

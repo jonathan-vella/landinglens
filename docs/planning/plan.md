@@ -1,5 +1,60 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 06 independent preparation: 2026-11-06
+
+[#136](https://github.com/jonathan-vella/landinglens/issues/136) owns the fixed
+eight B03.16-.18/B04.01-.04/B05.01 GUIDs in the
+[preparation matrix](../../references/preparation/batch-06.json), grounded in
+[20 actual captures](../../references/preparation/batch-06-sources.json).
+Baseline is actual `cb4db6b1bd724816104fd2597ca745f46c29f8f3`, `.16`,
+154 delivered/97 pending with18 receipts; no accepted successor is selected or
+registered. Cohort27 owns the sole delivery slot,29 precedes06, and all activation,
+PR/merge/receipt/closure gates await the coordinator's explicit slot.
+
+Existing identity/network/Key Vault helpers prepare unique known typed in-bound
+peering-to-two-VNet context and explicit vault data-plane model flags. Missing,
+wrong-kind, ambiguous, denied, self-linked, stale, unsupported and over-bound
+inputs remain explicit unknowns. No source/remote VNet is designated identity/hub;
+no configuration proves runtime authentication/isolation, effective data authority,
+directory privilege, operational PIM review or billing enrollment ownership.
+Other six workflows use source-specific independent human evidence only; manual
+sovereign administrator eligibility stays manual. All eight outcomes are blank,
+attributable and separately scope/content/time/expiry bound through existing
+engine, preparation/review/interview, tiers, reports/trackers, CLI/local-session
+and original-time replay paths. The actual existing-compiler fixture exercises
+only real peering/VNet/vault resources, not invented directory/manual features.
+
+Source findings retain the failed legacy Application Proxy redirect/404 and
+successful current replacement, Connect's active-passive/manual switch/password
+catch-up qualifications, service-specific data-plane versus control-plane
+permissions, PIM snapshot/completion/application/group differences, EA account
+versus subscription authority and upcoming WSA rule, and the FSI location example's
+limited sovereignty meaning. No private principal/contact/secret/query/billing/
+employee-location payload or new live route, action, dependency or compiler
+acquisition is introduced. Preparation export remains refused; exact accepted
+predecessor replay and every prior compiler case remain required. Accepted
+catalog/crosswalk/bank/count/history and all255/fixed251/original four controls,
+older own receipts and source times remain unchanged.
+
+Preparation checkout and own exact installed-wheel suites each ran **603 tests**:
+602 passed with only the original Windows symlink-privilege skip. All19 cohort06
+cases pass. All sixteen actual existing-compiler integrations exercised without
+skips or restore, retaining the preceding fifteen cases. Format/lint,44-source-file
+typing, dependency consistency and425 local documentation links pass. Own offline
+wheel SHA256: `c25d516c0c355c9f0515c52a3f9b756440a7cc88b7ccac820bfa7bde7db6cd32`.
+All123 package code/data members match checkout and the dedicated outside-checkout
+`site-packages` installation, importing accepted predecessor `.16`. Local compiler
+proof SHA256: `2dfc7f34aa57e0192de4a734d3641c4e6268370fbb8712f2ccddf07455da0045`.
+These are preparation proofs, not later exact-head/four-platform acceptance.
+The clean import's actual missing-`lark` failure preceded offline installation
+of only the three downloaded exact manifest/hash-reviewed runtime wheels in this
+session's own environment. Initial targeted failures exposed test assumptions
+about the unfrozen current `.16`, existing peering Collector route, comparison
+API and compiled child-name expression; corrected fixtures use the existing
+bounded literal-name adapter, not a new interpreter feature. Those invalidated
+attempts are not acceptance evidence. No other session environment, package
+publication, live operation or fabricated human decision substitutes for proof.
+
 ## Cohort 02 accepted integration: 2026-11-06
 
 The coordinator granted [#127](https://github.com/jonathan-vella/landinglens/issues/127)
