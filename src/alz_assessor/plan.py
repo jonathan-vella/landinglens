@@ -88,7 +88,18 @@ def plan_source(
             verified = provider_version == PROVIDER_VERSION
             candidate = tf_resource_id(scope, kind, values) if verified else None
             explicit_id = values.get("id")
-            if kind in {"azurerm_role_definition", "azurerm_active_directory_domain_service"}:
+            from .policy_strategy_evidence import TF_SCOPES
+
+            if kind in TF_SCOPES or kind in {
+                "azurerm_policy_definition",
+                "azurerm_policy_set_definition",
+            }:
+                identity = candidate
+                if isinstance(explicit_id, str) and (
+                    candidate is None or canonical_id(explicit_id) != candidate
+                ):
+                    raise InputError("Policy plan ID conflicts with explicit typed scope/name")
+            elif kind in {"azurerm_role_definition", "azurerm_active_directory_domain_service"}:
                 from uuid import UUID
 
                 from .contracts import identity_type
@@ -152,6 +163,16 @@ def plan_source(
                 )
             if identity and candidate and identity != candidate:
                 raise InputError("Plan resource ID conflicts with explicit scope/name bindings")
+            if identity and kind in {
+                "azurerm_lighthouse_definition",
+                "azurerm_lighthouse_assignment",
+            }:
+                from .tenant_evidence import resource_parent
+
+                parent = resource_parent(identity, arm_type.lower())
+                target = values.get("scope")
+                if parent is None or not isinstance(target, str) or parent != target.lower():
+                    raise InputError("Lighthouse plan identity conflicts with supported scope")
             if identity and (not scope or not identity.startswith(scope.lower() + "/")):
                 raise InputError("Plan resource ID is outside the explicit assessment scope")
             records.append(

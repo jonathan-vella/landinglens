@@ -2178,6 +2178,212 @@ SOURCES_15 += [
 ]
 
 
+SOURCES_02 = [
+    (
+        "tenant-strategy",
+        LEARN + "azure/cloud-adoption-framework/ready/landing-zone/design-area/"
+        "multi-tenant/considerations-recommendations",
+        ["single tenant", "regulatory", "Microsoft Customer Agreement"],
+        "Prefer one corporate tenant unless documented requirements cannot be met there. "
+        "ALZ is deployed separately in each tenant; subscription counts, names and Lighthouse "
+        "registrations establish neither complete tenant inventory nor business justification.",
+    ),
+    (
+        "tenant-automation",
+        LEARN
+        + "azure/cloud-adoption-framework/ready/landing-zone/design-area/multi-tenant/automation",
+        ["Complete isolation", "Shared application registration", "managed identities"],
+        "Two example platform automation models depend on required isolation; they are not "
+        "mandatory workload patterns. Current guidance qualifies the older managed-identity "
+        "limitation with user-assigned identity federation to a multitenant application. "
+        "Lighthouse cannot supply all ALZ deployment permissions or prove automation adoption.",
+    ),
+    (
+        "alz-lighthouse",
+        LEARN
+        + "azure/cloud-adoption-framework/ready/landing-zone/design-area/multi-tenant/lighthouse",
+        ["not management groups or tenants", "clouds", "P2"],
+        "Lighthouse delegates subscriptions/resource groups, not tenants or MGs, and cannot "
+        "cross Azure clouds. Generic template scope lists do not override service limits. "
+        "Eligible authorizations require managing-tenant P2; configuration is not actual use.",
+    ),
+    (
+        "lighthouse-overview",
+        LEARN + "azure/lighthouse/overview",
+        ["subscriptions and resource groups", "national cloud", "partner"],
+        "Enterprises as well as partners can use delegated resource management. Registration "
+        "does not establish partner/CSP status, directory authority or actual same-identity use.",
+    ),
+    (
+        "lighthouse-architecture",
+        LEARN + "azure/lighthouse/concepts/architecture",
+        ["subscription level", "registration assignment", "registration definition"],
+        "A subscription-level definition and an assignment at the delegated subscription/RG "
+        "form the configuration relationship. Only unique known scoped supplied joins are "
+        "prepared; effective authorization, identity use and partner approval remain separate.",
+    ),
+    (
+        "lighthouse-role-limits",
+        LEARN + "azure/lighthouse/concepts/tenants-users-roles",
+        ["custom roles", "DataActions", "User Access Administrator"],
+        "Owner/custom/DataActions and listed authorization actions are unsupported. UAA has "
+        "only a constrained managed-identity role-assignment use with explicit delegated roles; "
+        "the automation article's blanket UAA wording is qualified here. Syntactically valid "
+        "role-reference counts are not current built-in-role support or effective authority.",
+    ),
+    (
+        "lighthouse-csp",
+        LEARN + "azure/lighthouse/concepts/cloud-solution-provider",
+        ["AOBO", "private plans", "whether or not"],
+        "Lighthouse can complement CSP AOBO with granular resource permissions. CSP preview "
+        "customer listing is independent of onboarding; reseller CSP private marketplace "
+        "plans are unsupported. No registration implies a reseller or support relationship.",
+    ),
+    (
+        "csp-guidance",
+        LEARN + "azure/cloud-adoption-framework/ready/landing-zone/design-area/"
+        "azure-billing-cloud-solution-provider#design-recommendations",
+        ["escalation", "GDAP", "MPA"],
+        "Partner manages MPA and is the first support contact; agree case creation/escalation "
+        "and use granular resource delegation and GDAP appropriately. GDAP directory authority "
+        "and Lighthouse resource delegation are distinct; actual support process stays manual.",
+    ),
+    (
+        "mca-guidance",
+        LEARN + "azure/cloud-adoption-framework/ready/landing-zone/design-area/"
+        "azure-billing-microsoft-customer-agreement#design-recommendations",
+        ["invoice sections", "outside of standard Azure RBAC", "group mailbox"],
+        "MCA uses billing account/profile/invoice-section hierarchy, not EA departments/accounts. "
+        "Billing roles are distinct from Azure RBAC and cannot be assigned at MG/RG. Reports, "
+        "mailbox suitability and approved organizational mapping need separate evidence.",
+    ),
+    (
+        "ea-guidance",
+        LEARN + "azure/cloud-adoption-framework/ready/landing-zone/design-area/"
+        "azure-billing-enterprise-agreement#design-considerations",
+        ["departments", "February 15, 2024", "Notification Contact"],
+        "EA departments/accounts/subscriptions differ from resource MG hierarchy and MCA. "
+        "EA portal retired in February 2024; department quota is reporting, not enforcement. "
+        "Actual agreement, owners and suitable billing separation cannot be inferred.",
+    ),
+    (
+        "ea-notification",
+        LEARN + "azure/cost-management-billing/manage/"
+        "direct-ea-administration#manage-notification-contacts",
+        ["Manage notification contacts", "Bill to contact", "November 16, 2026"],
+        "EA notification contacts receive selected usage/user/lifecycle notifications without "
+        "billing access; invoices go separately to Bill to contact. Group mailbox ownership, "
+        "coverage and delivery require manual evidence. Upcoming 2026-11-16 WSA-only new billing "
+        "role assignments are dated guidance, not a retroactive claim about existing roles.",
+    ),
+    (
+        "cost-scopes",
+        LEARN + "azure/cost-management-billing/costs/understand-work-scopes",
+        ["Management groups", "Microsoft Customer Agreement", "Billing scopes"],
+        "Azure RBAC/resource scopes and agreement billing scopes differ. MCA Cost Management "
+        "does not currently support MGs; cost-details MG support is absent for EA and MCA. "
+        "View configuration grants no billing/invoice visibility or completeness.",
+    ),
+    (
+        "cost-views",
+        LEARN + "azure/cost-management-billing/costs/save-share-views",
+        ["Underlying data", "private views", "100 shared views"],
+        "Saved views store configuration, not underlying cost data; scope/access, private/shared "
+        "visibility and pinned dashboard snapshots differ. A chart/metric enum and exact scoped "
+        "view binding cannot prove actual reporting, data freshness or financial suitability.",
+    ),
+    (
+        "cost-csp",
+        LEARN + "azure/cost-management-billing/costs/get-started-partners",
+        ["Azure plan", "retail rates", "cost visibility policy"],
+        "CSP customer cost access depends on Azure Plan/MCA, provider visibility policy and "
+        "customer RBAC; retail customer views differ from partner invoice prices. Historical "
+        "costs do not move to a new partner billing relationship. No prices or usage retained.",
+    ),
+    (
+        "lighthouse-definition-arm",
+        LEARN + "azure/templates/microsoft.managedservices/2022-10-01/registrationdefinitions",
+        ["authorizations", "eligibleAuthorizations", "delegatedRoleDefinitionIds"],
+        "Pinned 2022-10-01 definition includes authorization and optional eligible lists. "
+        "Project bounded validated pair counts only; discard tenant/principal identifiers, "
+        "display names, offer metadata, JIT approvers and private partner information.",
+    ),
+    (
+        "lighthouse-assignment-arm",
+        LEARN + "azure/templates/microsoft.managedservices/2022-10-01/registrationassignments",
+        ["registrationDefinitionId", "fully qualified"],
+        "Pinned 2022-10-01 assignment explicitly references a definition. Service-specific "
+        "subscription definition and subscription/RG assignment limits supersede generic "
+        "template-generated tenant/MG scope options.",
+    ),
+    (
+        "cost-view-arm",
+        LEARN + "azure/templates/microsoft.costmanagement/2019-11-01/views",
+        ["ActualCost", "AmortizedCost", "scope", "chart"],
+        "Pinned 2019-11-01 chart/metric enums and explicit view scope support minimized "
+        "metadata only. Accept subscription/RG scopes only, require exact resource-parent "
+        "binding; billing/MG/private provider-root views are not projected as supported.",
+    ),
+    (
+        "terraform-lighthouse-definition",
+        RAW + "website/docs/r/lighthouse_definition.html.markdown",
+        ["lighthouse_definition_id", "authorization", "2022-10-01"],
+        "AzureRM 4.50.0 definition UUID is lighthouse_definition_id; name is only display text. "
+        "Do not derive an ARM identity from display name or fabricate an omitted generated UUID.",
+    ),
+    (
+        "terraform-lighthouse-definition-implementation",
+        RAW + "internal/services/lighthouse/lighthouse_definition_resource.go",
+        [
+            "commonids.ValidateSubscriptionID",
+            "ManagedByTenantId",
+            "NewScopedRegistrationDefinitionID",
+        ],
+        "Provider definition scope validates a subscription and uses explicit/generated UUID "
+        "for resource identity. Authorization sets map directly; missing optional eligible "
+        "list remains unknown rather than inventing zero or JIT/MFA defaults.",
+    ),
+    (
+        "terraform-lighthouse-assignment",
+        RAW + "website/docs/r/lighthouse_assignment.html.markdown",
+        ["resource group", "lighthouse_definition_id", "2022-10-01"],
+        "AzureRM assignment scope is subscription/RG; explicit optional name is a UUID and "
+        "definition ID is fully qualified. Omitted name cannot establish a raw-source identity.",
+    ),
+    (
+        "terraform-lighthouse-assignment-implementation",
+        RAW + "internal/services/lighthouse/lighthouse_assignment_resource.go",
+        ["ValidateResourceGroupID", "ExpandRegistrationDefinition", "RegistrationDefinitionId"],
+        "Provider assignment uses literal scope/UUID and explicit definition reference; "
+        "expanded embedded definition is not implicitly trusted or treated as a joined record.",
+    ),
+    (
+        "subscription-resource-reference",
+        LEARN + "azure/azure-resource-manager/templates/"
+        "template-functions-resource#subscriptionresourceid",
+        ["subscriptionResourceId", "current subscription", "resourceName1"],
+        "The implicit-subscription literal overload constructs an ID at the current "
+        "subscription, not RG. Only this bounded overload is interpreted for actual compiled "
+        "Lighthouse references; explicit foreign-subscription and unresolved overloads stay "
+        "unknown. ID construction does not expand the selected assessment/read boundary.",
+    ),
+    (
+        "learn-terms",
+        LEARN + "legal/termsofuse",
+        ["Documentation", "explicit license terms"],
+        "Retain attributed links, revision/hash/redirect metadata and independently authored "
+        "findings only. Do not redistribute articles, samples, provider implementation or "
+        "private tenant, billing, partner and contact data.",
+    ),
+    (
+        "provider-license",
+        RAW + "LICENSE",
+        ["Mozilla Public License", "2.0"],
+        "Pinned provider is MPL-2.0; only metadata and independently authored findings are "
+        "redistributed, with no upstream implementation copied.",
+    ),
+]
+
 SOURCES_05 = [
     (
         "landing-zone-roles",
@@ -3286,6 +3492,201 @@ SOURCES_29 = [
 ]
 
 
+SOURCES_27 = [
+    (
+        "policy-overview",
+        LEARN + "azure/governance/policy/overview",
+        ["initiative", "Resource Policy Contributor", "audit"],
+        "Actual E01.01/.03/.04/.05/.07/.08/.09 link. Initiatives group rules; definition "
+        "placement and assignment scopes differ. Begin with audit and review as code. "
+        "The current overview now discusses identity-aware policies; that is not an "
+        "implemented interpreter, entitlement check or blanket replacement for RBAC.",
+    ),
+    (
+        "approved-services",
+        LEARN + "security/benchmark/azure/mcsb-asset-management#am-2-use-only-approved-services",
+        ["AM-2", "approved", "Azure Policy"],
+        "Actual E01.06 link requires organization-approved services and audit/restriction. "
+        "It supplies no universal approved taxonomy or evidence that a referenced rule "
+        "enforces one. ARG/Monitor suggestions are not additional execution authorization.",
+    ),
+    (
+        "policy-scope",
+        LEARN + "azure/governance/policy/concepts/scope",
+        ["Definition location", "notScopes", "exempt/Action"],
+        "Custom definitions live at management groups or subscriptions, not resource groups. "
+        "Assignment must be at that location or a descendant. Exclusions omit evaluation/"
+        "compliance counting; tracked exemptions are separate objects with extra permissions.",
+    ),
+    (
+        "policy-assignment",
+        LEARN + "azure/governance/policy/concepts/assignment-structure",
+        ["DoNotEnforce", "definitionVersion", "resourceSelectors", "overrides"],
+        "ID creation scope, excluded scopes, selectors, overrides, parameters, versions and "
+        "enforcement mode are independent applicability/effect constraints. Missing/default/"
+        "wildcard/effective versions are not exact supplied-version joins. DoNotEnforce "
+        "does not disable evaluation; Default is not effective enforcement proof.",
+    ),
+    (
+        "policy-exemption",
+        LEARN + "azure/governance/policy/concepts/exemption-structure",
+        ["expiresOn", "assignmentScopeValidation", "policyDefinitionReferenceId"],
+        "Exemptions can select initiative members and resource/identity subsets, expire "
+        "without object deletion and relax assignment-scope validation. Saved references "
+        "alone cannot establish effective exemption, approval or complete coverage.",
+    ),
+    (
+        "policy-effects",
+        LEARN + "azure/governance/policy/concepts/effect-basics",
+        ["disabled", "manual", "cumulative most restrictive"],
+        "Explicit literal then.effect is a configuration fact only. Parameterized effects, "
+        "conditions, effect-specific details, overrides, modes and independent cumulative "
+        "assignments are not interpreted; existing resources and remediation differ.",
+    ),
+    (
+        "policy-regulatory",
+        LEARN + "azure/governance/policy/concepts/regulatory-compliance",
+        ["Preview", "Customer", "Shared", "policyMetadata"],
+        "Current page calls regulatory initiative grouping Preview. Groups/counts/reference "
+        "metadata are not an arbitrary legal-control mapping, legal compliance verdict "
+        "or customer/Microsoft/shared responsibility acceptance.",
+    ),
+    (
+        "management-hierarchy",
+        LEARN + "azure/governance/management-groups/overview",
+        ["one parent", "tenant ID", "must have"],
+        "Tenant root is directory-bound, not a name or the highest visible selected node. "
+        "Use positive saved parent paths only; missing parents or incomplete trees prove "
+        "no root identity or effective inherited policy/role outcome.",
+    ),
+    (
+        "landing-zone-hierarchy",
+        LEARN + "azure/cloud-adoption-framework/ready/landing-zone/design-area/"
+        "resource-org-management-groups",
+        ["Intermediate root", "Limit the number", "workload teams"],
+        "Intermediate root is below tenant root with ALZ-wide parent purpose, requiring "
+        "explicit designation. Root assignments should be limited but no numeric cap is "
+        "specified. Workload RBAC is normally subscription/resource-group scoped, unlike "
+        "platform-team MG access controlled through PIM. Initial management-group URL "
+        "without resource-org prefix returned404; this actual page is the reviewed source.",
+    ),
+    (
+        "resource-policy-contributor",
+        LEARN + "azure/role-based-access-control/built-in-roles/management-and-governance"
+        "#resource-policy-contributor",
+        ["36243c78-bf99-498c-9df9-86d9f8d28608", "policyenrollments", "*/read"],
+        "Role GUID36243c78-bf99-498c-9df9-86d9f8d28608 includes control-plane */read, "
+        "Policy/PolicyInsights, deployments/support; current page also includes enrollments. "
+        "It has no roleAssignments/write or dataActions. Reference/principalType alone "
+        "does not prove application-team designation, active membership/PIM, absence of "
+        "deny/conditions or effective least privilege/remediation-identity authority.",
+    ),
+    *[
+        (
+            "policy-spec-" + stem,
+            SPEC_RAW + "specification/resources/resource-manager/Microsoft.Authorization/"
+            "policy/stable/2023-04-01/" + stem + ".json",
+            markers,
+            finding,
+        )
+        for stem, markers, finding in [
+            (
+                "policyDefinitions",
+                ["policyType", "policyRule", "version"],
+                "Pinned2023-04-01 custom subscription/MG definitions versus global built-ins. "
+                "Minimize type, explicit supported mode, exact version and literal effect; "
+                "withhold rule/parameters/metadata and never fetch referenced definitions.",
+            ),
+            (
+                "policySetDefinitions",
+                ["PolicyDefinitionReference", "definitionVersion", "groupNames"],
+                "Pinned2023-04-01 initiative references with per-member versions and unique "
+                "reference IDs. Retain typed IDs, hashed member labels and bounded group counts "
+                "only; no group names, regulatory mapping, parameter values "
+                "or recursive evaluation.",
+            ),
+            (
+                "policyAssignments",
+                ["notScopes", "enforcementMode", "resourceSelectors"],
+                "Pinned2023-04-01 assignment scope is ID prefix; scope property is readOnly. "
+                "Minimized references/exclusions and counts preserve missing inputs as unknown. "
+                "Selectors/overrides/parameters/identity bodies are not retained or interpreted.",
+            ),
+        ]
+    ],
+    *[
+        (
+            "policy-provider-" + stem,
+            RAW + "website/docs/r/" + stem + ".html.markdown",
+            markers,
+            finding,
+        )
+        for stem, markers, finding in [
+            (
+                "policy_definition",
+                ["management_group_id", "policy_rule", "policy_type"],
+                "PinnedAzureRM4.50.0 explicit subscription/MG definitions; JSON-string rule "
+                "is bounded/duplicate-checked before extracting literal effect only. "
+                "Metadata version is not an effective or REST version; no join synthesized.",
+            ),
+            (
+                "policy_set_definition",
+                ["policy_definition_reference", "reference_id", "version"],
+                "PinnedAzureRM4.50.0 subscription initiative references; member version optional, "
+                "so absent/unresolved versions cannot make an exact supplied-version join. "
+                "This resource has no management_group_id argument.",
+            ),
+            (
+                "management_group_policy_assignment",
+                ["management_group_id", "enforce", "not_scopes"],
+                "PinnedAzureRM4.50.0 MG assignment with exact explicit target binding. "
+                "Omitted enforce, exclusions, selectors or overrides are not inferred defaults.",
+            ),
+            (
+                "subscription_policy_assignment",
+                ["subscription_id", "enforce", "resource_selectors"],
+                "PinnedAzureRM4.50.0 subscription assignment. Separate scope-specific provider "
+                "resources share one minimized model; unsupported resource assignments "
+                "stay unsupported.",
+            ),
+            (
+                "resource_group_policy_assignment",
+                ["resource_group_id", "enforce", "overrides"],
+                "PinnedAzureRM4.50.0 RG assignment with explicit typed target; no subscription/"
+                "MG promotion, service approval or automatic inheritance claim.",
+            ),
+        ]
+    ],
+    (
+        "policy-role-arm",
+        LEARN + "azure/templates/microsoft.authorization/2022-04-01/roleassignments",
+        ["roleDefinitionId", "principalType", "conditionVersion"],
+        "Existing versioned2022-04-01 role-assignment model is reused, without personal "
+        "principals/condition bodies or new identity/role collection. Exact assignment "
+        "scope and recognized role reference are not effective delegation.",
+    ),
+    (
+        "learn-terms",
+        LEARN + "legal/termsofuse",
+        ["Personal and Non-Commercial", "DOCUMENTATION", "License"],
+        "Reviewed Learn terms and documentation-specific terms; retain source metadata, "
+        "URLs/revisions/hashes and own factual findings only, not articles/sample scripts.",
+    ),
+    (
+        "policy-spec-license",
+        SPEC_RAW + "LICENSE",
+        ["MIT", "copyright"],
+        "Pinned REST-spec MIT terms reviewed; only own findings and source metadata retained.",
+    ),
+    (
+        "policy-provider-license",
+        RAW + "LICENSE",
+        ["Mozilla Public License", "2.0"],
+        "Pinned provider MPL2.0 terms reviewed; no provider source code redistributed.",
+    ),
+]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
@@ -3295,6 +3696,7 @@ def main() -> None:
         "--batch",
         choices=[
             "01",
+            "02",
             "04",
             "05",
             "08",
@@ -3309,6 +3711,7 @@ def main() -> None:
             "19",
             "20",
             "22",
+            "27",
             "23",
             "29",
             "30",
@@ -3318,9 +3721,10 @@ def main() -> None:
     args = parser.parse_args()
     if args.vwan_supplement and (args.batch != "16" or not args.preparation_only):
         raise ValueError("The vWAN supplement is cohort16 preparation only")
-    if (args.batch in {"05", "12", "16", "20", "23", "29", "30"}) != args.preparation_only:
+    if (args.batch in {"02", "05", "12", "16", "20", "23", "27", "29", "30"}) != args.preparation_only:
         raise ValueError(
-            "Cohorts 05/12/16/20/23/29/30 source capture require --preparation-only; no activation"
+            "Cohorts 02/05/12/16/20/23/27/29/30 source capture require --preparation-only; "
+            "no activation"
         )
     prefix = "preparation" if args.preparation_only else "batch"
     suffix = "-vwan" if args.vwan_supplement else ""
@@ -3330,14 +3734,15 @@ def main() -> None:
         / "recommendation-batches"
         / f"{prefix}-{args.batch}{suffix}-sources.json"
     )
-    if args.batch == "05":
-        target = ROOT / "references" / "preparation" / "batch-05-sources.json"
+    if args.batch in {"02", "05"}:
+        target = ROOT / "references" / "preparation" / f"batch-{args.batch}-sources.json"
     if target.exists() and not args.append_new_sources:
         raise ValueError("Frozen source review exists; do not silently recollect or redate it")
     sources = json.loads(target.read_text("utf-8"))["sources"] if target.exists() else []
     existing = {source["id"]: source for source in sources}
     selected_sources = {
         "01": SOURCES,
+        "02": SOURCES_02,
         "04": SOURCES_04,
         "05": SOURCES_05,
         "08": SOURCES_08,
@@ -3352,6 +3757,7 @@ def main() -> None:
         "19": SOURCES_19,
         "20": SOURCES_20,
         "22": SOURCES_22,
+        "27": SOURCES_27,
         "23": SOURCES_23,
         "29": SOURCES_29,
         "30": SOURCES_30,

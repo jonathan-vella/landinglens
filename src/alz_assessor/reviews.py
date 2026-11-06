@@ -85,6 +85,11 @@ def prepared_resource(
     if control["upstream_guid"] in LOGGING_GUIDS:
         prepared["logging_context"] = linked_context(resource, by_id, scope)
     if bundle is not None:
+        from .policy_strategy_evidence import GUIDS as POLICY_STRATEGY_GUIDS
+        from .policy_strategy_evidence import configuration_context
+
+        if control["upstream_guid"] in POLICY_STRATEGY_GUIDS and control.get("review_fact_paths"):
+            prepared["policy_configuration"] = configuration_context(resource, bundle, by_id)
         from .network_policy_evidence import (
             FIREWALL,
             GATEWAY,
@@ -398,14 +403,22 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     from .logging_evidence import GUIDS as LOGGING_GUIDS
     from .logging_evidence import scoped_identity
     from .network_policy_evidence import GUIDS as NETWORK_POLICY_GUIDS
+    from .policy_strategy_evidence import GUIDS as POLICY_STRATEGY_GUIDS
+    from .tenant_evidence import GUIDS as TENANT_GUIDS
 
     unbound = 0
+    policy_prepared = control["upstream_guid"] in POLICY_STRATEGY_GUIDS and bool(
+        control.get("review_fact_paths")
+    )
+    scoped_guids = GOVERNANCE_GUIDS | RESILIENCE_GUIDS | NETWORK_POLICY_GUIDS | TENANT_GUIDS
+    if policy_prepared:
+        scoped_guids |= POLICY_STRATEGY_GUIDS
     if control["upstream_guid"] in LOGGING_GUIDS:
         scoped = [
             resource for resource in matches if scoped_identity(resource, bundle.get("scope"))
         ]
         unbound, matches = len(matches) - len(scoped), scoped
-    elif control["upstream_guid"] in GOVERNANCE_GUIDS | RESILIENCE_GUIDS | NETWORK_POLICY_GUIDS:
+    elif control["upstream_guid"] in scoped_guids:
         scoped = [resource for resource in matches if resource_in_scope(resource, bundle)]
         unbound, matches = len(matches) - len(scoped), scoped
         by_id = {
@@ -429,11 +442,20 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
             "complete relationships. No whole-recommendation outcome or current freshness inferred."
         ),
     }
-    if control["upstream_guid"] in (
-        GOVERNANCE_GUIDS | LOGGING_GUIDS | RESILIENCE_GUIDS | NETWORK_POLICY_GUIDS
-    ):
+    if control["upstream_guid"] in scoped_guids | LOGGING_GUIDS:
         context["unbound_resources"] = unbound
-    if control["upstream_guid"] == "3a923c34-74d0-4001-aac6-a9e01e6a83de" and available:
+    if policy_prepared and available:
+        from .policy_strategy_evidence import population_context
+
+        context["supplied_policy_assignments"] = population_context(bundle, by_id)
+    if control["upstream_guid"] in TENANT_GUIDS:
+        from .tenant_evidence import resource_context
+
+        for prepared, resource in zip(context["resources"], matches[:100], strict=True):
+            prepared["tenant_configuration"] = resource_context(resource, by_id, bundle)
+    if (
+        policy_prepared or control["upstream_guid"] == "3a923c34-74d0-4001-aac6-a9e01e6a83de"
+    ) and available:
         from .governance_evidence import hierarchy_context
 
         context["saved_management_hierarchy"] = hierarchy_context(bundle)

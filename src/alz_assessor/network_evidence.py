@@ -12,12 +12,14 @@ from .governance_evidence import PATHS as GOVERNANCE_PATHS
 from .identity_evidence import PATHS as IDENTITY_PATHS
 from .logging_evidence import PATHS as LOGGING_PATHS
 from .network_policy_evidence import PATHS as NETWORK_POLICY_PATHS
+from .policy_strategy_evidence import PATHS as POLICY_STRATEGY_PATHS
 from .protection_evidence import KINDS as PROTECTION_KINDS
 from .protection_evidence import PATHS as PROTECTION_PATHS
 from .routing_evidence import KINDS as ROUTING_KINDS
 from .routing_evidence import PATHS as ROUTING_PATHS
 from .security_evidence import PATHS as SECURITY_PATHS
 from .sources import boolean, enumeration, property_at, unknown
+from .tenant_evidence import PATHS as TENANT_PATHS
 from .terraform import InputError
 from .virtual_wan_evidence import KINDS as VWAN_KINDS
 from .virtual_wan_evidence import PATHS as VWAN_PATHS
@@ -63,10 +65,12 @@ REVIEW_PATHS = (
     | SECURITY_PATHS
     | PROTECTION_PATHS
     | GOVERNANCE_PATHS
+    | TENANT_PATHS
     | {"connectionMonitorSummary", "expressRouteAlertSummary"}
     | DNS_PATHS
     | NETWORK_POLICY_PATHS
     | VWAN_PATHS
+    | POLICY_STRATEGY_PATHS
     | LOGGING_PATHS
 )
 
@@ -513,6 +517,14 @@ def private_connections(values: dict[str, Any], *, terraform: bool) -> Any:
 
 
 def review_fact(properties: dict[str, Any], path: str) -> Any:
+    if path in POLICY_STRATEGY_PATHS:
+        from .policy_strategy_evidence import review_fact as policy_strategy_fact
+
+        return policy_strategy_fact(properties, path)
+    if path in TENANT_PATHS:
+        from .tenant_evidence import review_fact as tenant_fact
+
+        return tenant_fact(properties, path)
     if path in LOGGING_PATHS:
         from .logging_evidence import review_fact as logging_fact
 
@@ -964,7 +976,14 @@ def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     } | ROUTING_KINDS | PROTECTION_KINDS | DNS_KINDS | VWAN_KINDS | {CIRCUIT_KIND, PORT_KIND}:
         return {}
     result: dict[str, Any] = {}
-    for path in sorted(REVIEW_PATHS - SECURITY_PATHS - GOVERNANCE_PATHS - LOGGING_PATHS):
+    for path in sorted(
+        REVIEW_PATHS
+        - SECURITY_PATHS
+        - GOVERNANCE_PATHS
+        - LOGGING_PATHS
+        - TENANT_PATHS
+        - POLICY_STRATEGY_PATHS
+    ):
         parts = path.split(".")
         target = result
         for part in parts[:-1]:

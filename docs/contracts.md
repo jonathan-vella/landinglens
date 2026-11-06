@@ -80,6 +80,53 @@ JSON/Markdown/HTML share the same counts, with no browser-side tier evaluator.
 
 ## Catalog and evidence contracts
 
+### Cohort 27 Policy configuration vocabulary
+
+The [eight-GUID accepted matrix](../references/recommendation-batches/batch-27.json)
+and [22 unchanged captures](../references/recommendation-batches/batch-27-sources.json)
+register `policyDefinitionSummary`, `policyInitiativeSummary` and
+`policyAssignmentSummary` in `.17` after the explicit coordinator slot.
+Eight independently blank decisions share the existing interview/review paths.
+Exact `.16` meanings remain frozen; authored preparation catalogs still cannot
+be exported as accepted replay. Source activation is not merged delivery.
+
+Supported ARM/no-restore Bicep uses `2023-04-01` definitions, initiatives and
+assignments. AzureRM `4.50.0` raw/supplied-module/optional-plan adapters support
+`azurerm_policy_definition`, subscription `azurerm_policy_set_definition`, and
+the management-group/subscription/resource-group policy-assignment resources.
+Other scope-specific provider resources remain unsupported; in particular
+`azurerm_policy_set_definition` has no `management_group_id` argument. No
+`jsonencode` interpreter expansion, module restore or definition fetch is added.
+Literal provider JSON strings are duplicate-checked and limited to100,000 bytes.
+
+Summaries retain only explicit supported enums, exact semantic versions, typed
+definition/excluded-scope references, hashed initiative member labels, bounded
+group counts and selector/override counts. Policy-rule conditions/details,
+parameter/selector/override bodies and values, group names, organizational or
+regulatory metadata and personal principals are withheld. A literal effect is
+not evaluated. Missing arrays, mode, enforcement or versions are unknown; no
+provider/ARM default is manufactured. Wildcards and unresolved versions cannot
+produce exact-version joins. Provider metadata is not synthesized into a REST
+or effective definition version.
+
+Custom definitions join only when supplied once, known, typed, in the selected
+scope, at a management group/subscription, with an exact matching supplied version
+and a positive assignment-location ancestry path. Existing saved hierarchy helpers
+are reused; missing parents, names or selected trees establish neither tenant root
+nor intermediate-root purpose. Global built-in IDs remain global references,
+not scoped custom definitions, fetched content or suitable controls. A scoped
+Resource Policy Contributor reference uses the existing minimized role model,
+not principal membership/PIM/conditions/deny/effective-authority evaluation.
+
+Preparation is bounded to100 initiative members,100 excluded scopes,100 groups,
+10 selector/override objects and100 Policy/role context resources. Bounds are
+parser/review limits, not Azure quotas or a recommended root-assignment cap.
+Supplied assignment counts remain explicitly incomplete; zero is not absence.
+Saved exemptions retain their original expiry and are separately qualified:
+their scope/member/selector validity, approval and effectiveness are not inferred.
+Saved Policy/query Signals keep their existing meanings. No new Collector API,
+tenant/identity/role/compliance read, query or evaluation/remediation is enabled.
+
 ### Virtual WAN configuration vocabulary
 
 Catalog `.6.12` registers minimized WAN type, separate WAN/hub branch flags,
@@ -448,6 +495,24 @@ normalized resource evidence is available. Optional content-bound
 `review_fact_paths` selects only the reviewed RBAC, network-access/default-action
 and minimum-TLS scalar vocabulary, plus reviewed network SKU, canonical
 relationship, IPv4 prefix/address and classic DNAT source facts.
+
+Cohort02 successor `2026-11-06.16` adds `lighthouseAuthorizationSummary`
+(1-100 explicit syntactically valid authorization pairs and separately 0-100
+eligible pairs; missing optional lists remain unknown), `registrationDefinitionId`
+(a subscription-level UUID-named definition reference), and `costViewSummary`
+(explicit scope plus reviewed chart/metric enums). No tenant/principal IDs,
+role payloads, offer/contact/billing identifiers or query bodies are projected.
+Counts are not role support, effective authority or distinct-person counts.
+Joins require known unique same-subscription records, service-supported
+subscription/RG scope and selected-boundary containment. Explicit view scope
+must match its resource parent; billing/MG/private views remain unsupported.
+No new live routes are activated. The accepted eight-control bank keeps every
+decision blank. Authored preparation catalogs are still refused by packaged replay;
+the accepted packaged successor replays sanitized original-
+time evidence retains only these facts and their unknowns. The actual Bicep
+fixture requires the bounded literal implicit-current-subscription
+`subscriptionResourceId` overload; explicit foreign-subscription, missing-scope
+and unresolved overloads remain unknown and never expand assessment boundaries.
 
 Cohort08 successor `2026-11-06.10` adds four typed vocabulary entries:
 `tagCount` (explicit 0-50 pairs,

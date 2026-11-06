@@ -1,5 +1,26 @@
 # LandingLens product requirements
 
+## Cohort 27 integration
+
+Reviewed successor `2026-11-06.17` follows the explicit coordinator slot after
+actual02 implementation134/receipt135 and #127 completed closure. The
+[eight-GUID matrix](../../references/recommendation-batches/batch-27.json) and
+22 preserved captures add eight assisted configuration/review workflows, not
+whole predicates. Strict scoped exact-version custom joins and positive saved
+hierarchy paths do not establish strategy, appropriate scope, root designation,
+service approval, legal compliance, built-in suitability or effective delegation/
+enforcement. All human outcomes stay independently blank and existing Signals
+stay Signals. Exact `.16`, all154 prior own-GUID rows/eighteen receipts and every
+non-own control remain unchanged. Dispositions stay12/200/43; checked merged
+implementation and guarded own receipts, not source activation, gate #130 closure.
+
+Implementation #137 passed all exact-head eight-job/CodeQL/security/review and
+four sixteen-case compiler gates and merged normally. Guarded `deliveries.27`
+binds all eight GUIDs to the actual checked head/merge/runs/own wheel; the checked
+reconciliation records162 delivered/89 pending. All154 earlier rows/eighteen
+receipts stay unchanged. Checked receipt publication/final-main CI still gate
+#130 closure; no organizational or effective-enforcement assurance is implied.
+
 ## Next increment: assessor efficiency
 
 Owner-authorised on 2026-11-05, tracked in
@@ -89,6 +110,24 @@ test count, Key Vault or subscription alias proves none. Existing helpers are
 exercised with authored candidate/test-only bank injection; no accepted bank,
 successor, counts, ledger, receipt or closure changes before the coordinator's
 slot after02/27. See [preparation boundaries](plan.md#cohort-29-independent-preparation-2026-11-06).
+
+Cohort02/[#127](https://github.com/jonathan-vella/landinglens/issues/127)
+integrates its eight immutable tenant/Lighthouse/support/cost/notification/
+hierarchy GUIDs from24 unchanged captures into reviewed successor `.16` after
+actual23 implementation131/receipt132 and the explicit sole-slot grant.
+Scoped typed registration joins and minimized shared-view metadata
+reuse existing adapters/reviews/tiers/outputs/sessions/replay; they never prove
+tenant strategy, same-identity/effective access, partner applicability, actual
+automation/reporting or agreement suitability. Support and mailbox decisions stay
+manual; all eight independent outcomes stay blank. No new live endpoint,
+directory/billing scope, permission or private payload retention. Exact `.15`,
+every non-own control, all146 preceding rows/seventeen receipts and original four
+full controls remain frozen. Counts stay12/200/43. Actual #134 passed exact-head
+eight-job/CodeQL/security/review and four fifteen-case compiler gates and merged
+normally. Guarded `deliveries.02` binds all eight GUIDs to actual head/merge/runs/
+583-test final wheel, recording154 delivered/97 pending on checked publication.
+Receipt publication and final-main CI still gate #127 closure. The historical independent preparation and
+invalidated-run/final post-install proofs remain recorded separately.
 
 Cohort23/#124 integrates seven immutable logging/support/service workflows in
 [accepted successor `.15`](../../references/recommendation-batches/batch-23.json)

@@ -6,8 +6,132 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.15"
+BANK_VERSION = "2026-11-06.17"
 BANK = {
+    "policy-strategy-placement-delegation": {
+        "question": "Supply eight separate decisions at the "
+        "original evidence time. E01.01: "
+        "identify approved governance "
+        "objectives, initiative grouping and "
+        "reviewed Policy-as-code "
+        "rollout/maintenance; an initiative "
+        "count or literal effect is not "
+        "strategy or enforcement. E01.03: bind "
+        "applicable regulatory obligations, "
+        "customer/Microsoft/shared "
+        "responsibilities and exact Policy/RBAC "
+        "controls using attributable redacted "
+        "evidence; built-in regulatory "
+        "groupings, including current Preview "
+        "status, are not a legal-compliance "
+        "verdict. E01.04: explicitly designate "
+        "the intermediate root below the actual "
+        "tenant root and prove complete "
+        "intended assignment ancestry; no name "
+        "or missing parent establishes either "
+        "root. Global built-ins are distinct "
+        "from custom "
+        "management-group/subscription "
+        "definitions. E01.05: decide the "
+        "highest appropriate scope for each "
+        "control and justified lower-scope "
+        "exclusions versus tracked exemptions; "
+        "review conditions, mode, versions, "
+        "overrides, resource/identity "
+        "selectors, expiry and "
+        "evaluation/remediation evidence "
+        "separately. E01.06: provide the "
+        "organization-approved services and "
+        "exceptions and show the applicable "
+        "audit/restriction controls; no generic "
+        "allowed-service taxonomy is assumed. "
+        "E01.07: compare actual built-in "
+        "scope/cloud/version/parameter/effect "
+        "suitability with custom alternatives "
+        "and maintenance cost; a global GUID "
+        "reference is not fetched content, "
+        "existence or suitability. E01.08: "
+        "identify the application team and "
+        "least-privilege scope, actual active "
+        "membership/PIM, conditions/deny "
+        "assignments and remediation-identity "
+        "grants; Resource Policy "
+        "Contributor36243c78-bf99-498c-9df9-86d9f8d28608 "
+        "includes control-plane read, "
+        "PolicyInsights, deployments/support, "
+        "not role-assignment write or "
+        "dataActions. Workload RBAC is normally "
+        "subscription/resource-group scoped; no "
+        "reference/principal-type/count proves "
+        "effective delegation. E01.09: "
+        "explicitly establish tenant-root "
+        "identity and review only must-have "
+        "root assignments, exclusions and "
+        "debugging/maintenance complexity "
+        "against complete attributable "
+        "inventory; no numeric assignment cap "
+        "is prescribed and a selected tree is "
+        "not complete. Use redacted supporting "
+        "references, not rule bodies, principal "
+        "records, service-list contents or "
+        "fabricated organizational/legal "
+        "decisions.",
+        "controls": [
+            "ALZ-5c986cb2-9131-456a-8247-6e49f541acdc",
+            "ALZ-d8a2adb1-17d6-4326-af62-5ca44e5695f2",
+            "ALZ-223ace8c-b123-408c-a501-7f154e3ab369",
+            "ALZ-3829e7e3-1618-4368-9a04-77a209945bda",
+            "ALZ-43334f24-9116-4341-a2ba-527526944008",
+            "ALZ-be7d7e48-4327-46d8-adc0-55bcf619e8a1",
+            "ALZ-3f988795-25d6-4268-a6d7-0ba6c97be995",
+            "ALZ-19048384-5c98-46cb-8913-156a12476e49",
+        ],
+    },
+    "tenant-lighthouse-billing-governance": {
+        "question": "Decide all eight tenant/billing GUIDs independently using redacted "
+        "attributable references. Justify a single corporate tenant or the specific regulatory/"
+        "business requirements that cannot be met there, with authoritative inventory and "
+        "service/B2B, licensing, audit and JML considerations, not resource counts. For "
+        "applicable multitenant platform automation, explain approved complete isolation or "
+        "shared-application/per-tenant-principal boundaries, current user-assigned managed-"
+        "identity federation qualifications, targeting, privilege/credential lifecycle, "
+        "actual authorized operation, monitoring and recovery. Substantiate actual same-"
+        "identity Lighthouse use and effective least-privilege delegated tasks separately "
+        "from registration pairs. Lighthouse delegates subscriptions/RGs, not tenants/MGs "
+        "or across clouds; Owner/custom/DataActions and specified authorization actions are "
+        "unsupported, and UAA's constrained managed-identity assignment exception is not "
+        "general access administration or full ALZ deployment authority. Explicitly establish "
+        "partner/CSP applicability, customer approval, scope, audit/removal and agreement "
+        "conditions; Entra GDAP/DAP, AOBO and resource delegation are different. Separately "
+        "evidence the approved CSP case-creation/support/escalation process and dated operation "
+        "without contacts, tickets or invented SLAs. Demonstrate actual suitable Cost "
+        "Management reports/views, audiences, allocation and current data/access: view "
+        "configuration is not underlying data, shared access, reporting or a pinned dashboard. "
+        "Review actual EA charge policies or CSP Azure Plan/MCA/provider visibility and retail-"
+        "versus-invoice limitations; MCA MG and EA/MCA cost-details MG limitations apply. "
+        "Separately establish appropriate maintained agreement-specific notification group "
+        "mailbox ownership, categories/cadence, delivery/review/escalation and continuity; "
+        "EA notification contacts are not Bill to invoice contacts and MCA differs. Map actual "
+        "approved organizational structure to EA departments/accounts or MCA profiles/invoice "
+        "sections, or applicable CSP partner-managed MPA/customer structures; Azure MG hierarchy "
+        "does not prove billing separation or authority. Never infer commercial model, tenant "
+        "inventory, effective access, automation adoption or business suitability from names "
+        "or metadata. Do not retain tenant/principal/contact/email identifiers, private partner "
+        "records, raw billing names/IDs, prices, usage, query bodies or credentials. All eight "
+        "outcomes stay blank until separately confirmed with scope/content/time/expiry binding; "
+        "support and mailbox suitability stay manual. Signals, humanConfirmed and exceptions "
+        "never manufacture technical Verified or a whole-recommendation pass.",
+        "controls": [
+            "ALZ-70c15989-c726-42c7-b0d3-24b7375b9201",
+            "ALZ-6309957b-821a-43d1-b9d9-7fcf1802b747",
+            "ALZ-78e11934-499a-45ed-8ef7-aae5578f0ecf",
+            "ALZ-5d82e6df-6f61-42f2-82e2-3132d293be3d",
+            "ALZ-a24d0de3-d4b9-4dfb-8ddd-bbfaf123fa01",
+            "ALZ-32952499-58c8-4e6f-ada5-972e67893d55",
+            "ALZ-685cb4f2-ac9c-4b19-9167-993ed0b32415",
+            "ALZ-12cd499f-96e2-4e41-a243-231fb3245a1c",
+        ],
+    },
     "central-logging-support-service-enablement": {
         "question": "Reconcile the approved central logging architecture with complete "
         "platform/application resource populations, diagnostic log categories and original-time "
