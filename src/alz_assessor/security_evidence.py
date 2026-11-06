@@ -86,8 +86,7 @@ def pricing_facts(value: Any) -> Any:
 
 
 def routing_facts(value: Any) -> Any:
-    from .contracts import identity_type
-    from .network_evidence import reference
+    from .protection_evidence import typed_reference
 
     if not isinstance(value, dict) or "unknown" in value:
         return unknown("activity_routing_not_explicit")
@@ -123,12 +122,7 @@ def routing_facts(value: Any) -> Any:
         ("workspaceId", "microsoft.operationalinsights/workspaces"),
         ("storageAccountId", "microsoft.storage/storageaccounts"),
     ):
-        identity = reference(value.get(key))
-        result[key] = (
-            identity
-            if isinstance(identity, str) and identity_type(identity) == kind
-            else unknown("activity_destination_missing_or_wrong_type")
-        )
+        result[key] = typed_reference(value.get(key), (kind,))
     return result
 
 

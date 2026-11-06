@@ -104,16 +104,18 @@ run; the earlier narrowly scoped pilot is not proof of every control or a tenant
 See [collection](collection.md), [contracts](contracts.md) and
 [detailed workflows](usage.md) for precise supported cases and bounds.
 
-## Cohort 22 preparation, not delivered
+## Cohort 22: security configuration and explicit review
 
-The [eight-GUID preparation matrix](../references/recommendation-batches/batch-22-preparation.json)
+The [eight-GUID matrix](../references/recommendation-batches/batch-22.json)
 and [25 captured sources](../references/recommendation-batches/batch-22-sources.json)
-record source review and offline typed configuration support only. No successor
-catalog, crosswalk, delivery receipt or new live Collector API is activated.
+record source review and offline typed configuration support. Successor `.6.6`
+preserves the exact delivered `.6.5` catalog/crosswalk and all earlier receipts.
+Catalog integration is not delivery; the ledger changes only after checked merge.
 Terraform/supplied-plan and direct ARM-property helpers prepare allowlisted
 Defender plan fields, activity-log routing, Managed HSM settings and VM patch
-configuration. Current accepted controls retain their earlier meanings; the
-specific questions/context remain candidate-only until serialized integration.
+configuration. The source-specific interview prepares eight separate blank
+scope/content/time-bound decisions through existing review, tier and replay paths.
+The extra ARM versions are planned-only; live Collector routes are unchanged.
 
 Managed HSM stores HSM-protected cryptographic keys, not secrets or credentials.
 External KEK custody adds customer-operated HSM/proxy responsibilities and is not

@@ -71,6 +71,11 @@ API_VERSIONS = {
     "microsoft.network/networkinterfaces": {"2024-05-01"},
     "microsoft.insights/diagnosticsettings": {"2021-05-01-preview"},
 }
+PLANNED_API_VERSIONS = API_VERSIONS | {
+    "microsoft.security/pricings": {"2024-01-01"},
+    "microsoft.keyvault/managedhsms": {"2024-11-01"},
+    "microsoft.compute/virtualmachines": {"2024-07-01"},
+}
 
 
 def unresolved(value: Any) -> bool:
@@ -444,11 +449,11 @@ def arm_source(
                     continue
                 arm_type = kind if isinstance(kind, str) else "unknown"
                 supported = (
-                    version in API_VERSIONS.get(arm_type.lower(), set())
+                    version in PLANNED_API_VERSIONS.get(arm_type.lower(), set())
                     if isinstance(version, str)
                     else False
                 )
-                applicable = arm_type.lower() in API_VERSIONS
+                applicable = arm_type.lower() in PLANNED_API_VERSIONS
                 state = (
                     "known"
                     if condition is True and known_count and (supported or not applicable)
@@ -459,7 +464,12 @@ def arm_source(
                 ):
                     state = "unknown"
                 binding = target_scope
-                diagnostic_target = None
+                diagnostic_target = (
+                    target_scope
+                    if arm_type.lower() == "microsoft.insights/diagnosticsettings"
+                    and "scope" not in entry
+                    else None
+                )
                 if "scope" in entry:
                     explicit_scope = context.value(entry["scope"])
                     if arm_type.lower() == "microsoft.insights/diagnosticsettings":
@@ -476,7 +486,10 @@ def arm_source(
                         if not (
                             target_scope
                             and diagnostic_target
-                            and diagnostic_target.startswith(target_scope.lower() + "/")
+                            and (
+                                diagnostic_target == target_scope.lower()
+                                or diagnostic_target.startswith(target_scope.lower() + "/")
+                            )
                         ):
                             binding, state = None, "unknown"
                     else:
@@ -510,6 +523,7 @@ def arm_source(
                             context.value(entry.get("properties", {})),
                             root={
                                 "scope": diagnostic_target,
+                                "name": name,
                                 "zones": context.value(entry.get("zones")),
                                 "sku": context.value(entry.get("sku")),
                                 **(

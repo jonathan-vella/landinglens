@@ -259,6 +259,12 @@ API/existing-network scope distinction. Preparation leaves every decision blank.
 The scope is included in the requirements hash; changed scope, bank, content or
 validity requires fresh preparation, not editing a binding.
 
+Use `--question sovereign-audit-workload-protection` for cohort22's eight distinct
+key-custody, Entra audit, activity-retention, CSPM/Servers/workload, endpoint and
+patch-drift decisions. Only references/redacted attestations are appropriate:
+never enter key/credential/security-domain material or private audit records.
+Configuration facts are review context, not proof of coverage or compliance.
+
 For the automated local workflow, start from saved **normalized evidence**, not
 a rendered or minimized assessment:
 

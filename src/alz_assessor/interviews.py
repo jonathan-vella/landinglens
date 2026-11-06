@@ -6,8 +6,33 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.5"
+BANK_VERSION = "2026-11-06.6"
 BANK = {
+    "sovereign-audit-workload-protection": {
+        "question": "Describe approved sovereign key-custody requirements and actual compatible "
+        "CMK use: Managed HSM keys are not secrets/credentials, and external KEK custody adds "
+        "customer-run HSM/proxy responsibilities. Identify actual redacted Entra access-audit "
+        "reports separately from Azure activity logs. Reconcile all applicable subscriptions' "
+        "activity categories, successful ingestion/export and table/storage retention with "
+        "approved requirements; configuration and new-arrival export do not prove history. "
+        "Distinguish paid CSPM, Servers P1/P2 and workload-specific plans/components, "
+        "resource overrides, actual coverage and endpoint enforcement. Reconcile Update "
+        "Manager assessment success and base-OS patch drift against the approved baseline "
+        "rather than deprecated MMA or a guessed threshold. Use attributable redacted "
+        "evidence references, never credentials, keys, security domains or private audit/"
+        "endpoint records. Decide all eight canonical GUIDs separately; one answer, "
+        "pricing record or diagnostic flag alone establishes no outcome.",
+        "controls": [
+            "ALZ-4ac6b67c-b3a4-4ff9-8e87-b07a7ce7bbdb",
+            "ALZ-4e5695f2-223a-4ce8-ab12-308ca5017f15",
+            "ALZ-4e3ab369-3829-4e7e-9161-83687a0477a2",
+            "ALZ-09945bda-4333-44f2-9911-634182ba5275",
+            "ALZ-36a72a48-fffe-4c40-9747-0ab5064355ba",
+            "ALZ-77425f48-ecba-43a0-aeac-a3ac733ccc6a",
+            "ALZ-24d96b30-61ee-4436-a1cc-d6ef08bc574b",
+            "ALZ-15833ee7-ad6c-46d3-9331-65c7acbe44ab",
+        ],
+    },
     "inbound-outbound-hybrid": {
         "question": "Describe global Front Door policy/domain/route coverage and effective rules; "
         "both origin backend filtering and exact X-Azure-FDID rejection; workload-aligned proxy "

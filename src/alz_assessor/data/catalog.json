@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "kind": "catalog",
-  "catalog_version": "2026-11-06.5",
+  "catalog_version": "2026-11-06.6",
   "design_areas": [
     "Azure billing and Active Directory tenant",
     "Identity and access management",
@@ -12502,14 +12502,17 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No keys, credentials, certificate/admin/tenant identities, security-domain bytes, HSM URIs or private audit data are retained; no activation or cryptographic/network operation. Purge/public-network flags do not establish adoption or business suitability.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Resolve the frozen secrets/credentials wording explicitly: Managed HSM supports HSM-protected cryptographic keys, not secrets or certificates. Identify an appropriate secret/credential solution separately, without supplying secret values.",
+        "Document approved sovereign/key-custody requirements and supported workload CMK use, key ownership/lifecycle, security-domain recovery responsibility and evidence of actual integration. Resource presence and BYOK import do not prove physical external custody.",
+        "Reviewer decision: does the approved design require external KEK custody, and if so are compatible services, customer-run proxy/HSM, mTLS, availability/recovery, region/support and SLA/cost responsibilities evidenced? EKM is GA, its Private Link model is preview; neither choice is automatically suitable."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-22",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "hsm-keys-not-secrets",
+        "external-custody-not-hsm-presence",
+        "sovereign-suitability-needs-owner"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -12524,9 +12527,63 @@
           "pointer": "/items/223",
           "item_sha256": "9c83968936fa8130ca1bff72c6d225e9a00565cfea873ac60a3869be47048f34",
           "guidance": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/capabilities/external-key-management"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/capabilities/external-key-management",
+          "source_sha256": "e0dbc8048a16719603382e586a0e1a4c17655f6a3d843e0a4b1d19c4c0a69553",
+          "revision": "7fd1d0aa0125108ec24f522fc1bbbcff03c3edda",
+          "retrieved_at": "2026-11-06T09:31:42.193818+00:00",
+          "pointer": "4ac6b67c-b3a4-4ff9-8e87-b07a7ce7bbdb",
+          "guidance": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/capabilities/external-key-management"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/overview",
+          "source_sha256": "f9deabfe4ba8773db8c2bdbd9f40c68dffa81db0761d48bc7fe0bf3505658812",
+          "revision": "f91c587c2422eb6343cefea5ca61346a6931d8df",
+          "retrieved_at": "2026-11-06T09:31:42.394394+00:00",
+          "pointer": "4ac6b67c-b3a4-4ff9-8e87-b07a7ce7bbdb",
+          "guidance": "https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates",
+          "source_sha256": "3fba2700cd98c4f3077f3410344a872cdf0e7562564293dc9d9d96e3c26e4af6",
+          "revision": "cc9ac0f545a688e4f2016a1541f565f136e23129",
+          "retrieved_at": "2026-11-06T09:31:42.601952+00:00",
+          "pointer": "4ac6b67c-b3a4-4ff9-8e87-b07a7ce7bbdb",
+          "guidance": "https://learn.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/external-key-management-overview",
+          "source_sha256": "3b1492089d22cd464518a3c36f831541d186acb1a69c2e2148c2c5b13b189012",
+          "revision": "5b8d62ef60d270ae9b6a430be680f4958a1aa20e",
+          "retrieved_at": "2026-11-06T09:31:42.815360+00:00",
+          "pointer": "4ac6b67c-b3a4-4ff9-8e87-b07a7ce7bbdb",
+          "guidance": "https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/external-key-management-overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/2024-11-01/managedhsms",
+          "source_sha256": "a5d7115991db9b4b9127279549032c0519195394f3c82ece26ad40e4c3b2d99f",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T09:31:50.226492+00:00",
+          "pointer": "4ac6b67c-b3a4-4ff9-8e87-b07a7ce7bbdb",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/2024-11-01/managedhsms"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/key_vault_managed_hardware_security_module.html.markdown",
+          "source_sha256": "142c8e354175096742f8ec95320a7ffd46c6316ff059f8baded495b9ab3e64f1",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T09:31:51.505398+00:00",
+          "pointer": "4ac6b67c-b3a4-4ff9-8e87-b07a7ce7bbdb",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/key_vault_managed_hardware_security_module.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.KeyVault/managedHSMs"
+      ],
+      "review_fact_paths": [
+        "hsmConfiguration"
+      ]
     },
     {
       "control_id": "ALZ-4e5695f2-223a-4ce8-ab12-308ca5017f15",
@@ -12546,14 +12603,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Legacy AAD URL resolves to Entra monitoring/health. This is genuinely human-evidence work; no Azure flag can establish the report and no Graph/directory/report/log read or login is performed.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Identify the actual redacted access-control audit report, directory/tenant and period, report owner, licensing/access constraints and audit/sign-in/provisioning sources used.",
+        "Reconcile report completeness, role/group/access changes and original event times with the intended audit population; no role assignment, Azure activity diagnostic setting or single sign-in establishes the report.",
+        "Reviewer decision: are the intended access-control audit reports generated and reviewed with accountable findings/follow-up and documented gaps/retention? Supply references or redacted attestations, never private directory/audit/sign-in records."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-22",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "entra-audit-not-azure-activity",
+        "audit-report-needs-attributable-evidence"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -12567,6 +12626,14 @@
           "retrieved_at": "2026-11-04T12:49:42.300152+00:00",
           "pointer": "/items/224",
           "item_sha256": "572a9b3114de9e30660086fea951f5a287f90337f2e4346234d4e7be8c1fe119",
+          "guidance": "https://learn.microsoft.com/azure/active-directory/reports-monitoring/overview-reports"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/active-directory/reports-monitoring/overview-reports",
+          "source_sha256": "774a5122b232d978ae983fae3954b6d532824d2e18230f3db05b5088cd8e64f3",
+          "revision": "ad2392b54e54af312a83c1095d1532609ac46a05",
+          "retrieved_at": "2026-11-06T09:31:43.934170+00:00",
+          "pointer": "4e5695f2-223a-4ce8-ab12-308ca5017f15",
           "guidance": "https://learn.microsoft.com/azure/active-directory/reports-monitoring/overview-reports"
         }
       ],
@@ -12590,14 +12657,17 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No audit contents, log queries, ingestion tests, destination enumeration or lifecycle change. Empty/absent/malformed/over-bound lists remain disclosed; selected categories are not every subscription's coverage.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reconcile all applicable subscriptions, original-time subscription diagnostic targets, categories and workspace/storage destinations; resource diagnostics and metrics do not establish activity-log export.",
+        "Verify successful original-time ingestion/export and completeness using redacted operational evidence, including historical gaps, new-arrivals-only export, retries/discards and destination availability. Default activity-log retention is 90 days, not durable export.",
+        "Reviewer decision: does actual table-specific analytics/total retention and any required storage lifecycle/immutability/recovery meet the approved retention/privacy requirement? Current Log Analytics total retention supports up to 12 years; do not invent a required duration or infer low cost, successful ingestion or adequacy from configuration."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-22",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "routing-not-ingestion-or-retention",
+        "table-retention-not-workspace-default",
+        "export-new-arrivals-not-history"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -12612,9 +12682,56 @@
           "pointer": "/items/225",
           "item_sha256": "6e47f0c3a087a6bccf0c0d4e19446705188ff19cfabb9d6bab6b2c8d653d2036",
           "guidance": "https://learn.microsoft.com/azure/azure-monitor/logs/logs-data-export?tabs=portal"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/azure-monitor/logs/logs-data-export?tabs=portal",
+          "source_sha256": "52e4e1f0d64efbc735179d1fca1a35f04073c180d141f1c4b34480b35b7c4bd2",
+          "revision": "022db371850311fc1d3db8923b5de1ab38cfbbaa",
+          "retrieved_at": "2026-11-06T09:31:44.550803+00:00",
+          "pointer": "4e3ab369-3829-4e7e-9161-83687a0477a2",
+          "guidance": "https://learn.microsoft.com/azure/azure-monitor/logs/logs-data-export?tabs=portal"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/activity-log",
+          "source_sha256": "bd349d852e768293856d7898ef359cb209cd338557751103797ee70df1fd9cac",
+          "revision": "a07b757d650e1215708e13f8546d4359adb8c38c",
+          "retrieved_at": "2026-11-06T09:31:45.146884+00:00",
+          "pointer": "4e3ab369-3829-4e7e-9161-83687a0477a2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/activity-log"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/data-retention-configure",
+          "source_sha256": "c43b03b64ff1da7a808cc9a342da58bca7f0a0e75722f271439212e452be2e40",
+          "revision": "dda53ebc0c46430cded570bdc06e9ff266fa5ef3",
+          "retrieved_at": "2026-11-06T09:31:45.476862+00:00",
+          "pointer": "4e3ab369-3829-4e7e-9161-83687a0477a2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/data-retention-configure"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/2021-05-01-preview/diagnosticsettings",
+          "source_sha256": "6a6c9ccc739d6736a956d4d8cc00ede122ff9cf55bfebf296bcfa21db81035a3",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T09:31:50.541859+00:00",
+          "pointer": "4e3ab369-3829-4e7e-9161-83687a0477a2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/2021-05-01-preview/diagnosticsettings"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/monitor_diagnostic_setting.html.markdown",
+          "source_sha256": "095f0692015969113d6d296e881e77e3728fff89da7eb123ab98f49235df2db6",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T09:31:51.786864+00:00",
+          "pointer": "4e3ab369-3829-4e7e-9161-83687a0477a2",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/monitor_diagnostic_setting.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Insights/diagnosticSettings"
+      ],
+      "review_fact_paths": [
+        "targetResourceId",
+        "activityLogRouting"
+      ]
     },
     {
       "control_id": "ALZ-09945bda-4333-44f2-9911-634182ba5275",
@@ -12634,14 +12751,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No CSPM scan, evaluation or new collection. Arbitrary extension/exclusion properties, sensitive findings and cost amounts are withheld. Standard tier or extension True establishes only configuration, never effective protection.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Identify CloudPosture configuration per applicable subscription/connector and distinguish paid Defender CSPM from Foundational CSPM; other plan records cannot answer this GUID.",
+        "Reconcile intended resources, cloud/region support, feature component enablement, exclusions and actual attributable coverage/assessment evidence. Billable-resource lists and pricing status are not complete coverage.",
+        "Reviewer decision: are paid CSPM features effectively available for the complete approved population, with component/support gaps, original evidence time and costs explicitly reviewed?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-22",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "cloudposture-plan-not-coverage",
+        "foundational-not-paid-cspm"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -12656,9 +12775,55 @@
           "pointer": "/items/226",
           "item_sha256": "bfad461eea2740a7183d3f6005223c9df8a410e0bc0111a8f6c92ef119c572aa",
           "guidance": "https://learn.microsoft.com/azure/defender-for-cloud/concept-cloud-security-posture-management"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/defender-for-cloud/concept-cloud-security-posture-management",
+          "source_sha256": "c30e7b2f27cbf3beaf6cf59a100f588a140776c8e8adfc9f14199ede32c5c922",
+          "revision": "34d3461ed0804139248afb2165929c9b72ac18a3",
+          "retrieved_at": "2026-11-06T09:31:46.076752+00:00",
+          "pointer": "09945bda-4333-44f2-9911-634182ba5275",
+          "guidance": "https://learn.microsoft.com/azure/defender-for-cloud/concept-cloud-security-posture-management"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.security/2024-01-01/pricings",
+          "source_sha256": "bff32e7e3b84ee1ab00e55661570452f6a93f8a87673a58c4d9ec53c8da3d7c3",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T09:31:49.634780+00:00",
+          "pointer": "09945bda-4333-44f2-9911-634182ba5275",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.security/2024-01-01/pricings"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/security/resource-manager/Microsoft.Security/Security/stable/2024-01-01/pricings.json",
+          "source_sha256": "5031087fb252e7243e0988d131da745ee755ec4e4ec2c7534573289ccb05be14",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T09:31:49.741275+00:00",
+          "pointer": "09945bda-4333-44f2-9911-634182ba5275",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/security/resource-manager/Microsoft.Security/Security/stable/2024-01-01/pricings.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/security_center_subscription_pricing.html.markdown",
+          "source_sha256": "f7df4ca28b5fdaf9719ff807c6bc1227b7975b147e396a1832cd7cfce45e81fc",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T09:31:50.941574+00:00",
+          "pointer": "09945bda-4333-44f2-9911-634182ba5275",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/security_center_subscription_pricing.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/securitycenter/security_center_subscription_pricing_resource.go",
+          "source_sha256": "7219937356d42ac6e6393ae77c25a4801f4dd131449a491750ca26eb3a53c2bc",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T09:31:51.224315+00:00",
+          "pointer": "09945bda-4333-44f2-9911-634182ba5275",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/securitycenter/security_center_subscription_pricing_resource.go"
         }
       ],
-      "severity": "High"
+      "severity": "High",
+      "review_resource_types": [
+        "Microsoft.Security/pricings"
+      ],
+      "review_fact_paths": [
+        "defenderPricing"
+      ]
     },
     {
       "control_id": "ALZ-36a72a48-fffe-4c40-9747-0ab5064355ba",
@@ -12678,14 +12843,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Subscription pricing may differ from resource coverage. No agent/endpoint/OS health checks, onboarding, scans or permission/settings changes. Cost and all-server protection remain human-evidence questions.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reconcile all applicable Azure/Arc/multicloud servers and subscription/connector/resource settings; omitted subplans do not default to P2 in the assessor.",
+        "Distinguish P1 endpoint/EDR capabilities and P2 additional capabilities, resource-level opt-outs/P1 overrides, onboarding/agent prerequisites and actual attributable protection evidence.",
+        "Reviewer decision: is the appropriate plan actually effective for every intended cloud server with explicit exemptions, unsupported OS/cloud cases and original-time coverage gaps?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-22",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "server-plan-not-fleet-protection",
+        "resource-overrides-and-opt-outs-explicit"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -12700,9 +12867,55 @@
           "pointer": "/items/227",
           "item_sha256": "2b36cdf6b061d886ca70419b6f7cd81ae2b6a6b006c62333d044e2721a1322ae",
           "guidance": "https://learn.microsoft.com/azure/defender-for-cloud/plan-defender-for-servers-select-plan"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/defender-for-cloud/plan-defender-for-servers-select-plan",
+          "source_sha256": "49a41a5ee22e55a2449ebb9014a31c787cc88e66d3c275ccaae4aed8e49da326",
+          "revision": "1c386956a1e923a9eda59e3be9c3b7b7c5de9a5b",
+          "retrieved_at": "2026-11-06T09:31:46.810444+00:00",
+          "pointer": "36a72a48-fffe-4c40-9747-0ab5064355ba",
+          "guidance": "https://learn.microsoft.com/azure/defender-for-cloud/plan-defender-for-servers-select-plan"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.security/2024-01-01/pricings",
+          "source_sha256": "bff32e7e3b84ee1ab00e55661570452f6a93f8a87673a58c4d9ec53c8da3d7c3",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T09:31:49.634780+00:00",
+          "pointer": "36a72a48-fffe-4c40-9747-0ab5064355ba",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.security/2024-01-01/pricings"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/security/resource-manager/Microsoft.Security/Security/stable/2024-01-01/pricings.json",
+          "source_sha256": "5031087fb252e7243e0988d131da745ee755ec4e4ec2c7534573289ccb05be14",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T09:31:49.741275+00:00",
+          "pointer": "36a72a48-fffe-4c40-9747-0ab5064355ba",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/security/resource-manager/Microsoft.Security/Security/stable/2024-01-01/pricings.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/security_center_subscription_pricing.html.markdown",
+          "source_sha256": "f7df4ca28b5fdaf9719ff807c6bc1227b7975b147e396a1832cd7cfce45e81fc",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T09:31:50.941574+00:00",
+          "pointer": "36a72a48-fffe-4c40-9747-0ab5064355ba",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/security_center_subscription_pricing.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/securitycenter/security_center_subscription_pricing_resource.go",
+          "source_sha256": "7219937356d42ac6e6393ae77c25a4801f4dd131449a491750ca26eb3a53c2bc",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T09:31:51.224315+00:00",
+          "pointer": "36a72a48-fffe-4c40-9747-0ab5064355ba",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/securitycenter/security_center_subscription_pricing_resource.go"
         }
       ],
-      "severity": "High"
+      "severity": "High",
+      "review_resource_types": [
+        "Microsoft.Security/pricings"
+      ],
+      "review_fact_paths": [
+        "defenderPricing"
+      ]
     },
     {
       "control_id": "ALZ-77425f48-ecba-43a0-aeac-a3ac733ccc6a",
@@ -12722,14 +12935,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No automatic all-plans rule, cost threshold, protection-health inference, deployment or scan. Missing/new/unsupported plan or extension names stay unknown rather than being accepted by free text.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Build the explicit applicable subscription/workload population and identify relevant plan/component/support requirements separately for servers, storage, databases, containers and other workloads.",
+        "Reconcile actual resource-level coverage, opt-outs, trial state, required monitoring/onboarding components, original evidence time and support gaps; pricing record counts or CloudPosture alone do not establish workload protection.",
+        "Reviewer decision: are the intended workload protections effective across all applicable subscriptions/resources, with accountable gaps, exclusions and cost/suitability review?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-22",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "workload-specific-plan-coverage",
+        "pricing-count-not-all-subscriptions"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -12744,9 +12959,55 @@
           "pointer": "/items/228",
           "item_sha256": "fdeb7c06e72e42caa92e8b4f08741d3047e925e920a05ba1664406c83bb5bf9c",
           "guidance": "https://learn.microsoft.com/azure/defender-for-cloud/connect-azure-subscription"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/defender-for-cloud/connect-azure-subscription",
+          "source_sha256": "6cd26ca88a2e41ee38e8323ddda5f507aa1c1fac5673aa08b8fd0eba71b18a18",
+          "revision": "9a429057cc06c482293eefe093d5518cad0ea239",
+          "retrieved_at": "2026-11-06T09:31:47.404614+00:00",
+          "pointer": "77425f48-ecba-43a0-aeac-a3ac733ccc6a",
+          "guidance": "https://learn.microsoft.com/azure/defender-for-cloud/connect-azure-subscription"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.security/2024-01-01/pricings",
+          "source_sha256": "bff32e7e3b84ee1ab00e55661570452f6a93f8a87673a58c4d9ec53c8da3d7c3",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T09:31:49.634780+00:00",
+          "pointer": "77425f48-ecba-43a0-aeac-a3ac733ccc6a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.security/2024-01-01/pricings"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/security/resource-manager/Microsoft.Security/Security/stable/2024-01-01/pricings.json",
+          "source_sha256": "5031087fb252e7243e0988d131da745ee755ec4e4ec2c7534573289ccb05be14",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T09:31:49.741275+00:00",
+          "pointer": "77425f48-ecba-43a0-aeac-a3ac733ccc6a",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/security/resource-manager/Microsoft.Security/Security/stable/2024-01-01/pricings.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/security_center_subscription_pricing.html.markdown",
+          "source_sha256": "f7df4ca28b5fdaf9719ff807c6bc1227b7975b147e396a1832cd7cfce45e81fc",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T09:31:50.941574+00:00",
+          "pointer": "77425f48-ecba-43a0-aeac-a3ac733ccc6a",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/security_center_subscription_pricing.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/securitycenter/security_center_subscription_pricing_resource.go",
+          "source_sha256": "7219937356d42ac6e6393ae77c25a4801f4dd131449a491750ca26eb3a53c2bc",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T09:31:51.224315+00:00",
+          "pointer": "77425f48-ecba-43a0-aeac-a3ac733ccc6a",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/securitycenter/security_center_subscription_pricing_resource.go"
         }
       ],
-      "severity": "High"
+      "severity": "High",
+      "review_resource_types": [
+        "Microsoft.Security/pricings"
+      ],
+      "review_fact_paths": [
+        "defenderPricing"
+      ]
     },
     {
       "control_id": "ALZ-24d96b30-61ee-4436-a1cc-d6ef08bc574b",
@@ -12766,14 +13027,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Configuration Manager guidance is not a universal Azure control. No endpoint inventory, policy scan, agent/antivirus command, event read, onboarding or remediation is performed; plan presence is bounded review context only.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reconcile the complete IaaS server population and actual supported endpoint-protection solution, onboarding and assigned antimalware policies; installed antivirus, MDE/EDR and server pricing are distinct.",
+        "Use attributable redacted original-time health/enforcement evidence for active protection, definition/engine updates, exclusions, conflicting/passive modes and unsupported OS cases; no arbitrary health threshold is imposed.",
+        "Reviewer decision: is endpoint protection actually enabled/enforced for all applicable IaaS servers, with accountable monitoring and explicit exceptions? Never supply private endpoint events or malware/audit records."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-22",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "installed-agent-not-enforcement",
+        "endpoint-health-needs-redacted-attestation"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -12788,9 +13051,39 @@
           "pointer": "/items/229",
           "item_sha256": "486fe4d81af0486f800396ad03c4851089e3d0a6093b01275b2b1d062b3e7b5d",
           "guidance": "https://learn.microsoft.com/mem/configmgr/protect/deploy-use/endpoint-protection"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/mem/configmgr/protect/deploy-use/endpoint-protection",
+          "source_sha256": "6f541ca1c5602fe4de4408bfa65c0c6462d023a9fc463ed479a9ed4b73031e4a",
+          "revision": "758c7821ed2e5d04e2e0e91fc6c7c07520f9aa29",
+          "retrieved_at": "2026-11-06T09:31:48.245994+00:00",
+          "pointer": "24d96b30-61ee-4436-a1cc-d6ef08bc574b",
+          "guidance": "https://learn.microsoft.com/mem/configmgr/protect/deploy-use/endpoint-protection"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/defender-for-cloud/plan-defender-for-servers-select-plan",
+          "source_sha256": "49a41a5ee22e55a2449ebb9014a31c787cc88e66d3c275ccaae4aed8e49da326",
+          "revision": "1c386956a1e923a9eda59e3be9c3b7b7c5de9a5b",
+          "retrieved_at": "2026-11-06T09:31:46.810444+00:00",
+          "pointer": "24d96b30-61ee-4436-a1cc-d6ef08bc574b",
+          "guidance": "https://learn.microsoft.com/azure/defender-for-cloud/plan-defender-for-servers-select-plan"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/security/resource-manager/Microsoft.Security/Security/stable/2024-01-01/pricings.json",
+          "source_sha256": "5031087fb252e7243e0988d131da745ee755ec4e4ec2c7534573289ccb05be14",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T09:31:49.741275+00:00",
+          "pointer": "24d96b30-61ee-4436-a1cc-d6ef08bc574b",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/security/resource-manager/Microsoft.Security/Security/stable/2024-01-01/pricings.json"
         }
       ],
-      "severity": "High"
+      "severity": "High",
+      "review_resource_types": [
+        "Microsoft.Security/pricings"
+      ],
+      "review_fact_paths": [
+        "defenderPricing"
+      ]
     },
     {
       "control_id": "ALZ-15833ee7-ad6c-46d3-9331-65c7acbe44ab",
@@ -12810,14 +13103,17 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Only VM configuration is projected. No OS credentials/custom data/SSH/extension settings, patch results/private logs, assessments, query execution, update install or remediation. Both OS profiles, unresolved/sensitive fields and unsupported modes stay unknown.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reconcile supported Azure/Arc/multicloud machines and actual Update Manager assessment prerequisites; MMA is deprecated and the legacy Security Center landing page contains no patch predicate.",
+        "Distinguish assessment mode, patch orchestration mode, successful recent assessments and actual missing updates. Preserve original assessment time and unavailable/stale/denied cases; AutomaticByPlatform does not prove patch compliance.",
+        "Reviewer decision: is base-OS patch drift monitored against the approved baseline/tolerance across the applicable fleet, with attributable assessment results, monitoring/log/alert integration, accountable follow-up and exceptions? No default drift duration, missing-update count or retention requirement is invented."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-22",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "assessment-mode-not-patch-compliance",
+        "update-manager-not-deprecated-mma",
+        "drift-tolerance-needs-owner"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -12832,9 +13128,65 @@
           "pointer": "/items/230",
           "item_sha256": "7bd8b294bb132cd60eda1d2719a1b8d49be06218142516789bebf5bda474a94d",
           "guidance": "https://learn.microsoft.com/azure/security-center/"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/security-center/",
+          "source_sha256": "7adb29f6e90cb261d447c93cc89e1f8c6f4eb8284b5712c2b6bec3b5e9a4fdb4",
+          "revision": "e63d3e0c25c9cf9a5addb68b798c2a4aa1bc5756",
+          "retrieved_at": "2026-11-06T09:31:48.965769+00:00",
+          "pointer": "15833ee7-ad6c-46d3-9331-65c7acbe44ab",
+          "guidance": "https://learn.microsoft.com/azure/security-center/"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/enable-periodic-system-updates",
+          "source_sha256": "9959b012a112d6faeec5de18c3a3e1dcb4ef32ded6b0651bda0774e3a4cd0734",
+          "revision": "f07c691cf167c5e961559bb8949081f07aae8bc2",
+          "retrieved_at": "2026-11-06T09:31:49.275003+00:00",
+          "pointer": "15833ee7-ad6c-46d3-9331-65c7acbe44ab",
+          "guidance": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/enable-periodic-system-updates"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/defender-for-cloud/plan-defender-for-servers-select-plan",
+          "source_sha256": "49a41a5ee22e55a2449ebb9014a31c787cc88e66d3c275ccaae4aed8e49da326",
+          "revision": "1c386956a1e923a9eda59e3be9c3b7b7c5de9a5b",
+          "retrieved_at": "2026-11-06T09:31:46.810444+00:00",
+          "pointer": "15833ee7-ad6c-46d3-9331-65c7acbe44ab",
+          "guidance": "https://learn.microsoft.com/azure/defender-for-cloud/plan-defender-for-servers-select-plan"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2024-07-01/computeRPCommon.json",
+          "source_sha256": "eaea4fa7a4312b865ca6b9a53fe6eb36bf220076f271ad5f0b074b3ee90d053d",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T09:31:50.675207+00:00",
+          "pointer": "15833ee7-ad6c-46d3-9331-65c7acbe44ab",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2024-07-01/computeRPCommon.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/linux_virtual_machine.html.markdown",
+          "source_sha256": "eb59c9fd48961e1a80e9fe31c0ed66ef3f04674e76706d66ae3820362c58a560",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T09:31:52.072411+00:00",
+          "pointer": "15833ee7-ad6c-46d3-9331-65c7acbe44ab",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/linux_virtual_machine.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/windows_virtual_machine.html.markdown",
+          "source_sha256": "98109d65ccb47b5d3665b7c5232ad262782f3dc79dd08d69b3ab6f625ad397c7",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T09:31:52.373752+00:00",
+          "pointer": "15833ee7-ad6c-46d3-9331-65c7acbe44ab",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/windows_virtual_machine.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Compute/virtualMachines",
+        "Microsoft.Security/pricings"
+      ],
+      "review_fact_paths": [
+        "patchConfiguration",
+        "defenderPricing"
+      ]
     },
     {
       "control_id": "ALZ-e5f8d79f-2e87-4768-924c-516775c6ea95",
@@ -14004,78 +14356,66 @@
   "reviewed_at": "2026-11-04T13:25:57.057372+00:00",
   "reference_manifest_sha256": "c287f93a4ff4c94c577b0248345d813f44fb27dff66524408870095024305d30",
   "control_source_manifest_sha256": "d189615f2793f141a6ee6cd5a7f026556a4146fd44d65705e6f08d0e01f7debf",
-  "accepted_matrix_sha256": "b452848cd80abedc79b4ac0e749252392089c3178e1da1001d61c0aa2e32a3bf",
+  "accepted_matrix_sha256": "294b4337c59e5eb30747073f926d4f81ce23bc2bc68b161ae7800dbfff6ff046",
   "wave_source_manifest_sha256": "617e66a497a1f6bb1ddf50f53b3f75f3ff2cec2989324d42496aeeb4d9d0ef38",
   "change_review": {
-    "base_sha256": "101bb9f9944095dc06b32aa9fdfb02acc4828209d4b929c6337910729df7311d",
-    "matrix_sha256": "b452848cd80abedc79b4ac0e749252392089c3178e1da1001d61c0aa2e32a3bf",
-    "reviewed_at": "2026-11-06T09:17:54.356573+00:00",
+    "base_sha256": "b34b9e6ff0a1f0fedc134fea0718ee104470d67294691f24000734357cd3c2ff",
+    "matrix_sha256": "294b4337c59e5eb30747073f926d4f81ce23bc2bc68b161ae7800dbfff6ff046",
+    "reviewed_at": "2026-11-06T10:02:20.4835235Z",
     "reviewer": "owner-delegated-source-backed-batch-review",
     "changes": [
       {
-        "control_id": "ALZ-1d7aa9b6-4704-4489-a804-2d88e79d17b7",
-        "before_sha256": "10cbe2d006bae942068b4f390f031f8245735b17e16c2b7ddb5f84abd2427350",
-        "after_sha256": "5c59ad6013d78dc6937b8709bc15c5324e2f306716c1615a918906f281488934",
-        "rationale": "Owner-delegated source-backed batch 13 acceptance: assisted"
+        "control_id": "ALZ-4ac6b67c-b3a4-4ff9-8e87-b07a7ce7bbdb",
+        "before_sha256": "96f4325f7b8f829cc84a7b24441dbc3f538f09283cebbe370786187bb4123b31",
+        "after_sha256": "e2a4b2358bf8d632188168723ab110995c3d9af89ee2e06ac19530c59f147b8f",
+        "rationale": "Owner-delegated source-backed batch 22 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-3b22a5a6-7e7a-48ed-9b30-e38c3f29812b",
-        "before_sha256": "3b7e34d3e0f66b259dd351528d63f5deaf87a323f3a3145b3604c509ac7f42fe",
-        "after_sha256": "0198c35d277223ac683ea65032ff51267f05dbe544afa42414de90f75d011961",
-        "rationale": "Owner-delegated source-backed batch 13 acceptance: assisted"
+        "control_id": "ALZ-4e5695f2-223a-4ce8-ab12-308ca5017f15",
+        "before_sha256": "3b3a425a13bcbf2e02970465a2e29ff9a54f0fb0dc1d4106190ae76053f5c466",
+        "after_sha256": "11f5d8ff8f2622fbdaad08225a313b464cba5dd9bdce5a371af437db88bd1d37",
+        "rationale": "Owner-delegated source-backed batch 22 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-2363cefe-179b-4599-be0d-5973cd4cd21b",
-        "before_sha256": "40ac2e4b97e5d679bffe7f91203722056749fc8e31b94614731eeb83898c4405",
-        "after_sha256": "11077990be615b27d48be7017702581a3c1d2e1bcb8033d32b79baaeadd951b3",
-        "rationale": "Owner-delegated source-backed batch 13 acceptance: assisted"
+        "control_id": "ALZ-4e3ab369-3829-4e7e-9161-83687a0477a2",
+        "before_sha256": "488529e164d31d688575b7032c8404033f582807a6c950c395749a44417d7fcc",
+        "after_sha256": "3ab6ed3da6ea295dafcfc432a935906c247d04dc535a96109167377e9dee4104",
+        "rationale": "Owner-delegated source-backed batch 22 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-088137f5-e6c4-4cfd-9e50-4547c2447ec6",
-        "before_sha256": "9532c764867db9c57ee50506865ab42472c65a36ff675bc9c44760144171e6c9",
-        "after_sha256": "cf808861835cf4bb82d80285ea4f6edb493118f3d66fcdd06f548fd8794e65d3",
-        "rationale": "Owner-delegated source-backed batch 13 acceptance: assisted"
+        "control_id": "ALZ-09945bda-4333-44f2-9911-634182ba5275",
+        "before_sha256": "1ad977fb5e936834edfe57ee826308cf05913a022fa151aab427d5345286cf32",
+        "after_sha256": "ffd974e0de57f7fd882e702e5a49253f4e0cf80a7b604488fae66bd8943e1377",
+        "rationale": "Owner-delegated source-backed batch 22 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-b034c01e-110b-463a-b36e-e3346e57f225",
-        "before_sha256": "2b49a9d1a829e93382579e72d99c317c433b177d57e8934efbc1b895ab500b2e",
-        "after_sha256": "c2b4e994ebb4daf20e087e41506c0103e1f2b6af1f62ad4f41e20e47f3bf269f",
-        "rationale": "Owner-delegated source-backed batch 13 acceptance: manual"
+        "control_id": "ALZ-36a72a48-fffe-4c40-9747-0ab5064355ba",
+        "before_sha256": "d8d513bbc08e71c90030f21e0c21816c9f87795c2b73fd8e191cfc92c659d618",
+        "after_sha256": "cdf34aea1db3438acc490036ff175dc3e2254f0ef6b1dd7bdd4c091f171f8753",
+        "rationale": "Owner-delegated source-backed batch 22 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-b1c82a3f-2320-4dfa-8972-7ae4823c8930",
-        "before_sha256": "cc81a5efc9dfd1643c6d6b42cae678bfa1a0617155042428f5d6a43630784cd0",
-        "after_sha256": "6a2f7a166153850439d5c22fd3744e76a0f943969ebaa2f562f99980ee6a6c35",
-        "rationale": "Owner-delegated source-backed batch 13 acceptance: assisted"
+        "control_id": "ALZ-77425f48-ecba-43a0-aeac-a3ac733ccc6a",
+        "before_sha256": "927756dc00c605717046aa87b8a1db1c3baccf69028bb93a02df12e4380f2cf6",
+        "after_sha256": "eb3a235033ee993dc855c48cfb646305936d661a40adcd65aa7ae6bf17adf93f",
+        "rationale": "Owner-delegated source-backed batch 22 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-3c5a808d-c695-4c14-a63c-c7ab7a510e41",
-        "before_sha256": "1404ec07f8e58f07c5732f9771568be2e76f46ec9ee3c10ba9ec195c90c85cad",
-        "after_sha256": "7d7b3906622868e285eaca428bbd87f3fe27da89c031e5cc70a7cb2fb904e9e3",
-        "rationale": "Owner-delegated source-backed batch 13 acceptance: assisted"
+        "control_id": "ALZ-24d96b30-61ee-4436-a1cc-d6ef08bc574b",
+        "before_sha256": "cb1a46532775a7dc3d8760966f21e2320f9c9500a00c00d76ee85d077751fad9",
+        "after_sha256": "5f20ac9bc98f311a7ac1bb63692a717cbaf783c9e7a6ec6f625bed9a21949eed",
+        "rationale": "Owner-delegated source-backed batch 22 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-359c373e-7dd6-4162-9a36-4a907ecae48e",
-        "before_sha256": "3ed4f56d25002a46608d47989fdbf77ef82ba160c294fbb21ff0787235eae909",
-        "after_sha256": "0183c12c3f50efb4ab7f1538762f74cc10c0724972685aa59a37adcd90184ce9",
-        "rationale": "Owner-delegated source-backed batch 13 acceptance: assisted"
-      },
-      {
-        "control_id": "ALZ-f29812b2-363c-4efe-879b-599de0d5973c",
-        "before_sha256": "00ab7ca6895b7bd6cda47dbae3f5833c5275d22d7c6f46c4a1c4adb0fa9a77aa",
-        "after_sha256": "a07b5b902a6e781071da79f842a76b85aa6a9e4aaf0a1c0a52a3705b99941933",
-        "rationale": "Owner-delegated source-backed batch 13 acceptance: assisted"
-      },
-      {
-        "control_id": "ALZ-d4cd21b0-8813-47f5-b6c4-cfd3e504547c",
-        "before_sha256": "04991136746b91eefa205678238ec4e6872596ae54db408380c33ded460bd4e1",
-        "after_sha256": "ea9aea4f409f4f9d4e7b68c80f10f5452eb88fbda7ff76fb3318f29b6dcb9753",
-        "rationale": "Owner-delegated source-backed batch 13 acceptance: assisted"
+        "control_id": "ALZ-15833ee7-ad6c-46d3-9331-65c7acbe44ab",
+        "before_sha256": "7104f87bb101a9e9522134fb855e8d89d7fcc2e99cafbfce99a4d4134fcea771",
+        "after_sha256": "776829d88e2e7fd42e85041aaae8ba84033b0a0a0ceb0cb8a908d4d554bb3bd4",
+        "rationale": "Owner-delegated source-backed batch 22 acceptance: assisted"
       }
     ]
   },
   "first_wave_matrix_sha256": "f649b2293211c844d661ea93c6978fe2db948eff17237af01ca090809da8e1fb",
-  "batch_source_manifest_sha256": "880bd7aadf9f6c0d5d629df32c5c31da105b6e0c4b580d7c9b8b60e29a7dce73",
-  "batch_catalog_version": "2026-11-06.5",
+  "batch_source_manifest_sha256": "faf03386bf08384e062b9720e4c9afdf74f2b6294ecd7b110fadabf306396397",
+  "batch_catalog_version": "2026-11-06.6",
   "priority_manifest_sha256": "b42971f85b9110f71fdc5ae81695fe4be72c1f28022ec27aeb719140ed1475c0"
 }

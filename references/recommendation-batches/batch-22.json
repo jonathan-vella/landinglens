@@ -1,10 +1,15 @@
 {
   "batch": "22",
-  "review_state": "prepared-awaiting-coordinator-slot",
+  "catalog_version": "2026-11-06.6",
+  "review_state": "owner-delegated-source-backed-matrix",
+  "accepted_at": "2026-11-06T10:02:20.4835235Z",
+  "prerequisites": ["13"],
+  "preserved_catalog_bytes": {
+    "2026-11-06.5": "cf9e27745068f5ec3d2d0701d07445951e9cbed31aeeed0657e2c022c7cd23f9"
+  },
   "issue": "https://github.com/jonathan-vella/landinglens/issues/100",
-  "acceptance_evidence": "Preparation only. Actual Microsoft guidance and pinned provider/REST definitions reviewed; isolated typed configuration helpers and offline fixtures are not accepted catalog activation or merged delivery.",
-  "supported_modes": "Explicit AzureRM 4.50.0 raw Terraform with supplied local snapshots and optional plan; direct reviewed ARM-property normalization and existing no-restore Bicep fixture; saved normalized evidence. No new Collector API registration or Azure/Entra/Graph/audit/data-plane reads.",
-  "remaining_integration": "After coordinator slot: reconcile then-current main and predecessor facts, freeze exact predecessor bytes, register a unique successor through shared builders, bind eight reviewed controls and interview bank, integrate offline ARM API-version support without expanding live collection, add compiler receipt case and run final full local/installed/CI/receipt gates. No version selected here.",
+  "acceptance_evidence": "Eight specific assisted workflows supported by actual Microsoft guidance and pinned provider/REST definitions. Typed plan/tier/extension, routing, HSM and patch configuration prepare review; none can establish complete protection, ingestion/retention, endpoint enforcement, patch compliance, actual access-audit reports or sovereign suitability. Separate scoped/content-bound interview decisions remain blank until explicitly supplied.",
+  "supported_modes": "Explicit AzureRM 4.50.0 raw Terraform with supplied local snapshots and optional plan; planned ARM pricing 2024-01-01, HSM 2024-11-01, VM 2024-07-01 and diagnostics 2021-05-01-preview plus existing no-restore Bicep; saved normalized evidence and previously supported injected diagnostic details. Planned-only API support does not extend the Collector API registry or authorized Azure/Entra/Graph/audit/data-plane reads.",
   "recommendations": [
     {
       "guid": "4ac6b67c-b3a4-4ff9-8e87-b07a7ce7bbdb",
