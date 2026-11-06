@@ -57,8 +57,8 @@ all report formats, exact original-time replay and blank owner decisions.
 The installed compiler receipt now exercises the new batch fixture as well as
 local success and unrestored-module failure. No new Azure access, login, scan,
 network/data-plane test, IaC execution, module fetch, compiler installation or
-package publication is authorized or performed. Working implementation is not
-merged acceptance; #52 remains open pending actual delivery gates.
+package publication was performed. The delivery receipt below records actual
+merged acceptance rather than classifying work as delivered.
 
 Pre-delivery verification passed 309 tests, 308 passed with one explicit Windows
 symlink-privilege skip, both from the checkout and the exact installed wheel
@@ -68,8 +68,23 @@ compiler receipt exercised both the new NSG/gateway/subnet/flow fixture and
 local success/unrestored-module failure, with no compiler skips. Wheel SHA256:
 `0e40d8d55bee8ef41da9a3851a9820cd538087b4861d9f8679495d1f69a4e7cf`.
 The original four automated hashes, fixed target membership, exact historical
-catalogs and every earlier cohort receipt are unchanged. No supported CI or
-merged acceptance is claimed until the actual remote runs and merge.
+catalogs and every earlier cohort receipt are unchanged.
+
+[#90](https://github.com/jonathan-vella/landinglens/pull/90) merged as
+`b598978b704d367ac3df40ab6160af33a9d30634` at 2026-11-06T07:31:43Z.
+Exact checked head `4da4cd6b046bcff53a397e20e6d6f07c1ea5d0f9` passed all eight
+Windows/Linux Python 3.12/3.13 jobs in runs
+[42180974199](https://github.com/jonathan-vella/landinglens/actions/runs/42180974199)
+and [42180998668](https://github.com/jonathan-vella/landinglens/actions/runs/42180998668),
+plus applicable CodeQL checks. All four downloaded PR compiler artifacts report
+exercised with no compiler skips and both integration cases, including the new
+batch fixture. Live head/reviews were refreshed before normal exact-head merge;
+no required review, branch protection or ruleset was configured, and no override
+was used. Each of the nine GUIDs now references its own `deliveries.19` receipt.
+The fixed ledger is **35 merged / 216 pending**. The highest remaining LL-34
+review priority is cohort 11; its source/dependency preflight is still required.
+This acceptance is source/fixture/saved/injected and installed-CLI verified,
+not new live Azure or operational segmentation/ingestion verification.
 
 ## Assessor-efficiency increment
 

@@ -78,11 +78,11 @@ records remain traceable under explicit lifecycle semantics.
 
 ## Active increment: fixed recommendation expansion
 
-The current working successor is `2026-11-06.1`: 255 retained GUIDs, 8 automated,
-204 assisted and 43 manual. Cohorts 01, 17 and 18 are merged (26 fixed targets);
-cohort 19 is resumed from the saved draft against exact delivered `.5` foundations.
-Its nine targets remain undelivered until checked merge; 225 remain undelivered
-overall. Only complete successful observed custom NSG snapshots can evaluate
+The current delivered successor is `2026-11-06.1`: 255 retained GUIDs, 8 automated,
+204 assisted and 43 manual. Cohorts 01, 17, 18 and 19 are merged (35 fixed targets);
+216 remain pending. Cohort 19/#90 reconciled the saved draft against exact
+delivered `.5` foundations and passed normal exact-head delivery gates.
+Only complete successful observed custom NSG snapshots can evaluate
 the explicit <=900 checklist target. Declared/raw/planned rule lists remain
 unknown; the target is distinct from the current 2,000 ARM service quota.
 Configured zones do
