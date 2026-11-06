@@ -107,8 +107,11 @@ existing peering/two-VNet joins and explicit vault RBAC context provide Signals;
 directory/operational/ownership/eligible-country decisions stay independently
 blank and B05.01 stays manual. Exact `.18`, every non-own full control, all169
 older rows/twenty receipts and original four controls remain frozen.
-Counts stay12/200/43; actual checked implementation/guarded receipt publication/
-final-main CI still gate delivery and closure.
+Counts stay12/200/43. Actual #143 passed exact-head eight-job/CodeQL/security/
+review and four seventeen-case compiler gates and merged normally. Guarded
+`deliveries.06` binds all eight GUIDs to actual head/merge/runs/663-test final
+wheel, recording177 delivered/74 pending on checked publication. Receipt
+publication and final-main CI still gate delivery and closure.
 See [integration boundaries](plan.md#cohort-06-accepted-integration-2026-11-06).
 
 Cohort29/[#133](https://github.com/jonathan-vella/landinglens/issues/133)
