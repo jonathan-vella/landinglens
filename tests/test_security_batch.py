@@ -743,3 +743,29 @@ class SecurityBatchTests(unittest.TestCase):
                     [{"category": "Administrative", "enabled": True}],
                 )
             self.assertTrue(any("api-version=2021-05-01-preview" in url for url in requests))
+
+    def test_actual_eight_guid_receipt_and_fixed_history(self):
+        review = ROOT / "references" / "recommendation-batches"
+        targets = json.loads((review / "targets.json").read_text())
+        ledger = json.loads((review / "ledger.json").read_text())
+        self.assertEqual(ledger["fixed_targets_sha256"], digest(targets))
+        self.assertEqual(len(ledger["recommendations"]), 251)
+        self.assertEqual(sum(r["status"] == "merged" for r in ledger["recommendations"]), 71)
+        receipt = ledger["deliveries"]["22"]
+        self.assertEqual(receipt["pr"], "https://github.com/jonathan-vella/landinglens/pull/104")
+        self.assertEqual(receipt["merge_commit"], "4929eae302ea2019d067862f17bdfb2ed5fc25a5")
+        self.assertEqual(receipt["checked_head"], "09612a164d4e502f32ac25b083f265d93f4fe098")
+        self.assertEqual(
+            receipt["wheel_sha256"],
+            "1043f7f9d4de9251ec18ac83e9ffa935b78fb5fcc2f2d92f6ba561b660592cf3",
+        )
+        self.assertEqual(
+            receipt["local_installed_suite"], {"tests": 363, "passed": 362, "skipped": 1}
+        )
+        self.assertEqual(len(receipt["compiler_integration_cases"]), 6)
+        selected = [r for r in ledger["recommendations"] if r["batch"] == "22"]
+        self.assertEqual(len(selected), 8)
+        for row in selected:
+            self.assertEqual(row["status"], "merged")
+            self.assertEqual(row["pr"], receipt["pr"])
+            self.assertEqual(row["merge_commit"], receipt["merge_commit"])
