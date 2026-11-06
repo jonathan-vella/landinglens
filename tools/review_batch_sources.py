@@ -7,6 +7,7 @@ import re
 import urllib.request
 from datetime import UTC, datetime
 from pathlib import Path
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 PROVIDER = "211156b6c9c3c4721a2a4631998a6bd08433a9ee"
@@ -1775,6 +1776,14 @@ SOURCES_22 = [
 ]
 
 
+def microsoft_site_terms(url: str) -> bool:
+    parsed = urlsplit(url)
+    return parsed.scheme == "https" and (
+        parsed.netloc == "techcommunity.microsoft.com"
+        or (parsed.netloc == "www.microsoft.com" and parsed.path.startswith("/en-us/legal/"))
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
@@ -1848,7 +1857,7 @@ def main() -> None:
                 if url.startswith((ALZ_RAW, POLICY_RAW))
                 else "Microsoft site terms: linked metadata and own findings only; "
                 "no article/comments/sample scripts redistributed"
-                if "techcommunity.microsoft.com" in url or "microsoft.com/en-us/legal" in url
+                if microsoft_site_terms(url)
                 else (
                     "Microsoft Learn attribution: source metadata and own factual findings only; "
                     "no page content redistributed"

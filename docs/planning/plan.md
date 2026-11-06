@@ -73,6 +73,16 @@ the package, so it was not counted as installed proof. No dependency or compiler
 acquisition was introduced. Platform, exact-head merge and guarded receipt gates
 remain required.
 
+Initial implementation CI passed all eight platform jobs and all four eight-case
+compiler proofs, but CodeQL reported substring-based source-URL classification.
+The correction requires an exact HTTPS authority and legal path, with hostile
+host/path/query/userinfo regression cases. Both corrected local and unchanged
+exact-installed-wheel suites ran **396 tests**: 395 passed with the original
+Windows privilege skip. All 14 cohort tests, format/lint and typing passed.
+No source revision/timestamp, accepted catalog, dependency or wheel byte changed.
+The corrected exact head must pass fresh platform/CodeQL/artifact gates; the
+earlier successful platform runs cannot authorize its merge.
+
 ## Cohort 14 integration: 2026-11-06
 
 The coordinator granted [#99](https://github.com/jonathan-vella/landinglens/issues/99)

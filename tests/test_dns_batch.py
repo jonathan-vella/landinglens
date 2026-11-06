@@ -2,6 +2,7 @@ import copy
 import hashlib
 import json
 import os
+import runpy
 import tempfile
 import unittest
 import zipfile
@@ -75,6 +76,23 @@ class DnsBatchTests(unittest.TestCase):
 
     def control(self, guid):
         return next(c for c in self.catalog["controls"] if c["upstream_guid"] == guid)
+
+    def test_source_reuse_terms_require_exact_https_authority_not_url_substrings(self):
+        classify = runpy.run_path(str(ROOT / "tools" / "review_batch_sources.py"))[
+            "microsoft_site_terms"
+        ]
+        self.assertTrue(classify("https://techcommunity.microsoft.com/blog/example"))
+        self.assertTrue(classify("https://www.microsoft.com/en-us/legal/terms-of-use"))
+        for url in (
+            "http://techcommunity.microsoft.com/blog/example",
+            "https://techcommunity.microsoft.com.example.invalid/blog",
+            "https://example.invalid/techcommunity.microsoft.com",
+            "https://example.invalid/?redirect=https://www.microsoft.com/en-us/legal/",
+            "https://techcommunity.microsoft.com@example.invalid/",
+            "https://www.microsoft.com.example.invalid/en-us/legal/",
+            "https://www.microsoft.com/en-us/products/",
+        ):
+            self.assertFalse(classify(url))
 
     def write(self, name, value):
         path = self.root / name
