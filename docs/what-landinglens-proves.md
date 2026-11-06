@@ -40,6 +40,33 @@ No current regional/port availability, achieved throughput/latency, working
 FastPath, operational redundancy or economic suitability follows from settings.
 ARM scale support does not imply the pinned Terraform provider supports it.
 
+## Cohort 05: identity configuration, not runtime assurance
+
+The [eight-GUID accepted matrix](../references/recommendation-batches/batch-05.json)
+and [25 preserved captures](../references/recommendation-batches/batch-05-sources.json)
+precede `.6.13`; activation alone is not merged delivery. Explicit VM zones/location,
+availability-set bindings/domain counts, Azure role types/assignable-scope counts
+and managed-domain replica subnet/location configurations are partial context
+only. Terraform's initial replica is a supplied subset; separate provider replica
+resources are not invented ARM children. Known unique in-scope bindings are
+required, and unknown/denied/partial/stale/foreign/unbound records never pass.
+
+Azure RBAC grants no Entra directory authority or proof of team alignment.
+Current guidance prefers built-in roles when sufficient, not universal custom
+roles. VM names/tags/types cannot identify DCs or complete populations. Regional
+AD DS sites and actual local DC use need independent evidence; managed Domain
+Services replicas instead share one AD site. Configuration proves no replication
+health, current regional support, compatibility or recovery.
+
+B03.12 remains manual. Actual Entra diagnostic settings are tenant-only, outside
+the existing assessment scope: subscription resource/activity diagnostics and a
+workspace cannot establish tenant log routing, arrival or retention. Emergency
+operations and phishing-resistant authentication remain separate blank operating
+decisions, not account/credential actions. Current phased mandatory MFA guidance
+replaces the frozen October2024 generalization for review, not historical replay.
+No directory/guest/log read, query/probe, principal/account names, raw role actions
+or credential/certificate material is introduced.
+
 ## Cohort 08: resource and cost governance
 
 The [seven-GUID accepted matrix](../references/recommendation-batches/batch-08.json)

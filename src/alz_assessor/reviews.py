@@ -134,6 +134,9 @@ def prepared_resource(
             }
         prepared["linked_network_security_group"] = linked
     refs = facts.get("subnetReferences")
+    replica = facts.get("replicaConfiguration")
+    if isinstance(replica, dict) and "unknown" not in replica:
+        refs = [entry["subnetId"] for entry in replica["replicas"]]
     if refs is None and "subnet.id" in facts:
         refs = [facts["subnet.id"]]
     if isinstance(refs, list):
@@ -204,6 +207,18 @@ def prepared_resource(
         prepared["links_truncated"] = len(refs) > 20
     for path, target_kind, paths, maximum in (
         (
+            "availabilitySetId",
+            "microsoft.compute/availabilitysets",
+            ("platformFaultDomainCount", "platformUpdateDomainCount", "resourceLocation"),
+            1,
+        ),
+        (
+            "roleDefinitionId",
+            "microsoft.authorization/roledefinitions",
+            ("azureRoleType", "assignableScopeCount"),
+            1,
+        ),
+        (
             "bastionVirtualNetworkId",
             "microsoft.network/virtualnetworks",
             ("dnsServerSummary", "resourceLocation"),
@@ -242,11 +257,7 @@ def prepared_resource(
     ):
         if path not in facts:
             continue
-        identities = (
-            [facts[path]]
-            if path in {"dnsVirtualNetworkId", "bastionVirtualNetworkId"}
-            else facts[path]
-        )
+        identities = [facts[path]] if maximum == 1 else facts[path]
         if not isinstance(identities, list):
             prepared["linked_" + path] = {"unknown": "relationships_missing_or_invalid"}
             continue
@@ -374,12 +385,18 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     ]
     from .governance_evidence import GUIDS as GOVERNANCE_GUIDS
     from .governance_evidence import resource_in_scope
+    from .identity_evidence import RESILIENCE_GUIDS
     from .network_policy_evidence import GUIDS as NETWORK_POLICY_GUIDS
 
     unbound = 0
-    if control["upstream_guid"] in GOVERNANCE_GUIDS | NETWORK_POLICY_GUIDS:
+    if control["upstream_guid"] in GOVERNANCE_GUIDS | RESILIENCE_GUIDS | NETWORK_POLICY_GUIDS:
         scoped = [resource for resource in matches if resource_in_scope(resource, bundle)]
         unbound, matches = len(matches) - len(scoped), scoped
+        by_id = {
+            identity: candidates
+            for identity, candidates in by_id.items()
+            if all(resource_in_scope(resource, bundle) for resource in candidates)
+        }
     context = {
         "mode": bundle["mode"],
         "collected_at": bundle["collected_at"],
@@ -396,7 +413,7 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
             "complete relationships. No whole-recommendation outcome or current freshness inferred."
         ),
     }
-    if control["upstream_guid"] in GOVERNANCE_GUIDS | NETWORK_POLICY_GUIDS:
+    if control["upstream_guid"] in GOVERNANCE_GUIDS | RESILIENCE_GUIDS | NETWORK_POLICY_GUIDS:
         context["unbound_resources"] = unbound
     if control["upstream_guid"] == "3a923c34-74d0-4001-aac6-a9e01e6a83de" and available:
         from .governance_evidence import hierarchy_context

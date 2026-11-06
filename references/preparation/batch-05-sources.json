@@ -1,0 +1,256 @@
+{
+  "batch": "05",
+  "review_state": "preparation-only-reviewed",
+  "sources": [
+    {
+      "id": "landing-zone-roles",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones#microsoft-entra-id-recommendations",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access-landing-zones",
+      "sha256": "c404ee1e9de6b12c178d91aa2d96d2706240fc5983d0284956700710aaf8c671",
+      "retrieved_at": "2026-11-06T14:10:29.244137+00:00",
+      "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+      "finding": "Current guidance distinguishes Entra directory authority from Azure resource RBAC, prefers built-in roles when sufficient and limits Global Administrator to emergencies where existing roles cannot suffice. No universal custom-role requirement.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "ad-ds-availability",
+      "url": "https://learn.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain#vm-recommendations",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/architecture/example-scenario/identity/adds-extend-domain",
+      "sha256": "e1a35ff902019e1f1567d457ef14cf6aa87b19451c07c2794cc451a7aa1a80cd",
+      "retrieved_at": "2026-11-06T14:10:29.716371+00:00",
+      "revision": "317c21f64e5270088105ad6d42b59ad26e40241c",
+      "finding": "Legacy architecture URL redirects to example-scenario. At least two actual AD DS DC VMs in different zones, or an availability set where zones are unavailable; VM type/name/tags never establish DC role, complete population or regional support.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "identity-regions",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/regions#identity",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/considerations/regions",
+      "sha256": "ce47a47950eb35b9b254c2ea6be3411f7cff9e2c9112a38a0b2a8e765492f6bc",
+      "retrieved_at": "2026-11-06T14:10:30.106031+00:00",
+      "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+      "finding": "Expand applicable self-managed AD DS or managed Domain Services into required regions. Resource metadata locations and globally scoped roles are not service placement, AD sites, local DC selection or geographical recovery evidence.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "identity-team-boundaries",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access#prerequisites-for-a-landing-zone---design-recommendations",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access",
+      "sha256": "1fcbf8207858e6cf0122e38fd8eec4c39f8ae50764525b295e2aea81e2ab5123",
+      "retrieved_at": "2026-11-06T14:10:30.489047+00:00",
+      "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+      "finding": "Current overview delegates centralized directory services to platform identity teams and application access to workload administrators. Actual organizational responsibilities and least privilege need independently approved evidence.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "domain-services-overview",
+      "url": "https://learn.microsoft.com/entra/identity/domain-services/overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/identity/domain-services/overview",
+      "sha256": "4250a05db8df25888c103e8d011612211130d93025488894d986de02cf132d6b",
+      "retrieved_at": "2026-11-06T14:10:30.880054+00:00",
+      "revision": "76d8519a36873870b93851b1fb585953871016ba",
+      "finding": "Managed Domain Services is a stand-alone managed domain, not an extension of on-premises AD DS. Synchronization and LDAP write limitations require workload compatibility review; ARM existence or SKU proves no compatibility.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "domain-services-replicas",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/domain-services/concepts-replica-sets",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/identity/domain-services/concepts-replica-sets",
+      "sha256": "2df791164b92a9af491c202c6b184a82023e97fd70283f8c79fc8f59389aecfe",
+      "retrieved_at": "2026-11-06T14:10:31.201541+00:00",
+      "revision": "69a56c38b7648a749bafed889ec84349faacfef4",
+      "finding": "Up to five replica sets in the same subscription; additional replicas require Enterprise/Premium and fully meshed replica VNet connectivity. They share one AD site; separate sites/replication settings cannot be defined. Workloads must also reside in recovery regions. Configured sets do not prove replication health.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "entra-log-integration",
+      "url": "https://learn.microsoft.com/azure/active-directory/reports-monitoring/concept-activity-logs-azure-monitor",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/identity/monitoring-health/concept-log-monitoring-integration-options-considerations",
+      "sha256": "9f700f3a0a6a30a6853080f0f969b77bc48a4d4d28719c32338063bedb1c42b0",
+      "retrieved_at": "2026-11-06T14:10:32.289213+00:00",
+      "revision": "ad2392b54e54af312a83c1095d1532609ac46a05",
+      "finding": "Legacy Azure AD URL redirects to Entra integration options. Directory audit/sign-in logs differ from Azure activity/resource logs. Routing alone proves no ingestion, coverage, retention, central ownership or successful alerts.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "entra-log-prerequisites",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/monitoring-health/howto-integrate-activity-logs-with-azure-monitor-logs",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/identity/monitoring-health/howto-integrate-activity-logs-with-azure-monitor-logs",
+      "sha256": "1a723bf80bdfff98ed9c1733a659628d6befbe2b834bc6b5db748a67cf978e09",
+      "retrieved_at": "2026-11-06T14:10:32.581114+00:00",
+      "revision": "ad2392b54e54af312a83c1095d1532609ac46a05",
+      "finding": "Directory Security Administrator and separately authorized workspace/data access are prerequisites. A workspace in the selected subscription does not demonstrate tenant log export or directory permission. No new directory or log read.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "emergency-access",
+      "url": "https://learn.microsoft.com/azure/active-directory/roles/security-emergency-access",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/security-emergency-access",
+      "sha256": "b4604f3682c37777252e75a7aaba647142ecfea255a2e86176dc9870bb0deb7e",
+      "retrieved_at": "2026-11-06T14:10:33.264161+00:00",
+      "revision": "149f9bd83afb633f3c3672127255a095e6561bf2",
+      "finding": "Legacy URL redirects to current Entra guidance: two or more cloud-only emergency accounts, phishing-resistant authentication independent of normal admin methods, permanent-active emergency GA, safe separate custody, monitoring and validation at least every 90 days. Blocking/restricting CA exclusions differ from report-only. Shared versus individual emergency account alternatives need an explicit decision.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "mandatory-mfa-current",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/authentication/concept-mandatory-multifactor-authentication",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/identity/authentication/concept-mandatory-multifactor-authentication",
+      "sha256": "986fffe0fa00297860d2a6e76c79f9050454a46ffe9582ffe7c7fc55cb08a529",
+      "retrieved_at": "2026-11-06T14:10:33.578634+00:00",
+      "revision": "12cb62ac91e33e82c48d712b8cb2936f3e15b2b8",
+      "finding": "Frozen October 2024 wording is not current universal enforcement. Phase 1 portal CRUD and phase 2 gradually from October 1 2025 CLI/PowerShell/IaC/control-plane create/update/delete differ; phase 2 reads excluded. Emergency accounts require MFA; workload identities are unaffected. No tenant rollout state is inferred.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "vm-placement-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/virtualmachines",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/virtualmachines",
+      "sha256": "f0ccc77f7363841b73bd37ac4c391068edc64dc53ce73db36a9cda0d95b6a3c7",
+      "retrieved_at": "2026-11-06T14:10:34.289325+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Pinned planned VM schema exposes top-level zones/location and availabilitySet.id. Explicit empty zones are only supplied nonzonal configuration, not unavailable regional zones. No guest/OS/credential/extension or inferred DC information.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "availability-set-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/availabilitysets",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/availabilitysets",
+      "sha256": "93c1c513d259ed27a4dc5b212f3d6b534ca7049e7ad74493864682d9ceb4bc84",
+      "retrieved_at": "2026-11-06T14:10:35.280356+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Pinned RG-scoped availability-set schema exposes configured fault/update counts. Known typed VM reference joins are context, never independent healthy DC proof.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "role-definition-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2022-04-01/roledefinitions",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2022-04-01/roledefinitions",
+      "sha256": "5b9c3fe56695154b467c041183fe7d5adeb21d3e3e2c30a7ca3573c657263838",
+      "retrieved_at": "2026-11-06T14:10:35.570587+00:00",
+      "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+      "finding": "Pinned scoped Azure role definition type and explicit assignable-scope count only. Do not retain role names, descriptions, principals or action contents, or equate resource RBAC to directory authority or team responsibilities.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "domain-services-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.aad/2022-12-01/domainservices",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.aad/2022-12-01/domainservices",
+      "sha256": "394b086e66fca504d2774789ccd6d7ac92c6191dae4fe62167ac5fb50b09fad3",
+      "retrieved_at": "2026-11-06T14:10:36.363651+00:00",
+      "revision": "a80a6ca0ce31aae2ff0424e8453153664e18bc8b",
+      "finding": "Actual resource is RG-scoped Microsoft.AAD/domainServices, with embedded replicaSets location/subnetId. No invented Graph or ARM replica child resources. Minimize to bounded configured replica/subnet/location context, not health or directory records.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "entra-diagnostics-tenant-schema",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.aadiam/2017-04-01/diagnosticsettings",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.aadiam/2017-04-01/diagnosticsettings",
+      "sha256": "9966dcf00c7f3e464212dced160bd99dccce67f2f2f328c68d0df968b4e96654",
+      "retrieved_at": "2026-11-06T14:10:36.802552+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Actual microsoft.aadiam/diagnosticSettings is tenant-only, not subscription-scoped Microsoft.Insights/diagnosticSettings. It remains unsupported within existing assessment scope; do not broaden scope or synthesize records to create a Signal.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-linux-placement",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/linux_virtual_machine.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/linux_virtual_machine.html.markdown",
+      "sha256": "eb59c9fd48961e1a80e9fe31c0ed66ef3f04674e76706d66ae3820362c58a560",
+      "retrieved_at": "2026-11-06T14:10:37.097268+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned linux VM has one zone, location and availability_set_id. Only explicit values are preparable; no null/default/absence inference or guest/DC role claim.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-windows-placement",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/windows_virtual_machine.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/windows_virtual_machine.html.markdown",
+      "sha256": "98109d65ccb47b5d3665b7c5232ad262782f3dc79dd08d69b3ab6f625ad397c7",
+      "retrieved_at": "2026-11-06T14:10:37.485287+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned windows VM has one zone, location and availability_set_id. Only explicit values are preparable; no null/default/absence inference or guest/DC role claim.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-availability-set",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/availability_set.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/availability_set.html.markdown",
+      "sha256": "4707c497632da0b55f719444123e132ad793fc14b994b36b0312fbe2146c7ec3",
+      "retrieved_at": "2026-11-06T14:10:37.744626+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider uses 2024-03-01 for availability sets. Project only explicit counts, not defaults or guarantees of physically independent healthy controllers.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-role-definition",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/role_definition.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/role_definition.html.markdown",
+      "sha256": "5f40c3f64d3fdcd7e256e099c5c3feefae6da53db1fb7904e6a5d5ca78a58b31",
+      "retrieved_at": "2026-11-06T14:10:38.038996+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned role-definition resource uses 2022-05-01-preview and Terraform composite id, not display name, for identity. Require explicit ARM role resource ID or UUID plus scope; missing/generated IDs remain unbound. No raw action contents.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-domain-services",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/active_directory_domain_service.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/active_directory_domain_service.html.markdown",
+      "sha256": "5b048ccb2052db2826f021b71f3cbba1909488c97be580fe580074f34c1d3869",
+      "retrieved_at": "2026-11-06T14:10:38.347340+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider uses 2021-05-01 and requires initial_replica_set. Project only that supplied initial subnet/location, never complete managed-domain replica population. Provider import uses an initialReplicaSetId suffix, not a real ARM child.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-replica-resource",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/active_directory_domain_service_replica_set.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/active_directory_domain_service_replica_set.html.markdown",
+      "sha256": "566e5a9ef5533b0a5ab5ab773ada33814c8b3950ca7341925ae0674edc9f1bb5",
+      "retrieved_at": "2026-11-06T14:10:38.638112+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Separate provider replica resource modifies its parent domain service; it is not a documented ARM replica child type. It stays explicitly unsupported rather than inventing resource identity, complete replica inventory or runtime status.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "provider-reuse",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "sha256": "4e2bb185ebd706f76329206869ccb348b92b6236100cfb07775fe31530dab0d5",
+      "retrieved_at": "2026-11-06T14:10:38.963659+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider is MPL-2.0. No provider source, page content or licensed implementation is redistributed in the preparation; retain attribution, hashes and own factual findings.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "learn-reuse",
+      "url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "resolved_url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "sha256": "5f291193485584bb585cb52fb625b0f6ebcf78f0a4b37ec98d733f4cc6047a49",
+      "retrieved_at": "2026-11-06T14:10:39.125976+00:00",
+      "revision": "9fd90ed833034800434458aef187ba08d8dc9d5b",
+      "finding": "Learn's general document reuse terms are constrained and explicit document licenses can govern separately. Retain URL/revision/hash attribution and own factual findings only; no Microsoft page text, graphics, layouts or assets are redistributed.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-domain-services-implementation",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/domainservices/active_directory_domain_service_resource.go",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/domainservices/active_directory_domain_service_resource.go",
+      "sha256": "4723dc59b82c2277a8e08193dc0b39b2e5a7d226fda449801a2d39cda80ce274",
+      "retrieved_at": "2026-11-06T14:11:46.696365+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Actual provider uses a composite initialReplicaSetId import/state identity and separately exports resource_id for the ARM domain resource. Plans require that typed ARM binding and a matching composite ID, never a fake replica child.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-role-definition-implementation",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/authorization/role_definition_resource.go",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/authorization/role_definition_resource.go",
+      "sha256": "c3cad21e6969659b7b6f9e0659936aeb175e5a780ddc00fd4c42bc0651e6cba7",
+      "retrieved_at": "2026-11-06T14:11:46.793283+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Actual provider creates CustomRole and exports separate ARM resource ID while using a composite state identity. Supplied plans must bind both correctly; raw generated UUIDs and names never become an inferred ARM role identity.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    }
+  ]
+}

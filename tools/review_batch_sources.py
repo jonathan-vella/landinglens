@@ -2178,6 +2178,197 @@ SOURCES_15 += [
 ]
 
 
+SOURCES_05 = [
+    (
+        "landing-zone-roles",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/"
+        "design-area/identity-access-landing-zones#microsoft-entra-id-recommendations",
+        ["fewest permissions", "only create custom roles when necessary", "Global Administrator"],
+        "Current guidance distinguishes Entra directory authority from Azure resource RBAC, "
+        "prefers built-in roles when sufficient and limits Global Administrator to emergencies "
+        "where existing roles cannot suffice. No universal custom-role requirement.",
+    ),
+    (
+        "ad-ds-availability",
+        "https://learn.microsoft.com/azure/architecture/reference-architectures/identity/"
+        "adds-extend-domain#vm-recommendations",
+        ["at least two VMs", "availability set", "Active Directory site"],
+        "Legacy architecture URL redirects to example-scenario. At least two actual AD DS "
+        "DC VMs in different zones, or an availability set where zones are unavailable; "
+        "VM type/name/tags never establish DC role, complete population or regional support.",
+    ),
+    (
+        "identity-regions",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/"
+        "regions#identity",
+        ["Identity", "new Azure region", "availability zones"],
+        "Expand applicable self-managed AD DS or managed Domain Services into required "
+        "regions. Resource metadata locations and globally scoped roles are not service "
+        "placement, AD sites, local DC selection or geographical recovery evidence.",
+    ),
+    (
+        "identity-team-boundaries",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/"
+        "design-area/identity-access#prerequisites-for-a-landing-zone---design-recommendations",
+        ["identity team", "application administrator", "separation of duties"],
+        "Current overview delegates centralized directory services to platform identity "
+        "teams and application access to workload administrators. Actual organizational "
+        "responsibilities and least privilege need independently approved evidence.",
+    ),
+    (
+        "domain-services-overview",
+        "https://learn.microsoft.com/entra/identity/domain-services/overview",
+        ["synchronization", "managed domain", "LDAP"],
+        "Managed Domain Services is a stand-alone managed domain, not an extension of "
+        "on-premises AD DS. Synchronization and LDAP write limitations require workload "
+        "compatibility review; ARM existence or SKU proves no compatibility.",
+    ),
+    (
+        "domain-services-replicas",
+        LEARN + "entra/identity/domain-services/concepts-replica-sets",
+        ["same Active Directory site", "five", "Enterprise", "same subscription"],
+        "Up to five replica sets in the same subscription; additional replicas require "
+        "Enterprise/Premium and fully meshed replica VNet connectivity. They share one "
+        "AD site; separate sites/replication settings cannot be defined. Workloads must "
+        "also reside in recovery regions. Configured sets do not prove replication health.",
+    ),
+    (
+        "entra-log-integration",
+        "https://learn.microsoft.com/azure/active-directory/reports-monitoring/"
+        "concept-activity-logs-azure-monitor",
+        ["Diagnostic settings", "sign-in", "Azure Monitor logs"],
+        "Legacy Azure AD URL redirects to Entra integration options. Directory audit/sign-in "
+        "logs differ from Azure activity/resource logs. Routing alone proves no ingestion, "
+        "coverage, retention, central ownership or successful alerts.",
+    ),
+    (
+        "entra-log-prerequisites",
+        LEARN + "entra/identity/monitoring-health/"
+        "howto-integrate-activity-logs-with-azure-monitor-logs",
+        ["Security Administrator", "Log Analytics workspace", "log categories"],
+        "Directory Security Administrator and separately authorized workspace/data access "
+        "are prerequisites. A workspace in the selected subscription does not demonstrate "
+        "tenant log export or directory permission. No new directory or log read.",
+    ),
+    (
+        "emergency-access",
+        "https://learn.microsoft.com/azure/active-directory/roles/security-emergency-access",
+        ["two or more", "Report-only", "permanent", "90 days", "phishing-resistant"],
+        "Legacy URL redirects to current Entra guidance: two or more cloud-only emergency "
+        "accounts, phishing-resistant authentication independent of normal admin methods, "
+        "permanent-active emergency GA, safe separate custody, monitoring and validation "
+        "at least every 90 days. Blocking/restricting CA exclusions differ from report-only. "
+        "Shared versus individual emergency account alternatives need an explicit decision.",
+    ),
+    (
+        "mandatory-mfa-current",
+        LEARN + "entra/identity/authentication/concept-mandatory-multifactor-authentication",
+        ["October 1, 2025", "Read operations", "Workload identities", "emergency"],
+        "Frozen October 2024 wording is not current universal enforcement. Phase 1 portal "
+        "CRUD and phase 2 gradually from October 1 2025 CLI/PowerShell/IaC/control-plane "
+        "create/update/delete differ; phase 2 reads excluded. Emergency accounts require "
+        "MFA; workload identities are unaffected. No tenant rollout state is inferred.",
+    ),
+    (
+        "vm-placement-arm",
+        LEARN + "azure/templates/microsoft.compute/2024-07-01/virtualmachines",
+        ["availabilitySet", "zones", "location"],
+        "Pinned planned VM schema exposes top-level zones/location and availabilitySet.id. "
+        "Explicit empty zones are only supplied nonzonal configuration, not unavailable "
+        "regional zones. No guest/OS/credential/extension or inferred DC information.",
+    ),
+    (
+        "availability-set-arm",
+        LEARN + "azure/templates/microsoft.compute/2024-07-01/availabilitysets",
+        ["platformFaultDomainCount", "platformUpdateDomainCount", "Resource groups"],
+        "Pinned RG-scoped availability-set schema exposes configured fault/update counts. "
+        "Known typed VM reference joins are context, never independent healthy DC proof.",
+    ),
+    (
+        "role-definition-arm",
+        LEARN + "azure/templates/microsoft.authorization/2022-04-01/roledefinitions",
+        ["assignableScopes", "CustomRole", "roleName"],
+        "Pinned scoped Azure role definition type and explicit assignable-scope count only. "
+        "Do not retain role names, descriptions, principals or action contents, or equate "
+        "resource RBAC to directory authority or team responsibilities.",
+    ),
+    (
+        "domain-services-arm",
+        LEARN + "azure/templates/microsoft.aad/2022-12-01/domainservices",
+        ["replicaSets", "subnetId", "Resource groups"],
+        "Actual resource is RG-scoped Microsoft.AAD/domainServices, with embedded replicaSets "
+        "location/subnetId. No invented Graph or ARM replica child resources. Minimize to "
+        "bounded configured replica/subnet/location context, not health or directory records.",
+    ),
+    (
+        "entra-diagnostics-tenant-schema",
+        LEARN + "azure/templates/microsoft.aadiam/2017-04-01/diagnosticsettings",
+        ["Tenant", "AuditLogs", "SignInLogs", "workspaceId"],
+        "Actual microsoft.aadiam/diagnosticSettings is tenant-only, not subscription-scoped "
+        "Microsoft.Insights/diagnosticSettings. It remains unsupported within existing "
+        "assessment scope; do not broaden scope or synthesize records to create a Signal.",
+    ),
+    *[
+        (
+            f"terraform-{os}-placement",
+            RAW + f"website/docs/r/{os}_virtual_machine.html.markdown",
+            ["availability_set_id", "zone", "location"],
+            f"Pinned {os} VM has one zone, location and availability_set_id. Only explicit "
+            "values are preparable; no null/default/absence inference or guest/DC role claim.",
+        )
+        for os in ("linux", "windows")
+    ],
+    (
+        "terraform-availability-set",
+        RAW + "website/docs/r/availability_set.html.markdown",
+        ["platform_fault_domain_count", "platform_update_domain_count", "2024-03-01"],
+        "Pinned provider uses 2024-03-01 for availability sets. Project only explicit "
+        "counts, not defaults or guarantees of physically independent healthy controllers.",
+    ),
+    (
+        "terraform-role-definition",
+        RAW + "website/docs/r/role_definition.html.markdown",
+        ["role_definition_resource_id", "{roleDefinitionId}|{scope}", "2022-05-01-preview"],
+        "Pinned role-definition resource uses 2022-05-01-preview and Terraform composite "
+        "id, not display name, for identity. Require explicit ARM role resource ID or "
+        "UUID plus scope; missing/generated IDs remain unbound. No raw action contents.",
+    ),
+    (
+        "terraform-domain-services",
+        RAW + "website/docs/r/active_directory_domain_service.html.markdown",
+        ["initial_replica_set", "inherits the same location", "2021-05-01"],
+        "Pinned provider uses 2021-05-01 and requires initial_replica_set. Project only that "
+        "supplied initial subnet/location, never complete managed-domain replica population. "
+        "Provider import uses an initialReplicaSetId suffix, not a real ARM child.",
+    ),
+    (
+        "terraform-domain-services-implementation",
+        RAW + "internal/services/domainservices/active_directory_domain_service_resource.go",
+        ["initialReplicaSetId", 'd.Set("resource_id", model.Id)', "2021-05-01"],
+        "Actual provider uses a composite initialReplicaSetId import/state identity and "
+        "separately exports resource_id for the ARM domain resource. Plans require that "
+        "typed ARM binding and a matching composite ID, never a fake replica child.",
+    ),
+    (
+        "terraform-role-definition-implementation",
+        RAW + "internal/services/authorization/role_definition_resource.go",
+        ["CustomRole", "RoleDefinitionResourceId", "2022-05-01-preview"],
+        "Actual provider creates CustomRole and exports separate ARM resource ID while "
+        "using a composite state identity. Supplied plans must bind both correctly; "
+        "raw generated UUIDs and names never become an inferred ARM role identity.",
+    ),
+    (
+        "terraform-replica-resource",
+        RAW + "website/docs/r/active_directory_domain_service_replica_set.html.markdown",
+        ["domain_service_id", "subnet_id", "service_status"],
+        "Separate provider replica resource modifies its parent domain service; it is not "
+        "a documented ARM replica child type. It stays explicitly unsupported rather than "
+        "inventing resource identity, complete replica inventory or runtime status.",
+    ),
+    *[source for source in SOURCES_15 if source[0] in {"provider-reuse", "learn-reuse"}],
+]
+
+
 SOURCES_20 = [
     (
         "vwan-any-to-any",
@@ -2770,6 +2961,7 @@ def main() -> None:
         choices=[
             "01",
             "04",
+            "05",
             "08",
             "11",
             "12",
@@ -2789,9 +2981,9 @@ def main() -> None:
     args = parser.parse_args()
     if args.vwan_supplement and (args.batch != "16" or not args.preparation_only):
         raise ValueError("The vWAN supplement is cohort16 preparation only")
-    if (args.batch in {"12", "16", "20", "30"}) != args.preparation_only:
+    if (args.batch in {"05", "12", "16", "20", "30"}) != args.preparation_only:
         raise ValueError(
-            "Cohorts 12/16/20/30 source capture require --preparation-only; no activation"
+            "Cohorts 05/12/16/20/30 source capture require --preparation-only; no activation"
         )
     prefix = "preparation" if args.preparation_only else "batch"
     suffix = "-vwan" if args.vwan_supplement else ""
@@ -2801,6 +2993,8 @@ def main() -> None:
         / "recommendation-batches"
         / f"{prefix}-{args.batch}{suffix}-sources.json"
     )
+    if args.batch == "05":
+        target = ROOT / "references" / "preparation" / "batch-05-sources.json"
     if target.exists() and not args.append_new_sources:
         raise ValueError("Frozen source review exists; do not silently recollect or redate it")
     sources = json.loads(target.read_text("utf-8"))["sources"] if target.exists() else []
@@ -2808,6 +3002,7 @@ def main() -> None:
     selected_sources = {
         "01": SOURCES,
         "04": SOURCES_04,
+        "05": SOURCES_05,
         "08": SOURCES_08,
         "11": SOURCES_11,
         "12": SOURCES_12,
@@ -2839,7 +3034,8 @@ def main() -> None:
             raise ValueError("Source acquisition bound exceeded")
         text = content.decode("utf-8")
         if any(marker.lower() not in text.lower() for marker in markers):
-            raise ValueError(f"Reviewed marker missing from {identity}; inspect actual source")
+            missing = [marker for marker in markers if marker.lower() not in text.lower()]
+            raise ValueError(f"Reviewed marker missing from {identity}: {missing}; inspect source")
         match = re.search(r'<meta name="git_commit_id" content="([^"]+)"', text)
         sources.append(
             {
