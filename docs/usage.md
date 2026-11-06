@@ -339,9 +339,9 @@ Supply the original `--manual`, `--exceptions`, `--catalog`, `--landing-zone`
 and `--max-age-hours` selections when applicable. Export evaluates and binds
 that invocation; it does not reconstruct missing normalized facts from a
 rendered report or prove the files existed at the selected historical time.
-The installed package includes current `2026-11-05.5` and frozen
+The installed package includes current `2026-11-06.1` and frozen
 `2026-11-04.1`, `2026-11-04.2`, `2026-11-05.1`, `2026-11-05.2` and
-`2026-11-05.3` catalog meaning.
+`2026-11-05.3` and `2026-11-05.5` catalog meaning.
 Altered/custom or unavailable historical
 artifacts fail explicitly rather than substituting today's rules.
 

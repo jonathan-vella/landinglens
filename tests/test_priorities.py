@@ -52,21 +52,22 @@ class PriorityTests(unittest.TestCase):
 
     def test_exact_frozen_history_source_severity_and_control_meaning(self):
         data = files("alz_assessor").joinpath("data")
+        priority_catalog = load_catalog(str(data.joinpath("catalog-2026-11-05.5.json")))
         previous = data.joinpath("catalog-2026-11-05.3.json").read_bytes()
         self.assertEqual(
             hashlib.sha256(previous).hexdigest(),
             "8fefb7c4c8c8e09224493db1dbb41b4a5710ad57c0735f50ac3338702735e7b5",
         )
         before = {c["control_id"]: c for c in json.loads(previous)["controls"]}
-        self.assertEqual(self.catalog["catalog_version"], "2026-11-05.5")
+        self.assertEqual(priority_catalog["catalog_version"], "2026-11-05.5")
         self.assertEqual(
             Counter(c["severity"] for c in self.catalog["controls"]),
             {"High": 71, "Medium": 158, "Low": 26},
         )
-        for control in self.catalog["controls"]:
+        for control in priority_catalog["controls"]:
             self.assertEqual(control_digest(control), control_digest(before[control["control_id"]]))
         self.assertEqual(
-            Counter(c["automation"] for c in self.catalog["controls"]),
+            Counter(c["automation"] for c in priority_catalog["controls"]),
             {"automated": 7, "assisted": 205, "manual": 43},
         )
         for source in load_priorities()["sources"]:
@@ -111,8 +112,12 @@ class PriorityTests(unittest.TestCase):
             self.assertEqual(ranks, sorted(ranks))
         old = load_catalog(str(files("alz_assessor").joinpath("data", "catalog-2026-11-05.3.json")))
         before = assess(self.bundle, old, at=AT)
+        frozen = load_catalog(
+            str(files("alz_assessor").joinpath("data", "catalog-2026-11-05.5.json"))
+        )
+        priority_only = assess(self.bundle, frozen, at=AT, evidence_tiers=True)
         self.assertEqual(
-            [(r["control_id"], r["observed"]["outcome"]) for r in report["results"]],
+            [(r["control_id"], r["observed"]["outcome"]) for r in priority_only["results"]],
             [(r["control_id"], r["observed"]["outcome"]) for r in before["results"]],
         )
         self.assertNotIn("severity", before["results"][0])

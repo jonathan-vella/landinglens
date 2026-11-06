@@ -56,11 +56,11 @@ owner-authorized increment. Baseline `2026-11-04.2` remains 4 automated /
 | 01 / [#46](https://github.com/jonathan-vella/landinglens/issues/46) | G02.01-.04, G02.07-.08, G04.02-.03; fixed GUIDs in ledger | Delivered catalogs/contracts/local reviews; no new live access required | [#47](https://github.com/jonathan-vella/landinglens/pull/47) merged; all eight checks passed, exact installed suite and all four CI compiler integrations exercised; issue closed |
 | 17 / [#48](https://github.com/jonathan-vella/landinglens/issues/48) | Nine firewall GUIDs; duplicate D07.12 entries remain distinct | Merged cohort 01, actual source review, reviewed network schemas | [#49](https://github.com/jonathan-vella/landinglens/pull/49) merged; all eight checks passed, exact installed suite and all four CI compiler integrations exercised; issue closed |
 | 18 / [#50](https://github.com/jonathan-vella/landinglens/issues/50) | Nine TLS/resilience/private-connectivity GUIDs | Merged cohort 17; 18 actual source captures and reviewed versioned schemas | [#51](https://github.com/jonathan-vella/landinglens/pull/51) merged; all eight checks passed, exact installed suite and all four compiler integrations exercised; issue closed |
-| 19 / [#52](https://github.com/jonathan-vella/landinglens/issues/52) | Nine service-endpoint/subnet/segmentation GUIDs | Merged cohort 18; re-evaluate after efficiency foundations | Paused unmerged draft preserved in named Git stash; no acceptance receipt |
+| 19 / [#52](https://github.com/jonathan-vella/landinglens/issues/52) | Nine service-endpoint/subnet/segmentation GUIDs | Merged cohort 18 and reconciled `.5` efficiency foundations | Resumed 2026-11-06; working successor `2026-11-06.1`, eight assisted workflows and one observed-only <=900 custom-rule predicate; actual delivery gates pending |
 | Other cohorts | Other 216 GUIDs in unchanged 5-10-item cohorts | Evidence foundations, then LL-34 severity/crosswalk priority with per-batch source requirements | Pending; partitioning/tiering is not delivery |
 
-Working successor `2026-11-05.3`: 7 automated / 205 assisted / 43 manual, all 255 visible.
-Twenty-six fixed targets are merged and 225 undelivered, including paused cohort 19; classification
+Working successor `2026-11-06.1`: 8 automated / 204 assisted / 43 manual, all 255 visible.
+Twenty-six fixed targets are merged and 225 undelivered, including resumed cohort 19; classification
 alone is not delivery.
 G02.02 is explicitly manual; unsupported Terraform vault soft-delete evidence
 remains unknown. Create ready batch issues as implementation proceeds, not 251
@@ -75,8 +75,8 @@ with any reviewed crosswalk association, then cohort ID. Counts come from curren
 source-bound severity and crosswalk, not invented machine-check coverage. The
 49 related query hashes count as associations, not accepted predicates or working
 collection. This is review priority, not an assertion that source/dependency gates
-for every cohort are satisfied. Known prerequisites still win; paused cohort 19
-must be reconciled against the new foundations before resuming.
+for every cohort are satisfied. Known prerequisites still win; cohort 19 was
+reconciled against the new foundations when resumed on 2026-11-06.
 
 | Cohort | Undelivered GUIDs | High / Medium / Low | Controls with associations |
 |---|---|---|---|

@@ -33,6 +33,39 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
+Current successor `2026-11-06.1` retains all 255 entries: 8 automated, 204 assisted
+and 43 manual. Crosswalk `2026-11-06.1` rebinds the unchanged 51-control,
+53-association mapping to this exact catalog, without new external equivalence.
+The history below remains version-specific.
+
+### Cohort 19: service endpoints, subnet capacity and segmentation
+
+The [source-backed matrix](../references/recommendation-batches/batch-19.json)
+and [24 source captures](../references/recommendation-batches/batch-19-sources.json)
+identify each canonical GUID. Reinspection on 2026-11-06 confirmed the same
+reviewed revisions; dynamic Learn HTML hashes can differ without a source revision
+change. The original captured hashes/times remain intact.
+
+| Recommendation | Accepted scope |
+|---|---|
+| D08.04 | Assisted explicit endpoint count, network-identifier references and subnet policy enum; not approved endpoint intent or service-side access |
+| D08.05 | Assisted minimized rule kinds/actions/FQDN and IPv4 counts; the relative guidance URL was resolved; no DNS, traffic or exfiltration verdict |
+| D09.01 | Assisted exact gateway/subnet link and minimum-/27 IPv4-capacity subcheck; conditional /26 ExpressRoute capacity stays human-reviewed |
+| D09.02 | Assisted separate custom/default priorities and VirtualNetwork indicators; a tag or default allow rule is not isolation |
+| D09.03 | Assisted subnet guardrail/ownership questions; PaaS subnet delegation is not organizational responsibility |
+| D09.04 | Assisted unique known subnet-to-NSG links and bounded rules; no effective segmentation claim |
+| D09.05 | Assisted canonical typed ASG references; no NIC membership or enforcement claim |
+| D09.06 | Assisted explicit flow-log/analytics configuration; no ingestion, supported-population or operational-use claim |
+| D09.07 | Automated observed-only complete custom NSG rule count, pass <=900 and fail >900; defaults excluded and no service-quota/headroom claim |
+
+Supported raw/supplied-module Terraform and optional plans use pinned AzureRM
+4.50.0; declared ARM/existing no-restore Bicep use reviewed 2024-05-01 APIs.
+Those declared/planned modes cannot prove complete NSG rule populations. Saved
+observed and injected scoped-detail evidence exercise the count; all missing,
+wrong-type, duplicate, transient, partial, denied, stale and over-bound cases
+remain explicit. Replay retains original times. Old catalog meanings and the
+fixed 251-GUID membership are unchanged; implementation is not merged acceptance.
+
 Crosswalk `2026-11-05.1` binds catalog `2026-11-05.3` without changing its
 7 automated / 205 assisted / 43 manual dispositions or the fixed 251-target
 ledger. All 255 GUIDs are represented: 51 have 53 associations; 204 are explicitly

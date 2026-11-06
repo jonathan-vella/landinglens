@@ -23,11 +23,14 @@ record = {
 success = True
 if compiler:
     sys.path.insert(0, str(args.tests.resolve()))
-    suite = unittest.defaultTestLoader.loadTestsFromName(
+    cases = [
         "test_bicep.BicepTests.test_actual_installed_compiler_local_success_and_unrestored_failure",
-    )
+        "test_segmentation_batch.SegmentationBatchTests."
+        "test_real_bicep_nsg_gateway_subnet_flow_without_restore",
+    ]
+    suite = unittest.defaultTestLoader.loadTestsFromNames(cases)
     result = unittest.TextTestRunner(verbosity=2).run(suite)
-    exercised = result.wasSuccessful() and result.testsRun == 1 and not result.skipped
+    exercised = result.wasSuccessful() and result.testsRun == len(cases) and not result.skipped
     success = result.wasSuccessful()
     record.update(
         status="exercised" if exercised else "skipped" if result.skipped else "failed",
@@ -36,6 +39,7 @@ if compiler:
         if exercised
         else "Integration did not exercise the compiler; inspect results",
         skipped=[reason for _, reason in result.skipped],
+        integration_cases=cases,
     )
 args.output.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
 print(json.dumps(record, indent=2))

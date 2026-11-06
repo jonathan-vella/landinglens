@@ -78,9 +78,14 @@ records remain traceable under explicit lifecycle semantics.
 
 ## Active increment: fixed recommendation expansion
 
-The current working successor is `2026-11-05.3`: 255 retained GUIDs, 7 automated,
-205 assisted and 43 manual. Cohorts 01, 17 and 18 are merged (26 fixed targets);
-225 remain pending. Configured zones do
+The current working successor is `2026-11-06.1`: 255 retained GUIDs, 8 automated,
+204 assisted and 43 manual. Cohorts 01, 17 and 18 are merged (26 fixed targets);
+cohort 19 is resumed from the saved draft against exact delivered `.5` foundations.
+Its nine targets remain undelivered until checked merge; 225 remain undelivered
+overall. Only complete successful observed custom NSG snapshots can evaluate
+the explicit <=900 checklist target. Declared/raw/planned rule lists remain
+unknown; the target is distinct from the current 2,000 ARM service quota.
+Configured zones do
 not establish backend redundancy; rule TLS/category fields and approved private
 endpoints do not establish effective inspection or connectivity. This is not exhaustive
 251-target acceptance; delivery/check evidence is tracked in the

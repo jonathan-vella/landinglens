@@ -507,7 +507,9 @@ class Collector:
                                 "Azure configuration identity differs from requested resource"
                             )
                         else:
-                            values = properties(kind, detail.get("properties"), root=detail)
+                            values = properties(
+                                kind, detail.get("properties"), root=detail, observed=True
+                            )
                     resources.append(
                         {
                             "logical_id": identity,

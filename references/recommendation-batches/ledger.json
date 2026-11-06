@@ -3239,9 +3239,37 @@
       "baseline_control_sha256": "a97de6430c0aff456f2c5dbbbe9eafc862e75a1639d115d2d65ebb2ca39d4fdf",
       "design_area": "Network topology and connectivity",
       "batch": "19",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "4704489a-8042-4d88-b79d-17b73b22a5a6",
+        "upstream_id": "D08.04",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit supplied service-endpoint count, network-identifier references and private-endpoint subnet policy enum, not blanket-enable intent or effective PaaS restrictions.",
+        "sources": [
+          "service-endpoint-intent",
+          "subnet-arm",
+          "terraform-subnet"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks/subnets"
+        ],
+        "review_fact_paths": [
+          "serviceEndpointCount",
+          "serviceEndpointNetworkIdentifiers",
+          "privateEndpointNetworkPolicies"
+        ],
+        "evidence_requirements": [
+          "Map each subnet's explicitly configured endpoint services to an approved workload need, service-side network restrictions and an accountable owner; explicit empty lists differ from missing configuration.",
+          "Distinguish classic endpoints, the current standard-service-endpoint preview and Private Link. Review any explicit network-identifier references; absence or unsupported provider fields do not establish classic mode.",
+          "Reviewer decision: are endpoints deliberately enabled only where needed, with forced-tunnel appliance bypass, service public endpoints and alternative private paths accounted for?"
+        ],
+        "limitations": "Endpoint count alone cannot show approved intent or effective network restrictions. No endpoint labels, service access check, implicit provider default, network-identifier expansion or new Azure read is used.",
+        "flags": [
+          "service-endpoints-not-intent",
+          "standard-endpoint-preview-not-inferred"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/52",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -3254,9 +3282,41 @@
       "baseline_control_sha256": "e4d83727ae22a48f3bf2937e5495a19b9d445da17da820ce18ddcc027e693746",
       "design_area": "Network topology and connectivity",
       "batch": "19",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "7e7a8ed4-b30e-438c-9f29-812b2363cefe",
+        "upstream_id": "D08.05",
+        "classification": "assisted",
+        "implemented_subclaim": "Bounded rule-kind/action and supplied FQDN/IPv4-address counts plus private-endpoint subnet policies; no effective exfiltration verdict.",
+        "sources": [
+          "private-endpoint-egress-inspection",
+          "terraform-application-rules",
+          "application-rules-arm",
+          "subnet-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/firewallPolicies/ruleCollectionGroups",
+          "Microsoft.Network/privateEndpoints",
+          "Microsoft.Network/virtualNetworks/subnets"
+        ],
+        "review_fact_paths": [
+          "egressRules",
+          "privateEndpointNetworkPolicies",
+          "subnet.id",
+          "routeTable.id"
+        ],
+        "evidence_requirements": [
+          "Bind the intended PaaS egress population to effective application/network rules, destinations, rule order, DNS and approved service names. Supplied counts do not validate FQDN syntax or exclusivity.",
+          "For private endpoints reconcile actual subnet network policies, routes and forward/return paths. Application rules support SNAT symmetry; network/NVA rules need appropriate SNAT. Reconcile SQL proxy/redirect limitations.",
+          "Reviewer decision: do tested attributable paths enforce the approved service destinations without IP-only or alternate-route bypass? Supply redacted evidence references, not private destination lists."
+        ],
+        "limitations": "The original relative guidance URL was resolved and inspected. No rule simulation, DNS lookup, traffic capture, log query, destination disclosure or exfiltration test is performed.",
+        "flags": [
+          "fqdn-count-not-exfiltration-prevention",
+          "private-endpoint-snat-path-needs-evidence"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/52",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -3269,9 +3329,39 @@
       "baseline_control_sha256": "7f4bed3409dcbfd37c8827f3d743c7d1ec249dd9f3d26a236d1075142974abf2",
       "design_area": "Network topology and connectivity",
       "batch": "19",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "f2aad7e3-bb03-4adc-8606-4123d342a917",
+        "upstream_id": "D09.01",
+        "classification": "assisted",
+        "implemented_subclaim": "Exact gateway type/subnet references with a minimum-/27 supplied-IPv4-capacity subcheck, not a whole gateway sizing verdict.",
+        "sources": [
+          "gateway-subnet-capacity",
+          "gateway-arm",
+          "terraform-gateway",
+          "subnet-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworkGateways",
+          "Microsoft.Network/virtualNetworks/subnets"
+        ],
+        "review_fact_paths": [
+          "gatewayType",
+          "subnetReferences",
+          "addressPrefixes"
+        ],
+        "evidence_requirements": [
+          "Bind each applicable gateway IP configuration to its exact subnet; do not identify a gateway by an arbitrary subnet name or infer missing relationships.",
+          "Verify at least /27 IPv4 capacity and actual deployment/circuit requirements. Current ExpressRoute guidance needs /26 or larger for 16 circuits; reconcile coexistence and other supported scenarios.",
+          "Reviewer decision: does the actual gateway subnet have adequate supported capacity for the intended topology and growth? A /27 subcheck alone cannot establish the conditional /26 requirement."
+        ],
+        "limitations": "Prefix length <=27 is a partial supplied-capacity check only. IPv6/mixed, unresolved prefixes, missing/denied subnets and unknown gateway relationships stay unknown. No circuit enumeration or subnet deployment occurs.",
+        "flags": [
+          "gateway-capacity-conditional",
+          "no-subnet-name-applicability"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/52",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -3284,9 +3374,42 @@
       "baseline_control_sha256": "90fb1783135d496d0503ffb12257c008daddcccb0944a31e41c38d852bdd3c9b",
       "design_area": "Network topology and connectivity",
       "batch": "19",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "11deb39d-8299-4e47-bbe0-0fb5a36318a8",
+        "upstream_id": "D09.02",
+        "classification": "assisted",
+        "implemented_subclaim": "Minimized custom-rule priorities/actions/directions, explicit VirtualNetwork-tag indicators and separate observed default-rule context.",
+        "sources": [
+          "virtualnetwork-tag-scope",
+          "nsg-effective-processing",
+          "nsg-arm",
+          "nsg-rest-2024",
+          "terraform-nsg",
+          "terraform-nsg-rule"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/networkSecurityGroups",
+          "Microsoft.Network/networkSecurityGroups/securityRules",
+          "Microsoft.Network/virtualNetworks/subnets"
+        ],
+        "review_fact_paths": [
+          "securityRuleSummary",
+          "defaultRuleSummary",
+          "networkSecurityGroup.id"
+        ],
+        "evidence_requirements": [
+          "Identify actual subnet/NIC NSGs and applicable custom/default rule priorities. Confirm the intended inbound isolation is not simply delegated to the default AllowVNetInBound rule.",
+          "Reconcile VirtualNetwork expansion across peering, on-premises, gateways, UDR prefixes and possible default routes; a tag is not a fixed narrow VNet CIDR.",
+          "Reviewer decision: do actual effective priorities and representative paths enforce the intended inbound boundaries, including exceptions and existing connection state?"
+        ],
+        "limitations": "Observed defaults and declared custom rules are distinct; missing default configuration stays unknown. No effective-rule query, topology expansion or packet test is executed.",
+        "flags": [
+          "virtualnetwork-tag-not-isolation",
+          "default-and-custom-rules-separated"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/52",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -3299,9 +3422,39 @@
       "baseline_control_sha256": "26da9f45495a078fe619beb63d68b1b385b4fb6eb486e32afd63bee1bf6af49f",
       "design_area": "Network topology and connectivity",
       "batch": "19",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "c2447ec6-6138-4a72-80f1-ce16ed301d6e",
+        "upstream_id": "D09.03",
+        "classification": "assisted",
+        "implemented_subclaim": "Exact subnet/VNet inventory and attached guardrail references supporting a specific workload-owner operating-model review.",
+        "sources": [
+          "landing-zone-segmentation",
+          "subnet-arm",
+          "terraform-subnet"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks",
+          "Microsoft.Network/virtualNetworks/subnets"
+        ],
+        "review_fact_paths": [
+          "addressPrefixes",
+          "networkSecurityGroup.id",
+          "routeTable.id",
+          "serviceEndpointCount"
+        ],
+        "evidence_requirements": [
+          "For each landing-zone subnet population identify the workload owner and approved creation/change responsibility using a redacted operating-model or change-record reference.",
+          "Reconcile platform guardrails, deny-only constraints, address allocation and controlled exceptions against actual subnet associations; PaaS subnet delegation is not ownership delegation.",
+          "Reviewer decision: can the workload owner create and operate subnets within those platform guardrails, with responsibilities explicitly accepted by the relevant humans?"
+        ],
+        "limitations": "Azure resource configuration cannot attest organizational ownership or accepted responsibility. No RBAC inference, permission enumeration/change or fabricated owner confirmation is used.",
+        "flags": [
+          "ownership-needs-human-record",
+          "paas-delegation-not-owner-delegation"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/52",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -3314,9 +3467,42 @@
       "baseline_control_sha256": "e58be6c7750a216dde9d2cad0fc75d14957d1366f26bfae2460008d415cd712c",
       "design_area": "Network topology and connectivity",
       "batch": "19",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "872e52e3-611c-4c58-a5a4-b1511e43a58a",
+        "upstream_id": "D09.04",
+        "classification": "assisted",
+        "implemented_subclaim": "Exact subnet NSG references and unique known positive NSG links with bounded minimized rule context.",
+        "sources": [
+          "landing-zone-segmentation",
+          "nsg-effective-processing",
+          "nsg-arm",
+          "nsg-rest-2024",
+          "terraform-nsg",
+          "terraform-nsg-rule"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks/subnets",
+          "Microsoft.Network/networkSecurityGroups",
+          "Microsoft.Network/networkSecurityGroups/securityRules"
+        ],
+        "review_fact_paths": [
+          "networkSecurityGroup.id",
+          "securityRuleSummary",
+          "defaultRuleSummary"
+        ],
+        "evidence_requirements": [
+          "Map all intended subnet and cross-landing-zone east/west boundaries to actual NSGs, NIC-level NSGs, routes and approved traffic. A positive link is not population completeness.",
+          "Review actual priority interactions: inbound subnet then NIC; outbound NIC then subnet. Include intra-subnet traffic, defaults, higher-priority exceptions and established connections.",
+          "Reviewer decision: do effective rules and attributable path evidence enforce the intended isolation across the complete applicable subnet population?"
+        ],
+        "limitations": "An attached NSG or configured deny rule alone is not effective segmentation. Missing, denied, ambiguous or differently typed references remain unknown; no extra topology/NSG read is launched.",
+        "flags": [
+          "nsg-attachment-not-effective-segmentation",
+          "positive-link-not-population-coverage"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/52",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -3329,9 +3515,42 @@
       "baseline_control_sha256": "475d23b5a41aeaf0a022e24a4208ccbcbf97d3640bcb5a94a1c54d500108a144",
       "design_area": "Network topology and connectivity",
       "batch": "19",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "a4d87397-48b6-462d-9d15-f512a65498f6",
+        "upstream_id": "D09.05",
+        "classification": "assisted",
+        "implemented_subclaim": "Bounded NSG rule direction/action/priority and canonical source/destination ASG references, not verified NIC membership.",
+        "sources": [
+          "landing-zone-segmentation",
+          "asg-membership",
+          "nsg-effective-processing",
+          "nsg-arm",
+          "terraform-nsg",
+          "terraform-nsg-rule"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/networkSecurityGroups",
+          "Microsoft.Network/networkSecurityGroups/securityRules",
+          "Microsoft.Network/applicationSecurityGroups",
+          "Microsoft.Network/virtualNetworks/subnets"
+        ],
+        "review_fact_paths": [
+          "securityRuleSummary",
+          "networkSecurityGroup.id"
+        ],
+        "evidence_requirements": [
+          "Map each intended application boundary to NSG rules, actual ASG NIC membership and effective priorities. All participating ASG NICs and source/destination ASGs must satisfy same-VNet constraints.",
+          "Reconcile the architecture's central-firewall role, including conditional Virtual WAN filtering, rather than treating every central appliance as a failure.",
+          "Reviewer decision: is east/west microsegmentation enforced at the relevant subnet/NIC boundaries with demonstrated membership and intended exceptions?"
+        ],
+        "limitations": "ASG references are not membership or enforcement proof. No NIC or effective-rule enumeration, appliance configuration change or packet test is performed.",
+        "flags": [
+          "asg-reference-not-membership",
+          "virtual-wan-firewall-is-conditional"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/52",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -3344,9 +3563,43 @@
       "baseline_control_sha256": "7a7e59b05bd0e81fe9e73dbcf76977a40b60dcbc0b736b6662c73d4fd71bd2e5",
       "design_area": "Network topology and connectivity",
       "batch": "19",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "dfe237de-143b-416c-91d7-aa9b64704489",
+        "upstream_id": "D09.06",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit flow-log enablement, canonical target/storage/workspace IDs, analytics bool and filter-presence indicator, never ingestion.",
+        "sources": [
+          "vnet-flow-log-coverage",
+          "traffic-analytics-pipeline",
+          "flow-log-arm",
+          "terraform-flow-log"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/networkWatchers/flowLogs",
+          "Microsoft.Network/virtualNetworks",
+          "Microsoft.Network/networkSecurityGroups"
+        ],
+        "review_fact_paths": [
+          "enabled",
+          "targetResourceId",
+          "storageId",
+          "trafficAnalytics.enabled",
+          "trafficAnalytics.workspaceResourceId",
+          "filteringConfigured"
+        ],
+        "evidence_requirements": [
+          "Bind the exact enabled flow log to an intended VNet target, supported service population, compatible storage and regional Traffic Analytics workspace; an NSG target is not VNet coverage.",
+          "Supply redacted original-time ingestion, processing/freshness and operational-use references, including explicit filters, unsupported services and ExpressRoute gateway/FastPath blind spots.",
+          "Reviewer decision: are useful VNet flows actually collected and analyzed for the intended population without unsupported or duplicate NSG/VNet collection? Do not create new NSG flow logs after the documented July 2025 cutoff."
+        ],
+        "limitations": "Configured enabled flags never establish ingestion, completeness, regional support or operational usefulness. No log/data-plane/workspace query, storage read, permission change or billing access occurs.",
+        "flags": [
+          "flow-log-config-not-ingestion",
+          "no-new-nsg-flow-log-recommendation"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/52",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -3359,9 +3612,47 @@
       "baseline_control_sha256": "ec8500524b0beb57b9a4ef9b9a7964738a3598328aba334344ba56c90d42d9bc",
       "design_area": "Network topology and connectivity",
       "batch": "19",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "0390417d-53dc-44d9-b3f4-c8832f359b41",
+        "upstream_id": "D09.07",
+        "classification": "automated",
+        "implemented_subclaim": "For each explicit observed NSG, count the complete valid custom securityRules array from a successful 2024-05-01 detail snapshot; pass <=900 and fail >900 against the fixed checklist target, excluding defaultSecurityRules.",
+        "sources": [
+          "network-service-limits",
+          "nsg-rest-2024",
+          "rest-spec-reuse",
+          "nsg-get-learn-fallback",
+          "nsg-arm",
+          "terraform-nsg",
+          "terraform-nsg-rule"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/networkSecurityGroups"
+        ],
+        "review_fact_paths": [
+          "securityRuleCount",
+          "securityRuleSummary"
+        ],
+        "method": "Observed-only complete custom NSG rule count against the explicit checklist <=900 target, not the current 2,000 ARM service quota.",
+        "rule": {
+          "operation": "nsg-rule-capacity",
+          "resource_type": "Microsoft.Network/networkSecurityGroups",
+          "property": "securityRuleCount",
+          "expected": 900
+        },
+        "evidence_requirements": [
+          "Require an original-time observed Succeeded detail snapshot with an explicit complete custom-rule array of at most 2,000 valid uniquely named rules and unique priorities per direction.",
+          "Evaluate exact <=900 independently of the current service quota. The current ARM table says 2,000; the frozen checklist's cited 1,000 is historical and not reused as a present quota or 90-percent-headroom claim.",
+          "Missing, malformed, symbolic, duplicate, transient, over-bound, stale or denied configuration stays unknown/error. Declared/raw/plan inline arrays do not establish all separately managed rules."
+        ],
+        "limitations": "The count is one resource's original-time explicit configuration, not estate completeness, effective rule behavior or remaining service quota. The requested 2024 Learn GET view falls back to 2026; the exact pinned 2024 Microsoft swagger is the source. No additional read or rule-list expansion occurs.",
+        "flags": [
+          "fixed-checklist-900-not-current-quota",
+          "observed-complete-custom-rules-only"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/52",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []

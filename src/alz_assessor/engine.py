@@ -8,7 +8,7 @@ from math import isfinite
 from typing import Any
 
 from .contracts import control_digest, digest, document, now, timestamp, validate
-from .network_evidence import address_list, nat_collections
+from .network_evidence import address_list, bounded_count, nat_collections
 from .policy_evidence import policy_signals
 from .query_signals import query_signals
 from .scanner_evidence import scanner_signals
@@ -51,6 +51,11 @@ def local_subchecks(properties: dict[str, Any]) -> dict[str, Any]:
         )
         result["supplied_ipv4_prefixes_have_minimum_26_capacity"] = (
             all(ip_network(value).prefixlen <= 26 for value in prefixes)
+            if known
+            else unknown("explicit_ipv4_prefixes_required")
+        )
+        result["supplied_ipv4_prefixes_have_minimum_27_capacity"] = (
+            all(ip_network(value).prefixlen <= 27 for value in prefixes)
             if known
             else unknown("explicit_ipv4_prefixes_required")
         )
@@ -257,8 +262,22 @@ def assess(
                         )
                     enum = rule.get("operation") == "enum-equals"
                     premium = rule.get("operation") == "firewall-premium-sku"
+                    capacity = rule.get("operation") == "nsg-rule-capacity"
                     sku = property_at(resource["properties"], "sku.tier") if enum else None
-                    if (
+                    if capacity and bundle["mode"] != "observed":
+                        outcome, reason, fact = (
+                            "unknown",
+                            "complete_observed_rule_count_required",
+                            None,
+                        )
+                    elif capacity and type(bounded_count(fact, 2000)) is int:
+                        outcome = "pass" if fact <= rule["expected"] else "fail"
+                        reason = (
+                            "within_checklist_rule_target"
+                            if outcome == "pass"
+                            else ("exceeds_checklist_rule_target")
+                        )
+                    elif (
                         premium
                         and isinstance(fact, str)
                         and fact in {"Basic", "Standard", "Premium"}
@@ -286,7 +305,7 @@ def assess(
                             None,
                         )
                     elif (enum and isinstance(fact, str) and fact in {"Alert", "Deny", "Off"}) or (
-                        not enum and not premium and type(fact) is bool
+                        not enum and not premium and not capacity and type(fact) is bool
                     ):
                         outcome = "pass" if fact == rule["expected"] else "fail"
                         reason = (
