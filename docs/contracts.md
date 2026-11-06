@@ -80,6 +80,28 @@ JSON/Markdown/HTML share the same counts, with no browser-side tier evaluator.
 
 ## Catalog and evidence contracts
 
+### Virtual WAN configuration vocabulary
+
+Catalog `.6.12` registers minimized WAN type, separate WAN/hub branch flags,
+typed scoped WAN/hub/firewall references, exact ASPath/ExpressRoute/VpnGateway
+preference, prefix-length-only hub IPv4 shape, reviewed RIU minimum,
+VNet-connection routing/table IDs, label summaries and Internet/PrivateTraffic
+intent. Counts, booleans, enums, typed joins and strict bounded arrays reject
+coercions, missing defaults, ambiguous references and over-bound input. Custom
+labels become exact SHA256 equality fingerprints; addresses, routes, next-hop
+IPs and query/traffic payloads are withheld. Fingerprints are not anonymous.
+
+The GUID-bound `hub-routing-preference` operation applies only to D10.07,
+`Microsoft.Network/virtualHubs`, `hubRoutingPreference`, expected `ASPath`, with
+no firewall-SKU or ordinary route-table interpretation. Unique known scoped
+identity and explicit valid configuration are required; an empty population
+stays unknown even with a complete-inventory flag. One evaluator produces
+technical Verified pass/fail independently of eight blank assisted decisions.
+The registered interview binds scope, catalog/control/requirements content,
+reviewer/evidence/rationale and original-time finite validity. No configuration
+or narrative creates a human decision or overrides technical evidence.
+Historical packaged catalog meanings and original-time replay remain unchanged.
+
 ### Review workspace version 1.0
 
 The local workspace adds its own explicit state version, design-area totals,

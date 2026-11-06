@@ -1,0 +1,140 @@
+{
+  "batch": "20",
+  "review_state": "preparation-only-not-accepted",
+  "issue": "https://github.com/jonathan-vella/landinglens/issues/115",
+  "reconciled_main": "21f95422a3700328afeacd9d29402cd3facf417c",
+  "source_manifest": "preparation-20-sources.json",
+  "activation_gate": "Explicit parent slot after cohorts08/30, then reconcile actual main, freeze exact predecessor, accept unique source-backed successor/schema/bank and final platform/wheel/compiler/merge/own-receipt gates. No accepted version is selected during preparation.",
+  "supported_modes": "Reviewed 2024-05-01 ARM/no-restore Bicep, pinned AzureRM4.50.0 raw/local supplied modules/optional plan JSON and saved/injected normalized facts only. No new Collector registrations, Azure/region/traffic/route/metric/health reads, execution, module restore, compiler acquisition or publication.",
+  "privacy": "Retain typed scoped identities and exact-label SHA256 equality fingerprints, not anonymity. Hub addresses, custom labels, route bodies, next-hop IPs, query text and traffic are withheld. Prefix shape, configured region and explicit enums/flags are not effective topology.",
+  "preparation_review_contract": "Typed paths are implemented for authored review-context preparation but not registered in accepted catalog schema. Current packaged catalog/bank/replay guards still reject an altered preparation catalog. Existing current-control decisions remain blank; no accepted vWAN predicate or Verified tier is created.",
+  "recommendations": [
+    {
+      "guid": "412e7f98-3f63-4047-82dd-69c5b5c2622f",
+      "upstream_id": "D10.01",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit WAN type/branch intent, known scoped WAN/hub bindings and supplied distinct-known hub/region counts prepare applicability. Counts never prove a complete architecture or scenario match.",
+      "sources": ["vwan-any-to-any", "vwan-regional-design", "vwan-rest", "terraform-virtual_wan", "terraform-virtual_hub"],
+      "review_resource_types": ["Microsoft.Network/virtualWans", "Microsoft.Network/virtualHubs"],
+      "review_fact_paths": ["virtualWanType", "wanBranchTrafficAllowed", "virtualWanId", "resourceLocation"],
+      "evidence_requirements": [
+        "Which documented routing design matches the approved workload connectivity matrix, isolation requirements, hybrid paths and operational model? Any-to-any specifically assumes unfiltered direct flows and common Default association/propagation.",
+        "Reconcile Standard-versus-Basic and unsupported/conditional features, actual regional/service eligibility, scale, cost and alternatives. Resource existence or global-WAN terminology cannot establish business suitability."
+      ],
+      "limitations": "Specific accountable scenario decision remains manual; no business requirements, topology completeness, region availability or effective paths inferred."
+    },
+    {
+      "guid": "54b69bad-33aa-4d5e-ac68-e1d76667313b",
+      "upstream_id": "D10.02",
+      "classification": "assisted",
+      "implemented_subclaim": "Exact scoped WAN/hub association and distinct known configured hub/region counts within a fully identified bounded supplied subset.",
+      "sources": ["vwan-regional-design", "vwan-hub-capacity", "vwan-faq", "vwan-rest"],
+      "review_resource_types": ["Microsoft.Network/virtualWans", "Microsoft.Network/virtualHubs"],
+      "review_fact_paths": ["virtualWanId", "virtualWanType", "resourceLocation", "hubRouterMinCapacity"],
+      "evidence_requirements": [
+        "Does attributable complete workload/region inventory have one or more suitable regional hubs bound to the intended common Standard WAN? Current CAF allows multiple hubs in one region to scale beyond single-hub limits.",
+        "Review connectivity subscription/resource-group and portal constraints, eligibility, limits, resilience and actual connection paths. Distinct regions and hub counts alone do not prove regional coverage or global reachability."
+      ],
+      "limitations": "Known supplied region strings are configuration, not current product availability or whole-estate coverage. Unknown/duplicate/unscoped population members invalidate positive supplied-subset counts."
+    },
+    {
+      "guid": "7d5d1e4e-6146-458d-9558-fd77249b8211",
+      "upstream_id": "D10.03",
+      "classification": "assisted",
+      "implemented_subclaim": "Known scoped hub-to-WAN and bidirectional local hub-to-AZFW_Hub firewall joins; explicit Internet routing-intent destination/typed local firewall next hop; existing firewall policy/SKU/egress facts.",
+      "sources": ["vwan-firewall", "vwan-routing-intent", "vwan-hub-capacity", "vwan-rest", "firewall-arm", "terraform-firewall", "terraform-virtual_hub_routing_intent"],
+      "review_resource_types": ["Microsoft.Network/virtualHubs", "Microsoft.Network/azureFirewalls", "Microsoft.Network/virtualHubs/routingIntent", "Microsoft.Network/virtualHubs/hubVirtualNetworkConnections"],
+      "review_fact_paths": ["virtualWanId", "hubFirewallId", "virtualWanHubId", "sku.name", "firewallPolicy.id", "hubRoutingPolicies", "hubInternetSecurityEnabled", "egressRules"],
+      "evidence_requirements": [
+        "Does every applicable hub have a supported local security solution with the intended Internet policy and attributable rule/route/traffic/ingestion evidence? A known configured Internet next hop is not effective filtering; default routes do not cross hubs.",
+        "Reconcile custom-route conflicts, Internet bypass/forced-tunnel exceptions, PrivateTraffic policy, region/cloud/NVA constraints and Firewall zones. Linked portal conversion cannot configure Firewall zones. Firewall maximum scale now needs at least /22 hub space."
+      ],
+      "limitations": "NVA/SaaS destinations are explicitly unsupported in the local Azure Firewall join. Terraform does not expose the hub reverse-firewall reference; the bidirectional claim remains unknown there. Neither security flag nor policy reference proves enforcement."
+    },
+    {
+      "guid": "6667313b-4f56-464b-9e98-4a859c773e7d",
+      "upstream_id": "D10.04",
+      "classification": "assisted",
+      "implemented_subclaim": "Known WAN/hub and VNet child associations plus explicit connection routing context prepare the reviewed migration scenario; no inferred migration state.",
+      "sources": ["vwan-migration", "vwan-any-to-any", "vwan-routing-intent", "terraform-virtual_hub_connection"],
+      "review_resource_types": ["Microsoft.Network/virtualWans", "Microsoft.Network/virtualHubs", "Microsoft.Network/virtualHubs/hubVirtualNetworkConnections"],
+      "review_fact_paths": ["virtualWanType", "virtualWanId", "resourceLocation", "hubRemoteVirtualNetworkId", "hubConnectionRouting"],
+      "evidence_requirements": [
+        "Which identified target architecture and staged migration plan matches required local/inter-region/branch/remote-user/Internet flows, shared services and supported Standard capabilities?",
+        "Review actual old-hub routing, staged cutover/coexistence, explicit security and isolation, rollback and attributable acceptance. Shared services remain in dedicated spokes; illustrative migration is not a completed rollout."
+      ],
+      "limitations": "Architecture alignment/cutover is a separately bound human decision; configuration cannot authenticate migration completion or traffic."
+    },
+    {
+      "guid": "261623a7-65a9-417e-8f34-8ef254c27d42",
+      "upstream_id": "D10.05",
+      "classification": "assisted",
+      "implemented_subclaim": "Known WAN/hub/region and explicit router minimum RIU configuration establish scoped review context for the prepackaged Insights topology/metrics workbook, not a synthetic enablement flag.",
+      "sources": ["vwan-insights", "vwan-hub-capacity", "vwan-regional-design"],
+      "review_resource_types": ["Microsoft.Network/virtualWans", "Microsoft.Network/virtualHubs"],
+      "review_fact_paths": ["virtualWanId", "virtualWanType", "resourceLocation", "hubRouterMinCapacity"],
+      "evidence_requirements": [
+        "Has an accountable operator actually reviewed the Virtual WAN Insights dependency map and detailed WAN/hub/gateway/connection workbook for the relevant original-time period and complete intended population?",
+        "Reconcile the linked page's preview label, actual metric/status availability and arriving alerts/output against approved capacity and incident requirements. Saved resource configuration is not monitor use, successful collection or health."
+      ],
+      "limitations": "No live workbook/query/metric execution, arbitrary alert threshold or whole-topology monitoring assurance."
+    },
+    {
+      "guid": "727c77e1-b9aa-4a37-a024-129d042422c1",
+      "upstream_id": "D10.06",
+      "classification": "assisted",
+      "implemented_subclaim": "Retain explicit WAN allowBranchToBranchTraffic and independent hub allowBranchToBranchTraffic booleans joined by typed scoped WAN/hub identities.",
+      "sources": ["vwan-faq", "vwan-any-to-any", "vwan-rest", "terraform-virtual_wan", "terraform-virtual_hub", "terraform-hub-implementation"],
+      "review_resource_types": ["Microsoft.Network/virtualWans", "Microsoft.Network/virtualHubs"],
+      "review_fact_paths": ["virtualWanType", "wanBranchTrafficAllowed", "virtualWanId", "hubBranchTrafficAllowed"],
+      "evidence_requirements": [
+        "Is WAN-wide branch-to-branch traffic explicitly enabled for intended VPN/ExpressRoute/User VPN flows, or is disabling it supported by an independently approved, attributable flow-blocking requirement?",
+        "Keep hub and WAN flags distinct: pinned provider defaults hub=false and WAN=true. Missing/raw defaults and disagreement stay visible, not inferred pass or reachability. Reconcile routing/security/Global Reach conditions independently."
+      ],
+      "limitations": "Conditional exception prevents a whole-recommendation boolean predicate. No reachability inference or fabricated exception."
+    },
+    {
+      "guid": "d49ac006-6670-4bc9-9948-d3e0a3a94f4d",
+      "upstream_id": "D10.07",
+      "classification": "assisted",
+      "implemented_subclaim": "Exact reviewed ExpressRoute/ASPath/VpnGateway enum; explicit ASPath true/false local subcheck. Missing, unknown enum, wrong case or unsupported value stays unknown.",
+      "candidate_predicate": "After slot/source acceptance only: exact enum-equals on known Microsoft.Network/virtualHubs hubRoutingPreference=ASPath. Explicit setting only; no effective-route or shortest-path guarantee.",
+      "sources": ["vwan-routing-preference", "vwan-faq", "vwan-rest", "terraform-virtual_hub", "terraform-hub-implementation"],
+      "review_resource_types": ["Microsoft.Network/virtualHubs"],
+      "review_fact_paths": ["virtualWanId", "hubRoutingPreference"],
+      "evidence_requirements": [
+        "Is each relevant known hub explicitly configured ASPath, and is this preference suitable for the intended advertisements and redundancy?",
+        "Reconcile LPM/static-route precedence, local/remote tie breakers, remote ExpressRoute selected-last and private-routing-intent exceptions, bow-tie paths and on-premises prepending. ASPath does not prove effective route selection or recovery."
+      ],
+      "limitations": "ExpressRoute documented default is never invented from an absent property. Source-specific predicate/schema activation remains deferred."
+    },
+    {
+      "guid": "2586b854-237e-47f1-84a1-d45d4cd2310d",
+      "upstream_id": "D10.08",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit exact-label summaries/fingerprints, typed hub-route-table association/propagation IDs, known local hub/table joins and nonempty explicit supplied-label subcheck.",
+      "sources": ["vwan-labels", "vwan-any-to-any", "vwan-routing-intent", "vwan-rest", "terraform-virtual_hub_connection", "terraform-virtual_hub_route_table", "terraform-connection-implementation"],
+      "review_resource_types": ["Microsoft.Network/virtualHubs/hubRouteTables", "Microsoft.Network/virtualHubs/hubVirtualNetworkConnections"],
+      "review_fact_paths": ["hubRouteLabels", "hubConnectionRouting", "hubRemoteVirtualNetworkId"],
+      "evidence_requirements": [
+        "Do actual same-WAN tables and all applicable VNet/VPN/ExpressRoute/P2S connections have consistent intended label-based dynamic propagation and associated tables for the complete reviewed connectivity matrix?",
+        "Default labels span hubs; omitted VNet labels default to Default in guidance but absent inputs stay unknown. Distinguish explicit empty labels, None isolation, static routes and local-only default routes; routing-intent constraints need separate review."
+      ],
+      "limitations": "Prepared VNet connection/route-table subset only; branch connection adapters remain unsupported, explicitly not a complete vWAN population. Label counts or equality do not prove correct propagation or inter-hub reachability. Ordinary GatewaySubnet route tables are never joined."
+    },
+    {
+      "guid": "9c75dfef-573c-461c-a698-68598595581a",
+      "upstream_id": "D10.09",
+      "classification": "assisted",
+      "implemented_subclaim": "Strict literal network-aligned IPv4 CIDR minimized to prefix length, with explicit /24 service-minimum, /23 recommendation and conditional /22 Firewall maximum-scale subchecks. Reviewed configured RIU2..50 table envelope remains separate.",
+      "sources": ["vwan-faq", "vwan-hub-capacity", "vwan-rest", "terraform-virtual_hub", "vwan-firewall"],
+      "review_resource_types": ["Microsoft.Network/virtualHubs", "Microsoft.Network/azureFirewalls"],
+      "review_fact_paths": ["virtualWanId", "hubPrefixSummary", "hubRouterMinCapacity", "hubFirewallId", "virtualWanHubId"],
+      "evidence_requirements": [
+        "Is each reviewed hub created with a nonoverlapping valid IPv4 prefix of /23 or larger, accounting for current /22 Firewall maximum-scale and NVA-specific allocation requirements?",
+        "Hub address space cannot change after creation. Reconcile intended gateways/NVAs/Firewall, actual allocations, regional quotas, RIU-versus-gateway scale, noninstant autoscaling and workload growth. Prefix size alone never establishes available growth capacity."
+      ],
+      "limitations": "IPv6, host-bit CIDR, dotted masks, missing or symbolic addresses stay unknown. Prefix shape is not address suitability, complete overlap analysis, quota or actual free capacity; do not reuse VNet-gateway scale models."
+    }
+  ]
+}

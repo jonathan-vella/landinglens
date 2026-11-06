@@ -50,6 +50,7 @@ def prepared_resource(
     resource: dict[str, Any],
     control: dict[str, Any],
     by_id: dict[str, list[dict[str, Any]]],
+    scope: str | None = None,
 ) -> dict[str, Any]:
     facts: dict[str, Any] = {}
     for path in control.get("review_fact_paths", []):
@@ -73,6 +74,15 @@ def prepared_resource(
         "facts": facts,
         "subchecks": local_subchecks(facts),
     }
+    from .virtual_wan_evidence import PATHS as VWAN_PATHS
+    from .virtual_wan_evidence import WAN, hub_context, wan_hub_population
+
+    if VWAN_PATHS.intersection(facts):
+        prepared["virtual_wan_context"] = (
+            wan_hub_population(resource, by_id, scope)
+            if resource["resource_type"].lower() == WAN
+            else hub_context(resource, by_id, scope)
+        )
     if (
         "disableBgpRoutePropagation" in control.get("review_fact_paths", [])
         and resource["resource_type"].lower() == "microsoft.network/virtualnetworkgateways"
@@ -339,8 +349,7 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     allowed = {kind.lower() for kind in kinds}
     by_id: dict[str, list[dict[str, Any]]] = {}
     for resource in bundle.get("resources", []):
-        if resource.get("arm_id"):
-            by_id.setdefault(resource["arm_id"].lower(), []).append(resource)
+        by_id.setdefault((resource.get("arm_id") or "").lower(), []).append(resource)
     matches = [
         resource
         for resource in bundle.get("resources", [])
@@ -358,7 +367,10 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
         "collected_at": bundle["collected_at"],
         "inventory_complete": bundle["inventory_complete"],
         "normalized_resources_available": available,
-        "resources": [prepared_resource(resource, control, by_id) for resource in matches[:100]],
+        "resources": [
+            prepared_resource(resource, control, by_id, bundle.get("scope"))
+            for resource in matches[:100]
+        ],
         "matching_resources": len(matches) if available else None,
         "truncated": len(matches) > 100,
         "warning": (
