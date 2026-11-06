@@ -252,6 +252,13 @@ An answer alone never approves anything; a failed/expired/changed decision rejec
 the whole output. Import the completed document with the usual `assess --manual`.
 The local workspace integration is separately tracked, not delivered by this CLI.
 
+Use `--question inbound-outbound-hybrid` for cohort 13's ten separate GUID
+decisions, including DDoS logging and NIC public-IP policy as distinct D05.08
+recommendations. Its migration question preserves the frozen date and current
+API/existing-network scope distinction. Preparation leaves every decision blank.
+The scope is included in the requirements hash; changed scope, bank, content or
+validity requires fresh preparation, not editing a binding.
+
 For the automated local workflow, start from saved **normalized evidence**, not
 a rendered or minimized assessment:
 

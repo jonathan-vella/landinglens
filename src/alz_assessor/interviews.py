@@ -6,8 +6,32 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.3"
+BANK_VERSION = "2026-11-06.5"
 BANK = {
+    "inbound-outbound-hybrid": {
+        "question": "Describe global Front Door policy/domain/route coverage and effective rules; "
+        "both origin backend filtering and exact X-Azure-FDID rejection; workload-aligned proxy "
+        "placement; every supported public IP's DDoS protection and arriving diagnostics; "
+        "the approved explicit-outbound migration strategy with current API/existing-network "
+        "scope (not the frozen retirement date); actual NIC-deny policy assignment/version/"
+        "enforcement and independent exceptions; maintained primary ExpressRoute/backup VPN "
+        "suitability; both-direction BGP preference; and measured demand supporting gateway "
+        "SKU/generation. Reference redacted evidence, not header values, hosts, peer addresses "
+        "or secrets. Decide all ten GUIDs separately, including both D05.08 meanings. "
+        "Configuration or one shared answer alone establishes none of these outcomes.",
+        "controls": [
+            "ALZ-1d7aa9b6-4704-4489-a804-2d88e79d17b7",
+            "ALZ-3b22a5a6-7e7a-48ed-9b30-e38c3f29812b",
+            "ALZ-2363cefe-179b-4599-be0d-5973cd4cd21b",
+            "ALZ-088137f5-e6c4-4cfd-9e50-4547c2447ec6",
+            "ALZ-b034c01e-110b-463a-b36e-e3346e57f225",
+            "ALZ-b1c82a3f-2320-4dfa-8972-7ae4823c8930",
+            "ALZ-3c5a808d-c695-4c14-a63c-c7ab7a510e41",
+            "ALZ-359c373e-7dd6-4162-9a36-4a907ecae48e",
+            "ALZ-f29812b2-363c-4efe-879b-599de0d5973c",
+            "ALZ-d4cd21b0-8813-47f5-b6c4-cfd3e504547c",
+        ],
+    },
     "access-operating-model": {
         "question": "Describe the approved RBAC scope/operating model and group source of "
         "authority; actual managed-identity use; administrator work/school account provenance; "
@@ -124,10 +148,13 @@ def prepare_interview(
         ],
         "requirements_sha256": digest(
             {
-                control: next(c for c in catalog["controls"] if c["control_id"] == control)[
-                    "evidence_requirements"
-                ]
-                for control in controls
+                "scope": scope_id(scope),
+                "controls": {
+                    control: next(c for c in catalog["controls"] if c["control_id"] == control)[
+                        "evidence_requirements"
+                    ]
+                    for control in controls
+                },
             }
         ),
     }
@@ -201,7 +228,10 @@ def compile_interview(
             }
         )
     if response["requirements_sha256"] != digest(
-        {control: controls[control]["evidence_requirements"] for control in seen}
+        {
+            "scope": scope,
+            "controls": {control: controls[control]["evidence_requirements"] for control in seen},
+        }
     ):
         raise InputError("Interview requirements binding changed")
     record = document("manual", schema_version="1.1", entries=entries)

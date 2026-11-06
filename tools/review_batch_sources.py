@@ -794,6 +794,298 @@ SOURCES_04 = [
     *[source for source in SOURCES_11 if source[0] == "port-arm"],
 ]
 
+ALZ_REVISION = "4eae565287844360a61545f9799400431adb6d0a"
+POLICY_REVISION = "f096d8de10fb25e71dd7f82b78ded110ec711d73"
+ALZ_RAW = f"https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/{ALZ_REVISION}/"
+POLICY_RAW = f"https://raw.githubusercontent.com/Azure/azure-policy/{POLICY_REVISION}/"
+SOURCES_13 = [
+    (
+        "frontdoor-waf",
+        "https://learn.microsoft.com/azure/web-application-firewall/afds/afds-overview",
+        ["Prevention", "Standard", "precedence"],
+        "Front Door is global; Standard supports custom rules only. Detection, Prevention, "
+        "rule actions, exclusions and profile/domain/route precedence differ. Reviewed "
+        "2024 schemas do not expose all newer attachment scopes; no global coverage inferred.",
+    ),
+    (
+        "application-gateway-waf",
+        "https://learn.microsoft.com/azure/web-application-firewall/ag/ag-overview",
+        ["WAF_v2", "listeners", "path-based"],
+        "Gateway/listener/path policies have distinct scope. WAF_v2 supports policy "
+        "associations; SKU or a policy reference alone does not establish inspection.",
+    ),
+    (
+        "origin-security",
+        LEARN + "azure/frontdoor/origin-security",
+        ["AzureFrontDoor.Backend", "X-Azure-FDID", "alone"],
+        "Public origins require both Front Door backend address filtering and validation "
+        "of the exact profile header. Service tag presence or any header rule alone is "
+        "insufficient. Private Link also requires disallowing alternate public paths.",
+    ),
+    (
+        "ddos-architectures",
+        "https://learn.microsoft.com/azure/ddos-protection/ddos-protection-reference-architectures",
+        ["Unsupported", "NAT Gateway", "Virtual WAN"],
+        "Network and per-IP protection differ; reconcile supported endpoints and every "
+        "positive association. NAT Gateway and Virtual WAN are unsupported in this source. "
+        "Configured protection never establishes mitigation readiness or estate coverage.",
+    ),
+    (
+        "default-outbound-current",
+        "https://learn.microsoft.com/azure/virtual-network/ip-services/default-outbound-access",
+        ["March 31, 2026", "earlier API", "deallocated", "delegated"],
+        "Revision e8c3f408 says APIs released after March 31, 2026 default new VNets to "
+        "private subnets; earlier APIs and existing VNets retain prior behavior. This is "
+        "not the frozen September 30, 2025 blanket retirement statement. Existing VM "
+        "stop/deallocation, managed/delegated-subnet limits and Internet UDR exceptions "
+        "need migration planning, never execution. Preserve historical wording.",
+    ),
+    (
+        "default-outbound-announcement",
+        "https://azure.microsoft.com/updates/default-outbound-access-for-vms-in-azure-will-be-retired-transition-to-a-new-method-of-internet-access/",
+        ["Azure Updates"],
+        "The announcement link resolves to the dynamic Azure Updates shell. Captured HTML "
+        "does not expose its item timeline, so no independent date verification is claimed; "
+        "current scope/date findings are bound to the inspected Learn revision instead.",
+    ),
+    (
+        "ddos-logging-redirect",
+        LEARN + "azure/ddos-protection/diagnostic-logging",
+        ["diagnostic setting", "categories"],
+        "Legacy DDoS logging redirects to a general Azure Monitor resource-log tutorial. "
+        "Diagnostic routing and actual ingestion are distinct; use actual IP log reference.",
+    ),
+    (
+        "ddos-log-categories",
+        LEARN
+        + "azure/azure-monitor/reference/supported-logs/microsoft-network-publicipaddresses-logs",
+        ["DDoSMitigationFlowLogs", "DDoSMitigationReports", "DDoSProtectionNotifications"],
+        "The public-IP reference lists three exact DDoS categories. Project only their "
+        "explicit enabled flags and bounded destination references, never raw log records.",
+    ),
+    (
+        "alz-policy-wiki",
+        "https://github.com/Azure/Enterprise-Scale/wiki/ALZ-Policies",
+        ["Azure-Landing-Zones", "policy"],
+        "The exact checklist wiki is a migration notice, not a current corp policy list. "
+        "Follow the central policy site and inspect pinned actual library assignment.",
+    ),
+    (
+        "alz-policy-site",
+        "https://azure.github.io/Azure-Landing-Zones/policy/",
+        ["preview", "custom", "built-in"],
+        "ALZ includes custom and built-in definitions and sometimes preview defaults. "
+        "Library presence is not an actual assignment or an enforcement outcome.",
+    ),
+    (
+        "alz-corp",
+        ALZ_RAW + "platform/alz/archetype_definitions/corp.alz_archetype_definition.json",
+        ["Deny-Public-IP-On-NIC"],
+        "Pinned corp explicitly includes Deny-Public-IP-On-NIC, not the separate deny-all "
+        "public-IP assignment. Archetype templates are not deployed governance evidence.",
+    ),
+    (
+        "alz-nic-assignment",
+        ALZ_RAW
+        + "platform/alz/policy_assignments/Deny-Public-IP-On-NIC.alz_policy_assignment.json",
+        ["83a86a26-fd1f-447c-b59d-e51f44264114", "Default", "1.*.*"],
+        "Actual library assignment binds built-in 83a86a26 version 1.*.* with Default "
+        "enforcement, placeholder MG scope and explicit empty notScopes. Validate actual "
+        "scope/inheritance/version, overrides/selectors/exemptions independently.",
+    ),
+    (
+        "alz-deny-public-ip",
+        ALZ_RAW + "platform/alz/policy_assignments/Deny-Public-IP.alz_policy_assignment.json",
+        ["6c112d4e", "listOfResourceTypesNotAllowed", "Deny"],
+        "The separate deny resource-types assignment forbids public-IP creation; this is "
+        "not equivalent to denying NIC attachments, and is not included in pinned corp.",
+    ),
+    (
+        "builtin-nic-public-ip",
+        POLICY_RAW + "built-in-policies/policyDefinitions/Network/NetworkPublicIPNic_Deny.json",
+        ["83a86a26", "ipconfigurations[*].publicIpAddress.id", "deny", "1.0.0"],
+        "Built-in 83a86a26 version 1.0.0 has Indexed NIC-array alias logic and fixed deny, "
+        "no effect parameter. It covers NICs, not just VMs. Saved assignment/exception "
+        "context is preparation only; no alias evaluation, trigger or remediation occurs.",
+    ),
+    (
+        "builtin-ddos-logging",
+        POLICY_RAW
+        + "built-in-policies/policyDefinitions/Monitoring/PublicIpDdosLogging_Audit.json",
+        ["752154a7", "DDoSMitigationReports", "AuditIfNotExists"],
+        "Built-in 752154a7 version 1.0.1 supports AuditIfNotExists/DeployIfNotExists/Disabled "
+        "and has parameter-dependent log/workspace existence logic. Its assignment or "
+        "compliance cannot prove whole-population DDoS logging or actual ingestion.",
+    ),
+    (
+        "connectivity-to-azure",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/connectivity-to-azure",
+        ["primary", "backup", "different peering locations"],
+        "CAF recommends primary ExpressRoute, backup VPN and independent circuit "
+        "locations, but workload suitability and maintained backup need separate evidence.",
+    ),
+    (
+        "expressroute-backup",
+        LEARN + "azure/expressroute/use-s2s-vpn-as-backup-for-expressroute-privatepeering",
+        ["not recommended", "active-passive", "more specific"],
+        "S2S backup is not recommended for latency-sensitive/mission-critical/bandwidth-"
+        "intensive workloads. Equal-prefix preference, more-specific VPN routes, both "
+        "directions and active maintenance matter. Presence never establishes failover.",
+    ),
+    (
+        "expressroute-routing",
+        "https://learn.microsoft.com/azure/expressroute/expressroute-routing",
+        ["private AS", "BGP", "community"],
+        "Reconcile private/Microsoft peering, both BGP sessions, prefix limits and route "
+        "attributes. Microsoft removes private ASNs on Microsoft peering and does not "
+        "honor arbitrary received communities. Never infer preference from BGP enabled.",
+    ),
+    (
+        "expressroute-optimization",
+        LEARN + "azure/expressroute/expressroute-optimize-routing",
+        ["Local Preference", "AS PATH", "weight"],
+        "Customer local preference, AS PATH prepending and Azure connection weight have "
+        "different directions/scope. Weight is considered before AS-path length for "
+        "Azure outbound; a numeric value alone never establishes the selected route.",
+    ),
+    (
+        "expressroute-sizing",
+        "https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways?source=recommendations#gwsku",
+        ["ErGwScale", "estimates", "maintenance"],
+        "Current ExpressRoute guidance includes scalable SKU and maintenance/private-"
+        "endpoint performance limits. Pinned provider lacks ErGwScale; configuration "
+        "is not bandwidth demand, effective throughput or regional SKU availability.",
+    ),
+    (
+        "vpn-sizing",
+        LEARN + "azure/vpn-gateway/about-gateway-skus",
+        ["benchmarks", "Generation2", "migration"],
+        "VPN throughput is benchmarked, not guaranteed; generation, algorithm, tunnel/"
+        "P2S mix and non-AZ migration matter. No demand or measured performance inferred.",
+    ),
+    (
+        "frontdoor-policy-arm",
+        LEARN
+        + "azure/templates/microsoft.network/2024-02-01/frontdoorwebapplicationfirewallpolicies",
+        ["policySettings", "managedRuleSets", "enabledState"],
+        "Reviewed 2024-02-01 exposes mode/enabledState and supplied custom/managed arrays. "
+        "Attempted Network 2024-05-01 URL returned 404; it is not an accepted API.",
+    ),
+    (
+        "frontdoor-security-arm",
+        LEARN + "azure/templates/microsoft.cdn/2024-02-01/profiles/securitypolicies",
+        ["wafPolicy", "associations", "patternsToMatch"],
+        "Project typed WAF ID, exact domain/endpoint IDs and explicit all-paths marker "
+        "within each supplied association; bounded subset is not profile/route coverage.",
+    ),
+    (
+        "application-gateway-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/applicationgateways",
+        ["gatewayIPConfigurations", "firewallPolicy", "backendAddresses"],
+        "Project explicit gateway subnets, WAF references and bounded configured backend "
+        "counts, withholding hostnames/certificates. Placement and exclusivity need review.",
+    ),
+    (
+        "gateway-waf-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/"
+        "applicationgatewaywebapplicationfirewallpolicies",
+        ["negationConditon", "RequestHeaders", "policySettings"],
+        "Gateway custom conditions use the actual misspelled negationConditon API key. "
+        "Retain header-shape/count/action/priority only, never FDID or other match values.",
+    ),
+    (
+        "public-ip-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/publicipaddresses",
+        ["ddosSettings", "protectionMode", "ddosProtectionPlan"],
+        "IP protection mode and plan binding are distinct. Inherited mode needs actual "
+        "supported VNet attachment. Addresses/DNS labels are withheld.",
+    ),
+    (
+        "nic-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/networkinterfaces",
+        ["publicIPAddress", "virtualMachine", "ipConfigurations"],
+        "Supplied IP-configuration/subnet/public-IP and VM references are bounded positive "
+        "links only. Missing references are not absence or effective policy enforcement.",
+    ),
+    (
+        "diagnostics-arm",
+        LEARN + "azure/templates/microsoft.insights/2021-05-01-preview/diagnosticsettings",
+        ["categoryGroup", "logs", "storageAccountId"],
+        "Explicit log category flags and typed workspace/storage destination IDs are "
+        "configuration only. Extension target comes from actual scope/ID, not resource name.",
+    ),
+    (
+        "connection-weight-implementation",
+        RAW + "internal/services/network/virtual_network_gateway_connection_resource.go",
+        ["routing_weight", "IntBetween(0, 32000)", "Sensitive"],
+        "Actual pinned provider validates connection weight 0..32000 and exposes computed "
+        "fields; preserve explicit values only, with shared/authorization keys withheld.",
+    ),
+    *[
+        (
+            identity,
+            RAW + "website/docs/r/" + resource + ".html.markdown",
+            markers,
+            finding,
+        )
+        for identity, resource, markers, finding in [
+            (
+                "terraform-frontdoor-security",
+                "cdn_frontdoor_security_policy",
+                ["patterns_to_match", "cdn_frontdoor_domain_id"],
+                "Pinned single firewall association nests in security_policies/firewall; "
+                "domain active is computed, not defaulted. Profile parent ID is explicit.",
+            ),
+            (
+                "terraform-frontdoor-policy",
+                "cdn_frontdoor_firewall_policy",
+                ["sku_name", "mode", "managed_rule"],
+                "Pinned provider supports Standard/Premium and explicit enabled/mode; missing "
+                "custom/managed arrays do not become zero. Rule counts are not blocking efficacy.",
+            ),
+            (
+                "terraform-application-gateway",
+                "application_gateway",
+                ["gateway_ip_configuration", "firewall_policy_id", "fqdns"],
+                "Project explicit subnet/WAF links and supplied address/FQDN counts only; "
+                "withhold actual hosts, private addresses, certificates and rule paths.",
+            ),
+            (
+                "terraform-gateway-waf",
+                "web_application_firewall_policy",
+                ["match_variables", "RequestHeaders", "negation_condition"],
+                "Pinned gateway policy supports explicit policy_settings/custom_rules; "
+                "header configuration is only a candidate, not verified exact-profile filtering.",
+            ),
+            (
+                "terraform-public-ip",
+                "public_ip",
+                ["ddos_protection_mode", "ddos_protection_plan_id"],
+                "Pinned IP mode defaults are not inferred; explicit mode/plan only. Historical "
+                "provider zone prose differs from current guidance, so no resilience verdict.",
+            ),
+            (
+                "terraform-nic",
+                "network_interface",
+                ["virtual_machine_id", "public_ip_address_id"],
+                "Project explicit subnet/public-IP and computed VM links only; raw missing "
+                "VM binding remains unknown rather than assuming an unattached interface.",
+            ),
+        ]
+    ],
+    *[
+        source
+        for source in SOURCES_17
+        if source[0] in {"subnet-arm", "terraform-subnet", "terraform-diagnostics"}
+    ],
+    *[source for source in SOURCES_19 if source[0] in {"gateway-arm", "terraform-gateway"}],
+    *[
+        source
+        for source in SOURCES_11
+        if source[0] in {"connection-arm", "terraform-gateway-connection"}
+    ],
+]
+
 
 SOURCES_14 = [
     (
@@ -984,7 +1276,9 @@ SOURCES_14 = [
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
-    parser.add_argument("--batch", choices=["01", "04", "11", "14", "17", "18", "19"], default="01")
+    parser.add_argument(
+        "--batch", choices=["01", "04", "11", "13", "14", "17", "18", "19"], default="01"
+    )
     args = parser.parse_args()
     target = ROOT / "references" / "recommendation-batches" / f"batch-{args.batch}-sources.json"
     if target.exists() and not args.append_new_sources:
@@ -995,6 +1289,7 @@ def main() -> None:
         "01": SOURCES,
         "04": SOURCES_04,
         "11": SOURCES_11,
+        "13": SOURCES_13,
         "14": SOURCES_14,
         "17": SOURCES_17,
         "18": SOURCES_18,
@@ -1027,6 +1322,10 @@ def main() -> None:
                 if url.startswith(RAW)
                 else SPEC_REVISION
                 if url.startswith(SPEC_RAW)
+                else ALZ_REVISION
+                if url.startswith(ALZ_RAW)
+                else POLICY_REVISION
+                if url.startswith(POLICY_RAW)
                 else match.group(1)
                 if match
                 else "retrieved-page",
@@ -1035,6 +1334,8 @@ def main() -> None:
                 if url.startswith(RAW)
                 else "MIT Microsoft REST specification: metadata and own factual findings only"
                 if url.startswith(SPEC_RAW)
+                else "MIT Azure policy/library: metadata and own factual findings only"
+                if url.startswith((ALZ_RAW, POLICY_RAW))
                 else (
                     "Microsoft Learn attribution: source metadata and own factual findings only; "
                     "no page content redistributed"

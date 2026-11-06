@@ -78,7 +78,14 @@ records remain traceable under explicit lifecycle semantics.
 
 ## Active increment: fixed recommendation expansion
 
-The current delivered successor is `2026-11-06.3`: 255 retained GUIDs, 10 automated,
+The working successor is `2026-11-06.5`: cohort13 adds bounded protection,
+outbound and hybrid configuration preparation with ten distinct source-bound
+human decisions. D05.07 remains manual and its historical date is preserved
+alongside current API/new-network guidance. No full protection/enforcement/
+ingestion/failover/demand claim is inferred. Actual checked delivery and receipts
+remain pending; delivered `.6.3` is frozen.
+
+The prior delivered successor is `2026-11-06.3`: 255 retained GUIDs, 10 automated,
 202 assisted and 43 manual. Cohorts 01, 17, 18, 19, 11 and 04 are merged (53 fixed targets);
 198 remain pending. Cohort 19/#90 reconciled the saved draft against exact
 delivered `.5` foundations and passed normal exact-head delivery gates.
