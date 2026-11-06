@@ -8,6 +8,17 @@ are in the [plan](planning/plan.md).
 
 ## Evidence and outcomes
 
+Cohort09 [independent preparation](automation-matrix.md#cohort-09-independent-preparation-not-accepted)
+does not activate accepted support or delivery. Positive MG parentage is not an
+organizational designation; explicit VM location labels are not geographic/legal
+independence, appropriate regional selection, DR, capacity or required feature
+availability. Tag counts are not data classification, sovereignty or enforcement.
+Current SLZ's four-zone architecture qualifies the immutable checklist's Public
+wording without requiring a Public-named MG. Regional requirements and organization
+classification remain separate manual decisions. No private classification,
+workload/employee/location payload, live availability/account read or legal
+eligibility judgment is introduced.
+
 | Evidence | What it establishes | What it does not establish |
 |---|---|---|
 | Accepted explicit configuration predicate | The stated typed property test for the supplied resource and time | Effective inheritance, runtime routing/protection, recovery success or estate completeness |

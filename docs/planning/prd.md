@@ -1,5 +1,20 @@
 # LandingLens product requirements
 
+## Cohort 09 independent preparation
+
+[#145](https://github.com/jonathan-vella/landinglens/issues/145) prepares seven
+source-specific organization/region/classification workflows outside accepted
+activation, after actual `.19`/177 delivered and before its serialized slot
+following10/25. Existing typed scoped parentage, VM location labels and safe tag
+counts remain partial Signals, never organizational purpose/root designation,
+physical/legal independence, regional suitability, availability/capacity,
+classification or enforcement. C03.01/C04.02 stay manual. Seven independent blank
+decisions and exceptions retain scope/content/time/expiry binding and attribution.
+Current SLZ four-zone and regional-guidance qualifications do not rewrite immutable
+wording. See the [preparation boundaries](plan.md#cohort-09-independent-preparation-2026-11-06).
+No accepted successor/bank/catalog/crosswalk/count/history, PR/merge/receipt or
+closure occurs before the explicit slot and actual final gates.
+
 ## Cohort 27 integration
 
 Reviewed successor `2026-11-06.17` follows the explicit coordinator slot after

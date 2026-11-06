@@ -1,5 +1,70 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 09 independent preparation: 2026-11-06
+
+[#145](https://github.com/jonathan-vella/landinglens/issues/145) owns only the
+[seven fixed organization/region/classification GUIDs](../../references/preparation/batch-09.json).
+Baseline is actual main `a3686afb9e24ca70eb1f9efcc69b16e8dad10a4a`, accepted
+`.19`,177 delivered/74 pending/21 receipts and255GUIDs/fixed251.
+No accepted successor, bank registration, catalog/crosswalk/count/history update,
+PR, merge, receipt or closure is authorized before the explicit coordinator slot
+after cohorts10 and25.
+
+[17 actual public captures](../../references/preparation/batch-09-sources.json)
+record redirects, revisions, hashes, terms and pinned existing schemas.
+Current SLZ has Corp/Online non-confidential zones and confidential counterparts,
+not a mandatory Public-named MG. Current regional guidance supersedes the old
+fragment and neither mandates paired regions nor the historical distance rule.
+Public product information is subject to change and not customer entitlement,
+quota or physical capacity evidence. Immutable recommendations remain unchanged.
+
+Existing governance/location/tag-count helpers feed one strict unique-known typed
+selected-scope preparation path, including parent joins consistent with saved
+positive hierarchy edges. No name designates a role/root. No location strings
+establish independence, suitability, DR or available features. Counts establish
+neither organization-approved classification nor enforcement. Seven source-specific
+workflows keep all outcomes independently blank; C03.01/C04.02 remain manual.
+The draft interview remains outside the accepted bank. Preparation reuses existing
+adapters/engine/review/interview/session/tier/output and original-time replay
+contracts, not new live collectors, predicates, availability fetches or private
+classification. The genuine VM compiler fixture exercises only existing location
+and count facts and preserves every predecessor integration.
+
+At the later explicit slot, reconcile actual10/25 main, freeze its exact bytes,
+derive a unique successor through existing builders, activate sources/matrix/bank
+and prove accepted replay without changing older controls/receipts. Own exact
+wheel/full-suite/static/dependency/doc checks, exact-head eight platform jobs,
+CodeQL/security/review, four downloaded exercised compiler proofs, fresh live
+feedback/head/base/main and normal SHA-bound merge remain mandatory. Guarded
+own-GUID receipt publication and final-main CI, not preparation or issue closure,
+constitute delivery.
+
+Preparation checkout and own exact installed-wheel suites each ran **683 tests**:
+682 passed with only the original Windows symlink-privilege skip. All19 cohort09
+cases pass. Format/lint,46-source-file typing, dependency consistency and472 local
+documentation links pass. The existing compiler exercised all eighteen genuine
+integrations without skips or restore, retaining the preceding seventeen cases.
+Local compiler proof SHA256:
+`0fe7a7474376482eb0492815bf38b9cd7229ed6052cb82901116cb5d389c54d2`.
+Own offline wheel SHA256:
+`3c63897d9b6a7dd3dfc549b66871e096214fa4764aa64d0a5820ba7a04a21912`.
+All137 package members match checkout, wheel and the dedicated outside-checkout
+`site-packages` installation, which still imports accepted predecessor `.19`.
+These are preparation proofs, not later exact-head/four-platform acceptance.
+
+The initial test invocation imported the unrelated globally installed old package;
+explicit checkout `PYTHONPATH` corrected the invocation without modifying it.
+Targeted fixture failures distinguished original control content hashes from
+later source-bound severity metadata, inventory-known from supported properties,
+and duplicate logical identity from duplicate ARM identity. Corrected assertions
+retain full frozen `.19` bytes and original control-content bindings. The own
+clean import's actual missing-`hcl2` failure preceded offline installation of only
+the three exact manifest/hash-reviewed runtime wheels downloaded into this
+session's own environment. No other session environment, dependency version,
+compiler acquisition or live route was used. Invalidated attempts are not
+acceptance evidence; accepted catalog/crosswalk/bank/count/history and every
+older own-GUID row/receipt remain unchanged.
+
 ## Cohort 06 accepted integration: 2026-11-06
 
 The coordinator explicitly granted [#136](https://github.com/jonathan-vella/landinglens/issues/136)

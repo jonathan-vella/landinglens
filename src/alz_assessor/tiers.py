@@ -33,6 +33,8 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     from .policy_strategy_evidence import GUIDS as POLICY_STRATEGY_GUIDS
     from .policy_strategy_evidence import unique_known as policy_unique_known
     from .sources import boolean, enumeration, property_at
+    from .sovereign_evidence import GUIDS as SOVEREIGN_GUIDS
+    from .sovereign_evidence import configuration_context as sovereign_context
     from .tenant_evidence import GUIDS as TENANT_GUIDS
     from .tenant_evidence import prepared_signal as tenant_signal
     from .virtual_wan_evidence import GUIDS as VWAN_GUIDS
@@ -45,11 +47,21 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     logging = control["upstream_guid"] in LOGGING_GUIDS
     by_id: dict[str, list[dict[str, Any]]] = {}
     policy = control["upstream_guid"] in POLICY_STRATEGY_GUIDS
-    if vwan or policy or logging or control["upstream_guid"] in TENANT_GUIDS | HYBRID_GUIDS:
+    if (
+        vwan
+        or policy
+        or logging
+        or control["upstream_guid"] in TENANT_GUIDS | HYBRID_GUIDS | SOVEREIGN_GUIDS
+    ):
         for resource in bundle["resources"]:
             by_id.setdefault((resource.get("arm_id") or "").lower(), []).append(resource)
     for resource in bundle["resources"]:
         if resource["state"] != "known" or resource["resource_type"].lower() not in kinds:
+            continue
+        if control["upstream_guid"] in SOVEREIGN_GUIDS:
+            context = sovereign_context(resource, by_id, bundle, control["review_fact_paths"])
+            if has_fact(context.get("facts", {})):
+                return True
             continue
         if control["upstream_guid"] in HYBRID_GUIDS:
             context = hybrid_context(resource, by_id, bundle)

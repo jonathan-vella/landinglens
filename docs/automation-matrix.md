@@ -39,6 +39,39 @@ and 43 manual. Crosswalk `2026-11-06.19` rebinds the unchanged 51-control,
 Exact predecessor `.18` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
 
+### Cohort 09: independent preparation, not accepted
+
+[#145](https://github.com/jonathan-vella/landinglens/issues/145) prepares the
+[seven fixed GUIDs](../references/preparation/batch-09.json) against
+[17 public captures](../references/preparation/batch-09-sources.json).
+It does not register a successor catalog/interview bank, change dispositions,
+record delivery or close the issue. Activation awaits the coordinator's explicit
+serialized slot after cohorts10 and25.
+
+| Recommendation | Preparation and separate human decision |
+|---|---|
+| C02.15 | Unique known typed in-scope parent joins consistent with saved positive edges; explicitly designate the landing-zones parent and both confidential organizational roles and substantiate direct placement |
+| C03.01 | Manual approved residency/latency/cost/recovery/dependency requirements and regional suitability; no location-based legal or eligibility judgment |
+| C03.02 | Existing explicit VM location labels only; substantiate regional organization, independent failure domains, replication, tested recovery and capacity separately |
+| C03.03 | VM labels orient review, not availability; reconcile every required service/SKU/feature in every primary/recovery region plus actual access/entitlement/quota/capacity |
+| C04.01 | Typed positive parentage only; reconcile immutable Public wording with current SLZ's non-confidential Corp/Online and confidential counterparts and actual policy/isolation constraints |
+| C04.02 | Manual organization-approved taxonomy, scope, handling, ambiguity and maintenance; no private data classification |
+| C04.03 | Existing validated tag counts only; separately substantiate approved non-sensitive metadata, actual usage and policy enforcement |
+
+No whole-recommendation predicate is added. Preparation uses the existing engine,
+adapters, bound review/interview/session contracts, tiers and outputs. Missing,
+partial, denied, ambiguous, stale, unsupported or over-bound evidence is unknown.
+The draft interview is exercised only through authored in-memory preparation;
+it is deliberately absent from the accepted bank. Original-time predecessor
+replay remains accepted; candidate replay remains rejected.
+
+Resource/display names do not designate purposes or roots. Distinct location
+strings and paired regions prove no geographic/legal independence, appropriate
+choice, DR or capacity; current guidance mandates neither pairing nor a historical
+distance. Public availability is not customer entitlement or quota. Plain-text tags
+must not contain sensitive information, do not automatically inherit and are not
+supported on MGs. Counts establish neither classification nor enforcement.
+
 ### Cohort 06: hybrid identity, data access and sovereignty decisions
 
 The [eight-GUID matrix](../references/recommendation-batches/batch-06.json) and
