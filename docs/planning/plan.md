@@ -19,6 +19,53 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## Cohort 23 independent preparation: 2026-11-06
+
+[#124](https://github.com/jonathan-vella/landinglens/issues/124) owns seven fixed
+central logging, SIEM, conditional Azure/M365 Lockbox, Event Grid/log-alert,
+separate-account and two distinct service-plan GUIDs. The
+[preparation matrix](../../references/recommendation-batches/preparation-23.json)
+and [22 source captures](../../references/recommendation-batches/preparation-23-sources.json)
+are deliberately outside accepted builders. No successor version, catalog/
+crosswalk history, ledger/count, registered interview bank, delivery receipt or
+issue closure is activated during independent work.
+
+Literal workspace configuration, default Sentinel workspace extensions,
+workspace-scoped scheduled LogAlert metadata and custom-topic static metric
+criteria reuse existing adapters and diagnostic/security/monitoring helpers.
+Strict unique known typed in-bound source/target joins remain original-time
+preparation, not ingestion, correlation/detection, health, complete coverage,
+tenant equivalence or delivery latency. No KQL, rule body, raw event/log,
+support/private request, personal identity, webhook or credential is retained.
+The actual Event Grid link covers metrics/activity alerts; it cannot establish
+the frozen log-oriented real-time claim. Azure and M365 Lockbox require separate
+eligibility, tenant enablement, supported service/cloud, approver, audit and
+exclusion evidence; Azure feature registration proves neither plane. Three
+organizational decisions remain manual and all seven candidate outcomes blank.
+
+The candidate matrix/interview is exercised without registering an accepted
+successor. Real packaged predecessor replay and an additional actual no-restore
+compiler fixture preserve existing compiler cases and evaluator meanings.
+Final reconciliation, accepted source/schema/bank/catalog activation, checked
+implementation/receipt PRs and closure await the parent's explicit slot after
+05/16. No successor is launched here; no cloud/M365 access is implied.
+
+Preparation checkout and its own exact installed wheel each ran **509 tests**:
+508 passed with the original Windows symlink-privilege skip. All19 cohort cases,
+format/lint, 42-source-file typing, dependency consistency and366 local links pass.
+All twelve actual existing-compiler cases exercised without skips or restore;
+the first eleven are preserved and the twelfth checks real workspace extensions
+and distinct log/metric alert preparation. Compiler proof SHA256:
+`b34cca912cd5b348cc3b3cd04e2eeb8d3e2c3ef8a030c6dbe6b77ec90d2ff0a8`.
+Own offline wheel SHA256:
+`57f0460119d88dbf23b9375010c793fc2120458e9716e0440b19763e1c8b5d9a`.
+All105 packaged code/data bytes match checkout and a fresh outside-checkout
+interpreter proves its own site-packages import. Only the original three reviewed
+runtime wheels were restored from hash-checked local cache after explicit
+missing-`hcl2` failure. No accepted data/ledger bytes changed. These local
+preparation proofs are not accepted-successor replay, platform/CodeQL/PR delivery,
+four matching downloaded compiler artifacts, own-GUID receipts or #124 completion.
+
 ## Cohort 20 accepted integration: 2026-11-06
 
 The parent granted [#115](https://github.com/jonathan-vella/landinglens/issues/115)

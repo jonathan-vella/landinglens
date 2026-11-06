@@ -52,10 +52,17 @@ def prepared_resource(
     by_id: dict[str, list[dict[str, Any]]],
     scope: str | None = None,
 ) -> dict[str, Any]:
+    from .logging_evidence import GUIDS as LOGGING_GUIDS
+    from .logging_evidence import linked_context, resource_paths
+
     facts: dict[str, Any] = {}
     for path in control.get("review_fact_paths", []):
         if resource["state"] != "known":
             facts[path] = {"unknown": "resource_not_known"}
+        elif control["upstream_guid"] in LOGGING_GUIDS and path not in resource_paths(
+            resource["resource_type"]
+        ):
+            facts[path] = {"unknown": "fact_not_applicable_to_resource_type"}
         elif path in REVIEW_PATHS:
             facts[path] = review_fact(resource["properties"], path)
         elif path == "enableRbacAuthorization":
@@ -74,6 +81,8 @@ def prepared_resource(
         "facts": facts,
         "subchecks": local_subchecks(facts),
     }
+    if control["upstream_guid"] in LOGGING_GUIDS:
+        prepared["logging_context"] = linked_context(resource, by_id, scope)
     from .virtual_wan_evidence import PATHS as VWAN_PATHS
     from .virtual_wan_evidence import WAN, hub_context, wan_hub_population
 
@@ -357,9 +366,16 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     ]
     from .governance_evidence import GUIDS as GOVERNANCE_GUIDS
     from .governance_evidence import resource_in_scope
+    from .logging_evidence import GUIDS as LOGGING_GUIDS
+    from .logging_evidence import scoped_identity
 
     unbound = 0
-    if control["upstream_guid"] in GOVERNANCE_GUIDS:
+    if control["upstream_guid"] in LOGGING_GUIDS:
+        scoped = [
+            resource for resource in matches if scoped_identity(resource, bundle.get("scope"))
+        ]
+        unbound, matches = len(matches) - len(scoped), scoped
+    elif control["upstream_guid"] in GOVERNANCE_GUIDS:
         scoped = [resource for resource in matches if resource_in_scope(resource, bundle)]
         unbound, matches = len(matches) - len(scoped), scoped
     context = {
@@ -378,7 +394,7 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
             "complete relationships. No whole-recommendation outcome or current freshness inferred."
         ),
     }
-    if control["upstream_guid"] in GOVERNANCE_GUIDS:
+    if control["upstream_guid"] in GOVERNANCE_GUIDS | LOGGING_GUIDS:
         context["unbound_resources"] = unbound
     if control["upstream_guid"] == "3a923c34-74d0-4001-aac6-a9e01e6a83de" and available:
         from .governance_evidence import hierarchy_context

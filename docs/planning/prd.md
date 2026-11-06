@@ -78,6 +78,17 @@ records remain traceable under explicit lifecycle semantics.
 
 ## Active increment: fixed recommendation expansion
 
+Cohort23/#124 independently prepares seven immutable logging/support/service
+workflows in an [unactivated matrix](../../references/recommendation-batches/preparation-23.json).
+Bounded workspace/onboarding/log-alert/custom-topic metric facts and strict local
+joins are not ingestion, correlation, real-time delivery or tenant coverage.
+Actual linked Event Grid metric guidance and separate Azure/M365 Lockbox
+eligibility/enablement/approver/audit/exclusion boundaries remain explicit.
+Separate account use and the two different operating plans stay manual; all seven
+candidate decisions remain blank and source/content/scope/time bound. No accepted
+version, bank, counts or receipts change before the coordinator's explicit slot.
+See [preparation boundaries](plan.md#cohort-23-independent-preparation-2026-11-06).
+
 Reviewed successor `2026-11-06.12` integrates cohort20/#115 after the parent's
 explicit slot and actual30 implementation119/receipt120 delivery. One strict
 unique-known scoped ASPath configuration predicate and eight source-specific

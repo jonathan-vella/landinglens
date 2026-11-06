@@ -24,6 +24,9 @@ TF_TYPES = {
     "azurerm_firewall_policy": "Microsoft.Network/firewallPolicies",
     "azurerm_resource_group": "Microsoft.Resources/resourceGroups",
     "azurerm_log_analytics_workspace": "Microsoft.OperationalInsights/workspaces",
+    "azurerm_sentinel_log_analytics_workspace_onboarding": (
+        "Microsoft.SecurityInsights/onboardingStates"
+    ),
     "azurerm_virtual_network": "Microsoft.Network/virtualNetworks",
     "azurerm_management_group": "Microsoft.Management/managementGroups",
     "azurerm_portal_dashboard": "Microsoft.Portal/dashboards",
@@ -129,6 +132,7 @@ def property_at(properties: Any, path: str) -> Any:
 def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     from .governance_evidence import projected_properties as governance_properties
     from .identity_evidence import IDENTITY_KINDS, identity_summary, role_properties
+    from .logging_evidence import projected_properties as logging_properties
     from .security_evidence import projected_properties as security_properties
 
     if kind == "azurerm_role_assignment":
@@ -144,6 +148,7 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
         )
     )
     result.update(governance_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
+    result.update(logging_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     return result
 
 
@@ -291,6 +296,18 @@ def resource_scope(scope: str | None, properties: dict[str, Any]) -> str | None:
 
 def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str | None:
     name = values.get("name")
+    if kind == "azurerm_sentinel_log_analytics_workspace_onboarding":
+        from .protection_evidence import typed_reference
+
+        parent = typed_reference(
+            values.get("workspace_id"), ("microsoft.operationalinsights/workspaces",)
+        )
+        boundary = scope_id(scope) if scope else None
+        if boundary and isinstance(parent, str) and parent.startswith(boundary + "/"):
+            return canonical_id(
+                parent + "/providers/Microsoft.SecurityInsights/onboardingStates/default"
+            )
+        return None
     if kind in {
         "azurerm_virtual_hub_connection",
         "azurerm_virtual_hub_route_table",

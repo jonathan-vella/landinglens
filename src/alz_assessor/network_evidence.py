@@ -10,6 +10,7 @@ from .expressroute_evidence import CIRCUIT_KIND, PORT_KIND
 from .expressroute_evidence import PATHS as EXPRESSROUTE_PATHS
 from .governance_evidence import PATHS as GOVERNANCE_PATHS
 from .identity_evidence import PATHS as IDENTITY_PATHS
+from .logging_evidence import PATHS as LOGGING_PATHS
 from .protection_evidence import KINDS as PROTECTION_KINDS
 from .protection_evidence import PATHS as PROTECTION_PATHS
 from .routing_evidence import KINDS as ROUTING_KINDS
@@ -64,6 +65,7 @@ REVIEW_PATHS = (
     | {"connectionMonitorSummary", "expressRouteAlertSummary"}
     | DNS_PATHS
     | VWAN_PATHS
+    | LOGGING_PATHS
 )
 
 
@@ -509,6 +511,10 @@ def private_connections(values: dict[str, Any], *, terraform: bool) -> Any:
 
 
 def review_fact(properties: dict[str, Any], path: str) -> Any:
+    if path in LOGGING_PATHS:
+        from .logging_evidence import review_fact as logging_fact
+
+        return logging_fact(properties, path)
     if path in VWAN_PATHS:
         from .virtual_wan_evidence import review_fact as vwan_fact
 
@@ -947,7 +953,7 @@ def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     } | ROUTING_KINDS | PROTECTION_KINDS | DNS_KINDS | VWAN_KINDS | {CIRCUIT_KIND, PORT_KIND}:
         return {}
     result: dict[str, Any] = {}
-    for path in sorted(REVIEW_PATHS - SECURITY_PATHS - GOVERNANCE_PATHS):
+    for path in sorted(REVIEW_PATHS - SECURITY_PATHS - GOVERNANCE_PATHS - LOGGING_PATHS):
         parts = path.split(".")
         target = result
         for part in parts[:-1]:
