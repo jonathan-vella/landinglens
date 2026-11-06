@@ -241,6 +241,16 @@ Guidance links require HTTPS and only navigate when explicitly selected.
 
 ### Identity, manual evidence and optional plans
 
+Use `--question central-logging-support-service-enablement` for cohort23's
+seven distinct decisions. Review actual central logging/ingestion and SIEM
+correlation separately; workspace routing or Sentinel onboarding does not prove
+either. Azure and M365 Lockbox require separate tenant/service/license/approver/
+audit evidence. The linked Event Grid metric/activity tutorial is not general
+log-query alerting or measured real-time delivery. Separate privileged-account
+use, new-service readiness and service-request fulfillment remain manual, not
+inferred from resource presence. Supply redacted references, never log/query/rule
+bodies, support/private request contents, identities, endpoints or credentials.
+
 `interview inspect` lists versioned, specific multi-control questions and each
 control's evidence requirements. `interview prepare assessment.json --question
 private-service-paths --scope ARM_SCOPE --output response.json` prepares a blank
@@ -251,6 +261,13 @@ together and writes a normal manual-review document. Existing outputs are refuse
 An answer alone never approves anything; a failed/expired/changed decision rejects
 the whole output. Import the completed document with the usual `assess --manual`.
 The local workspace integration is separately tracked, not delivered by this CLI.
+
+Use `--question network-monitoring-sovereignty-policy` for cohort16's nine
+separate diagnostic/routing/inspection/geography/global-policy/partner/DNS
+decisions. Its technical context is configuration only; border crossing is a
+factual question, not a blanket prohibition. Current partner support, actual
+paths/tunnels/filtering, approved regions, role delegation and client DNS use
+require separate attributable evidence. Every outcome starts blank.
 
 Use `--question inbound-outbound-hybrid` for cohort 13's ten separate GUID
 decisions, including DDoS logging and NIC public-IP policy as distinct D05.08

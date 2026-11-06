@@ -24,6 +24,9 @@ TF_TYPES = {
     "azurerm_firewall_policy": "Microsoft.Network/firewallPolicies",
     "azurerm_resource_group": "Microsoft.Resources/resourceGroups",
     "azurerm_log_analytics_workspace": "Microsoft.OperationalInsights/workspaces",
+    "azurerm_sentinel_log_analytics_workspace_onboarding": (
+        "Microsoft.SecurityInsights/onboardingStates"
+    ),
     "azurerm_virtual_network": "Microsoft.Network/virtualNetworks",
     "azurerm_management_group": "Microsoft.Management/managementGroups",
     "azurerm_portal_dashboard": "Microsoft.Portal/dashboards",
@@ -37,6 +40,7 @@ TF_TYPES = {
     "azurerm_network_security_group": "Microsoft.Network/networkSecurityGroups",
     "azurerm_network_security_rule": "Microsoft.Network/networkSecurityGroups/securityRules",
     "azurerm_virtual_network_gateway": "Microsoft.Network/virtualNetworkGateways",
+    "azurerm_vpn_gateway": "Microsoft.Network/vpnGateways",
     "azurerm_network_watcher_flow_log": "Microsoft.Network/networkWatchers/flowLogs",
     "azurerm_network_connection_monitor": "Microsoft.Network/networkWatchers/connectionMonitors",
     "azurerm_application_security_group": "Microsoft.Network/applicationSecurityGroups",
@@ -135,6 +139,8 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     from .governance_evidence import projected_properties as governance_properties
     from .identity_evidence import IDENTITY_KINDS, identity_summary, role_properties
     from .identity_evidence import projected_properties as identity_properties
+    from .logging_evidence import projected_properties as logging_properties
+    from .network_policy_evidence import projected_properties as network_policy_properties
     from .security_evidence import projected_properties as security_properties
     from .tenant_evidence import projected_properties as tenant_properties
 
@@ -151,6 +157,8 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
         )
     )
     result.update(governance_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
+    result.update(logging_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
+    result.update(network_policy_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(identity_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(tenant_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     return result
@@ -336,6 +344,18 @@ def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str 
             )
         return None
     name = values.get("name")
+    if kind == "azurerm_sentinel_log_analytics_workspace_onboarding":
+        from .protection_evidence import typed_reference
+
+        parent = typed_reference(
+            values.get("workspace_id"), ("microsoft.operationalinsights/workspaces",)
+        )
+        boundary = scope_id(scope) if scope else None
+        if boundary and isinstance(parent, str) and parent.startswith(boundary + "/"):
+            return canonical_id(
+                parent + "/providers/Microsoft.SecurityInsights/onboardingStates/default"
+            )
+        return None
     if kind in {
         "azurerm_virtual_hub_connection",
         "azurerm_virtual_hub_route_table",

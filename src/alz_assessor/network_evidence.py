@@ -10,6 +10,8 @@ from .expressroute_evidence import CIRCUIT_KIND, PORT_KIND
 from .expressroute_evidence import PATHS as EXPRESSROUTE_PATHS
 from .governance_evidence import PATHS as GOVERNANCE_PATHS
 from .identity_evidence import PATHS as IDENTITY_PATHS
+from .logging_evidence import PATHS as LOGGING_PATHS
+from .network_policy_evidence import PATHS as NETWORK_POLICY_PATHS
 from .protection_evidence import KINDS as PROTECTION_KINDS
 from .protection_evidence import PATHS as PROTECTION_PATHS
 from .routing_evidence import KINDS as ROUTING_KINDS
@@ -65,7 +67,9 @@ REVIEW_PATHS = (
     | TENANT_PATHS
     | {"connectionMonitorSummary", "expressRouteAlertSummary"}
     | DNS_PATHS
+    | NETWORK_POLICY_PATHS
     | VWAN_PATHS
+    | LOGGING_PATHS
 )
 
 
@@ -515,6 +519,14 @@ def review_fact(properties: dict[str, Any], path: str) -> Any:
         from .tenant_evidence import review_fact as tenant_fact
 
         return tenant_fact(properties, path)
+    if path in LOGGING_PATHS:
+        from .logging_evidence import review_fact as logging_fact
+
+        return logging_fact(properties, path)
+    if path in NETWORK_POLICY_PATHS:
+        from .network_policy_evidence import review_fact as network_policy_fact
+
+        return network_policy_fact(properties, path)
     if path in VWAN_PATHS:
         from .virtual_wan_evidence import review_fact as vwan_fact
 
@@ -605,6 +617,7 @@ def projected_properties(
 ) -> dict[str, Any]:
     from .dns_evidence import projected_properties as dns_properties
     from .monitoring_evidence import projected_properties as monitoring_properties
+    from .network_policy_evidence import projected_properties as network_policy_properties
     from .protection_evidence import projected_properties as protection_properties
     from .virtual_wan_evidence import projected_properties as vwan_properties
 
@@ -613,6 +626,7 @@ def projected_properties(
         | protection_properties(kind.lower(), values, terraform=terraform, root=root)
         | dns_properties(kind.lower(), values, terraform=terraform, root=root)
         | monitoring_properties(kind.lower(), values, terraform=terraform)
+        | network_policy_properties(kind, values, terraform=terraform)
         | vwan_properties(kind.lower(), values, terraform=terraform, root=root)
     )
     if kind.lower() == "microsoft.network/connections":
@@ -937,6 +951,9 @@ def _projected_properties(
 def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     if kind.lower() not in {
         "microsoft.network/azurefirewalls",
+        "microsoft.network/firewallpolicies",
+        "microsoft.network/securitypartnerproviders",
+        "microsoft.network/vpngateways",
         "microsoft.network/virtualnetworks/subnets",
         "microsoft.network/ipgroups",
         "microsoft.network/azurefirewalls/natrulecollections",
@@ -953,7 +970,9 @@ def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     } | ROUTING_KINDS | PROTECTION_KINDS | DNS_KINDS | VWAN_KINDS | {CIRCUIT_KIND, PORT_KIND}:
         return {}
     result: dict[str, Any] = {}
-    for path in sorted(REVIEW_PATHS - SECURITY_PATHS - GOVERNANCE_PATHS - TENANT_PATHS):
+    for path in sorted(
+        REVIEW_PATHS - SECURITY_PATHS - GOVERNANCE_PATHS - LOGGING_PATHS - TENANT_PATHS
+    ):
         parts = path.split(".")
         target = result
         for part in parts[:-1]:

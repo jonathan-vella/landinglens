@@ -90,6 +90,23 @@ directory/billing scope, permission or private payload retention. Cohorts16/23
 precede its explicit coordinator slot; preparation activates no successor, bank,
 catalog/crosswalk/count/history or receipt and does not close #127.
 
+Cohort23/#124 integrates seven immutable logging/support/service workflows in
+[accepted successor `.15`](../../references/recommendation-batches/batch-23.json)
+after actual16 implementation128/receipt129 and the coordinator's explicit slot.
+Bounded workspace/onboarding/log-alert/custom-topic metric facts and strict local
+joins are not ingestion, correlation, real-time delivery or tenant coverage.
+Actual linked Event Grid metric guidance and separate Azure/M365 Lockbox
+eligibility/enablement/approver/audit/exclusion boundaries remain explicit.
+Separate account use and the two different operating plans stay manual; all seven
+registered decisions remain blank and source/content/scope/time bound. Exact
+`.14`, all139 prior own-GUID rows/sixteen receipts and original four full controls
+remain unchanged. #131 passed exact-head platform/CodeQL/security/review and four
+fourteen-case compiler gates and merged normally. Guarded `deliveries.23` binds
+all seven GUIDs to that actual head/merge/runs/559-test wheel, recording146 delivered/
+105 pending on checked publication. Dispositions stay12/200/43; receipt publication
+and final-main CI still gate #124 closure. See
+[integration boundaries](plan.md#cohort-23-accepted-integration-2026-11-06).
+
 Reviewed successor `2026-11-06.13` integrates cohort05/
 [#118](https://github.com/jonathan-vella/landinglens/issues/118) after the sole
 coordinator grant and actual cohort20 implementation122/receipt123 delivery.
@@ -216,6 +233,32 @@ Each GUID binds its guarded `deliveries.22` receipt. At that delivery the ledger
 was 71 merged / 180 pending; checked receipt #105 completed its reconciliation.
 No actual protection/retention/endpoint/patch/sovereign suitability or owner
 decision follows from configuration alone.
+
+Cohort16/#121 integrates nine fixed monitoring/sovereignty/firewall workflows in
+reviewed successor `2026-11-06.14` after the coordinator's sole slot grant and
+actual cohort05 implementation125/receipt126. Eight assisted workflows and the
+manual factual border question share strict scoped typed configuration and nine
+blank decisions across existing review/tier/report/session/replay surfaces.
+All255 GUIDs, 12/200/43 dispositions, exact `.6.13` bytes, original predicates
+and130 preceding own-GUID receipts remain unchanged. Configuration proves no
+paths, inspection, physical geography, global coverage, delegation, partner
+support or client DNS use; original source contradictions remain explicit.
+Implementation #128 passed actual exact-head platform/security/CodeQL/review and
+four thirteen-case exercised compiler gates and merged normally. Guarded
+`deliveries.16` binds all nine GUIDs to that head/merge, 534-test proof and own
+wheel. The reconciled ledger records139 delivered /112 pending; all130 earlier
+rows/fifteen receipts remain unchanged. Checked receipt publication still gates
+#121 closure; source activation or implementation closure alone is not delivery.
+
+Historically, cohort16/#121 independently prepared nine fixed monitoring/sovereignty/firewall
+workflows without accepted catalog, count or receipt activation. Typed gateway
+flags, strict scoped policy/diagnostic/alert joins and minimized rule protocols
+are configuration context, not routes, inspection, physical geography, global
+coverage or delegation. The factual border question and approved geography/
+conditional inspection decisions remain separate and blank. Current source
+support lists only Zscaler; historical partner enums and redirected VPN/AVD
+guidance cannot establish broader applicability. The coordinator's explicit slot
+and then-current main reconciliation gate all final activation and delivery.
 
 The prior delivered successor was `2026-11-06.5`: cohort13 adds bounded protection,
 outbound and hybrid configuration preparation with ten distinct source-bound

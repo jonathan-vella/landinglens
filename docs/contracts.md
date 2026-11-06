@@ -210,6 +210,27 @@ Existing catalog/index assets are never replaced.
 
 ### Guided interview responses
 
+Cohort23 registers `central-logging-support-service-enablement` with seven
+independently blank content/scope/expiry-bound decisions. Its typed paths are
+`logWorkspaceSummary`, `sentinelOnboardingSummary`, `logAlertSummary`,
+`eventGridTopicSummary` and `eventGridMetricAlertSummary`, alongside reused
+diagnostic paths. Facts are resource-kind-specific, and Signals require a typed
+identity in the explicit subscription/RG scope. Local joins require unique known
+typed records; they never expand tenant scope or establish ingestion, correlation,
+alert delivery or support approvals. Azure/M365 Lockbox remains human evidence,
+and the three organizational recommendations remain manual. Sanitized original-time
+replay revalidates the same minimized facts; it retains no query/rule body,
+support/private request, personal identity, webhook or credential payload.
+
+The cohort16 typed review paths add explicit gateway remote-VNet/vWAN flags,
+gateway diagnostic/static-metric summaries, typed base-policy references, DNS
+proxy flags, minimized protocol/FQDN counts and partner configuration. Strict
+scoped known joins retain explicit uncertainty for missing/ambiguous/denied/
+cyclic/over-bound associations. Partner `schemaProviderName` is historical API
+vocabulary, not current service support; vWAN VPN and VNet gateways remain
+distinct. The same privacy-projected original-time replay retains these facts
+without raw destinations, queries, logs, provider contracts or principal records.
+
 The versioned `question-bank` 1.0 groups specific Key Vault operating-model and
 private-service-path questions by exact retained human-evidence control IDs.
 It exposes each control's own requirements/limitations; a shared question does

@@ -183,26 +183,39 @@ def monitor_properties(values: dict[str, Any], terraform: bool) -> Any:
     )
 
 
-def alert_facts(value: Any) -> Any:
+def alert_facts(value: Any, *, gateway: bool = False) -> Any:
+    from .network_policy_evidence import GATEWAY_METRICS
+
     if not isinstance(value, dict) or "unknown" in value:
         return unknown("expressroute_alert_summary_not_explicit")
     scopes, criteria, actions = (
-        value.get("circuitIds"),
+        value.get("gatewayIds" if gateway else "circuitIds"),
         value.get("criteria"),
         value.get("actionIds"),
     )
     return {
         "enabled": boolean(value.get("enabled")),
-        "circuitIds": [
-            typed_reference(item, ("microsoft.network/expressroutecircuits",)) for item in scopes
+        "gatewayIds" if gateway else "circuitIds": [
+            typed_reference(
+                item,
+                ("microsoft.network/virtualnetworkgateways",)
+                if gateway
+                else ("microsoft.network/expressroutecircuits",),
+            )
+            for item in scopes
         ]
         if isinstance(scopes, list) and 1 <= len(scopes) <= 100
         else unknown("alert_scopes_missing_invalid_empty_or_over_100"),
         "criteria": [
             {
-                "metricName": enumeration(row.get("metricName"), METRICS),
+                "metricName": enumeration(
+                    row.get("metricName"), GATEWAY_METRICS if gateway else METRICS
+                ),
                 "metricNamespace": enumeration(
-                    row.get("metricNamespace"), ("Microsoft.Network/expressRouteCircuits",)
+                    row.get("metricNamespace"),
+                    ("Microsoft.Network/virtualNetworkGateways",)
+                    if gateway
+                    else ("Microsoft.Network/expressRouteCircuits",),
                 ),
                 "timeAggregation": enumeration(
                     row.get("timeAggregation"), ("Average", "Count", "Minimum", "Maximum", "Total")
@@ -241,15 +254,20 @@ def projected_properties(kind: str, values: dict[str, Any], *, terraform: bool) 
         )
         actions = values.get("actions")
         return {
-            "expressRouteAlertSummary": alert_facts(
+            name: alert_facts(
                 {
                     "enabled": values.get("enabled"),
-                    "circuitIds": values.get("scopes"),
+                    "gatewayIds" if gateway else "circuitIds": values.get("scopes"),
                     "criteria": all_of if supported else None,
                     "actionIds": [row.get("actionGroupId") for row in actions]
                     if rows(actions)
                     else None,
-                }
+                },
+                gateway=gateway,
+            )
+            for name, gateway in (
+                ("expressRouteAlertSummary", False),
+                ("gatewayMetricAlertSummary", True),
             )
         }
     return {}

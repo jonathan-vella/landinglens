@@ -446,6 +446,8 @@ class VirtualWanBatchTests(unittest.TestCase):
                     "evidence",
                     "--at",
                     AT,
+                    "--catalog",
+                    str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.12.json")),
                     "--evidence-tiers",
                     "--output",
                     str(output),

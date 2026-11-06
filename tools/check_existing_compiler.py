@@ -46,6 +46,10 @@ if compiler:
         "test_real_bicep_virtual_wan_scoped_configuration_without_restore",
         "test_identity_resilience_preparation.IdentityResiliencePreparationTests."
         "test_real_bicep_identity_resilience_without_restore",
+        "test_network_policy_preparation.NetworkPolicyPreparationTests."
+        "test_real_bicep_policy_gateway_diagnostics_without_restore",
+        "test_logging_preparation.LoggingPreparationTests."
+        "test_real_bicep_logging_workspace_extensions_and_alerts_without_restore",
         "test_tenant_preparation.TenantPreparationTests."
         "test_real_bicep_tenant_configuration_without_restore",
     ]

@@ -6,8 +6,88 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.13"
+BANK_VERSION = "2026-11-06.15"
 BANK = {
+    "central-logging-support-service-enablement": {
+        "question": "Reconcile the approved central logging architecture with complete "
+        "platform/application resource populations, diagnostic log categories and original-time "
+        "arriving data. Centralization permits separate tenant, residency, access, ownership, "
+        "retention and resilience boundaries; a local typed workspace join is only supplied "
+        "configuration, not complete coverage. Separately substantiate actual SIEM connectors, "
+        "normalization/time synchronization, cross-service correlation, maintained detections "
+        "and SecOps triage/response using redacted attributable evidence; Sentinel onboarding "
+        "alone proves none and other SIEMs remain valid. For sovereign applicability, review "
+        "Azure and M365 Lockbox separately: Azure tenant enablement, Developer-or-higher "
+        "support, supported service/cloud population, subscription versus tenant approvers/"
+        "audit sources, no MG-scoped approval roles and emergency/incidental/legal-demand "
+        "exclusions; M365 tenant enablement, E5/G5 or qualifying add-on, supported "
+        "Exchange/SharePoint/OneDrive/Teams/Windows365 and Copilot-through-Exchange coverage, "
+        "distinct approver and audit setup. Azure four-day and M365 twelve-hour pending expiry "
+        "are not universal approvals. No feature registration, role assignment or resource "
+        "flag establishes either tenant's effective coverage or actual support approval. "
+        "The Event Grid checklist link covers service metrics/activity alerts, not general "
+        "log-query alerting: explain the real log-to-event/detection/action architecture, "
+        "supported log-query versus metric/activity semantics and original-time end-to-end "
+        "latency/failure/response evidence; configured frequency or a metric alert proves "
+        "neither real-time delivery nor log correlation. Separately evidence everyday versus "
+        "privileged account use, protected accountable administration and emergency/automation "
+        "exceptions without identities. Distinguish the approved new-service readiness/adoption "
+        "plan (network/data protection, identity, segregation, privacy/residency, operations/"
+        "recovery, capacity/SKU/region/GA/compliance/SLA and owners) from the approved "
+        "service-request fulfillment plan (intake, authorization, catalog, accountable "
+        "fulfillment, service-specific targets, validation, escalation, rollback and closure). "
+        "Never invent policy, licensing, SLA, requests or approvals. Use redacted references, "
+        "not logs/KQL/rule bodies, support/private request contents, personal identities, "
+        "endpoints, webhook URLs or credentials. Decide all seven GUIDs independently; a shared "
+        "narrative or Signal never manufactures Verified.",
+        "controls": [
+            "ALZ-e5f8d79f-2e87-4768-924c-516775c6ea95",
+            "ALZ-a56888b2-7e83-4404-bd31-b886528502d1",
+            "ALZ-d21a922d-5ca7-427a-82a6-35f7b21f1bfc",
+            "ALZ-874a748b-662d-46d1-9051-2a66498f6dfe",
+            "ALZ-6f704104-85c1-441f-96d3-c9819911645e",
+            "ALZ-9a19bf39-c95d-444c-9c89-19ca1f6d5215",
+            "ALZ-ae514b93-3d45-485e-8112-9bd7ba012f7b",
+        ],
+    },
+    "network-monitoring-sovereignty-policy": {
+        "question": "Reconcile the exact ExpressRoute gateway with applicable diagnostics, "
+        "actual arriving logs, gateway-specific metrics, approved dimensions/thresholds/"
+        "actions and alert receipt, not the linked VPN instructions or circuit alerts. "
+        "Establish actual both-direction VNet/ExpressRoute and Azure-local inspection paths, "
+        "workload context and required exceptions; explicit remote-VNet/vWAN flags are not "
+        "effective routes and the route-map-upgraded vWAN exception needs review. Answer "
+        "whether interconnects cross borders/countries from attributable redacted physical/"
+        "provider evidence; this is a factual question, not a blanket prohibition. Supply "
+        "organization-approved geography and review peering, transit and alternate paths "
+        "without treating resource or meet-me locations as countries. Separately decide "
+        "required outbound, non-HTTP/S inbound and conditional east-west inspection, designated "
+        "global/base policy and complete estate associations, parent priority/NAT/DNS inheritance "
+        "exceptions, region constraints and actual least-privilege team delegation. For optional "
+        "partner services, current reviewed guidance lists only Zscaler in secured vWAN hubs "
+        "with VPN tunnels and partner-managed rules; historical IBoss/CheckPoint enums are not "
+        "present-day support, nor does the source establish a retirement date. Verify original-"
+        "time support, regional/cloud/service suitability and actual routing/filtering; no "
+        "signup or credential exchange. Known reciprocal hub/WAN/firewall/VPN and local "
+        "connection/table/intent joins remain configuration, not partner default-route opt-in, "
+        "actual tunnels or complete branch/VPN-connection coverage. Prefer application rules "
+        "for HTTP/S/MSSQL and FQDN tags where supported; other TCP/UDP FQDN network rules require "
+        "DNS proxy and consistent client/upstream resolution, without network-rule wildcards. "
+        "Local flags/rule counts and inherited references prove none of these whole outcomes. "
+        "Use redacted attributable references and supply nine separate decisions; never retain "
+        "raw destinations, logs, contracts, principal records or credentials.",
+        "controls": [
+            "ALZ-3f79ed00-203b-4c95-9efd-691505f5a1f9",
+            "ALZ-5234c93f-b651-41dd-80c1-234177b91ced",
+            "ALZ-8ac6a9e0-1e6a-483d-b5de-32c199248160",
+            "ALZ-4cc8ca4e-a503-4bac-9b1e-82283a711043",
+            "ALZ-8b517d94-c9d0-42c4-9803-d93ed0a46bc0",
+            "ALZ-e6c4cfd3-e504-4547-a244-7ec66138a720",
+            "ALZ-5a4b1511-e43a-458a-ac22-99c4d7b57d0c",
+            "ALZ-655562f2-b3e4-4563-a4d8-739748b662d6",
+            "ALZ-14d99880-2f88-47e8-a134-62a7d85c94af",
+        ],
+    },
     "identity-resilience-roles-emergency-access": {
         "question": "Reconcile actual least-privileged Entra directory authority and justified "
         "Global Administrator use independently of Azure RBAC; distinguish the permanent-active "
