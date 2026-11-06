@@ -14,6 +14,13 @@ stay Signals. Exact `.16`, all154 prior own-GUID rows/eighteen receipts and ever
 non-own control remain unchanged. Dispositions stay12/200/43; checked merged
 implementation and guarded own receipts, not source activation, gate #130 closure.
 
+Implementation #137 passed all exact-head eight-job/CodeQL/security/review and
+four sixteen-case compiler gates and merged normally. Guarded `deliveries.27`
+binds all eight GUIDs to the actual checked head/merge/runs/own wheel; the checked
+reconciliation records162 delivered/89 pending. All154 earlier rows/eighteen
+receipts stay unchanged. Checked receipt publication/final-main CI still gate
+#130 closure; no organizational or effective-enforcement assurance is implied.
+
 ## Next increment: assessor efficiency
 
 Owner-authorised on 2026-11-05, tracked in
