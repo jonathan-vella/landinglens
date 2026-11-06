@@ -52,7 +52,7 @@ class InterviewTests(unittest.TestCase):
 
     def test_bank_specific_requirements_and_blank_explicit_decisions(self):
         bank = question_bank(self.catalog)
-        self.assertEqual(len(bank["questions"]), 6)
+        self.assertEqual(len(bank["questions"]), 9)
         for question in bank["questions"]:
             self.assertTrue(question["question"])
             self.assertTrue(
@@ -183,4 +183,7 @@ class InterviewTests(unittest.TestCase):
             )
         ]
         self.assertEqual(actual, expected)
-        self.assertEqual(sum(row[1] for row in actual), 171)
+        self.assertEqual(
+            sum(row[1] for row in actual),
+            sum(entry["status"] != "merged" for entry in ledger["recommendations"]),
+        )

@@ -19,6 +19,15 @@ TAG_KINDS = {
 }
 METRICS_PART = "Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart"
 MARKDOWN_PART = "Extension/HubsExtension/PartType/MarkdownPart"
+GUIDS = {
+    "49b82111-2df2-47ee-912e-7f983f630472",
+    "2dd69c5b-5c26-422f-94b6-9bad33aad5e8",
+    "c68e1d76-6673-413b-9f56-64b5e984a859",
+    "c773e7d2-6162-43a7-95a9-17e1f348ef25",
+    "ae28c84c-33b6-4b78-88b9-fe5c41049d40",
+    "3a923c34-74d0-4001-aac6-a9e01e6a83de",
+    "5de32c19-9248-4160-9d5d-1e4e614658d3",
+}
 
 
 def typed_reference(value: Any, kind: str) -> Any:
@@ -239,3 +248,19 @@ def hierarchy_context(bundle: dict[str, Any]) -> dict[str, Any]:
         "complete": isinstance(completeness, dict) and completeness.get("relationships") is True,
         "warning": result["warning"],
     }
+
+
+def resource_in_scope(resource: dict[str, Any], bundle: dict[str, Any]) -> bool:
+    identity, selected = resource.get("arm_id"), bundle.get("scope")
+    if not isinstance(identity, str) or not isinstance(selected, str):
+        return False
+    identity, selected = canonical_id(identity), scope_id(selected)
+    if identity == selected or identity.startswith(selected + "/"):
+        return True
+    if identity_type(selected) != MG_KIND:
+        return False
+    hierarchy = hierarchy_context(bundle)
+    return "unknown" not in hierarchy and any(
+        identity == edge["id"] or identity.startswith(edge["id"] + "/")
+        for edge in hierarchy["relationships"]
+    )

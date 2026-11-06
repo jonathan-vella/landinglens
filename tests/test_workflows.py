@@ -75,6 +75,7 @@ class WorkflowTests(unittest.TestCase):
                 "D09.07",
                 "D01.12",
                 "D01.13",
+                "D06.17",
             },
         )
         for control in self.catalog["controls"]:

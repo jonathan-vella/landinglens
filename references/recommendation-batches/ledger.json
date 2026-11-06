@@ -213,6 +213,63 @@
       },
       "wheel_sha256": "df723f455bd646a432fd911015df5d53fba4e043d720dfa596d83d562875b851",
       "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
+    },
+    "12": {
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/110",
+      "merge_commit": "a57906768b2cafb2ba20c7ed6df59695ca18b017",
+      "merged_at": "2026-11-06T11:57:05Z",
+      "checked_head": "98b1b39323bc0bb7ebd161139ca5f0c6578b3a4a",
+      "checks": [
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42213324429",
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42213333056"
+      ],
+      "acceptance": "Actual push/PR runs on the merged head passed all eight supported jobs. All four downloaded PR compiler artifacts exercised the same integration cases without skips. Normal exact-head merge and other applicable checks were gated before recording; this receipt does not imply protected-branch enforcement.",
+      "compiler_integration_cases": [
+        "test_bicep.BicepTests.test_actual_installed_compiler_local_success_and_unrestored_failure",
+        "test_segmentation_batch.SegmentationBatchTests.test_real_bicep_nsg_gateway_subnet_flow_without_restore",
+        "test_routing_batch.RoutingBatchTests.test_real_bicep_routing_peering_lb_macsec_connection_no_restore",
+        "test_identity_batch.IdentityBatchTests.test_real_bicep_storage_identity_role_context_without_restore",
+        "test_protection_batch.ProtectionBatchTests.test_real_bicep_protection_outbound_hybrid_no_restore",
+        "test_security_batch.SecurityBatchTests.test_real_bicep_security_configuration_without_restore",
+        "test_expressroute_preparation.ExpressRoutePreparationTests.test_real_bicep_expressroute_cost_capacity_fastpath_without_restore",
+        "test_dns_batch.DnsBatchTests.test_real_bicep_dns_bastion_no_restore"
+      ],
+      "local_installed_suite": {
+        "tests": 396,
+        "passed": 395,
+        "skipped": 1
+      },
+      "wheel_sha256": "733592b2b07633d8b6f576097fee66bdf69f2a81c51f333d3d74e8f6b73c7b08",
+      "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
+    },
+    "15": {
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/113",
+      "merge_commit": "1e69870dd77739a3f38d3ac443b75edfd18c1775",
+      "merged_at": "2026-11-06T13:07:16Z",
+      "checked_head": "18d5b70731d5f36a5bc38a81d2261548c3cdd7d9",
+      "checks": [
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42221888863",
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42221895767"
+      ],
+      "acceptance": "Actual push/PR runs on the merged head passed all eight supported jobs. All four downloaded PR compiler artifacts exercised the same integration cases without skips. Normal exact-head merge and other applicable checks were gated before recording; this receipt does not imply protected-branch enforcement.",
+      "compiler_integration_cases": [
+        "test_bicep.BicepTests.test_actual_installed_compiler_local_success_and_unrestored_failure",
+        "test_segmentation_batch.SegmentationBatchTests.test_real_bicep_nsg_gateway_subnet_flow_without_restore",
+        "test_routing_batch.RoutingBatchTests.test_real_bicep_routing_peering_lb_macsec_connection_no_restore",
+        "test_identity_batch.IdentityBatchTests.test_real_bicep_storage_identity_role_context_without_restore",
+        "test_protection_batch.ProtectionBatchTests.test_real_bicep_protection_outbound_hybrid_no_restore",
+        "test_security_batch.SecurityBatchTests.test_real_bicep_security_configuration_without_restore",
+        "test_expressroute_preparation.ExpressRoutePreparationTests.test_real_bicep_expressroute_cost_capacity_fastpath_without_restore",
+        "test_dns_batch.DnsBatchTests.test_real_bicep_dns_bastion_no_restore",
+        "test_monitoring_preparation.MonitoringPreparationTests.test_real_bicep_monitor_and_gateway_route_join_without_restore"
+      ],
+      "local_installed_suite": {
+        "tests": 423,
+        "passed": 422,
+        "skipped": 1
+      },
+      "wheel_sha256": "d0fcb7941178c76168e3316d43dc06c86693e17ea7fc42684b5a5f177d98696c",
+      "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
     }
   },
   "recommendations": [
@@ -1525,9 +1582,33 @@
       "baseline_control_sha256": "75d813d3cb2157cab2f2458ca182e70347d85274bb78e5c971df9d375a5e80fd",
       "design_area": "Resource organization",
       "batch": "08",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "upstream_id": "C02.08",
+        "guid": "49b82111-2df2-47ee-912e-7f983f630472",
+        "classification": "manual",
+        "implemented_subclaim": "Scoped existing minimized assignment types/role definitions prepare a specific accountability/access/budget/policy/remediation review; no personal principals or invented process attestation.",
+        "sources": [
+          "owner-access-reviews",
+          "cost-operating-plan",
+          "billing-tags"
+        ],
+        "review_resource_types": [
+          "Microsoft.Authorization/roleAssignments"
+        ],
+        "review_fact_paths": [
+          "principalType",
+          "roleDefinitionId"
+        ],
+        "evidence_requirements": [
+          "Preparation: existing minimized assignment type/role and original-time policy context can orient a review; no personal principals, access-review records or owner identities are collected.",
+          "Reviewer decision: cite the approved scoped accountability/communication process and redacted acknowledgement evidence; identify who is responsible without retaining personal records.",
+          "Reviewer decision: separately substantiate recurring access review, budget review, policy-compliance review and remediation/escalation with attributable dated references and agreed cadence; assignment presence proves none."
+        ],
+        "limitations": "Manual awareness and operating effectiveness. No role, tag, inherited scope, policy assignment or budget proves that resource owners understand or carry out responsibilities. No new Entra/access/cost reads, required cadence or organizational responsibility is invented.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/109",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -1540,9 +1621,25 @@
       "baseline_control_sha256": "2e2404a4fd569a0a9e8c6edc662d5b14bd79621d201fe20d6c14d2de96955aaa",
       "design_area": "Resource organization",
       "batch": "08",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "upstream_id": "C02.09",
+        "guid": "2dd69c5b-5c26-422f-94b6-9bad33aad5e8",
+        "classification": "manual",
+        "implemented_subclaim": "Source-reviewed service/region/offer-specific quota and provisioning questions distinguish public limits from actual quota and available capacity without invented headroom or awareness.",
+        "sources": [
+          "subscription-limits",
+          "capacity-not-quota-or-discount"
+        ],
+        "evidence_requirements": [
+          "Preparation: reviewed service-specific quota guidance distinguishes adjustable limits, fixed constraints, subscription offers, regional vCPU-family/total limits and physical capacity; no live quota or usage is collected.",
+          "Reviewer decision: cite the subscription owners' and core IT team's explicit quota-awareness process, scoped service/region requirements and dated communication/training references.",
+          "Reviewer decision: reconcile provisioning impact, lead time and escalation with actual separately authorized quota/capacity evidence; a published maximum or granted quota does not guarantee regional capacity or provisioning success."
+        ],
+        "limitations": "Manual awareness and planning. No universal quota threshold, headroom, regional availability or increase approval is inferred. Missing quota, usage or capacity evidence remains unavailable, not zero or sufficient.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/109",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -1555,9 +1652,34 @@
       "baseline_control_sha256": "55ae3b65e8ed0d87ab08d7b0a8907c8e44683749ac6c4dccbf27faf62f57c61e",
       "design_area": "Resource organization",
       "batch": "08",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "upstream_id": "C02.10",
+        "guid": "c68e1d76-6673-413b-9f56-64b5e984a859",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit typed in-scope VM capacity-reservation-group reference prepares separate capacity-versus-discount and financial-suitability decisions; no availability or savings predicate.",
+        "sources": [
+          "reservation-discounts",
+          "capacity-not-quota-or-discount",
+          "vm-capacity-arm",
+          "terraform-linux-capacity",
+          "terraform-windows-capacity"
+        ],
+        "review_resource_types": [
+          "Microsoft.Compute/virtualMachines"
+        ],
+        "review_fact_paths": [
+          "capacityReservationGroupId"
+        ],
+        "evidence_requirements": [
+          "Preparation: only an explicit typed VM capacity-reservation-group reference; this is on-demand capacity configuration, not a Reserved Instance purchase/discount or proof of reserved availability.",
+          "Reviewer decision: reconcile separately authorized redacted demand and SKU/region/scope/term matching with reservation discount suitability, financial commitment and alternatives; no utilization or break-even threshold is imposed.",
+          "Reviewer decision: independently review accepted capacity reservation and matching VM/SKU/region/zone association, available quota, support restrictions and SLA conditions. Explicitly correct the checklist's conflation of Reserved Instance discounts with capacity guarantees."
+        ],
+        "limitations": "Reserved Instances provide matching-usage billing discounts only; on-demand capacity reservations address capacity under distinct quota/availability/SLA conditions. A configured reference proves neither actual reservation acceptance/capacity nor business/cost suitability. No billing amounts, usage history, purchase or cancellation.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/109",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -1570,9 +1692,34 @@
       "baseline_control_sha256": "2b475c5b30d4a5426c9b590f71fecc4b993e01625c21b903620b1173c149fa06",
       "design_area": "Resource organization",
       "batch": "08",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "upstream_id": "C02.11",
+        "guid": "c773e7d2-6162-43a7-95a9-17e1f348ef25",
+        "classification": "assisted",
+        "implemented_subclaim": "In-scope dashboard lens/tile and exact reviewed metrics-chart/markdown/other counts, with typed bounds and separate ARM-array/Terraform-object normalization, retain no opaque tile payload.",
+        "sources": [
+          "portal-dashboards",
+          "dashboard-structure",
+          "dashboard-arm",
+          "terraform-dashboard",
+          "terraform-dashboard-implementation"
+        ],
+        "review_resource_types": [
+          "Microsoft.Portal/dashboards"
+        ],
+        "review_fact_paths": [
+          "dashboardSummary"
+        ],
+        "evidence_requirements": [
+          "Preparation: explicit bounded lens/tile and exact reviewed metrics-chart/markdown/other counts only; ARM array and pinned Terraform object representations are distinct. Private dashboards and other visualization tools may be outside inventory.",
+          "Reviewer decision: demonstrate actual appropriate compute/storage targets, CPU, guest memory and free-disk capacity coverage, time window, current telemetry and intended operational use with redacted evidence references.",
+          "Reviewer decision: distinguish disk I/O from free disk space, tile presence from configuration/health and monitoring coverage from agreed capacity action requirements; no raw queries, markdown, inputs or metric readings are retained."
+        ],
+        "limitations": "Structural dashboard facts are partial review preparation only. A metrics tile can be unconfigured, inaccessible, stale or target the wrong resource; arbitrary or markdown tiles do not prove capacity monitoring. No metric/query execution, health conclusion, utilization threshold or raw payload retention.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/109",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -1585,9 +1732,27 @@
       "baseline_control_sha256": "3c2ab184ce96ca45038c59897ce10d9621133f6d322ac11b6213bd4637d8e9e2",
       "design_area": "Resource organization",
       "batch": "08",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "upstream_id": "C02.12",
+        "guid": "ae28c84c-33b6-4b78-88b9-fe5c41049d40",
+        "classification": "manual",
+        "implemented_subclaim": "Specific operating-plan workflow covers accountability, budgets/forecast, allocation, agreed reviews, optimization and corrective actions using redacted dated references; no technical flag attests a process.",
+        "sources": [
+          "cost-operating-plan",
+          "cost-plan-current",
+          "billing-tags",
+          "cost-tag-inheritance"
+        ],
+        "evidence_requirements": [
+          "Preparation: the checklist's manage-costs URL redirects to broader manage/administer guidance; current setup-guide cost planning and billing/tag conditions supplement it without claiming a deployed plan.",
+          "Reviewer decision: cite the approved scoped cost-management operating plan covering accountable roles, budget/forecast, allocation, agreed reporting/review cadence, optimization and corrective/escalation actions.",
+          "Reviewer decision: substantiate actual dated operation and business alignment with attributable redacted references; no tag, dashboard, reservation or shared narrative establishes the plan or approval."
+        ],
+        "limitations": "Inherently manual operating-plan and effectiveness judgment. No billing records, budget amount, usage history, financial authority, required threshold or organizational role is invented. Technical configuration alone is not an operating process.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/109",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -1600,9 +1765,34 @@
       "baseline_control_sha256": "a9855c2cde5ad3b96fe45103428fa9936e289d5659ee034310c594cc40d5a4bd",
       "design_area": "Resource organization",
       "batch": "08",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "upstream_id": "C02.13",
+        "guid": "3a923c34-74d0-4001-aac6-a9e01e6a83de",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit typed MG parent and existing saved unique rooted MG/subscription edges provide original-time scoped placement context; dedicated identity role and actual regional DC use remain separate decisions.",
+        "sources": [
+          "management-hierarchy",
+          "identity-placement",
+          "regional-domain-controllers",
+          "management-arm",
+          "terraform-management"
+        ],
+        "review_resource_types": [
+          "Microsoft.Management/managementGroups"
+        ],
+        "review_fact_paths": [
+          "managementParentId"
+        ],
+        "evidence_requirements": [
+          "Preparation: explicit typed MG parent and existing bounded saved Collector parent relationships retain original time, selected scope and completeness. Omitted parents, root designation, subscription purpose and out-of-scope ancestry are not inferred.",
+          "Reviewer decision: confirm whether server-based identity services are applicable and identify the explicitly approved identity subscription/MG using redacted architecture evidence, not names, labels or tags.",
+          "Reviewer decision: substantiate dedicated isolation and actual identity-service hosting; separately review required regional AD DS sites/subnets and domain-controller locator/use or managed Domain Services replica design. Co-location, region strings and DNS settings alone prove none."
+        ],
+        "limitations": "Configuration and positive parent edges are partial facts, not a dedicated identity-role designation, complete inherited governance, root access, billing visibility or actual regional DC use. Entra ID, managed Domain Services and self-managed AD DS differ. Tenant deployments, directory records, DC discovery and network tests stay out of scope.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/109",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -1615,9 +1805,38 @@
       "baseline_control_sha256": "9453387bf7643533a774739e2dc3692286d7a82612fcce0ab5b42893bf2f1e13",
       "design_area": "Resource organization",
       "batch": "08",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "upstream_id": "C02.14",
+        "guid": "5de32c19-9248-4160-9d5d-1e4e614658d3",
+        "classification": "assisted",
+        "implemented_subclaim": "Validated explicit pair count for reviewed in-scope resource types, never keys/values; distinguish empty supplied tags from missing/malformed input and organization-specific cost taxonomy/billing inheritance.",
+        "sources": [
+          "billing-tags",
+          "tag-rules",
+          "cost-tag-inheritance",
+          "terraform-linux-capacity",
+          "terraform-windows-capacity"
+        ],
+        "review_resource_types": [
+          "Microsoft.Compute/virtualMachines",
+          "Microsoft.Storage/storageAccounts",
+          "Microsoft.Portal/dashboards",
+          "Microsoft.Resources/resourceGroups",
+          "Microsoft.Resources/subscriptions"
+        ],
+        "review_fact_paths": [
+          "tagCount"
+        ],
+        "evidence_requirements": [
+          "Preparation: explicit validated tag-pair count only for reviewed resource types, with no tag keys or values. Empty is zero supplied pairs, missing/unresolved/malformed/ambiguous/over-bound is unknown. MGs do not support tags.",
+          "Reviewer decision: confirm the organization's approved billing/cost allocation taxonomy, consistency and actual usage-record/cost-report attribution with redacted references; example tag keys are not mandatory requirements.",
+          "Reviewer decision: reconcile supported service/billing agreement/scope, access and effective Cost Management tag inheritance/conflict settings and current-month processing delay. Resource tags do not automatically inherit; billing inheritance affects usage records, not resources or all history."
+        ],
+        "limitations": "Presence/count cannot prove billing support, relevant classification, effective cost allocation, inherited tags or actual ownership. No invented required key set, tag values, cost/usage records, policy execution or financial action. Unreviewed resource types remain unsupported.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/109",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -2367,12 +2586,42 @@
       "baseline_control_sha256": "3a1d198464ee71747e5d19225e056f6f0b3e4b6a0557ee98d53d09709c17869b",
       "design_area": "Network topology and connectivity",
       "batch": "12",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "f348ef25-4c27-4d42-b8bb-ac7571559ab9",
+        "upstream_id": "D03.04",
+        "classification": "assisted",
+        "implemented_subclaim": "Reuse typed supplied VNet IPv4 prefix/RFC1918/local overlap summaries, with explicit selected-inventory incompleteness and a complete-estate production/DR review question.",
+        "sources": [
+          "site-recovery-addresses",
+          "vnet-dns-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks"
+        ],
+        "review_fact_paths": [
+          "virtualNetworkPrefixes",
+          "resourceLocation"
+        ],
+        "evidence_requirements": [
+          "Bind complete production and DR populations, on-premises sites, VNets, peerings, VPN/ExpressRoute, reserved ranges and recovery networks to the exact assessment scope and evidence time. Names, local overlaps or inventory_complete do not identify estate roles or complete the DR inventory.",
+          "Site Recovery permits IP retention only with whole-subnet failover and route changes so that the overlapping subnet is not simultaneously present at both connected sites. Reconcile independent approved exception, recovery ordering, address availability and required DNS updates.",
+          "Reviewer decision: do complete original-time production/DR and recovery-plan evidence establish no conflicting simultaneous connected address use? Keep the decision blank until explicitly supplied."
+        ],
+        "limitations": "Bounded IPv4-only supplied comparisons are not global IPAM, production/DR classification, route reachability or a tested subnet move. IPv6/unresolved/absent populations stay unknown.",
+        "flags": [
+          "local-prefixes-not-complete-dr-population",
+          "ip-retention-needs-subnet-move-review"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/103",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/110",
+      "merge_commit": "a57906768b2cafb2ba20c7ed6df59695ca18b017",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.12: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "0c47f486-656d-4699-8c30-edef5b8a93c4",
@@ -2382,12 +2631,48 @@
       "baseline_control_sha256": "6281c1e951ef2a060189e6939ace05f91b2d88d6f2325d142bedbb9019a0af9b",
       "design_area": "Network topology and connectivity",
       "batch": "12",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "0c47f486-656d-4699-8c30-edef5b8a93c4",
+        "upstream_id": "D03.05",
+        "classification": "assisted",
+        "implemented_subclaim": "Literal public-IP SKU/tier/allocation/version, reused validated configuredZones and root region, without guessing default zones or regional capabilities.",
+        "sources": [
+          "public-ip-zones",
+          "public-ip-arm",
+          "terraform-public-ip"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/publicIPAddresses"
+        ],
+        "review_fact_paths": [
+          "publicIpSku",
+          "publicIpTier",
+          "publicIpAllocationMethod",
+          "publicIpVersion",
+          "configuredZones",
+          "resourceLocation",
+          "ipConfigurationId"
+        ],
+        "evidence_requirements": [
+          "Current source revision b5d5aac3 states formerly non-zonal Standard IPs with empty zones are zone-redundant in supported regions. Reconcile actual region availability, API/resource state, zonal intent and attached service; never fail merely because zones are empty.",
+          "Review Standard versus retired Basic, Regional versus Global and actual attached service compatibility. Standard v2 is currently NAT Gateway v2 only and outside the reviewed 2024 ARM/AzureRM enum; unsupported versions remain unknown.",
+          "Reviewer decision: are Standard and applicable zone-redundant public IPs correctly used throughout the actual endpoint population, with independent backend/service resilience evidence?"
+        ],
+        "limitations": "Literal SKU or zones is only configuration, not regional support, runtime redundancy, a complete public-IP estate, service health or backend availability. Missing defaults are not inferred.",
+        "flags": [
+          "empty-zones-not-nonredundancy",
+          "sku-region-api-service-review-required"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/103",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/110",
+      "merge_commit": "a57906768b2cafb2ba20c7ed6df59695ca18b017",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.12: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "153e8908-ae28-4c84-a33b-6b7808b9fe5c",
@@ -2397,12 +2682,52 @@
       "baseline_control_sha256": "2cc8979f90047fb6bb222ed439b46cb4214df63a2177a7d2f2979a2cd91baf0c",
       "design_area": "Network topology and connectivity",
       "batch": "12",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "153e8908-ae28-4c84-a33b-6b7808b9fe5c",
+        "upstream_id": "D03.06",
+        "classification": "assisted",
+        "implemented_subclaim": "Private-zone identity, typed VNet links, explicit link completion/resolution-policy and minimized supplied DNS-server count/default-versus-custom marker.",
+        "sources": [
+          "private-dns-quickstart",
+          "private-zone-links",
+          "private-zone-arm",
+          "private-link-arm",
+          "terraform-private-zone",
+          "terraform-private-link",
+          "workload-dns"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/privateDnsZones",
+          "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+          "Microsoft.Network/virtualNetworks"
+        ],
+        "review_fact_paths": [
+          "dnsVirtualNetworkId",
+          "registrationEnabled",
+          "dnsLinkState",
+          "resolutionPolicy",
+          "dnsServerSummary"
+        ],
+        "evidence_requirements": [
+          "Confirm Azure-only requirements, authoritative namespace/ownership/delegation and every client VNet's default/custom DNS path. Private zones are global resources; presence or region alone does not establish the required namespace design.",
+          "Reconcile exact zone/VNet links and Completed state, explicit custom-DNS bypass/forwarding, suffixes and any NxDomainRedirect fallback (Private Link A/AAAA/CNAME only). Missing links/status/DNS lists remain unknown.",
+          "Reviewer decision: does redacted original-time design and actual resolution evidence establish the required Azure-only delegated private DNS solution?"
+        ],
+        "limitations": "No domain/record content or queries are retained/run. Configured links and server counts are not effective resolution, delegation, availability or suitability.",
+        "flags": [
+          "zone-link-not-resolution",
+          "custom-dns-path-and-delegation-human"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/103",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/110",
+      "merge_commit": "a57906768b2cafb2ba20c7ed6df59695ca18b017",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.12: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "41049d40-3a92-43c3-974d-00018ac6a9e0",
@@ -2412,12 +2737,74 @@
       "baseline_control_sha256": "1ed85af715745d9cdd2adba782756a0a3b347bb7ebdb19dc76b9e07a90d7f9fe",
       "design_area": "Network topology and connectivity",
       "batch": "12",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "41049d40-3a92-43c3-974d-00018ac6a9e0",
+        "upstream_id": "D03.07",
+        "classification": "assisted",
+        "implemented_subclaim": "Typed Resolver/VNet, inbound subnet/allocation summaries, outbound subnet/ruleset links, explicit forwarding state, minimized domain/target shape and DNS-only subnet delegation.",
+        "sources": [
+          "resolver-overview",
+          "resolver-endpoints",
+          "resolver-arm",
+          "inbound-arm",
+          "outbound-arm",
+          "ruleset-arm",
+          "forwarding-rule-arm",
+          "ruleset-link-arm",
+          "terraform-resolver",
+          "terraform-inbound",
+          "terraform-outbound",
+          "terraform-ruleset",
+          "terraform-forwarding-rule",
+          "terraform-ruleset-link",
+          "terraform-rule-implementation",
+          "subnet-arm",
+          "terraform-subnet",
+          "vnet-dns-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/dnsResolvers",
+          "Microsoft.Network/dnsResolvers/inboundEndpoints",
+          "Microsoft.Network/dnsResolvers/outboundEndpoints",
+          "Microsoft.Network/dnsForwardingRulesets",
+          "Microsoft.Network/dnsForwardingRulesets/forwardingRules",
+          "Microsoft.Network/dnsForwardingRulesets/virtualNetworkLinks",
+          "Microsoft.Network/virtualNetworks/subnets",
+          "Microsoft.Network/virtualNetworks",
+          "Microsoft.Network/privateDnsZones/virtualNetworkLinks"
+        ],
+        "review_fact_paths": [
+          "dnsVirtualNetworkId",
+          "resourceLocation",
+          "resolverIpConfigurations",
+          "resolverOutboundEndpointIds",
+          "subnetReferences",
+          "forwardingRuleState",
+          "forwardingDomainSummary",
+          "forwardingTargetSummary"
+        ],
+        "evidence_requirements": [
+          "Confirm hybrid need and lack of an already appropriate enterprise DNS service. Reconcile actual Azure-to-on-premises and on-premises-to-Azure forwarding/authority and existing connectivity independently.",
+          "Resolver/VNet and ruleset links must satisfy current regional/tenant limits. Dedicated exclusively Microsoft.Network/dnsResolvers-delegated IPv4 endpoint subnets must be /24 through /28 and not shared; encryption, IPv6, FastPath and Lighthouse restrictions need review.",
+          "Up to two outbound endpoint references must share one Resolver; current bounds are five endpoints per direction, 1000 rules, 500 links and six targets per rule. Supplied counts are not complete service populations or quotas verified against runtime.",
+          "Check enabled longest-suffix rules, ordered target ports, wildcard public resolution, authoritative private-zone links and no loop back to an inbound endpoint's own VNet. 168.63.129.16 cannot be a forwarding target. Dynamic inbound IP can change on reprovisioning. Private target addresses/domains are withheld; inspect redacted separate evidence.",
+          "Reviewer decision: does scoped original-time configuration plus actual both-direction resolution and operational evidence establish the suitable hybrid Resolver design?"
+        ],
+        "limitations": "No forwarding evaluator, raw target/domain retention, DNS probe or region registry inferred. Terraform lacks a separate encryption enabled flag; omitted target port is not defaulted to 53. Missing/partial/unsupported details remain unknown.",
+        "flags": [
+          "resolver-config-not-hybrid-resolution",
+          "regional-links-exclusive-subnets-and-loop-review"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/103",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/110",
+      "merge_commit": "a57906768b2cafb2ba20c7ed6df59695ca18b017",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.12: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "1e6a83de-5de3-42c1-a924-81607d5d1e4e",
@@ -2427,12 +2814,38 @@
       "baseline_control_sha256": "414fb80d6b0dba2fbd0e5e1ae5a9ccc25459757ac0be38d36deee4bc3575c4e4",
       "design_area": "Network topology and connectivity",
       "batch": "12",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "1e6a83de-5de3-42c1-a924-81607d5d1e4e",
+        "upstream_id": "D03.08",
+        "classification": "manual",
+        "implemented_subclaim": "Retained inherently manual workload-specific DNS requirement and vendor-supported design question, accompanied only by minimized supplied DNS path context.",
+        "sources": [
+          "workload-dns"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworks"
+        ],
+        "review_fact_paths": [
+          "dnsServerSummary"
+        ],
+        "evidence_requirements": [
+          "Identify each special workload and its supported vendor/version DNS authority, suffix, conditional-forwarding, cluster and lifecycle requirements; do not infer OpenShift or any workload from resource names or one VNet DNS setting.",
+          "Reviewer decision: is the selected preferred DNS solution approved and supported for every relevant workload, with attributable redacted vendor/design and operational evidence? Keep this manual decision blank."
+        ],
+        "limitations": "No generic infrastructure flag can establish a preferred workload DNS solution. Configuration does not invent workload identity, vendor approval or a human decision.",
+        "flags": [
+          "manual-workload-specific-dns-suitability"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/103",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/110",
+      "merge_commit": "a57906768b2cafb2ba20c7ed6df59695ca18b017",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.12: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "614658d3-558f-4d77-849b-821112df27ee",
@@ -2442,12 +2855,45 @@
       "baseline_control_sha256": "f5926aec82fb36cf1b234acaefaaf3f983d9933e3b603d13eb08764118db48dd",
       "design_area": "Network topology and connectivity",
       "batch": "12",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "614658d3-558f-4d77-849b-821112df27ee",
+        "upstream_id": "D03.09",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit link registrationEnabled boolean and typed VNet/link completion, never unconditional required=true or proof of record lifecycle.",
+        "sources": [
+          "autoregistration",
+          "private-zone-links",
+          "private-link-arm",
+          "terraform-private-link"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/privateDnsZones/virtualNetworkLinks"
+        ],
+        "review_fact_paths": [
+          "registrationEnabled",
+          "dnsVirtualNetworkId",
+          "dnsLinkState"
+        ],
+        "evidence_requirements": [
+          "Auto-registration covers VM primary NIC A records only, one registration zone per VNet. It does not cover private endpoints, internal load balancers, extra NICs or PTR records; reconcile those independent lifecycle mechanisms.",
+          "Bind the actual relevant VNet/zone population and workload requirements. Explicit disabled registration may be appropriate for resolution-only/Private Link/reverse zones; an enabled link does not prove created, updated or removed records.",
+          "Reviewer decision: is auto-registration correctly enabled where applicable and do attributable lifecycle evidence and independent non-VM mechanisms cover all required records?"
+        ],
+        "limitations": "Conditional recommendation, not a universal boolean predicate. Missing link status or false default is not inferred; no DNS records are read or retained.",
+        "flags": [
+          "registration-vm-primary-nic-only",
+          "resolution-only-links-not-failures"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/103",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/110",
+      "merge_commit": "a57906768b2cafb2ba20c7ed6df59695ca18b017",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.12: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "18c80eb0-582a-4198-bf5c-d8800b2d263b",
@@ -2457,12 +2903,45 @@
       "baseline_control_sha256": "f86d998ee2c07d10a3073a86e80cf4ad5df87d93e604853f481155e00e741116",
       "design_area": "Network topology and connectivity",
       "batch": "12",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "18c80eb0-582a-4198-bf5c-d8800b2d263b",
+        "upstream_id": "D03.10",
+        "classification": "manual",
+        "implemented_subclaim": "Retained inherently manual multi-region/failover strategy, with regional configured Resolver and positive zone/VNet-link context only.",
+        "sources": [
+          "multi-region-dns",
+          "resolver-endpoints",
+          "private-dns-quickstart",
+          "site-recovery-addresses"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/dnsResolvers",
+          "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+          "Microsoft.Network/dnsForwardingRulesets/virtualNetworkLinks"
+        ],
+        "review_fact_paths": [
+          "resourceLocation",
+          "dnsVirtualNetworkId"
+        ],
+        "evidence_requirements": [
+          "Document accountable service-specific multi-region DNS ownership, authoritative zones, regional endpoints/resolvers, record-update sequence, TTL/cache behavior, failover/failback dependencies, health decisions and rollback. Global zones or multiple links alone do not constitute a plan.",
+          "Reconcile Private Link regional-record maintenance and each service's actual geo-failover semantics. A single global private endpoint and multiple regional private endpoints have different routing and lifecycle tradeoffs.",
+          "Reviewer decision: is the multi-region/failover DNS plan approved and supported by attributable original-time exercises and service-specific evidence? Keep this manual strategy decision blank."
+        ],
+        "limitations": "No health, DNS, routing or failover execution. Region/link context cannot establish resilient resolution, tested restoration, record selection or owner approval.",
+        "flags": [
+          "manual-multi-region-failover-plan"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/103",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/110",
+      "merge_commit": "a57906768b2cafb2ba20c7ed6df59695ca18b017",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.12: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "baac3ecb-a94c-4ac4-8c79-cdf27c0d78df",
@@ -2472,12 +2951,36 @@
       "baseline_control_sha256": "409b99ec85ed96827ed8f3b6bf321868017394293086e93cc7a2552232c7f066",
       "design_area": "Network topology and connectivity",
       "batch": "12",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "baac3ecb-a94c-4ac4-8c79-cdf27c0d78df",
+        "upstream_id": "D03.11",
+        "classification": "assisted",
+        "implemented_subclaim": "Actual reviewed Windows ephemeral UDP source-port advisory and a specific host/container exclusion-evidence question; no IaC substitute or generated command.",
+        "sources": [
+          "windows-65330",
+          "vnet-reserved-port",
+          "microsoft-terms"
+        ],
+        "evidence_requirements": [
+          "The actual TechCommunity article and VNet FAQ identify reserved UDP SOURCE port 65330. DNS destination port 53, an NSG deny or configured DNS server does not establish guest exclusion. Article intro also says 65530; its probability arithmetic is not adopted.",
+          "Reconcile the complete relevant Windows VM/container host population, IPv4 scope, persistent UDP excluded-range evidence, current ownership and independent exceptions using separately supplied attributable redacted evidence. Never read guests or alter OS/network settings here.",
+          "Reviewer decision: does original-time host/container configuration evidence establish the reviewed 65330 exclusion where applicable? Unsupported AS-IS article samples are advisory only; leave outcome blank until explicit evidence is supplied."
+        ],
+        "limitations": "Permitted management-plane IaC/saved resource configuration cannot establish this guest property. No source article/sample commands are redistributed, no port/packet/DNS probe or remediation is executed.",
+        "flags": [
+          "udp-source-65330-not-dns-destination",
+          "guest-evidence-unavailable-from-iac"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/103",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/110",
+      "merge_commit": "a57906768b2cafb2ba20c7ed6df59695ca18b017",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.12: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "ee1ac551-c4d5-46cf-b035-d0a3c50d87ad",
@@ -2487,12 +2990,58 @@
       "baseline_control_sha256": "7c0d004dfd321bb039024a65fb314377b24df213e67ac54111d6e90896f3b170",
       "design_area": "Network topology and connectivity",
       "batch": "12",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "ee1ac551-c4d5-46cf-b035-d0a3c50d87ad",
+        "upstream_id": "D05.01",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit Bastion SKU, private-only, feature/recording flags, scale units, zones and typed subnet/public-IP/Developer VNet references.",
+        "sources": [
+          "bastion-overview",
+          "bastion-settings",
+          "bastion-faq",
+          "bastion-arm",
+          "terraform-bastion",
+          "terraform-bastion-implementation",
+          "public-ip-zones",
+          "public-ip-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/bastionHosts",
+          "Microsoft.Network/publicIPAddresses",
+          "Microsoft.Network/networkInterfaces",
+          "Microsoft.Network/virtualNetworks/subnets"
+        ],
+        "review_fact_paths": [
+          "bastionSku",
+          "bastionFeatureSummary",
+          "bastionVirtualNetworkId",
+          "subnetReferences",
+          "bastionPublicIpIds",
+          "configuredZones",
+          "resourceLocation",
+          "nicIpConfigurations"
+        ],
+        "evidence_requirements": [
+          "Confirm dedicated production versus shared dev/test Developer, Premium private-only versus public Standard Static IPv4 entrypoint, permitted identity/RBAC/guest access and approved connection features. Provider lacks private-only input; missing is unknown.",
+          "Reconcile actual every-VM/VNet/peering topology, direct public RDP/SSH bypass, effective NSG/route constraints, default-route/UDR/force-tunneling restrictions and exact conflicting internal private DNS zones. VM public-IP links do not establish effective exposure or secure access.",
+          "Review recording/SAS storage/access separately without retaining URLs, current region/zone support and IPv6 dual-stack preview (newer configuration guide differs from IPv4-only FAQ/old schemas). Counts/features are not runtime security or resilient sessions.",
+          "Reviewer decision: is Bastion the approved secure access path with attributable operational access, bypass and audit evidence for all applicable networks?"
+        ],
+        "limitations": "No live login, access test, guest credentials, host FQDN, ACL raw address or recording secret is retained. Bastion presence/SKU cannot prove secure access or suitability.",
+        "flags": [
+          "bastion-presence-not-secure-access",
+          "developer-private-only-and-preview-exceptions"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/103",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/110",
+      "merge_commit": "a57906768b2cafb2ba20c7ed6df59695ca18b017",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.12: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "6eab9eb6-762b-485e-8ea8-15aa5dba0bd0",
@@ -2502,12 +3051,53 @@
       "baseline_control_sha256": "8b0e044896b65f638a526eb43dddd43c8c24c588bf0b9f694f8d676a45b824ed",
       "design_area": "Network topology and connectivity",
       "batch": "12",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "6eab9eb6-762b-485e-8ea8-15aa5dba0bd0",
+        "upstream_id": "D05.02",
+        "classification": "assisted",
+        "implemented_subclaim": "Typed actual Bastion-to-subnet links, reused supplied IPv4 /26-capacity subcheck and explicit SKU/private-only/deployment-era exceptions, not name-only acceptance.",
+        "sources": [
+          "bastion-faq",
+          "bastion-settings",
+          "bastion-arm",
+          "terraform-bastion",
+          "terraform-bastion-implementation",
+          "subnet-arm",
+          "terraform-subnet"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/bastionHosts",
+          "Microsoft.Network/virtualNetworks/subnets"
+        ],
+        "review_fact_paths": [
+          "bastionSku",
+          "enablePrivateOnlyBastion",
+          "bastionVirtualNetworkId",
+          "subnetReferences",
+          "addressPrefixes",
+          "networkSecurityGroup.id",
+          "routeTable.id"
+        ],
+        "evidence_requirements": [
+          "Dedicated non-Developer resources deployed on/after 2021-11-02 require exclusive AzureBastionSubnet in the same VNet/resource group, /26 or larger. Positive typed host/subnet binding is required; a matching subnet name alone does not identify use.",
+          "Pre-2021-11-02 /27 deployments remain supported, with /26 recommended for scaling. Developer has no dedicated-subnet requirement; Premium private-only still does. Reconcile actual SKU, original deployment evidence, independent approved exceptions, subnet exclusivity, IPv4/preview constraints and effective NSG/routes.",
+          "Reviewer decision: does actual deployment-era/topology/occupancy evidence establish the applicable subnet requirements? A narrow capacity subcheck neither verifies dedicated occupancy nor rejects the grandfathered /27 case."
+        ],
+        "limitations": "No whole predicate is defensible without SKU/deployment-era/exclusive-population evidence. Missing/ambiguous linked subnet and IPv6/mixed/unresolved prefixes remain unknown, never a name-based pass.",
+        "flags": [
+          "capacity-subcheck-not-bastion-deployment-acceptance",
+          "legacy-27-and-developer-conditions"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/103",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/110",
+      "merge_commit": "a57906768b2cafb2ba20c7ed6df59695ca18b017",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.12: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "1d7aa9b6-4704-4489-a804-2d88e79d17b7",
@@ -3528,12 +4118,48 @@
       "baseline_control_sha256": "7dec70d87811110c737d19272198cc1a57a8f74ad82547f39299578ced49bd97",
       "design_area": "Network topology and connectivity",
       "batch": "15",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "b30e38c3-f298-412b-8363-cefe179b599d",
+        "upstream_id": "D06.13",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit configured static ExpressRoute alert circuit scopes, enabled flag, supported metric names/aggregation and action-group references, alongside typed linked circuit/gateway context.",
+        "sources": [
+          "expressroute-monitoring",
+          "expressroute-insights",
+          "metric-alert-arm",
+          "circuit-arm",
+          "connection-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Insights/metricAlerts",
+          "Microsoft.Network/connections",
+          "Microsoft.Network/virtualNetworkGateways"
+        ],
+        "review_fact_paths": [
+          "expressRouteAlertSummary",
+          "expressRouteCircuitId",
+          "virtualNetworkGateway1.id",
+          "gatewayType"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: has an accountable operator reviewed actual Insights availability and utilization for both links, every applicable peering and linked gateway over the relevant original-time period?",
+          "Reconcile MSEE maintenance effects on BGP availability, approved demand/metric dimensions/thresholds/actions and actual arriving alerts/output. Insights needs no enablement setup; automatic metrics or configured alerts do not prove use, health or ingestion."
+        ],
+        "limitations": "Static single-resource configuration only; dynamic/multiple-resource/web-test criteria stay unsupported. Thresholds/dimensions/raw metrics/probes are not retained or invented. No monitoring execution or alert/health read.",
+        "flags": [
+          "insights-no-invented-enable-flag",
+          "configured-alert-not-health-or-ingestion"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/106",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/113",
+      "merge_commit": "1e69870dd77739a3f38d3ac443b75edfd18c1775",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.15: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "5bf68dc9-325e-4873-bf88-f8214ef2e5d2",
@@ -3543,12 +4169,44 @@
       "baseline_control_sha256": "e52be6d77bd4646922c904068ded7552d49f23de288b9942e18c5f63df288d23",
       "design_area": "Network topology and connectivity",
       "batch": "15",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "5bf68dc9-325e-4873-bf88-f8214ef2e5d2",
+        "upstream_id": "D06.14",
+        "classification": "assisted",
+        "implemented_subclaim": "Bounded endpoint types, test protocols/explicit frequencies, group disable/counts/exact unique reference resolution and typed workspace outputs, withholding endpoint names/addresses and request data.",
+        "sources": [
+          "connection-monitor-linked",
+          "connection-monitor-current",
+          "connection-monitor-arm",
+          "terraform-connection-monitor",
+          "terraform-connection-monitor-implementation",
+          "rest-monitor"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/networkWatchers/connectionMonitors"
+        ],
+        "review_fact_paths": [
+          "connectionMonitorSummary"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: does current supported agent evidence cover Azure VM/VMSS sources and Arc-enabled on-premises sources with AMA, rather than the linked retired Log Analytics/MMA instructions?",
+          "Reconcile all intended source/destination/redundant paths, enabled groups, actual executed probes/results, approved frequency/loss/latency requirements and arriving workspace output. Configured counts/reference resolution never establish successful monitoring."
+        ],
+        "limitations": "30..1800 seconds is the pinned provider's configuration envelope, not a health SLO. Legacy endpoint enums are configuration context, not current agent support. No endpoints, headers, FQDNs, raw probes or diagnostics retained.",
+        "flags": [
+          "linked-mma-guidance-conflicts-with-current-arc-ama",
+          "configuration-not-probe-results"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/106",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/113",
+      "merge_commit": "1e69870dd77739a3f38d3ac443b75edfd18c1775",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.15: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "e0d5973c-d4cd-421b-8881-37f5e6c4cfd3",
@@ -3558,12 +4216,53 @@
       "baseline_control_sha256": "83b081ce4c34c0c478bed41d8d9fb917900ff77a9983a06d2bc942aebaee8811",
       "design_area": "Network topology and connectivity",
       "batch": "15",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "e0d5973c-d4cd-421b-8881-37f5e6c4cfd3",
+        "upstream_id": "D06.15",
+        "classification": "assisted",
+        "implemented_subclaim": "Strict unique known provider-circuit or Direct-circuit-to-port joins and bounded explicit location-label fingerprints disclose whether the complete supplied subset includes distinct circuits with different configured labels.",
+        "sources": [
+          "expressroute-disaster-recovery",
+          "expressroute-high-availability",
+          "circuit-arm",
+          "circuit-rest-2024",
+          "port-arm",
+          "port-rest-2024",
+          "terraform-circuit",
+          "terraform-expressroute-port"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/expressRouteCircuits",
+          "Microsoft.Network/expressRoutePorts",
+          "Microsoft.Network/connections",
+          "Microsoft.Network/virtualNetworkGateways"
+        ],
+        "review_fact_paths": [
+          "expressRouteCircuitId",
+          "virtualNetworkGateway1.id",
+          "gatewayType",
+          "expressRoutePort.id",
+          "peeringLocationFingerprint"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: are actual independent circuits at different peering locations connected to the intended networks, with supported geopolitical/Premium reach and provider/customer failure-domain diversity?",
+          "Distinct configured label fingerprints are not canonical sites, anonymity or physical independence. Same-metro sites can share regional risks; reconcile latency/asymmetry and attributable real recovery evidence against approved objectives."
+        ],
+        "limitations": "Supplied location checks are bounded to100 circuits and every member must be unique known and explicitly located; unknown/denied/ambiguous/over-bound members cannot make a positive subcheck. No actual geo-failover, physical topology or arbitrary SLO inference.",
+        "flags": [
+          "configured-labels-not-independent-peering-sites",
+          "all-supplied-joins-must-be-known"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/106",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/113",
+      "merge_commit": "1e69870dd77739a3f38d3ac443b75edfd18c1775",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.15: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "cf3fe65c-fec0-495a-8edc-9675200f2add",
@@ -3573,12 +4272,52 @@
       "baseline_control_sha256": "891ce5082bbf94f9cb9069153ee210dec4b9188178de720c77357d686e06b603",
       "design_area": "Network topology and connectivity",
       "batch": "15",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "cf3fe65c-fec0-495a-8edc-9675200f2add",
+        "upstream_id": "D06.16",
+        "classification": "assisted",
+        "implemented_subclaim": "Reuse explicit IPsec/ExpressRoute types, exact gateway/circuit/local-gateway references, BGP intent and supported gateway/subnet context for a maintained private-peering VPN-backup review.",
+        "sources": [
+          "expressroute-coexistence",
+          "expressroute-backup",
+          "connection-arm",
+          "terraform-gateway-connection",
+          "gateway-arm",
+          "terraform-gateway",
+          "gateway-rest-2024"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/connections",
+          "Microsoft.Network/virtualNetworkGateways"
+        ],
+        "review_fact_paths": [
+          "connectionType",
+          "virtualNetworkGateway1.id",
+          "expressRouteCircuitId",
+          "enableBgp",
+          "gatewaySku",
+          "subnetReferences",
+          "localNetworkGatewayId"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: is the complete intended design actually single-circuit private peering, and is actively maintained S2S backup appropriate rather than latency-sensitive/mission-critical/bandwidth-intensive workload connectivity?",
+          "Verify route-based non-Basic VPN/coexistence subnet prerequisites, both-direction equal/more-specific prefix preference, Internet backup independence and attributable tested failover/recovery evidence. Microsoft peering has no equivalent VPN-based failover."
+        ],
+        "limitations": "Configured connections, BGP/weight/SKU and positive associations cannot prove a complete single-circuit population, preferred routes, working tunnels or maintained recovery. No VPN/route/traffic probe or secret collection.",
+        "flags": [
+          "private-peering-backup-is-workload-conditional",
+          "connection-not-maintained-failover"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/106",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/113",
+      "merge_commit": "1e69870dd77739a3f38d3ac443b75edfd18c1775",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.15: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "72105cc8-aaea-4ee1-8c7a-ad25977afcaf",
@@ -3588,12 +4327,60 @@
       "baseline_control_sha256": "b93731dc712f0287696e38531434ee802ad9fb6961fbe5a18c051b9b86aa2e42",
       "design_area": "Network topology and connectivity",
       "batch": "15",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "72105cc8-aaea-4ee1-8c7a-ad25977afcaf",
+        "upstream_id": "D06.17",
+        "classification": "automated",
+        "implemented_subclaim": "For each explicit known scoped VPN/ExpressRoute gateway, every bounded known GatewaySubnet-to-unique-known-route-table join has explicit disableBgpRoutePropagation=false. True fails; missing/default/unbound/ambiguous/out-of-scope/truncated joins remain unknown, including empty inventory.",
+        "sources": [
+          "gateway-subnet-propagation",
+          "expressroute-gateway-propagation",
+          "route-arm",
+          "rest-route",
+          "subnet-arm",
+          "rest-subnet",
+          "route-table-provider-implementation",
+          "terraform-subnet-route-association"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualNetworkGateways",
+          "Microsoft.Network/virtualNetworks/subnets",
+          "Microsoft.Network/routeTables"
+        ],
+        "review_fact_paths": [
+          "gatewayType",
+          "subnetReferences",
+          "routeTable.id",
+          "disableBgpRoutePropagation"
+        ],
+        "method": "Strictly joined scoped GatewaySubnet propagation configuration, not effective routes.",
+        "rule": {
+          "operation": "gateway-route-propagation",
+          "resource_type": "Microsoft.Network/virtualNetworkGateways",
+          "property": "subnetReferences",
+          "expected": true
+        },
+        "evidence_requirements": [
+          "Bind the gateway to explicit unique known GatewaySubnet and route-table identities inside an explicit subscription/resource-group evidence scope; require exact explicit booleans. An arbitrary table flag or no resources cannot pass.",
+          "Missing/unsupported/symbolic/denied/stale/ambiguous or over20 displayed gateway-subnet links stay unknown. Raw Terraform association resources are not inferred; supply the normalized subnet join explicitly or keep it unknown.",
+          "Reconcile effective learned routes, NSG/UDR restrictions, gateway availability and complete intended topology separately; the accepted machine claim is only the literal joined propagation configuration."
+        ],
+        "limitations": "No effective-route or gateway-health test, default propagation assumption or no-table/no-gateway absence pass. Unbound management-group evidence is not supported by this scoped literal predicate. Human decisions and independent exceptions cannot alter its technical result.",
+        "flags": [
+          "strict-known-gateway-subnet-table-join",
+          "explicit-flag-no-default-or-absence-pass",
+          "configuration-not-effective-routing"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/106",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/113",
+      "merge_commit": "1e69870dd77739a3f38d3ac443b75edfd18c1775",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.15: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "d581a947-69a2-4783-942e-9df3664324c8",
@@ -3603,12 +4390,47 @@
       "baseline_control_sha256": "3443d761c25904bf561fe43bac9d68f6df3b3123877f8bd8207197907a95d592",
       "design_area": "Network topology and connectivity",
       "batch": "15",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "d581a947-69a2-4783-942e-9df3664324c8",
+        "upstream_id": "D06.18",
+        "classification": "assisted",
+        "implemented_subclaim": "Typed original-time circuit/gateway/BGP/weight context prepares a specific dynamic edge convergence/load-sharing review, without treating Azure VPN activeActive as customer ECMP.",
+        "sources": [
+          "expressroute-high-availability",
+          "expressroute-disaster-recovery",
+          "connection-arm",
+          "gateway-rest-2024"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/connections",
+          "Microsoft.Network/virtualNetworkGateways"
+        ],
+        "review_fact_paths": [
+          "connectionType",
+          "expressRouteCircuitId",
+          "enableBgp",
+          "activeActive",
+          "routingWeight"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: do both customer/provider edge sessions dynamically converge to the surviving link with correct advertisements and return paths, including Microsoft's maintenance AS-path draining?",
+          "Verify actual per-flow active-active sharing or explicitly supported actively maintained active-passive routing, NAT/stateful effects and approved recovery objectives. Cloud BGP/activeActive flags or sample timers are not on-premises behavior."
+        ],
+        "limitations": "No edge routing collection, load/latency threshold or convergence/failover test. Gateway weight and active-active configuration have different direction/scope from actual customer edge routing.",
+        "flags": [
+          "cloud-flags-not-edge-convergence-or-ecmp",
+          "maintained-active-passive-supported"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/106",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/113",
+      "merge_commit": "1e69870dd77739a3f38d3ac443b75edfd18c1775",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.15: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "b258f058-b9f6-46cd-b28d-990106f0c3f8",
@@ -3618,12 +4440,46 @@
       "baseline_control_sha256": "3cf9b1d1b77975601b0edf879cd507cf4adbb618773b10fd92b4c9fba396a3a7",
       "design_area": "Network topology and connectivity",
       "batch": "15",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "b258f058-b9f6-46cd-b28d-990106f0c3f8",
+        "upstream_id": "D06.19",
+        "classification": "assisted",
+        "implemented_subclaim": "Exact configured circuit/gateway/Direct-port context identifies scope for a two-distinct-real-edge-device decision, not a cloud resource-count verdict.",
+        "sources": [
+          "expressroute-high-availability",
+          "expressroute-disaster-recovery",
+          "port-arm",
+          "port-rest-2024"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/connections",
+          "Microsoft.Network/expressRouteCircuits",
+          "Microsoft.Network/expressRoutePorts"
+        ],
+        "review_fact_paths": [
+          "expressRouteCircuitId",
+          "virtualNetworkGateway1.id",
+          "expressRoutePort.id"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: do attributable redacted customer/provider topology records bind primary and secondary physical links to distinct actual customer edge devices, not subinterfaces or ports on one chassis?",
+          "Reconcile provider first-mile paths, power/cooling and downstream shared failure domains separately. Do not retain device identities, router credentials or raw physical records."
+        ],
+        "limitations": "Two links, circuits, ports or configured names cannot authenticate physical customer/provider independence. No new on-premises or provider evidence collection.",
+        "flags": [
+          "two-cloud-resources-not-two-physical-devices",
+          "physical-independence-needs-attributable-evidence"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/106",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/113",
+      "merge_commit": "1e69870dd77739a3f38d3ac443b75edfd18c1775",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.15: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "fe2a1b53-6fbd-4c67-b58a-85d7c7a0afcb",
@@ -3633,12 +4489,45 @@
       "baseline_control_sha256": "1738cb45b0b0720865e71356df302099f310b10f6abe00b5b3dc9dca53d1206a",
       "design_area": "Network topology and connectivity",
       "batch": "15",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "fe2a1b53-6fbd-4c67-b58a-85d7c7a0afcb",
+        "upstream_id": "D06.20",
+        "classification": "assisted",
+        "implemented_subclaim": "Typed circuit/connection context prepares a two-edge-interface-and-BGP BFD decision without inventing a customer/provider BFD flag from MSEE defaults.",
+        "sources": [
+          "expressroute-bfd",
+          "expressroute-high-availability",
+          "expressroute-disaster-recovery",
+          "circuit-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/connections",
+          "Microsoft.Network/expressRouteCircuits"
+        ],
+        "review_fact_paths": [
+          "expressRouteCircuitId",
+          "connectionType",
+          "expressRoutePort.id"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: is BFD configured on both primary and secondary customer/provider interfaces and linked to their BGP sessions, with vendor support/echo behavior and attributable operational evidence?",
+          "Reconcile private/Microsoft and IPv4/IPv6 creation/reset applicability, including IPv6 before November2025. Cloud-side defaults and sample timer values never prove edge BFD or end-to-end gateway/site convergence."
+        ],
+        "limitations": "No BFD query, packet test, peering reset, edge configuration read or fabricated approval. Faster link detection is not a guaranteed end-to-end failover SLO.",
+        "flags": [
+          "msee-default-not-customer-provider-bfd",
+          "ipv4-ipv6-creation-reset-conditions-preserved"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/106",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/113",
+      "merge_commit": "1e69870dd77739a3f38d3ac443b75edfd18c1775",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.15: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "669b215a-ce43-4371-8f6f-11047f6490f1",
@@ -3648,12 +4537,54 @@
       "baseline_control_sha256": "419c9714847da6244c9f3361d37472406db85cd5d5693ddee515fdd2f4ce78c7",
       "design_area": "Network topology and connectivity",
       "batch": "15",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "669b215a-ce43-4371-8f6f-11047f6490f1",
+        "upstream_id": "D06.22",
+        "classification": "assisted",
+        "implemented_subclaim": "Strict unique known ExpressRoute gateway-to-typed-connection-to-distinct-known-circuit-to-provider/Direct-port-location joins prepare bounded circuit/location counts and a configuration-only subcheck.",
+        "sources": [
+          "expressroute-disaster-recovery",
+          "connection-arm",
+          "gateway-rest-2024",
+          "circuit-arm",
+          "circuit-rest-2024",
+          "port-arm",
+          "port-rest-2024",
+          "terraform-gateway-connection"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/connections",
+          "Microsoft.Network/virtualNetworkGateways",
+          "Microsoft.Network/expressRouteCircuits",
+          "Microsoft.Network/expressRoutePorts"
+        ],
+        "review_fact_paths": [
+          "connectionType",
+          "expressRouteCircuitId",
+          "virtualNetworkGateway1.id",
+          "gatewayType",
+          "routingWeight",
+          "peeringLocationFingerprint"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: is this exact ExpressRoute gateway actually bound to at least two distinct circuits at different verified peering sites, not duplicate connections or circuits bound to other gateways?",
+          "Reconcile complete intended topology, unknown/ambiguous supplied joins, regional/geopolitical/Premium reach, customer/provider failure domains and both-direction routing/recovery. Distinct configured labels do not prove actual independent sites or operational resiliency."
+        ],
+        "limitations": "Every supplied uncertain connection/circuit/location makes the bounded join check unknown. At most100 supplied connections/circuits and100 displayed gateways; truncation is disclosed. Positive supplied joins are not complete estate or failover evidence.",
+        "flags": [
+          "exact-gateway-distinct-circuit-joins",
+          "configured-labels-not-verified-sites-or-failover"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/106",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/113",
+      "merge_commit": "1e69870dd77739a3f38d3ac443b75edfd18c1775",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.15: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "3f79ed00-203b-4c95-9efd-691505f5a1f9",

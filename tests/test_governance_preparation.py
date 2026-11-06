@@ -14,7 +14,7 @@ from alz_assessor.arm import properties as arm_properties
 from alz_assessor.azure import Collector, Response
 from alz_assessor.bicep import compile_bicep
 from alz_assessor.catalog import load_catalog
-from alz_assessor.contracts import digest, document, validate
+from alz_assessor.contracts import control_digest, digest, document, validate
 from alz_assessor.engine import assess
 from alz_assessor.governance_evidence import (
     DASHBOARD_KIND,
@@ -171,7 +171,10 @@ class GovernancePreparationTests(unittest.TestCase):
         self.assertEqual(matrix["review_state"], "source-reviewed-preparation-not-accepted")
         self.assertNotIn("catalog_version", matrix)
         self.assertNotIn("accepted_at", matrix)
-        self.assertFalse((fixed.parent / "batch-08.json").exists())
+        accepted = json.loads((fixed.parent / "batch-08.json").read_text("utf-8"))
+        self.assertEqual(accepted["catalog_version"], "2026-11-06.10")
+        self.assertEqual(accepted["review_state"], "owner-delegated-source-backed-matrix")
+        self.assertEqual({r["upstream_id"]: r["guid"] for r in accepted["recommendations"]}, GUIDS)
         manifest = json.loads((PREPARATION / "batch-08-sources.json").read_text("utf-8"))
         sources = {s["id"]: s for s in manifest["sources"]}
         self.assertEqual(len(sources), 24)
@@ -532,7 +535,11 @@ class GovernancePreparationTests(unittest.TestCase):
         self.assertEqual(
             tiers,
             {
-                identity: "manual" if identity in {"C02.08", "C02.09", "C02.12"} else "signal"
+                identity: "manual"
+                if identity in {"C02.08", "C02.09", "C02.12"}
+                else "needs_decision"
+                if identity == "C02.13"
+                else "signal"
                 for identity in GUIDS
             },
         )
@@ -707,6 +714,169 @@ class GovernancePreparationTests(unittest.TestCase):
             )
         )
         self.assertFalse(has_fact(bundle["resources"][0]["properties"].get("dashboardSummary")))
+
+    def accepted_catalog(self):
+        data = ROOT / "src" / "alz_assessor" / "data"
+        frozen = data / "catalog-2026-11-06.10.json"
+        return load_catalog(str(frozen)) if frozen.exists() else load_catalog()
+
+    def scoped_bundle(self):
+        bundle = self.bundle()
+        bundle["scope"] = MG
+        bundle["metadata"] = {
+            "relationships": [{"id": CHILD, "parent": MG}, {"id": SUB, "parent": CHILD}],
+            "completeness": {"relationships": False},
+        }
+        return bundle
+
+    def test_accepted_exact_successor_preserves_all_predecessor_control_objects_and_sources(self):
+        data = ROOT / "src" / "alz_assessor" / "data"
+        for name, expected in (
+            (
+                "catalog-2026-11-06.9.json",
+                "5f678970f45fcd9ac635576d31cfe0f896c97199d11552d2061886aaa441004c",
+            ),
+            (
+                "crosswalk-2026-11-06.9.json",
+                "9cc735acb396ba27bfccc2a017ec1cc1c1a1ea6eba9f3f86185814fea5c6b519",
+            ),
+        ):
+            self.assertEqual(hashlib.sha256((data / name).read_bytes()).hexdigest(), expected)
+        before = load_catalog(str(data / "catalog-2026-11-06.9.json"))
+        catalog = self.accepted_catalog()
+        self.assertEqual(catalog["catalog_version"], "2026-11-06.10")
+        self.assertEqual(len(catalog["controls"]), 255)
+        previous = {c["upstream_guid"]: c for c in before["controls"]}
+        for control in catalog["controls"]:
+            if control["upstream_guid"] not in GUIDS.values():
+                self.assertEqual(control, previous[control["upstream_guid"]])
+        original = load_catalog(str(data / "catalog-2026-11-04.2.json"))
+        for control in original["controls"]:
+            if control["automation"] == "automated":
+                retained = next(
+                    c for c in catalog["controls"] if c["control_id"] == control["control_id"]
+                )
+                self.assertEqual(retained, previous[control["upstream_guid"]])
+                self.assertEqual(control_digest(retained), control_digest(control))
+        old_crosswalk = json.loads((data / "crosswalk-2026-11-06.9.json").read_text("utf-8"))
+        current = json.loads((data / "crosswalk.json").read_text("utf-8"))
+        self.assertEqual(current["entries"], old_crosswalk["entries"])
+        self.assertEqual(current["sources"], old_crosswalk["sources"])
+        accepted_sources = ROOT / "references" / "recommendation-batches" / "batch-08-sources.json"
+        self.assertEqual(
+            accepted_sources.read_bytes(), (PREPARATION / "batch-08-sources.json").read_bytes()
+        )
+        self.assertEqual(
+            hashlib.sha256(accepted_sources.read_bytes()).hexdigest(),
+            "0bec744bf862cb3689b9962a1672dd05ff82f68dd3d3cdf28ea2de8124cb89fb",
+        )
+
+    def test_accepted_all_surfaces_bank_replay_session_and_seven_independent_decisions(self):
+        catalog, bundle = self.accepted_catalog(), self.scoped_bundle()
+        report = assess(bundle, catalog, at=AT, evidence_tiers=True)
+        own = self.own(report)
+        self.assertEqual(len(own), 7)
+        self.assertTrue(all(r["observed"]["outcome"] == "manual" for r in own))
+        self.assertEqual(
+            {r["upstream_id"]: r["observed"]["evidence_tier"] for r in own},
+            {
+                identity: "manual" if identity in {"C02.08", "C02.09", "C02.12"} else "signal"
+                for identity in GUIDS
+            },
+        )
+        for format in ("json", "markdown", "html", "csv", "sarif", "pr-summary"):
+            self.assertNotIn(SENTINEL, render(report, format))
+        with zipfile.ZipFile(BytesIO(render_xlsx(report))) as archive:
+            self.assertNotIn(
+                SENTINEL, "".join(archive.read(n).decode() for n in archive.namelist())
+            )
+        export_bundle(self.root / "accepted-cohort08", bundle, catalog, at=AT, evidence_tiers=True)
+        replayed = replay_bundle(self.root / "accepted-cohort08")
+        self.assertEqual(semantic(replayed), semantic(report))
+        identity = next(c for c in catalog["controls"] if c["upstream_id"] == "C02.13")
+        self.assertEqual(
+            review_context(identity, bundle), review_context(identity, sanitize_evidence(bundle))
+        )
+        session = ReviewSession(
+            bundle, catalog, self.root / "accepted-session", clock=lambda: AT, evidence_tiers=True
+        )
+        self.assertEqual(session.state()["records"], [])
+        response = prepare_interview(report, catalog, "resource-cost-governance", MG)
+        self.assertEqual(len(response["decisions"]), 7)
+        self.assertTrue(all(d["outcome"] is None for d in response["decisions"]))
+        self.assertIsNone(response["answer"])
+        with self.assertRaises(InputError):
+            compile_interview(response, catalog, at=AT)
+        response.update(
+            answer="Authored offline acceptance fixture, not an owner approval.",
+            reviewer="Fixture reviewer",
+            rationale="Seven distinct fixture decisions.",
+            evidence="https://example.invalid/cohort08",
+            valid_from=AT,
+            valid_until="2026-11-07T12:00:00Z",
+        )
+        for row in response["decisions"]:
+            row["outcome"] = "fail"
+        manual = compile_interview(response, catalog, at=AT)
+        reviewed = assess(bundle, catalog, at=AT, manual=manual, evidence_tiers=True)
+        self.assertTrue(all(r["observed"]["outcome"] == "fail" for r in self.own(reviewed)))
+        self.assertTrue(
+            all(r["observed"]["evidence_tier"] != "verified" for r in self.own(reviewed))
+        )
+        for binding in ("catalog_sha256", "requirements_sha256"):
+            changed = copy.deepcopy(response)
+            changed[binding] = "0" * 64
+            with self.assertRaises(InputError):
+                compile_interview(changed, catalog, at=AT)
+        control_ids = {c["control_id"]: c for c in catalog["controls"]}
+        self.assertTrue(
+            all(
+                e["control_sha256"] == control_digest(control_ids[e["control_id"]])
+                for e in manual["entries"]
+            )
+        )
+
+    def test_accepted_unbound_foreign_missing_and_stale_resources_supply_no_signal(self):
+        catalog, bundle = self.accepted_catalog(), self.bundle()
+        for mode in ("unbound", "foreign", "missing", "stale", "denied"):
+            changed = copy.deepcopy(bundle)
+            if mode == "missing":
+                changed["resources"] = []
+            elif mode == "stale":
+                changed["collected_at"] = "2000-01-01T00:00:00Z"
+            else:
+                for resource in changed["resources"]:
+                    if mode == "unbound":
+                        resource["arm_id"] = None
+                    elif mode == "foreign":
+                        resource["arm_id"] = resource["arm_id"].replace(
+                            SUB, "/subscriptions/00000000-0000-0000-0000-000000000099"
+                        )
+                    elif mode == "denied":
+                        resource.update(state="inaccessible", reason="access_denied")
+            report = self.own(assess(changed, catalog, at=AT, evidence_tiers=True))
+            self.assertTrue(all(r["observed"]["outcome"] != "pass" for r in report))
+            self.assertTrue(all(r["observed"]["evidence_tier"] != "signal" for r in report))
+        bad = self.scoped_bundle()
+        bad["metadata"] = {"scopes": [SUB]}
+        report = self.own(assess(bad, catalog, at=AT, evidence_tiers=True))
+        self.assertTrue(all(r["observed"]["evidence_tier"] != "signal" for r in report))
+
+    def test_all_99_prior_own_guid_receipts_remain_exact(self):
+        ledger = json.loads(
+            (ROOT / "references" / "recommendation-batches" / "ledger.json").read_text("utf-8")
+        )
+        earlier = {"01", "04", "11", "12", "13", "14", "15", "17", "18", "19", "22"}
+        rows = [row for row in ledger["recommendations"] if row["batch"] in earlier]
+        receipts = {key: value for key, value in ledger["deliveries"].items() if key in earlier}
+        self.assertEqual(len(rows), 99)
+        self.assertTrue(all(row["status"] == "merged" for row in rows))
+        self.assertEqual(
+            digest(rows), "0ac124b55e2e59e0e38d54b2902ee370175d5694d57c05afaf49b9e455a8b4de"
+        )
+        self.assertEqual(
+            digest(receipts), "f29ea9fe2a724da9e94dfa274a5cf319f39c06f999e735c87c953a57e43193bb"
+        )
 
     @unittest.skipUnless(os.environ.get("BICEP_COMPILER"), "existing Bicep compiler not supplied")
     def test_real_bicep_governance_without_restore(self):

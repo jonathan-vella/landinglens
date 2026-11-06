@@ -40,16 +40,18 @@ No current regional/port availability, achieved throughput/latency, working
 FastPath, operational redundancy or economic suitability follows from settings.
 ARM scale support does not imply the pinned Terraform provider supports it.
 
-## Cohort 08 preparation (not accepted delivery)
+## Cohort 08: resource and cost governance
 
-The [seven-GUID preparation matrix](../references/preparation/batch-08.json)
-and [24 source captures](../references/preparation/batch-08-sources.json) are
-outside the accepted batch builder. They do not select a successor version,
-register an interview, change delivery counts or establish merged acceptance.
+The [seven-GUID accepted matrix](../references/recommendation-batches/batch-08.json)
+and [24 preserved source captures](../references/recommendation-batches/batch-08-sources.json)
+precede `2026-11-06.10`. Source/matrix activation alone does not change delivery
+counts or establish merged acceptance.
 The existing adapters prepare explicit tag-pair counts, bounded dashboard
 structure, typed VM capacity-reservation-group references and MG parent IDs.
 Existing saved Collector parent relationships can supply original-time scoped
 context; no new Collector route, billing, quota or directory read is added.
+Machine context requires explicit in-scope resource identities or positive saved
+MG parent bindings, not names or bare scope metadata.
 
 Reserved Instances provide matching-usage billing discounts, not guaranteed
 capacity. On-demand capacity reservation is distinct and subject to actual
@@ -67,6 +69,25 @@ MG names or parent edges do not designate identity subscriptions or establish
 regional domain-controller use. Owner responsibility, quota awareness and the
 cost-management operating plan remain three separate manual recommendations;
 all seven preparation decisions remain blank.
+
+Cohort15's GatewaySubnet propagation predicate is a strictly joined scoped
+configuration check, not a gateway uptime or effective-route verdict. A table
+flag alone, missing association/default or empty inventory cannot pass.
+Monitoring/alert configuration and supplied location-label fingerprints remain
+Signals awaiting eight separate decisions, never health, ingestion, verified
+peering sites, physical edge independence, customer/provider BFD or actual
+convergence/failover. Unsupported/ambiguous populations stay visible; linked
+legacy-agent and current BFD date/peering conditions are not silently simplified.
+
+Cohort12 prepares DR prefixes, public-IP configuration, private DNS links,
+Resolver endpoint/rule shapes and Bastion settings. Public-IP empty zones cannot
+alone establish nonredundancy; registration applies only to VM primary NICs.
+Resolver subnets, regional links and loop avoidance need distinct evidence.
+Bastion Developer/private-only and pre-2021-11-02 /27 exceptions remain explicit.
+The port-65330 guidance concerns a Windows UDP source port, not DNS destination
+port 53; no guest read or OS change occurs. Workload-specific DNS and multi-region
+failover plans remain manual. No DNS record, raw destination or recording secret
+is retained, and no configuration becomes a resolution/security/resilience pass.
 
 ## Tiers and counts
 

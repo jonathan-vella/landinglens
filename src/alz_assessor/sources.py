@@ -38,6 +38,7 @@ TF_TYPES = {
     "azurerm_network_security_rule": "Microsoft.Network/networkSecurityGroups/securityRules",
     "azurerm_virtual_network_gateway": "Microsoft.Network/virtualNetworkGateways",
     "azurerm_network_watcher_flow_log": "Microsoft.Network/networkWatchers/flowLogs",
+    "azurerm_network_connection_monitor": "Microsoft.Network/networkWatchers/connectionMonitors",
     "azurerm_application_security_group": "Microsoft.Network/applicationSecurityGroups",
     "azurerm_route_table": "Microsoft.Network/routeTables",
     "azurerm_virtual_network_peering": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
@@ -61,6 +62,27 @@ TF_TYPES = {
     ),
     "azurerm_public_ip": "Microsoft.Network/publicIPAddresses",
     "azurerm_network_interface": "Microsoft.Network/networkInterfaces",
+    "azurerm_private_dns_zone": "Microsoft.Network/privateDnsZones",
+    "azurerm_private_dns_zone_virtual_network_link": (
+        "Microsoft.Network/privateDnsZones/virtualNetworkLinks"
+    ),
+    "azurerm_private_dns_resolver": "Microsoft.Network/dnsResolvers",
+    "azurerm_private_dns_resolver_inbound_endpoint": (
+        "Microsoft.Network/dnsResolvers/inboundEndpoints"
+    ),
+    "azurerm_private_dns_resolver_outbound_endpoint": (
+        "Microsoft.Network/dnsResolvers/outboundEndpoints"
+    ),
+    "azurerm_private_dns_resolver_dns_forwarding_ruleset": (
+        "Microsoft.Network/dnsForwardingRulesets"
+    ),
+    "azurerm_private_dns_resolver_forwarding_rule": (
+        "Microsoft.Network/dnsForwardingRulesets/forwardingRules"
+    ),
+    "azurerm_private_dns_resolver_virtual_network_link": (
+        "Microsoft.Network/dnsForwardingRulesets/virtualNetworkLinks"
+    ),
+    "azurerm_bastion_host": "Microsoft.Network/bastionHosts",
     "azurerm_firewall_policy_rule_collection_group": (
         "Microsoft.Network/firewallPolicies/ruleCollectionGroups"
     ),
@@ -264,6 +286,44 @@ def resource_scope(scope: str | None, properties: dict[str, Any]) -> str | None:
 
 def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str | None:
     name = values.get("name")
+    dns_parent = {
+        "azurerm_private_dns_resolver_inbound_endpoint": (
+            "private_dns_resolver_id",
+            "microsoft.network/dnsresolvers",
+            "inboundEndpoints",
+        ),
+        "azurerm_private_dns_resolver_outbound_endpoint": (
+            "private_dns_resolver_id",
+            "microsoft.network/dnsresolvers",
+            "outboundEndpoints",
+        ),
+        "azurerm_private_dns_resolver_forwarding_rule": (
+            "dns_forwarding_ruleset_id",
+            "microsoft.network/dnsforwardingrulesets",
+            "forwardingRules",
+        ),
+        "azurerm_private_dns_resolver_virtual_network_link": (
+            "dns_forwarding_ruleset_id",
+            "microsoft.network/dnsforwardingrulesets",
+            "virtualNetworkLinks",
+        ),
+    }.get(kind)
+    if dns_parent:
+        from .protection_evidence import typed_reference
+
+        key, parent_kind, child_kind = dns_parent
+        parent = typed_reference(values.get(key), (parent_kind,))
+        boundary = scope_id(scope) if scope else None
+        if (
+            boundary
+            and isinstance(parent, str)
+            and parent.startswith(boundary + "/")
+            and isinstance(name, str)
+            and name
+            and "/" not in name
+        ):
+            return canonical_id(parent + "/" + child_kind + "/" + name)
+        return None
     if kind == "azurerm_security_center_subscription_pricing":
         from .security_evidence import PLANS
 
@@ -272,11 +332,13 @@ def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str 
         if boundary and boundary.count("/") == 2 and isinstance(plan, str) and plan in PLANS:
             return canonical_id(boundary + "/providers/Microsoft.Security/pricings/" + plan)
         return None
-    if kind == "azurerm_cdn_frontdoor_security_policy":
+    if kind in {"azurerm_cdn_frontdoor_security_policy", "azurerm_network_connection_monitor"}:
         from .protection_evidence import typed_reference
 
+        monitor = kind == "azurerm_network_connection_monitor"
         parent = typed_reference(
-            values.get("cdn_frontdoor_profile_id"), ("microsoft.cdn/profiles",)
+            values.get("network_watcher_id" if monitor else "cdn_frontdoor_profile_id"),
+            ("microsoft.network/networkwatchers",) if monitor else ("microsoft.cdn/profiles",),
         )
         boundary = scope_id(scope) if scope else None
         if (
@@ -287,7 +349,9 @@ def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str 
             and name
             and "/" not in name
         ):
-            return canonical_id(parent + "/securityPolicies/" + name)
+            return canonical_id(
+                parent + ("/connectionMonitors/" if monitor else "/securityPolicies/") + name
+            )
         return None
     if kind == "azurerm_role_assignment":
         from .network_evidence import reference
@@ -343,6 +407,7 @@ def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str 
         "azurerm_network_security_rule": "network_security_group_name",
         "azurerm_network_watcher_flow_log": "network_watcher_name",
         "azurerm_virtual_network_peering": "virtual_network_name",
+        "azurerm_private_dns_zone_virtual_network_link": "private_dns_zone_name",
     }.get(kind)
     if parent_key:
         parent = values.get(parent_key)

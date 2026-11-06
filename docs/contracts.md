@@ -227,6 +227,16 @@ existing records. Answer/field lengths and group sizes are bounded. The shared
 narrative becomes attributable rationale, not machine evidence or a Verified tier.
 Original single-control workflows and historical replay remain unchanged.
 
+Bank `2026-11-06.9` adds eight distinct ExpressRoute monitoring/routing/failover
+decisions. D06.17 instead has the guarded 1.1 `gateway-route-propagation`
+operation: exact own GUID, gateway resource type, `subnetReferences` property and
+`expected=true`, with known GatewaySubnet/table joins and explicit scoped flags.
+It cannot be retargeted to arbitrary route tables or overridden by human review.
+Unknown/failed technical results allow independent exception disposition only.
+Typed monitor/alert summaries and lower-case 64-hex location fingerprints are
+minimized original-time facts; fingerprints are not verified sites or anonymity.
+Replay retains exact packaged catalog/source bindings and all historical meanings.
+
 ### Allowlisted query evidence
 
 The separate packaged `query-allowlist` 1.0 accounts for all 49 frozen audited
@@ -396,8 +406,8 @@ normalized resource evidence is available. Optional content-bound
 and minimum-TLS scalar vocabulary, plus reviewed network SKU, canonical
 relationship, IPv4 prefix/address and classic DNAT source facts.
 
-Cohort08's unaccepted preparation adds four typed vocabulary entries without
-changing any packaged catalog or bank version: `tagCount` (explicit 0-50 pairs,
+Cohort08 successor `2026-11-06.10` adds four typed vocabulary entries:
+`tagCount` (explicit 0-50 pairs,
 no keys/values), `dashboardSummary` (0-20 lenses and at most 100 total parts,
 exact metrics-chart/markdown/other counts), `capacityReservationGroupId` (a
 canonical Compute capacity-reservation-group ID) and `managementParentId`
@@ -414,6 +424,9 @@ explicitly unusable. Review context preserves collection time and separately
 reports completeness, never an identity designation. Replay retains only valid
 canonical edges and refuses malformed/ambiguous/over-bound saved hierarchy.
 Authored in-memory preparation catalogs remain refused by packaged replay.
+The accepted bank adds `resource-cost-governance` with seven independent blank
+outcomes. New Signals require explicit scoped identities or positive saved MG
+parent edges; bare scope metadata, names and unbound resources remain unusable.
 
 Successor `2026-11-05.3` permits 1-8 reviewed paths, including top-level configured
 firewall zones, explicit VNet DDoS flag/plan ID, subnet NSG references, private

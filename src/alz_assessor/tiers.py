@@ -23,6 +23,8 @@ def has_fact(value: Any) -> bool:
 
 
 def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
+    from .governance_evidence import GUIDS as GOVERNANCE_GUIDS
+    from .governance_evidence import resource_in_scope
     from .network_evidence import REVIEW_PATHS, review_fact
     from .sources import boolean, enumeration, property_at
 
@@ -31,6 +33,8 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
         return False
     for resource in bundle["resources"]:
         if resource["state"] != "known" or resource["resource_type"].lower() not in kinds:
+            continue
+        if control["upstream_guid"] in GOVERNANCE_GUIDS and not resource_in_scope(resource, bundle):
             continue
         for path in control.get("review_fact_paths", []):
             properties = resource["properties"]

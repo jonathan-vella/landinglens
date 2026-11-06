@@ -7,7 +7,7 @@ from ipaddress import ip_address, ip_network
 from math import isfinite
 from typing import Any
 
-from .contracts import control_digest, digest, document, now, timestamp, validate
+from .contracts import control_digest, digest, document, now, scope_id, timestamp, validate
 from .network_evidence import address_list, bounded_count, nat_collections
 from .policy_evidence import policy_signals
 from .query_signals import query_signals
@@ -66,6 +66,12 @@ def local_subchecks(properties: dict[str, Any]) -> dict[str, Any]:
             if known
             else unknown("explicit_ipv4_prefixes_required")
         )
+        if "dnsResolverDelegation" in properties:
+            result["supplied_dns_resolver_ipv4_prefixes_within_24_28"] = (
+                all(24 <= ip_network(value).prefixlen <= 28 for value in prefixes)
+                if known
+                else unknown("explicit_ipv4_prefixes_required")
+            )
     if "natRuleCollections" in properties:
         collections = nat_collections(properties["natRuleCollections"])
         restrictions = []
@@ -183,6 +189,10 @@ def assess(
         else set()
     )
     resources = list(bundle["resources"])
+    by_id: dict[str, list[dict[str, Any]]] = {}
+    for resource in resources:
+        if resource.get("arm_id"):
+            by_id.setdefault(resource["arm_id"].lower(), []).append(resource)
     if any(
         c.get("rule") and c["rule"]["resource_type"].lower() == BLOB_SERVICE_TYPE.lower()
         for c in catalog["controls"]
@@ -212,6 +222,7 @@ def assess(
             )
             continue
         rule = control.get("rule")
+        gateway_routes = bool(rule and rule.get("operation") == "gateway-route-propagation")
         prepared = evidence_tiers and not stale and prepared_signal(control, bundle)
         review_signal = (
             evidence_tiers
@@ -237,9 +248,15 @@ def assess(
                 outcome, reason = "not_applicable", "landing_zone_not_applicable"
             elif rule:
                 if resource is None:
-                    outcome = "not_applicable" if bundle["inventory_complete"] else "unknown"
+                    outcome = (
+                        "not_applicable"
+                        if bundle["inventory_complete"] and not gateway_routes
+                        else "unknown"
+                    )
                     reason = (
-                        "no_applicable_resources"
+                        "gateway_subnet_population_not_established"
+                        if gateway_routes
+                        else "no_applicable_resources"
                         if outcome == "not_applicable"
                         else "incomplete_graph"
                     )
@@ -256,6 +273,52 @@ def assess(
                     outcome, reason = "unknown", "blob_service_identity_not_default"
                 else:
                     fact = property_at(resource["properties"], rule["property"])
+                    joined_links = []
+                    if gateway_routes:
+                        from .routing_evidence import gateway_route_subchecks
+
+                        component_facts = gateway_route_subchecks(resource, by_id)
+                        raw_rows = component_facts.get("gateway_subnet_routes")
+                        rows = raw_rows if isinstance(raw_rows, list) else []
+                        boundary = scope_id(bundle["scope"]) if bundle.get("scope") else None
+                        identities = [resource.get("arm_id")]
+                        if isinstance(rows, list):
+                            identities.extend(
+                                row.get(key)
+                                for row in rows
+                                for key in ("subnet_id", "route_table_id")
+                            )
+                        complete = (
+                            isinstance(rows, list)
+                            and bool(rows)
+                            and component_facts.get("truncated") is False
+                            and boundary is not None
+                            and property_at(resource["properties"], "gatewayType")
+                            in ("Vpn", "ExpressRoute")
+                            and all(
+                                isinstance(identity, str)
+                                and identity.lower().startswith(boundary + "/")
+                                for identity in identities
+                            )
+                            and all(
+                                type(row.get("route_propagation_enabled")) is bool for row in rows
+                            )
+                        )
+                        fact = (
+                            all(row["route_propagation_enabled"] for row in rows)
+                            if complete
+                            else None
+                        )
+                        if complete:
+                            joined_links = [resource["source_location"] + "#subnetReferences"]
+                            for row in rows:
+                                joined_links.extend(
+                                    by_id[row[key]][0]["source_location"] + "#" + path
+                                    for key, path in (
+                                        ("subnet_id", "routeTable.id"),
+                                        ("route_table_id", "disableBgpRoutePropagation"),
+                                    )
+                                )
                     vault = rule.get("operation") == "vault-deletion-protection"
                     if vault:
                         purge = property_at(resource["properties"], "enablePurgeProtection")
@@ -280,6 +343,8 @@ def assess(
                             else "complete_observed_rule_count_required",
                             None,
                         )
+                    elif gateway_routes and fact is None:
+                        outcome, reason = "unknown", "gateway_route_propagation_join_unresolved"
                     elif (
                         capacity
                         and type(bounded_count(fact, 1000 if route_capacity else 2000)) is int
@@ -330,13 +395,21 @@ def assess(
                     ):
                         outcome = "pass" if fact == rule["expected"] else "fail"
                         reason = (
-                            "explicit_property_matches"
+                            "joined_gateway_route_propagation_enabled"
+                            if gateway_routes and outcome == "pass"
+                            else "joined_gateway_route_propagation_disabled"
+                            if gateway_routes
+                            else "explicit_property_matches"
                             if outcome == "pass"
                             else "explicit_property_differs"
                         )
                     else:
                         outcome, reason, fact = "unknown", "property_unresolved_or_wrong_type", None
-                    links = [resource["source_location"] + "#" + rule["property"]]
+                    links = (
+                        joined_links
+                        if gateway_routes
+                        else [resource["source_location"] + "#" + rule["property"]]
+                    )
                     if enum:
                         links.append(resource["source_location"] + "#sku.tier")
                     if vault:

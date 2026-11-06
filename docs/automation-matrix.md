@@ -33,11 +33,85 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.7` retains all 255 entries: 10 automated, 202 assisted
-and 43 manual. Crosswalk `2026-11-06.7` rebinds the unchanged 51-control,
+Current successor `2026-11-06.10` retains all 255 entries: 11 automated, 201 assisted
+and 43 manual. Crosswalk `2026-11-06.10` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-Exact predecessor `.6.6` is frozen; source-matrix acceptance alone is not delivery.
+Exact predecessor `.6.9` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
+
+### Cohort 08: resource ownership, quotas and cost governance
+
+The [seven-GUID matrix](../references/recommendation-batches/batch-08.json)
+and [24 preserved source captures](../references/recommendation-batches/batch-08-sources.json)
+precede `.6.10`. C02.08/.09/.12 remain manual: owner accountability and
+access/budget/policy/remediation reviews, quota awareness/provisioning effects,
+and an operating cost-management plan require attributable human evidence.
+The registered `resource-cost-governance` interview leaves all seven outcomes
+blank and validates independent scope/content/expiry-bound decisions.
+
+| Recommendation | Literal preparation and independent decision boundary |
+|---|---|
+| C02.10 | Typed capacity-group reference from a scoped VM; Reserved Instance matching-usage discounts do not guarantee capacity. Actual reservation acceptance, quota, SKU/region/zone/SLA conditions and financial suitability need separate review. |
+| C02.11 | Bounded lens/tile and exact reviewed metrics-chart/markdown/other counts, not CPU/guest-memory/free-disk coverage, telemetry health or operational use. ARM arrays and pinned Terraform objects are handled separately; opaque content is withheld. |
+| C02.13 | Explicit scoped MG parent and unique rooted saved MG/subscription edges; dedicated identity subscription/MG designation, actual hosting/isolation and regional AD DS sites/subnets/locator use are separately evidenced, never inferred from names. |
+| C02.14 | Validated explicit tag-pair counts only, never keys/values. Approved taxonomy, effective billing allocation and agreement/scope/access/inheritance/conflict/current-month conditions are separate; resource tags do not automatically inherit. |
+
+Machine preparation requires an explicit in-scope ARM identity or a positive
+saved MG parent binding. Bare names, `metadata.scopes`, unbound/foreign/denied/
+malformed/ambiguous/stale/over-bound evidence cannot supply a Signal or pass.
+Earlier predicates, all 255 GUIDs, fixed251/original hashes, `.6.9` bytes and
+every older own-GUID receipt are unchanged. No new cloud/directory/billing/quota
+read, financial action, arbitrary threshold, taxonomy or human approval is added.
+
+### Cohort 15: ExpressRoute monitoring, routing and failover
+
+The [nine-GUID matrix](../references/recommendation-batches/batch-15.json) and
+[39 source captures](../references/recommendation-batches/batch-15-sources.json)
+precede `.6.9`. All 30 preparation captures retain their original rows/times.
+D06.17 alone becomes an automated literal configuration predicate: each known
+scoped VPN/ExpressRoute gateway must explicitly join to known GatewaySubnet and
+unique known route tables with `disableBgpRoutePropagation=false`. True fails;
+missing/default/unbound/ambiguous/out-of-scope/truncated joins, absent populations
+and stale/denied inputs never pass. This is not effective routes or availability.
+
+Eight source-specific decisions stay blank. Connection Monitor group/reference
+configuration, static alert scope/metric/action context and exact gateway/circuit/
+Direct-port joins are minimized partial evidence, not operational outcomes.
+Location fingerprints compare explicit labels only, not canonical sites,
+anonymity or physical independence. Linked MMA instructions conflict with current
+Arc/AMA guidance; BFD retains both peering kinds and IPv4/IPv6 creation/reset dates.
+No arbitrary latency/load/failover threshold, monitor execution, edge BFD test or
+live collection expansion occurs. Earlier predicates, source meanings and receipts
+remain frozen; implementation/receipt delivery is separately checked.
+
+### Cohort 12: DR addressing, DNS and Bastion
+
+The [ten-GUID matrix](../references/recommendation-batches/batch-12.json) and
+[43 source captures](../references/recommendation-batches/batch-12-sources.json)
+precede `.6.8`. Eight useful assisted workflows and manual D03.08/D03.10 retain
+their exact meanings. All earlier catalog/crosswalk bytes and own receipts remain
+unchanged. Ten scope/content/expiry-bound decisions stay blank.
+
+| Recommendation | Bounded preparation and necessary decision |
+|---|---|
+| D03.04 | Reused supplied IPv4/RFC1918/overlap summaries; complete production/DR populations and approved whole-subnet IP-retention exceptions need evidence |
+| D03.05 | Standard/tier/allocation/version/region and reused zones; empty zones can now be redundant, but region/API/service and backend resilience need review |
+| D03.06 | Zone identity, typed VNet links, completion/policy and minimized DNS-server count; delegation and actual default/custom resolution remain unverified |
+| D03.07 | Resolver/VNet/endpoint/ruleset links, allocation, rule/target shape and delegated-subnet range subchecks; authority, regional limits, exclusivity and loop-free both-direction resolution need evidence |
+| D03.08 | Manual workload/vendor DNS suitability, not workload inference from names or settings |
+| D03.09 | Explicit VM-primary-NIC registration flag; one registration zone per VNet and independent non-VM/PTR lifecycles remain conditional |
+| D03.10 | Manual service-specific multi-region/failover DNS plan, including ownership, updates, TTL/cache and rollback |
+| D03.11 | Actual UDP SOURCE port 65330 advisory and specific Windows/container exclusion question; no guest probe, OS change or destination-port substitute |
+| D05.01 | Bastion SKU/features/scaling and typed subnet/IP/Developer VNet links; approved access, bypass, NSG/route/DNS/audit evidence remains separate |
+| D05.02 | Actual host/subnet binding and reused /26-capacity subcheck; Developer, private-only, pre-2021-11-02 /27 and exclusive occupancy need review |
+
+Resolver endpoint subnets require IPv4 /24 through /28 and exclusive delegation;
+ruleset links are regional, target order/suffix matching and inbound loops matter,
+and Azure-provided DNS cannot be a forwarding target. Missing port is not default
+53. New Bastion dual-stack preview wording differs from the IPv4-only FAQ/older
+schemas. No DNS record/domain/target IP, ACL address or recording secret is retained.
+Configured links, zones, registration or Bastion never establish effective
+resolution, security, resilience or workload suitability.
 
 ### Cohort 14: ExpressRoute cost, FastPath and gateway resilience
 
