@@ -3343,6 +3343,287 @@ SOURCES_16_VWAN = [
 ]
 
 
+SOURCES_06 = [
+    (
+        "connect-staging-linked",
+        "https://learn.microsoft.com/azure/active-directory/hybrid/"
+        "how-to-connect-sync-staging-server",
+        ["Active-Passive", "password writeback", "pending exports", "catch-up"],
+        "Legacy link redirects to Connect Sync operations. Staging imports/synchronizes but "
+        "does not normally export or run password sync/writeback; switching is an explicit "
+        "active-passive procedure, never automatic active-active failover. Keep configuration "
+        "aligned, verify pending exports/deletion protection and isolate the old active "
+        "server before promotion. Password catch-up can take hours; do not restart during "
+        "catch-up. This is not Cloud Sync equivalence or evidence of tested recovery.",
+    ),
+    (
+        "synced-role-accounts-linked",
+        "https://learn.microsoft.com/azure/active-directory/roles/best-practices",
+        ["cloud native accounts", "on-premises synced accounts", "least privilege"],
+        "Current redirected Entra guidance avoids synced accounts for directory roles "
+        "because on-premises compromise can reach cloud authority. Any checklist exception "
+        "requires separate justified, scoped, time-bound human evidence, not Azure role "
+        "principalType, VM naming, managed identity or a fabricated synchronization flag.",
+    ),
+    (
+        "app-proxy-current",
+        LEARN + "entra/identity/app-proxy/overview-what-is-app-proxy",
+        ["private network connector", "outbound", "internal users"],
+        "The original application-proxy URL now redirects to a 404. Current overview "
+        "describes Entra's cloud service and private network connectors for remote web "
+        "application access, not an ARM proxy resource or general internal-user VPN. "
+        "Central platform ownership, application onboarding and actual SSO remain decisions.",
+    ),
+    (
+        "app-proxy-ha",
+        LEARN + "entra/identity/app-proxy/application-proxy-high-availability-load-balancing",
+        ["at least two connectors", "Three connectors", "different outbound connections"],
+        "At least two connectors per group, preferably three, separate outbound failure "
+        "domains and automatic updates are current HA guidance. Backend session persistence "
+        "and connector/service operation need separate evidence. VM counts/names do not "
+        "establish connector groups, configuration, platform ownership or availability.",
+    ),
+    (
+        "identity-network-rbac-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/"
+        "design-area/identity-access-landing-zones",
+        ["virtual network peered", "data plane", "regularly validate resource entitlements"],
+        "Current reference architecture optionally deploys identity services in a dedicated "
+        "subscription/VNet peered to the platform hub. Entra-native applications may need "
+        "none. Secure identity boundaries and workload access separately. Data-plane RBAC "
+        "is service-specific, not generic Owner authority. PIM review operation differs "
+        "from configured assignments and the historical section anchors have changed.",
+    ),
+    (
+        "pim-review-linked",
+        "https://learn.microsoft.com/azure/active-directory/privileged-identity-management/"
+        "pim-create-roles-and-resource-roles-review",
+        ["snapshot", "eligible assignments", "Applied", "group"],
+        "Current redirected PIM review guidance distinguishes Entra PRA from resource "
+        "Owner/UAA prerequisites, licensing and active/eligible/all selection. Each instance "
+        "captures a start-time snapshot; recurring configuration is not completion or "
+        "applied revocation. Entra role-assignable groups are reviewed as groups; Azure "
+        "group-member denial does not remove group membership and nested-group limits "
+        "need review. Service-principal reviews have additional Workload ID Premium terms.",
+    ),
+    (
+        "enrollment-owners-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/"
+        "design-area/azure-billing-enterprise-agreement",
+        ["minimize the number of account owners", "February 15, 2024", "account owner"],
+        "EA account owners can own subscriptions created under their account; other EA "
+        "roles do not by themselves confer subscription/directory authority. Minimize "
+        "actual enrollment account-owner authority, not a subscription Owner count. "
+        "The EA portal retired in 2024; agreement applicability and exceptions need review.",
+    ),
+    (
+        "ea-role-qualification",
+        LEARN + "azure/cost-management-billing/manage/understand-ea-roles",
+        ["November 16, 2026", "one account owner per account", "individual user accounts"],
+        "EA billing roles differ from Azure RBAC and support individual users, not DG/SG "
+        "assignment. One owner per account is a service constraint, not a universal "
+        "enrollment-wide least-privilege threshold. Starting 2026-11-16 new billing role "
+        "assignments require WSA; existing MSA assignments are not yet impacted.",
+    ),
+    (
+        "sovereign-location-linked",
+        LEARN + "industry/financial-services/architecture/location-based-access-content",
+        ["GPS", "authentication context", "exports or downloads"],
+        "This FSI example uses application-integrated authentication context and named "
+        "GPS locations, with PIM access a possible use case. It does not define an "
+        "organization's eligible administrator countries, nationality, legal sovereignty "
+        "or blanket coverage for exported data. Those remain independently manual.",
+    ),
+    (
+        "location-qualification",
+        LEARN + "entra/identity/conditional-access/location-condition",
+        ["Network", "unknown countries", "public IP address", "GPS"],
+        "Location condition is now Network. Public-IP mapping or consented Authenticator "
+        "GPS are access signals, not nationality or complete sovereignty assurance. "
+        "Unknown locations, policy scope/exclusions and application integration need "
+        "independent review. No employee location or sign-in data is collected.",
+    ),
+    (
+        "vault-data-plane",
+        LEARN + "azure/key-vault/general/rbac-guide",
+        ["2026-02-01", "control plane", "data plane", "invalidates all access policies"],
+        "Vault control/data planes are independent; Key Vault Contributor does not grant "
+        "secret/key access. New API2026-02-01 defaults do not fill missing pinned2024-11-01 "
+        "evidence. Explicit RBAC flag prepares only the configured vault model. HSM differs; "
+        "changing model can cause outages without equivalent roles. No migration occurs.",
+    ),
+    (
+        "storage-data-plane",
+        LEARN + "azure/storage/blobs/authorize-access-azure-active-directory",
+        ["data access", "Owner", "Contributor", "Reader"],
+        "Blob data roles and token authorization differ from control-plane Owner/"
+        "Contributor/Reader roles. Service support, effective permissions and actual "
+        "authentication must be independently reviewed; account presence is insufficient.",
+    ),
+    (
+        "sql-data-plane",
+        LEARN + "azure/azure-sql/database/authentication-aad-overview",
+        ["Create SQL principals", "Microsoft Entra administrator", "database"],
+        "Azure SQL Entra authentication requires service-specific administrator and SQL "
+        "principal/permission configuration. Do not equate generic Azure resource Owner "
+        "or a Key Vault RBAC flag to SQL database authorization or every database service.",
+    ),
+    *[source for source in SOURCES_05 if source[0] == "identity-team-boundaries"],
+    *[source for source in SOURCES if source[0] in {"vault-arm", "terraform-vault"}],
+    *[source for source in SOURCES_11 if source[0] in {"peering-arm", "terraform-peering"}],
+    *[source for source in SOURCES_02 if source[0] in {"learn-terms", "provider-license"}],
+]
+
+
+SOURCES_29 = [
+    (
+        "platform-automation-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/"
+        "design-area/platform-automation-devops",
+        ["lifecycle", "DevOps teams topologies", "Test-driven development"],
+        "Platform automation spans provisioning, management, evolution and operations. "
+        "An accelerator or repository is not evidence that an assessed cross-functional "
+        "team owns and operates that lifecycle.",
+    ),
+    (
+        "team-topology-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/"
+        "devops-teams-topologies#design-recommendations",
+        ["cross-functional", "business units", "Enabling teams", "policy-driven"],
+        "Current topology separates platform lifecycle, workload lifecycle and time-bound "
+        "enabling support. IT/security/compliance/business representation, explicit functions "
+        "and policy-driven workload autonomy require operating evidence. The old "
+        "design-recommendations fragment no longer identifies the current headings.",
+    ),
+    (
+        "iac-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/"
+        "infrastructure-as-code",
+        ["implementation options", "Bootstrap", "continuous"],
+        "The original IaC link redirects to platform implementation options. Accelerator "
+        "planning/prerequisite/bootstrap/run capabilities do not prove actual CI/CD use, "
+        "deployment quality or application-team adoption.",
+    ),
+    (
+        "lifecycle-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/"
+        "development-strategy-development-lifecycle#automated-builds",
+        ["unit tests", "Key Vault", "predeployment", "Rollback"],
+        "Lifecycle guidance distinguishes IaC/application build tests, limited service "
+        "connections, secret variables, production-like delivery, change previews and rollback. "
+        "A build file, green result or compiler cannot establish full operating discipline.",
+    ),
+    (
+        "landing-zone-tdd",
+        LEARN + "azure/cloud-adoption-framework/ready/considerations/"
+        "development-strategy-test-driven-development",
+        ["definition of done", "red/green", "not to create a suite of tests"],
+        "TDD ties tests to agreed acceptance criteria and repeats red/green/refactoring and "
+        "controlled test-environment validation. Test quantity, syntax checks and compiler "
+        "success are not adequacy, application coverage or an agreed definition of done.",
+    ),
+    (
+        "rbac-best-practices",
+        LEARN + "azure/role-based-access-control/best-practices",
+        ["least privilege", "conditions", "groups, not users", "wildcard"],
+        "Use least privilege at narrow scopes, review privileged/conditional access and "
+        "groups, and avoid broad wildcard custom permissions. Definitions/assignments alone "
+        "do not establish effective workload autonomy or actual operating boundaries.",
+    ),
+    (
+        "rbac-custom-roles",
+        LEARN + "azure/role-based-access-control/custom-roles",
+        ["built-in roles", "specific needs", "Test the custom role"],
+        "Custom roles are conditional on built-in roles not meeting specific needs, not a "
+        "universal requirement from frozen H01.03 shorthand. Test justified custom permissions "
+        "and actual effective scope without collecting directory or raw role-action records.",
+    ),
+    (
+        "secret-pipeline",
+        LEARN + "azure/devops/pipelines/release/key-vault-in-own-project?view=azure-devops",
+        ["service connection", "Managed Identity", "secrets"],
+        "Key Vault pipeline integration requires authentication, access and connectivity. "
+        "A sample tutorial or vault does not prove assessed code avoids literals or that "
+        "runtime variables/logs/artifacts remain safe. No tutorial actions are executed.",
+    ),
+    (
+        "secret-template-reference",
+        LEARN + "azure/azure-resource-manager/templates/key-vault-parameter",
+        ["enabledForTemplateDeployment", "deploy/action", "secretVersion"],
+        "ARM parameter references retrieve a secret at deployment, including optional version "
+        "selection and separate deployment access. Secure parameter type, reference or "
+        "vault existence proves neither complete secret hygiene nor VM certificate behavior. "
+        "No secret values, identifiers or deployment permissions are collected.",
+    ),
+    (
+        "vending-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/"
+        "design-area/subscription-vending",
+        ["CCoE", "IPAM", "commercial agreement", "aren't hard limits", "MPA"],
+        "CCoE defines business logic/approval; platform teams create/configure/govern and hand "
+        "off; workloads update budgets and operate. Intake, IPAM/networking, hierarchy, quotas, "
+        "identities, offer eligibility and failure handling are separate. Budgets are not hard "
+        "limits; DevTest is not available for MPA. An alias cannot prove this whole process.",
+    ),
+    (
+        "vending-implementation",
+        LEARN + "azure/architecture/landing-zones/subscription-vending",
+        ["trackable request", "dedicated state file", "OpenID Connect", "Post-deployment"],
+        "The request/source-control/deployment example is one approach, not a mandatory "
+        "Gitflow policy. Validate approved input, one request per subscription, isolated "
+        "Terraform state, least-privileged identity and result reporting/handoff. "
+        "Creation/configuration ends automation, not workload operations.",
+    ),
+    (
+        "vending-agreements",
+        LEARN + "azure/cost-management-billing/manage/programmatically-create-subscription",
+        [
+            "Enterprise Agreement",
+            "Microsoft Customer Agreement",
+            "Microsoft Partner Agreement",
+            "can't create support plans",
+        ],
+        "Programmatic creation covers EA/MCA/MPA with agreement/API-specific requirements. "
+        "It does not create support plans or authorize a financial, subscription or access action.",
+    ),
+    (
+        "vending-ea",
+        LEARN + "azure/cost-management-billing/manage/"
+        "programmatically-create-subscription-enterprise-agreement",
+        ["Enterprise Administrator", "Enrollment Account", "2019-10-01-preview"],
+        "EA creation requires Enterprise Administrator or Enrollment Account Owner authority; "
+        "service principal delegation and API-version prerequisites differ. Subscription "
+        "resource RBAC alone is not billing-plane creation authority.",
+    ),
+    (
+        "vending-mca",
+        LEARN + "azure/cost-management-billing/manage/"
+        "programmatically-create-subscription-microsoft-customer-agreement",
+        ["invoice section", "billing profile", "Azure subscription creator"],
+        "MCA requires qualifying invoice-section/billing-profile/billing-account authority; "
+        "legacy/latest API permissions can differ and cross-tenant creation has separate "
+        "guidance. No actual agreement, billing scope or authority is inferred.",
+    ),
+    (
+        "vending-mpa",
+        LEARN + "azure/cost-management-billing/manage/"
+        "programmatically-create-subscription-microsoft-partner-agreement",
+        ["Admin Agent", "cloud solution provider", "REST APIs"],
+        "MPA prerequisites name CSP Admin Agent. The text says REST examples and currently "
+        "unsupported CLI/PowerShell although later tabs refer to CLI; this inconsistency "
+        "does not establish an accepted executable client or actual customer eligibility.",
+    ),
+    (
+        "learn-terms",
+        LEARN + "legal/termsofuse",
+        ["documentation", "explicit license terms", "third party"],
+        "Retain attributed URLs, retrieved revisions/hashes and independently written factual "
+        "findings only. Do not redistribute article text, comments, images or sample scripts; "
+        "linked software and third-party material have separate terms.",
+    ),
+]
+
+
 SOURCES_27 = [
     (
         "policy-overview",
@@ -3740,6 +4021,7 @@ def main() -> None:
             "02",
             "04",
             "05",
+            "06",
             "08",
             "10",
             "11",
@@ -3755,6 +4037,7 @@ def main() -> None:
             "22",
             "27",
             "23",
+            "29",
             "30",
         ],
         default="01",
@@ -3763,10 +4046,10 @@ def main() -> None:
     if args.vwan_supplement and (args.batch != "16" or not args.preparation_only):
         raise ValueError("The vWAN supplement is cohort16 preparation only")
     if (
-        args.batch in {"02", "05", "10", "12", "16", "20", "23", "27", "30"}
+        args.batch in {"02", "05", "06", "10", "12", "16", "20", "23", "27", "29", "30"}
     ) != args.preparation_only:
         raise ValueError(
-            "Cohorts 02/05/10/12/16/20/23/27/30 source capture require --preparation-only; "
+            "Cohorts 02/05/06/10/12/16/20/23/27/29/30 source capture require --preparation-only; "
             "no activation"
         )
     prefix = "preparation" if args.preparation_only else "batch"
@@ -3777,7 +4060,7 @@ def main() -> None:
         / "recommendation-batches"
         / f"{prefix}-{args.batch}{suffix}-sources.json"
     )
-    if args.batch in {"02", "05"}:
+    if args.batch in {"02", "05", "06"}:
         target = ROOT / "references" / "preparation" / f"batch-{args.batch}-sources.json"
     if target.exists() and not args.append_new_sources:
         raise ValueError("Frozen source review exists; do not silently recollect or redate it")
@@ -3788,6 +4071,7 @@ def main() -> None:
         "02": SOURCES_02,
         "04": SOURCES_04,
         "05": SOURCES_05,
+        "06": SOURCES_06,
         "08": SOURCES_08,
         "10": SOURCES_10,
         "11": SOURCES_11,
@@ -3803,6 +4087,7 @@ def main() -> None:
         "22": SOURCES_22,
         "27": SOURCES_27,
         "23": SOURCES_23,
+        "29": SOURCES_29,
         "30": SOURCES_30,
     }[args.batch]
     for identity, url, markers, finding in (

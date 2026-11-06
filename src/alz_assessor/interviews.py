@@ -6,8 +6,84 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.17"
+BANK_VERSION = "2026-11-06.19"
 BANK = {
+    "hybrid-identity-entitlements-sovereignty": {
+        "question": "Decide all eight GUIDs independently using attributable redacted evidence "
+        "and the control-specific requirements. For Connect Sync, distinguish maintained "
+        "active/passive staging, pending-export checks and actual recovery, isolate the former "
+        "active server and review password catch-up; do not assume Cloud Sync equivalence. "
+        "Establish Entra role identity provenance and independently justify every required "
+        "synced-account exception, not Azure RBAC or VM naming. Substantiate central Application "
+        "Proxy ownership, workload handoffs, connector groups, independent outbound failure "
+        "domains, updates and actual SSO/availability; the old link is unavailable and current "
+        "reviewed replacements apply. Identify actual identity services and approved VNet/hub "
+        "boundaries, then substantiate both-direction effective segmentation and authentication, "
+        "not peering flags. Review resource-specific vault/storage/SQL data-plane permissions "
+        "and actual use independently of control-plane Owner and newer API defaults. Establish "
+        "PIM populations, licensing, active/eligible and group coverage, cadence and actual "
+        "snapshot-bound completed/applied reviews, not recurrence configuration. Establish "
+        "actual EA enrollment account owners and least privilege, not subscription Owner "
+        "counts; distinguish one owner per account from an invented enrollment threshold and "
+        "the upcoming WSA rule from existing MSA assignments. Separately establish organization-"
+        "approved sovereign administrator eligibility, service/task/country boundaries, real "
+        "enforcement and support/emergency exceptions; IP/GPS signals and the FSI example are "
+        "not nationality or complete sovereignty assurance. Retain no principal/contact/secret/"
+        "query/billing/employee-location payloads. Leave all eight outcomes independently blank "
+        "until explicit scope/content/time/expiry-bound confirmation. B05.01 remains manual; "
+        "Signals, exceptions and humanConfirmed never manufacture Verified.",
+        "controls": [
+            "ALZ-cd163e39-84a5-4b39-97b7-6973abd70d94",
+            "ALZ-35037e68-9349-4c15-b371-228514f4cdff",
+            "ALZ-d5d1e4e6-1465-48d3-958f-d77249b82111",
+            "ALZ-9cf5418b-1520-4b7b-add7-88eb28f833e8",
+            "ALZ-d4d1ad54-1abc-4919-b267-3f342d3b49e4",
+            "ALZ-d505ebcb-79b1-4274-9c0d-a27c8bea489c",
+            "ALZ-0ce74f19-9abb-47e4-ae95-6b057a1d2be9",
+            "ALZ-1770a2ac-c194-4e5c-ade4-82939d38a510",
+        ],
+    },
+    "platform-team-delivery-vending": {
+        "question": "Reconcile actual cross-functional IT/security/compliance/business "
+        "representation "
+        "and ownership across platform design, build, maintenance and operations, then separately "
+        "evidence assigned platform functions and interfaces rather than job titles or directory "
+        "membership. Establish workload end-to-end application ownership, real self-service and "
+        "escalation boundaries, policy guardrails and effective least-privileged RBAC including "
+        "inherited/conditional permissions; adequate built-in roles are valid, custom roles need "
+        "a specific justified gap and testing. Do not require centralized workload pipelines. "
+        "Trace actual scoped IaC changes through CI triggers, builds, tests, previews, governed "
+        "production-like deployment, release history, rollback and ongoing drift/failure response. "
+        "Separately bind IaC AND application unit tests to agreed acceptance criteria/definition "
+        "of done, relevant source revisions, failure handling and uncovered populations; "
+        "syntax/compilation and test counts are not adequacy or a coverage threshold. Substantiate "
+        "non-hardcoded secret handling via redacted references to approved secret variables/"
+        "references, restricted deployment access, identity/network prerequisites, version/"
+        "rotation/revocation and safe output handling. A vault, secure parameter, saved scan or "
+        "no detected data proves no complete hygiene; never scan or fetch secrets. For vending, "
+        "distinguish approved CCoE business logic and trackable validated intake from platform "
+        "request/deployment automation, agreement/API-specific EA/MCA/MPA creation authority, "
+        "configuration of existing subscriptions, offer/DevTest eligibility, IPAM/nonoverlap/"
+        "networking, management-group policy placement, quotas/failure handling, least-privileged "
+        "identities/RBAC, budgets/tags, reporting and actual workload handoff/operations. Budgets "
+        "are not hard caps; DevTest is unavailable for MPA; the example Gitflow is not universal; "
+        "Terraform per-subscription state and managed identity/OIDC are design considerations, "
+        "not new execution authority. No alias, pipeline or configuration proves fulfilled vending "
+        "governance. Use attributable redacted references only, not employee/team directory "
+        "records, private code/pipeline content, secret literals/URIs, credentials or sensitive "
+        "billing/request payloads. Supply seven separate outcomes, original-time scope/content "
+        "binding, attribution and validity; exceptions remain independent and a shared narrative "
+        "or humanConfirmed/Signal never manufactures Verified.",
+        "controls": [
+            "ALZ-e85f4226-bf06-4e35-8a8b-7aee4d2d633a",
+            "ALZ-634146bf-7085-4419-a7b5-f96d2726f6da",
+            "ALZ-a9e65070-c59e-4112-8bf6-c11364d4a2a5",
+            "ALZ-165eb5e9-b434-448a-9e24-178632186212",
+            "ALZ-0cadb8c7-8fa5-4fbf-8f39-d1fadb3b0460",
+            "ALZ-108d5099-a11d-4445-bd8b-e12a5e95412e",
+            "ALZ-a52e0c98-76b9-4a09-a1c9-6b2babf22ac4",
+        ],
+    },
     "policy-strategy-placement-delegation": {
         "question": "Supply eight separate decisions at the "
         "original evidence time. E01.01: "

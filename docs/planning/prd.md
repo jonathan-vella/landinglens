@@ -112,6 +112,40 @@ records remain traceable under explicit lifecycle semantics.
 
 ## Active increment: fixed recommendation expansion
 
+Cohort06/[#136](https://github.com/jonathan-vella/landinglens/issues/136)
+integrates eight fixed hybrid identity/data-access/review/enrollment/sovereignty
+workflows in reviewed successor `.19` after the explicit slot and actual27/29
+checked delivery. All20 preparation captures/times remain unchanged. Only bounded
+existing peering/two-VNet joins and explicit vault RBAC context provide Signals;
+directory/operational/ownership/eligible-country decisions stay independently
+blank and B05.01 stays manual. Exact `.18`, every non-own full control, all169
+older rows/twenty receipts and original four controls remain frozen.
+Counts stay12/200/43. Actual #143 passed exact-head eight-job/CodeQL/security/
+review and four seventeen-case compiler gates and merged normally. Guarded
+`deliveries.06` binds all eight GUIDs to actual head/merge/runs/663-test final
+wheel, recording177 delivered/74 pending on checked publication. Receipt
+publication and final-main CI still gate delivery and closure.
+See [integration boundaries](plan.md#cohort-06-accepted-integration-2026-11-06).
+
+Cohort29/[#133](https://github.com/jonathan-vella/landinglens/issues/133)
+integrates seven manual platform-team/function/autonomy/delivery/
+test/secret/vending workflows in the
+[accepted matrix](../../references/recommendation-batches/batch-29.json)
+after actual02/27 checked delivery and the explicit sole-slot grant.
+Source-specific blank decisions distinguish adequate built-in versus justified
+custom RBAC, actual IaC/application build quality, non-hardcoding evidence and
+agreement-qualified governed vending/handoff. A repository, compiler, passing
+test count, Key Vault or subscription alias proves none. Existing helpers are
+shared by the registered bank and packaged `.18` original-time replay; historical
+preparation/test-only bank injection remains separately pinned. Exact `.17`,
+every non-own control, all162 earlier rows/nineteen receipts and original four
+full objects remain unchanged. Counts stay12/200/43. Actual #140 passed exact-head
+eight-job/CodeQL/security/review and four sixteen-case compiler gates and merged
+normally. Guarded `deliveries.29` binds all seven GUIDs to actual head/merge/runs/
+635-test own wheel, recording169 delivered/82 pending on checked publication.
+Receipt publication and final-main CI still gate #133 closure. Acceptance or
+implementation alone is not delivery. See [integration boundaries](plan.md#cohort-29-accepted-integration-2026-11-06).
+
 Cohort02/[#127](https://github.com/jonathan-vella/landinglens/issues/127)
 integrates its eight immutable tenant/Lighthouse/support/cost/notification/
 hierarchy GUIDs from24 unchanged captures into reviewed successor `.16` after
