@@ -89,8 +89,11 @@ separate WAN/hub flags, route-label/intent, RIU and ASPath exceptions are explic
 No effective topology/filtering/monitoring, physical independence, anonymity,
 regional eligibility, suitability or free growth capacity is inferred.
 Exact `.6.11`, all113 earlier rows/thirteen receipts and original four controls
-remain unchanged. Dispositions are12 automated/200 assisted/43 manual;
-delivery stays113/138 until checked implementation and guarded own receipts.
+remain unchanged. Dispositions are12 automated/200 assisted/43 manual.
+Implementation #122 passed actual eight-job/CodeQL/security/review and four
+eleven-case compiler gates and merged normally. Guarded own-GUID receipts
+record122 delivered/129 pending on checked publication; receipt publication
+still gates #115 closure, not classification or implementation closure alone.
 See [integration evidence](plan.md#cohort-20-accepted-integration-2026-11-06).
 
 Reviewed successor `2026-11-06.11` integrates cohort30/#112 after its explicit

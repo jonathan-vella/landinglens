@@ -129,6 +129,45 @@ class VirtualWanBatchTests(unittest.TestCase):
         )
         self.assertTrue(all(r["status"] == "merged" for r in rows))
 
+    def test_actual_cohort20_receipt_binds_all_nine_immutable_guids(self):
+        ledger = json.loads((preparation.REFERENCE / "ledger.json").read_text("utf-8"))
+        receipt = ledger["deliveries"]["20"]
+        self.assertEqual(receipt["pr"], "https://github.com/jonathan-vella/landinglens/pull/122")
+        self.assertEqual(receipt["checked_head"], "e816aa6a2d68ff2aba45b01211f9989fef2ebb37")
+        self.assertEqual(receipt["merge_commit"], "c63dd9b8de4927b72558643551e0eee229b2074d")
+        self.assertEqual(receipt["merged_at"], "2026-11-06T15:12:55Z")
+        self.assertEqual(
+            receipt["checks"],
+            [
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42239817936",
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42239859771",
+            ],
+        )
+        self.assertEqual(
+            receipt["wheel_sha256"],
+            "8701d4f9e06619acd3dfb3e1489d9b56b7c78d74d698072b8fe3a0e7dd23be37",
+        )
+        self.assertEqual(
+            receipt["local_installed_suite"], {"tests": 489, "passed": 488, "skipped": 1}
+        )
+        self.assertEqual(len(receipt["compiler_integration_cases"]), 11)
+        self.assertEqual(
+            receipt["compiler_integration_cases"][-1],
+            "test_virtual_wan_preparation.VirtualWanPreparationTests."
+            "test_real_bicep_virtual_wan_scoped_configuration_without_restore",
+        )
+        own = [r for r in ledger["recommendations"] if r["batch"] == "20"]
+        self.assertEqual({r["guid"] for r in own}, set(GUIDS.values()))
+        self.assertEqual(len(own), 9)
+        for row in own:
+            self.assertEqual(row["status"], "merged")
+            self.assertEqual(row["pr"], receipt["pr"])
+            self.assertEqual(row["merge_commit"], receipt["merge_commit"])
+            self.assertIn(
+                "deliveries.20: all eight CI jobs and four compiler artifacts verified",
+                row["runtime_evidence"],
+            )
+
     def test_explicit_scoped_aspath_both_modes_and_other_reviewed_preferences(self):
         for mode in ("planned", "observed"):
             for value in ("ASPath", "ExpressRoute", "VpnGateway"):
