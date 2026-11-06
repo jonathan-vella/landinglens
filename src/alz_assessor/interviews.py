@@ -6,8 +6,69 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.8"
+BANK_VERSION = "2026-11-06.10"
 BANK = {
+    "resource-cost-governance": {
+        "question": "Describe the scoped process that communicates owner responsibilities and "
+        "demonstrates access, budget and policy reviews and remediation. Separately establish "
+        "subscription-owner/core-team quota awareness and provisioning impact: quota is not "
+        "available regional capacity. Reconcile financial suitability and matching-usage "
+        "Reserved Instance discounts separately from accepted on-demand capacity reservation, "
+        "VM/SKU/region/zone association and SLA conditions; discounts do not guarantee capacity. "
+        "Demonstrate working dashboards or other visualizations covering appropriate CPU, "
+        "guest-memory and free-disk capacity, targets and original-time telemetry; tile counts "
+        "and disk I/O are not coverage or health. Cite the approved operating cost plan, "
+        "accountability, forecast/budget, allocation, agreed reviews and corrective actions. "
+        "If server-based identity is applicable, explicitly designate the dedicated identity "
+        "subscription/MG and substantiate hosting/isolation and regional AD DS sites/subnets/"
+        "locator use or managed Domain Services design; names and parent edges prove no role. "
+        "Reconcile approved billing/cost taxonomy and attributable allocation with supported "
+        "service/agreement/scope/access and actual tag-inheritance/conflict/time conditions. "
+        "Resource tags do not automatically inherit; Cost Management inheritance changes "
+        "usage records, not resources or all history. Use redacted references only, never "
+        "personal owner/directory records, tag values, raw dashboard queries/content, "
+        "billing amounts, usage histories or credentials. Decide all seven canonical GUIDs "
+        "separately; configuration or a shared answer alone establishes none.",
+        "controls": [
+            "ALZ-49b82111-2df2-47ee-912e-7f983f630472",
+            "ALZ-2dd69c5b-5c26-422f-94b6-9bad33aad5e8",
+            "ALZ-c68e1d76-6673-413b-9f56-64b5e984a859",
+            "ALZ-c773e7d2-6162-43a7-95a9-17e1f348ef25",
+            "ALZ-ae28c84c-33b6-4b78-88b9-fe5c41049d40",
+            "ALZ-3a923c34-74d0-4001-aac6-a9e01e6a83de",
+            "ALZ-5de32c19-9248-4160-9d5d-1e4e614658d3",
+        ],
+    },
+    "expressroute-monitoring-routing-failover": {
+        "question": "Reconcile actual Insights availability/utilization for both links, peering "
+        "and gateway with maintenance interpretation and arriving alerts/output; configured "
+        "monitors are not health. Review supported Arc/AMA and Network Watcher agents rather "
+        "than the linked retired MMA instructions, complete source/destination/redundant-path "
+        "coverage and approved probe frequency/loss/latency requirements. Bind distinct "
+        "circuits and exact gateways to actual independent peering/provider/customer failure "
+        "domains; configured location-label fingerprints are neither canonical sites nor "
+        "physical independence. For single-circuit private peering, reconcile maintained "
+        "route-based non-Basic VPN suitability, Internet backup independence and both-direction "
+        "preference/failover evidence. Review dynamic edge convergence/load sharing or maintained "
+        "active-passive routing, NAT/stateful effects and maintenance draining. Bind both "
+        "physical links to distinct real customer devices; verify interface and BGP-linked BFD "
+        "on both customer/provider edges with private/Microsoft, IPv4/IPv6 creation/reset dates "
+        "and vendor echo behavior. GatewaySubnet propagation has a separate strictly joined "
+        "configuration predicate, not an availability/effective-route claim. Use attributable "
+        "redacted references, never endpoint addresses, router credentials, raw probes or "
+        "fabricated operational tests. Decide these eight human-evidence GUIDs separately; "
+        "one answer or cloud-side default creates no whole-recommendation outcome.",
+        "controls": [
+            "ALZ-b30e38c3-f298-412b-8363-cefe179b599d",
+            "ALZ-5bf68dc9-325e-4873-bf88-f8214ef2e5d2",
+            "ALZ-e0d5973c-d4cd-421b-8881-37f5e6c4cfd3",
+            "ALZ-cf3fe65c-fec0-495a-8edc-9675200f2add",
+            "ALZ-d581a947-69a2-4783-942e-9df3664324c8",
+            "ALZ-b258f058-b9f6-46cd-b28d-990106f0c3f8",
+            "ALZ-fe2a1b53-6fbd-4c67-b58a-85d7c7a0afcb",
+            "ALZ-669b215a-ce43-4371-8f6f-11047f6490f1",
+        ],
+    },
     "dr-dns-bastion": {
         "question": "Reconcile complete production/DR address populations and any Site Recovery "
         "IP-retention/subnet-move exception; actual public-IP SKU/region/API/zone and attached-"

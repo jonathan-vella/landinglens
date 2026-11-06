@@ -2,8 +2,13 @@
 
 Offline-first, advisory Azure Landing Zones CLI for assessing supplied IaC or
 saved observed evidence. All 255 checklist GUIDs remain visible. The current
-catalog has 10 accepted configuration predicates, 202 assisted recommendations
+catalog has 11 accepted configuration predicates, 201 assisted recommendations
 and 43 manual recommendations.
+
+Resource/cost governance prepares scoped tag counts, dashboard structure,
+capacity-group references and hierarchy context with seven separate blank
+decisions. These do not establish cost attribution, monitoring health, identity
+roles or available capacity; owner awareness and operating plans remain manual.
 
 The NSG and route-count predicates are observed-only. Declared rules/routes do
 not establish complete custom populations. Peering access is an explicit setting,
@@ -16,6 +21,12 @@ DR addressing, DNS and Bastion review now includes minimized typed configuration
 and ten separate blank decisions. Configured links, registration, zones or
 Bastion presence do not prove resolution, record lifecycle, resilience or secure
 access; workload DNS and multi-region strategies remain manual.
+
+ExpressRoute monitoring/routing/failover adds eight separate blank decisions and
+a strictly joined GatewaySubnet propagation configuration check. Missing flags,
+unbound/ambiguous/out-of-scope tables and empty inventory cannot pass. Configured
+monitors, alert routing and location labels do not prove health, ingestion,
+physical independence, edge BFD or actual convergence/failover.
 
 Read [what LandingLens does and doesn't prove](docs/what-landinglens-proves.md)
 before interpreting results. [Detailed workflows](docs/usage.md),

@@ -26,6 +26,16 @@ appliance, Graph or data-plane reads; the existing authorization boundary remain
 
 ## Policy evidence reuse
 
+Cohort15 adds planned-only ARM Connection Monitor 2024-05-01 and static metric
+alerts 2018-03-01, not new live Collector registrations. Existing gateway/subnet/
+route-table facts support a strict joined propagation configuration predicate.
+Minimized monitor protocols/frequencies/group counts/reference resolution,
+workspace outputs, metric/action scope and location-label fingerprints support
+saved/injected original-time review and replay. Missing relationships are never
+fetched; addresses/FQDNs, headers, router credentials and raw probes are withheld.
+This acceptance performs no monitor, BFD, packet, health, ingestion or failover
+operation and does not broaden #40's authorization.
+
 LL-30 consumes the existing scoped collector's separate assignments, exemptions
 and original-time PolicyStates records as assessment 1.2 Signals. No new
 management-plane operation, permission, scope expansion or evaluation trigger is

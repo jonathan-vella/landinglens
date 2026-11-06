@@ -26,6 +26,7 @@ TF_TYPES = {
     "azurerm_log_analytics_workspace": "Microsoft.OperationalInsights/workspaces",
     "azurerm_virtual_network": "Microsoft.Network/virtualNetworks",
     "azurerm_management_group": "Microsoft.Management/managementGroups",
+    "azurerm_portal_dashboard": "Microsoft.Portal/dashboards",
     "azurerm_key_vault": "Microsoft.KeyVault/vaults",
     "azurerm_firewall": "Microsoft.Network/azureFirewalls",
     "azurerm_subnet": "Microsoft.Network/virtualNetworks/subnets",
@@ -37,6 +38,7 @@ TF_TYPES = {
     "azurerm_network_security_rule": "Microsoft.Network/networkSecurityGroups/securityRules",
     "azurerm_virtual_network_gateway": "Microsoft.Network/virtualNetworkGateways",
     "azurerm_network_watcher_flow_log": "Microsoft.Network/networkWatchers/flowLogs",
+    "azurerm_network_connection_monitor": "Microsoft.Network/networkWatchers/connectionMonitors",
     "azurerm_application_security_group": "Microsoft.Network/applicationSecurityGroups",
     "azurerm_route_table": "Microsoft.Network/routeTables",
     "azurerm_virtual_network_peering": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
@@ -120,6 +122,7 @@ def property_at(properties: Any, path: str) -> Any:
 
 
 def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
+    from .governance_evidence import projected_properties as governance_properties
     from .identity_evidence import IDENTITY_KINDS, identity_summary, role_properties
     from .security_evidence import projected_properties as security_properties
 
@@ -135,6 +138,7 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
             TF_TYPES.get(kind, kind), properties, terraform=True, terraform_kind=kind
         )
     )
+    result.update(governance_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     return result
 
 
@@ -328,11 +332,13 @@ def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str 
         if boundary and boundary.count("/") == 2 and isinstance(plan, str) and plan in PLANS:
             return canonical_id(boundary + "/providers/Microsoft.Security/pricings/" + plan)
         return None
-    if kind == "azurerm_cdn_frontdoor_security_policy":
+    if kind in {"azurerm_cdn_frontdoor_security_policy", "azurerm_network_connection_monitor"}:
         from .protection_evidence import typed_reference
 
+        monitor = kind == "azurerm_network_connection_monitor"
         parent = typed_reference(
-            values.get("cdn_frontdoor_profile_id"), ("microsoft.cdn/profiles",)
+            values.get("network_watcher_id" if monitor else "cdn_frontdoor_profile_id"),
+            ("microsoft.network/networkwatchers",) if monitor else ("microsoft.cdn/profiles",),
         )
         boundary = scope_id(scope) if scope else None
         if (
@@ -343,7 +349,9 @@ def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str 
             and name
             and "/" not in name
         ):
-            return canonical_id(parent + "/securityPolicies/" + name)
+            return canonical_id(
+                parent + ("/connectionMonitors/" if monitor else "/securityPolicies/") + name
+            )
         return None
     if kind == "azurerm_role_assignment":
         from .network_evidence import reference

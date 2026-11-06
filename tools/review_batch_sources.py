@@ -1776,6 +1776,408 @@ SOURCES_22 = [
 ]
 
 
+SOURCES_08 = [
+    (
+        "learn-reuse-terms",
+        LEARN + "legal/termsofuse",
+        ["Personal and Non-Commercial", "Microsoft Learn"],
+        "Reviewed Learn Terms of Use; preserve attribution and URLs/hashes/revisions "
+        "with independently authored factual findings only. No upstream page text, "
+        "images, samples or dashboard contents are redistributed.",
+    ),
+    (
+        "provider-reuse-terms",
+        RAW + "LICENSE",
+        ["Mozilla Public License Version 2.0", "Covered Software"],
+        "Pinned provider license is MPL-2.0. No provider implementation is copied; "
+        "retain metadata, attribution and independently authored mapping findings only.",
+    ),
+    (
+        "owner-access-reviews",
+        "https://learn.microsoft.com/entra/id-governance/access-reviews-overview",
+        ["resource owners", "regularly", "role assignments"],
+        "Access reviews require recurring resource-owner engagement and explicit access "
+        "decisions. An Azure role assignment cannot prove awareness, responsibility, budget "
+        "or policy review, remediation, or the organization's operating process.",
+    ),
+    (
+        "subscription-limits",
+        "https://learn.microsoft.com/azure/azure-resource-manager/management/"
+        "azure-subscription-service-limits",
+        ["regional level", "adjustable limits", "Free Azure trial"],
+        "Service-specific adjustable and fixed limits differ; regional quota increases do "
+        "not propagate to other regions. Public limits are not a subscription's actual "
+        "quota, available capacity, provisioning success or owner awareness.",
+    ),
+    (
+        "reservation-discounts",
+        "https://learn.microsoft.com/azure/cost-management-billing/reservations/"
+        "save-compute-costs-reservations",
+        ["billing discount", "consistent", "scope"],
+        "Reservations discount matching usage based on SKU, applicable region and scope; "
+        "suitability needs attributable baseline demand and financial comparison. They "
+        "do not change resource runtime state or establish available compute capacity.",
+    ),
+    (
+        "capacity-not-quota-or-discount",
+        LEARN + "azure/virtual-machines/capacity-reservation-overview",
+        ["Quota and capacity are separate", "don't guarantee capacity", "SLA"],
+        "On-demand capacity reservation is distinct from Reserved Instance billing discounts. "
+        "Creation needs both quota and available capacity; matching VM association and "
+        "applicable SKU/region/zone/SLA conditions matter. A configured group reference alone "
+        "is neither accepted capacity nor cost suitability. No purchase or capacity read.",
+    ),
+    (
+        "portal-dashboards",
+        "https://learn.microsoft.com/azure/azure-portal/azure-portal-dashboards",
+        ["private", "Metrics chart", "configuration"],
+        "Shared dashboards are subscription resources while private dashboards need not be "
+        "in resource inventory. Tile presence is not configured CPU/memory/free-disk coverage, "
+        "correct target/time window, working telemetry, operational health or actual use.",
+    ),
+    (
+        "dashboard-structure",
+        LEARN + "azure/azure-portal/azure-portal-dashboards-structure",
+        ["lenses", "MetricsChartPart", "MarkdownPart", "Disk Read Operations"],
+        "Reviewed lenses/parts and exact MetricsChartPart/MarkdownPart type strings support "
+        "only minimized structural counts. Disk I/O is not free disk space. Inputs, queries, "
+        "titles, markdown, metric values and arbitrary tile payloads are never retained.",
+    ),
+    (
+        "cost-operating-plan",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/get-started/manage-costs",
+        ["cost", "responsibilities", "business"],
+        "The original manage-costs link now redirects to manage/administer. Its broader "
+        "operating guidance does not establish a detailed cost plan; reviewer must reconcile "
+        "accountability, budget/forecast, allocation, review cadence and corrective actions.",
+    ),
+    (
+        "cost-plan-current",
+        LEARN + "azure/cloud-adoption-framework/ready/azure-setup-guide/manage-costs",
+        ["cost", "budget"],
+        "Current cost optimization guidance supplements the redirected checklist link. "
+        "A documented and operating process, agreed requirements and attributable reviews "
+        "remain manual; no fixed budget, utilization threshold or responsibility is invented.",
+    ),
+    (
+        "management-hierarchy",
+        "https://learn.microsoft.com/azure/governance/management-groups/overview",
+        ["only one parent", "root management group", "Microsoft Customer Agreement"],
+        "MGs provide policy/access inheritance, not resource-tag inheritance or unrestricted "
+        "billing visibility. Each MG/subscription has one parent; MCA cost-management support "
+        "differs. Names/display names never designate an approved identity role.",
+    ),
+    (
+        "identity-placement",
+        LEARN + "azure/cloud-adoption-framework/ready/landing-zone/design-area/"
+        "resource-org-management-groups",
+        ["Identity", "dedicated subscription", "platform"],
+        "The reference Identity MG contains a dedicated identity subscription under Platform. "
+        "That conditional architecture is not proved by an identity-like name, VM location, "
+        "parent ID or subscription membership; application identity requirements need review.",
+    ),
+    (
+        "regional-domain-controllers",
+        LEARN + "azure/cloud-adoption-framework/ready/landing-zone/design-area/"
+        "identity-access-active-directory-hybrid-identity",
+        ["site design", "same Azure region", "Identity subscription"],
+        "Current hybrid identity guidance places domain controllers in an isolated Identity "
+        "platform subscription. AD DS sites/subnets and locator behavior support regional "
+        "use; same-region VMs, DNS settings or labels alone do not prove DC role or usage. "
+        "Entra ID, managed Domain Services and self-managed AD DS remain distinct.",
+    ),
+    (
+        "billing-tags",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/"
+        "azure-best-practices/track-costs",
+        ["tagging strategy", "billing", "Scope"],
+        "Example business/cost tags are organization-dependent, not a required key set. "
+        "Billing agreement, supported scope, authorized visibility and allocation semantics "
+        "must be reviewed independently of tag presence or role assignment.",
+    ),
+    (
+        "tag-rules",
+        LEARN + "azure/azure-resource-manager/management/tag-resources",
+        ["not to management groups", "don't inherit", "plain text", "50"],
+        "Resources/RGs/subscriptions support tags subject to provider limits; MGs do not. "
+        "Keys are case-insensitive, values case-sensitive. Resource tags do not automatically "
+        "inherit. Retain only validated explicit pair count, never keys/values or defaults.",
+    ),
+    (
+        "cost-tag-inheritance",
+        LEARN + "azure/cost-management-billing/costs/enable-tag-inheritance",
+        ["usage records", "not the resources", "current month", "24 hours"],
+        "Cost Management inheritance is opt-in and agreement/scope/permission dependent "
+        "(EA/MCA/MPA Azure plan). It changes usage records, not resources, within the current "
+        "month after processing; conflict precedence is configurable. Resource-tag counts "
+        "do not attest billing allocation, actual inheritance setting or historical coverage.",
+    ),
+    (
+        "dashboard-arm",
+        LEARN + "azure/templates/microsoft.portal/2020-09-01-preview/dashboards",
+        ["DashboardLens", "DashboardParts", "lenses", "tags"],
+        "Pinned planned-only 2020-09-01-preview exposes lens/part arrays and opaque metadata. "
+        "Only structural counts and reviewed exact type classifications are projected. "
+        "Unsupported shapes and malformed/over-bound content remain explicit unknowns.",
+    ),
+    (
+        "management-arm",
+        LEARN + "azure/templates/microsoft.management/2020-05-01/managementgroups",
+        ["details", "parent", "tenant"],
+        "Pinned 2020-05-01 exposes explicit details.parent.id. Omitted parent is not guessed "
+        "as root; tenant-scope creation is outside this assessor's scope model. Existing "
+        "saved descendant relationships are context only, not a role-designation predicate.",
+    ),
+    (
+        "vm-capacity-arm",
+        LEARN + "azure/templates/microsoft.compute/2024-07-01/virtualmachines",
+        ["capacityReservationGroup", "capacityReservation", "id"],
+        "Project only an explicit typed capacityReservation.capacityReservationGroup.id "
+        "reference. Exclude credentials/OS data, reservation prices, consumption and "
+        "capacity claims; resource-group/region/SKU matching requires separate review.",
+    ),
+    (
+        "terraform-dashboard",
+        RAW + "website/docs/r/portal_dashboard.html.markdown",
+        ["dashboard_properties", "lenses", "parts", "hidden-title"],
+        "Pinned 4.50.0 dashboard_properties is JSON with object-keyed lenses/parts in its "
+        "example, unlike the ARM array shape. Bounded literal JSON is normalized separately; "
+        "symbolic/malformed/duplicate-key input is unknown. Titles, tags and content withheld.",
+    ),
+    (
+        "terraform-management",
+        RAW + "website/docs/r/management_group.html.markdown",
+        ["parent_management_group_id", "subscription_ids", "2020-05-01"],
+        "Pinned 4.50.0 supports an explicit parent MG ID and subscription UUID list; "
+        "membership conflicts with standalone associations. Omitted/computed parents, "
+        "subscription purpose, inherited policy and regional DC use are not inferred.",
+    ),
+    (
+        "terraform-dashboard-implementation",
+        RAW + "internal/services/portal/portal_dashboard_resource.go",
+        ["2019-01-01-preview", "json.Unmarshal", "dashboard_properties"],
+        "The pinned provider uses 2019-01-01-preview and parses literal dashboard JSON. "
+        "Do not claim its object-keyed schema is the ARM 2020 array schema; both bounded "
+        "representations are separately tested. No provider or Terraform is executed.",
+    ),
+    *[
+        (
+            f"terraform-{os}-capacity",
+            RAW + f"website/docs/r/{os}_virtual_machine.html.markdown",
+            ["capacity_reservation_group_id", "tags"],
+            f"Pinned {os} VM supports explicit capacity_reservation_group_id and tags. "
+            "Only typed group reference and validated tag pair count are preparable, "
+            "not a Reserved Instance discount, financial suitability or available capacity.",
+        )
+        for os in ("linux", "windows")
+    ],
+]
+
+
+SOURCES_15 = [
+    (
+        "expressroute-gateway-propagation",
+        LEARN + "azure/expressroute/expressroute-about-virtual-network-gateways",
+        ["route propagation", "won't function", "same peering location"],
+        "ExpressRoute-specific guidance also requires GatewaySubnet BGP propagation. "
+        "Explicit joined flag is a configuration subclaim, not learned routes or uptime. "
+        "SKU/location circuit maxima and subnet size are separate from two-site resilience.",
+    ),
+    (
+        "expressroute-monitoring",
+        "https://learn.microsoft.com/azure/expressroute/expressroute-monitoring-metrics-alerts",
+        ["ArpAvailability", "BgpAvailability", "BitsInPerSecond"],
+        "Actual checklist link redirects to monitoring data reference. Automatic platform "
+        "metrics and diagnostic export support do not establish Insights use or ingestion.",
+    ),
+    (
+        "expressroute-insights",
+        LEARN + "azure/expressroute/expressroute-network-insights",
+        ["extra setup", "primary and secondary", "maintenance"],
+        "Insights needs no extra setup. Review original-time availability/utilization for "
+        "both links, peering and gateway; maintenance can lower reported BGP availability "
+        "while the customer-edge session remains up. No enablement boolean is invented.",
+    ),
+    (
+        "connection-monitor-linked",
+        "https://learn.microsoft.com/azure/expressroute/how-to-configure-connection-monitor",
+        ["Log Analytics agent", "test groups", "thresholds"],
+        "Checklist-linked page still instructs installing Log Analytics/MMA agents. "
+        "This conflicts with current Network Watcher guidance; do not implement or endorse "
+        "legacy agent installation. Test configuration is not successful probing.",
+    ),
+    (
+        "connection-monitor-current",
+        LEARN + "azure/network-watcher/connection-monitor-overview",
+        ["Log Analytics agent is no longer supported", "Arc", "destination"],
+        "Current guidance requires Arc-enabled on-premises source hosts and Azure Monitor "
+        "Agent; Azure VM/VMSS sources require Network Watcher extension. Destination "
+        "requirements differ. ARM/provider legacy endpoint enums are not current support.",
+    ),
+    (
+        "expressroute-disaster-recovery",
+        "https://learn.microsoft.com/azure/expressroute/"
+        "designing-for-disaster-recovery-with-expressroute-privatepeering",
+        ["different peering locations", "same metro", "180 seconds", "Connection Weight"],
+        "Different peering locations can share a metro/failure domain. Different metros, "
+        "provider/customer diversity, supported geopolitical/Premium reach and both-direction "
+        "routing need review. Up to 180 seconds under some failures is not a promised SLO.",
+    ),
+    (
+        "expressroute-coexistence",
+        "https://learn.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager",
+        ["route-based", "Basic", "longest prefix", "private peering"],
+        "S2S coexistence requires route-based non-Basic VPN and supported GatewaySubnet; "
+        "backup applies to private, not Microsoft, peering. Equal-prefix preference and "
+        "longest-prefix selection differ; configuration does not demonstrate failover.",
+    ),
+    (
+        "gateway-subnet-propagation",
+        "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsub",
+        ["GatewaySubnet", "route propagation", "won't function"],
+        "VPN-specific page requires BGP propagation on GatewaySubnet. Explicit "
+        "disableBgpRoutePropagation=false must be joined to the actual known gateway subnet "
+        "and table, not any table flag. NSG/UDR restrictions and availability are separate.",
+    ),
+    (
+        "expressroute-high-availability",
+        "https://learn.microsoft.com/azure/expressroute/"
+        "designing-for-high-availability-with-expressroute#active-active-connections",
+        ["same Customer Premises Equipment", "active-passive", "stateless"],
+        "Both links need distinct customer edge devices and end-to-end failure domains. "
+        "Active-active is recommended, active-passive supported with maintained routes; "
+        "stateful/NAT effects and maintenance draining need operational evidence.",
+    ),
+    (
+        "expressroute-bfd",
+        "https://learn.microsoft.com/azure/expressroute/expressroute-bfd",
+        ["Microsoft peering", "November 2025", "echo mode", "both your primary and secondary"],
+        "Current BFD supports private and Microsoft peering. MSEE defaults depend on "
+        "creation/reset and IPv4/IPv6 dates (IPv6 November 2025); customer/provider must "
+        "configure interface and BGP linkage on both devices. Disable echo as advised. "
+        "MSEE defaults/timer examples never prove edge configuration or failover SLO.",
+    ),
+    (
+        "connection-monitor-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/networkwatchers/connectionmonitors",
+        ["testConfigurations", "testGroups", "disable", "workspaceResourceId"],
+        "2024-05-01 supplies endpoint/configuration/group/output structures. Validate "
+        "exact unique group references before minimizing names/addresses. Explicit "
+        "disable=false and configured frequency/thresholds are not executing health tests.",
+    ),
+    (
+        "metric-alert-arm",
+        LEARN + "azure/templates/microsoft.insights/2018-03-01/metricalerts",
+        ["enabled", "scopes", "metricNamespace", "actionGroupId"],
+        "2018-03-01 metric alerts expose explicit scopes, enabled and criteria/actions. "
+        "Only supplied ExpressRoute static criterion names and typed circuit scopes are "
+        "prepared; dynamic/web-test/multiple-resource forms stay visibly unsupported.",
+    ),
+    (
+        "terraform-connection-monitor",
+        RAW + "website/docs/r/network_connection_monitor.html.markdown",
+        ["test_configuration_names", "output_workspace_resource_ids", "2024-05-01"],
+        "4.50.0 supports v2 only and explicit group endpoint/config references. Missing "
+        "enabled/frequency defaults are not inferred; legacy endpoint enums do not "
+        "establish supported Arc migration. Withhold addresses, headers, paths and notes.",
+    ),
+    (
+        "terraform-connection-monitor-implementation",
+        RAW + "internal/services/network/network_connection_monitor_resource.go",
+        ["test_frequency_in_seconds", "test_group", "ChecksFailedPercent"],
+        "Pinned implementation expands supplied groups/configurations/outputs into "
+        "2024-05-01 structures. Provider creation defaults do not establish raw/import "
+        "configuration and connection monitor creation is not an execution result.",
+    ),
+    *[
+        source
+        for source in SOURCES_11
+        if source[0]
+        in {"route-arm", "terraform-route-table", "connection-arm", "terraform-gateway-connection"}
+    ],
+    *[source for source in SOURCES_17 if source[0] in {"subnet-arm", "terraform-subnet"}],
+    *[source for source in SOURCES_19 if source[0] in {"gateway-arm", "terraform-gateway"}],
+    *[source for source in SOURCES_13 if source[0] == "expressroute-backup"],
+    (
+        "route-table-provider-implementation",
+        RAW + "internal/services/network/route_table_resource.go",
+        ["bgp_route_propagation_enabled", "DisableBgpRoutePropagation"],
+        "Provider inverts explicit bgp_route_propagation_enabled into the ARM disable "
+        "flag. Missing values remain unknown; subnet association must be known separately.",
+    ),
+    (
+        "terraform-subnet-route-association",
+        RAW + "website/docs/r/subnet_route_table_association.html.markdown",
+        ["subnet_id", "route_table_id"],
+        "Association is separately managed. Raw subnet/table presence cannot establish "
+        "a join; reuse explicit supplied normalized subnet routeTable.id rather than "
+        "defaulting missing associations or guessing names.",
+    ),
+    (
+        "rest-spec-reuse",
+        SPEC_RAW + "LICENSE",
+        ["MIT License"],
+        "Pinned REST specification reuse is MIT; retain metadata and own findings only.",
+    ),
+    *[
+        (
+            "rest-" + name,
+            SPEC_RAW + "specification/network/resource-manager/Microsoft.Network/Network/"
+            "stable/2024-05-01/" + filename,
+            markers,
+            finding,
+        )
+        for name, filename, markers, finding in [
+            (
+                "monitor",
+                "networkWatcher.json",
+                ["ConnectionMonitorTestGroup", "testFrequencySec"],
+                "Pinned schema defines explicit groups, endpoint enums and configuration, "
+                "including obsolete endpoint forms. Schema presence is not current support.",
+            ),
+            (
+                "route",
+                "routeTable.json",
+                ["disableBgpRoutePropagation", "boolean"],
+                "Pinned schema declares disableBgpRoutePropagation boolean. Omission is unknown.",
+            ),
+            (
+                "subnet",
+                "virtualNetwork.json",
+                ["routeTable", "SubnetPropertiesFormat"],
+                "Actual subnet properties carry route-table references; bind explicit identities.",
+            ),
+            (
+                "gateway",
+                "virtualNetworkGateway.json",
+                ["peer", "virtualNetworkGateway1"],
+                "Actual connection peer.id binds an ExpressRoute circuit; reuse cohort13's "
+                "typed circuit/gateway facts and future merged cohort14 circuit metadata.",
+            ),
+        ]
+    ],
+]
+
+
+SOURCES_15 += [
+    source
+    for source in SOURCES_14
+    if source[0]
+    in {
+        "circuit-arm",
+        "circuit-rest-2024",
+        "port-arm",
+        "port-rest-2024",
+        "terraform-circuit",
+        "terraform-expressroute-port",
+        "connection-arm",
+        "gateway-rest-2024",
+        "provider-reuse",
+        "learn-reuse",
+    }
+]
+
+
 def microsoft_site_terms(url: str) -> bool:
     parsed = urlsplit(url)
     return parsed.scheme == "https" and (
@@ -1985,7 +2387,7 @@ def main() -> None:
     parser.add_argument("--preparation-only", action="store_true")
     parser.add_argument(
         "--batch",
-        choices=["01", "04", "11", "12", "13", "14", "17", "18", "19", "22", "30"],
+        choices=["01", "04", "08", "11", "12", "13", "14", "15", "17", "18", "19", "22", "30"],
         default="01",
     )
     args = parser.parse_args()
@@ -2000,10 +2402,12 @@ def main() -> None:
     for identity, url, markers, finding in {
         "01": SOURCES,
         "04": SOURCES_04,
+        "08": SOURCES_08,
         "11": SOURCES_11,
         "12": SOURCES_12,
         "13": SOURCES_13,
         "14": SOURCES_14,
+        "15": SOURCES_15,
         "17": SOURCES_17,
         "18": SOURCES_18,
         "19": SOURCES_19,

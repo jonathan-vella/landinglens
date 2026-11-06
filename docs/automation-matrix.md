@@ -33,11 +33,56 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.8` retains all 255 entries: 10 automated, 202 assisted
-and 43 manual. Crosswalk `2026-11-06.8` rebinds the unchanged 51-control,
+Current successor `2026-11-06.10` retains all 255 entries: 11 automated, 201 assisted
+and 43 manual. Crosswalk `2026-11-06.10` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-Exact predecessor `.6.7` is frozen; source-matrix acceptance alone is not delivery.
+Exact predecessor `.6.9` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
+
+### Cohort 08: resource ownership, quotas and cost governance
+
+The [seven-GUID matrix](../references/recommendation-batches/batch-08.json)
+and [24 preserved source captures](../references/recommendation-batches/batch-08-sources.json)
+precede `.6.10`. C02.08/.09/.12 remain manual: owner accountability and
+access/budget/policy/remediation reviews, quota awareness/provisioning effects,
+and an operating cost-management plan require attributable human evidence.
+The registered `resource-cost-governance` interview leaves all seven outcomes
+blank and validates independent scope/content/expiry-bound decisions.
+
+| Recommendation | Literal preparation and independent decision boundary |
+|---|---|
+| C02.10 | Typed capacity-group reference from a scoped VM; Reserved Instance matching-usage discounts do not guarantee capacity. Actual reservation acceptance, quota, SKU/region/zone/SLA conditions and financial suitability need separate review. |
+| C02.11 | Bounded lens/tile and exact reviewed metrics-chart/markdown/other counts, not CPU/guest-memory/free-disk coverage, telemetry health or operational use. ARM arrays and pinned Terraform objects are handled separately; opaque content is withheld. |
+| C02.13 | Explicit scoped MG parent and unique rooted saved MG/subscription edges; dedicated identity subscription/MG designation, actual hosting/isolation and regional AD DS sites/subnets/locator use are separately evidenced, never inferred from names. |
+| C02.14 | Validated explicit tag-pair counts only, never keys/values. Approved taxonomy, effective billing allocation and agreement/scope/access/inheritance/conflict/current-month conditions are separate; resource tags do not automatically inherit. |
+
+Machine preparation requires an explicit in-scope ARM identity or a positive
+saved MG parent binding. Bare names, `metadata.scopes`, unbound/foreign/denied/
+malformed/ambiguous/stale/over-bound evidence cannot supply a Signal or pass.
+Earlier predicates, all 255 GUIDs, fixed251/original hashes, `.6.9` bytes and
+every older own-GUID receipt are unchanged. No new cloud/directory/billing/quota
+read, financial action, arbitrary threshold, taxonomy or human approval is added.
+
+### Cohort 15: ExpressRoute monitoring, routing and failover
+
+The [nine-GUID matrix](../references/recommendation-batches/batch-15.json) and
+[39 source captures](../references/recommendation-batches/batch-15-sources.json)
+precede `.6.9`. All 30 preparation captures retain their original rows/times.
+D06.17 alone becomes an automated literal configuration predicate: each known
+scoped VPN/ExpressRoute gateway must explicitly join to known GatewaySubnet and
+unique known route tables with `disableBgpRoutePropagation=false`. True fails;
+missing/default/unbound/ambiguous/out-of-scope/truncated joins, absent populations
+and stale/denied inputs never pass. This is not effective routes or availability.
+
+Eight source-specific decisions stay blank. Connection Monitor group/reference
+configuration, static alert scope/metric/action context and exact gateway/circuit/
+Direct-port joins are minimized partial evidence, not operational outcomes.
+Location fingerprints compare explicit labels only, not canonical sites,
+anonymity or physical independence. Linked MMA instructions conflict with current
+Arc/AMA guidance; BFD retains both peering kinds and IPv4/IPv6 creation/reset dates.
+No arbitrary latency/load/failover threshold, monitor execution, edge BFD test or
+live collection expansion occurs. Earlier predicates, source meanings and receipts
+remain frozen; implementation/receipt delivery is separately checked.
 
 ### Cohort 12: DR addressing, DNS and Bastion
 

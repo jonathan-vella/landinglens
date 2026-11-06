@@ -4,6 +4,13 @@ import re
 from typing import Any
 
 GUIDANCE = {
+    "gateway_routes": (
+        "The exact scoped gateway, GatewaySubnet and route-table propagation join is incomplete.",
+        "Unique known gateway/GatewaySubnet/table identities, explicit propagation flags "
+        "and complete bounded subnet references in one subscription/resource-group evidence scope.",
+        "Review separately prepared original-time bindings and flags; do not infer defaults, "
+        "absence, effective routes or availability. No read, probe or remediation is run.",
+    ),
     "policy": (
         "Policy evidence is partial, stale or conflicted, not a checklist outcome.",
         "Original evaluation time, exact assignment/definition context, exclusions and exemptions.",
@@ -62,6 +69,10 @@ GUIDANCE = {
 }
 
 REASONS = {
+    "gateway_routes": (
+        "gateway_subnet_population_not_established",
+        "gateway_route_propagation_join_unresolved",
+    ),
     "policy": (
         "policy_evidence_not_observed",
         "policy_crosswalk_catalog_unavailable",
@@ -220,6 +231,8 @@ REASONS = {
         "prerequisite_checked",
         "canonical_identity_and_explicit_fact",
         "known_identity_complete_current_inventory",
+        "joined_gateway_route_propagation_enabled",
+        "joined_gateway_route_propagation_disabled",
     ),
 }
 REASON_GROUP = {reason: group for group, reasons in REASONS.items() for reason in reasons}

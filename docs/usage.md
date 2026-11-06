@@ -259,6 +259,13 @@ API/existing-network scope distinction. Preparation leaves every decision blank.
 The scope is included in the requirements hash; changed scope, bank, content or
 validity requires fresh preparation, not editing a binding.
 
+Use `--question expressroute-monitoring-routing-failover` for cohort15's eight
+separate monitoring/topology/edge decisions. D06.17 has a separate strictly joined
+GatewaySubnet propagation predicate; manual answers never override it. Review
+location-label and monitoring configuration as partial Signals, not independent
+physical sites, probe health, ingestion, edge BFD or failover evidence. All
+questions start blank and require actual attributable evidence.
+
 Use `--question sovereign-audit-workload-protection` for cohort22's eight distinct
 key-custody, Entra audit, activity-retention, CSPM/Servers/workload, endpoint and
 patch-drift decisions. Only references/redacted attestations are appropriate:
@@ -272,6 +279,16 @@ operational references, not keys, addresses or private appliance identities.
 Configured bandwidth and published limits are not measured demand or headroom;
 SKU/zone/bypass settings are not resilience, current availability or performance.
 Preparation leaves all outcomes blank and retains scope/content/expiry guards.
+
+Use `--question resource-cost-governance` for cohort08's seven separate ownership,
+quota, reservation/capacity, dashboard, operating-plan, identity-placement and
+billing-tag decisions. Provide redacted attributable references, not tag values,
+raw dashboard queries/content, financial amounts, usage histories or personal
+owner/directory records. A Reserved Instance discount is not a capacity guarantee;
+resource tags do not automatically inherit, and Cost Management tag inheritance
+changes usage records under distinct agreement/scope/time conditions. Explicit
+resource identities or positive saved MG parent bindings are required for scoped
+machine context; names and bare scope metadata never designate identity roles.
 
 For the automated local workflow, start from saved **normalized evidence**, not
 a rendered or minimized assessment:
