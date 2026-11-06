@@ -3819,6 +3819,384 @@ SOURCES_27 = [
 ]
 
 
+SOURCES_25 = [
+    (
+        "service-health-linked",
+        "https://learn.microsoft.com/azure/service-health/"
+        "alerts-activity-log-service-notifications-portal",
+        ["Resource Health", "Global", "public clouds"],
+        "Service Health and Resource Health events are distinct. Current guidance limits "
+        "Service Health alerts to public clouds/global and requires Global action groups. "
+        "Subscription/tenant preview and event filters need separate coverage review.",
+    ),
+    (
+        "action-groups-linked",
+        "https://learn.microsoft.com/azure/azure-monitor/alerts/action-groups",
+        ["five action groups", "Global", "one-time passcode"],
+        "Enabled receiver configuration is not verified recipients, delivery or response. "
+        "Global and regional processing differ; current email OTP enforcement requires "
+        "operating evidence. No recipients, endpoints, secrets or contact tests are retained.",
+    ),
+    (
+        "sentinel-linked",
+        "https://learn.microsoft.com/azure/sentinel/quickstart-onboard",
+        ["paid service", "data connector", "Log Analytics"],
+        "This linked Sentinel onboarding page does not itself specify the checklist's "
+        "no-raw-log-export principle. Onboarding/workspace configuration cannot establish "
+        "all export paths or an on-premises boundary; require independent architecture review.",
+    ),
+    (
+        "logs-reporting-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/"
+        "azure-setup-guide/monitoring-reporting?tabs=AzureMonitor",
+        ["Visualization", "workbooks", "Logs"],
+        "CAF describes collection, insights, visualization and response. Workspace existence "
+        "does not establish ingestion, useful reports, use of Logs or report quality.",
+    ),
+    (
+        "diagnostics-extension-linked",
+        "https://learn.microsoft.com/azure/azure-monitor/agents/diagnostics-extension-overview",
+        ["March 31, 2026", "no longer supported", "Don't use new deployments"],
+        "WAD/LAD retired March 31, 2026; the current page explicitly forbids new deployments. "
+        "Preserve immutable conditional wording but review legacy applicability, migration, "
+        "shared-storage boundaries and alternatives, not an invented supported extension.",
+    ),
+    (
+        "diagnostics-migration",
+        LEARN + "azure/azure-monitor/agents/azure-monitor-agent-migration-wad-lad",
+        ["Data Collection Rules", "Auxiliary", "September 1, 2026"],
+        "AMA/DCR and destination-specific replacements require parity and cutover evidence. "
+        "The ADX/Fabric preview destination also retired September 1, 2026. Do not copy "
+        "stale deployment steps or infer migration from agent/storage presence.",
+    ),
+    (
+        "operational-alerts-linked",
+        "https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview",
+        ["Metric alerts", "Log search alerts", "Activity log alerts"],
+        "Metric, scheduled log-query and activity alerts are distinct configuration types. "
+        "Configured enabled criteria/actions do not prove actual firing, notification, "
+        "acknowledgement, escalation or an approved operational response requirement.",
+    ),
+    (
+        "monitoring-requirements-linked",
+        "https://learn.microsoft.com/azure/architecture/best-practices/monitoring",
+        ["Health monitoring", "Availability monitoring", "Performance monitoring"],
+        "Requirements depend on business health, availability, performance, security and "
+        "operating scenarios. No generic rule count, frequency or fabricated SLA answers "
+        "the independently manual requirements assessment.",
+    ),
+    (
+        "amba-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/"
+        "landing-zone/design-area/management-monitor",
+        ["DeployIfNotExists", "Remediate", "service health alerts"],
+        "CAF separates AMBA policy/initiative import, assignment, brownfield remediation "
+        "and tests. Service Health needs direct action groups, not processing rules. "
+        "Saved Policy references cannot prove AMBA origin/version or complete deployment.",
+    ),
+    (
+        "redundancy-linked",
+        "https://learn.microsoft.com/en-gb/azure/storage/common/redundancy-migration?tabs=portal",
+        ["two-step", "data synchronization", "no SLA"],
+        "Replication changes have account/service restrictions, conversion and synchronization "
+        "requirements; configuration does not prove conversion completion or ready failover. "
+        "No migration, support request, paid change or data-plane access is performed.",
+    ),
+    (
+        "storage-redundancy",
+        LEARN + "azure/storage/common/storage-redundancy",
+        ["asynchronously", "ZRS", "data-modifying operations"],
+        "ZRS protects primary zones; GRS protects a secondary region asynchronously, and "
+        "GZRS combines them. Read-access is distinct. LRS is not zone/geo redundancy. "
+        "SKU is not actual availability, RPO/RTO, backup, failover readiness or residency.",
+    ),
+    (
+        "resource-health",
+        LEARN + "azure/service-health/resource-health-alert-monitor-guide",
+        ["distinct", "Unknown", "Platform initiated"],
+        "Resource Health is individual-resource status/transition/reason monitoring; "
+        "Service Health is broader service incidents. Do not substitute either population "
+        "or a configured status filter for actual health or all-resource event coverage.",
+    ),
+    *[
+        (
+            identity,
+            SPEC_RAW + "specification/monitor/resource-manager/Microsoft.Insights/Insights/" + path,
+            markers,
+            finding,
+        )
+        for identity, path, markers, finding in [
+            (
+                "activity-alert-spec",
+                "stable/2020-10-01/activityLogAlerts_API.json",
+                ["allOf", "containsAny", "actionGroupId", "scopes"],
+                "Pinned 2020-10-01 defines allOf/anyOf/leaf criteria and explicit enabled, "
+                "scope and action references. Only literal single category equality is "
+                "classified; other condition payloads are withheld and remain incomplete.",
+            ),
+            (
+                "action-group-spec",
+                "stable/2023-01-01/actionGroups_API.json",
+                ["emailReceivers", "enabled", "location"],
+                "Pinned 2023-01-01 exposes receiver arrays, explicit enabled and location. "
+                "Retain bounded per-type counts only, never receiver identities or secrets. "
+                "Absent arrays/flags/location are unknown, not empty/enabled/global defaults.",
+            ),
+        ]
+    ],
+    *[
+        (
+            "terraform-" + name,
+            RAW + f"website/docs/r/{name}.html.markdown",
+            markers,
+            finding,
+        )
+        for name, markers, finding in [
+            (
+                "monitor_activity_log_alert",
+                ["ServiceHealth", "resource_health", "2020-10-01"],
+                "4.50.0 explicit category, scopes, enabled and action references normalize "
+                "without defaults. Only category equality is interpreted; filter block "
+                "presence/count is not semantic matching or actual health assurance.",
+            ),
+            (
+                "monitor_action_group",
+                ["email_receiver", "location", "2023-01-01"],
+                "4.50.0 receiver blocks normalize to bounded counts; enabled and location "
+                "must be explicit. Default true/global is never evidence. No contacts retained.",
+            ),
+            (
+                "monitor_metric_alert",
+                ["dynamic_criteria", "criteria", "2018-03-01"],
+                "4.50.0 static metric criteria counts are configuration context only; "
+                "dynamic/web-test/multi-resource forms remain unsupported. No metric name, "
+                "dimension, threshold payload or notification content is retained.",
+            ),
+            (
+                "storage_account",
+                ["account_tier", "account_replication_type", "RAGZRS"],
+                "4.50.0 explicit tier plus replication type forms an exact reviewed SKU, "
+                "never substring matching or a default. Unsupported Premium geo forms "
+                "and omitted values remain unknown; kind is separately explicit context.",
+            ),
+        ]
+    ],
+    (
+        "storage-arm",
+        LEARN + "azure/templates/microsoft.storage/2023-05-01/storageaccounts",
+        ["Standard_RAGZRS", "Premium_ZRS", "kind"],
+        "Pinned 2023-05-01 root SKU and kind are separate from storage properties. "
+        "Accept only its eight exact SKUs for configuration classification, not a "
+        "guarantee that a kind/region/service combination is supported or operating.",
+    ),
+    *[
+        source
+        for source in SOURCES_23
+        if source[0]
+        in {
+            "workspace-arm",
+            "log-alert-arm",
+            "metric-alert-arm",
+            "terraform-workspace",
+            "learn-reuse",
+            "provider-license",
+        }
+    ],
+    *[source for source in SOURCES_14 if source[0] == "rest-spec-reuse"],
+    *[source for source in SOURCES_27 if source[0].startswith("policy-spec-")],
+]
+
+
+SOURCES_10 = [
+    (
+        "application-delivery",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/"
+        "azure-best-practices/plan-for-app-delivery",
+        ["spoke", "Front Door", "WAF"],
+        "Application delivery is workload-owned; Application Gateway belongs with the "
+        "application, not as a shared hub service. A documented standard, actual WAF "
+        "operation and Front Door origin restriction remain human decisions.",
+    ),
+    (
+        "network-design",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/"
+        "enterprise-scale/network-topology-and-connectivity",
+        ["Connectivity", "Corp", "Online"],
+        "Redirects to landing-zone/design-area. Align networking with actual traffic "
+        "and hybrid requirements; MG/resource names do not designate hub or spoke purpose.",
+    ),
+    (
+        "landing-zone-regions",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/regions",
+        ["multiple regions", "DNS zones are global", "Connectivity"],
+        "Prepare platform connectivity for regional expansion and DR. Supplied locations "
+        "are not independent failure domains, complete regional services or exercised DR. "
+        "Private DNS zones are global, not another regional deployment.",
+    ),
+    (
+        "traditional-topology",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/"
+        "azure-best-practices/traditional-azure-networking-topology",
+        ["aren't transitive", "minimal shared services", "partner vendor", "more than two"],
+        "Traditional hub-spoke is scenario-dependent. Minimal gateways/firewall/NVAs and "
+        "conditional DNS belong in a designated hub, not shared L7 ingress. Global peering "
+        "is nontransitive; direct spoke paths can bypass inspection. More-than-two-region "
+        "global transit has Virtual WAN/ExpressRoute alternatives, not a universal peering rule.",
+    ),
+    (
+        "partner-nva",
+        "https://learn.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha",
+        ["vendor", "Convergence time", "Traffic symmetry"],
+        "Redirects to networking/guide/network-virtual-appliance-high-availability. Vendor "
+        "validation, actual version/topology/support, convergence, SNAT/symmetry and "
+        "failover require partner evidence. Generic Azure patterns do not prove support.",
+    ),
+    (
+        "coexisting-gateways",
+        "https://learn.microsoft.com/azure/expressroute/"
+        "expressroute-howto-coexist-resource-manager"
+        "#to-enable-transit-routing-between-expressroute-and-azure-vpn",
+        ["65515", "Basic", "/27", "Route Server"],
+        "Conditional ER/S2S VPN coexistence needs route-based non-Basic VPN. GatewaySubnet "
+        "/27-or-larger is not RouteServerSubnet sizing. Backup is private, not Microsoft, "
+        "peering; equal-prefix preference differs from longest-prefix selection.",
+    ),
+    (
+        "route-server-quickstart",
+        "https://learn.microsoft.com/azure/route-server/"
+        "quickstart-configure-route-server-portal#create-a-route-server-1",
+        ["RouteServerSubnet", "minimum of /26 or larger", "Standard"],
+        "Actual redirect quickstart-create-route-server-portal now requires /26 or larger. "
+        "Immutable D01.08 and pinned AzureRM4.50.0 still say /27; preserve that discrepancy "
+        "and qualify any sizing subcheck by this captured current source, not a whole verdict.",
+    ),
+    (
+        "route-server-transit",
+        LEARN + "azure/route-server/expressroute-vpn-support",
+        ["active-active", "65515", "same virtual network", "isn't supported"],
+        "Route exchange must be explicitly enabled; VPN active-active/ASN65515 are required, "
+        "VPN BGP is not. All gateways must share the Route Server VNet. No ER-to-ER "
+        "circuit transit or runtime route/health proof follows from configuration.",
+    ),
+    (
+        "route-server-faq",
+        LEARN + "azure/route-server/route-server-faq",
+        ["S2S", "P2S", "4,000", "50,000", "10,000", "isn't an Azure Virtual WAN"],
+        "VNet Route Server uses virtualHubs ARM identity but is not Virtual WAN. Transit "
+        "excludes P2S. Current limits include16 BGP peers,4000 routes/peer,500 VNets,"
+        "50000 VMs (capacity-dependent),10000 total prefixes; combined VNet/Route Server "
+        "advertisements to ER remain1000. Updates count against peer limits; no estate "
+        "count, entitlement or capacity is inferred from selected supplied records.",
+    ),
+    (
+        "global-peering",
+        "https://learn.microsoft.com/azure/virtual-network/virtual-networks-faq"
+        "#can-i-create-a-peering-connection-to-a-vnet-in-a-different-region",
+        ["Transitive peering is not supported", "different regions", "Connected"],
+        "Global peering connects different regions; both directional links are required. "
+        "Nontransitive and Basic Load Balancer/global-peering restrictions apply. Location "
+        "inequality and reciprocal references do not establish hub designation or working paths.",
+    ),
+    (
+        "network-insights",
+        "https://learn.microsoft.com/azure/azure-monitor/insights/network-insights-overview",
+        ["without requiring any configuration", "Connection monitor", "Diagnostic Toolkit"],
+        "Redirects to Network Watcher Network Insights. Built-in topology/health/metrics "
+        "need no configuration; monitor/flow/alert settings do not prove end-to-end "
+        "operation, coverage, ingestion, owner response or executed diagnostic tests.",
+    ),
+    (
+        "network-limits",
+        "https://learn.microsoft.com/azure/azure-resource-manager/management/"
+        "azure-subscription-service-limits?toc=/azure/virtual-network/toc.json"
+        "#azure-resource-manager-virtual-networking-limits",
+        ["650", "Route advertisement limits", "4,000", "10,000", "1,000"],
+        "Actual current table lists650 peerings/VNet, not immutable historical500. "
+        "Historical400 spokes is not a current universal threshold. ER private-peering "
+        "Azure-to-onprem IPv4 gateway routes1000 (both SKUs), IPv6 100; incoming IPv4 "
+        "onprem routes4000 Local/Standard or10000 Premium. Direction, family, SKU, "
+        "Route Server limits, summarization and actual authorized quotas/complete counts "
+        "require separate review; no live quota lookup or automatic headroom verdict.",
+    ),
+    (
+        "route-server-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/virtualhubs",
+        ["allowBranchToBranchTraffic", "sku", "virtualWan"],
+        "Shared virtualHubs type and SKU alone do not designate Route Server. Preserve "
+        "explicit branch flag/preference separately from positively joined VNet attachment.",
+    ),
+    (
+        "routing-ipconfiguration-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/virtualhubs/ipconfigurations",
+        ["subnet", "publicIPAddress"],
+        "Separate virtualHubs/ipConfigurations child supplies typed subnet/public-IP "
+        "relationships. Parent ipConfigurations is read-only references in the REST spec; "
+        "do not invent embedded configuration bodies or retain private IPs.",
+    ),
+    (
+        "route-server-provider",
+        RAW + "website/docs/r/route_server.html.markdown",
+        ["branch_to_branch_traffic_enabled", "subnet_id", "/27", "2024-05-01"],
+        "AzureRM4.50.0 explicit azurerm_route_server maps to virtualHubs and separately "
+        "creates its IP configuration. Omitted branch flag/preference defaults are not "
+        "inferred; pinned /27 sizing guidance conflicts with current portal /26 guidance.",
+    ),
+    (
+        "route-server-provider-implementation",
+        RAW + "internal/services/network/route_server_resource.go",
+        ["HubIPConfiguration", "AllowBranchToBranchTraffic", "VirtualHubIPConfiguration"],
+        "Provider creates parent then separate ipConfig1 child with subnet/public-IP IDs. "
+        "Explicit Terraform resource type prepares declared attachment without fabricating "
+        "ARM kind=RouteServer or a child identity in normalized evidence.",
+    ),
+    (
+        "routing-rest-spec",
+        SPEC_RAW + "specification/network/resource-manager/Microsoft.Network/Network/"
+        "stable/2024-05-01/virtualWan.json",
+        ["HubIPConfigurationPropertiesFormat", "ipConfigurations", "allowBranchToBranchTraffic"],
+        "Pinned REST defines separate HubIPConfiguration subnet/public-IP and parent "
+        "read-only child references. No private IP/ASN/partner payloads are retained.",
+    ),
+    (
+        "peering-rest-spec",
+        SPEC_RAW + "specification/network/resource-manager/Microsoft.Network/Network/"
+        "stable/2024-05-01/virtualNetwork.json",
+        ["allowGatewayTransit", "useRemoteGateways", "peerCompleteVnets"],
+        "Explicit peering flags have separate directional meanings. No missing defaults, "
+        "effective transit, subnet-peering completeness or remote gateway inferred.",
+    ),
+    *[source for source in SOURCES_11 if source[0] in {"peering-arm", "terraform-peering"}],
+    *[source for source in SOURCES_17 if source[0] in {"subnet-arm", "terraform-subnet"}],
+    *[source for source in SOURCES_19 if source[0] in {"gateway-arm", "terraform-gateway"}],
+    *[
+        source
+        for source in SOURCES_15
+        if source[0]
+        in {
+            "connection-monitor-arm",
+            "metric-alert-arm",
+            "terraform-connection-monitor",
+            "learn-reuse",
+            "provider-reuse",
+            "rest-spec-reuse",
+        }
+    ],
+    (
+        "learn-terms",
+        LEARN + "legal/termsofuse",
+        ["Notice Specific to Documents", "explicit license terms"],
+        "Reviewed document terms; retain attributed metadata and own factual findings only, "
+        "not article text, screenshots, samples or private comments.",
+    ),
+    (
+        "provider-license",
+        RAW + "LICENSE",
+        ["Mozilla Public License", "2.0"],
+        "Pinned provider MPL2.0; only own findings and source metadata retained.",
+    ),
+]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
@@ -3833,6 +4211,7 @@ def main() -> None:
             "05",
             "06",
             "08",
+            "10",
             "11",
             "12",
             "13",
@@ -3846,6 +4225,7 @@ def main() -> None:
             "22",
             "27",
             "23",
+            "25",
             "29",
             "30",
         ],
@@ -3855,10 +4235,11 @@ def main() -> None:
     if args.vwan_supplement and (args.batch != "16" or not args.preparation_only):
         raise ValueError("The vWAN supplement is cohort16 preparation only")
     if (
-        args.batch in {"02", "05", "06", "12", "16", "20", "23", "27", "29", "30"}
+        args.batch in {"02", "05", "06", "10", "12", "16", "20", "23", "25", "27", "29", "30"}
     ) != args.preparation_only:
         raise ValueError(
-            "Cohorts 02/05/06/12/16/20/23/27/29/30 source capture require --preparation-only; "
+            "Cohorts 02/05/06/10/12/16/20/23/25/27/29/30 source capture "
+            "require --preparation-only; "
             "no activation"
         )
     prefix = "preparation" if args.preparation_only else "batch"
@@ -3882,6 +4263,7 @@ def main() -> None:
         "05": SOURCES_05,
         "06": SOURCES_06,
         "08": SOURCES_08,
+        "10": SOURCES_10,
         "11": SOURCES_11,
         "12": SOURCES_12,
         "13": SOURCES_13,
@@ -3895,6 +4277,7 @@ def main() -> None:
         "22": SOURCES_22,
         "27": SOURCES_27,
         "23": SOURCES_23,
+        "25": SOURCES_25,
         "29": SOURCES_29,
         "30": SOURCES_30,
     }[args.batch]

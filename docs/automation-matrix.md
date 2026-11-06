@@ -33,10 +33,10 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.19` retains all 255 entries: 12 automated, 200 assisted
-and 43 manual. Crosswalk `2026-11-06.19` rebinds the unchanged 51-control,
+Current successor `2026-11-06.21` retains all 255 entries: 12 automated, 200 assisted
+and 43 manual. Crosswalk `2026-11-06.21` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-Exact predecessor `.18` is frozen; source-matrix acceptance alone is not delivery.
+Exact predecessor `.20` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
 
 ### Cohort 09: independent preparation, not accepted
@@ -71,6 +71,30 @@ choice, DR or capacity; current guidance mandates neither pairing nor a historic
 distance. Public availability is not customer entitlement or quota. Plain-text tags
 must not contain sensitive information, do not automatically inherit and are not
 supported on MGs. Counts establish neither classification nor enforcement.
+
+### Cohort 25: platform health, operational alerts and resilient log storage
+
+The [nine-GUID matrix](../references/recommendation-batches/batch-25.json) and
+[30 unchanged source captures](../references/recommendation-batches/batch-25-sources.json)
+follow the explicit sole slot after checked06/10 delivery. Eight assisted and one
+manual workflow add no whole-recommendation predicate. Activity-alert category,
+enabled/scopes/action references, minimized action-group counts/global-processing,
+static single-resource metric metadata and exact eight-SKU redundancy
+classification reuse workspace/log-alert/Policy configuration and strict
+unique known typed selected-scope relationships. All nine human decisions and
+exceptions remain independently blank and bound.
+
+Service Health differs from Resource Health; enabled rules/actions are not
+emitted events, verified recipients or delivered response. Workspace presence is
+not Logs ingestion/report quality, Azure location is not proof of no raw-log
+export, and Policy references do not establish AMBA origin/version, remediation
+or complete coverage. Current WAD/LAD retirement on March31,2026 qualifies
+immutable conditional F01.14; no supported legacy deployment is manufactured.
+Storage SKU is not actual availability, completed conversion, failover,
+backup or residency. Missing/partial/ambiguous/stale/denied/unsupported/over-bound
+inputs remain explicit; neither Signals nor human confirmation creates Verified.
+All187 earlier rows/22 receipts, every non-own full control and exact `.20` bytes
+remain unchanged. Source activation is not merged/receipted delivery.
 
 ### Cohort 06: hybrid identity, data access and sovereignty decisions
 

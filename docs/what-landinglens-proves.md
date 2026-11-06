@@ -19,6 +19,18 @@ classification remain separate manual decisions. No private classification,
 workload/employee/location payload, live availability/account read or legal
 eligibility judgment is introduced.
 
+Cohort25 prepares [nine independent reviews](../references/recommendation-batches/batch-25.json)
+using minimized activity/action/static-metric/storage metadata and reused
+workspace/log-alert/Policy context. Service Health is not Resource Health;
+enabled setup does not establish emitted/delivered events or response.
+Workspace location/presence does not prove ingestion, report quality or absence
+of raw-log export. Generic Policy configuration cannot identify AMBA origin,
+release or remediation/completeness. WAD/LAD retired March31,2026: conditional
+legacy wording requires applicability/migration review, not new deployments.
+Exact zone/geo SKU configuration is not actual availability, backup, failover
+readiness or residency. F01.16 requirements remain manual; no Signal or human
+confirmation creates a Verified whole-recommendation outcome.
+
 | Evidence | What it establishes | What it does not establish |
 |---|---|---|
 | Accepted explicit configuration predicate | The stated typed property test for the supplied resource and time | Effective inheritance, runtime routing/protection, recovery success or estate completeness |

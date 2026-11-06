@@ -14,6 +14,70 @@ Current SLZ four-zone and regional-guidance qualifications do not rewrite immuta
 wording. See the [preparation boundaries](plan.md#cohort-09-independent-preparation-2026-11-06).
 No accepted successor/bank/catalog/crosswalk/count/history, PR/merge/receipt or
 closure occurs before the explicit slot and actual final gates.
+## Cohort 25 accepted boundary
+
+The explicit sole slot after actual06/10 implementation, checked receipt and
+final-main delivery activates [nine workflows](../../references/recommendation-batches/batch-25.json)
+in builder-derived catalog/crosswalk `2026-11-06.21`. Original255/fixed251,
+four complete original automated controls, every non-own object, all187 prior
+own-GUID rows/22 receipts and exact `.20` bytes remain preserved.
+
+Eight assisted decisions distinguish Service Health/Resource Health,
+configured actions versus actual notification/response, raw-log export
+boundaries, Logs reporting usage, conditional retired WAD/LAD storage and
+supported migration, operational alert types, AMBA origin/version/remediation,
+and qualified storage redundancy. F01.16 business requirements remain manual.
+No live collector route, query, contact test, deployment, second Policy
+interpreter or runtime assurance is added. All nine independently blank
+decisions use existing evaluator, tiers, reports/trackers, CLI/local session and
+original-time private replay. Counts remain12/200/43; guarded implementation
+merge/receipt publication/final-main checks, not activation, gate delivery and
+satisfied #142 closure.
+
+Implementation #149 merged normally after exact checked-head eight jobs,
+CodeQL/security/review and four downloaded matching19-case compiler proofs.
+The guarded `deliveries.25` receipt binds each actual GUID to that head/merge/
+runs and own721-test wheel, deriving196 delivered/55 pending and23 receipts.
+All187 earlier rows/22 receipts remain unchanged. Checked publication and actual
+final-main CI still gate satisfied closure, not classification or merge alone.
+
+## Cohort 10 accepted boundary
+
+After actual29/06 implementation/receipt delivery and the explicit sole-slot
+grant, cohort10/#139 integrates [ten workflows](../../references/recommendation-batches/batch-10.json)
+in builder-derived `2026-11-06.20`. All255 GUIDs, fixed251/original four full
+objects, every non-own predecessor control and all177 earlier rows/21 receipts
+are preserved. Exact `.19` bytes remain packaged. Eight assisted and two manual
+workflows share the existing evaluator/adapters/tiers/reports/CLI/session and
+original-time replay; all ten registered decisions stay independently blank.
+Strict06 RG-shape identity binding is reused, not relaxed.
+
+Immutable /27 and400/500/1000 wording remains distinct from current linked
+/26-or-larger and650-peering qualifications. No service/purpose, effective
+transit, regional independence, partner support, operating monitoring, complete
+estate or actual quota assurance is inferred. Counts remain12/200/43; guarded
+merged delivery, not activation, changes177 delivered/74 pending. See the
+[integration evidence](plan.md#cohort-10-accepted-integration-2026-11-06).
+
+Implementation #146 merged normally after exact-head8-job/CodeQL/security/
+review and four exercised18-case compiler gates. Guarded `deliveries.10` binds
+each GUID to that actual head/merge/runs/694-test own wheel, recording187
+delivered/64 pending and22 receipts on checked publication. All177 earlier
+rows/21 receipts remain unchanged; receipt publication/final-main CI still
+gate satisfied #139 closure, not classification or implementation merge alone.
+
+## Historical cohort 10 preparation boundary
+
+Cohort10/#139 independently prepares [ten specific workflows](../../references/recommendation-batches/preparation-10.json)
+without accepted catalog/interview activation or delivery. New typed routing/
+peering context requires unique known selected-scope relationships, not names,
+presence or resource-type/SKU equality. Immutable /27 and400/500/1000 checklist
+wording is preserved alongside actual current /26-or-larger Route Server
+quickstart and650-peering service-table qualifications. Whole topology,
+regional readiness/independence, shared-service purpose, partner support,
+effective transit, monitoring operation and actual quotas stay separate blank
+human decisions. The [preparation record](plan.md#historical-cohort-10-independent-preparation-2026-11-06)
+retains source/adapter/privacy/proof boundaries; cohorts29/06 precede activation.
 
 ## Cohort 27 integration
 

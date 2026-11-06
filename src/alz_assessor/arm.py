@@ -82,10 +82,13 @@ API_VERSIONS = {
     "microsoft.network/bastionhosts": {"2024-05-01"},
 }
 PLANNED_API_VERSIONS = API_VERSIONS | {
+    "microsoft.insights/activitylogalerts": {"2020-10-01"},
+    "microsoft.insights/actiongroups": {"2023-01-01"},
     "microsoft.network/securitypartnerproviders": {"2024-05-01"},
     "microsoft.network/vpngateways": {"2024-05-01"},
     "microsoft.network/virtualwans": {"2024-05-01"},
     "microsoft.network/virtualhubs": {"2024-05-01"},
+    "microsoft.network/virtualhubs/ipconfigurations": {"2024-05-01"},
     "microsoft.network/virtualhubs/hubvirtualnetworkconnections": {"2024-05-01"},
     "microsoft.network/virtualhubs/hubroutetables": {"2024-05-01"},
     "microsoft.network/virtualhubs/routingintent": {"2024-05-01"},
@@ -126,9 +129,11 @@ def properties(
     from .identity_evidence import projected_properties as identity_properties
     from .logging_evidence import projected_properties as logging_properties
     from .network_policy_evidence import projected_properties as network_policy_properties
+    from .platform_health_evidence import projected_properties as platform_health_properties
     from .policy_strategy_evidence import projected_properties as policy_strategy_properties
     from .security_evidence import projected_properties as security_properties
     from .tenant_evidence import projected_properties as tenant_properties
+    from .topology_evidence import projected_properties as topology_properties
 
     if isinstance(values, dict) and kind.lower() == ROLE_KIND:
         return role_properties(values, terraform=False)
@@ -141,10 +146,12 @@ def properties(
         result.update(security_properties(kind, values, root=root))
         result.update(governance_properties(kind, values, root=root))
         result.update(logging_properties(kind, values, root=root))
+        result.update(platform_health_properties(kind, values, root=root))
         result.update(network_policy_properties(kind, values))
         result.update(identity_properties(kind, values, root=root))
         result.update(policy_strategy_properties(kind, values))
         result.update(tenant_properties(kind, values))
+        result.update(topology_properties(kind, values))
     return result
 
 

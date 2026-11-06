@@ -6,8 +6,95 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.19"
+BANK_VERSION = "2026-11-06.21"
 BANK = {
+    "platform-health-alerts-log-boundaries-redundancy": {
+        "question": "Decide each of the nine monitoring recommendations independently "
+        "from attributable "
+        "redacted evidence. Reconcile separate Service Health service/region/event populations "
+        "and Resource Health resource/status/transition/reason populations, including clouds, "
+        "tenant preview versus subscription scope, original-time events and accountable response. "
+        "Verify directly attached, enabled Global action groups for applicable Service Health "
+        "alerts; receiver counts and configuration do not verify contacts, current email OTP, "
+        "delivery, acknowledgement or escalation. Review every Azure-born raw-log export route "
+        "and on-premises boundary, allowing critical-alert integration only as the immutable "
+        "guidance describes; Sentinel onboarding and workspace location cannot prove no export. "
+        "Demonstrate actual Azure Monitor Logs ingestion and useful insight/report usage, "
+        "independently of metrics or workspace existence. F01.14 is conditional legacy wording: "
+        "WAD/LAD retired March 31, 2026; record applicability, existing shared-storage "
+        "boundaries, AMA/DCR destination-specific migration, parity and cutover without "
+        "recommending new legacy deployments or treating boot diagnostics as the extension. "
+        "Review operational metric, activity and log-query rule criteria, data arrival, enabled "
+        "configuration, actions and actual end-to-end response separately. Supply the approved "
+        "business monitoring requirements, owners, measurable "
+        "health/availability/performance/security/retention/residency objectives and justified "
+        "exceptions; never invent an SLA or threshold. For AMBA, bind the actual reviewed "
+        "origin/version to complete intended platform populations, "
+        "initiatives/assignments/parameters/exclusions, brownfield remediation and tests; generic "
+        "Policy references prove none. For storage, assess exact SKU plus kind/service/region "
+        "support, zone versus asynchronous geo protection, read access, "
+        "conversions/synchronization, RPO/RTO, failover and residency with accountable "
+        "requirements and exceptions. No probes, queries, deployments, contact tests, log/query "
+        "contents, recipient addresses, phones, webhook URLs, keys, billing or personal identity "
+        "payloads. Signals and human confirmations never manufacture Verified.",
+        "controls": [
+            "ALZ-e5695f22-23ac-4e8c-a123-08ca5017f154",
+            "ALZ-d5f345bf-97ab-41a7-819c-6104baa7d48c",
+            "ALZ-e3ab3693-829e-47e3-8618-3687a0477a20",
+            "ALZ-6944008b-e7d7-4e48-9327-6d8bdc055bcf",
+            "ALZ-619e8a13-f988-4795-85d6-26886d70ba6c",
+            "ALZ-97be9951-9048-4384-9c98-6cb2913156a1",
+            "ALZ-859c3900-4514-41eb-b010-475d695abd74",
+            "ALZ-aa45be6a-8f2d-4896-b0e3-775e6e94e610",
+            "ALZ-0d83fd81-952c-4d47-a6cb-3a930925ef2e",
+        ],
+    },
+    "hub-spoke-route-server-monitoring": {
+        "question": "Provide ten independently attributable original-time decisions and "
+        "exceptions, "
+        "not one shared approval. D01.01: identify the approved internal/external "
+        "application-delivery standard, workload-owned spoke ingress, regional Application "
+        "Gateway v2/WAF versus global Front Door/WAF and origin restriction, including justified "
+        "protocol/partner alternatives. D01.02: explicitly designate hubs/spokes and justify "
+        "traditional topology against flexibility, traffic/isolation/transit and managed "
+        "alternatives; names and peering count do not prove purpose. D01.03: identify required "
+        "regions and complete regional connectivity/DNS/identity/management readiness, physical "
+        "failure domains and exercised DR; location labels are not readiness. D01.04: bind the "
+        "designated hub to required shared ER/VPN/firewall or supported partner NVA and "
+        "conditional DNS services, ownership and effective inspection; do not centralize shared "
+        "L7 workload ingress. D01.06: if partner technology applies, identify exact "
+        "vendor/version/supported design and evidence for HA, convergence, symmetry/SNAT, "
+        "performance and Azure compatibility; generic Azure patterns are not vendor approval. "
+        "D01.07: determine whether ER/S2S VPN transit is actually required, establish Route Server "
+        "VNet attachment and explicit branch exchange, same-VNet gateways and active-active VPN "
+        "ASN65515/route-based non-Basic requirements; VPN BGP is not required, P2S and ER-to-ER "
+        "transit are excluded, effective routes/failover need separate evidence. D01.08: "
+        "acknowledge immutable /27 wording versus current linked /26-or-larger quickstart and "
+        "older provider /27 guidance; approve a dedicated RouteServerSubnet with current "
+        "source-qualified capacity and NSG/UDR restrictions, not a name-only check. D01.09: "
+        "designate actual regional hubs and approve both directional global peerings/alternative "
+        "interregional design, nontransitivity, Basic Load Balancer restrictions and required "
+        "inspection without unintended bypass; unequal regions do not prove global hub transit. "
+        "D01.10: show actual Network Insights topology/health/metrics visibility, required "
+        "connectivity/traffic/alerts, ingestion/freshness, ownership and response with redacted "
+        "evidence; built-in views need no configuration and no test/probe is authorized here. "
+        "D01.11: reconcile immutable400/500/1000 wording with current650 peerings/VNet and "
+        "source-specific Route Server/ER direction/family/SKU limits; establish authorized current "
+        "quotas and complete regional spokes/peerings/advertised-prefix populations, summarization "
+        "and growth/exception plan, rather than counting selected records.",
+        "controls": [
+            "ALZ-373f482f-3e39-4d39-8aa4-7e566f6082b6",
+            "ALZ-e8bbac75-7155-49ab-a153-e8908ae28c84",
+            "ALZ-7bc1c396-2461-4698-b57f-30ca69525252",
+            "ALZ-7dd61623-a364-4a90-9eca-e48ebd54cd7d",
+            "ALZ-e2e8abac-3571-4559-ab91-53e89f89dc7b",
+            "ALZ-ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
+            "ALZ-91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
+            "ALZ-cc881471-607c-41cc-a0e6-14658dd558f9",
+            "ALZ-4722d929-c1b1-4cd6-81f5-4b29bade39ad",
+            "ALZ-0e7c28ec-9366-4572-83b0-f4664b1d944a",
+        ],
+    },
     "hybrid-identity-entitlements-sovereignty": {
         "question": "Decide all eight GUIDs independently using attributable redacted evidence "
         "and the control-specific requirements. For Connect Sync, distinguish maintained "
