@@ -4,7 +4,7 @@
   "issue": "https://github.com/jonathan-vella/landinglens/issues/99",
   "prerequisites": ["13", "22"],
   "activation": "Deferred until the coordinator grants the catalog/delivery slot; no successor version chosen.",
-  "supported_modes": "Prepared pure typed helpers for reviewed ARM/REST 2024-05-01 and AzureRM 4.50.0 literal values. Full raw/plan/ARM/saved/injected normalization, review, tier, output and replay integration awaits the merged predecessor gateway/connection contract.",
+  "supported_modes": "Circuit/port configuration facts normalize through the existing reviewed ARM/REST 2024-05-01, existing no-restore Bicep, AzureRM 4.50.0 raw/supplied-plan and saved/injected paths, with typed review/replay projection. FastPath flags remain pure helpers. GUID-specific catalog, interview, tier and report activation plus gateway/connection integration await the merged predecessor contract and coordinator slot.",
   "shared_interface_needs": [
     "Reuse cohort13 gateway SKU, gatewayType, activeActive, enableBgp, public-IP/subnet relationships and connection circuit/local-network-gateway relationships.",
     "Reuse original-time and scoped evidence guards. Add only explicit FastPath booleans to the merged connection projection.",

@@ -7,7 +7,10 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
+from alz_assessor.arm import arm_source
+from alz_assessor.azure import Collector, Response
 from alz_assessor.bicep import compile_bicep
+from alz_assessor.contracts import validate
 from alz_assessor.expressroute_evidence import (
     PATHS,
     bandwidth,
@@ -18,6 +21,10 @@ from alz_assessor.expressroute_evidence import (
     port_reference,
     review_fact,
 )
+from alz_assessor.plan import plan_source
+from alz_assessor.replay import sanitize_evidence
+from alz_assessor.sources import terraform_source, tf_properties, tf_resource_id
+from alz_assessor.terraform import InputError, tree_hash
 
 ROOT = Path(__file__).resolve().parents[1]
 SCOPE = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/expressroute"
@@ -37,6 +44,17 @@ GUIDS = {
 
 
 class ExpressRoutePreparationTests(unittest.TestCase):
+    def setUp(self):
+        temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(temporary.cleanup)
+        self.root = Path(temporary.name)
+
+    def write(self, name, value):
+        path = self.root / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(value), encoding="utf-8")
+        return path
+
     def circuit(self):
         return {
             "sku": [{"tier": "Local", "family": "UnlimitedData", "name": SENTINEL}],
@@ -250,6 +268,257 @@ class ExpressRoutePreparationTests(unittest.TestCase):
                 ],
             )
 
+    def test_raw_supplied_module_plan_types_sensitivity_and_scope(self):
+        values = {
+            "azurerm_express_route_circuit": {
+                **self.circuit(),
+                "name": "local",
+                "resource_group_name": "expressroute",
+            },
+            "azurerm_express_route_port": {
+                "name": "direct",
+                "resource_group_name": "expressroute",
+                "bandwidth_in_gbps": 100,
+                "billing_type": "MeteredData",
+                "encapsulation": "QinQ",
+                "peering_location": "Amsterdam",
+                "link1": [{"macsec_cak_keyvault_secret_id": SENTINEL}],
+            },
+        }
+        module = self.root / "snapshots" / "expressroute"
+        self.write(
+            "snapshots/expressroute/main.tf.json",
+            {"resource": {kind: {"test": body} for kind, body in values.items()}},
+        )
+        self.write(
+            "source/main.tf.json",
+            {
+                "module": {
+                    "expressroute": {"source": "example.invalid/alz/network", "version": "1.0"}
+                }
+            },
+        )
+        manifest = self.write(
+            "snapshots/snapshots.json",
+            {
+                "modules": [
+                    {
+                        "source": "example.invalid/alz/network",
+                        "version": "1.0",
+                        "subdirectory": "",
+                        "path": "expressroute",
+                        "sha256": tree_hash(module),
+                    }
+                ]
+            },
+        )
+        planned = {
+            "format_version": "1.2",
+            "planned_values": {
+                "root_module": {
+                    "resources": [
+                        {
+                            "mode": "managed",
+                            "type": kind,
+                            "address": kind + ".test",
+                            "values": {**body, "id": tf_resource_id(SCOPE, kind, body)},
+                        }
+                        for kind, body in values.items()
+                    ]
+                }
+            },
+        }
+        path = self.write("plan.json", planned)
+        with patch("socket.socket.connect", side_effect=AssertionError("network forbidden")):
+            raw = terraform_source(
+                self.root / "source",
+                scope=SCOPE,
+                provider_version="4.50.0",
+                snapshots=manifest,
+                authorized_roots=[self.root],
+            )
+            plan = plan_source(path, scope=SCOPE, provider_version="4.50.0")
+        for bundle in (raw, plan):
+            self.assertNotIn(SENTINEL, json.dumps(bundle))
+            resources = {r["resource_type"].lower(): r for r in bundle["resources"]}
+            circuit = resources["microsoft.network/expressroutecircuits"]
+            self.assertEqual(circuit["properties"]["directCircuitBandwidthGbps"], 10)
+            self.assertEqual(circuit["properties"]["expressRoutePort"]["id"], PORT.lower())
+            self.assertEqual(
+                circuit["arm_id"],
+                (SCOPE + "/providers/Microsoft.Network/expressRouteCircuits/local").lower(),
+            )
+            self.assertEqual(
+                resources["microsoft.network/expressrouteports"]["properties"][
+                    "directPortBandwidthGbps"
+                ],
+                100,
+            )
+            sanitized = sanitize_evidence(bundle)
+            validate(sanitized, "evidence")
+            projected = {r["resource_type"].lower(): r for r in sanitized["resources"]}
+            self.assertEqual(
+                projected[circuit["resource_type"].lower()]["properties"][
+                    "directCircuitBandwidthGbps"
+                ],
+                10,
+            )
+            self.assertNotIn(SENTINEL, json.dumps(sanitized))
+        planned["planned_values"]["root_module"]["resources"][0]["sensitive_values"] = {
+            "bandwidth_in_gbps": True,
+            "sku": True,
+            "express_route_port_id": True,
+        }
+        path = self.write("plan.json", planned)
+        hidden = plan_source(path, scope=SCOPE, provider_version="4.50.0")
+        props = hidden["resources"][0]["properties"]
+        self.assertIn("unknown", props["directCircuitBandwidthGbps"])
+        self.assertIn("unknown", props["circuitSku"]["family"])
+        self.assertIn("unknown", props["expressRoutePort"]["id"])
+        unsupported = plan_source(path, scope=SCOPE, provider_version="4.49.0")
+        self.assertTrue(all(r["state"] == "unknown" for r in unsupported["resources"]))
+        with self.assertRaisesRegex(InputError, "outside the explicit assessment scope"):
+            plan_source(
+                path, scope=SCOPE.replace("expressroute", "another"), provider_version="4.50.0"
+            )
+
+    def test_arm_normalization_supported_version_replay_and_old_port_facts(self):
+        template = {
+            "resources": [
+                {
+                    "type": "Microsoft.Network/expressRouteCircuits",
+                    "apiVersion": "2024-05-01",
+                    "name": "local",
+                    "sku": {"tier": "Local", "family": "UnlimitedData", "name": SENTINEL},
+                    "properties": {
+                        "bandwidthInGbps": 10,
+                        "expressRoutePort": {"id": PORT},
+                        "enableDirectPortRateLimit": True,
+                        "authorizationKey": SENTINEL,
+                    },
+                },
+                {
+                    "type": "Microsoft.Network/expressRoutePorts",
+                    "apiVersion": "2024-05-01",
+                    "name": "direct",
+                    "identity": {
+                        "type": "UserAssigned",
+                        "userAssignedIdentities": {
+                            SCOPE + "/providers/Microsoft.ManagedIdentity/"
+                            "userAssignedIdentities/fixture": {}
+                        },
+                    },
+                    "properties": {
+                        "bandwidthInGbps": 100,
+                        "billingType": "MeteredData",
+                        "encapsulation": "QinQ",
+                        "peeringLocation": "Amsterdam",
+                        "links": [
+                            {
+                                "properties": {
+                                    "macSecConfig": {
+                                        "cipher": "GcmAes256",
+                                        "sciState": "Enabled",
+                                        "cakSecretIdentifier": SENTINEL,
+                                    }
+                                }
+                            }
+                        ],
+                    },
+                },
+            ],
+        }
+        bundle = arm_source(self.write("arm.json", template), scope=SCOPE)
+        self.assertNotIn(SENTINEL, json.dumps(bundle))
+        circuit, port = bundle["resources"]
+        self.assertEqual(
+            circuit["properties"], tf_properties("azurerm_express_route_circuit", self.circuit())
+        )
+        self.assertEqual(
+            port["properties"]["macsecLinks"], [{"cipher": "GcmAes256", "sciState": "Enabled"}]
+        )
+        self.assertIn("identitySummary", port["properties"])
+        port["properties"]["billingSecrets"] = SENTINEL
+        projected = sanitize_evidence(bundle)
+        self.assertEqual(projected["collected_at"], bundle["collected_at"])
+        self.assertNotIn(SENTINEL, json.dumps(projected))
+        self.assertEqual(
+            projected["resources"][1]["properties"]["directPortBillingType"], "MeteredData"
+        )
+        self.assertEqual(
+            projected["resources"][1]["properties"]["macsecLinks"],
+            port["properties"]["macsecLinks"],
+        )
+        self.assertEqual(
+            projected["resources"][1]["properties"]["identitySummary"],
+            port["properties"]["identitySummary"],
+        )
+        template["resources"][0]["apiVersion"] = "2024-07-01"
+        unsupported = arm_source(self.write("unsupported.json", template), scope=SCOPE)
+        self.assertEqual(unsupported["resources"][0]["state"], "unknown")
+
+    def test_injected_circuit_detail_root_sku_denied_partial_and_no_extra_reads(self):
+        identity = SCOPE + "/providers/Microsoft.Network/expressRouteCircuits/local"
+        detail = {
+            "id": identity,
+            "type": "Microsoft.Network/expressRouteCircuits",
+            "sku": {"tier": "Local", "family": "UnlimitedData"},
+            "properties": {
+                "bandwidthInGbps": 10,
+                "expressRoutePort": {"id": PORT},
+                "serviceKey": SENTINEL,
+                "peerings": [{"properties": {"primaryPeerAddressPrefix": SENTINEL}}],
+            },
+        }
+        requests = []
+
+        def transport(method, url):
+            requests.append((method, url))
+            if method == "POST":
+                self.assertIn("/policyStates/latest/queryResults?", url)
+                return Response(200, {"value": []}, {})
+            self.assertEqual(method, "GET")
+            if "/resources?" in url:
+                return Response(200, {"value": [{"id": identity, "type": detail["type"]}]}, {})
+            if "/expressroutecircuits/" in url.lower():
+                self.assertIn("api-version=2024-05-01", url)
+                return Response(200, detail, {})
+            return Response(200, {"value": []}, {})
+
+        with patch("socket.socket.connect", side_effect=AssertionError("network forbidden")):
+            observed = Collector(transport).collect(
+                subscriptions=["00000000-0000-0000-0000-000000000001"],
+                inventory_authorized=True,
+            )
+        props = observed["resources"][0]["properties"]
+        self.assertEqual(props["circuitSku"]["family"], "UnlimitedData")
+        self.assertEqual(props["directCircuitBandwidthGbps"], 10)
+        self.assertNotIn(SENTINEL, json.dumps(sanitize_evidence(observed)))
+        self.assertFalse(any("/expressrouteports/" in url.lower() for _, url in requests))
+        original_time = observed["collected_at"]
+
+        def denied(method, url):
+            if "/expressroutecircuits/" in url.lower():
+                return Response(403, {}, {})
+            return transport(method, url)
+
+        observed = Collector(denied).collect(
+            subscriptions=["00000000-0000-0000-0000-000000000001"],
+            inventory_authorized=True,
+        )
+        self.assertEqual(observed["resources"][0]["state"], "inaccessible")
+        self.assertFalse(observed["resources"][0]["properties"])
+        detail["properties"] = {}
+        partial = Collector(transport).collect(
+            subscriptions=["00000000-0000-0000-0000-000000000001"],
+            inventory_authorized=True,
+        )
+        self.assertIn(
+            "unknown", partial["resources"][0]["properties"]["directCircuitBandwidthGbps"]
+        )
+        self.assertIn("unknown", partial["resources"][0]["properties"]["expressRoutePort"]["id"])
+        self.assertTrue(original_time)
+
     @unittest.skipUnless(os.environ.get("BICEP_COMPILER"), "existing Bicep compiler not supplied")
     def test_real_bicep_expressroute_cost_capacity_fastpath_without_restore(self):
         source = ROOT / "tests" / "fixtures" / "expressroute" / "main.bicep"
@@ -278,4 +547,11 @@ class ExpressRoutePreparationTests(unittest.TestCase):
         self.assertEqual(
             flags, {"expressRouteGatewayBypass": True, "enablePrivateLinkFastPath": True}
         )
+        normalized = arm_source(
+            source, scope=SCOPE, bicep=True, compiler=os.environ["BICEP_COMPILER"]
+        )
+        by_name = {r["arm_id"].rsplit("/", 1)[-1]: r for r in normalized["resources"]}
+        self.assertEqual(by_name["local"]["properties"]["expressRoutePort"]["id"], PORT.lower())
+        self.assertEqual(by_name["provider"]["properties"]["providerCircuitBandwidthMbps"], 500)
+        self.assertEqual(by_name["direct"]["properties"]["directPortBandwidthGbps"], 100)
         self.assertEqual(before, hashlib.sha256(source.read_bytes()).hexdigest())

@@ -4,6 +4,8 @@ from ipaddress import ip_address, ip_network
 from typing import Any
 
 from .contracts import canonical_id, identity_type
+from .expressroute_evidence import CIRCUIT_KIND, PORT_KIND
+from .expressroute_evidence import PATHS as EXPRESSROUTE_PATHS
 from .identity_evidence import PATHS as IDENTITY_PATHS
 from .routing_evidence import KINDS as ROUTING_KINDS
 from .routing_evidence import PATHS as ROUTING_PATHS
@@ -47,6 +49,7 @@ REVIEW_PATHS = (
     }
     | ROUTING_PATHS
     | IDENTITY_PATHS
+    | EXPRESSROUTE_PATHS
 )
 
 
@@ -492,6 +495,10 @@ def private_connections(values: dict[str, Any], *, terraform: bool) -> Any:
 
 
 def review_fact(properties: dict[str, Any], path: str) -> Any:
+    if path in EXPRESSROUTE_PATHS:
+        from .expressroute_evidence import review_fact as expressroute_fact
+
+        return expressroute_fact(properties, path)
     if path in IDENTITY_PATHS:
         from .identity_evidence import review_fact as identity_fact
 
@@ -822,28 +829,35 @@ def projected_properties(
         }
     from .routing_evidence import projected_properties as routing_properties
 
+    if kind == CIRCUIT_KIND:
+        from .expressroute_evidence import circuit_properties
+
+        return circuit_properties(values, terraform=terraform, root=root)
+    if kind == PORT_KIND:
+        from .expressroute_evidence import port_properties
+
+        return {
+            **routing_properties(kind, values, terraform=terraform, observed=observed, root=root),
+            **port_properties(values, terraform=terraform),
+        }
     return routing_properties(kind, values, terraform=terraform, observed=observed, root=root)
 
 
 def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
-    if (
-        kind.lower()
-        not in {
-            "microsoft.network/azurefirewalls",
-            "microsoft.network/virtualnetworks/subnets",
-            "microsoft.network/ipgroups",
-            "microsoft.network/azurefirewalls/natrulecollections",
-            "microsoft.insights/diagnosticsettings",
-            "microsoft.network/virtualnetworks",
-            "microsoft.network/privateendpoints",
-            "microsoft.network/firewallpolicies/rulecollectiongroups",
-            "microsoft.network/networksecuritygroups",
-            "microsoft.network/networksecuritygroups/securityrules",
-            "microsoft.network/virtualnetworkgateways",
-            "microsoft.network/networkwatchers/flowlogs",
-        }
-        | ROUTING_KINDS
-    ):
+    if kind.lower() not in {
+        "microsoft.network/azurefirewalls",
+        "microsoft.network/virtualnetworks/subnets",
+        "microsoft.network/ipgroups",
+        "microsoft.network/azurefirewalls/natrulecollections",
+        "microsoft.insights/diagnosticsettings",
+        "microsoft.network/virtualnetworks",
+        "microsoft.network/privateendpoints",
+        "microsoft.network/firewallpolicies/rulecollectiongroups",
+        "microsoft.network/networksecuritygroups",
+        "microsoft.network/networksecuritygroups/securityrules",
+        "microsoft.network/virtualnetworkgateways",
+        "microsoft.network/networkwatchers/flowlogs",
+    } | ROUTING_KINDS | {CIRCUIT_KIND, PORT_KIND}:
         return {}
     result: dict[str, Any] = {}
     for path in sorted(REVIEW_PATHS):

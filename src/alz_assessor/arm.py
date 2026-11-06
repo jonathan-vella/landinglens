@@ -52,6 +52,7 @@ API_VERSIONS = {
     "microsoft.network/loadbalancers": {"2024-05-01"},
     "microsoft.network/loadbalancers/backendaddresspools": {"2024-05-01"},
     "microsoft.network/expressrouteports": {"2024-05-01"},
+    "microsoft.network/expressroutecircuits": {"2024-05-01"},
     "microsoft.network/connections": {"2024-05-01"},
     "microsoft.authorization/roleassignments": {"2022-04-01"},
 }
