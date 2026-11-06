@@ -6,8 +6,87 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.16"
+BANK_VERSION = "2026-11-06.17"
 BANK = {
+    "policy-strategy-placement-delegation": {
+        "question": "Supply eight separate decisions at the "
+        "original evidence time. E01.01: "
+        "identify approved governance "
+        "objectives, initiative grouping and "
+        "reviewed Policy-as-code "
+        "rollout/maintenance; an initiative "
+        "count or literal effect is not "
+        "strategy or enforcement. E01.03: bind "
+        "applicable regulatory obligations, "
+        "customer/Microsoft/shared "
+        "responsibilities and exact Policy/RBAC "
+        "controls using attributable redacted "
+        "evidence; built-in regulatory "
+        "groupings, including current Preview "
+        "status, are not a legal-compliance "
+        "verdict. E01.04: explicitly designate "
+        "the intermediate root below the actual "
+        "tenant root and prove complete "
+        "intended assignment ancestry; no name "
+        "or missing parent establishes either "
+        "root. Global built-ins are distinct "
+        "from custom "
+        "management-group/subscription "
+        "definitions. E01.05: decide the "
+        "highest appropriate scope for each "
+        "control and justified lower-scope "
+        "exclusions versus tracked exemptions; "
+        "review conditions, mode, versions, "
+        "overrides, resource/identity "
+        "selectors, expiry and "
+        "evaluation/remediation evidence "
+        "separately. E01.06: provide the "
+        "organization-approved services and "
+        "exceptions and show the applicable "
+        "audit/restriction controls; no generic "
+        "allowed-service taxonomy is assumed. "
+        "E01.07: compare actual built-in "
+        "scope/cloud/version/parameter/effect "
+        "suitability with custom alternatives "
+        "and maintenance cost; a global GUID "
+        "reference is not fetched content, "
+        "existence or suitability. E01.08: "
+        "identify the application team and "
+        "least-privilege scope, actual active "
+        "membership/PIM, conditions/deny "
+        "assignments and remediation-identity "
+        "grants; Resource Policy "
+        "Contributor36243c78-bf99-498c-9df9-86d9f8d28608 "
+        "includes control-plane read, "
+        "PolicyInsights, deployments/support, "
+        "not role-assignment write or "
+        "dataActions. Workload RBAC is normally "
+        "subscription/resource-group scoped; no "
+        "reference/principal-type/count proves "
+        "effective delegation. E01.09: "
+        "explicitly establish tenant-root "
+        "identity and review only must-have "
+        "root assignments, exclusions and "
+        "debugging/maintenance complexity "
+        "against complete attributable "
+        "inventory; no numeric assignment cap "
+        "is prescribed and a selected tree is "
+        "not complete. Use redacted supporting "
+        "references, not rule bodies, principal "
+        "records, service-list contents or "
+        "fabricated organizational/legal "
+        "decisions.",
+        "controls": [
+            "ALZ-5c986cb2-9131-456a-8247-6e49f541acdc",
+            "ALZ-d8a2adb1-17d6-4326-af62-5ca44e5695f2",
+            "ALZ-223ace8c-b123-408c-a501-7f154e3ab369",
+            "ALZ-3829e7e3-1618-4368-9a04-77a209945bda",
+            "ALZ-43334f24-9116-4341-a2ba-527526944008",
+            "ALZ-be7d7e48-4327-46d8-adc0-55bcf619e8a1",
+            "ALZ-3f988795-25d6-4268-a6d7-0ba6c97be995",
+            "ALZ-19048384-5c98-46cb-8913-156a12476e49",
+        ],
+    },
     "tenant-lighthouse-billing-governance": {
         "question": "Decide all eight tenant/billing GUIDs independently using redacted "
         "attributable references. Justify a single corporate tenant or the specific regulatory/"

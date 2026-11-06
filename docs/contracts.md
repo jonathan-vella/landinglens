@@ -80,14 +80,15 @@ JSON/Markdown/HTML share the same counts, with no browser-side tier evaluator.
 
 ## Catalog and evidence contracts
 
-### Cohort 27 independent Policy preparation (not accepted activation)
+### Cohort 27 Policy configuration vocabulary
 
-The [eight-GUID preparation matrix](../references/recommendation-batches/preparation-27.json)
-and [22 source captures](../references/recommendation-batches/preparation-27-sources.json)
-prepare `policyDefinitionSummary`, `policyInitiativeSummary` and
-`policyAssignmentSummary`. These helpers are not registered on the accepted
-cohort27 controls or interview bank until the coordinator grants its delivery
-slot. Current accepted catalog/crosswalk meanings and replay guards are unchanged.
+The [eight-GUID accepted matrix](../references/recommendation-batches/batch-27.json)
+and [22 unchanged captures](../references/recommendation-batches/batch-27-sources.json)
+register `policyDefinitionSummary`, `policyInitiativeSummary` and
+`policyAssignmentSummary` in `.17` after the explicit coordinator slot.
+Eight independently blank decisions share the existing interview/review paths.
+Exact `.16` meanings remain frozen; authored preparation catalogs still cannot
+be exported as accepted replay. Source activation is not merged delivery.
 
 Supported ARM/no-restore Bicep uses `2023-04-01` definitions, initiatives and
 assignments. AzureRM `4.50.0` raw/supplied-module/optional-plan adapters support

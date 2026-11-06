@@ -8659,9 +8659,37 @@
       "baseline_control_sha256": "5d47b7ef3159dede6878567359814810bf864a4f1091f0c94e03784ef42d57bb",
       "design_area": "Governance",
       "batch": "27",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "5c986cb2-9131-456a-8247-6e49f541acdc",
+        "upstream_id": "E01.01",
+        "classification": "assisted",
+        "implemented_subclaim": "Minimized explicit definition type/mode/literal effect and initiative member references; unique known in-scope custom definition joins require exact matching supplied versions and positive placement ancestry. No recursive evaluation or implicit fetch.",
+        "sources": [
+          "policy-overview",
+          "policy-effects",
+          "policy-spec-policyDefinitions",
+          "policy-spec-policySetDefinitions",
+          "policy-provider-policy_definition",
+          "policy-provider-policy_set_definition"
+        ],
+        "review_resource_types": [
+          "Microsoft.Authorization/policyDefinitions",
+          "Microsoft.Authorization/policySetDefinitions",
+          "Microsoft.Authorization/policyAssignments"
+        ],
+        "review_fact_paths": [
+          "policyDefinitionSummary",
+          "policyInitiativeSummary",
+          "policyAssignmentSummary"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Are the approved governance objectives represented by appropriate initiative groups, reviewed changes, staged audit/enforcement and a maintained operating strategy?"
+        ],
+        "limitations": "Literal effect and grouped references are configuration, not evaluated conditions, valid parameter/effect combinations, complete coverage, remediation or organizational strategy.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/130",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -8674,9 +8702,38 @@
       "baseline_control_sha256": "d7f7b1e0f6c3f878a79365abde9cef4242ac7f6d380e97a3558ebe1f3c249af0",
       "design_area": "Governance",
       "batch": "27",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "d8a2adb1-17d6-4326-af62-5ca44e5695f2",
+        "upstream_id": "E01.03",
+        "classification": "assisted",
+        "implemented_subclaim": "Bounded initiative group counts and hashed member labels, definition/assignment references and existing minimized role context prepare independent Policy/RBAC mapping review without retaining any regulatory mapping.",
+        "sources": [
+          "policy-overview",
+          "policy-regulatory",
+          "policy-spec-policySetDefinitions",
+          "policy-role-arm"
+        ],
+        "review_resource_types": [
+          "Microsoft.Authorization/policyDefinitions",
+          "Microsoft.Authorization/policySetDefinitions",
+          "Microsoft.Authorization/policyAssignments",
+          "Microsoft.Authorization/roleAssignments"
+        ],
+        "review_fact_paths": [
+          "policyDefinitionSummary",
+          "policyInitiativeSummary",
+          "policyAssignmentSummary",
+          "principalType",
+          "roleDefinitionId"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Which obligations and customer/Microsoft/shared responsibilities apply, and what exact attributable Policy/RBAC mapping and independent supporting controls satisfy them?"
+        ],
+        "limitations": "Current regulatory grouping guidance calls the feature Preview. Mapping, assignment, member count and saved compliance Signals prove neither legal compliance nor effective RBAC.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/130",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -8689,9 +8746,39 @@
       "baseline_control_sha256": "afce6eb7321299b383ae8f5dd66601f363ad0250bfebc577d35f47b8ea930703",
       "design_area": "Governance",
       "batch": "27",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "223ace8c-b123-408c-a501-7f154e3ab369",
+        "upstream_id": "E01.04",
+        "classification": "assisted",
+        "implemented_subclaim": "Exact custom management-group/subscription definition locations and supplied positive hierarchy paths distinguish valid local placement from unbound ancestry; global built-in references stay global, unfetched and unjoined.",
+        "sources": [
+          "policy-overview",
+          "policy-scope",
+          "management-hierarchy",
+          "landing-zone-hierarchy",
+          "policy-spec-policyDefinitions",
+          "policy-spec-policySetDefinitions"
+        ],
+        "review_resource_types": [
+          "Microsoft.Authorization/policyDefinitions",
+          "Microsoft.Authorization/policySetDefinitions",
+          "Microsoft.Authorization/policyAssignments",
+          "Microsoft.Management/managementGroups"
+        ],
+        "review_fact_paths": [
+          "policyDefinitionSummary",
+          "policyInitiativeSummary",
+          "policyAssignmentSummary",
+          "managementParentId"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Is the explicitly designated intermediate root directly below the actual tenant root, and does each custom definition location cover every intended assignment through attributable complete ancestry?"
+        ],
+        "limitations": "Names, absence of visible parents, a selected MG tree or definition references establish no tenant/intermediate-root designation, complete hierarchy or effective inherited result. Resource-group custom definitions are unsupported locations.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/130",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -8704,9 +8791,40 @@
       "baseline_control_sha256": "38644c193f092e57335a7c4c1d0e7cde6cd5d8882799a5a39c6f6ade20ff3848",
       "design_area": "Governance",
       "batch": "27",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "3829e7e3-1618-4368-9a04-77a209945bda",
+        "upstream_id": "E01.05",
+        "classification": "assisted",
+        "implemented_subclaim": "Exact assignment-ID scope, explicit exclusions with positive descendant checks, version-bound custom definition context, separate enforcement/selector/override counts and separately qualified saved exemption references.",
+        "sources": [
+          "policy-overview",
+          "policy-scope",
+          "policy-assignment",
+          "policy-exemption",
+          "policy-effects",
+          "policy-spec-policyAssignments",
+          "policy-provider-management_group_policy_assignment",
+          "policy-provider-subscription_policy_assignment",
+          "policy-provider-resource_group_policy_assignment"
+        ],
+        "review_resource_types": [
+          "Microsoft.Authorization/policyDefinitions",
+          "Microsoft.Authorization/policySetDefinitions",
+          "Microsoft.Authorization/policyAssignments"
+        ],
+        "review_fact_paths": [
+          "policyDefinitionSummary",
+          "policyInitiativeSummary",
+          "policyAssignmentSummary"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Is this the highest appropriate assignment scope, with justified lower exclusions versus tracked time/member/selector-bound exemptions, complete intended coverage and actual effect/evaluation/remediation evidence?"
+        ],
+        "limitations": "Default enforcementMode, nonempty assignment inventory or ancestor linkage cannot prove enforcement. DoNotEnforce still permits evaluation. Missing arrays remain unknown, not empty; selector/override bodies and conditions are never interpreted.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/130",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -8719,9 +8837,34 @@
       "baseline_control_sha256": "5e61ca9ff4acb5902a0d1d036357c42b52424d9ba9f43aa4180d5642e1cbc113",
       "design_area": "Governance",
       "batch": "27",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "43334f24-9116-4341-a2ba-527526944008",
+        "upstream_id": "E01.06",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit supported mode/literal effect and scoped assignment/definition references prepare audit/restriction review, withholding all service-list/parameter/rule contents.",
+        "sources": [
+          "approved-services",
+          "policy-effects",
+          "policy-scope",
+          "policy-spec-policyDefinitions",
+          "policy-spec-policyAssignments"
+        ],
+        "review_resource_types": [
+          "Microsoft.Authorization/policyDefinitions",
+          "Microsoft.Authorization/policyAssignments"
+        ],
+        "review_fact_paths": [
+          "policyDefinitionSummary",
+          "policyAssignmentSummary"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: What services and exceptions has the organization approved, and which applicable controls actually audit/restrict provisioning across the authorized scope?"
+        ],
+        "limitations": "No universal approved-service taxonomy exists in AM-2. A deny/audit literal does not identify a service allowlist, enforce it or authorize a new ARG query/scan.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/130",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -8734,9 +8877,36 @@
       "baseline_control_sha256": "fb70469e0ca52a1b0939abb26f18d47e0295363165e26614bf4a91b3fe778fb0",
       "design_area": "Governance",
       "batch": "27",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "be7d7e48-4327-46d8-adc0-55bcf619e8a1",
+        "upstream_id": "E01.07",
+        "classification": "assisted",
+        "implemented_subclaim": "Definition policyType and reference namespace distinguish explicit custom configuration from globally identified built-in references; unsupported/missing/versioned/wildcard bindings remain unknown rather than fetching or treating a GUID as content.",
+        "sources": [
+          "policy-overview",
+          "policy-scope",
+          "policy-assignment",
+          "policy-spec-policyDefinitions",
+          "policy-spec-policySetDefinitions"
+        ],
+        "review_resource_types": [
+          "Microsoft.Authorization/policyDefinitions",
+          "Microsoft.Authorization/policySetDefinitions",
+          "Microsoft.Authorization/policyAssignments"
+        ],
+        "review_fact_paths": [
+          "policyDefinitionSummary",
+          "policyInitiativeSummary",
+          "policyAssignmentSummary"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Are actual original-time built-ins suitable for the required cloud/scope/mode/version/parameters/effects, and is any custom alternative justified against maintenance overhead?"
+        ],
+        "limitations": "A global built-in reference is not a custom intermediate-root definition, a fetched version, evidence of existence/effect or suitability. Provider metadata does not synthesize an exact effective version.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/130",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -8749,9 +8919,32 @@
       "baseline_control_sha256": "24a2c781dad197febe71f51dc1fad56c118704b0e01bb22b824a8f3feb017628",
       "design_area": "Governance",
       "batch": "27",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "3f988795-25d6-4268-a6d7-0ba6c97be995",
+        "upstream_id": "E01.08",
+        "classification": "assisted",
+        "implemented_subclaim": "Reuse existing unique known scoped role assignment principal-type and typed role-definition reference; recognize the exact Resource Policy Contributor GUID without retaining personal principals or interpreting permissions.",
+        "sources": [
+          "policy-overview",
+          "resource-policy-contributor",
+          "policy-role-arm",
+          "landing-zone-hierarchy"
+        ],
+        "review_resource_types": [
+          "Microsoft.Authorization/roleAssignments"
+        ],
+        "review_fact_paths": [
+          "principalType",
+          "roleDefinitionId"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Is the intended application team actively and appropriately delegated at the least-privilege subscription/resource-group scope, considering PIM/membership, conditions/deny assignments, broad control-plane read and separate remediation-identity grants?"
+        ],
+        "limitations": "Role reference is not actual team identity, active effective authority, proper scope or roleAssignments/write. No new assignment/grant, identity read or permission interpreter is added.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/130",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []
@@ -8764,9 +8957,34 @@
       "baseline_control_sha256": "26e166fbce8390934f5b5b722bde62e3b1be25bd42dd37ac1f64e843bf188d33",
       "design_area": "Governance",
       "batch": "27",
-      "status": "pending",
-      "review": null,
-      "issue": null,
+      "status": "implementation-in-progress",
+      "review": {
+        "guid": "19048384-5c98-46cb-8913-156a12476e49",
+        "upstream_id": "E01.09",
+        "classification": "assisted",
+        "implemented_subclaim": "Supplied-subset scoped assignment/exclusion counts, unresolved/truncated populations and positive saved MG parent edges prepare root-complexity review without automatically naming the tenant root.",
+        "sources": [
+          "policy-overview",
+          "landing-zone-hierarchy",
+          "management-hierarchy",
+          "policy-assignment",
+          "policy-exemption"
+        ],
+        "review_resource_types": [
+          "Microsoft.Authorization/policyAssignments",
+          "Microsoft.Management/managementGroups"
+        ],
+        "review_fact_paths": [
+          "policyAssignmentSummary",
+          "managementParentId"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: After explicitly establishing tenant-root identity and complete inventory, are only justified must-have assignments placed there, with manageable inherited exclusions/exemptions and debugging/maintenance complexity?"
+        ],
+        "limitations": "The guidance supplies no numeric root-assignment cap. Missing parent does not establish tenant root, zero supplied assignments does not establish absence, and selected inventory cannot establish organizational appropriateness.",
+        "flags": []
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/130",
       "pr": null,
       "merge_commit": null,
       "runtime_evidence": []

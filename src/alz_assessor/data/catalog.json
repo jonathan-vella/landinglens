@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "kind": "catalog",
-  "catalog_version": "2026-11-06.16",
+  "catalog_version": "2026-11-06.17",
   "design_areas": [
     "Azure billing and Active Directory tenant",
     "Identity and access management",
@@ -13281,15 +13281,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Literal effect and grouped references are configuration, not evaluated conditions, valid parameter/effect combinations, complete coverage, remediation or organizational strategy.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Are the approved governance objectives represented by appropriate initiative groups, reviewed changes, staged audit/enforcement and a maintained operating strategy?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-27",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -13303,9 +13300,67 @@
           "pointer": "/items/167",
           "item_sha256": "49f1a6042733f9714bc2ee0f120a5688747dce6a6451b9d64b7f01e66eb06305",
           "guidance": "https://learn.microsoft.com/azure/governance/policy/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/overview",
+          "source_sha256": "d06041580633abb0e6adf6b78bd791ab2cd053c0dbafb703a6948f8e4a647aca",
+          "revision": "f5122cc9a56620b3e86ab6e47a77b9d4bb826992",
+          "retrieved_at": "2026-11-06T17:45:54.201823+00:00",
+          "pointer": "5c986cb2-9131-456a-8247-6e49f541acdc",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effect-basics",
+          "source_sha256": "959db135df02234a325ec66be0250d389e48cee0b2ce79b24c1e4222a683170b",
+          "revision": "436beed9da29528ce784d09c0668b6800436d263",
+          "retrieved_at": "2026-11-06T17:45:55.068690+00:00",
+          "pointer": "5c986cb2-9131-456a-8247-6e49f541acdc",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effect-basics"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json",
+          "source_sha256": "9d707ad996174330367c811461f5f3b2e1c710b63e5b171e804ad058850d9ad6",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T17:45:56.062887+00:00",
+          "pointer": "5c986cb2-9131-456a-8247-6e49f541acdc",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json",
+          "source_sha256": "a75b99bf469062e594abc1468aea4f473c5f070b21311e894c4b1e3a86d89e48",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T17:45:56.330812+00:00",
+          "pointer": "5c986cb2-9131-456a-8247-6e49f541acdc",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_definition.html.markdown",
+          "source_sha256": "74cf604cb0de66c8428b0114ff594ef3c02956e49c411ef7d692b0a782893993",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T17:45:56.921332+00:00",
+          "pointer": "5c986cb2-9131-456a-8247-6e49f541acdc",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_definition.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_set_definition.html.markdown",
+          "source_sha256": "9348c71eb855dbe45ff5299a9a37778dd41224534668fd64df74620e04ab9a9c",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T17:45:57.192963+00:00",
+          "pointer": "5c986cb2-9131-456a-8247-6e49f541acdc",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_set_definition.html.markdown"
         }
       ],
-      "severity": "High"
+      "severity": "High",
+      "review_resource_types": [
+        "Microsoft.Authorization/policyDefinitions",
+        "Microsoft.Authorization/policySetDefinitions",
+        "Microsoft.Authorization/policyAssignments"
+      ],
+      "review_fact_paths": [
+        "policyDefinitionSummary",
+        "policyInitiativeSummary",
+        "policyAssignmentSummary"
+      ]
     },
     {
       "control_id": "ALZ-d8a2adb1-17d6-4326-af62-5ca44e5695f2",
@@ -13325,15 +13380,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Current regulatory grouping guidance calls the feature Preview. Mapping, assignment, member count and saved compliance Signals prove neither legal compliance nor effective RBAC.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Which obligations and customer/Microsoft/shared responsibilities apply, and what exact attributable Policy/RBAC mapping and independent supporting controls satisfy them?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-27",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -13347,9 +13399,54 @@
           "pointer": "/items/168",
           "item_sha256": "ab3ed4c9ff6295ec0a544982398e4b3b6d919b12393115ebc3af47ec24eea567",
           "guidance": "https://learn.microsoft.com/azure/governance/policy/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/overview",
+          "source_sha256": "d06041580633abb0e6adf6b78bd791ab2cd053c0dbafb703a6948f8e4a647aca",
+          "revision": "f5122cc9a56620b3e86ab6e47a77b9d4bb826992",
+          "retrieved_at": "2026-11-06T17:45:54.201823+00:00",
+          "pointer": "d8a2adb1-17d6-4326-af62-5ca44e5695f2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/regulatory-compliance",
+          "source_sha256": "05686724f60574061eca41c6b1f217e3e5df365a99cd642006a4c40453946d5d",
+          "revision": "335102b882bfe205071a0b561c28b21eabf0a5ee",
+          "retrieved_at": "2026-11-06T17:45:55.219111+00:00",
+          "pointer": "d8a2adb1-17d6-4326-af62-5ca44e5695f2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/regulatory-compliance"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json",
+          "source_sha256": "a75b99bf469062e594abc1468aea4f473c5f070b21311e894c4b1e3a86d89e48",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T17:45:56.330812+00:00",
+          "pointer": "d8a2adb1-17d6-4326-af62-5ca44e5695f2",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2022-04-01/roleassignments",
+          "source_sha256": "47570774109abbaabbcbc7af98734376811a94042e92909eeb89bb06ddfea119",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T17:45:58.398875+00:00",
+          "pointer": "d8a2adb1-17d6-4326-af62-5ca44e5695f2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2022-04-01/roleassignments"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Authorization/policyDefinitions",
+        "Microsoft.Authorization/policySetDefinitions",
+        "Microsoft.Authorization/policyAssignments",
+        "Microsoft.Authorization/roleAssignments"
+      ],
+      "review_fact_paths": [
+        "policyDefinitionSummary",
+        "policyInitiativeSummary",
+        "policyAssignmentSummary",
+        "principalType",
+        "roleDefinitionId"
+      ]
     },
     {
       "control_id": "ALZ-223ace8c-b123-408c-a501-7f154e3ab369",
@@ -13369,15 +13466,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Names, absence of visible parents, a selected MG tree or definition references establish no tenant/intermediate-root designation, complete hierarchy or effective inherited result. Resource-group custom definitions are unsupported locations.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Is the explicitly designated intermediate root directly below the actual tenant root, and does each custom definition location cover every intended assignment through attributable complete ancestry?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-27",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -13391,9 +13485,69 @@
           "pointer": "/items/169",
           "item_sha256": "a5a119c3817420aa34c32c715412e360b8520180ee5e979fa8c388d71708e186",
           "guidance": "https://learn.microsoft.com/azure/governance/policy/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/overview",
+          "source_sha256": "d06041580633abb0e6adf6b78bd791ab2cd053c0dbafb703a6948f8e4a647aca",
+          "revision": "f5122cc9a56620b3e86ab6e47a77b9d4bb826992",
+          "retrieved_at": "2026-11-06T17:45:54.201823+00:00",
+          "pointer": "223ace8c-b123-408c-a501-7f154e3ab369",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/scope",
+          "source_sha256": "fd293a7a27568e84d85f6d47c88b299558e42d8255d529cbd8087921b07b26bc",
+          "revision": "335102b882bfe205071a0b561c28b21eabf0a5ee",
+          "retrieved_at": "2026-11-06T17:45:54.555668+00:00",
+          "pointer": "223ace8c-b123-408c-a501-7f154e3ab369",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/scope"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+          "source_sha256": "576243c73bd2e8d016cb15734b8c256be10f60aaa8ddd6dec56f6f830264740a",
+          "revision": "84d6ae283915e42535dac6184ccce6d8a1969027",
+          "retrieved_at": "2026-11-06T17:45:55.399459+00:00",
+          "pointer": "223ace8c-b123-408c-a501-7f154e3ab369",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups",
+          "source_sha256": "35c7b5c9d838533c817866f5a0ae5e56c72f4d1688f848c58fe4f22720201783",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T17:45:55.569903+00:00",
+          "pointer": "223ace8c-b123-408c-a501-7f154e3ab369",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json",
+          "source_sha256": "9d707ad996174330367c811461f5f3b2e1c710b63e5b171e804ad058850d9ad6",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T17:45:56.062887+00:00",
+          "pointer": "223ace8c-b123-408c-a501-7f154e3ab369",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json",
+          "source_sha256": "a75b99bf469062e594abc1468aea4f473c5f070b21311e894c4b1e3a86d89e48",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T17:45:56.330812+00:00",
+          "pointer": "223ace8c-b123-408c-a501-7f154e3ab369",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Authorization/policyDefinitions",
+        "Microsoft.Authorization/policySetDefinitions",
+        "Microsoft.Authorization/policyAssignments",
+        "Microsoft.Management/managementGroups"
+      ],
+      "review_fact_paths": [
+        "policyDefinitionSummary",
+        "policyInitiativeSummary",
+        "policyAssignmentSummary",
+        "managementParentId"
+      ]
     },
     {
       "control_id": "ALZ-3829e7e3-1618-4368-9a04-77a209945bda",
@@ -13413,15 +13567,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Default enforcementMode, nonempty assignment inventory or ancestor linkage cannot prove enforcement. DoNotEnforce still permits evaluation. Missing arrays remain unknown, not empty; selector/override bodies and conditions are never interpreted.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Is this the highest appropriate assignment scope, with justified lower exclusions versus tracked time/member/selector-bound exemptions, complete intended coverage and actual effect/evaluation/remediation evidence?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-27",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -13435,9 +13586,91 @@
           "pointer": "/items/170",
           "item_sha256": "70134fe47db6ed26f123d334186d592b18665aa1d9db0d9de7d37815faf4b303",
           "guidance": "https://learn.microsoft.com/azure/governance/policy/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/overview",
+          "source_sha256": "d06041580633abb0e6adf6b78bd791ab2cd053c0dbafb703a6948f8e4a647aca",
+          "revision": "f5122cc9a56620b3e86ab6e47a77b9d4bb826992",
+          "retrieved_at": "2026-11-06T17:45:54.201823+00:00",
+          "pointer": "3829e7e3-1618-4368-9a04-77a209945bda",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/scope",
+          "source_sha256": "fd293a7a27568e84d85f6d47c88b299558e42d8255d529cbd8087921b07b26bc",
+          "revision": "335102b882bfe205071a0b561c28b21eabf0a5ee",
+          "retrieved_at": "2026-11-06T17:45:54.555668+00:00",
+          "pointer": "3829e7e3-1618-4368-9a04-77a209945bda",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/scope"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure",
+          "source_sha256": "a1d582cc6ae22c80c71397e6e2edabebaba2ee04824cd8a18f5e44c2d771dd06",
+          "revision": "a404a6abd3de4275ac00471ae996ec31443b9aeb",
+          "retrieved_at": "2026-11-06T17:45:54.747263+00:00",
+          "pointer": "3829e7e3-1618-4368-9a04-77a209945bda",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/exemption-structure",
+          "source_sha256": "12980e4035b02630c254e0da75a3911b795051a51dd27a942fe41002593fac46",
+          "revision": "ad08d6209a5960ed91d1c46131250915ea9f2da7",
+          "retrieved_at": "2026-11-06T17:45:54.916634+00:00",
+          "pointer": "3829e7e3-1618-4368-9a04-77a209945bda",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/exemption-structure"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effect-basics",
+          "source_sha256": "959db135df02234a325ec66be0250d389e48cee0b2ce79b24c1e4222a683170b",
+          "revision": "436beed9da29528ce784d09c0668b6800436d263",
+          "retrieved_at": "2026-11-06T17:45:55.068690+00:00",
+          "pointer": "3829e7e3-1618-4368-9a04-77a209945bda",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effect-basics"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json",
+          "source_sha256": "85934922ce8fe3e200fe0642df802f38b72ad153d66807ad874fdf78ee443989",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T17:45:56.634386+00:00",
+          "pointer": "3829e7e3-1618-4368-9a04-77a209945bda",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group_policy_assignment.html.markdown",
+          "source_sha256": "474694e8983a628f6a6443c48c517b2dcac214dea7229dae307fe91465fd7f91",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T17:45:57.472410+00:00",
+          "pointer": "3829e7e3-1618-4368-9a04-77a209945bda",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group_policy_assignment.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subscription_policy_assignment.html.markdown",
+          "source_sha256": "1eed39b22a8e715763c0e5334940c7a27cd259d2c116a637a2599019cab1d272",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T17:45:57.746770+00:00",
+          "pointer": "3829e7e3-1618-4368-9a04-77a209945bda",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subscription_policy_assignment.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/resource_group_policy_assignment.html.markdown",
+          "source_sha256": "d43953099295faf63678a5fa43130bad6c906429318be58ca62e64784f6bfccf",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T17:45:58.039781+00:00",
+          "pointer": "3829e7e3-1618-4368-9a04-77a209945bda",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/resource_group_policy_assignment.html.markdown"
         }
       ],
-      "severity": "High"
+      "severity": "High",
+      "review_resource_types": [
+        "Microsoft.Authorization/policyDefinitions",
+        "Microsoft.Authorization/policySetDefinitions",
+        "Microsoft.Authorization/policyAssignments"
+      ],
+      "review_fact_paths": [
+        "policyDefinitionSummary",
+        "policyInitiativeSummary",
+        "policyAssignmentSummary"
+      ]
     },
     {
       "control_id": "ALZ-43334f24-9116-4341-a2ba-527526944008",
@@ -13457,15 +13690,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No universal approved-service taxonomy exists in AM-2. A deny/audit literal does not identify a service allowlist, enforce it or authorize a new ARG query/scan.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: What services and exceptions has the organization approved, and which applicable controls actually audit/restrict provisioning across the authorized scope?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-27",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -13479,9 +13709,57 @@
           "pointer": "/items/171",
           "item_sha256": "a155253c2e62f9305c33e2ba6c36f0f5fb01286039f01c8579dc3e90448cd494",
           "guidance": "https://learn.microsoft.com/security/benchmark/azure/mcsb-asset-management#am-2-use-only-approved-services"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/security/benchmark/azure/mcsb-asset-management#am-2-use-only-approved-services",
+          "source_sha256": "171f40b329df14c3f7142456ad1ba2bab739baaae102dd4d178876ac0496138c",
+          "revision": "03e20ea8476c6c138752ddee1dec20f1a0a1b199",
+          "retrieved_at": "2026-11-06T17:45:54.380971+00:00",
+          "pointer": "43334f24-9116-4341-a2ba-527526944008",
+          "guidance": "https://learn.microsoft.com/en-us/security/benchmark/azure/mcsb-asset-management#am-2-use-only-approved-services"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effect-basics",
+          "source_sha256": "959db135df02234a325ec66be0250d389e48cee0b2ce79b24c1e4222a683170b",
+          "revision": "436beed9da29528ce784d09c0668b6800436d263",
+          "retrieved_at": "2026-11-06T17:45:55.068690+00:00",
+          "pointer": "43334f24-9116-4341-a2ba-527526944008",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effect-basics"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/scope",
+          "source_sha256": "fd293a7a27568e84d85f6d47c88b299558e42d8255d529cbd8087921b07b26bc",
+          "revision": "335102b882bfe205071a0b561c28b21eabf0a5ee",
+          "retrieved_at": "2026-11-06T17:45:54.555668+00:00",
+          "pointer": "43334f24-9116-4341-a2ba-527526944008",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/scope"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json",
+          "source_sha256": "9d707ad996174330367c811461f5f3b2e1c710b63e5b171e804ad058850d9ad6",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T17:45:56.062887+00:00",
+          "pointer": "43334f24-9116-4341-a2ba-527526944008",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json",
+          "source_sha256": "85934922ce8fe3e200fe0642df802f38b72ad153d66807ad874fdf78ee443989",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T17:45:56.634386+00:00",
+          "pointer": "43334f24-9116-4341-a2ba-527526944008",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json"
         }
       ],
-      "severity": "Low"
+      "severity": "Low",
+      "review_resource_types": [
+        "Microsoft.Authorization/policyDefinitions",
+        "Microsoft.Authorization/policyAssignments"
+      ],
+      "review_fact_paths": [
+        "policyDefinitionSummary",
+        "policyAssignmentSummary"
+      ]
     },
     {
       "control_id": "ALZ-be7d7e48-4327-46d8-adc0-55bcf619e8a1",
@@ -13501,15 +13779,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "A global built-in reference is not a custom intermediate-root definition, a fetched version, evidence of existence/effect or suitability. Provider metadata does not synthesize an exact effective version.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Are actual original-time built-ins suitable for the required cloud/scope/mode/version/parameters/effects, and is any custom alternative justified against maintenance overhead?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-27",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -13523,9 +13798,59 @@
           "pointer": "/items/172",
           "item_sha256": "3bfbd70b9f2ce1ed9c090a34229486e2b9596b77bf55ff14d849a65ee053d32c",
           "guidance": "https://learn.microsoft.com/azure/governance/policy/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/overview",
+          "source_sha256": "d06041580633abb0e6adf6b78bd791ab2cd053c0dbafb703a6948f8e4a647aca",
+          "revision": "f5122cc9a56620b3e86ab6e47a77b9d4bb826992",
+          "retrieved_at": "2026-11-06T17:45:54.201823+00:00",
+          "pointer": "be7d7e48-4327-46d8-adc0-55bcf619e8a1",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/scope",
+          "source_sha256": "fd293a7a27568e84d85f6d47c88b299558e42d8255d529cbd8087921b07b26bc",
+          "revision": "335102b882bfe205071a0b561c28b21eabf0a5ee",
+          "retrieved_at": "2026-11-06T17:45:54.555668+00:00",
+          "pointer": "be7d7e48-4327-46d8-adc0-55bcf619e8a1",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/scope"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure",
+          "source_sha256": "a1d582cc6ae22c80c71397e6e2edabebaba2ee04824cd8a18f5e44c2d771dd06",
+          "revision": "a404a6abd3de4275ac00471ae996ec31443b9aeb",
+          "retrieved_at": "2026-11-06T17:45:54.747263+00:00",
+          "pointer": "be7d7e48-4327-46d8-adc0-55bcf619e8a1",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json",
+          "source_sha256": "9d707ad996174330367c811461f5f3b2e1c710b63e5b171e804ad058850d9ad6",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T17:45:56.062887+00:00",
+          "pointer": "be7d7e48-4327-46d8-adc0-55bcf619e8a1",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json",
+          "source_sha256": "a75b99bf469062e594abc1468aea4f473c5f070b21311e894c4b1e3a86d89e48",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T17:45:56.330812+00:00",
+          "pointer": "be7d7e48-4327-46d8-adc0-55bcf619e8a1",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Authorization/policyDefinitions",
+        "Microsoft.Authorization/policySetDefinitions",
+        "Microsoft.Authorization/policyAssignments"
+      ],
+      "review_fact_paths": [
+        "policyDefinitionSummary",
+        "policyInitiativeSummary",
+        "policyAssignmentSummary"
+      ]
     },
     {
       "control_id": "ALZ-3f988795-25d6-4268-a6d7-0ba6c97be995",
@@ -13545,15 +13870,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Role reference is not actual team identity, active effective authority, proper scope or roleAssignments/write. No new assignment/grant, identity read or permission interpreter is added.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Is the intended application team actively and appropriately delegated at the least-privilege subscription/resource-group scope, considering PIM/membership, conditions/deny assignments, broad control-plane read and separate remediation-identity grants?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-27",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -13567,9 +13889,48 @@
           "pointer": "/items/173",
           "item_sha256": "96fbd22c69ca34628e51ed07d3e3af3d7105199b6470d86dea183f44645dc856",
           "guidance": "https://learn.microsoft.com/azure/governance/policy/overview#azure-rbac-permissions-in-azure-policy"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/overview",
+          "source_sha256": "d06041580633abb0e6adf6b78bd791ab2cd053c0dbafb703a6948f8e4a647aca",
+          "revision": "f5122cc9a56620b3e86ab6e47a77b9d4bb826992",
+          "retrieved_at": "2026-11-06T17:45:54.201823+00:00",
+          "pointer": "3f988795-25d6-4268-a6d7-0ba6c97be995",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/management-and-governance#resource-policy-contributor",
+          "source_sha256": "4ca061d20b9e999f2cb5a7f353afcdfb312dd3d85a2e76c488e4cefbc327893b",
+          "revision": "1b4e136a1da731e1ed16444eb6ce5701bcd8c0f4",
+          "retrieved_at": "2026-11-06T17:45:55.789823+00:00",
+          "pointer": "3f988795-25d6-4268-a6d7-0ba6c97be995",
+          "guidance": "https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/management-and-governance#resource-policy-contributor"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2022-04-01/roleassignments",
+          "source_sha256": "47570774109abbaabbcbc7af98734376811a94042e92909eeb89bb06ddfea119",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T17:45:58.398875+00:00",
+          "pointer": "3f988795-25d6-4268-a6d7-0ba6c97be995",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2022-04-01/roleassignments"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups",
+          "source_sha256": "35c7b5c9d838533c817866f5a0ae5e56c72f4d1688f848c58fe4f22720201783",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T17:45:55.569903+00:00",
+          "pointer": "3f988795-25d6-4268-a6d7-0ba6c97be995",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Authorization/roleAssignments"
+      ],
+      "review_fact_paths": [
+        "principalType",
+        "roleDefinitionId"
+      ]
     },
     {
       "control_id": "ALZ-19048384-5c98-46cb-8913-156a12476e49",
@@ -13589,15 +13950,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "The guidance supplies no numeric root-assignment cap. Missing parent does not establish tenant root, zero supplied assignments does not establish absence, and selected inventory cannot establish organizational appropriateness.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: After explicitly establishing tenant-root identity and complete inventory, are only justified must-have assignments placed there, with manageable inherited exclusions/exemptions and debugging/maintenance complexity?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-27",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -13611,9 +13969,57 @@
           "pointer": "/items/174",
           "item_sha256": "9a24eeb2270b4bc5f9f6aa9aef864d1543d4cd1f76d20ae20fcf3e3263876d2c",
           "guidance": "https://learn.microsoft.com/azure/governance/policy/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/overview",
+          "source_sha256": "d06041580633abb0e6adf6b78bd791ab2cd053c0dbafb703a6948f8e4a647aca",
+          "revision": "f5122cc9a56620b3e86ab6e47a77b9d4bb826992",
+          "retrieved_at": "2026-11-06T17:45:54.201823+00:00",
+          "pointer": "19048384-5c98-46cb-8913-156a12476e49",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups",
+          "source_sha256": "35c7b5c9d838533c817866f5a0ae5e56c72f4d1688f848c58fe4f22720201783",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T17:45:55.569903+00:00",
+          "pointer": "19048384-5c98-46cb-8913-156a12476e49",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+          "source_sha256": "576243c73bd2e8d016cb15734b8c256be10f60aaa8ddd6dec56f6f830264740a",
+          "revision": "84d6ae283915e42535dac6184ccce6d8a1969027",
+          "retrieved_at": "2026-11-06T17:45:55.399459+00:00",
+          "pointer": "19048384-5c98-46cb-8913-156a12476e49",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure",
+          "source_sha256": "a1d582cc6ae22c80c71397e6e2edabebaba2ee04824cd8a18f5e44c2d771dd06",
+          "revision": "a404a6abd3de4275ac00471ae996ec31443b9aeb",
+          "retrieved_at": "2026-11-06T17:45:54.747263+00:00",
+          "pointer": "19048384-5c98-46cb-8913-156a12476e49",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/exemption-structure",
+          "source_sha256": "12980e4035b02630c254e0da75a3911b795051a51dd27a942fe41002593fac46",
+          "revision": "ad08d6209a5960ed91d1c46131250915ea9f2da7",
+          "retrieved_at": "2026-11-06T17:45:54.916634+00:00",
+          "pointer": "19048384-5c98-46cb-8913-156a12476e49",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/exemption-structure"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Authorization/policyAssignments",
+        "Microsoft.Management/managementGroups"
+      ],
+      "review_fact_paths": [
+        "policyAssignmentSummary",
+        "managementParentId"
+      ]
     },
     {
       "control_id": "ALZ-29fd366b-a180-452b-9bd7-954b7700c667",
@@ -18295,66 +18701,66 @@
   "reviewed_at": "2026-11-04T13:25:57.057372+00:00",
   "reference_manifest_sha256": "c287f93a4ff4c94c577b0248345d813f44fb27dff66524408870095024305d30",
   "control_source_manifest_sha256": "d189615f2793f141a6ee6cd5a7f026556a4146fd44d65705e6f08d0e01f7debf",
-  "accepted_matrix_sha256": "47609dc2ee7a2314b2af2aa1f5625390b9f0a1b6ed88a792fbe95a0ba530c1f7",
+  "accepted_matrix_sha256": "c26fffb104e9b846902df34da30d040efb2e4b1d4f9d285e9766476c262a148c",
   "wave_source_manifest_sha256": "617e66a497a1f6bb1ddf50f53b3f75f3ff2cec2989324d42496aeeb4d9d0ef38",
   "change_review": {
-    "base_sha256": "fa399b4f068036b88777cba83dafdd4a2c7bfd480f2ee53cdca4f209f85108f9",
-    "matrix_sha256": "47609dc2ee7a2314b2af2aa1f5625390b9f0a1b6ed88a792fbe95a0ba530c1f7",
-    "reviewed_at": "2026-11-06T18:24:50.687Z",
+    "base_sha256": "0cd46db988137d064e33147a28cb947e9eb4e618ce59b71c871b5b70a6451d0b",
+    "matrix_sha256": "c26fffb104e9b846902df34da30d040efb2e4b1d4f9d285e9766476c262a148c",
+    "reviewed_at": "2026-11-06T19:12:56.926229+00:00",
     "reviewer": "owner-delegated-source-backed-batch-review",
     "changes": [
       {
-        "control_id": "ALZ-70c15989-c726-42c7-b0d3-24b7375b9201",
-        "before_sha256": "b418946b412e5f80be1593523e73dc2a43c39aeba293fc3fa0cda8abd775e517",
-        "after_sha256": "370f3aa6216577c9b9b71bbe0c0e1e86e1ad8b137d60571448301c45556e3e43",
-        "rationale": "Owner-delegated source-backed batch 02 acceptance: assisted"
+        "control_id": "ALZ-5c986cb2-9131-456a-8247-6e49f541acdc",
+        "before_sha256": "5d47b7ef3159dede6878567359814810bf864a4f1091f0c94e03784ef42d57bb",
+        "after_sha256": "8355bf2da79d8b1887afcbfd1f95b4327fb3d7738635d88fba93e1aaab2f67b9",
+        "rationale": "Owner-delegated source-backed batch 27 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-6309957b-821a-43d1-b9d9-7fcf1802b747",
-        "before_sha256": "bcd6f540d7e6a52df9e980bdca5e5de476b153712a45ee24ff42563403f897c0",
-        "after_sha256": "5bb6431d38e08e3fc33f80c042feff8945026294bbc21b29451eb81e83b9b19d",
-        "rationale": "Owner-delegated source-backed batch 02 acceptance: assisted"
+        "control_id": "ALZ-d8a2adb1-17d6-4326-af62-5ca44e5695f2",
+        "before_sha256": "d7f7b1e0f6c3f878a79365abde9cef4242ac7f6d380e97a3558ebe1f3c249af0",
+        "after_sha256": "a3f2ed319ec7f901c9e1643f3e11b3569498418e7013f8794f8f468a419255e7",
+        "rationale": "Owner-delegated source-backed batch 27 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-78e11934-499a-45ed-8ef7-aae5578f0ecf",
-        "before_sha256": "e1b6c47f359343b13b02fad4776d918d950dcc02a1a0b3dba3cc8087b657b652",
-        "after_sha256": "7fa54b85dacf78b96759b00e98fdeef5e9e34d185ff87ca2d090b2516f9b714c",
-        "rationale": "Owner-delegated source-backed batch 02 acceptance: assisted"
+        "control_id": "ALZ-223ace8c-b123-408c-a501-7f154e3ab369",
+        "before_sha256": "afce6eb7321299b383ae8f5dd66601f363ad0250bfebc577d35f47b8ea930703",
+        "after_sha256": "e922bb710bc5d1f8b078015a396add5be4786373974707e2dea72fe5e3962141",
+        "rationale": "Owner-delegated source-backed batch 27 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-5d82e6df-6f61-42f2-82e2-3132d293be3d",
-        "before_sha256": "cab23390cb2fe7accc3e5eb346015c02a1aeb6a0dec9de305ef81811e5d2503f",
-        "after_sha256": "5542a71c60ad060bd1f7cae476b363f5dffe34a577064b2f543d95ecbe1a7254",
-        "rationale": "Owner-delegated source-backed batch 02 acceptance: assisted"
+        "control_id": "ALZ-3829e7e3-1618-4368-9a04-77a209945bda",
+        "before_sha256": "38644c193f092e57335a7c4c1d0e7cde6cd5d8882799a5a39c6f6ade20ff3848",
+        "after_sha256": "6fa054310290857a16c1b86cc1818e9127d101c9a3e6bfdca1b15645998c4d11",
+        "rationale": "Owner-delegated source-backed batch 27 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-a24d0de3-d4b9-4dfb-8ddd-bbfaf123fa01",
-        "before_sha256": "0dbc548d0a7336978d04afaa1b794811270c1727f1fbbfd807804c2214b32fc2",
-        "after_sha256": "47b31c5a90b0a94f41bc9b2dc424063b842bb7acf0e15e2dfef70a2cdc872b92",
-        "rationale": "Owner-delegated source-backed batch 02 acceptance: manual"
+        "control_id": "ALZ-43334f24-9116-4341-a2ba-527526944008",
+        "before_sha256": "5e61ca9ff4acb5902a0d1d036357c42b52424d9ba9f43aa4180d5642e1cbc113",
+        "after_sha256": "fc920899cd05113b9d231b7fce880446c0753a23067a7e7ced54c63948f6d9aa",
+        "rationale": "Owner-delegated source-backed batch 27 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-32952499-58c8-4e6f-ada5-972e67893d55",
-        "before_sha256": "29d9f798b3217c1774c397a0fa09b69e27ba14483f8f47f8a80b49376231c3f6",
-        "after_sha256": "31e07e9b28c7de0518dfc263fe265639bd6d5fd6def0f19d09d8f0ce754edfcc",
-        "rationale": "Owner-delegated source-backed batch 02 acceptance: assisted"
+        "control_id": "ALZ-be7d7e48-4327-46d8-adc0-55bcf619e8a1",
+        "before_sha256": "fb70469e0ca52a1b0939abb26f18d47e0295363165e26614bf4a91b3fe778fb0",
+        "after_sha256": "c5e4da87833b268b8ec98fb2b13cdf9c145e5acc5c7df19c9547cf94da6811af",
+        "rationale": "Owner-delegated source-backed batch 27 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-685cb4f2-ac9c-4b19-9167-993ed0b32415",
-        "before_sha256": "755563fe93f53540c25b8b0ab03c33c1287b78bdb4363306af414c2f4c96be21",
-        "after_sha256": "b61ead7cfa5fa78b6fbb769f305572139c66c6892ed51a2f665cfc40f1b3631f",
-        "rationale": "Owner-delegated source-backed batch 02 acceptance: manual"
+        "control_id": "ALZ-3f988795-25d6-4268-a6d7-0ba6c97be995",
+        "before_sha256": "24a2c781dad197febe71f51dc1fad56c118704b0e01bb22b824a8f3feb017628",
+        "after_sha256": "993209e2f583a9e5af3ef370726102fc52ece23147a8067b394428ab06cbf90c",
+        "rationale": "Owner-delegated source-backed batch 27 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-12cd499f-96e2-4e41-a243-231fb3245a1c",
-        "before_sha256": "10bc678dfa6705003dd85efa3d0bb429d6d4161af98ac423b752f7c854c4f157",
-        "after_sha256": "a6de3aaa6945c1e251a55ad762cf96870d85c3ff5f39f90bc85d9b896a50e5f9",
-        "rationale": "Owner-delegated source-backed batch 02 acceptance: assisted"
+        "control_id": "ALZ-19048384-5c98-46cb-8913-156a12476e49",
+        "before_sha256": "26e166fbce8390934f5b5b722bde62e3b1be25bd42dd37ac1f64e843bf188d33",
+        "after_sha256": "4b6ecc0dc38ac534de70d97c32c94cebb18bd67f2cd5677262517db77c185be2",
+        "rationale": "Owner-delegated source-backed batch 27 acceptance: assisted"
       }
     ]
   },
   "first_wave_matrix_sha256": "f649b2293211c844d661ea93c6978fe2db948eff17237af01ca090809da8e1fb",
-  "batch_source_manifest_sha256": "3823c8f97a694e38f8b6992d155f29dc56818c31ccc42d197ea249456df454cd",
-  "batch_catalog_version": "2026-11-06.16",
+  "batch_source_manifest_sha256": "6f8309c75051d8b2936f564ef72c9a6c00c8b39b9f07162aba2de2b2ac3a21c3",
+  "batch_catalog_version": "2026-11-06.17",
   "priority_manifest_sha256": "b42971f85b9110f71fdc5ae81695fe4be72c1f28022ec27aeb719140ed1475c0"
 }

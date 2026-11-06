@@ -40,10 +40,11 @@ No current regional/port availability, achieved throughput/latency, working
 FastPath, operational redundancy or economic suitability follows from settings.
 ARM scale support does not imply the pinned Terraform provider supports it.
 
-## Cohort 27 preparation: Policy configuration, not governance assurance
+## Cohort 27: Policy configuration, not governance assurance
 
-The [eight-GUID preparation](../references/recommendation-batches/preparation-27.json)
-is not accepted activation or delivery. Bounded literal definition/initiative/
+The [eight-GUID accepted matrix](../references/recommendation-batches/batch-27.json)
+follows the explicit slot after cohort02 delivery. Activation alone is not delivery.
+Bounded literal definition/initiative/
 assignment facts, exact supplied-version custom joins and original-time positive
 hierarchy paths prepare eight independent decisions. They prove no effective
 conditions, inheritance/enforcement, legal compliance, approved-service list,

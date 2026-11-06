@@ -6,6 +6,7 @@ import os
 import tempfile
 import unittest
 import zipfile
+from importlib.resources import files
 from pathlib import Path
 from unittest.mock import patch
 
@@ -79,7 +80,9 @@ class PolicyStrategyPreparationTests(unittest.TestCase):
         self.matrix = json.loads(
             (ROOT / "references/recommendation-batches/preparation-27.json").read_text("utf-8")
         )
-        self.catalog = copy.deepcopy(load_catalog())
+        self.catalog = copy.deepcopy(
+            load_catalog(str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.16.json")))
+        )
         self.catalog["review_state"] = "authored-in-memory-fixture-not-accepted"
         rows = {row["guid"]: row for row in self.matrix["recommendations"]}
         for control in self.catalog["controls"]:
@@ -205,7 +208,11 @@ class PolicyStrategyPreparationTests(unittest.TestCase):
         self.assertNotIn("catalog_version", self.matrix)
         self.assertNotIn("accepted_at", self.matrix)
         self.assertEqual(self.matrix["review_state"], "preparation-only-not-accepted")
-        self.assertNotIn(self.matrix["interview"]["id"], interviews.BANK)
+        question = self.matrix["interview"]
+        self.assertEqual(
+            interviews.BANK[question["id"]],
+            {key: question[key] for key in ("question", "controls")},
+        )
         manifest = json.loads((targets.parent / "preparation-27-sources.json").read_text("utf-8"))
         sources = {s["id"]: s for s in manifest["sources"]}
         self.assertGreaterEqual(len(sources), 22)
@@ -224,7 +231,9 @@ class PolicyStrategyPreparationTests(unittest.TestCase):
                 set(row["review_fact_paths"])
                 <= PATHS | {"principalType", "roleDefinitionId", "managementParentId"}
             )
-        accepted = load_catalog()
+        accepted = load_catalog(
+            str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.16.json"))
+        )
         self.assertEqual(len(accepted["controls"]), 255)
         for c in accepted["controls"]:
             if c["upstream_guid"] in GUIDS:

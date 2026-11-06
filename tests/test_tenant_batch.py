@@ -217,7 +217,10 @@ class TenantBatchTests(unittest.TestCase):
         self.assertEqual({r["control_id"] for r in own}, IDS)
         self.assertTrue(all(r["observed"]["outcome"] == "manual" for r in own))
         self.assertTrue(all(r["observed"]["evidence_tier"] != "verified" for r in own))
-        crosswalk = load_crosswalk(catalog=self.catalog)
+        crosswalk = load_crosswalk(
+            catalog=self.catalog,
+            path=Path(str(files("alz_assessor").joinpath("data", "crosswalk-2026-11-06.16.json"))),
+        )
         mapped = [r for r in crosswalk["entries"] if r["guid"] in GUIDS]
         self.assertEqual(len(mapped), 8)
         self.assertTrue(all(r["targets"] == [] for r in mapped))

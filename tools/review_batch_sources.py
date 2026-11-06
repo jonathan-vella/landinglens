@@ -3573,7 +3573,8 @@ def main() -> None:
         raise ValueError("The vWAN supplement is cohort16 preparation only")
     if (args.batch in {"02", "05", "12", "16", "20", "23", "27", "30"}) != args.preparation_only:
         raise ValueError(
-            "Cohorts 02/05/12/16/20/23/27/30 source capture require --preparation-only; no activation"
+            "Cohorts 02/05/12/16/20/23/27/30 source capture require --preparation-only; "
+            "no activation"
         )
     prefix = "preparation" if args.preparation_only else "batch"
     suffix = "-vwan" if args.vwan_supplement else ""

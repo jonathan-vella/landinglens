@@ -1,5 +1,19 @@
 # LandingLens product requirements
 
+## Cohort 27 integration
+
+Reviewed successor `2026-11-06.17` follows the explicit coordinator slot after
+actual02 implementation134/receipt135 and #127 completed closure. The
+[eight-GUID matrix](../../references/recommendation-batches/batch-27.json) and
+22 preserved captures add eight assisted configuration/review workflows, not
+whole predicates. Strict scoped exact-version custom joins and positive saved
+hierarchy paths do not establish strategy, appropriate scope, root designation,
+service approval, legal compliance, built-in suitability or effective delegation/
+enforcement. All human outcomes stay independently blank and existing Signals
+stay Signals. Exact `.16`, all154 prior own-GUID rows/eighteen receipts and every
+non-own control remain unchanged. Dispositions stay12/200/43; checked merged
+implementation and guarded own receipts, not source activation, gate #130 closure.
+
 ## Next increment: assessor efficiency
 
 Owner-authorised on 2026-11-05, tracked in
