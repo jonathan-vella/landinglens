@@ -1089,6 +1089,16 @@ SOURCES_13 = [
 
 SOURCES_14 = [
     (
+        "scalable-gateway",
+        LEARN + "azure/expressroute/scalable-gateway",
+        ["maximum scale unit", "40", "fixed scaling", "West Europe"],
+        "ErGwScale bounds are 1-40; min=1 requires fixed max=1 and autoscale min starts at 2. "
+        "Private Link workloads should use fixed scaling; IPsec over ExpressRoute is unsupported. "
+        "The current source lists region exclusions including West Europe, "
+        "not blanket availability. Configured minimum>=10 is a FastPath prerequisite subcheck, "
+        "not actual scale or performance.",
+    ),
+    (
         "expressroute-cost",
         "https://learn.microsoft.com/azure/expressroute/plan-manage-cost",
         ["Unlimited data plan", "monthly port fee", "Global Reach"],

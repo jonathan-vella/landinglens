@@ -20,6 +20,9 @@ PATHS = {
     "peeringLocationConfigured",
     "expressRouteGatewayBypass",
     "enablePrivateLinkFastPath",
+    "gatewayScaleBounds",
+    "gatewayPublicIpReferences",
+    "publicIpSku",
 }
 CIRCUIT_KIND = "microsoft.network/expressroutecircuits"
 PORT_KIND = "microsoft.network/expressrouteports"
@@ -146,6 +149,74 @@ def fastpath_properties(values: dict[str, Any], *, terraform: bool) -> dict[str,
     }
 
 
+def scale_bounds(value: Any) -> Any:
+    if not isinstance(value, dict):
+        return unknown("gateway_scale_bounds_not_explicit")
+    minimum, maximum = value.get("min"), value.get("max")
+    if (
+        type(minimum) is int
+        and type(maximum) is int
+        and 1 <= minimum <= maximum <= 40
+        and (minimum != 1 or maximum == 1)
+    ):
+        return {"min": minimum, "max": maximum}
+    return unknown("gateway_scale_bounds_invalid_or_outside_reviewed_range")
+
+
+def gateway_properties(values: dict[str, Any], *, terraform: bool) -> dict[str, Any]:
+    from .protection_evidence import typed_reference
+
+    configs = values.get("ip_configuration" if terraform else "ipConfigurations")
+    refs = (
+        [
+            typed_reference(
+                property_at(
+                    entry, "public_ip_address_id" if terraform else "properties.publicIPAddress.id"
+                ),
+                ("microsoft.network/publicipaddresses",),
+            )
+            for entry in configs
+        ]
+        if isinstance(configs, list) and 1 <= len(configs) <= 3
+        else unknown("gateway_ip_configurations_missing_or_over_3")
+    )
+    return {
+        "gatewayPublicIpReferences": refs,
+        "gatewayScaleBounds": unknown("terraform_gateway_scale_bounds_not_reviewed")
+        if terraform
+        else scale_bounds(property_at(values, "autoScaleConfiguration.bounds")),
+    }
+
+
+def fastpath_subchecks(properties: dict[str, Any]) -> dict[str, Any]:
+    from .protection_evidence import GATEWAY_SKUS
+
+    result: dict[str, Any] = {}
+    if "gatewaySku" in properties:
+        sku = property_at(properties, "gatewaySku")
+        kind = property_at(properties, "gatewayType")
+        supported: Any = unknown("explicit_gateway_type_and_supported_sku_required")
+        if kind in ("Vpn", "ExpressRoute") and isinstance(sku, str) and sku in GATEWAY_SKUS:
+            supported = kind == "ExpressRoute" and sku in ("UltraPerformance", "ErGw3AZ")
+            if kind == "ExpressRoute" and sku == "ErGwScale":
+                bounds = scale_bounds(property_at(properties, "gatewayScaleBounds"))
+                supported = (
+                    bounds["min"] >= 10
+                    if isinstance(bounds, dict) and "unknown" not in bounds
+                    else unknown("explicit_ergwscale_minimum_required")
+                )
+        result["configured_gateway_meets_fastpath_sku_and_minimum_scale_requirement"] = supported
+    if "expressRouteGatewayBypass" in properties or "enablePrivateLinkFastPath" in properties:
+        bypass = property_at(properties, "expressRouteGatewayBypass")
+        private = property_at(properties, "enablePrivateLinkFastPath")
+        result["configured_private_link_fastpath_flags_are_consistent"] = (
+            not private or bypass
+            if type(bypass) is bool and type(private) is bool
+            else unknown("both_explicit_fastpath_flags_required")
+        )
+    return result
+
+
 def review_fact(properties: dict[str, Any], path: str) -> Any:
     value = property_at(properties, path)
     if path == "circuitSku.tier":
@@ -158,6 +229,18 @@ def review_fact(properties: dict[str, Any], path: str) -> Any:
         return port_properties({"bandwidthInGbps": value}, terraform=False)[path]
     if path == "directPortEncapsulation":
         return enumeration(value, ("Dot1Q", "QinQ"))
+    if path == "publicIpSku":
+        return enumeration(value, ("Basic", "Standard"))
+    if path == "gatewayScaleBounds":
+        return scale_bounds(value)
+    if path == "gatewayPublicIpReferences":
+        from .protection_evidence import typed_reference
+
+        return (
+            [typed_reference(item, ("microsoft.network/publicipaddresses",)) for item in value]
+            if isinstance(value, list) and 1 <= len(value) <= 3
+            else unknown("gateway_public_ip_references_missing_or_over_3")
+        )
     if path == "expressRoutePort.id":
         return port_reference(value)
     if path in {

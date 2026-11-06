@@ -8,9 +8,11 @@ from pathlib import Path
 from unittest.mock import patch
 
 from alz_assessor.arm import arm_source
+from alz_assessor.arm import properties as arm_properties
 from alz_assessor.azure import Collector, Response
 from alz_assessor.bicep import compile_bicep
 from alz_assessor.contracts import validate
+from alz_assessor.engine import local_subchecks
 from alz_assessor.expressroute_evidence import (
     PATHS,
     bandwidth,
@@ -20,9 +22,12 @@ from alz_assessor.expressroute_evidence import (
     port_properties,
     port_reference,
     review_fact,
+    scale_bounds,
 )
+from alz_assessor.network_evidence import review_fact as network_fact
 from alz_assessor.plan import plan_source
 from alz_assessor.replay import sanitize_evidence
+from alz_assessor.reviews import review_context
 from alz_assessor.sources import terraform_source, tf_properties, tf_resource_id
 from alz_assessor.terraform import InputError, tree_hash
 
@@ -81,7 +86,7 @@ class ExpressRoutePreparationTests(unittest.TestCase):
             matrix["review_state"], "source-reviewed-preparation-not-accepted-or-delivered"
         )
         sources = {s["id"]: s for s in manifest["sources"]}
-        self.assertEqual(len(sources), 25)
+        self.assertEqual(len(sources), 26)
         for source in sources.values():
             self.assertRegex(source["sha256"], r"^[0-9a-f]{64}$")
             self.assertRegex(source["revision"], r"^[0-9a-f]{40}$")
@@ -95,6 +100,7 @@ class ExpressRoutePreparationTests(unittest.TestCase):
         for row in matrix["recommendations"]:
             self.assertEqual(row["classification"], "assisted")
             self.assertNotIn("rule", row)
+            self.assertTrue(1 <= len(row["review_fact_paths"]) <= 8)
             self.assertTrue(set(row["sources"]) <= set(sources))
             self.assertTrue(row["limitations"])
             self.assertTrue(
@@ -519,6 +525,179 @@ class ExpressRoutePreparationTests(unittest.TestCase):
         self.assertIn("unknown", partial["resources"][0]["properties"]["expressRoutePort"]["id"])
         self.assertTrue(original_time)
 
+    def test_merged_gateway_fields_fastpath_minimum_and_provider_support_boundary(self):
+        public = SCOPE + "/providers/Microsoft.Network/publicIPAddresses/gateway"
+        raw = {
+            "gatewayType": "ExpressRoute",
+            "sku": {"name": "ErGwScale"},
+            "enableBgp": True,
+            "activeActive": False,
+            "autoScaleConfiguration": {"bounds": {"min": 10, "max": 40}},
+            "ipConfigurations": [{"properties": {"publicIPAddress": {"id": public}}}],
+        }
+        props = arm_properties("Microsoft.Network/virtualNetworkGateways", raw)
+        self.assertEqual(props["gatewaySku"], "ErGwScale")
+        self.assertEqual(props["gatewayType"], "ExpressRoute")
+        self.assertEqual(props["enableBgp"], True)
+        self.assertEqual(props["activeActive"], False)
+        self.assertEqual(props["gatewayScaleBounds"], {"min": 10, "max": 40})
+        self.assertEqual(props["gatewayPublicIpReferences"], [public.lower()])
+        key = "configured_gateway_meets_fastpath_sku_and_minimum_scale_requirement"
+        for sku, bounds, expected in (
+            ("UltraPerformance", None, True),
+            ("ErGw3AZ", None, True),
+            ("ErGw2AZ", None, False),
+            ("Standard", None, False),
+            ("ErGwScale", {"min": 9, "max": 40}, False),
+            ("ErGwScale", {"min": 10, "max": 40}, True),
+            ("ErGwScale", {"min": 10, "max": 10}, True),
+            ("ErGwScale", None, None),
+        ):
+            check = local_subchecks({**props, "gatewaySku": sku, "gatewayScaleBounds": bounds})[key]
+            self.assertIn("unknown", check) if expected is None else self.assertEqual(
+                check, expected
+            )
+        self.assertFalse(local_subchecks({**props, "gatewayType": "Vpn"})[key])
+        for bounds in (
+            {},
+            None,
+            {"min": True, "max": 10},
+            {"min": "10", "max": 10},
+            {"min": 0, "max": 40},
+            {"min": 1, "max": 40},
+            {"min": 10, "max": 9},
+            {"min": 10, "max": 41},
+        ):
+            self.assertIn("unknown", scale_bounds(bounds))
+        self.assertEqual(scale_bounds({"min": 1, "max": 1}), {"min": 1, "max": 1})
+        tf = tf_properties(
+            "azurerm_virtual_network_gateway",
+            {
+                "type": "ExpressRoute",
+                "sku": "ErGwScale",
+                "autoScaleConfiguration": raw["autoScaleConfiguration"],
+                "ip_configuration": [{"public_ip_address_id": public}],
+            },
+        )
+        self.assertIn("unknown", tf["gatewaySku"])
+        self.assertIn("unknown", tf["gatewayScaleBounds"])
+        self.assertEqual(tf["gatewayPublicIpReferences"], [public.lower()])
+        for flags, expected in (
+            ({"expressRouteGatewayBypass": True, "enablePrivateLinkFastPath": True}, True),
+            ({"expressRouteGatewayBypass": False, "enablePrivateLinkFastPath": True}, False),
+            ({"expressRouteGatewayBypass": False, "enablePrivateLinkFastPath": False}, True),
+        ):
+            check = local_subchecks(flags)["configured_private_link_fastpath_flags_are_consistent"]
+            self.assertEqual(check, expected)
+        self.assertIn(
+            "unknown",
+            local_subchecks({"expressRouteGatewayBypass": True})[
+                "configured_private_link_fastpath_flags_are_consistent"
+            ],
+        )
+
+    def test_reused_connection_gateway_review_links_are_unique_known_and_original_time(self):
+        gateway = SCOPE + "/providers/Microsoft.Network/virtualNetworkGateways/gateway"
+        public = SCOPE + "/providers/Microsoft.Network/publicIPAddresses/gateway"
+        template = {
+            "resources": [
+                {
+                    "type": "Microsoft.Network/connections",
+                    "name": "connection",
+                    "apiVersion": "2024-05-01",
+                    "properties": {
+                        "connectionType": "ExpressRoute",
+                        "virtualNetworkGateway1": {"id": gateway},
+                        "peer": {
+                            "id": SCOPE + "/providers/Microsoft.Network/expressRouteCircuits/local"
+                        },
+                        "expressRouteGatewayBypass": True,
+                        "enablePrivateLinkFastPath": True,
+                        "routingWeight": 10,
+                        "sharedKey": SENTINEL,
+                    },
+                },
+                {
+                    "type": "Microsoft.Network/virtualNetworkGateways",
+                    "name": "gateway",
+                    "apiVersion": "2024-05-01",
+                    "properties": {
+                        "gatewayType": "ExpressRoute",
+                        "sku": {"name": "ErGwScale"},
+                        "autoScaleConfiguration": {"bounds": {"min": 10, "max": 10}},
+                        "ipConfigurations": [{"properties": {"publicIPAddress": {"id": public}}}],
+                    },
+                },
+                {
+                    "type": "Microsoft.Network/publicIPAddresses",
+                    "name": "gateway",
+                    "apiVersion": "2024-05-01",
+                    "sku": {"name": "Standard"},
+                    "zones": ["1", "2", "3"],
+                    "properties": {"ipAddress": SENTINEL, "dnsSettings": {"fqdn": SENTINEL}},
+                },
+            ]
+        }
+        bundle = arm_source(self.write("hybrid.json", template), scope=SCOPE)
+        row = next(
+            r
+            for r in json.loads(
+                (
+                    ROOT / "references" / "recommendation-batches" / "batch-14-preparation.json"
+                ).read_text()
+            )["recommendations"]
+            if r["upstream_id"] == "D06.08"
+        )
+        control = {
+            "upstream_guid": row["guid"],
+            "review_fact_paths": row["review_fact_paths"],
+            "review_resource_types": row["review_resource_types"],
+        }
+        context = review_context(control, bundle)
+        connection = context["resources"][0]
+        self.assertEqual(
+            connection["facts"]["expressRouteCircuitId"],
+            template["resources"][0]["properties"]["peer"]["id"].lower(),
+        )
+        linked = connection["linked_gateway"]
+        self.assertEqual(linked["facts"]["gatewaySku"], "ErGwScale")
+        self.assertEqual(linked["public_ips"][0]["publicIpSku"], "Standard")
+        self.assertEqual(linked["public_ips"][0]["configuredZones"], ["1", "2", "3"])
+        self.assertTrue(
+            linked["subchecks"][
+                "configured_gateway_meets_fastpath_sku_and_minimum_scale_requirement"
+            ]
+        )
+        self.assertNotIn(SENTINEL, json.dumps(context))
+        projected = sanitize_evidence(bundle)
+        self.assertEqual(projected["collected_at"], bundle["collected_at"])
+        replay_context = review_context(control, projected)
+        self.assertEqual(replay_context["resources"][0]["linked_gateway"], linked)
+        bad = copy.deepcopy(bundle)
+        bad["resources"].append(copy.deepcopy(bad["resources"][1]))
+        bad["resources"][-1]["logical_id"] = "duplicate.gateway"
+        with self.assertRaisesRegex(InputError, "Duplicate or ambiguous ARM resource identity"):
+            review_context(control, bad)
+        bad = copy.deepcopy(bundle)
+        bad["resources"][1]["state"] = "inaccessible"
+        bad["resources"][1]["reason"] = "access_denied"
+        self.assertIn("unknown", review_context(control, bad)["resources"][0]["linked_gateway"])
+        bad = copy.deepcopy(bundle)
+        bad["resources"][2]["state"] = "inaccessible"
+        bad["resources"][2]["reason"] = "access_denied"
+        self.assertIn(
+            "unknown",
+            review_context(control, bad)["resources"][0]["linked_gateway"]["public_ips"][0],
+        )
+        bad = copy.deepcopy(bundle)
+        bad["resources"][1]["properties"]["gatewayPublicIpReferences"] = {"unknown": "not_supplied"}
+        self.assertIn(
+            "unknown", review_context(control, bad)["resources"][0]["linked_gateway"]["public_ips"]
+        )
+        self.assertIn(
+            "unknown", network_fact({"gatewayPublicIpReferences": []}, "gatewayPublicIpReferences")
+        )
+
     @unittest.skipUnless(os.environ.get("BICEP_COMPILER"), "existing Bicep compiler not supplied")
     def test_real_bicep_expressroute_cost_capacity_fastpath_without_restore(self):
         source = ROOT / "tests" / "fixtures" / "expressroute" / "main.bicep"
@@ -550,8 +729,29 @@ class ExpressRoutePreparationTests(unittest.TestCase):
         normalized = arm_source(
             source, scope=SCOPE, bicep=True, compiler=os.environ["BICEP_COMPILER"]
         )
-        by_name = {r["arm_id"].rsplit("/", 1)[-1]: r for r in normalized["resources"]}
-        self.assertEqual(by_name["local"]["properties"]["expressRoutePort"]["id"], PORT.lower())
-        self.assertEqual(by_name["provider"]["properties"]["providerCircuitBandwidthMbps"], 500)
-        self.assertEqual(by_name["direct"]["properties"]["directPortBandwidthGbps"], 100)
+        by_id = {r["arm_id"]: r for r in normalized["resources"]}
+        base = (SCOPE + "/providers/Microsoft.Network/").lower()
+        self.assertEqual(
+            by_id[base + "expressroutecircuits/local"]["properties"]["expressRoutePort"]["id"],
+            PORT.lower(),
+        )
+        self.assertEqual(
+            by_id[base + "expressroutecircuits/provider"]["properties"][
+                "providerCircuitBandwidthMbps"
+            ],
+            500,
+        )
+        self.assertEqual(
+            by_id[base + "expressrouteports/direct"]["properties"]["directPortBandwidthGbps"], 100
+        )
+        self.assertEqual(
+            by_id[base + "virtualnetworkgateways/gateway"]["properties"]["gatewaySku"], "ErGwScale"
+        )
+        self.assertEqual(
+            by_id[base + "virtualnetworkgateways/gateway"]["properties"]["gatewayScaleBounds"],
+            {"min": 10, "max": 10},
+        )
+        self.assertTrue(
+            by_id[base + "connections/fastpath"]["properties"]["expressRouteGatewayBypass"]
+        )
         self.assertEqual(before, hashlib.sha256(source.read_bytes()).hexdigest())

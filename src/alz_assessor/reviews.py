@@ -119,6 +119,55 @@ def prepared_resource(
             )
         prepared["linked_subnets"] = links
         prepared["links_truncated"] = len(refs) > 20
+    if "virtualNetworkGateway1.id" in facts:
+        identity = facts["virtualNetworkGateway1.id"]
+        candidates = by_id.get(identity, []) if isinstance(identity, str) else []
+        gateway: dict[str, Any] = {
+            "arm_id": identity if isinstance(identity, str) else None,
+            "unknown": "referenced_gateway_not_unique_known",
+        }
+        if (
+            len(candidates) == 1
+            and candidates[0]["resource_type"].lower() == "microsoft.network/virtualnetworkgateways"
+            and candidates[0]["state"] == "known"
+        ):
+            child = candidates[0]
+            gateway_facts = {
+                path: review_fact(child["properties"], path)
+                for path in (
+                    "gatewayType",
+                    "gatewaySku",
+                    "activeActive",
+                    "gatewayScaleBounds",
+                    "gatewayPublicIpReferences",
+                )
+            }
+            gateway = {
+                "arm_id": identity,
+                "facts": gateway_facts,
+                "subchecks": local_subchecks(gateway_facts),
+            }
+            public_refs = gateway_facts["gatewayPublicIpReferences"]
+            public_ips = []
+            for public_id in public_refs if isinstance(public_refs, list) else []:
+                matches = by_id.get(public_id, []) if isinstance(public_id, str) else []
+                entry: dict[str, Any] = {
+                    "arm_id": public_id if isinstance(public_id, str) else None,
+                    "unknown": "referenced_public_ip_not_unique_known",
+                }
+                if (
+                    len(matches) == 1
+                    and matches[0]["resource_type"].lower() == "microsoft.network/publicipaddresses"
+                    and matches[0]["state"] == "known"
+                ):
+                    entry = {
+                        "arm_id": public_id,
+                        "publicIpSku": review_fact(matches[0]["properties"], "publicIpSku"),
+                        "configuredZones": review_fact(matches[0]["properties"], "configuredZones"),
+                    }
+                public_ips.append(entry)
+            gateway["public_ips"] = public_ips if isinstance(public_refs, list) else public_refs
+        prepared["linked_gateway"] = gateway
     return prepared
 
 

@@ -4,11 +4,11 @@
   "issue": "https://github.com/jonathan-vella/landinglens/issues/99",
   "prerequisites": ["13", "22"],
   "activation": "Deferred until the coordinator grants the catalog/delivery slot; no successor version chosen.",
-  "supported_modes": "Circuit/port configuration facts normalize through the existing reviewed ARM/REST 2024-05-01, existing no-restore Bicep, AzureRM 4.50.0 raw/supplied-plan and saved/injected paths, with typed review/replay projection. FastPath flags remain pure helpers. GUID-specific catalog, interview, tier and report activation plus gateway/connection integration await the merged predecessor contract and coordinator slot.",
+  "supported_modes": "Circuit/port and explicit connection FastPath facts normalize through the existing reviewed ARM/REST 2024-05-01, existing no-restore Bicep, AzureRM 4.50.0 raw/supplied-plan and saved/injected paths, with typed review/replay projection. Merged cohort13 owns gateway SKU/type/BGP/active-active and connection bindings. Additional ARM-only scale bounds and gateway public-IP references supply partial original-time review/subchecks, not outcomes. GUID-specific catalog, interview, tier and report activation awaits the coordinator slot.",
   "shared_interface_needs": [
-    "Reuse cohort13 gateway SKU, gatewayType, activeActive, enableBgp, public-IP/subnet relationships and connection circuit/local-network-gateway relationships.",
-    "Reuse original-time and scoped evidence guards. Add only explicit FastPath booleans to the merged connection projection.",
-    "ARM ErGwScale autoscale bounds can support a minimum-scale subcheck; pinned Terraform documentation exposes no corresponding field.",
+    "Merged cohort13 gateway SKU, gatewayType, activeActive, enableBgp, subnet relationships and connection circuit/local-network-gateway relationships are reused without duplicate facts.",
+    "Original-time and scoped evidence guards remain unchanged. Explicit FastPath booleans extend the merged connection projection; unique known gateway/public-IP joins remain partial review context.",
+    "ARM-only ErGwScale autoscale bounds support the literal configured-minimum subcheck; pinned Terraform documentation exposes no corresponding field and remains unknown.",
     "Preserve routing_evidence connection/IPsec/MACsec and identity_evidence Direct-port identity meanings; no alternate gateway abstraction."
   ],
   "recommendations": [
@@ -35,7 +35,7 @@
       "implemented_subclaim": "Prepared explicit circuit tier, minimised peering-location presence and typed Direct port binding; location presence is not Local eligibility.",
       "sources": ["expressroute-local", "expressroute-locations", "circuit-arm", "terraform-circuit", "connection-arm"],
       "review_resource_types": ["Microsoft.Network/expressRouteCircuits", "Microsoft.Network/connections", "Microsoft.Network/virtualNetworkGateways"],
-      "review_fact_paths": ["circuitSku.tier", "peeringLocationConfigured", "expressRoutePort.id"],
+      "review_fact_paths": ["circuitSku.tier", "peeringLocationConfigured", "expressRoutePort.id", "expressRouteCircuitId", "virtualNetworkGateway1.id"],
       "evidence_requirements": [
         "Reconcile each actual physical peering location with the source-reviewed Local mapping for all required Azure workload and recovery regions; circuit resource location is not the peering location.",
         "Resolve scoped connection/circuit/gateway bindings and unsupported Global Reach or wider-geography requirements.",
@@ -48,17 +48,17 @@
       "guid": "2447ec66-138a-4720-8f1c-e16ed301d6e8",
       "upstream_id": "D06.06",
       "classification": "assisted",
-      "implemented_subclaim": "Reviewed exact AZ-capable SKUs including ErGwScale; gateway placement facts deliberately await merged cohort13 helpers.",
-      "sources": ["expressroute-gateway", "gateway-reliability", "zone-gateway-creation", "gateway-arm", "gateway-rest-2024", "terraform-gateway"],
+      "implemented_subclaim": "Reuse merged cohort13 gateway SKU/type facts with explicit typed public-IP references and supplied Standard/zone configuration; no zone-placement verdict.",
+      "sources": ["expressroute-gateway", "gateway-reliability", "zone-gateway-creation", "gateway-arm", "gateway-rest-2024", "terraform-gateway", "scalable-gateway"],
       "review_resource_types": ["Microsoft.Network/virtualNetworkGateways", "Microsoft.Network/publicIPAddresses"],
-      "review_fact_paths": [],
+      "review_fact_paths": ["gatewayType", "gatewaySku", "gatewayPublicIpReferences", "publicIpSku", "configuredZones"],
       "evidence_requirements": [
         "Bind an ExpressRoute gateway to its actual supported region, exact SKU, deployed/migrated configuration and public-IP allocation/zone evidence.",
         "Distinguish AZ-capable from zonal versus zone-redundant placement and new auto-assigned public-IP behavior from existing deployments.",
         "Reviewer decision: does attributable deployment evidence establish zone-redundant ExpressRoute gateway placement in the required supported region?"
       ],
       "limitations": "An AZ substring misses ErGwScale and can classify a zonal AZ-capable gateway incorrectly. No live availability, health, public-IP detail or migration operation.",
-      "flags": ["sku-capability-not-zone-placement", "merged-gateway-contract-required"]
+      "flags": ["sku-capability-not-zone-placement", "public-ip-config-not-runtime-placement"]
     },
     {
       "guid": "72e52e36-11cc-458b-9a4b-1511e43a58a9",
@@ -80,14 +80,15 @@
       "guid": "c2299c4d-7b57-4d0c-9555-62f2b3e4563a",
       "upstream_id": "D06.08",
       "classification": "assisted",
-      "implemented_subclaim": "Prepared strict independent gateway-bypass and Private Link FastPath booleans, not runtime path or eligibility verdicts.",
-      "sources": ["fastpath", "expressroute-gateway", "gateway-rest-2024", "connection-arm", "terraform-gateway-connection"],
+      "implemented_subclaim": "Strict separate bypass/Private Link booleans and reused gateway/circuit binding plus literal gateway-SKU/minimum-scale and flag-consistency subchecks, not runtime eligibility or performance.",
+      "sources": ["fastpath", "expressroute-gateway", "gateway-rest-2024", "connection-arm", "terraform-gateway-connection", "scalable-gateway"],
       "review_resource_types": ["Microsoft.Network/connections", "Microsoft.Network/expressRoutePorts", "Microsoft.Network/virtualNetworkGateways"],
-      "review_fact_paths": ["expressRouteGatewayBypass", "enablePrivateLinkFastPath", "directPortBandwidthGbps"],
+      "review_fact_paths": ["connectionType", "virtualNetworkGateway1.id", "expressRouteCircuitId", "expressRouteGatewayBypass", "enablePrivateLinkFastPath", "gatewaySku", "gatewayScaleBounds", "directPortBandwidthGbps"],
       "evidence_requirements": [
         "Bind explicit low-latency or >10-Gbps throughput demand to the exact ExpressRoute connection and gateway.",
         "Verify UltraPerformance/ErGw3AZ or ARM ErGwScale minimum ten scale units; no Terraform scale default/block is inferred. Virtual WAN Direct five-unit defaults are a separate unsupported model.",
         "Review Direct/provider, IPv4/IPv6, same-region hub/spoke, UDR, service, enrolled limited-GA Private Link and cumulative port IP limits separately; reconcile supported fallback gateway capacity.",
+        "Review ErGwScale-specific regional exclusions, fixed-scale guidance for Private Link, unsupported IPsec-over-ExpressRoute and up-to-30-minute autoscaling; configured maximum is not achieved/current scale.",
         "Reviewer decision: is FastPath enabled and eligible for the exact demanded traffic/topology, with attributable path/performance evidence rather than only bypass=true?"
       ],
       "limitations": "Provider IPv4 hub support is narrower than Direct. Private Link is limited GA with enrollment/region/service limits. Exhaustion and unsupported/cross-region traffic fall back through the gateway.",
@@ -97,26 +98,26 @@
       "guid": "4d873974-8b66-42d6-b15f-512a65498f6d",
       "upstream_id": "D06.09",
       "classification": "assisted",
-      "implemented_subclaim": "Reviewed supported VPN gateway/public-IP prerequisites; placement integration awaits predecessor facts, without an AZ-name predicate.",
+      "implemented_subclaim": "Reuse merged VPN gateway SKU/type/active-active alongside typed gateway public-IP references and explicit Standard/zone configuration, without an AZ-name predicate.",
       "sources": ["zone-gateway-creation", "gateway-reliability", "gateway-arm", "gateway-rest-2024", "terraform-gateway"],
       "review_resource_types": ["Microsoft.Network/virtualNetworkGateways", "Microsoft.Network/publicIPAddresses"],
-      "review_fact_paths": [],
+      "review_fact_paths": ["gatewayType", "gatewaySku", "activeActive", "gatewayPublicIpReferences", "publicIpSku", "configuredZones"],
       "evidence_requirements": [
         "Reconcile VPN gateway type/SKU, supported region and original deployment or migration against current service guidance.",
         "Verify every applicable Standard public IP's actual zone-redundant placement; active-active and zone redundancy are separate.",
         "Reviewer decision: is this branch/remote VPN gateway actually deployed zone redundantly in a supported region?"
       ],
       "limitations": "SKU text does not prove public-IP zones or gateway VM placement. New default behavior is not evidence that an existing gateway was migrated.",
-      "flags": ["vpn-zone-placement-not-active-active", "merged-gateway-contract-required"]
+      "flags": ["vpn-zone-placement-not-active-active", "public-ip-config-not-runtime-placement"]
     },
     {
       "guid": "45866df8-cf85-4ca9-bbe2-65ec1478919e",
       "upstream_id": "D06.10",
       "classification": "assisted",
-      "implemented_subclaim": "Reviewed appliance-specific binding/failure-domain questions; no count inferred from Azure activeActive or local-gateway records.",
+      "implemented_subclaim": "Reuse merged IPsec connection/local-gateway bindings and gateway active-active/BGP facts for appliance-specific review; no actual appliance count is inferred.",
       "sources": ["onprem-vpn-redundancy", "gateway-reliability", "connection-arm", "gateway-rest-2024", "terraform-gateway-connection"],
       "review_resource_types": ["Microsoft.Network/connections", "Microsoft.Network/virtualNetworkGateways", "Microsoft.Network/localNetworkGateways"],
-      "review_fact_paths": [],
+      "review_fact_paths": ["connectionType", "localNetworkGatewayId", "virtualNetworkGateway1.id", "activeActive", "enableBgp"],
       "evidence_requirements": [
         "Reconcile each branch/site's real independent VPN appliances, active-active or active-passive arrangement and power/uplink/failure domains using redacted attributable inventory.",
         "Bind supplied Azure IPsec connections/local-gateway declarations to actual appliances; two tunnels can terminate on one device. Review appropriate BGP/ECMP, route withdrawal and failover evidence.",
@@ -148,7 +149,7 @@
       "implemented_subclaim": "Prepared circuit-to-Direct-port binding, capacity and QinQ/Dot1Q context, not inferred environment labels or effective routing-domain isolation.",
       "sources": ["hybrid-demand-and-isolation", "expressroute-direct", "expressroute-architecture", "circuit-rest-2024", "port-rest-2024", "connection-arm"],
       "review_resource_types": ["Microsoft.Network/expressRouteCircuits", "Microsoft.Network/expressRoutePorts", "Microsoft.Network/connections"],
-      "review_fact_paths": ["expressRoutePort.id", "directCircuitBandwidthGbps", "directPortBandwidthGbps", "directPortEncapsulation", "directPortRateLimit"],
+      "review_fact_paths": ["expressRoutePort.id", "directCircuitBandwidthGbps", "directPortBandwidthGbps", "directPortEncapsulation", "directPortRateLimit", "expressRouteCircuitId"],
       "evidence_requirements": [
         "Supply the accountable owner's explicit separation/dedicated-bandwidth requirements and exact accepted production/nonproduction routing populations; never infer them from names or tags.",
         "Reconcile actual separate circuit bindings, VLAN/VRF and on-premises BGP/route import/export, VNet interconnections, Global Reach and bypass paths.",

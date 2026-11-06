@@ -251,6 +251,16 @@
       "revision": "9fd90ed833034800434458aef187ba08d8dc9d5b",
       "finding": "Learn's general document reuse terms are constrained and explicit document licenses can govern separately. Retain URL/revision/hash attribution and own factual findings only; no Microsoft page text, graphics, layouts or assets are redistributed.",
       "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "scalable-gateway",
+      "url": "https://learn.microsoft.com/en-us/azure/expressroute/scalable-gateway",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/expressroute/scalable-gateway",
+      "sha256": "0aef940fc599a052091a43826b179f7aeacbd439d3589f2521f84ecaf36f7172",
+      "retrieved_at": "2026-11-06T09:52:22.650024+00:00",
+      "revision": "8cc757293f61ba26c0c1052842ee35014124174a",
+      "finding": "ErGwScale bounds are 1-40; min=1 requires fixed max=1 and autoscale min starts at 2. Private Link workloads should use fixed scaling; IPsec over ExpressRoute is unsupported. The current source lists region exclusions including West Europe, not blanket availability. Configured minimum>=10 is a FastPath prerequisite subcheck, not actual scale or performance.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
     }
   ]
 }

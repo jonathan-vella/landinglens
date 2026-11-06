@@ -568,9 +568,26 @@ def projected_properties(
 ) -> dict[str, Any]:
     from .protection_evidence import projected_properties as protection_properties
 
-    return _projected_properties(
+    result = _projected_properties(
         kind, values, terraform=terraform, root=root, observed=observed
     ) | protection_properties(kind.lower(), values, terraform=terraform, root=root)
+    if kind.lower() == "microsoft.network/connections":
+        from .expressroute_evidence import fastpath_properties
+
+        result.update(fastpath_properties(values, terraform=terraform))
+    if kind.lower() == "microsoft.network/virtualnetworkgateways":
+        from .expressroute_evidence import gateway_properties
+
+        result.update(gateway_properties(values, terraform=terraform))
+    if kind.lower() == "microsoft.network/publicipaddresses":
+        result["publicIpSku"] = enumeration(
+            values.get("sku") if terraform else property_at(root, "sku.name"),
+            ("Basic", "Standard"),
+        )
+        result["configuredZones"] = configured_zones(
+            values.get("zones") if terraform else property_at(root, "zones")
+        )
+    return result
 
 
 def _projected_properties(
