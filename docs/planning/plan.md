@@ -63,6 +63,38 @@ The clean interpreter imported from its own site-packages outside the checkout;
 only existing cached reviewed runtime wheels were used, with no network
 installation or module/compiler acquisition.
 
+[#104](https://github.com/jonathan-vella/landinglens/pull/104) merged normally as
+`4929eae302ea2019d067862f17bdfb2ed5fc25a5` at 2026-11-06T10:18:16Z.
+Exact checked head `09612a164d4e502f32ac25b083f265d93f4fe098` passed every
+supported job in push/PR runs `42200949166` / `42200977240`, CodeQL run
+`42200972959`, and the applicable Advanced Security check. Reviews, head,
+actual main and all check-runs were refreshed immediately before normal
+SHA-bound merge; no required review/protection/ruleset was configured or bypassed.
+
+All four downloaded PR compiler artifacts exercised the same six cases with no
+skips: IDs `13493598932` (Ubuntu 3.12), `13494931110` (Ubuntu 3.13),
+`13494367856` (Windows 3.12) and `13495070402` (Windows 3.13).
+Compiler JSON SHA256 is
+`423661b21725a4592f5d055594ca3e1678eb1dc72bcde605ca5497a4cba2a573`
+on Ubuntu and
+`04c6cdedbac395fa1f99a7de7f90c7f5effa955b150b0cce69257c4318293960`
+on Windows.
+
+The guarded recorder independently re-read the actual merged PR/head/base,
+both complete runs and every compiler artifact before binding all eight GUIDs
+to their own `deliveries.22` receipt and the exact wheel above. Every earlier
+own-GUID receipt and fixed target remains unchanged. The ledger becomes
+**71 merged / 180 pending** on checked receipt reconciliation. Catalog/crosswalk
+remain `.6.6`, 10 automated / 202 assisted / 43 manual; cohort14 is the highest
+remaining source/dependency review priority. #100 closure is gated on the checked
+receipt merge. This is source/fixture/saved/injected and exact installed-CLI
+acceptance, not new live Azure or operational protection/retention/compliance proof.
+
+Final receipt reconciliation passed 364 checkout and exact-installed tests:
+363 passed with the same original Windows symlink-privilege skip. Format/lint,
+36-file typing and dependency checks remain green. The exact implementation
+wheel above is unchanged; receipt/docs/tests add no package-source dependency.
+
 ## Cohort 13 delivery: 2026-11-06
 
 [#97](https://github.com/jonathan-vella/landinglens/issues/97) owns exactly the
