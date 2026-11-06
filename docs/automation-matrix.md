@@ -33,8 +33,8 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.1` retains all 255 entries: 8 automated, 204 assisted
-and 43 manual. Crosswalk `2026-11-06.1` rebinds the unchanged 51-control,
+Current successor `2026-11-06.2` retains all 255 entries: 10 automated, 202 assisted
+and 43 manual. Crosswalk `2026-11-06.2` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
 The history below remains version-specific.
 
@@ -66,6 +66,33 @@ wrong-type, duplicate, transient, partial, denied, stale and over-bound cases
 remain explicit. Replay retains original times. Old catalog meanings and the
 fixed 251-GUID membership are unchanged. #90 passed normal exact-head CI/compiler
 gates and merged; `deliveries.19` records each of its nine GUIDs' actual acceptance.
+
+### Cohort 11: routing, peering and transport resilience
+
+The [ten-GUID matrix](../references/recommendation-batches/batch-11.json)
+and [21 actual source captures](../references/recommendation-batches/batch-11-sources.json)
+precede `2026-11-06.2`. D01.12 evaluates only a complete successful observed
+custom-route array against the literal <=400 checklist target, not effective
+BGP/system routing or today's quota options. Declared/raw/planned child populations
+stay unknown. D01.13 evaluates explicit per-direction `allowVirtualNetworkAccess`
+only; no provider/portal default, reciprocal peering, transit or reachability is
+inferred. All earlier predicates and exact delivered catalog bytes are unchanged.
+
+Seven specific assisted workflows prepare frontend-zone/public-IP and supplied
+backend-entry context, per-link MACsec cipher/SCI fields, IPsec private-IP intent
+and gateway IDs, and explicit IPv4 address-space subchecks. D02.01 remains manual:
+no setting establishes an approved business/security encryption requirement.
+Backend entries are not distinct healthy instances; a Standard SKU or frontend
+is not an SLA or backend/region resilience. MACsec config is not negotiated
+edge-to-MSEE encryption or end-to-end privacy; a private-IP IPsec connection is
+not proof that either direction prefers the encrypted path. Keys, secret
+identifiers, tunnel addresses and raw destinations are withheld.
+
+RFC1918 subchecks use exactly 10/8, 172.16/12 and 192.168/16, not the broader
+`is_private` classification. Local pairwise prefix checks do not prove global
+Azure/on-premises nonoverlap or appropriate capacity. IPv6/mixed, unresolved and
+over-bound lists remain unknown; workload/IPAM/growth evidence stays explicit.
+No traffic, encryption, key, health, DNS, on-premises or external IPAM query occurs.
 
 Crosswalk `2026-11-05.1` binds catalog `2026-11-05.3` without changing its
 7 automated / 205 assisted / 43 manual dispositions or the fixed 251-target

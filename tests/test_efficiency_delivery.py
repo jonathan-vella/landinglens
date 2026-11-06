@@ -265,7 +265,7 @@ class EfficiencyDeliveryTests(unittest.TestCase):
         self.assertEqual(sum(row["status"] == "merged" for row in ledger["recommendations"]), 35)
         self.assertEqual(
             {row["batch"] for row in ledger["recommendations"] if row["status"] == "merged"},
-            {"01", "17", "18", "19"},
+            set(ledger["deliveries"]),
         )
         for row in ledger["recommendations"]:
             if row["status"] == "merged":
@@ -273,6 +273,9 @@ class EfficiencyDeliveryTests(unittest.TestCase):
                 self.assertEqual(
                     (row["pr"], row["merge_commit"]), (receipt["pr"], receipt["merge_commit"])
                 )
+            elif row["batch"] == "11":
+                self.assertEqual(row["status"], "implementation-in-progress")
+                self.assertIsNone(row["merge_commit"])
             else:
                 self.assertEqual(row["status"], "pending")
                 self.assertIsNone(row["merge_commit"])

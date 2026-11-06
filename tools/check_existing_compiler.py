@@ -27,6 +27,8 @@ if compiler:
         "test_bicep.BicepTests.test_actual_installed_compiler_local_success_and_unrestored_failure",
         "test_segmentation_batch.SegmentationBatchTests."
         "test_real_bicep_nsg_gateway_subnet_flow_without_restore",
+        "test_routing_batch.RoutingBatchTests."
+        "test_real_bicep_routing_peering_lb_macsec_connection_no_restore",
     ]
     suite = unittest.defaultTestLoader.loadTestsFromNames(cases)
     result = unittest.TextTestRunner(verbosity=2).run(suite)

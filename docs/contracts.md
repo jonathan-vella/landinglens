@@ -425,6 +425,22 @@ uses explicit positive subnet links, never names, and does not resolve condition
 partial facts remain Signals or review context, not effective segmentation,
 ownership or operational ingestion verdicts.
 
+Successor `2026-11-06.2` adds `route-capacity`, bound strictly to
+`Microsoft.Network/routeTables.routeCount` and expected integer 400. Only observed
+successful complete custom-route populations, bounded to 1,000, can pass/fail;
+declared/planned/raw arrays cannot establish all separately managed routes.
+Defaults, effective BGP/system routes and current service-limit options are not
+silently substituted. The separate explicit peering-access boolean uses the
+existing boolean evaluator. Missing/defaulted/wrong-type values remain unknown.
+
+New reviewed context paths retain frontend summaries bounded to 20, backend
+summaries bounded to 100 pools with counts bounded to 1,000, at most two MACsec
+link cipher/SCI enums, explicit connection/private-IP/gateway facts and VNet IPv4
+prefixes bounded to 100. Supplied counts do not establish distinct/healthy
+instances, working encryption or population completeness. Replay revalidates the
+same typed vocabulary. Keys, secret identifiers, certificates, tunnel addresses
+and backend/next-hop IPs are withheld.
+
 | Kind | Required content and invariants |
 |---|---|
 | `catalog` | Version, canonical design areas, GUID-based local IDs, recommendation, related areas, applicability, method, automation disposition, evidence requirements, lifecycle and reviewed references. Tenant policy and organization extensions are separate mappings, not replacements for the recommendation baseline. |

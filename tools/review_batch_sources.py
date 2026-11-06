@@ -383,6 +383,141 @@ SOURCES_18 = [
 ]
 
 
+SOURCES_11 = [
+    (
+        "peering-access",
+        LEARN + "azure/virtual-network/virtual-network-manage-peering",
+        ["allow-vnet-access", "forwarded traffic", "VirtualNetwork"],
+        "Explicit allowVirtualNetworkAccess is a per-direction configuration setting, "
+        "not reciprocal connectivity, NSG isolation, gateway transit or forwarding proof.",
+    ),
+    (
+        "load-balancer-reliability",
+        LEARN + "azure/reliability/reliability-load-balancer",
+        ["front-end IP configuration", "back-end instances", "independently"],
+        "Zone redundancy belongs to each frontend or its public IP, independently of "
+        "backend placement and health. Standard SKU or two supplied backend entries "
+        "does not establish operational or regional resilience.",
+    ),
+    (
+        "expressroute-macsec",
+        LEARN + "azure/expressroute/expressroute-howto-macsec",
+        ["two physical ports", "GcmAesXpn256", "private endpoint"],
+        "ExpressRoute Direct has two links. Configured cipher/SCI fields are not negotiated "
+        "encryption; key availability, identities, port applicability and both ends require "
+        "separate evidence. Never retain CAK/CKN values or secret identifiers.",
+    ),
+    (
+        "vpn-private-peering",
+        LEARN + "azure/vpn-gateway/site-to-site-vpn-private-peering",
+        ["standard-IP", "same prefixes", "without VPN protection"],
+        "Private-IP VPN connections need a functioning private circuit and preferred "
+        "encrypted routes in both directions. Equal prefixes can prefer unencrypted "
+        "ExpressRoute; a connection or IPsec policy is not encrypted-path proof.",
+    ),
+    (
+        "ip-address-planning",
+        LEARN + "azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-ip-addressing",
+        ["RFC 1918", "five IP addresses", "overlapping", "IPv6"],
+        "Review the complete Azure/on-premises allocation and approved growth requirements. "
+        "Local RFC1918 and pairwise IPv4 overlap subchecks do not prove global nonoverlap "
+        "or appropriate sizing; IPv6 and NAT remain explicit unsupported context.",
+    ),
+    (
+        "route-rest-2024",
+        SPEC_RAW + "specification/network/resource-manager/Microsoft.Network/Network/"
+        "stable/2024-05-01/routeTable.json",
+        ["RouteTables_Get", "RouteTablePropertiesFormat", "nextHopType"],
+        "The pinned GET returns the route table's custom routes separately from effective "
+        "BGP/system routing. Only a successful explicit complete observed array can support "
+        "the checklist 400 target; child declarations and service tags need no expansion.",
+    ),
+    (
+        "route-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/routetables",
+        ["routes", "nextHopType", "addressPrefix"],
+        "Declared custom routes do not establish completeness when child routes are managed "
+        "separately. Next-hop types and count context are retained, not next-hop IPs.",
+    ),
+    (
+        "peering-arm",
+        LEARN
+        + "azure/templates/microsoft.network/2024-05-01/virtualnetworks/virtualnetworkpeerings",
+        ["allowVirtualNetworkAccess", "remoteVirtualNetwork", "allowForwardedTraffic"],
+        "Explicit boolean access is distinct from forwarding/transit and remote topology. "
+        "Missing boolean is unknown; no portal/provider default is inferred.",
+    ),
+    (
+        "lb-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/loadbalancers",
+        ["frontendIPConfigurations", "backendAddressPools", "publicIPAddress", "zones"],
+        "Frontend zone/public-IP references and bounded supplied backend counts are partial "
+        "facts. Unknown memberships, VMSS expansion, probes and public-IP zones need review.",
+    ),
+    (
+        "port-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/expressrouteports",
+        ["macSecConfig", "cipher", "sciState"],
+        "Project bounded per-link cipher/SCI enums only; keys, secret identifiers, router "
+        "labels and physical port details are withheld. Configuration is not link encryption.",
+    ),
+    (
+        "connection-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/connections",
+        ["connectionType", "useLocalAzureIpAddress", "virtualNetworkGateway1"],
+        "Connection type/private-IP boolean and canonical gateway IDs support review only; "
+        "shared/authorization keys, IKE details and tunnel addresses are not exported.",
+    ),
+    *[
+        (
+            "terraform-" + identity,
+            RAW + "website/docs/r/" + filename + ".html.markdown",
+            markers,
+            finding,
+        )
+        for identity, filename, markers, finding in (
+            (
+                "route-table",
+                "route_table",
+                ["route", "route resources", "address_prefix"],
+                "Inline and separately managed routes cannot prove a complete custom population.",
+            ),
+            (
+                "peering",
+                "virtual_network_peering",
+                ["allow_virtual_network_access", "remote_virtual_network_id"],
+                "Only explicit per-direction booleans are evaluated.",
+            ),
+            (
+                "load-balancer",
+                "lb",
+                ["frontend_ip_configuration", "sku", "zones"],
+                "Standard SKU and explicit frontend context do not prove "
+                "zone or backend resilience.",
+            ),
+            (
+                "backend-pool",
+                "lb_backend_address_pool",
+                ["loadbalancer_id", "backend_address"],
+                "Pool declarations alone cannot count distinct healthy backend instances.",
+            ),
+            (
+                "expressroute-port",
+                "express_route_port",
+                ["link1", "link2", "macsec_cipher"],
+                "Pinned provider supports two link blocks; no cipher default or key is retained.",
+            ),
+            (
+                "gateway-connection",
+                "virtual_network_gateway_connection",
+                ["local_azure_ip_address_enabled", "virtual_network_gateway_id", "IPsec"],
+                "Private-IP intent is not a preferred, working encrypted private-peering path.",
+            ),
+        )
+    ],
+]
+
+
 SOURCES_19 = [
     (
         "service-endpoint-intent",
@@ -554,10 +689,16 @@ SOURCES_19 = [
 ]
 
 
+SOURCES_11 += [
+    source for source in SOURCES_19 if source[0] in {"network-service-limits", "rest-spec-reuse"}
+]
+SOURCES_11 += [source for source in SOURCES_18 if source[0] in {"vnet-arm", "terraform-vnet"}]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
-    parser.add_argument("--batch", choices=["01", "17", "18", "19"], default="01")
+    parser.add_argument("--batch", choices=["01", "11", "17", "18", "19"], default="01")
     args = parser.parse_args()
     target = ROOT / "references" / "recommendation-batches" / f"batch-{args.batch}-sources.json"
     if target.exists() and not args.append_new_sources:
@@ -566,6 +707,7 @@ def main() -> None:
     existing = {source["id"]: source for source in sources}
     for identity, url, markers, finding in {
         "01": SOURCES,
+        "11": SOURCES_11,
         "17": SOURCES_17,
         "18": SOURCES_18,
         "19": SOURCES_19,

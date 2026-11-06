@@ -222,7 +222,7 @@ class CrosswalkTests(unittest.TestCase):
         self.assertEqual(
             digest(assess(bundle, self.catalog, at=bundle["collected_at"])), digest(assessment)
         )
-        self.assertEqual(sum(c["automation"] == "automated" for c in self.catalog["controls"]), 8)
+        self.assertEqual(sum(c["automation"] == "automated" for c in self.catalog["controls"]), 10)
 
     def test_cli_inspect_validate_and_invalid_options(self):
         code, output, error = self.cli("crosswalk", "inspect", "--id", "G04.01")

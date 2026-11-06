@@ -47,6 +47,12 @@ API_VERSIONS = {
     "microsoft.network/networksecuritygroups/securityrules": {"2024-05-01"},
     "microsoft.network/virtualnetworkgateways": {"2024-05-01"},
     "microsoft.network/networkwatchers/flowlogs": {"2024-05-01"},
+    "microsoft.network/routetables": {"2024-05-01"},
+    "microsoft.network/virtualnetworks/virtualnetworkpeerings": {"2024-05-01"},
+    "microsoft.network/loadbalancers": {"2024-05-01"},
+    "microsoft.network/loadbalancers/backendaddresspools": {"2024-05-01"},
+    "microsoft.network/expressrouteports": {"2024-05-01"},
+    "microsoft.network/connections": {"2024-05-01"},
 }
 
 
@@ -432,7 +438,10 @@ def arm_source(
                         "properties": properties(
                             arm_type,
                             context.value(entry.get("properties", {})),
-                            root={"zones": context.value(entry.get("zones"))},
+                            root={
+                                "zones": context.value(entry.get("zones")),
+                                "sku": context.value(entry.get("sku")),
+                            },
                         )
                         if state == "known"
                         else {},

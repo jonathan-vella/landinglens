@@ -38,6 +38,12 @@ TF_TYPES = {
     "azurerm_virtual_network_gateway": "Microsoft.Network/virtualNetworkGateways",
     "azurerm_network_watcher_flow_log": "Microsoft.Network/networkWatchers/flowLogs",
     "azurerm_application_security_group": "Microsoft.Network/applicationSecurityGroups",
+    "azurerm_route_table": "Microsoft.Network/routeTables",
+    "azurerm_virtual_network_peering": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+    "azurerm_lb": "Microsoft.Network/loadBalancers",
+    "azurerm_lb_backend_address_pool": "Microsoft.Network/loadBalancers/backendAddressPools",
+    "azurerm_express_route_port": "Microsoft.Network/expressRoutePorts",
+    "azurerm_virtual_network_gateway_connection": "Microsoft.Network/connections",
     "azurerm_firewall_policy_rule_collection_group": (
         "Microsoft.Network/firewallPolicies/ruleCollectionGroups"
     ),
@@ -256,6 +262,7 @@ def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str 
         "azurerm_firewall_nat_rule_collection": "azure_firewall_name",
         "azurerm_network_security_rule": "network_security_group_name",
         "azurerm_network_watcher_flow_log": "network_watcher_name",
+        "azurerm_virtual_network_peering": "virtual_network_name",
     }.get(kind)
     if parent_key:
         parent = values.get(parent_key)

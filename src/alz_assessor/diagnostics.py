@@ -128,6 +128,7 @@ REASONS = {
         "enum_missing_unresolved_or_invalid",
         "sku_unresolved_or_wrong_type",
         "complete_observed_rule_count_required",
+        "complete_observed_route_count_required",
         "unverified_provider_version",
         "required_parameter",
         "parameter_missing",
@@ -208,6 +209,8 @@ REASONS = {
     "verified": (
         "within_checklist_rule_target",
         "exceeds_checklist_rule_target",
+        "within_checklist_route_target",
+        "exceeds_checklist_route_target",
         "explicit_property_matches",
         "explicit_property_differs",
         "manual_attestation",

@@ -4,6 +4,8 @@ from ipaddress import ip_address, ip_network
 from typing import Any
 
 from .contracts import canonical_id, identity_type
+from .routing_evidence import KINDS as ROUTING_KINDS
+from .routing_evidence import PATHS as ROUTING_PATHS
 from .sources import boolean, enumeration, property_at, unknown
 from .terraform import InputError
 
@@ -40,7 +42,7 @@ REVIEW_PATHS = {
     "trafficAnalytics.enabled",
     "trafficAnalytics.workspaceResourceId",
     "filteringConfigured",
-}
+} | ROUTING_PATHS
 
 
 def bounded_count(value: Any, maximum: int) -> Any:
@@ -485,6 +487,10 @@ def private_connections(values: dict[str, Any], *, terraform: bool) -> Any:
 
 
 def review_fact(properties: dict[str, Any], path: str) -> Any:
+    if path in ROUTING_PATHS:
+        from .routing_evidence import review_fact as routing_fact
+
+        return routing_fact(properties, path)
     value = property_at(properties, path)
     if path == "sku.tier":
         return enumeration(value, ("Basic", "Standard", "Premium"))
@@ -619,6 +625,12 @@ def projected_properties(
             else {}
         )
         return {
+            "virtualNetworkPrefixes": address_list(
+                values.get("address_space")
+                if terraform
+                else property_at(values, "addressSpace.addressPrefixes"),
+                prefix_only=True,
+            ),
             "enableDdosProtection": boolean(
                 plan.get("enable") if terraform else values.get("enableDdosProtection")
             ),
@@ -799,24 +811,30 @@ def projected_properties(
                 ]
             )
         }
-    return {}
+    from .routing_evidence import projected_properties as routing_properties
+
+    return routing_properties(kind, values, terraform=terraform, observed=observed, root=root)
 
 
 def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
-    if kind.lower() not in {
-        "microsoft.network/azurefirewalls",
-        "microsoft.network/virtualnetworks/subnets",
-        "microsoft.network/ipgroups",
-        "microsoft.network/azurefirewalls/natrulecollections",
-        "microsoft.insights/diagnosticsettings",
-        "microsoft.network/virtualnetworks",
-        "microsoft.network/privateendpoints",
-        "microsoft.network/firewallpolicies/rulecollectiongroups",
-        "microsoft.network/networksecuritygroups",
-        "microsoft.network/networksecuritygroups/securityrules",
-        "microsoft.network/virtualnetworkgateways",
-        "microsoft.network/networkwatchers/flowlogs",
-    }:
+    if (
+        kind.lower()
+        not in {
+            "microsoft.network/azurefirewalls",
+            "microsoft.network/virtualnetworks/subnets",
+            "microsoft.network/ipgroups",
+            "microsoft.network/azurefirewalls/natrulecollections",
+            "microsoft.insights/diagnosticsettings",
+            "microsoft.network/virtualnetworks",
+            "microsoft.network/privateendpoints",
+            "microsoft.network/firewallpolicies/rulecollectiongroups",
+            "microsoft.network/networksecuritygroups",
+            "microsoft.network/networksecuritygroups/securityrules",
+            "microsoft.network/virtualnetworkgateways",
+            "microsoft.network/networkwatchers/flowlogs",
+        }
+        | ROUTING_KINDS
+    ):
         return {}
     result: dict[str, Any] = {}
     for path in sorted(REVIEW_PATHS):
