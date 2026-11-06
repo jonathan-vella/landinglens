@@ -228,3 +228,42 @@ class PlatformDeliveryBatchTests(unittest.TestCase):
         mapped = [r for r in crosswalk["entries"] if r["guid"] in GUIDS.values()]
         self.assertEqual(len(mapped), 7)
         self.assertTrue(all(r["targets"] == [] for r in mapped))
+
+    def test_actual_seven_own_receipts_bind_merged_head_runs_wheel_and_historical_count(self):
+        ledger = json.loads((REFERENCE / "ledger.json").read_text("utf-8"))
+        receipt = ledger["deliveries"]["29"]
+        self.assertEqual(receipt["pr"], "https://github.com/jonathan-vella/landinglens/pull/140")
+        self.assertEqual(receipt["checked_head"], "314fe23f8e130e88709173e59ff9ae4cf967adfb")
+        self.assertEqual(receipt["merge_commit"], "0cda0635c4351592d381956cec30c9bf9cbbfb23")
+        self.assertEqual(receipt["merged_at"], "2026-11-06T20:45:33Z")
+        self.assertEqual(
+            receipt["wheel_sha256"],
+            "a5417cf6aff38c0a9ead56af3f0c2ed7d5253363b9d2f8691af4b1d6b3d6f5b3",
+        )
+        self.assertEqual(
+            receipt["local_installed_suite"], {"tests": 635, "passed": 634, "skipped": 1}
+        )
+        self.assertEqual(
+            receipt["checks"],
+            [
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42289191950",
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42289226748",
+            ],
+        )
+        self.assertEqual(len(receipt["compiler_integration_cases"]), 16)
+        self.assertEqual(
+            receipt["compiler_integration_cases"],
+            ledger["deliveries"]["27"]["compiler_integration_cases"],
+        )
+        own = [r for r in ledger["recommendations"] if r["batch"] == "29"]
+        self.assertEqual({r["upstream_id"]: r["guid"] for r in own}, GUIDS)
+        for row in own:
+            self.assertEqual(row["status"], "merged")
+            self.assertEqual(row["pr"], receipt["pr"])
+            self.assertEqual(row["merge_commit"], receipt["merge_commit"])
+            self.assertIn("deliveries.29:", " ".join(row["runtime_evidence"]))
+        prefix = set(self.matrix["preserved_delivery_batches"]) | {"29"}
+        self.assertEqual(
+            sum(r["status"] == "merged" for r in ledger["recommendations"] if r["batch"] in prefix),
+            169,
+        )
