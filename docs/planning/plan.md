@@ -59,13 +59,16 @@ include D06.17; cohort13's ten-predicate historical assertion uses frozen `.6.5`
 and cohort12's old80-row receipt checks do not count future cohorts.
 
 Own offline wheel SHA256:
-`88cd5b17564ed4fa45b4cacf36625b84c41c2f558a790f0d52bc7830481c96e2`.
+`d0fcb7941178c76168e3316d43dc06c86693e17ea7fc42684b5a5f177d98696c`.
 Every packaged code/data byte matches the checkout; the fresh outside-checkout
 interpreter proves site-packages import. Only existing own reviewed runtime
 wheels were restored after its missing-`hcl2` probe. Original captured times,
 all predecessor catalog/crosswalk bytes and 90 rows/ten receipts are unchanged.
 Platform/CodeQL/reviews, four matching compiler artifacts, normal exact-head
 merge and guarded receipt reconciliation remain required delivery gates.
+The compiled monitoring fixture also evaluates the exact accepted D06.17
+predicate through the single engine; unresolved joins expose explicit
+GatewaySubnet binding/flag guidance without executing suggested operations.
 
 ## Historical cohort 15 independent preparation: 2026-11-06
 

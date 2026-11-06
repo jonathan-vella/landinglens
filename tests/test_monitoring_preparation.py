@@ -897,6 +897,15 @@ class MonitoringPreparationTests(unittest.TestCase):
         joined = gateway_circuit_subchecks(gateway, resources, self.by_id(evidence))
         self.assertEqual(joined["supplied_distinct_circuit_count"], 2)
         self.assertTrue(joined["supplied_circuits_include_different_location_labels"])
+        evaluated = assess(
+            evidence, load_catalog(), at=evidence["collected_at"], evidence_tiers=True
+        )
+        propagation = next(
+            row for row in evaluated["results"] if row["control_id"] == "ALZ-" + GUIDS[4]
+        )["planned"]
+        self.assertEqual(propagation["outcome"], "pass")
+        self.assertIs(propagation["fact"], True)
+        self.assertEqual(propagation["evidence_tier"], "verified")
 
 
 if __name__ == "__main__":

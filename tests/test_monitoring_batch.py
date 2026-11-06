@@ -12,6 +12,7 @@ import test_monitoring_preparation as preparation
 
 from alz_assessor.catalog import load_catalog
 from alz_assessor.contracts import control_digest, document, validate
+from alz_assessor.diagnostics import guidance
 from alz_assessor.engine import assess
 from alz_assessor.interviews import compile_interview, prepare_interview, question_bank
 from alz_assessor.replay import export_bundle, replay_bundle, semantic
@@ -137,6 +138,9 @@ class MonitoringBatchTests(unittest.TestCase):
             self.assertEqual(body["outcome"], "unknown")
             self.assertIsNone(body["fact"])
             self.assertNotEqual(body["evidence_tier"], "verified")
+            explanation = guidance(body["reason"])
+            self.assertTrue(explanation["supported"])
+            self.assertIn("GatewaySubnet", explanation["required_evidence"])
         for complete in (False, True):
             bundle = self.fixture.bundle()
             bundle["inventory_complete"] = complete
