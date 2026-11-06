@@ -5,6 +5,12 @@ fixtures, not a live tenant. That historical baseline is unchanged. Subsequent
 owner-authorized access probes are bounded access evidence, not full collector
 or control verification. Normal assessment and tests need no Azure credentials.
 
+Cohort22's pricing/HSM/VM API versions are supported only for planned ARM/Bicep,
+not added to the live Collector registry. Previously supported diagnostic details
+can supply minimized routing categories and destinations through saved/injected
+evidence. They establish configuration only, never arriving logs or retention.
+No Azure, Entra, audit/log or data-plane request is performed for this acceptance.
+
 ## Policy evidence reuse
 
 LL-30 consumes the existing scoped collector's separate assignments, exemptions

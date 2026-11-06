@@ -1,0 +1,141 @@
+{
+  "batch": "22",
+  "catalog_version": "2026-11-06.6",
+  "review_state": "owner-delegated-source-backed-matrix",
+  "accepted_at": "2026-11-06T10:02:20.4835235Z",
+  "prerequisites": ["13"],
+  "preserved_catalog_bytes": {
+    "2026-11-06.5": "cf9e27745068f5ec3d2d0701d07445951e9cbed31aeeed0657e2c022c7cd23f9"
+  },
+  "issue": "https://github.com/jonathan-vella/landinglens/issues/100",
+  "acceptance_evidence": "Eight specific assisted workflows supported by actual Microsoft guidance and pinned provider/REST definitions. Typed plan/tier/extension, routing, HSM and patch configuration prepare review; none can establish complete protection, ingestion/retention, endpoint enforcement, patch compliance, actual access-audit reports or sovereign suitability. Separate scoped/content-bound interview decisions remain blank until explicitly supplied.",
+  "supported_modes": "Explicit AzureRM 4.50.0 raw Terraform with supplied local snapshots and optional plan; planned ARM pricing 2024-01-01, HSM 2024-11-01, VM 2024-07-01 and diagnostics 2021-05-01-preview plus existing no-restore Bicep; saved normalized evidence and previously supported injected diagnostic details. Planned-only API support does not extend the Collector API registry or authorized Azure/Entra/Graph/audit/data-plane reads.",
+  "recommendations": [
+    {
+      "guid": "4ac6b67c-b3a4-4ff9-8e87-b07a7ce7bbdb",
+      "upstream_id": "G02.13",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit Managed HSM public-network and purge configuration as bounded resource context; specific key-custody/capability review, not secrets storage or sovereign adoption.",
+      "sources": ["sovereign-external-keys", "hsm-overview", "hsm-object-types", "hsm-ekm-architecture", "hsm-arm", "terraform-hsm"],
+      "review_resource_types": ["Microsoft.KeyVault/managedHSMs"],
+      "review_fact_paths": ["hsmConfiguration"],
+      "evidence_requirements": [
+        "Resolve the frozen secrets/credentials wording explicitly: Managed HSM supports HSM-protected cryptographic keys, not secrets or certificates. Identify an appropriate secret/credential solution separately, without supplying secret values.",
+        "Document approved sovereign/key-custody requirements and supported workload CMK use, key ownership/lifecycle, security-domain recovery responsibility and evidence of actual integration. Resource presence and BYOK import do not prove physical external custody.",
+        "Reviewer decision: does the approved design require external KEK custody, and if so are compatible services, customer-run proxy/HSM, mTLS, availability/recovery, region/support and SLA/cost responsibilities evidenced? EKM is GA, its Private Link model is preview; neither choice is automatically suitable."
+      ],
+      "limitations": "No keys, credentials, certificate/admin/tenant identities, security-domain bytes, HSM URIs or private audit data are retained; no activation or cryptographic/network operation. Purge/public-network flags do not establish adoption or business suitability.",
+      "flags": ["hsm-keys-not-secrets", "external-custody-not-hsm-presence", "sovereign-suitability-needs-owner"]
+    },
+    {
+      "guid": "4e5695f2-223a-4ce8-ab12-308ca5017f15",
+      "upstream_id": "G03.01",
+      "classification": "assisted",
+      "implemented_subclaim": "Source-specific directory-access audit-report review with attributable scope/time/coverage and explicit privacy boundaries.",
+      "sources": ["entra-audit-reporting"],
+      "evidence_requirements": [
+        "Identify the actual redacted access-control audit report, directory/tenant and period, report owner, licensing/access constraints and audit/sign-in/provisioning sources used.",
+        "Reconcile report completeness, role/group/access changes and original event times with the intended audit population; no role assignment, Azure activity diagnostic setting or single sign-in establishes the report.",
+        "Reviewer decision: are the intended access-control audit reports generated and reviewed with accountable findings/follow-up and documented gaps/retention? Supply references or redacted attestations, never private directory/audit/sign-in records."
+      ],
+      "limitations": "Legacy AAD URL resolves to Entra monitoring/health. This is genuinely human-evidence work; no Azure flag can establish the report and no Graph/directory/report/log read or login is performed.",
+      "flags": ["entra-audit-not-azure-activity", "audit-report-needs-attributable-evidence"]
+    },
+    {
+      "guid": "4e3ab369-3829-4e7e-9161-83687a0477a2",
+      "upstream_id": "G03.02",
+      "classification": "assisted",
+      "implemented_subclaim": "Bounded explicit diagnostic activity categories/groups with enabled booleans and typed workspace/storage destinations, not ingestion or retention.",
+      "sources": ["activity-export", "activity-log", "log-retention", "diagnostic-arm", "terraform-diagnostics"],
+      "review_resource_types": ["Microsoft.Insights/diagnosticSettings"],
+      "review_fact_paths": ["targetResourceId", "activityLogRouting"],
+      "evidence_requirements": [
+        "Reconcile all applicable subscriptions, original-time subscription diagnostic targets, categories and workspace/storage destinations; resource diagnostics and metrics do not establish activity-log export.",
+        "Verify successful original-time ingestion/export and completeness using redacted operational evidence, including historical gaps, new-arrivals-only export, retries/discards and destination availability. Default activity-log retention is 90 days, not durable export.",
+        "Reviewer decision: does actual table-specific analytics/total retention and any required storage lifecycle/immutability/recovery meet the approved retention/privacy requirement? Current Log Analytics total retention supports up to 12 years; do not invent a required duration or infer low cost, successful ingestion or adequacy from configuration."
+      ],
+      "limitations": "No audit contents, log queries, ingestion tests, destination enumeration or lifecycle change. Empty/absent/malformed/over-bound lists remain disclosed; selected categories are not every subscription's coverage.",
+      "flags": ["routing-not-ingestion-or-retention", "table-retention-not-workspace-default", "export-new-arrivals-not-history"]
+    },
+    {
+      "guid": "09945bda-4333-44f2-9911-634182ba5275",
+      "upstream_id": "G03.03",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit allowlisted CloudPosture pricing tier/subplan and extension string states at the supplied scope, not CSPM-wide coverage.",
+      "sources": ["defender-cspm", "pricing-arm", "pricing-rest", "terraform-pricing", "terraform-pricing-implementation"],
+      "review_resource_types": ["Microsoft.Security/pricings"],
+      "review_fact_paths": ["defenderPricing"],
+      "evidence_requirements": [
+        "Identify CloudPosture configuration per applicable subscription/connector and distinguish paid Defender CSPM from Foundational CSPM; other plan records cannot answer this GUID.",
+        "Reconcile intended resources, cloud/region support, feature component enablement, exclusions and actual attributable coverage/assessment evidence. Billable-resource lists and pricing status are not complete coverage.",
+        "Reviewer decision: are paid CSPM features effectively available for the complete approved population, with component/support gaps, original evidence time and costs explicitly reviewed?"
+      ],
+      "limitations": "No CSPM scan, evaluation or new collection. Arbitrary extension/exclusion properties, sensitive findings and cost amounts are withheld. Standard tier or extension True establishes only configuration, never effective protection.",
+      "flags": ["cloudposture-plan-not-coverage", "foundational-not-paid-cspm"]
+    },
+    {
+      "guid": "36a72a48-fffe-4c40-9747-0ab5064355ba",
+      "upstream_id": "G03.04",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit VirtualMachines pricing tier and P1/P2 subplan with scope-local extension/enforce context, not all cloud servers.",
+      "sources": ["defender-servers", "pricing-arm", "pricing-rest", "terraform-pricing", "terraform-pricing-implementation"],
+      "review_resource_types": ["Microsoft.Security/pricings"],
+      "review_fact_paths": ["defenderPricing"],
+      "evidence_requirements": [
+        "Reconcile all applicable Azure/Arc/multicloud servers and subscription/connector/resource settings; omitted subplans do not default to P2 in the assessor.",
+        "Distinguish P1 endpoint/EDR capabilities and P2 additional capabilities, resource-level opt-outs/P1 overrides, onboarding/agent prerequisites and actual attributable protection evidence.",
+        "Reviewer decision: is the appropriate plan actually effective for every intended cloud server with explicit exemptions, unsupported OS/cloud cases and original-time coverage gaps?"
+      ],
+      "limitations": "Subscription pricing may differ from resource coverage. No agent/endpoint/OS health checks, onboarding, scans or permission/settings changes. Cost and all-server protection remain human-evidence questions.",
+      "flags": ["server-plan-not-fleet-protection", "resource-overrides-and-opt-outs-explicit"]
+    },
+    {
+      "guid": "77425f48-ecba-43a0-aeac-a3ac733ccc6a",
+      "upstream_id": "G03.05",
+      "classification": "assisted",
+      "implemented_subclaim": "Allowlisted workload plan/tier/subplan and supplied extension states, preserving distinct records and scopes.",
+      "sources": ["defender-workloads", "pricing-arm", "pricing-rest", "terraform-pricing", "terraform-pricing-implementation"],
+      "review_resource_types": ["Microsoft.Security/pricings"],
+      "review_fact_paths": ["defenderPricing"],
+      "evidence_requirements": [
+        "Build the explicit applicable subscription/workload population and identify relevant plan/component/support requirements separately for servers, storage, databases, containers and other workloads.",
+        "Reconcile actual resource-level coverage, opt-outs, trial state, required monitoring/onboarding components, original evidence time and support gaps; pricing record counts or CloudPosture alone do not establish workload protection.",
+        "Reviewer decision: are the intended workload protections effective across all applicable subscriptions/resources, with accountable gaps, exclusions and cost/suitability review?"
+      ],
+      "limitations": "No automatic all-plans rule, cost threshold, protection-health inference, deployment or scan. Missing/new/unsupported plan or extension names stay unknown rather than being accepted by free text.",
+      "flags": ["workload-specific-plan-coverage", "pricing-count-not-all-subscriptions"]
+    },
+    {
+      "guid": "24d96b30-61ee-4436-a1cc-d6ef08bc574b",
+      "upstream_id": "G03.06",
+      "classification": "assisted",
+      "implemented_subclaim": "Source-specific endpoint enforcement/health interview; optional server plan context is never an endpoint-enforcement result.",
+      "sources": ["endpoint-protection", "defender-servers", "pricing-rest"],
+      "review_resource_types": ["Microsoft.Security/pricings"],
+      "review_fact_paths": ["defenderPricing"],
+      "evidence_requirements": [
+        "Reconcile the complete IaaS server population and actual supported endpoint-protection solution, onboarding and assigned antimalware policies; installed antivirus, MDE/EDR and server pricing are distinct.",
+        "Use attributable redacted original-time health/enforcement evidence for active protection, definition/engine updates, exclusions, conflicting/passive modes and unsupported OS cases; no arbitrary health threshold is imposed.",
+        "Reviewer decision: is endpoint protection actually enabled/enforced for all applicable IaaS servers, with accountable monitoring and explicit exceptions? Never supply private endpoint events or malware/audit records."
+      ],
+      "limitations": "Configuration Manager guidance is not a universal Azure control. No endpoint inventory, policy scan, agent/antivirus command, event read, onboarding or remediation is performed; plan presence is bounded review context only.",
+      "flags": ["installed-agent-not-enforcement", "endpoint-health-needs-redacted-attestation"]
+    },
+    {
+      "guid": "15833ee7-ad6c-46d3-9331-65c7acbe44ab",
+      "upstream_id": "G03.07",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit unambiguous Linux/Windows periodic assessment/patch mode and VM-agent boolean, plus distinct Defender plan context.",
+      "sources": ["legacy-security-center", "patch-assessment", "defender-servers", "vm-patch-rest", "terraform-linux-patch", "terraform-windows-patch"],
+      "review_resource_types": ["Microsoft.Compute/virtualMachines", "Microsoft.Security/pricings"],
+      "review_fact_paths": ["patchConfiguration", "defenderPricing"],
+      "evidence_requirements": [
+        "Reconcile supported Azure/Arc/multicloud machines and actual Update Manager assessment prerequisites; MMA is deprecated and the legacy Security Center landing page contains no patch predicate.",
+        "Distinguish assessment mode, patch orchestration mode, successful recent assessments and actual missing updates. Preserve original assessment time and unavailable/stale/denied cases; AutomaticByPlatform does not prove patch compliance.",
+        "Reviewer decision: is base-OS patch drift monitored against the approved baseline/tolerance across the applicable fleet, with attributable assessment results, monitoring/log/alert integration, accountable follow-up and exceptions? No default drift duration, missing-update count or retention requirement is invented."
+      ],
+      "limitations": "Only VM configuration is projected. No OS credentials/custom data/SSH/extension settings, patch results/private logs, assessments, query execution, update install or remediation. Both OS profiles, unresolved/sensitive fields and unsupported modes stay unknown.",
+      "flags": ["assessment-mode-not-patch-compliance", "update-manager-not-deprecated-mma", "drift-tolerance-needs-owner"]
+    }
+  ]
+}

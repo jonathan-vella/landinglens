@@ -112,8 +112,9 @@ These remain 188 undelivered GUIDs. Cohorts 19/11/04/13 left the pending table o
 actual #90/#93/#96/#101 delivery and their per-GUID receipts. No membership or original baseline
 hash changes through reprioritisation.
 
-The owner asked for parallel work. Isolated cohort22/#100 and cohort14/#99
-preparation now runs alongside cohort13 delivery, reusing shared helpers.
+The owner asked for parallel work. After cohort13's implementation/receipt merges,
+cohort22/#100 owns the granted delivery slot while isolated cohort14/#99
+preparation continues, reusing shared helpers.
 Catalog activation, exact-head merges and receipt reconciliation stay serialized
 under coordinator-granted slots; preparation alone is not delivery.
 

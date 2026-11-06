@@ -207,6 +207,12 @@ Changing a prepared scope therefore invalidates the response rather than
 rebinding its decisions silently. Earlier bank versions require fresh preparation.
 The access interview and distinct duplicate display IDs remain available.
 
+Bank `2026-11-06.6` adds eight separate sovereign-key/audit/workload-protection
+decisions. It preserves every earlier question and the scope-bound requirements
+hash; the narrative cannot substitute for original-time coverage/operational
+evidence. Managed HSM secrets, pricing-based fleet protection, diagnostic-based
+retention and mode-based patch compliance are never inferred.
+
 All selected records validate before CLI output is opened exclusively; invalid/
 expired/duplicate/conflicting bindings cannot leave a partial output or overwrite
 existing records. Answer/field lengths and group sizes are bounded. The shared

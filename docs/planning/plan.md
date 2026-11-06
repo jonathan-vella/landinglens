@@ -19,6 +19,50 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## Cohort 22 integration: 2026-11-06
+
+The coordinator granted [#100](https://github.com/jonathan-vella/landinglens/issues/100)
+its sole delivery slot after actual cohort13 implementation/receipt merges and
+#97 closure. Preparation commit `71e4e0d` was reconciled with actual main
+`8fbd1a1dff9d384d1df015da85f0fc2d32c07815`, not an assumed `.6.4`.
+The [eight-GUID matrix](../../references/recommendation-batches/batch-22.json)
+and [25 reviewed sources](../../references/recommendation-batches/batch-22-sources.json)
+precede working successor `2026-11-06.6`. Exact delivered `.6.5` bytes are frozen:
+`cf9e27745068f5ec3d2d0701d07445951e9cbed31aeeed0657e2c022c7cd23f9`.
+All 255 entries, fixed 251 membership/original hashes, ten predicates, earlier
+catalog/crosswalk bytes and own-GUID receipts are retained.
+
+All eight workflows remain assisted. Explicit scope-local pricing tier/subplan/
+extension strings, diagnostic categories and typed destinations, HSM network/
+purge settings and OS-specific assessment/patch enums prepare useful review.
+They never establish all-resource protection, arriving/retained logs, endpoint
+enforcement, OS compliance or sovereign suitability. Actual source redirects
+distinguish Managed HSM keys from unsupported secrets/credentials; external KEK
+custody from HSM presence; Entra audit reports from Azure activity logs; and
+current Update Manager assessments from deprecated MMA. No retention, cost,
+health or patch-drift threshold is invented.
+
+The single evaluator and shared typed review/tier/report/replay paths are reused,
+including cohort13's typed-reference helper and scope-bound interview hash.
+Eight separate source-specific decisions remain blank until explicitly supplied.
+Pricing/HSM/VM API support is planned-only, so the live Collector registry is
+unchanged. Existing five compiler cases are preserved and a sixth exercises both
+new security fixtures with no restoration. No new Azure/Entra/log/data-plane read,
+login, policy/query/scanner run, key operation, dependency or human approval occurs.
+Actual merged delivery and guarded receipts remain required; the fixed ledger is
+still **63 merged / 188 pending** until that reconciliation.
+
+Pre-delivery local and exact clean-installed suites each ran 363 tests:
+362 passed and one explicit original Windows symlink-privilege skip.
+All 14 security tests, format/lint, 36-source-file type checks and dependency
+consistency passed. The existing compiler exercised all six cases, including
+both new security fixtures, without compiler skips or restoration.
+Exact wheel SHA256:
+`1043f7f9d4de9251ec18ac83e9ffa935b78fb5fcc2f2d92f6ba561b660592cf3`.
+The clean interpreter imported from its own site-packages outside the checkout;
+only existing cached reviewed runtime wheels were used, with no network
+installation or module/compiler acquisition.
+
 ## Cohort 13 delivery: 2026-11-06
 
 [#97](https://github.com/jonathan-vella/landinglens/issues/97) owns exactly the
