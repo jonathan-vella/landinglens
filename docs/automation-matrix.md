@@ -33,10 +33,43 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.5` retains all 255 entries: 10 automated, 202 assisted
-and 43 manual. Crosswalk `2026-11-06.5` rebinds the unchanged 51-control,
+Current successor `2026-11-06.6` retains all 255 entries: 10 automated, 202 assisted
+and 43 manual. Crosswalk `2026-11-06.6` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
 The history below remains version-specific.
+
+### Cohort 22: sovereign keys, auditing and workload protection
+
+The [eight-GUID matrix](../references/recommendation-batches/batch-22.json) and
+[25 source captures](../references/recommendation-batches/batch-22-sources.json)
+precede `.6.6`. Exact `.6.5` catalog/crosswalk bytes are frozen; all eight remain
+assisted. No whole recommendation follows from configuration alone.
+
+| Recommendation | Bounded preparation and necessary decision |
+|---|---|
+| G02.13 | Explicit HSM network/purge settings; reconcile key versus secret capability, real CMK adoption, external KEK custody and sovereign requirements |
+| G03.01 | Specific attributable Entra access-audit report, population, period and follow-up; Azure diagnostics are not a directory report |
+| G03.02 | Explicit activity category/group enabled flags and typed destinations/target; verify actual ingestion/export and table/storage retention against approved requirements |
+| G03.03 | CloudPosture tier/extension context; paid CSPM versus Foundational and actual resource/component coverage remain distinct |
+| G03.04 | VirtualMachines tier/P1/P2 and scope context; reconcile server population, overrides, onboarding and effective protection |
+| G03.05 | Distinct allowlisted workload plan/subplan/extension records; no record count establishes all-subscription protection |
+| G03.06 | Specific endpoint enforcement/health review with optional server-plan context; installed agent/antivirus or pricing never proves enforcement |
+| G03.07 | Explicit Linux/Windows assessment/patch mode and agent boolean; verify successful Update Manager assessments, baseline drift and accountable monitoring |
+
+Current sovereign guidance distinguishes Managed HSM cryptographic keys from
+secrets/credentials, which Managed HSM does not support. External-key management
+is GA, while Private Link integration is preview; customer-operated HSM/proxy
+availability and SLA responsibilities require explicit review. Legacy Entra and
+Security Center URLs resolve to current monitoring/Defender guidance. Current
+patch recommendations use Update Manager, not deprecated MMA collection.
+
+All paths share the existing evaluator, context, tiers, reports, reviews and replay.
+The new eight-GUID interview retains separate blank attributable decisions and
+scope-bound requirements hashes. Existing interview meanings and all historical
+controls remain unchanged. Additional pricing/HSM/VM ARM versions are planned-only,
+not new Collector calls. Missing/denied/partial/stale/malformed/ambiguous/over-bound
+evidence stays visible; no private audit records, credentials, key/security-domain
+material, invented retention/cost/health threshold or live query is introduced.
 
 ### Cohort 13: inbound protection, outbound migration and hybrid connectivity
 

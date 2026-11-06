@@ -78,15 +78,26 @@ records remain traceable under explicit lifecycle semantics.
 
 ## Active increment: fixed recommendation expansion
 
-The delivered successor is `2026-11-06.5`: cohort13 adds bounded protection,
+Delivered implementation successor `2026-11-06.6` integrates cohort22's eight assisted workflows
+after the coordinator granted its delivery slot. Planned-only pricing/HSM/VM
+versions, saved/injected diagnostic facts and a source-specific interview share
+the existing evidence/review/replay paths without extending live collection.
+Exact `.6.5` bytes and all earlier own-GUID receipts are frozen. #104 passed
+normal exact-head platform/CodeQL/four six-case compiler gates and merged.
+Each GUID binds its guarded `deliveries.22` receipt; the ledger is 71 merged /
+180 pending, subject to checked receipt reconciliation before #100 closure.
+No actual protection/retention/endpoint/patch/sovereign suitability or owner
+decision follows from configuration alone.
+
+The prior delivered successor was `2026-11-06.5`: cohort13 adds bounded protection,
 outbound and hybrid configuration preparation with ten distinct source-bound
 human decisions, left blank until explicitly supplied. D05.07 remains manual and its historical date is preserved
 alongside current API/new-network guidance. No full protection/enforcement/
 ingestion/failover/demand claim is inferred. #101 passed the actual eight-job,
 CodeQL and four five-case compiler gates and merged normally; all ten GUIDs bind
-their own `deliveries.13` receipt. The fixed ledger is 63 merged / 188 pending;
-`.6.3` and earlier receipts remain frozen. Cohort22/14 preparation is parallel
-and isolated; activation/merge/receipt slots remain coordinator-serialized.
+their own `deliveries.13` receipt. Its ledger was 63 merged / 188 pending;
+`.6.3` and earlier receipts remain frozen. Cohort14 preparation remains parallel
+and isolated while cohort22 owns the coordinator-serialized delivery slot.
 
 The prior delivered successor is `2026-11-06.3`: 255 retained GUIDs, 10 automated,
 202 assisted and 43 manual. Its six-cohort delivery had 53 fixed targets merged

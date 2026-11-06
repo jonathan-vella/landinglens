@@ -1,0 +1,256 @@
+{
+  "batch": "22",
+  "review_state": "reviewed",
+  "sources": [
+    {
+      "id": "sovereign-external-keys",
+      "url": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/capabilities/external-key-management",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-sovereign-clouds/public/external-key-management",
+      "sha256": "e0dbc8048a16719603382e586a0e1a4c17655f6a3d843e0a4b1d19c4c0a69553",
+      "retrieved_at": "2026-11-06T09:31:42.193818+00:00",
+      "revision": "7fd1d0aa0125108ec24f522fc1bbbcff03c3edda",
+      "finding": "Legacy sovereign guidance redirects to Azure sovereign clouds. Managed HSM keys and external customer-operated HSM KEK custody differ; EKM requires a hard physical-custody mandate and introduces proxy/HSM availability responsibilities.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "hsm-overview",
+      "url": "https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/overview",
+      "sha256": "f9deabfe4ba8773db8c2bdbd9f40c68dffa81db0761d48bc7fe0bf3505658812",
+      "retrieved_at": "2026-11-06T09:31:42.394394+00:00",
+      "revision": "f91c587c2422eb6343cefea5ca61346a6931d8df",
+      "finding": "Managed HSM is a cryptographic-key service. Its presence or public-network configuration cannot prove key use, external custody or sovereign suitability.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "hsm-object-types",
+      "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates",
+      "sha256": "3fba2700cd98c4f3077f3410344a872cdf0e7562564293dc9d9d96e3c26e4af6",
+      "retrieved_at": "2026-11-06T09:31:42.601952+00:00",
+      "revision": "cc9ac0f545a688e4f2016a1541f565f136e23129",
+      "finding": "Managed HSM supports HSM-protected keys, not secrets, certificates or storage account keys. Frozen G02.13 secrets/credentials wording is not current capability.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "hsm-ekm-architecture",
+      "url": "https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/external-key-management-overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/key-vault/managed-hsm/external-key-management-overview",
+      "sha256": "3b1492089d22cd464518a3c36f831541d186acb1a69c2e2148c2c5b13b189012",
+      "retrieved_at": "2026-11-06T09:31:42.815360+00:00",
+      "revision": "5b8d62ef60d270ae9b6a430be680f4958a1aa20e",
+      "finding": "EKM is GA; Private Link integration is preview. External KEK never leaves the external HSM; unwrap returns the DEK to the service. Compatible CMK services, mTLS, proxy operations, costs and end-to-end SLA exclusions require human review.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "entra-audit-reporting",
+      "url": "https://learn.microsoft.com/azure/active-directory/reports-monitoring/overview-reports",
+      "resolved_url": "https://learn.microsoft.com/en-us/entra/identity/monitoring-health/overview-monitoring-health",
+      "sha256": "774a5122b232d978ae983fae3954b6d532824d2e18230f3db05b5088cd8e64f3",
+      "retrieved_at": "2026-11-06T09:31:43.934170+00:00",
+      "revision": "ad2392b54e54af312a83c1095d1532609ac46a05",
+      "finding": "Legacy AAD link redirects to Entra monitoring and health. Directory audit, sign-in and provisioning logs answer different questions; Azure activity diagnostics or role assignments do not prove an access-control audit report.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "activity-export",
+      "url": "https://learn.microsoft.com/azure/azure-monitor/logs/logs-data-export?tabs=portal",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/logs-data-export?tabs=portal",
+      "sha256": "52e4e1f0d64efbc735179d1fca1a35f04073c180d141f1c4b34480b35b7c4bd2",
+      "retrieved_at": "2026-11-06T09:31:44.550803+00:00",
+      "revision": "022db371850311fc1d3db8923b5de1ab38cfbbaa",
+      "finding": "Workspace export covers selected tables' new arrivals, not historical data. Unavailable destinations can cause discarded records after retries; configuration does not prove successful ingestion/export, completeness, retention or low cost.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "activity-log",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/activity-log",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/fundamentals/activity-log",
+      "sha256": "bd349d852e768293856d7898ef359cb209cd338557751103797ee70df1fd9cac",
+      "retrieved_at": "2026-11-06T09:31:45.146884+00:00",
+      "revision": "a07b757d650e1215708e13f8546d4359adb8c38c",
+      "finding": "Activity log retains management events for 90 days by default; resource/data-plane and Entra audit records differ. Subscription diagnostics and destinations are partial routing facts, not delivered retention or complete subscription coverage.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "log-retention",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/data-retention-configure",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/data-retention-configure",
+      "sha256": "c43b03b64ff1da7a808cc9a342da58bca7f0a0e75722f271439212e452be2e40",
+      "retrieved_at": "2026-11-06T09:31:45.476862+00:00",
+      "revision": "dda53ebc0c46430cded570bdc06e9ff266fa5ef3",
+      "finding": "Current total table retention supports up to 12 years; analytics and total retention differ. Per-table overrides, privacy obligations, search/recovery and storage lifecycle/immutability require review, not an invented minimum.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "defender-cspm",
+      "url": "https://learn.microsoft.com/azure/defender-for-cloud/concept-cloud-security-posture-management",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/concept-cloud-security-posture-management",
+      "sha256": "c30e7b2f27cbf3beaf6cf59a100f588a140776c8e8adfc9f14199ede32c5c922",
+      "retrieved_at": "2026-11-06T09:31:46.076752+00:00",
+      "revision": "34d3461ed0804139248afb2165929c9b72ac18a3",
+      "finding": "Foundational and paid Defender CSPM differ; billable types are not the whole protection population. Feature components, connectors, exclusions and regional support require evidence beyond a CloudPosture Standard pricing record.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "defender-servers",
+      "url": "https://learn.microsoft.com/azure/defender-for-cloud/plan-defender-for-servers-select-plan",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/plan-defender-for-servers-select-plan",
+      "sha256": "49a41a5ee22e55a2449ebb9014a31c787cc88e66d3c275ccaae4aed8e49da326",
+      "retrieved_at": "2026-11-06T09:31:46.810444+00:00",
+      "revision": "1c386956a1e923a9eda59e3be9c3b7b7c5de9a5b",
+      "finding": "Servers P1/P2 differ. Subscription recommendation has resource-level opt-outs and P1 overrides; plan configuration is not every server's protection or health.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "defender-workloads",
+      "url": "https://learn.microsoft.com/azure/defender-for-cloud/connect-azure-subscription",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/connect-azure-subscription",
+      "sha256": "6cd26ca88a2e41ee38e8323ddda5f507aa1c1fac5673aa08b8fd0eba71b18a18",
+      "retrieved_at": "2026-11-06T09:31:47.404614+00:00",
+      "revision": "9a429057cc06c482293eefe093d5518cad0ea239",
+      "finding": "Workload plans and their required monitoring components differ. Review actual subscription/resource coverage and workload suitability, not the count of pricing records, a trial, or an Enable all description as runtime proof.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "endpoint-protection",
+      "url": "https://learn.microsoft.com/mem/configmgr/protect/deploy-use/endpoint-protection",
+      "resolved_url": "https://learn.microsoft.com/en-us/intune/configmgr/protect/deploy-use/endpoint-protection",
+      "sha256": "6f541ca1c5602fe4de4408bfa65c0c6462d023a9fc463ed479a9ed4b73031e4a",
+      "retrieved_at": "2026-11-06T09:31:48.245994+00:00",
+      "revision": "758c7821ed2e5d04e2e0e91fc6c7c07520f9aa29",
+      "finding": "Legacy MEM URL redirects to Intune Configuration Manager. Installed antivirus, antimalware policy assignment, MDE onboarding, EDR and actual enforced endpoint health are distinct. Plan/agent presence is not enforcement.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "legacy-security-center",
+      "url": "https://learn.microsoft.com/azure/security-center/",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/",
+      "sha256": "7adb29f6e90cb261d447c93cc89e1f8c6f4eb8284b5712c2b6bec3b5e9a4fdb4",
+      "retrieved_at": "2026-11-06T09:31:48.965769+00:00",
+      "revision": "e63d3e0c25c9cf9a5addb68b798c2a4aa1bc5756",
+      "finding": "Legacy Security Center URL redirects to the Defender documentation landing page, not a patch-drift predicate. Supplement with current Update Manager guidance.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "patch-assessment",
+      "url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/enable-periodic-system-updates",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/enable-periodic-system-updates",
+      "sha256": "9959b012a112d6faeec5de18c3a3e1dcb4ef32ded6b0651bda0774e3a4cd0734",
+      "retrieved_at": "2026-11-06T09:31:49.275003+00:00",
+      "revision": "f07c691cf167c5e961559bb8949081f07aae8bc2",
+      "finding": "Defender update recommendations use Update Manager; old MMA collection is deprecated. Explicit periodic-assessment mode is not successful assessment, missing-update compliance, alert routing or an approved patch-drift tolerance.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "pricing-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.security/2024-01-01/pricings",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.security/2024-01-01/pricings",
+      "sha256": "bff32e7e3b84ee1ab00e55661570452f6a93f8a87673a58c4d9ec53c8da3d7c3",
+      "retrieved_at": "2026-11-06T09:31:49.634780+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "2024-01-01 has scope-local tier/subplan and string True/False extension/enforce fields. Do not coerce booleans or infer an omitted subplan, coverage or cost.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "pricing-rest",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/security/resource-manager/Microsoft.Security/Security/stable/2024-01-01/pricings.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/security/resource-manager/Microsoft.Security/Security/stable/2024-01-01/pricings.json",
+      "sha256": "5031087fb252e7243e0988d131da745ee755ec4e4ec2c7534573289ccb05be14",
+      "retrieved_at": "2026-11-06T09:31:49.741275+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned REST explicitly distinguishes subscription plan status from resource coverage. Retain allowlisted configuration only; exclude arbitrary extension properties, exclusion tags, operation messages and protection-health claims.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "hsm-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/2024-11-01/managedhsms",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/2024-11-01/managedhsms",
+      "sha256": "a5d7115991db9b4b9127279549032c0519195394f3c82ece26ad40e4c3b2d99f",
+      "retrieved_at": "2026-11-06T09:31:50.226492+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Project explicit public-network/purge settings only; admin/tenant identities, security domains, credentials and key URIs are withheld. No activation is performed.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "diagnostic-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/2021-05-01-preview/diagnosticsettings",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/2021-05-01-preview/diagnosticsettings",
+      "sha256": "6a6c9ccc739d6736a956d4d8cc00ede122ff9cf55bfebf296bcfa21db81035a3",
+      "retrieved_at": "2026-11-06T09:31:50.541859+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Explicit category/group plus boolean enabled and typed destinations are routing configuration. Metrics, empty/invalid arrays or storage retentionPolicy cannot establish activity export, delivered ingestion or retention adequacy.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "vm-patch-rest",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2024-07-01/computeRPCommon.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2024-07-01/computeRPCommon.json",
+      "sha256": "eaea4fa7a4312b865ca6b9a53fe6eb36bf220076f271ad5f0b074b3ee90d053d",
+      "retrieved_at": "2026-11-06T09:31:50.675207+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Linux and Windows patch-mode enums differ. Only one explicit OS configuration and its assessment/patch enums and agent boolean are projected; osProfile credentials, custom data, SSH material and OS compliance records are withheld.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-pricing",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/security_center_subscription_pricing.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/security_center_subscription_pricing.html.markdown",
+      "sha256": "f7df4ca28b5fdaf9719ff807c6bc1227b7975b147e396a1832cd7cfce45e81fc",
+      "retrieved_at": "2026-11-06T09:31:50.941574+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned AzureRM 4.50.0 uses pricing API 2023-01-01, explicit tier/resource_type/subplan and extension blocks; do not infer its default VirtualMachines target.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-pricing-implementation",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/securitycenter/security_center_subscription_pricing_resource.go",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/securitycenter/security_center_subscription_pricing_resource.go",
+      "sha256": "7219937356d42ac6e6393ae77c25a4801f4dd131449a491750ca26eb3a53c2bc",
+      "retrieved_at": "2026-11-06T09:31:51.224315+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned expand sets supplied named extensions True; read flattens enabled ones only. No absent extension becomes disabled, no omitted defaults are projected, and arbitrary additional properties remain withheld.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-hsm",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/key_vault_managed_hardware_security_module.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/key_vault_managed_hardware_security_module.html.markdown",
+      "sha256": "142c8e354175096742f8ec95320a7ffd46c6316ff059f8baded495b9ab3e64f1",
+      "retrieved_at": "2026-11-06T09:31:51.505398+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "4.50.0 HSM uses 2023-07-01. Explicit public-network/purge booleans are preparable, not secrets storage, activation or EKM. Security-domain data and IDs are excluded.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-diagnostics",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/monitor_diagnostic_setting.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/monitor_diagnostic_setting.html.markdown",
+      "sha256": "095f0692015969113d6d296e881e77e3728fff89da7eb123ab98f49235df2db6",
+      "retrieved_at": "2026-11-06T09:31:51.786864+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "4.50.0 enabled_log presence configures enabled logs; category and category_group are mutually exclusive. Missing/malformed values remain unknown; metrics do not imply logs, and no diagnostic category/data-plane read is performed.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-linux-patch",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/linux_virtual_machine.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/linux_virtual_machine.html.markdown",
+      "sha256": "eb59c9fd48961e1a80e9fe31c0ed66ef3f04674e76706d66ae3820362c58a560",
+      "retrieved_at": "2026-11-06T09:31:52.072411+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned linux VM documentation supports explicit OS-specific patch and assessment enums with an agent boolean, not patch success/compliance. Default values, administrator data, custom data and secrets are not retained.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-windows-patch",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/windows_virtual_machine.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/windows_virtual_machine.html.markdown",
+      "sha256": "98109d65ccb47b5d3665b7c5232ad262782f3dc79dd08d69b3ab6f625ad397c7",
+      "retrieved_at": "2026-11-06T09:31:52.373752+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned windows VM documentation supports explicit OS-specific patch and assessment enums with an agent boolean, not patch success/compliance. Default values, administrator data, custom data and secrets are not retained.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    }
+  ]
+}

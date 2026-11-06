@@ -1283,11 +1283,205 @@ SOURCES_14 = [
 ]
 
 
+SOURCES_22 = [
+    (
+        "sovereign-external-keys",
+        LEARN
+        + "industry/sovereign-cloud/sovereign-public-cloud/capabilities/external-key-management",
+        ["external", "proxy", "availability"],
+        "Legacy sovereign guidance redirects to Azure sovereign clouds. Managed HSM keys "
+        "and external customer-operated HSM KEK custody differ; EKM requires a hard "
+        "physical-custody mandate and introduces proxy/HSM availability responsibilities.",
+    ),
+    (
+        "hsm-overview",
+        LEARN + "azure/key-vault/managed-hsm/overview",
+        ["cryptographic keys", "single-tenant", "external key"],
+        "Managed HSM is a cryptographic-key service. Its presence or public-network "
+        "configuration cannot prove key use, external custody or sovereign suitability.",
+    ),
+    (
+        "hsm-object-types",
+        LEARN + "azure/key-vault/general/about-keys-secrets-certificates",
+        ["Secrets", "Not supported", "Managed HSM"],
+        "Managed HSM supports HSM-protected keys, not secrets, certificates or storage "
+        "account keys. Frozen G02.13 secrets/credentials wording is not current capability.",
+    ),
+    (
+        "hsm-ekm-architecture",
+        LEARN + "azure/key-vault/managed-hsm/external-key-management-overview",
+        ["generally available", "preview", "No end-to-end", "KEK"],
+        "EKM is GA; Private Link integration is preview. External KEK never leaves the "
+        "external HSM; unwrap returns the DEK to the service. Compatible CMK services, "
+        "mTLS, proxy operations, costs and end-to-end SLA exclusions require human review.",
+    ),
+    (
+        "entra-audit-reporting",
+        "https://learn.microsoft.com/azure/active-directory/reports-monitoring/overview-reports",
+        ["Audit logs", "Sign-in logs", "Provisioning logs"],
+        "Legacy AAD link redirects to Entra monitoring and health. Directory audit, "
+        "sign-in and provisioning logs answer different questions; Azure activity "
+        "diagnostics or role assignments do not prove an access-control audit report.",
+    ),
+    (
+        "activity-export",
+        "https://learn.microsoft.com/azure/azure-monitor/logs/logs-data-export?tabs=portal",
+        ["new data", "12 hours", "discarded"],
+        "Workspace export covers selected tables' new arrivals, not historical data. "
+        "Unavailable destinations can cause discarded records after retries; configuration "
+        "does not prove successful ingestion/export, completeness, retention or low cost.",
+    ),
+    (
+        "activity-log",
+        LEARN + "azure/azure-monitor/essentials/activity-log",
+        ["90 days", "control plane", "diagnostic setting"],
+        "Activity log retains management events for 90 days by default; resource/data-plane "
+        "and Entra audit records differ. Subscription diagnostics and destinations are "
+        "partial routing facts, not delivered retention or complete subscription coverage.",
+    ),
+    (
+        "log-retention",
+        LEARN + "azure/azure-monitor/logs/data-retention-configure",
+        ["12 years", "total retention", "particular table"],
+        "Current total table retention supports up to 12 years; analytics and total "
+        "retention differ. Per-table overrides, privacy obligations, search/recovery "
+        "and storage lifecycle/immutability require review, not an invented minimum.",
+    ),
+    (
+        "defender-cspm",
+        "https://learn.microsoft.com/azure/defender-for-cloud/concept-cloud-security-posture-management",
+        ["Foundational CSPM", "Defender CSPM", "billable"],
+        "Foundational and paid Defender CSPM differ; billable types are not the whole "
+        "protection population. Feature components, connectors, exclusions and regional "
+        "support require evidence beyond a CloudPosture Standard pricing record.",
+    ),
+    (
+        "defender-servers",
+        "https://learn.microsoft.com/azure/defender-for-cloud/plan-defender-for-servers-select-plan",
+        ["Plan 1", "Plan 2", "resource level"],
+        "Servers P1/P2 differ. Subscription recommendation has resource-level opt-outs "
+        "and P1 overrides; plan configuration is not every server's protection or health.",
+    ),
+    (
+        "defender-workloads",
+        "https://learn.microsoft.com/azure/defender-for-cloud/connect-azure-subscription",
+        ["workload protection", "coverage workbook", "paid plans"],
+        "Workload plans and their required monitoring components differ. Review actual "
+        "subscription/resource coverage and workload suitability, not the count of "
+        "pricing records, a trial, or an Enable all description as runtime proof.",
+    ),
+    (
+        "endpoint-protection",
+        "https://learn.microsoft.com/mem/configmgr/protect/deploy-use/endpoint-protection",
+        ["Configuration Manager", "antimalware", "monitor compliance"],
+        "Legacy MEM URL redirects to Intune Configuration Manager. Installed antivirus, "
+        "antimalware policy assignment, MDE onboarding, EDR and actual enforced endpoint "
+        "health are distinct. Plan/agent presence is not enforcement.",
+    ),
+    (
+        "legacy-security-center",
+        "https://learn.microsoft.com/azure/security-center/",
+        ["Defender for Cloud", "Workload protection"],
+        "Legacy Security Center URL redirects to the Defender documentation landing page, "
+        "not a patch-drift predicate. Supplement with current Update Manager guidance.",
+    ),
+    (
+        "patch-assessment",
+        LEARN + "azure/defender-for-cloud/enable-periodic-system-updates",
+        ["Azure Update Manager", "deprecated", "Plan 2"],
+        "Defender update recommendations use Update Manager; old MMA collection is "
+        "deprecated. Explicit periodic-assessment mode is not successful assessment, "
+        "missing-update compliance, alert routing or an approved patch-drift tolerance.",
+    ),
+    (
+        "pricing-arm",
+        LEARN + "azure/templates/microsoft.security/2024-01-01/pricings",
+        ["pricingTier", "subPlan", "enforce", "isEnabled"],
+        "2024-01-01 has scope-local tier/subplan and string True/False extension/enforce "
+        "fields. Do not coerce booleans or infer an omitted subplan, coverage or cost.",
+    ),
+    (
+        "pricing-rest",
+        SPEC_RAW + "specification/security/resource-manager/Microsoft.Security/Security/"
+        "stable/2024-01-01/pricings.json",
+        ["resourcesCoverageStatus", "misalignment", "additionalExtensionProperties"],
+        "Pinned REST explicitly distinguishes subscription plan status from resource "
+        "coverage. Retain allowlisted configuration only; exclude arbitrary extension "
+        "properties, exclusion tags, operation messages and protection-health claims.",
+    ),
+    (
+        "hsm-arm",
+        LEARN + "azure/templates/microsoft.keyvault/2024-11-01/managedhsms",
+        ["publicNetworkAccess", "enablePurgeProtection", "initialAdminObjectIds"],
+        "Project explicit public-network/purge settings only; admin/tenant identities, "
+        "security domains, credentials and key URIs are withheld. No activation is performed.",
+    ),
+    (
+        "diagnostic-arm",
+        LEARN + "azure/templates/microsoft.insights/2021-05-01-preview/diagnosticsettings",
+        ["categoryGroup", "enabled", "workspaceId", "storageAccountId"],
+        "Explicit category/group plus boolean enabled and typed destinations are routing "
+        "configuration. Metrics, empty/invalid arrays or storage retentionPolicy cannot "
+        "establish activity export, delivered ingestion or retention adequacy.",
+    ),
+    (
+        "vm-patch-rest",
+        SPEC_RAW + "specification/compute/resource-manager/Microsoft.Compute/Compute/"
+        "stable/2024-07-01/computeRPCommon.json",
+        ["LinuxPatchSettings", "assessmentMode", "AutomaticByPlatform", "Manual"],
+        "Linux and Windows patch-mode enums differ. Only one explicit OS configuration "
+        "and its assessment/patch enums and agent boolean are projected; osProfile "
+        "credentials, custom data, SSH material and OS compliance records are withheld.",
+    ),
+    (
+        "terraform-pricing",
+        RAW + "website/docs/r/security_center_subscription_pricing.html.markdown",
+        ["CloudPosture", "subplan", "extension", "2023-01-01"],
+        "Pinned AzureRM 4.50.0 uses pricing API 2023-01-01, explicit tier/resource_type/"
+        "subplan and extension blocks; do not infer its default VirtualMachines target.",
+    ),
+    (
+        "terraform-pricing-implementation",
+        RAW + "internal/services/securitycenter/security_center_subscription_pricing_resource.go",
+        ["extensionStatuses[input", "IsEnabledTrue", "only keep enabled extensions"],
+        "Pinned expand sets supplied named extensions True; read flattens enabled ones "
+        "only. No absent extension becomes disabled, no omitted defaults are projected, "
+        "and arbitrary additional properties remain withheld.",
+    ),
+    (
+        "terraform-hsm",
+        RAW + "website/docs/r/key_vault_managed_hardware_security_module.html.markdown",
+        ["public_network_access_enabled", "security_domain_encrypted_data", "2023-07-01"],
+        "4.50.0 HSM uses 2023-07-01. Explicit public-network/purge booleans are preparable, "
+        "not secrets storage, activation or EKM. Security-domain data and IDs are excluded.",
+    ),
+    (
+        "terraform-diagnostics",
+        RAW + "website/docs/r/monitor_diagnostic_setting.html.markdown",
+        ["enabled_log", "Exactly one", "storage_account_id"],
+        "4.50.0 enabled_log presence configures enabled logs; category and category_group "
+        "are mutually exclusive. Missing/malformed values remain unknown; metrics do "
+        "not imply logs, and no diagnostic category/data-plane read is performed.",
+    ),
+    *[
+        (
+            f"terraform-{os}-patch",
+            RAW + f"website/docs/r/{os}_virtual_machine.html.markdown",
+            ["patch_assessment_mode", "patch_mode", "provision_vm_agent"],
+            f"Pinned {os} VM documentation supports explicit OS-specific patch and "
+            "assessment enums with an agent boolean, not patch success/compliance. "
+            "Default values, administrator data, custom data and secrets are not retained.",
+        )
+        for os in ("linux", "windows")
+    ],
+]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
     parser.add_argument(
-        "--batch", choices=["01", "04", "11", "13", "14", "17", "18", "19"], default="01"
+        "--batch", choices=["01", "04", "11", "13", "14", "17", "18", "19", "22"], default="01"
     )
     args = parser.parse_args()
     target = ROOT / "references" / "recommendation-batches" / f"batch-{args.batch}-sources.json"
@@ -1304,6 +1498,7 @@ def main() -> None:
         "17": SOURCES_17,
         "18": SOURCES_18,
         "19": SOURCES_19,
+        "22": SOURCES_22,
     }[args.batch]:
         if identity in existing:
             if existing[identity]["url"] != url:

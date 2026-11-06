@@ -11,6 +11,7 @@ from .protection_evidence import KINDS as PROTECTION_KINDS
 from .protection_evidence import PATHS as PROTECTION_PATHS
 from .routing_evidence import KINDS as ROUTING_KINDS
 from .routing_evidence import PATHS as ROUTING_PATHS
+from .security_evidence import PATHS as SECURITY_PATHS
 from .sources import boolean, enumeration, property_at, unknown
 from .terraform import InputError
 
@@ -52,6 +53,7 @@ REVIEW_PATHS = (
     | ROUTING_PATHS
     | IDENTITY_PATHS
     | EXPRESSROUTE_PATHS
+    | SECURITY_PATHS
     | PROTECTION_PATHS
 )
 
@@ -502,6 +504,10 @@ def review_fact(properties: dict[str, Any], path: str) -> Any:
         from .expressroute_evidence import review_fact as expressroute_fact
 
         return expressroute_fact(properties, path)
+    if path in SECURITY_PATHS:
+        from .security_evidence import review_fact as security_fact
+
+        return security_fact(properties, path)
     if path in PROTECTION_PATHS:
         from .protection_evidence import review_fact as protection_fact
 
@@ -907,7 +913,7 @@ def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     } | ROUTING_KINDS | PROTECTION_KINDS | {CIRCUIT_KIND, PORT_KIND}:
         return {}
     result: dict[str, Any] = {}
-    for path in sorted(REVIEW_PATHS):
+    for path in sorted(REVIEW_PATHS - SECURITY_PATHS):
         parts = path.split(".")
         target = result
         for part in parts[:-1]:
