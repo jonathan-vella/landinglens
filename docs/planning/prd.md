@@ -79,16 +79,20 @@ records remain traceable under explicit lifecycle semantics.
 ## Active increment: fixed recommendation expansion
 
 Cohort02/[#127](https://github.com/jonathan-vella/landinglens/issues/127)
-independently prepares its eight immutable tenant/Lighthouse/support/cost/
-notification/hierarchy GUIDs from24 inspected source captures, outside accepted
-builders. Scoped typed registration joins and minimized shared-view metadata
+integrates its eight immutable tenant/Lighthouse/support/cost/notification/
+hierarchy GUIDs from24 unchanged captures into reviewed successor `.16` after
+actual23 implementation131/receipt132 and the explicit sole-slot grant.
+Scoped typed registration joins and minimized shared-view metadata
 reuse existing adapters/reviews/tiers/outputs/sessions/replay; they never prove
 tenant strategy, same-identity/effective access, partner applicability, actual
 automation/reporting or agreement suitability. Support and mailbox decisions stay
 manual; all eight independent outcomes stay blank. No new live endpoint,
-directory/billing scope, permission or private payload retention. Cohorts16/23
-precede its explicit coordinator slot; preparation activates no successor, bank,
-catalog/crosswalk/count/history or receipt and does not close #127.
+directory/billing scope, permission or private payload retention. Exact `.15`,
+every non-own control, all146 preceding rows/seventeen receipts and original four
+full controls remain frozen. Counts stay12/200/43; delivery remains146/105 until
+checked implementation and guarded own-eight receipt publication. Source
+acceptance alone does not close #127. The historical independent preparation and
+invalidated-run/final post-install proofs remain recorded separately.
 
 Cohort23/#124 integrates seven immutable logging/support/service workflows in
 [accepted successor `.15`](../../references/recommendation-batches/batch-23.json)

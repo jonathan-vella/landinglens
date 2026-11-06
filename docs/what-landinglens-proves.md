@@ -40,13 +40,14 @@ No current regional/port availability, achieved throughput/latency, working
 FastPath, operational redundancy or economic suitability follows from settings.
 ARM scale support does not imply the pinned Terraform provider supports it.
 
-## Cohort 02: independent tenant and billing preparation
+## Cohort 02: tenant and billing configuration, not organizational assurance
 
-The [eight-GUID preparation matrix](../references/preparation/batch-02.json) and
-[24 source captures](../references/preparation/batch-02-sources.json) are outside
-accepted catalog builders. No successor, interview-bank activation, catalog/
-crosswalk/count/history change, delivery receipt or issue closure follows from
-this preparation. A02.02 support process and A03.01 mailbox suitability stay
+The [eight-GUID accepted matrix](../references/recommendation-batches/batch-02.json) and
+[24 unchanged source captures](../references/recommendation-batches/batch-02-sources.json)
+precede `.16` after the explicit slot and actual cohort23 receipt delivery.
+The separate preparation artifacts and their original proofs remain historical;
+acceptance alone establishes no merged delivery or issue closure.
+A02.02 support process and A03.01 mailbox suitability stay
 manual; all eight operating/applicability decisions remain separately blank.
 
 Pinned ARM and AzureRM4.50 Lighthouse projections prepare bounded authorization

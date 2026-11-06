@@ -449,7 +449,7 @@ normalized resource evidence is available. Optional content-bound
 and minimum-TLS scalar vocabulary, plus reviewed network SKU, canonical
 relationship, IPv4 prefix/address and classic DNAT source facts.
 
-Cohort02 independent preparation adds `lighthouseAuthorizationSummary`
+Cohort02 successor `2026-11-06.16` adds `lighthouseAuthorizationSummary`
 (1-100 explicit syntactically valid authorization pairs and separately 0-100
 eligible pairs; missing optional lists remain unknown), `registrationDefinitionId`
 (a subscription-level UUID-named definition reference), and `costViewSummary`
@@ -459,8 +459,9 @@ Counts are not role support, effective authority or distinct-person counts.
 Joins require known unique same-subscription records, service-supported
 subscription/RG scope and selected-boundary containment. Explicit view scope
 must match its resource parent; billing/MG/private views remain unsupported.
-No new live routes or accepted catalog/bank entries are activated. Authored
-preparation catalogs are still refused by packaged replay; sanitized original-
+No new live routes are activated. The accepted eight-control bank keeps every
+decision blank. Authored preparation catalogs are still refused by packaged replay;
+the accepted packaged successor replays sanitized original-
 time evidence retains only these facts and their unknowns. The actual Bicep
 fixture requires the bounded literal implicit-current-subscription
 `subscriptionResourceId` overload; explicit foreign-subscription, missing-scope

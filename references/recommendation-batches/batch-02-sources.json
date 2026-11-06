@@ -1,0 +1,246 @@
+{
+  "batch": "02",
+  "review_state": "reviewed",
+  "sources": [
+    {
+      "id": "tenant-strategy",
+      "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/multi-tenant/considerations-recommendations",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/multi-tenant/considerations-recommendations",
+      "sha256": "c6089169a0cac95b5b4cf3729533850efb71720094e6ae9ae0b6d5a523b0c605",
+      "retrieved_at": "2026-11-06T16:31:33.141311+00:00",
+      "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+      "finding": "Prefer one corporate tenant unless documented requirements cannot be met there. ALZ is deployed separately in each tenant; subscription counts, names and Lighthouse registrations establish neither complete tenant inventory nor business justification.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "tenant-automation",
+      "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/multi-tenant/automation",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/multi-tenant/automation",
+      "sha256": "e9aee1e8a93eab57f6b68ec0a3475cc2a422888395b05696ee7ba24cb179249d",
+      "retrieved_at": "2026-11-06T16:31:33.420647+00:00",
+      "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+      "finding": "Two example platform automation models depend on required isolation; they are not mandatory workload patterns. Current guidance qualifies the older managed-identity limitation with user-assigned identity federation to a multitenant application. Lighthouse cannot supply all ALZ deployment permissions or prove automation adoption.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "alz-lighthouse",
+      "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/multi-tenant/lighthouse",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/multi-tenant/lighthouse",
+      "sha256": "428217449089508d14de4c1dddebeddd2eff2ab030a251e3c624144013d79221",
+      "retrieved_at": "2026-11-06T16:31:33.662379+00:00",
+      "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+      "finding": "Lighthouse delegates subscriptions/resource groups, not tenants or MGs, and cannot cross Azure clouds. Generic template scope lists do not override service limits. Eligible authorizations require managing-tenant P2; configuration is not actual use.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "lighthouse-overview",
+      "url": "https://learn.microsoft.com/en-us/azure/lighthouse/overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/lighthouse/overview",
+      "sha256": "0a3adc70c15c3fb1b4c9baacae7130d654648e2f37250410af1bd2dd97bdaff6",
+      "retrieved_at": "2026-11-06T16:31:33.861217+00:00",
+      "revision": "1c42a60bb4e14792eb16afb56b87167a0203579e",
+      "finding": "Enterprises as well as partners can use delegated resource management. Registration does not establish partner/CSP status, directory authority or actual same-identity use.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "lighthouse-architecture",
+      "url": "https://learn.microsoft.com/en-us/azure/lighthouse/concepts/architecture",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/lighthouse/concepts/architecture",
+      "sha256": "e7796886e4178a7cd201b28df4b014f5e1c81a6c4a83ee577397a6c24bcc6a4c",
+      "retrieved_at": "2026-11-06T16:31:34.124516+00:00",
+      "revision": "0ec08c5379757e260ae1edecffa8467dded04c8e",
+      "finding": "A subscription-level definition and an assignment at the delegated subscription/RG form the configuration relationship. Only unique known scoped supplied joins are prepared; effective authorization, identity use and partner approval remain separate.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "lighthouse-role-limits",
+      "url": "https://learn.microsoft.com/en-us/azure/lighthouse/concepts/tenants-users-roles",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/lighthouse/concepts/tenants-users-roles",
+      "sha256": "63e69a0742a341e351411af39c5b2b16bacebd376a2bef60e1d239c907ad865e",
+      "retrieved_at": "2026-11-06T16:31:34.337466+00:00",
+      "revision": "8c4eaeac299a5f9a05a4aeef8f65a420f3f65143",
+      "finding": "Owner/custom/DataActions and listed authorization actions are unsupported. UAA has only a constrained managed-identity role-assignment use with explicit delegated roles; the automation article's blanket UAA wording is qualified here. Syntactically valid role-reference counts are not current built-in-role support or effective authority.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "lighthouse-csp",
+      "url": "https://learn.microsoft.com/en-us/azure/lighthouse/concepts/cloud-solution-provider",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/lighthouse/concepts/cloud-solution-provider",
+      "sha256": "de0e27dba4336646606a7d59fa20ef9ce5536e8d14df891d9126ea7e99dadd45",
+      "retrieved_at": "2026-11-06T16:31:34.575695+00:00",
+      "revision": "4e4c3b9f8b5ccadf177f8526766ab3d129855661",
+      "finding": "Lighthouse can complement CSP AOBO with granular resource permissions. CSP preview customer listing is independent of onboarding; reseller CSP private marketplace plans are unsupported. No registration implies a reseller or support relationship.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "csp-guidance",
+      "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-cloud-solution-provider#design-recommendations",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-cloud-solution-provider#design-recommendations",
+      "sha256": "c4cf5f08675e916d8eb7fd4231e26eb50f219e257e2c86fd9dbaaea4b1613fcf",
+      "retrieved_at": "2026-11-06T16:31:34.747585+00:00",
+      "revision": "e881a31e3b8bb9b6425939609d9a9fc6e7405be5",
+      "finding": "Partner manages MPA and is the first support contact; agree case creation/escalation and use granular resource delegation and GDAP appropriately. GDAP directory authority and Lighthouse resource delegation are distinct; actual support process stays manual.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "mca-guidance",
+      "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations",
+      "sha256": "91941224a7308d042391624d350cdfbc5206bf38573f3aace4dc61c9bc66f25f",
+      "retrieved_at": "2026-11-06T16:31:34.919702+00:00",
+      "revision": "3bebc7ff1c27a170d5fb41b9df844cc5b9a8fa7a",
+      "finding": "MCA uses billing account/profile/invoice-section hierarchy, not EA departments/accounts. Billing roles are distinct from Azure RBAC and cannot be assigned at MG/RG. Reports, mailbox suitability and approved organizational mapping need separate evidence.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "ea-guidance",
+      "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement#design-considerations",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement#design-considerations",
+      "sha256": "275fbae0049464eea5d5a9fc0fb58436754f3eb351a344b0501d9dd436ee968d",
+      "retrieved_at": "2026-11-06T16:31:35.203739+00:00",
+      "revision": "3bebc7ff1c27a170d5fb41b9df844cc5b9a8fa7a",
+      "finding": "EA departments/accounts/subscriptions differ from resource MG hierarchy and MCA. EA portal retired in February 2024; department quota is reporting, not enforcement. Actual agreement, owners and suitable billing separation cannot be inferred.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "ea-notification",
+      "url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/direct-ea-administration#manage-notification-contacts",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/direct-ea-administration#manage-notification-contacts",
+      "sha256": "0495d0a92f7d1de42426c8ef9897a5ef1f6cd79cd78f1575392903c291c532b6",
+      "retrieved_at": "2026-11-06T16:31:35.428624+00:00",
+      "revision": "f8867ca6fa353f27dbab4ad997734ed9885eea72",
+      "finding": "EA notification contacts receive selected usage/user/lifecycle notifications without billing access; invoices go separately to Bill to contact. Group mailbox ownership, coverage and delivery require manual evidence. Upcoming 2026-11-16 WSA-only new billing role assignments are dated guidance, not a retroactive claim about existing roles.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "cost-scopes",
+      "url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/understand-work-scopes",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/understand-work-scopes",
+      "sha256": "e79073ea61f2308b1a92ab2d5a27a993c9a504807b8964ec4907d205e2c4113a",
+      "retrieved_at": "2026-11-06T16:31:35.631706+00:00",
+      "revision": "e2507938b2a97d1c5db073fc57046b84254900a0",
+      "finding": "Azure RBAC/resource scopes and agreement billing scopes differ. MCA Cost Management does not currently support MGs; cost-details MG support is absent for EA and MCA. View configuration grants no billing/invoice visibility or completeness.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "cost-views",
+      "url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/save-share-views",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/save-share-views",
+      "sha256": "f3edc73c658fd40f70d6d53663f13bbff8a636ed32231471e8d172d54e1cd1ea",
+      "retrieved_at": "2026-11-06T16:31:35.880848+00:00",
+      "revision": "981d4c7a114a9026e67c1ac75226043c035d2ab5",
+      "finding": "Saved views store configuration, not underlying cost data; scope/access, private/shared visibility and pinned dashboard snapshots differ. A chart/metric enum and exact scoped view binding cannot prove actual reporting, data freshness or financial suitability.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "cost-csp",
+      "url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/get-started-partners",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/get-started-partners",
+      "sha256": "4fae7a94401bd450b34c3e6f3fb4f9baa8597f6847a6e747d794aeed69046871",
+      "retrieved_at": "2026-11-06T16:31:36.098873+00:00",
+      "revision": "347827720157742c186e6c6cca8c96c90564272d",
+      "finding": "CSP customer cost access depends on Azure Plan/MCA, provider visibility policy and customer RBAC; retail customer views differ from partner invoice prices. Historical costs do not move to a new partner billing relationship. No prices or usage retained.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "lighthouse-definition-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.managedservices/2022-10-01/registrationdefinitions",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.managedservices/2022-10-01/registrationdefinitions",
+      "sha256": "4687baf30e6b60935a0f37c21bf768aa45c67f3146880ef9ed9254c59c35d9d8",
+      "retrieved_at": "2026-11-06T16:31:36.395588+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Pinned 2022-10-01 definition includes authorization and optional eligible lists. Project bounded validated pair counts only; discard tenant/principal identifiers, display names, offer metadata, JIT approvers and private partner information.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "lighthouse-assignment-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.managedservices/2022-10-01/registrationassignments",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.managedservices/2022-10-01/registrationassignments",
+      "sha256": "788115f357828fad4e06bc724e5eed13e10f1a37fe7d8603dcd0d579f50ca3b1",
+      "retrieved_at": "2026-11-06T16:31:36.714787+00:00",
+      "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+      "finding": "Pinned 2022-10-01 assignment explicitly references a definition. Service-specific subscription definition and subscription/RG assignment limits supersede generic template-generated tenant/MG scope options.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "cost-view-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.costmanagement/2019-11-01/views",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.costmanagement/2019-11-01/views",
+      "sha256": "ca308419000bb10031229fa2de8d886c47005cadd5daa6ff3d049b7b51f5673c",
+      "retrieved_at": "2026-11-06T16:31:36.933742+00:00",
+      "revision": "a80a6ca0ce31aae2ff0424e8453153664e18bc8b",
+      "finding": "Pinned 2019-11-01 chart/metric enums and explicit view scope support minimized metadata only. Accept subscription/RG scopes only, require exact resource-parent binding; billing/MG/private provider-root views are not projected as supported.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-lighthouse-definition",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/lighthouse_definition.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/lighthouse_definition.html.markdown",
+      "sha256": "cd6ab2b9e4299c80b8407911ea179fb907a1d58843bcc2afab5efc0263632d8d",
+      "retrieved_at": "2026-11-06T16:31:37.020781+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "AzureRM 4.50.0 definition UUID is lighthouse_definition_id; name is only display text. Do not derive an ARM identity from display name or fabricate an omitted generated UUID.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-lighthouse-definition-implementation",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/lighthouse/lighthouse_definition_resource.go",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/lighthouse/lighthouse_definition_resource.go",
+      "sha256": "dada2f70a04df76c7aad2bf9a55ed0625410042e3a02fbdacf9bd0a606655582",
+      "retrieved_at": "2026-11-06T16:31:37.131775+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Provider definition scope validates a subscription and uses explicit/generated UUID for resource identity. Authorization sets map directly; missing optional eligible list remains unknown rather than inventing zero or JIT/MFA defaults.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-lighthouse-assignment",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/lighthouse_assignment.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/lighthouse_assignment.html.markdown",
+      "sha256": "8f4c21a43114c398dcd18b0f589c858963f864c3535e5d50f479c803a594aedb",
+      "retrieved_at": "2026-11-06T16:31:37.226901+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "AzureRM assignment scope is subscription/RG; explicit optional name is a UUID and definition ID is fully qualified. Omitted name cannot establish a raw-source identity.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-lighthouse-assignment-implementation",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/lighthouse/lighthouse_assignment_resource.go",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/lighthouse/lighthouse_assignment_resource.go",
+      "sha256": "9b0265122c2d8d84864b0b33539a5aa829ec46e624e5ca1397ca197b5aaba2f9",
+      "retrieved_at": "2026-11-06T16:31:37.343697+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Provider assignment uses literal scope/UUID and explicit definition reference; expanded embedded definition is not implicitly trusted or treated as a joined record.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "learn-terms",
+      "url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "resolved_url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "sha256": "0af57ecccaf8275169795becc7966c136503c32d735bdd49660b7743485eea5e",
+      "retrieved_at": "2026-11-06T16:31:37.560446+00:00",
+      "revision": "9fd90ed833034800434458aef187ba08d8dc9d5b",
+      "finding": "Retain attributed links, revision/hash/redirect metadata and independently authored findings only. Do not redistribute articles, samples, provider implementation or private tenant, billing, partner and contact data.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "provider-license",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "sha256": "4e2bb185ebd706f76329206869ccb348b92b6236100cfb07775fe31530dab0d5",
+      "retrieved_at": "2026-11-06T16:31:37.885306+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider is MPL-2.0; only metadata and independently authored findings are redistributed, with no upstream implementation copied.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "subscription-resource-reference",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/template-functions-resource#subscriptionresourceid",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/template-functions-resource#subscriptionresourceid",
+      "sha256": "7fd1e10725767a3c2c17382163abc8c2310bcbbba105a24b63c1fbd22907284a",
+      "retrieved_at": "2026-11-06T16:34:34.092538+00:00",
+      "revision": "60d7594f1161b78c56b01b5379ea5622e9892c0b",
+      "finding": "The implicit-subscription literal overload constructs an ID at the current subscription, not RG. Only this bounded overload is interpreted for actual compiled Lighthouse references; explicit foreign-subscription and unresolved overloads stay unknown. ID construction does not expand the selected assessment/read boundary.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    }
+  ]
+}

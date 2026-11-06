@@ -5,6 +5,7 @@ import os
 import tempfile
 import unittest
 import zipfile
+from importlib.resources import files
 from io import BytesIO
 from pathlib import Path
 from unittest.mock import patch
@@ -231,16 +232,17 @@ class TenantPreparationTests(unittest.TestCase):
                 "manual" if row["upstream_id"] in {"A02.02", "A03.01"} else "assisted",
             )
         self.assertEqual(len(load_catalog()["controls"]), 255)
+        predecessor = load_catalog(
+            str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.15.json"))
+        )
         self.assertTrue(
             all(
                 not c.get("review_fact_paths")
-                for c in load_catalog()["controls"]
+                for c in predecessor["controls"]
                 if c["upstream_guid"] in GUIDS
             )
         )
-        self.assertFalse(
-            any(set(q["controls"]) & {"ALZ-" + g for g in GUIDS} for q in BANK.values())
-        )
+        self.assertNotIn("interview", matrix)
 
     def test_authorization_pairs_minimized_not_people_roles_or_authority(self):
         summary = self.bundle()["resources"][0]["properties"]["lighthouseAuthorizationSummary"]
