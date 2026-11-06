@@ -66,6 +66,45 @@ manifest/hash-reviewed runtime wheels, offline. Exact-head remote platform/
 CodeQL/security/review and four downloaded exercised compiler proofs still
 gate the normal implementation merge.
 
+[#143](https://github.com/jonathan-vella/landinglens/pull/143) merged normally as
+`2a4de9a3cde1ba6990bd8eaff520e3b991e834b0` at2026-11-06T21:45:03Z.
+Exact checked head `55711230d3d957a520d2b6a0d8bc5368e2b667c2` passed all eight
+push/PR platform jobs in `42297876607` / `42297912078`, CodeQL `42297906739`
+and Advanced Security `42297916868`. All twelve checks and actual head/base/main,
+comments/reviews/threads were refreshed both before ready and before normal
+SHA-bound merge. Every feedback surface was empty. No admin/force/bypass,
+auto-merge, protection/settings change or approval was used.
+
+All four downloaded exact-head PR compiler artifacts exercised the same seventeen
+cases without skips: `13543755051` (Windows3.12), `13542783196` (Windows3.13),
+`13542683217` (Ubuntu3.12), `13542538249` (Ubuntu3.13). JSON SHA256:
+`2416e4c0240a136a49838ae46e204a8d245882ecf100830ac5e3ffb074709121`
+on Ubuntu and
+`7d787dfbfc8c86ffc7ecc4338327753633e9f25c81544122c636bb9953efed5f`
+on Windows. These downloaded platform proofs, not earlier local preparation,
+were required for acceptance.
+
+The guarded recorder independently reread actual #143 merged head, both complete
+four-job runs and all four downloaded artifacts before binding `deliveries.06`
+and every own GUID to the final663-test implementation wheel. All169 older
+rows/twenty receipts remain exact. Checked receipt publication records
+**177 delivered /74 pending** with unchanged `.19`,255GUIDs/fixed251/original
+four controls and12/200/43 dispositions. Actual source/severity/crosswalk
+recomputation ranks10 next, then25; that is not a new slot grant. Checked receipt
+publication and final-main CI remain #136 closure and sole-slot-release gates.
+No actual identity, access, recovery, review operation, billing or sovereignty
+decision is claimed from a receipt.
+
+Receipt reconciliation suites each ran **664 tests** in checkout and the own
+exact installed implementation wheel:663 passed with the same original Windows
+privilege skip. All28 cohort06 cases pass. The new assertion binds all eight GUIDs
+to actual #143/head/merge/runs/663-test wheel, preserves all169 older rows/twenty
+receipts and pins this completed historical prefix to177 rather than future
+global totals. Format/lint,45-source-file typing, dependency consistency and461
+local documentation links pass. Package code/data and the final implementation
+wheel remain unchanged. Checked receipt merge and final-main CI remain closure
+gates; this local proof alone does not release the sole slot.
+
 ## Cohort 06 independent preparation: 2026-11-06
 
 [#136](https://github.com/jonathan-vella/landinglens/issues/136) owns the fixed
