@@ -111,9 +111,12 @@ test count, Key Vault or subscription alias proves none. Existing helpers are
 shared by the registered bank and packaged `.18` original-time replay; historical
 preparation/test-only bank injection remains separately pinned. Exact `.17`,
 every non-own control, all162 earlier rows/nineteen receipts and original four
-full objects remain unchanged. Counts stay12/200/43 and162 delivered/89 pending
-until checked implementation and guarded own receipts. Acceptance alone is not
-delivery or closure. See [integration boundaries](plan.md#cohort-29-accepted-integration-2026-11-06).
+full objects remain unchanged. Counts stay12/200/43. Actual #140 passed exact-head
+eight-job/CodeQL/security/review and four sixteen-case compiler gates and merged
+normally. Guarded `deliveries.29` binds all seven GUIDs to actual head/merge/runs/
+635-test own wheel, recording169 delivered/82 pending on checked publication.
+Receipt publication and final-main CI still gate #133 closure. Acceptance or
+implementation alone is not delivery. See [integration boundaries](plan.md#cohort-29-accepted-integration-2026-11-06).
 
 Cohort02/[#127](https://github.com/jonathan-vella/landinglens/issues/127)
 integrates its eight immutable tenant/Lighthouse/support/cost/notification/

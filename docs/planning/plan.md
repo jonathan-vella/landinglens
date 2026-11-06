@@ -66,6 +66,42 @@ frozen `.17` crosswalk bytes rather than weakening binding validation.
 Local results are distinct from still-required remote platform/compiler/review
 and guarded implementation/receipt delivery gates.
 
+[#140](https://github.com/jonathan-vella/landinglens/pull/140) merged normally as
+`0cda0635c4351592d381956cec30c9bf9cbbfb23` at `2026-11-06T20:45:33Z`.
+Exact checked head `314fe23f8e130e88709173e59ff9ae4cf967adfb` passed all eight
+push/PR jobs in `42289191950`/`42289226748`, both CodeQL analyses in `42289222572`
+and Advanced Security `42289235086`. Fresh exact head/base/main/all checks,
+comments/reviews/threads were verified immediately before the normal SHA-bound
+merge; all feedback collections were empty. No admin/force/bypass, auto-merge,
+protection or permission change was used.
+
+All four actual downloaded head-bound PR artifacts matched the same sixteen
+cases and exercised without skips: `13539761020` (Ubuntu3.12),
+`13539616323` (Ubuntu3.13), `13539481889` (Windows3.12) and
+`13538628797` (Windows3.13). Compiler JSON SHA256:
+`4f964a04aab65170289fb46a07624a151b694fed5de3a12f2552338e8c81c31c`
+on Ubuntu and
+`b453d63162545a1d00ec2bb6e33d6682342b301a1df81083b652ff6ebd18aace`
+on Windows. The guarded recorder independently reread the actual merged PR,
+both complete platform runs and all four downloaded compiler proofs before
+binding every own GUID to `deliveries.29` and the exact implementation wheel.
+
+Receipt reconciliation records169 delivered/82 pending with unchanged catalog/
+crosswalk `.18` and12/200/43 dispositions. All162 older rows/nineteen receipts
+remain unchanged. Source-severity/crosswalk priority derived from the actual
+ledger places06 next, then10, without a new slot or access grant. The seven-own
+binding assertion pins this completed historical prefix, not future global totals.
+Checked receipt publication and final-main CI still gate #133 satisfied closure
+and release of the sole cohort29 slot; implementation merge alone is not delivery.
+
+Receipt checkout and exact installed implementation-wheel suites each ran636
+tests: 635 passed with the same original Windows privilege skip. All25 cohort29
+cases, full static/type/dependency checks and445 local links pass. All132 package
+members remain byte-for-byte unchanged and match the original delivered wheel;
+the additional own-receipt assertion is not retroactively included in the
+635-test implementation receipt. Receipt publication still requires fresh
+platform/security/review and four actual matching exercised compiler artifacts.
+
 ## Cohort 29 independent preparation: 2026-11-06
 
 [#133](https://github.com/jonathan-vella/landinglens/issues/133) prepares seven
