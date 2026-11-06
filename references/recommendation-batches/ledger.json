@@ -300,6 +300,67 @@
       },
       "wheel_sha256": "6a0c87ea08b6a2cba085d777b1a028fb609c37de056c2d3b0682529d35692116",
       "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
+    },
+    "30": {
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/119",
+      "merge_commit": "b1dc6a4898781a7f4238f110e2e13d321f81a484",
+      "merged_at": "2026-11-06T14:23:00Z",
+      "checked_head": "84463f566855351e5aa985b09feaaaf6c68f6e9c",
+      "checks": [
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42232134247",
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42232181318"
+      ],
+      "acceptance": "Actual push/PR runs on the merged head passed all eight supported jobs. All four downloaded PR compiler artifacts exercised the same integration cases without skips. Normal exact-head merge and other applicable checks were gated before recording; this receipt does not imply protected-branch enforcement.",
+      "compiler_integration_cases": [
+        "test_bicep.BicepTests.test_actual_installed_compiler_local_success_and_unrestored_failure",
+        "test_segmentation_batch.SegmentationBatchTests.test_real_bicep_nsg_gateway_subnet_flow_without_restore",
+        "test_routing_batch.RoutingBatchTests.test_real_bicep_routing_peering_lb_macsec_connection_no_restore",
+        "test_identity_batch.IdentityBatchTests.test_real_bicep_storage_identity_role_context_without_restore",
+        "test_protection_batch.ProtectionBatchTests.test_real_bicep_protection_outbound_hybrid_no_restore",
+        "test_security_batch.SecurityBatchTests.test_real_bicep_security_configuration_without_restore",
+        "test_expressroute_preparation.ExpressRoutePreparationTests.test_real_bicep_expressroute_cost_capacity_fastpath_without_restore",
+        "test_dns_batch.DnsBatchTests.test_real_bicep_dns_bastion_no_restore",
+        "test_monitoring_preparation.MonitoringPreparationTests.test_real_bicep_monitor_and_gateway_route_join_without_restore",
+        "test_governance_preparation.GovernancePreparationTests.test_real_bicep_governance_without_restore"
+      ],
+      "local_installed_suite": {
+        "tests": 458,
+        "passed": 457,
+        "skipped": 1
+      },
+      "wheel_sha256": "683714ac1d1edb586ab813d08f2dfd0aaf73c3dc85b398f2cfc42e490360e2fb",
+      "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
+    },
+    "20": {
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/122",
+      "merge_commit": "c63dd9b8de4927b72558643551e0eee229b2074d",
+      "merged_at": "2026-11-06T15:12:55Z",
+      "checked_head": "e816aa6a2d68ff2aba45b01211f9989fef2ebb37",
+      "checks": [
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42239817936",
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42239859771"
+      ],
+      "acceptance": "Actual push/PR runs on the merged head passed all eight supported jobs. All four downloaded PR compiler artifacts exercised the same integration cases without skips. Normal exact-head merge and other applicable checks were gated before recording; this receipt does not imply protected-branch enforcement.",
+      "compiler_integration_cases": [
+        "test_bicep.BicepTests.test_actual_installed_compiler_local_success_and_unrestored_failure",
+        "test_segmentation_batch.SegmentationBatchTests.test_real_bicep_nsg_gateway_subnet_flow_without_restore",
+        "test_routing_batch.RoutingBatchTests.test_real_bicep_routing_peering_lb_macsec_connection_no_restore",
+        "test_identity_batch.IdentityBatchTests.test_real_bicep_storage_identity_role_context_without_restore",
+        "test_protection_batch.ProtectionBatchTests.test_real_bicep_protection_outbound_hybrid_no_restore",
+        "test_security_batch.SecurityBatchTests.test_real_bicep_security_configuration_without_restore",
+        "test_expressroute_preparation.ExpressRoutePreparationTests.test_real_bicep_expressroute_cost_capacity_fastpath_without_restore",
+        "test_dns_batch.DnsBatchTests.test_real_bicep_dns_bastion_no_restore",
+        "test_monitoring_preparation.MonitoringPreparationTests.test_real_bicep_monitor_and_gateway_route_join_without_restore",
+        "test_governance_preparation.GovernancePreparationTests.test_real_bicep_governance_without_restore",
+        "test_virtual_wan_preparation.VirtualWanPreparationTests.test_real_bicep_virtual_wan_scoped_configuration_without_restore"
+      ],
+      "local_installed_suite": {
+        "tests": 489,
+        "passed": 488,
+        "skipped": 1
+      },
+      "wheel_sha256": "8701d4f9e06619acd3dfb3e1489d9b56b7c78d74d698072b8fe3a0e7dd23be37",
+      "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
     }
   },
   "recommendations": [
@@ -6119,12 +6180,47 @@
       "baseline_control_sha256": "bf424e1fb22de80059c05bd132d73e96bb81ecdba7cd49bff5827461e4e1eaf7",
       "design_area": "Network topology and connectivity",
       "batch": "20",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "412e7f98-3f63-4047-82dd-69c5b5c2622f",
+        "upstream_id": "D10.01",
+        "classification": "assisted",
+        "implemented_subclaim": "Known WAN type/branch intent, strict scoped WAN/hub bindings and bounded distinct-known supplied hub/region counts prepare the documented routing scenario.",
+        "sources": [
+          "vwan-any-to-any",
+          "vwan-regional-design",
+          "vwan-rest",
+          "terraform-virtual_wan",
+          "terraform-virtual_hub"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualWans",
+          "Microsoft.Network/virtualHubs"
+        ],
+        "review_fact_paths": [
+          "virtualWanType",
+          "wanBranchTrafficAllowed",
+          "virtualWanId",
+          "resourceLocation"
+        ],
+        "evidence_requirements": [
+          "Bind the approved complete workload/branch connectivity and isolation matrix to an explicitly documented routing design. Any-to-any specifically assumes unfiltered direct flows and common Default association/propagation; resource presence is not scenario suitability.",
+          "Separately reconcile Standard/Basic support, service/region eligibility, operational model, cost, scale and alternatives with attributable original-time evidence. Supply a bound decision; no business or topology outcome is prefilled."
+        ],
+        "limitations": "Specific accountable scenario judgment remains required. Supplied counts and names prove neither requirements nor complete architecture, eligibility or effective global reachability.",
+        "flags": [
+          "configuration-not-scenario-suitability",
+          "supplied-topology-subset-only"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/115",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/122",
+      "merge_commit": "c63dd9b8de4927b72558643551e0eee229b2074d",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.20: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "54b69bad-33aa-4d5e-ac68-e1d76667313b",
@@ -6134,12 +6230,46 @@
       "baseline_control_sha256": "7cabd5b47ff34ccc88b60e1d132462f15c14aef9c6b298b0a801e60cdeaf10c3",
       "design_area": "Network topology and connectivity",
       "batch": "20",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "54b69bad-33aa-4d5e-ac68-e1d76667313b",
+        "upstream_id": "D10.02",
+        "classification": "assisted",
+        "implemented_subclaim": "Exact typed scoped WAN/hub relationships and distinct-known configured hub/region counts with unknown/denied/duplicate/unidentified/over-bound population guards.",
+        "sources": [
+          "vwan-regional-design",
+          "vwan-hub-capacity",
+          "vwan-faq",
+          "vwan-rest"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualWans",
+          "Microsoft.Network/virtualHubs"
+        ],
+        "review_fact_paths": [
+          "virtualWanId",
+          "virtualWanType",
+          "resourceLocation",
+          "hubRouterMinCapacity"
+        ],
+        "evidence_requirements": [
+          "Reconcile the complete intended workload/region inventory with one or more eligible regional hubs in the intended common Standard WAN. Current CAF allows multiple hubs in one region for single-hub scale limits, not exactly one.",
+          "Review subscription/RG and portal constraints, actual quotas, regional eligibility, failure domains and supported connection paths. Supply an attributable scoped decision independently of supplied distinct hub/region counts."
+        ],
+        "limitations": "Supplied region strings/counts establish configuration only, not current product eligibility, complete regional coverage, physical diversity or actual reachability.",
+        "flags": [
+          "multiple-hubs-per-region-allowed",
+          "counts-not-complete-coverage"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/115",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/122",
+      "merge_commit": "c63dd9b8de4927b72558643551e0eee229b2074d",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.20: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "7d5d1e4e-6146-458d-9558-fd77249b8211",
@@ -6149,12 +6279,55 @@
       "baseline_control_sha256": "8b3bb787852c4c40926741d8c2809a339cec6d1e49f22484a46314fe8d1e1bd8",
       "design_area": "Network topology and connectivity",
       "batch": "20",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "7d5d1e4e-6146-458d-9558-fd77249b8211",
+        "upstream_id": "D10.03",
+        "classification": "assisted",
+        "implemented_subclaim": "Strict known scoped WAN/hub/bidirectional local AZFW_Hub firewall join and exact Internet-intent next hop, with existing policy/SKU/egress facts.",
+        "sources": [
+          "vwan-firewall",
+          "vwan-routing-intent",
+          "vwan-hub-capacity",
+          "vwan-rest",
+          "firewall-arm",
+          "terraform-firewall",
+          "terraform-virtual_hub_routing_intent"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualHubs",
+          "Microsoft.Network/azureFirewalls",
+          "Microsoft.Network/virtualHubs/routingIntent",
+          "Microsoft.Network/virtualHubs/hubVirtualNetworkConnections"
+        ],
+        "review_fact_paths": [
+          "virtualWanId",
+          "hubFirewallId",
+          "virtualWanHubId",
+          "sku.name",
+          "firewallPolicy.id",
+          "hubRoutingPolicies",
+          "hubInternetSecurityEnabled",
+          "egressRules"
+        ],
+        "evidence_requirements": [
+          "Bind every applicable hub to its supported local security solution, intended Internet/PrivateTraffic policy and actual effective routes, rules, filtering and log arrivals. Default Internet routes do not cross hubs; flags/references alone do not prove protection.",
+          "Reconcile custom-route conflicts, bypass/forced-tunnel requirements, cloud/region/NVA constraints, Firewall zones and maximum-scale /22 hub requirement. The linked portal conversion does not configure Firewall zones. Supply a separate scoped decision."
+        ],
+        "limitations": "NVA/SaaS next hops stay unsupported in the Azure Firewall join. Missing Terraform reverse-hub reference stays unknown. Configuration never proves effective filtering, inspection, availability or ingestion.",
+        "flags": [
+          "local-firewall-intent-only",
+          "configuration-not-filtering"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/115",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/122",
+      "merge_commit": "c63dd9b8de4927b72558643551e0eee229b2074d",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.20: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "6667313b-4f56-464b-9e98-4a859c773e7d",
@@ -6164,12 +6337,47 @@
       "baseline_control_sha256": "6ee9a889d0f31a815341bed36a67c55be9128e1f1fef10f1570743a0c950d059",
       "design_area": "Network topology and connectivity",
       "batch": "20",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "6667313b-4f56-464b-9e98-4a859c773e7d",
+        "upstream_id": "D10.04",
+        "classification": "assisted",
+        "implemented_subclaim": "Known WAN/hub and VNet child associations with explicit minimized connection routing context prepare architecture/migration review.",
+        "sources": [
+          "vwan-migration",
+          "vwan-any-to-any",
+          "vwan-routing-intent",
+          "terraform-virtual_hub_connection"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualWans",
+          "Microsoft.Network/virtualHubs",
+          "Microsoft.Network/virtualHubs/hubVirtualNetworkConnections"
+        ],
+        "review_fact_paths": [
+          "virtualWanType",
+          "virtualWanId",
+          "resourceLocation",
+          "hubRemoteVirtualNetworkId",
+          "hubConnectionRouting"
+        ],
+        "evidence_requirements": [
+          "Identify the approved target architecture and staged migration for local/inter-region/branch/user/Internet flows, security/isolation and supported Standard capabilities. Shared services remain in dedicated spokes.",
+          "Reference attributable old-hub/coexistence routing, controlled cutover, rollback and acceptance evidence. An illustrative migration and configured connections do not establish rollout completion; supply the decision independently."
+        ],
+        "limitations": "No migration state, architecture suitability or accepted cutover is inferred from configuration or resource names.",
+        "flags": [
+          "configuration-not-completed-migration"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/115",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/122",
+      "merge_commit": "c63dd9b8de4927b72558643551e0eee229b2074d",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.20: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "261623a7-65a9-417e-8f34-8ef254c27d42",
@@ -6179,12 +6387,45 @@
       "baseline_control_sha256": "877408da6409819e09036ea8a8ca1367202700aca01f7c9dc70d359090f2940c",
       "design_area": "Network topology and connectivity",
       "batch": "20",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "261623a7-65a9-417e-8f34-8ef254c27d42",
+        "upstream_id": "D10.05",
+        "classification": "assisted",
+        "implemented_subclaim": "Known scoped WAN/hub, region and explicit RIU minimum prepare the prepackaged Insights topology/metrics workbook review without an invented enablement flag.",
+        "sources": [
+          "vwan-insights",
+          "vwan-hub-capacity",
+          "vwan-regional-design"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualWans",
+          "Microsoft.Network/virtualHubs"
+        ],
+        "review_fact_paths": [
+          "virtualWanId",
+          "virtualWanType",
+          "resourceLocation",
+          "hubRouterMinCapacity"
+        ],
+        "evidence_requirements": [
+          "Reference accountable actual Insights dependency-map and detailed WAN/hub/gateway/connection workbook use for the relevant original-time period and complete intended population.",
+          "Reconcile the linked page's preview label, actual metric/status availability and arriving alert/output evidence against approved capacity/incident requirements. Supply the decision; configured resources and RIUs are not monitoring use or health."
+        ],
+        "limitations": "No workbook/query/metric execution or arbitrary threshold. No monitoring coverage, collection, ingestion or runtime-health verdict from saved configuration.",
+        "flags": [
+          "insights-use-needs-evidence",
+          "no-enable-flag-invented"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/115",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/122",
+      "merge_commit": "c63dd9b8de4927b72558643551e0eee229b2074d",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.20: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "727c77e1-b9aa-4a37-a024-129d042422c1",
@@ -6194,12 +6435,48 @@
       "baseline_control_sha256": "f143a5e51c0ac9e28756d2e3c1857131b7635e403068e228dd928666cf0044fb",
       "design_area": "Network topology and connectivity",
       "batch": "20",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "727c77e1-b9aa-4a37-a024-129d042422c1",
+        "upstream_id": "D10.06",
+        "classification": "assisted",
+        "implemented_subclaim": "Separate explicit WAN/hub branch booleans with exact typed scoped relationships; no default substitution or conditional exception invented.",
+        "sources": [
+          "vwan-faq",
+          "vwan-any-to-any",
+          "vwan-rest",
+          "terraform-virtual_wan",
+          "terraform-virtual_hub",
+          "terraform-hub-implementation"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualWans",
+          "Microsoft.Network/virtualHubs"
+        ],
+        "review_fact_paths": [
+          "virtualWanType",
+          "wanBranchTrafficAllowed",
+          "virtualWanId",
+          "hubBranchTrafficAllowed"
+        ],
+        "evidence_requirements": [
+          "Is WAN-wide branch traffic explicitly enabled for intended VPN/ExpressRoute/User VPN flows, or is disabling supported by a separate approved attributable requirement to block those flows? Supply the conditional decision without fabricating an exception.",
+          "Keep hub and WAN flags distinct: pinned provider defaults hub=false and WAN=true. Missing flags stay unknown; reconcile routing/security/Global Reach conditions independently. Neither flag proves actual branch reachability."
+        ],
+        "limitations": "Conditional flow-blocking requirements prevent a whole-recommendation boolean predicate. No flag disagreement or missing default becomes a technical pass, approved exception or effective path.",
+        "flags": [
+          "branch-exceptions-require-human-evidence",
+          "wan-hub-flags-distinct"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/115",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/122",
+      "merge_commit": "c63dd9b8de4927b72558643551e0eee229b2074d",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.20: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "d49ac006-6670-4bc9-9948-d3e0a3a94f4d",
@@ -6209,12 +6486,51 @@
       "baseline_control_sha256": "d55dfc28108af75ece4bf1069b5d13014a309c79f4907f2340109c564194ce9f",
       "design_area": "Network topology and connectivity",
       "batch": "20",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "d49ac006-6670-4bc9-9948-d3e0a3a94f4d",
+        "upstream_id": "D10.07",
+        "classification": "automated",
+        "method": "scoped-explicit-hub-preference",
+        "rule": {
+          "resource_type": "Microsoft.Network/virtualHubs",
+          "property": "hubRoutingPreference",
+          "operation": "hub-routing-preference",
+          "expected": "ASPath"
+        },
+        "implemented_subclaim": "A unique known typed in-scope hub explicitly ASPath passes the configuration check; explicit ExpressRoute/VpnGateway fail. Unknown enum/case/default, duplicate/unbound identity, stale/denied evidence or missing population cannot pass.",
+        "sources": [
+          "vwan-routing-preference",
+          "vwan-faq",
+          "vwan-rest",
+          "terraform-virtual_hub",
+          "terraform-hub-implementation"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualHubs"
+        ],
+        "review_fact_paths": [
+          "virtualWanId",
+          "hubRoutingPreference"
+        ],
+        "evidence_requirements": [
+          "The technical predicate tests only literal reviewed hubRoutingPreference=ASPath on a unique known typed hub inside an explicit subscription/resource-group evidence scope. ExpressRoute defaults are never inferred; absence remains unknown.",
+          "Independently review LPM/static precedence, local/remote tie breakers, remote ExpressRoute selected-last, private-intent exceptions, bow-tie paths and on-premises prepending. Verified configuration does not establish selected routes, suitability, reachability or failover."
+        ],
+        "limitations": "Explicit configuration only, not an effective-route or shortest-path guarantee. No complete/empty inventory creates applicability or a pass without a known scoped hub.",
+        "flags": [
+          "explicit-configuration-only",
+          "aspath-not-effective-route-selection"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/115",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/122",
+      "merge_commit": "c63dd9b8de4927b72558643551e0eee229b2074d",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.20: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "2586b854-237e-47f1-84a1-d45d4cd2310d",
@@ -6224,12 +6540,48 @@
       "baseline_control_sha256": "3303a13c7463cdebec3e2cac95167d92c169c3251c72e05422a56345a4f53bf5",
       "design_area": "Network topology and connectivity",
       "batch": "20",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "2586b854-237e-47f1-84a1-d45d4cd2310d",
+        "upstream_id": "D10.08",
+        "classification": "assisted",
+        "implemented_subclaim": "Exact-label fingerprints and Default marker, typed local hub-route-table IDs, association/propagation joins and explicit supplied-ID/label overlap subchecks; raw routes/custom labels withheld.",
+        "sources": [
+          "vwan-labels",
+          "vwan-any-to-any",
+          "vwan-routing-intent",
+          "vwan-rest",
+          "terraform-virtual_hub_connection",
+          "terraform-virtual_hub_route_table",
+          "terraform-connection-implementation"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualHubs/hubRouteTables",
+          "Microsoft.Network/virtualHubs/hubVirtualNetworkConnections"
+        ],
+        "review_fact_paths": [
+          "hubRouteLabels",
+          "hubConnectionRouting",
+          "hubRemoteVirtualNetworkId"
+        ],
+        "evidence_requirements": [
+          "Reference actual same-WAN tables and all intended VNet/VPN/ExpressRoute/P2S connections with consistent label-based dynamic propagation and associated tables matching the approved complete connectivity matrix.",
+          "Default labels span hubs; omitted VNet labels default Default in guidance, not missing evidence. Distinguish explicit empty labels, None isolation, static routes, local-only default routes and routing-intent constraints. Supply the decision independently of label count or equality."
+        ],
+        "limitations": "Prepared VNet connection/table subset only; branch forms stay unsupported. Ordinary GatewaySubnet tables are never used. Label hashes retain associations and are not anonymity, correct propagation or connectivity proof.",
+        "flags": [
+          "label-equality-not-connectivity",
+          "branch-connection-forms-not-projected"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/115",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/122",
+      "merge_commit": "c63dd9b8de4927b72558643551e0eee229b2074d",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.20: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "9c75dfef-573c-461c-a698-68598595581a",
@@ -6239,12 +6591,48 @@
       "baseline_control_sha256": "eb101d4c31ba1e15356285de07335c09a106c70cee62fc07a774346d2a8359a0",
       "design_area": "Network topology and connectivity",
       "batch": "20",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "9c75dfef-573c-461c-a698-68598595581a",
+        "upstream_id": "D10.09",
+        "classification": "assisted",
+        "implemented_subclaim": "Strict network-aligned literal IPv4 CIDR is minimized to prefix length with /24 minimum, /23 recommendation and joined /22 Firewall maximum-scale subchecks; explicit RIU2..50 reviewed-table envelope is separate.",
+        "sources": [
+          "vwan-faq",
+          "vwan-hub-capacity",
+          "vwan-rest",
+          "terraform-virtual_hub",
+          "vwan-firewall"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/virtualHubs",
+          "Microsoft.Network/azureFirewalls"
+        ],
+        "review_fact_paths": [
+          "virtualWanId",
+          "hubPrefixSummary",
+          "hubRouterMinCapacity",
+          "hubFirewallId",
+          "virtualWanHubId"
+        ],
+        "evidence_requirements": [
+          "Reference each hub's valid nonoverlapping IPv4 space of /23 or larger, accounting for current /22 Firewall maximum-scale and NVA-specific allocations, complete connected/on-premises populations and actual service suitability.",
+          "Hub space cannot change after creation. Review intended services, actual allocations/growth, regional quota and capacity, RIU-versus-gateway scale and noninstant autoscaling. Supply an attributable decision; prefix size and published RIU limits do not prove free growth capacity."
+        ],
+        "limitations": "IPv6, host-bit CIDR, dotted masks, missing/symbolic prefix and malformed summaries stay unknown. Prefix shape is not address suitability, complete overlap analysis, actual free space, quota or performance; VNet-gateway scale models are not reused.",
+        "flags": [
+          "prefix-shape-not-available-capacity",
+          "firewall-22-condition-explicit"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/115",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/122",
+      "merge_commit": "c63dd9b8de4927b72558643551e0eee229b2074d",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.20: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "b86ad884-08e3-4727-94b8-75ba18f20459",
@@ -7586,12 +7974,37 @@
       "baseline_control_sha256": "ed1272f7cd3e90d5c290b7ce87b18a463bf5980effe914c1d61f3a08889ba189",
       "design_area": "Platform automation and DevOps",
       "batch": "30",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "cfe363b5-f579-4284-bc56-a42153e4c10b",
+        "upstream_id": "H02.01",
+        "classification": "manual",
+        "implemented_subclaim": "Prepare version-control adoption review for the complete scoped application and IaC populations, not this assessor's checkout.",
+        "sources": [
+          "caf-iac-linked",
+          "caf-lifecycle-linked",
+          "caf-iac-updates",
+          "caf-automation"
+        ],
+        "evidence_requirements": [
+          "Bind the assessed platform and workload source/IaC population, omissions, ownership responsibilities and actual version-control change history to the explicit assessment scope and original evidence time. Git is Microsoft's recommended option; a local .git directory or one saved repository is not organization-wide use.",
+          "Reference redacted evidence of the chosen mono/multirepo arrangement, visibility and contribution/access model. CAF recommends private landing-zone repositories and public sharing only for nonconfidential material; do not infer visibility, access or adoption from URLs, repository names or this project's GitHub settings.",
+          "Reviewer decision: does attributable population and operating evidence establish actual version-control adoption for both application code and IaC in this scope? Leave outcome, reviewer, evidence, rationale and validity blank until explicitly supplied."
+        ],
+        "limitations": "No repository discovery, clone, private source ingestion or organization-wide predicate. The original linked IaC page now redirects to platform implementation options; accelerator capability is not application adoption. Missing, partial, denied, malformed, unsupported or stale evidence cannot become a technical pass.",
+        "flags": [
+          "manual-version-control-adoption",
+          "local-checkout-not-assessed-estate"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/112",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/119",
+      "merge_commit": "b1dc6a4898781a7f4238f110e2e13d321f81a484",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.30: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "c7245dd4-af8a-403a-8bb7-890c1a7cfa9d",
@@ -7601,12 +8014,37 @@
       "baseline_control_sha256": "43ca441adf7d9ee2542226beec8a5cb8ddb1757059d7b84e6f3828f3a17acbc4",
       "design_area": "Platform automation and DevOps",
       "batch": "30",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "c7245dd4-af8a-403a-8bb7-890c1a7cfa9d",
+        "upstream_id": "H02.02",
+        "classification": "manual",
+        "implemented_subclaim": "Prepare the selected branch model, collaboration and release-fix reconciliation review separately from PR strategy.",
+        "sources": [
+          "caf-lifecycle-linked",
+          "azure-repos-branching",
+          "github-flow",
+          "caf-iac-updates"
+        ],
+        "evidence_requirements": [
+          "Bind the team's chosen branch strategy and rationale, platform/application repositories, release/support needs, naming convention and actual collaboration history to scope and evidence time. CAF recommends trunk-based development; GitHub Flow and release branches are options to reconcile, not universal mandatory models.",
+          "Reference redacted protected-branch permissions/policies, actual feature/main integration and release-fix porting where applicable, plus explicit bypasses and unresolved gaps. A branch name, default branch or isolated PR does not establish a consistently followed operating strategy; no invented branch age or reviewer-count threshold.",
+          "Reviewer decision: does actual scoped collaboration and maintenance evidence show the chosen documented branch strategy is followed? Decide H02.02 independently from H02.03 and keep all decision and attribution fields blank until supplied."
+        ],
+        "limitations": "No Git history scan or branch/policy/settings read is introduced. Source recommendations inform human review; they do not authorize setting policies or imply existing approvals. Unknown strategy, uncovered repositories and stale evidence remain explicit.",
+        "flags": [
+          "manual-branch-operating-strategy",
+          "branch-presence-not-discipline"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/112",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/119",
+      "merge_commit": "b1dc6a4898781a7f4238f110e2e13d321f81a484",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.30: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "12aeea20-9165-4b3e-bdf2-6795fcd3cdbe",
@@ -7616,12 +8054,37 @@
       "baseline_control_sha256": "1f2f804e955a0ebc8dcdfa30aac16cc444ebf00ff5bce7db89a3272b66abb837",
       "design_area": "Platform automation and DevOps",
       "batch": "30",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "12aeea20-9165-4b3e-bdf2-6795fcd3cdbe",
+        "upstream_id": "H02.03",
+        "classification": "manual",
+        "implemented_subclaim": "Prepare actual PR change-control review, retaining separate strategy, approvals, checks and bypass evidence.",
+        "sources": [
+          "caf-lifecycle-linked",
+          "azure-repos-branching",
+          "github-flow",
+          "caf-automation"
+        ],
+        "evidence_requirements": [
+          "Bind important branches and the actual application/IaC merge population to the explicit scope and original time. Reference the team's agreed author/reviewer responsibilities, intelligible change descriptions, peer review, comment resolution and chosen merge strategy; CAF recommends squash but this is not an assumed organization setting.",
+          "Reference redacted evidence that applicable PR checks and reviews cover the updated source head, required review policies are followed and bypasses/exceptions are separately recorded. A PR file/template, workflow, green build or old approval does not establish change-control adoption. The product guidance's suggested two reviewers is not a universal acceptance threshold.",
+          "Reviewer decision: does the complete scoped change evidence demonstrate the adopted PR strategy controls merges? Supply H02.03 separately from branching and DevSecOps decisions; a shared narrative never selects pass, fail or not-applicable."
+        ],
+        "limitations": "No GitHub/Azure DevOps transport, estate PR read, check dispatch, scan or policy change. Technical Verified outcomes on existing predicates do not confirm this process recommendation. Private code, personal reviewer identities and raw review payloads are not requested.",
+        "flags": [
+          "manual-pr-change-control",
+          "updated-head-review-not-template"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/112",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/119",
+      "merge_commit": "b1dc6a4898781a7f4238f110e2e13d321f81a484",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.30: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "2676ae46-65ca-444e-8695-fdddeace4cb1",
@@ -7631,12 +8094,36 @@
       "baseline_control_sha256": "8a15d3e700f0902c19a5f5aa92cd90c09b4b91cce62d65a0727c2796e0f8d92c",
       "design_area": "Platform automation and DevOps",
       "batch": "30",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "2676ae46-65ca-444e-8695-fdddeace4cb1",
+        "upstream_id": "H02.04",
+        "classification": "manual",
+        "implemented_subclaim": "Prepare emergency quick-fix/backlog/rework and drift reconciliation review using actual CAF automation guidance.",
+        "sources": [
+          "caf-management-linked",
+          "caf-automation",
+          "caf-iac-updates"
+        ],
+        "evidence_requirements": [
+          "Bind the scoped emergency/quick-fix population and agreed code-first emergency process to original time, with redacted incident/change and code references. The original management-platform link now discusses inventory/visibility; current CAF automation explicitly covers quick fixes, backlog and technical debt.",
+          "Reference actual backlog registration for quick fixes, assigned rework responsibility and later reviewed reconciliation to maintained code, including emergency portal/CLI drift and supported release branches where applicable. A ticket, hotfix branch or unreviewed emergency commit alone does not prove rework or controlled debt; no invented remediation deadline.",
+          "Reviewer decision: does the scoped quick-fix evidence establish the registered backlog and subsequent code/review reconciliation process, with explicit remaining debt and independent exceptions? Keep the decision and its validity/attribution blank until supplied."
+        ],
+        "limitations": "No work-item/incident ingestion, backlog service access or automated debt score. Empty/denied emergency history is not proof that no fixes occurred; applicability needs an explicit bound human decision, not guessed absence.",
+        "flags": [
+          "manual-quick-fix-reconciliation",
+          "backlog-entry-not-completed-rework"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/112",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/119",
+      "merge_commit": "b1dc6a4898781a7f4238f110e2e13d321f81a484",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.30: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "2cdc9d99-dbcc-4ad4-97f5-e7d358bdfa73",
@@ -7646,12 +8133,37 @@
       "baseline_control_sha256": "44f313b4186eac14268b7c80a1652d48d202fcd5d9bee0bbdfeecdcab053b8f1",
       "design_area": "Platform automation and DevOps",
       "batch": "30",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "2cdc9d99-dbcc-4ad4-97f5-e7d358bdfa73",
+        "upstream_id": "H03.01",
+        "classification": "manual",
+        "implemented_subclaim": "Prepare separate platform/workload declarative desired-state adoption and lifecycle-maintenance review.",
+        "sources": [
+          "caf-iac-linked",
+          "caf-iac-updates",
+          "caf-lifecycle-linked",
+          "caf-automation"
+        ],
+        "evidence_requirements": [
+          "Bind platform and application landing-zone populations, the selected Bicep/ARM/Terraform desired-state definitions and coverage gaps to scope/time. Declarative infrastructure differs from imperative CLI/PowerShell actions; existing non-IaC resources require explicit desired-state/state-management alignment.",
+          "Reference attributable redacted evidence of versioned definitions, reviewed change previews, governed deployment responsibility, rollback/recovery and ongoing drift/emergency reconciliation. Existing file parsing, preflight, compiler, plans and planned/observed differences are limited configuration context, not proof of actual deployment or lifecycle adoption.",
+          "Reviewer decision: does the full scoped platform AND workload evidence establish that declarative IaC builds and maintains the architecture? Record omissions and independent exceptions explicitly; leave all human outcome/attribution/expiry fields blank until supplied."
+        ],
+        "limitations": "No new IaC handling or dummy Bicep fixture; no Terraform init/plan/apply, what-if/deployment, module acquisition or restore. Existing eight no-restore compiler tests retain their technical meaning and cannot verify an operating strategy.",
+        "flags": [
+          "manual-declarative-iac-adoption",
+          "compilation-not-lifecycle-management"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/112",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/119",
+      "merge_commit": "b1dc6a4898781a7f4238f110e2e13d321f81a484",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.30: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "cc87a3bc-c572-4ad2-92ed-8cabab66160f",
@@ -7661,12 +8173,36 @@
       "baseline_control_sha256": "a1b9027eb723e936460ea9957a5d0742d4401c3a2f840dfed655b8462500d105",
       "design_area": "Platform automation and DevOps",
       "batch": "30",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "cc87a3bc-c572-4ad2-92ed-8cabab66160f",
+        "upstream_id": "H04.01",
+        "classification": "manual",
+        "implemented_subclaim": "Prepare lifecycle-wide security integration and risk/remediation ownership review, not scan-presence automation.",
+        "sources": [
+          "caf-security-linked",
+          "caf-lifecycle-linked",
+          "caf-iac-updates"
+        ],
+        "evidence_requirements": [
+          "Bind the scoped innovation/workload/platform lifecycle and agreed risk objectives to original time. Reference redacted evidence of security participation in design/threat modeling and peer review, code risk discovery/remediation, pipeline security and production operations feedback, with responsibilities and coverage gaps.",
+          "Reconcile actual remediation and risk acceptance, production approval/change gates and operations lessons with development/operations responsibilities. CAF integration is organizational and incremental; a scanner installation, successful saved scan, workflow flag, hardened image or one secure deployment does not establish complete DevSecOps integration.",
+          "Reviewer decision: does attributable lifecycle and operating evidence demonstrate security is integrated into development and operations within this scope? Decide H04.01 separately from PR process and image sovereignty; keep outcome and approval details unasserted until supplied."
+        ],
+        "limitations": "No new scanner transport, security execution, live posture or invented organization policy/approval. Existing PSRule/SARIF/Policy/ARG evidence retains its limited Signal/predicate semantics; only exact already-reviewed executable queries remain allowlisted.",
+        "flags": [
+          "manual-devsecops-integration",
+          "scan-not-organizational-security"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/112",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/119",
+      "merge_commit": "b1dc6a4898781a7f4238f110e2e13d321f81a484",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.30: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "047c91e2-6bb4-4a42-a0ef-ab06ad0062c9",
@@ -7676,12 +8212,45 @@
       "baseline_control_sha256": "5e3d808424df7f03c2ec7d75f155968494b88a845c82ea9023ba9b4b70d8b529",
       "design_area": "Platform automation and DevOps",
       "batch": "30",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "047c91e2-6bb4-4a42-a0ef-ab06ad0062c9",
+        "upstream_id": "H05.01",
+        "classification": "manual",
+        "implemented_subclaim": "Prepare separately bound agent, registry, base-image and package storage/processing sovereignty review against explicit organizational requirements.",
+        "sources": [
+          "azure-residency-linked",
+          "devops-residency",
+          "devops-hosted-agents",
+          "github-residency",
+          "github-residency-storage",
+          "github-residency-rendered",
+          "github-storage-rendered",
+          "acr-geo-replication",
+          "acr-data-endpoints",
+          "acr-tasks",
+          "acr-task-agent-pools"
+        ],
+        "evidence_requirements": [
+          "Bind approved country/region/geography and storage-versus-processing requirements to scope/time and the actual agent, package registry, base-image, build-context, upstream origin, redirect, cache/log/artifact/backup and replication population. Keep approvals blank; geography is not an exact region or a legal sovereignty determination. Use redacted references, never raw source/pipeline payloads, personal identities, credentials, tokens or unnecessary account/location inventories.",
+          "Reconcile current service boundaries independently: Azure Geo commitments have service/preview exceptions; Azure DevOps Services uses geography with US macOS/token and Brazil DR/capacity fallback; GitHub.com defaults US, while GHE.com offers EU including EFTA Norway/Switzerland, Australia, US and Japan with telemetry/support/billing/Copilot/optional secret-check exceptions. ACR syncs all configured replicas and global routing can select another replica; regional layer redirects remain within the serving replica, not necessarily every required boundary. Premium dedicated task pools are Linux-only preview in published regions and still consume external dependencies and changing precached images.",
+          "Reviewer decision: do attributable complete agent/registry/base-image/dependency storage AND execution/processing evidence satisfy the explicitly approved boundary, including documented exceptions? Leave outcome, scope-bound approval attribution, rationale and expiry blank until supplied; URL, runner label, registry/resource location or one image digest alone proves no sovereignty outcome."
+        ],
+        "limitations": "No estate/region/account/registry/agent lookup, upload, build task, package publication or fabricated residency/legal approval. Published availability is not actual location or eligibility. Unknown external services, partial copies, denied provenance and stale requirements remain explicit manual gaps.",
+        "flags": [
+          "manual-build-supply-chain-sovereignty",
+          "geo-storage-processing-distinct",
+          "replicas-and-upstream-origins-required"
+        ]
+      },
+      "issue": "https://github.com/jonathan-vella/landinglens/issues/112",
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/119",
+      "merge_commit": "b1dc6a4898781a7f4238f110e2e13d321f81a484",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.30: all eight CI jobs and four compiler artifacts verified"
+      ]
     }
   ]
 }

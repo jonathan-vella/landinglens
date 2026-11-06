@@ -118,6 +118,19 @@ is retained, and no configuration becomes a resolution/security/resilience pass.
 
 ## Tiers and counts
 
+Cohort20's [Virtual WAN matrix](../references/recommendation-batches/batch-20.json)
+adds one strict scoped ASPath configuration predicate and eight separate
+assisted decisions. Explicit WAN/hub branch flags, Internet-intent/local-firewall
+joins, supplied-table labels, prefix length and RIU minimum never prove complete
+topology, effective propagation/filtering,
+Insights use, regional eligibility, business suitability or available capacity.
+Current Firewall maximum scaling needs /22 rather than the general /23
+recommendation. Hub routing/RIUs are distinct from VNet GatewaySubnet propagation
+and VNet-gateway scale. Exact-label equality fingerprints retain sensitive
+associations and are not anonymous. Branch connection forms remain unsupported
+in the label adapter; missing defaults/joins stay unknown and all eight human
+decisions start blank. Source/schema/bank acceptance alone is not delivery.
+
 With explicit assessment 1.2, Verified means sufficient current evidence for an
 accepted predicate, including a failure. Signal means usable machine evidence
 awaits human confirmation. Needs decision has no usable machine evidence.

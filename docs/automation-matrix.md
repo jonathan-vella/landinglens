@@ -33,11 +33,60 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.10` retains all 255 entries: 11 automated, 201 assisted
-and 43 manual. Crosswalk `2026-11-06.10` rebinds the unchanged 51-control,
+Current successor `2026-11-06.12` retains all 255 entries: 12 automated, 200 assisted
+and 43 manual. Crosswalk `2026-11-06.12` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-Exact predecessor `.6.9` is frozen; source-matrix acceptance alone is not delivery.
+Exact predecessor `.6.11` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
+
+### Cohort 20: Virtual WAN topology, routing and capacity
+
+The [nine-GUID matrix](../references/recommendation-batches/batch-20.json) and
+[23 original captures](../references/recommendation-batches/batch-20-sources.json)
+precede `.6.12`. D10.07 tests only explicit `hubRoutingPreference=ASPath` on a
+unique known typed hub inside an explicit subscription/resource-group scope.
+Explicit ExpressRoute/VpnGateway fail; missing/default/invalid/unscoped/denied/
+stale or absent populations cannot pass. It is not a route-selection guarantee:
+LPM/static precedence, remote ExpressRoute and private-intent exceptions remain.
+
+The eight other workflows reuse minimized typed WAN/hub/firewall/connection/table
+facts and the shared bound review/interview/session/report/replay paths.
+WAN/hub branch flags stay distinct; flow-blocking exceptions need their own
+evidence. Known supplied hub/region counts do not prove complete coverage;
+current CAF permits multiple hubs per region. Internet intent requires exact
+local firewall joins; no filtering follows from flags, policy IDs or label text.
+Branch label forms remain unsupported; prepared VNet/table labels are only a
+subset. Default/None, static versus dynamic propagation and routing-intent
+constraints need review; ordinary GatewaySubnet tables are never substituted.
+
+Hub IPv4 addresses are minimized to strict network-aligned prefix length.
+/24 minimum and /23 general recommendation are distinct from current /22
+Firewall maximum-scale and NVA allocation requirements. RIUs differ from gateway
+scale units and autoscaling is not instantaneous. No free capacity, performance,
+eligibility, physical independence or suitability follows. Insights use and
+arriving status/metrics need attributable evidence, not an invented enablement
+flag. Exact-label equality fingerprints retain associations, not anonymity.
+Eight human decisions start blank; Verified configuration never confirms them.
+
+### Cohort 30: development lifecycle, DevSecOps and sovereignty
+
+The [seven-GUID matrix](../references/recommendation-batches/batch-30.json) and
+[22 preserved captures](../references/recommendation-batches/batch-30-sources.json)
+precede `.6.11`. H02.01-.04/H03.01/H04.01/H05.01 remain manual. Scoped version-control
+adoption, branch discipline, separate PR strategy, emergency backlog/rework,
+platform/workload declarative maintenance, lifecycle-wide security and actual
+build supply-chain sovereignty each require an independent explicit decision.
+The registered `development-lifecycle-sovereignty` interview starts entirely blank
+and reuses bound review/expiry/exception/tier/report/session/replay mechanisms.
+
+CAF redirects and the actual quick-fix guidance are explicit. Sovereignty review
+distinguishes service-specific storage/processing/geography boundaries, Azure
+DevOps US macOS/token/Brazil exceptions, GHE.com EU/EFTA/Australia/US/Japan and
+data exceptions, ACR all-replica/global routing versus regional layer endpoints,
+and Linux-only preview task-pool/external dependency limits. Public availability,
+runner labels, resource locations, local Git, compiled IaC or scan results prove
+none of these operating decisions. No new resource type, predicate, transport,
+live read, scanner, dependency, dummy compiler case or human approval is added.
 
 ### Cohort 08: resource ownership, quotas and cost governance
 

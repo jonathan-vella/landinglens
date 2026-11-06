@@ -1,0 +1,226 @@
+{
+  "batch": "30",
+  "review_state": "preparation-only-reviewed",
+  "sources": [
+    {
+      "id": "caf-iac-linked",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/implementation-options",
+      "sha256": "713bdd941f902cf5f4f92eac5aaebd765979a90042e0db67c1ea2518dc2a29f3",
+      "retrieved_at": "2026-11-06T12:20:36.729902+00:00",
+      "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+      "finding": "The actual checklist IaC link redirects to platform implementation options. AVM/accelerator capability does not establish platform or workload adoption.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "caf-lifecycle-linked",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/development-strategy-development-lifecycle",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/considerations/development-strategy-development-lifecycle",
+      "sha256": "fe9b098ead93e0f5199ed8c800761dc14bf0cfff093c511f918a59c0307a1b25",
+      "retrieved_at": "2026-11-06T12:20:37.097085+00:00",
+      "revision": "1d617e9e850beeac2f896765e35cdb86a1d47ea7",
+      "finding": "CAF recommends Git, private landing-zone repositories, trunk-based development, branch permissions/policies, separate PR review and squash merges. No fixed reviewer count or branch lifetime is an organization-specific requirement.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "caf-management-linked",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-platform",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-platform",
+      "sha256": "8f323d19a76571ce087f4a174dc498bb973a2d19e5df393116b1dc847e033261",
+      "retrieved_at": "2026-11-06T12:20:37.465716+00:00",
+      "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+      "finding": "The original H02.04 link now concerns inventory and visibility, not emergency-fix backlog reconciliation. Preserve the original link and use current CAF automation guidance for the actual quick-fix process.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "caf-security-linked",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/landing-zone-security#secure",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/considerations/landing-zone-security",
+      "sha256": "9a8aeb920ad82e435bc1d1f6dfb1674e905feceffe094b425d5ee70d61b918cc",
+      "retrieved_at": "2026-11-06T12:20:37.844066+00:00",
+      "revision": "1d617e9e850beeac2f896765e35cdb86a1d47ea7",
+      "finding": "Security integration covers people and design/code/pipeline/operations throughout the lifecycle. A passing scan or enabled workflow cannot attest integration, risk ownership, remediation or operational feedback.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "azure-residency-linked",
+      "url": "https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency",
+      "resolved_url": "https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency",
+      "sha256": "6a064a658b28f41ee04ae5bb27785da891baf90bfcf189eec7ca1da4f134e410",
+      "retrieved_at": "2026-11-06T12:20:46.355557+00:00",
+      "revision": "retrieved-page",
+      "finding": "Azure's general Geo commitments have explicit service and preview exceptions. Region, geography, storage and processing are distinct; these commitments cannot be generalized to GitHub, Azure DevOps or every upstream package/image service.",
+      "reuse": "Microsoft site terms: linked metadata and own findings only; no article/comments/sample scripts redistributed"
+    },
+    {
+      "id": "caf-iac-updates",
+      "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code-updates",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code-updates",
+      "sha256": "28f3e1e6f94a3e795872f4577cfae3e45039b1a806b4aa76c39a3ea1be0f52bb",
+      "retrieved_at": "2026-11-06T12:20:46.521732+00:00",
+      "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+      "finding": "Declarative desired state differs from imperative scripts. Existing non-IaC resources need explicit state alignment; platform/workload maintenance, drift, reviewed changes and emergency reconciliation need attributable process evidence. Neither an IaC file nor compilation proves lifecycle management.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "caf-automation",
+      "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/considerations/automation",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/considerations/automation",
+      "sha256": "ed5229bba7fe8acb488da80c8088c11eb888c1ad47b06875e150d09fbe886142",
+      "retrieved_at": "2026-11-06T12:20:46.663364+00:00",
+      "revision": "be2f1b99d07eb7219b3a6198e3d838b44be4fb17",
+      "finding": "CAF explicitly requires registering quick fixes in the backlog and later reworking them to limit technical debt; emergency portal fixes must return to code. A ticket or hotfix branch alone cannot prove this process was followed.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "azure-repos-branching",
+      "url": "https://learn.microsoft.com/en-us/azure/devops/repos/git/git-branching-guidance?view=azure-devops",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/devops/repos/git/git-branching-guidance?view=azure-devops",
+      "sha256": "83c0f60badb0237acde9514e0ab9b10ba1dd2a054f9ca15f7e735a7c1bf94ee3",
+      "retrieved_at": "2026-11-06T12:20:46.813340+00:00",
+      "revision": "1eeaa8de39f8b7130d8eb45ec907d9e47d6f5a32",
+      "finding": "Simple feature/main/PR discipline and release fix porting are supported strategies. The article's suggested two reviewers is not a mandatory universal threshold; actual protected branches, bypasses and review practices require scoped evidence.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "devops-residency",
+      "url": "https://learn.microsoft.com/en-us/azure/devops/organizations/security/data-location?view=azure-devops",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/devops/organizations/security/data-location?view=azure-devops",
+      "sha256": "d41a929bc5e84ac36af806c834e8b73ebb4a2df15abed93c66b062cee979a0cd",
+      "retrieved_at": "2026-11-06T12:20:46.974335+00:00",
+      "revision": "acaa346106375897259b9b61b0208f475dd0f010",
+      "finding": "Azure DevOps Services customer data uses a selected geography with exceptions: token data is US; profile/support/preview data have separate boundaries; macOS jobs transfer data to GitHub's US datacenter; Brazil replicates to South Central US. These are not Azure DevOps Server or exact-region guarantees.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "devops-hosted-agents",
+      "url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops",
+      "sha256": "605b0fff5922a7519bb0655ac260bea2d3c289fa961fb3af4fa077cda595473f",
+      "retrieved_at": "2026-11-06T12:20:47.135096+00:00",
+      "revision": "3fc18de83c91dbccff78dbc06c3844be8115472d",
+      "finding": "Windows/Linux agents can use any region in the organization's geography, not necessarily its exact region. EU organizations stay within the EU boundary; Brazil South has US capacity fallback; macOS agents always run in the US. An OS/pool label is not evidence of an actual assessed job's location.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "acr-geo-replication",
+      "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-geo-replication",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-geo-replication",
+      "sha256": "5a8bcc6e38030d4253ff9e3b533f9fe60a2fed5ab699c8e277feeb863663c83f",
+      "retrieved_at": "2026-11-06T12:20:47.305390+00:00",
+      "revision": "5b269b058de3add7d93252e07581b9b868378f06",
+      "finding": "Premium ACR replicates content and metadata to all selected replicas with eventual consistency. Global endpoints use network/health routing, not a residency promise. Regional serving does not remove other stored copies or upstream dependencies.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "acr-data-endpoints",
+      "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-dedicated-data-endpoints",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-dedicated-data-endpoints",
+      "sha256": "19b1a53bc6a95f5854cdde69df4d615549978d09ce6a52d252349d412c726f5e",
+      "retrieved_at": "2026-11-06T12:20:47.469240+00:00",
+      "revision": "bf01c3214302b684912f62ebe76b0495196d4d18",
+      "finding": "Dedicated data endpoints serve layer downloads, not uploads. The 307 layer redirect stays in the serving replica's region; global replica selection and all stored replicas still need review. No host-name-derived sovereignty pass is justified.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "acr-tasks",
+      "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview",
+      "sha256": "f070c36f5d13b1889287a8c1c94d1412f68f96ef97c9fc10ebde7aed4f90fcbd",
+      "retrieved_at": "2026-11-06T12:20:47.634009+00:00",
+      "revision": "77ed42b078ffffc9096cb8d860b62a165b788f57",
+      "finding": "Tasks can send source context to Azure and consume local, Git, remote tarball or OCI contexts and public base images. Task/image presence does not prove execution or upstream residency. Command-line/URI secrets can enter diagnostic tracing; retain redacted references only, never context payloads, tokens or credentials.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "acr-task-agent-pools",
+      "url": "https://learn.microsoft.com/en-us/azure/container-registry/tasks-agent-pools",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/container-registry/tasks-agent-pools",
+      "sha256": "608a6f07f152984b8061f4db3b83cc43808cbcb3488658e3fb1103070164a59f",
+      "retrieved_at": "2026-11-06T12:20:48.019897+00:00",
+      "revision": "3011761b83f8be9f320b068022b8ca3847537c94",
+      "finding": "Premium dedicated task pools are preview, Linux-only and limited to the published regions, including listed public-cloud and USGov regions. The VNet/pool does not bound all dependencies: service endpoints, diagnostics, package restores, external registries and changing precached base images still require review. No preview eligibility or actual pool residency is inferred from a registry location.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "github-flow",
+      "url": "https://raw.githubusercontent.com/github/docs/c9d8b26db3b48d8d3e1d91f4cef575623ff12f83/content/get-started/using-github/github-flow.md",
+      "resolved_url": "https://raw.githubusercontent.com/github/docs/c9d8b26db3b48d8d3e1d91f4cef575623ff12f83/content/get-started/using-github/github-flow.md",
+      "sha256": "9a57d079475196c6e88e96c6e42f873262dd0c1784de96d412bf503986e0d9cf",
+      "retrieved_at": "2026-11-06T12:20:48.114459+00:00",
+      "revision": "c9d8b26db3b48d8d3e1d91f4cef575623ff12f83",
+      "finding": "GitHub Flow is a lightweight branch-based strategy, not a mandated strategy for every release model. Review, checks and protected-branch requirements are separate from a local branch or PR's presence.",
+      "reuse": "CC-BY-4.0 GitHub Docs: attributed metadata and own findings only; no page content redistributed"
+    },
+    {
+      "id": "github-residency",
+      "url": "https://raw.githubusercontent.com/github/docs/c9d8b26db3b48d8d3e1d91f4cef575623ff12f83/content/admin/data-residency/about-github-enterprise-cloud-with-data-residency.md",
+      "resolved_url": "https://raw.githubusercontent.com/github/docs/c9d8b26db3b48d8d3e1d91f4cef575623ff12f83/content/admin/data-residency/about-github-enterprise-cloud-with-data-residency.md",
+      "sha256": "58fd07227b7703f144ff0a08f57d05dd60410822d8b35418c34f551f0b477aac",
+      "retrieved_at": "2026-11-06T12:20:48.197910+00:00",
+      "revision": "c9d8b26db3b48d8d3e1d91f4cef575623ff12f83",
+      "finding": "GitHub.com defaults to US storage. Enterprise Cloud residency is a distinct GHE.com deployment; current documented regions are EU including EFTA Norway/Switzerland, Australia, US and Japan. This EU boundary differs from Azure DevOps' EU-only hosted-agent boundary and is not country-level sovereignty.",
+      "reuse": "CC-BY-4.0 GitHub Docs: attributed metadata and own findings only; no page content redistributed"
+    },
+    {
+      "id": "github-residency-storage",
+      "url": "https://raw.githubusercontent.com/github/docs/c9d8b26db3b48d8d3e1d91f4cef575623ff12f83/content/admin/data-residency/about-storage-of-your-data-with-data-residency.md",
+      "resolved_url": "https://raw.githubusercontent.com/github/docs/c9d8b26db3b48d8d3e1d91f4cef575623ff12f83/content/admin/data-residency/about-storage-of-your-data-with-data-residency.md",
+      "sha256": "435f1440c3101466cb7954a8a14a2f26022b35d56a37e49815d7f2590bd00120",
+      "retrieved_at": "2026-11-06T12:20:48.290655+00:00",
+      "revision": "c9d8b26db3b48d8d3e1d91f4cef575623ff12f83",
+      "finding": "GHE.com stores customer content and identifiable Actions/BCDR data in-region, with exceptions for pseudonymous telemetry, billing, support, optional secret validity checks and Copilot. Current compliant-model policy changes Copilot's boundary; do not infer enrollment or settings. External actions, caches, package registries and upstream base images need independently attributable review.",
+      "reuse": "CC-BY-4.0 GitHub Docs: attributed metadata and own findings only; no page content redistributed"
+    },
+    {
+      "id": "github-residency-rendered",
+      "url": "https://docs.github.com/en/enterprise-cloud@latest/admin/data-residency/about-github-enterprise-cloud-with-data-residency",
+      "resolved_url": "https://docs.github.com/en/enterprise-cloud@latest/admin/data-residency/about-github-enterprise-cloud-with-data-residency",
+      "sha256": "6714defa70e0c623f79779b9e8d3b8550b0a3b1cbfbdedd957ee2a90a8143283",
+      "retrieved_at": "2026-11-06T12:20:48.582416+00:00",
+      "revision": "retrieved-page",
+      "finding": "Rendered official page includes reused region content absent from the pinned article file. Hash this actually reviewed EU/EFTA/Australia/US/Japan boundary; retrieved-page means no published commit identity, not a fabricated revision.",
+      "reuse": "CC-BY-4.0 GitHub Docs: attributed metadata and own findings only; no page content redistributed"
+    },
+    {
+      "id": "github-storage-rendered",
+      "url": "https://docs.github.com/en/enterprise-cloud@latest/admin/data-residency/about-storage-of-your-data-with-data-residency",
+      "resolved_url": "https://docs.github.com/en/enterprise-cloud@latest/admin/data-residency/about-storage-of-your-data-with-data-residency",
+      "sha256": "8b387da38672efa74a2936d61b85ed2ebc58f571562d8244fe84b9ae2176cfcc",
+      "retrieved_at": "2026-11-06T12:20:48.947949+00:00",
+      "revision": "retrieved-page",
+      "finding": "Rendered official storage exceptions complement the pinned template source. Compliant Copilot inference is conditional on the specified policy; no actual enterprise configuration or human authorization is asserted.",
+      "reuse": "CC-BY-4.0 GitHub Docs: attributed metadata and own findings only; no page content redistributed"
+    },
+    {
+      "id": "github-docs-reuse",
+      "url": "https://raw.githubusercontent.com/github/docs/c9d8b26db3b48d8d3e1d91f4cef575623ff12f83/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/github/docs/c9d8b26db3b48d8d3e1d91f4cef575623ff12f83/LICENSE",
+      "sha256": "12d3a82a7d1378e6f597ec23d63a081aeb6ec4bc8de2a76ee9dc96c34c6d7a1b",
+      "retrieved_at": "2026-11-06T12:20:49.343466+00:00",
+      "revision": "c9d8b26db3b48d8d3e1d91f4cef575623ff12f83",
+      "finding": "Pinned GitHub documentation uses CC-BY-4.0. Retain attribution, exact revision/hash and original factual findings only; no page content or assets redistributed.",
+      "reuse": "CC-BY-4.0 GitHub Docs: attributed metadata and own findings only; no page content redistributed"
+    },
+    {
+      "id": "learn-reuse",
+      "url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "resolved_url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "sha256": "6c52cbfffd7732e5ad204c47ac6901ad2d0f640a6f0ecda99f67ba17516cc8d6",
+      "retrieved_at": "2026-11-06T12:20:49.490775+00:00",
+      "revision": "9fd90ed833034800434458aef187ba08d8dc9d5b",
+      "finding": "Learn document terms are constrained; separately explicit licenses can govern. Keep source metadata and original factual findings only, not article copies.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "microsoft-site-reuse",
+      "url": "https://www.microsoft.com/en-us/legal/terms-of-use",
+      "resolved_url": "https://www.microsoft.com/en-us/legal/terms-of-use",
+      "sha256": "fa7876b35bf9dea38cf2c49f9ce88c667a606221db50ef6ddaf40a740ba08977",
+      "retrieved_at": "2026-11-06T12:20:52.981132+00:00",
+      "revision": "retrieved-page",
+      "finding": "Microsoft site terms do not grant unrestricted reuse of Azure marketing pages. Keep linked metadata, checksum and original factual findings, not page text/assets.",
+      "reuse": "Microsoft site terms: linked metadata and own findings only; no article/comments/sample scripts redistributed"
+    }
+  ]
+}

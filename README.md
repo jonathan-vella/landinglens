@@ -2,8 +2,14 @@
 
 Offline-first, advisory Azure Landing Zones CLI for assessing supplied IaC or
 saved observed evidence. All 255 checklist GUIDs remain visible. The current
-catalog has 11 accepted configuration predicates, 201 assisted recommendations
+catalog has 12 accepted configuration predicates, 200 assisted recommendations
 and 43 manual recommendations.
+
+Virtual WAN adds an exact scoped ASPath configuration check and eight separate
+blank decisions for scenario, topology, security, Insights, branch exceptions,
+labels and capacity. These facts do not prove effective routing, filtering,
+monitoring, complete regional coverage or free growth capacity; current Firewall
+maximum scaling needs /22 hub space, not just the general /23 recommendation.
 
 Resource/cost governance prepares scoped tag counts, dashboard structure,
 capacity-group references and hierarchy context with seven separate blank

@@ -42,6 +42,8 @@ if compiler:
         "test_real_bicep_monitor_and_gateway_route_join_without_restore",
         "test_governance_preparation.GovernancePreparationTests."
         "test_real_bicep_governance_without_restore",
+        "test_virtual_wan_preparation.VirtualWanPreparationTests."
+        "test_real_bicep_virtual_wan_scoped_configuration_without_restore",
         "test_identity_resilience_preparation.IdentityResiliencePreparationTests."
         "test_real_bicep_identity_resilience_without_restore",
     ]

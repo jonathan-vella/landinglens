@@ -75,6 +75,7 @@ class WorkflowTests(unittest.TestCase):
                 "D09.07",
                 "D01.12",
                 "D01.13",
+                "D10.07",
                 "D06.17",
             },
         )
