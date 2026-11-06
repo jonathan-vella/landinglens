@@ -301,6 +301,96 @@
       "revision": "85c4c477040178eb023f500c1eac2239372424d9",
       "finding": "ExpressRoute-specific guidance also requires GatewaySubnet BGP propagation. Explicit joined flag is a configuration subclaim, not learned routes or uptime. SKU/location circuit maxima and subnet size are separate from two-site resilience.",
       "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "circuit-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/expressroutecircuits",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/expressroutecircuits",
+      "sha256": "e0a84bb2e1baef9845250722588836e3c850f88e508d77e4789f99d84ba03d09",
+      "retrieved_at": "2026-11-06T12:19:47.105644+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Pinned ARM exposes explicit tier/family, provider Mbps versus Direct Gbps, port reference and rate-limit flag. The generated page labels circuit Gbps int while the exact REST schema says number; retain finite numeric facts without claiming eligibility.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "circuit-rest-2024",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/expressRouteCircuit.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/expressRouteCircuit.json",
+      "sha256": "76dd409d7b89748a73787b5dcd4b6f0e67613e4ae173dc851589e256133b5461",
+      "retrieved_at": "2026-11-06T12:19:47.472162+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Exact GET/schema distinguishes circuit bandwidth number, provider integer Mbps, SKU enums and port reference. Secret/service keys, addresses, stats and notes are excluded.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "port-rest-2024",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/expressRoutePort.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/expressRoutePort.json",
+      "sha256": "1b46faaa28623bf85fee69207f3eb293cd30aed97e3f24f47e3ddba91e498c88",
+      "retrieved_at": "2026-11-06T12:19:47.777557+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Port bandwidth is integer; billing and encapsulation are independent enums. No arbitrary service keys, link identities, rack/interface values or secret references are included in the cost/capacity facts.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "gateway-rest-2024",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualNetworkGateway.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualNetworkGateway.json",
+      "sha256": "31a2757f2c7bd0630ee9be290797b709f172e72847c7a210a7a5a957940e1639",
+      "retrieved_at": "2026-11-06T12:19:48.121905+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned gateway/connection schema supports explicit bypass/Private Link booleans and autoscale bounds. Omitted defaults, current scale, deployed zone population and working routes are not inferred. Reuse merged predecessor gateway/connection helpers.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "port-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/expressrouteports",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/expressrouteports",
+      "sha256": "8e755971ac1f5335b2d614f283ff18e9a096b5a6e1e303f09b5fd3acf7edecbf",
+      "retrieved_at": "2026-11-06T12:19:48.413511+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Project bounded per-link cipher/SCI enums only; keys, secret identifiers, router labels and physical port details are withheld. Configuration is not link encryption.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-expressroute-port",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/express_route_port.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/express_route_port.html.markdown",
+      "sha256": "bd81aa36a90fb8c0371fbd2db42020105f49249704ae0a5f28e32ffad84eca52",
+      "retrieved_at": "2026-11-06T12:19:49.745292+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider supports two link blocks; no cipher default or key is retained.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-circuit",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/express_route_circuit.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/express_route_circuit.html.markdown",
+      "sha256": "07795333e920c9d454185582d5473173c7a57bda2622ad184840217484c19b82",
+      "retrieved_at": "2026-11-06T12:19:50.055623+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "AzureRM 4.50.0 distinguishes mutually exclusive provider and Direct fields. Explicit single SKU block is required; Basic is an enum, not a justified regional/cost option. No migration, provider execution or service-key retention occurs.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "provider-reuse",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "sha256": "4e2bb185ebd706f76329206869ccb348b92b6236100cfb07775fe31530dab0d5",
+      "retrieved_at": "2026-11-06T12:19:50.381203+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider is MPL-2.0. No provider source, page content or licensed implementation is redistributed in the preparation; retain attribution, hashes and own factual findings.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "learn-reuse",
+      "url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "resolved_url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "sha256": "6c52cbfffd7732e5ad204c47ac6901ad2d0f640a6f0ecda99f67ba17516cc8d6",
+      "retrieved_at": "2026-11-06T12:19:50.699976+00:00",
+      "revision": "9fd90ed833034800434458aef187ba08d8dc9d5b",
+      "finding": "Learn's general document reuse terms are constrained and explicit document licenses can govern separately. Retain URL/revision/hash attribution and own factual findings only; no Microsoft page text, graphics, layouts or assets are redistributed.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
     }
   ]
 }

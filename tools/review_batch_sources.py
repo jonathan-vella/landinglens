@@ -1961,6 +1961,25 @@ SOURCES_15 = [
 ]
 
 
+SOURCES_15 += [
+    source
+    for source in SOURCES_14
+    if source[0]
+    in {
+        "circuit-arm",
+        "circuit-rest-2024",
+        "port-arm",
+        "port-rest-2024",
+        "terraform-circuit",
+        "terraform-expressroute-port",
+        "connection-arm",
+        "gateway-rest-2024",
+        "provider-reuse",
+        "learn-reuse",
+    }
+]
+
+
 def microsoft_site_terms(url: str) -> bool:
     parsed = urlsplit(url)
     return parsed.scheme == "https" and (

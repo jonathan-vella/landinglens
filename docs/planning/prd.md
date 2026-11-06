@@ -78,6 +78,16 @@ records remain traceable under explicit lifecycle semantics.
 
 ## Active increment: fixed recommendation expansion
 
+Working `2026-11-06.9` integrates cohort15 after its explicit slot grant and
+actual cohort12 implementation/receipt delivery. Exact `.6.8` bytes and all90
+preceding own-GUID rows/ten receipts remain frozen. One strictly joined scoped
+GatewaySubnet propagation predicate and eight separate assisted decisions retain
+all255 GUIDs, **11 automated / 201 assisted / 43 manual**. Missing/default/absent/
+ambiguous/denied/stale joins never pass; configuration and location labels prove
+no operational health, ingestion, edge BFD, physical independence or recovery.
+The ledger stays90 delivered /161 pending until actual implementation and
+guarded receipt acceptance; source/matrix activation is not delivery.
+
 Cohort15/#106 independently prepares nine immutable ExpressRoute monitoring,
 propagation and failover workflows after actual cohort14 delivery, alongside cohort12. Its reviewed source
 matrix is not accepted catalog activation. Minimized configured-monitor/alert

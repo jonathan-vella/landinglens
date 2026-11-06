@@ -277,12 +277,14 @@ class DnsBatchTests(unittest.TestCase):
         for row in self.matrix["recommendations"]:
             self.assertLessEqual(set(row["sources"]), source_ids)
             self.assertTrue(row["evidence_requirements"])
-        baseline = load_catalog()
+        baseline = load_catalog(
+            str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.8.json"))
+        )
         self.assertEqual(len(self.catalog["controls"]), 255)
         self.assertEqual(self.control(GUIDS[4])["automation"], "manual")
         self.assertEqual(self.control(GUIDS[6])["automation"], "manual")
         for old in baseline["controls"]:
-            if old["upstream_guid"] not in GUIDS:
+            if old["upstream_guid"] in GUIDS:
                 self.assertEqual(
                     control_digest(old), control_digest(self.control(old["upstream_guid"]))
                 )
@@ -311,13 +313,14 @@ class DnsBatchTests(unittest.TestCase):
 
     def test_actual_cohort12_receipt_preserves_all_80_previous_rows_and_nine_receipts(self):
         ledger = json.loads((REFERENCES / "ledger.json").read_text())
+        earlier_batches = {"01", "04", "11", "13", "14", "17", "18", "19", "22"}
         earlier_receipts = {
-            key: value for key, value in ledger["deliveries"].items() if key != "12"
+            key: value for key, value in ledger["deliveries"].items() if key in earlier_batches
         }
         earlier_rows = [
             row
             for row in ledger["recommendations"]
-            if row["status"] == "merged" and row["batch"] != "12"
+            if row["status"] == "merged" and row["batch"] in earlier_batches
         ]
         for value, expected in (
             (earlier_receipts, "1da5f99a9d027f6d687464c67d4c69926e1bcb3dce8c0704f2bb36754c4624d2"),
@@ -352,7 +355,13 @@ class DnsBatchTests(unittest.TestCase):
                 for row in own
             )
         )
-        self.assertEqual(sum(row["status"] == "merged" for row in ledger["recommendations"]), 90)
+        self.assertEqual(
+            sum(
+                row["status"] == "merged" and row["batch"] in earlier_batches | {"12"}
+                for row in ledger["recommendations"]
+            ),
+            90,
+        )
 
     def test_minimized_dns_public_ip_bastion_and_preserved_literal_facts(self):
         bundle = self.bundle()

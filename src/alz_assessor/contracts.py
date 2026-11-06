@@ -443,6 +443,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                                 "disableBgpRoutePropagation",
                                 "connectionMonitorSummary",
                                 "expressRouteAlertSummary",
+                                "peeringLocationFingerprint",
                             }
                             | DNS_PATHS
                         )
@@ -506,6 +507,17 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                         or "applicable_skus" in rule
                     ):
                         raise InputError("Invalid reviewed observed route <=400 predicate")
+                elif operation == "gateway-route-propagation" and data["schema_version"] == "1.1":
+                    if (
+                        control.get("upstream_guid") != "72105cc8-aaea-4ee1-8c7a-ad25977afcaf"
+                        or rule["resource_type"] != "Microsoft.Network/virtualNetworkGateways"
+                        or rule["property"] != "subnetReferences"
+                        or rule.get("expected") is not True
+                        or "applicable_skus" in rule
+                    ):
+                        raise InputError(
+                            "Invalid reviewed joined GatewaySubnet propagation predicate"
+                        )
                 else:
                     raise InputError("Unsupported rule operation or contract version")
             elif control.get("rule") is not None:

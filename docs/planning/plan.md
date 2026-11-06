@@ -19,7 +19,55 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
-## Cohort 15 independent preparation: 2026-11-06
+## Cohort 15 granted integration: 2026-11-06
+
+The coordinator granted [#106](https://github.com/jonathan-vella/landinglens/issues/106)
+the sole slot after actual cohort12 implementation110/receipt111 and #103 closure.
+Preserved `68fb11e` was reconciled with main
+`a2e874f456717d6e5f7df2165d689b8b00d8d40a`. Exact `.6.8` catalog bytes are frozen:
+`5c8f0d3331c6c6ffe1478de34395b33001e6b12ee5857394a5d6ff6b60b92ecc`;
+crosswalk bytes: `75b123e331928af8e483b75632cf2e7ea834347389ef795ec3df7238af12aa6f`.
+The [accepted nine-GUID matrix](../../references/recommendation-batches/batch-15.json)
+and [39 captured sources](../../references/recommendation-batches/batch-15-sources.json)
+precede unique working successor `2026-11-06.9`. All 30 original preparation
+capture rows/times, 255 GUIDs, fixed251/original four hashes and every one of
+the 90 predecessor rows/ten receipts are retained.
+
+D06.17 is an automated literal joined propagation check, not an arbitrary table
+flag or availability verdict. It requires explicit subscription/RG scope, unique
+known VPN/ExpressRoute gateway/GatewaySubnet/table joins, complete bounded links
+and explicit booleans. Missing/default/absent/stale/denied/ambiguous/out-of-scope/
+truncated evidence cannot pass. Eight other workflows remain assisted with
+separate scope/content/expiry-bound blank decisions. Configuration, label
+fingerprints and MSEE defaults never prove probes, ingestion, independent sites/
+devices, edge BFD, dynamic routing/load sharing or actual recovery.
+
+The single evaluator, adapters, typed review/tier/output/session/bank/replay
+paths are wired. All eight actual current compiler cases are preserved and the
+monitoring/join fixture is the ninth, without restoration. No live API registry,
+probe, permission, dependency, compiler/module acquisition or human approval is
+added. Current catalog/crosswalk counts are **11 automated / 201 assisted /
+43 manual**. Delivery remains **90 merged / 161 pending** until normal exact-head
+implementation gates and guarded own-GUID receipts are actually accepted.
+
+Pre-delivery checkout and own exact-installed suites each ran **423 tests**:
+422 passed with the original Windows symlink-privilege skip. All 26 monitoring/
+joined-predicate cases pass. Nine actual existing-compiler cases exercised with
+no restore or compiler skip. Format/lint, 39-source-file typing, dependency
+consistency and 315 documentation links pass. Current-count assertions now
+include D06.17; cohort13's ten-predicate historical assertion uses frozen `.6.5`,
+and cohort12's old80-row receipt checks do not count future cohorts.
+
+Own offline wheel SHA256:
+`88cd5b17564ed4fa45b4cacf36625b84c41c2f558a790f0d52bc7830481c96e2`.
+Every packaged code/data byte matches the checkout; the fresh outside-checkout
+interpreter proves site-packages import. Only existing own reviewed runtime
+wheels were restored after its missing-`hcl2` probe. Original captured times,
+all predecessor catalog/crosswalk bytes and 90 rows/ten receipts are unchanged.
+Platform/CodeQL/reviews, four matching compiler artifacts, normal exact-head
+merge and guarded receipt reconciliation remain required delivery gates.
+
+## Historical cohort 15 independent preparation: 2026-11-06
 
 [#106](https://github.com/jonathan-vella/landinglens/issues/106) is the third
 isolated workstream, after cohort14's delivery slot and prepared cohort12.

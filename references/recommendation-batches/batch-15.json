@@ -1,0 +1,153 @@
+{
+  "batch": "15",
+  "catalog_version": "2026-11-06.9",
+  "review_state": "owner-delegated-source-backed-matrix",
+  "accepted_at": "2026-11-06T12:20:17.2182476Z",
+  "prerequisites": ["11", "13", "22", "14", "12"],
+  "preserved_catalog_bytes": {
+    "2026-11-06.8": "5c8f0d3331c6c6ffe1478de34395b33001e6b12ee5857394a5d6ff6b60b92ecc"
+  },
+  "issue": "https://github.com/jonathan-vella/landinglens/issues/106",
+  "acceptance_evidence": "Sole coordinator slot granted after actual cohort12 implementation110/receipt111. One literal strictly joined GatewaySubnet propagation predicate and eight specific assisted monitoring/topology/edge workflows, retaining all prior controls, sources, receipts and unknown/default/privacy boundaries. Preparation, implementation merge and guarded receipt acceptance are distinct.",
+  "supported_modes": "Existing AzureRM4.50.0 raw/local supplied modules and optional saved plan; reviewed ARM2024-05-01/no-restore Bicep connection monitor and network configuration, ARM2018-03-01 static metric alerts; saved normalized and existing injected management-plane facts. Propagation requires exact unique known gateway/GatewaySubnet/table identities inside an explicit subscription/RG evidence scope and explicit flags. No new Collector API, live probe, monitor/BFD/failover execution or deployment.",
+  "recommendations": [
+    {
+      "guid": "b30e38c3-f298-412b-8363-cefe179b599d",
+      "upstream_id": "D06.13",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit configured static ExpressRoute alert circuit scopes, enabled flag, supported metric names/aggregation and action-group references, alongside typed linked circuit/gateway context.",
+      "sources": ["expressroute-monitoring", "expressroute-insights", "metric-alert-arm", "circuit-arm", "connection-arm"],
+      "review_resource_types": ["Microsoft.Insights/metricAlerts", "Microsoft.Network/connections", "Microsoft.Network/virtualNetworkGateways"],
+      "review_fact_paths": ["expressRouteAlertSummary", "expressRouteCircuitId", "virtualNetworkGateway1.id", "gatewayType"],
+      "evidence_requirements": [
+        "Reviewer decision: has an accountable operator reviewed actual Insights availability and utilization for both links, every applicable peering and linked gateway over the relevant original-time period?",
+        "Reconcile MSEE maintenance effects on BGP availability, approved demand/metric dimensions/thresholds/actions and actual arriving alerts/output. Insights needs no enablement setup; automatic metrics or configured alerts do not prove use, health or ingestion."
+      ],
+      "limitations": "Static single-resource configuration only; dynamic/multiple-resource/web-test criteria stay unsupported. Thresholds/dimensions/raw metrics/probes are not retained or invented. No monitoring execution or alert/health read.",
+      "flags": ["insights-no-invented-enable-flag", "configured-alert-not-health-or-ingestion"]
+    },
+    {
+      "guid": "5bf68dc9-325e-4873-bf88-f8214ef2e5d2",
+      "upstream_id": "D06.14",
+      "classification": "assisted",
+      "implemented_subclaim": "Bounded endpoint types, test protocols/explicit frequencies, group disable/counts/exact unique reference resolution and typed workspace outputs, withholding endpoint names/addresses and request data.",
+      "sources": ["connection-monitor-linked", "connection-monitor-current", "connection-monitor-arm", "terraform-connection-monitor", "terraform-connection-monitor-implementation", "rest-monitor"],
+      "review_resource_types": ["Microsoft.Network/networkWatchers/connectionMonitors"],
+      "review_fact_paths": ["connectionMonitorSummary"],
+      "evidence_requirements": [
+        "Reviewer decision: does current supported agent evidence cover Azure VM/VMSS sources and Arc-enabled on-premises sources with AMA, rather than the linked retired Log Analytics/MMA instructions?",
+        "Reconcile all intended source/destination/redundant paths, enabled groups, actual executed probes/results, approved frequency/loss/latency requirements and arriving workspace output. Configured counts/reference resolution never establish successful monitoring."
+      ],
+      "limitations": "30..1800 seconds is the pinned provider's configuration envelope, not a health SLO. Legacy endpoint enums are configuration context, not current agent support. No endpoints, headers, FQDNs, raw probes or diagnostics retained.",
+      "flags": ["linked-mma-guidance-conflicts-with-current-arc-ama", "configuration-not-probe-results"]
+    },
+    {
+      "guid": "e0d5973c-d4cd-421b-8881-37f5e6c4cfd3",
+      "upstream_id": "D06.15",
+      "classification": "assisted",
+      "implemented_subclaim": "Strict unique known provider-circuit or Direct-circuit-to-port joins and bounded explicit location-label fingerprints disclose whether the complete supplied subset includes distinct circuits with different configured labels.",
+      "sources": ["expressroute-disaster-recovery", "expressroute-high-availability", "circuit-arm", "circuit-rest-2024", "port-arm", "port-rest-2024", "terraform-circuit", "terraform-expressroute-port"],
+      "review_resource_types": ["Microsoft.Network/expressRouteCircuits", "Microsoft.Network/expressRoutePorts", "Microsoft.Network/connections", "Microsoft.Network/virtualNetworkGateways"],
+      "review_fact_paths": ["expressRouteCircuitId", "virtualNetworkGateway1.id", "gatewayType", "expressRoutePort.id", "peeringLocationFingerprint"],
+      "evidence_requirements": [
+        "Reviewer decision: are actual independent circuits at different peering locations connected to the intended networks, with supported geopolitical/Premium reach and provider/customer failure-domain diversity?",
+        "Distinct configured label fingerprints are not canonical sites, anonymity or physical independence. Same-metro sites can share regional risks; reconcile latency/asymmetry and attributable real recovery evidence against approved objectives."
+      ],
+      "limitations": "Supplied location checks are bounded to100 circuits and every member must be unique known and explicitly located; unknown/denied/ambiguous/over-bound members cannot make a positive subcheck. No actual geo-failover, physical topology or arbitrary SLO inference.",
+      "flags": ["configured-labels-not-independent-peering-sites", "all-supplied-joins-must-be-known"]
+    },
+    {
+      "guid": "cf3fe65c-fec0-495a-8edc-9675200f2add",
+      "upstream_id": "D06.16",
+      "classification": "assisted",
+      "implemented_subclaim": "Reuse explicit IPsec/ExpressRoute types, exact gateway/circuit/local-gateway references, BGP intent and supported gateway/subnet context for a maintained private-peering VPN-backup review.",
+      "sources": ["expressroute-coexistence", "expressroute-backup", "connection-arm", "terraform-gateway-connection", "gateway-arm", "terraform-gateway", "gateway-rest-2024"],
+      "review_resource_types": ["Microsoft.Network/connections", "Microsoft.Network/virtualNetworkGateways"],
+      "review_fact_paths": ["connectionType", "virtualNetworkGateway1.id", "expressRouteCircuitId", "enableBgp", "gatewaySku", "subnetReferences", "localNetworkGatewayId"],
+      "evidence_requirements": [
+        "Reviewer decision: is the complete intended design actually single-circuit private peering, and is actively maintained S2S backup appropriate rather than latency-sensitive/mission-critical/bandwidth-intensive workload connectivity?",
+        "Verify route-based non-Basic VPN/coexistence subnet prerequisites, both-direction equal/more-specific prefix preference, Internet backup independence and attributable tested failover/recovery evidence. Microsoft peering has no equivalent VPN-based failover."
+      ],
+      "limitations": "Configured connections, BGP/weight/SKU and positive associations cannot prove a complete single-circuit population, preferred routes, working tunnels or maintained recovery. No VPN/route/traffic probe or secret collection.",
+      "flags": ["private-peering-backup-is-workload-conditional", "connection-not-maintained-failover"]
+    },
+    {
+      "guid": "72105cc8-aaea-4ee1-8c7a-ad25977afcaf",
+      "upstream_id": "D06.17",
+      "classification": "automated",
+      "implemented_subclaim": "For each explicit known scoped VPN/ExpressRoute gateway, every bounded known GatewaySubnet-to-unique-known-route-table join has explicit disableBgpRoutePropagation=false. True fails; missing/default/unbound/ambiguous/out-of-scope/truncated joins remain unknown, including empty inventory.",
+      "sources": ["gateway-subnet-propagation", "expressroute-gateway-propagation", "route-arm", "rest-route", "subnet-arm", "rest-subnet", "route-table-provider-implementation", "terraform-subnet-route-association"],
+      "review_resource_types": ["Microsoft.Network/virtualNetworkGateways", "Microsoft.Network/virtualNetworks/subnets", "Microsoft.Network/routeTables"],
+      "review_fact_paths": ["gatewayType", "subnetReferences", "routeTable.id", "disableBgpRoutePropagation"],
+      "method": "Strictly joined scoped GatewaySubnet propagation configuration, not effective routes.",
+      "rule": {"operation": "gateway-route-propagation", "resource_type": "Microsoft.Network/virtualNetworkGateways", "property": "subnetReferences", "expected": true},
+      "evidence_requirements": [
+        "Bind the gateway to explicit unique known GatewaySubnet and route-table identities inside an explicit subscription/resource-group evidence scope; require exact explicit booleans. An arbitrary table flag or no resources cannot pass.",
+        "Missing/unsupported/symbolic/denied/stale/ambiguous or over20 displayed gateway-subnet links stay unknown. Raw Terraform association resources are not inferred; supply the normalized subnet join explicitly or keep it unknown.",
+        "Reconcile effective learned routes, NSG/UDR restrictions, gateway availability and complete intended topology separately; the accepted machine claim is only the literal joined propagation configuration."
+      ],
+      "limitations": "No effective-route or gateway-health test, default propagation assumption or no-table/no-gateway absence pass. Unbound management-group evidence is not supported by this scoped literal predicate. Human decisions and independent exceptions cannot alter its technical result.",
+      "flags": ["strict-known-gateway-subnet-table-join", "explicit-flag-no-default-or-absence-pass", "configuration-not-effective-routing"]
+    },
+    {
+      "guid": "d581a947-69a2-4783-942e-9df3664324c8",
+      "upstream_id": "D06.18",
+      "classification": "assisted",
+      "implemented_subclaim": "Typed original-time circuit/gateway/BGP/weight context prepares a specific dynamic edge convergence/load-sharing review, without treating Azure VPN activeActive as customer ECMP.",
+      "sources": ["expressroute-high-availability", "expressroute-disaster-recovery", "connection-arm", "gateway-rest-2024"],
+      "review_resource_types": ["Microsoft.Network/connections", "Microsoft.Network/virtualNetworkGateways"],
+      "review_fact_paths": ["connectionType", "expressRouteCircuitId", "enableBgp", "activeActive", "routingWeight"],
+      "evidence_requirements": [
+        "Reviewer decision: do both customer/provider edge sessions dynamically converge to the surviving link with correct advertisements and return paths, including Microsoft's maintenance AS-path draining?",
+        "Verify actual per-flow active-active sharing or explicitly supported actively maintained active-passive routing, NAT/stateful effects and approved recovery objectives. Cloud BGP/activeActive flags or sample timers are not on-premises behavior."
+      ],
+      "limitations": "No edge routing collection, load/latency threshold or convergence/failover test. Gateway weight and active-active configuration have different direction/scope from actual customer edge routing.",
+      "flags": ["cloud-flags-not-edge-convergence-or-ecmp", "maintained-active-passive-supported"]
+    },
+    {
+      "guid": "b258f058-b9f6-46cd-b28d-990106f0c3f8",
+      "upstream_id": "D06.19",
+      "classification": "assisted",
+      "implemented_subclaim": "Exact configured circuit/gateway/Direct-port context identifies scope for a two-distinct-real-edge-device decision, not a cloud resource-count verdict.",
+      "sources": ["expressroute-high-availability", "expressroute-disaster-recovery", "port-arm", "port-rest-2024"],
+      "review_resource_types": ["Microsoft.Network/connections", "Microsoft.Network/expressRouteCircuits", "Microsoft.Network/expressRoutePorts"],
+      "review_fact_paths": ["expressRouteCircuitId", "virtualNetworkGateway1.id", "expressRoutePort.id"],
+      "evidence_requirements": [
+        "Reviewer decision: do attributable redacted customer/provider topology records bind primary and secondary physical links to distinct actual customer edge devices, not subinterfaces or ports on one chassis?",
+        "Reconcile provider first-mile paths, power/cooling and downstream shared failure domains separately. Do not retain device identities, router credentials or raw physical records."
+      ],
+      "limitations": "Two links, circuits, ports or configured names cannot authenticate physical customer/provider independence. No new on-premises or provider evidence collection.",
+      "flags": ["two-cloud-resources-not-two-physical-devices", "physical-independence-needs-attributable-evidence"]
+    },
+    {
+      "guid": "fe2a1b53-6fbd-4c67-b58a-85d7c7a0afcb",
+      "upstream_id": "D06.20",
+      "classification": "assisted",
+      "implemented_subclaim": "Typed circuit/connection context prepares a two-edge-interface-and-BGP BFD decision without inventing a customer/provider BFD flag from MSEE defaults.",
+      "sources": ["expressroute-bfd", "expressroute-high-availability", "expressroute-disaster-recovery", "circuit-arm"],
+      "review_resource_types": ["Microsoft.Network/connections", "Microsoft.Network/expressRouteCircuits"],
+      "review_fact_paths": ["expressRouteCircuitId", "connectionType", "expressRoutePort.id"],
+      "evidence_requirements": [
+        "Reviewer decision: is BFD configured on both primary and secondary customer/provider interfaces and linked to their BGP sessions, with vendor support/echo behavior and attributable operational evidence?",
+        "Reconcile private/Microsoft and IPv4/IPv6 creation/reset applicability, including IPv6 before November2025. Cloud-side defaults and sample timer values never prove edge BFD or end-to-end gateway/site convergence."
+      ],
+      "limitations": "No BFD query, packet test, peering reset, edge configuration read or fabricated approval. Faster link detection is not a guaranteed end-to-end failover SLO.",
+      "flags": ["msee-default-not-customer-provider-bfd", "ipv4-ipv6-creation-reset-conditions-preserved"]
+    },
+    {
+      "guid": "669b215a-ce43-4371-8f6f-11047f6490f1",
+      "upstream_id": "D06.22",
+      "classification": "assisted",
+      "implemented_subclaim": "Strict unique known ExpressRoute gateway-to-typed-connection-to-distinct-known-circuit-to-provider/Direct-port-location joins prepare bounded circuit/location counts and a configuration-only subcheck.",
+      "sources": ["expressroute-disaster-recovery", "connection-arm", "gateway-rest-2024", "circuit-arm", "circuit-rest-2024", "port-arm", "port-rest-2024", "terraform-gateway-connection"],
+      "review_resource_types": ["Microsoft.Network/connections", "Microsoft.Network/virtualNetworkGateways", "Microsoft.Network/expressRouteCircuits", "Microsoft.Network/expressRoutePorts"],
+      "review_fact_paths": ["connectionType", "expressRouteCircuitId", "virtualNetworkGateway1.id", "gatewayType", "routingWeight", "peeringLocationFingerprint"],
+      "evidence_requirements": [
+        "Reviewer decision: is this exact ExpressRoute gateway actually bound to at least two distinct circuits at different verified peering sites, not duplicate connections or circuits bound to other gateways?",
+        "Reconcile complete intended topology, unknown/ambiguous supplied joins, regional/geopolitical/Premium reach, customer/provider failure domains and both-direction routing/recovery. Distinct configured labels do not prove actual independent sites or operational resiliency."
+      ],
+      "limitations": "Every supplied uncertain connection/circuit/location makes the bounded join check unknown. At most100 supplied connections/circuits and100 displayed gateways; truncation is disclosed. Positive supplied joins are not complete estate or failover evidence.",
+      "flags": ["exact-gateway-distinct-circuit-joins", "configured-labels-not-verified-sites-or-failover"]
+    }
+  ]
+}

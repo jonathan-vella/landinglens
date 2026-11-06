@@ -259,6 +259,13 @@ API/existing-network scope distinction. Preparation leaves every decision blank.
 The scope is included in the requirements hash; changed scope, bank, content or
 validity requires fresh preparation, not editing a binding.
 
+Use `--question expressroute-monitoring-routing-failover` for cohort15's eight
+separate monitoring/topology/edge decisions. D06.17 has a separate strictly joined
+GatewaySubnet propagation predicate; manual answers never override it. Review
+location-label and monitoring configuration as partial Signals, not independent
+physical sites, probe health, ingestion, edge BFD or failover evidence. All
+questions start blank and require actual attributable evidence.
+
 Use `--question sovereign-audit-workload-protection` for cohort22's eight distinct
 key-custody, Entra audit, activity-retention, CSPM/Servers/workload, endpoint and
 patch-drift decisions. Only references/redacted attestations are appropriate:

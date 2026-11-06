@@ -266,8 +266,9 @@ class MonitoringPreparationTests(unittest.TestCase):
             )
         rejected = copy.deepcopy(self.catalog)
         rejected["controls"][0]["review_fact_paths"] = ["peeringLocationFingerprint"]
-        with self.assertRaisesRegex(InputError, "reviewed typed paths"):
-            validate(rejected, "catalog")
+        validate(rejected, "catalog")
+        with self.assertRaisesRegex(InputError, "differs from a packaged"):
+            known_catalog(rejected)
 
     def test_same_locations_and_duplicate_connections_do_not_inflate_redundancy(self):
         for location, expected in (("Amsterdam2", True), ("amsterdam", False)):
@@ -402,7 +403,7 @@ class MonitoringPreparationTests(unittest.TestCase):
             self.assertNotIn(PRIVATE, json.dumps(output))
             self.assertNotIn("Amsterdam", json.dumps(output))
 
-    def test_fixed_membership_sources_and_no_catalog_activation(self):
+    def test_fixed_membership_and_preserved_preparation_source_capture_times(self):
         root = Path(__file__).resolve().parents[1]
         targets = json.loads((root / "references/recommendation-batches/targets.json").read_text())
         selected = [row for row in targets["targets"] if row["batch"] == "15"]
@@ -416,7 +417,18 @@ class MonitoringPreparationTests(unittest.TestCase):
         sources = json.loads(
             (root / "references/recommendation-batches/batch-15-sources.json").read_text()
         )
-        self.assertEqual(len(sources["sources"]), 30)
+        self.assertEqual(len(sources["sources"]), 39)
+        original_capture = {
+            "batch": "15",
+            "review_state": "reviewed",
+            "sources": sources["sources"][:30],
+        }
+        self.assertEqual(
+            hashlib.sha256(
+                (json.dumps(original_capture, indent=2) + "\n").replace("\n", "\r\n").encode()
+            ).hexdigest(),
+            "7f989c035767bc7e4d2b147085d4dba0bf592b1c3c2cf551078ccc5163a99d7b",
+        )
         indexed = {row["id"]: row for row in sources["sources"]}
         for row in preparation["recommendations"]:
             self.assertTrue(set(row["sources"]) <= set(indexed))
@@ -434,7 +446,11 @@ class MonitoringPreparationTests(unittest.TestCase):
             self.assertEqual(len(source["revision"]), 40)
             self.assertTrue(source["retrieved_at"])
             self.assertTrue(source["reuse"])
-        self.assertFalse((root / "references/recommendation-batches/batch-15.json").exists())
+        accepted = json.loads(
+            (root / "references/recommendation-batches/batch-15.json").read_text()
+        )
+        self.assertEqual(accepted["catalog_version"], "2026-11-06.9")
+        self.assertEqual([row["guid"] for row in accepted["recommendations"]], list(GUIDS))
         original = load_catalog(
             str(files("alz_assessor").joinpath("data", "catalog-2026-11-04.2.json"))
         )

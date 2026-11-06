@@ -297,7 +297,7 @@ class ProtectionBatchTests(unittest.TestCase):
                     control_digest(control), control_digest(before[control["upstream_guid"]])
                 )
         self.assertEqual(len(self.catalog["controls"]), 255)
-        self.assertEqual(sum(c["automation"] == "automated" for c in self.catalog["controls"]), 10)
+        self.assertEqual(sum(c["automation"] == "automated" for c in cohort13["controls"]), 10)
         manual = self.control(GUIDS[4])
         self.assertEqual(manual["automation"], "manual")
         self.assertEqual(manual["recommendation"], before[GUIDS[4]]["recommendation"])
