@@ -26,11 +26,15 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     from .governance_evidence import GUIDS as GOVERNANCE_GUIDS
     from .governance_evidence import resource_in_scope
     from .identity_evidence import RESILIENCE_GUIDS
+    from .logging_evidence import GUIDS as LOGGING_GUIDS
+    from .logging_evidence import resource_paths, scoped_identity
     from .network_evidence import REVIEW_PATHS, review_fact
     from .network_policy_evidence import GUIDS as NETWORK_POLICY_GUIDS
     from .policy_strategy_evidence import GUIDS as POLICY_STRATEGY_GUIDS
     from .policy_strategy_evidence import unique_known as policy_unique_known
     from .sources import boolean, enumeration, property_at
+    from .tenant_evidence import GUIDS as TENANT_GUIDS
+    from .tenant_evidence import prepared_signal as tenant_signal
     from .virtual_wan_evidence import GUIDS as VWAN_GUIDS
     from .virtual_wan_evidence import known_resource
 
@@ -38,9 +42,10 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     if not kinds or not control.get("review_fact_paths"):
         return False
     vwan = control["upstream_guid"] in VWAN_GUIDS
+    logging = control["upstream_guid"] in LOGGING_GUIDS
     by_id: dict[str, list[dict[str, Any]]] = {}
     policy = control["upstream_guid"] in POLICY_STRATEGY_GUIDS
-    if vwan or policy:
+    if vwan or policy or logging or control["upstream_guid"] in TENANT_GUIDS:
         for resource in bundle["resources"]:
             by_id.setdefault((resource.get("arm_id") or "").lower(), []).append(resource)
     for resource in bundle["resources"]:
@@ -48,12 +53,20 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
             continue
         if policy and not policy_unique_known(resource, bundle, by_id):
             continue
+        if control["upstream_guid"] in TENANT_GUIDS:
+            if tenant_signal(resource, by_id, bundle):
+                return True
+            continue
         if control[
             "upstream_guid"
         ] in GOVERNANCE_GUIDS | RESILIENCE_GUIDS | NETWORK_POLICY_GUIDS and not resource_in_scope(
             resource, bundle
         ):
             continue
+        if logging:
+            identity = scoped_identity(resource, bundle.get("scope"))
+            if not identity or len(by_id.get(identity, [])) != 1:
+                continue
         if (
             vwan
             and known_resource(
@@ -66,6 +79,8 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
         ):
             continue
         for path in control.get("review_fact_paths", []):
+            if logging and path not in resource_paths(resource["resource_type"]):
+                continue
             properties = resource["properties"]
             if path in REVIEW_PATHS:
                 fact = review_fact(properties, path)

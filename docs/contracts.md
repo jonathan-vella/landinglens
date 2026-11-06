@@ -256,6 +256,18 @@ Existing catalog/index assets are never replaced.
 
 ### Guided interview responses
 
+Cohort23 registers `central-logging-support-service-enablement` with seven
+independently blank content/scope/expiry-bound decisions. Its typed paths are
+`logWorkspaceSummary`, `sentinelOnboardingSummary`, `logAlertSummary`,
+`eventGridTopicSummary` and `eventGridMetricAlertSummary`, alongside reused
+diagnostic paths. Facts are resource-kind-specific, and Signals require a typed
+identity in the explicit subscription/RG scope. Local joins require unique known
+typed records; they never expand tenant scope or establish ingestion, correlation,
+alert delivery or support approvals. Azure/M365 Lockbox remains human evidence,
+and the three organizational recommendations remain manual. Sanitized original-time
+replay revalidates the same minimized facts; it retains no query/rule body,
+support/private request, personal identity, webhook or credential payload.
+
 The cohort16 typed review paths add explicit gateway remote-VNet/vWAN flags,
 gateway diagnostic/static-metric summaries, typed base-policy references, DNS
 proxy flags, minimized protocol/FQDN counts and partner configuration. Strict
@@ -482,6 +494,24 @@ normalized resource evidence is available. Optional content-bound
 `review_fact_paths` selects only the reviewed RBAC, network-access/default-action
 and minimum-TLS scalar vocabulary, plus reviewed network SKU, canonical
 relationship, IPv4 prefix/address and classic DNAT source facts.
+
+Cohort02 successor `2026-11-06.16` adds `lighthouseAuthorizationSummary`
+(1-100 explicit syntactically valid authorization pairs and separately 0-100
+eligible pairs; missing optional lists remain unknown), `registrationDefinitionId`
+(a subscription-level UUID-named definition reference), and `costViewSummary`
+(explicit scope plus reviewed chart/metric enums). No tenant/principal IDs,
+role payloads, offer/contact/billing identifiers or query bodies are projected.
+Counts are not role support, effective authority or distinct-person counts.
+Joins require known unique same-subscription records, service-supported
+subscription/RG scope and selected-boundary containment. Explicit view scope
+must match its resource parent; billing/MG/private views remain unsupported.
+No new live routes are activated. The accepted eight-control bank keeps every
+decision blank. Authored preparation catalogs are still refused by packaged replay;
+the accepted packaged successor replays sanitized original-
+time evidence retains only these facts and their unknowns. The actual Bicep
+fixture requires the bounded literal implicit-current-subscription
+`subscriptionResourceId` overload; explicit foreign-subscription, missing-scope
+and unresolved overloads remain unknown and never expand assessment boundaries.
 
 Cohort08 successor `2026-11-06.10` adds four typed vocabulary entries:
 `tagCount` (explicit 0-50 pairs,

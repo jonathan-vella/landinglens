@@ -61,6 +61,214 @@ failure; no dependency was added. These are preparation proofs, not then-current
 main reconciliation, final CI/review/four-platform compiler artifacts, normal
 merge, guarded own-GUID receipts or satisfied #130 closure.
 
+## Cohort 02 accepted integration: 2026-11-06
+
+The coordinator granted [#127](https://github.com/jonathan-vella/landinglens/issues/127)
+the sole slot after actual cohort23 implementation131/receipt132 and #124
+completed closure,146 independently verified delivered GUIDs/seventeen receipts.
+Preserved preparation `24fa7cb` was reconciled with actual main
+`35156dd37a43e6dd79c0c5d5ad8ab2b8f20bc1a5` in `06937d4`, retaining cohort16/23
+scope/tier/bank interfaces, canonical invalid-gateway-target replay normalization,
+all prior controls and all fourteen actual compiler cases. The
+[eight-GUID matrix](../../references/recommendation-batches/batch-02.json) and
+[24 unchanged source captures](../../references/recommendation-batches/batch-02-sources.json)
+precede unique reviewed successor `2026-11-06.16` via existing offline
+`build_batches`/`build_crosswalk`. Exact `.15` catalog bytes:
+`88bf9dffc2c9ae0efbd27acd2dcfefa34b7c15225a640cf35609ca4ea466321f`;
+crosswalk bytes:
+`287a4495171c2d72db362c97e1528767af231ffd4046e17410d2bf1a328a3323`.
+Every non-own control object, fixed251/original four full controls and all146
+older own-GUID rows/seventeen receipts remain unchanged.
+
+Existing adapters/evaluator prepare minimized subscription-level Lighthouse
+authorization-pair counts, explicit subscription/RG assignment-to-definition
+references and shared-view chart/metric/scope metadata. Strict unique known
+typed same-subscription joins stay inside the selected boundary, including only
+existing positively bound saved MG edges. RG selection does not authorize its
+subscription's definition. View scope must exactly match its resource parent;
+bare scope metadata does not produce a Signal. The Bicep fixture requires only
+the reviewed implicit-current-subscription literal ID overload, not a foreign
+subscription/read expansion. The new fixture is the fifteenth actual existing
+no-restore compiler case, retaining all fourteen delivered cases.
+
+Six assisted workflows and inherently manual CSP support/group-mailbox decisions
+retain eight separately blank registered decisions, scoped content/attribution/
+expiry, independent exceptions and explicit unknown/partial/stale/denied/
+ambiguous/malformed/unsupported/over-bound limits. Actual tenant strategy,
+automation adoption, same-identity/effective delegated use, partner applicability,
+support/reporting/notification operation and agreement-specific organizational
+billing suitability are not inferred. Lighthouse is resource delegation, not
+tenant/MG/cross-cloud delegation, Entra GDAP/DAP or billing authority. Current role
+restrictions, constrained UAA managed-identity exception, identity-federation
+qualifications, EA/MCA/CSP hierarchy/cost visibility and notification/invoice
+distinctions stay explicit. No tenant/principal/contact/email identifiers,
+private partner records, raw billing names/IDs, prices, usage, query bodies or
+credentials enter new projections. No live route, permission, dependency,
+cloud operation or actual owner approval is added.
+
+Actual accepted-package original-time replay, installed CLI, review/interview/
+tier/report/tracker/session behavior are exercised, not just crosswalk hashes.
+Historical `.15` assertions now use their exact frozen catalog/crosswalk rather
+than accidentally rebinding to the latest successor; preparation replay refusal
+and original post-install/superseded-run history remain intact. Dispositions stay
+**12 automated /200 assisted /43 manual**, with all255 visible and unchanged
+51-control/53-association crosswalk. Cohort02 has no query association; only the
+existing exact D07.06/.07 allowlist remains executable, without new execution.
+Delivery stays **146 delivered /105 pending** until normal exact-head platform/
+CodeQL/review/four matching exercised compiler gates, implementation merge and
+guarded own-eight receipt publication satisfy their gates.
+
+Pre-delivery checkout and own exact installed-wheel suites each ran **583 tests**:
+582 passed with only the original Windows symlink-privilege skip. All23 cohort02
+preparation/accepted cases pass, as do format/lint, 44-source-file typing,
+dependency consistency and414 local documentation links. All fifteen actual
+existing-compiler integrations exercised without skips or restore, retaining the
+fourteen preceding cases. Own final offline wheel SHA256:
+`1f71423241ba5e0b56bec415299eabf915bbccf39f82a2c62780433868a53a86`.
+All123 package source/data members match checkout and a fresh own outside-
+checkout `site-packages` `.16` installation. Its actual missing-`lark` probe
+preceded restoring only the three manifest/hash-reviewed runtime wheels from
+this session's local staging, offline. No other session environment, package
+publication, live runtime result or fabricated human decision substitutes for
+these local proofs. Historical preparation's invalidated run and final post-
+install evidence remain distinct from this final implementation proof.
+
+[#134](https://github.com/jonathan-vella/landinglens/pull/134) merged normally as
+`8440e2e57b7598ece6205ce01d56460833709013` at2026-11-06T18:46:14Z.
+Exact checked head `67b7131f4a972da83675a9729f792489c8aa461d` passed all eight
+supported push/PR jobs in `42272351636` / `42272382581`, CodeQL `42272376837`
+and Advanced Security `42272389079`. Actual head/base/main, every check,
+comments/reviews/threads were refreshed before ready transition and normal
+SHA-bound merge. All comment/review/thread reads were empty; no review,
+protection or ruleset was configured or bypassed. No admin/force/auto-merge or
+settings change was used.
+
+All four downloaded exact-head PR compiler artifacts exercised the same fifteen
+cases with no skips: `13533135546`, `13532655322`, `13531501965`, `13530827340`.
+Compiler JSON SHA256:
+`5aa0d98e631a3fa0d9b3caa081a7a857c57a170d582f9ad88d7e4615db53d95e`
+on Ubuntu and
+`6fea46ce30172b3d4224e3ad832db0a161d5239117bdccd528e38da9c4d59aab`
+on Windows. These downloaded platform proofs, not earlier local preparation,
+were required for acceptance.
+
+The guarded recorder independently reread actual #134 merged head, both
+complete four-job runs and all downloaded compiler artifacts before recording
+`deliveries.02` against the exact final implementation wheel above. Every own
+GUID binds that receipt; all146 older rows/seventeen receipts stay exact.
+The checked reconciliation ledger becomes **154 delivered /97 pending**.
+Cohort27 is the next source/severity/crosswalk review priority (eight targets,
+two High and zero mapped), followed by29; this is not a new slot grant.
+Checked receipt publication and final-main CI remain #127 closure/slot-release
+gates. No actual tenant, partner, access, automation, support, cost, mailbox or
+organizational suitability decision is claimed from receipts.
+
+Receipt reconciliation suites each ran **584 tests** in the checkout and own
+exact installed implementation wheel: 583 passed with the same original Windows
+privilege skip. The new assertion binds all eight GUIDs to actual #134/head/
+merge/runs/583-test wheel, preserves all146 older rows/seventeen receipts and
+pins this completed historical prefix to154, not future global totals. All24
+cohort02 cases pass. Format/lint, 44-source-file typing, dependency consistency
+and415 documentation links pass. Package code/data and the exact implementation
+wheel remain unchanged; all123 members still match own `site-packages`.
+Actual ledger/source-severity/crosswalk recomputation confirms97 pending,
+cohort27 next then29. Checked receipt merge and final-main CI remain closure gates.
+
+## Cohort 23 accepted integration: 2026-11-06
+
+The coordinator granted [#124](https://github.com/jonathan-vella/landinglens/issues/124)
+the sole slot after actual cohort16 implementation128/receipt129, #121 completed
+closure and139 independently verified own-GUID receipts. Preserved preparation
+`3204291` was reconciled with actual main
+`3dc42b209a74a11f0be8fabfa17795177bd9a097` in `cfa973e`.
+The [seven-GUID matrix](../../references/recommendation-batches/batch-23.json)
+and [22 original captures](../../references/recommendation-batches/batch-23-sources.json)
+precede unique successor `2026-11-06.15` through existing offline builders.
+Exact `.14` catalog bytes:
+`cff4272bf75497cede26b9683feb21a78a4416f40bbae825998c04e3c5e19a41`;
+crosswalk bytes:
+`34faf24ee323ead3c3cc6e5b7a0af2bedc71f67b84c58c18e7e397050a4db26a`.
+All255 GUIDs, fixed251/original four full controls, all139 earlier rows/sixteen
+receipts, ASPath and joined GatewaySubnet predicates remain unchanged.
+
+Four assisted workflows prepare literal workspace, Sentinel default onboarding,
+workspace log-alert and distinct Event Grid custom-topic metric configuration.
+Strict known unique typed subscription/RG-local joins and kind-specific facts/
+Signals never prove tenant equivalence, ingestion, correlation/detection, health,
+latency or complete coverage. The linked Event Grid page concerns metrics/activity
+alerts, not a general log-oriented real-time solution. Azure Lockbox uses tenant
+administration, not feature registration; Azure support/service/cloud/approver/
+audit/exclusion conditions differ from M365 licensing/tenant/service/approver/
+audit conditions. No synthetic Lockbox/Graph/M365 resource or support approval is
+invented. Separate account use and two different service operating plans remain
+three manual recommendations. All seven registered decisions remain independently
+blank and content/scope/expiry bound.
+
+The existing evaluator, CLI, tiers, reports/trackers, local session and actual
+packaged `.15` original-time replay are exercised. Historical `.12` preparation
+and `.14` semantics stay pinned; executable guards reject direct preparation
+matrix activation and unguarded source recapture. A tightly coupled malformed
+gateway-alert scope normalization keeps unrelated Event Grid metric context
+unknown and replay-idempotent, not a gateway criterion or new predicate.
+All thirteen actual predecessor compiler cases remain; the relevant logging
+fixture is the fourteenth. There are no new dependencies, live endpoints,
+collection/queries/scans/events/alerts, permissions/settings, requests, approvals,
+deployments, module/compiler acquisition or fabricated human outcomes.
+
+Dispositions remain **12 automated /200 assisted /43 manual**; crosswalk remains
+51 controls/53 static partial/related associations. The cohort's one query
+association is not an executable test; only the existing exact D07.06/.07
+allowlist remains executable. Delivery stays **139 delivered /112 pending** until
+normal exact-head implementation/platform/CodeQL/review/four matching exercised
+compiler proofs and guarded seven-own-GUID receipt publication satisfy their gates.
+
+Pre-delivery checkout and own exact installed-wheel suites each ran **559 tests**:
+558 passed with only the original Windows symlink-privilege skip. All24 cohort
+preparation/accepted cases, format/lint, 43-source-file typing, dependency
+consistency and399 local documentation links pass. All fourteen existing-compiler
+cases are included with no compiler skip or restore. Own offline wheel SHA256:
+`4e4b0b4f95f513cbb562339b584eac202a1457ebabe573f5ae06d6c52d364023`.
+All118 packaged code/data bytes match checkout, and the dedicated minimal
+outside-checkout interpreter proves its own site-packages `.15` import.
+No new dependency, alternate session environment, package publication or live
+runtime evidence is substituted for these local results.
+
+[#131](https://github.com/jonathan-vella/landinglens/pull/131) merged normally as
+`32d40747b185921a27ab46f562ef4db35c4b804b` at 2026-11-06T17:59:06Z.
+Exact checked head `aca60f824174c493f66f90e2c0b75426d878820c` passed all eight
+supported push/PR jobs in `42265371359` / `42265396588`, CodeQL `42265391904`
+and Advanced Security `42265405397`. Fresh head/main/checks/comments/reviews were
+verified immediately before the normal SHA-bound merge; zero review comments,
+reviews or threads required disposition. No admin/force/bypass, auto-merge or
+protection/settings change was used.
+
+Four actual downloaded PR artifacts matched all fourteen cases and exercised
+them without skips: `13526762919` (Ubuntu3.12), `13526763215` (Ubuntu3.13),
+`13525874513` (Windows3.12), `13527635167` (Windows3.13). Compiler JSON SHA256:
+`d535f774c1ba5221a36fd56649045f6a3b6a4d9bea1caa3548d30756de545f77` on Ubuntu;
+`b2cb7c4cb72994fb2ad964544da558172fc5791443c3f0b1602e8f2d4de0c4e7` on Windows.
+The guarded recorder independently reread actual merge/head, both complete runs
+and all four compiler artifacts before binding all seven GUIDs to `deliveries.23`
+and the exact implementation wheel above. Every139 earlier row/sixteen receipt
+remains unchanged.
+
+Reconciliation records **146 delivered /105 pending** with unchanged catalog/
+crosswalk `.15` and12/200/43 dispositions. The pending priority table is derived
+from the real ledger; cohort02 is next, not an automatic source/dependency grant
+or a successor launched here. Checked receipt publication and final-main CI still
+gate #124 satisfied closure and sole-slot release; implementation merge alone is
+not delivery.
+
+Receipt reconciliation adds an executable actual-own-seven-GUID binding assertion.
+Checkout and exact installed implementation-wheel suites each ran **560 tests**:
+559 passed with the same original Windows privilege skip. All25 cohort cases,
+full static/type/dependency checks and400 local documentation links pass.
+All118 implementation code/data members remain byte-for-byte unchanged; no
+replacement wheel or altered historical receipt is substituted. Receipt-branch
+results are distinct from the original559-case acceptance in `deliveries.23`.
+Actual implementation-merge main CI `42266567867` also succeeded on
+`32d40747b185921a27ab46f562ef4db35c4b804b`.
+
 ## Cohort 16 accepted integration: 2026-11-06
 
 The coordinator granted [#121](https://github.com/jonathan-vella/landinglens/issues/121)
@@ -256,6 +464,114 @@ Original research basis: an earlier report retained in the planning session,
 not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
+
+## Cohort 02 independent preparation: 2026-11-06
+
+[#127](https://github.com/jonathan-vella/landinglens/issues/127) owns exactly the
+eight A01.01-A03.02 GUIDs in its
+[preparation matrix](../../references/preparation/batch-02.json), backed by
+[24 actual source captures](../../references/preparation/batch-02-sources.json).
+Baseline is main `4e0fdd9b899a8c155e20e6caf022279fe8c1b48a`; cohorts16/23 retain
+their preceding delivery gates. Preparation does not choose/register a successor,
+activate accepted source/matrix/catalog/crosswalk/history/counts or the interview
+bank, create a delivered receipt, merge or close #127.
+
+Existing adapters/evaluator/review/tier/report/session/replay helpers prepare
+bounded authorization-pair counts, explicit Lighthouse registration references
+and subscription/RG cost-view chart/metric metadata. Joins require unique known
+scoped same-subscription records and matching view-parent scope. Actual compiled
+subscription references require the reviewed implicit-current-subscription
+literal overload; no foreign-subscription overload or read expansion is added.
+The thirteenth actual no-restore compiler case retains all twelve delivered
+cases and exercises the authored Lighthouse/cost-view fixture.
+
+Tenant strategy, automation adoption, actual same-identity/effective delegated
+access, conditional partner status, support operation, reporting outcome,
+mailbox suitability and agreement-specific organizational billing hierarchy
+remain separate attributable decisions. A02.02/A03.01 stay manual. Lighthouse
+resource delegation is not Entra GDAP, billing authority or full ALZ deployment
+authority; service limits override generic template tenant/MG scope options.
+Current UAA exceptions, user-assigned managed-identity federation qualifications,
+EA/MCA/CSP hierarchy/cost-visibility limits and notification/invoice distinctions
+are recorded, without retaining private identities, contacts, billing/query/
+usage/price payloads or credentials. No live route, permission, dependency,
+cloud operation or actual owner approval is introduced.
+
+Final preparation suites each ran **524 tests** in the checkout and own exact
+installed wheel: 523 passed and the original Windows symlink-privilege case
+skipped. All18 cohort02 cases passed. All13 actual existing-compiler cases
+exercised without skips or restoration, preserving all12 delivered cases.
+Format/lint, 42-source-file typing, dependency consistency and379 local
+documentation links passed. The own final wheel was built offline and every109
+package source/data member matched both checkout and outside-checkout
+`site-packages`. The fresh environment's actual missing-`lark` probe preceded
+restoring only the three manifest/hash-reviewed runtime wheels from local pip
+cache. No network installation or other session environment was used. An earlier
+installed run was invalidated by an overlapping environment reinstall; the final
+full run above started after installation completed and passed without weakening
+assertions.
+
+Final preparation wheel SHA256:
+`623e2e48c2162de94c106cf1b1da5a5581eb0a6edd66ee55e984372fed9b33e4`.
+Installed thirteen-case compiler JSON SHA256:
+`e5886a6b8a8bedfe2c8123721a7f31b8f8563e7a5739bebf8784aa5806c7ff0f`.
+Matrix SHA256:
+`f9a1ce180661504477802740d4255bdd5f3dcb03950768f35dd0a5cb415ad94f`;
+source capture SHA256:
+`868c445a6432442d277f12dab85b7ea6f896d7d710cd89e94d3da0d5e16c4781`.
+Catalog/crosswalk/fixed target/ledger bytes and every older receipt remain exact.
+These are preparation proofs, not platform CI, accepted-successor replay or
+merged delivery. Then-current-main reconciliation, exact predecessor freeze,
+source/matrix/bank activation, unique reviewed successor, four matching exercised
+platform compiler artifacts, normal exact-head implementation merge and guarded
+own-GUID receipt publication remain deferred until the coordinator's explicit slot.
+
+## Cohort 23 independent preparation: 2026-11-06
+
+[#124](https://github.com/jonathan-vella/landinglens/issues/124) owns seven fixed
+central logging, SIEM, conditional Azure/M365 Lockbox, Event Grid/log-alert,
+separate-account and two distinct service-plan GUIDs. The
+[preparation matrix](../../references/recommendation-batches/preparation-23.json)
+and [22 source captures](../../references/recommendation-batches/preparation-23-sources.json)
+are deliberately outside accepted builders. No successor version, catalog/
+crosswalk history, ledger/count, registered interview bank, delivery receipt or
+issue closure is activated during independent work.
+
+Literal workspace configuration, default Sentinel workspace extensions,
+workspace-scoped scheduled LogAlert metadata and custom-topic static metric
+criteria reuse existing adapters and diagnostic/security/monitoring helpers.
+Strict unique known typed in-bound source/target joins remain original-time
+preparation, not ingestion, correlation/detection, health, complete coverage,
+tenant equivalence or delivery latency. No KQL, rule body, raw event/log,
+support/private request, personal identity, webhook or credential is retained.
+The actual Event Grid link covers metrics/activity alerts; it cannot establish
+the frozen log-oriented real-time claim. Azure and M365 Lockbox require separate
+eligibility, tenant enablement, supported service/cloud, approver, audit and
+exclusion evidence; Azure feature registration proves neither plane. Three
+organizational decisions remain manual and all seven candidate outcomes blank.
+
+The candidate matrix/interview is exercised without registering an accepted
+successor. Real packaged predecessor replay and an additional actual no-restore
+compiler fixture preserve existing compiler cases and evaluator meanings.
+Final reconciliation, accepted source/schema/bank/catalog activation, checked
+implementation/receipt PRs and closure await the parent's explicit slot after
+05/16. No successor is launched here; no cloud/M365 access is implied.
+
+Preparation checkout and its own exact installed wheel each ran **509 tests**:
+508 passed with the original Windows symlink-privilege skip. All19 cohort cases,
+format/lint, 42-source-file typing, dependency consistency and366 local links pass.
+All twelve actual existing-compiler cases exercised without skips or restore;
+the first eleven are preserved and the twelfth checks real workspace extensions
+and distinct log/metric alert preparation. Compiler proof SHA256:
+`b34cca912cd5b348cc3b3cd04e2eeb8d3e2c3ef8a030c6dbe6b77ec90d2ff0a8`.
+Own offline wheel SHA256:
+`57f0460119d88dbf23b9375010c793fc2120458e9716e0440b19763e1c8b5d9a`.
+All105 packaged code/data bytes match checkout and a fresh outside-checkout
+interpreter proves its own site-packages import. Only the original three reviewed
+runtime wheels were restored from hash-checked local cache after explicit
+missing-`hcl2` failure. No accepted data/ledger bytes changed. These local
+preparation proofs are not accepted-successor replay, platform/CodeQL/PR delivery,
+four matching downloaded compiler artifacts, own-GUID receipts or #124 completion.
 
 ## Cohort 05 granted integration: 2026-11-06
 

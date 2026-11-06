@@ -78,6 +78,41 @@ records remain traceable under explicit lifecycle semantics.
 
 ## Active increment: fixed recommendation expansion
 
+Cohort02/[#127](https://github.com/jonathan-vella/landinglens/issues/127)
+integrates its eight immutable tenant/Lighthouse/support/cost/notification/
+hierarchy GUIDs from24 unchanged captures into reviewed successor `.16` after
+actual23 implementation131/receipt132 and the explicit sole-slot grant.
+Scoped typed registration joins and minimized shared-view metadata
+reuse existing adapters/reviews/tiers/outputs/sessions/replay; they never prove
+tenant strategy, same-identity/effective access, partner applicability, actual
+automation/reporting or agreement suitability. Support and mailbox decisions stay
+manual; all eight independent outcomes stay blank. No new live endpoint,
+directory/billing scope, permission or private payload retention. Exact `.15`,
+every non-own control, all146 preceding rows/seventeen receipts and original four
+full controls remain frozen. Counts stay12/200/43. Actual #134 passed exact-head
+eight-job/CodeQL/security/review and four fifteen-case compiler gates and merged
+normally. Guarded `deliveries.02` binds all eight GUIDs to actual head/merge/runs/
+583-test final wheel, recording154 delivered/97 pending on checked publication.
+Receipt publication and final-main CI still gate #127 closure. The historical independent preparation and
+invalidated-run/final post-install proofs remain recorded separately.
+
+Cohort23/#124 integrates seven immutable logging/support/service workflows in
+[accepted successor `.15`](../../references/recommendation-batches/batch-23.json)
+after actual16 implementation128/receipt129 and the coordinator's explicit slot.
+Bounded workspace/onboarding/log-alert/custom-topic metric facts and strict local
+joins are not ingestion, correlation, real-time delivery or tenant coverage.
+Actual linked Event Grid metric guidance and separate Azure/M365 Lockbox
+eligibility/enablement/approver/audit/exclusion boundaries remain explicit.
+Separate account use and the two different operating plans stay manual; all seven
+registered decisions remain blank and source/content/scope/time bound. Exact
+`.14`, all139 prior own-GUID rows/sixteen receipts and original four full controls
+remain unchanged. #131 passed exact-head platform/CodeQL/security/review and four
+fourteen-case compiler gates and merged normally. Guarded `deliveries.23` binds
+all seven GUIDs to that actual head/merge/runs/559-test wheel, recording146 delivered/
+105 pending on checked publication. Dispositions stay12/200/43; receipt publication
+and final-main CI still gate #124 closure. See
+[integration boundaries](plan.md#cohort-23-accepted-integration-2026-11-06).
+
 Reviewed successor `2026-11-06.13` integrates cohort05/
 [#118](https://github.com/jonathan-vella/landinglens/issues/118) after the sole
 coordinator grant and actual cohort20 implementation122/receipt123 delivery.

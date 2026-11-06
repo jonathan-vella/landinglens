@@ -62,6 +62,38 @@ A reference and principal type do not establish active team membership,
 least privilege or remediation-identity grants. No new cloud read or action,
 rule interpreter, service taxonomy or organizational/regulatory decision is added.
 
+## Cohort 02: tenant and billing configuration, not organizational assurance
+
+The [eight-GUID accepted matrix](../references/recommendation-batches/batch-02.json) and
+[24 unchanged source captures](../references/recommendation-batches/batch-02-sources.json)
+precede `.16` after the explicit slot and actual cohort23 receipt delivery.
+The separate preparation artifacts and their original proofs remain historical;
+acceptance alone establishes no merged delivery or issue closure.
+A02.02 support process and A03.01 mailbox suitability stay
+manual; all eight operating/applicability decisions remain separately blank.
+
+Pinned ARM and AzureRM4.50 Lighthouse projections prepare bounded authorization
+pair counts and an explicit assignment-to-definition reference. Positive joins
+require unique known records, a subscription-level definition and a same-
+subscription subscription/RG assignment inside the selected boundary. Selecting
+an RG never authorizes reading its subscription's definition. Counts are only
+syntactically valid principal/role pairs, not distinct people, current role
+support, effective access, actual same-identity use or partner/CSP status.
+Lighthouse does not delegate tenants/MGs, cross Azure clouds or supply all ALZ
+deployment permissions. Restricted UAA managed-identity assignment support is
+not general access administration.
+
+Only explicit shared-view chart/metric metadata with a matching subscription/RG
+resource-parent scope is prepared. Private/billing/MG views and Terraform
+cost-view resources are not added. Saved views contain configuration, not cost
+data; neither a view nor an Azure MG proves reporting, an agreement or billing
+separation. EA departments/accounts, MCA profiles/invoice sections and CSP
+partner-managed MPA/customer structures differ. CSP visibility policies and
+retail-versus-invoice views, MCA MG limitations, and EA notification-versus-
+invoice contacts require independent review. No tenant/principal/contact/email
+identifiers, private partner records, raw billing names/IDs, prices, usage,
+query bodies or credentials enter these projections. No new live read or action.
+
 ## Cohort 16: network policy configuration, not path or sovereignty assurance
 
 The [nine-GUID matrix](../references/recommendation-batches/batch-16.json) adds
@@ -158,6 +190,30 @@ failover plans remain manual. No DNS record, raw destination or recording secret
 is retained, and no configuration becomes a resolution/security/resilience pass.
 
 ## Tiers and counts
+
+Cohort23's [accepted matrix](../references/recommendation-batches/batch-23.json)
+is included in successor `2026-11-06.15` after the coordinator's explicit slot.
+Its [22 reviewed sources](../references/recommendation-batches/batch-23-sources.json)
+separate central workspace/routing configuration from ingestion, Sentinel
+onboarding from SIEM correlation/detection, and Event Grid service metric alerts
+from log-query alerting and measured end-to-end latency. The existing offline
+adapters prepare only explicit bounded fields and unique known typed
+subscription/RG-local joins; they do not prove tenant equivalence or broaden
+cross-boundary collection. Raw Terraform resource-computed IDs remain unresolved;
+literal supplied parent IDs are required for its onboarding joins.
+
+Azure Lockbox uses tenant administration and requires at least Developer support;
+Azure feature registration is not tenant enablement. M365 has distinct tenant
+enablement, E5/G5 or qualifying add-on licensing, supported services and approver/
+audit responsibilities. Actual service/cloud availability and exclusions need
+review in each plane. Neither an Azure flag nor an imagined ARM/Graph type
+establishes M365 coverage or actual support approvals. Separate privileged-account
+use, new-service readiness and request fulfillment remain three different manual
+decisions. All seven candidate decisions start blank. Preparation adds no live
+reads, queries, alert/event execution, requests, approvals or settings changes.
+The registered interview and actual packaged successor replay share these limits.
+Source acceptance is not exact-head implementation delivery or guarded own-GUID
+receipt publication; those gates remain separate.
 
 Cohort20's [Virtual WAN matrix](../references/recommendation-batches/batch-20.json)
 adds one strict scoped ASPath configuration predicate and eight separate

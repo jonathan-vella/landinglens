@@ -6,8 +6,95 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.14"
+BANK_VERSION = "2026-11-06.16"
 BANK = {
+    "tenant-lighthouse-billing-governance": {
+        "question": "Decide all eight tenant/billing GUIDs independently using redacted "
+        "attributable references. Justify a single corporate tenant or the specific regulatory/"
+        "business requirements that cannot be met there, with authoritative inventory and "
+        "service/B2B, licensing, audit and JML considerations, not resource counts. For "
+        "applicable multitenant platform automation, explain approved complete isolation or "
+        "shared-application/per-tenant-principal boundaries, current user-assigned managed-"
+        "identity federation qualifications, targeting, privilege/credential lifecycle, "
+        "actual authorized operation, monitoring and recovery. Substantiate actual same-"
+        "identity Lighthouse use and effective least-privilege delegated tasks separately "
+        "from registration pairs. Lighthouse delegates subscriptions/RGs, not tenants/MGs "
+        "or across clouds; Owner/custom/DataActions and specified authorization actions are "
+        "unsupported, and UAA's constrained managed-identity assignment exception is not "
+        "general access administration or full ALZ deployment authority. Explicitly establish "
+        "partner/CSP applicability, customer approval, scope, audit/removal and agreement "
+        "conditions; Entra GDAP/DAP, AOBO and resource delegation are different. Separately "
+        "evidence the approved CSP case-creation/support/escalation process and dated operation "
+        "without contacts, tickets or invented SLAs. Demonstrate actual suitable Cost "
+        "Management reports/views, audiences, allocation and current data/access: view "
+        "configuration is not underlying data, shared access, reporting or a pinned dashboard. "
+        "Review actual EA charge policies or CSP Azure Plan/MCA/provider visibility and retail-"
+        "versus-invoice limitations; MCA MG and EA/MCA cost-details MG limitations apply. "
+        "Separately establish appropriate maintained agreement-specific notification group "
+        "mailbox ownership, categories/cadence, delivery/review/escalation and continuity; "
+        "EA notification contacts are not Bill to invoice contacts and MCA differs. Map actual "
+        "approved organizational structure to EA departments/accounts or MCA profiles/invoice "
+        "sections, or applicable CSP partner-managed MPA/customer structures; Azure MG hierarchy "
+        "does not prove billing separation or authority. Never infer commercial model, tenant "
+        "inventory, effective access, automation adoption or business suitability from names "
+        "or metadata. Do not retain tenant/principal/contact/email identifiers, private partner "
+        "records, raw billing names/IDs, prices, usage, query bodies or credentials. All eight "
+        "outcomes stay blank until separately confirmed with scope/content/time/expiry binding; "
+        "support and mailbox suitability stay manual. Signals, humanConfirmed and exceptions "
+        "never manufacture technical Verified or a whole-recommendation pass.",
+        "controls": [
+            "ALZ-70c15989-c726-42c7-b0d3-24b7375b9201",
+            "ALZ-6309957b-821a-43d1-b9d9-7fcf1802b747",
+            "ALZ-78e11934-499a-45ed-8ef7-aae5578f0ecf",
+            "ALZ-5d82e6df-6f61-42f2-82e2-3132d293be3d",
+            "ALZ-a24d0de3-d4b9-4dfb-8ddd-bbfaf123fa01",
+            "ALZ-32952499-58c8-4e6f-ada5-972e67893d55",
+            "ALZ-685cb4f2-ac9c-4b19-9167-993ed0b32415",
+            "ALZ-12cd499f-96e2-4e41-a243-231fb3245a1c",
+        ],
+    },
+    "central-logging-support-service-enablement": {
+        "question": "Reconcile the approved central logging architecture with complete "
+        "platform/application resource populations, diagnostic log categories and original-time "
+        "arriving data. Centralization permits separate tenant, residency, access, ownership, "
+        "retention and resilience boundaries; a local typed workspace join is only supplied "
+        "configuration, not complete coverage. Separately substantiate actual SIEM connectors, "
+        "normalization/time synchronization, cross-service correlation, maintained detections "
+        "and SecOps triage/response using redacted attributable evidence; Sentinel onboarding "
+        "alone proves none and other SIEMs remain valid. For sovereign applicability, review "
+        "Azure and M365 Lockbox separately: Azure tenant enablement, Developer-or-higher "
+        "support, supported service/cloud population, subscription versus tenant approvers/"
+        "audit sources, no MG-scoped approval roles and emergency/incidental/legal-demand "
+        "exclusions; M365 tenant enablement, E5/G5 or qualifying add-on, supported "
+        "Exchange/SharePoint/OneDrive/Teams/Windows365 and Copilot-through-Exchange coverage, "
+        "distinct approver and audit setup. Azure four-day and M365 twelve-hour pending expiry "
+        "are not universal approvals. No feature registration, role assignment or resource "
+        "flag establishes either tenant's effective coverage or actual support approval. "
+        "The Event Grid checklist link covers service metrics/activity alerts, not general "
+        "log-query alerting: explain the real log-to-event/detection/action architecture, "
+        "supported log-query versus metric/activity semantics and original-time end-to-end "
+        "latency/failure/response evidence; configured frequency or a metric alert proves "
+        "neither real-time delivery nor log correlation. Separately evidence everyday versus "
+        "privileged account use, protected accountable administration and emergency/automation "
+        "exceptions without identities. Distinguish the approved new-service readiness/adoption "
+        "plan (network/data protection, identity, segregation, privacy/residency, operations/"
+        "recovery, capacity/SKU/region/GA/compliance/SLA and owners) from the approved "
+        "service-request fulfillment plan (intake, authorization, catalog, accountable "
+        "fulfillment, service-specific targets, validation, escalation, rollback and closure). "
+        "Never invent policy, licensing, SLA, requests or approvals. Use redacted references, "
+        "not logs/KQL/rule bodies, support/private request contents, personal identities, "
+        "endpoints, webhook URLs or credentials. Decide all seven GUIDs independently; a shared "
+        "narrative or Signal never manufactures Verified.",
+        "controls": [
+            "ALZ-e5f8d79f-2e87-4768-924c-516775c6ea95",
+            "ALZ-a56888b2-7e83-4404-bd31-b886528502d1",
+            "ALZ-d21a922d-5ca7-427a-82a6-35f7b21f1bfc",
+            "ALZ-874a748b-662d-46d1-9051-2a66498f6dfe",
+            "ALZ-6f704104-85c1-441f-96d3-c9819911645e",
+            "ALZ-9a19bf39-c95d-444c-9c89-19ca1f6d5215",
+            "ALZ-ae514b93-3d45-485e-8112-9bd7ba012f7b",
+        ],
+    },
     "network-monitoring-sovereignty-policy": {
         "question": "Reconcile the exact ExpressRoute gateway with applicable diagnostics, "
         "actual arriving logs, gateway-specific metrics, approved dimensions/thresholds/"

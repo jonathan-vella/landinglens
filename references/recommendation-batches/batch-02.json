@@ -1,0 +1,235 @@
+{
+  "batch": "02",
+  "issue": 127,
+  "review_state": "owner-delegated-source-backed-matrix",
+  "catalog_version": "2026-11-06.16",
+  "accepted_at": "2026-11-06T18:24:50.687Z",
+  "activation": "Explicit coordinator slot after actual16 implementation128/receipt129,23 implementation131/receipt132 and124closure; reconcile actualmain35156dd and preserve all146 prior rows/seventeen own receipts. Acceptance alone is not delivery; checked implementation and guarded own8 receipts still gate127closure.",
+  "prerequisites": [
+    "05",
+    "16",
+    "23"
+  ],
+  "integration_base_commit": "35156dd37a43e6dd79c0c5d5ad8ab2b8f20bc1a5",
+  "preparation_commit": "24fa7cb9851d97d4f54bf04523628e00ae178363",
+  "preserved_catalog_bytes": {
+    "2026-11-06.15": "88bf9dffc2c9ae0efbd27acd2dcfefa34b7c15225a640cf35609ca4ea466321f"
+  },
+  "preserved_crosswalk_bytes": {
+    "2026-11-06.15": "287a4495171c2d72db362c97e1528767af231ffd4046e17410d2bf1a328a3323"
+  },
+  "preserved_delivery_batches": [
+    "01",
+    "17",
+    "18",
+    "19",
+    "11",
+    "04",
+    "13",
+    "22",
+    "14",
+    "12",
+    "15",
+    "08",
+    "30",
+    "20",
+    "05",
+    "16",
+    "23"
+  ],
+  "preserved_delivery_receipts_sha256": "bc563dfa7d514c2c1d159669eef95e7ebe16cad98cdb965529b51ab4c1ecbe92",
+  "preserved_merged_recommendations_sha256": "b56f0606a0f368fd0a59c941183849f16059f5fab582616a247085f9f8193171",
+  "baseline_main": "4e0fdd9b899a8c155e20e6caf022279fe8c1b48a",
+  "recommendations": [
+    {
+      "upstream_id": "A01.01",
+      "guid": "70c15989-c726-42c7-b0d3-24b7375b9201",
+      "classification": "assisted",
+      "sources": [
+        "tenant-strategy",
+        "ea-guidance",
+        "mca-guidance"
+      ],
+      "evidence_requirements": [
+        "Preparation: current guidance favors a single corporate tenant and separate ALZ deployments where multiple tenants are justified; there is no supported ARM predicate for organizational or regulatory need.",
+        "Reviewer decision: cite an attributable dated tenant-strategy decision and redacted authoritative inventory reference; document the specific regulatory/business requirements that cannot be met in one tenant and the considered single-tenant alternatives.",
+        "Reviewer decision: independently substantiate tenant/ALZ boundaries, workload service/B2B support, collaboration, licensing, audit and JML implications. Neither subscription/resource counts nor Lighthouse registrations prove complete tenant inventory or strategy suitability."
+      ],
+      "limitations": "Business and regulatory suitability remain explicit decisions. No tenant names/IDs, directory enumeration, cross-cloud assumption, migration or inferred tenant strategy. EA/MCA can span tenants under their conditions; agreement count is not tenant count.",
+      "flags": []
+    },
+    {
+      "upstream_id": "A01.02",
+      "guid": "6309957b-821a-43d1-b9d9-7fcf1802b747",
+      "classification": "assisted",
+      "sources": [
+        "tenant-automation",
+        "tenant-strategy",
+        "lighthouse-role-limits"
+      ],
+      "evidence_requirements": [
+        "Preparation: reviewed platform automation models distinguish complete isolation from a shared multitenant application with per-tenant service principals; current user-assigned managed-identity federation qualifications apply. No directory/application/pipeline inventory is collected.",
+        "Reviewer decision: establish whether multitenant platform automation applies, then cite the approved operating model, isolation rationale and redacted repository/pipeline/identity boundary and privilege-management references.",
+        "Reviewer decision: independently demonstrate actual authorized operation, tenant targeting, credential/federation lifecycle, change control, monitoring and recovery. Configuration or a Lighthouse pair does not prove execution, adoption or the owner/authorization rights needed for whole-platform ALZ deployment."
+      ],
+      "limitations": "No actual cross-tenant automation, new identity trust/registration/consent, pipeline execution or credentials. Example approaches are not universal workload requirements. Lighthouse's restricted UAA exception does not provide general access administration.",
+      "flags": []
+    },
+    {
+      "upstream_id": "A01.03",
+      "guid": "78e11934-499a-45ed-8ef7-aae5578f0ecf",
+      "classification": "assisted",
+      "sources": [
+        "alz-lighthouse",
+        "lighthouse-overview",
+        "lighthouse-architecture",
+        "lighthouse-role-limits",
+        "lighthouse-definition-arm",
+        "lighthouse-assignment-arm",
+        "terraform-lighthouse-definition",
+        "terraform-lighthouse-definition-implementation",
+        "terraform-lighthouse-assignment",
+        "terraform-lighthouse-assignment-implementation",
+        "subscription-resource-reference"
+      ],
+      "review_resource_types": [
+        "Microsoft.ManagedServices/registrationAssignments"
+      ],
+      "review_fact_paths": [
+        "registrationDefinitionId"
+      ],
+      "evidence_requirements": [
+        "Preparation: explicit subscription/RG assignment-to-subscription-definition reference, unique known same-subscription records within the selected boundary and bounded syntactically valid authorization-pair counts only. RG selection does not authorize reading its subscription-level definition.",
+        "Reviewer decision: substantiate applicable multitenant management and actual authorized same-identity use with attributable redacted evidence, including intended tasks, supported cloud, selected subscription/RG scopes and least-privilege roles.",
+        "Reviewer decision: separately substantiate effective delegated access, current built-in-role/action restrictions, eligible/JIT activation and managing-tenant licensing where applicable. Owner/custom/DataActions roles are unsupported; constrained UAA managed-identity assignments are not general access administration."
+      ],
+      "limitations": "Joined registration metadata is partial configuration, not effective authority, identity use, onboarding success, full tenant inventory or directory/billing access. Lighthouse does not delegate tenants/MGs or cross clouds. Public role-reference syntax/counts establish neither supported roles nor permissions. No raw tenant/principal identifiers or private authorization details retained.",
+      "flags": []
+    },
+    {
+      "upstream_id": "A02.01",
+      "guid": "5d82e6df-6f61-42f2-82e2-3132d293be3d",
+      "classification": "assisted",
+      "sources": [
+        "lighthouse-overview",
+        "lighthouse-csp",
+        "csp-guidance",
+        "lighthouse-role-limits",
+        "lighthouse-definition-arm",
+        "lighthouse-assignment-arm",
+        "terraform-lighthouse-definition-implementation",
+        "terraform-lighthouse-assignment-implementation"
+      ],
+      "review_resource_types": [
+        "Microsoft.ManagedServices/registrationAssignments"
+      ],
+      "review_fact_paths": [
+        "registrationDefinitionId"
+      ],
+      "evidence_requirements": [
+        "Preparation: the same strict subscription/RG registration join provides bounded resource-delegation configuration only; it does not identify a partner, CSP reseller, contract or commercial model.",
+        "Reviewer decision: explicitly establish whether partner administration applies from an approved redacted agreement/reference, then substantiate customer approval, intended resource scope/tasks, least privilege, removal/audit and current role support.",
+        "Reviewer decision: distinguish Lighthouse resource delegation from Entra GDAP/DAP and billing authority; reconcile CSP AOBO and private marketplace-plan restrictions where relevant. No Lighthouse registration can demonstrate whole-tenant administration or partner support effectiveness."
+      ],
+      "limitations": "Partner applicability and actual authorized access remain separately attributable decisions. No auto-exclusion from absent registrations, guessed commercial model, new delegation or retained partner-private records.",
+      "flags": []
+    },
+    {
+      "upstream_id": "A02.02",
+      "guid": "a24d0de3-d4b9-4dfb-8ddd-bbfaf123fa01",
+      "classification": "manual",
+      "sources": [
+        "csp-guidance",
+        "lighthouse-csp"
+      ],
+      "evidence_requirements": [
+        "Preparation: CSP guidance identifies the partner as first support contact and requires agreement on case creation and escalation; Lighthouse and GDAP are not evidence of this process.",
+        "Reviewer decision: establish CSP applicability explicitly and cite the approved redacted support/request/escalation process, accountable roles, service coverage and agreed response/escalation paths.",
+        "Reviewer decision: substantiate communication, current availability and dated exercise or real operation with redacted evidence references, without retaining tickets, personal contact details or confidential partner records."
+      ],
+      "limitations": "Manual support-process and operating-effectiveness decision. No support case, message, contact lookup, invented SLA or inferred CSP relationship. Not-applicable requires its own bound rationale.",
+      "flags": []
+    },
+    {
+      "upstream_id": "A02.03",
+      "guid": "32952499-58c8-4e6f-ada5-972e67893d55",
+      "classification": "assisted",
+      "sources": [
+        "mca-guidance",
+        "cost-scopes",
+        "cost-views",
+        "cost-csp",
+        "cost-view-arm"
+      ],
+      "review_resource_types": [
+        "Microsoft.CostManagement/views"
+      ],
+      "review_fact_paths": [
+        "costViewSummary"
+      ],
+      "evidence_requirements": [
+        "Preparation: pinned ARM shared-view chart/metric enums and explicit subscription/RG view scope must match the unique known resource parent inside the selected boundary. Query bodies, filters, amounts, usage, names and billing identifiers are withheld; private/billing/MG views are not supported projections.",
+        "Reviewer decision: establish actual agreement, reporting audience and approved cost-allocation/reporting requirements; demonstrate current appropriate reports/views and their actual use with attributable redacted evidence.",
+        "Reviewer decision: substantiate effective RBAC/billing visibility, EA charge policies or CSP Azure Plan/MCA/provider visibility conditions as applicable. Distinguish CSP retail views from partner invoice prices, MCA hierarchy from EA and saved configuration from underlying data, shared access or a pinned dashboard snapshot."
+      ],
+      "limitations": "View metadata proves neither reporting outcome, current data, complete costs, invoice access nor financial suitability. MCA MG Cost Management and EA/MCA MG cost-details limitations remain explicit. No query execution, billing-plane reads, prices, usage, permissions or scheduled email.",
+      "flags": []
+    },
+    {
+      "upstream_id": "A03.01",
+      "guid": "685cb4f2-ac9c-4b19-9167-993ed0b32415",
+      "classification": "manual",
+      "sources": [
+        "ea-notification",
+        "ea-guidance",
+        "mca-guidance"
+      ],
+      "evidence_requirements": [
+        "Preparation: EA notification contacts and Bill to invoice contacts have different purposes; MCA billing-account notification guidance differs. There is no subscription-level ARM field proving group-mailbox suitability.",
+        "Reviewer decision: establish agreement-specific notification requirements and cite redacted approved configuration/ownership references confirming an appropriate maintained group mailbox and authorized coverage of required categories/cadence.",
+        "Reviewer decision: separately substantiate delivery/review/escalation and continuity with dated redacted references; do not retain mailbox addresses, contact identifiers, memberships or message contents. A configured address, action group or budget recipient does not prove billing notification coverage."
+      ],
+      "limitations": "Manual group-mailbox suitability and actual notification operation. No mailbox/contact/notification read or change, sent test message, inferred recipient/group or billing access. Upcoming EA WSA-only assignment policy is not proof of notification configuration.",
+      "flags": []
+    },
+    {
+      "upstream_id": "A03.02",
+      "guid": "12cd499f-96e2-4e41-a243-231fb3245a1c",
+      "classification": "assisted",
+      "sources": [
+        "ea-guidance",
+        "mca-guidance",
+        "csp-guidance",
+        "cost-scopes",
+        "ea-notification"
+      ],
+      "evidence_requirements": [
+        "Preparation: EA enrollment/departments/accounts/subscriptions, MCA billing account/profiles/invoice sections/subscriptions and CSP partner-managed MPA/customer structures are different. Azure MG/resource hierarchy is not a billing hierarchy.",
+        "Reviewer decision: explicitly establish the actual applicable agreement and approved organizational mapping using attributable redacted authoritative references; for EA substantiate department/account mapping and intended billing separation, for MCA the corresponding profile/invoice-section design.",
+        "Reviewer decision: demonstrate actual hierarchy, scoped ownership, coverage and current operation, including agreement-specific roles and constraints. Do not retain account/enrollment names/IDs, private contracts, prices or financial records; a subscription belongs to only one EA account or MCA invoice section at a time under applicable rules."
+      ],
+      "limitations": "Agreement-specific hierarchy and organizational suitability remain human decisions. No tenant/resource names, counts, MG parents or Lighthouse records infer a contract or prove billing separation. EA quota is not enforcement; billing roles do not imply directory/resource authority. No invented billing-plane ARM resource or scope expansion.",
+      "flags": []
+    }
+  ],
+  "source_acquisition_notes": [
+    "All eight original checklist links and current linked limitations were inspected; locale redirects and actual public page revisions/hashes are captured separately.",
+    "Generic ARM template deployment-scope lists conflict with Lighthouse service-specific limits. Support is deliberately narrower: subscription definitions and subscription/RG assignments; no tenant/MG delegation.",
+    "The first source-capture attempt found no Creative Commons marker on the actual Learn terms page. Its explicit-license/document terms were inspected instead; no page/sample/provider content is redistributed.",
+    "Only pinned AzureRM4.50 Lighthouse definitions/assignments are added. No AzAPI or guessed Terraform cost-view/billing resource support, new transport, endpoint, dependency or compiler acquisition."
+  ],
+  "interview": {
+    "id": "tenant-lighthouse-billing-governance",
+    "question": "Decide all eight tenant/billing GUIDs independently using redacted attributable references. Justify a single corporate tenant or the specific regulatory/business requirements that cannot be met there, with authoritative inventory and service/B2B, licensing, audit and JML considerations, not resource counts. For applicable multitenant platform automation, explain approved complete isolation or shared-application/per-tenant-principal boundaries, current user-assigned managed-identity federation qualifications, targeting, privilege/credential lifecycle, actual authorized operation, monitoring and recovery. Substantiate actual same-identity Lighthouse use and effective least-privilege delegated tasks separately from registration pairs. Lighthouse delegates subscriptions/RGs, not tenants/MGs or across clouds; Owner/custom/DataActions and specified authorization actions are unsupported, and UAA's constrained managed-identity assignment exception is not general access administration or full ALZ deployment authority. Explicitly establish partner/CSP applicability, customer approval, scope, audit/removal and agreement conditions; Entra GDAP/DAP, AOBO and resource delegation are different. Separately evidence the approved CSP case-creation/support/escalation process and dated operation without contacts, tickets or invented SLAs. Demonstrate actual suitable Cost Management reports/views, audiences, allocation and current data/access: view configuration is not underlying data, shared access, reporting or a pinned dashboard. Review actual EA charge policies or CSP Azure Plan/MCA/provider visibility and retail-versus-invoice limitations; MCA MG and EA/MCA cost-details MG limitations apply. Separately establish appropriate maintained agreement-specific notification group mailbox ownership, categories/cadence, delivery/review/escalation and continuity; EA notification contacts are not Bill to invoice contacts and MCA differs. Map actual approved organizational structure to EA departments/accounts or MCA profiles/invoice sections, or applicable CSP partner-managed MPA/customer structures; Azure MG hierarchy does not prove billing separation or authority. Never infer commercial model, tenant inventory, effective access, automation adoption or business suitability from names or metadata. Do not retain tenant/principal/contact/email identifiers, private partner records, raw billing names/IDs, prices, usage, query bodies or credentials. All eight outcomes stay blank until separately confirmed with scope/content/time/expiry binding; support and mailbox suitability stay manual. Signals, humanConfirmed and exceptions never manufacture technical Verified or a whole-recommendation pass.",
+    "controls": [
+      "ALZ-70c15989-c726-42c7-b0d3-24b7375b9201",
+      "ALZ-6309957b-821a-43d1-b9d9-7fcf1802b747",
+      "ALZ-78e11934-499a-45ed-8ef7-aae5578f0ecf",
+      "ALZ-5d82e6df-6f61-42f2-82e2-3132d293be3d",
+      "ALZ-a24d0de3-d4b9-4dfb-8ddd-bbfaf123fa01",
+      "ALZ-32952499-58c8-4e6f-ada5-972e67893d55",
+      "ALZ-685cb4f2-ac9c-4b19-9167-993ed0b32415",
+      "ALZ-12cd499f-96e2-4e41-a243-231fb3245a1c"
+    ]
+  }
+}

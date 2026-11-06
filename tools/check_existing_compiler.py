@@ -50,6 +50,10 @@ if compiler:
         "test_real_bicep_policy_gateway_diagnostics_without_restore",
         "test_policy_strategy_preparation.PolicyStrategyPreparationTests."
         "test_real_bicep_policy_strategy_without_restore",
+        "test_logging_preparation.LoggingPreparationTests."
+        "test_real_bicep_logging_workspace_extensions_and_alerts_without_restore",
+        "test_tenant_preparation.TenantPreparationTests."
+        "test_real_bicep_tenant_configuration_without_restore",
     ]
     suite = unittest.defaultTestLoader.loadTestsFromNames(cases)
     result = unittest.TextTestRunner(verbosity=2).run(suite)
