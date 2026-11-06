@@ -55,6 +55,11 @@ TF_TYPES = {
     "azurerm_virtual_network_gateway_connection": "Microsoft.Network/connections",
     "azurerm_role_assignment": "Microsoft.Authorization/roleAssignments",
     "azurerm_role_definition": "Microsoft.Authorization/roleDefinitions",
+    "azurerm_policy_definition": "Microsoft.Authorization/policyDefinitions",
+    "azurerm_policy_set_definition": "Microsoft.Authorization/policySetDefinitions",
+    "azurerm_management_group_policy_assignment": "Microsoft.Authorization/policyAssignments",
+    "azurerm_subscription_policy_assignment": "Microsoft.Authorization/policyAssignments",
+    "azurerm_resource_group_policy_assignment": "Microsoft.Authorization/policyAssignments",
     "azurerm_availability_set": "Microsoft.Compute/availabilitySets",
     "azurerm_active_directory_domain_service": "Microsoft.AAD/domainServices",
     "azurerm_security_center_subscription_pricing": "Microsoft.Security/pricings",
@@ -135,6 +140,7 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     from .identity_evidence import IDENTITY_KINDS, identity_summary, role_properties
     from .identity_evidence import projected_properties as identity_properties
     from .network_policy_evidence import projected_properties as network_policy_properties
+    from .policy_strategy_evidence import projected_properties as policy_strategy_properties
     from .security_evidence import projected_properties as security_properties
 
     if kind == "azurerm_role_assignment":
@@ -152,6 +158,7 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     result.update(governance_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(network_policy_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(identity_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
+    result.update(policy_strategy_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     return result
 
 
@@ -402,6 +409,11 @@ def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str 
                 parent + ("/connectionMonitors/" if monitor else "/securityPolicies/") + name
             )
         return None
+    from .policy_strategy_evidence import TF_SCOPES
+    from .policy_strategy_evidence import tf_resource_id as policy_resource_id
+
+    if kind in TF_SCOPES or kind in {"azurerm_policy_definition", "azurerm_policy_set_definition"}:
+        return policy_resource_id(scope, kind, values)
     if kind == "azurerm_role_assignment":
         from .network_evidence import reference
 

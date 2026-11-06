@@ -40,6 +40,28 @@ No current regional/port availability, achieved throughput/latency, working
 FastPath, operational redundancy or economic suitability follows from settings.
 ARM scale support does not imply the pinned Terraform provider supports it.
 
+## Cohort 27 preparation: Policy configuration, not governance assurance
+
+The [eight-GUID preparation](../references/recommendation-batches/preparation-27.json)
+is not accepted activation or delivery. Bounded literal definition/initiative/
+assignment facts, exact supplied-version custom joins and original-time positive
+hierarchy paths prepare eight independent decisions. They prove no effective
+conditions, inheritance/enforcement, legal compliance, approved-service list,
+built-in suitability, appropriate organizational scope or actual delegation.
+Global built-ins remain unfetched references; custom definitions are scoped to
+management groups/subscriptions, not resource groups.
+
+The reviewer must explicitly establish tenant/intermediate-root identity and
+purpose. A name, missing parent or the highest visible selected node is not root
+evidence. Root-assignment guidance supplies no numeric cap. Exclusions and tracked
+expiring/member/selector-bound exemptions differ; selector/override counts and
+`Default` enforcement do not prove an outcome, and `DoNotEnforce` still permits
+evaluation. Resource Policy Contributor includes broad control-plane read and
+PolicyInsights/deployments/support, not role-assignment write or dataActions.
+A reference and principal type do not establish active team membership,
+least privilege or remediation-identity grants. No new cloud read or action,
+rule interpreter, service taxonomy or organizational/regulatory decision is added.
+
 ## Cohort 16: network policy configuration, not path or sovereignty assurance
 
 The [nine-GUID matrix](../references/recommendation-batches/batch-16.json) adds

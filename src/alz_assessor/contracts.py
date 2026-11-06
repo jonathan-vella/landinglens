@@ -338,6 +338,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                 from .dns_evidence import PATHS as DNS_PATHS
                 from .identity_evidence import PATHS as IDENTITY_PATHS
                 from .network_policy_evidence import PATHS as NETWORK_POLICY_PATHS
+                from .policy_strategy_evidence import PATHS as POLICY_STRATEGY_PATHS
                 from .virtual_wan_evidence import PATHS as VWAN_PATHS
 
                 paths = require(control, "review_fact_paths", list)
@@ -456,6 +457,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                             | IDENTITY_PATHS
                             | NETWORK_POLICY_PATHS
                             | VWAN_PATHS
+                            | POLICY_STRATEGY_PATHS
                         )
                         for path in paths
                     )

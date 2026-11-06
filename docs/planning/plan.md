@@ -1,5 +1,66 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 27 independent preparation: 2026-11-06
+
+[#130](https://github.com/jonathan-vella/landinglens/issues/130) prepares exactly
+E01.01/.03/.04/.05/.06/.07/.08/.09; there is no invented E01.02 target.
+The [eight-GUID matrix](../../references/recommendation-batches/preparation-27.json)
+and [22 actual source captures](../../references/recommendation-batches/preparation-27-sources.json)
+retain original-time URL/resolution, revision/hash, reuse terms and specific
+Policy/MCSB/RBAC/hierarchy/ARM/provider limitations. The initially attempted CAF
+`management-group` URL returned404; the reviewed actual page is
+`resource-org-management-groups`. Current regulatory grouping guidance calls the
+feature Preview; current Resource Policy Contributor guidance includes enrollments.
+Neither alters frozen checklist wording or existing Policy/query Signal meanings.
+
+The single evaluator's existing ARM/raw supplied-module/optional-plan adapters,
+hierarchy, reviews, tiers, reports/trackers and local sessions share minimized
+configuration. Typed unique-known in-scope custom references require exact
+supplied versions and positive placement ancestry. Global built-ins remain
+unfetched references, not intermediate-root custom definitions. Provider metadata
+does not manufacture a version; wildcards/missing versions cannot make exact joins.
+The real no-restore compiler fixture covers only the supported new Policy types.
+The eight-decision interview is exercised in memory, not registered in the
+accepted bank, and accepted replay guards still reject the unaccepted catalog.
+Existing accepted/historical original-time replay retains projected facts.
+
+No whole-recommendation predicate is added. Literal effects, assignment scope,
+exclusions, selector/override counts, separate saved exemptions and scoped role
+references prove no strategy, legal compliance, service approval, suitable
+built-ins, effective enforcement/inheritance or application-team delegation.
+Root/intermediate purpose must be explicitly established: names/missing parents/
+selected trees cannot do so, and no numeric root-assignment cap is invented.
+Rules/parameters/selectors/override bodies and values, regulatory mappings,
+private labels and principal records are withheld.
+
+This is independent preparation on actual `3dc42b209a74a11f0be8fabfa17795177bd9a097`.
+The coordinator retains serialized23/02/27 delivery slots. No accepted catalog,
+crosswalk, count, history, receipt, interview registration, merge or issue closure
+changes before an explicit slot and then-current-main reconciliation. No new live
+Azure/Policy/Graph/hierarchy/role/compliance read, login, query, Policy evaluation,
+remediation, grant/settings/deployment action, dependency or acquisition is added.
+
+Preparation verification ran **555 tests in both the checkout and own clean
+installed wheel:554 passed, one original Windows symlink-privilege skip**.
+All20 cohort27 cases pass, including source identity, scope/version/uniqueness/
+hierarchy, conditional/unsupported/denied/stale inputs, privacy, separate blank
+decisions, all-format/session binding and accepted/historical original-time
+replay. Existing accepted controls acquire no new Policy context before
+activation, and the unaccepted authored catalog still cannot be exported as
+accepted replay.
+
+All14 actual existing-compiler cases exercised without restoration or compiler
+skips, retaining the thirteen predecessors and adding the supported Policy fixture.
+Format/lint,43-source-file typing, dependency consistency and393 local links pass.
+Own offline wheel SHA256 is
+`6eac140127e11654c51e1b5c498a244bba8ae9b5f3f4031c2ed6fc947ce21610`.
+The outside-checkout interpreter imports its own site-packages package and matches
+all114 packaged source/data/license files byte-for-byte. The three unchanged
+manifest runtime wheels were restored only after an actual offline missing-wheel
+failure; no dependency was added. These are preparation proofs, not then-current
+main reconciliation, final CI/review/four-platform compiler artifacts, normal
+merge, guarded own-GUID receipts or satisfied #130 closure.
+
 ## Cohort 16 accepted integration: 2026-11-06
 
 The coordinator granted [#121](https://github.com/jonathan-vella/landinglens/issues/121)
