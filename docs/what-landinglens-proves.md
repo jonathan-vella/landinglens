@@ -40,6 +40,38 @@ No current regional/port availability, achieved throughput/latency, working
 FastPath, operational redundancy or economic suitability follows from settings.
 ARM scale support does not imply the pinned Terraform provider supports it.
 
+## Cohort 02: tenant and billing configuration, not organizational assurance
+
+The [eight-GUID accepted matrix](../references/recommendation-batches/batch-02.json) and
+[24 unchanged source captures](../references/recommendation-batches/batch-02-sources.json)
+precede `.16` after the explicit slot and actual cohort23 receipt delivery.
+The separate preparation artifacts and their original proofs remain historical;
+acceptance alone establishes no merged delivery or issue closure.
+A02.02 support process and A03.01 mailbox suitability stay
+manual; all eight operating/applicability decisions remain separately blank.
+
+Pinned ARM and AzureRM4.50 Lighthouse projections prepare bounded authorization
+pair counts and an explicit assignment-to-definition reference. Positive joins
+require unique known records, a subscription-level definition and a same-
+subscription subscription/RG assignment inside the selected boundary. Selecting
+an RG never authorizes reading its subscription's definition. Counts are only
+syntactically valid principal/role pairs, not distinct people, current role
+support, effective access, actual same-identity use or partner/CSP status.
+Lighthouse does not delegate tenants/MGs, cross Azure clouds or supply all ALZ
+deployment permissions. Restricted UAA managed-identity assignment support is
+not general access administration.
+
+Only explicit shared-view chart/metric metadata with a matching subscription/RG
+resource-parent scope is prepared. Private/billing/MG views and Terraform
+cost-view resources are not added. Saved views contain configuration, not cost
+data; neither a view nor an Azure MG proves reporting, an agreement or billing
+separation. EA departments/accounts, MCA profiles/invoice sections and CSP
+partner-managed MPA/customer structures differ. CSP visibility policies and
+retail-versus-invoice views, MCA MG limitations, and EA notification-versus-
+invoice contacts require independent review. No tenant/principal/contact/email
+identifiers, private partner records, raw billing names/IDs, prices, usage,
+query bodies or credentials enter these projections. No new live read or action.
+
 ## Cohort 16: network policy configuration, not path or sovereignty assurance
 
 The [nine-GUID matrix](../references/recommendation-batches/batch-16.json) adds

@@ -33,11 +33,41 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.15` retains all 255 entries: 12 automated, 200 assisted
-and 43 manual. Crosswalk `2026-11-06.15` rebinds the unchanged 51-control,
+Current successor `2026-11-06.16` retains all 255 entries: 12 automated, 200 assisted
+and 43 manual. Crosswalk `2026-11-06.16` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-Exact predecessor `.6.13` is frozen; source-matrix acceptance alone is not delivery.
+Exact predecessor `.6.15` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
+
+### Cohort 02: tenant, Lighthouse and agreement-specific billing governance
+
+The [eight-GUID accepted matrix](../references/recommendation-batches/batch-02.json)
+and [24 unchanged captures](../references/recommendation-batches/batch-02-sources.json)
+follow the explicit coordinator slot after actual cohort23 delivery. Six assisted
+workflows and two manual recommendations share existing adapters, review/tier/
+report/session paths and packaged original-time replay. No whole predicate is
+promoted. All146 preceding own-GUID rows/seventeen receipts, exact `.15` bytes
+and non-own control objects remain unchanged.
+
+Subscription-level Lighthouse definitions, subscription/RG assignments and
+bounded syntactically valid authorization-pair counts prepare only configuration.
+Strict unique known in-bound same-subscription joins never prove complete tenant
+inventory, actual same-identity use, supported roles, effective access, partner
+status or platform-automation adoption. No tenant/MG/cross-cloud delegation is
+invented. Pinned shared-view chart/metric/scope metadata is not underlying costs,
+reporting operation, invoice access or financial suitability; explicit view scope
+must match its subscription/RG resource parent. No Graph/directory/billing plane,
+new live route, endpoint, dependency, query execution or private payload retention.
+
+The registered `tenant-lighthouse-billing-governance` interview leaves all eight
+independent outcomes blank. Tenant strategy and automation, partner applicability,
+CSP support, reporting, manual group-mailbox suitability and EA/MCA/CSP-specific
+hierarchy/organizational fit require separately attributable evidence. Lighthouse
+resource delegation, GDAP/DAP and billing roles are distinct; restricted UAA is
+not general access administration. EA notification and Bill to contacts differ.
+The [preparation history](planning/plan.md#cohort-02-independent-preparation-2026-11-06)
+retains its superseded-run history and final post-install proof. Acceptance is not
+merged delivery or actual tenant, partner or financial assurance.
 
 ### Cohort 23: central logging, support access and service enablement
 

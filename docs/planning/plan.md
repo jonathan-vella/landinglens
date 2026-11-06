@@ -1,5 +1,77 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 02 accepted integration: 2026-11-06
+
+The coordinator granted [#127](https://github.com/jonathan-vella/landinglens/issues/127)
+the sole slot after actual cohort23 implementation131/receipt132 and #124
+completed closure,146 independently verified delivered GUIDs/seventeen receipts.
+Preserved preparation `24fa7cb` was reconciled with actual main
+`35156dd37a43e6dd79c0c5d5ad8ab2b8f20bc1a5` in `06937d4`, retaining cohort16/23
+scope/tier/bank interfaces, canonical invalid-gateway-target replay normalization,
+all prior controls and all fourteen actual compiler cases. The
+[eight-GUID matrix](../../references/recommendation-batches/batch-02.json) and
+[24 unchanged source captures](../../references/recommendation-batches/batch-02-sources.json)
+precede unique reviewed successor `2026-11-06.16` via existing offline
+`build_batches`/`build_crosswalk`. Exact `.15` catalog bytes:
+`88bf9dffc2c9ae0efbd27acd2dcfefa34b7c15225a640cf35609ca4ea466321f`;
+crosswalk bytes:
+`287a4495171c2d72db362c97e1528767af231ffd4046e17410d2bf1a328a3323`.
+Every non-own control object, fixed251/original four full controls and all146
+older own-GUID rows/seventeen receipts remain unchanged.
+
+Existing adapters/evaluator prepare minimized subscription-level Lighthouse
+authorization-pair counts, explicit subscription/RG assignment-to-definition
+references and shared-view chart/metric/scope metadata. Strict unique known
+typed same-subscription joins stay inside the selected boundary, including only
+existing positively bound saved MG edges. RG selection does not authorize its
+subscription's definition. View scope must exactly match its resource parent;
+bare scope metadata does not produce a Signal. The Bicep fixture requires only
+the reviewed implicit-current-subscription literal ID overload, not a foreign
+subscription/read expansion. The new fixture is the fifteenth actual existing
+no-restore compiler case, retaining all fourteen delivered cases.
+
+Six assisted workflows and inherently manual CSP support/group-mailbox decisions
+retain eight separately blank registered decisions, scoped content/attribution/
+expiry, independent exceptions and explicit unknown/partial/stale/denied/
+ambiguous/malformed/unsupported/over-bound limits. Actual tenant strategy,
+automation adoption, same-identity/effective delegated use, partner applicability,
+support/reporting/notification operation and agreement-specific organizational
+billing suitability are not inferred. Lighthouse is resource delegation, not
+tenant/MG/cross-cloud delegation, Entra GDAP/DAP or billing authority. Current role
+restrictions, constrained UAA managed-identity exception, identity-federation
+qualifications, EA/MCA/CSP hierarchy/cost visibility and notification/invoice
+distinctions stay explicit. No tenant/principal/contact/email identifiers,
+private partner records, raw billing names/IDs, prices, usage, query bodies or
+credentials enter new projections. No live route, permission, dependency,
+cloud operation or actual owner approval is added.
+
+Actual accepted-package original-time replay, installed CLI, review/interview/
+tier/report/tracker/session behavior are exercised, not just crosswalk hashes.
+Historical `.15` assertions now use their exact frozen catalog/crosswalk rather
+than accidentally rebinding to the latest successor; preparation replay refusal
+and original post-install/superseded-run history remain intact. Dispositions stay
+**12 automated /200 assisted /43 manual**, with all255 visible and unchanged
+51-control/53-association crosswalk. Cohort02 has no query association; only the
+existing exact D07.06/.07 allowlist remains executable, without new execution.
+Delivery stays **146 delivered /105 pending** until normal exact-head platform/
+CodeQL/review/four matching exercised compiler gates, implementation merge and
+guarded own-eight receipt publication satisfy their gates.
+
+Pre-delivery checkout and own exact installed-wheel suites each ran **583 tests**:
+582 passed with only the original Windows symlink-privilege skip. All23 cohort02
+preparation/accepted cases pass, as do format/lint, 44-source-file typing,
+dependency consistency and414 local documentation links. All fifteen actual
+existing-compiler integrations exercised without skips or restore, retaining the
+fourteen preceding cases. Own final offline wheel SHA256:
+`1f71423241ba5e0b56bec415299eabf915bbccf39f82a2c62780433868a53a86`.
+All123 package source/data members match checkout and a fresh own outside-
+checkout `site-packages` `.16` installation. Its actual missing-`lark` probe
+preceded restoring only the three manifest/hash-reviewed runtime wheels from
+this session's local staging, offline. No other session environment, package
+publication, live runtime result or fabricated human decision substitutes for
+these local proofs. Historical preparation's invalidated run and final post-
+install evidence remain distinct from this final implementation proof.
+
 ## Cohort 23 accepted integration: 2026-11-06
 
 The coordinator granted [#124](https://github.com/jonathan-vella/landinglens/issues/124)
@@ -290,6 +362,67 @@ Original research basis: an earlier report retained in the planning session,
 not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
+
+## Cohort 02 independent preparation: 2026-11-06
+
+[#127](https://github.com/jonathan-vella/landinglens/issues/127) owns exactly the
+eight A01.01-A03.02 GUIDs in its
+[preparation matrix](../../references/preparation/batch-02.json), backed by
+[24 actual source captures](../../references/preparation/batch-02-sources.json).
+Baseline is main `4e0fdd9b899a8c155e20e6caf022279fe8c1b48a`; cohorts16/23 retain
+their preceding delivery gates. Preparation does not choose/register a successor,
+activate accepted source/matrix/catalog/crosswalk/history/counts or the interview
+bank, create a delivered receipt, merge or close #127.
+
+Existing adapters/evaluator/review/tier/report/session/replay helpers prepare
+bounded authorization-pair counts, explicit Lighthouse registration references
+and subscription/RG cost-view chart/metric metadata. Joins require unique known
+scoped same-subscription records and matching view-parent scope. Actual compiled
+subscription references require the reviewed implicit-current-subscription
+literal overload; no foreign-subscription overload or read expansion is added.
+The thirteenth actual no-restore compiler case retains all twelve delivered
+cases and exercises the authored Lighthouse/cost-view fixture.
+
+Tenant strategy, automation adoption, actual same-identity/effective delegated
+access, conditional partner status, support operation, reporting outcome,
+mailbox suitability and agreement-specific organizational billing hierarchy
+remain separate attributable decisions. A02.02/A03.01 stay manual. Lighthouse
+resource delegation is not Entra GDAP, billing authority or full ALZ deployment
+authority; service limits override generic template tenant/MG scope options.
+Current UAA exceptions, user-assigned managed-identity federation qualifications,
+EA/MCA/CSP hierarchy/cost-visibility limits and notification/invoice distinctions
+are recorded, without retaining private identities, contacts, billing/query/
+usage/price payloads or credentials. No live route, permission, dependency,
+cloud operation or actual owner approval is introduced.
+
+Final preparation suites each ran **524 tests** in the checkout and own exact
+installed wheel: 523 passed and the original Windows symlink-privilege case
+skipped. All18 cohort02 cases passed. All13 actual existing-compiler cases
+exercised without skips or restoration, preserving all12 delivered cases.
+Format/lint, 42-source-file typing, dependency consistency and379 local
+documentation links passed. The own final wheel was built offline and every109
+package source/data member matched both checkout and outside-checkout
+`site-packages`. The fresh environment's actual missing-`lark` probe preceded
+restoring only the three manifest/hash-reviewed runtime wheels from local pip
+cache. No network installation or other session environment was used. An earlier
+installed run was invalidated by an overlapping environment reinstall; the final
+full run above started after installation completed and passed without weakening
+assertions.
+
+Final preparation wheel SHA256:
+`623e2e48c2162de94c106cf1b1da5a5581eb0a6edd66ee55e984372fed9b33e4`.
+Installed thirteen-case compiler JSON SHA256:
+`e5886a6b8a8bedfe2c8123721a7f31b8f8563e7a5739bebf8784aa5806c7ff0f`.
+Matrix SHA256:
+`f9a1ce180661504477802740d4255bdd5f3dcb03950768f35dd0a5cb415ad94f`;
+source capture SHA256:
+`868c445a6432442d277f12dab85b7ea6f896d7d710cd89e94d3da0d5e16c4781`.
+Catalog/crosswalk/fixed target/ledger bytes and every older receipt remain exact.
+These are preparation proofs, not platform CI, accepted-successor replay or
+merged delivery. Then-current-main reconciliation, exact predecessor freeze,
+source/matrix/bank activation, unique reviewed successor, four matching exercised
+platform compiler artifacts, normal exact-head implementation merge and guarded
+own-GUID receipt publication remain deferred until the coordinator's explicit slot.
 
 ## Cohort 23 independent preparation: 2026-11-06
 

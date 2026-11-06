@@ -398,6 +398,7 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     from .logging_evidence import GUIDS as LOGGING_GUIDS
     from .logging_evidence import scoped_identity
     from .network_policy_evidence import GUIDS as NETWORK_POLICY_GUIDS
+    from .tenant_evidence import GUIDS as TENANT_GUIDS
 
     unbound = 0
     if control["upstream_guid"] in LOGGING_GUIDS:
@@ -405,7 +406,9 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
             resource for resource in matches if scoped_identity(resource, bundle.get("scope"))
         ]
         unbound, matches = len(matches) - len(scoped), scoped
-    elif control["upstream_guid"] in GOVERNANCE_GUIDS | RESILIENCE_GUIDS | NETWORK_POLICY_GUIDS:
+    elif control["upstream_guid"] in (
+        GOVERNANCE_GUIDS | RESILIENCE_GUIDS | NETWORK_POLICY_GUIDS | TENANT_GUIDS
+    ):
         scoped = [resource for resource in matches if resource_in_scope(resource, bundle)]
         unbound, matches = len(matches) - len(scoped), scoped
         by_id = {
@@ -430,9 +433,14 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
         ),
     }
     if control["upstream_guid"] in (
-        GOVERNANCE_GUIDS | LOGGING_GUIDS | RESILIENCE_GUIDS | NETWORK_POLICY_GUIDS
+        GOVERNANCE_GUIDS | LOGGING_GUIDS | RESILIENCE_GUIDS | NETWORK_POLICY_GUIDS | TENANT_GUIDS
     ):
         context["unbound_resources"] = unbound
+    if control["upstream_guid"] in TENANT_GUIDS:
+        from .tenant_evidence import resource_context
+
+        for prepared, resource in zip(context["resources"], matches[:100], strict=True):
+            prepared["tenant_configuration"] = resource_context(resource, by_id, bundle)
     if control["upstream_guid"] == "3a923c34-74d0-4001-aac6-a9e01e6a83de" and available:
         from .governance_evidence import hierarchy_context
 

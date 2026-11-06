@@ -31,6 +31,8 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     from .network_evidence import REVIEW_PATHS, review_fact
     from .network_policy_evidence import GUIDS as NETWORK_POLICY_GUIDS
     from .sources import boolean, enumeration, property_at
+    from .tenant_evidence import GUIDS as TENANT_GUIDS
+    from .tenant_evidence import prepared_signal as tenant_signal
     from .virtual_wan_evidence import GUIDS as VWAN_GUIDS
     from .virtual_wan_evidence import known_resource
 
@@ -40,11 +42,15 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     vwan = control["upstream_guid"] in VWAN_GUIDS
     logging = control["upstream_guid"] in LOGGING_GUIDS
     by_id: dict[str, list[dict[str, Any]]] = {}
-    if vwan or logging:
+    if vwan or logging or control["upstream_guid"] in TENANT_GUIDS:
         for resource in bundle["resources"]:
             by_id.setdefault((resource.get("arm_id") or "").lower(), []).append(resource)
     for resource in bundle["resources"]:
         if resource["state"] != "known" or resource["resource_type"].lower() not in kinds:
+            continue
+        if control["upstream_guid"] in TENANT_GUIDS:
+            if tenant_signal(resource, by_id, bundle):
+                return True
             continue
         if control[
             "upstream_guid"

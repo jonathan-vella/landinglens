@@ -6,8 +6,53 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.15"
+BANK_VERSION = "2026-11-06.16"
 BANK = {
+    "tenant-lighthouse-billing-governance": {
+        "question": "Decide all eight tenant/billing GUIDs independently using redacted "
+        "attributable references. Justify a single corporate tenant or the specific regulatory/"
+        "business requirements that cannot be met there, with authoritative inventory and "
+        "service/B2B, licensing, audit and JML considerations, not resource counts. For "
+        "applicable multitenant platform automation, explain approved complete isolation or "
+        "shared-application/per-tenant-principal boundaries, current user-assigned managed-"
+        "identity federation qualifications, targeting, privilege/credential lifecycle, "
+        "actual authorized operation, monitoring and recovery. Substantiate actual same-"
+        "identity Lighthouse use and effective least-privilege delegated tasks separately "
+        "from registration pairs. Lighthouse delegates subscriptions/RGs, not tenants/MGs "
+        "or across clouds; Owner/custom/DataActions and specified authorization actions are "
+        "unsupported, and UAA's constrained managed-identity assignment exception is not "
+        "general access administration or full ALZ deployment authority. Explicitly establish "
+        "partner/CSP applicability, customer approval, scope, audit/removal and agreement "
+        "conditions; Entra GDAP/DAP, AOBO and resource delegation are different. Separately "
+        "evidence the approved CSP case-creation/support/escalation process and dated operation "
+        "without contacts, tickets or invented SLAs. Demonstrate actual suitable Cost "
+        "Management reports/views, audiences, allocation and current data/access: view "
+        "configuration is not underlying data, shared access, reporting or a pinned dashboard. "
+        "Review actual EA charge policies or CSP Azure Plan/MCA/provider visibility and retail-"
+        "versus-invoice limitations; MCA MG and EA/MCA cost-details MG limitations apply. "
+        "Separately establish appropriate maintained agreement-specific notification group "
+        "mailbox ownership, categories/cadence, delivery/review/escalation and continuity; "
+        "EA notification contacts are not Bill to invoice contacts and MCA differs. Map actual "
+        "approved organizational structure to EA departments/accounts or MCA profiles/invoice "
+        "sections, or applicable CSP partner-managed MPA/customer structures; Azure MG hierarchy "
+        "does not prove billing separation or authority. Never infer commercial model, tenant "
+        "inventory, effective access, automation adoption or business suitability from names "
+        "or metadata. Do not retain tenant/principal/contact/email identifiers, private partner "
+        "records, raw billing names/IDs, prices, usage, query bodies or credentials. All eight "
+        "outcomes stay blank until separately confirmed with scope/content/time/expiry binding; "
+        "support and mailbox suitability stay manual. Signals, humanConfirmed and exceptions "
+        "never manufacture technical Verified or a whole-recommendation pass.",
+        "controls": [
+            "ALZ-70c15989-c726-42c7-b0d3-24b7375b9201",
+            "ALZ-6309957b-821a-43d1-b9d9-7fcf1802b747",
+            "ALZ-78e11934-499a-45ed-8ef7-aae5578f0ecf",
+            "ALZ-5d82e6df-6f61-42f2-82e2-3132d293be3d",
+            "ALZ-a24d0de3-d4b9-4dfb-8ddd-bbfaf123fa01",
+            "ALZ-32952499-58c8-4e6f-ada5-972e67893d55",
+            "ALZ-685cb4f2-ac9c-4b19-9167-993ed0b32415",
+            "ALZ-12cd499f-96e2-4e41-a243-231fb3245a1c",
+        ],
+    },
     "central-logging-support-service-enablement": {
         "question": "Reconcile the approved central logging architecture with complete "
         "platform/application resource populations, diagnostic log categories and original-time "

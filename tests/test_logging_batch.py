@@ -190,7 +190,10 @@ class LoggingBatchTests(unittest.TestCase):
         own = [row for row in report["results"] if row["control_id"] in IDS]
         self.assertEqual({row["control_id"] for row in own}, IDS)
         self.assertTrue(all(row["observed"]["evidence_tier"] != "verified" for row in own))
-        crosswalk = load_crosswalk(catalog=self.catalog)
+        frozen = files("alz_assessor").joinpath("data", "crosswalk-2026-11-06.15.json")
+        crosswalk = load_crosswalk(
+            catalog=self.catalog, path=Path(str(frozen)) if frozen.is_file() else None
+        )
         mapped = [row for row in crosswalk["entries"] if row["guid"] in GUIDS]
         self.assertEqual(sum(bool(row["targets"]) for row in mapped), 1)
         self.assertTrue(

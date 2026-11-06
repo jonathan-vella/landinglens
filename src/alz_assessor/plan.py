@@ -152,6 +152,16 @@ def plan_source(
                 )
             if identity and candidate and identity != candidate:
                 raise InputError("Plan resource ID conflicts with explicit scope/name bindings")
+            if identity and kind in {
+                "azurerm_lighthouse_definition",
+                "azurerm_lighthouse_assignment",
+            }:
+                from .tenant_evidence import resource_parent
+
+                parent = resource_parent(identity, arm_type.lower())
+                target = values.get("scope")
+                if parent is None or not isinstance(target, str) or parent != target.lower():
+                    raise InputError("Lighthouse plan identity conflicts with supported scope")
             if identity and (not scope or not identity.startswith(scope.lower() + "/")):
                 raise InputError("Plan resource ID is outside the explicit assessment scope")
             records.append(
