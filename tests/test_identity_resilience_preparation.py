@@ -288,6 +288,64 @@ class IdentityResiliencePreparationTests(unittest.TestCase):
             json.loads((PREPARATION / "batch-05-sources.json").read_text())["sources"],
         )
 
+    def test_actual_cohort05_receipt_binds_all_eight_immutable_guids(self):
+        ledger = json.loads(
+            (ROOT / "references" / "recommendation-batches" / "ledger.json").read_text()
+        )
+        receipt = ledger["deliveries"]["05"]
+        self.assertEqual(receipt["pr"], "https://github.com/jonathan-vella/landinglens/pull/125")
+        self.assertEqual(receipt["checked_head"], "cd9563cfdfb5411e0ac98518e53e664780bad1ea")
+        self.assertEqual(receipt["merge_commit"], "29ac2110f6493a123af68519701b5e2c6f5996ca")
+        self.assertEqual(receipt["merged_at"], "2026-11-06T15:54:37Z")
+        self.assertEqual(
+            receipt["checks"],
+            [
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42246208657",
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42246243947",
+            ],
+        )
+        self.assertEqual(
+            receipt["wheel_sha256"],
+            "1c88f19cbd87a13ebc033b701bf01de30444c21814cfacbc5823c7956c672017",
+        )
+        self.assertEqual(
+            receipt["local_installed_suite"], {"tests": 505, "passed": 504, "skipped": 1}
+        )
+        self.assertEqual(len(receipt["compiler_integration_cases"]), 12)
+        self.assertEqual(
+            receipt["compiler_integration_cases"][-1],
+            "test_identity_resilience_preparation.IdentityResiliencePreparationTests."
+            "test_real_bicep_identity_resilience_without_restore",
+        )
+        own = [r for r in ledger["recommendations"] if r["batch"] == "05"]
+        self.assertEqual(len(own), 8)
+        self.assertEqual({r["guid"] for r in own}, set(GUIDS.values()))
+        for row in own:
+            self.assertEqual(row["status"], "merged")
+            self.assertEqual(row["pr"], receipt["pr"])
+            self.assertEqual(row["merge_commit"], receipt["merge_commit"])
+            self.assertIn("deliveries.05", " ".join(row["runtime_evidence"]))
+        completed = {
+            "01",
+            "04",
+            "05",
+            "08",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "17",
+            "18",
+            "19",
+            "20",
+            "22",
+            "30",
+        }
+        prefix = [r for r in ledger["recommendations"] if r["batch"] in completed]
+        self.assertEqual(len(prefix), 130)
+        self.assertTrue(all(r["status"] == "merged" for r in prefix))
+
     def test_registered_blank_interview_and_actual_accepted_package_replay(self):
         catalog, bundle = load_catalog(), self.bundle()
         report = assess(bundle, catalog, at=AT, evidence_tiers=True)

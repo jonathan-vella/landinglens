@@ -91,6 +91,10 @@ scope. B03.12 stays manual; no new predicate, live route or owner approval.
 Exact `.6.12`, all non-own predecessor controls, all122 prior rows and14 receipts
 remain unchanged. Counts remain12/200/43; actual implementation/receipt delivery
 and checked reconciliation, not activation alone, gate #118 closure.
+Implementation #125 passed exact-head eight-job/CodeQL/security/review and four
+twelve-case compiler gates and merged normally. Guarded `deliveries.05` binds
+all eight GUIDs to that actual head/merge/runs/final wheel; checked publication
+records130 delivered/121 pending. Receipt publication still gates #118 closure.
 
 Reviewed successor `2026-11-06.12` integrates cohort20/#115 after the parent's
 explicit slot and actual30 implementation119/receipt120 delivery. One strict
