@@ -78,17 +78,20 @@ records remain traceable under explicit lifecycle semantics.
 
 ## Active increment: fixed recommendation expansion
 
-Cohort20/#115 independently prepares nine immutable Virtual WAN GUIDs on delivered
-cohort15 main while08/30 retain delivery priority. Exact reviewed sources and a
-nonaccepted matrix support strict scoped WAN/hub/firewall/table/connection facts,
-separate branch flags, ASPath setting, minimized labels/prefixes and RIU context.
-Current /22 Firewall maximum-scale, /23 recommendation, multiple-hubs-per-region,
-default-label and routing-intent/AS-Path exceptions remain explicit.
-Preparation proves neither actual topology/route selection/filtering/Insights
-use nor suitability, regional eligibility or available capacity. Every human
-decision remains blank; accepted catalog/schema/bank/count/history and own
-receipts stay unchanged until the parent's sole-slot grant and delivery gates.
-See [preparation evidence](plan.md#cohort-20-independent-preparation-2026-11-06).
+Reviewed successor `2026-11-06.12` integrates cohort20/#115 after the parent's
+explicit slot and actual30 implementation119/receipt120 delivery. One strict
+unique-known scoped ASPath configuration predicate and eight source-specific
+assisted workflows share the existing CLI/review/tier/output/session and real
+packaged original-time replay paths. The registered interview keeps eight
+independent human outcomes blank; Verified configuration never confirms them.
+Current /22 Firewall maximum-scale, /23 recommendation, multiple-hubs/region,
+separate WAN/hub flags, route-label/intent, RIU and ASPath exceptions are explicit.
+No effective topology/filtering/monitoring, physical independence, anonymity,
+regional eligibility, suitability or free growth capacity is inferred.
+Exact `.6.11`, all113 earlier rows/thirteen receipts and original four controls
+remain unchanged. Dispositions are12 automated/200 assisted/43 manual;
+delivery stays113/138 until checked implementation and guarded own receipts.
+See [integration evidence](plan.md#cohort-20-accepted-integration-2026-11-06).
 
 Reviewed successor `2026-11-06.11` integrates cohort30/#112 after its explicit
 coordinator slot and actual08 implementation116/receipt117 delivery. Seven

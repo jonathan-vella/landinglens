@@ -16,6 +16,17 @@ TABLE = HUB + "/hubroutetables"
 INTENT = HUB + "/routingintent"
 FIREWALL = "microsoft.network/azurefirewalls"
 KINDS = {WAN, HUB, CONNECTION, TABLE, INTENT}
+GUIDS = {
+    "412e7f98-3f63-4047-82dd-69c5b5c2622f",
+    "54b69bad-33aa-4d5e-ac68-e1d76667313b",
+    "7d5d1e4e-6146-458d-9558-fd77249b8211",
+    "6667313b-4f56-464b-9e98-4a859c773e7d",
+    "261623a7-65a9-417e-8f34-8ef254c27d42",
+    "727c77e1-b9aa-4a37-a024-129d042422c1",
+    "d49ac006-6670-4bc9-9948-d3e0a3a94f4d",
+    "2586b854-237e-47f1-84a1-d45d4cd2310d",
+    "9c75dfef-573c-461c-a698-68598595581a",
+}
 PATHS = {
     "virtualWanType",
     "wanBranchTrafficAllowed",

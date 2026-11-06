@@ -1,0 +1,236 @@
+{
+  "batch": "20",
+  "review_state": "reviewed",
+  "sources": [
+    {
+      "id": "vwan-any-to-any",
+      "url": "https://learn.microsoft.com/azure/virtual-wan/scenario-any-to-any",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-wan/scenario-any-to-any",
+      "sha256": "b9e65613e007458eb3147bdbf214cf658cf2e4d61258c36a9f194e14e0d4896f",
+      "retrieved_at": "2026-11-06T13:32:07.506787+00:00",
+      "revision": "975b80952400a3000a2b8e80334a81adaf948848",
+      "finding": "The actual scenario is unfiltered any-to-any with common association/propagation. Standard inter-hub defaults are not evidence of business suitability or reachability.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "vwan-regional-design",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/virtual-wan-network-topology#virtual-wan-network-design-recommendationst",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/virtual-wan-network-topology",
+      "sha256": "136cbe7297a336c213addecdfd85fa54330d130f69a0758ddd38ce27e3b3b4c3",
+      "retrieved_at": "2026-11-06T13:32:07.890345+00:00",
+      "revision": "1b71252cc095030dabc0dfb4bd2398885f46aaaa",
+      "finding": "Current CAF permits multiple hubs per region for scale; not exactly one. The original fragment is obsolete. Regions, complete workloads and limits need review.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "vwan-firewall",
+      "url": "https://learn.microsoft.com/azure/virtual-wan/howto-firewall",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-wan/howto-firewall",
+      "sha256": "9005352c0b01a9bbcbda604602fb2ea0f4b78520841df2e42f654f89017899b3",
+      "retrieved_at": "2026-11-06T13:32:08.285490+00:00",
+      "revision": "975b80952400a3000a2b8e80334a81adaf948848",
+      "finding": "The linked portal conversion does not configure Firewall zones. Hub association and AZFW_Hub SKU are configuration, not filtering, availability or policy enforcement.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "vwan-migration",
+      "url": "https://learn.microsoft.com/azure/virtual-wan/migrate-from-hub-spoke-topology",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-wan/migrate-from-hub-spoke-topology",
+      "sha256": "22e80b919792ca2e15cc838184003884a729ee169302829866b42da098d780c9",
+      "retrieved_at": "2026-11-06T13:32:08.669039+00:00",
+      "revision": "975b80952400a3000a2b8e80334a81adaf948848",
+      "finding": "The illustrated staged migration is scenario-specific. Shared services stay in spokes; intended traffic, cutover, old routes and rollback need attributable review.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "vwan-insights",
+      "url": "https://learn.microsoft.com/azure/virtual-wan/azure-monitor-insights",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-wan/azure-monitor-insights",
+      "sha256": "07cc2008c719e922f7419ede31ea2886b43fda98dea66f4c92f6f0583bb9536e",
+      "retrieved_at": "2026-11-06T13:32:09.060607+00:00",
+      "revision": "975b80952400a3000a2b8e80334a81adaf948848",
+      "finding": "The linked page labels the portal Insights view preview and describes a prepackaged workbook; no enablement boolean. Saved resource facts do not prove workbook use, health, metric arrivals or complete topology coverage.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "vwan-faq",
+      "url": "https://learn.microsoft.com/azure/virtual-wan/virtual-wan-faq",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-faq",
+      "sha256": "7129cf99b11d29f6ea634f385fb702bf85aa4425589b1865800b07a1df8a9af6",
+      "retrieved_at": "2026-11-06T13:32:09.468730+00:00",
+      "revision": "8a916a7601334517d863bc72d2059b2e76e2612f",
+      "finding": "WAN branch traffic defaults enabled in guidance, but missing flags remain unknown. Minimum hub /24, recommended /23 or larger; Firewall maximum scaling requires /22. Address space is immutable, IPv6 unsupported. Regions are an external eligibility review, not a guessed list. ER transit/Global Reach and routing intent differ.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "vwan-routing-preference",
+      "url": "https://learn.microsoft.com/azure/virtual-wan/about-virtual-hub-routing-preference",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-wan/about-virtual-hub-routing-preference",
+      "sha256": "7fcc37449eadbbf8dbefe6bd9b5690a2243b6b6dcb594a448437f816e06c8b56",
+      "retrieved_at": "2026-11-06T13:32:09.873394+00:00",
+      "revision": "975b80952400a3000a2b8e80334a81adaf948848",
+      "finding": "ExpressRoute default, VPN and AS Path are explicit configurations. LPM/static precedence and remote ER/private-intent exceptions prevent a shortest-path assurance.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "vwan-labels",
+      "url": "https://learn.microsoft.com/azure/virtual-wan/about-virtual-hub-routing#labels",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-wan/about-virtual-hub-routing",
+      "sha256": "527c0ae89a282609516cc39a8550555486f9e0d9417ff111dc3f74db8b100f66",
+      "retrieved_at": "2026-11-06T13:32:10.243425+00:00",
+      "revision": "975b80952400a3000a2b8e80334a81adaf948848",
+      "finding": "Default label spans hubs; omitted VNet propagation labels default to Default in guidance but are not inferred from absent inputs. Dynamic, static and default-route propagation differ; nonempty labels do not prove correct inter-hub connectivity.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "vwan-hub-capacity",
+      "url": "https://learn.microsoft.com/en-us/azure/virtual-wan/hub-settings",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-wan/hub-settings",
+      "sha256": "a33a5b86bbba968f34b049cbfa3b6d06205f2087b3458a0de0f4f27ff4a7fa1d",
+      "retrieved_at": "2026-11-06T13:32:10.397508+00:00",
+      "revision": "8a916a7601334517d863bc72d2059b2e76e2612f",
+      "finding": "RIUs differ from gateway scale units: 2 RIUs support 3 Gbps/2000 VMs; autoscaling is not instant and does not prove headroom. Reviewed table 2..50 is an advisory envelope, not API quota or guaranteed performance. /22 Firewall condition remains.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "vwan-routing-intent",
+      "url": "https://learn.microsoft.com/en-us/azure/virtual-wan/how-to-routing-policies",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-wan/how-to-routing-policies",
+      "sha256": "b40fd134227402e510b4931ab9121e4efbedc206979b53555baffe9f81d6ff53",
+      "retrieved_at": "2026-11-06T13:32:10.570017+00:00",
+      "revision": "6f66dce23b3c4c7df791985c83d28d16e25eee29",
+      "finding": "Internet intent requires local security next hop; default routes do not cross hubs. Custom routing configurations conflict with intent constructs; 21Vianet unsupported and Government NVA/SaaS availability conditional. Exact local firewall join is only configured intent, not actual inspection, filtering or route selection.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "vwan-rest",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json",
+      "sha256": "6220238b792ce425e1c117a4b69bb36f44072aac24820cf7ba4d2c95e553adc2",
+      "retrieved_at": "2026-11-06T13:32:10.762328+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned 2024-05-01 defines WAN and hub branch flags separately; hub ASPath/ExpressRoute/VpnGateway, hubRouteTables labels and connection routing configuration. Hub route tables are not Microsoft.Network/routeTables. Internet/PrivateTraffic are a reviewed subset of free-form destination strings; others remain unsupported.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-virtual_wan",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_wan.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_wan.html.markdown",
+      "sha256": "23ef458e298491cab19e74151b3d51c0daaf2f754ec3e987d6c399f67f101b16",
+      "retrieved_at": "2026-11-06T13:32:11.076756+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "4.50.0 WAN defaults branch=true/type=Standard. Raw missing defaults are unknown; no hub flag substituted for the WAN-wide flag.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-virtual_hub",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub.html.markdown",
+      "sha256": "f7ea6df6a43384951912c46d317f1534de8c14bc6f8ce740c04b81caa9bd17b2",
+      "retrieved_at": "2026-11-06T13:32:11.360574+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "4.50.0 hub branch default=false differs from WAN default=true. Retain both explicit booleans independently. Hub preference defaults ER, RIU minimum=2. Address prefix changes recreate hub; no default or growth inference.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-virtual_hub_connection",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub_connection.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub_connection.html.markdown",
+      "sha256": "ccea4deec20f99f7e94e2b6a8fdad8164f8dee1ad8e72077518af73f99ab9c99",
+      "retrieved_at": "2026-11-06T13:32:11.638970+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Explicit routing/propagation blocks and child identity are preparable. Computed or absent labels/IDs stay unknown; static next-hop addresses withheld.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-virtual_hub_route_table",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub_route_table.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub_route_table.html.markdown",
+      "sha256": "c984043f9fd58834694c12a7321166a25cb0b72251f11c000994aed0996dbd2d",
+      "retrieved_at": "2026-11-06T13:32:11.923615+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Explicit labels support minimized equality only. Separately managed routes mean inline count cannot prove complete route population; all routes withheld.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-virtual_hub_routing_intent",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub_routing_intent.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_hub_routing_intent.html.markdown",
+      "sha256": "68388b38ed549acdc6849d71c4a3c8dc42a6fc00afd828f0d6a50838ba0eb1f4",
+      "retrieved_at": "2026-11-06T13:32:12.194144+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "One or two unique named destination policies with exact typed firewall references prepare local intent; NVA/SaaS forms remain unsupported/unknown.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-hub-implementation",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/network/virtual_hub_resource.go",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/network/virtual_hub_resource.go",
+      "sha256": "5ae706f100d16f9dfecd4e12648e11d74dbbbc3698a8dc2eb38d45ecf915d724",
+      "retrieved_at": "2026-11-06T13:32:12.502809+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned implementation writes the hub-specific flag independently of the WAN. Read pointer defaults cannot establish absent saved inputs; project explicit only.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-connection-implementation",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/network/virtual_hub_connection_resource.go",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/network/virtual_hub_connection_resource.go",
+      "sha256": "a1eeae82dcfd63d100bd8be2dcde1f422becf0b2690409dfe3b28b251b5cbed1",
+      "retrieved_at": "2026-11-06T13:32:12.776664+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned routing and labels can be computed; expand maps supplied blocks to ARM fields. Neither inferred labels nor internet-security flag proves effective routes.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "firewall-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/azurefirewalls",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/azurefirewalls",
+      "sha256": "57797903b7e04c271992a30c87b1fff97fb896ccda9def2d87b6ac09d405f5fb",
+      "retrieved_at": "2026-11-06T13:32:13.152233+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Versioned SKU tier/name, explicit subnet/policy references and classic NAT structures are reviewed. Missing values and unexpanded IP Groups are not safe-source evidence.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-firewall",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/firewall.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/firewall.html.markdown",
+      "sha256": "9135af603a68c738c117055bfcfa60b0581b220f49336c715011eecbee20e037",
+      "retrieved_at": "2026-11-06T13:32:13.546256+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "4.50.0 declares Basic/Standard/Premium, exactly one data subnet reference and optional management configuration. Both subnet kinds need minimum /26 capacity; defaults are not inferred.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "rest-spec-reuse",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/LICENSE",
+      "sha256": "b37363bf2295aa0acde60ce78a60034a71a0955075fc01aa09cc23eadff44436",
+      "retrieved_at": "2026-11-06T13:32:13.861445+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned Microsoft REST schemas are MIT licensed; retain metadata and own factual findings.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "provider-reuse",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "sha256": "4e2bb185ebd706f76329206869ccb348b92b6236100cfb07775fe31530dab0d5",
+      "retrieved_at": "2026-11-06T13:32:14.510618+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider is MPL-2.0. No provider source, page content or licensed implementation is redistributed in the preparation; retain attribution, hashes and own factual findings.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "learn-reuse",
+      "url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "resolved_url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "sha256": "f113a067e1dc6226c2d8033de0226092cd1b120bc6550a6047644749a25f7d48",
+      "retrieved_at": "2026-11-06T13:32:14.877664+00:00",
+      "revision": "9fd90ed833034800434458aef187ba08d8dc9d5b",
+      "finding": "Learn's general document reuse terms are constrained and explicit document licenses can govern separately. Retain URL/revision/hash attribution and own factual findings only; no Microsoft page text, graphics, layouts or assets are redistributed.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    }
+  ]
+}

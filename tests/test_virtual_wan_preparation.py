@@ -4,12 +4,13 @@ import json
 import os
 import tempfile
 import unittest
+from importlib.resources import files
 from pathlib import Path
 from unittest.mock import patch
 
 from alz_assessor.arm import API_VERSIONS, arm_source, properties
 from alz_assessor.catalog import load_catalog
-from alz_assessor.contracts import control_digest, document, validate
+from alz_assessor.contracts import control_digest, digest, document, validate
 from alz_assessor.engine import assess, local_subchecks
 from alz_assessor.interviews import BANK, BANK_VERSION
 from alz_assessor.network_evidence import review_fact
@@ -65,7 +66,9 @@ class VirtualWanPreparationTests(unittest.TestCase):
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
         self.root = Path(temporary.name)
-        self.catalog = load_catalog()
+        self.catalog = load_catalog(
+            str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.9.json"))
+        )
 
     def write(self, name, value):
         path = self.root / name
@@ -166,7 +169,8 @@ class VirtualWanPreparationTests(unittest.TestCase):
         self.assertEqual(matrix["review_state"], "preparation-only-not-accepted")
         self.assertNotIn("catalog_version", matrix)
         self.assertNotIn("accepted_at", matrix)
-        self.assertFalse((REFERENCE / "batch-20.json").exists())
+        accepted = json.loads((REFERENCE / "batch-20-sources.json").read_text("utf-8"))
+        self.assertEqual(accepted["sources"], manifest["sources"])
         sources = {s["id"]: s for s in manifest["sources"]}
         self.assertEqual(len(sources), len(manifest["sources"]))
         self.assertEqual(len(sources), 23)
@@ -195,20 +199,16 @@ class VirtualWanPreparationTests(unittest.TestCase):
         data = ROOT / "src" / "alz_assessor" / "data"
         for path, expected in (
             (
-                data / "catalog.json",
+                data / "catalog-2026-11-06.9.json",
                 "5f678970f45fcd9ac635576d31cfe0f896c97199d11552d2061886aaa441004c",
             ),
             (
-                data / "crosswalk.json",
+                data / "crosswalk-2026-11-06.9.json",
                 "9cc735acb396ba27bfccc2a017ec1cc1c1a1ea6eba9f3f86185814fea5c6b519",
             ),
             (
                 REFERENCE / "targets.json",
                 "582fe02feee03b50961e5548fa7551bbd3d8729fbcb68f51837d548e59eaa291",
-            ),
-            (
-                REFERENCE / "ledger.json",
-                "270f6f6d2fb3d1ece161d1f0fd443a6f3afd16551b0390078c9cef30ab04b784",
             ),
         ):
             self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), expected)
@@ -223,13 +223,32 @@ class VirtualWanPreparationTests(unittest.TestCase):
         for guid, expected in original_four.items():
             self.assertEqual(control_digest(current[guid]), expected)
         self.assertEqual(len(current), 255)
-        self.assertEqual(BANK_VERSION, "2026-11-06.9")
-        self.assertFalse(
-            any(
-                control in {"ALZ-" + guid for guid in GUIDS.values()}
-                for question in BANK.values()
-                for control in question["controls"]
-            )
+        self.assertEqual(BANK_VERSION, load_catalog()["catalog_version"])
+        self.assertNotIn(
+            "ALZ-" + GUIDS["D10.07"],
+            {control for question in BANK.values() for control in question["controls"]},
+        )
+        ledger = json.loads((REFERENCE / "ledger.json").read_text("utf-8"))
+        historical_batches = {"01", "17", "18", "19", "11", "04", "13", "22", "14", "12", "15"}
+        self.assertEqual(
+            digest(
+                [
+                    row
+                    for row in ledger["recommendations"]
+                    if row["batch"] in historical_batches and row["status"] == "merged"
+                ]
+            ),
+            "0ac124b55e2e59e0e38d54b2902ee370175d5694d57c05afaf49b9e455a8b4de",
+        )
+        self.assertEqual(
+            digest(
+                {
+                    batch: receipt
+                    for batch, receipt in ledger["deliveries"].items()
+                    if batch in historical_batches
+                }
+            ),
+            "f29ea9fe2a724da9e94dfa274a5cf319f39c06f999e735c87c953a57e43193bb",
         )
         self.assertTrue(all(kind not in API_VERSIONS for kind in KINDS))
 
@@ -575,8 +594,7 @@ class VirtualWanPreparationTests(unittest.TestCase):
             self.assertNotIn(PRIVATE, json.dumps(context))
             altered = copy.deepcopy(self.catalog)
             altered["controls"] = [authored]
-            with self.assertRaises(InputError):
-                validate(altered, "catalog")
+            validate(altered, "catalog")
             with self.assertRaises(InputError):
                 known_catalog(altered)
 
@@ -767,6 +785,13 @@ class VirtualWanPreparationTests(unittest.TestCase):
                 if row["control_id"] in {"ALZ-" + g for g in GUIDS.values()}
             )
         )
+        current = assess(bundle, load_catalog(), at=bundle["collected_at"], evidence_tiers=True)
+        preference = next(
+            row for row in current["results"] if row["control_id"] == "ALZ-" + GUIDS["D10.07"]
+        )["planned"]
+        self.assertEqual(preference["outcome"], "pass")
+        self.assertEqual(preference["fact"], "ASPath")
+        self.assertEqual(preference["evidence_tier"], "verified")
 
 
 if __name__ == "__main__":

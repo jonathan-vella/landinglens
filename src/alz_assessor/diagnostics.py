@@ -4,6 +4,13 @@ import re
 from typing import Any
 
 GUIDANCE = {
+    "virtual_wan": (
+        "The supplied hub's scoped identity or explicit routing preference is not established.",
+        "A unique known typed Virtual WAN hub within the explicit subscription/resource-group "
+        "scope and its literal reviewed ASPath/ExpressRoute/VpnGateway preference.",
+        "Review original-time scoped configuration; missing defaults/populations stay unknown. "
+        "No selected route, topology or reachability is proven; no read or remediation runs.",
+    ),
     "gateway_routes": (
         "The exact scoped gateway, GatewaySubnet and route-table propagation join is incomplete.",
         "Unique known gateway/GatewaySubnet/table identities, explicit propagation flags "
@@ -69,6 +76,10 @@ GUIDANCE = {
 }
 
 REASONS = {
+    "virtual_wan": (
+        "vwan_hub_population_not_established",
+        "vwan_hub_identity_or_preference_unresolved",
+    ),
     "gateway_routes": (
         "gateway_subnet_population_not_established",
         "gateway_route_propagation_join_unresolved",
@@ -218,6 +229,8 @@ REASONS = {
         "input_path_not_authorized",
     ),
     "verified": (
+        "explicit_hub_aspath_configured",
+        "explicit_hub_other_preference",
         "within_checklist_rule_target",
         "exceeds_checklist_rule_target",
         "within_checklist_route_target",

@@ -6,8 +6,42 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.11"
+BANK_VERSION = "2026-11-06.12"
 BANK = {
+    "virtual-wan-topology-routing-capacity": {
+        "question": "Bind the approved connectivity matrix to a documented Virtual WAN design "
+        "and staged migration, actual workload/branch populations, shared services, cutover "
+        "and rollback. Reconcile one or more eligible regional hubs in the intended common "
+        "Standard WAN, actual limits and independent failure domains; supplied hub/region "
+        "counts are not complete coverage or global reachability. Review each hub's local "
+        "security solution, Internet/PrivateTraffic intent, actual routes/rules/filtering "
+        "and arriving logs, custom-route conflicts, bypasses, cloud/region/NVA constraints "
+        "and Firewall zones; default routes do not cross hubs. Demonstrate actual Insights "
+        "dependency-map/workbook use and relevant original-time metrics/status/alerts, not "
+        "a synthetic enablement flag. Decide branch-to-branch requirements and explicit "
+        "blocking exceptions separately, retaining the WAN-versus-hub flag distinction and "
+        "no inferred defaults. Review all intended VNet/VPN/ExpressRoute/P2S associations and "
+        "dynamic label propagation, Default/None isolation, static routes and routing-intent "
+        "limits; prepared VNet/table labels are only a subset. ASPath has a separate exact "
+        "configuration predicate, not a selected-route or failover guarantee. Reconcile "
+        "immutable nonoverlapping hub IPv4 space: /24 minimum, /23 general recommendation, "
+        "/22 for Firewall maximum scale and NVA-specific allocations, actual usage and "
+        "growth, quota and noninstant RIU-versus-gateway scaling. Use redacted attributable "
+        "references, not raw addresses, custom labels, route/query/traffic payloads or "
+        "invented runtime tests. Equality fingerprints are not anonymous or physical "
+        "identity proof. Decide these eight human-evidence GUIDs independently; a shared "
+        "narrative, configuration or technical Verified result does not confirm them.",
+        "controls": [
+            "ALZ-412e7f98-3f63-4047-82dd-69c5b5c2622f",
+            "ALZ-54b69bad-33aa-4d5e-ac68-e1d76667313b",
+            "ALZ-7d5d1e4e-6146-458d-9558-fd77249b8211",
+            "ALZ-6667313b-4f56-464b-9e98-4a859c773e7d",
+            "ALZ-261623a7-65a9-417e-8f34-8ef254c27d42",
+            "ALZ-727c77e1-b9aa-4a37-a024-129d042422c1",
+            "ALZ-2586b854-237e-47f1-84a1-d45d4cd2310d",
+            "ALZ-9c75dfef-573c-461c-a698-68598595581a",
+        ],
+    },
     "development-lifecycle-sovereignty": {
         "question": "Reconcile the scoped platform AND application source/IaC populations with "
         "actual version-control use, repository visibility/access and change history; the "
