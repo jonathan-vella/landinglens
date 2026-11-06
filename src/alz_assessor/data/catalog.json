@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "kind": "catalog",
-  "catalog_version": "2026-11-06.6",
+  "catalog_version": "2026-11-06.7",
   "design_areas": [
     "Azure billing and Active Directory tenant",
     "Identity and access management",
@@ -5693,14 +5693,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "MeteredData or Local is not a generic pass; configured bandwidth is not outbound volume, demand or break-even economics. No live billing/traffic read or pricing API.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Bind a representative original-time outbound demand record to the exact circuit, billing period, peering pricing zone and negotiated price currency.",
+        "Compare actual metered/unlimited circuit, gateway, provider, Direct-port and Global Reach costs; Local's included unlimited transfer is a different case.",
+        "Reviewer decision: does the attributable demand and total-cost comparison justify this circuit's unlimited-data plan?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-14",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "billing-configuration-not-cost-suitability",
+        "no-arbitrary-break-even"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -5715,9 +5717,60 @@
           "pointer": "/items/101",
           "item_sha256": "d6930bc7e3084301e1a2be997c08167a0a07a1acc7abd761a3b225799b5f7d91",
           "guidance": "https://learn.microsoft.com/azure/expressroute/plan-manage-cost"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/expressroute/plan-manage-cost",
+          "source_sha256": "387c49690612a0bf42f8f261ee56da4c7a9d7d6818b0faa3ecc503d3b2670b2d",
+          "revision": "2666ad40250d82d8e4383fb672286eaa8f770da9",
+          "retrieved_at": "2026-11-06T09:31:24.769255+00:00",
+          "pointer": "7025b442-f6e9-4af6-b11f-c9574916016f",
+          "guidance": "https://learn.microsoft.com/azure/expressroute/plan-manage-cost"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-local",
+          "source_sha256": "91ae60e45a6df1037cf2a89536503f1bdb128db7ab046c319a562cb98a1678dd",
+          "revision": "fd9e538811e7f837fc0920c04a45a34c7563ab15",
+          "retrieved_at": "2026-11-06T09:31:25.226325+00:00",
+          "pointer": "7025b442-f6e9-4af6-b11f-c9574916016f",
+          "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-local"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/expressroutecircuits",
+          "source_sha256": "e4b8afb927b9ffacbd631ff2a5a95075d345793fac90c9106ebf086997ccd208",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T09:31:29.614294+00:00",
+          "pointer": "7025b442-f6e9-4af6-b11f-c9574916016f",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/expressroutecircuits"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/expressRouteCircuit.json",
+          "source_sha256": "76dd409d7b89748a73787b5dcd4b6f0e67613e4ae173dc851589e256133b5461",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T09:31:29.744011+00:00",
+          "pointer": "7025b442-f6e9-4af6-b11f-c9574916016f",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/expressRouteCircuit.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/express_route_circuit.html.markdown",
+          "source_sha256": "07795333e920c9d454185582d5473173c7a57bda2622ad184840217484c19b82",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T09:31:30.769239+00:00",
+          "pointer": "7025b442-f6e9-4af6-b11f-c9574916016f",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/express_route_circuit.html.markdown"
         }
       ],
-      "severity": "High"
+      "severity": "High",
+      "review_resource_types": [
+        "Microsoft.Network/expressRouteCircuits",
+        "Microsoft.Network/expressRoutePorts"
+      ],
+      "review_fact_paths": [
+        "circuitSku.tier",
+        "circuitSku.family",
+        "providerCircuitBandwidthMbps",
+        "directCircuitBandwidthGbps",
+        "directPortBillingType"
+      ]
     },
     {
       "control_id": "ALZ-f4e7926a-ec35-476e-a412-5dd17136bd62",
@@ -5737,14 +5790,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Local SKU, circuit region, one relationship or a public table cannot establish current regional availability, port admission, complete target regions or cost suitability.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reconcile each actual physical peering location with the source-reviewed Local mapping for all required Azure workload and recovery regions; circuit resource location is not the peering location.",
+        "Resolve scoped connection/circuit/gateway bindings and unsupported Global Reach or wider-geography requirements.",
+        "Reviewer decision: does Local support every required region/service and provide the justified cost alternative for this exact circuit?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-14",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "resource-region-not-peering-location",
+        "local-mapping-needs-explicit-review"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -5759,9 +5814,61 @@
           "pointer": "/items/102",
           "item_sha256": "ef3123bcdde89dac2488c05d2479baee0e3feea8e3d1f2e580e5fa7774e381bf",
           "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-local"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-local",
+          "source_sha256": "91ae60e45a6df1037cf2a89536503f1bdb128db7ab046c319a562cb98a1678dd",
+          "revision": "fd9e538811e7f837fc0920c04a45a34c7563ab15",
+          "retrieved_at": "2026-11-06T09:31:25.226325+00:00",
+          "pointer": "f4e7926a-ec35-476e-a412-5dd17136bd62",
+          "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-local"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/expressroute/expressroute-locations-providers",
+          "source_sha256": "e37e3aa11b9d6780dbee92ca0d17e0a23a80536586feb812a82c0e63cd0d84e0",
+          "revision": "2bbe8c4ea4c2b011513ccc5178e52111eea1f8a0",
+          "retrieved_at": "2026-11-06T09:31:29.395031+00:00",
+          "pointer": "f4e7926a-ec35-476e-a412-5dd17136bd62",
+          "guidance": "https://learn.microsoft.com/en-us/azure/expressroute/expressroute-locations-providers"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/expressroutecircuits",
+          "source_sha256": "e4b8afb927b9ffacbd631ff2a5a95075d345793fac90c9106ebf086997ccd208",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T09:31:29.614294+00:00",
+          "pointer": "f4e7926a-ec35-476e-a412-5dd17136bd62",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/expressroutecircuits"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/express_route_circuit.html.markdown",
+          "source_sha256": "07795333e920c9d454185582d5473173c7a57bda2622ad184840217484c19b82",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T09:31:30.769239+00:00",
+          "pointer": "f4e7926a-ec35-476e-a412-5dd17136bd62",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/express_route_circuit.html.markdown"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/connections",
+          "source_sha256": "8d4280075503b9d1f0832a065a0847ba78cfcd8673166b862fcfc810288062b0",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T09:31:30.451487+00:00",
+          "pointer": "f4e7926a-ec35-476e-a412-5dd17136bd62",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/connections"
         }
       ],
-      "severity": "High"
+      "severity": "High",
+      "review_resource_types": [
+        "Microsoft.Network/expressRouteCircuits",
+        "Microsoft.Network/connections",
+        "Microsoft.Network/virtualNetworkGateways"
+      ],
+      "review_fact_paths": [
+        "circuitSku.tier",
+        "peeringLocationConfigured",
+        "expressRoutePort.id",
+        "expressRouteCircuitId",
+        "virtualNetworkGateway1.id"
+      ]
     },
     {
       "control_id": "ALZ-2447ec66-138a-4720-8f1c-e16ed301d6e8",
@@ -5781,14 +5888,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "An AZ substring misses ErGwScale and can classify a zonal AZ-capable gateway incorrectly. No live availability, health, public-IP detail or migration operation.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Bind an ExpressRoute gateway to its actual supported region, exact SKU, deployed/migrated configuration and public-IP allocation/zone evidence.",
+        "Distinguish AZ-capable from zonal versus zone-redundant placement and new auto-assigned public-IP behavior from existing deployments.",
+        "Reviewer decision: does attributable deployment evidence establish zone-redundant ExpressRoute gateway placement in the required supported region?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-14",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "sku-capability-not-zone-placement",
+        "public-ip-config-not-runtime-placement"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -5803,9 +5912,76 @@
           "pointer": "/items/103",
           "item_sha256": "e7c5dd74680969e404da67d8026808825bf957766297130e075a36c71359f627",
           "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways",
+          "source_sha256": "92ebf165d81c076f9e23c50662a42f4f0c88ccfa6eabc64d39d5cf83d3a44d91",
+          "revision": "85c4c477040178eb023f500c1eac2239372424d9",
+          "retrieved_at": "2026-11-06T09:31:25.694247+00:00",
+          "pointer": "2447ec66-138a-4720-8f1c-e16ed301d6e8",
+          "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/reliability/reliability-virtual-network-gateway",
+          "source_sha256": "fe9c12866def116b86e7e10b15b9feaa12fa921f1298ba0fbf02b06e33ca3483",
+          "revision": "e136e6fa8f22e50ff323739fc1c5475270c3fc86",
+          "retrieved_at": "2026-11-06T09:31:29.169699+00:00",
+          "pointer": "2447ec66-138a-4720-8f1c-e16ed301d6e8",
+          "guidance": "https://learn.microsoft.com/en-us/azure/reliability/reliability-virtual-network-gateway"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/vpn-gateway/create-zone-redundant-vnet-gateway",
+          "source_sha256": "154a2d23b28c7b0c08365800081191daaaf43fe63b4322aec8050e02683c2458",
+          "revision": "cbc5a06c9d3ed838942a27993a46132325fcb5d0",
+          "retrieved_at": "2026-11-06T09:31:27.086569+00:00",
+          "pointer": "2447ec66-138a-4720-8f1c-e16ed301d6e8",
+          "guidance": "https://learn.microsoft.com/azure/vpn-gateway/create-zone-redundant-vnet-gateway"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworkgateways",
+          "source_sha256": "3765ac62dcd92244f185fda4827a331c17f1382b170e44f9f4d099f70c721d25",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T09:31:31.248099+00:00",
+          "pointer": "2447ec66-138a-4720-8f1c-e16ed301d6e8",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworkgateways"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualNetworkGateway.json",
+          "source_sha256": "31a2757f2c7bd0630ee9be290797b709f172e72847c7a210a7a5a957940e1639",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T09:31:30.009677+00:00",
+          "pointer": "2447ec66-138a-4720-8f1c-e16ed301d6e8",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualNetworkGateway.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_gateway.html.markdown",
+          "source_sha256": "abec37ea2fa768bf6bbb030d76837f21a40d9700587a67ad4d87a99d313caf2d",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T09:31:30.882668+00:00",
+          "pointer": "2447ec66-138a-4720-8f1c-e16ed301d6e8",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_gateway.html.markdown"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/expressroute/scalable-gateway",
+          "source_sha256": "0aef940fc599a052091a43826b179f7aeacbd439d3589f2521f84ecaf36f7172",
+          "revision": "8cc757293f61ba26c0c1052842ee35014124174a",
+          "retrieved_at": "2026-11-06T09:52:22.650024+00:00",
+          "pointer": "2447ec66-138a-4720-8f1c-e16ed301d6e8",
+          "guidance": "https://learn.microsoft.com/en-us/azure/expressroute/scalable-gateway"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Network/virtualNetworkGateways",
+        "Microsoft.Network/publicIPAddresses"
+      ],
+      "review_fact_paths": [
+        "gatewayType",
+        "gatewaySku",
+        "gatewayPublicIpReferences",
+        "publicIpSku",
+        "configuredZones"
+      ]
     },
     {
       "control_id": "ALZ-72e52e36-11cc-458b-9a4b-1511e43a58a9",
@@ -5825,14 +6001,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "The checklist's trigger is a requirement, not configured capacity or achieved throughput. The current Direct page documents conditional 400 Gbps beyond older FAQ/CAF 10/100 text.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Supply approved aggregate/per-flow throughput, burst, latency and dedicated-port requirements with attributable measurements and growth assumptions.",
+        "Reconcile provider circuit limits, actual Direct port/circuit allocation, gateway/fallback capacity and equipment/colocation readiness.",
+        "Reviewer decision: does demand above 10 Gbps or the dedicated-port requirement justify the supported Direct design, including conditional 400-Gbps location/enrollment when relevant?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-14",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "configured-capacity-not-demand",
+        "400gbps-conditional-not-blanket-availability"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -5847,9 +6025,67 @@
           "pointer": "/items/104",
           "item_sha256": "7d2aa1046e317ff857201dba20594213b0c7c6d8f9e062f2f378039f8a43e8db",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/connectivity-to-azure"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/connectivity-to-azure",
+          "source_sha256": "acb2896626c6b93398ca6ad0af90160f519753d01d6eb093ff97cc375861a8ac",
+          "revision": "c47f8917bd4e0c9929286fbfa835ccadc00317fb",
+          "retrieved_at": "2026-11-06T09:31:26.153113+00:00",
+          "pointer": "72e52e36-11cc-458b-9a4b-1511e43a58a9",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/connectivity-to-azure"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/expressroute/expressroute-erdirect-about",
+          "source_sha256": "64378fe3bcf219c82f3821c170aab56d2a252a321b2182572b80fcc690398c00",
+          "revision": "8f748fc809bffa90898e9b2eac7861739e13e233",
+          "retrieved_at": "2026-11-06T09:31:27.982946+00:00",
+          "pointer": "72e52e36-11cc-458b-9a4b-1511e43a58a9",
+          "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-erdirect-about"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways",
+          "source_sha256": "92ebf165d81c076f9e23c50662a42f4f0c88ccfa6eabc64d39d5cf83d3a44d91",
+          "revision": "85c4c477040178eb023f500c1eac2239372424d9",
+          "retrieved_at": "2026-11-06T09:31:25.694247+00:00",
+          "pointer": "72e52e36-11cc-458b-9a4b-1511e43a58a9",
+          "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/expressrouteports",
+          "source_sha256": "c690261914ba4c25deab17f35d1f77d3e00ed2231164bd3380081d3c57f9a45c",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T09:31:30.228007+00:00",
+          "pointer": "72e52e36-11cc-458b-9a4b-1511e43a58a9",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/expressrouteports"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/expressRoutePort.json",
+          "source_sha256": "1b46faaa28623bf85fee69207f3eb293cd30aed97e3f24f47e3ddba91e498c88",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T09:31:29.859668+00:00",
+          "pointer": "72e52e36-11cc-458b-9a4b-1511e43a58a9",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/expressRoutePort.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/express_route_port.html.markdown",
+          "source_sha256": "bd81aa36a90fb8c0371fbd2db42020105f49249704ae0a5f28e32ffad84eca52",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T09:31:30.559749+00:00",
+          "pointer": "72e52e36-11cc-458b-9a4b-1511e43a58a9",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/express_route_port.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Network/expressRouteCircuits",
+        "Microsoft.Network/expressRoutePorts"
+      ],
+      "review_fact_paths": [
+        "expressRoutePort.id",
+        "directCircuitBandwidthGbps",
+        "directPortBandwidthGbps",
+        "directPortEncapsulation"
+      ]
     },
     {
       "control_id": "ALZ-c2299c4d-7b57-4d0c-9555-62f2b3e4563a",
@@ -5869,14 +6105,18 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Provider IPv4 hub support is narrower than Direct. Private Link is limited GA with enrollment/region/service limits. Exhaustion and unsupported/cross-region traffic fall back through the gateway.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Bind explicit low-latency or >10-Gbps throughput demand to the exact ExpressRoute connection and gateway.",
+        "Verify UltraPerformance/ErGw3AZ or ARM ErGwScale minimum ten scale units; no Terraform scale default/block is inferred. Virtual WAN Direct five-unit defaults are a separate unsupported model.",
+        "Review Direct/provider, IPv4/IPv6, same-region hub/spoke, UDR, service, enrolled limited-GA Private Link and cumulative port IP limits separately; reconcile supported fallback gateway capacity.",
+        "Review ErGwScale-specific regional exclusions, fixed-scale guidance for Private Link, unsupported IPsec-over-ExpressRoute and up-to-30-minute autoscaling; configured maximum is not achieved/current scale.",
+        "Reviewer decision: is FastPath enabled and eligible for the exact demanded traffic/topology, with attributable path/performance evidence rather than only bypass=true?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-14",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "fastpath-intent-not-achieved-path",
+        "conditional-features-and-fallback"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -5891,9 +6131,72 @@
           "pointer": "/items/105",
           "item_sha256": "d3268c1ebf227da973fd864fa887e73f3136f034e22e89282e1b9523994e83b9",
           "guidance": "https://learn.microsoft.com/azure/expressroute/about-fastpath"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/expressroute/about-fastpath",
+          "source_sha256": "52f3c43860180752c34d5f582a976a8ce367ce0a209255a53defe1350a06f996",
+          "revision": "1cfd566ef5e78b557a6a05c19ecf6726b375d204",
+          "retrieved_at": "2026-11-06T09:31:26.642524+00:00",
+          "pointer": "c2299c4d-7b57-4d0c-9555-62f2b3e4563a",
+          "guidance": "https://learn.microsoft.com/azure/expressroute/about-fastpath"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways",
+          "source_sha256": "92ebf165d81c076f9e23c50662a42f4f0c88ccfa6eabc64d39d5cf83d3a44d91",
+          "revision": "85c4c477040178eb023f500c1eac2239372424d9",
+          "retrieved_at": "2026-11-06T09:31:25.694247+00:00",
+          "pointer": "c2299c4d-7b57-4d0c-9555-62f2b3e4563a",
+          "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualNetworkGateway.json",
+          "source_sha256": "31a2757f2c7bd0630ee9be290797b709f172e72847c7a210a7a5a957940e1639",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T09:31:30.009677+00:00",
+          "pointer": "c2299c4d-7b57-4d0c-9555-62f2b3e4563a",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualNetworkGateway.json"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/connections",
+          "source_sha256": "8d4280075503b9d1f0832a065a0847ba78cfcd8673166b862fcfc810288062b0",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T09:31:30.451487+00:00",
+          "pointer": "c2299c4d-7b57-4d0c-9555-62f2b3e4563a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/connections"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_gateway_connection.html.markdown",
+          "source_sha256": "2713c60f167abe176d065621f63ae24cfec366b4c8e819ceb58df2caabe0a84c",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T09:31:30.677769+00:00",
+          "pointer": "c2299c4d-7b57-4d0c-9555-62f2b3e4563a",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_gateway_connection.html.markdown"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/expressroute/scalable-gateway",
+          "source_sha256": "0aef940fc599a052091a43826b179f7aeacbd439d3589f2521f84ecaf36f7172",
+          "revision": "8cc757293f61ba26c0c1052842ee35014124174a",
+          "retrieved_at": "2026-11-06T09:52:22.650024+00:00",
+          "pointer": "c2299c4d-7b57-4d0c-9555-62f2b3e4563a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/expressroute/scalable-gateway"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Network/connections",
+        "Microsoft.Network/expressRoutePorts",
+        "Microsoft.Network/virtualNetworkGateways"
+      ],
+      "review_fact_paths": [
+        "connectionType",
+        "virtualNetworkGateway1.id",
+        "expressRouteCircuitId",
+        "expressRouteGatewayBypass",
+        "enablePrivateLinkFastPath",
+        "gatewaySku",
+        "gatewayScaleBounds",
+        "directPortBandwidthGbps"
+      ]
     },
     {
       "control_id": "ALZ-4d873974-8b66-42d6-b15f-512a65498f6d",
@@ -5913,14 +6216,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "SKU text does not prove public-IP zones or gateway VM placement. New default behavior is not evidence that an existing gateway was migrated.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reconcile VPN gateway type/SKU, supported region and original deployment or migration against current service guidance.",
+        "Verify every applicable Standard public IP's actual zone-redundant placement; active-active and zone redundancy are separate.",
+        "Reviewer decision: is this branch/remote VPN gateway actually deployed zone redundantly in a supported region?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-14",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "vpn-zone-placement-not-active-active",
+        "public-ip-config-not-runtime-placement"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -5935,9 +6240,61 @@
           "pointer": "/items/106",
           "item_sha256": "17b54a0836441582b9ce6d56aa90cdddbbb2d9bdbf599d65c6ade9ae3eed4834",
           "guidance": "https://learn.microsoft.com/azure/vpn-gateway/create-zone-redundant-vnet-gateway"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/vpn-gateway/create-zone-redundant-vnet-gateway",
+          "source_sha256": "154a2d23b28c7b0c08365800081191daaaf43fe63b4322aec8050e02683c2458",
+          "revision": "cbc5a06c9d3ed838942a27993a46132325fcb5d0",
+          "retrieved_at": "2026-11-06T09:31:27.086569+00:00",
+          "pointer": "4d873974-8b66-42d6-b15f-512a65498f6d",
+          "guidance": "https://learn.microsoft.com/azure/vpn-gateway/create-zone-redundant-vnet-gateway"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/reliability/reliability-virtual-network-gateway",
+          "source_sha256": "fe9c12866def116b86e7e10b15b9feaa12fa921f1298ba0fbf02b06e33ca3483",
+          "revision": "e136e6fa8f22e50ff323739fc1c5475270c3fc86",
+          "retrieved_at": "2026-11-06T09:31:29.169699+00:00",
+          "pointer": "4d873974-8b66-42d6-b15f-512a65498f6d",
+          "guidance": "https://learn.microsoft.com/en-us/azure/reliability/reliability-virtual-network-gateway"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworkgateways",
+          "source_sha256": "3765ac62dcd92244f185fda4827a331c17f1382b170e44f9f4d099f70c721d25",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T09:31:31.248099+00:00",
+          "pointer": "4d873974-8b66-42d6-b15f-512a65498f6d",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworkgateways"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualNetworkGateway.json",
+          "source_sha256": "31a2757f2c7bd0630ee9be290797b709f172e72847c7a210a7a5a957940e1639",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T09:31:30.009677+00:00",
+          "pointer": "4d873974-8b66-42d6-b15f-512a65498f6d",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualNetworkGateway.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_gateway.html.markdown",
+          "source_sha256": "abec37ea2fa768bf6bbb030d76837f21a40d9700587a67ad4d87a99d313caf2d",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T09:31:30.882668+00:00",
+          "pointer": "4d873974-8b66-42d6-b15f-512a65498f6d",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_gateway.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Network/virtualNetworkGateways",
+        "Microsoft.Network/publicIPAddresses"
+      ],
+      "review_fact_paths": [
+        "gatewayType",
+        "gatewaySku",
+        "activeActive",
+        "gatewayPublicIpReferences",
+        "publicIpSku",
+        "configuredZones"
+      ]
     },
     {
       "control_id": "ALZ-45866df8-cf85-4ca9-bbe2-65ec1478919e",
@@ -5957,14 +6314,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Azure activeActive, two local gateway IDs or multiple connections cannot attest on-premises appliance population/independence/health. No IPs, keys, topology probes or live appliance inventory.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reconcile each branch/site's real independent VPN appliances, active-active or active-passive arrangement and power/uplink/failure domains using redacted attributable inventory.",
+        "Bind supplied Azure IPsec connections/local-gateway declarations to actual appliances; two tunnels can terminate on one device. Review appropriate BGP/ECMP, route withdrawal and failover evidence.",
+        "Reviewer decision: are redundant on-premises appliances deployed and configured to preserve this site's connectivity during an appliance/path failure?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-14",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "azure-active-active-not-onprem-redundancy",
+        "declarations-not-appliance-population"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -5979,9 +6338,61 @@
           "pointer": "/items/107",
           "item_sha256": "3362698b7dea3ebe2e05c2589084997374f4250201565fb70b1800e40501aa11",
           "guidance": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable",
+          "source_sha256": "a6d50343aa55eb6df50826cb737097034e1aca06bb5ec29ae64c6ccf1d815738",
+          "revision": "ad31c693f9ef19cbfe13ea489566ce0010181980",
+          "retrieved_at": "2026-11-06T09:31:27.537397+00:00",
+          "pointer": "45866df8-cf85-4ca9-bbe2-65ec1478919e",
+          "guidance": "https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/reliability/reliability-virtual-network-gateway",
+          "source_sha256": "fe9c12866def116b86e7e10b15b9feaa12fa921f1298ba0fbf02b06e33ca3483",
+          "revision": "e136e6fa8f22e50ff323739fc1c5475270c3fc86",
+          "retrieved_at": "2026-11-06T09:31:29.169699+00:00",
+          "pointer": "45866df8-cf85-4ca9-bbe2-65ec1478919e",
+          "guidance": "https://learn.microsoft.com/en-us/azure/reliability/reliability-virtual-network-gateway"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/connections",
+          "source_sha256": "8d4280075503b9d1f0832a065a0847ba78cfcd8673166b862fcfc810288062b0",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T09:31:30.451487+00:00",
+          "pointer": "45866df8-cf85-4ca9-bbe2-65ec1478919e",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/connections"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualNetworkGateway.json",
+          "source_sha256": "31a2757f2c7bd0630ee9be290797b709f172e72847c7a210a7a5a957940e1639",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T09:31:30.009677+00:00",
+          "pointer": "45866df8-cf85-4ca9-bbe2-65ec1478919e",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualNetworkGateway.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_gateway_connection.html.markdown",
+          "source_sha256": "2713c60f167abe176d065621f63ae24cfec366b4c8e819ceb58df2caabe0a84c",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T09:31:30.677769+00:00",
+          "pointer": "45866df8-cf85-4ca9-bbe2-65ec1478919e",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_gateway_connection.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Network/connections",
+        "Microsoft.Network/virtualNetworkGateways",
+        "Microsoft.Network/localNetworkGateways"
+      ],
+      "review_fact_paths": [
+        "connectionType",
+        "localNetworkGatewayId",
+        "virtualNetworkGateway1.id",
+        "activeActive",
+        "enableBgp"
+      ]
     },
     {
       "control_id": "ALZ-718cb437-b060-2589-8856-2e93a5c6633b",
@@ -6001,14 +6412,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Port billing and circuit family are different fields. Direct+Local presence does not prove lower total cost or suitability, and Local cannot supply Global Reach.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Resolve the exact Direct port/circuit relationship and all required local/nonlocal regions and services against current Local mapping.",
+        "Compare negotiated port billing, Local/Standard/Premium circuit charges, outbound transfer, gateway and colocation/provider costs for attributable actual usage.",
+        "Reviewer decision: has the Local circuit alternative on this Direct port been considered and accepted or rejected with a source-bound regional and full-cost rationale?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-14",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "direct-port-billing-distinct-from-circuit",
+        "cost-choice-needs-demand-and-reach"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -6023,9 +6436,68 @@
           "pointer": "/items/108",
           "item_sha256": "0574f27bfe3022ee3e51ced8b0920073bb4cb377e9e974fe90f06e7fedc5f967",
           "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-erdirect-about"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/expressroute/expressroute-erdirect-about",
+          "source_sha256": "64378fe3bcf219c82f3821c170aab56d2a252a321b2182572b80fcc690398c00",
+          "revision": "8f748fc809bffa90898e9b2eac7861739e13e233",
+          "retrieved_at": "2026-11-06T09:31:27.982946+00:00",
+          "pointer": "718cb437-b060-2589-8856-2e93a5c6633b",
+          "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-erdirect-about"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/expressroute/plan-manage-cost",
+          "source_sha256": "387c49690612a0bf42f8f261ee56da4c7a9d7d6818b0faa3ecc503d3b2670b2d",
+          "revision": "2666ad40250d82d8e4383fb672286eaa8f770da9",
+          "retrieved_at": "2026-11-06T09:31:24.769255+00:00",
+          "pointer": "718cb437-b060-2589-8856-2e93a5c6633b",
+          "guidance": "https://learn.microsoft.com/azure/expressroute/plan-manage-cost"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-local",
+          "source_sha256": "91ae60e45a6df1037cf2a89536503f1bdb128db7ab046c319a562cb98a1678dd",
+          "revision": "fd9e538811e7f837fc0920c04a45a34c7563ab15",
+          "retrieved_at": "2026-11-06T09:31:25.226325+00:00",
+          "pointer": "718cb437-b060-2589-8856-2e93a5c6633b",
+          "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-local"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/expressroute/expressroute-locations-providers",
+          "source_sha256": "e37e3aa11b9d6780dbee92ca0d17e0a23a80536586feb812a82c0e63cd0d84e0",
+          "revision": "2bbe8c4ea4c2b011513ccc5178e52111eea1f8a0",
+          "retrieved_at": "2026-11-06T09:31:29.395031+00:00",
+          "pointer": "718cb437-b060-2589-8856-2e93a5c6633b",
+          "guidance": "https://learn.microsoft.com/en-us/azure/expressroute/expressroute-locations-providers"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/expressRouteCircuit.json",
+          "source_sha256": "76dd409d7b89748a73787b5dcd4b6f0e67613e4ae173dc851589e256133b5461",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T09:31:29.744011+00:00",
+          "pointer": "718cb437-b060-2589-8856-2e93a5c6633b",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/expressRouteCircuit.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/expressRoutePort.json",
+          "source_sha256": "1b46faaa28623bf85fee69207f3eb293cd30aed97e3f24f47e3ddba91e498c88",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T09:31:29.859668+00:00",
+          "pointer": "718cb437-b060-2589-8856-2e93a5c6633b",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/expressRoutePort.json"
         }
       ],
-      "severity": "High"
+      "severity": "High",
+      "review_resource_types": [
+        "Microsoft.Network/expressRouteCircuits",
+        "Microsoft.Network/expressRoutePorts"
+      ],
+      "review_fact_paths": [
+        "expressRoutePort.id",
+        "circuitSku.tier",
+        "circuitSku.family",
+        "directPortBillingType",
+        "directPortBandwidthGbps"
+      ]
     },
     {
       "control_id": "ALZ-8042d88e-79d1-47b7-9b22-a5a67e7a8ed4",
@@ -6045,14 +6517,17 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "QinQ/Dot1Q, circuit count, distinct IDs and rate-limit intent are bounded configuration facts only. No addresses, route/packet probes, isolation testing or environment-name inference.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Supply the accountable owner's explicit separation/dedicated-bandwidth requirements and exact accepted production/nonproduction routing populations; never infer them from names or tags.",
+        "Reconcile actual separate circuit bindings, VLAN/VRF and on-premises BGP/route import/export, VNet interconnections, Global Reach and bypass paths.",
+        "Account for shared Direct port/provider capacity, rate limits and noisy-neighbor demand; two circuit declarations are not independent physical bandwidth.",
+        "Reviewer decision: does the implemented dedicated-circuit/routing design satisfy the explicit isolation/capacity requirement with attributable operational evidence?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-14",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "circuit-separation-not-effective-isolation",
+        "shared-ports-can-share-contention"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -6067,9 +6542,70 @@
           "pointer": "/items/109",
           "item_sha256": "af85dacdf98a76c7d96404b5f9eee78f5e6b4be81b7b522e68fca80ff3d17f92",
           "guidance": "https://learn.microsoft.com/azure/architecture/framework/services/networking/expressroute/reliability"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/connectivity-to-azure",
+          "source_sha256": "acb2896626c6b93398ca6ad0af90160f519753d01d6eb093ff97cc375861a8ac",
+          "revision": "c47f8917bd4e0c9929286fbfa835ccadc00317fb",
+          "retrieved_at": "2026-11-06T09:31:26.153113+00:00",
+          "pointer": "8042d88e-79d1-47b7-9b22-a5a67e7a8ed4",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/connectivity-to-azure"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/expressroute/expressroute-erdirect-about",
+          "source_sha256": "64378fe3bcf219c82f3821c170aab56d2a252a321b2182572b80fcc690398c00",
+          "revision": "8f748fc809bffa90898e9b2eac7861739e13e233",
+          "retrieved_at": "2026-11-06T09:31:27.982946+00:00",
+          "pointer": "8042d88e-79d1-47b7-9b22-a5a67e7a8ed4",
+          "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-erdirect-about"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/architecture/framework/services/networking/expressroute/reliability",
+          "source_sha256": "46520fe44e221ee11f61185d3c2dd9e29c2c701790461b15f82633f6e1293b8a",
+          "revision": "0b2ef1fcf0d93f4ec84a1ef2cd61b1a50fffdc83",
+          "retrieved_at": "2026-11-06T09:31:28.961939+00:00",
+          "pointer": "8042d88e-79d1-47b7-9b22-a5a67e7a8ed4",
+          "guidance": "https://learn.microsoft.com/azure/architecture/framework/services/networking/expressroute/reliability"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/expressRouteCircuit.json",
+          "source_sha256": "76dd409d7b89748a73787b5dcd4b6f0e67613e4ae173dc851589e256133b5461",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T09:31:29.744011+00:00",
+          "pointer": "8042d88e-79d1-47b7-9b22-a5a67e7a8ed4",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/expressRouteCircuit.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/expressRoutePort.json",
+          "source_sha256": "1b46faaa28623bf85fee69207f3eb293cd30aed97e3f24f47e3ddba91e498c88",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T09:31:29.859668+00:00",
+          "pointer": "8042d88e-79d1-47b7-9b22-a5a67e7a8ed4",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/expressRoutePort.json"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/connections",
+          "source_sha256": "8d4280075503b9d1f0832a065a0847ba78cfcd8673166b862fcfc810288062b0",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T09:31:30.451487+00:00",
+          "pointer": "8042d88e-79d1-47b7-9b22-a5a67e7a8ed4",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/connections"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Network/expressRouteCircuits",
+        "Microsoft.Network/expressRoutePorts",
+        "Microsoft.Network/connections"
+      ],
+      "review_fact_paths": [
+        "expressRoutePort.id",
+        "directCircuitBandwidthGbps",
+        "directPortBandwidthGbps",
+        "directPortEncapsulation",
+        "directPortRateLimit",
+        "expressRouteCircuitId"
+      ]
     },
     {
       "control_id": "ALZ-b30e38c3-f298-412b-8363-cefe179b599d",
@@ -14356,66 +14892,72 @@
   "reviewed_at": "2026-11-04T13:25:57.057372+00:00",
   "reference_manifest_sha256": "c287f93a4ff4c94c577b0248345d813f44fb27dff66524408870095024305d30",
   "control_source_manifest_sha256": "d189615f2793f141a6ee6cd5a7f026556a4146fd44d65705e6f08d0e01f7debf",
-  "accepted_matrix_sha256": "294b4337c59e5eb30747073f926d4f81ce23bc2bc68b161ae7800dbfff6ff046",
+  "accepted_matrix_sha256": "dc51484a69e6ebce3a8654066437a6fdd8b7a691202670bc29e718c85566f27b",
   "wave_source_manifest_sha256": "617e66a497a1f6bb1ddf50f53b3f75f3ff2cec2989324d42496aeeb4d9d0ef38",
   "change_review": {
-    "base_sha256": "b34b9e6ff0a1f0fedc134fea0718ee104470d67294691f24000734357cd3c2ff",
-    "matrix_sha256": "294b4337c59e5eb30747073f926d4f81ce23bc2bc68b161ae7800dbfff6ff046",
-    "reviewed_at": "2026-11-06T10:02:20.4835235Z",
+    "base_sha256": "332ce47440e7541b0079422d13f812caf8a946345f766154e55463e1c9911df3",
+    "matrix_sha256": "dc51484a69e6ebce3a8654066437a6fdd8b7a691202670bc29e718c85566f27b",
+    "reviewed_at": "2026-11-06T10:37:08.5648090Z",
     "reviewer": "owner-delegated-source-backed-batch-review",
     "changes": [
       {
-        "control_id": "ALZ-4ac6b67c-b3a4-4ff9-8e87-b07a7ce7bbdb",
-        "before_sha256": "96f4325f7b8f829cc84a7b24441dbc3f538f09283cebbe370786187bb4123b31",
-        "after_sha256": "e2a4b2358bf8d632188168723ab110995c3d9af89ee2e06ac19530c59f147b8f",
-        "rationale": "Owner-delegated source-backed batch 22 acceptance: assisted"
+        "control_id": "ALZ-7025b442-f6e9-4af6-b11f-c9574916016f",
+        "before_sha256": "598dea8b02650133de2b5098904891ad5a87a9ad8d7b23272938a9291b8d04c0",
+        "after_sha256": "a1fd2c6bd3fb236e9050418b7d96b1521fb9982bc6e0a493129de5c83b6e2db1",
+        "rationale": "Owner-delegated source-backed batch 14 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-4e5695f2-223a-4ce8-ab12-308ca5017f15",
-        "before_sha256": "3b3a425a13bcbf2e02970465a2e29ff9a54f0fb0dc1d4106190ae76053f5c466",
-        "after_sha256": "11f5d8ff8f2622fbdaad08225a313b464cba5dd9bdce5a371af437db88bd1d37",
-        "rationale": "Owner-delegated source-backed batch 22 acceptance: assisted"
+        "control_id": "ALZ-f4e7926a-ec35-476e-a412-5dd17136bd62",
+        "before_sha256": "aa5f09046f8a3548798373429abb019fb5caa4dbd1cfae0e4bc58e360c11dc95",
+        "after_sha256": "eeb9ef22c69c3050cdceb610100598bc5bf40f0d3e145a83426f45f6eedf752a",
+        "rationale": "Owner-delegated source-backed batch 14 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-4e3ab369-3829-4e7e-9161-83687a0477a2",
-        "before_sha256": "488529e164d31d688575b7032c8404033f582807a6c950c395749a44417d7fcc",
-        "after_sha256": "3ab6ed3da6ea295dafcfc432a935906c247d04dc535a96109167377e9dee4104",
-        "rationale": "Owner-delegated source-backed batch 22 acceptance: assisted"
+        "control_id": "ALZ-2447ec66-138a-4720-8f1c-e16ed301d6e8",
+        "before_sha256": "ec24eb827baa44e7a64ac51b878d970b9c4de65ba85e506db05245c55dad17a7",
+        "after_sha256": "490a11adc974adb774921a87dba93ad1b725fe7ff65e83fa300028b284fcee74",
+        "rationale": "Owner-delegated source-backed batch 14 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-09945bda-4333-44f2-9911-634182ba5275",
-        "before_sha256": "1ad977fb5e936834edfe57ee826308cf05913a022fa151aab427d5345286cf32",
-        "after_sha256": "ffd974e0de57f7fd882e702e5a49253f4e0cf80a7b604488fae66bd8943e1377",
-        "rationale": "Owner-delegated source-backed batch 22 acceptance: assisted"
+        "control_id": "ALZ-72e52e36-11cc-458b-9a4b-1511e43a58a9",
+        "before_sha256": "447abdcc6636b560fdf5e2a6fc215c3e0fa4cb7f4f96e3f39bc3bb4a19322642",
+        "after_sha256": "bf06625f0c0dae69993a6f9d0c587007c3e09f68d00c238c6b6a54031a406cb9",
+        "rationale": "Owner-delegated source-backed batch 14 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-36a72a48-fffe-4c40-9747-0ab5064355ba",
-        "before_sha256": "d8d513bbc08e71c90030f21e0c21816c9f87795c2b73fd8e191cfc92c659d618",
-        "after_sha256": "cdf34aea1db3438acc490036ff175dc3e2254f0ef6b1dd7bdd4c091f171f8753",
-        "rationale": "Owner-delegated source-backed batch 22 acceptance: assisted"
+        "control_id": "ALZ-c2299c4d-7b57-4d0c-9555-62f2b3e4563a",
+        "before_sha256": "c539b0b5d3f4d747c2187dd38b48bc729f3b4cd5292491853d59f1b1693ca57e",
+        "after_sha256": "bdf07f33cb2aa2845500840062160f0c2a3d161643d879b75219fabb50603732",
+        "rationale": "Owner-delegated source-backed batch 14 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-77425f48-ecba-43a0-aeac-a3ac733ccc6a",
-        "before_sha256": "927756dc00c605717046aa87b8a1db1c3baccf69028bb93a02df12e4380f2cf6",
-        "after_sha256": "eb3a235033ee993dc855c48cfb646305936d661a40adcd65aa7ae6bf17adf93f",
-        "rationale": "Owner-delegated source-backed batch 22 acceptance: assisted"
+        "control_id": "ALZ-4d873974-8b66-42d6-b15f-512a65498f6d",
+        "before_sha256": "0ef45bb4131f7238cc2ba34a820b045b08f3a11daffeb85a9a3ce0bcd5c7dda9",
+        "after_sha256": "c4287e04f0860662cb12fe0edea5e2ba2ccf09243745f1fa72057e8a63025220",
+        "rationale": "Owner-delegated source-backed batch 14 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-24d96b30-61ee-4436-a1cc-d6ef08bc574b",
-        "before_sha256": "cb1a46532775a7dc3d8760966f21e2320f9c9500a00c00d76ee85d077751fad9",
-        "after_sha256": "5f20ac9bc98f311a7ac1bb63692a717cbaf783c9e7a6ec6f625bed9a21949eed",
-        "rationale": "Owner-delegated source-backed batch 22 acceptance: assisted"
+        "control_id": "ALZ-45866df8-cf85-4ca9-bbe2-65ec1478919e",
+        "before_sha256": "cf5f2a8c6ae1575051f5e930e49f715cd2e0092d8927edeac178461397684ad1",
+        "after_sha256": "602864e1a28cd04e39190e89161634b165f9e3797ac6e24ddaf5521801f3cb56",
+        "rationale": "Owner-delegated source-backed batch 14 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-15833ee7-ad6c-46d3-9331-65c7acbe44ab",
-        "before_sha256": "7104f87bb101a9e9522134fb855e8d89d7fcc2e99cafbfce99a4d4134fcea771",
-        "after_sha256": "776829d88e2e7fd42e85041aaae8ba84033b0a0a0ceb0cb8a908d4d554bb3bd4",
-        "rationale": "Owner-delegated source-backed batch 22 acceptance: assisted"
+        "control_id": "ALZ-718cb437-b060-2589-8856-2e93a5c6633b",
+        "before_sha256": "1a78a19fa01af43105c2ec75f636c49227238c1843b1d84a1880787ec3b5a993",
+        "after_sha256": "9ab2890dbc2a045d917d1f013a63a8f381a23467057dd2c19d7d9779aefd2841",
+        "rationale": "Owner-delegated source-backed batch 14 acceptance: assisted"
+      },
+      {
+        "control_id": "ALZ-8042d88e-79d1-47b7-9b22-a5a67e7a8ed4",
+        "before_sha256": "9a000061103f201b76867fc690934d9d416f9417a096d9b298319221bfaf3b2a",
+        "after_sha256": "20c274ac7b413a99eb7994ca2e18327b5c1e46b6f0b1b5c190b72b66f2ac4799",
+        "rationale": "Owner-delegated source-backed batch 14 acceptance: assisted"
       }
     ]
   },
   "first_wave_matrix_sha256": "f649b2293211c844d661ea93c6978fe2db948eff17237af01ca090809da8e1fb",
-  "batch_source_manifest_sha256": "faf03386bf08384e062b9720e4c9afdf74f2b6294ecd7b110fadabf306396397",
-  "batch_catalog_version": "2026-11-06.6",
+  "batch_source_manifest_sha256": "20d9aa15d3a3cfc0f7917c52775addb53068cc00e7962d5cf5816a9364fe5f9b",
+  "batch_catalog_version": "2026-11-06.7",
   "priority_manifest_sha256": "b42971f85b9110f71fdc5ae81695fe4be72c1f28022ec27aeb719140ed1475c0"
 }

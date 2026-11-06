@@ -31,6 +31,15 @@ The frozen default-outbound retirement wording differs from the inspected curren
 Learn guidance for new VNets and later APIs; see the
 [versioned findings](automation-matrix.md#cohort-13-inbound-protection-outbound-migration-and-hybrid-connectivity).
 
+Cohort14 supplies typed ExpressRoute circuit/port billing and capacity, FastPath
+flags, source-specific gateway scale/zone context and scoped positive relationships.
+Nine explicit decisions distinguish actual requirements/costs, Local reach,
+deployed resilience, real on-premises devices and effective routing isolation.
+The published FastPath IP limit is not observed usage or available headroom.
+No current regional/port availability, achieved throughput/latency, working
+FastPath, operational redundancy or economic suitability follows from settings.
+ARM scale support does not imply the pinned Terraform provider supports it.
+
 ## Tiers and counts
 
 With explicit assessment 1.2, Verified means sufficient current evidence for an

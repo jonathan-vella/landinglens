@@ -64,6 +64,91 @@ already reviewed runtime dependencies were restored only after its explicit
 missing-`lark` failure; no compiler/module or new dependency was acquired.
 These are preparation checks, not final merged/cohort14-integrated acceptance.
 
+## Cohort 14 integration: 2026-11-06
+
+The coordinator granted [#99](https://github.com/jonathan-vella/landinglens/issues/99)
+its sole slot after actual cohort22 implementation/receipt merges. Preserved
+preparation `60951de` was reconciled with delivered main
+`4f2cb6d72897c6e135dbfd52b500554872ae149c`. The
+[nine-GUID matrix](../../references/recommendation-batches/batch-14.json) and
+[26 actual source captures](../../references/recommendation-batches/batch-14-sources.json)
+precede working `2026-11-06.7`. Exact `.6.6` catalog bytes are frozen with SHA256
+`b5620f2e88cbce8c7d53178626931406975b604d0cb5f4b3e5e9ba41470098b8`.
+All 255 GUIDs, immutable 251 membership/original hashes, ten existing predicates,
+old catalog/crosswalk meanings and every earlier own-GUID receipt are retained.
+
+All nine recommendations remain assisted. Explicit circuit tier/family, separate
+provider Mbps/Direct numeric Gbps, port billing/encapsulation, FastPath flags and
+ARM-only scale/public-IP context reuse merged gateway/connection helpers.
+Scoped positive circuit/port/gateway/public-IP joins and literal FastPath
+prerequisite/published-limit subchecks are partial original-time preparation,
+not actual demand, current availability, costs, working paths or resilience.
+Finite fractional circuit bandwidth can prepare a Signal; invalid/nonfinite
+values cannot. Pinned Terraform has no invented ErGwScale/autoscale support.
+
+Current sources distinguish Local reach from resource location, port billing
+from circuit billing and AZ-capable SKUs from zonal/zone-redundant deployment.
+Conditional Direct 400-Gbps and FastPath provider/Direct/IPv6/UDR/Private Link
+support, cumulative port IP limits and fallback remain explicit review constraints.
+ErGwScale has bounds 1-40, fixed-scale Private Link guidance, regional exclusions
+and no IPsec-over-ExpressRoute support. No arbitrary cost, traffic or latency
+threshold, on-premises appliance count or environment-name isolation is inferred.
+
+The single evaluator's adapters, review contexts, all reports, tiers, sessions,
+interviews and exact packaged replay are wired. Nine source-bound decisions stay
+blank until explicitly supplied. Historical unaccepted/tampered replay remains
+refused. The existing six compiler cases are preserved and a seventh exercises
+the ExpressRoute fixture without restoration. No new live Azure/cost/traffic/
+health/region/directory reads, login, probes, scan, deployment, module/compiler
+acquisition, permission change, dependency or human approval is introduced.
+Checked implementation delivery and guarded actual receipts remain required;
+the fixed ledger is still **71 merged / 180 pending** before that reconciliation.
+
+Pre-delivery local and own exact-installed suites each ran **381 tests**:
+380 passed and the original Windows symlink-privilege case was explicitly skipped.
+All 17 cohort-specific cases passed, including actual packaged `.6.7` replay,
+all output formats, blank sessions and nine separate source-bound decisions.
+Format/lint, 37-source-file type checks and dependency consistency passed.
+All seven existing-compiler cases exercised without skips or restoration.
+The final wheel was built offline and installed into a fresh own environment
+outside checkout using staged reviewed runtime wheels; import provenance was
+asserted under site-packages. No dependency manifest or compiler acquisition changed.
+Exact wheel SHA256:
+`df723f455bd646a432fd911015df5d53fba4e043d720dfa596d83d562875b851`.
+Platform CI, downloaded compiler artifacts, normal checked merge and actual
+own-GUID receipts remain delivery gates, not assumed from these local results.
+
+[#107](https://github.com/jonathan-vella/landinglens/pull/107) merged normally as
+`64d18c84fe5831d90423f06984d73dd2fc671028` at 2026-11-06T11:03:49Z.
+Exact checked head `da4dfa054cd3e44348c53d4a53289066e48f5aae` passed all eight
+supported jobs in push/PR runs `42206494462` / `42206544372`, CodeQL run
+`42206542315` and the applicable AI-findings run `42206548556`.
+All four downloaded compiler artifacts exercised identical seven-case coverage
+without skips: IDs `13496484161`, `13497625015`, `13497375707`, `13495834551`.
+Their JSON SHA256 is
+`0152e4ac902d26dd275fb5ac5c5d8aad9e00def9543343123e082d6acab95d7f`
+on Ubuntu and
+`66e99709547173e16a6107fd02bcd4dc52fab987a7ffb14051ea7e41ed54cf50`
+on Windows. Exact head, actual main, all check-runs and reviews were refreshed
+immediately before normal SHA-bound merge. No required review, branch protection
+or ruleset was configured or bypassed.
+
+The guarded recorder reverified actual merged PR/head/runs/compiler artifacts
+and the own installed wheel, then bound all nine GUIDs to `deliveries.14`.
+All 71 earlier receipt rows and all eight earlier cohort receipts are unchanged.
+The actual ledger is **80 merged / 171 pending**; cohort12 is next by current
+severity/crosswalk priority. Checked receipt publication remains the closure
+gate. This is source/fixture/saved/injected and installed-CLI acceptance, not
+new live Azure, demand, regional availability, costs, routing, performance,
+on-premises redundancy or an invented human decision.
+
+The receipt/invariant follow-up passed **382 local and exact-installed tests**:
+381 passed with the same original Windows privilege skip. The exact implementation
+wheel above is unchanged. A new own-GUID receipt assertion freezes all 71 prior
+rows and eight prior cohort receipts; cohort22's historical count remains 71
+within its exact completed cohorts, not redefined as the new global total.
+Format/lint, 37-source-file type checks and dependency consistency passed.
+
 ## Cohort 22 integration: 2026-11-06
 
 The coordinator granted [#100](https://github.com/jonathan-vella/landinglens/issues/100)

@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "kind": "crosswalk",
-  "crosswalk_version": "2026-11-06.6",
-  "catalog_sha256": "332ce47440e7541b0079422d13f812caf8a946345f766154e55463e1c9911df3",
+  "crosswalk_version": "2026-11-06.7",
+  "catalog_sha256": "17e14077671b6a2b8c6bb45c8d2cf7b02b17152e101d9e8d32f7c709c029517e",
   "review_state": "reviewed",
   "reviewed_at": "2026-11-05T02:06:20.881972+00:00",
   "reviewer": "owner-delegated-source-backed-review",

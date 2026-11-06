@@ -4,6 +4,7 @@ import json
 import os
 import tempfile
 import unittest
+from importlib.resources import files
 from pathlib import Path
 from unittest.mock import patch
 
@@ -43,7 +44,9 @@ class SecurityBatchTests(unittest.TestCase):
         self.root = Path(temp.name)
         reviews = ROOT / "references" / "recommendation-batches"
         self.matrix = json.loads((reviews / "batch-22.json").read_text())
-        self.catalog = load_catalog()
+        self.catalog = load_catalog(
+            str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.6.json"))
+        )
 
     def candidate(self):
         candidate = copy.deepcopy(self.catalog)
@@ -750,7 +753,12 @@ class SecurityBatchTests(unittest.TestCase):
         ledger = json.loads((review / "ledger.json").read_text())
         self.assertEqual(ledger["fixed_targets_sha256"], digest(targets))
         self.assertEqual(len(ledger["recommendations"]), 251)
-        self.assertEqual(sum(r["status"] == "merged" for r in ledger["recommendations"]), 71)
+        completed_batches = ("01", "04", "11", "13", "17", "18", "19", "22")
+        delivered_through_cohort22 = [
+            row for row in ledger["recommendations"] if row["batch"] in completed_batches
+        ]
+        self.assertEqual(len(delivered_through_cohort22), 71)
+        self.assertTrue(all(row["status"] == "merged" for row in delivered_through_cohort22))
         receipt = ledger["deliveries"]["22"]
         self.assertEqual(receipt["pr"], "https://github.com/jonathan-vella/landinglens/pull/104")
         self.assertEqual(receipt["merge_commit"], "4929eae302ea2019d067862f17bdfb2ed5fc25a5")

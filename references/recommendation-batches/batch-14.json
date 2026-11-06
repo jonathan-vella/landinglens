@@ -1,0 +1,171 @@
+{
+  "batch": "14",
+  "catalog_version": "2026-11-06.7",
+  "review_state": "owner-delegated-source-backed-matrix",
+  "accepted_at": "2026-11-06T10:37:08.5648090Z",
+  "preserved_catalog_bytes": {
+    "2026-11-06.6": "b5620f2e88cbce8c7d53178626931406975b604d0cb5f4b3e5e9ba41470098b8"
+  },
+  "preserved_crosswalk_bytes": {
+    "2026-11-06.6": "ffcc95726458a4acf9302c4a5d7c2d721df06cab6d292b1ea53c470a45810705"
+  },
+  "issue": "https://github.com/jonathan-vella/landinglens/issues/99",
+  "prerequisites": ["13", "22"],
+  "acceptance_evidence": "Nine GUID-specific assisted workflows with typed billing/capacity/zone/connection context and literal FastPath prerequisite subchecks. Configuration never establishes current region/port availability, actual demand or costs, achieved throughput/latency, deployed gateway resilience, real on-premises appliances or effective routing isolation. Separate source-bound decisions remain blank; actual checked merge and guarded receipts are distinct from source-matrix acceptance.",
+  "supported_modes": "Circuit/port and explicit connection FastPath facts normalize through reviewed ARM/REST 2024-05-01, existing no-restore Bicep, AzureRM 4.50.0 raw/supplied-plan and saved/injected paths. Merged cohort13 owns gateway SKU/type/BGP/active-active and circuit/local-gateway bindings; cohort22 security behavior is retained. ARM-only scale bounds and typed gateway public-IP references supply partial original-time review/subchecks. Finite numeric circuit Gbps can prepare a Signal, never a pass. All reports, tiers, review sessions, interviews and exact packaged-catalog replay use the single evaluator. No new live Azure/cost/traffic/health/region queries, scans, credentials, module restoration or deployments.",
+  "shared_interface_needs": [
+    "Merged cohort13 gateway SKU, gatewayType, activeActive, enableBgp, subnet relationships and connection circuit/local-network-gateway relationships are reused without duplicate facts.",
+    "Original-time and scoped evidence guards remain unchanged. Explicit FastPath booleans extend the merged connection projection; unique known gateway/public-IP joins remain partial review context.",
+    "ARM-only ErGwScale autoscale bounds support the literal configured-minimum subcheck; pinned Terraform documentation exposes no corresponding field and remains unknown.",
+    "Preserve routing_evidence connection/IPsec/MACsec and identity_evidence Direct-port identity meanings; no alternate gateway abstraction."
+  ],
+  "recommendations": [
+    {
+      "guid": "7025b442-f6e9-4af6-b11f-c9574916016f",
+      "upstream_id": "D06.04",
+      "classification": "assisted",
+      "implemented_subclaim": "Prepared explicit circuit tier/family and separate provider Mbps/Direct Gbps facts; no billing default or cost threshold.",
+      "sources": ["expressroute-cost", "expressroute-local", "circuit-arm", "circuit-rest-2024", "terraform-circuit"],
+      "review_resource_types": ["Microsoft.Network/expressRouteCircuits", "Microsoft.Network/expressRoutePorts"],
+      "review_fact_paths": ["circuitSku.tier", "circuitSku.family", "providerCircuitBandwidthMbps", "directCircuitBandwidthGbps", "directPortBillingType"],
+      "evidence_requirements": [
+        "Bind a representative original-time outbound demand record to the exact circuit, billing period, peering pricing zone and negotiated price currency.",
+        "Compare actual metered/unlimited circuit, gateway, provider, Direct-port and Global Reach costs; Local's included unlimited transfer is a different case.",
+        "Reviewer decision: does the attributable demand and total-cost comparison justify this circuit's unlimited-data plan?"
+      ],
+      "limitations": "MeteredData or Local is not a generic pass; configured bandwidth is not outbound volume, demand or break-even economics. No live billing/traffic read or pricing API.",
+      "flags": ["billing-configuration-not-cost-suitability", "no-arbitrary-break-even"]
+    },
+    {
+      "guid": "f4e7926a-ec35-476e-a412-5dd17136bd62",
+      "upstream_id": "D06.05",
+      "classification": "assisted",
+      "implemented_subclaim": "Prepared explicit circuit tier, minimised peering-location presence and typed Direct port binding; location presence is not Local eligibility.",
+      "sources": ["expressroute-local", "expressroute-locations", "circuit-arm", "terraform-circuit", "connection-arm"],
+      "review_resource_types": ["Microsoft.Network/expressRouteCircuits", "Microsoft.Network/connections", "Microsoft.Network/virtualNetworkGateways"],
+      "review_fact_paths": ["circuitSku.tier", "peeringLocationConfigured", "expressRoutePort.id", "expressRouteCircuitId", "virtualNetworkGateway1.id"],
+      "evidence_requirements": [
+        "Reconcile each actual physical peering location with the source-reviewed Local mapping for all required Azure workload and recovery regions; circuit resource location is not the peering location.",
+        "Resolve scoped connection/circuit/gateway bindings and unsupported Global Reach or wider-geography requirements.",
+        "Reviewer decision: does Local support every required region/service and provide the justified cost alternative for this exact circuit?"
+      ],
+      "limitations": "Local SKU, circuit region, one relationship or a public table cannot establish current regional availability, port admission, complete target regions or cost suitability.",
+      "flags": ["resource-region-not-peering-location", "local-mapping-needs-explicit-review"]
+    },
+    {
+      "guid": "2447ec66-138a-4720-8f1c-e16ed301d6e8",
+      "upstream_id": "D06.06",
+      "classification": "assisted",
+      "implemented_subclaim": "Reuse merged cohort13 gateway SKU/type facts with explicit typed public-IP references and supplied Standard/zone configuration; no zone-placement verdict.",
+      "sources": ["expressroute-gateway", "gateway-reliability", "zone-gateway-creation", "gateway-arm", "gateway-rest-2024", "terraform-gateway", "scalable-gateway"],
+      "review_resource_types": ["Microsoft.Network/virtualNetworkGateways", "Microsoft.Network/publicIPAddresses"],
+      "review_fact_paths": ["gatewayType", "gatewaySku", "gatewayPublicIpReferences", "publicIpSku", "configuredZones"],
+      "evidence_requirements": [
+        "Bind an ExpressRoute gateway to its actual supported region, exact SKU, deployed/migrated configuration and public-IP allocation/zone evidence.",
+        "Distinguish AZ-capable from zonal versus zone-redundant placement and new auto-assigned public-IP behavior from existing deployments.",
+        "Reviewer decision: does attributable deployment evidence establish zone-redundant ExpressRoute gateway placement in the required supported region?"
+      ],
+      "limitations": "An AZ substring misses ErGwScale and can classify a zonal AZ-capable gateway incorrectly. No live availability, health, public-IP detail or migration operation.",
+      "flags": ["sku-capability-not-zone-placement", "public-ip-config-not-runtime-placement"]
+    },
+    {
+      "guid": "72e52e36-11cc-458b-9a4b-1511e43a58a9",
+      "upstream_id": "D06.07",
+      "classification": "assisted",
+      "implemented_subclaim": "Prepared explicit Direct-port bandwidth/encapsulation and circuit Gbps plus typed binding, without using resource presence as demand.",
+      "sources": ["hybrid-demand-and-isolation", "expressroute-direct", "expressroute-gateway", "port-arm", "port-rest-2024", "terraform-expressroute-port"],
+      "review_resource_types": ["Microsoft.Network/expressRouteCircuits", "Microsoft.Network/expressRoutePorts"],
+      "review_fact_paths": ["expressRoutePort.id", "directCircuitBandwidthGbps", "directPortBandwidthGbps", "directPortEncapsulation"],
+      "evidence_requirements": [
+        "Supply approved aggregate/per-flow throughput, burst, latency and dedicated-port requirements with attributable measurements and growth assumptions.",
+        "Reconcile provider circuit limits, actual Direct port/circuit allocation, gateway/fallback capacity and equipment/colocation readiness.",
+        "Reviewer decision: does demand above 10 Gbps or the dedicated-port requirement justify the supported Direct design, including conditional 400-Gbps location/enrollment when relevant?"
+      ],
+      "limitations": "The checklist's trigger is a requirement, not configured capacity or achieved throughput. The current Direct page documents conditional 400 Gbps beyond older FAQ/CAF 10/100 text.",
+      "flags": ["configured-capacity-not-demand", "400gbps-conditional-not-blanket-availability"]
+    },
+    {
+      "guid": "c2299c4d-7b57-4d0c-9555-62f2b3e4563a",
+      "upstream_id": "D06.08",
+      "classification": "assisted",
+      "implemented_subclaim": "Strict separate bypass/Private Link booleans, unique known gateway/circuit/Direct-port bindings and published cumulative port IP limit, plus literal gateway-SKU/minimum-scale and flag-consistency subchecks; no runtime eligibility, usage or performance verdict.",
+      "sources": ["fastpath", "expressroute-gateway", "gateway-rest-2024", "connection-arm", "terraform-gateway-connection", "scalable-gateway"],
+      "review_resource_types": ["Microsoft.Network/connections", "Microsoft.Network/expressRoutePorts", "Microsoft.Network/virtualNetworkGateways"],
+      "review_fact_paths": ["connectionType", "virtualNetworkGateway1.id", "expressRouteCircuitId", "expressRouteGatewayBypass", "enablePrivateLinkFastPath", "gatewaySku", "gatewayScaleBounds", "directPortBandwidthGbps"],
+      "evidence_requirements": [
+        "Bind explicit low-latency or >10-Gbps throughput demand to the exact ExpressRoute connection and gateway.",
+        "Verify UltraPerformance/ErGw3AZ or ARM ErGwScale minimum ten scale units; no Terraform scale default/block is inferred. Virtual WAN Direct five-unit defaults are a separate unsupported model.",
+        "Review Direct/provider, IPv4/IPv6, same-region hub/spoke, UDR, service, enrolled limited-GA Private Link and cumulative port IP limits separately; reconcile supported fallback gateway capacity.",
+        "Review ErGwScale-specific regional exclusions, fixed-scale guidance for Private Link, unsupported IPsec-over-ExpressRoute and up-to-30-minute autoscaling; configured maximum is not achieved/current scale.",
+        "Reviewer decision: is FastPath enabled and eligible for the exact demanded traffic/topology, with attributable path/performance evidence rather than only bypass=true?"
+      ],
+      "limitations": "Provider IPv4 hub support is narrower than Direct. Private Link is limited GA with enrollment/region/service limits. Exhaustion and unsupported/cross-region traffic fall back through the gateway.",
+      "flags": ["fastpath-intent-not-achieved-path", "conditional-features-and-fallback"]
+    },
+    {
+      "guid": "4d873974-8b66-42d6-b15f-512a65498f6d",
+      "upstream_id": "D06.09",
+      "classification": "assisted",
+      "implemented_subclaim": "Reuse merged VPN gateway SKU/type/active-active alongside typed gateway public-IP references and explicit Standard/zone configuration, without an AZ-name predicate.",
+      "sources": ["zone-gateway-creation", "gateway-reliability", "gateway-arm", "gateway-rest-2024", "terraform-gateway"],
+      "review_resource_types": ["Microsoft.Network/virtualNetworkGateways", "Microsoft.Network/publicIPAddresses"],
+      "review_fact_paths": ["gatewayType", "gatewaySku", "activeActive", "gatewayPublicIpReferences", "publicIpSku", "configuredZones"],
+      "evidence_requirements": [
+        "Reconcile VPN gateway type/SKU, supported region and original deployment or migration against current service guidance.",
+        "Verify every applicable Standard public IP's actual zone-redundant placement; active-active and zone redundancy are separate.",
+        "Reviewer decision: is this branch/remote VPN gateway actually deployed zone redundantly in a supported region?"
+      ],
+      "limitations": "SKU text does not prove public-IP zones or gateway VM placement. New default behavior is not evidence that an existing gateway was migrated.",
+      "flags": ["vpn-zone-placement-not-active-active", "public-ip-config-not-runtime-placement"]
+    },
+    {
+      "guid": "45866df8-cf85-4ca9-bbe2-65ec1478919e",
+      "upstream_id": "D06.10",
+      "classification": "assisted",
+      "implemented_subclaim": "Reuse merged IPsec connection/local-gateway bindings and gateway active-active/BGP facts for appliance-specific review; no actual appliance count is inferred.",
+      "sources": ["onprem-vpn-redundancy", "gateway-reliability", "connection-arm", "gateway-rest-2024", "terraform-gateway-connection"],
+      "review_resource_types": ["Microsoft.Network/connections", "Microsoft.Network/virtualNetworkGateways", "Microsoft.Network/localNetworkGateways"],
+      "review_fact_paths": ["connectionType", "localNetworkGatewayId", "virtualNetworkGateway1.id", "activeActive", "enableBgp"],
+      "evidence_requirements": [
+        "Reconcile each branch/site's real independent VPN appliances, active-active or active-passive arrangement and power/uplink/failure domains using redacted attributable inventory.",
+        "Bind supplied Azure IPsec connections/local-gateway declarations to actual appliances; two tunnels can terminate on one device. Review appropriate BGP/ECMP, route withdrawal and failover evidence.",
+        "Reviewer decision: are redundant on-premises appliances deployed and configured to preserve this site's connectivity during an appliance/path failure?"
+      ],
+      "limitations": "Azure activeActive, two local gateway IDs or multiple connections cannot attest on-premises appliance population/independence/health. No IPs, keys, topology probes or live appliance inventory.",
+      "flags": ["azure-active-active-not-onprem-redundancy", "declarations-not-appliance-population"]
+    },
+    {
+      "guid": "718cb437-b060-2589-8856-2e93a5c6633b",
+      "upstream_id": "D06.11",
+      "classification": "assisted",
+      "implemented_subclaim": "Prepared Direct binding, circuit tier/family and port billing facts to separate port and Local circuit economics.",
+      "sources": ["expressroute-direct", "expressroute-cost", "expressroute-local", "expressroute-locations", "circuit-rest-2024", "port-rest-2024"],
+      "review_resource_types": ["Microsoft.Network/expressRouteCircuits", "Microsoft.Network/expressRoutePorts"],
+      "review_fact_paths": ["expressRoutePort.id", "circuitSku.tier", "circuitSku.family", "directPortBillingType", "directPortBandwidthGbps"],
+      "evidence_requirements": [
+        "Resolve the exact Direct port/circuit relationship and all required local/nonlocal regions and services against current Local mapping.",
+        "Compare negotiated port billing, Local/Standard/Premium circuit charges, outbound transfer, gateway and colocation/provider costs for attributable actual usage.",
+        "Reviewer decision: has the Local circuit alternative on this Direct port been considered and accepted or rejected with a source-bound regional and full-cost rationale?"
+      ],
+      "limitations": "Port billing and circuit family are different fields. Direct+Local presence does not prove lower total cost or suitability, and Local cannot supply Global Reach.",
+      "flags": ["direct-port-billing-distinct-from-circuit", "cost-choice-needs-demand-and-reach"]
+    },
+    {
+      "guid": "8042d88e-79d1-47b7-9b22-a5a67e7a8ed4",
+      "upstream_id": "D06.12",
+      "classification": "assisted",
+      "implemented_subclaim": "Prepared circuit-to-Direct-port binding, capacity and QinQ/Dot1Q context, not inferred environment labels or effective routing-domain isolation.",
+      "sources": ["hybrid-demand-and-isolation", "expressroute-direct", "expressroute-architecture", "circuit-rest-2024", "port-rest-2024", "connection-arm"],
+      "review_resource_types": ["Microsoft.Network/expressRouteCircuits", "Microsoft.Network/expressRoutePorts", "Microsoft.Network/connections"],
+      "review_fact_paths": ["expressRoutePort.id", "directCircuitBandwidthGbps", "directPortBandwidthGbps", "directPortEncapsulation", "directPortRateLimit", "expressRouteCircuitId"],
+      "evidence_requirements": [
+        "Supply the accountable owner's explicit separation/dedicated-bandwidth requirements and exact accepted production/nonproduction routing populations; never infer them from names or tags.",
+        "Reconcile actual separate circuit bindings, VLAN/VRF and on-premises BGP/route import/export, VNet interconnections, Global Reach and bypass paths.",
+        "Account for shared Direct port/provider capacity, rate limits and noisy-neighbor demand; two circuit declarations are not independent physical bandwidth.",
+        "Reviewer decision: does the implemented dedicated-circuit/routing design satisfy the explicit isolation/capacity requirement with attributable operational evidence?"
+      ],
+      "limitations": "QinQ/Dot1Q, circuit count, distinct IDs and rate-limit intent are bounded configuration facts only. No addresses, route/packet probes, isolation testing or environment-name inference.",
+      "flags": ["circuit-separation-not-effective-isolation", "shared-ports-can-share-contention"]
+    }
+  ]
+}

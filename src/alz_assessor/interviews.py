@@ -6,8 +6,35 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.6"
+BANK_VERSION = "2026-11-06.7"
 BANK = {
+    "expressroute-cost-resilience": {
+        "question": "Describe the attributable actual outbound demand and full metered/unlimited/"
+        "Direct-port/circuit/gateway/provider cost comparison, including Local reach and Global "
+        "Reach restrictions. Reconcile physical peering location with every required workload/"
+        "recovery region; resource location and public tables do not attest current availability. "
+        "Distinguish AZ-capable SKU from deployed gateway/public-IP zone placement and Azure "
+        "active-active from real independent on-premises appliances and failover. Supply actual "
+        "throughput/latency and dedicated-port requirements rather than configured bandwidth. "
+        "Review FastPath's exact connection/gateway/scale prerequisites, provider versus Direct "
+        "IPv4/IPv6 and same-region topology, enrolled limited-GA Private Link services, published "
+        "IP limits, fixed-scale guidance and fallback capacity. Reconcile Direct/Local billing "
+        "choices and actual dedicated circuits, routing domains, VLAN/VRF/BGP paths and shared "
+        "port contention against explicit isolation requirements. Use redacted attributable "
+        "references, never addresses, keys or secret/private device identities. Decide each "
+        "of the nine canonical GUIDs separately; configuration or one answer alone proves none.",
+        "controls": [
+            "ALZ-7025b442-f6e9-4af6-b11f-c9574916016f",
+            "ALZ-f4e7926a-ec35-476e-a412-5dd17136bd62",
+            "ALZ-2447ec66-138a-4720-8f1c-e16ed301d6e8",
+            "ALZ-72e52e36-11cc-458b-9a4b-1511e43a58a9",
+            "ALZ-c2299c4d-7b57-4d0c-9555-62f2b3e4563a",
+            "ALZ-4d873974-8b66-42d6-b15f-512a65498f6d",
+            "ALZ-45866df8-cf85-4ca9-bbe2-65ec1478919e",
+            "ALZ-718cb437-b060-2589-8856-2e93a5c6633b",
+            "ALZ-8042d88e-79d1-47b7-9b22-a5a67e7a8ed4",
+        ],
+    },
     "sovereign-audit-workload-protection": {
         "question": "Describe approved sovereign key-custody requirements and actual compatible "
         "CMK use: Managed HSM keys are not secrets/credentials, and external KEK custody adds "

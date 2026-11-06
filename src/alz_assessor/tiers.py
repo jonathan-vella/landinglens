@@ -1,5 +1,6 @@
 """Evidence routing is separate from technical outcomes and human decisions."""
 
+from math import isfinite
 from typing import Any
 
 from .terraform import InputError
@@ -18,7 +19,7 @@ def has_fact(value: Any) -> bool:
         return "unknown" not in value and any(has_fact(item) for item in value.values())
     if isinstance(value, list):
         return bool(value) and any(has_fact(item) for item in value)
-    return type(value) in (str, bool, int)
+    return type(value) in (str, bool, int) or (type(value) is float and isfinite(value))
 
 
 def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
