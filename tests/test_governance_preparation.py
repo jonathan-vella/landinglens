@@ -878,6 +878,44 @@ class GovernancePreparationTests(unittest.TestCase):
             digest(receipts), "f29ea9fe2a724da9e94dfa274a5cf319f39c06f999e735c87c953a57e43193bb"
         )
 
+    def test_actual_cohort08_own_guid_receipt_and_historical_count(self):
+        ledger = json.loads(
+            (ROOT / "references" / "recommendation-batches" / "ledger.json").read_text("utf-8")
+        )
+        receipt = ledger["deliveries"]["08"]
+        self.assertEqual(receipt["pr"], "https://github.com/jonathan-vella/landinglens/pull/116")
+        self.assertEqual(receipt["checked_head"], "60613e671665a45aad6919903415a3dda7cafd7f")
+        self.assertEqual(receipt["merge_commit"], "2fe56d0c5d43c00b1924f84c5119ff7a297bf1dd")
+        self.assertEqual(
+            receipt["checks"],
+            [
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42227197426",
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42227223772",
+            ],
+        )
+        self.assertEqual(
+            receipt["local_installed_suite"], {"tests": 441, "passed": 440, "skipped": 1}
+        )
+        self.assertEqual(
+            receipt["wheel_sha256"],
+            "6a0c87ea08b6a2cba085d777b1a028fb609c37de056c2d3b0682529d35692116",
+        )
+        self.assertEqual(len(receipt["compiler_integration_cases"]), 10)
+        self.assertEqual(
+            digest(receipt), "8035dd413da354bfeb23273eb26adc113b78ebfa4fa32d04aad6168928c2cf3f"
+        )
+        rows = [row for row in ledger["recommendations"] if row["batch"] == "08"]
+        self.assertEqual({r["upstream_id"]: r["guid"] for r in rows}, GUIDS)
+        for row in rows:
+            self.assertEqual(row["status"], "merged")
+            self.assertEqual(row["pr"], receipt["pr"])
+            self.assertEqual(row["merge_commit"], receipt["merge_commit"])
+            self.assertIn("deliveries.08", " ".join(row["runtime_evidence"]))
+        completed = {"01", "04", "08", "11", "12", "13", "14", "15", "17", "18", "19", "22"}
+        prefix = [row for row in ledger["recommendations"] if row["batch"] in completed]
+        self.assertEqual(len(prefix), 106)
+        self.assertTrue(all(row["status"] == "merged" for row in prefix))
+
     @unittest.skipUnless(os.environ.get("BICEP_COMPILER"), "existing Bicep compiler not supplied")
     def test_real_bicep_governance_without_restore(self):
         source = ROOT / "tests" / "fixtures" / "governance" / "main.bicep"
