@@ -56,6 +56,8 @@ if compiler:
         "test_real_bicep_policy_strategy_without_restore",
         "test_hybrid_identity_preparation.HybridIdentityPreparationTests."
         "test_real_bicep_peering_and_vault_configuration_without_restore",
+        "test_topology_preparation.TopologyPreparationTests."
+        "test_real_bicep_vnet_routing_attachment_without_restore",
     ]
     suite = unittest.defaultTestLoader.loadTestsFromNames(cases)
     result = unittest.TextTestRunner(verbosity=2).run(suite)

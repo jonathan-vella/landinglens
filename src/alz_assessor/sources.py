@@ -52,6 +52,7 @@ TF_TYPES = {
     "azurerm_express_route_circuit": "Microsoft.Network/expressRouteCircuits",
     "azurerm_virtual_wan": "Microsoft.Network/virtualWans",
     "azurerm_virtual_hub": "Microsoft.Network/virtualHubs",
+    "azurerm_route_server": "Microsoft.Network/virtualHubs",
     "azurerm_virtual_hub_connection": "Microsoft.Network/virtualHubs/hubVirtualNetworkConnections",
     "azurerm_virtual_hub_route_table": "Microsoft.Network/virtualHubs/hubRouteTables",
     "azurerm_virtual_hub_routing_intent": "Microsoft.Network/virtualHubs/routingIntent",
@@ -149,6 +150,7 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     from .policy_strategy_evidence import projected_properties as policy_strategy_properties
     from .security_evidence import projected_properties as security_properties
     from .tenant_evidence import projected_properties as tenant_properties
+    from .topology_evidence import projected_properties as topology_properties
 
     if kind == "azurerm_role_assignment":
         return role_properties(properties, terraform=True)
@@ -168,6 +170,11 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     result.update(identity_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(policy_strategy_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(tenant_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
+    result.update(
+        topology_properties(
+            TF_TYPES.get(kind, kind), properties, terraform=True, terraform_kind=kind
+        )
+    )
     return result
 
 

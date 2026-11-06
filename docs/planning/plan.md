@@ -1,5 +1,113 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 10 accepted integration: 2026-11-06
+
+The coordinator explicitly granted [#139](https://github.com/jonathan-vella/landinglens/issues/139)
+the sole slot after actual29 implementation140/receipt141 and06
+implementation143/receipt144, completed issues and checked final main
+`a3686afb9e24ca70eb1f9efcc69b16e8dad10a4a`. Preparation `b4b92ac` reconciles
+that baseline in `cba7bf8`, preserving the29 manual bank,27 Policy workflows,
+06 hybrid-identity helper and all17 predecessor compiler cases. The new
+eighteenth compiler case exercises actual VNet/subnet/routing IP-configuration
+facts, not monitoring, topology intent or operational assurance.
+
+The [accepted ten-GUID matrix](../../references/recommendation-batches/batch-10.json)
+and [32 byte-preserved captures](../../references/recommendation-batches/batch-10-sources.json)
+precede builder-derived catalog/crosswalk `2026-11-06.20`. Exact `.19` catalog
+SHA256 is `8da27e4849f887b68129a19ce5f814b2b3d66186f364524755011983647baf33`;
+crosswalk SHA256 is `a077b38749f189a479eb07bc1a9794977f44203005f637f98d018b12062d470d`.
+All255 GUIDs, fixed251 membership, original four complete objects, every
+non-own predecessor control and all177 earlier own-GUID rows/21 receipts
+remain unchanged. Counts remain12 automated/200 assisted/43 manual.
+Registered interviews retain ten independent blank outcomes and separate
+exceptions; neither human confirmation nor Signals become Verified.
+
+Unique-known selected-scope relationships now reuse06's strict RG identity
+validation. No names, count/equality, SKU or `virtualHubs` identity designate
+hubs/spokes or conflate VNet Route Server with Virtual WAN. Current-source
+single-IPv4 subnet sizing uses <=26 while preserving immutable/provider /27
+wording. Current650 peerings/VNet remains separate from historical400/500/1000
+and direction/family/SKU-specific ExpressRoute and Route Server limits;
+complete populations and current authorized quotas stay human. Existing
+monitoring facts are preparation, not operation or executed tests.
+
+Accepted bank/session/output/CLI and packaged original-time successor replay
+are exercised separately from the historical preparation fixture, now pinned
+to exact `.19`. Predecessor replay retains old meaning and cannot acquire new
+bound reviews. No live route/query/scanner/quota read, acquisition, restoration,
+deployment, package publication or fabricated owner assurance is introduced.
+Checked implementation and guarded ten-own-GUID receipt publication/final-main
+CI remain delivery and closure gates; activation alone leaves177 delivered/74 pending.
+
+Final source and own exact installed-wheel suites each ran **694 tests:693 passed,
+one original Windows symlink-privilege skip**. All30 cohort10 preparation/accepted
+cases pass. All18 actual existing-compiler cases exercised without skips/restore,
+including06 before the topology case. Ruff/format,46-file mypy, dependency
+consistency and473 local links pass. All141 packaged members match checkout and
+the dedicated outside-checkout interpreter's own installed bytes.
+Wheel SHA256: `defe7f7f901a98fe77bba32522e1c52169802666e8e42e4b693cb9e7a58b5967`.
+Compiler proof SHA256: `5a4f7fec3e60a5c5544b378d3b7358d29574efad0b73d838114a742b0842606d`.
+Initial broad runs exposed a renamed historical documentation anchor and the
+old exact18-question bank assertion; both were corrected without weakening
+bindings or replacing exact counts. The first isolated import lacked `hcl2`;
+only the three unchanged manifest-hash-verified runtime wheels were restored.
+The subsequent full suites and18-case proof are final, not those failed runs
+or the historical633-test preparation wheel. Exact-head remote platform/
+CodeQL/security/review and four downloaded compiler proofs still gate merge.
+
+## Historical cohort 10 independent preparation: 2026-11-06
+
+[#139](https://github.com/jonathan-vella/landinglens/issues/139) prepares the
+[exact ten-GUID matrix](../../references/recommendation-batches/preparation-10.json)
+and [32 actual public-source captures](../../references/recommendation-batches/preparation-10-sources.json)
+on main `69cb9ea2ac209ed77bee34546a5b4723813d162a`. Cohorts29/06 retain the
+preceding delivery slots. This does not register an accepted successor or
+interview, activate catalog/crosswalk/history/counts, record delivery or close #139.
+The eight assisted and two manual decisions remain independently blank.
+
+Existing adapters/evaluator/review/report/session/replay paths now prepare
+strict unique-known selected-scope VNet/subnet/IP-configuration/peering
+relationships. New facts retain prefix lengths and explicit flags, not IPs,
+partner payloads or inferred hub purpose. Genuine VNet routing attachment is
+separate from Virtual WAN: both services use `Microsoft.Network/virtualHubs`,
+and the resource type/SKU alone cannot distinguish them. Gateway transit
+preparation distinguishes active-active VPN ASN65515, route-based/non-Basic
+coexistence and optional VPN BGP; S2S is not P2S or ER-to-ER transit.
+No new live route, query, scanner, quota lookup, compiler acquisition or restore.
+
+The actual D01.08 link redirects to a quickstart requiring **/26 or larger**,
+while immutable checklist and pinned AzureRM4.50.0 wording still say /27.
+Only a source-qualified conditional single-IPv4 sizing subcheck compares <=26;
+dedicated use, service designation, NSG/UDR restrictions and whole judgment
+remain human. The current service table lists **650 peerings/VNet**, not the
+historical500; historical400 spokes is not a universal threshold. ExpressRoute
+prefix limits remain direction/family/SKU specific, alongside separate Route
+Server limits. Supplied-subset counts are not current quota/headroom evidence.
+Network Insights redirects to Network Watcher and offers built-in topology/
+health/metrics without configuration; existing monitoring facts do not prove
+executed tests, complete coverage, ingestion or operation.
+
+Preparation includes raw/supplied-module/plan/ARM/saved evidence, original-time
+minimization, blank interviews and independent exceptions, binding/selection/
+scope/time/expiry/attribution/atomicity, CLI/output/tracker/session and accepted
+predecessor replay/candidate rejection. All16 predecessor compiler cases remain;
+the seventeenth exercises real VNet/subnet/routing IP-configuration facts using
+the existing no-restore compiler, not architectural intent or monitoring.
+Final preparation proofs are local/offline, not accepted successor replay,
+cross-platform exact-head CI, PR review, merged delivery or guarded receipts.
+Those gates must be repeated after an explicit slot and then-current-main reconcile.
+
+Final own installed-wheel suite outside the checkout ran **633 tests:632 passed,
+one original Windows symlink-privilege skip**. All22 cohort cases passed.
+All17 actual existing-compiler cases exercised without skips/restoration.
+Format/lint,46-source-file typing, dependency consistency and437 local links passed.
+All129 packaged members matched both checkout and dedicated installed bytes;
+all85 accepted-data/fixed-target/ledger files remain byte-identical.
+Wheel SHA256: `ba498aeb5f79dac4503526fbdf06800953fe4e0d05a1e4d3d97e3f607f32cd2e`.
+Compiler proof SHA256: `76b3a087f88c5c81668508ba244dd7d208bf7ad87367cdcf2bb5796b951be74a`.
+The isolated environment initially lacked `hcl2`; only the three exact reviewed,
+manifest-hash-verified runtime wheels were restored. The subsequent complete
+installed suite and byte checks, not the failed import, are the final proof.
 ## Cohort 06 accepted integration: 2026-11-06
 
 The coordinator explicitly granted [#136](https://github.com/jonathan-vella/landinglens/issues/136)

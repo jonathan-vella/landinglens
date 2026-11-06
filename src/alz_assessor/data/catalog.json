@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "kind": "catalog",
-  "catalog_version": "2026-11-06.19",
+  "catalog_version": "2026-11-06.20",
   "design_areas": [
     "Azure billing and Active Directory tenant",
     "Identity and access management",
@@ -4080,15 +4080,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Requires organizational decision/process evidence outside IaC alone.",
+      "rationale": "Application security, approved standards and operating practice cannot be inferred from resource existence, WAF association or names.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Is the approved internal/external application-delivery standard implemented with workload-owned spoke Application Gateway v2/WAF, global Front Door/WAF and restricted origins, with justified protocol/partner alternatives and ownership?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-10",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -4102,6 +4099,22 @@
           "pointer": "/items/61",
           "item_sha256": "aa377cc8ef966b2e4f909a80f42ba5191804a2f304fe56af0c15a4bc92341f10",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-app-delivery"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-app-delivery",
+          "source_sha256": "ee2ce13e746f7fe5db1af768dd55ee15e65d05aeb60d7abaad38e1bb09998acc",
+          "revision": "9d27229f0bc63425bef5a036f6343e4a31cac4df",
+          "retrieved_at": "2026-11-06T20:22:45.361198+00:00",
+          "pointer": "373f482f-3e39-4d39-8aa4-7e566f6082b6",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-app-delivery"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology",
+          "source_sha256": "69ed8bf486a72fdd0a0d5995bdb452605bf9a208e94969ee2c6157e510f32c02",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T20:22:47.768330+00:00",
+          "pointer": "373f482f-3e39-4d39-8aa4-7e566f6082b6",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology"
         }
       ],
       "severity": "Medium"
@@ -4124,15 +4137,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "A reciprocal configured peering is nontransitive; topology purpose, complete estate, granular effective routing and suitability remain human.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Which VNets are explicitly designated hubs/spokes, and why does traditional hub-spoke satisfy required flexibility, traffic, isolation and transit better than managed alternatives?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-10",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -4146,9 +4156,59 @@
           "pointer": "/items/62",
           "item_sha256": "ba83024a2d8618ebe82daccbc4c11f413e600f68e4f4d2f4d0a898450e91a5e9",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/network-topology-and-connectivity"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/network-topology-and-connectivity",
+          "source_sha256": "283a9c611e8e0b011b3e4e450239a528f1e72938c34a2ac72249ddcbda7512ec",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T20:22:46.216585+00:00",
+          "pointer": "e8bbac75-7155-49ab-a153-e8908ae28c84",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/network-topology-and-connectivity"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology",
+          "source_sha256": "69ed8bf486a72fdd0a0d5995bdb452605bf9a208e94969ee2c6157e510f32c02",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T20:22:47.768330+00:00",
+          "pointer": "e8bbac75-7155-49ab-a153-e8908ae28c84",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/virtualnetworkpeerings",
+          "source_sha256": "bd876cc7658adc3c1dde04140b9ef236365eaff61d1bfffc3105e396a3b554d7",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T20:22:56.615016+00:00",
+          "pointer": "e8bbac75-7155-49ab-a153-e8908ae28c84",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/virtualnetworkpeerings"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualNetwork.json",
+          "source_sha256": "6d4bf66495c6ee39b4f88476a3c4d11473f6ed67315d13ff54eb0de7888cb3b7",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T20:22:56.237070+00:00",
+          "pointer": "e8bbac75-7155-49ab-a153-e8908ae28c84",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualNetwork.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_peering.html.markdown",
+          "source_sha256": "686d4bd40d5c9698485adb54ad226c97cbffbc4605b7811dfb3b04ec6db48721",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T20:22:56.916310+00:00",
+          "pointer": "e8bbac75-7155-49ab-a153-e8908ae28c84",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_peering.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Network/virtualNetworks",
+        "Microsoft.Network/virtualNetworks/virtualNetworkPeerings"
+      ],
+      "review_fact_paths": [
+        "resourceLocation",
+        "allowVirtualNetworkAccess",
+        "remoteVirtualNetwork.id",
+        "peeringTransitSummary"
+      ]
     },
     {
       "control_id": "ALZ-7bc1c396-2461-4698-b57f-30ca69525252",
@@ -4168,15 +4228,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Multiple location labels are not regional readiness, physical independence or failover. Private DNS zones are global; a selected inventory cannot prove complete deployment.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Do the required regions have complete connectivity, DNS, identity and management readiness for multi-region workloads and exercised DR across real independent failure domains?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-10",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -4190,9 +4247,62 @@
           "pointer": "/items/63",
           "item_sha256": "054e1a36e1b543e215315da7597500962c5a7f3a0c3b109e91c7e9a327cb2ee4",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/regions"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/regions",
+          "source_sha256": "eddc7ee6cc11efc6a82bbaef23818f5f1d4553a6ceb95837cf5ef63598789b12",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T20:22:46.865591+00:00",
+          "pointer": "7bc1c396-2461-4698-b57f-30ca69525252",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/regions"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology",
+          "source_sha256": "69ed8bf486a72fdd0a0d5995bdb452605bf9a208e94969ee2c6157e510f32c02",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T20:22:47.768330+00:00",
+          "pointer": "7bc1c396-2461-4698-b57f-30ca69525252",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworkgateways",
+          "source_sha256": "b6264ef312a7c8e888ad8f659003c3a602d24f2b3d4489d339b1fd93533e45a6",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T20:22:58.316975+00:00",
+          "pointer": "7bc1c396-2461-4698-b57f-30ca69525252",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworkgateways"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_gateway.html.markdown",
+          "source_sha256": "abec37ea2fa768bf6bbb030d76837f21a40d9700587a67ad4d87a99d313caf2d",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T20:22:58.623175+00:00",
+          "pointer": "7bc1c396-2461-4698-b57f-30ca69525252",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_gateway.html.markdown"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/subnets",
+          "source_sha256": "037272ea459d86d6e1c2590485dbbc76ca3b24243d082f98a507e806ee1d669b",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T20:22:57.413739+00:00",
+          "pointer": "7bc1c396-2461-4698-b57f-30ca69525252",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/subnets"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Network/virtualNetworks",
+        "Microsoft.Network/virtualNetworkGateways",
+        "Microsoft.Network/azureFirewalls",
+        "Microsoft.Network/dnsResolvers"
+      ],
+      "review_fact_paths": [
+        "resourceLocation",
+        "subnetReferences",
+        "dnsVirtualNetworkId",
+        "dnsServerSummary",
+        "gatewayType"
+      ]
     },
     {
       "control_id": "ALZ-7dd61623-a364-4a90-9eca-e48ebd54cd7d",
@@ -4212,15 +4322,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Shared subnet/VNet identity is not hub designation, required service completeness, NVA support or effective protection. No NVA inferred from VM names.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Are the required ER/VPN gateways, firewall or supported partner NVAs and conditional DNS services in the explicitly designated central hub with proper ownership/effective inspection, while L7 workload ingress stays workload-owned?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-10",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -4234,9 +4341,69 @@
           "pointer": "/items/64",
           "item_sha256": "a4044381b16efaf5f655cd723d79df5674962b83eaee48b73ea7d4fc49bc7eb4",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology",
+          "source_sha256": "69ed8bf486a72fdd0a0d5995bdb452605bf9a208e94969ee2c6157e510f32c02",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T20:22:47.768330+00:00",
+          "pointer": "7dd61623-a364-4a90-9eca-e48ebd54cd7d",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/regions",
+          "source_sha256": "eddc7ee6cc11efc6a82bbaef23818f5f1d4553a6ceb95837cf5ef63598789b12",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T20:22:46.865591+00:00",
+          "pointer": "7dd61623-a364-4a90-9eca-e48ebd54cd7d",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/regions"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworkgateways",
+          "source_sha256": "b6264ef312a7c8e888ad8f659003c3a602d24f2b3d4489d339b1fd93533e45a6",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T20:22:58.316975+00:00",
+          "pointer": "7dd61623-a364-4a90-9eca-e48ebd54cd7d",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworkgateways"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_gateway.html.markdown",
+          "source_sha256": "abec37ea2fa768bf6bbb030d76837f21a40d9700587a67ad4d87a99d313caf2d",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T20:22:58.623175+00:00",
+          "pointer": "7dd61623-a364-4a90-9eca-e48ebd54cd7d",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_gateway.html.markdown"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/subnets",
+          "source_sha256": "037272ea459d86d6e1c2590485dbbc76ca3b24243d082f98a507e806ee1d669b",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T20:22:57.413739+00:00",
+          "pointer": "7dd61623-a364-4a90-9eca-e48ebd54cd7d",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/subnets"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subnet.html.markdown",
+          "source_sha256": "81efb15b9b422afa08a21b346e5e81bcd7d8f250a1a138db02627f798653c824",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T20:22:57.738052+00:00",
+          "pointer": "7dd61623-a364-4a90-9eca-e48ebd54cd7d",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subnet.html.markdown"
         }
       ],
-      "severity": "High"
+      "severity": "High",
+      "review_resource_types": [
+        "Microsoft.Network/virtualNetworks",
+        "Microsoft.Network/virtualNetworkGateways",
+        "Microsoft.Network/azureFirewalls",
+        "Microsoft.Network/dnsResolvers"
+      ],
+      "review_fact_paths": [
+        "subnetReferences",
+        "dnsVirtualNetworkId",
+        "gatewayType",
+        "resourceLocation"
+      ]
     },
     {
       "control_id": "ALZ-e2e8abac-3571-4559-ab91-53e89f89dc7b",
@@ -4256,15 +4423,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Requires organizational decision/process evidence outside IaC alone.",
+      "rationale": "Generic Microsoft patterns or a deployed appliance do not establish vendor approval/support, actual HA/performance or applicability.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: If partner networking applies, does the exact vendor/version support this design and its HA/convergence, symmetry/SNAT, performance and Azure compatibility, with attributable current partner evidence?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-10",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -4278,6 +4442,22 @@
           "pointer": "/items/65",
           "item_sha256": "4c94669296ca6d68e3f8a85feba0dc81feed01699fb0250dc493c812b975e5fb",
           "guidance": "https://learn.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha",
+          "source_sha256": "227573abff8d329bf43c917b5600dbb63e16f75ecadb2345bb299d8349882fc9",
+          "revision": "2c296bbb07d8c67ab68e4ff88a60cb4c4aa24120",
+          "retrieved_at": "2026-11-06T20:22:48.867447+00:00",
+          "pointer": "e2e8abac-3571-4559-ab91-53e89f89dc7b",
+          "guidance": "https://learn.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology",
+          "source_sha256": "69ed8bf486a72fdd0a0d5995bdb452605bf9a208e94969ee2c6157e510f32c02",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T20:22:47.768330+00:00",
+          "pointer": "e2e8abac-3571-4559-ab91-53e89f89dc7b",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology"
         }
       ],
       "severity": "Medium"
@@ -4300,15 +4480,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "virtualHubs identity/SKU and branch flag alone designate neither Route Server nor Virtual WAN. Declared attachment/gateway settings are not complete/effective transit or authorization to change networking.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Is ER/S2S VPN transit required, with Route Server and same-VNet gateways, explicit branch exchange and active-active route-based non-Basic VPN ASN65515, plus actual route/failover evidence? VPN BGP is not required; P2S and ER-to-ER transit are excluded."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-10",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -4322,9 +4499,88 @@
           "pointer": "/items/66",
           "item_sha256": "8d9f465aca056af696205230951e3df00d75c2723c9ddd7efadaefaaf4ca6624",
           "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager#to-enable-transit-routing-between-expressroute-and-azure-vpn"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager#to-enable-transit-routing-between-expressroute-and-azure-vpn",
+          "source_sha256": "f5a1b5141d9bc9e760b4aeac8a49b0deb80cca8aa8a592ccad05398e2a5c227d",
+          "revision": "e60c7dd7c775becfd72486cfd4ff4440c7d875d4",
+          "retrieved_at": "2026-11-06T20:22:49.651669+00:00",
+          "pointer": "ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
+          "guidance": "https://learn.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager#to-enable-transit-routing-between-expressroute-and-azure-vpn"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/route-server/expressroute-vpn-support",
+          "source_sha256": "6328382e65dc271bc6658b5bc6c6448188d719596835beb0c39c174abcc04ef8",
+          "revision": "e60c7dd7c775becfd72486cfd4ff4440c7d875d4",
+          "retrieved_at": "2026-11-06T20:22:51.464064+00:00",
+          "pointer": "ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/route-server/expressroute-vpn-support"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/route-server/route-server-faq",
+          "source_sha256": "26751e669042fa629f6eccb11bd065b029912ace042e5dbc1b462574253e1225",
+          "revision": "7e185a942e5588c59bb86aefbceea87a1accef5c",
+          "retrieved_at": "2026-11-06T20:22:51.800502+00:00",
+          "pointer": "ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/route-server/route-server-faq"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualhubs",
+          "source_sha256": "0b75a5c1a37b43a02bd2b1e97f40eeb199712b574949fe7cf3295cc7a5c47752",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T20:22:54.377049+00:00",
+          "pointer": "ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualhubs"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualhubs/ipconfigurations",
+          "source_sha256": "b595b41fb99f6663adf23b50942ded7b0c905dc6c69eed76eab3ee61ff261379",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T20:22:54.975914+00:00",
+          "pointer": "ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualhubs/ipconfigurations"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json",
+          "source_sha256": "6220238b792ce425e1c117a4b69bb36f44072aac24820cf7ba4d2c95e553adc2",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T20:22:55.949641+00:00",
+          "pointer": "ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/route_server.html.markdown",
+          "source_sha256": "98833b22df5b5fd75be2467b3d4bb09c47aa90b89b290d3bcd67ce687a879bd3",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T20:22:55.265355+00:00",
+          "pointer": "ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/route_server.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/network/route_server_resource.go",
+          "source_sha256": "6fbd607f8598071215d18b78a4dd4caa374ffb99a55cedf19c11278a621eaca3",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T20:22:55.598868+00:00",
+          "pointer": "ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/network/route_server_resource.go"
         }
       ],
-      "severity": "Low"
+      "severity": "Low",
+      "review_resource_types": [
+        "Microsoft.Network/virtualHubs",
+        "Microsoft.Network/virtualHubs/ipConfigurations",
+        "Microsoft.Network/virtualNetworkGateways"
+      ],
+      "review_fact_paths": [
+        "routingSubnetReferences",
+        "routingIpConfigurationIds",
+        "routingSubnetId",
+        "hubBranchTrafficAllowed",
+        "subnetReferences",
+        "gatewayType",
+        "activeActive",
+        "gatewayTransitSummary"
+      ]
     },
     {
       "control_id": "ALZ-91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
@@ -4344,15 +4600,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Source-qualified sizing context is not a whole verdict. Reserved name, positive attachment or sufficiently large prefix does not prove service designation, dedicated use, current eligibility or operational support.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: After acknowledging immutable /27 and older provider wording versus the current linked /26-or-larger requirement, is this a dedicated applicable RouteServerSubnet with current capacity, no NSG/UDR association and justified source/version exceptions?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-10",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -4366,9 +4619,68 @@
           "pointer": "/items/67",
           "item_sha256": "884dc046d64b5849ba814cdb48bbd2aa69af5110e62b554e931e1d7025e040fe",
           "guidance": "https://learn.microsoft.com/azure/route-server/quickstart-configure-route-server-portal#create-a-route-server-1"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/route-server/quickstart-configure-route-server-portal#create-a-route-server-1",
+          "source_sha256": "94ec557b80763aa42b731b39ec7f2c31ce986ca1adf3de2b931c628c74ef27a0",
+          "revision": "5f8ac3f000e300bf91dabad7b83976bd636ec3d8",
+          "retrieved_at": "2026-11-06T20:22:51.059850+00:00",
+          "pointer": "91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
+          "guidance": "https://learn.microsoft.com/azure/route-server/quickstart-configure-route-server-portal#create-a-route-server-1"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/route_server.html.markdown",
+          "source_sha256": "98833b22df5b5fd75be2467b3d4bb09c47aa90b89b290d3bcd67ce687a879bd3",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T20:22:55.265355+00:00",
+          "pointer": "91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/route_server.html.markdown"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/route-server/route-server-faq",
+          "source_sha256": "26751e669042fa629f6eccb11bd065b029912ace042e5dbc1b462574253e1225",
+          "revision": "7e185a942e5588c59bb86aefbceea87a1accef5c",
+          "retrieved_at": "2026-11-06T20:22:51.800502+00:00",
+          "pointer": "91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
+          "guidance": "https://learn.microsoft.com/en-us/azure/route-server/route-server-faq"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/subnets",
+          "source_sha256": "037272ea459d86d6e1c2590485dbbc76ca3b24243d082f98a507e806ee1d669b",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T20:22:57.413739+00:00",
+          "pointer": "91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/subnets"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subnet.html.markdown",
+          "source_sha256": "81efb15b9b422afa08a21b346e5e81bcd7d8f250a1a138db02627f798653c824",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T20:22:57.738052+00:00",
+          "pointer": "91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subnet.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json",
+          "source_sha256": "6220238b792ce425e1c117a4b69bb36f44072aac24820cf7ba4d2c95e553adc2",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T20:22:55.949641+00:00",
+          "pointer": "91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json"
         }
       ],
-      "severity": "Low"
+      "severity": "Low",
+      "review_resource_types": [
+        "Microsoft.Network/virtualHubs",
+        "Microsoft.Network/virtualHubs/ipConfigurations",
+        "Microsoft.Network/virtualNetworks/subnets"
+      ],
+      "review_fact_paths": [
+        "routingSubnetReferences",
+        "routingIpConfigurationIds",
+        "routingSubnetId",
+        "routingSubnetPrefixSummary"
+      ]
     },
     {
       "control_id": "ALZ-cc881471-607c-41cc-a0e6-14658dd558f9",
@@ -4388,15 +4700,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Different configured regions and reciprocal links are not designated hubs, working global connectivity or transitive spoke routing. Many-region managed/ER alternatives remain conditional.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: For explicitly designated regional hubs, is bidirectional global peering or a justified alternative appropriate, respecting nontransitivity, Basic Load Balancer restrictions and cross-region inspection without bypass?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-10",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -4410,9 +4719,59 @@
           "pointer": "/items/68",
           "item_sha256": "1a216b981803b00f9bb9e7a1467834148b3c55830dd039d12dcab1119e53b994",
           "guidance": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-faq#can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-faq#can-i-create-a-peering-connection-to-a-vnet-in-a-different-region",
+          "source_sha256": "e7987c6393117b562181c2af62aaa9f32ceb64395cf84f5f9e1b79c04358bb96",
+          "revision": "68e89fc78da465edc51c2971c2eff4579723e1c2",
+          "retrieved_at": "2026-11-06T20:22:52.503672+00:00",
+          "pointer": "cc881471-607c-41cc-a0e6-14658dd558f9",
+          "guidance": "https://learn.microsoft.com/azure/virtual-network/virtual-networks-faq#can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology",
+          "source_sha256": "69ed8bf486a72fdd0a0d5995bdb452605bf9a208e94969ee2c6157e510f32c02",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T20:22:47.768330+00:00",
+          "pointer": "cc881471-607c-41cc-a0e6-14658dd558f9",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/virtualnetworkpeerings",
+          "source_sha256": "bd876cc7658adc3c1dde04140b9ef236365eaff61d1bfffc3105e396a3b554d7",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T20:22:56.615016+00:00",
+          "pointer": "cc881471-607c-41cc-a0e6-14658dd558f9",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/virtualnetworkpeerings"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualNetwork.json",
+          "source_sha256": "6d4bf66495c6ee39b4f88476a3c4d11473f6ed67315d13ff54eb0de7888cb3b7",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T20:22:56.237070+00:00",
+          "pointer": "cc881471-607c-41cc-a0e6-14658dd558f9",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualNetwork.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_peering.html.markdown",
+          "source_sha256": "686d4bd40d5c9698485adb54ad226c97cbffbc4605b7811dfb3b04ec6db48721",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T20:22:56.916310+00:00",
+          "pointer": "cc881471-607c-41cc-a0e6-14658dd558f9",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_network_peering.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+        "Microsoft.Network/virtualNetworks"
+      ],
+      "review_fact_paths": [
+        "remoteVirtualNetwork.id",
+        "allowVirtualNetworkAccess",
+        "peeringTransitSummary",
+        "resourceLocation"
+      ]
     },
     {
       "control_id": "ALZ-4722d929-c1b1-4cd6-81f5-4b29bade39ad",
@@ -4432,15 +4791,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Network Insights redirects to Network Watcher. No configuration is required for built-in views. Monitor/flow/alert association does not establish running tests, current health, end-to-end coverage or owner response; no live diagnostic/query authorized.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Is actual Network Insights topology/health/metrics visibility and required connectivity/traffic/alerts operation complete, fresh and owned, with attributable ingestion and response evidence rather than configured resource presence?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-10",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -4454,9 +4810,53 @@
           "pointer": "/items/69",
           "item_sha256": "89456aaf992711b9f0f84a27779d3d1bf5d7a6b9f11fdb7a010cea8444c2efdc",
           "guidance": "https://learn.microsoft.com/azure/azure-monitor/insights/network-insights-overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/azure-monitor/insights/network-insights-overview",
+          "source_sha256": "441b3b1f0e5c5c1beb1b9f2f8173e15f75bdb646bb89cf58b11f318b9638cc2e",
+          "revision": "72d285d0aefe1746c6b2c92672e049d20885583b",
+          "retrieved_at": "2026-11-06T20:22:53.344307+00:00",
+          "pointer": "4722d929-c1b1-4cd6-81f5-4b29bade39ad",
+          "guidance": "https://learn.microsoft.com/azure/azure-monitor/insights/network-insights-overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/networkwatchers/connectionmonitors",
+          "source_sha256": "e0cfd8a712f81567a7c797f5187b637bcc07b57643034ad6b99d3a380b3c7cb2",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T20:22:58.950893+00:00",
+          "pointer": "4722d929-c1b1-4cd6-81f5-4b29bade39ad",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/networkwatchers/connectionmonitors"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/2018-03-01/metricalerts",
+          "source_sha256": "19be049356a3288432a5c01beb713e45986e380433edd26f1cceedc10513eafe",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T20:22:59.319315+00:00",
+          "pointer": "4722d929-c1b1-4cd6-81f5-4b29bade39ad",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/2018-03-01/metricalerts"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/network_connection_monitor.html.markdown",
+          "source_sha256": "08b29883d89b65a28bcc0fb2a60e3f51718b38dce23909ac97075570be7dcda2",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T20:22:59.652111+00:00",
+          "pointer": "4722d929-c1b1-4cd6-81f5-4b29bade39ad",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/network_connection_monitor.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Network/networkWatchers/connectionMonitors",
+        "Microsoft.Network/networkWatchers/flowLogs",
+        "Microsoft.Insights/metricAlerts"
+      ],
+      "review_fact_paths": [
+        "connectionMonitorSummary",
+        "expressRouteAlertSummary",
+        "enabled",
+        "trafficAnalytics.enabled",
+        "trafficAnalytics.workspaceResourceId"
+      ]
     },
     {
       "control_id": "ALZ-0e7c28ec-9366-4572-83b0-f4664b1d944a",
@@ -4476,15 +4876,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Historical checklist numbers are immutable text, not current automatic limits. No complete estate, live quotas, direction-specific prefix advertisements, spare capacity or extra-hub need inferred from selected resource counts.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Reconcile historical400-spoke/500-peering/1000-prefix wording with current650 peerings/VNet and Route Server/ER direction/family/SKU limits, authorized actual quotas, complete regional/advertised populations, summarization and growth/exception plans."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-10",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -4498,9 +4895,63 @@
           "pointer": "/items/70",
           "item_sha256": "6985ae05dd24f39c09c5e19c1487bca9becfbc56a1e7f4dfd48b71a0e777c668",
           "guidance": "https://learn.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits?toc=/azure/virtual-network/toc.json#azure-resource-manager-virtual-networking-limits"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits?toc=/azure/virtual-network/toc.json#azure-resource-manager-virtual-networking-limits",
+          "source_sha256": "0096226a7d640c98d8079ab37b7081f60b3d42b9e6679c22c8d726b047e8dddb",
+          "revision": "b925adaad71e273e5a1379e52d082568ef8fbf6f",
+          "retrieved_at": "2026-11-06T20:22:53.980097+00:00",
+          "pointer": "0e7c28ec-9366-4572-83b0-f4664b1d944a",
+          "guidance": "https://learn.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits?toc=/azure/virtual-network/toc.json#azure-resource-manager-virtual-networking-limits"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/route-server/route-server-faq",
+          "source_sha256": "26751e669042fa629f6eccb11bd065b029912ace042e5dbc1b462574253e1225",
+          "revision": "7e185a942e5588c59bb86aefbceea87a1accef5c",
+          "retrieved_at": "2026-11-06T20:22:51.800502+00:00",
+          "pointer": "0e7c28ec-9366-4572-83b0-f4664b1d944a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/route-server/route-server-faq"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology",
+          "source_sha256": "69ed8bf486a72fdd0a0d5995bdb452605bf9a208e94969ee2c6157e510f32c02",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T20:22:47.768330+00:00",
+          "pointer": "0e7c28ec-9366-4572-83b0-f4664b1d944a",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/virtualnetworkpeerings",
+          "source_sha256": "bd876cc7658adc3c1dde04140b9ef236365eaff61d1bfffc3105e396a3b554d7",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T20:22:56.615016+00:00",
+          "pointer": "0e7c28ec-9366-4572-83b0-f4664b1d944a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworks/virtualnetworkpeerings"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworkgateways",
+          "source_sha256": "b6264ef312a7c8e888ad8f659003c3a602d24f2b3d4489d339b1fd93533e45a6",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T20:22:58.316975+00:00",
+          "pointer": "0e7c28ec-9366-4572-83b0-f4664b1d944a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/virtualnetworkgateways"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Network/virtualNetworks",
+        "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+        "Microsoft.Network/virtualHubs",
+        "Microsoft.Network/virtualNetworkGateways"
+      ],
+      "review_fact_paths": [
+        "resourceLocation",
+        "remoteVirtualNetwork.id",
+        "routingSubnetReferences",
+        "routingIpConfigurationIds",
+        "gatewaySku",
+        "gatewayType"
+      ]
     },
     {
       "control_id": "ALZ-3d457936-e9b7-41eb-bdff-314b26450b12",
@@ -19076,66 +19527,78 @@
   "reviewed_at": "2026-11-04T13:25:57.057372+00:00",
   "reference_manifest_sha256": "c287f93a4ff4c94c577b0248345d813f44fb27dff66524408870095024305d30",
   "control_source_manifest_sha256": "d189615f2793f141a6ee6cd5a7f026556a4146fd44d65705e6f08d0e01f7debf",
-  "accepted_matrix_sha256": "3928a207674262ec736245039a13b64c1458cb1b9a9614befb68c4df3a0517ec",
+  "accepted_matrix_sha256": "5e0e1a78255cd29b10cf7777f466189232e6494c469f52caed133cf0fc8d1445",
   "wave_source_manifest_sha256": "617e66a497a1f6bb1ddf50f53b3f75f3ff2cec2989324d42496aeeb4d9d0ef38",
   "change_review": {
-    "base_sha256": "96599cc920854070333a2b9ad789aab6f4483566fb1a3e469d1c7bfdb4ab206d",
-    "matrix_sha256": "3928a207674262ec736245039a13b64c1458cb1b9a9614befb68c4df3a0517ec",
-    "reviewed_at": "2026-11-06T21:17:12.7071128Z",
+    "base_sha256": "7937ee2c8df6bbff3067e1b9d55b41d9052cc90d9ba53e8561af1f4eb30d4035",
+    "matrix_sha256": "5e0e1a78255cd29b10cf7777f466189232e6494c469f52caed133cf0fc8d1445",
+    "reviewed_at": "2026-11-06T22:12:09.856Z",
     "reviewer": "owner-delegated-source-backed-batch-review",
     "changes": [
       {
-        "control_id": "ALZ-cd163e39-84a5-4b39-97b7-6973abd70d94",
-        "before_sha256": "f14f245101a88fd29605014514e783bafddce0880f29e4e369c3563b970b71c9",
-        "after_sha256": "1919b00251d01fad4f8c9f631d8467b00514d80d2abb9a3fb029b5d43c6d421c",
-        "rationale": "Owner-delegated source-backed batch 06 acceptance: assisted"
+        "control_id": "ALZ-373f482f-3e39-4d39-8aa4-7e566f6082b6",
+        "before_sha256": "a664147125eb2fcda54282689c99b04aeed136a41743f7a6c23203dfa9bdd66b",
+        "after_sha256": "360e3abe9cd37cd57cf41bfba3a7c4e020e2ee482314a3acc6d86bae1bbf0b97",
+        "rationale": "Owner-delegated source-backed batch 10 acceptance: manual"
       },
       {
-        "control_id": "ALZ-35037e68-9349-4c15-b371-228514f4cdff",
-        "before_sha256": "8df7cf041d4a11409567ee8f1c8b5db4a5bfb470fe0391bf30253f870ac64fc9",
-        "after_sha256": "39d319edb7d00e203e75d4edd475672699005062713f16d97ee52f601c4c8b4f",
-        "rationale": "Owner-delegated source-backed batch 06 acceptance: assisted"
+        "control_id": "ALZ-e8bbac75-7155-49ab-a153-e8908ae28c84",
+        "before_sha256": "61e3df0bffa4524be413d7a851db81e5529484dafd7d0c1f8786232b91ae3807",
+        "after_sha256": "4f65b460a05cfa933e78c9cd2d6448ad69ae2a3c7e2587fe5d9e41cde6af09ab",
+        "rationale": "Owner-delegated source-backed batch 10 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-d5d1e4e6-1465-48d3-958f-d77249b82111",
-        "before_sha256": "b2041c7187824e5a7ee0c3f42af48789f06cbd221efd52003e47548580b9900d",
-        "after_sha256": "467bcf2d92a306835039388e136797731c75201ed2050fe6487d0056cc0d5679",
-        "rationale": "Owner-delegated source-backed batch 06 acceptance: assisted"
+        "control_id": "ALZ-7bc1c396-2461-4698-b57f-30ca69525252",
+        "before_sha256": "37b91f65773827622537bbbe48fb98014c55a5158e8f8124da23d88d22c00605",
+        "after_sha256": "40bbadbb8246ee9adbce5597588b4a19318d65aa31fd0f41856e77dbd1153fd9",
+        "rationale": "Owner-delegated source-backed batch 10 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-9cf5418b-1520-4b7b-add7-88eb28f833e8",
-        "before_sha256": "ac7904e745fb2477229b54a067a855d2af03211aec456cb2f97208a9fc2cf3c0",
-        "after_sha256": "610401f5432b458f338d8bfeb705b30a0c9663ec28ce6eaad6dbb4542d720a37",
-        "rationale": "Owner-delegated source-backed batch 06 acceptance: assisted"
+        "control_id": "ALZ-7dd61623-a364-4a90-9eca-e48ebd54cd7d",
+        "before_sha256": "c1ee4a1d666f4a55d1a8a843b9fb9f927e9759aef45e043cbfa996d705b66871",
+        "after_sha256": "f990a6731e2ebf3d3901ab2704c82aa7a11dc6a98b453ecb71c5e22f9fb7e88a",
+        "rationale": "Owner-delegated source-backed batch 10 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-d4d1ad54-1abc-4919-b267-3f342d3b49e4",
-        "before_sha256": "3eb3876f615d295f15fb8c6008669e5913ac1eaf5e5de81ba41b4f89a0fe75dc",
-        "after_sha256": "db43a7fc4fc14d538e0d3df0ac034448795a00fd7a34d9a5142019c9d1396d25",
-        "rationale": "Owner-delegated source-backed batch 06 acceptance: assisted"
+        "control_id": "ALZ-e2e8abac-3571-4559-ab91-53e89f89dc7b",
+        "before_sha256": "983cedccf52b181c5db5f1423942ff62f657638327db505aa5fe0d66a19feb4c",
+        "after_sha256": "8841479f9f415ba0191e57d7d91323ffc6efbe734129e00e65bb47e47d1e5f60",
+        "rationale": "Owner-delegated source-backed batch 10 acceptance: manual"
       },
       {
-        "control_id": "ALZ-d505ebcb-79b1-4274-9c0d-a27c8bea489c",
-        "before_sha256": "8dafe6129bbf051b773354d500cb3d948e054710e58338ff57c9b5ab439782b0",
-        "after_sha256": "f32349b1af63f4a3efcfcb5999be9bb4f6baee7228a18506256a604583e4a0c5",
-        "rationale": "Owner-delegated source-backed batch 06 acceptance: assisted"
+        "control_id": "ALZ-ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
+        "before_sha256": "9ec74d770f7b2a672cab9ae3c55a22e7dc8b5e6a52dae8bc00a8b80b03fcb785",
+        "after_sha256": "af465992634c800f74bf5dce6e4737c60ed4f3243a719f5678a5cddda270916a",
+        "rationale": "Owner-delegated source-backed batch 10 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-0ce74f19-9abb-47e4-ae95-6b057a1d2be9",
-        "before_sha256": "977354eea4c83df6b830467a14f9888629b8726242d3a52ec070f4e438c369f9",
-        "after_sha256": "41085ddefa7b9561148a9d3efca741ad536c605edb39e494848ce89e6f569382",
-        "rationale": "Owner-delegated source-backed batch 06 acceptance: assisted"
+        "control_id": "ALZ-91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
+        "before_sha256": "2798f71d52063c6b921537d03618f7360d7fe6cf7429a05e775777efb9a715fa",
+        "after_sha256": "a4684e70bbbab19cac5fe0d5f6939a36a7cb910014e70583771167c513006716",
+        "rationale": "Owner-delegated source-backed batch 10 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-1770a2ac-c194-4e5c-ade4-82939d38a510",
-        "before_sha256": "3d4052b54f93713aa3999562789b3b705a63aa615e817786688abdd9394ce7ea",
-        "after_sha256": "2902914b85c0e77c23c1b982afae9ebda9f80c992eeec7d498378a0aff4b0e24",
-        "rationale": "Owner-delegated source-backed batch 06 acceptance: manual"
+        "control_id": "ALZ-cc881471-607c-41cc-a0e6-14658dd558f9",
+        "before_sha256": "d9e90e6ab792d91aea31d2b7bf59a73812c062c1c43582e12da96b2eac2cadc2",
+        "after_sha256": "a0b8c8983ceb1d96d07adf20251408411540112058370ffe3ab655894a24f771",
+        "rationale": "Owner-delegated source-backed batch 10 acceptance: assisted"
+      },
+      {
+        "control_id": "ALZ-4722d929-c1b1-4cd6-81f5-4b29bade39ad",
+        "before_sha256": "0d11eb5020901890e013457a66d4286e0303c9db8bc1f792effb5711104f66c3",
+        "after_sha256": "8bf6631ea8b7297fff8bf7f10352779aa6571c3fa3e5fac76e716775f77da907",
+        "rationale": "Owner-delegated source-backed batch 10 acceptance: assisted"
+      },
+      {
+        "control_id": "ALZ-0e7c28ec-9366-4572-83b0-f4664b1d944a",
+        "before_sha256": "3811add812557e830e8f09b9636ecb2ce08039a377796baee3e32d4bbe6e1a2e",
+        "after_sha256": "dd31181da3ff125e13215bd6d1091da718d4e860a88b0f38a8ef1e1b1aaebf87",
+        "rationale": "Owner-delegated source-backed batch 10 acceptance: assisted"
       }
     ]
   },
   "first_wave_matrix_sha256": "f649b2293211c844d661ea93c6978fe2db948eff17237af01ca090809da8e1fb",
-  "batch_source_manifest_sha256": "28fb3969b39705b0a936c90d2cf4886c9c8ff8bbffa1dc3b9a23d923ca2ac94b",
-  "batch_catalog_version": "2026-11-06.19",
+  "batch_source_manifest_sha256": "6bef529422a005ca1ba56abbab7962d7fe951c644d90aa48cb72bee131571f52",
+  "batch_catalog_version": "2026-11-06.20",
   "priority_manifest_sha256": "b42971f85b9110f71fdc5ae81695fe4be72c1f28022ec27aeb719140ed1475c0"
 }

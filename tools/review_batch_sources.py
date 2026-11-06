@@ -3819,6 +3819,196 @@ SOURCES_27 = [
 ]
 
 
+SOURCES_10 = [
+    (
+        "application-delivery",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/"
+        "azure-best-practices/plan-for-app-delivery",
+        ["spoke", "Front Door", "WAF"],
+        "Application delivery is workload-owned; Application Gateway belongs with the "
+        "application, not as a shared hub service. A documented standard, actual WAF "
+        "operation and Front Door origin restriction remain human decisions.",
+    ),
+    (
+        "network-design",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/"
+        "enterprise-scale/network-topology-and-connectivity",
+        ["Connectivity", "Corp", "Online"],
+        "Redirects to landing-zone/design-area. Align networking with actual traffic "
+        "and hybrid requirements; MG/resource names do not designate hub or spoke purpose.",
+    ),
+    (
+        "landing-zone-regions",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/considerations/regions",
+        ["multiple regions", "DNS zones are global", "Connectivity"],
+        "Prepare platform connectivity for regional expansion and DR. Supplied locations "
+        "are not independent failure domains, complete regional services or exercised DR. "
+        "Private DNS zones are global, not another regional deployment.",
+    ),
+    (
+        "traditional-topology",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/"
+        "azure-best-practices/traditional-azure-networking-topology",
+        ["aren't transitive", "minimal shared services", "partner vendor", "more than two"],
+        "Traditional hub-spoke is scenario-dependent. Minimal gateways/firewall/NVAs and "
+        "conditional DNS belong in a designated hub, not shared L7 ingress. Global peering "
+        "is nontransitive; direct spoke paths can bypass inspection. More-than-two-region "
+        "global transit has Virtual WAN/ExpressRoute alternatives, not a universal peering rule.",
+    ),
+    (
+        "partner-nva",
+        "https://learn.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha",
+        ["vendor", "Convergence time", "Traffic symmetry"],
+        "Redirects to networking/guide/network-virtual-appliance-high-availability. Vendor "
+        "validation, actual version/topology/support, convergence, SNAT/symmetry and "
+        "failover require partner evidence. Generic Azure patterns do not prove support.",
+    ),
+    (
+        "coexisting-gateways",
+        "https://learn.microsoft.com/azure/expressroute/"
+        "expressroute-howto-coexist-resource-manager"
+        "#to-enable-transit-routing-between-expressroute-and-azure-vpn",
+        ["65515", "Basic", "/27", "Route Server"],
+        "Conditional ER/S2S VPN coexistence needs route-based non-Basic VPN. GatewaySubnet "
+        "/27-or-larger is not RouteServerSubnet sizing. Backup is private, not Microsoft, "
+        "peering; equal-prefix preference differs from longest-prefix selection.",
+    ),
+    (
+        "route-server-quickstart",
+        "https://learn.microsoft.com/azure/route-server/"
+        "quickstart-configure-route-server-portal#create-a-route-server-1",
+        ["RouteServerSubnet", "minimum of /26 or larger", "Standard"],
+        "Actual redirect quickstart-create-route-server-portal now requires /26 or larger. "
+        "Immutable D01.08 and pinned AzureRM4.50.0 still say /27; preserve that discrepancy "
+        "and qualify any sizing subcheck by this captured current source, not a whole verdict.",
+    ),
+    (
+        "route-server-transit",
+        LEARN + "azure/route-server/expressroute-vpn-support",
+        ["active-active", "65515", "same virtual network", "isn't supported"],
+        "Route exchange must be explicitly enabled; VPN active-active/ASN65515 are required, "
+        "VPN BGP is not. All gateways must share the Route Server VNet. No ER-to-ER "
+        "circuit transit or runtime route/health proof follows from configuration.",
+    ),
+    (
+        "route-server-faq",
+        LEARN + "azure/route-server/route-server-faq",
+        ["S2S", "P2S", "4,000", "50,000", "10,000", "isn't an Azure Virtual WAN"],
+        "VNet Route Server uses virtualHubs ARM identity but is not Virtual WAN. Transit "
+        "excludes P2S. Current limits include16 BGP peers,4000 routes/peer,500 VNets,"
+        "50000 VMs (capacity-dependent),10000 total prefixes; combined VNet/Route Server "
+        "advertisements to ER remain1000. Updates count against peer limits; no estate "
+        "count, entitlement or capacity is inferred from selected supplied records.",
+    ),
+    (
+        "global-peering",
+        "https://learn.microsoft.com/azure/virtual-network/virtual-networks-faq"
+        "#can-i-create-a-peering-connection-to-a-vnet-in-a-different-region",
+        ["Transitive peering is not supported", "different regions", "Connected"],
+        "Global peering connects different regions; both directional links are required. "
+        "Nontransitive and Basic Load Balancer/global-peering restrictions apply. Location "
+        "inequality and reciprocal references do not establish hub designation or working paths.",
+    ),
+    (
+        "network-insights",
+        "https://learn.microsoft.com/azure/azure-monitor/insights/network-insights-overview",
+        ["without requiring any configuration", "Connection monitor", "Diagnostic Toolkit"],
+        "Redirects to Network Watcher Network Insights. Built-in topology/health/metrics "
+        "need no configuration; monitor/flow/alert settings do not prove end-to-end "
+        "operation, coverage, ingestion, owner response or executed diagnostic tests.",
+    ),
+    (
+        "network-limits",
+        "https://learn.microsoft.com/azure/azure-resource-manager/management/"
+        "azure-subscription-service-limits?toc=/azure/virtual-network/toc.json"
+        "#azure-resource-manager-virtual-networking-limits",
+        ["650", "Route advertisement limits", "4,000", "10,000", "1,000"],
+        "Actual current table lists650 peerings/VNet, not immutable historical500. "
+        "Historical400 spokes is not a current universal threshold. ER private-peering "
+        "Azure-to-onprem IPv4 gateway routes1000 (both SKUs), IPv6 100; incoming IPv4 "
+        "onprem routes4000 Local/Standard or10000 Premium. Direction, family, SKU, "
+        "Route Server limits, summarization and actual authorized quotas/complete counts "
+        "require separate review; no live quota lookup or automatic headroom verdict.",
+    ),
+    (
+        "route-server-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/virtualhubs",
+        ["allowBranchToBranchTraffic", "sku", "virtualWan"],
+        "Shared virtualHubs type and SKU alone do not designate Route Server. Preserve "
+        "explicit branch flag/preference separately from positively joined VNet attachment.",
+    ),
+    (
+        "routing-ipconfiguration-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/virtualhubs/ipconfigurations",
+        ["subnet", "publicIPAddress"],
+        "Separate virtualHubs/ipConfigurations child supplies typed subnet/public-IP "
+        "relationships. Parent ipConfigurations is read-only references in the REST spec; "
+        "do not invent embedded configuration bodies or retain private IPs.",
+    ),
+    (
+        "route-server-provider",
+        RAW + "website/docs/r/route_server.html.markdown",
+        ["branch_to_branch_traffic_enabled", "subnet_id", "/27", "2024-05-01"],
+        "AzureRM4.50.0 explicit azurerm_route_server maps to virtualHubs and separately "
+        "creates its IP configuration. Omitted branch flag/preference defaults are not "
+        "inferred; pinned /27 sizing guidance conflicts with current portal /26 guidance.",
+    ),
+    (
+        "route-server-provider-implementation",
+        RAW + "internal/services/network/route_server_resource.go",
+        ["HubIPConfiguration", "AllowBranchToBranchTraffic", "VirtualHubIPConfiguration"],
+        "Provider creates parent then separate ipConfig1 child with subnet/public-IP IDs. "
+        "Explicit Terraform resource type prepares declared attachment without fabricating "
+        "ARM kind=RouteServer or a child identity in normalized evidence.",
+    ),
+    (
+        "routing-rest-spec",
+        SPEC_RAW + "specification/network/resource-manager/Microsoft.Network/Network/"
+        "stable/2024-05-01/virtualWan.json",
+        ["HubIPConfigurationPropertiesFormat", "ipConfigurations", "allowBranchToBranchTraffic"],
+        "Pinned REST defines separate HubIPConfiguration subnet/public-IP and parent "
+        "read-only child references. No private IP/ASN/partner payloads are retained.",
+    ),
+    (
+        "peering-rest-spec",
+        SPEC_RAW + "specification/network/resource-manager/Microsoft.Network/Network/"
+        "stable/2024-05-01/virtualNetwork.json",
+        ["allowGatewayTransit", "useRemoteGateways", "peerCompleteVnets"],
+        "Explicit peering flags have separate directional meanings. No missing defaults, "
+        "effective transit, subnet-peering completeness or remote gateway inferred.",
+    ),
+    *[source for source in SOURCES_11 if source[0] in {"peering-arm", "terraform-peering"}],
+    *[source for source in SOURCES_17 if source[0] in {"subnet-arm", "terraform-subnet"}],
+    *[source for source in SOURCES_19 if source[0] in {"gateway-arm", "terraform-gateway"}],
+    *[
+        source
+        for source in SOURCES_15
+        if source[0]
+        in {
+            "connection-monitor-arm",
+            "metric-alert-arm",
+            "terraform-connection-monitor",
+            "learn-reuse",
+            "provider-reuse",
+            "rest-spec-reuse",
+        }
+    ],
+    (
+        "learn-terms",
+        LEARN + "legal/termsofuse",
+        ["Notice Specific to Documents", "explicit license terms"],
+        "Reviewed document terms; retain attributed metadata and own factual findings only, "
+        "not article text, screenshots, samples or private comments.",
+    ),
+    (
+        "provider-license",
+        RAW + "LICENSE",
+        ["Mozilla Public License", "2.0"],
+        "Pinned provider MPL2.0; only own findings and source metadata retained.",
+    ),
+]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
@@ -3833,6 +4023,7 @@ def main() -> None:
             "05",
             "06",
             "08",
+            "10",
             "11",
             "12",
             "13",
@@ -3855,10 +4046,10 @@ def main() -> None:
     if args.vwan_supplement and (args.batch != "16" or not args.preparation_only):
         raise ValueError("The vWAN supplement is cohort16 preparation only")
     if (
-        args.batch in {"02", "05", "06", "12", "16", "20", "23", "27", "29", "30"}
+        args.batch in {"02", "05", "06", "10", "12", "16", "20", "23", "27", "29", "30"}
     ) != args.preparation_only:
         raise ValueError(
-            "Cohorts 02/05/06/12/16/20/23/27/29/30 source capture require --preparation-only; "
+            "Cohorts 02/05/06/10/12/16/20/23/27/29/30 source capture require --preparation-only; "
             "no activation"
         )
     prefix = "preparation" if args.preparation_only else "batch"
@@ -3882,6 +4073,7 @@ def main() -> None:
         "05": SOURCES_05,
         "06": SOURCES_06,
         "08": SOURCES_08,
+        "10": SOURCES_10,
         "11": SOURCES_11,
         "12": SOURCES_12,
         "13": SOURCES_13,

@@ -1,0 +1,165 @@
+{
+  "batch": "10",
+  "review_state": "owner-delegated-source-backed-matrix",
+  "catalog_version": "2026-11-06.20",
+  "accepted_at": "2026-11-06T22:12:09.856Z",
+  "baseline_main": "a3686afb9e24ca70eb1f9efcc69b16e8dad10a4a",
+  "preparation_commit": "b4b92ac9f26b585abb0a81cb0fb0842485bb4dfd",
+  "reconciliation_commit": "cba7bf8",
+  "prerequisites": ["06", "27", "29"],
+  "preserved_catalog_bytes": {
+    "2026-11-06.19": "8da27e4849f887b68129a19ce5f814b2b3d66186f364524755011983647baf33"
+  },
+  "preserved_crosswalk_bytes": {
+    "2026-11-06.19": "a077b38749f189a479eb07bc1a9794977f44203005f637f98d018b12062d470d"
+  },
+  "preserved_delivery_batches": ["01", "02", "04", "05", "06", "08", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "22", "23", "27", "29", "30"],
+  "preserved_delivery_receipts_sha256": "e83f0963a6485877e36cfb61d509de608cb73f7c5263c5a00fe4341bf3a5b937",
+  "preserved_merged_recommendations_sha256": "5d8ff84197bcbdc8b75223c7269974bfb6b3fbdcccd4135b5d307a24b506a791",
+  "issue": "https://github.com/jonathan-vella/landinglens/issues/139",
+  "source_manifest": "batch-10-sources.json",
+  "activation": "Explicit sole coordinator slot after actual29 implementation140/receipt141 and06 implementation143/receipt144, checked final main and completed issues. Preparation b4b92ac reconciled with actual main a3686af in cba7bf8; frozen exact .19 predecessor precedes builder-derived .20. Accepted source/workflows are not merged delivery; guarded own receipt publication and final-main CI remain mandatory.",
+  "supported_modes": "Existing single evaluator, raw Terraform/supplied local modules/optional saved plan with pinned AzureRM4.50.0; ARM/no-restore Bicep2024-05-01 network definitions and existing monitor definitions; saved/injected normalized evidence. No new Collector routes, modules, definitions, compiler acquisition, query execution or live network/monitor/quota reads.",
+  "privacy": "New projections retain only typed relationships, explicit booleans and subnet family/prefix-length summaries. No new IP, route, NVA, vendor payload or private monitoring data retained. Resource IDs remain identity-bearing, not anonymous.",
+  "source_qualifications": {
+    "route_server_subnet": "Immutable checklist says /27. Actual linked quickstart redirects and requires minimum /26 or larger, while pinned AzureRM4.50.0 documentation still says /27-or-shorter. Current-source subcheck uses <=26 for one explicit IPv4 prefix only; dedicated reserved subnet, role, NSG/UDR restrictions and applicability stay human.",
+    "scale": "Immutable 400-spoke/500-peering/1000-prefix wording is preserved. Actual current service table lists650 peerings/VNet. ER private-peering Azure-to-onprem IPv4 gateway routes1000, IPv6 100; incoming IPv4 routes4000 Local/Standard or10000 Premium. Route Server additionally has500 VNets,16 BGP peers,4000 routes/peer,10000 total prefixes and capacity-dependent VM limits. Direction/family/SKU/effective advertised routes, summarisations, current authorized quotas and complete estate are not inferred or automatically passed.",
+    "transit": "Conditional S2S, not P2S, ER/VPN transit requires Route Server route exchange; VPN active-active/ASN65515 and route-based non-Basic coexistence; VPN BGP itself is not required. All gateways must share the Route Server VNet. No ER-to-ER circuit transit, effective routes or failover inferred.",
+    "resource_identity": "Route Server uses Microsoft.Network/virtualHubs and separate ipConfigurations, not a fictional routeServers resource or kind=RouteServer discriminator. Same ARM type/SKU and branch flag do not establish Virtual WAN or Route Server purpose; explicit VNet attachment is separate configuration.",
+    "monitoring": "Network Insights now resides under Network Watcher and offers topology/health/metrics without configuration. Existing monitor/flow/alert facts are preparation only; no resource-presence proxy establishes end-to-end operation."
+  },
+  "interview": {
+    "id": "hub-spoke-route-server-monitoring",
+    "question": "Provide ten independently attributable original-time decisions and exceptions, not one shared approval. D01.01: identify the approved internal/external application-delivery standard, workload-owned spoke ingress, regional Application Gateway v2/WAF versus global Front Door/WAF and origin restriction, including justified protocol/partner alternatives. D01.02: explicitly designate hubs/spokes and justify traditional topology against flexibility, traffic/isolation/transit and managed alternatives; names and peering count do not prove purpose. D01.03: identify required regions and complete regional connectivity/DNS/identity/management readiness, physical failure domains and exercised DR; location labels are not readiness. D01.04: bind the designated hub to required shared ER/VPN/firewall or supported partner NVA and conditional DNS services, ownership and effective inspection; do not centralize shared L7 workload ingress. D01.06: if partner technology applies, identify exact vendor/version/supported design and evidence for HA, convergence, symmetry/SNAT, performance and Azure compatibility; generic Azure patterns are not vendor approval. D01.07: determine whether ER/S2S VPN transit is actually required, establish Route Server VNet attachment and explicit branch exchange, same-VNet gateways and active-active VPN ASN65515/route-based non-Basic requirements; VPN BGP is not required, P2S and ER-to-ER transit are excluded, effective routes/failover need separate evidence. D01.08: acknowledge immutable /27 wording versus current linked /26-or-larger quickstart and older provider /27 guidance; approve a dedicated RouteServerSubnet with current source-qualified capacity and NSG/UDR restrictions, not a name-only check. D01.09: designate actual regional hubs and approve both directional global peerings/alternative interregional design, nontransitivity, Basic Load Balancer restrictions and required inspection without unintended bypass; unequal regions do not prove global hub transit. D01.10: show actual Network Insights topology/health/metrics visibility, required connectivity/traffic/alerts, ingestion/freshness, ownership and response with redacted evidence; built-in views need no configuration and no test/probe is authorized here. D01.11: reconcile immutable400/500/1000 wording with current650 peerings/VNet and source-specific Route Server/ER direction/family/SKU limits; establish authorized current quotas and complete regional spokes/peerings/advertised-prefix populations, summarization and growth/exception plan, rather than counting selected records.",
+    "controls": [
+      "ALZ-373f482f-3e39-4d39-8aa4-7e566f6082b6",
+      "ALZ-e8bbac75-7155-49ab-a153-e8908ae28c84",
+      "ALZ-7bc1c396-2461-4698-b57f-30ca69525252",
+      "ALZ-7dd61623-a364-4a90-9eca-e48ebd54cd7d",
+      "ALZ-e2e8abac-3571-4559-ab91-53e89f89dc7b",
+      "ALZ-ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
+      "ALZ-91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
+      "ALZ-cc881471-607c-41cc-a0e6-14658dd558f9",
+      "ALZ-4722d929-c1b1-4cd6-81f5-4b29bade39ad",
+      "ALZ-0e7c28ec-9366-4572-83b0-f4664b1d944a"
+    ]
+  },
+  "recommendations": [
+    {
+      "guid": "373f482f-3e39-4d39-8aa4-7e566f6082b6",
+      "upstream_id": "D01.01",
+      "classification": "manual",
+      "flags": [],
+      "implemented_subclaim": "Specific application-delivery standard workflow with blank decision and independent exceptions; no presence-based standard predicate.",
+      "sources": ["application-delivery", "traditional-topology"],
+      "evidence_requirements": ["Reviewer decision: Is the approved internal/external application-delivery standard implemented with workload-owned spoke Application Gateway v2/WAF, global Front Door/WAF and restricted origins, with justified protocol/partner alternatives and ownership?"],
+      "limitations": "Application security, approved standards and operating practice cannot be inferred from resource existence, WAF association or names."
+    },
+    {
+      "guid": "e8bbac75-7155-49ab-a153-e8908ae28c84",
+      "upstream_id": "D01.02",
+      "classification": "assisted",
+      "flags": [],
+      "implemented_subclaim": "Strict unique-known selected-scope local/remote VNet and reciprocal peering relationships, explicit directional flags and minimized locations support topology review.",
+      "sources": ["network-design", "traditional-topology", "peering-arm", "peering-rest-spec", "terraform-peering"],
+      "review_resource_types": ["Microsoft.Network/virtualNetworks", "Microsoft.Network/virtualNetworks/virtualNetworkPeerings"],
+      "review_fact_paths": ["resourceLocation", "allowVirtualNetworkAccess", "remoteVirtualNetwork.id", "peeringTransitSummary"],
+      "evidence_requirements": ["Reviewer decision: Which VNets are explicitly designated hubs/spokes, and why does traditional hub-spoke satisfy required flexibility, traffic, isolation and transit better than managed alternatives?"],
+      "limitations": "A reciprocal configured peering is nontransitive; topology purpose, complete estate, granular effective routing and suitability remain human."
+    },
+    {
+      "guid": "7bc1c396-2461-4698-b57f-30ca69525252",
+      "upstream_id": "D01.03",
+      "classification": "assisted",
+      "flags": [],
+      "implemented_subclaim": "Existing location and explicit gateway/firewall/DNS VNet attachment context prepare review of supplied regional configuration only.",
+      "sources": ["landing-zone-regions", "traditional-topology", "gateway-arm", "terraform-gateway", "subnet-arm"],
+      "review_resource_types": ["Microsoft.Network/virtualNetworks", "Microsoft.Network/virtualNetworkGateways", "Microsoft.Network/azureFirewalls", "Microsoft.Network/dnsResolvers"],
+      "review_fact_paths": ["resourceLocation", "subnetReferences", "dnsVirtualNetworkId", "dnsServerSummary", "gatewayType"],
+      "evidence_requirements": ["Reviewer decision: Do the required regions have complete connectivity, DNS, identity and management readiness for multi-region workloads and exercised DR across real independent failure domains?"],
+      "limitations": "Multiple location labels are not regional readiness, physical independence or failover. Private DNS zones are global; a selected inventory cannot prove complete deployment."
+    },
+    {
+      "guid": "7dd61623-a364-4a90-9eca-e48ebd54cd7d",
+      "upstream_id": "D01.04",
+      "classification": "assisted",
+      "flags": [],
+      "implemented_subclaim": "Typed unique-known gateway/firewall subnet-to-VNet joins and existing DNS reference context prepare explicit shared-service placement review.",
+      "sources": ["traditional-topology", "landing-zone-regions", "gateway-arm", "terraform-gateway", "subnet-arm", "terraform-subnet"],
+      "review_resource_types": ["Microsoft.Network/virtualNetworks", "Microsoft.Network/virtualNetworkGateways", "Microsoft.Network/azureFirewalls", "Microsoft.Network/dnsResolvers"],
+      "review_fact_paths": ["subnetReferences", "dnsVirtualNetworkId", "gatewayType", "resourceLocation"],
+      "evidence_requirements": ["Reviewer decision: Are the required ER/VPN gateways, firewall or supported partner NVAs and conditional DNS services in the explicitly designated central hub with proper ownership/effective inspection, while L7 workload ingress stays workload-owned?"],
+      "limitations": "Shared subnet/VNet identity is not hub designation, required service completeness, NVA support or effective protection. No NVA inferred from VM names."
+    },
+    {
+      "guid": "e2e8abac-3571-4559-ab91-53e89f89dc7b",
+      "upstream_id": "D01.06",
+      "classification": "manual",
+      "flags": [],
+      "implemented_subclaim": "Specific conditional partner/version/topology/HA/symmetry/support workflow, independent blank decision and exceptions without private partner payloads.",
+      "sources": ["partner-nva", "traditional-topology"],
+      "evidence_requirements": ["Reviewer decision: If partner networking applies, does the exact vendor/version support this design and its HA/convergence, symmetry/SNAT, performance and Azure compatibility, with attributable current partner evidence?"],
+      "limitations": "Generic Microsoft patterns or a deployed appliance do not establish vendor approval/support, actual HA/performance or applicability."
+    },
+    {
+      "guid": "ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
+      "upstream_id": "D01.07",
+      "classification": "assisted",
+      "flags": [],
+      "implemented_subclaim": "Explicit branch exchange/preference, genuine virtualHubs IP-configuration/subnet relationships and existing minimized gateway type/active-active/ASN facts; no effective-transit predicate.",
+      "sources": ["coexisting-gateways", "route-server-transit", "route-server-faq", "route-server-arm", "routing-ipconfiguration-arm", "routing-rest-spec", "route-server-provider", "route-server-provider-implementation"],
+      "review_resource_types": ["Microsoft.Network/virtualHubs", "Microsoft.Network/virtualHubs/ipConfigurations", "Microsoft.Network/virtualNetworkGateways"],
+      "review_fact_paths": ["routingSubnetReferences", "routingIpConfigurationIds", "routingSubnetId", "hubBranchTrafficAllowed", "subnetReferences", "gatewayType", "activeActive", "gatewayTransitSummary"],
+      "evidence_requirements": ["Reviewer decision: Is ER/S2S VPN transit required, with Route Server and same-VNet gateways, explicit branch exchange and active-active route-based non-Basic VPN ASN65515, plus actual route/failover evidence? VPN BGP is not required; P2S and ER-to-ER transit are excluded."],
+      "limitations": "virtualHubs identity/SKU and branch flag alone designate neither Route Server nor Virtual WAN. Declared attachment/gateway settings are not complete/effective transit or authorization to change networking."
+    },
+    {
+      "guid": "91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
+      "upstream_id": "D01.08",
+      "classification": "assisted",
+      "flags": [],
+      "implemented_subclaim": "Positively joined configured subnet/VNet and IPv4 prefix-length-only comparison to captured current <=26 minimum; missing, dual-stack, multiple/invalid/over-bound prefixes remain unknown.",
+      "sources": ["route-server-quickstart", "route-server-provider", "route-server-faq", "subnet-arm", "terraform-subnet", "routing-rest-spec"],
+      "review_resource_types": ["Microsoft.Network/virtualHubs", "Microsoft.Network/virtualHubs/ipConfigurations", "Microsoft.Network/virtualNetworks/subnets"],
+      "review_fact_paths": ["routingSubnetReferences", "routingIpConfigurationIds", "routingSubnetId", "routingSubnetPrefixSummary"],
+      "evidence_requirements": ["Reviewer decision: After acknowledging immutable /27 and older provider wording versus the current linked /26-or-larger requirement, is this a dedicated applicable RouteServerSubnet with current capacity, no NSG/UDR association and justified source/version exceptions?"],
+      "limitations": "Source-qualified sizing context is not a whole verdict. Reserved name, positive attachment or sufficiently large prefix does not prove service designation, dedicated use, current eligibility or operational support."
+    },
+    {
+      "guid": "cc881471-607c-41cc-a0e6-14658dd558f9",
+      "upstream_id": "D01.09",
+      "classification": "assisted",
+      "flags": [],
+      "implemented_subclaim": "Unique-known distinct local/remote VNets, explicit configured locations and reciprocal directional peering context without runtime state or hub purpose inference.",
+      "sources": ["global-peering", "traditional-topology", "peering-arm", "peering-rest-spec", "terraform-peering"],
+      "review_resource_types": ["Microsoft.Network/virtualNetworks/virtualNetworkPeerings", "Microsoft.Network/virtualNetworks"],
+      "review_fact_paths": ["remoteVirtualNetwork.id", "allowVirtualNetworkAccess", "peeringTransitSummary", "resourceLocation"],
+      "evidence_requirements": ["Reviewer decision: For explicitly designated regional hubs, is bidirectional global peering or a justified alternative appropriate, respecting nontransitivity, Basic Load Balancer restrictions and cross-region inspection without bypass?"],
+      "limitations": "Different configured regions and reciprocal links are not designated hubs, working global connectivity or transitive spoke routing. Many-region managed/ER alternatives remain conditional."
+    },
+    {
+      "guid": "4722d929-c1b1-4cd6-81f5-4b29bade39ad",
+      "upstream_id": "D01.10",
+      "classification": "assisted",
+      "flags": [],
+      "implemented_subclaim": "Reuse existing bounded monitor/flow/alert facts for original-time preparation; built-in Network Insights topology/health/metrics needs no fabricated enablement flag.",
+      "sources": ["network-insights", "connection-monitor-arm", "metric-alert-arm", "terraform-connection-monitor"],
+      "review_resource_types": ["Microsoft.Network/networkWatchers/connectionMonitors", "Microsoft.Network/networkWatchers/flowLogs", "Microsoft.Insights/metricAlerts"],
+      "review_fact_paths": ["connectionMonitorSummary", "expressRouteAlertSummary", "enabled", "trafficAnalytics.enabled", "trafficAnalytics.workspaceResourceId"],
+      "evidence_requirements": ["Reviewer decision: Is actual Network Insights topology/health/metrics visibility and required connectivity/traffic/alerts operation complete, fresh and owned, with attributable ingestion and response evidence rather than configured resource presence?"],
+      "limitations": "Network Insights redirects to Network Watcher. No configuration is required for built-in views. Monitor/flow/alert association does not establish running tests, current health, end-to-end coverage or owner response; no live diagnostic/query authorized."
+    },
+    {
+      "guid": "0e7c28ec-9366-4572-83b0-f4664b1d944a",
+      "upstream_id": "D01.11",
+      "classification": "assisted",
+      "flags": [],
+      "implemented_subclaim": "Supplied typed VNet/peering/routing attachment and existing gateway metadata prepare scale review; no selected-subset count is compared to whole-estate service quotas.",
+      "sources": ["network-limits", "route-server-faq", "traditional-topology", "peering-arm", "gateway-arm"],
+      "review_resource_types": ["Microsoft.Network/virtualNetworks", "Microsoft.Network/virtualNetworks/virtualNetworkPeerings", "Microsoft.Network/virtualHubs", "Microsoft.Network/virtualNetworkGateways"],
+      "review_fact_paths": ["resourceLocation", "remoteVirtualNetwork.id", "routingSubnetReferences", "routingIpConfigurationIds", "gatewaySku", "gatewayType"],
+      "evidence_requirements": ["Reviewer decision: Reconcile historical400-spoke/500-peering/1000-prefix wording with current650 peerings/VNet and Route Server/ER direction/family/SKU limits, authorized actual quotas, complete regional/advertised populations, summarization and growth/exception plans."],
+      "limitations": "Historical checklist numbers are immutable text, not current automatic limits. No complete estate, live quotas, direction-specific prefix advertisements, spare capacity or extra-hub need inferred from selected resource counts."
+    }
+  ]
+}
