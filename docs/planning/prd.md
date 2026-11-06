@@ -78,6 +78,18 @@ records remain traceable under explicit lifecycle semantics.
 
 ## Active increment: fixed recommendation expansion
 
+Cohort20/#115 independently prepares nine immutable Virtual WAN GUIDs on delivered
+cohort15 main while08/30 retain delivery priority. Exact reviewed sources and a
+nonaccepted matrix support strict scoped WAN/hub/firewall/table/connection facts,
+separate branch flags, ASPath setting, minimized labels/prefixes and RIU context.
+Current /22 Firewall maximum-scale, /23 recommendation, multiple-hubs-per-region,
+default-label and routing-intent/AS-Path exceptions remain explicit.
+Preparation proves neither actual topology/route selection/filtering/Insights
+use nor suitability, regional eligibility or available capacity. Every human
+decision remains blank; accepted catalog/schema/bank/count/history and own
+receipts stay unchanged until the parent's sole-slot grant and delivery gates.
+See [preparation evidence](plan.md#cohort-20-independent-preparation-2026-11-06).
+
 Delivered implementation `2026-11-06.9` integrates cohort15 after its explicit slot grant and
 actual cohort12 implementation/receipt delivery. Exact `.6.8` bytes and all90
 preceding own-GUID rows/ten receipts remain frozen. One strictly joined scoped

@@ -43,8 +43,10 @@ def local_subchecks(properties: dict[str, Any]) -> dict[str, Any]:
     """Original-time partial facts, never whole-recommendation outcomes."""
     result: dict[str, Any] = {}
     from .expressroute_evidence import fastpath_subchecks
+    from .virtual_wan_evidence import subchecks as vwan_subchecks
 
     result.update(fastpath_subchecks(properties))
+    result.update(vwan_subchecks(properties))
     if "virtualNetworkPrefixes" in properties:
         from .routing_evidence import address_subchecks
 

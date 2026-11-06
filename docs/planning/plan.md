@@ -19,6 +19,58 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## Cohort 20 independent preparation: 2026-11-06
+
+[#115](https://github.com/jonathan-vella/landinglens/issues/115) owns the third
+rolling workstream after delivered cohort15, beside finalizing08 and prepared30.
+The isolated baseline is actual main
+`21f95422a3700328afeacd9d29402cd3facf417c`.
+The [nine-GUID preparation matrix](../../references/recommendation-batches/batch-20-preparation.json)
+and [23 captured sources](../../references/recommendation-batches/preparation-20-sources.json)
+are outside accepted builder activation. Captures retain exact reviewed
+revisions, hashes, redirects, original times and reuse terms; no article, provider
+implementation, diagrams or raw route/query/traffic records are redistributed.
+
+Existing network/routing/firewall/review/replay helpers carry explicit WAN type,
+separate WAN/hub branch booleans, scoped typed associations, routing preference,
+strict network-aligned IPv4 prefix shape, reviewed RIU minimum, local Internet
+intent and exact-label fingerprints. Known distinct population guards disclose
+unknown, denied, duplicate, unidentified, unscoped and over-bound members.
+Typed hub-route-table joins never use ordinary VNet/GatewaySubnet tables.
+Authored preparation context and original-time packaged replay are exercised;
+all nine actual current-catalog human decisions remain blank. No vWAN predicate,
+accepted schema path, bank question, successor version or Verified tier is activated.
+
+Reviewed defaults and conditions are deliberately not inferred: WAN branch
+defaults true while pinned AzureRM hub branch defaults false; ExpressRoute is the
+documented routing preference default. ASPath is only explicit configuration,
+with LPM/static/remote-ER/private-intent exceptions. Omitted VNet propagation
+labels default to Default in guidance but absent inputs remain unknown.
+Current CAF allows more than one hub per region. Hub space is immutable;
+/24 is minimum, /23 recommended, and /22 is now required for maximum Firewall
+scaling. RIUs differ from gateway scale units; autoscaling is not instantaneous.
+Insights has a prepackaged workbook and the linked page's preview label, not a
+synthetic enablement flag. No effective topology, filtering, monitoring, current
+region eligibility, scenario suitability or available growth capacity is claimed.
+
+Checkout and own exact-installed suites each ran **442 tests**: 441 passed with
+the original Windows symlink-privilege skip. All 18 vWAN preparation cases and
+all ten actual existing-compiler cases exercised with no restore/compiler skip.
+Format/lint, 40-source-file typing and dependency consistency pass.
+Own offline wheel SHA256:
+`3c3aa0e4eafcf6bf44f30ed8d2c3a0537e794b7efc932e3b2715f83a3a383a73`.
+All 91 packaged code/data members match checkout bytes. A fresh outside-checkout
+interpreter proves its own site-packages import; only the three already reviewed,
+hash-checked runtime wheels were restored after its missing-`hcl2` probe.
+
+Current `.6.9` catalog/crosswalk, all255 GUIDs, immutable251/original four control
+hashes and all99 delivered rows/eleven receipts remain unchanged. Delivery stays
+**99 delivered / 152 pending**, not preparation completion. Activation and
+reconciliation with then-current08/30 main await the parent's explicit sole-slot
+grant; final platform/CodeQL/review, four matching exercised compiler artifacts,
+normal exact-head implementation merge and guarded own-GUID receipt/closure
+gates are deferred. No successor workstream is launched.
+
 ## Cohort 15 granted integration: 2026-11-06
 
 The coordinator granted [#106](https://github.com/jonathan-vella/landinglens/issues/106)
