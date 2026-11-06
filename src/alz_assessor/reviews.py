@@ -369,9 +369,10 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     from .governance_evidence import GUIDS as GOVERNANCE_GUIDS
     from .governance_evidence import resource_in_scope
     from .identity_evidence import RESILIENCE_GUIDS
+    from .tenant_evidence import GUIDS as TENANT_GUIDS
 
     unbound = 0
-    if control["upstream_guid"] in GOVERNANCE_GUIDS | RESILIENCE_GUIDS:
+    if control["upstream_guid"] in GOVERNANCE_GUIDS | RESILIENCE_GUIDS | TENANT_GUIDS:
         scoped = [resource for resource in matches if resource_in_scope(resource, bundle)]
         unbound, matches = len(matches) - len(scoped), scoped
         by_id = {
@@ -395,8 +396,13 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
             "complete relationships. No whole-recommendation outcome or current freshness inferred."
         ),
     }
-    if control["upstream_guid"] in GOVERNANCE_GUIDS | RESILIENCE_GUIDS:
+    if control["upstream_guid"] in GOVERNANCE_GUIDS | RESILIENCE_GUIDS | TENANT_GUIDS:
         context["unbound_resources"] = unbound
+    if control["upstream_guid"] in TENANT_GUIDS:
+        from .tenant_evidence import resource_context
+
+        for prepared, resource in zip(context["resources"], matches[:100], strict=True):
+            prepared["tenant_configuration"] = resource_context(resource, by_id, bundle)
     if control["upstream_guid"] == "3a923c34-74d0-4001-aac6-a9e01e6a83de" and available:
         from .governance_evidence import hierarchy_context
 

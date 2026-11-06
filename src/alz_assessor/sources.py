@@ -54,6 +54,8 @@ TF_TYPES = {
     "azurerm_virtual_network_gateway_connection": "Microsoft.Network/connections",
     "azurerm_role_assignment": "Microsoft.Authorization/roleAssignments",
     "azurerm_role_definition": "Microsoft.Authorization/roleDefinitions",
+    "azurerm_lighthouse_definition": "Microsoft.ManagedServices/registrationDefinitions",
+    "azurerm_lighthouse_assignment": "Microsoft.ManagedServices/registrationAssignments",
     "azurerm_availability_set": "Microsoft.Compute/availabilitySets",
     "azurerm_active_directory_domain_service": "Microsoft.AAD/domainServices",
     "azurerm_security_center_subscription_pricing": "Microsoft.Security/pricings",
@@ -134,6 +136,7 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     from .identity_evidence import IDENTITY_KINDS, identity_summary, role_properties
     from .identity_evidence import projected_properties as identity_properties
     from .security_evidence import projected_properties as security_properties
+    from .tenant_evidence import projected_properties as tenant_properties
 
     if kind == "azurerm_role_assignment":
         return role_properties(properties, terraform=True)
@@ -149,6 +152,7 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     )
     result.update(governance_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(identity_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
+    result.update(tenant_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     return result
 
 
@@ -295,6 +299,25 @@ def resource_scope(scope: str | None, properties: dict[str, Any]) -> str | None:
 
 
 def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str | None:
+    if kind in {"azurerm_lighthouse_definition", "azurerm_lighthouse_assignment"}:
+        from .tenant_evidence import resource_parent, uuid_literal
+
+        target = values.get("scope")
+        identifier = values.get(
+            "lighthouse_definition_id" if kind == "azurerm_lighthouse_definition" else "name"
+        )
+        if not isinstance(target, str) or not uuid_literal(identifier) or not scope:
+            return None
+        try:
+            lh_target, lh_boundary = scope_id(target), scope_id(scope)
+        except InputError:
+            return None
+        identity = canonical_id(lh_target + "/providers/" + TF_TYPES[kind] + "/" + identifier)
+        if resource_parent(identity, TF_TYPES[kind].lower()) is not None and (
+            lh_target == lh_boundary or lh_target.startswith(lh_boundary + "/")
+        ):
+            return identity
+        return None
     if kind == "azurerm_role_definition":
         from uuid import UUID
 

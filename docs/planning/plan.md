@@ -19,6 +19,67 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## Cohort 02 independent preparation: 2026-11-06
+
+[#127](https://github.com/jonathan-vella/landinglens/issues/127) owns exactly the
+eight A01.01-A03.02 GUIDs in its
+[preparation matrix](../../references/preparation/batch-02.json), backed by
+[24 actual source captures](../../references/preparation/batch-02-sources.json).
+Baseline is main `4e0fdd9b899a8c155e20e6caf022279fe8c1b48a`; cohorts16/23 retain
+their preceding delivery gates. Preparation does not choose/register a successor,
+activate accepted source/matrix/catalog/crosswalk/history/counts or the interview
+bank, create a delivered receipt, merge or close #127.
+
+Existing adapters/evaluator/review/tier/report/session/replay helpers prepare
+bounded authorization-pair counts, explicit Lighthouse registration references
+and subscription/RG cost-view chart/metric metadata. Joins require unique known
+scoped same-subscription records and matching view-parent scope. Actual compiled
+subscription references require the reviewed implicit-current-subscription
+literal overload; no foreign-subscription overload or read expansion is added.
+The thirteenth actual no-restore compiler case retains all twelve delivered
+cases and exercises the authored Lighthouse/cost-view fixture.
+
+Tenant strategy, automation adoption, actual same-identity/effective delegated
+access, conditional partner status, support operation, reporting outcome,
+mailbox suitability and agreement-specific organizational billing hierarchy
+remain separate attributable decisions. A02.02/A03.01 stay manual. Lighthouse
+resource delegation is not Entra GDAP, billing authority or full ALZ deployment
+authority; service limits override generic template tenant/MG scope options.
+Current UAA exceptions, user-assigned managed-identity federation qualifications,
+EA/MCA/CSP hierarchy/cost-visibility limits and notification/invoice distinctions
+are recorded, without retaining private identities, contacts, billing/query/
+usage/price payloads or credentials. No live route, permission, dependency,
+cloud operation or actual owner approval is introduced.
+
+Final preparation suites each ran **524 tests** in the checkout and own exact
+installed wheel: 523 passed and the original Windows symlink-privilege case
+skipped. All18 cohort02 cases passed. All13 actual existing-compiler cases
+exercised without skips or restoration, preserving all12 delivered cases.
+Format/lint, 42-source-file typing, dependency consistency and379 local
+documentation links passed. The own final wheel was built offline and every109
+package source/data member matched both checkout and outside-checkout
+`site-packages`. The fresh environment's actual missing-`lark` probe preceded
+restoring only the three manifest/hash-reviewed runtime wheels from local pip
+cache. No network installation or other session environment was used. An earlier
+installed run was invalidated by an overlapping environment reinstall; the final
+full run above started after installation completed and passed without weakening
+assertions.
+
+Final preparation wheel SHA256:
+`623e2e48c2162de94c106cf1b1da5a5581eb0a6edd66ee55e984372fed9b33e4`.
+Installed thirteen-case compiler JSON SHA256:
+`e5886a6b8a8bedfe2c8123721a7f31b8f8563e7a5739bebf8784aa5806c7ff0f`.
+Matrix SHA256:
+`f9a1ce180661504477802740d4255bdd5f3dcb03950768f35dd0a5cb415ad94f`;
+source capture SHA256:
+`868c445a6432442d277f12dab85b7ea6f896d7d710cd89e94d3da0d5e16c4781`.
+Catalog/crosswalk/fixed target/ledger bytes and every older receipt remain exact.
+These are preparation proofs, not platform CI, accepted-successor replay or
+merged delivery. Then-current-main reconciliation, exact predecessor freeze,
+source/matrix/bank activation, unique reviewed successor, four matching exercised
+platform compiler artifacts, normal exact-head implementation merge and guarded
+own-GUID receipt publication remain deferred until the coordinator's explicit slot.
+
 ## Cohort 05 granted integration: 2026-11-06
 
 The coordinator granted [#118](https://github.com/jonathan-vella/landinglens/issues/118)
