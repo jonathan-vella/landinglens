@@ -87,8 +87,10 @@ No new predicate or live/cloud/financial action is added. Explicit identities or
 positive saved MG parent bindings are required for machine context, and no name,
 tag count, tile or capacity reference proves the whole recommendation.
 Exact `.6.9`, all predecessor controls and every99 earlier own-GUID receipt are
-preserved. The ledger remains99 delivered /152 pending until actual checked
-implementation/receipt acceptance, not source classification alone.
+preserved. #116 passed actual eight-job/CodeQL/review/four ten-case compiler gates
+and merged normally; guarded own-GUID receipts record106 delivered /145 pending
+on checked publication. #109 closure remains gated on receipt reconciliation,
+not source classification or implementation closure alone.
 
 Delivered implementation `2026-11-06.9` integrates cohort15 after its explicit slot grant and
 actual cohort12 implementation/receipt delivery. Exact `.6.8` bytes and all90

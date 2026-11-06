@@ -66,6 +66,36 @@ Wheel SHA256:
 Platform/CodeQL/review checks, downloaded compiler proofs and actual normal
 implementation/receipt merges are not inferred from these local results.
 
+[#116](https://github.com/jonathan-vella/landinglens/pull/116) merged normally as
+`2fe56d0c5d43c00b1924f84c5119ff7a297bf1dd` at 2026-11-06T13:45:25Z.
+Exact checked head `60613e671665a45aad6919903415a3dda7cafd7f` passed all eight
+supported jobs in push/PR runs `42227197426` / `42227223772`, CodeQL run
+`42227221181` and the applicable Advanced Security check. Live head/base, all
+checks, reviews, threads and main were refreshed immediately before normal
+SHA-bound merge. No required review, branch protection or ruleset was configured
+or bypassed.
+
+All four downloaded PR compiler artifacts exercised identical ten-case coverage
+with no skips: IDs `13507090516`, `13506636422`, `13506072830`, `13505379063`.
+Compiler JSON SHA256 is
+`7d4dcc83aa300a11b9b8f0db22e941e0daa3dd7b0f59f5daa6bb2587efb04e6e`
+on Ubuntu and
+`6249aec8dfd5e6822a038438c932146df25e1806425280ea3e77dcd61b597f83`
+on Windows. The guarded recorder independently reverified merged PR/head, both
+actual runs, downloaded artifacts, fixed membership, earlier own-GUID receipts
+and the exact implementation wheel before recording `deliveries.08`.
+All99 earlier rows/eleven cohort receipts remain exact. The ledger becomes
+**106 delivered /145 pending**; cohort30 is next by current severity/crosswalk
+priority. Checked receipt publication remains the #109 closure gate.
+
+Receipt reconciliation passed **442 local and exact-installed tests**: 441 passed
+with the same original Windows privilege skip. The new assertion pins all seven
+own GUIDs to actual #116/head/merge/runs/wheel and retains all99 prior rows and
+eleven prior cohort receipts. The historical completed-cohort prefix is106,
+not a redefined global total in future deliveries. Format/lint, 40-source-file
+typing, dependency consistency and330 local documentation links passed.
+Package source/data and the exact implementation wheel above are unchanged.
+
 ## Cohort 08 independent preparation: 2026-11-06
 
 [#109](https://github.com/jonathan-vella/landinglens/issues/109) owns exactly the
