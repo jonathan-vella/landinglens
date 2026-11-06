@@ -753,7 +753,12 @@ class SecurityBatchTests(unittest.TestCase):
         ledger = json.loads((review / "ledger.json").read_text())
         self.assertEqual(ledger["fixed_targets_sha256"], digest(targets))
         self.assertEqual(len(ledger["recommendations"]), 251)
-        self.assertEqual(sum(r["status"] == "merged" for r in ledger["recommendations"]), 71)
+        completed_batches = ("01", "04", "11", "13", "17", "18", "19", "22")
+        delivered_through_cohort22 = [
+            row for row in ledger["recommendations"] if row["batch"] in completed_batches
+        ]
+        self.assertEqual(len(delivered_through_cohort22), 71)
+        self.assertTrue(all(row["status"] == "merged" for row in delivered_through_cohort22))
         receipt = ledger["deliveries"]["22"]
         self.assertEqual(receipt["pr"], "https://github.com/jonathan-vella/landinglens/pull/104")
         self.assertEqual(receipt["merge_commit"], "4929eae302ea2019d067862f17bdfb2ed5fc25a5")

@@ -183,4 +183,4 @@ class InterviewTests(unittest.TestCase):
             )
         ]
         self.assertEqual(actual, expected)
-        self.assertEqual(sum(row[1] for row in actual), 180)
+        self.assertEqual(sum(row[1] for row in actual), 171)
