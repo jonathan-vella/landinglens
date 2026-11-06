@@ -51,6 +51,7 @@ def prepared_resource(
     control: dict[str, Any],
     by_id: dict[str, list[dict[str, Any]]],
     scope: str | None = None,
+    bundle: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     from .logging_evidence import GUIDS as LOGGING_GUIDS
     from .logging_evidence import linked_context, resource_paths
@@ -83,6 +84,22 @@ def prepared_resource(
     }
     if control["upstream_guid"] in LOGGING_GUIDS:
         prepared["logging_context"] = linked_context(resource, by_id, scope)
+    if bundle is not None:
+        from .network_policy_evidence import (
+            FIREWALL,
+            GATEWAY,
+            PARTNER,
+            gateway_context,
+            partner_context,
+            policy_context,
+        )
+
+        if "basePolicy.id" in facts and resource["resource_type"].lower() == FIREWALL:
+            prepared["configured_policy_chain"] = policy_context(resource, bundle, by_id)
+        if "gatewayDiagnosticSummary" in facts and resource["resource_type"].lower() == GATEWAY:
+            prepared["configured_gateway_monitoring"] = gateway_context(resource, bundle, by_id)
+        if "partnerConfiguration" in facts and resource["resource_type"].lower() == PARTNER:
+            prepared["configured_partner_hub"] = partner_context(resource, bundle, by_id)
     from .virtual_wan_evidence import PATHS as VWAN_PATHS
     from .virtual_wan_evidence import WAN, hub_context, wan_hub_population
 
@@ -126,6 +143,9 @@ def prepared_resource(
             }
         prepared["linked_network_security_group"] = linked
     refs = facts.get("subnetReferences")
+    replica = facts.get("replicaConfiguration")
+    if isinstance(replica, dict) and "unknown" not in replica:
+        refs = [entry["subnetId"] for entry in replica["replicas"]]
     if refs is None and "subnet.id" in facts:
         refs = [facts["subnet.id"]]
     if isinstance(refs, list):
@@ -196,6 +216,18 @@ def prepared_resource(
         prepared["links_truncated"] = len(refs) > 20
     for path, target_kind, paths, maximum in (
         (
+            "availabilitySetId",
+            "microsoft.compute/availabilitysets",
+            ("platformFaultDomainCount", "platformUpdateDomainCount", "resourceLocation"),
+            1,
+        ),
+        (
+            "roleDefinitionId",
+            "microsoft.authorization/roledefinitions",
+            ("azureRoleType", "assignableScopeCount"),
+            1,
+        ),
+        (
             "bastionVirtualNetworkId",
             "microsoft.network/virtualnetworks",
             ("dnsServerSummary", "resourceLocation"),
@@ -234,11 +266,7 @@ def prepared_resource(
     ):
         if path not in facts:
             continue
-        identities = (
-            [facts[path]]
-            if path in {"dnsVirtualNetworkId", "bastionVirtualNetworkId"}
-            else facts[path]
-        )
+        identities = [facts[path]] if maximum == 1 else facts[path]
         if not isinstance(identities, list):
             prepared["linked_" + path] = {"unknown": "relationships_missing_or_invalid"}
             continue
@@ -366,8 +394,10 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     ]
     from .governance_evidence import GUIDS as GOVERNANCE_GUIDS
     from .governance_evidence import resource_in_scope
+    from .identity_evidence import RESILIENCE_GUIDS
     from .logging_evidence import GUIDS as LOGGING_GUIDS
     from .logging_evidence import scoped_identity
+    from .network_policy_evidence import GUIDS as NETWORK_POLICY_GUIDS
 
     unbound = 0
     if control["upstream_guid"] in LOGGING_GUIDS:
@@ -375,16 +405,21 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
             resource for resource in matches if scoped_identity(resource, bundle.get("scope"))
         ]
         unbound, matches = len(matches) - len(scoped), scoped
-    elif control["upstream_guid"] in GOVERNANCE_GUIDS:
+    elif control["upstream_guid"] in GOVERNANCE_GUIDS | RESILIENCE_GUIDS | NETWORK_POLICY_GUIDS:
         scoped = [resource for resource in matches if resource_in_scope(resource, bundle)]
         unbound, matches = len(matches) - len(scoped), scoped
+        by_id = {
+            identity: candidates
+            for identity, candidates in by_id.items()
+            if all(resource_in_scope(resource, bundle) for resource in candidates)
+        }
     context = {
         "mode": bundle["mode"],
         "collected_at": bundle["collected_at"],
         "inventory_complete": bundle["inventory_complete"],
         "normalized_resources_available": available,
         "resources": [
-            prepared_resource(resource, control, by_id, bundle.get("scope"))
+            prepared_resource(resource, control, by_id, bundle.get("scope"), bundle)
             for resource in matches[:100]
         ],
         "matching_resources": len(matches) if available else None,
@@ -394,7 +429,9 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
             "complete relationships. No whole-recommendation outcome or current freshness inferred."
         ),
     }
-    if control["upstream_guid"] in GOVERNANCE_GUIDS | LOGGING_GUIDS:
+    if control["upstream_guid"] in (
+        GOVERNANCE_GUIDS | LOGGING_GUIDS | RESILIENCE_GUIDS | NETWORK_POLICY_GUIDS
+    ):
         context["unbound_resources"] = unbound
     if control["upstream_guid"] == "3a923c34-74d0-4001-aac6-a9e01e6a83de" and available:
         from .governance_evidence import hierarchy_context

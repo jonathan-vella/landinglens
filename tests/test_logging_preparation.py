@@ -60,7 +60,9 @@ class LoggingPreparationTests(unittest.TestCase):
         self.addCleanup(temporary.cleanup)
         self.root = Path(temporary.name)
         self.matrix = json.loads((REFERENCE / "preparation-23.json").read_text("utf-8"))
-        self.accepted = load_catalog()
+        self.accepted = load_catalog(
+            str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.12.json"))
+        )
         self.catalog = copy.deepcopy(self.accepted)
         for control in self.catalog["controls"]:
             row = next(
@@ -252,7 +254,6 @@ class LoggingPreparationTests(unittest.TestCase):
         self.assertEqual(self.matrix["review_state"], "preparation-only-reviewed")
         self.assertNotIn("catalog_version", self.matrix)
         self.assertNotIn("accepted_at", self.matrix)
-        self.assertFalse((REFERENCE / "batch-23.json").exists())
         self.assertEqual(self.accepted["catalog_version"], "2026-11-06.12")
         before = {c["control_id"]: c for c in self.accepted["controls"]}
         for control in self.catalog["controls"]:
@@ -264,15 +265,9 @@ class LoggingPreparationTests(unittest.TestCase):
                 self.assertIsNone(control["rule"])
                 self.assertEqual(control["automation"], before[control["control_id"]]["automation"])
         self.assertEqual(len(self.catalog["controls"]), 255)
-        ledger = json.loads((REFERENCE / "ledger.json").read_text("utf-8"))
-        self.assertTrue(
-            all(r["status"] != "merged" for r in ledger["recommendations"] if r["guid"] in fixed)
-        )
-        accepted = [
-            json.loads(path.read_text("utf-8"))["batch"]
-            for path in REFERENCE.glob("batch-[0-9][0-9].json")
-        ]
-        self.assertNotIn("23", accepted)
+        builder = runpy.run_path(str(ROOT / "tools" / "build_batches.py"), run_name="prep")
+        with self.assertRaisesRegex(ValueError, "Preparation"):
+            builder["apply_batch"](self.accepted, self.accepted, targets, self.matrix, [], [])
         capture = runpy.run_path(str(ROOT / "tools" / "review_batch_sources.py"), run_name="prep")
         with patch("sys.argv", ["review_batch_sources.py", "--batch", "23"]):
             with self.assertRaisesRegex(ValueError, "preparation-only"):
@@ -863,7 +858,11 @@ class LoggingPreparationTests(unittest.TestCase):
         self.assertEqual(replay["evidence"][0]["collected_at"], AT)
         self.assertEqual(
             digest(self.accepted),
-            digest(load_catalog(str(files("alz_assessor").joinpath("data", "catalog.json")))),
+            digest(
+                load_catalog(
+                    str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.12.json"))
+                )
+            ),
         )
 
     def test_local_session_remains_blank_and_persists_authored_decision(self):

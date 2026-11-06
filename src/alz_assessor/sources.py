@@ -16,7 +16,7 @@ from .contracts import (
     scope_id,
     validate,
 )
-from .terraform import Analyzer
+from .terraform import Analyzer, InputError
 
 PROVIDER_VERSION = "4.50.0"
 TF_TYPES = {
@@ -40,6 +40,7 @@ TF_TYPES = {
     "azurerm_network_security_group": "Microsoft.Network/networkSecurityGroups",
     "azurerm_network_security_rule": "Microsoft.Network/networkSecurityGroups/securityRules",
     "azurerm_virtual_network_gateway": "Microsoft.Network/virtualNetworkGateways",
+    "azurerm_vpn_gateway": "Microsoft.Network/vpnGateways",
     "azurerm_network_watcher_flow_log": "Microsoft.Network/networkWatchers/flowLogs",
     "azurerm_network_connection_monitor": "Microsoft.Network/networkWatchers/connectionMonitors",
     "azurerm_application_security_group": "Microsoft.Network/applicationSecurityGroups",
@@ -56,6 +57,9 @@ TF_TYPES = {
     "azurerm_virtual_hub_routing_intent": "Microsoft.Network/virtualHubs/routingIntent",
     "azurerm_virtual_network_gateway_connection": "Microsoft.Network/connections",
     "azurerm_role_assignment": "Microsoft.Authorization/roleAssignments",
+    "azurerm_role_definition": "Microsoft.Authorization/roleDefinitions",
+    "azurerm_availability_set": "Microsoft.Compute/availabilitySets",
+    "azurerm_active_directory_domain_service": "Microsoft.AAD/domainServices",
     "azurerm_security_center_subscription_pricing": "Microsoft.Security/pricings",
     "azurerm_key_vault_managed_hardware_security_module": "Microsoft.KeyVault/managedHSMs",
     "azurerm_linux_virtual_machine": "Microsoft.Compute/virtualMachines",
@@ -132,7 +136,9 @@ def property_at(properties: Any, path: str) -> Any:
 def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     from .governance_evidence import projected_properties as governance_properties
     from .identity_evidence import IDENTITY_KINDS, identity_summary, role_properties
+    from .identity_evidence import projected_properties as identity_properties
     from .logging_evidence import projected_properties as logging_properties
+    from .network_policy_evidence import projected_properties as network_policy_properties
     from .security_evidence import projected_properties as security_properties
 
     if kind == "azurerm_role_assignment":
@@ -149,6 +155,8 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     )
     result.update(governance_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(logging_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
+    result.update(network_policy_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
+    result.update(identity_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     return result
 
 
@@ -295,6 +303,23 @@ def resource_scope(scope: str | None, properties: dict[str, Any]) -> str | None:
 
 
 def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str | None:
+    if kind == "azurerm_role_definition":
+        from uuid import UUID
+
+        target = values.get("scope")
+        boundary = scope_id(scope) if scope else None
+        if not isinstance(target, str):
+            return None
+        try:
+            target = scope_id(target)
+            identifier = str(UUID(values["role_definition_id"]))
+        except (InputError, KeyError, TypeError, ValueError, AttributeError):
+            return None
+        if boundary and (target == boundary or target.startswith(boundary + "/")):
+            return canonical_id(
+                target + "/providers/Microsoft.Authorization/roleDefinitions/" + identifier
+            )
+        return None
     name = values.get("name")
     if kind == "azurerm_sentinel_log_analytics_workspace_onboarding":
         from .protection_evidence import typed_reference

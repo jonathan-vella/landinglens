@@ -89,6 +89,24 @@ candidate decisions remain blank and source/content/scope/time bound. No accepte
 version, bank, counts or receipts change before the coordinator's explicit slot.
 See [preparation boundaries](plan.md#cohort-23-independent-preparation-2026-11-06).
 
+Reviewed successor `2026-11-06.13` integrates cohort05/
+[#118](https://github.com/jonathan-vella/landinglens/issues/118) after the sole
+coordinator grant and actual cohort20 implementation122/receipt123 delivery.
+Its accepted eight-GUID matrix, 25 preserved captures and registered blank
+interview add no whole predicate. Minimized typed VM/set/role/
+replica facts reuse existing adapters and review/replay paths; directory
+authority, DC designation/local resolution, compatibility, replica health,
+tenant log ingestion and emergency operating/authentication evidence remain
+separate decisions. Tenant-only Entra diagnostics do not broaden assessment
+scope. B03.12 stays manual; no new predicate, live route or owner approval.
+Exact `.6.12`, all non-own predecessor controls, all122 prior rows and14 receipts
+remain unchanged. Counts remain12/200/43; actual implementation/receipt delivery
+and checked reconciliation, not activation alone, gate #118 closure.
+Implementation #125 passed exact-head eight-job/CodeQL/security/review and four
+twelve-case compiler gates and merged normally. Guarded `deliveries.05` binds
+all eight GUIDs to that actual head/merge/runs/final wheel; checked publication
+records130 delivered/121 pending. Receipt publication still gates #118 closure.
+
 Reviewed successor `2026-11-06.12` integrates cohort20/#115 after the parent's
 explicit slot and actual30 implementation119/receipt120 delivery. One strict
 unique-known scoped ASPath configuration predicate and eight source-specific
@@ -197,6 +215,32 @@ Each GUID binds its guarded `deliveries.22` receipt. At that delivery the ledger
 was 71 merged / 180 pending; checked receipt #105 completed its reconciliation.
 No actual protection/retention/endpoint/patch/sovereign suitability or owner
 decision follows from configuration alone.
+
+Cohort16/#121 integrates nine fixed monitoring/sovereignty/firewall workflows in
+reviewed successor `2026-11-06.14` after the coordinator's sole slot grant and
+actual cohort05 implementation125/receipt126. Eight assisted workflows and the
+manual factual border question share strict scoped typed configuration and nine
+blank decisions across existing review/tier/report/session/replay surfaces.
+All255 GUIDs, 12/200/43 dispositions, exact `.6.13` bytes, original predicates
+and130 preceding own-GUID receipts remain unchanged. Configuration proves no
+paths, inspection, physical geography, global coverage, delegation, partner
+support or client DNS use; original source contradictions remain explicit.
+Implementation #128 passed actual exact-head platform/security/CodeQL/review and
+four thirteen-case exercised compiler gates and merged normally. Guarded
+`deliveries.16` binds all nine GUIDs to that head/merge, 534-test proof and own
+wheel. The reconciled ledger records139 delivered /112 pending; all130 earlier
+rows/fifteen receipts remain unchanged. Checked receipt publication still gates
+#121 closure; source activation or implementation closure alone is not delivery.
+
+Historically, cohort16/#121 independently prepared nine fixed monitoring/sovereignty/firewall
+workflows without accepted catalog, count or receipt activation. Typed gateway
+flags, strict scoped policy/diagnostic/alert joins and minimized rule protocols
+are configuration context, not routes, inspection, physical geography, global
+coverage or delegation. The factual border question and approved geography/
+conditional inspection decisions remain separate and blank. Current source
+support lists only Zscaler; historical partner enums and redirected VPN/AVD
+guidance cannot establish broader applicability. The coordinator's explicit slot
+and then-current main reconciliation gate all final activation and delivery.
 
 The prior delivered successor was `2026-11-06.5`: cohort13 adds bounded protection,
 outbound and hybrid configuration preparation with ten distinct source-bound

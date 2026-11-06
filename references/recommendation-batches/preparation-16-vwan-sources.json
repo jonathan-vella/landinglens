@@ -1,0 +1,36 @@
+{
+  "batch": "16",
+  "review_state": "preparation-only-reviewed",
+  "sources": [
+    {
+      "id": "partner-vwan-vpn-rest",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/network/resource-manager/Microsoft.Network/Network/stable/2024-05-01/virtualWan.json",
+      "sha256": "6220238b792ce425e1c117a4b69bb36f44072aac24820cf7ba4d2c95e553adc2",
+      "retrieved_at": "2026-11-06T15:36:13.731147+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Actual pinned virtualWan.json, not nonexistent virtualHub.json/vpnGateway.json, defines hub.vpnGateway and VPN gateway.virtualHub references. This vWAN vpnGateways type differs from VNet virtualNetworkGateways. Configuration is not tunnel health.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "partner-vwan-vpn-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/vpngateways",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/vpngateways",
+      "sha256": "da19265d81917014ded89c0631ac3a13387686a8af9d77125497f0429e17bf0e",
+      "retrieved_at": "2026-11-06T15:36:14.342488+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "2024-05-01 vWAN VPN gateway has explicit virtualHub binding. Project only that typed ID; do not retain connections, addresses, keys, BGP or tunnel records.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "partner-vwan-vpn-provider",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/vpn_gateway.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/vpn_gateway.html.markdown",
+      "sha256": "1f522cd61bc4f7ddf3020e58a96964651af5012b4ef2fde926196e07855b03e6",
+      "retrieved_at": "2026-11-06T15:36:14.615311+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned 4.50.0 azurerm_vpn_gateway exposes required virtual_hub_id. A supplied positive reference is configuration only; hub's missing reciprocal reference cannot be inferred from provider defaults or a name.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    }
+  ]
+}

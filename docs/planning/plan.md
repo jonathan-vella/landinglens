@@ -1,5 +1,182 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 16 accepted integration: 2026-11-06
+
+The coordinator granted [#121](https://github.com/jonathan-vella/landinglens/issues/121)
+the sole delivery slot after actual cohort05 implementation125/receipt126,
+#118 completed closure and verified130 own-GUID receipts. Preserved `2e2c679`
+and renewed `12a4a77` preparation reconcile actual main
+`4e0fdd9b899a8c155e20e6caf022279fe8c1b48a` in merge `666b9d1`.
+The [nine-GUID matrix](../../references/recommendation-batches/batch-16.json)
+and [35 reviewed captures](../../references/recommendation-batches/batch-16-sources.json)
+precede unique successor `2026-11-06.14`, derived with the existing offline
+batch/crosswalk builders. All32 original source rows and three supplemental rows
+retain their original revisions, hashes and times. Exact predecessor `.6.13`
+catalog bytes are frozen with SHA256
+`86381a5401b5b473f0c120de2cbee77fc393d562d5a02211834b4de22cd77322`;
+crosswalk bytes:
+`d0949529bb2e26e5b0583c58368fb65e79e5ab83b85456a60099cb4c437cb5db`.
+
+All255 GUIDs, fixed251 membership, original four predicates/full predecessor
+control objects, cohort15 propagation, actual vWAN models and every130 earlier
+own-GUID row/fifteen receipts remain unchanged. Current dispositions stay
+**12 automated / 200 assisted / 43 manual**. Eight assisted workflows and manual
+D06.26 add no whole-recommendation predicate. Typed scoped gateway diagnostics/
+alerts, remote-VNet/vWAN flags, policy-chain/local-rule-group and reciprocal
+partner/hub/WAN/VPN/routing context share the single engine and all review/tier/
+report/tracker/session and accepted-package original-time replay paths. The
+registered interview retains nine independently blank decisions.
+
+The preserved source contradictions/current partner uncertainty and all limits
+below still apply. Configuration never proves physical/country paths, approved
+geography, effective inspection/inheritance/delegation, health, partner support,
+complete global coverage or actual client DNS use. No live Collector route,
+tenant scope, transport, dependency, module/compiler acquisition, runtime query,
+network/identity action or human attestation is introduced. All twelve current
+actual compiler cases are retained and the relevant cohort16 fixture is the
+thirteenth. **130 delivered /121 pending** remains unchanged until normal
+exact-head implementation/platform/CodeQL/review/four matching exercised compiler
+proofs and guarded own-GUID receipt publication satisfy their gates. Source
+acceptance or implementation closure alone is not delivery.
+
+Pre-delivery checkout and own exact-installed suites each ran **534 tests**:
+533 passed with the original Windows symlink-privilege skip. All28 cohort16
+tests pass, including actual registered-bank sessions, privacy, strict joins,
+history/receipt preservation and accepted/historical original-time replay.
+All thirteen actual existing-compiler cases exercised without restoration or
+compiler skips. Format/lint, 42-source-file typing, dependency consistency and
+351 local documentation links passed. Exact own offline wheel SHA256 is
+`b59543508e922c5c332bdd7ff02cb7714bce3ffea00e1b60baadcccc0f5c4a2f`.
+Its clean outside-checkout interpreter imports its own site-packages package and
+matches all113 packaged Python/data/license artifacts byte-for-byte. The existing
+reviewed runtime wheels suffice; no dependency was added or restored. Historical
+cohort05 assertions retain exact `.13` and122 predecessor receipts; cohort20's
+CLI comparison explicitly selects its exact `.12` catalog instead of comparing
+different successors.
+
+[#128](https://github.com/jonathan-vella/landinglens/pull/128) merged normally as
+`6721bd8f03cdbdbe29077bd54f91cfb967f10c1f` at `2026-11-06T16:51:14Z`.
+Exact checked head `3bc11d9f93d17ed29626cb45c9c2295154196534` passed all eight
+supported push/PR jobs in runs `42254947762` / `42254985842`, security run
+`42254994909`, Analyze(actions/python) and CodeQL. Fresh reviews/inline comments
+were empty and no branch protection/ruleset/review requirement was changed or
+bypassed. It stayed draft/do-not-merge until these actual gates passed.
+
+All four PR compiler artifacts were downloaded, head-bound and exercised the
+same13 cases without skips: `13522766465` (Ubuntu3.12), `13521549426` (Ubuntu3.13),
+`13522511951` (Windows3.12), `13522606863` (Windows3.13). JSON SHA256 is
+`e7ec10bf8dd868df385e6c91230081edd86df4c4db17b84d3cae4e96c41ee536`
+on Ubuntu and
+`f28526fdb0dda94fbb2000bd425c7b31cacd2df9063d85a1821ad470cd181081`
+on Windows. The guarded recorder independently re-read actual merged128, both
+complete runs, all four downloaded proofs and own wheel before binding each
+of nine GUIDs to its own `deliveries.16` receipt.
+
+The checked receipt reconciliation records **139 delivered /112 pending**;
+all130 earlier rows/fifteen receipts, exact catalog/crosswalk history and fixed251
+membership remain unchanged. Actual ledger/severity/crosswalk ranking places
+cohort23 next, without treating associations as executed queries or tests.
+Accepted dispositions remain12 automated /200 assisted /43 manual. Final
+receipt publication still gates #121 closure; implementation closure alone is
+not delivery. No new Azure/runtime/partner/identity operation or fabricated
+geographic/inspection/delegation decision is asserted.
+
+The receipt reconciliation passes **535 checkout and exact-installed tests**:
+534 passed with the same original Windows skip. All thirteen compiler cases
+remain exercised without restoration/skips. Static/type/dependency checks and
+352 local links pass. All113 installed source/data/license artifacts still match
+the delivered implementation wheel exactly; only ledger, documentation and the
+own-receipt regression test change in this reconciliation. Receipt platform/
+security/review/compiler gates must pass before normal publication and closure.
+
+## Historical cohort 16 independent preparation: 2026-11-06
+
+[#121](https://github.com/jonathan-vella/landinglens/issues/121) prepares nine
+immutable network monitoring, sovereignty and firewall-policy targets in its
+[reviewed matrix](../../references/recommendation-batches/preparation-16.json)
+and [public-source capture](../../references/recommendation-batches/preparation-16-sources.json).
+This is not accepted catalog activation or delivery. Actual cohort20 delivery
+is merged; cohort05 retains the earlier serialized slot. No cohort16 successor
+version, counts, crosswalk, history, receipts or issue closure is changed.
+
+Existing adapters now prepare explicit gateway remote-VNet/vWAN flags, typed
+base-policy links, bounded category/metric/protocol facts and strict scoped
+known unique gateway/diagnostic/alert and firewall/policy/local-rule-group joins.
+Cycles, denied/ambiguous/out-of-scope links and over-bound populations cannot
+produce complete coverage; a missing parent is not an inferred global root.
+Per-node DNS flags are explicit configuration, not effective inherited settings.
+No new transport, collector route, dependency, query execution or live operation
+is introduced. Rule destinations, ports, raw logs, contracts and principal records
+are withheld.
+
+The actual D06.23 link redirects to VPN monitoring, not ExpressRoute-specific
+category support. D06.24's page has conflicting default statements; explicit
+flags do not resolve actual routes, including the documented route-map-upgraded
+vWAN exception. D06.25's workload-specific CAF link redirects to AVD reverse
+connect/TLS guidance. Current partner pages list only Zscaler, while the pinned
+schema still includes IBoss/CheckPoint; those enums prove no current availability
+and the reviewed pages establish no retirement date. Partner integration requires
+secured vWAN hubs, not hub VNets.
+ARM/no-restore Bicep and saved evidence can prepare a historical partner-provider
+enum and typed virtual-hub reference, explicitly leaving current service support
+unknown. This adds no live Collector registration or Terraform partner adapter.
+The renewed preparation below reuses actual merged cohort20 models.
+
+D06.26 remains a factual border/country question, not a prohibition. Approved
+regions and conditional inspection requirements remain separate human decisions;
+locations, peering, policy and proxy flags prove no physical paths, global coverage,
+delegation, filtering, health or client DNS use. The prepared interview has nine
+separate blank decisions. Preparation tests exercise it locally without registering
+it in the accepted bank or weakening packaged-catalog replay guards. Final
+source/schema/bank activation, then-current main reconciliation and complete
+checked delivery remain gated on the coordinator's explicit slot.
+
+Preparation verification ran **477 tests in both the checkout and own clean
+installed wheel: 476 passed, one original Windows symlink-privilege skip**.
+All17 cohort tests, formatting/lint, 41-source-file typing, dependency consistency
+and 248 local documentation links passed. The existing Bicep0.47.16 compiler
+exercised all11 actual cases without restoration or compiler skips, including
+the new policy/gateway/diagnostics/partner fixture. Offline-built own wheel SHA256
+is `1fb33aaf61bb008b325a10e7760298eebc823f40d13d20f59d1621ed21756b13`;
+its outside-checkout interpreter imported only its site-packages package and
+matched all41 Python source files byte-for-byte. Missing clean runtime wheels
+were restored only after an actual offline missing-dependency failure; all three
+match the unchanged reviewed manifest. These are preparation proofs, not final
+then-current-main, CI, merge, own-GUID receipt or closure acceptance.
+
+Renewed preparation reconciles actual main
+`f2411afa0d43e7f25402b364b9721dccb26201cd` in merge `06b9402`, preserving
+preparation `2e2c679` and all32 original captures byte-for-byte. The
+[three-source supplement](../../references/recommendation-batches/preparation-16-vwan-sources.json)
+inspects the actual pinned `virtualWan.json` hub/VPN references, 2024-05-01
+VPN ARM schema and AzureRM4.50.0 provider. Virtual WAN `vpnGateways` are not
+VNet `virtualNetworkGateways`. Only explicit typed hub bindings are projected;
+no VPN connections, keys, BGP addresses, tunnel state or routing payloads remain.
+
+Partner review now requires unique known subscription/resource-group-scoped
+partner, hub and WAN before presenting joined context. It reuses cohort20's
+actual reciprocal hub/firewall and exact local connection/table/intent checks.
+A VPN binding additionally requires explicit reciprocal known hub/VPN references;
+raw Terraform's absent hub reverse reference stays unknown. Missing, denied,
+ambiguous, wrong-type, cross-scope or over-bound populations cannot establish a
+join or absence. Known local Firewall Internet intent and connection security
+flags do not establish partner default-route opt-in, actual tunnels, branch/VPN
+connection coverage, service availability, health or inspection. All prior source
+contradictions and physical/country/approved-geography limits remain. Accepted
+cohort20 catalog/crosswalk/receipts are unchanged; cohort16 activation still waits
+for an explicit slot after actual cohort05 delivery.
+
+Renewed checkout and fresh own installed-wheel suites each ran **514 tests**:
+513 passed, with only the original Windows symlink-privilege skip. All24 cohort16
+and 30 delivered-vWAN focused cases passed. Formatting/lint, 42-source-file typing,
+dependency consistency and 261 local documentation links passed. All11 current
+compiler cases plus the expanded cohort16 fixture exercised without restoration
+or skips. Own offline wheel SHA256 is
+`fce024ff7f86b89cc59cd52d76f413cbc92411034b84ac5b4b356ba864fd9030`;
+the fresh outside-checkout interpreter imported its own site-packages package and
+matched all42 Python source files. This is renewed independent preparation, not
+accepted cohort16 activation or final delivery proof.
+
 ## Problem and approach
 
 Create a standalone, advisory-only CLI that compares planned or deployed Azure infrastructure with Microsoft Azure Landing Zones guidance. Organize the checklist and reports by the verified Microsoft design areas.
@@ -65,6 +242,153 @@ runtime wheels were restored from hash-checked local cache after explicit
 missing-`hcl2` failure. No accepted data/ledger bytes changed. These local
 preparation proofs are not accepted-successor replay, platform/CodeQL/PR delivery,
 four matching downloaded compiler artifacts, own-GUID receipts or #124 completion.
+
+## Cohort 05 granted integration: 2026-11-06
+
+The coordinator granted [#118](https://github.com/jonathan-vella/landinglens/issues/118)
+the sole slot after actual cohort20 implementation122/receipt123 and #115 closure.
+Preserved `03442eb` was reconciled with main
+`f2411afa0d43e7f25402b364b9721dccb26201cd`, retaining the manual cohort30 bank,
+Virtual WAN predicate/interfaces and all eleven delivered compiler cases.
+Exact `.6.12` catalog bytes:
+`ce02d3d63cf078637e7702a6cbb7b47f2858eeb9320da002784c2a0fcf7ad4ed`;
+crosswalk bytes:
+`93808594a67f5439ab7075a3dcc52d69ced8a67ea9fec62a4d17e054f5b9e79f`.
+The [accepted eight-GUID matrix](../../references/recommendation-batches/batch-05.json)
+and [25 unchanged captures](../../references/recommendation-batches/batch-05-sources.json)
+precede unique reviewed successor `2026-11-06.13` using existing offline builders.
+All255 GUIDs, fixed251/original four hashes, every predecessor control object
+outside the eight own GUIDs, all122 prior receipt rows and all14 receipts remain
+unchanged. Counts stay **12 automated /200 assisted /43 manual**; delivery stays
+**122 delivered /129 pending** until guarded own-GUID receipt reconciliation.
+
+Typed VM/set/role/replica preparation and eight separate blank decisions use the
+same evaluator, adapters, review/tier/report/session/interview and accepted-package
+original-time replay paths. The actual Entra tenant diagnostic boundary is not
+broadened. VM labels/type do not identify DCs; Azure RBAC grants no directory
+authority; managed replicas share one AD site; B03.12 stays manual; emergency
+operations and authentication remain separately evidenced. The twelfth actual
+no-restore compiler case exercises the identity fixture. No new live route,
+permission, dependency, compiler acquisition, cloud operation or owner decision.
+Final platform/CodeQL/review/compiler gates, exact-head normal implementation
+merge and guarded receipt publication remain required before #118 closure.
+
+Pre-delivery checkout and own exact-installed suites each ran **505 tests**:
+504 passed and the original Windows symlink-privilege case skipped. All15
+identity cases passed. All12 actual existing-compiler cases exercised with no
+skips/restoration. Format/lint, 41-source-file typing, dependency consistency and
+370 local documentation links passed. The first full run exposed an old bank
+count assertion (11 instead of the actual12 questions); the exact assertion was
+updated and both full suites rerun successfully.
+
+The final wheel was built offline and installed in a fresh own outside-checkout
+environment; import from its `site-packages` and `.6.13` catalog were asserted.
+All108 package source/data members match the checkout, and exact frozen `.6.12`
+bytes match delivered main. Only the already hash-reviewed staged runtime wheels
+were restored after the fresh environment's missing-`hcl2` probe.
+Final wheel SHA256:
+`1c88f19cbd87a13ebc033b701bf01de30444c21814cfacbc5823c7956c672017`.
+Earlier preparation wheels/local compiler proofs are not substituted for final
+platform CI or downloaded artifacts. No merged delivery is inferred yet.
+
+[#125](https://github.com/jonathan-vella/landinglens/pull/125) merged normally as
+`29ac2110f6493a123af68519701b5e2c6f5996ca` at 2026-11-06T15:54:37Z.
+Exact checked head `cd9563cfdfb5411e0ac98518e53e664780bad1ea` passed all eight
+supported jobs in push/PR runs `42246208657` / `42246243947`, CodeQL
+`42246238293` and Advanced Security `42246250926`. Actual head/base/main,
+check-runs, reviews and threads were refreshed immediately before ready
+transition and normal SHA-bound merge. No required review, branch protection
+or ruleset was configured or bypassed.
+
+All four downloaded PR compiler artifacts exercised identical twelve-case
+coverage with no skips: `13519320862`, `13519296245`, `13518871554`,
+`13518051743`. Compiler JSON SHA256:
+`93e8aa55cfe40467861b0df5821111ec0ca7091e44d226c310be7d9ff36d4051`
+on Ubuntu and
+`de2d350bd17a68a324a82510876097e6c91020df7d439746044fe709e7b6d0ad`
+on Windows. Earlier head/preparation proofs were not reused for acceptance.
+
+The guarded recorder independently reread the actual merged PR/head, both
+complete four-job runs and all downloaded compiler artifacts before recording
+`deliveries.05` against the exact final wheel above. Every own GUID binds that
+receipt; all122 preceding rows/fourteen receipts remain exact. The reconciliation
+ledger becomes **130 delivered /121 pending**; cohort16 is the next source/
+severity/crosswalk review priority, not an automatic slot grant. Checked receipt
+publication remains required before #118 closure and sole-slot release.
+No actual directory, DC, runtime, log-ingestion or emergency-access decision is
+claimed from implementation or receipts.
+
+Receipt reconciliation passed **506 tests** in both the checkout and own exact
+installed environment: 505 passed with the same original Windows privilege
+skip. The new assertion pins all eight own GUIDs to actual #125/head/merge/runs/
+wheel and preserves all122 older rows/fourteen receipts. All16 identity cases
+passed. The completed-cohort historical prefix is130, not a global count
+redefined by future delivery. Format/lint, 41-source-file typing, dependency
+consistency and371 documentation links pass. Package code/data and the exact
+final implementation wheel remain unchanged. Actual ledger/severity/crosswalk
+recomputation confirms121 pending, cohort16 next (nine targets, two High and one
+mapped), followed by23. Checked receipt merge remains the closure gate.
+
+## Cohort 05 historical independent preparation: 2026-11-06
+
+[#118](https://github.com/jonathan-vella/landinglens/issues/118) owns exactly the
+eight immutable B03.08-B03.15 GUIDs. Its
+[reviewed matrix](../../references/preparation/batch-05.json) and
+[25 captured sources](../../references/preparation/batch-05-sources.json) are
+outside accepted builder inputs. Baseline main is
+`949de0cad9bda19095069a22addf38bd78474dec`. Cohort30 and cohort20 retain their
+preceding delivery slots; this preparation neither chooses a successor nor
+activates catalog/crosswalk/count/history, registers an interview, records
+receipts, merges or closes the issue.
+
+Existing adapters now prepare minimized explicit VM placement, typed availability
+sets and fault/update counts, Azure role types and supported assignable-scope
+counts, and managed Domain Services SKU/embedded replica configuration. Saved
+and injected records retain original time; planned ARM and pinned Terraform
+raw/supplied-module/optional-plan paths use the same projections. Provider
+composite IDs require actual typed ARM bindings rather than invented child
+resources. Unique known scoped joins supply partial context only. Shared
+contracts, reviews, tiers, reports, local sessions and original-time replay
+retain unknown/denied/partial/stale/foreign/unbound/ambiguous limits. The existing
+ten compiler cases remain and an eleventh compiles the authored identity fixture
+without restoration.
+
+Current guidance favors adequate built-in roles before custom roles. Azure RBAC
+never establishes Entra directory authority or team responsibility. VM names,
+tags and type never identify DCs or their full population. Managed Domain Services
+replicas share one AD site and require appropriate SKU, supported regions,
+full-mesh networking and redundant workloads; configured replicas prove no health
+or recovery. B03.12 compatibility stays manual. Actual Entra diagnostic settings
+are tenant-only and remain unsupported in this assessor's existing scope model;
+no subscription diagnostic resource or workspace manufactures tenant log routing
+or ingestion. Emergency operating and phishing-resistant authentication decisions
+remain separate and blank. Current phased MFA and emergency guidance supersede
+the frozen October2024 generalization without altering historical checklist text.
+No directory/guest/log payload, principal/account name, role action content,
+credential or certificate material is projected. No live route, permission,
+dependency, compiler acquisition, cloud operation or owner decision is added.
+
+Preparation verification ran **455 tests** in both the checkout and own exact
+installed wheel: 454 passed and the original Windows symlink-privilege case
+skipped. All13 cohort05 cases passed. All11 actual existing-compiler integrations
+exercised without skips or restoration, retaining the ten delivered cases.
+Formatting/lint, 40-source-file typing, dependency consistency and338 local
+documentation links passed. The own wheel was built offline and installed into
+a fresh own environment outside checkout; all95 package source/data members
+matched the checkout, and site-packages import was asserted. After the initial
+missing-`hcl2` probe, only the three exact reviewed runtime wheels were restored
+from pip's local cache with `docs/dependencies.json` SHA256 verification and no
+network installation or borrowed environment.
+Wheel SHA256:
+`8c2d566f004ec9971034b4b97f70cac5e7e68c33eaef98bb2aa8f14c2f673556`.
+Local compiler proof SHA256:
+`796a1d0b5c8db9c7e25d0d67b9a94fdc51e15d6e23624023c427d3da95e3f6d6`.
+These are preparation proofs, not platform CI, accepted successor replay or
+merged delivery. Then-current-main reconciliation, accepted source/matrix/bank
+activation, four matching exercised platform compiler proofs, exact-head normal
+implementation merge, guarded own-GUID receipts and checked reconciliation remain
+deferred until the coordinator grants the slot. All eight ledger rows remain
+pending; current catalog/crosswalk and older receipts are unchanged.
 
 ## Cohort 20 accepted integration: 2026-11-06
 

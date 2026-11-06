@@ -210,6 +210,15 @@ Existing catalog/index assets are never replaced.
 
 ### Guided interview responses
 
+The cohort16 typed review paths add explicit gateway remote-VNet/vWAN flags,
+gateway diagnostic/static-metric summaries, typed base-policy references, DNS
+proxy flags, minimized protocol/FQDN counts and partner configuration. Strict
+scoped known joins retain explicit uncertainty for missing/ambiguous/denied/
+cyclic/over-bound associations. Partner `schemaProviderName` is historical API
+vocabulary, not current service support; vWAN VPN and VNet gateways remain
+distinct. The same privacy-projected original-time replay retains these facts
+without raw destinations, queries, logs, provider contracts or principal records.
+
 The versioned `question-bank` 1.0 groups specific Key Vault operating-model and
 private-service-path questions by exact retained human-evidence control IDs.
 It exposes each control's own requirements/limitations; a shared question does
