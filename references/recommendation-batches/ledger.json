@@ -393,6 +393,39 @@
       },
       "wheel_sha256": "1c88f19cbd87a13ebc033b701bf01de30444c21814cfacbc5823c7956c672017",
       "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
+    },
+    "16": {
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/128",
+      "merge_commit": "6721bd8f03cdbdbe29077bd54f91cfb967f10c1f",
+      "merged_at": "2026-11-06T16:51:14Z",
+      "checked_head": "3bc11d9f93d17ed29626cb45c9c2295154196534",
+      "checks": [
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42254947762",
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42254985842"
+      ],
+      "acceptance": "Actual push/PR runs on the merged head passed all eight supported jobs. All four downloaded PR compiler artifacts exercised the same integration cases without skips. Normal exact-head merge and other applicable checks were gated before recording; this receipt does not imply protected-branch enforcement.",
+      "compiler_integration_cases": [
+        "test_bicep.BicepTests.test_actual_installed_compiler_local_success_and_unrestored_failure",
+        "test_segmentation_batch.SegmentationBatchTests.test_real_bicep_nsg_gateway_subnet_flow_without_restore",
+        "test_routing_batch.RoutingBatchTests.test_real_bicep_routing_peering_lb_macsec_connection_no_restore",
+        "test_identity_batch.IdentityBatchTests.test_real_bicep_storage_identity_role_context_without_restore",
+        "test_protection_batch.ProtectionBatchTests.test_real_bicep_protection_outbound_hybrid_no_restore",
+        "test_security_batch.SecurityBatchTests.test_real_bicep_security_configuration_without_restore",
+        "test_expressroute_preparation.ExpressRoutePreparationTests.test_real_bicep_expressroute_cost_capacity_fastpath_without_restore",
+        "test_dns_batch.DnsBatchTests.test_real_bicep_dns_bastion_no_restore",
+        "test_monitoring_preparation.MonitoringPreparationTests.test_real_bicep_monitor_and_gateway_route_join_without_restore",
+        "test_governance_preparation.GovernancePreparationTests.test_real_bicep_governance_without_restore",
+        "test_virtual_wan_preparation.VirtualWanPreparationTests.test_real_bicep_virtual_wan_scoped_configuration_without_restore",
+        "test_identity_resilience_preparation.IdentityResiliencePreparationTests.test_real_bicep_identity_resilience_without_restore",
+        "test_network_policy_preparation.NetworkPolicyPreparationTests.test_real_bicep_policy_gateway_diagnostics_without_restore"
+      ],
+      "local_installed_suite": {
+        "tests": 534,
+        "passed": 533,
+        "skipped": 1
+      },
+      "wheel_sha256": "b59543508e922c5c332bdd7ff02cb7714bce3ffea00e1b60baadcccc0f5c4a2f",
+      "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
     }
   },
   "recommendations": [
@@ -4954,7 +4987,7 @@
       "baseline_control_sha256": "2c446b9746794f4745655fb1cac7e03f9b4bec4f6c65bb40f9da712f3e2bbae3",
       "design_area": "Network topology and connectivity",
       "batch": "16",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "3f79ed00-203b-4c95-9efd-691505f5a1f9",
         "upstream_id": "D06.23",
@@ -4986,9 +5019,13 @@
         "flags": []
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/121",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/128",
+      "merge_commit": "6721bd8f03cdbdbe29077bd54f91cfb967f10c1f",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.16: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "5234c93f-b651-41dd-80c1-234177b91ced",
@@ -4998,7 +5035,7 @@
       "baseline_control_sha256": "85df73d68d2560bd73aeed7a56fc63e62d677e53b662b51601fe8192c90f4a9b",
       "design_area": "Network topology and connectivity",
       "batch": "16",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "5234c93f-b651-41dd-80c1-234177b91ced",
         "upstream_id": "D06.24",
@@ -5034,9 +5071,13 @@
         "flags": []
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/121",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/128",
+      "merge_commit": "6721bd8f03cdbdbe29077bd54f91cfb967f10c1f",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.16: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "8ac6a9e0-1e6a-483d-b5de-32c199248160",
@@ -5046,7 +5087,7 @@
       "baseline_control_sha256": "aa80ede90fc887974a120510a37427e39fece1c63a581711d2ce492753fa7eb7",
       "design_area": "Network topology and connectivity",
       "batch": "16",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "8ac6a9e0-1e6a-483d-b5de-32c199248160",
         "upstream_id": "D06.25",
@@ -5080,9 +5121,13 @@
         "flags": []
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/121",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/128",
+      "merge_commit": "6721bd8f03cdbdbe29077bd54f91cfb967f10c1f",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.16: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "4cc8ca4e-a503-4bac-9b1e-82283a711043",
@@ -5092,7 +5137,7 @@
       "baseline_control_sha256": "b7660b1d193996559498a293821e5df1d9aafd3c4c7126f79a1e3ea4fce99452",
       "design_area": "Network topology and connectivity",
       "batch": "16",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "4cc8ca4e-a503-4bac-9b1e-82283a711043",
         "upstream_id": "D06.26",
@@ -5109,9 +5154,13 @@
         "flags": []
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/121",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/128",
+      "merge_commit": "6721bd8f03cdbdbe29077bd54f91cfb967f10c1f",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.16: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "8b517d94-c9d0-42c4-9803-d93ed0a46bc0",
@@ -5121,7 +5170,7 @@
       "baseline_control_sha256": "d7c2f0143467512b4dbb401011e7c4f9e4592c8a54068d0fa1baa1f6f3ab3bb8",
       "design_area": "Network topology and connectivity",
       "batch": "16",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "8b517d94-c9d0-42c4-9803-d93ed0a46bc0",
         "upstream_id": "D06.27",
@@ -5151,9 +5200,13 @@
         "flags": []
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/121",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/128",
+      "merge_commit": "6721bd8f03cdbdbe29077bd54f91cfb967f10c1f",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.16: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "e6c4cfd3-e504-4547-a244-7ec66138a720",
@@ -5163,7 +5216,7 @@
       "baseline_control_sha256": "5baac734b4a561e56e6d2f09a556ad0dc19df039d0167138e8649f8352ade06d",
       "design_area": "Network topology and connectivity",
       "batch": "16",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "e6c4cfd3-e504-4547-a244-7ec66138a720",
         "upstream_id": "D07.01",
@@ -5197,9 +5250,13 @@
         "flags": []
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/121",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/128",
+      "merge_commit": "6721bd8f03cdbdbe29077bd54f91cfb967f10c1f",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.16: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "5a4b1511-e43a-458a-ac22-99c4d7b57d0c",
@@ -5209,7 +5266,7 @@
       "baseline_control_sha256": "102a7e6da254b55abefa6048571678e3faaf2e24a5bdd3856ea630fda375d111",
       "design_area": "Network topology and connectivity",
       "batch": "16",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "5a4b1511-e43a-458a-ac22-99c4d7b57d0c",
         "upstream_id": "D07.02",
@@ -5240,9 +5297,13 @@
         "flags": []
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/121",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/128",
+      "merge_commit": "6721bd8f03cdbdbe29077bd54f91cfb967f10c1f",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.16: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "655562f2-b3e4-4563-a4d8-739748b662d6",
@@ -5252,7 +5313,7 @@
       "baseline_control_sha256": "24ab2f22d1c2fb49bd6e8dc940f49c9b90d43550033d9f2c004d8c77075d4fbe",
       "design_area": "Network topology and connectivity",
       "batch": "16",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "655562f2-b3e4-4563-a4d8-739748b662d6",
         "upstream_id": "D07.03",
@@ -5284,9 +5345,13 @@
         "flags": []
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/121",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/128",
+      "merge_commit": "6721bd8f03cdbdbe29077bd54f91cfb967f10c1f",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.16: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "14d99880-2f88-47e8-a134-62a7d85c94af",
@@ -5296,7 +5361,7 @@
       "baseline_control_sha256": "72f24c117e6a463f86a650f133e72b8231610dd200f9c440798f412b3bf1b3f1",
       "design_area": "Network topology and connectivity",
       "batch": "16",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "guid": "14d99880-2f88-47e8-a134-62a7d85c94af",
         "upstream_id": "D07.04",
@@ -5330,9 +5395,13 @@
         "flags": []
       },
       "issue": "https://github.com/jonathan-vella/landinglens/issues/121",
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/128",
+      "merge_commit": "6721bd8f03cdbdbe29077bd54f91cfb967f10c1f",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.16: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "c10d51ef-f999-455d-bba0-5c90ece07447",

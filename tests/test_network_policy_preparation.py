@@ -362,6 +362,48 @@ class NetworkPolicyPreparationTests(unittest.TestCase):
             self.assertEqual(row["pr"], receipts[row["batch"]]["pr"])
             self.assertEqual(row["merge_commit"], receipts[row["batch"]]["merge_commit"])
 
+    def test_actual_cohort16_receipt_binds_all_nine_and_preserves_delivery_prefix(self):
+        root = ROOT / "references/recommendation-batches"
+        ledger = json.loads((root / "ledger.json").read_text())
+        matrix = json.loads((root / "batch-16.json").read_text())
+        receipt = ledger["deliveries"]["16"]
+        self.assertEqual(receipt["pr"], "https://github.com/jonathan-vella/landinglens/pull/128")
+        self.assertEqual(receipt["checked_head"], "3bc11d9f93d17ed29626cb45c9c2295154196534")
+        self.assertEqual(receipt["merge_commit"], "6721bd8f03cdbdbe29077bd54f91cfb967f10c1f")
+        self.assertEqual(receipt["merged_at"], "2026-11-06T16:51:14Z")
+        self.assertEqual(
+            receipt["checks"],
+            [
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42254947762",
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42254985842",
+            ],
+        )
+        self.assertEqual(
+            receipt["wheel_sha256"],
+            "b59543508e922c5c332bdd7ff02cb7714bce3ffea00e1b60baadcccc0f5c4a2f",
+        )
+        self.assertEqual(
+            receipt["local_installed_suite"], {"tests": 534, "passed": 533, "skipped": 1}
+        )
+        self.assertEqual(len(receipt["compiler_integration_cases"]), 13)
+        self.assertEqual(
+            receipt["compiler_integration_cases"][-1],
+            "test_network_policy_preparation.NetworkPolicyPreparationTests."
+            "test_real_bicep_policy_gateway_diagnostics_without_restore",
+        )
+        rows = [r for r in ledger["recommendations"] if r["batch"] == "16"]
+        self.assertEqual(len(rows), 9)
+        self.assertEqual({row["guid"] for row in rows}, GUIDS)
+        for row in rows:
+            self.assertEqual(row["status"], "merged")
+            self.assertEqual(row["pr"], receipt["pr"])
+            self.assertEqual(row["merge_commit"], receipt["merge_commit"])
+            self.assertIn("deliveries.16", " ".join(row["runtime_evidence"]))
+        completed = set(matrix["preserved_delivery_batches"]) | {"16"}
+        prefix = [r for r in ledger["recommendations"] if r["batch"] in completed]
+        self.assertEqual(len(prefix), 139)
+        self.assertTrue(all(row["status"] == "merged" for row in prefix))
+
     def test_registered_source_bank_keeps_signals_reviews_and_exceptions_separate(self):
         question = "network-monitoring-sovereignty-policy"
         bundle = self.partner_topology()

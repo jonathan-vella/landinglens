@@ -54,6 +54,41 @@ cohort05 assertions retain exact `.13` and122 predecessor receipts; cohort20's
 CLI comparison explicitly selects its exact `.12` catalog instead of comparing
 different successors.
 
+[#128](https://github.com/jonathan-vella/landinglens/pull/128) merged normally as
+`6721bd8f03cdbdbe29077bd54f91cfb967f10c1f` at `2026-11-06T16:51:14Z`.
+Exact checked head `3bc11d9f93d17ed29626cb45c9c2295154196534` passed all eight
+supported push/PR jobs in runs `42254947762` / `42254985842`, security run
+`42254994909`, Analyze(actions/python) and CodeQL. Fresh reviews/inline comments
+were empty and no branch protection/ruleset/review requirement was changed or
+bypassed. It stayed draft/do-not-merge until these actual gates passed.
+
+All four PR compiler artifacts were downloaded, head-bound and exercised the
+same13 cases without skips: `13522766465` (Ubuntu3.12), `13521549426` (Ubuntu3.13),
+`13522511951` (Windows3.12), `13522606863` (Windows3.13). JSON SHA256 is
+`e7ec10bf8dd868df385e6c91230081edd86df4c4db17b84d3cae4e96c41ee536`
+on Ubuntu and
+`f28526fdb0dda94fbb2000bd425c7b31cacd2df9063d85a1821ad470cd181081`
+on Windows. The guarded recorder independently re-read actual merged128, both
+complete runs, all four downloaded proofs and own wheel before binding each
+of nine GUIDs to its own `deliveries.16` receipt.
+
+The checked receipt reconciliation records **139 delivered /112 pending**;
+all130 earlier rows/fifteen receipts, exact catalog/crosswalk history and fixed251
+membership remain unchanged. Actual ledger/severity/crosswalk ranking places
+cohort23 next, without treating associations as executed queries or tests.
+Accepted dispositions remain12 automated /200 assisted /43 manual. Final
+receipt publication still gates #121 closure; implementation closure alone is
+not delivery. No new Azure/runtime/partner/identity operation or fabricated
+geographic/inspection/delegation decision is asserted.
+
+The receipt reconciliation passes **535 checkout and exact-installed tests**:
+534 passed with the same original Windows skip. All thirteen compiler cases
+remain exercised without restoration/skips. Static/type/dependency checks and
+352 local links pass. All113 installed source/data/license artifacts still match
+the delivered implementation wheel exactly; only ledger, documentation and the
+own-receipt regression test change in this reconciliation. Receipt platform/
+security/review/compiler gates must pass before normal publication and closure.
+
 ## Historical cohort 16 independent preparation: 2026-11-06
 
 [#121](https://github.com/jonathan-vella/landinglens/issues/121) prepares nine
