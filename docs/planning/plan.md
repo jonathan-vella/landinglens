@@ -73,6 +73,40 @@ environment and own `site-packages` import were verified. All 248 non-cohort
 control objects, 106 earlier delivered rows and twelve receipts remain unchanged.
 These local proofs do not substitute for exact-head CI, normal merge or receipts.
 
+[#119](https://github.com/jonathan-vella/landinglens/pull/119) merged normally as
+`b1dc6a4898781a7f4238f110e2e13d321f81a484` at 2026-11-06T14:23:00Z.
+Exact checked head `84463f566855351e5aa985b09feaaaf6c68f6e9c` passed all eight
+supported platform jobs in push/PR runs `42232134247` / `42232181318`,
+CodeQL run `42232178740` and Advanced Security run `42232186979`.
+There were no blocking reviews or inline findings. Actual head/main/checks/reviews
+were refreshed immediately before normal SHA-bound merge; no rule, review,
+setting, permission or bypass was introduced.
+
+Four matching downloaded compiler artifact IDs are `13510546571`, `13510651712`,
+`13509892153` and `13510067214`. Each exercises the same ten actual predecessor
+cases with zero skips. JSON SHA256 is
+`7d4dcc83aa300a11b9b8f0db22e941e0daa3dd7b0f59f5daa6bb2587efb04e6e`
+on Ubuntu and
+`6249aec8dfd5e6822a038438c932146df25e1806425280ea3e77dcd61b597f83`
+on Windows. These are exercised compiler proofs, not source-hash proxies.
+
+The guarded recorder re-read the real merged PR, exact-head push/PR jobs and
+four downloaded compiler artifacts, then bound all seven own GUIDs to
+`deliveries.30`, the actual head/merge and the unchanged own wheel above.
+All 106 earlier rows and twelve receipts remain exact. The ledger now records
+**113 merged / 138 pending**; cohort20 is next in unchanged source/severity/
+crosswalk priority. Checked receipt publication remains the final #112 closure
+gate. No live organization/estate/registry read, deployment, scan or fabricated
+human confirmation follows from these source/fixture/installed results.
+
+The receipt reconciliation passed **460 local and exact-installed tests**:
+459 passed with the original Windows privilege skip. Two new actual-receipt
+invariants freeze all 106 prior rows/twelve receipts and assert this cohort's
+seven own-GUID bindings, original 458-test implementation proof, checked head,
+merge and exact unchanged wheel. Format/lint, 40-source-file typing and dependency
+checks passed. Runtime/package bytes and the implementation receipt are unchanged;
+these extra reconciliation tests do not rewrite its original acceptance total.
+
 ## Cohort 30 independent preparation: 2026-11-06
 
 [#112](https://github.com/jonathan-vella/landinglens/issues/112) owns the seven
