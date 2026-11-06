@@ -3,7 +3,7 @@
 from ipaddress import ip_address, ip_network
 from typing import Any
 
-from .contracts import canonical_id
+from .contracts import canonical_id, identity_type
 from .sources import boolean, enumeration, property_at, unknown
 from .terraform import InputError
 
@@ -27,7 +27,243 @@ REVIEW_PATHS = {
     "privateConnections",
     "subnet.id",
     "networkSecurityGroup.id",
+    "serviceEndpointCount",
+    "serviceEndpointNetworkIdentifiers",
+    "privateEndpointNetworkPolicies",
+    "gatewayType",
+    "securityRuleCount",
+    "securityRuleSummary",
+    "defaultRuleSummary",
+    "egressRules",
+    "enabled",
+    "storageId",
+    "trafficAnalytics.enabled",
+    "trafficAnalytics.workspaceResourceId",
+    "filteringConfigured",
 }
+
+
+def bounded_count(value: Any, maximum: int) -> Any:
+    return (
+        value
+        if type(value) is int and 0 <= value <= maximum
+        else unknown("count_missing_unresolved_or_invalid")
+    )
+
+
+def supplied_string_count(value: Any) -> Any:
+    if (
+        not isinstance(value, list)
+        or len(value) > 100
+        or any(not isinstance(item, str) or not item.strip() or len(item) > 253 for item in value)
+    ):
+        return unknown("string_list_missing_invalid_or_over_100")
+    return len(value)
+
+
+def asg_references(value: Any) -> Any:
+    result = references(value)
+    if not isinstance(result, list) or len(result) > 10:
+        return unknown("asg_references_missing_invalid_or_over_10")
+    return [
+        item
+        if isinstance(item, str)
+        and identity_type(item) == "microsoft.network/applicationsecuritygroups"
+        else unknown("asg_reference_wrong_type")
+        for item in result
+    ]
+
+
+def virtual_network_tag(singular: Any, plural: Any) -> Any:
+    if singular is not None and plural is not None:
+        return unknown("conflicting_address_prefix_fields")
+    entries = [singular] if singular is not None else plural
+    if isinstance(supplied_string_count(entries), dict):
+        return unknown("address_prefix_entries_not_explicit")
+    return any(item.casefold() == "virtualnetwork" for item in entries)
+
+
+def rule_summary_facts(value: Any) -> Any:
+    if not isinstance(value, dict) or "unknown" in value:
+        return unknown("rule_summary_not_explicit")
+    count, rules = value.get("suppliedCount"), value.get("rules")
+    if (
+        type(count) is not int
+        or not 0 <= count <= 2000
+        or not isinstance(rules, list)
+        or len(rules) != min(count, 20)
+        or type(value.get("truncated")) is not bool
+        or value["truncated"] != (count > 20)
+    ):
+        return unknown("rule_summary_invalid_or_over_bound")
+    result = []
+    for rule in rules:
+        if not isinstance(rule, dict):
+            return unknown("rule_summary_entry_not_object")
+        priority = rule.get("priority")
+        result.append(
+            {
+                "priority": priority
+                if type(priority) is int and 100 <= priority <= 65500
+                else unknown("rule_priority_not_explicit"),
+                "direction": enumeration(rule.get("direction"), ("Inbound", "Outbound")),
+                "access": enumeration(rule.get("access"), ("Allow", "Deny")),
+                "sourceVirtualNetwork": boolean(rule.get("sourceVirtualNetwork")),
+                "destinationVirtualNetwork": boolean(rule.get("destinationVirtualNetwork")),
+                "sourceAsgs": asg_references(rule.get("sourceAsgs")),
+                "destinationAsgs": asg_references(rule.get("destinationAsgs")),
+            }
+        )
+    return {"suppliedCount": count, "truncated": count > 20, "rules": result}
+
+
+def rule_summary(value: Any, *, terraform: bool) -> Any:
+    if not isinstance(value, list) or len(value) > 2000:
+        return unknown("rules_missing_or_over_2000")
+    result: list[dict[str, Any]] = []
+    for rule in value[:20]:
+        body = rule if terraform else rule.get("properties") if isinstance(rule, dict) else None
+        if not isinstance(body, dict):
+            result.append({})
+            continue
+        summary = {key: body.get(key) for key in ("priority", "direction", "access")}
+        for side in ("source", "destination"):
+            summary[side + "VirtualNetwork"] = virtual_network_tag(
+                body.get(side + "_address_prefix" if terraform else side + "AddressPrefix"),
+                body.get(side + "_address_prefixes" if terraform else side + "AddressPrefixes"),
+            )
+            groups = body.get(
+                side + "_application_security_group_ids"
+                if terraform
+                else side + "ApplicationSecurityGroups"
+            )
+            summary[side + "Asgs"] = (
+                groups
+                if terraform
+                else [group.get("id") if isinstance(group, dict) else None for group in groups]
+                if isinstance(groups, list) and len(groups) <= 10
+                else None
+            )
+        result.append(summary)
+    return rule_summary_facts(
+        {"suppliedCount": len(value), "truncated": len(value) > 20, "rules": result}
+    )
+
+
+def observed_rule_count(values: dict[str, Any], *, observed: bool) -> Any:
+    rules = values.get("securityRules")
+    if (
+        not observed
+        or values.get("provisioningState") != "Succeeded"
+        or not isinstance(rules, list)
+        or len(rules) > 2000
+    ):
+        return unknown("complete_succeeded_observed_custom_rules_required")
+    names, priorities = set(), set()
+    for rule in rules:
+        body = rule.get("properties") if isinstance(rule, dict) else None
+        name = rule.get("name") if isinstance(rule, dict) else None
+        if (
+            not isinstance(body, dict)
+            or not isinstance(name, str)
+            or not name.strip()
+            or len(name) > 256
+        ):
+            return unknown("custom_rule_identity_or_body_invalid")
+        priority, direction = body.get("priority"), body.get("direction")
+        if (
+            type(priority) is not int
+            or not 100 <= priority <= 4096
+            or not isinstance(direction, str)
+            or direction not in ("Inbound", "Outbound")
+            or body.get("access") not in ("Allow", "Deny")
+            or body.get("protocol") not in ("Tcp", "Udp", "Icmp", "Esp", "*", "Ah")
+            or body.get("provisioningState", "Succeeded") != "Succeeded"
+            or name.casefold() in names
+            or (direction, priority) in priorities
+        ):
+            return unknown("custom_rules_invalid_duplicate_or_transient")
+        names.add(name.casefold())
+        priorities.add((direction, priority))
+    return len(rules)
+
+
+def egress_facts(value: Any) -> Any:
+    if not isinstance(value, list) or len(value) > 100:
+        return unknown("egress_rules_missing_or_over_100")
+    result = []
+    for rule in value:
+        if not isinstance(rule, dict):
+            return unknown("egress_rule_not_object")
+        result.append(
+            {
+                "kind": enumeration(rule.get("kind"), ("ApplicationRule", "NetworkRule")),
+                "action": enumeration(rule.get("action"), ("Allow", "Deny")),
+                "fqdnCount": bounded_count(rule.get("fqdnCount"), 100),
+                "ipv4AddressCount": bounded_count(rule.get("ipv4AddressCount"), 100),
+            }
+        )
+    return result
+
+
+def egress_rules(values: dict[str, Any], *, terraform: bool) -> Any:
+    collections = values.get("ruleCollections")
+    if terraform:
+        application = values.get("application_rule_collection")
+        network = values.get("network_rule_collection")
+        if application is None and network is None:
+            return unknown("egress_collections_not_explicit")
+        if any(
+            items is not None and not isinstance(items, list) for items in (application, network)
+        ):
+            return unknown("egress_collections_not_explicit")
+        collections = [
+            {"kind": kind, "action": entry.get("action"), "rules": entry.get("rule")}
+            if isinstance(entry, dict)
+            else None
+            for kind, entries in (
+                ("ApplicationRule", application or []),
+                ("NetworkRule", network or []),
+            )
+            for entry in entries[:21]
+        ]
+    if not isinstance(collections, list) or len(collections) > 20:
+        return unknown("egress_collections_missing_or_over_20")
+    result = []
+    for collection in collections:
+        if not isinstance(collection, dict):
+            return unknown("egress_collection_not_object")
+        rules, action = collection.get("rules"), collection.get("action")
+        action = action if terraform else action.get("type") if isinstance(action, dict) else None
+        if not isinstance(rules, list) or len(rules) > 100:
+            return unknown("egress_rules_missing_or_over_100")
+        for rule in rules:
+            if not isinstance(rule, dict):
+                return unknown("egress_rule_not_object")
+            kind = collection.get("kind") if terraform else rule.get("ruleType")
+            if kind == "NatRule":
+                continue
+            addresses = address_list(
+                rule.get("destination_addresses" if terraform else "destinationAddresses"),
+                wildcards=True,
+            )
+            result.append(
+                {
+                    "kind": kind,
+                    "action": action,
+                    "fqdnCount": supplied_string_count(
+                        rule.get("destination_fqdns" if terraform else "destinationFqdns")
+                        if kind == "NetworkRule"
+                        else rule.get("destination_fqdns" if terraform else "targetFqdns")
+                    ),
+                    "ipv4AddressCount": len(addresses)
+                    if isinstance(addresses, list) and all(isinstance(a, str) for a in addresses)
+                    else unknown("destination_ipv4_entries_not_explicit"),
+                }
+            )
+            if len(result) > 100:
+                return unknown("egress_rules_missing_or_over_100")
+    return egress_facts(result)
 
 
 def reference(value: Any) -> Any:
@@ -272,11 +508,34 @@ def review_fact(properties: dict[str, Any], path: str) -> Any:
         return boolean(value)
     if path == "privateConnections":
         return private_connection_facts(value)
+    if path == "securityRuleCount":
+        return bounded_count(value, 2000)
+    if path == "serviceEndpointCount":
+        return bounded_count(value, 100)
+    if path == "serviceEndpointNetworkIdentifiers":
+        return references(value)
+    if path == "privateEndpointNetworkPolicies":
+        return enumeration(
+            value, ("Disabled", "Enabled", "NetworkSecurityGroupEnabled", "RouteTableEnabled")
+        )
+    if path == "gatewayType":
+        return enumeration(value, ("Vpn", "ExpressRoute"))
+    if path in {"securityRuleSummary", "defaultRuleSummary"}:
+        return rule_summary_facts(value)
+    if path == "egressRules":
+        return egress_facts(value)
+    if path in {"enabled", "trafficAnalytics.enabled", "filteringConfigured"}:
+        return boolean(value)
     return reference(value)
 
 
 def projected_properties(
-    kind: str, values: dict[str, Any], *, terraform: bool = False, root: Any = None
+    kind: str,
+    values: dict[str, Any],
+    *,
+    terraform: bool = False,
+    root: Any = None,
+    observed: bool = False,
 ) -> dict[str, Any]:
     kind = kind.lower()
     if kind == "microsoft.network/azurefirewalls":
@@ -379,7 +638,74 @@ def projected_properties(
             "privateConnections": private_connections(values, terraform=terraform),
         }
     if kind == "microsoft.network/firewallpolicies/rulecollectiongroups":
-        return {"applicationRules": application_rules(values, terraform=terraform)}
+        return {
+            "applicationRules": application_rules(values, terraform=terraform),
+            "egressRules": egress_rules(values, terraform=terraform),
+        }
+    if kind == "microsoft.network/networksecuritygroups":
+        return {
+            "securityRuleCount": observed_rule_count(values, observed=observed and not terraform),
+            "securityRuleSummary": rule_summary(
+                values.get("security_rule" if terraform else "securityRules"), terraform=terraform
+            ),
+            "defaultRuleSummary": rule_summary(
+                values.get("defaultSecurityRules") if observed and not terraform else None,
+                terraform=False,
+            ),
+        }
+    if kind == "microsoft.network/networksecuritygroups/securityrules":
+        return {
+            "securityRuleSummary": rule_summary(
+                [values] if terraform else [{"properties": values}], terraform=terraform
+            )
+        }
+    if kind == "microsoft.network/virtualnetworkgateways":
+        configs = values.get("ip_configuration" if terraform else "ipConfigurations")
+        return {
+            "gatewayType": enumeration(
+                values.get("type" if terraform else "gatewayType"), ("Vpn", "ExpressRoute")
+            ),
+            "subnetReferences": [
+                reference(
+                    entry.get("subnet_id")
+                    if terraform and isinstance(entry, dict)
+                    else property_at(entry, "properties.subnet.id")
+                )
+                for entry in configs
+            ]
+            if isinstance(configs, list) and 1 <= len(configs) <= 3
+            else unknown("gateway_ip_configurations_missing_or_over_3"),
+        }
+    if kind == "microsoft.network/networkwatchers/flowlogs":
+        analytics = (
+            values.get("traffic_analytics")
+            if terraform
+            else property_at(
+                values, "flowAnalyticsConfiguration.networkWatcherFlowAnalyticsConfiguration"
+            )
+        )
+        if terraform:
+            analytics = (
+                analytics[0] if isinstance(analytics, list) and len(analytics) == 1 else None
+            )
+        analytics = analytics if isinstance(analytics, dict) else {}
+        filtering = values.get("enabledFilteringCriteria") if not terraform else None
+        return {
+            "enabled": boolean(values.get("enabled")),
+            "targetResourceId": reference(
+                values.get("target_resource_id" if terraform else "targetResourceId")
+            ),
+            "storageId": reference(values.get("storage_account_id" if terraform else "storageId")),
+            "trafficAnalytics": {
+                "enabled": boolean(analytics.get("enabled")),
+                "workspaceResourceId": reference(
+                    analytics.get("workspace_resource_id" if terraform else "workspaceResourceId")
+                ),
+            },
+            "filteringConfigured": bool(filtering.strip())
+            if isinstance(filtering, str) and len(filtering) <= 1000
+            else unknown("filter_configuration_not_explicit"),
+        }
     if kind == "microsoft.network/virtualnetworks/subnets":
         prefixes = (
             values.get("address_prefixes")
@@ -392,8 +718,30 @@ def projected_properties(
             prefixes = None
         if terraform and values.get("ip_address_pool") not in (None, []):
             prefixes = None
+        endpoints = values.get("service_endpoints" if terraform else "serviceEndpoints")
+        services = (
+            endpoints
+            if terraform
+            else [entry.get("service") if isinstance(entry, dict) else None for entry in endpoints]
+            if isinstance(endpoints, list) and len(endpoints) <= 100
+            else None
+        )
         return {
             "addressPrefixes": address_list(prefixes, prefix_only=True),
+            "serviceEndpointCount": supplied_string_count(services),
+            "serviceEndpointNetworkIdentifiers": [
+                reference(property_at(entry, "networkIdentifier.id")) for entry in endpoints
+            ]
+            if not terraform and isinstance(endpoints, list) and len(endpoints) <= 100
+            else unknown("endpoint_network_identifiers_not_explicit"),
+            "privateEndpointNetworkPolicies": enumeration(
+                values.get(
+                    "private_endpoint_network_policies"
+                    if terraform
+                    else "privateEndpointNetworkPolicies"
+                ),
+                ("Disabled", "Enabled", "NetworkSecurityGroupEnabled", "RouteTableEnabled"),
+            ),
             "routeTable": {"id": reference(property_at(values, "routeTable.id"))}
             if not terraform
             else {"id": unknown("association_requires_separate_evidence")},
@@ -464,6 +812,10 @@ def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
         "microsoft.network/virtualnetworks",
         "microsoft.network/privateendpoints",
         "microsoft.network/firewallpolicies/rulecollectiongroups",
+        "microsoft.network/networksecuritygroups",
+        "microsoft.network/networksecuritygroups/securityrules",
+        "microsoft.network/virtualnetworkgateways",
+        "microsoft.network/networkwatchers/flowlogs",
     }:
         return {}
     result: dict[str, Any] = {}

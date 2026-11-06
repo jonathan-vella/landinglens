@@ -43,6 +43,10 @@ API_VERSIONS = {
     "microsoft.network/virtualnetworks": {"2024-05-01"},
     "microsoft.network/privateendpoints": {"2024-05-01"},
     "microsoft.network/firewallpolicies/rulecollectiongroups": {"2024-05-01"},
+    "microsoft.network/networksecuritygroups": {"2024-05-01"},
+    "microsoft.network/networksecuritygroups/securityrules": {"2024-05-01"},
+    "microsoft.network/virtualnetworkgateways": {"2024-05-01"},
+    "microsoft.network/networkwatchers/flowlogs": {"2024-05-01"},
 }
 
 
@@ -52,7 +56,9 @@ def unresolved(value: Any) -> bool:
     return isinstance(value, list) and any(unresolved(v) for v in value)
 
 
-def properties(kind: str, values: Any, *, root: Any = None) -> dict[str, Any]:
+def properties(
+    kind: str, values: Any, *, root: Any = None, observed: bool = False
+) -> dict[str, Any]:
     if not isinstance(values, dict):
         return {}
     if kind.lower() == "microsoft.storage/storageaccounts":
@@ -109,7 +115,7 @@ def properties(kind: str, values: Any, *, root: Any = None) -> dict[str, Any]:
         }
     from .network_evidence import projected_properties
 
-    return projected_properties(kind, values, root=root)
+    return projected_properties(kind, values, root=root, observed=observed)
 
 
 class Expressions:

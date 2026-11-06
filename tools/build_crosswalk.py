@@ -125,7 +125,7 @@ def capture() -> None:
     path.write_text(json.dumps({"sources": sources}, indent=2) + "\n", encoding="utf-8")
 
 
-def build() -> None:
+def build(version: str) -> None:
     catalog = load_catalog()
     manifest = json.loads((REVIEW / "sources.json").read_text("utf-8"))
     checklist_bytes = (ROOT / "references" / "2026-11-04" / "alz-checklist.json").read_bytes()
@@ -207,7 +207,7 @@ def build() -> None:
         {
             "schema_version": "1.0",
             "kind": "crosswalk",
-            "crosswalk_version": "2026-11-05.2",
+            "crosswalk_version": version,
             "catalog_sha256": digest(catalog),
             "review_state": "reviewed",
             "reviewed_at": max(source["retrieved_at"] for source in manifest["sources"]),
@@ -229,8 +229,9 @@ def build() -> None:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--version", required=True, help="Reviewed crosswalk successor version")
     parser.add_argument("--capture-reviewed-sources", action="store_true")
     args = parser.parse_args()
     if args.capture_reviewed_sources:
         capture()
-    build()
+    build(args.version)

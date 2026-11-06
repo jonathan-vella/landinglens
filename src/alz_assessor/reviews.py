@@ -37,6 +37,29 @@ def prepared_resource(
         "facts": facts,
         "subchecks": local_subchecks(facts),
     }
+    if "networkSecurityGroup.id" in facts:
+        identity = facts["networkSecurityGroup.id"]
+        candidates = by_id.get(identity, []) if isinstance(identity, str) else []
+        linked: dict[str, Any] = {
+            "arm_id": identity if isinstance(identity, str) else None,
+            "unknown": "referenced_nsg_not_unique_known",
+        }
+        if (
+            len(candidates) == 1
+            and candidates[0]["resource_type"].lower() == "microsoft.network/networksecuritygroups"
+            and candidates[0]["state"] == "known"
+        ):
+            linked = {
+                "arm_id": identity,
+                "securityRuleCount": review_fact(candidates[0]["properties"], "securityRuleCount"),
+                "securityRuleSummary": review_fact(
+                    candidates[0]["properties"], "securityRuleSummary"
+                ),
+                "defaultRuleSummary": review_fact(
+                    candidates[0]["properties"], "defaultRuleSummary"
+                ),
+            }
+        prepared["linked_network_security_group"] = linked
     refs = facts.get("subnetReferences")
     if refs is None and "subnet.id" in facts:
         refs = [facts["subnet.id"]]

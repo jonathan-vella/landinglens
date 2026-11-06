@@ -118,6 +118,26 @@ and [nine-GUID matrix](../references/recommendation-batches/batch-18.json)
 retain these limitations. Verification uses saved fixtures and injected detail
 reads/denials, not a new live tenant run, packet/DNS/log probe or approval action.
 
+### Cohort-19 segmentation preparation
+
+The existing per-inventoried-resource detail path additionally recognizes NSGs,
+standalone NSG security rules, virtual network gateways and Network Watcher flow
+logs at **2024-05-01**, using `read` on those exact resource types. Saved/injected
+tests exercise these projections; no new live reads or permissions are authorized
+or claimed. No rule-list expansion, NIC/ASG membership enumeration, effective-rule
+query, packet/DNS test or workspace/storage data-plane request occurs.
+
+Only a successful observed NSG GET can supply the complete custom-rule count for
+the checklist's <=900 predicate. The reviewed pinned 2024 REST schema separates
+custom and default rules; the Learn GET page requested with the 2024 view falls
+back to 2026 and is not substituted as its schema. Transient, denied, malformed,
+missing or over-bound populations remain unknown. Counts do not establish estate
+completeness or rule effectiveness. Other projections are bounded informational
+facts for the [nine-GUID matrix](../references/recommendation-batches/batch-19.json)
+and [24 reviewed sources](../references/recommendation-batches/batch-19-sources.json).
+Flow-log enablement is not ingestion, and the workflow does not recommend
+creating new NSG flow logs after Microsoft's July 2025 cutoff.
+
 The accepted first wave adds only explicit firewall-policy `sku.tier`,
 `threatIntelMode` and `intrusionDetection.mode` to the existing approved detail
 projection. It does not collect bypass lists, secrets or arbitrary properties.

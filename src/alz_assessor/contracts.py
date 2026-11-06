@@ -366,6 +366,19 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                             "privateConnections",
                             "subnet.id",
                             "networkSecurityGroup.id",
+                            "serviceEndpointCount",
+                            "serviceEndpointNetworkIdentifiers",
+                            "privateEndpointNetworkPolicies",
+                            "gatewayType",
+                            "securityRuleCount",
+                            "securityRuleSummary",
+                            "defaultRuleSummary",
+                            "egressRules",
+                            "enabled",
+                            "storageId",
+                            "trafficAnalytics.enabled",
+                            "trafficAnalytics.workspaceResourceId",
+                            "filteringConfigured",
                         }
                         for path in paths
                     )
@@ -409,6 +422,15 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                         or "applicable_skus" in rule
                     ):
                         raise InputError("Invalid reviewed deployed-firewall SKU predicate")
+                elif operation == "nsg-rule-capacity" and data["schema_version"] == "1.1":
+                    if (
+                        rule["resource_type"] != "Microsoft.Network/networkSecurityGroups"
+                        or rule["property"] != "securityRuleCount"
+                        or type(rule.get("expected")) is not int
+                        or rule["expected"] != 900
+                        or "applicable_skus" in rule
+                    ):
+                        raise InputError("Invalid reviewed observed NSG <=900 predicate")
                 else:
                     raise InputError("Unsupported rule operation or contract version")
             elif control.get("rule") is not None:

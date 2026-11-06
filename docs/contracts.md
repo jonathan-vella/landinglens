@@ -402,6 +402,29 @@ subchecks, never a least-privilege, reachable private path or effective-policy
 pass. Arbitrary raw properties and approvals are never copied. All original
 review bindings/expiry apply.
 
+Successor `2026-11-06.1` adds the strict `nsg-rule-capacity` operation for
+`Microsoft.Network/networkSecurityGroups.securityRuleCount`, with the exact
+checklist threshold 900. Only observed evidence can pass or fail it. The
+normalizer requires an explicit custom `securityRules` array, a Succeeded parent,
+valid uniquely named rules, valid unique priorities per direction and at most
+2,000 entries. Defaults are excluded. Declared ARM/Bicep, raw Terraform and plan
+arrays cannot establish the complete separately managed population and remain
+unknown. The 900 target is not a current service-limit or 90%-headroom claim;
+the reviewed current ARM quota is 2,000. Freshness, scope and inventory completeness
+remain independent.
+
+The same successor adds endpoint counts/policy enums, gateway type/subnet
+references, minimized NSG and egress summaries, and flow-log/analytics configuration
+for assisted preparation. NSG summaries retain at most 20 rule previews, exact
+supplied count and explicit truncation; source/destination ASG IDs are bounded to
+10 and type-checked. Egress summaries retain at most 100 rule-kind/action and
+FQDN/IPv4 counts, not destinations. Rule names, descriptions, ports, credentials,
+filter text and certificates are not retained. The gateway minimum-/27 subcheck
+uses explicit positive subnet links, never names, and does not resolve conditional
+/26 requirements. Unique known NSG links use supplied inventory only. All these
+partial facts remain Signals or review context, not effective segmentation,
+ownership or operational ingestion verdicts.
+
 | Kind | Required content and invariants |
 |---|---|
 | `catalog` | Version, canonical design areas, GUID-based local IDs, recommendation, related areas, applicability, method, automation disposition, evidence requirements, lifecycle and reviewed references. Tenant policy and organization extensions are separate mappings, not replacements for the recommendation baseline. |

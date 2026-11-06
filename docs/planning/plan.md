@@ -19,6 +19,58 @@ not included here. Implementation now uses the retrieved, pinned sources in
 [`references/2026-11-04`](../../references/2026-11-04/review.md), not assumptions
 from that report.
 
+## Cohort 19 resumed: 2026-11-06
+
+The owner resumed [#52](https://github.com/jonathan-vella/landinglens/issues/52)
+after efficiency delivery. The saved code/source/test draft was restored
+selectively, not applied over the current catalog/ledger. Its import conflict
+was reconciled with policy/scanner/query Signals. The original stash remains
+available. Draft `.4` was not activated; working successor `2026-11-06.1` builds
+from the exact delivered `.5` priority catalog, whose frozen byte SHA256 is
+`b2404cdc5c0c06aca70d3faf7d8e464c4bea49cbdbc80d5cc641fdd35f709153`.
+
+The [nine-GUID matrix](../../references/recommendation-batches/batch-19.json)
+and [24 reviewed sources](../../references/recommendation-batches/batch-19-sources.json)
+precede predicate activation. All 24 actual public URLs were re-fetched on
+2026-11-06; reviewed revisions still match. Dynamic Learn HTML bytes differ
+without changing those revisions; original captured hashes/times were preserved.
+The relative D08.05 URL is resolved. Current ARM NSG quota is 2,000, so the
+checklist's explicit <=900 target is not described as today's quota or
+90%-headroom. The requested 2024 Learn GET view falls back to 2026; the exact
+pinned Microsoft 2024 REST schema supports the accepted GET semantics.
+
+The sole whole predicate is observed-only complete custom NSG rule count.
+Declared/planned/raw arrays cannot establish all separately managed rules.
+Gateway /27 capacity, endpoint intent, effective rule/tag/ASG segmentation,
+ownership and operational flow-log ingestion retain their specific assisted
+questions and bounded facts. All 255 entries remain: 8 automated, 204 assisted,
+43 manual. Crosswalk `2026-11-06.1` rebinds unchanged 51-control/53-association
+coverage to the new catalog; severity, old predicates and historical bytes are
+preserved. The builder replays the exact priority boundary and preserves earlier
+per-cohort receipts instead of rebuilding from obsolete `.3` meaning.
+
+Acceptance covers supplied-module Terraform/optional plan, ARM/existing no-restore
+Bicep, saved observed and injected scoped detail reads; 0/900/901/1000/2000
+counts, invalid/partial/duplicate/transient/stale/denied/unsupported cases;
+typed positive links, private-value withholding, tier failure-as-Verified,
+all report formats, exact original-time replay and blank owner decisions.
+The installed compiler receipt now exercises the new batch fixture as well as
+local success and unrestored-module failure. No new Azure access, login, scan,
+network/data-plane test, IaC execution, module fetch, compiler installation or
+package publication is authorized or performed. Working implementation is not
+merged acceptance; #52 remains open pending actual delivery gates.
+
+Pre-delivery verification passed 309 tests, 308 passed with one explicit Windows
+symlink-privilege skip, both from the checkout and the exact installed wheel
+outside it. All 17 batch-specific tests passed. Lint/format, 32-source-file type
+checks and dependency consistency passed without new dependencies. The installed
+compiler receipt exercised both the new NSG/gateway/subnet/flow fixture and
+local success/unrestored-module failure, with no compiler skips. Wheel SHA256:
+`0e40d8d55bee8ef41da9a3851a9820cd538087b4861d9f8679495d1f69a4e7cf`.
+The original four automated hashes, fixed target membership, exact historical
+catalogs and every earlier cohort receipt are unchanged. No supported CI or
+merged acceptance is claimed until the actual remote runs and merge.
+
 ## Assessor-efficiency increment
 
 ### Source-automation approval and dispatch follow-up

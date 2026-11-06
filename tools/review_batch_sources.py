@@ -12,6 +12,8 @@ ROOT = Path(__file__).resolve().parents[1]
 PROVIDER = "211156b6c9c3c4721a2a4631998a6bd08433a9ee"
 LEARN = "https://learn.microsoft.com/en-us/"
 RAW = f"https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/{PROVIDER}/"
+SPEC_REVISION = "5531fa823aafa40895d51db03315fa749fcb9cf0"
+SPEC_RAW = f"https://raw.githubusercontent.com/Azure/azure-rest-api-specs/{SPEC_REVISION}/"
 SOURCES = [
     (
         "vault-overview",
@@ -381,19 +383,193 @@ SOURCES_18 = [
 ]
 
 
+SOURCES_19 = [
+    (
+        "service-endpoint-intent",
+        LEARN + "azure/virtual-network/virtual-network-service-endpoints-overview",
+        ["subnets independently", "public IP addresses", "network virtual appliance"],
+        "Service endpoints are deliberately configured per subnet/service and may bypass an "
+        "inspection route. Presence/absence does not establish intent, access restriction or "
+        "exfiltration prevention. Current standard-service-endpoint preview is not inferred "
+        "from pinned classic provider fields.",
+    ),
+    (
+        "private-endpoint-egress-inspection",
+        LEARN + "azure/private-link/inspect-traffic-with-azure-firewall",
+        ["flow symmetry", "SNAT", "network policy support"],
+        "The checklist relative guidance is resolved to the actual Learn page. FQDN/application "
+        "rules, routing, subnet endpoint policies and SNAT symmetry must be reconciled; local "
+        "FQDN counts or a private endpoint do not establish an inspected exclusive path.",
+    ),
+    (
+        "gateway-subnet-capacity",
+        LEARN + "azure/expressroute/expressroute-howto-add-gateway-resource-manager",
+        ["/27 or larger", "16 ExpressRoute circuits", "/26 or larger"],
+        "Minimum /27 means capacity at least /27, not exact prefix equality. Sixteen "
+        "ExpressRoute circuits require /26 or larger; actual gateway references and workload "
+        "requirements matter. No gateway deployment or circuit enumeration is executed.",
+    ),
+    (
+        "virtualnetwork-tag-scope",
+        LEARN + "azure/virtual-network/service-tags-overview",
+        ["VirtualNetwork", "on-premises address spaces", "default routes"],
+        "VirtualNetwork includes connected on-premises, peering, gateway and route prefixes "
+        "and can contain default routes. A tag/default allow rule is not an isolation boundary "
+        "or proof of effective segmentation.",
+    ),
+    (
+        "landing-zone-segmentation",
+        LEARN + "azure/cloud-adoption-framework/ready/azure-best-practices/"
+        "plan-for-landing-zone-network-segmentation",
+        ["Delegate subnet creation", "deny-only policies", "Virtual WAN"],
+        "Subnet ownership is organizational evidence, distinct from PaaS subnet delegations. "
+        "NSG/ASG protection needs exact traffic/association/priority context. Virtual WAN "
+        "firewall guidance is conditional, not a blanket prohibition of central appliances.",
+    ),
+    (
+        "nsg-effective-processing",
+        LEARN + "azure/virtual-network/network-security-group-how-it-works",
+        ["Inbound traffic", "Outbound traffic", "Intra-subnet traffic"],
+        "Subnet and NIC NSGs interact in direction-specific order, including intra-subnet "
+        "traffic. Configured rules/associations do not prove an effective allowed/denied path.",
+    ),
+    (
+        "asg-membership",
+        LEARN + "azure/virtual-network/application-security-groups",
+        ["same virtual network", "isn't a member", "priority"],
+        "ASG rule presence is not membership or enforcement. Source/destination memberships "
+        "must be in the applicable same VNet; higher-priority rules and other NSGs matter.",
+    ),
+    (
+        "vnet-flow-log-coverage",
+        LEARN + "azure/network-watcher/vnet-flow-logs-overview",
+        ["Incompatible services", "FastPath", "same region"],
+        "VNet flow-log enabled configuration is not ingestion, supported-workload coverage "
+        "or analytics usefulness. Storage/region/unsupported-service and ExpressRoute "
+        "FastPath limitations remain human evidence questions; no flow data is read.",
+    ),
+    (
+        "traffic-analytics-pipeline",
+        LEARN + "azure/network-watcher/traffic-analytics",
+        ["Log Analytics workspace", "raw flow logs", "Availability"],
+        "Analytics needs flow data, a compatible workspace/region and actual processing, "
+        "not just enabled=true. No workspace logs, permissions or billing are queried.",
+    ),
+    (
+        "network-service-limits",
+        LEARN + "azure/azure-resource-manager/management/azure-subscription-service-limits",
+        ["Networking limits - Azure Resource Manager", "NSG rules per NSG", "2,000"],
+        "Current ARM networking table lists 2,000 NSG rules, whereas the frozen checklist's "
+        "900 recommendation cites a 1,000 limit. Keep the explicit checklist target distinct "
+        "from current quota and from the separate classic-deployment table.",
+    ),
+    (
+        "nsg-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/networksecuritygroups",
+        ["securityRules", "SecurityRulePropertiesFormat", "priority"],
+        "Explicit declared custom rules are distinct from defaults, child declarations and "
+        "complete observed configuration. Required rule fields are protocol/access/priority/"
+        "direction. Rule previews must not expose names, descriptions, ports or addresses.",
+    ),
+    (
+        "nsg-get-learn-fallback",
+        LEARN
+        + "rest/api/virtualnetwork/network-security-groups/get?view=rest-virtualnetwork-2024-05-01",
+        ["2026-01-01", "defaultSecurityRules", "securityRules"],
+        "The requested 2024-05-01 Learn REST view falls back to 2026-01-01. It is not evidence "
+        "for the accepted 2024 GET; the separately pinned actual 2024 swagger supplies that.",
+    ),
+    (
+        "nsg-rest-2024",
+        SPEC_RAW + "specification/network/resource-manager/Microsoft.Network/Network/"
+        "stable/2024-05-01/networkSecurityGroup.json",
+        ["NetworkSecurityGroups_Get", "2024-05-01", "defaultSecurityRules", "securityRules"],
+        "The exact 2024 GET returns NetworkSecurityGroup with separate custom/default arrays. "
+        "This is not a paginated list. Whole-rule capacity requires a successful original-time "
+        "complete custom-rule array, not inline Terraform or declared parent-only lists.",
+    ),
+    (
+        "rest-spec-reuse",
+        SPEC_RAW + "LICENSE",
+        ["MIT License", "Copyright (c) 2017 Microsoft"],
+        "Reviewed MIT reuse terms for the pinned Microsoft REST specification. Retain metadata "
+        "and own factual findings only; no substantial upstream schema is redistributed.",
+    ),
+    (
+        "gateway-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/virtualnetworkgateways",
+        ["gatewayType", "ipConfigurations", "subnet"],
+        "Explicit gateway type and IP-configuration subnet IDs identify positive capacity "
+        "review links. No resource-name inference, certificate or RADIUS material is retained.",
+    ),
+    (
+        "flow-log-arm",
+        LEARN + "azure/templates/microsoft.network/2024-05-01/networkwatchers/flowlogs",
+        [
+            "targetResourceId",
+            "enabledFilteringCriteria",
+            "networkWatcherFlowAnalyticsConfiguration",
+        ],
+        "Versioned fields expose enabled, target/storage/workspace IDs and analytics settings. "
+        "The target description says NSG while the same page's VNet example uses a VNet: "
+        "validate canonical target type rather than assume VNet coverage. Filters are not "
+        "copied and enabled configuration never establishes ingestion.",
+    ),
+    (
+        "terraform-nsg",
+        RAW + "website/docs/r/network_security_group.html.markdown",
+        ["empty slice", "overwrite rules", "security_rule"],
+        "Pinned 4.50.0 allows inline and separately managed rules but warns not to mix them. "
+        "Omission does not establish empty configuration. Whole counts remain unknown for "
+        "raw/plan rather than assuming all rule resources are represented by one parent.",
+    ),
+    (
+        "terraform-nsg-rule",
+        RAW + "website/docs/r/network_security_rule.html.markdown",
+        ["network_security_group_name", "source_application_security_group_ids", "priority"],
+        "Pinned standalone rule has explicit parent name/group and typed rule/ASG references; "
+        "its presence does not establish complete parent rules or effective segmentation.",
+    ),
+    (
+        "terraform-gateway",
+        RAW + "website/docs/r/virtual_network_gateway.html.markdown",
+        ["subnet_id", "ExpressRoute", "up to 3"],
+        "Pinned gateway configuration supports up to three explicit subnet-bearing IP configs. "
+        "Keep typed gateway kind/IDs only, never VPN certificates, RADIUS secrets or addresses.",
+    ),
+    (
+        "terraform-flow-log",
+        RAW + "website/docs/r/network_watcher_flow_log.html.markdown",
+        ["target_resource_id", "workspace_resource_id", "July 30, 2025"],
+        "Pinned flow-log fields have explicit target/storage IDs, enabled bool and optional "
+        "analytics block. Its NSG example is stale for new deployments after July 2025; "
+        "do not recommend creating NSG flow logs or execute provider lifecycle side effects.",
+    ),
+    *[source for source in SOURCES_17 if source[0] in {"subnet-arm", "terraform-subnet"}],
+    *[
+        source
+        for source in SOURCES_18
+        if source[0] in {"terraform-application-rules", "application-rules-arm"}
+    ],
+]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
-    parser.add_argument("--batch", choices=["01", "17", "18"], default="01")
+    parser.add_argument("--batch", choices=["01", "17", "18", "19"], default="01")
     args = parser.parse_args()
     target = ROOT / "references" / "recommendation-batches" / f"batch-{args.batch}-sources.json"
     if target.exists() and not args.append_new_sources:
         raise ValueError("Frozen source review exists; do not silently recollect or redate it")
     sources = json.loads(target.read_text("utf-8"))["sources"] if target.exists() else []
     existing = {source["id"]: source for source in sources}
-    for identity, url, markers, finding in {"01": SOURCES, "17": SOURCES_17, "18": SOURCES_18}[
-        args.batch
-    ]:
+    for identity, url, markers, finding in {
+        "01": SOURCES,
+        "17": SOURCES_17,
+        "18": SOURCES_18,
+        "19": SOURCES_19,
+    }[args.batch]:
         if identity in existing:
             if existing[identity]["url"] != url:
                 raise ValueError("A captured source URL changed; use a new reviewed identity")
@@ -419,12 +595,16 @@ def main() -> None:
                 "retrieved_at": datetime.now(UTC).isoformat(),
                 "revision": PROVIDER
                 if url.startswith(RAW)
+                else SPEC_REVISION
+                if url.startswith(SPEC_RAW)
                 else match.group(1)
                 if match
                 else "retrieved-page",
                 "finding": finding,
                 "reuse": "MPL-2.0 provider: metadata and own factual findings only"
                 if url.startswith(RAW)
+                else "MIT Microsoft REST specification: metadata and own factual findings only"
+                if url.startswith(SPEC_RAW)
                 else (
                     "Microsoft Learn attribution: source metadata and own factual findings only; "
                     "no page content redistributed"

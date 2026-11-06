@@ -222,7 +222,7 @@ class CrosswalkTests(unittest.TestCase):
         self.assertEqual(
             digest(assess(bundle, self.catalog, at=bundle["collected_at"])), digest(assessment)
         )
-        self.assertEqual(sum(c["automation"] == "automated" for c in self.catalog["controls"]), 7)
+        self.assertEqual(sum(c["automation"] == "automated" for c in self.catalog["controls"]), 8)
 
     def test_cli_inspect_validate_and_invalid_options(self):
         code, output, error = self.cli("crosswalk", "inspect", "--id", "G04.01")
@@ -287,7 +287,7 @@ class CrosswalkTests(unittest.TestCase):
             with patch.object(
                 module, "public_fetch", side_effect=AssertionError("network forbidden")
             ):
-                module.build()
+                module.build(self.crosswalk["crosswalk_version"])
             for name, content in originals.items():
                 self.assertEqual((module.DATA / name).read_bytes(), content)
             with patch.object(

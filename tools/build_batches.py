@@ -171,6 +171,8 @@ def apply_batch(
         accepted_matrix_sha256=digest(matrix),
         batch_source_manifest_sha256=hashlib.sha256((DATA / source_name).read_bytes()).hexdigest(),
     )
+    if "priority_manifest_sha256" in catalog:
+        catalog["batch_catalog_version"] = version
     catalog["change_review"] = {
         "base_sha256": digest(previous),
         "matrix_sha256": digest(matrix),
@@ -209,8 +211,23 @@ def main() -> None:
         (json.loads(path.read_text("utf-8")) for path in REVIEWS.glob("batch-[0-9][0-9].json")),
         key=catalog_order,
     )
+    priorities = (
+        json.loads((DATA / "catalog-priorities.json").read_text("utf-8"))
+        if (DATA / "catalog-priorities.json").exists()
+        else None
+    )
     for index, batch in enumerate(accepted):
         catalog = apply_batch(catalog, original, targets, batch, batches, manifests)
+        if priorities and catalog["catalog_version"] == priorities["base_catalog_version"]:
+            from alz_assessor.priorities import prioritised_catalog
+
+            catalog = prioritised_catalog(catalog, priorities)
+            if index < len(accepted) - 1:
+                frozen = DATA / f"catalog-{catalog['catalog_version']}.json"
+                if not frozen.exists() or json.loads(frozen.read_text("utf-8")) != catalog:
+                    raise ValueError(
+                        "Restore the exact delivered priority catalog before expansion"
+                    )
         if index < len(accepted) - 1:
             frozen = DATA / f"catalog-{catalog['catalog_version']}.json"
             if frozen.exists() and json.loads(frozen.read_text("utf-8")) != catalog:
@@ -219,12 +236,6 @@ def main() -> None:
         updates.update({item["guid"]: item for item in batch["recommendations"]})
         issues[batch["batch"]] = batch.get(
             "issue", "https://github.com/jonathan-vella/landinglens/issues/46"
-        )
-    if (DATA / "catalog-priorities.json").exists():
-        from alz_assessor.priorities import prioritised_catalog
-
-        catalog = prioritised_catalog(
-            catalog, json.loads((DATA / "catalog-priorities.json").read_text("utf-8"))
         )
     write(DATA / "catalog.json", catalog)
     ledger = [
