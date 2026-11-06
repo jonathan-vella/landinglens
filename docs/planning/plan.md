@@ -59,6 +59,31 @@ Exact installed wheel SHA256:
 Earlier catalog bytes/controls and delivery receipts are unchanged; no new
 dependency, live Azure access or owner decision was introduced.
 
+[#93](https://github.com/jonathan-vella/landinglens/pull/93) merged normally as
+`e78f27d2509756b9876e9f4841639536cd718056` at 2026-11-06T08:11:21Z.
+Exact checked head `0a2b482e47f854d9c3708c4cec02979ade681e92` passed all eight
+supported jobs in runs `42185316224`/`42185342294` plus applicable CodeQL.
+All four downloaded compiler artifacts exercised the same three actual cases
+without skips. Each GUID now binds its own `deliveries.11` receipt. The fixed
+ledger is **45 merged / 206 pending**; next source/dependency review is cohort
+04/#94. No branch protection, required review or ruleset was configured or bypassed.
+
+`tools/record_batch_delivery.py` removes repetitive manual receipt edits for the
+remaining cohorts. It reads the real merged PR, checks exact head/workflow/event
+and all eight jobs, downloads all four PR compiler artifacts and rejects skipped,
+missing or inconsistent cases before atomically replacing ledger content.
+It validates fixed membership and earlier own-cohort receipts, records the actual
+wheel hash/local totals and refuses to replace a different historical receipt.
+Six executable tests cover successful/idempotent recording and unchanged-ledger
+failure on unmerged/wrong-base/wrong-head/failed/missing/other-workflow jobs,
+unexercised compiler cases, changed targets, changed historical receipts and
+concurrent external edits with targeted temporary-file cleanup.
+It grants no permissions and performs no merge or Azure operation.
+The receipt/recorder follow-up passed 326 local and exact-installed tests:
+325 passed and the same explicit Windows privilege skip. Format/lint, type and
+dependency checks passed. Package source/data are unchanged by this follow-up;
+the exact cohort11 wheel above remains the installed artifact.
+
 ## Cohort 19 resumed: 2026-11-06
 
 The owner resumed [#52](https://github.com/jonathan-vella/landinglens/issues/52)
