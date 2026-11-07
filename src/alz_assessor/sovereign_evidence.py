@@ -55,7 +55,11 @@ def resource_paths(kind: str) -> set[str]:
     return (
         ({"managementParentId"} if kind == MG_KIND else set())
         | ({"resourceLocation"} if kind == VM_KIND else set())
-        | ({"storageRedundancySummary"} if kind == "microsoft.storage/storageaccounts" else set())
+        | (
+            {"storageRedundancySummary", "storageEncryptionSummary"}
+            if kind == "microsoft.storage/storageaccounts"
+            else set()
+        )
         | ({"tagCount"} if kind in TAG_KINDS else set())
     )
 

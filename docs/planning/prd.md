@@ -1,5 +1,22 @@
 # LandingLens product requirements
 
+## Final cohort 28 accepted boundary
+
+The explicit final sole slot after checked03/21 delivery activates
+[eight independent source-qualified workflows](../../references/recommendation-batches/batch-28.json)
+in builder-derived `.28`, preserving exact `.27`, all243 earlier rows/29 receipts,
+all255/fixed251 and the original four complete automated controls. There is no
+successor. Budget modes, suitable Policy content/placement/effective enforcement,
+objectives mapping, jurisdiction/service processing, vendor personnel constraints
+and in-use confidential-computing requirements stay independent and exceptable.
+Delivered03/21 helpers are reused unchanged; no duplicate normalizer, new Policy
+interpreter/fetch, live action, private financial/personnel/confidential payload or
+manufactured financial/legal/sovereignty assurance is added. Only the existing
+query Signals remain executable, without execution here.
+All eight decisions start blank and bound, Signals/human confirmation never
+manufacture Verified. Exact-head implementation and checked own receipt/final-main
+publication, not activation or issue status, gate delivery of the final8 targets.
+
 ## Cohort 28 merged-budget preparation boundary
 
 After the preparation-only dependency unblock, actual merged

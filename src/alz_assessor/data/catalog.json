@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "kind": "catalog",
-  "catalog_version": "2026-11-06.27",
+  "catalog_version": "2026-11-06.28",
   "design_areas": [
     "Azure billing and Active Directory tenant",
     "Identity and access management",
@@ -15537,14 +15537,15 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Reuse actual delivered03 helper; configuration supports a separately bound human review, not delivery, spend enforcement or financial assurance. Tutorial0.01..1000 percent differs from REST/provider0..1000 prose; no percentage or threshold predicate is retained. Pinned2019-10-01 REST lists only Actual despite AzureRM docs advertising both;2024-08-01 lists both. Missing/unreviewed provenance stays unknown. No valid active period, filters/coverage, required recipients, omitted defaults, delivered messages, financial suitability or consumption stop inferred; types from different budgets are never combined into a both-modes claim.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Are explicit enabled Actual and Forecasted notifications configured for the same appropriate source/version-qualified cost budget, with separately evidenced valid scope/period/threshold suitability and recipients/delivery? No financial/contact payload or spend-enforcement inference."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-28",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "source-qualified",
+        "independent-human-decision",
+        "no-operational-assurance"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -15559,9 +15560,63 @@
           "pointer": "/items/175",
           "item_sha256": "60b2dea461c903853bd733ce37f5182111e8b55de98083f6f1e13d10e5e04115",
           "guidance": "https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets?bc=%2Fazure%2Fcloud-adoption-framework%2F_bread%2Ftoc.json&toc=%2Fazure%2Fcloud-adoption-framework%2Ftoc.json"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-acm-create-budgets?bc=%2Fazure%2Fcloud-adoption-framework%2F_bread%2Ftoc.json&toc=%2Fazure%2Fcloud-adoption-framework%2Ftoc.json",
+          "source_sha256": "e656447c28075a638c3d590f6caf581ba43b193f13126bb774a97a872db4be4c",
+          "revision": "981d4c7a114a9026e67c1ac75226043c035d2ab5",
+          "retrieved_at": "2026-11-07T04:22:37.955220+00:00",
+          "pointer": "29fd366b-a180-452b-9bd7-954b7700c667",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-acm-create-budgets?bc=%2Fazure%2Fcloud-adoption-framework%2F_bread%2Ftoc.json&toc=%2Fazure%2Fcloud-adoption-framework%2Ftoc.json"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.consumption/2024-08-01/budgets",
+          "source_sha256": "d41e6d2d2dc91b0107fa64d2d9f7f00bc6a6915bedf7426672c2ed7ef4259dfc",
+          "revision": "a80a6ca0ce31aae2ff0424e8453153664e18bc8b",
+          "retrieved_at": "2026-11-07T04:22:54.418127+00:00",
+          "pointer": "29fd366b-a180-452b-9bd7-954b7700c667",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.consumption/2024-08-01/budgets"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/consumption/resource-manager/Microsoft.Consumption/Consumption/stable/2019-10-01/consumption.json",
+          "source_sha256": "8d02a3bd0e5b8fb8f318346976cd30280ed81bd42d526ac0fcc1f5c276bc823f",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-07T04:22:54.576679+00:00",
+          "pointer": "29fd366b-a180-452b-9bd7-954b7700c667",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/consumption/resource-manager/Microsoft.Consumption/Consumption/stable/2019-10-01/consumption.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/consumption/resource-manager/Microsoft.Consumption/Consumption/stable/2024-08-01/openapi.json",
+          "source_sha256": "2a56b9d02c1ad5182151d8e1d459aebae1a4328516dacac7f53094a6d36fdfa3",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-07T04:22:54.777422+00:00",
+          "pointer": "29fd366b-a180-452b-9bd7-954b7700c667",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/consumption/resource-manager/Microsoft.Consumption/Consumption/stable/2024-08-01/openapi.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/consumption_budget_subscription.html.markdown",
+          "source_sha256": "25d03020b10aa71085313ab982c3931f24df9e19d9d09a560110064e865541c3",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T04:22:55.038276+00:00",
+          "pointer": "29fd366b-a180-452b-9bd7-954b7700c667",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/consumption_budget_subscription.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/consumption_budget_resource_group.html.markdown",
+          "source_sha256": "d7d904bfbd55c84217ade69aed974ad04ea1b791a07cf341ce01d95a5a7325a3",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T04:22:55.345553+00:00",
+          "pointer": "29fd366b-a180-452b-9bd7-954b7700c667",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/consumption_budget_resource_group.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Consumption/budgets"
+      ],
+      "review_fact_paths": [
+        "budgetConfiguration"
+      ]
     },
     {
       "control_id": "ALZ-5a917e1f-348e-4f25-9c27-d42e8bbac757",
@@ -15581,14 +15636,15 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Actual link redirects to archived2023 release history. Names, references, literal effects, positive placement, Default enforcementMode and saved Compliant Signals establish neither sovereign requirements nor effective enforcement or legal compliance.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Which data sovereignty requirements actually apply, and do the exact suitable Policy controls, versions, parameters, complete intended assignment coverage, exceptions and evaluation/remediation evidence address them?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-28",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "source-qualified",
+        "independent-human-decision",
+        "no-operational-assurance"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -15603,9 +15659,93 @@
           "pointer": "/items/176",
           "item_sha256": "04c7b6239f3c01b391151862e7a6446c858c600150f2faa752acc17a90f775ac",
           "guidance": "https://learn.microsoft.com/industry/release-plan/2023wave2/cloud-sovereignty/enable-data-sovereignty-policy-baseline"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/industry/release-plan/2023wave2/cloud-sovereignty/enable-data-sovereignty-policy-baseline",
+          "source_sha256": "67a4c6d120534137470968d4f1c0655a209d8e44308d2c71428886982640c9e9",
+          "revision": "b001e98f8deeb30464126938b86dc890fe719baf",
+          "retrieved_at": "2026-11-07T04:22:39.298893+00:00",
+          "pointer": "5a917e1f-348e-4f25-9c27-d42e8bbac757",
+          "guidance": "https://learn.microsoft.com/industry/release-plan/2023wave2/cloud-sovereignty/enable-data-sovereignty-policy-baseline"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/implementing-workloads/design-sovereign-policies#sovereign-policy-initiatives",
+          "source_sha256": "5481f5476b553256d5ffa75bf40222aecd0579dce6c83fc36639298122d894f0",
+          "revision": "3479ef7a3e2fad94a5e4afcef61621899239b37c",
+          "retrieved_at": "2026-11-07T04:22:40.181286+00:00",
+          "pointer": "5a917e1f-348e-4f25-9c27-d42e8bbac757",
+          "guidance": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/implementing-workloads/design-sovereign-policies#sovereign-policy-initiatives"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/overview",
+          "source_sha256": "5d57ce3ad07769d7cbde39feb6c7055e273060bae3e9dc0ef42edc2ba552106a",
+          "revision": "f5122cc9a56620b3e86ab6e47a77b9d4bb826992",
+          "retrieved_at": "2026-11-07T04:22:55.750661+00:00",
+          "pointer": "5a917e1f-348e-4f25-9c27-d42e8bbac757",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/scope",
+          "source_sha256": "8ed8b90d1a8495826da7c467263e07520947979cd1163288fc73bb362031cd6c",
+          "revision": "335102b882bfe205071a0b561c28b21eabf0a5ee",
+          "retrieved_at": "2026-11-07T04:22:56.202341+00:00",
+          "pointer": "5a917e1f-348e-4f25-9c27-d42e8bbac757",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/scope"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure",
+          "source_sha256": "dfdcfeb2e0080a7bc6795c6646920fe0fcc8eb06c174626327ee6969a132e809",
+          "revision": "a404a6abd3de4275ac00471ae996ec31443b9aeb",
+          "retrieved_at": "2026-11-07T04:22:56.517697+00:00",
+          "pointer": "5a917e1f-348e-4f25-9c27-d42e8bbac757",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/exemption-structure",
+          "source_sha256": "cbdb0503ca09b115eb4fe9f29e0cb9cb396c04a6e603dab5b5c83d7390f3f77e",
+          "revision": "ad08d6209a5960ed91d1c46131250915ea9f2da7",
+          "retrieved_at": "2026-11-07T04:22:57.000420+00:00",
+          "pointer": "5a917e1f-348e-4f25-9c27-d42e8bbac757",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/exemption-structure"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json",
+          "source_sha256": "9d707ad996174330367c811461f5f3b2e1c710b63e5b171e804ad058850d9ad6",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-07T04:22:57.889559+00:00",
+          "pointer": "5a917e1f-348e-4f25-9c27-d42e8bbac757",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json",
+          "source_sha256": "a75b99bf469062e594abc1468aea4f473c5f070b21311e894c4b1e3a86d89e48",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-07T04:22:58.171670+00:00",
+          "pointer": "5a917e1f-348e-4f25-9c27-d42e8bbac757",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json",
+          "source_sha256": "85934922ce8fe3e200fe0642df802f38b72ad153d66807ad874fdf78ee443989",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-07T04:22:58.469048+00:00",
+          "pointer": "5a917e1f-348e-4f25-9c27-d42e8bbac757",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Authorization/policyDefinitions",
+        "Microsoft.Authorization/policySetDefinitions",
+        "Microsoft.Authorization/policyAssignments",
+        "Microsoft.Management/managementGroups"
+      ],
+      "review_fact_paths": [
+        "policyDefinitionSummary",
+        "policyInitiativeSummary",
+        "policyAssignmentSummary",
+        "managementParentId"
+      ]
     },
     {
       "control_id": "ALZ-78b22132-b41c-460b-a4d3-df8f73a67dc2",
@@ -15625,14 +15765,15 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Current design L1 locality/transit, L2 at-rest/CMK and L3 in-use levels differ from pinned baseline SO group numbers. Reviewed public global/confidential1.2.0 snapshots have5/22 members with wildcard/preview member versions; they are not original-time deployed content or exact member resolutions. No label, initiative ID, literal effect or custom join identifies an effective sovereign baseline; runtime built-in references stay unfetched. Audit-first guidance is not enforced deny.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Are actual original-time sovereign initiative content and exact versions suitable and assigned at explicitly designated management-group levels, including supporting platform services, with independently justified exclusions/exemptions and actual evaluation/effects?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-28",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "source-qualified",
+        "independent-human-decision",
+        "no-operational-assurance"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -15647,9 +15788,173 @@
           "pointer": "/items/177",
           "item_sha256": "bb01187d3546c0f807063d5eb648253b165d32857f1615bab9a7cd4c7cd4c98c",
           "guidance": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/implementing-workloads/design-sovereign-policies#sovereign-policy-initiatives"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/implementing-workloads/design-sovereign-policies#sovereign-policy-initiatives",
+          "source_sha256": "5481f5476b553256d5ffa75bf40222aecd0579dce6c83fc36639298122d894f0",
+          "revision": "3479ef7a3e2fad94a5e4afcef61621899239b37c",
+          "retrieved_at": "2026-11-07T04:22:40.181286+00:00",
+          "pointer": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+          "guidance": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/implementing-workloads/design-sovereign-policies#sovereign-policy-initiatives"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/samples/mcfs-baseline-global",
+          "source_sha256": "886b59918fc17d33e4d9ced9355fd86d2f3f8a9dff50a7c807624b190dddaf5f",
+          "revision": "9f52a3754ca90e9f24463e1bbb443012a18b0c15",
+          "retrieved_at": "2026-11-07T04:22:52.460199+00:00",
+          "pointer": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/samples/mcfs-baseline-global"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/samples/mcfs-baseline-confidential",
+          "source_sha256": "24c3f609b46465998fb051045f1b1a8f860b2e858e46df8ac63978cebe9aaa9d",
+          "revision": "68e5f859eed6dab7a73a3819aa3741ff5932b546",
+          "retrieved_at": "2026-11-07T04:22:52.886843+00:00",
+          "pointer": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/samples/mcfs-baseline-confidential"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-policy/f096d8de10fb25e71dd7f82b78ded110ec711d73/built-in-policies/policySetDefinitions/Regulatory%20Compliance/MCfS_Sovereignty_Baseline_Global_Policies.json",
+          "source_sha256": "5349e9e8e51f18c78eafaaec871651b4d48a9595283eeb1f5f01d3a3d4ac7d83",
+          "revision": "f096d8de10fb25e71dd7f82b78ded110ec711d73",
+          "retrieved_at": "2026-11-07T04:37:35.514254+00:00",
+          "pointer": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-policy/f096d8de10fb25e71dd7f82b78ded110ec711d73/built-in-policies/policySetDefinitions/Regulatory%20Compliance/MCfS_Sovereignty_Baseline_Global_Policies.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-policy/f096d8de10fb25e71dd7f82b78ded110ec711d73/built-in-policies/policySetDefinitions/Regulatory%20Compliance/MCfS_Sovereignty_Baseline_Confidential_Policies.json",
+          "source_sha256": "89824174fdb24ca0c866a625f62a41e93d4a19e0de8bba8e5b51defeff3f4817",
+          "revision": "f096d8de10fb25e71dd7f82b78ded110ec711d73",
+          "retrieved_at": "2026-11-07T04:37:35.613613+00:00",
+          "pointer": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-policy/f096d8de10fb25e71dd7f82b78ded110ec711d73/built-in-policies/policySetDefinitions/Regulatory%20Compliance/MCfS_Sovereignty_Baseline_Confidential_Policies.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-policy/f096d8de10fb25e71dd7f82b78ded110ec711d73/LICENSE",
+          "source_sha256": "27ebda9d51f0a56b7e281ccd8230a27236dcb51c05f64b07869ecf6e965d68b0",
+          "revision": "f096d8de10fb25e71dd7f82b78ded110ec711d73",
+          "retrieved_at": "2026-11-07T04:37:35.851781+00:00",
+          "pointer": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-policy/f096d8de10fb25e71dd7f82b78ded110ec711d73/LICENSE"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/scope",
+          "source_sha256": "8ed8b90d1a8495826da7c467263e07520947979cd1163288fc73bb362031cd6c",
+          "revision": "335102b882bfe205071a0b561c28b21eabf0a5ee",
+          "retrieved_at": "2026-11-07T04:22:56.202341+00:00",
+          "pointer": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/scope"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure",
+          "source_sha256": "dfdcfeb2e0080a7bc6795c6646920fe0fcc8eb06c174626327ee6969a132e809",
+          "revision": "a404a6abd3de4275ac00471ae996ec31443b9aeb",
+          "retrieved_at": "2026-11-07T04:22:56.517697+00:00",
+          "pointer": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/exemption-structure",
+          "source_sha256": "cbdb0503ca09b115eb4fe9f29e0cb9cb396c04a6e603dab5b5c83d7390f3f77e",
+          "revision": "ad08d6209a5960ed91d1c46131250915ea9f2da7",
+          "retrieved_at": "2026-11-07T04:22:57.000420+00:00",
+          "pointer": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/exemption-structure"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+          "source_sha256": "722134a7f78faad3a1b9edccae9d5f3a371255bab0a80e582ebe737e7ec3eb12",
+          "revision": "84d6ae283915e42535dac6184ccce6d8a1969027",
+          "retrieved_at": "2026-11-07T04:22:57.294402+00:00",
+          "pointer": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups",
+          "source_sha256": "3335e9f4032953dfa9606f03639053f09c7aaa095048cf555d0d0eb5efb8e94d",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-07T04:22:57.587953+00:00",
+          "pointer": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json",
+          "source_sha256": "9d707ad996174330367c811461f5f3b2e1c710b63e5b171e804ad058850d9ad6",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-07T04:22:57.889559+00:00",
+          "pointer": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json",
+          "source_sha256": "a75b99bf469062e594abc1468aea4f473c5f070b21311e894c4b1e3a86d89e48",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-07T04:22:58.171670+00:00",
+          "pointer": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json",
+          "source_sha256": "85934922ce8fe3e200fe0642df802f38b72ad153d66807ad874fdf78ee443989",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-07T04:22:58.469048+00:00",
+          "pointer": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_definition.html.markdown",
+          "source_sha256": "74cf604cb0de66c8428b0114ff594ef3c02956e49c411ef7d692b0a782893993",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T04:22:58.744678+00:00",
+          "pointer": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_definition.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_set_definition.html.markdown",
+          "source_sha256": "9348c71eb855dbe45ff5299a9a37778dd41224534668fd64df74620e04ab9a9c",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T04:22:59.014537+00:00",
+          "pointer": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_set_definition.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group_policy_assignment.html.markdown",
+          "source_sha256": "474694e8983a628f6a6443c48c517b2dcac214dea7229dae307fe91465fd7f91",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T04:22:59.292466+00:00",
+          "pointer": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group_policy_assignment.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subscription_policy_assignment.html.markdown",
+          "source_sha256": "1eed39b22a8e715763c0e5334940c7a27cd259d2c116a637a2599019cab1d272",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T04:22:59.556778+00:00",
+          "pointer": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subscription_policy_assignment.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/resource_group_policy_assignment.html.markdown",
+          "source_sha256": "d43953099295faf63678a5fa43130bad6c906429318be58ca62e64784f6bfccf",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T04:22:59.877441+00:00",
+          "pointer": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/resource_group_policy_assignment.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Authorization/policyDefinitions",
+        "Microsoft.Authorization/policySetDefinitions",
+        "Microsoft.Authorization/policyAssignments",
+        "Microsoft.Management/managementGroups"
+      ],
+      "review_fact_paths": [
+        "policyDefinitionSummary",
+        "policyInitiativeSummary",
+        "policyAssignmentSummary",
+        "managementParentId"
+      ]
     },
     {
       "control_id": "ALZ-caeea0e9-1024-41df-a52e-d99c3f22a6f4",
@@ -15669,14 +15974,15 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Requires organizational decision/process evidence outside IaC alone.",
+      "rationale": "Actual link now redirects to implementation options, not a customer mapping. Counts, regulatory groupings, configuration, framework labels and another control's decision cannot document or approve objectives.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: What sovereign control objectives have been approved, and what attributable source-specific mapping to Policy and independent controls, responsibilities, gaps and exceptions substantiates them?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-28",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "source-qualified",
+        "independent-human-decision",
+        "no-operational-assurance"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -15691,6 +15997,38 @@
           "pointer": "/items/178",
           "item_sha256": "6add12ed42ba47825db11b0968b5f14d149a5de2fa4f47b654c80f141383234f",
           "guidance": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/sovereign-landing-zone/implement-controls-principles"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/sovereign-landing-zone/implement-controls-principles",
+          "source_sha256": "a7dcd34c5f49f8dc0928da7948de9638100dbeda1a036a024e6b2646a7911b05",
+          "revision": "3479ef7a3e2fad94a5e4afcef61621899239b37c",
+          "retrieved_at": "2026-11-07T04:22:41.123661+00:00",
+          "pointer": "caeea0e9-1024-41df-a52e-d99c3f22a6f4",
+          "guidance": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/sovereign-landing-zone/implement-controls-principles"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/implementing-workloads/design-sovereign-policies#sovereign-policy-initiatives",
+          "source_sha256": "5481f5476b553256d5ffa75bf40222aecd0579dce6c83fc36639298122d894f0",
+          "revision": "3479ef7a3e2fad94a5e4afcef61621899239b37c",
+          "retrieved_at": "2026-11-07T04:22:40.181286+00:00",
+          "pointer": "caeea0e9-1024-41df-a52e-d99c3f22a6f4",
+          "guidance": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/implementing-workloads/design-sovereign-policies#sovereign-policy-initiatives"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/samples/mcfs-baseline-global",
+          "source_sha256": "886b59918fc17d33e4d9ced9355fd86d2f3f8a9dff50a7c807624b190dddaf5f",
+          "revision": "9f52a3754ca90e9f24463e1bbb443012a18b0c15",
+          "retrieved_at": "2026-11-07T04:22:52.460199+00:00",
+          "pointer": "caeea0e9-1024-41df-a52e-d99c3f22a6f4",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/samples/mcfs-baseline-global"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/samples/mcfs-baseline-confidential",
+          "source_sha256": "24c3f609b46465998fb051045f1b1a8f860b2e858e46df8ac63978cebe9aaa9d",
+          "revision": "68e5f859eed6dab7a73a3819aa3741ff5932b546",
+          "retrieved_at": "2026-11-07T04:22:52.886843+00:00",
+          "pointer": "caeea0e9-1024-41df-a52e-d99c3f22a6f4",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/samples/mcfs-baseline-confidential"
         }
       ],
       "severity": "Medium"
@@ -15713,14 +16051,15 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Location strings are not jurisdiction. Pairing is optional and service-specific; ZRS stays in primary zones, GRS/GZRS uses asynchronous paired-secondary replication with LRS there. No secondary location, actual replication, universal pairing, approved jurisdiction or DR readiness inferred. Storage encryption settings do not locate data or establish jurisdiction; Terraform key source remains unknown without separate-CMK reconciliation.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Are independently approved primary and DR jurisdictions satisfied by actual service-specific storage/replication/backup/failover locations and supported tier/region behavior, including pairing asymmetry, cross-geography exceptions and ZRS/GZRS constraints?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-28",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "source-qualified",
+        "independent-human-decision",
+        "no-operational-assurance"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -15735,9 +16074,82 @@
           "pointer": "/items/179",
           "item_sha256": "3d144d0bb047b26718eb0f901cbfca2e3c1ea4ab054154d75a5604fb3bf41757",
           "guidance": "https://learn.microsoft.com/en-us/azure/reliability/regions-paired"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/reliability/regions-paired",
+          "source_sha256": "5cf8eacd683f374e5bb6de9239105f915dcd77e75e3e3dd18a2418959c7844e1",
+          "revision": "12bb98a3460c0d83c61e0f419deade1229d8edcb",
+          "retrieved_at": "2026-11-07T04:22:41.858080+00:00",
+          "pointer": "9b461617-db7b-4399-8ac6-d4eb7153893a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/reliability/regions-paired"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy",
+          "source_sha256": "8aff1ddb40f610feeb3f2e191daab48da7be1c3db138a175df1dfb4666b2771c",
+          "revision": "600b459b67367f93f8426065bac787d0b7766c3e",
+          "retrieved_at": "2026-11-07T04:22:53.240358+00:00",
+          "pointer": "9b461617-db7b-4399-8ac6-d4eb7153893a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy"
+        },
+        {
+          "source_url": "https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency",
+          "source_sha256": "8d55af910b0d874e1ca8cee70e06aabb10de0193a05cfaa244597799319cd3cb",
+          "revision": "retrieved-page",
+          "retrieved_at": "2026-11-07T04:22:50.448950+00:00",
+          "pointer": "9b461617-db7b-4399-8ac6-d4eb7153893a",
+          "guidance": "https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts",
+          "source_sha256": "80fd20eb27260ce6815875d7b2235ad748d37830c811168892a44fa7187684d5",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-07T04:23:01.030700+00:00",
+          "pointer": "9b461617-db7b-4399-8ac6-d4eb7153893a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown",
+          "source_sha256": "2497fd8c88453f99b82d2697bda7b7faee30f889693a1840fafc5bc59305219a",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T04:23:01.330774+00:00",
+          "pointer": "9b461617-db7b-4399-8ac6-d4eb7153893a",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview",
+          "source_sha256": "814e21b37edf08e292fef83d7700d05705459d7fe454125e1dd685b5b760db6b",
+          "revision": "cdf0d71d6878c96f2d38f3ff00f3df6f91bb82b2",
+          "retrieved_at": "2026-11-07T03:00:33.057199+00:00",
+          "pointer": "9b461617-db7b-4399-8ac6-d4eb7153893a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts",
+          "source_sha256": "307f4a0da46534762fe97ec28ca0cddd2d43b1299f77a4b9a9bc4eaa103e655c",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-07T03:00:33.863187+00:00",
+          "pointer": "9b461617-db7b-4399-8ac6-d4eb7153893a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown",
+          "source_sha256": "2497fd8c88453f99b82d2697bda7b7faee30f889693a1840fafc5bc59305219a",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T03:00:34.120711+00:00",
+          "pointer": "9b461617-db7b-4399-8ac6-d4eb7153893a",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Compute/virtualMachines",
+        "Microsoft.Storage/storageAccounts"
+      ],
+      "review_fact_paths": [
+        "resourceLocation",
+        "storageRedundancySummary",
+        "storageEncryptionSummary"
+      ]
     },
     {
       "control_id": "ALZ-bfaf7b7a-9e6c-4840-a2bd-2c524326bdf6",
@@ -15757,14 +16169,15 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "One VM location is not service inventory/completeness or a processing map. Foundry Global/DataZone/geography types, operational metadata/copies, Extended Zones and prerelease exceptions differ. No region availability, capacity, contractual authorization or legal suitability probed or inferred.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: For each Database/Storage/Container/Analytics/AI service and feature, are actual processing, at-rest/backup/control/support locations and current availability acceptable against explicit permitted jurisdictions and reviewed service-specific exceptions?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-28",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "source-qualified",
+        "independent-human-decision",
+        "no-operational-assurance"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -15779,9 +16192,47 @@
           "pointer": "/items/180",
           "item_sha256": "a2cf9ac66518c9fc937a280a788cf270da89200a3897626e777a0ef8c2b907e2",
           "guidance": "https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency"
+        },
+        {
+          "source_url": "https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency",
+          "source_sha256": "8d55af910b0d874e1ca8cee70e06aabb10de0193a05cfaa244597799319cd3cb",
+          "revision": "retrieved-page",
+          "retrieved_at": "2026-11-07T04:22:50.448950+00:00",
+          "pointer": "bfaf7b7a-9e6c-4840-a2bd-2c524326bdf6",
+          "guidance": "https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/deployment-types",
+          "source_sha256": "67749ef0b7bc8dbba0f8888f646e4c3740340b66f72f305b95697ec120ad367f",
+          "revision": "32726378f9adc67a78fef2187aa9197cdfea657a",
+          "retrieved_at": "2026-11-07T04:22:54.083534+00:00",
+          "pointer": "bfaf7b7a-9e6c-4840-a2bd-2c524326bdf6",
+          "guidance": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/deployment-types"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/reliability/regions-paired",
+          "source_sha256": "5cf8eacd683f374e5bb6de9239105f915dcd77e75e3e3dd18a2418959c7844e1",
+          "revision": "12bb98a3460c0d83c61e0f419deade1229d8edcb",
+          "retrieved_at": "2026-11-07T04:22:41.858080+00:00",
+          "pointer": "bfaf7b7a-9e6c-4840-a2bd-2c524326bdf6",
+          "guidance": "https://learn.microsoft.com/en-us/azure/reliability/regions-paired"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/confidential-computing/",
+          "source_sha256": "033afea66b79e239d3f702b97470e44be356ede3a9d365affb3f171c5f904d66",
+          "revision": "53e548cc6652179ebd5d01805a8b24af6fc812d6",
+          "retrieved_at": "2026-11-07T04:22:51.532006+00:00",
+          "pointer": "bfaf7b7a-9e6c-4840-a2bd-2c524326bdf6",
+          "guidance": "https://learn.microsoft.com/en-us/azure/confidential-computing/"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Compute/virtualMachines"
+      ],
+      "review_fact_paths": [
+        "resourceLocation"
+      ]
     },
     {
       "control_id": "ALZ-3105633e-b168-4ce0-a016-5f10e7cdea5a",
@@ -15801,14 +16252,15 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Requires organizational decision/process evidence outside IaC alone.",
+      "rationale": "Defender identity/access recommendations, external account domains, roles, resource regions and baseline labels cannot establish vendor personnel jurisdiction or access eligibility. No contact, personnel probe or legal decision is performed.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Have vendor remote-access and managed-services personnel jurisdiction constraints, contractual responsibilities, actual approval/access controls and exceptions been independently established with redacted evidence, without personnel identity/nationality/location collection?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-28",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "source-qualified",
+        "independent-human-decision",
+        "no-operational-assurance"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -15823,6 +16275,30 @@
           "pointer": "/items/181",
           "item_sha256": "f6ca1846c8ef4a1c8de6ce90b250ec5ef3c2e42b21ba492e32a3edd387e893c0",
           "guidance": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/recommendations-reference-identity-access"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/recommendations-reference-identity-access",
+          "source_sha256": "fdc359ad89ebe146f4f5a16e91360d22560f106ab7d0bb7851fe422ed3c34cbc",
+          "revision": "307ea66e69b8532a9c397a1f4672585c5a56481d",
+          "retrieved_at": "2026-11-07T04:22:51.077256+00:00",
+          "pointer": "3105633e-b168-4ce0-a016-5f10e7cdea5a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/recommendations-reference-identity-access"
+        },
+        {
+          "source_url": "https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency",
+          "source_sha256": "8d55af910b0d874e1ca8cee70e06aabb10de0193a05cfaa244597799319cd3cb",
+          "revision": "retrieved-page",
+          "retrieved_at": "2026-11-07T04:22:50.448950+00:00",
+          "pointer": "3105633e-b168-4ce0-a016-5f10e7cdea5a",
+          "guidance": "https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/implementing-workloads/design-sovereign-policies#sovereign-policy-initiatives",
+          "source_sha256": "5481f5476b553256d5ffa75bf40222aecd0579dce6c83fc36639298122d894f0",
+          "revision": "3479ef7a3e2fad94a5e4afcef61621899239b37c",
+          "retrieved_at": "2026-11-07T04:22:40.181286+00:00",
+          "pointer": "3105633e-b168-4ce0-a016-5f10e7cdea5a",
+          "guidance": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/implementing-workloads/design-sovereign-policies#sovereign-policy-initiatives"
         }
       ],
       "severity": "Medium"
@@ -15845,14 +16321,15 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Requires organizational decision/process evidence outside IaC alone.",
+      "rationale": "At-rest CMK, Trusted Launch, workload names and confidential initiative labels are not in-use protection, attestation, a human requirement or proper execution. No confidential contents, workload classification inference, attestation run or operator-access assurance.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Do the applicable sensitive workloads require in-use confidential computing, and what service/region/feature, attested TEE, key-release/trust requirements, proper configuration evidence and justified exceptions address that need?"
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-28",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "source-qualified",
+        "independent-human-decision",
+        "no-operational-assurance"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -15867,6 +16344,38 @@
           "pointer": "/items/182",
           "item_sha256": "7fdce278bbbd70ff994d1035a28e537f10c2ac8ee26a0d1bea5d7509e091662a",
           "guidance": "https://learn.microsoft.com/en-us/azure/confidential-computing/"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/confidential-computing/",
+          "source_sha256": "033afea66b79e239d3f702b97470e44be356ede3a9d365affb3f171c5f904d66",
+          "revision": "53e548cc6652179ebd5d01805a8b24af6fc812d6",
+          "retrieved_at": "2026-11-07T04:22:51.532006+00:00",
+          "pointer": "77cf1acd-16b4-4092-8d30-6ec9579854ce",
+          "guidance": "https://learn.microsoft.com/en-us/azure/confidential-computing/"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/confidential-computing/overview",
+          "source_sha256": "6cd820fb55318b6a30adc319cbaf4ee13dd8c47464032af443ca836aee03f3dc",
+          "revision": "53e548cc6652179ebd5d01805a8b24af6fc812d6",
+          "retrieved_at": "2026-11-07T04:22:52.010294+00:00",
+          "pointer": "77cf1acd-16b4-4092-8d30-6ec9579854ce",
+          "guidance": "https://learn.microsoft.com/en-us/azure/confidential-computing/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/implementing-workloads/design-sovereign-policies#sovereign-policy-initiatives",
+          "source_sha256": "5481f5476b553256d5ffa75bf40222aecd0579dce6c83fc36639298122d894f0",
+          "revision": "3479ef7a3e2fad94a5e4afcef61621899239b37c",
+          "retrieved_at": "2026-11-07T04:22:40.181286+00:00",
+          "pointer": "77cf1acd-16b4-4092-8d30-6ec9579854ce",
+          "guidance": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/implementing-workloads/design-sovereign-policies#sovereign-policy-initiatives"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/samples/mcfs-baseline-confidential",
+          "source_sha256": "24c3f609b46465998fb051045f1b1a8f860b2e858e46df8ac63978cebe9aaa9d",
+          "revision": "68e5f859eed6dab7a73a3819aa3741ff5932b546",
+          "retrieved_at": "2026-11-07T04:22:52.886843+00:00",
+          "pointer": "77cf1acd-16b4-4092-8d30-6ec9579854ce",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/samples/mcfs-baseline-confidential"
         }
       ],
       "severity": "Medium"
@@ -22013,66 +22522,66 @@
   "reviewed_at": "2026-11-04T13:25:57.057372+00:00",
   "reference_manifest_sha256": "c287f93a4ff4c94c577b0248345d813f44fb27dff66524408870095024305d30",
   "control_source_manifest_sha256": "d189615f2793f141a6ee6cd5a7f026556a4146fd44d65705e6f08d0e01f7debf",
-  "accepted_matrix_sha256": "2ef2fcebb9d6cb4d07d15f1efbd97d9b0289656f60d2de3bb44008e973c9f835",
+  "accepted_matrix_sha256": "bc0334f6e3094b8036609783e12386825344b7261dff52fbf8fd34c75ebabf05",
   "wave_source_manifest_sha256": "617e66a497a1f6bb1ddf50f53b3f75f3ff2cec2989324d42496aeeb4d9d0ef38",
   "change_review": {
-    "base_sha256": "a3ae0504098752c35d79ba958bab475201c3a4f6b2a4a5c2469f50c153664e5c",
-    "matrix_sha256": "2ef2fcebb9d6cb4d07d15f1efbd97d9b0289656f60d2de3bb44008e973c9f835",
-    "reviewed_at": "2026-11-07T05:31:14.848355+00:00",
+    "base_sha256": "948e7ca51c33e3fe7d314ff2c6790b577967b11b53394d48febab2293d024e94",
+    "matrix_sha256": "bc0334f6e3094b8036609783e12386825344b7261dff52fbf8fd34c75ebabf05",
+    "reviewed_at": "2026-11-07T06:53:45.531544+00:00",
     "reviewer": "owner-delegated-source-backed-batch-review",
     "changes": [
       {
-        "control_id": "ALZ-b86ad884-08e3-4727-94b8-75ba18f20459",
-        "before_sha256": "0ff36e7a023b84903e3cc9c204fc55f8a11ac109540c37b14a72f34e145f64c7",
-        "after_sha256": "f3da7b44d54b4813c24cbf0750e09bff2aed478e1c49348a06f1f085cb2a1f88",
-        "rationale": "Owner-delegated source-backed batch 21 acceptance: manual"
+        "control_id": "ALZ-29fd366b-a180-452b-9bd7-954b7700c667",
+        "before_sha256": "2a6e004265229c5f733713687804bba47a3454690dc3f92387d8786edc41a6b7",
+        "after_sha256": "57a2a9aa78b80fd83745200801bafc8d8ccd439b5b12b4078cae4991b631adba",
+        "rationale": "Owner-delegated source-backed batch 28 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-01365d38-e43f-49cc-ad86-8266abca264f",
-        "before_sha256": "416a5ef89f324ad1f8b7c0efabf604c5e7421c56a55bedbe0ba7966b328963d7",
-        "after_sha256": "659ac78fc9d7420469fabffc8736dcc0930e28eb965972091f26644454bd3181",
-        "rationale": "Owner-delegated source-backed batch 21 acceptance: manual"
+        "control_id": "ALZ-5a917e1f-348e-4f25-9c27-d42e8bbac757",
+        "before_sha256": "63bd36362b5e8312997a03ef5b9c852d702e8983acf9a9114b692202e96a4e63",
+        "after_sha256": "679a5de4e88d686f8b709114eb351d23668786c691c4f1a0a207b8e1c8878807",
+        "rationale": "Owner-delegated source-backed batch 28 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-6d70ba6c-97be-4995-8904-83845c986cb2",
-        "before_sha256": "860df77d51b10721d2547d533b955caa5c64de3cc51706a1e56e36a7b57d066d",
-        "after_sha256": "39431edc4a158b20bb9daa3715cdaf330b6d153866d2f36279d75de645ef3394",
-        "rationale": "Owner-delegated source-backed batch 21 acceptance: assisted"
+        "control_id": "ALZ-78b22132-b41c-460b-a4d3-df8f73a67dc2",
+        "before_sha256": "c9d4a52d0a4afe601a404db499dc09480bb66c2c8e3463c77226583093089d94",
+        "after_sha256": "3b0aeb250658297c37d3402014ca16386ec4320ed23eea01e6256df23798e491",
+        "rationale": "Owner-delegated source-backed batch 28 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-913156a1-2476-4e49-b541-acdce979377b",
-        "before_sha256": "3bde89e904dfa364821e87a8b68c3541d4c7464f567db06a5aa54c815ea244bb",
-        "after_sha256": "3fa253f0a2f4a671059ee0d128e09e39299dcc1f99134784aff3a15aa539a0c3",
-        "rationale": "Owner-delegated source-backed batch 21 acceptance: assisted"
+        "control_id": "ALZ-caeea0e9-1024-41df-a52e-d99c3f22a6f4",
+        "before_sha256": "e71c16577146797c136be90500407a1cc2789ee557191c5b2b8839a7aa6156af",
+        "after_sha256": "d57bee6ce63f7a66de2e279a97e5e6ce4427b07e089ef9fe4effd889fd2ca66b",
+        "rationale": "Owner-delegated source-backed batch 28 acceptance: manual"
       },
       {
-        "control_id": "ALZ-b12308ca-5017-4f15-9e3a-b3693829e7e3",
-        "before_sha256": "2c92076d7afa4db203f9db6d83817e3087a1b592fcedab51e05e082d7b73bca2",
-        "after_sha256": "ea7d887ab3aed3c3e15e2d744fa2fdafee6b2d7b011ed1b7a5d2d521d5d5965d",
-        "rationale": "Owner-delegated source-backed batch 21 acceptance: assisted"
+        "control_id": "ALZ-9b461617-db7b-4399-8ac6-d4eb7153893a",
+        "before_sha256": "e9c4aececdf7a2152dd20331516c683eb2e889f40b806fa1a430ba657de43495",
+        "after_sha256": "986d228556c9455383c01b7b42a44d77e186645f15339b835f6445ddabf26777",
+        "rationale": "Owner-delegated source-backed batch 28 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-16183687-a047-47a2-8994-5bda43334f24",
-        "before_sha256": "1da69366315b8650ca03f37cf6f3bdc2a8b2d14cbe178f9e1e751ef3d1f78f9c",
-        "after_sha256": "4d8b3075739549a039a1455438220b316b61e6383d3ea4ff9ae02b0a7b64c712",
-        "rationale": "Owner-delegated source-backed batch 21 acceptance: assisted"
+        "control_id": "ALZ-bfaf7b7a-9e6c-4840-a2bd-2c524326bdf6",
+        "before_sha256": "fd46f722d23c5c652e4adc608625d7055da4d10314ed8dc2b2a1819e4aa844ad",
+        "after_sha256": "c8451eab96cd6c9ed199216adfa42b76d2d382a227413b28d6584f93b8577054",
+        "rationale": "Owner-delegated source-backed batch 28 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-b48ade7f-50be-4d2e-9866-d57b17942fc2",
-        "before_sha256": "50ecda07769504522e83e1d7a227c8ece354479b5656f8a7cfa43d8a0b2c59f4",
-        "after_sha256": "b8ccb1970ceff6976dc1062323f16a5c03355486440d2378e1064e1984c50dd1",
-        "rationale": "Owner-delegated source-backed batch 21 acceptance: manual"
+        "control_id": "ALZ-3105633e-b168-4ce0-a016-5f10e7cdea5a",
+        "before_sha256": "f4f1a875bcafbb244aa6d836653c938a9977fb6cd67cc83b888bfc5479ea37e6",
+        "after_sha256": "1797cc4da0ca11a0d24db9134faad57501922fa3da42cf803bbbe8bda9cca3e0",
+        "rationale": "Owner-delegated source-backed batch 28 acceptance: manual"
       },
       {
-        "control_id": "ALZ-25d62688-6d70-4ba6-a97b-e99519048384",
-        "before_sha256": "1ba6af42a6140f34155a2cc4d5476e13b5d782cca6ada766eb36053ea63457c8",
-        "after_sha256": "5e2c56527cf86efd6d131777c9430df70be1e3183c37decd1e268ffd2f1d2868",
-        "rationale": "Owner-delegated source-backed batch 21 acceptance: manual"
+        "control_id": "ALZ-77cf1acd-16b4-4092-8d30-6ec9579854ce",
+        "before_sha256": "22705f38618b0e9d74c094a0ca82911530ba6dc0eb5292363fb673858d12b799",
+        "after_sha256": "2993a82ecf4ab6e5914a61f44a830604b8871ff256bf5cc8b8a358fb4d397201",
+        "rationale": "Owner-delegated source-backed batch 28 acceptance: manual"
       }
     ]
   },
   "first_wave_matrix_sha256": "f649b2293211c844d661ea93c6978fe2db948eff17237af01ca090809da8e1fb",
-  "batch_source_manifest_sha256": "54c3f70652b9fccdef7f76cc6b181467ee9d4bd69885cc21ec8b4a300fc50f61",
-  "batch_catalog_version": "2026-11-06.27",
+  "batch_source_manifest_sha256": "9e21348eda65c39b57c5f1122ade6e7044c6361b08a58063edba7968995b7539",
+  "batch_catalog_version": "2026-11-06.28",
   "priority_manifest_sha256": "b42971f85b9110f71fdc5ae81695fe4be72c1f28022ec27aeb719140ed1475c0"
 }

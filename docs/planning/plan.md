@@ -1,5 +1,82 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Final cohort 28 accepted integration: 2026-11-07
+
+The explicit final sole coordinator slot follows actual03 implementation164/
+receipt165 and21 implementation166/receipt167, completed157/160 and checked main
+`792e652f642eba7ace77a8f32861e6b9024d1bd6`. Reconciliation `6243cc4` retains
+initial `0a11067`, merged-budget `b8ebfb4`, every original source capture/wheel/
+proof and invalidated history. Actual25 predecessor compiler cases, including
+21 storage, precede own genuine existing-budget-fixture wiring case26.
+
+Existing offline builders derive unique catalog/crosswalk `.28` from exact `.27`
+and the [eight-GUID matrix](../../references/recommendation-batches/batch-28.json).
+The [44-source accepted manifest](../../references/recommendation-batches/batch-28-sources.json)
+preserves all41 own captures and appends three actual21 storage-source captures,
+without recollection or source wording changes. Every non-own full control, all243
+prior own rows/29 receipts and bindings, all255 GUIDs/fixed251, original four complete
+objects and historical bytes remain frozen. Counts remain12 automated/200 assisted/
+43 manual; unchanged51-control/53-association crosswalk rebinds only the catalog.
+Activation leaves243 delivered/8 pending until actual own checked delivery.
+
+Delivered03 budget and21 keySource/infrastructure/Queue-Table projections are reused
+unchanged. Actual/Forecasted configuration is source-version-qualified, not valid
+threshold/period/coverage, recipients/delivery or spend enforcement; separate
+budgets are not combined. Scoped custom Policy joins are not sovereign baseline
+identity or effective enforcement. Archived release history/current redirects,
+wildcard/preview initiative members, optional/asymmetric/cross-geography pairing,
+storage constraints and service processing/feature exceptions stay explicit.
+Encryption settings do not locate data or prove in-use execution. Objectives,
+personnel/vendor constraints and confidential-computing requirements stay manual.
+All eight decisions and exceptions start independently blank, attributable,
+selected/content/scope/time/expiry-bound. No financial/contact/tag/rule/personnel/
+confidential/private payload, new collector/query/interpreter/fetch, live action,
+legal decision or owner/runtime assurance is introduced. Signals and humanConfirmed
+never manufacture Verified.
+
+Accepted successor/predecessor replay, actual adapters, review/interview/session
+atomicity, tiers, outputs/trackers and CLI use one evaluator. Own exact installed
+wheel/full suite/static checks, all26 exercised compiler cases, exact-head eight
+push/PR jobs, CodeQL/security/review and four downloaded matching compiler proofs
+precede fresh live head/base/main/feedback checks and normal SHA-bound merge.
+Guarded actual own receipt plus checked publication/final-main CI gate satisfied
+163 closure and the final251 own bindings/zero pending/30 receipts reconciliation,
+never251 automated predicates or actual compliance. No successor exists after28.
+
+Exact frozen `.27` catalog bytes SHA256:
+`fe8f6094f54d12cafa39fd51eaefed8a9c37f36c9cabff834ba5d085eb5ef446`;
+crosswalk:
+`7584f548975accaff49d42cdaa2014d2828760b405383f284509fe6bfc45a0a7`.
+The own accepted implementation wheel SHA256 is
+`c92956e6e88fd20a4105697727454b2b3937eddcebcc6f202d258d72c9cad879`.
+All180 package members match checkout, wheel and the dedicated outside-checkout
+site-packages installation importing `.28`. All205 protected historical data/batch
+files and the original prepared matrix/41 captures remain byte-identical.
+Both delivered03/21 helper Git blobs remain unchanged. After the new clean import
+reported missing `lark`, only the same three locally retained exact manifest-hash-
+verified runtime wheels were restored; no dependency or compiler acquisition.
+All53 source files pass static typing; formatting/lint, dependency consistency and
+604 local documentation links pass. All26 existing-compiler cases exercised
+without skips or restore; own proof SHA256
+`55858723bcf022fc24bc66f08d6924df77a54700f331ec533aac44a802644219`.
+
+The first918-test installed-wheel run exposed one historical negative-fixture
+assumption: the old builder test selected an actual `pending` row, but activation
+of the final cohort correctly leaves none in that status (last8 are in progress).
+Its stale-reference tests now author the same invalid pending/in-progress states
+on the exact E02.01 GUID, clearing fixture receipt fields first. This also works
+after final receipt publication; actual builder byte-reproduction, all real ledger
+counts/bindings and rejection conditions are unchanged. The corrected exact
+targeted test passes against the unchanged wheel. The failed full run is retained
+as invalidated history, not acceptance evidence.
+
+The corrected final installed-wheel full suite completed918 tests:917 passed,
+with only the original Windows symlink-privilege skip. All33 own preparation/
+accepted cases pass, including registered independent decisions, actual21
+storage context, original-time successor/predecessor replay, atomic failure/resume,
+all outputs/CLI and the real existing-fixture compiler wiring. These fresh
+post-slot proofs, not either preparation wheel, supply the later guarded recorder.
+
 ## Cohort 28 merged-budget preparation: 2026-11-07
 
 The coordinator's bounded preparation-only unblock verifies actual

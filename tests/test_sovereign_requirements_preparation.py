@@ -78,7 +78,7 @@ class SovereignRequirementsPreparationTests(unittest.TestCase):
             (ROOT / "references/recommendation-batches/preparation-28.json").read_text("utf-8")
         )
         self.catalog = copy.deepcopy(
-            load_catalog(str(files("alz_assessor").joinpath("data", "catalog.json")))
+            load_catalog(str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.27.json")))
         )
         self.catalog["review_state"] = "authored-in-memory-preparation-not-accepted"
         rows = {row["guid"]: row for row in self.matrix["recommendations"]}
@@ -263,7 +263,12 @@ class SovereignRequirementsPreparationTests(unittest.TestCase):
         self.assertNotIn("catalog_version", self.matrix)
         self.assertEqual({r["upstream_id"]: r["guid"] for r in self.matrix["recommendations"]}, IDS)
         self.assertEqual(self.matrix["review_state"], "source-reviewed-preparation-not-accepted")
-        self.assertNotIn(self.matrix["interview"]["id"], interviews.BANK)
+        accepted = json.loads(
+            (ROOT / "references/recommendation-batches/batch-28.json").read_text("utf-8")
+        )
+        question = accepted["interview"]
+        self.assertEqual({"id": question["id"], **interviews.BANK[question["id"]]}, question)
+        self.assertNotEqual(question["question"], self.matrix["interview"]["question"])
         manifest = json.loads(
             (ROOT / "references/recommendation-batches/preparation-28-sources.json").read_text(
                 "utf-8"
@@ -1112,6 +1117,7 @@ class SovereignRequirementsPreparationTests(unittest.TestCase):
 
     @unittest.skipUnless(os.environ.get("BICEP_COMPILER"), "No existing Bicep compiler supplied")
     def test_real_bicep_existing_budget_fixture_feeds_candidate_without_restore(self):
+        self.catalog = load_catalog()
         bundle = arm_source(
             ROOT / "tests/fixtures/billing/main.bicep",
             scope=RG,

@@ -567,8 +567,15 @@ class FirewallBatchTests(unittest.TestCase):
             entry = (
                 next(row for row in changed["recommendations"] if row["status"] == status)
                 if status == "merged"
-                else next(row for row in changed["recommendations"] if row["status"] == "pending")
+                else next(
+                    row
+                    for row in changed["recommendations"]
+                    if row["guid"] == "29fd366b-a180-452b-9bd7-954b7700c667"
+                )
             )
+            if status != "merged":
+                # Author the invalid undelivered fixture even after the final receipt.
+                entry.update(pr=None, merge_commit=None, runtime_evidence=[])
             entry.update(status=status, **changes)
             self.write("reviews/ledger.json", changed)
             with (
