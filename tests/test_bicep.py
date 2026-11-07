@@ -123,6 +123,59 @@ class BicepTests(unittest.TestCase):
                     "/resourcegroups/rg-offline-binding/", bundle["resources"][0]["arm_id"]
                 )
 
+    def test_actual_compiler_copies_lambdas_local_outputs_and_declared_defaults(self):
+        compiler = os.environ.get("BICEP_COMPILER") or shutil.which("bicep")
+        if not compiler:
+            self.skipTest("Set BICEP_COMPILER to an existing standalone compiler for integration")
+        with tempfile.TemporaryDirectory() as directory:
+            parameters = Path(directory) / "parameters.json"
+            for enabled, expected in ((True, 3), (False, 1)):
+                parameters.write_text(
+                    json.dumps(
+                        {
+                            "parameters": {
+                                "hubs": {
+                                    "value": [
+                                        {
+                                            "name": "west",
+                                            "prefix": "10.40.0.0/22",
+                                            "enabled": enabled,
+                                        },
+                                        {
+                                            "name": "north",
+                                            "prefix": "10.41.0.0/22",
+                                            "enabled": True,
+                                        },
+                                    ]
+                                }
+                            }
+                        }
+                    ),
+                    encoding="utf-8",
+                )
+                bundle = arm_source(
+                    FIXTURE / "compatibility-main.bicep",
+                    scope="/subscriptions/00000000-0000-0000-0000-000000000001",
+                    parameters=parameters,
+                    compiler=compiler,
+                    bicep=True,
+                )
+                self.assertEqual(len(bundle["resources"]), expected)
+                identities = {row["arm_id"] for row in bundle["resources"]}
+                self.assertTrue(
+                    any(identity.endswith("/virtualnetworks/north") for identity in identities)
+                )
+                self.assertEqual(
+                    any(
+                        identity.endswith("/virtualnetworks/west-consumer")
+                        for identity in identities
+                    ),
+                    enabled,
+                )
+                for row in bundle["resources"]:
+                    self.assertEqual(row["state"], "known")
+                    self.assertIsInstance(row["properties"]["virtualNetworkPrefixes"], list)
+
 
 if __name__ == "__main__":
     unittest.main()

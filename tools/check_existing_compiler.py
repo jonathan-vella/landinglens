@@ -76,6 +76,8 @@ if compiler:
         "test_real_bicep_existing_budget_fixture_feeds_candidate_without_restore",
         "test_bicep.BicepTests."
         "test_actual_installed_compiler_parameter_wrappers_and_existing_references",
+        "test_bicep.BicepTests."
+        "test_actual_compiler_copies_lambdas_local_outputs_and_declared_defaults",
     ]
     suite = unittest.defaultTestLoader.loadTestsFromNames(cases)
     result = unittest.TextTestRunner(verbosity=2).run(suite)

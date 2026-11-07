@@ -182,10 +182,31 @@ def projected_properties(
             value = values.get(key)
             return ("Enabled" if value else "Disabled") if type(value) is bool else None
 
+        sku = values.get("sku") if terraform else property_at(values, "sku.name")
+        if (
+            not terraform
+            and isinstance(root, dict)
+            and root.get("apiVersion") == "2025-07-01"
+            and (
+                not isinstance(sku, str)
+                or sku
+                not in {
+                    "CapacityReservation",
+                    "Free",
+                    "LACluster",
+                    "PerGB2018",
+                    "PerNode",
+                    "Premium",
+                    "Standalone",
+                    "Standard",
+                }
+            )
+        ):
+            sku = unknown("workspace_sku_outside_reviewed_api_subset")
         return {
             "logWorkspaceSummary": workspace_facts(
                 {
-                    "sku": values.get("sku") if terraform else property_at(values, "sku.name"),
+                    "sku": sku,
                     "retentionInDays": values.get(
                         "retention_in_days" if terraform else "retentionInDays"
                     ),

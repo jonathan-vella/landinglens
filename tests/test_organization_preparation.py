@@ -612,6 +612,12 @@ class OrganizationPreparationTests(unittest.TestCase):
         self.assertIn("unknown", configuration_context(bundle))
         template = self.arm_template()
         template["resources"][-1]["name"] = "[format('{0}/{1}', 'authored', 'default')]"
+        bundle = arm_source(self.write("pure-formatted-expression.json", template), scope=MG)
+        self.assertIsNotNone(bundle["resources"][-1]["arm_id"])
+        self.assertNotIn(PRIVATE, json.dumps(bundle))
+        template["resources"][-1]["name"] = (
+            "[format('{0}/{1}', reference('external').name, 'default')]"
+        )
         bundle = arm_source(self.write("unsupported-expression.json", template), scope=MG)
         self.assertIsNone(bundle["resources"][-1]["arm_id"])
         self.assertIn("unknown", configuration_context(bundle))

@@ -1,0 +1,105 @@
+{
+  "kind": "offline-accelerator-compatibility-provenance",
+  "reviewed_date": "2026-11-07",
+  "baseline_provenance": "accelerator-validation.json",
+  "accelerator_revision": "88dcafa6afcd57e1b3ccd772a81c88bd29ae2ac2",
+  "source_and_compiled_template_bytes_unchanged": true,
+  "fictional_parameters": true,
+  "azure_login_deployment_or_live_collection": false,
+  "api_support_scope": "Planned ARM/Bicep only; observed collector API allowlists/routes unchanged",
+  "api_reviews": [
+    {
+      "resource_type": "Microsoft.OperationalInsights/workspaces",
+      "api_version": "2025-07-01",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.operationalinsights/2025-07-01/workspaces",
+      "git_commit": "a80a6ca0ce31aae2ff0424e8453153664e18bc8b",
+      "html_sha256": "ca422e9942cd6783c2b51de692473f5250a092ecc6f6fa05b650e3eea82b9bbd",
+      "projected_fields": ["sku.name", "retentionInDays", "publicNetworkAccessForIngestion", "publicNetworkAccessForQuery"],
+      "limitations": "Existing 30-730 retention subset retained; no SKU eligibility or cost assurance. SecuredByPerimeter remains unknown under existing two-state network projection. API-specific reviewed SKU subset enforced."
+    },
+    {
+      "resource_type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+      "api_version": "2024-01-01",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-01-01/virtualnetworks/virtualnetworkpeerings",
+      "git_commit": "34186641da814105fd2729b572f9fe866f2cc961",
+      "html_sha256": "645b25a664c13b94da34d22d0bbcc63425c575e82d7645e5230fc1e56c313cfb",
+      "projected_fields": ["remoteVirtualNetwork.id", "allowForwardedTraffic", "allowGatewayTransit", "allowVirtualNetworkAccess", "useRemoteGateways"],
+      "limitations": "Declared relationships/flags only, not Connected state or traffic/transit assurance."
+    },
+    {
+      "resource_type": "Microsoft.Network/azureFirewalls",
+      "api_version": "2024-10-01",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-10-01/azurefirewalls",
+      "git_commit": "34186641da814105fd2729b572f9fe866f2cc961",
+      "html_sha256": "aabfc1829b788a119d2bafb5a7966bef8d7347b407b7e3b7917514eeb900e1bd",
+      "projected_fields": ["firewallPolicy.id", "sku", "threatIntelMode", "ipConfigurations"],
+      "limitations": "Existing minimized projections only; runtime-assigned private/public IPs are not inferred."
+    },
+    {
+      "resource_type": "Microsoft.Network/firewallPolicies",
+      "api_version": "2024-10-01",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-10-01/firewallpolicies",
+      "git_commit": "34186641da814105fd2729b572f9fe866f2cc961",
+      "html_sha256": "49d6d069ab5f4dba8a3a70a3d49cb9a4fde17a7e84a172f50ef56410d1602577",
+      "projected_fields": ["dnsSettings.enableProxy", "dnsSettings.servers", "sku.tier", "threatIntelMode", "intrusionDetection.mode", "basePolicy.id"],
+      "limitations": "Unset/null DNS settings remain unknown; no default proxy state, IDPS efficacy or rule assurance is invented."
+    },
+    {
+      "resource_type": "Microsoft.Network/routeTables",
+      "api_version": "2024-07-01",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-07-01/routetables",
+      "git_commit": "34186641da814105fd2729b572f9fe866f2cc961",
+      "html_sha256": "388adad8dd12c8c149c6393eee333936214980bc38b5fe491876b593cd0bc544",
+      "projected_fields": ["routes", "disableBgpRoutePropagation"],
+      "limitations": "Existing minimized route-prefix/next-hop projections only, not effective routes or reachability."
+    },
+    {
+      "resource_type": "Microsoft.SecurityInsights/onboardingStates",
+      "api_version": "2025-09-01",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.securityinsights/2025-09-01/onboardingstates",
+      "git_commit": "a80a6ca0ce31aae2ff0424e8453153664e18bc8b",
+      "html_sha256": "266eae00613ef05b9c3f2881ef0339bea92157579709e6d20e2f6f10fafd19f2",
+      "projected_fields": ["customerManagedKey"],
+      "limitations": "Explicit default-named workspace-scoped declaration only, not ingestion/correlation/incident handling."
+    }
+  ],
+  "semantics_reviews": [
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/parameters#nullable-constraint",
+      "git_commit": "492355adb960206d6f1c7981129afbbb36d88c62",
+      "reviewed": "Nullable values may be null or omitted; implicit nullable defaults are null."
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-functions-array#empty",
+      "git_commit": "44e14d85342861986148c5ba3860b44573e222eb",
+      "reviewed": "Empty accepts null; contains object keys is case-insensitive; string/array comparisons remain case-sensitive."
+    },
+    {
+      "url": "https://github.com/Azure/bicep/blob/70057e84fdf7f5ce14967ebbe65e208dc81be4b0/src/Bicep.Core.IntegrationTests/ParameterFileTests.cs",
+      "reviewed": "Microsoft optional-parameter nulling tests inspected; no compiler installation or upgrade."
+    }
+  ],
+  "independent_null_default_probe": {
+    "compiler": "Existing Bicep CLI 0.47.16",
+    "command": "bicep test LOCAL_TEST --no-restore",
+    "scope": "Authored pure local assertions with session-only experimental test configuration and empty cloud credential precedence",
+    "positive": "Explicit null uses declared nonnullable default; nullable value remains null",
+    "negative": "Explicit nondefault string fails defaultUsed assertion",
+    "positive_exit": 0,
+    "negative_exit": 1,
+    "azure_operations": false
+  },
+  "measured_results": {
+    "logging": {"resources": 8, "known_records": 8, "unknown_records": 0, "assessment_rows": 255, "automated_unknown_rows": 12},
+    "hub": {"resources": 20, "known_records": 20, "unknown_records": 0, "vnets": 2, "subnets": 4, "reciprocal_peerings": 2, "assessment_rows": 263, "automated_rows": {"pass": 2, "fail": 2, "not_applicable": 2, "unknown": 14}},
+    "controlled_cases": ["logging", "logging-retention90", "hub", "hub-denied-peerings", "hub-changed-prefix", "hub-no-peerings", "hub-no-firewalls"],
+    "html_xlsx_and_semantically_identical_replay": true,
+    "all_255_recommendations_retained": true
+  },
+  "limitations": [
+    "Known resource records can contain unknown properties; selected inputs are not full accelerator coverage.",
+    "Equal projected redeclarations are normalized with both addresses retained in diagnostics; conflicts become unknown.",
+    "Runtime references, runtime-assigned values, pickZones, linked templates, output copies and unsupported forms/APIs remain unknown.",
+    "No deployed state, estate completeness, operational behavior or compliance assurance is established."
+  ]
+}

@@ -85,8 +85,9 @@ explain the required flags; use your actual authorised scope.
 
 Without a deployed ALZ, use the
 [offline accelerator validation workflow](docs/accelerator-validation.md).
-Both reviewed Microsoft templates compile locally, but interpretation is partial;
-the documented unknowns must not be mistaken for a successful ALZ assessment.
+The reviewed logging and hub templates yield scoped inventory and controlled
+configuration outcomes locally. Unsupported/runtime facts remain unknown; this
+is not a deployed ALZ or compliance assessment.
 
 ## Triage and record decisions
 
