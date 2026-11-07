@@ -32,6 +32,9 @@ TF_TYPES = {
     ),
     "azurerm_management_lock": "Microsoft.Authorization/locks",
     "azurerm_arc_machine": "Microsoft.HybridCompute/machines",
+    "azurerm_monitor_activity_log_alert": "Microsoft.Insights/activityLogAlerts",
+    "azurerm_monitor_action_group": "Microsoft.Insights/actionGroups",
+    "azurerm_monitor_metric_alert": "Microsoft.Insights/metricAlerts",
     "azurerm_storage_account": "Microsoft.Storage/storageAccounts",
     "azurerm_firewall_policy": "Microsoft.Network/firewallPolicies",
     "azurerm_resource_group": "Microsoft.Resources/resourceGroups",
@@ -160,6 +163,7 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     from .logging_evidence import projected_properties as logging_properties
     from .network_policy_evidence import projected_properties as network_policy_properties
     from .operations_evidence import projected_properties as operations_properties
+    from .platform_health_evidence import projected_properties as platform_health_properties
     from .policy_strategy_evidence import projected_properties as policy_strategy_properties
     from .security_evidence import projected_properties as security_properties
     from .tenant_evidence import projected_properties as tenant_properties
@@ -179,6 +183,7 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     )
     result.update(governance_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(logging_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
+    result.update(platform_health_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(network_policy_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(identity_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(policy_strategy_properties(TF_TYPES.get(kind, kind), properties, terraform=True))

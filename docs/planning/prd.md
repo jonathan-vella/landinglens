@@ -14,6 +14,71 @@ ingestion, sovereignty, legal WORM sufficiency, completed audit/patch/traffic
 operation, criticality or effective protection/access. See the
 [preparation boundaries](plan.md#cohort-24-independent-preparation-2026-11-07).
 
+## Cohort 09 accepted boundary
+
+The explicit sole coordinator slot after actual10 implementation146/receipt147
+and25 implementation149/receipt150, completed issues and checked final main
+`e5506c3d4061845b4250a68046ba281156de676d` activates the
+[seven-GUID matrix](../../references/recommendation-batches/batch-09.json) in
+builder-derived catalog/crosswalk `.22`. Exact `.21`, all196 prior own rows/
+23 receipts, every non-own complete control and the original four remain frozen.
+Five assisted and two manual source-specific workflows share the existing engine,
+strict scoped typed positive joins, privacy-safe projections, registered bank,
+sessions, tiers, outputs and original-time replay. No whole-guidance predicate,
+collector, availability fetch or personal/legal decision is added. All seven
+decisions and exceptions stay independently blank and bound. Actual implementation
+review/checks/normal merge, guarded own-GUID checked receipt publication and
+final-main CI still gate #145 completion.
+
+Implementation [#152](https://github.com/jonathan-vella/landinglens/pull/152)
+passed all exact-head eight-job/CodeQL/security/review and four twenty-case
+downloaded compiler gates and merged normally. Guarded `deliveries.09` binds all
+seven GUIDs to the actual head/merge/runs/747-test own implementation wheel.
+Checked reconciliation records203 delivered/48 pending/24 receipts, preserving
+all196 earlier rows/23 receipts. Checked receipt publication and actual final-main
+CI still gate #145 closure, not issue status or source activation.
+
+## Cohort 09 independent preparation
+
+[#145](https://github.com/jonathan-vella/landinglens/issues/145) prepares seven
+source-specific organization/region/classification workflows outside accepted
+activation, after actual `.19`/177 delivered and before its serialized slot
+following10/25. Existing typed scoped parentage, VM location labels and safe tag
+counts remain partial Signals, never organizational purpose/root designation,
+physical/legal independence, regional suitability, availability/capacity,
+classification or enforcement. C03.01/C04.02 stay manual. Seven independent blank
+decisions and exceptions retain scope/content/time/expiry binding and attribution.
+Current SLZ four-zone and regional-guidance qualifications do not rewrite immutable
+wording. See the [preparation boundaries](plan.md#cohort-09-independent-preparation-2026-11-06).
+No accepted successor/bank/catalog/crosswalk/count/history, PR/merge/receipt or
+closure occurs before the explicit slot and actual final gates.
+## Cohort 25 accepted boundary
+
+The explicit sole slot after actual06/10 implementation, checked receipt and
+final-main delivery activates [nine workflows](../../references/recommendation-batches/batch-25.json)
+in builder-derived catalog/crosswalk `2026-11-06.21`. Original255/fixed251,
+four complete original automated controls, every non-own object, all187 prior
+own-GUID rows/22 receipts and exact `.20` bytes remain preserved.
+
+Eight assisted decisions distinguish Service Health/Resource Health,
+configured actions versus actual notification/response, raw-log export
+boundaries, Logs reporting usage, conditional retired WAD/LAD storage and
+supported migration, operational alert types, AMBA origin/version/remediation,
+and qualified storage redundancy. F01.16 business requirements remain manual.
+No live collector route, query, contact test, deployment, second Policy
+interpreter or runtime assurance is added. All nine independently blank
+decisions use existing evaluator, tiers, reports/trackers, CLI/local session and
+original-time private replay. Counts remain12/200/43; guarded implementation
+merge/receipt publication/final-main checks, not activation, gate delivery and
+satisfied #142 closure.
+
+Implementation #149 merged normally after exact checked-head eight jobs,
+CodeQL/security/review and four downloaded matching19-case compiler proofs.
+The guarded `deliveries.25` receipt binds each actual GUID to that head/merge/
+runs and own721-test wheel, deriving196 delivered/55 pending and23 receipts.
+All187 earlier rows/22 receipts remain unchanged. Checked publication and actual
+final-main CI still gate satisfied closure, not classification or merge alone.
+
 ## Cohort 10 accepted boundary
 
 After actual29/06 implementation/receipt delivery and the explicit sole-slot

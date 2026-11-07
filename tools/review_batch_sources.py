@@ -3819,6 +3819,194 @@ SOURCES_27 = [
 ]
 
 
+SOURCES_25 = [
+    (
+        "service-health-linked",
+        "https://learn.microsoft.com/azure/service-health/"
+        "alerts-activity-log-service-notifications-portal",
+        ["Resource Health", "Global", "public clouds"],
+        "Service Health and Resource Health events are distinct. Current guidance limits "
+        "Service Health alerts to public clouds/global and requires Global action groups. "
+        "Subscription/tenant preview and event filters need separate coverage review.",
+    ),
+    (
+        "action-groups-linked",
+        "https://learn.microsoft.com/azure/azure-monitor/alerts/action-groups",
+        ["five action groups", "Global", "one-time passcode"],
+        "Enabled receiver configuration is not verified recipients, delivery or response. "
+        "Global and regional processing differ; current email OTP enforcement requires "
+        "operating evidence. No recipients, endpoints, secrets or contact tests are retained.",
+    ),
+    (
+        "sentinel-linked",
+        "https://learn.microsoft.com/azure/sentinel/quickstart-onboard",
+        ["paid service", "data connector", "Log Analytics"],
+        "This linked Sentinel onboarding page does not itself specify the checklist's "
+        "no-raw-log-export principle. Onboarding/workspace configuration cannot establish "
+        "all export paths or an on-premises boundary; require independent architecture review.",
+    ),
+    (
+        "logs-reporting-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/"
+        "azure-setup-guide/monitoring-reporting?tabs=AzureMonitor",
+        ["Visualization", "workbooks", "Logs"],
+        "CAF describes collection, insights, visualization and response. Workspace existence "
+        "does not establish ingestion, useful reports, use of Logs or report quality.",
+    ),
+    (
+        "diagnostics-extension-linked",
+        "https://learn.microsoft.com/azure/azure-monitor/agents/diagnostics-extension-overview",
+        ["March 31, 2026", "no longer supported", "Don't use new deployments"],
+        "WAD/LAD retired March 31, 2026; the current page explicitly forbids new deployments. "
+        "Preserve immutable conditional wording but review legacy applicability, migration, "
+        "shared-storage boundaries and alternatives, not an invented supported extension.",
+    ),
+    (
+        "diagnostics-migration",
+        LEARN + "azure/azure-monitor/agents/azure-monitor-agent-migration-wad-lad",
+        ["Data Collection Rules", "Auxiliary", "September 1, 2026"],
+        "AMA/DCR and destination-specific replacements require parity and cutover evidence. "
+        "The ADX/Fabric preview destination also retired September 1, 2026. Do not copy "
+        "stale deployment steps or infer migration from agent/storage presence.",
+    ),
+    (
+        "operational-alerts-linked",
+        "https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview",
+        ["Metric alerts", "Log search alerts", "Activity log alerts"],
+        "Metric, scheduled log-query and activity alerts are distinct configuration types. "
+        "Configured enabled criteria/actions do not prove actual firing, notification, "
+        "acknowledgement, escalation or an approved operational response requirement.",
+    ),
+    (
+        "monitoring-requirements-linked",
+        "https://learn.microsoft.com/azure/architecture/best-practices/monitoring",
+        ["Health monitoring", "Availability monitoring", "Performance monitoring"],
+        "Requirements depend on business health, availability, performance, security and "
+        "operating scenarios. No generic rule count, frequency or fabricated SLA answers "
+        "the independently manual requirements assessment.",
+    ),
+    (
+        "amba-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/"
+        "landing-zone/design-area/management-monitor",
+        ["DeployIfNotExists", "Remediate", "service health alerts"],
+        "CAF separates AMBA policy/initiative import, assignment, brownfield remediation "
+        "and tests. Service Health needs direct action groups, not processing rules. "
+        "Saved Policy references cannot prove AMBA origin/version or complete deployment.",
+    ),
+    (
+        "redundancy-linked",
+        "https://learn.microsoft.com/en-gb/azure/storage/common/redundancy-migration?tabs=portal",
+        ["two-step", "data synchronization", "no SLA"],
+        "Replication changes have account/service restrictions, conversion and synchronization "
+        "requirements; configuration does not prove conversion completion or ready failover. "
+        "No migration, support request, paid change or data-plane access is performed.",
+    ),
+    (
+        "storage-redundancy",
+        LEARN + "azure/storage/common/storage-redundancy",
+        ["asynchronously", "ZRS", "data-modifying operations"],
+        "ZRS protects primary zones; GRS protects a secondary region asynchronously, and "
+        "GZRS combines them. Read-access is distinct. LRS is not zone/geo redundancy. "
+        "SKU is not actual availability, RPO/RTO, backup, failover readiness or residency.",
+    ),
+    (
+        "resource-health",
+        LEARN + "azure/service-health/resource-health-alert-monitor-guide",
+        ["distinct", "Unknown", "Platform initiated"],
+        "Resource Health is individual-resource status/transition/reason monitoring; "
+        "Service Health is broader service incidents. Do not substitute either population "
+        "or a configured status filter for actual health or all-resource event coverage.",
+    ),
+    *[
+        (
+            identity,
+            SPEC_RAW + "specification/monitor/resource-manager/Microsoft.Insights/Insights/" + path,
+            markers,
+            finding,
+        )
+        for identity, path, markers, finding in [
+            (
+                "activity-alert-spec",
+                "stable/2020-10-01/activityLogAlerts_API.json",
+                ["allOf", "containsAny", "actionGroupId", "scopes"],
+                "Pinned 2020-10-01 defines allOf/anyOf/leaf criteria and explicit enabled, "
+                "scope and action references. Only literal single category equality is "
+                "classified; other condition payloads are withheld and remain incomplete.",
+            ),
+            (
+                "action-group-spec",
+                "stable/2023-01-01/actionGroups_API.json",
+                ["emailReceivers", "enabled", "location"],
+                "Pinned 2023-01-01 exposes receiver arrays, explicit enabled and location. "
+                "Retain bounded per-type counts only, never receiver identities or secrets. "
+                "Absent arrays/flags/location are unknown, not empty/enabled/global defaults.",
+            ),
+        ]
+    ],
+    *[
+        (
+            "terraform-" + name,
+            RAW + f"website/docs/r/{name}.html.markdown",
+            markers,
+            finding,
+        )
+        for name, markers, finding in [
+            (
+                "monitor_activity_log_alert",
+                ["ServiceHealth", "resource_health", "2020-10-01"],
+                "4.50.0 explicit category, scopes, enabled and action references normalize "
+                "without defaults. Only category equality is interpreted; filter block "
+                "presence/count is not semantic matching or actual health assurance.",
+            ),
+            (
+                "monitor_action_group",
+                ["email_receiver", "location", "2023-01-01"],
+                "4.50.0 receiver blocks normalize to bounded counts; enabled and location "
+                "must be explicit. Default true/global is never evidence. No contacts retained.",
+            ),
+            (
+                "monitor_metric_alert",
+                ["dynamic_criteria", "criteria", "2018-03-01"],
+                "4.50.0 static metric criteria counts are configuration context only; "
+                "dynamic/web-test/multi-resource forms remain unsupported. No metric name, "
+                "dimension, threshold payload or notification content is retained.",
+            ),
+            (
+                "storage_account",
+                ["account_tier", "account_replication_type", "RAGZRS"],
+                "4.50.0 explicit tier plus replication type forms an exact reviewed SKU, "
+                "never substring matching or a default. Unsupported Premium geo forms "
+                "and omitted values remain unknown; kind is separately explicit context.",
+            ),
+        ]
+    ],
+    (
+        "storage-arm",
+        LEARN + "azure/templates/microsoft.storage/2023-05-01/storageaccounts",
+        ["Standard_RAGZRS", "Premium_ZRS", "kind"],
+        "Pinned 2023-05-01 root SKU and kind are separate from storage properties. "
+        "Accept only its eight exact SKUs for configuration classification, not a "
+        "guarantee that a kind/region/service combination is supported or operating.",
+    ),
+    *[
+        source
+        for source in SOURCES_23
+        if source[0]
+        in {
+            "workspace-arm",
+            "log-alert-arm",
+            "metric-alert-arm",
+            "terraform-workspace",
+            "learn-reuse",
+            "provider-license",
+        }
+    ],
+    *[source for source in SOURCES_14 if source[0] == "rest-spec-reuse"],
+    *[source for source in SOURCES_27 if source[0].startswith("policy-spec-")],
+]
+
+
 SOURCES_10 = [
     (
         "application-delivery",
@@ -4273,6 +4461,7 @@ def main() -> None:
             "27",
             "23",
             "24",
+            "25",
             "29",
             "30",
         ],
@@ -4282,10 +4471,10 @@ def main() -> None:
     if args.vwan_supplement and (args.batch != "16" or not args.preparation_only):
         raise ValueError("The vWAN supplement is cohort16 preparation only")
     if (
-        args.batch in {"02", "05", "06", "10", "12", "16", "20", "23", "24", "27", "29", "30"}
+        args.batch in {"02", "05", "06", "10", "12", "16", "20", "23", "24", "25", "27", "29", "30"}
     ) != args.preparation_only:
         raise ValueError(
-            "Cohorts 02/05/06/10/12/16/20/23/24/27/29/30 source capture require "
+            "Cohorts 02/05/06/10/12/16/20/23/24/25/27/29/30 source capture require "
             "--preparation-only; no activation"
         )
     prefix = "preparation" if args.preparation_only else "batch"
@@ -4324,6 +4513,7 @@ def main() -> None:
         "27": SOURCES_27,
         "23": SOURCES_23,
         "24": SOURCES_24,
+        "25": SOURCES_25,
         "29": SOURCES_29,
         "30": SOURCES_30,
     }[args.batch]

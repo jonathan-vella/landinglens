@@ -6,8 +6,84 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.20"
+BANK_VERSION = "2026-11-06.22"
 BANK = {
+    "sovereign-organization-regions-classification": {
+        "question": "Decide all seven GUIDs independently with attributable redacted evidence "
+        "and explicit scope/content/time/expiry binding. For C02.15 designate the authoritative "
+        "landing-zones parent and both confidential organizational roles and substantiate each "
+        "direct placement; names and positive parentage do not designate purposes. For C03.01 "
+        "bind approved residency, latency, cost, reliability and dependency requirements to "
+        "chosen regions and separately authorized access/quota/capacity references, not private "
+        "workload/employee/location inventories or legal eligibility judgments. For C03.02 "
+        "justify regional organization and actual independent failure domains, replication, "
+        "recovery dependencies and tested failover/capacity; distinct labels and region pairs "
+        "prove none, and current guidance does not mandate pairing or historical distance. "
+        "For C03.03 reconcile every required service/SKU/feature/version/dependency in each "
+        "primary/recovery region with dated evidence and independently review actual "
+        "entitlement/access/quota/capacity; the public product page is informational and subject "
+        "to change. For C04.01 explicitly reconcile immutable Public wording with the pinned "
+        "four-zone Corp/Online and confidential architecture, approved customization, connectivity "
+        "and confidential-computing policy controls; no Public-named MG is assumed. For C04.02 "
+        "cite the organization's approved taxonomy, scope across processing/flows/backup/cache/"
+        "preproduction, handling rules, unclassified/ambiguous decisions and ongoing maintenance; "
+        "example labels are not a universal taxonomy and no actual private data is classified. "
+        "For C04.03 substantiate approved non-sensitive sovereign metadata and actual consistent "
+        "usage plus separate policy controls/enforcement; tags are plain text, not inherited or "
+        "supported on MGs, and counts prove no classification/sovereignty. Preserve independent "
+        "applicability, outcomes and exceptions; C03.01/C04.02 stay manual. No shared answer, "
+        "name, Signals or humanConfirmed manufactures Verified.",
+        "controls": [
+            "ALZ-6cc0ea22-42bb-441e-a345-804ab0a09666",
+            "ALZ-250d81ce-8bbe-4f85-9051-6a18a8221e50",
+            "ALZ-19ca3f89-397d-44b1-b5b6-5e18661372ac",
+            "ALZ-4c27d42e-8bba-4c75-9155-9ab9153e8908",
+            "ALZ-914b8cb7-c2f6-40fa-ae18-81c049e0cb5a",
+            "ALZ-51a1e9e9-a49a-40b2-87b9-ff753bc6de86",
+            "ALZ-a89153d8-18b2-4caf-bc19-850fc8fba00f",
+        ],
+    },
+    "platform-health-alerts-log-boundaries-redundancy": {
+        "question": "Decide each of the nine monitoring recommendations independently "
+        "from attributable "
+        "redacted evidence. Reconcile separate Service Health service/region/event populations "
+        "and Resource Health resource/status/transition/reason populations, including clouds, "
+        "tenant preview versus subscription scope, original-time events and accountable response. "
+        "Verify directly attached, enabled Global action groups for applicable Service Health "
+        "alerts; receiver counts and configuration do not verify contacts, current email OTP, "
+        "delivery, acknowledgement or escalation. Review every Azure-born raw-log export route "
+        "and on-premises boundary, allowing critical-alert integration only as the immutable "
+        "guidance describes; Sentinel onboarding and workspace location cannot prove no export. "
+        "Demonstrate actual Azure Monitor Logs ingestion and useful insight/report usage, "
+        "independently of metrics or workspace existence. F01.14 is conditional legacy wording: "
+        "WAD/LAD retired March 31, 2026; record applicability, existing shared-storage "
+        "boundaries, AMA/DCR destination-specific migration, parity and cutover without "
+        "recommending new legacy deployments or treating boot diagnostics as the extension. "
+        "Review operational metric, activity and log-query rule criteria, data arrival, enabled "
+        "configuration, actions and actual end-to-end response separately. Supply the approved "
+        "business monitoring requirements, owners, measurable "
+        "health/availability/performance/security/retention/residency objectives and justified "
+        "exceptions; never invent an SLA or threshold. For AMBA, bind the actual reviewed "
+        "origin/version to complete intended platform populations, "
+        "initiatives/assignments/parameters/exclusions, brownfield remediation and tests; generic "
+        "Policy references prove none. For storage, assess exact SKU plus kind/service/region "
+        "support, zone versus asynchronous geo protection, read access, "
+        "conversions/synchronization, RPO/RTO, failover and residency with accountable "
+        "requirements and exceptions. No probes, queries, deployments, contact tests, log/query "
+        "contents, recipient addresses, phones, webhook URLs, keys, billing or personal identity "
+        "payloads. Signals and human confirmations never manufacture Verified.",
+        "controls": [
+            "ALZ-e5695f22-23ac-4e8c-a123-08ca5017f154",
+            "ALZ-d5f345bf-97ab-41a7-819c-6104baa7d48c",
+            "ALZ-e3ab3693-829e-47e3-8618-3687a0477a20",
+            "ALZ-6944008b-e7d7-4e48-9327-6d8bdc055bcf",
+            "ALZ-619e8a13-f988-4795-85d6-26886d70ba6c",
+            "ALZ-97be9951-9048-4384-9c98-6cb2913156a1",
+            "ALZ-859c3900-4514-41eb-b010-475d695abd74",
+            "ALZ-aa45be6a-8f2d-4896-b0e3-775e6e94e610",
+            "ALZ-0d83fd81-952c-4d47-a6cb-3a930925ef2e",
+        ],
+    },
     "hub-spoke-route-server-monitoring": {
         "question": "Provide ten independently attributable original-time decisions and "
         "exceptions, "

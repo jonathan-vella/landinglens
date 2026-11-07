@@ -41,6 +41,30 @@ redaction and bounded expansion without adding a test dependency.
 
 ## Assessment workflows
 
+Cohort25's [accepted matrix](../references/recommendation-batches/batch-25.json)
+and [captured source findings](../references/recommendation-batches/batch-25-sources.json)
+define nine separate F01.10-F01.18 reviews and a registered blank interview in
+catalog `2026-11-06.21`, following the explicit slot after checked06/10 delivery.
+Original [preparation](../references/recommendation-batches/preparation-25.json)
+is retained separately; source acceptance alone is not delivery. The
+offline adapters prepare activity-alert category/scope/action metadata, action-group
+enabled/global-processing/channel counts, static single-resource metric-alert
+metadata and exact storage redundancy SKUs. Existing workspace/log-alert and
+Policy configuration helpers are reused. Unknown flags, missing receiver arrays,
+unsupported versions/forms and ambiguous/out-of-scope relationships stay explicit;
+recipient identities, contacts, webhook URLs, query/log contents and secrets are
+not retained.
+
+Configuration never proves event emission, delivery/response, Logs ingestion or
+report quality, absence of raw-log export, AMBA origin/version/remediation or
+complete monitoring coverage. Exact redundancy SKU classification does not prove
+kind/service/region support, actual availability, completed conversion, failover
+or residency. F01.16 requirements remain manual. Current Microsoft guidance says
+WAD/LAD retired March 31, 2026: F01.14 preserves its immutable conditional wording
+but requires applicability and supported migration review, not new legacy
+deployments. No live collection, alert/contact tests, query, deployment, compiler
+acquisition or module restore is added.
+
 For Terraform, prefer a separately prepared plan JSON with
 `--input terraform-plan --provider-version 4.50.0 --scope ARM_SCOPE`.
 LandingLens only reads the supplied JSON; it never runs Terraform to produce it.
@@ -240,6 +264,18 @@ The report uses system fonts, light/dark theme variables and a no-network CSP.
 Guidance links require HTTPS and only navigate when explicitly selected.
 
 ### Identity, manual evidence and optional plans
+
+Use `--question sovereign-organization-regions-classification` for cohort09's
+seven distinct decisions. Explicitly designate organizational MG roles/root and
+reconcile immutable Public wording with current SLZ's four-zone architecture.
+Substantiate regional requirements, justified organization, actual required
+service/feature availability and separate entitlement/quota/capacity references;
+location strings, region pairs and public tables prove none. Separately reference
+the approved classification taxonomy and non-sensitive sovereign tag usage.
+No actual private data classification, legal/eligibility decision, sensitive tag
+value, private workload/employee/location payload or new live availability/account
+read is performed. Every outcome stays blank until explicit bound confirmation;
+Signals and exceptions never manufacture Verified.
 
 Use `--question central-logging-support-service-enablement` for cohort23's
 seven distinct decisions. Review actual central logging/ingestion and SIEM

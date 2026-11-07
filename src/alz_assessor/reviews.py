@@ -59,6 +59,9 @@ def prepared_resource(
     from .operations_evidence import configuration_context as operations_context
     from .operations_evidence import resource_paths as operations_paths
     from .operations_evidence import unique_known as operations_unique
+    from .platform_health_evidence import GUIDS as PLATFORM_HEALTH_GUIDS
+    from .platform_health_evidence import linked_context as platform_context
+    from .platform_health_evidence import resource_paths as platform_paths
     from .topology_evidence import GUIDS as TOPOLOGY_GUIDS
     from .topology_evidence import configuration_context as topology_context
     from .topology_evidence import resource_paths as topology_paths
@@ -92,6 +95,10 @@ def prepared_resource(
             resource["resource_type"]
         ):
             facts[path] = {"unknown": "fact_not_applicable_to_resource_type"}
+        elif control["upstream_guid"] in PLATFORM_HEALTH_GUIDS and path not in platform_paths(
+            resource["resource_type"]
+        ):
+            facts[path] = {"unknown": "fact_not_applicable_to_resource_type"}
         elif path in REVIEW_PATHS:
             facts[path] = review_fact(resource["properties"], path)
         elif path == "enableRbacAuthorization":
@@ -112,6 +119,15 @@ def prepared_resource(
     }
     if control["upstream_guid"] in LOGGING_GUIDS:
         prepared["logging_context"] = linked_context(resource, by_id, scope)
+    if control["upstream_guid"] in PLATFORM_HEALTH_GUIDS and control["upstream_guid"] != (
+        "aa45be6a-8f2d-4896-b0e3-775e6e94e610"
+    ):
+        prepared["platform_health_context"] = platform_context(resource, by_id, scope)
+        if resource["resource_type"].lower() in {
+            "microsoft.operationalinsights/workspaces",
+            "microsoft.insights/scheduledqueryrules",
+        }:
+            prepared["logging_context"] = linked_context(resource, by_id, scope)
     if bundle is not None and control["upstream_guid"] in TOPOLOGY_GUIDS:
         prepared["topology_configuration"] = topology_context(resource, bundle, by_id)
     if bundle is not None and control["upstream_guid"] in OPERATIONS_GUIDS:
@@ -120,7 +136,9 @@ def prepared_resource(
         from .policy_strategy_evidence import GUIDS as POLICY_STRATEGY_GUIDS
         from .policy_strategy_evidence import configuration_context
 
-        if control["upstream_guid"] in POLICY_STRATEGY_GUIDS and control.get("review_fact_paths"):
+        if control["upstream_guid"] in POLICY_STRATEGY_GUIDS | {
+            "aa45be6a-8f2d-4896-b0e3-775e6e94e610"
+        } and control.get("review_fact_paths"):
             prepared["policy_configuration"] = configuration_context(resource, bundle, by_id)
         from .network_policy_evidence import (
             FIREWALL,
@@ -438,14 +456,20 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     from .logging_evidence import scoped_identity
     from .network_policy_evidence import GUIDS as NETWORK_POLICY_GUIDS
     from .operations_evidence import GUIDS as OPERATIONS_GUIDS
+    from .platform_health_evidence import GUIDS as PLATFORM_HEALTH_GUIDS
     from .policy_strategy_evidence import GUIDS as POLICY_STRATEGY_GUIDS
+    from .sovereign_evidence import GUIDS as SOVEREIGN_GUIDS
+    from .sovereign_evidence import configuration_context as sovereign_context
     from .tenant_evidence import GUIDS as TENANT_GUIDS
     from .topology_evidence import GUIDS as TOPOLOGY_GUIDS
 
     unbound = 0
-    policy_prepared = control["upstream_guid"] in POLICY_STRATEGY_GUIDS and bool(
+    sovereign_prepared = control["upstream_guid"] in SOVEREIGN_GUIDS and bool(
         control.get("review_fact_paths")
     )
+    policy_prepared = control["upstream_guid"] in POLICY_STRATEGY_GUIDS | {
+        "aa45be6a-8f2d-4896-b0e3-775e6e94e610"
+    } and bool(control.get("review_fact_paths"))
     scoped_guids = (
         GOVERNANCE_GUIDS
         | RESILIENCE_GUIDS
@@ -456,8 +480,10 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
         | OPERATIONS_GUIDS
     )
     if policy_prepared:
-        scoped_guids |= POLICY_STRATEGY_GUIDS
-    if control["upstream_guid"] in LOGGING_GUIDS:
+        scoped_guids |= POLICY_STRATEGY_GUIDS | {"aa45be6a-8f2d-4896-b0e3-775e6e94e610"}
+    if sovereign_prepared:
+        scoped_guids |= SOVEREIGN_GUIDS
+    if control["upstream_guid"] in LOGGING_GUIDS | PLATFORM_HEALTH_GUIDS and not policy_prepared:
         scoped = [
             resource for resource in matches if scoped_identity(resource, bundle.get("scope"))
         ]
@@ -486,12 +512,18 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
             "complete relationships. No whole-recommendation outcome or current freshness inferred."
         ),
     }
-    if control["upstream_guid"] in scoped_guids | LOGGING_GUIDS:
+    if control["upstream_guid"] in scoped_guids | LOGGING_GUIDS | PLATFORM_HEALTH_GUIDS:
         context["unbound_resources"] = unbound
     if control["upstream_guid"] in HYBRID_GUIDS:
         for prepared, resource in zip(context["resources"], matches[:100], strict=True):
             configuration = hybrid_context(resource, by_id, bundle)
             prepared["hybrid_configuration"] = configuration
+            prepared["facts"] = configuration.get("facts", configuration)
+            prepared["subchecks"] = {}
+    if sovereign_prepared:
+        for prepared, resource in zip(context["resources"], matches[:100], strict=True):
+            configuration = sovereign_context(resource, by_id, bundle, control["review_fact_paths"])
+            prepared["sovereign_configuration"] = configuration
             prepared["facts"] = configuration.get("facts", configuration)
             prepared["subchecks"] = {}
     if policy_prepared and available:
@@ -504,7 +536,9 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
         for prepared, resource in zip(context["resources"], matches[:100], strict=True):
             prepared["tenant_configuration"] = resource_context(resource, by_id, bundle)
     if (
-        policy_prepared or control["upstream_guid"] == "3a923c34-74d0-4001-aac6-a9e01e6a83de"
+        policy_prepared
+        or (sovereign_prepared and "managementParentId" in control["review_fact_paths"])
+        or control["upstream_guid"] == "3a923c34-74d0-4001-aac6-a9e01e6a83de"
     ) and available:
         from .governance_evidence import hierarchy_context
 
