@@ -282,11 +282,7 @@ def projected_properties(
         configuration = operations_properties(kind, values, terraform=terraform)
         return {
             "guestAssignmentSummary": guest_facts(
-                {
-                    "assignmentType": configuration["operationsGuestAssignment"].get(
-                        "assignmentType"
-                    )
-                }
+                {"assignmentType": configuration["operationsGuestAssignment"].get("assignmentType")}
             )
         }
     if kind == EXTENSION:

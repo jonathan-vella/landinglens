@@ -8,8 +8,10 @@ are in the [plan](planning/plan.md).
 
 ## Evidence and outcomes
 
-Cohort26 independently prepares [eight reviews](../references/recommendation-batches/preparation-26.json)
-without accepted catalog/interview activation or delivery. Service-qualified vault
+Cohort26 activates [eight independent reviews](../references/recommendation-batches/batch-26.json)
+in `.24` after the explicit checked09/24 slot, preserving exact `.23`, prior
+controls/receipts and all21 predecessor compiler cases. Activation is not delivery;
+the implementation/receipt/final-main gates remain separate. Service-qualified vault
 settings are not suitable backup choices, retention, recovery success or achieved
 RPO/RTO. Guest assignments/extensions and Policy references do not establish
 compliant settings or actual drift monitoring. SQL Database groups do not prove

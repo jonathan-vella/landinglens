@@ -1,6 +1,25 @@
 # LandingLens product requirements
 
-## Cohort 26 independent preparation boundary
+## Cohort 26 accepted boundary
+
+After checked09/24 delivery and the explicit sole slot, cohort26/#151 activates
+[eight assisted workflows](../../references/recommendation-batches/batch-26.json)
+in builder-derived catalog/crosswalk `2026-11-06.24`. Exact `.23`, all255/fixed251,
+four complete original automated controls, every non-own object, all212 earlier
+rows/25 receipts and every binding remain unchanged.24 guest identity/scope and
+projection helpers are reused; all21 predecessor compiler cases remain.
+
+Eight independently blank source-specific decisions distinguish configured
+recovery/redundancy, guest assignment/extension/drift context, narrow SQL Database
+failover and WAF category/destination/onboarding facts from actual recovery,
+compliance, telemetry and operating assurance. Source-qualified defaults/current
+guest lifecycle/legacy Backup Center and conflicting Front Door category wording
+remain explicit. No live collection, query, guest command, restore/failover,
+second Policy interpreter or built-in acquisition is added. Dispositions remain
+12/200/43; guarded implementation/receipt/final-main gates, not activation, change
+212 delivered/39 undelivered and permit satisfied #151 closure.
+
+## Historical cohort 26 independent preparation boundary
 
 Cohort26/#151 prepares [eight source-specific assisted workflows](../../references/recommendation-batches/preparation-26.json),
 not accepted activation or delivery. Cohorts09/24 retain their preceding slots.

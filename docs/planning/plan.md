@@ -1,6 +1,41 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
-## Cohort 26 independent preparation: 2026-11-07
+## Cohort 26 accepted integration: 2026-11-07
+
+The explicit sole coordinator slot follows actual09 implementation152/receipt153
+and24 implementation155/receipt156, completed issues and checked final main
+`e2b71b212b47b1d240368e9da13ab51bd66797ee`. Preparation `b39b67a` is preserved;
+reconciliation `88a20fc` retains09 hierarchy/VM metadata and24 table/export/
+immutability/guest/Arc/lock behavior. Guest extension scope and Terraform identity
+reuse24's implementation, and guest-mode projection delegates to its helper.
+All21 actual predecessor compiler cases precede the recovery configuration case.
+
+Existing builders derive unique catalog/crosswalk `2026-11-06.24` from exact
+frozen `.23` bytes, [45 unchanged captures](../../references/recommendation-batches/batch-26-sources.json)
+and the [eight-GUID accepted matrix](../../references/recommendation-batches/batch-26.json).
+Original255/fixed251, four complete original automated controls, every non-own
+control, all212 prior own-GUID rows/25 receipts and every historical binding remain
+unchanged. Dispositions remain12 automated/200 assisted/43 manual. Before guarded
+delivery,212 are delivered and39 undelivered; activation is not a receipt.
+
+Eight registered independent decisions share existing evaluator, review/tier,
+report/tracker, CLI/local-session and original-time private replay mechanisms.
+Recovery Services versus Data Protection/workload defaults, Files snapshot versus
+vaulted backup, current Machine Configuration lifecycle and legacy Backup Center
+are source-qualified. The Front Door service monitoring/Sentinel category-name
+discrepancy is retained. Configured recovery/guest/SQL/WAF facts establish neither
+protected fleet, successful recovery/achieved RPO/RTO, compliant guests/operating
+drift monitoring, universal PaaS DR nor WAF/Sentinel ingestion/review/detection.
+Human coverage/requirements/retention/testing/operation decisions remain blank and
+exceptable; Signals and human confirmations never manufacture Verified.
+
+Fresh own installed-wheel/static/accepted-replay checks, exact-head eight
+platform jobs, CodeQL/security/review and four downloaded exercised compiler proofs
+gate the normal SHA-bound implementation merge. Guarded actual own-GUID recording,
+checked receipt publication and actual final-main CI gate satisfied #151 closure.
+Preparation proofs below cannot substitute for these delivery gates.
+
+## Historical cohort 26 independent preparation: 2026-11-07
 
 [#151](https://github.com/jonathan-vella/landinglens/issues/151) owns exactly the
 eight F02.01-.02/F03.01-.02/F04.01-.02/F06.01-.02 GUIDs in the
