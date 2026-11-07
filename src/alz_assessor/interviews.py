@@ -6,8 +6,151 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.23"
+BANK_VERSION = "2026-11-06.25"
 BANK = {
+    "naming-hierarchy-scoped-authorization": {
+        "question": "Decide all eight GUIDs independently "
+        "using attributable redacted evidence, "
+        "explicit selected "
+        "scope/content/time/expiry binding and "
+        "separate exceptions. C01.01: cite the "
+        "approved organization-specific naming "
+        "standard, covered resource "
+        "types/scopes, component order and "
+        "immutable versus mutable metadata, "
+        "actual adoption, ownership and "
+        "exceptions; Azure "
+        "syntax/examples/counts are not "
+        "approval and no resource names or "
+        "private tag values are retained. "
+        "C02.01: declare the authoritative "
+        "tenant root and ALZ intermediate root, "
+        "exact level-counting convention, "
+        "complete dated hierarchy and justified "
+        "flatness/exceptions; immutable "
+        "four-level wording must be reconciled "
+        "with current CAF ideally three-to-four "
+        "guidance, separately from the "
+        "six-level service limit excluding "
+        "tenant root/subscriptions. Supplied "
+        "relative MG edges exclude the selected "
+        "anchor and subscriptions and do not "
+        "determine estate depth. C02.02: "
+        "explicitly designate the sandbox and "
+        "evidence experimentation, isolation "
+        "from development/test/production, "
+        "guardrails, access, cost/lifecycle and "
+        "actual operating ownership; a label or "
+        "group is insufficient. C02.03: "
+        "designate the platform and intended "
+        "tenant/intermediate parent, "
+        "substantiate direct placement and "
+        "common platform Policy/RBAC and "
+        "accountable ownership; do not infer "
+        "purpose/root from names or parentage. "
+        "C02.04: designate the dedicated "
+        "connectivity subscription and intended "
+        "Connectivity MG, substantiate actual "
+        "membership, required central "
+        "networking/DNS/ER or justified "
+        "alternatives and scale/regional "
+        "exceptions; subscription or networking "
+        "presence does not prove dedicated use. "
+        "C02.05: separately establish "
+        "authoritative tenant root, complete "
+        "existing subscription placement and "
+        "approved exceptions, and the explicit "
+        "default group for future "
+        "subscriptions; defaultManagementGroup "
+        "does not relocate existing "
+        "subscriptions or prove absence at "
+        "root. C02.06: reconcile the explicit "
+        "requireAuthorizationForGroupCreation "
+        "setting attached to independently "
+        "designated tenant root with separately "
+        "evidenced effective least-privileged "
+        "create/move/delete/settings/access "
+        "operations, inheritance, PIM and "
+        "emergency exceptions; the creation "
+        "toggle and settings-read/write role do "
+        "not prove all privileged operations. "
+        "C02.07: bind each designated "
+        "landing-zones child group to approved "
+        "security/compliance/connectivity/feature "
+        "requirements, actual placement and "
+        "effective Policy/ownership; do not "
+        "copy organizational charts or infer "
+        "business purpose from graph shape. "
+        "Missing/partial/ambiguous/stale/denied/unsupported/over-bound "
+        "inputs remain unknown. No tenant "
+        "reads, changes, queries or fabricated "
+        "owner confirmation. Signals and "
+        "humanConfirmed never manufacture "
+        "Verified.",
+        "controls": [
+            "ALZ-cacf55bc-e4e4-46be-96bc-57a5f23a269a",
+            "ALZ-2df27ee4-12e7-4f98-9f63-04722dd69c5b",
+            "ALZ-667313b4-f566-44b5-b984-a859c773e7d2",
+            "ALZ-61623a76-5a91-47e1-b348-ef254c27d42e",
+            "ALZ-8bbac757-1559-4ab9-853e-8908ae28c84c",
+            "ALZ-33b6b780-8b9f-4e5c-9104-9d403a923c34",
+            "ALZ-74d00018-ac6a-49e0-8e6a-83de5de32c19",
+            "ALZ-92481607-d5d1-4e4e-9146-58d3558fd772",
+        ],
+    },
+    "recovery-guest-drift-waf-telemetry": {
+        "question": (
+            "Decide all eight recommendations independently using attributable redacted evidence, "
+            "never one shared outcome. For Azure VM DR, reconcile complete eligible VM/application/"
+            "dependency populations, Azure-to-Azure Site Recovery and native backup configuration "
+            "with separately approved RPO/RTO, recovery points, retention, network/failback and "
+            "actual drill/restore evidence. For redundancy, preserve the immutable GRS-default "
+            "wording but qualify Recovery Services versus Data Protection Backup vaults, datastore/"
+            "workload/region support and Azure Files snapshot versus vaulted backup; generic "
+            "account SKU and omitted settings prove no default or suitable backup choice. For "
+            "guest deployment, distinguish legacy Guest Configuration wording from current Machine "
+            "Configuration, direct versus Policy-created assignments, Audit/apply/autocorrect "
+            "modes, exact guest extension publisher/type/instance names, identity/network/content "
+            "prerequisites and current OS/architecture/VMSS/Arc support, including November 2026 "
+            "Linux PowerShell changes; assignments do not prove execution or compliance. For "
+            "security drift monitoring, separately substantiate expected baselines, Policy "
+            "definitions/versions/assignments/parameters/exclusions, timely compliance "
+            "observations, "
+            "responsible review and operating response. No built-in fetch or second rule "
+            "interpreter. For PaaS DR, assess every actual service/SKU/region and "
+            "component/workload "
+            "failover/failback plan with original-time drills; a SQL Database failover group is "
+            "narrow configuration, not universal support, successful failover or achieved RPO/RTO. "
+            "For native/third-party backup, substantiate compatible workload/version coverage, "
+            "retention/restore/security and ownership; legacy Backup Center now points to "
+            "Resiliency/Business Continuity Center, whose presence is not protection. For WAF "
+            "diagnostics, bind the actual delivery resource/service to explicit enabled firewall-"
+            "log categories and destinations, then independently substantiate ingestion, "
+            "retention, "
+            "regular attack and false-positive review/tuning. Standard/Premium Front Door uses "
+            "FrontDoorWebApplicationFirewallLog; classic capitalization differs and is unsupported "
+            "by this preparatory target model. The Sentinel walkthrough's FrontDoorFirewallLog "
+            "names conflict with the service-specific monitoring page: do not equate them. For "
+            "WAF-to-Sentinel, separately prove connector/content configuration, arriving WAF data, "
+            "analytics/detection coverage and accountable response; shared workspace/onboarding "
+            "and categories do not prove integration. All requirements, coverage, testing, "
+            "operating decisions and exceptions remain blank until explicitly supplied. No live "
+            "probes, commands, backup/restore/failover, guest or compliance execution, "
+            "WAF attacks, "
+            "queries, traffic or telemetry retrieval; no logs, guest/package/report payloads, "
+            "scripts, settings, secrets, private endpoints or personal data retained."
+        ),
+        "controls": [
+            "ALZ-7ea02e1c-7166-45a3-bdf5-098891367fcb",
+            "ALZ-eba8cf22-45c6-4dc1-9b57-2cceb3b97ce5",
+            "ALZ-f541acdc-e979-4377-acdb-3751ab2ab13a",
+            "ALZ-da6e55d7-d8a2-4adb-817d-6326af625ca4",
+            "ALZ-b2ab13ad-a6e5-45d7-b8a2-adb117d6326a",
+            "ALZ-f625ca44-e569-45f2-823a-ce8cb12308ca",
+            "ALZ-89cc5e11-aa4d-4c3b-893d-feb99215266a",
+            "ALZ-7f408960-c626-44cb-a018-347c8d790cdf",
+        ],
+    },
     "log-retention-machine-resource-guardrails": {
         "question": (
             "Provide nine independently attributable original-time decisions and exceptions, "

@@ -16,6 +16,91 @@ See the [preparation boundary](plan.md#cohort-03-independent-preparation-2026-11
 Cohorts26/07 and the explicit coordinator slot precede accepted registration,
 then-current reconciliation and actual implementation/receipt/final-main gates.
 
+## Cohort 07 accepted boundary
+
+The explicit sole slot after actual24/26 checked implementation, receipts and
+final main activates [eight source-specific naming/hierarchy workflows](../../references/recommendation-batches/batch-07.json)
+in builder-derived `.25`. Exact `.24`, every non-own control, original four
+complete objects, all220 prior own rows/26 receipts and fixed251 remain frozen.
+All eight decisions and exceptions remain independently blank and bound.
+Names/valid syntax/partial ancestry cannot establish purpose, authoritative root,
+complete estate depth, approved naming or actual adoption. Default placement
+does not prove existing root-subscription absence; creation authorization is not
+all effective operations. No new live collector/query, Policy interpreter/fetch,
+private payload retention, tenant/permission/settings change or operating assurance
+is added. Exact implementation and checked receipt/final-main gates, not source
+activation or issue status, determine delivery.
+
+Implementation [#161](https://github.com/jonathan-vella/landinglens/pull/161)
+merged normally after exact checked-head eight-job/CodeQL/security/review and
+four downloaded23-case compiler gates. Guarded `deliveries.07` binds all eight
+GUIDs to that actual head/merge/runs and own834-test wheel, deriving228 delivered/
+23 pending/27 receipts while preserving all220 earlier rows/26 receipts.
+Checked receipt publication and actual final-main CI determine satisfied closure,
+not source activation, local preparation or issue status.
+
+## Cohort 07 preparation boundary
+
+[#154](https://github.com/jonathan-vella/landinglens/issues/154) prepares
+[eight fixed source-specific workflows](../../references/preparation/batch-07.json)
+outside accepted activation, serialized after actual24/26 and an explicit slot.
+Typed explicit keys, supplied positive parentage and pinned settings provide only
+partial original-time configuration. Relative subtree depth is not full-estate
+depth; ideal flatness and service limits differ. Default placement is not absence
+of existing root subscriptions; creation authorization is not all effective access.
+Naming standard/adoption, sandbox purpose, platform/connectivity/workload roles,
+root designation and effective authority require eight independently blank,
+attributable scoped/content/time/expiry-bound decisions and separate exceptions.
+No live collector/API, tenant read, query, deployment, settings/permissions change,
+private name/tag/principal payload or new whole-guidance predicate is authorized.
+## Cohort 26 accepted boundary
+
+After checked09/24 delivery and the explicit sole slot, cohort26/#151 activates
+[eight assisted workflows](../../references/recommendation-batches/batch-26.json)
+in builder-derived catalog/crosswalk `2026-11-06.24`. Exact `.23`, all255/fixed251,
+four complete original automated controls, every non-own object, all212 earlier
+rows/25 receipts and every binding remain unchanged.24 guest identity/scope and
+projection helpers are reused; all21 predecessor compiler cases remain.
+
+Eight independently blank source-specific decisions distinguish configured
+recovery/redundancy, guest assignment/extension/drift context, narrow SQL Database
+failover and WAF category/destination/onboarding facts from actual recovery,
+compliance, telemetry and operating assurance. Source-qualified defaults/current
+guest lifecycle/legacy Backup Center and conflicting Front Door category wording
+remain explicit. No live collection, query, guest command, restore/failover,
+second Policy interpreter or built-in acquisition is added. Dispositions remain
+12/200/43; guarded implementation/receipt/final-main gates, not activation, change
+212 delivered/39 undelivered and permit satisfied #151 closure.
+
+Implementation #158 merged normally after final exact-head eight-job/CodeQL/
+security/review and four downloaded matching22-case compiler gates. Guarded
+`deliveries.26` binds all eight GUIDs to that actual head/merge/runs/806-test own
+wheel, deriving220 delivered/31 undelivered and26 receipts. All212 earlier
+rows/25 receipts remain unchanged; checked receipt publication and final-main CI
+still gate satisfied #151 closure, not classification or merge alone.
+
+## Historical cohort 26 independent preparation boundary
+
+Cohort26/#151 prepares [eight source-specific assisted workflows](../../references/recommendation-batches/preparation-26.json),
+not accepted activation or delivery. Cohorts09/24 retain their preceding slots.
+Explicit service-qualified Recovery Services/Data Protection settings, A2A/VM
+backup references, guest assignment/extension modes, SQL Database failover
+configuration and WAF category/destination links share existing adapters,
+evaluator, reviews, tiers, reports/trackers, CLI/session and original-time replay.
+All eight decisions stay independently blank and exceptable.
+
+Recovery Services' documented GRS default is not universal across Backup vaults
+or workloads; generic account redundancy and omitted settings prove no backup
+choice. Guest Configuration redirects to Machine Configuration, with current
+November2026 Linux PowerShell support qualifications. Backup Center is legacy.
+The Sentinel walkthrough's Front Door category names differ from the
+service-specific monitoring reference; no silent category equivalence is added.
+Configuration proves neither recovery success/RPO/RTO, guest compliance/drift
+operation, universal PaaS DR nor WAF/Sentinel ingestion/review/detection.
+No live routes, queries, guest commands, deployment or operating tests are added.
+Accepted source/matrix/bank/catalog/crosswalk/history/counts and receipts remain
+unchanged until an explicit serialized slot and its actual delivery gates.
+
 ## Cohort 24 accepted boundary
 
 After actual25/09 checked implementation/receipt delivery and the explicit sole

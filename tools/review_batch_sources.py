@@ -4197,6 +4197,93 @@ SOURCES_10 = [
 ]
 
 
+SOURCES_07 = [
+    (
+        "naming-standard",
+        LEARN + "azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming",
+        ["tailored naming convention", "personal, sensitive, or confidential", "permanence"],
+        "Naming must satisfy organization-specific requirements and per-type scope, character "
+        "and length rules. Examples are not an approved enterprise standard; names are often "
+        "immutable and must not contain confidential information. No raw names are retained.",
+    ),
+    (
+        "management-design",
+        LEARN + "azure/cloud-adoption-framework/ready/landing-zone/design-area/"
+        "resource-org-management-groups",
+        ["three to four", "Intermediate root", "sandbox", "connectivity subscription"],
+        "CAF ideally recommends three to four levels, while separately documenting the six-level "
+        "service bound excluding tenant root/subscriptions. The ALZ intermediate root is below "
+        "tenant root. Sandbox purpose, platform placement, workload requirements and dedicated "
+        "connectivity need explicit organizational designation; no naming/count predicate. "
+        "Dedicated regional connectivity subscriptions can be justified by scale.",
+    ),
+    (
+        "management-overview",
+        LEARN + "azure/governance/management-groups/overview",
+        ["six levels", "only one parent", "root level or the subscription level", "10,000"],
+        "Single-parent hierarchy supports six MG levels below tenant root, "
+        "excluding subscriptions. "
+        "This is a service maximum, not CAF's ideal or a universal four-level counting convention. "
+        "Partial positive parentage and selected scope cannot designate tenant root, establish "
+        "complete estate depth, subscription absence, policy results or effective permissions.",
+    ),
+    (
+        "hierarchy-protection",
+        LEARN + "azure/governance/management-groups/how-to/protect-resource-hierarchy",
+        [
+            "defaultManagementGroup",
+            "requireAuthorizationForGroupCreation",
+            "Hierarchy Settings Administrator",
+        ],
+        "defaultManagementGroup governs new subscription placement, not existing membership or "
+        "absence of root subscriptions. requireAuthorizationForGroupCreation requires root write "
+        "permission for creation, not all effective privileged operations. Settings read/write "
+        "permissions themselves grant no other hierarchy/resource access.",
+    ),
+    (
+        "hierarchy-settings-arm",
+        LEARN + "azure/templates/microsoft.management/2020-05-01/managementgroups/settings",
+        ["Tenant", "'default'", "requireAuthorizationForGroupCreation", "defaultManagementGroup"],
+        "Pinned tenant resource managementGroups/settings/default exposes independent explicit "
+        "default MG reference and creation-authorization boolean. Supplied settings attach to "
+        "a unique known selected anchor; that does not designate it as authoritative tenant root. "
+        "No implicit defaults or ARM permission operations are executed.",
+    ),
+    (
+        "management-arm",
+        LEARN + "azure/templates/microsoft.management/2020-05-01/managementgroups",
+        ["Tenant", "parent", "displayName"],
+        "Pinned tenant MG resource has explicit resource key and details.parent.id. Resource "
+        "keys are identities, never business-purpose or root designations. Display names, "
+        "tenant/principal payloads and private metadata are not projected.",
+    ),
+    (
+        "terraform-management",
+        RAW + "website/docs/r/management_group.html.markdown",
+        ["parent_management_group_id", "subscription_ids", "2020-05-01"],
+        "Pinned AzureRM4.50 MG supplies explicit name key and optional parent ID. Omitted name "
+        "is generated and cannot bind an identity. Optional subscription_ids and the separate "
+        "association resource conflict if both managed; neither omission nor empty selected "
+        "input proves complete actual root subscription absence. No settings resource is assumed.",
+    ),
+    (
+        "terraform-management-association",
+        RAW + "website/docs/r/management_group_subscription_association.html.markdown",
+        ["management_group_id", "subscription_id", "2020-05-01"],
+        "Separate AzureRM association binds a specific subscription to an MG, not a subscription "
+        "purpose. It is not a new subscription object or settings resource; "
+        "unsupported association "
+        "inputs remain unknown rather than inventing complete inventory or deployment authority.",
+    ),
+    *[
+        source
+        for source in SOURCES_27
+        if source[0] in {"policy-scope", "policy-assignment-structure", "management-hierarchy"}
+    ],
+    *[source for source in SOURCES_15 if source[0] in {"provider-reuse", "learn-reuse"}],
+]
+
+
 SOURCES_24 = [
     (
         "workspace-design-linked",
@@ -4548,6 +4635,332 @@ SOURCES_03 = [
 ]
 
 
+SOURCES_26 = [
+    (
+        "bcdr-linked",
+        LEARN.removesuffix("en-us/") + "azure/cloud-adoption-framework/ready/landing-zone/"
+        "design-area/management-business-continuity-disaster-recovery#design-recommendations",
+        ["Site Recovery", "RPO", "PaaS"],
+        "CAF separates Azure-to-Azure VM replication, native backup and service-specific PaaS DR. "
+        "Configuration cannot establish complete protection, achieved recovery objectives "
+        "or drills.",
+    ),
+    (
+        "redundancy-linked",
+        LEARN.removesuffix("en-us/") + "azure/storage/common/storage-redundancy",
+        ["LRS", "ZRS", "GRS"],
+        "Storage redundancy describes account replication, not a universal Azure Backup default "
+        "or correct backup choice. Preserve immutable GRS wording with vault/workload "
+        "qualifications.",
+    ),
+    (
+        "recovery-vault-settings",
+        LEARN + "azure/backup/backup-create-rs-vault",
+        ["default", "geo-redundant", "snapshot", "vaulted"],
+        "Redirects to backup-create-recovery-services-vault. Recovery Services documents default "
+        "GRS and explicit LRS/ZRS choices before protection. Vault settings do not govern Azure "
+        "Files snapshot backups, only vaulted backup; CRR has workload/region constraints and "
+        "configuration does not prove a successful secondary restore or an achieved RPO.",
+    ),
+    (
+        "backup-vault-settings",
+        LEARN + "azure/backup/backup-vault-overview",
+        ["storage redundancy", "business needs", "PostgreSQL"],
+        "Data Protection Backup vaults require service-specific datastore/redundancy review; this "
+        "page does not establish a universal GRS default. CRR support is workload-specific. "
+        "No omitted setting is converted into observed configuration.",
+    ),
+    (
+        "guest-linked",
+        LEARN.removesuffix("en-us/") + "azure/governance/policy/concepts/guest-configuration",
+        ["November 2026", "Arc", "50 guest assignments"],
+        "Legacy Guest Configuration URL redirects to Machine Configuration. Assignments are "
+        "distinct from Policy definitions; Audit, ApplyAndMonitor and ApplyAndAutoCorrect differ. "
+        "November 2026 Linux PowerShell compatibility changes, OS/architecture and Arc/VMSS "
+        "support require review; configured extension/assignment is not execution or compliance.",
+    ),
+    (
+        "guest-assignments",
+        LEARN + "azure/governance/machine-configuration/concepts/assignments",
+        ["complianceStatus", "Null", "manually"],
+        "Guest assignments can be created manually or by Policy. A temporary null assignment "
+        "type is documented; neither assignment presence nor apply mode proves compliant settings "
+        "or current drift monitoring. Package contents, URIs and reports are withheld.",
+    ),
+    (
+        "guest-extension",
+        LEARN + "azure/virtual-machines/extensions/guest-configuration",
+        ["Microsoft.GuestConfiguration", "ConfigurationForLinux", "ConfigurationforWindows"],
+        "Reviewed exact publisher/type pairs and AzurePolicyforLinux/Windows instance names. "
+        "System identity, supported OS, network/content access and actual installation/reporting "
+        "remain independent requirements. Never deploy or execute an extension.",
+    ),
+    (
+        "drift-linked",
+        LEARN.removesuffix("en-us/") + "azure/cloud-adoption-framework/ready/landing-zone/"
+        "design-area/management-operational-compliance#monitoring-for-configuration-drift",
+        ["configuration drift", "Machine Configuration", "Azure Policy"],
+        "CAF recommends in-machine drift auditing through Policy and Machine Configuration. "
+        "Reuse supplied Policy configuration/compliance Signals without interpreting rules or "
+        "fetching built-ins; assignment references do not prove actual monitoring or remediation.",
+    ),
+    (
+        "paas-linked",
+        LEARN.removesuffix("en-us/")
+        + "azure/architecture/framework/resiliency/backup-and-recovery",
+        ["disaster recovery", "retention", "Regularly test restores"],
+        "Legacy resiliency URL redirects to Well-Architected disaster recovery. No single tool "
+        "covers every service; approve per-component RPO/RTO, retention, dependencies, failback "
+        "and attributable drill results. A SQL failover group is not universal PaaS DR.",
+    ),
+    (
+        "sql-recovery",
+        LEARN + "azure/azure-sql/database/failover-group-sql-db",
+        ["asynchronous", "customer managed", "test"],
+        "SQL Database failover groups use asynchronous geo-replication; forced failover can lose "
+        "data. Current customer-managed versus Microsoft-managed terminology differs from the "
+        "pinned API Manual/Automatic enum. Configured policy is neither a drill nor achieved RPO.",
+    ),
+    (
+        "backup-center-linked",
+        LEARN.removesuffix("en-us/") + "azure/backup/backup-center-overview",
+        ["legacy", "Resiliency", "no longer available"],
+        "Backup Center is a legacy experience, no longer in portal search; current guidance "
+        "points to Resiliency/Business Continuity Center. Console capability is not protected "
+        "fleet coverage, third-party compatibility or successful backup/restore.",
+    ),
+    (
+        "waf-diagnostics-linked",
+        LEARN.removesuffix("en-us/") + "azure/web-application-firewall/afds/"
+        "waf-front-door-best-practices#add-diagnostic-settings-to-save-your-wafs-logs",
+        ["diagnostic settings", "false-positive", "Front Door Premium"],
+        "Premium-qualified best practices separate configured log routing, regular attack review "
+        "and false-positive tuning. No categories or WAF resource can prove actual log review.",
+    ),
+    (
+        "waf-sentinel-linked",
+        LEARN.removesuffix("en-us/") + "azure/web-application-firewall/afds/"
+        "waf-front-door-best-practices#send-logs-to-microsoft-sentinel",
+        ["Sentinel", "Azure WAF connector"],
+        "WAF telemetry integration requires ingestion and analysis, not a shared workspace or "
+        "Sentinel onboarding reference. No connectors, analytics, incidents or playbooks executed.",
+    ),
+    (
+        "frontdoor-logs",
+        LEARN + "azure/web-application-firewall/afds/waf-front-door-monitor",
+        [
+            "FrontDoorWebApplicationFirewallLog",
+            "FrontdoorWebApplicationFirewallLog",
+            "Logs aren",
+            "enabled by default",
+        ],
+        "Authoritative service page distinguishes Standard/Premium "
+        "FrontDoorWebApplicationFirewallLog from classic FrontdoorWebApplicationFirewallLog. "
+        "Metrics/activity logs are not WAF logs; logging is not enabled by default. "
+        "Only exact supplied categories are prepared; no payloads are retained.",
+    ),
+    (
+        "appgateway-logs",
+        LEARN + "azure/web-application-firewall/ag/web-application-firewall-logs",
+        ["ApplicationGatewayFirewallLog", "detection", "prevention"],
+        "ApplicationGatewayFirewallLog is distinct from access/performance/activity logs. "
+        "Diagnostic destinations can be workspace, storage or Event Hubs; configured flags "
+        "do not establish ingestion, attacks, false positives, retention or review.",
+    ),
+    (
+        "waf-sentinel",
+        LEARN + "azure/web-application-firewall/waf-sentinel",
+        ["FrontDoorFirewallLog", "Content hub", "ingested WAF logs"],
+        "Walkthrough currently says FrontDoorFirewallLog/FrontdoorFirewallLog, unlike the "
+        "service-specific monitoring page's WebApplicationFirewallLog categories. Do not silently "
+        "equate them. Actual connector/content/ingestion/analytics evidence remains a blank "
+        "human decision, separate from category/destination/onboarding configuration.",
+    ),
+    *[
+        (identity, LEARN + "azure/templates/" + path, markers, finding)
+        for identity, path, markers, finding in [
+            (
+                "recovery-storage-arm",
+                "microsoft.recoveryservices/2023-02-01/vaults/backupstorageconfig",
+                ["storageModelType", "crossRegionRestoreFlag"],
+                "Pinned child vaultstorageconfig exposes explicit storageModelType and CRR flag; "
+                "do not read generic account SKU or unrelated vault properties as these settings.",
+            ),
+            (
+                "backup-vault-arm",
+                "microsoft.dataprotection/2024-04-01/backupvaults",
+                ["datastoreType", "OperationalStore", "storageSettings"],
+                "Pinned storageSettings pairs explicit datastore and redundancy. SnapshotStore is "
+                "not in this ARM enum despite stale provider docs; unknown forms remain unknown. "
+                "Soft-delete retention is not backup-policy/recovery-point retention.",
+            ),
+            (
+                "backup-item-arm",
+                "microsoft.recoveryservices/2024-01-01/vaults/backupfabrics/"
+                "protectioncontainers/protecteditems",
+                ["Microsoft.Compute/virtualMachines", "sourceResourceId", "policyId"],
+                "Only exact Microsoft.Compute/virtualMachines item discriminator is normalized to "
+                "typed source VM and backup-policy references; no job, payload or "
+                "protection-health "
+                "assertion, and no inferred identity from container names.",
+            ),
+            (
+                "asr-arm",
+                "microsoft.recoveryservices/2024-04-01/vaults/replicationfabrics/"
+                "replicationprotectioncontainers/replicationprotecteditems",
+                ["A2A", "fabricObjectId", "recoveryResourceGroupId"],
+                "Only A2A providerSpecificDetails with explicit source VM, replication policy and "
+                "recovery RG references is prepared. Other providers/migration kinds "
+                "are unsupported. "
+                "No replication health, recovery-point, RPO/RTO or failover outcome retained.",
+            ),
+            (
+                "guest-arm",
+                "microsoft.guestconfiguration/2024-04-05/guestconfigurationassignments",
+                ["assignmentType", "ApplyAndMonitor", "Audit"],
+                "Pinned extension resource retains exact assignment type only. Parameters, content "
+                "URIs/hashes, reports and VMSS payloads are withheld; null is unknown, not Audit.",
+            ),
+            (
+                "extension-arm",
+                "microsoft.compute/2024-07-01/virtualmachines/extensions",
+                ["publisher", "enableAutomaticUpgrade", "typeHandlerVersion"],
+                "Retain only reviewed guest publisher/type and explicit upgrade booleans. "
+                "No settings/protected settings/scripts/statuses or inferred installed version.",
+            ),
+            (
+                "sql-arm",
+                "microsoft.sql/2023-08-01/servers/failovergroups",
+                ["Manual", "Automatic", "partnerServers", "databases"],
+                "Pinned SQL Database group has typed database/partner-server references and "
+                "read-write policy; full grace/data-loss/region/dependency/drill review "
+                "remains human.",
+            ),
+            (
+                "profile-arm",
+                "microsoft.cdn/2024-02-01/profiles",
+                ["Standard_AzureFrontDoor", "Premium_AzureFrontDoor"],
+                "Root SKU qualifies a Standard/Premium Front Door profile. Classic and other CDN "
+                "profiles stay unsupported; no security-policy or telemetry inference from SKU.",
+            ),
+            (
+                "diagnostic-arm",
+                "microsoft.insights/2021-05-01-preview/diagnosticsettings",
+                ["categoryGroup", "enabled", "workspaceId", "storageAccountId"],
+                "Retain only exact WAF categories/enabled values and typed workspace/storage "
+                "references. Category groups are not expanded into individual categories; "
+                "Event Hub "
+                "keys/names/authorization payloads and private logs are withheld.",
+            ),
+        ]
+    ],
+    *[
+        (
+            "terraform-" + resource,
+            RAW + "website/docs/r/" + resource + ".html.markdown",
+            markers,
+            finding,
+        )
+        for resource, markers, finding in [
+            (
+                "recovery_services_vault",
+                ["storage_mode_type", "GeoRedundant"],
+                "AzureRM 4.50.0 documents GRS default but only explicit storage_mode_type/CRR "
+                "are projected. Generic vault ARM properties are not the storage-config child.",
+            ),
+            (
+                "data_protection_backup_vault",
+                ["datastore_type", "redundancy"],
+                "4.50.0 requires explicit datastore/redundancy, not universal GRS. "
+                "Stale SnapshotStore "
+                "note is not silently accepted as the pinned ARM OperationalStore enum.",
+            ),
+            (
+                "backup_protected_vm",
+                ["source_vm_id", "backup_policy_id", "ProtectionStopped"],
+                "4.50.0 source/policy can be omitted for retained/stopped protection; "
+                "missing values "
+                "stay unknown. Raw record identity needs explicit mapping; "
+                "no guessed container ID.",
+            ),
+            (
+                "site_recovery_replicated_vm",
+                ["source_vm_id", "recovery_replication_policy_id"],
+                "4.50.0 resource is Azure-to-Azure only. Explicit typed references "
+                "are configuration, "
+                "not replication success or tested failover.",
+            ),
+            (
+                "policy_virtual_machine_configuration_assignment",
+                ["assignment_type", "virtual_machine_id", "will not be executed"],
+                "4.50.0 guest assignment can exist without extension execution. Only explicit "
+                "assignment mode is retained; no package, parameter or reported "
+                "compliance payloads.",
+            ),
+            (
+                "virtual_machine_extension",
+                ["publisher", "automatic_upgrade_enabled"],
+                "4.50.0 explicit guest publisher/type/upgrade flags only; defaults, settings and "
+                "protected settings are never retained or executed.",
+            ),
+            (
+                "mssql_failover_group",
+                ["server_id", "partner_server", "Automatic", "Manual"],
+                "4.50.0 explicit SQL server/database references and failover mode "
+                "normalize, without "
+                "computed role, connection strings or default policy assumptions.",
+            ),
+            (
+                "cdn_frontdoor_profile",
+                ["sku_name", "Premium_AzureFrontDoor"],
+                "4.50.0 exact Standard/Premium SKU qualifies Front Door categories, "
+                "not WAF coverage.",
+            ),
+            (
+                "monitor_diagnostic_setting",
+                ["category_group", "log_analytics_workspace_id"],
+                "4.50.0 enabled_log is explicit enabled-category configuration. "
+                "Do not expand groups "
+                "or confuse metrics/access logs with WAF logs; destination IDs "
+                "are configuration only.",
+            ),
+        ]
+    ],
+    (
+        "learn-terms",
+        "https://learn.microsoft.com/legal/termsofuse",
+        ["Terms of Use", "Microsoft"],
+        "Reviewed Learn terms; preserve attributed metadata and own factual findings only, "
+        "not article text, sample scripts, logs or third-party content.",
+    ),
+    (
+        "provider-license",
+        RAW + "LICENSE",
+        ["Mozilla Public License", "2.0"],
+        "Pinned provider MPL-2.0: retain source metadata and independently authored findings only.",
+    ),
+]
+SOURCES_26 += [
+    source
+    for source in SOURCES_25
+    if source[0]
+    in {
+        "workspace-arm",
+        "terraform-workspace",
+        "policy-spec-policyDefinitions",
+        "policy-spec-policySetDefinitions",
+        "policy-spec-policyAssignments",
+        "policy-spec-license",
+    }
+]
+SOURCES_26 += [
+    source
+    for source in SOURCES_23
+    if source[0]
+    in {"onboarding-arm", "terraform-onboarding", "terraform-onboarding-implementation"}
+]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
@@ -4562,6 +4975,7 @@ def main() -> None:
             "04",
             "05",
             "06",
+            "07",
             "08",
             "10",
             "11",
@@ -4579,6 +4993,7 @@ def main() -> None:
             "23",
             "24",
             "25",
+            "26",
             "29",
             "30",
         ],
@@ -4589,10 +5004,27 @@ def main() -> None:
         raise ValueError("The vWAN supplement is cohort16 preparation only")
     if (
         args.batch
-        in {"02", "03", "05", "06", "10", "12", "16", "20", "23", "24", "25", "27", "29", "30"}
+        in {
+            "02",
+            "03",
+            "05",
+            "06",
+            "07",
+            "10",
+            "12",
+            "16",
+            "20",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "29",
+            "30",
+        }
     ) != args.preparation_only:
         raise ValueError(
-            "Cohorts 02/03/05/06/10/12/16/20/23/24/25/27/29/30 source capture require "
+            "Cohorts 02/03/05/06/07/10/12/16/20/23/24/25/26/27/29/30 source capture require "
             "--preparation-only; no activation"
         )
     prefix = "preparation" if args.preparation_only else "batch"
@@ -4603,7 +5035,7 @@ def main() -> None:
         / "recommendation-batches"
         / f"{prefix}-{args.batch}{suffix}-sources.json"
     )
-    if args.batch in {"02", "03", "05", "06"}:
+    if args.batch in {"02", "03", "05", "06", "07"}:
         target = ROOT / "references" / "preparation" / f"batch-{args.batch}-sources.json"
     if target.exists() and not args.append_new_sources:
         raise ValueError("Frozen source review exists; do not silently recollect or redate it")
@@ -4616,6 +5048,7 @@ def main() -> None:
         "04": SOURCES_04,
         "05": SOURCES_05,
         "06": SOURCES_06,
+        "07": SOURCES_07,
         "08": SOURCES_08,
         "10": SOURCES_10,
         "11": SOURCES_11,
@@ -4633,6 +5066,7 @@ def main() -> None:
         "23": SOURCES_23,
         "24": SOURCES_24,
         "25": SOURCES_25,
+        "26": SOURCES_26,
         "29": SOURCES_29,
         "30": SOURCES_30,
     }[args.batch]

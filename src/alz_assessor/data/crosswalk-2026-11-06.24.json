@@ -1,0 +1,1962 @@
+{
+  "schema_version": "1.0",
+  "kind": "crosswalk",
+  "crosswalk_version": "2026-11-06.24",
+  "catalog_sha256": "cb419ccab499a7f2de6df2876d95106284d75ecdba1dae593078db54c86a1b8b",
+  "review_state": "reviewed",
+  "reviewed_at": "2026-11-05T02:06:20.881972+00:00",
+  "reviewer": "owner-delegated-source-backed-review",
+  "sources": [
+    {
+      "id": "alz-storage-assignment",
+      "url": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/4eae565287844360a61545f9799400431adb6d0a/platform/alz/policy_assignments/Deny-Storage-http.alz_policy_assignment.json",
+      "revision": "4eae565287844360a61545f9799400431adb6d0a",
+      "sha256": "67bb28bf3142d7170815bc326d08e2422062f2548630c87e4feb8cfa4f42abe7",
+      "retrieved_at": "2026-11-05T02:06:17.551448+00:00",
+      "release": "platform/alz/2026.10.0",
+      "license": "MIT",
+      "license_url": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/4eae565287844360a61545f9799400431adb6d0a/LICENSE",
+      "license_revision": "4eae565287844360a61545f9799400431adb6d0a",
+      "license_sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "finding": "Exact Deny-Storage-http assignment references built-in 404c3081 with Deny effect and 2.*.* definition version. Placeholder scope is a library template, not deployed evidence."
+    },
+    {
+      "id": "builtin-storage-transfer",
+      "url": "https://raw.githubusercontent.com/Azure/azure-policy/f096d8de10fb25e71dd7f82b78ded110ec711d73/built-in-policies/policyDefinitions/Storage/Storage_AuditForHTTPSEnabled_Audit.json",
+      "revision": "f096d8de10fb25e71dd7f82b78ded110ec711d73",
+      "sha256": "dafed20a9e1d68bf0022209bbbd6b9523b63e033dd7b12ea04ddda06781212e6",
+      "retrieved_at": "2026-11-05T02:06:18.170819+00:00",
+      "release": null,
+      "license": "MIT",
+      "license_url": "https://raw.githubusercontent.com/Azure/azure-policy/f096d8de10fb25e71dd7f82b78ded110ec711d73/LICENSE",
+      "license_revision": "f096d8de10fb25e71dd7f82b78ded110ec711d73",
+      "license_sha256": "27ebda9d51f0a56b7e281ccd8230a27236dcb51c05f64b07869ecf6e965d68b0",
+      "finding": "Built-in 404c3081 version 2.0.0 checks explicit false and API-dependent absent values. Audit/Deny/Disabled effect and missing-property defaults differ from LandingLens's explicit-boolean-only predicate; compliance remains a Signal, not an equivalent pass."
+    },
+    {
+      "id": "psrule-storage-yaml",
+      "url": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/a40c77e029c6e6d95f7a809dc70219c9ee9a4242/src/PSRule.Rules.Azure/rules/Azure.Storage.Rule.yaml",
+      "revision": "a40c77e029c6e6d95f7a809dc70219c9ee9a4242",
+      "sha256": "05dac57f7faa35eb8b728cf4781147d231e67c02b9698d5f2548df5566d4aec6",
+      "retrieved_at": "2026-11-05T02:06:18.615179+00:00",
+      "release": "v1.48.0-B0228",
+      "license": "MIT",
+      "license_url": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/a40c77e029c6e6d95f7a809dc70219c9ee9a4242/LICENSE",
+      "license_revision": "a40c77e029c6e6d95f7a809dc70219c9ee9a4242",
+      "license_sha256": "7df20dcdf9197e9945c14858d41c60f11b52b93e5b69e2b63416b874d598d322",
+      "finding": "Azure.Storage.SecureTransfer / AZR-000196 accepts an omitted flag for API >=2019-04-01. This differs from LandingLens's explicit-property requirement; partial mapping only."
+    },
+    {
+      "id": "psrule-storage-powershell",
+      "url": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/a40c77e029c6e6d95f7a809dc70219c9ee9a4242/src/PSRule.Rules.Azure/rules/Azure.Storage.Rule.ps1",
+      "revision": "a40c77e029c6e6d95f7a809dc70219c9ee9a4242",
+      "sha256": "dec26db27df765f879b5f6dc35a7981705ad639aed4e55998ee4a423e44e2274",
+      "retrieved_at": "2026-11-05T02:06:19.095878+00:00",
+      "release": "v1.48.0-B0228",
+      "license": "MIT",
+      "license_url": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/a40c77e029c6e6d95f7a809dc70219c9ee9a4242/LICENSE",
+      "license_revision": "a40c77e029c6e6d95f7a809dc70219c9ee9a4242",
+      "license_sha256": "7df20dcdf9197e9945c14858d41c60f11b52b93e5b69e2b63416b874d598d322",
+      "finding": "Azure.Storage.ContainerSoftDelete / AZR-000289 checks child enabled plus days>=1, with CloudShell/HNS/FileStorage exclusions. Its population and child/default semantics are not equivalent to the whole checklist or LandingLens predicate."
+    },
+    {
+      "id": "psrule-storage-guidance",
+      "url": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/a40c77e029c6e6d95f7a809dc70219c9ee9a4242/docs/en/rules/Azure.Storage.SecureTransfer.md",
+      "revision": "a40c77e029c6e6d95f7a809dc70219c9ee9a4242",
+      "sha256": "e2c9dd6d8b2aba04aba2a8fe691b1d73d6009aa7f6e19cfc40ef4345843485e3",
+      "retrieved_at": "2026-11-05T02:06:19.592088+00:00",
+      "release": "v1.48.0-B0228",
+      "license": "MIT",
+      "license_url": "https://raw.githubusercontent.com/Azure/PSRule.Rules.Azure/a40c77e029c6e6d95f7a809dc70219c9ee9a4242/LICENSE",
+      "license_revision": "a40c77e029c6e6d95f7a809dc70219c9ee9a4242",
+      "license_sha256": "7df20dcdf9197e9945c14858d41c60f11b52b93e5b69e2b63416b874d598d322",
+      "finding": "Actual rule guidance links built-in 404c3081 and documents API-dependent secure-transfer defaults. These are associations, not operational encryption verification."
+    },
+    {
+      "id": "checklist",
+      "url": "https://raw.githubusercontent.com/Azure/review-checklists/f131b93418892102b00c247fd9cf685e3d356522/checklists/alz_checklist.en.json",
+      "revision": "f131b93418892102b00c247fd9cf685e3d356522",
+      "sha256": "c812868dc68d137a2352d838f5a7293062e999acaaf59775b5eff9a3d38cea28",
+      "retrieved_at": "2026-11-05T02:06:20.364132+00:00",
+      "release": null,
+      "license": "MIT",
+      "license_url": "https://raw.githubusercontent.com/Azure/review-checklists/f131b93418892102b00c247fd9cf685e3d356522/LICENSE",
+      "license_revision": "f131b93418892102b00c247fd9cf685e3d356522",
+      "license_sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "finding": "Frozen 255-GUID checklist supplies exact 49 nonempty query hashes and recommendation intent."
+    },
+    {
+      "id": "candidate-audit",
+      "url": "https://raw.githubusercontent.com/jonathan-vella/landinglens/601062bee928d0a7c1d41dabfa123875af501b59/references/2026-11-04-wave1/candidate-audit.json",
+      "revision": "601062bee928d0a7c1d41dabfa123875af501b59",
+      "sha256": "7428d8c7b26e14a44368e2ebd2a495f49bab95514d35cff1f6195e34279c1f12",
+      "retrieved_at": "2026-11-05T02:06:20.881972+00:00",
+      "release": null,
+      "license": "Own factual review; underlying checklist MIT",
+      "license_url": "https://raw.githubusercontent.com/Azure/review-checklists/f131b93418892102b00c247fd9cf685e3d356522/LICENSE",
+      "license_revision": "f131b93418892102b00c247fd9cf685e3d356522",
+      "license_sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "finding": "Reviewed static 49-query audit supplies per-GUID output/population limitations. No query was executed; query associations are related only, not an execution allowlist."
+    }
+  ],
+  "entries": [
+    {
+      "guid": "70c15989-c726-42c7-b0d3-24b7375b9201",
+      "control_id": "ALZ-70c15989-c726-42c7-b0d3-24b7375b9201",
+      "targets": []
+    },
+    {
+      "guid": "6309957b-821a-43d1-b9d9-7fcf1802b747",
+      "control_id": "ALZ-6309957b-821a-43d1-b9d9-7fcf1802b747",
+      "targets": []
+    },
+    {
+      "guid": "78e11934-499a-45ed-8ef7-aae5578f0ecf",
+      "control_id": "ALZ-78e11934-499a-45ed-8ef7-aae5578f0ecf",
+      "targets": []
+    },
+    {
+      "guid": "5d82e6df-6f61-42f2-82e2-3132d293be3d",
+      "control_id": "ALZ-5d82e6df-6f61-42f2-82e2-3132d293be3d",
+      "targets": []
+    },
+    {
+      "guid": "a24d0de3-d4b9-4dfb-8ddd-bbfaf123fa01",
+      "control_id": "ALZ-a24d0de3-d4b9-4dfb-8ddd-bbfaf123fa01",
+      "targets": []
+    },
+    {
+      "guid": "32952499-58c8-4e6f-ada5-972e67893d55",
+      "control_id": "ALZ-32952499-58c8-4e6f-ada5-972e67893d55",
+      "targets": []
+    },
+    {
+      "guid": "685cb4f2-ac9c-4b19-9167-993ed0b32415",
+      "control_id": "ALZ-685cb4f2-ac9c-4b19-9167-993ed0b32415",
+      "targets": []
+    },
+    {
+      "guid": "12cd499f-96e2-4e41-a243-231fb3245a1c",
+      "control_id": "ALZ-12cd499f-96e2-4e41-a243-231fb3245a1c",
+      "targets": []
+    },
+    {
+      "guid": "54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+      "control_id": "ALZ-54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+      "targets": []
+    },
+    {
+      "guid": "ca0fe401-12ad-46fc-8a7e-86293866a9f6",
+      "control_id": "ALZ-ca0fe401-12ad-46fc-8a7e-86293866a9f6",
+      "targets": []
+    },
+    {
+      "guid": "5cf9f485-2784-49b3-9824-75d9b8bdb57b",
+      "control_id": "ALZ-5cf9f485-2784-49b3-9824-75d9b8bdb57b",
+      "targets": []
+    },
+    {
+      "guid": "6ad5c3dd-e5ea-4ff1-81a4-7886ff87845c",
+      "control_id": "ALZ-6ad5c3dd-e5ea-4ff1-81a4-7886ff87845c",
+      "targets": []
+    },
+    {
+      "guid": "90e87802-602f-4dfb-acea-67c60689f1d7",
+      "control_id": "ALZ-90e87802-602f-4dfb-acea-67c60689f1d7",
+      "targets": []
+    },
+    {
+      "guid": "e81a73f0-84c4-4641-b406-14db3b4d1f50",
+      "control_id": "ALZ-e81a73f0-84c4-4641-b406-14db3b4d1f50",
+      "targets": []
+    },
+    {
+      "guid": "ae757485-92a4-482a-8bc9-eefe6f5b5ec3",
+      "control_id": "ALZ-ae757485-92a4-482a-8bc9-eefe6f5b5ec3",
+      "targets": []
+    },
+    {
+      "guid": "348ef254-c27d-442e-abba-c7571559ab91",
+      "control_id": "ALZ-348ef254-c27d-442e-abba-c7571559ab91",
+      "targets": []
+    },
+    {
+      "guid": "4348bf81-7573-4512-8f46-9061cc198fea",
+      "control_id": "ALZ-4348bf81-7573-4512-8f46-9061cc198fea",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "11dcfb5b084f94a8b1801c2ca0e6c5819499ceffd3ac2ca767e467fdca0aeb6f",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Selects existing managed identities, omits combined identity type and service-principal consumers; cannot establish replacement or tenant usage.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "12e7f983-f630-4472-8dd6-9c5b5c2622f5",
+      "control_id": "ALZ-12e7f983-f630-4472-8dd6-9c5b5c2622f5",
+      "targets": []
+    },
+    {
+      "guid": "4b69bad3-3aad-45e8-a68e-1d76667313b4",
+      "control_id": "ALZ-4b69bad3-3aad-45e8-a68e-1d76667313b4",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "d0a794c47803e88ffb81dbfb966a4b91be5880a17c52c041c1d84f1622d3d02c",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Only exact subscription-scope role assignments join; no assignment ID, nested groups, inherited/RG roles or on-premises group management evidence.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "53e8908a-e28c-484c-93b6-b7808b9fe5c4",
+      "control_id": "ALZ-53e8908a-e28c-484c-93b6-b7808b9fe5c4",
+      "targets": []
+    },
+    {
+      "guid": "1049d403-a923-4c34-94d0-0018ac6a9e01",
+      "control_id": "ALZ-1049d403-a923-4c34-94d0-0018ac6a9e01",
+      "targets": []
+    },
+    {
+      "guid": "e6a83de5-de32-4c19-a248-1607d5d1e4e6",
+      "control_id": "ALZ-e6a83de5-de32-4c19-a248-1607d5d1e4e6",
+      "targets": []
+    },
+    {
+      "guid": "14658d35-58fd-4772-99b8-21112df27ee4",
+      "control_id": "ALZ-14658d35-58fd-4772-99b8-21112df27ee4",
+      "targets": []
+    },
+    {
+      "guid": "d98d954d-7d1c-4a07-92a7-cf3afe8dcbd2",
+      "control_id": "ALZ-d98d954d-7d1c-4a07-92a7-cf3afe8dcbd2",
+      "targets": []
+    },
+    {
+      "guid": "1559ab91-53e8-4908-ae28-c84c33b6b780",
+      "control_id": "ALZ-1559ab91-53e8-4908-ae28-c84c33b6b780",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "1e05abe06c0f113dc1885b7bfc1426ef62fe6e3f46f8f5c8a22c20979a382448",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. DC role inferred from name/tags. Any zone or availability set does not prove two DCs across zones, supported locations or resiliency.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "e8aa1e41-870d-4968-94c6-77be14f510ac",
+      "control_id": "ALZ-e8aa1e41-870d-4968-94c6-77be14f510ac",
+      "targets": []
+    },
+    {
+      "guid": "f5664b5e-984a-4859-a773-e7d261623a76",
+      "control_id": "ALZ-f5664b5e-984a-4859-a773-e7d261623a76",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "5ecfe16ddb707315db86e6463e5d8887467091c02432eeea592e32f24cf4bae7",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Custom-role existence does not prove required business roles, permissions or team alignment; role definition ID is lost.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "8b9fe5c4-1049-4d40-9a92-3c3474d00018",
+      "control_id": "ALZ-8b9fe5c4-1049-4d40-9a92-3c3474d00018",
+      "targets": []
+    },
+    {
+      "guid": "0dd4e625-9c4b-4a56-b54a-4357bac12761",
+      "control_id": "ALZ-0dd4e625-9c4b-4a56-b54a-4357bac12761",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "0765d76f16fea62d934e980ace50b5c97c447000e638f7122a870ecb522d59f0",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Replica-array count subset only. Missing arrays can disappear; complete replica inventory and intended multi-region applicability are required.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "1cf0b8da-70bd-44d0-94af-8d99cfc89ae1",
+      "control_id": "ALZ-1cf0b8da-70bd-44d0-94af-8d99cfc89ae1",
+      "targets": []
+    },
+    {
+      "guid": "984a859c-773e-47d2-9162-3a765a917e1f",
+      "control_id": "ALZ-984a859c-773e-47d2-9162-3a765a917e1f",
+      "targets": []
+    },
+    {
+      "guid": "cd163e39-84a5-4b39-97b7-6973abd70d94",
+      "control_id": "ALZ-cd163e39-84a5-4b39-97b7-6973abd70d94",
+      "targets": []
+    },
+    {
+      "guid": "35037e68-9349-4c15-b371-228514f4cdff",
+      "control_id": "ALZ-35037e68-9349-4c15-b371-228514f4cdff",
+      "targets": []
+    },
+    {
+      "guid": "d5d1e4e6-1465-48d3-958f-d77249b82111",
+      "control_id": "ALZ-d5d1e4e6-1465-48d3-958f-d77249b82111",
+      "targets": []
+    },
+    {
+      "guid": "9cf5418b-1520-4b7b-add7-88eb28f833e8",
+      "control_id": "ALZ-9cf5418b-1520-4b7b-add7-88eb28f833e8",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "9886f56cd6854218d78aae6690f5f08001903e3933eac7ee092bcc20788008d5",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Hub classification is a name substring, not topology. Missing peerings or inaccessible remote networks cannot establish connectivity.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "d4d1ad54-1abc-4919-b267-3f342d3b49e4",
+      "control_id": "ALZ-d4d1ad54-1abc-4919-b267-3f342d3b49e4",
+      "targets": []
+    },
+    {
+      "guid": "d505ebcb-79b1-4274-9c0d-a27c8bea489c",
+      "control_id": "ALZ-d505ebcb-79b1-4274-9c0d-a27c8bea489c",
+      "targets": []
+    },
+    {
+      "guid": "0ce74f19-9abb-47e4-ae95-6b057a1d2be9",
+      "control_id": "ALZ-0ce74f19-9abb-47e4-ae95-6b057a1d2be9",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "886af77074f8d71f91a7a9a39343fca2e3799a1f00ffccd0f1497c354677a7fd",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Arbitrary owner threshold >3; Azure RBAC Owner counts are not enrollment account ownership. Missing assignments do not prove zero owners.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "1770a2ac-c194-4e5c-ade4-82939d38a510",
+      "control_id": "ALZ-1770a2ac-c194-4e5c-ade4-82939d38a510",
+      "targets": []
+    },
+    {
+      "guid": "cacf55bc-e4e4-46be-96bc-57a5f23a269a",
+      "control_id": "ALZ-cacf55bc-e4e4-46be-96bc-57a5f23a269a",
+      "targets": []
+    },
+    {
+      "guid": "2df27ee4-12e7-4f98-9f63-04722dd69c5b",
+      "control_id": "ALZ-2df27ee4-12e7-4f98-9f63-04722dd69c5b",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "6aab7d7cf2e888d31d670574d0f20a3648fd6671dcf780a8c4faeacb2f4e1ec0",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Subscription ancestor-chain length only; root counting and complete visible hierarchy matter. Null/inaccessible chains cannot prove flatness.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "667313b4-f566-44b5-b984-a859c773e7d2",
+      "control_id": "ALZ-667313b4-f566-44b5-b984-a859c773e7d2",
+      "targets": []
+    },
+    {
+      "guid": "61623a76-5a91-47e1-b348-ef254c27d42e",
+      "control_id": "ALZ-61623a76-5a91-47e1-b348-ef254c27d42e",
+      "targets": []
+    },
+    {
+      "guid": "8bbac757-1559-4ab9-853e-8908ae28c84c",
+      "control_id": "ALZ-8bbac757-1559-4ab9-853e-8908ae28c84c",
+      "targets": []
+    },
+    {
+      "guid": "33b6b780-8b9f-4e5c-9104-9d403a923c34",
+      "control_id": "ALZ-33b6b780-8b9f-4e5c-9104-9d403a923c34",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "9d9a00519d46a572261c62bafe4ec2ef3410c4e9827334a2b3c07a5646f1f28c",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Ancestor length >1 is a subscription-placement subset, not proof that all subscriptions are visible or root governance is appropriate.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "74d00018-ac6a-49e0-8e6a-83de5de32c19",
+      "control_id": "ALZ-74d00018-ac6a-49e0-8e6a-83de5de32c19",
+      "targets": []
+    },
+    {
+      "guid": "92481607-d5d1-4e4e-9146-58d3558fd772",
+      "control_id": "ALZ-92481607-d5d1-4e4e-9146-58d3558fd772",
+      "targets": []
+    },
+    {
+      "guid": "49b82111-2df2-47ee-912e-7f983f630472",
+      "control_id": "ALZ-49b82111-2df2-47ee-912e-7f983f630472",
+      "targets": []
+    },
+    {
+      "guid": "2dd69c5b-5c26-422f-94b6-9bad33aad5e8",
+      "control_id": "ALZ-2dd69c5b-5c26-422f-94b6-9bad33aad5e8",
+      "targets": []
+    },
+    {
+      "guid": "c68e1d76-6673-413b-9f56-64b5e984a859",
+      "control_id": "ALZ-c68e1d76-6673-413b-9f56-64b5e984a859",
+      "targets": []
+    },
+    {
+      "guid": "c773e7d2-6162-43a7-95a9-17e1f348ef25",
+      "control_id": "ALZ-c773e7d2-6162-43a7-95a9-17e1f348ef25",
+      "targets": []
+    },
+    {
+      "guid": "ae28c84c-33b6-4b78-88b9-fe5c41049d40",
+      "control_id": "ALZ-ae28c84c-33b6-4b78-88b9-fe5c41049d40",
+      "targets": []
+    },
+    {
+      "guid": "3a923c34-74d0-4001-aac6-a9e01e6a83de",
+      "control_id": "ALZ-3a923c34-74d0-4001-aac6-a9e01e6a83de",
+      "targets": []
+    },
+    {
+      "guid": "5de32c19-9248-4160-9d5d-1e4e614658d3",
+      "control_id": "ALZ-5de32c19-9248-4160-9d5d-1e4e614658d3",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "b8586a7b795856ba0da38242ac4c5b6df95d5103a9601fd691630a4bd062f70f",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Non-null tags can be empty or irrelevant; no billing keys/values or cost allocation intent is tested.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "6cc0ea22-42bb-441e-a345-804ab0a09666",
+      "control_id": "ALZ-6cc0ea22-42bb-441e-a345-804ab0a09666",
+      "targets": []
+    },
+    {
+      "guid": "250d81ce-8bbe-4f85-9051-6a18a8221e50",
+      "control_id": "ALZ-250d81ce-8bbe-4f85-9051-6a18a8221e50",
+      "targets": []
+    },
+    {
+      "guid": "19ca3f89-397d-44b1-b5b6-5e18661372ac",
+      "control_id": "ALZ-19ca3f89-397d-44b1-b5b6-5e18661372ac",
+      "targets": []
+    },
+    {
+      "guid": "4c27d42e-8bba-4c75-9155-9ab9153e8908",
+      "control_id": "ALZ-4c27d42e-8bba-4c75-9155-9ab9153e8908",
+      "targets": []
+    },
+    {
+      "guid": "914b8cb7-c2f6-40fa-ae18-81c049e0cb5a",
+      "control_id": "ALZ-914b8cb7-c2f6-40fa-ae18-81c049e0cb5a",
+      "targets": []
+    },
+    {
+      "guid": "51a1e9e9-a49a-40b2-87b9-ff753bc6de86",
+      "control_id": "ALZ-51a1e9e9-a49a-40b2-87b9-ff753bc6de86",
+      "targets": []
+    },
+    {
+      "guid": "a89153d8-18b2-4caf-bc19-850fc8fba00f",
+      "control_id": "ALZ-a89153d8-18b2-4caf-bc19-850fc8fba00f",
+      "targets": []
+    },
+    {
+      "guid": "373f482f-3e39-4d39-8aa4-7e566f6082b6",
+      "control_id": "ALZ-373f482f-3e39-4d39-8aa4-7e566f6082b6",
+      "targets": []
+    },
+    {
+      "guid": "e8bbac75-7155-49ab-a153-e8908ae28c84",
+      "control_id": "ALZ-e8bbac75-7155-49ab-a153-e8908ae28c84",
+      "targets": []
+    },
+    {
+      "guid": "7bc1c396-2461-4698-b57f-30ca69525252",
+      "control_id": "ALZ-7bc1c396-2461-4698-b57f-30ca69525252",
+      "targets": []
+    },
+    {
+      "guid": "7dd61623-a364-4a90-9eca-e48ebd54cd7d",
+      "control_id": "ALZ-7dd61623-a364-4a90-9eca-e48ebd54cd7d",
+      "targets": []
+    },
+    {
+      "guid": "e2e8abac-3571-4559-ab91-53e89f89dc7b",
+      "control_id": "ALZ-e2e8abac-3571-4559-ab91-53e89f89dc7b",
+      "targets": []
+    },
+    {
+      "guid": "ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
+      "control_id": "ALZ-ce463dbb-bc8a-4c2a-aebc-92a43da1dae2",
+      "targets": []
+    },
+    {
+      "guid": "91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
+      "control_id": "ALZ-91b9d7d5-91e1-4dcb-8f1f-fa7e465646cc",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "b02b4f4239c734763b3f2979345fedb507832a735cddce14e071ae2e82c2a0c3",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Prefix split has no explicit numeric/CIDR validation; <=27 differs from exact /27. Distinct parent IDs lose multiple subnet identities.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "cc881471-607c-41cc-a0e6-14658dd558f9",
+      "control_id": "ALZ-cc881471-607c-41cc-a0e6-14658dd558f9",
+      "targets": []
+    },
+    {
+      "guid": "4722d929-c1b1-4cd6-81f5-4b29bade39ad",
+      "control_id": "ALZ-4722d929-c1b1-4cd6-81f5-4b29bade39ad",
+      "targets": []
+    },
+    {
+      "guid": "0e7c28ec-9366-4572-83b0-f4664b1d944a",
+      "control_id": "ALZ-0e7c28ec-9366-4572-83b0-f4664b1d944a",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "5fd2c7b79736dbf2c6edb8dd012c0a7fb4a63e8bec443e4a215110ce24eca853",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. 450 peerings differs from 400 spokes and 500 peering limit; not regional hub identification or ExpressRoute prefix population. Empty arrays vanish.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "3d457936-e9b7-41eb-bdff-314b26450b12",
+      "control_id": "ALZ-3d457936-e9b7-41eb-bdff-314b26450b12",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "77fa8250cad714f6a20023b7139e839bc294597bea56c6492613900bd167218d",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. <360 differs from recommendation limit 400. Expansion loses empty/omitted route tables; embedded routes must be complete.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "c76cb5a2-abe2-11ed-afa1-0242ac120002",
+      "control_id": "ALZ-c76cb5a2-abe2-11ed-afa1-0242ac120002",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "09aade6cee96dbc61305caf941711c72c2129486337ef407eaff4a1bb9285489",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Explicit peering flag subset; child canonical ID is not projected. Capitalized True syntax and returned types are not service-executed.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "9dcd6250-9c4a-4382-aa9b-5b84c64fc1fe",
+      "control_id": "ALZ-9dcd6250-9c4a-4382-aa9b-5b84c64fc1fe",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "acc8c623434e94e4e8e1e4a3c0c165185d1fa61c4ba8abfe79413e09ec59992d",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Frontend/private zones and public-IP joins require complete child/remote inventory; excludes Basic instead of failing it; regional support unknown.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "48682fb1-1e86-4458-a686-518ebd47393d",
+      "control_id": "ALZ-48682fb1-1e86-4458-a686-518ebd47393d",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "3a545ea14dae0c4c7b24a6f22cc53cc649e953de82cd632761c03aab9c754a19",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Inline backend and NIC membership branches need complete inventories; unmatched/null NIC counts may disappear. Pool identity is not retained.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "821a568d-c632-4693-ba76-e2751de35050",
+      "control_id": "ALZ-821a568d-c632-4693-ba76-e2751de35050",
+      "targets": []
+    },
+    {
+      "guid": "de0d5973-cd4c-4d21-a088-137f5e6c4cfd",
+      "control_id": "ALZ-de0d5973-cd4c-4d21-a088-137f5e6c4cfd",
+      "targets": []
+    },
+    {
+      "guid": "ed301d6e-872e-452e-9611-cc58b5a4b151",
+      "control_id": "ALZ-ed301d6e-872e-452e-9611-cc58b5a4b151",
+      "targets": []
+    },
+    {
+      "guid": "558fd772-49b8-4211-82df-27ee412e7f98",
+      "control_id": "ALZ-558fd772-49b8-4211-82df-27ee412e7f98",
+      "targets": []
+    },
+    {
+      "guid": "3f630472-2dd6-49c5-a5c2-622f54b69bad",
+      "control_id": "ALZ-3f630472-2dd6-49c5-a5c2-622f54b69bad",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "0ae65af5f08d6c14e4258051cdae8b1c9881d36738ba50e05918aee2c40782a0",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. RFC1918-looking string prefix is not validated CIDR/network containment; multiple prefixes require distinct evidence instances.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "33aad5e8-c68e-41d7-9667-313b4f5664b5",
+      "control_id": "ALZ-33aad5e8-c68e-41d7-9667-313b4f5664b5",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "f0a7854438040950dfacb57bb043ec50ee1d9559373475429885c991b2852a8c",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Mask >16 is not evidence that address space is appropriately allocated or not wasted; string/numeric conversion and intent are unverified.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "f348ef25-4c27-4d42-b8bb-ac7571559ab9",
+      "control_id": "ALZ-f348ef25-4c27-4d42-b8bb-ac7571559ab9",
+      "targets": []
+    },
+    {
+      "guid": "0c47f486-656d-4699-8c30-edef5b8a93c4",
+      "control_id": "ALZ-0c47f486-656d-4699-8c30-edef5b8a93c4",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "48de83e82493de6fffe5ee34ee8b96148e150fe792fc9475bff4bf51a2442af9",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Regional IP zone-array subset; does not establish Standard SKU, zone capability or global-IP applicability. No rows is not a pass.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "153e8908-ae28-4c84-a33b-6b7808b9fe5c",
+      "control_id": "ALZ-153e8908-ae28-4c84-a33b-6b7808b9fe5c",
+      "targets": []
+    },
+    {
+      "guid": "41049d40-3a92-43c3-974d-00018ac6a9e0",
+      "control_id": "ALZ-41049d40-3a92-43c3-974d-00018ac6a9e0",
+      "targets": []
+    },
+    {
+      "guid": "1e6a83de-5de3-42c1-a924-81607d5d1e4e",
+      "control_id": "ALZ-1e6a83de-5de3-42c1-a924-81607d5d1e4e",
+      "targets": []
+    },
+    {
+      "guid": "614658d3-558f-4d77-849b-821112df27ee",
+      "control_id": "ALZ-614658d3-558f-4d77-849b-821112df27ee",
+      "targets": []
+    },
+    {
+      "guid": "18c80eb0-582a-4198-bf5c-d8800b2d263b",
+      "control_id": "ALZ-18c80eb0-582a-4198-bf5c-d8800b2d263b",
+      "targets": []
+    },
+    {
+      "guid": "baac3ecb-a94c-4ac4-8c79-cdf27c0d78df",
+      "control_id": "ALZ-baac3ecb-a94c-4ac4-8c79-cdf27c0d78df",
+      "targets": []
+    },
+    {
+      "guid": "ee1ac551-c4d5-46cf-b035-d0a3c50d87ad",
+      "control_id": "ALZ-ee1ac551-c4d5-46cf-b035-d0a3c50d87ad",
+      "targets": []
+    },
+    {
+      "guid": "6eab9eb6-762b-485e-8ea8-15aa5dba0bd0",
+      "control_id": "ALZ-6eab9eb6-762b-485e-8ea8-15aa5dba0bd0",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "3819987e691b2288bdc4110c21b18eea4d8c9f476d282b4918ecda68da5b7345",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Named Bastion subnet prefix subset; needs numeric CIDR validation, SKU applicability and canonical subnet IDs; missing subnets are not absent.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "1d7aa9b6-4704-4489-a804-2d88e79d17b7",
+      "control_id": "ALZ-1d7aa9b6-4704-4489-a804-2d88e79d17b7",
+      "targets": []
+    },
+    {
+      "guid": "3b22a5a6-7e7a-48ed-9b30-e38c3f29812b",
+      "control_id": "ALZ-3b22a5a6-7e7a-48ed-9b30-e38c3f29812b",
+      "targets": []
+    },
+    {
+      "guid": "2363cefe-179b-4599-be0d-5973cd4cd21b",
+      "control_id": "ALZ-2363cefe-179b-4599-be0d-5973cd4cd21b",
+      "targets": []
+    },
+    {
+      "guid": "088137f5-e6c4-4cfd-9e50-4547c2447ec6",
+      "control_id": "ALZ-088137f5-e6c4-4cfd-9e50-4547c2447ec6",
+      "targets": []
+    },
+    {
+      "guid": "b034c01e-110b-463a-b36e-e3346e57f225",
+      "control_id": "ALZ-b034c01e-110b-463a-b36e-e3346e57f225",
+      "targets": []
+    },
+    {
+      "guid": "b1c82a3f-2320-4dfa-8972-7ae4823c8930",
+      "control_id": "ALZ-b1c82a3f-2320-4dfa-8972-7ae4823c8930",
+      "targets": []
+    },
+    {
+      "guid": "3c5a808d-c695-4c14-a63c-c7ab7a510e41",
+      "control_id": "ALZ-3c5a808d-c695-4c14-a63c-c7ab7a510e41",
+      "targets": []
+    },
+    {
+      "guid": "359c373e-7dd6-4162-9a36-4a907ecae48e",
+      "control_id": "ALZ-359c373e-7dd6-4162-9a36-4a907ecae48e",
+      "targets": []
+    },
+    {
+      "guid": "f29812b2-363c-4efe-879b-599de0d5973c",
+      "control_id": "ALZ-f29812b2-363c-4efe-879b-599de0d5973c",
+      "targets": []
+    },
+    {
+      "guid": "d4cd21b0-8813-47f5-b6c4-cfd3e504547c",
+      "control_id": "ALZ-d4cd21b0-8813-47f5-b6c4-cfd3e504547c",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "2ded7e4f856ba3db1da2930d7022c16fd421946b5493305a2e72a33fbe16cdac",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Excluding Basic/Standard is not bandwidth or performance sizing evidence; missing SKUs and workload requirements remain unknown.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "7025b442-f6e9-4af6-b11f-c9574916016f",
+      "control_id": "ALZ-7025b442-f6e9-4af6-b11f-c9574916016f",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "0ffbd9103e36776b60f7aa6a4fe06f0d4563b35b403b2f8e0667ef09a17bea67",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Metered/local SKU is not a cost-justification test; actual bandwidth, contract and intended usage are missing.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "f4e7926a-ec35-476e-a412-5dd17136bd62",
+      "control_id": "ALZ-f4e7926a-ec35-476e-a412-5dd17136bd62",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "1a08053af97d3da8fa6862d6e9dcf53d5746b409c69cae3c30320be077ed3992",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Connection/circuit join needs full canonical identities and region eligibility. Any Local circuit does not justify every circuit's cost.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "2447ec66-138a-4720-8f1c-e16ed301d6e8",
+      "control_id": "ALZ-2447ec66-138a-4720-8f1c-e16ed301d6e8",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "36e91ea0a6309fefea20c265ab0df06a626394952c7dfb65a8d7ff73ced12274",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. AZ substring is not verified zone support; population also includes VPN although recommendation names ExpressRoute. Region applicability missing.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "72e52e36-11cc-458b-9a4b-1511e43a58a9",
+      "control_id": "ALZ-72e52e36-11cc-458b-9a4b-1511e43a58a9",
+      "targets": []
+    },
+    {
+      "guid": "c2299c4d-7b57-4d0c-9555-62f2b3e4563a",
+      "control_id": "ALZ-c2299c4d-7b57-4d0c-9555-62f2b3e4563a",
+      "targets": []
+    },
+    {
+      "guid": "4d873974-8b66-42d6-b15f-512a65498f6d",
+      "control_id": "ALZ-4d873974-8b66-42d6-b15f-512a65498f6d",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "7980f290fa8301195bcce9e2020c2f47cec0b175639574f1922a582174641959",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. SKU-name AZ substring does not establish regional zone availability or current capability; no default/capability inference is accepted.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "45866df8-cf85-4ca9-bbe2-65ec1478919e",
+      "control_id": "ALZ-45866df8-cf85-4ca9-bbe2-65ec1478919e",
+      "targets": []
+    },
+    {
+      "guid": "718cb437-b060-2589-8856-2e93a5c6633b",
+      "control_id": "ALZ-718cb437-b060-2589-8856-2e93a5c6633b",
+      "targets": []
+    },
+    {
+      "guid": "8042d88e-79d1-47b7-9b22-a5a67e7a8ed4",
+      "control_id": "ALZ-8042d88e-79d1-47b7-9b22-a5a67e7a8ed4",
+      "targets": []
+    },
+    {
+      "guid": "b30e38c3-f298-412b-8363-cefe179b599d",
+      "control_id": "ALZ-b30e38c3-f298-412b-8363-cefe179b599d",
+      "targets": []
+    },
+    {
+      "guid": "5bf68dc9-325e-4873-bf88-f8214ef2e5d2",
+      "control_id": "ALZ-5bf68dc9-325e-4873-bf88-f8214ef2e5d2",
+      "targets": []
+    },
+    {
+      "guid": "e0d5973c-d4cd-421b-8881-37f5e6c4cfd3",
+      "control_id": "ALZ-e0d5973c-d4cd-421b-8881-37f5e6c4cfd3",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "bc531cafbd2a8acd9dd19d6324a5ed44969e28aa8704f96c1de7f833eab617c4",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Distinct circuit-location count requires complete connection/circuit joins; case-normalized IDs and missing locations need explicit validation.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "cf3fe65c-fec0-495a-8edc-9675200f2add",
+      "control_id": "ALZ-cf3fe65c-fec0-495a-8edc-9675200f2add",
+      "targets": []
+    },
+    {
+      "guid": "72105cc8-aaea-4ee1-8c7a-ad25977afcaf",
+      "control_id": "ALZ-72105cc8-aaea-4ee1-8c7a-ad25977afcaf",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "7b78c1eec14cbccb20b11e4427233f492c43f8438fd43637cb427f6032770fd9",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Left-join null disableBgpRoutePropagation is treated as compliant: an inaccessible/missing route table can manufacture a pass. Not accepted.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "d581a947-69a2-4783-942e-9df3664324c8",
+      "control_id": "ALZ-d581a947-69a2-4783-942e-9df3664324c8",
+      "targets": []
+    },
+    {
+      "guid": "b258f058-b9f6-46cd-b28d-990106f0c3f8",
+      "control_id": "ALZ-b258f058-b9f6-46cd-b28d-990106f0c3f8",
+      "targets": []
+    },
+    {
+      "guid": "fe2a1b53-6fbd-4c67-b58a-85d7c7a0afcb",
+      "control_id": "ALZ-fe2a1b53-6fbd-4c67-b58a-85d7c7a0afcb",
+      "targets": []
+    },
+    {
+      "guid": "669b215a-ce43-4371-8f6f-11047f6490f1",
+      "control_id": "ALZ-669b215a-ce43-4371-8f6f-11047f6490f1",
+      "targets": []
+    },
+    {
+      "guid": "3f79ed00-203b-4c95-9efd-691505f5a1f9",
+      "control_id": "ALZ-3f79ed00-203b-4c95-9efd-691505f5a1f9",
+      "targets": []
+    },
+    {
+      "guid": "5234c93f-b651-41dd-80c1-234177b91ced",
+      "control_id": "ALZ-5234c93f-b651-41dd-80c1-234177b91ced",
+      "targets": []
+    },
+    {
+      "guid": "8ac6a9e0-1e6a-483d-b5de-32c199248160",
+      "control_id": "ALZ-8ac6a9e0-1e6a-483d-b5de-32c199248160",
+      "targets": []
+    },
+    {
+      "guid": "4cc8ca4e-a503-4bac-9b1e-82283a711043",
+      "control_id": "ALZ-4cc8ca4e-a503-4bac-9b1e-82283a711043",
+      "targets": []
+    },
+    {
+      "guid": "8b517d94-c9d0-42c4-9803-d93ed0a46bc0",
+      "control_id": "ALZ-8b517d94-c9d0-42c4-9803-d93ed0a46bc0",
+      "targets": []
+    },
+    {
+      "guid": "e6c4cfd3-e504-4547-a244-7ec66138a720",
+      "control_id": "ALZ-e6c4cfd3-e504-4547-a244-7ec66138a720",
+      "targets": []
+    },
+    {
+      "guid": "5a4b1511-e43a-458a-ac22-99c4d7b57d0c",
+      "control_id": "ALZ-5a4b1511-e43a-458a-ac22-99c4d7b57d0c",
+      "targets": []
+    },
+    {
+      "guid": "655562f2-b3e4-4563-a4d8-739748b662d6",
+      "control_id": "ALZ-655562f2-b3e4-4563-a4d8-739748b662d6",
+      "targets": []
+    },
+    {
+      "guid": "14d99880-2f88-47e8-a134-62a7d85c94af",
+      "control_id": "ALZ-14d99880-2f88-47e8-a134-62a7d85c94af",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "59a7411db95f7c5adb33f1569108fc126d8faafdac707db3189b93682acf2775",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. DNS proxy alone does not establish application rules, FQDN network rules or egress routing; compound recommendation cannot be reduced to this flag.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "c10d51ef-f999-455d-bba0-5c90ece07447",
+      "control_id": "ALZ-c10d51ef-f999-455d-bba0-5c90ece07447",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "e7741a0012e1284efbab7a4006b0589a0e869d7b8a4694364bd198dcf4292710",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Explicit policy SKU only, not firewall association, runtime protection or whether Premium is required for this workload.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "e9c8f584-6d5e-473b-8dc5-acc9fbaab4e3",
+      "control_id": "ALZ-e9c8f584-6d5e-473b-8dc5-acc9fbaab4e3",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "37f8ccbd6fa01784b39df7da439c0ee5c612cb7c114d78a2afbb60bec6c7d001",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Reimplement typed local Deny flag with explicit Standard/Premium tier. Basic cannot deny. Missing enums/SKU are unknown, not provider defaults.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "b9d0dff5-bdd4-4cd8-88ed-5811610b2b2c",
+      "control_id": "ALZ-b9d0dff5-bdd4-4cd8-88ed-5811610b2b2c",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "3f79d9ceb9775db45940fd5ccb7f6843d49feedd17f5fb80a9f3c390bb643e89",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Reimplement typed local IDPS Deny flag on explicit Premium tier only; not effective inherited mode, bypass/signature coverage or runtime IDPS.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "a3784907-9836-4271-aafc-93535f8ec08b",
+      "control_id": "ALZ-a3784907-9836-4271-aafc-93535f8ec08b",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "b6faec58614ce91d7df3ecffc467259c80daa596b598742994917508668504c4",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. A route-table reference is not an Internet route to a firewall/NVA; Virtual WAN peering inferred from names. Missing joins are unsafe.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "715d833d-4708-4527-90ac-1b142c7045ba",
+      "control_id": "ALZ-715d833d-4708-4527-90ac-1b142c7045ba",
+      "targets": []
+    },
+    {
+      "guid": "e960fc6b-4ab2-4db6-9609-3745135f9ffa",
+      "control_id": "ALZ-e960fc6b-4ab2-4db6-9609-3745135f9ffa",
+      "targets": []
+    },
+    {
+      "guid": "22d6419e-b627-4d95-9e7d-019fa759387f",
+      "control_id": "ALZ-22d6419e-b627-4d95-9e7d-019fa759387f",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "4e04d2108df588fd799e08437ab241591dc6315182feceafeff9ef26703dc5d5",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Exact /26 subset needs numeric/CIDR validation and canonical subnet ID; omitted arrays and subnet applicability remain unknown.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "828cec2e-af6c-40c2-8fa2-1b681ee63eb7",
+      "control_id": "ALZ-828cec2e-af6c-40c2-8fa2-1b681ee63eb7",
+      "targets": []
+    },
+    {
+      "guid": "0da83bb1-2f39-49af-b5c9-835fc455e3d1",
+      "control_id": "ALZ-0da83bb1-2f39-49af-b5c9-835fc455e3d1",
+      "targets": []
+    },
+    {
+      "guid": "c44c6f0e-1642-4a61-a17b-0922f835c93a",
+      "control_id": "ALZ-c44c6f0e-1642-4a61-a17b-0922f835c93a",
+      "targets": []
+    },
+    {
+      "guid": "7371dc21-251a-47a3-af14-6e01b9da4757",
+      "control_id": "ALZ-7371dc21-251a-47a3-af14-6e01b9da4757",
+      "targets": []
+    },
+    {
+      "guid": "346840b8-1064-496e-8396-4b1340172d52",
+      "control_id": "ALZ-346840b8-1064-496e-8396-4b1340172d52",
+      "targets": []
+    },
+    {
+      "guid": "39990a13-915c-45f9-a2d3-562d7d6c4b7c",
+      "control_id": "ALZ-39990a13-915c-45f9-a2d3-562d7d6c4b7c",
+      "targets": []
+    },
+    {
+      "guid": "6eff7e6c-6c4a-43d7-be3f-6641c2cb3d4a",
+      "control_id": "ALZ-6eff7e6c-6c4a-43d7-be3f-6641c2cb3d4a",
+      "targets": []
+    },
+    {
+      "guid": "94f3eede-9aa3-4088-92a3-bb9a56509fad",
+      "control_id": "ALZ-94f3eede-9aa3-4088-92a3-bb9a56509fad",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "3bad6147121522e856c5ab25e0158e24bb45e45577c9fa302a5103f991825c62",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Query filters to attached policies and compares a Boolean with string true. Existing accepted typed predicate is separate, not this query.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "64e7000e-3c06-485e-b455-ced7f454cba3",
+      "control_id": "ALZ-64e7000e-3c06-485e-b455-ced7f454cba3",
+      "targets": []
+    },
+    {
+      "guid": "d38ad60c-bc9e-4d49-b699-97e5d4dcf707",
+      "control_id": "ALZ-d38ad60c-bc9e-4d49-b699-97e5d4dcf707",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "eb8016f424262a7c181977b6a26fd330af69cba009c64f71ccad6a21098a8cbd",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Non-VWAN firewall zone-array subset; managed/regional zone support and SKU/availability applicability need review. No rows cannot prove resilience.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "e8143efa-0301-4d62-be54-ca7b5ce566dc",
+      "control_id": "ALZ-e8143efa-0301-4d62-be54-ca7b5ce566dc",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "486a968e67a2f2caba36f3e1adb176e454555e5933ca40e50d26da3ca4f9b215",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Firewall/VNet/DDoS plan joins need complete child IDs; orphan right rows can lack firewall identity. Association is not runtime mitigation.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "d301d6e8-72e5-42e3-911c-c58b5a4b1511",
+      "control_id": "ALZ-d301d6e8-72e5-42e3-911c-c58b5a4b1511",
+      "targets": []
+    },
+    {
+      "guid": "e43a58a9-c229-49c4-b7b5-7d0c655562f2",
+      "control_id": "ALZ-e43a58a9-c229-49c4-b7b5-7d0c655562f2",
+      "targets": []
+    },
+    {
+      "guid": "b3e4563a-4d87-4397-98b6-62d6d15f512a",
+      "control_id": "ALZ-b3e4563a-4d87-4397-98b6-62d6d15f512a",
+      "targets": []
+    },
+    {
+      "guid": "4704489a-8042-4d88-b79d-17b73b22a5a6",
+      "control_id": "ALZ-4704489a-8042-4d88-b79d-17b73b22a5a6",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "2e88b3d41d2b4da3b90eb5c00471b26ce20bb5377ec99371c756b11edd0149ed",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Null serviceEndpoints becomes compliant; missing details can manufacture a pass. Exceptions and full subnet inventory require review.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "7e7a8ed4-b30e-438c-9f29-812b2363cefe",
+      "control_id": "ALZ-7e7a8ed4-b30e-438c-9f29-812b2363cefe",
+      "targets": []
+    },
+    {
+      "guid": "f2aad7e3-bb03-4adc-8606-4123d342a917",
+      "control_id": "ALZ-f2aad7e3-bb03-4adc-8606-4123d342a917",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "6d0e477d2f4e7ee37348adb0b05be98cdf56fd9d8f138b44ddf09cbe643cc576",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Gateway subnet <=27 requires numeric/CIDR and canonical child checks; missing or inapplicable gateway subnets cannot be inferred absent.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "11deb39d-8299-4e47-bbe0-0fb5a36318a8",
+      "control_id": "ALZ-11deb39d-8299-4e47-bbe0-0fb5a36318a8",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "2994d1252c1f6b3e47f371c5762f8e178e6b4828075e33a22b5f934010ec171b",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Any blanket deny ignores priority, preceding allows, service-tag semantics and effective NSG rules; not an effective inbound-policy proof.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "c2447ec6-6138-4a72-80f1-ce16ed301d6e",
+      "control_id": "ALZ-c2447ec6-6138-4a72-80f1-ce16ed301d6e",
+      "targets": []
+    },
+    {
+      "guid": "872e52e3-611c-4c58-a5a4-b1511e43a58a",
+      "control_id": "ALZ-872e52e3-611c-4c58-a5a4-b1511e43a58a",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "d5c04b1ff2f2ab055a83b215cb03f126ac04f2b7ea9db54e865281d5f9069645",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. NSG-reference presence subset only; requires canonical child identities, explicit special-subnet applicability and effective-policy caveats.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "a4d87397-48b6-462d-9d15-f512a65498f6",
+      "control_id": "ALZ-a4d87397-48b6-462d-9d15-f512a65498f6",
+      "targets": []
+    },
+    {
+      "guid": "dfe237de-143b-416c-91d7-aa9b64704489",
+      "control_id": "ALZ-dfe237de-143b-416c-91d7-aa9b64704489",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "574d9b911f39263248f794d2a1d914ebda9efbe62ba0e64580bf32122fab714f",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Flow-log join tests existence but does not require the projected Traffic Analytics flag to be true. Inaccessible flow logs cannot prove absence.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "0390417d-53dc-44d9-b3f4-c8832f359b41",
+      "control_id": "ALZ-0390417d-53dc-44d9-b3f4-c8832f359b41",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "81c4551c5e89bf0cb46681ccce22f8e500966c2df8d17fb2365b88ba0a8d015e",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. <900 disagrees with no more than 900 at the boundary; complete custom rule arrays and separate system/effective rules require review.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "412e7f98-3f63-4047-82dd-69c5b5c2622f",
+      "control_id": "ALZ-412e7f98-3f63-4047-82dd-69c5b5c2622f",
+      "targets": []
+    },
+    {
+      "guid": "54b69bad-33aa-4d5e-ac68-e1d76667313b",
+      "control_id": "ALZ-54b69bad-33aa-4d5e-ac68-e1d76667313b",
+      "targets": []
+    },
+    {
+      "guid": "7d5d1e4e-6146-458d-9558-fd77249b8211",
+      "control_id": "ALZ-7d5d1e4e-6146-458d-9558-fd77249b8211",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "d952a2f37414434acd2aed2a9a282bffc39ec3e45679c1b1ec3561a5d812844e",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Virtual-hub firewall reference subset; existence does not prove secured outbound routing or effective filtering.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "6667313b-4f56-464b-9e98-4a859c773e7d",
+      "control_id": "ALZ-6667313b-4f56-464b-9e98-4a859c773e7d",
+      "targets": []
+    },
+    {
+      "guid": "261623a7-65a9-417e-8f34-8ef254c27d42",
+      "control_id": "ALZ-261623a7-65a9-417e-8f34-8ef254c27d42",
+      "targets": []
+    },
+    {
+      "guid": "727c77e1-b9aa-4a37-a024-129d042422c1",
+      "control_id": "ALZ-727c77e1-b9aa-4a37-a024-129d042422c1",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "738e1137d821859bce739f3d359aa0ffbe8164ec2f85bbbf2644183ce8abb6b0",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Boolean property compared with string true; coercion is not accepted. Explicit approved branch-blocking intent can change applicability.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "d49ac006-6670-4bc9-9948-d3e0a3a94f4d",
+      "control_id": "ALZ-d49ac006-6670-4bc9-9948-d3e0a3a94f4d",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "b614ee7d0ae3674ac009351717a26c80902d8fb75dd650d7fc60b3d311e4b103",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Explicit routing-preference enum subset; defaults, operational routing and regional/product applicability are not inferred.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "2586b854-237e-47f1-84a1-d45d4cd2310d",
+      "control_id": "ALZ-2586b854-237e-47f1-84a1-d45d4cd2310d",
+      "targets": []
+    },
+    {
+      "guid": "9c75dfef-573c-461c-a698-68598595581a",
+      "control_id": "ALZ-9c75dfef-573c-461c-a698-68598595581a",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "f3352d73bd9273171c7a3067ffa1bc1cdf4ac9c1f5e6e39c17d27117467a7dbc",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Mask <23 incorrectly excludes /23 versus at least /23; subnet text parsing is not CIDR validation. No corrected automation is accepted here.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "5c986cb2-9131-456a-8247-6e49f541acdc",
+      "control_id": "ALZ-5c986cb2-9131-456a-8247-6e49f541acdc",
+      "targets": []
+    },
+    {
+      "guid": "d8a2adb1-17d6-4326-af62-5ca44e5695f2",
+      "control_id": "ALZ-d8a2adb1-17d6-4326-af62-5ca44e5695f2",
+      "targets": []
+    },
+    {
+      "guid": "223ace8c-b123-408c-a501-7f154e3ab369",
+      "control_id": "ALZ-223ace8c-b123-408c-a501-7f154e3ab369",
+      "targets": []
+    },
+    {
+      "guid": "3829e7e3-1618-4368-9a04-77a209945bda",
+      "control_id": "ALZ-3829e7e3-1618-4368-9a04-77a209945bda",
+      "targets": []
+    },
+    {
+      "guid": "43334f24-9116-4341-a2ba-527526944008",
+      "control_id": "ALZ-43334f24-9116-4341-a2ba-527526944008",
+      "targets": []
+    },
+    {
+      "guid": "be7d7e48-4327-46d8-adc0-55bcf619e8a1",
+      "control_id": "ALZ-be7d7e48-4327-46d8-adc0-55bcf619e8a1",
+      "targets": []
+    },
+    {
+      "guid": "3f988795-25d6-4268-a6d7-0ba6c97be995",
+      "control_id": "ALZ-3f988795-25d6-4268-a6d7-0ba6c97be995",
+      "targets": []
+    },
+    {
+      "guid": "19048384-5c98-46cb-8913-156a12476e49",
+      "control_id": "ALZ-19048384-5c98-46cb-8913-156a12476e49",
+      "targets": []
+    },
+    {
+      "guid": "29fd366b-a180-452b-9bd7-954b7700c667",
+      "control_id": "ALZ-29fd366b-a180-452b-9bd7-954b7700c667",
+      "targets": []
+    },
+    {
+      "guid": "5a917e1f-348e-4f25-9c27-d42e8bbac757",
+      "control_id": "ALZ-5a917e1f-348e-4f25-9c27-d42e8bbac757",
+      "targets": []
+    },
+    {
+      "guid": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+      "control_id": "ALZ-78b22132-b41c-460b-a4d3-df8f73a67dc2",
+      "targets": []
+    },
+    {
+      "guid": "caeea0e9-1024-41df-a52e-d99c3f22a6f4",
+      "control_id": "ALZ-caeea0e9-1024-41df-a52e-d99c3f22a6f4",
+      "targets": []
+    },
+    {
+      "guid": "9b461617-db7b-4399-8ac6-d4eb7153893a",
+      "control_id": "ALZ-9b461617-db7b-4399-8ac6-d4eb7153893a",
+      "targets": []
+    },
+    {
+      "guid": "bfaf7b7a-9e6c-4840-a2bd-2c524326bdf6",
+      "control_id": "ALZ-bfaf7b7a-9e6c-4840-a2bd-2c524326bdf6",
+      "targets": []
+    },
+    {
+      "guid": "3105633e-b168-4ce0-a016-5f10e7cdea5a",
+      "control_id": "ALZ-3105633e-b168-4ce0-a016-5f10e7cdea5a",
+      "targets": []
+    },
+    {
+      "guid": "77cf1acd-16b4-4092-8d30-6ec9579854ce",
+      "control_id": "ALZ-77cf1acd-16b4-4092-8d30-6ec9579854ce",
+      "targets": []
+    },
+    {
+      "guid": "67e7a8ed-4b30-4e38-a3f2-9812b2363cef",
+      "control_id": "ALZ-67e7a8ed-4b30-4e38-a3f2-9812b2363cef",
+      "targets": []
+    },
+    {
+      "guid": "7418ada9-4199-4c28-8286-d15e9433e8f3",
+      "control_id": "ALZ-7418ada9-4199-4c28-8286-d15e9433e8f3",
+      "targets": []
+    },
+    {
+      "guid": "5e6c4cfd-3e50-4454-9c24-47ec66138a72",
+      "control_id": "ALZ-5e6c4cfd-3e50-4454-9c24-47ec66138a72",
+      "targets": []
+    },
+    {
+      "guid": "e7d7e484-3276-4d8b-bc05-5bcf619e8a13",
+      "control_id": "ALZ-e7d7e484-3276-4d8b-bc05-5bcf619e8a13",
+      "targets": []
+    },
+    {
+      "guid": "f9887952-5d62-4688-9d70-ba6c97be9951",
+      "control_id": "ALZ-f9887952-5d62-4688-9d70-ba6c97be9951",
+      "targets": []
+    },
+    {
+      "guid": "c806c048-26b7-4ddf-b4c2-b4f0c476925d",
+      "control_id": "ALZ-c806c048-26b7-4ddf-b4c2-b4f0c476925d",
+      "targets": []
+    },
+    {
+      "guid": "90483845-c986-4cb2-a131-56a12476e49f",
+      "control_id": "ALZ-90483845-c986-4cb2-a131-56a12476e49f",
+      "targets": []
+    },
+    {
+      "guid": "541acdce-9793-477b-adb3-751ab2ab13ad",
+      "control_id": "ALZ-541acdce-9793-477b-adb3-751ab2ab13ad",
+      "targets": []
+    },
+    {
+      "guid": "a6e55d7d-8a2a-4db1-87d6-326af625ca44",
+      "control_id": "ALZ-a6e55d7d-8a2a-4db1-87d6-326af625ca44",
+      "targets": []
+    },
+    {
+      "guid": "e5695f22-23ac-4e8c-a123-08ca5017f154",
+      "control_id": "ALZ-e5695f22-23ac-4e8c-a123-08ca5017f154",
+      "targets": []
+    },
+    {
+      "guid": "d5f345bf-97ab-41a7-819c-6104baa7d48c",
+      "control_id": "ALZ-d5f345bf-97ab-41a7-819c-6104baa7d48c",
+      "targets": []
+    },
+    {
+      "guid": "e3ab3693-829e-47e3-8618-3687a0477a20",
+      "control_id": "ALZ-e3ab3693-829e-47e3-8618-3687a0477a20",
+      "targets": []
+    },
+    {
+      "guid": "6944008b-e7d7-4e48-9327-6d8bdc055bcf",
+      "control_id": "ALZ-6944008b-e7d7-4e48-9327-6d8bdc055bcf",
+      "targets": []
+    },
+    {
+      "guid": "619e8a13-f988-4795-85d6-26886d70ba6c",
+      "control_id": "ALZ-619e8a13-f988-4795-85d6-26886d70ba6c",
+      "targets": []
+    },
+    {
+      "guid": "97be9951-9048-4384-9c98-6cb2913156a1",
+      "control_id": "ALZ-97be9951-9048-4384-9c98-6cb2913156a1",
+      "targets": []
+    },
+    {
+      "guid": "859c3900-4514-41eb-b010-475d695abd74",
+      "control_id": "ALZ-859c3900-4514-41eb-b010-475d695abd74",
+      "targets": []
+    },
+    {
+      "guid": "aa45be6a-8f2d-4896-b0e3-775e6e94e610",
+      "control_id": "ALZ-aa45be6a-8f2d-4896-b0e3-775e6e94e610",
+      "targets": []
+    },
+    {
+      "guid": "0d83fd81-952c-4d47-a6cb-3a930925ef2e",
+      "control_id": "ALZ-0d83fd81-952c-4d47-a6cb-3a930925ef2e",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "a9e264ead99710d3e4556ad6f97ac3c287f4df467ee9ad0428ebb11308989330",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. LRS SKU matches only; missing/unsupported SKUs and resiliency intent cannot become passes from an empty violation list.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "7ea02e1c-7166-45a3-bdf5-098891367fcb",
+      "control_id": "ALZ-7ea02e1c-7166-45a3-bdf5-098891367fcb",
+      "targets": []
+    },
+    {
+      "guid": "eba8cf22-45c6-4dc1-9b57-2cceb3b97ce5",
+      "control_id": "ALZ-eba8cf22-45c6-4dc1-9b57-2cceb3b97ce5",
+      "targets": []
+    },
+    {
+      "guid": "f541acdc-e979-4377-acdb-3751ab2ab13a",
+      "control_id": "ALZ-f541acdc-e979-4377-acdb-3751ab2ab13a",
+      "targets": []
+    },
+    {
+      "guid": "da6e55d7-d8a2-4adb-817d-6326af625ca4",
+      "control_id": "ALZ-da6e55d7-d8a2-4adb-817d-6326af625ca4",
+      "targets": []
+    },
+    {
+      "guid": "b2ab13ad-a6e5-45d7-b8a2-adb117d6326a",
+      "control_id": "ALZ-b2ab13ad-a6e5-45d7-b8a2-adb117d6326a",
+      "targets": []
+    },
+    {
+      "guid": "f625ca44-e569-45f2-823a-ce8cb12308ca",
+      "control_id": "ALZ-f625ca44-e569-45f2-823a-ce8cb12308ca",
+      "targets": []
+    },
+    {
+      "guid": "89cc5e11-aa4d-4c3b-893d-feb99215266a",
+      "control_id": "ALZ-89cc5e11-aa4d-4c3b-893d-feb99215266a",
+      "targets": []
+    },
+    {
+      "guid": "7f408960-c626-44cb-a018-347c8d790cdf",
+      "control_id": "ALZ-7f408960-c626-44cb-a018-347c8d790cdf",
+      "targets": []
+    },
+    {
+      "guid": "b86ad884-08e3-4727-94b8-75ba18f20459",
+      "control_id": "ALZ-b86ad884-08e3-4727-94b8-75ba18f20459",
+      "targets": []
+    },
+    {
+      "guid": "01365d38-e43f-49cc-ad86-8266abca264f",
+      "control_id": "ALZ-01365d38-e43f-49cc-ad86-8266abca264f",
+      "targets": []
+    },
+    {
+      "guid": "5017f154-e3ab-4369-9829-e7e316183687",
+      "control_id": "ALZ-5017f154-e3ab-4369-9829-e7e316183687",
+      "targets": []
+    },
+    {
+      "guid": "a0477a20-9945-4bda-9333-4f2491163418",
+      "control_id": "ALZ-a0477a20-9945-4bda-9333-4f2491163418",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "e5ceef3409d5bdfff42264533427c234a19378be9729063960b5a046777b0575",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Vault count !=1 makes zero vaults compliant; does not distinguish apps, environments or regions. Not an acceptable segregation predicate.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "2ba52752-6944-4008-ae7d-7e4843276d8b",
+      "control_id": "ALZ-2ba52752-6944-4008-ae7d-7e4843276d8b",
+      "targets": []
+    },
+    {
+      "guid": "dc055bcf-619e-48a1-9f98-879525d62688",
+      "control_id": "ALZ-dc055bcf-619e-48a1-9f98-879525d62688",
+      "targets": []
+    },
+    {
+      "guid": "6d70ba6c-97be-4995-8904-83845c986cb2",
+      "control_id": "ALZ-6d70ba6c-97be-4995-8904-83845c986cb2",
+      "targets": []
+    },
+    {
+      "guid": "913156a1-2476-4e49-b541-acdce979377b",
+      "control_id": "ALZ-913156a1-2476-4e49-b541-acdce979377b",
+      "targets": []
+    },
+    {
+      "guid": "cdb3751a-b2ab-413a-ba6e-55d7d8a2adb1",
+      "control_id": "ALZ-cdb3751a-b2ab-413a-ba6e-55d7d8a2adb1",
+      "targets": []
+    },
+    {
+      "guid": "17d6326a-f625-4ca4-9e56-95f2223ace8c",
+      "control_id": "ALZ-17d6326a-f625-4ca4-9e56-95f2223ace8c",
+      "targets": []
+    },
+    {
+      "guid": "b12308ca-5017-4f15-9e3a-b3693829e7e3",
+      "control_id": "ALZ-b12308ca-5017-4f15-9e3a-b3693829e7e3",
+      "targets": []
+    },
+    {
+      "guid": "16183687-a047-47a2-8994-5bda43334f24",
+      "control_id": "ALZ-16183687-a047-47a2-8994-5bda43334f24",
+      "targets": []
+    },
+    {
+      "guid": "b48ade7f-50be-4d2e-9866-d57b17942fc2",
+      "control_id": "ALZ-b48ade7f-50be-4d2e-9866-d57b17942fc2",
+      "targets": []
+    },
+    {
+      "guid": "25d62688-6d70-4ba6-a97b-e99519048384",
+      "control_id": "ALZ-25d62688-6d70-4ba6-a97b-e99519048384",
+      "targets": []
+    },
+    {
+      "guid": "4ac6b67c-b3a4-4ff9-8e87-b07a7ce7bbdb",
+      "control_id": "ALZ-4ac6b67c-b3a4-4ff9-8e87-b07a7ce7bbdb",
+      "targets": []
+    },
+    {
+      "guid": "4e5695f2-223a-4ce8-ab12-308ca5017f15",
+      "control_id": "ALZ-4e5695f2-223a-4ce8-ab12-308ca5017f15",
+      "targets": []
+    },
+    {
+      "guid": "4e3ab369-3829-4e7e-9161-83687a0477a2",
+      "control_id": "ALZ-4e3ab369-3829-4e7e-9161-83687a0477a2",
+      "targets": []
+    },
+    {
+      "guid": "09945bda-4333-44f2-9911-634182ba5275",
+      "control_id": "ALZ-09945bda-4333-44f2-9911-634182ba5275",
+      "targets": []
+    },
+    {
+      "guid": "36a72a48-fffe-4c40-9747-0ab5064355ba",
+      "control_id": "ALZ-36a72a48-fffe-4c40-9747-0ab5064355ba",
+      "targets": []
+    },
+    {
+      "guid": "77425f48-ecba-43a0-aeac-a3ac733ccc6a",
+      "control_id": "ALZ-77425f48-ecba-43a0-aeac-a3ac733ccc6a",
+      "targets": []
+    },
+    {
+      "guid": "24d96b30-61ee-4436-a1cc-d6ef08bc574b",
+      "control_id": "ALZ-24d96b30-61ee-4436-a1cc-d6ef08bc574b",
+      "targets": []
+    },
+    {
+      "guid": "15833ee7-ad6c-46d3-9331-65c7acbe44ab",
+      "control_id": "ALZ-15833ee7-ad6c-46d3-9331-65c7acbe44ab",
+      "targets": []
+    },
+    {
+      "guid": "e5f8d79f-2e87-4768-924c-516775c6ea95",
+      "control_id": "ALZ-e5f8d79f-2e87-4768-924c-516775c6ea95",
+      "targets": []
+    },
+    {
+      "guid": "a56888b2-7e83-4404-bd31-b886528502d1",
+      "control_id": "ALZ-a56888b2-7e83-4404-bd31-b886528502d1",
+      "targets": [
+        {
+          "kind": "arg-query",
+          "id": "31e5062b1af2a16231d37f50d4299e7dc963098ddba83ad0315c2eca9b8ea5ec",
+          "strength": "related",
+          "rationale": "Static candidate only; not an executable allowlist or outcome. Inner-joined SecurityInsights solution existence excludes unmatched workspaces and does not prove SIEM ingestion, correlation or operations.",
+          "source_ids": [
+            "checklist",
+            "candidate-audit"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "d21a922d-5ca7-427a-82a6-35f7b21f1bfc",
+      "control_id": "ALZ-d21a922d-5ca7-427a-82a6-35f7b21f1bfc",
+      "targets": []
+    },
+    {
+      "guid": "874a748b-662d-46d1-9051-2a66498f6dfe",
+      "control_id": "ALZ-874a748b-662d-46d1-9051-2a66498f6dfe",
+      "targets": []
+    },
+    {
+      "guid": "b03ed428-4617-4067-a787-85468b9ccf3f",
+      "control_id": "ALZ-b03ed428-4617-4067-a787-85468b9ccf3f",
+      "targets": [
+        {
+          "kind": "alz-policy-assignment",
+          "id": "Deny-Storage-http",
+          "strength": "partial",
+          "rationale": "Same secure-transfer property intent, but external API-dependent missing-value defaults/effects differ from LandingLens's explicit boolean; no assignment/scanner result establishes a checklist pass.",
+          "source_ids": [
+            "checklist",
+            "alz-storage-assignment",
+            "builtin-storage-transfer"
+          ]
+        },
+        {
+          "kind": "azure-policy-definition",
+          "id": "/providers/Microsoft.Authorization/policyDefinitions/404c3081-a854-4457-ae30-26a93ef643f9",
+          "strength": "partial",
+          "rationale": "Same secure-transfer property intent, but external API-dependent missing-value defaults/effects differ from LandingLens's explicit boolean; no assignment/scanner result establishes a checklist pass.",
+          "source_ids": [
+            "checklist",
+            "builtin-storage-transfer"
+          ]
+        },
+        {
+          "kind": "psrule",
+          "id": "Azure.Storage.SecureTransfer",
+          "strength": "partial",
+          "rationale": "Same secure-transfer property intent, but external API-dependent missing-value defaults/effects differ from LandingLens's explicit boolean; no assignment/scanner result establishes a checklist pass.",
+          "source_ids": [
+            "checklist",
+            "psrule-storage-yaml",
+            "psrule-storage-guidance"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "159aac9f-863f-4f48-82cf-00c28fa97a0e",
+      "control_id": "ALZ-159aac9f-863f-4f48-82cf-00c28fa97a0e",
+      "targets": [
+        {
+          "kind": "psrule",
+          "id": "Azure.Storage.ContainerSoftDelete",
+          "strength": "partial",
+          "rationale": "Checks enabled and retention days but has CloudShell/HNS/FileStorage population exclusions and child selection differences. No recovery test or equivalent whole-recommendation outcome.",
+          "source_ids": [
+            "checklist",
+            "psrule-storage-powershell"
+          ]
+        }
+      ]
+    },
+    {
+      "guid": "31e77d70-f001-455b-93aa-6d05eea10968",
+      "control_id": "ALZ-31e77d70-f001-455b-93aa-6d05eea10968",
+      "targets": []
+    },
+    {
+      "guid": "6f704104-85c1-441f-96d3-c9819911645e",
+      "control_id": "ALZ-6f704104-85c1-441f-96d3-c9819911645e",
+      "targets": []
+    },
+    {
+      "guid": "9a19bf39-c95d-444c-9c89-19ca1f6d5215",
+      "control_id": "ALZ-9a19bf39-c95d-444c-9c89-19ca1f6d5215",
+      "targets": []
+    },
+    {
+      "guid": "ae514b93-3d45-485e-8112-9bd7ba012f7b",
+      "control_id": "ALZ-ae514b93-3d45-485e-8112-9bd7ba012f7b",
+      "targets": []
+    },
+    {
+      "guid": "e85f4226-bf06-4e35-8a8b-7aee4d2d633a",
+      "control_id": "ALZ-e85f4226-bf06-4e35-8a8b-7aee4d2d633a",
+      "targets": []
+    },
+    {
+      "guid": "634146bf-7085-4419-a7b5-f96d2726f6da",
+      "control_id": "ALZ-634146bf-7085-4419-a7b5-f96d2726f6da",
+      "targets": []
+    },
+    {
+      "guid": "a9e65070-c59e-4112-8bf6-c11364d4a2a5",
+      "control_id": "ALZ-a9e65070-c59e-4112-8bf6-c11364d4a2a5",
+      "targets": []
+    },
+    {
+      "guid": "165eb5e9-b434-448a-9e24-178632186212",
+      "control_id": "ALZ-165eb5e9-b434-448a-9e24-178632186212",
+      "targets": []
+    },
+    {
+      "guid": "0cadb8c7-8fa5-4fbf-8f39-d1fadb3b0460",
+      "control_id": "ALZ-0cadb8c7-8fa5-4fbf-8f39-d1fadb3b0460",
+      "targets": []
+    },
+    {
+      "guid": "108d5099-a11d-4445-bd8b-e12a5e95412e",
+      "control_id": "ALZ-108d5099-a11d-4445-bd8b-e12a5e95412e",
+      "targets": []
+    },
+    {
+      "guid": "a52e0c98-76b9-4a09-a1c9-6b2babf22ac4",
+      "control_id": "ALZ-a52e0c98-76b9-4a09-a1c9-6b2babf22ac4",
+      "targets": []
+    },
+    {
+      "guid": "cfe363b5-f579-4284-bc56-a42153e4c10b",
+      "control_id": "ALZ-cfe363b5-f579-4284-bc56-a42153e4c10b",
+      "targets": []
+    },
+    {
+      "guid": "c7245dd4-af8a-403a-8bb7-890c1a7cfa9d",
+      "control_id": "ALZ-c7245dd4-af8a-403a-8bb7-890c1a7cfa9d",
+      "targets": []
+    },
+    {
+      "guid": "12aeea20-9165-4b3e-bdf2-6795fcd3cdbe",
+      "control_id": "ALZ-12aeea20-9165-4b3e-bdf2-6795fcd3cdbe",
+      "targets": []
+    },
+    {
+      "guid": "2676ae46-65ca-444e-8695-fdddeace4cb1",
+      "control_id": "ALZ-2676ae46-65ca-444e-8695-fdddeace4cb1",
+      "targets": []
+    },
+    {
+      "guid": "2cdc9d99-dbcc-4ad4-97f5-e7d358bdfa73",
+      "control_id": "ALZ-2cdc9d99-dbcc-4ad4-97f5-e7d358bdfa73",
+      "targets": []
+    },
+    {
+      "guid": "cc87a3bc-c572-4ad2-92ed-8cabab66160f",
+      "control_id": "ALZ-cc87a3bc-c572-4ad2-92ed-8cabab66160f",
+      "targets": []
+    },
+    {
+      "guid": "047c91e2-6bb4-4a42-a0ef-ab06ad0062c9",
+      "control_id": "ALZ-047c91e2-6bb4-4a42-a0ef-ab06ad0062c9",
+      "targets": []
+    }
+  ]
+}

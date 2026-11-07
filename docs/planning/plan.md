@@ -68,6 +68,293 @@ lacked `hcl2`; only the three unchanged manifest-hash-verified runtime wheels we
 restored into this cohort's dedicated environment. No other session environment
 or accepted bank was modified.
 
+## Cohort 07 accepted integration: 2026-11-07
+
+The explicit sole coordinator slot follows actual24 implementation155/receipt156
+and26 implementation158/receipt159, completed151 and checked final main
+`a2454003de0564de236ca56443cf7f5123d09d0e`. Preserved preparation `93de055`
+reconciles this baseline in `c9d2bcb`; all22 existing genuine compiler cases,
+including operations and recovery, precede the own MG-key/parent/settings case.
+
+The [eight-GUID matrix](../../references/recommendation-batches/batch-07.json)
+and [12 unchanged captures](../../references/recommendation-batches/batch-07-sources.json)
+activate builder-derived catalog/crosswalk `.25`. Exact `.24` catalog bytes:
+`34698f9a9f861bab60b96caa78ed03da2557d7d4f902a595f79191d48c38aedd`;
+crosswalk bytes:
+`b0d6d942aa996ca6c7679317bb4f4965f7f2fbc55ff2391989ce035b07496853`.
+All255GUIDs/fixed251/original four complete objects, every non-own full control,
+all220 prior own rows and26 receipts remain frozen. Counts stay12/200/43 and
+crosswalk51 controls/53 associations. Activation alone leaves220 delivered/
+31 pending until actual checked own delivery.
+
+All eight source-specific independent outcomes and exceptions start blank with
+scope/content/time/expiry binding and attribution. Naming policy/adoption,
+sandbox/platform/connectivity/workload purpose, authoritative tenant/intermediate
+root, complete estate depth and effective operations remain human judgments.
+Relative edges exclude the selected anchor/subscriptions, not an asserted tenant
+root. CAF ideal three-to-four, immutable four-level wording and the six-level
+service bound are not interchangeable. Default settings govern new subscriptions,
+not absence of existing root subscriptions; creation authorization does not prove
+every privileged operation. Missing/partial/ambiguous/stale/denied/unsupported/
+over-bound inputs remain unknown. No new live route, tenant query, Policy fetch/
+interpreter, private payload retention, settings/permissions change or operational
+assurance is introduced. Existing adapters, evaluator, bank, sessions, tiers,
+outputs and private original-time accepted/predecessor replay carry the same
+qualified workflow. Exact own implementation wheel/full suite/static/23-case
+compiler proof, eight-job exact-head/CodeQL/security/review and four downloaded
+matching exercised proofs, normal SHA-bound merge, guarded own-GUID receipt and
+checked final-main publication still gate satisfied #154 closure.
+
+The final own accepted implementation wheel SHA256 is
+`366c4aefbc1adf63a3befc9003440c6c1a0d74835c6086f157bda6b0bd81cb5b`.
+All166 package members match checkout, wheel and the dedicated outside-checkout
+site-packages installation importing `.25`. Its full suite ran834 tests:
+833 passed with only the original Windows symlink-privilege skip. All28 own
+preparation/accepted cases pass, including registered independent decisions,
+atomic failure/resume, original-time replay and predecessor/candidate rejection.
+The existing compiler exercised all23 cases without skips or restore; proof
+SHA256 `89bb24ad7a82a8e4738bdf0b6dbc7f32d49db06e29897fdcfe7cd3e37e548ddb`.
+All51 source files pass static typing; formatting/lint, dependency consistency
+and551 local documentation links pass. The initial834-test source run found
+one missed historical interview-bank count assertion; the corrected assertion
+pins the original22 questions after excluding both later additions, while
+requiring24 current questions. The failed run is not final acceptance evidence.
+Preparation wheels/proofs remain separate and do not replace these post-slot
+implementation proofs or the remote merge/delivery gates.
+
+### Cohort 07 implementation and guarded receipt reconciliation
+
+[#161](https://github.com/jonathan-vella/landinglens/pull/161) merged normally as
+`b02116231d76a222b13d1cc375856e883afd81e4` at2026-11-07T03:36:36Z.
+Exact checked head `724244b9dfa5f28c48f1cd459a00458967199835` passed all eight
+push/PR platform jobs in42333701287/42333715145, CodeQL42333712287 and Advanced
+Security42333718319. All11 PR checks and live head/base/main/comments/reviews/
+threads were refreshed both before ready and before normal SHA-bound merge;
+every feedback surface was empty. No admin/force/bypass, auto-merge or
+protection/settings change was used.
+
+All four downloaded exact-head PR compiler artifacts exercised the same23 cases
+without skips: Ubuntu3.12 `13557904526`, Ubuntu3.13 `13559061318`,
+Windows3.12 `13559146640`, Windows3.13 `13559460625`. JSON SHA256:
+`06f956d3ae295abd08fcfea2e6cac46435bda674b78beeefa4268e8c16fd383a`
+on Ubuntu and
+`08fee069c0c3cd032ddd2e3cceb7ed4e94ce6196fc85976c4038d05cbed31a94`
+on Windows. These downloaded proofs match this cohort's actual PR/head, not
+preparation or another cohort's artifacts.
+
+The existing guarded recorder verified actual merged161, both own checked runs,
+all eight platform jobs and all four matching exercised compiler artifacts before
+writing `deliveries.07` and binding every one of the eight actual GUIDs to that
+receipt. Its own implementation wheel is
+`366c4aefbc1adf63a3befc9003440c6c1a0d74835c6086f157bda6b0bd81cb5b`,
+834 tests/833 passed/one original Windows skip. Derived ledger totals are
+**228 delivered / 23 pending / 27 receipts**. All220 earlier rows/26 receipts,
+all255 GUIDs/fixed251/original four full controls, exact historical bytes and
+every own binding remain preserved; dispositions stay12/200/43.
+Checked receipt publication and actual final-main CI, not implementation merge,
+recording, source activation or issue status, determine satisfied #154 completion.
+No new Azure reads, queries, deployment, settings/permissions changes or owner/
+runtime assurances are asserted.
+
+The first receipt-head `00274b5bb09e06326a8e9c8635461efe2a817175` failed all
+eight platform jobs in push42334892706/PR42334908306 because the pending-priority
+table still included delivered cohort07, while its guarded ledger correctly
+derived23 pending GUIDs. CodeQL42334905523 and Advanced Security42334909975
+passed, but that head is not accepted publication evidence. The correction removes
+only the delivered07 pending row and reconciles the current summary to `.25`/
+23 remaining. The unchanged ledger-derived exact-membership assertion now passes;
+no test weakening, receipt/wheel replacement, production code change or bypass.
+Both failed run IDs/logs remain retained as invalidated history. Implementation
+final-main platform42334794664 and CodeQL42334794536 passed independently;
+receipt publication still needs its own fresh exact-head and final-main gates.
+
+## Cohort 07 independent preparation: 2026-11-07
+
+[#154](https://github.com/jonathan-vella/landinglens/issues/154) prepares the
+[eight fixed naming/hierarchy GUIDs](../../references/preparation/batch-07.json)
+and [reviewed source provenance](../../references/preparation/batch-07-sources.json)
+against actual main `e489d7125c2b60669dfe0599cd30ab189984ff43` / `.22`.
+This does not register an accepted successor or interview, activate a matrix,
+change delivery counts/history, open a PR, merge, publish a receipt or close the
+issue. Actual cohorts24/26 and an explicit sole coordinator slot precede those gates.
+
+Existing governance parent projections and saved hierarchy edges feed one bounded,
+typed, unique-known graph. Explicit tenant resource keys can identify planned MGs
+without designating their organizational purpose or tenant-root status. Pinned
+ARM/Bicep settings/default configuration supplies two independent minimized fields;
+AzureRM has no assumed settings resource. No new Collector endpoint or observed
+API allowlist entry is added. Unsupported expressions, versions, unresolved keys,
+duplicates/cycles/conflicting/missing parents, out-of-scope and over100 relevant
+records remain unknown. Relative MG-edge depth excludes the selected anchor and
+subscriptions; it is not a full-estate measurement or a compliance threshold.
+Current CAF ideally three-to-four guidance, immutable four-level wording and the
+service maximum six below tenant root remain distinct source-qualified boundaries.
+
+All eight source-specific human decisions start independently blank with separate
+exceptions, attribution, scope/content/time/expiry binding. Naming policy and actual
+adoption, sandbox operating model, platform/connectivity placement, existing root
+subscriptions, effective privileged operations and workload needs cannot be inferred
+from names, syntax, counts, positive ancestry or humanConfirmed. A default group
+controls future placement, not existing membership; the authorization toggle covers
+creation, not every operation. Preparation-only bank injection exercises existing
+reviews/interviews, tiers/outputs, CLI/local sessions and original-time private replay.
+The genuine no-restore compiler fixture proves explicit keys/parent/settings only,
+not root designation, complete tenant topology or organizational intent.
+
+The final preparation wheel SHA256 is
+`ebc3af929f3044cbe934fc1b3d3974bef5248ff8903cc9a09ed30d4f08c02501`.
+All152 package members match checkout, wheel and the dedicated outside-checkout
+site-packages installation importing unchanged `.22`. Its full suite ran769
+tests:768 passed and only the original Windows symlink-privilege case skipped.
+All21 real compiler cases, including all20 predecessors and the new literal
+MG-key/parent/settings fixture, exercised the existing compiler without skips or
+restore. Compiler proof SHA256:
+`f93b8e6655306d628a48be46701b8c6a08a795b64289aadad9e96691a4dc8bcb`.
+All21 own workflow cases,49-source-file typing, formatting/lint, dependency
+consistency and516 local documentation links pass. A clean-environment import
+first failed on missing hcl2; only the three exact reviewed manifest wheels were
+then restored and hash-verified in this session's own environment. No other
+session installation was used. Preparation proof is not accepted delivery:
+actual then-main reconciliation, accepted registration/replay, exact-head
+eight platform jobs/CodeQL/security/review, four downloaded matching compiler
+proofs, normal SHA-bound merge, guarded own-GUID receipt and checked final-main
+publication remain deferred until the coordinator grants the slot.
+## Cohort 26 accepted integration: 2026-11-07
+
+The explicit sole coordinator slot follows actual09 implementation152/receipt153
+and24 implementation155/receipt156, completed issues and checked final main
+`e2b71b212b47b1d240368e9da13ab51bd66797ee`. Preparation `b39b67a` is preserved;
+reconciliation `88a20fc` retains09 hierarchy/VM metadata and24 table/export/
+immutability/guest/Arc/lock behavior. Guest extension scope and Terraform identity
+reuse24's implementation, and guest-mode projection delegates to its helper.
+All21 actual predecessor compiler cases precede the recovery configuration case.
+
+Existing builders derive unique catalog/crosswalk `2026-11-06.24` from exact
+frozen `.23` bytes, [45 unchanged captures](../../references/recommendation-batches/batch-26-sources.json)
+and the [eight-GUID accepted matrix](../../references/recommendation-batches/batch-26.json).
+Original255/fixed251, four complete original automated controls, every non-own
+control, all212 prior own-GUID rows/25 receipts and every historical binding remain
+unchanged. Dispositions remain12 automated/200 assisted/43 manual. Before guarded
+delivery,212 are delivered and39 undelivered; activation is not a receipt.
+
+Eight registered independent decisions share existing evaluator, review/tier,
+report/tracker, CLI/local-session and original-time private replay mechanisms.
+Recovery Services versus Data Protection/workload defaults, Files snapshot versus
+vaulted backup, current Machine Configuration lifecycle and legacy Backup Center
+are source-qualified. The Front Door service monitoring/Sentinel category-name
+discrepancy is retained. Configured recovery/guest/SQL/WAF facts establish neither
+protected fleet, successful recovery/achieved RPO/RTO, compliant guests/operating
+drift monitoring, universal PaaS DR nor WAF/Sentinel ingestion/review/detection.
+Human coverage/requirements/retention/testing/operation decisions remain blank and
+exceptable; Signals and human confirmations never manufacture Verified.
+
+Fresh own installed-wheel/static/accepted-replay checks, exact-head eight
+platform jobs, CodeQL/security/review and four downloaded exercised compiler proofs
+gate the normal SHA-bound implementation merge. Guarded actual own-GUID recording,
+checked receipt publication and actual final-main CI gate satisfied #151 closure.
+Preparation proofs below cannot substitute for these delivery gates.
+
+Implementation [#158](https://github.com/jonathan-vella/landinglens/pull/158)
+merged normally as `67e8cb85c2b8e56438b292baf59a8163e7654933` after final head
+`0a27ad5700f3945a785efb35d4a062b601cdba9f` passed push42327421284 and
+PR42327426873 (all eight jobs), CodeQL42327422652/security42327428474 and
+fresh zero-feedback/head/base/main gates. All four downloaded PR artifacts match
+that head/run and exercise the same22 compiler cases without skips.
+The final own clean outside-checkout installed wheel ran806 tests:805 passed and
+the original Windows symlink-privilege skip1. Format/lint,50-file typing,
+dependency consistency,417 local doc links and exact161-member package byte
+comparison passed. Actual own accepted wheel SHA256:
+`00c3eb05a81acf7dbe13acca096169c6ccec16994ed8708c95652ce92d5d4340`.
+
+First accepted head `c9d78e6` and its local suite/push42326808397 failed only the
+stale22-question bank count. The correction pins exact23 and separately retains
+the22 predecessor-question count; no assertion or test was weakened. Obsolete
+PR42326824993 was cancelled. Those runs and earlier preparation proofs remain
+history, not final-head acceptance. Runtime/guest/recovery/security operation
+is still not asserted.
+
+The guarded recorder binds every own GUID through `deliveries.26` to actual
+implementation158/head/merge/two runs/22 cases/806-test own wheel. Derived totals
+are220 delivered/31 undelivered and26 receipts, retaining all212 earlier rows/
+25 receipts and their own bindings unchanged. Checked receipt publication and
+actual final-main CI still gate satisfied #151 closure; neither activation,
+implementation merge nor this local receipt record alone completes delivery.
+
+First receipt head `34461db` failed the unchanged pending-priority-table test:
+the guarded ledger correctly removed26 from undelivered membership, but the
+backlog still displayed its row. The correction removes that delivered row and
+derives31 remaining targets; no test assertion is changed. Invalidated receipt
+push42328596560/PR42328610904 remain history, not checked publication evidence.
+
+## Historical cohort 26 independent preparation: 2026-11-07
+
+[#151](https://github.com/jonathan-vella/landinglens/issues/151) owns exactly the
+eight F02.01-.02/F03.01-.02/F04.01-.02/F06.01-.02 GUIDs in the
+[preparation matrix](../../references/recommendation-batches/preparation-26.json)
+and [reviewed source captures](../../references/recommendation-batches/preparation-26-sources.json).
+Baseline is actual main `e5506c3d4061845b4250a68046ba281156de676d`,
+catalog/crosswalk `2026-11-06.21`,196 delivered/55 pending/23 receipts.
+This preparation does not choose/register a successor, activate the interview
+bank/source/matrix/catalog/crosswalk/counts/history, open a PR, merge, record
+delivery or close the issue. Cohorts09/24 precede the explicit serialized slot.
+
+Minimized configuration uses existing typed VM, recovery, storage, Policy,
+protection and logging helpers. Strict unique known selected-scope relationships
+join configured VM backup/A2A references, guest assignment/extension parents,
+SQL Database group members/partners and WAF diagnostic service/destination/
+default Sentinel-onboarding references. Raw backup protected-item identities
+need explicit source-hash-bound mapping rather than guessed container names.
+No live Collector/API registry, built-in fetch or second Policy interpreter is
+added. Terraform explicit local modules/supplied plan, pinned ARM/existing
+no-restore Bicep and normalized saved/injected evidence share projections;
+planned and observed facts remain separate.
+
+Recovery Services documents default GRS, but Data Protection datastore settings
+and workload/region support need separate review. Azure Files snapshot backup
+does not inherit vaulted-backup redundancy. Missing settings never become
+defaults; no generic storage SKU answers backup choice or retention. Current
+Machine Configuration redirects and November2026 Linux PowerShell support changes
+qualify immutable guest wording; assignments/extensions do not establish installed
+compliant settings or operating drift monitoring. Backup Center is a legacy
+experience pointing to Resiliency/Business Continuity Center. SQL failover groups
+are narrow asynchronous configuration, not universal PaaS DR or tested recovery.
+
+The service monitoring reference specifies
+`FrontDoorWebApplicationFirewallLog` for Standard/Premium and
+`FrontdoorWebApplicationFirewallLog` for classic, while the Sentinel walkthrough
+currently says `FrontDoorFirewallLog`/`FrontdoorFirewallLog`. This discrepancy is
+retained, not silently equated. Explicit exact categories are distinct from
+metrics/access/activity logs or unexpanded groups. Workspace/onboarding links
+cannot manufacture actual telemetry, review, detection or response.
+
+Eight attributable, selected, time-bound, independently blank and exceptable
+decisions preserve recovery requirements/coverage/retention/drills/RPO/RTO,
+compliant guest execution, actual Policy drift operation, service-specific
+PaaS failover, backup compatibility and WAF/Sentinel operation as human judgments.
+No logs, guest/package/report payloads, private scripts/settings, credentials,
+queries or personal data are retained. Signals and human confirmations never
+create Verified. At the later slot, reconcile actual09/24 main and operations
+helpers, freeze its exact predecessor, derive the successor with existing
+builders, preserve all original objects/bytes/receipts/bindings, and rerun actual
+accepted-bank/replay/wheel/exact-head platform/CodeQL/security/review/compiler
+gates before normal SHA-bound merge, guarded receipt and final-main closure.
+
+Final preparation uses45 actual captures and27 cohort-specific cases. The own
+clean outside-checkout installed wheel ran **748 tests:747 passed and the one
+original Windows symlink-privilege skip**. All20 actual no-restore compiler cases
+were exercised without skips, preserving all19 predecessors and adding only
+genuine recovery/guest/SQL/WAF configuration compilation, not a recovery or
+security operating test. Format/lint,48-source-file typing, dependency consistency,
+384 local documentation links and exact147-member installed-package/source byte
+comparison passed. Final own wheel SHA256:
+`ab2d99a48729eae750c1c7a55bdb7b927c47a5863ce58f4e0fe2abeb6d4c3447`.
+An earlier wheel was superseded after tightening unsupported service/SKU,
+guest-parent and exact storage-child qualification; its running suite was stopped,
+not reused as final proof. The first isolated import exposed missing runtime
+dependencies; only the three exact reviewed manifest-hash wheels were restored
+into this session's own environment. Accepted data/ledger/targets remain unchanged.
+These are local preparation proofs, not later accepted-bank replay, exact-head
+platform/security/CodeQL/review gates, merged delivery or a checked receipt.
 ## Cohort 24 accepted integration: 2026-11-07
 
 The explicit sole coordinator grant for

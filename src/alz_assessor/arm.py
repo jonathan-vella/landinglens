@@ -83,6 +83,17 @@ API_VERSIONS = {
 }
 PLANNED_API_VERSIONS = API_VERSIONS | {
     "microsoft.consumption/budgets": {"2024-08-01"},
+    "microsoft.recoveryservices/vaults": {"2024-01-01"},
+    "microsoft.recoveryservices/vaults/backupstorageconfig": {"2023-02-01"},
+    "microsoft.recoveryservices/vaults/backupfabrics/protectioncontainers/protecteditems": {
+        "2024-01-01"
+    },
+    "microsoft.recoveryservices/vaults/replicationfabrics/"
+    "replicationprotectioncontainers/replicationprotecteditems": {"2024-04-01"},
+    "microsoft.dataprotection/backupvaults": {"2024-04-01"},
+    "microsoft.compute/virtualmachines/extensions": {"2024-07-01"},
+    "microsoft.sql/servers/failovergroups": {"2023-08-01"},
+    "microsoft.cdn/profiles": {"2024-02-01"},
     "microsoft.operationalinsights/workspaces/tables": {"2023-09-01"},
     "microsoft.operationalinsights/workspaces/dataexports": {"2020-08-01"},
     "microsoft.storage/storageaccounts/blobservices/containers/immutabilitypolicies": {
@@ -108,6 +119,7 @@ PLANNED_API_VERSIONS = API_VERSIONS | {
     "microsoft.compute/virtualmachines": {"2024-07-01"},
     "microsoft.portal/dashboards": {"2020-09-01-preview"},
     "microsoft.management/managementgroups": {"2020-05-01"},
+    "microsoft.management/managementgroups/settings": {"2020-05-01"},
     "microsoft.operationalinsights/workspaces": {"2023-09-01"},
     "microsoft.securityinsights/onboardingstates": {"2024-03-01"},
     "microsoft.insights/scheduledqueryrules": {"2023-12-01"},
@@ -140,8 +152,10 @@ def properties(
     from .logging_evidence import projected_properties as logging_properties
     from .network_policy_evidence import projected_properties as network_policy_properties
     from .operations_evidence import projected_properties as operations_properties
+    from .organization_evidence import projected_properties as organization_properties
     from .platform_health_evidence import projected_properties as platform_health_properties
     from .policy_strategy_evidence import projected_properties as policy_strategy_properties
+    from .recovery_evidence import projected_properties as recovery_properties
     from .security_evidence import projected_properties as security_properties
     from .tenant_evidence import projected_properties as tenant_properties
     from .topology_evidence import projected_properties as topology_properties
@@ -157,8 +171,10 @@ def properties(
         result.update(billing_properties(kind, values))
         result.update(security_properties(kind, values, root=root))
         result.update(governance_properties(kind, values, root=root))
+        result.update(organization_properties(kind, values))
         result.update(logging_properties(kind, values, root=root))
         result.update(platform_health_properties(kind, values, root=root))
+        result.update(recovery_properties(kind, values, root=root))
         result.update(network_policy_properties(kind, values))
         result.update(identity_properties(kind, values, root=root))
         result.update(policy_strategy_properties(kind, values))
@@ -662,6 +678,17 @@ def arm_source(
                     if state == "known"
                     else None
                 )
+                if (
+                    arm_type.lower()
+                    in {
+                        "microsoft.management/managementgroups",
+                        "microsoft.management/managementgroups/settings",
+                    }
+                    and state == "known"
+                ):
+                    from .organization_evidence import explicit_identity
+
+                    identity = explicit_identity(arm_type, name, binding)
                 records.append(
                     {
                         "logical_id": logical,
