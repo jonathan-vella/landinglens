@@ -90,10 +90,17 @@ PLANNED_API_VERSIONS = API_VERSIONS | {
     "microsoft.recoveryservices/vaults/replicationfabrics/"
     "replicationprotectioncontainers/replicationprotecteditems": {"2024-04-01"},
     "microsoft.dataprotection/backupvaults": {"2024-04-01"},
-    "microsoft.guestconfiguration/guestconfigurationassignments": {"2024-04-05"},
     "microsoft.compute/virtualmachines/extensions": {"2024-07-01"},
     "microsoft.sql/servers/failovergroups": {"2023-08-01"},
     "microsoft.cdn/profiles": {"2024-02-01"},
+    "microsoft.operationalinsights/workspaces/tables": {"2023-09-01"},
+    "microsoft.operationalinsights/workspaces/dataexports": {"2020-08-01"},
+    "microsoft.storage/storageaccounts/blobservices/containers/immutabilitypolicies": {
+        "2023-05-01"
+    },
+    "microsoft.guestconfiguration/guestconfigurationassignments": {"2024-04-05"},
+    "microsoft.hybridcompute/machines": {"2024-07-10"},
+    "microsoft.authorization/locks": {"2020-05-01"},
     "microsoft.insights/activitylogalerts": {"2020-10-01"},
     "microsoft.insights/actiongroups": {"2023-01-01"},
     "microsoft.network/securitypartnerproviders": {"2024-05-01"},
@@ -141,6 +148,7 @@ def properties(
     from .identity_evidence import projected_properties as identity_properties
     from .logging_evidence import projected_properties as logging_properties
     from .network_policy_evidence import projected_properties as network_policy_properties
+    from .operations_evidence import projected_properties as operations_properties
     from .platform_health_evidence import projected_properties as platform_health_properties
     from .policy_strategy_evidence import projected_properties as policy_strategy_properties
     from .recovery_evidence import projected_properties as recovery_properties
@@ -166,6 +174,7 @@ def properties(
         result.update(policy_strategy_properties(kind, values))
         result.update(tenant_properties(kind, values))
         result.update(topology_properties(kind, values))
+        result.update(operations_properties(kind, values))
     return result
 
 
@@ -550,8 +559,11 @@ def arm_source(
                 ):
                     state = "unknown"
                 binding = target_scope
+                from .operations_evidence import GUEST, LOCK, lock_scope
+
+                operations_extension = arm_type.lower() in {GUEST, LOCK}
+                operations_target = target_scope if arm_type.lower() == LOCK else None
                 onboarding_target = None
-                guest_target = None
                 diagnostic_target = (
                     target_scope
                     if arm_type.lower() == "microsoft.insights/diagnosticsettings"
@@ -560,10 +572,20 @@ def arm_source(
                 )
                 if "scope" in entry:
                     explicit_scope = context.value(entry["scope"])
-                    if arm_type.lower() in {
+                    if operations_extension:
+                        if isinstance(explicit_scope, str) and explicit_scope.startswith(
+                            "Microsoft."
+                        ):
+                            parts = explicit_scope.split("/")
+                            explicit_scope = derive_id(
+                                target_scope,
+                                "/".join([parts[0], *parts[1::2]]),
+                                "/".join(parts[2::2]),
+                            )
+                        operations_target = lock_scope(explicit_scope)
+                    elif arm_type.lower() in {
                         "microsoft.insights/diagnosticsettings",
                         "microsoft.securityinsights/onboardingstates",
-                        "microsoft.guestconfiguration/guestconfigurationassignments",
                     }:
                         if isinstance(explicit_scope, str):
                             if explicit_scope.startswith("Microsoft."):
@@ -585,18 +607,9 @@ def arm_source(
                                         ("microsoft.operationalinsights/workspaces",),
                                     )
                                     onboarding_target = target if isinstance(target, str) else None
-                                elif arm_type.lower() == (
-                                    "microsoft.guestconfiguration/guestconfigurationassignments"
-                                ):
-                                    from .protection_evidence import typed_reference
-
-                                    target = typed_reference(
-                                        explicit_scope, ("microsoft.compute/virtualmachines",)
-                                    )
-                                    guest_target = target if isinstance(target, str) else None
                                 else:
                                     diagnostic_target = canonical_id(explicit_scope)
-                        extension_target = onboarding_target or diagnostic_target or guest_target
+                        extension_target = onboarding_target or diagnostic_target
                         if not (
                             target_scope
                             and extension_target
@@ -610,21 +623,36 @@ def arm_source(
                         binding = (
                             scope_id(explicit_scope) if isinstance(explicit_scope, str) else None
                         )
+                if operations_extension:
+                    from .contracts import identity_type
+
+                    if not (
+                        target_scope
+                        and operations_target
+                        and (
+                            operations_target == target_scope.lower()
+                            or operations_target.startswith(target_scope.lower() + "/")
+                        )
+                        and (
+                            arm_type.lower() == LOCK
+                            or identity_type(operations_target)
+                            in {
+                                "microsoft.compute/virtualmachines",
+                                "microsoft.hybridcompute/machines",
+                            }
+                        )
+                        and isinstance(name, str)
+                        and name
+                        and "/" not in name
+                    ):
+                        binding, state = None, "unknown"
                 if arm_type.lower() == "microsoft.securityinsights/onboardingstates" and (
                     not onboarding_target or name != "default"
                 ):
                     binding, state = None, "unknown"
-                if arm_type.lower() == (
-                    "microsoft.guestconfiguration/guestconfigurationassignments"
-                ) and (not guest_target or not isinstance(name, str) or not name or "/" in name):
-                    binding, state = None, "unknown"
                 identity = (
-                    canonical_id(
-                        guest_target
-                        + "/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/"
-                        + name
-                    )
-                    if guest_target and state == "known"
+                    canonical_id(operations_target + "/providers/" + arm_type + "/" + name)
+                    if operations_extension and operations_target and state == "known"
                     else canonical_id(
                         onboarding_target
                         + "/providers/Microsoft.SecurityInsights/onboardingStates/default"

@@ -4197,6 +4197,241 @@ SOURCES_10 = [
 ]
 
 
+SOURCES_24 = [
+    (
+        "workspace-design-linked",
+        LEARN + "azure/azure-monitor/logs/workspace-design#azure-regions",
+        ["fewest number of workspaces", "Data retention", "Microsoft Entra tenants"],
+        "Start with one and use the fewest workspaces meeting independent tenant, RBAC, "
+        "ownership, geography, retention, resilience and cost requirements. Configuration "
+        "does not establish approved centralization, complete ingestion or sovereignty.",
+    ),
+    (
+        "regional-workspace-linked",
+        LEARN + "azure/azure-monitor/logs/design-logs-deployment",
+        ["workspace-design", "bandwidth", "diagnostic settings"],
+        "Actual link redirects to workspace-design. Regional residency and VM bandwidth "
+        "tradeoffs differ from resource diagnostic-setting egress; no universal regional "
+        "workspace count or cost threshold is inferred.",
+    ),
+    (
+        "retention-linked",
+        LEARN + "azure/azure-monitor/logs/data-retention-archive?tabs=portal-1%2Cportal-2",
+        ["4,383", "730", "30 days", "immediatePurgeDataOn30Days"],
+        "Redirects to data-retention-configure. Analytics table retention 4-730 days, "
+        "total up to4383 days/12 years. Basic queries use30 days, Auxiliary total retention; "
+        "workspace defaults do not override explicit table settings. Thirty may retain31 "
+        "unless the separate immediate-purge flag applies. CLI documented max2556 differs "
+        "from REST/portal4383. No requirement adequacy or actual retained data inferred.",
+    ),
+    (
+        "export-current",
+        LEARN + "azure/azure-monitor/logs/logs-data-export",
+        ["new data", "workspace's region", "immutability", "Unsupported tables"],
+        "Continuous selected-table export covers new arriving data, not historical "
+        "backfill or every supported/required table. Same-region destination, supported "
+        "tables, transforms, delivery, storage access and immutable policy must be reviewed "
+        "separately. No export or log operation is performed.",
+    ),
+    (
+        "immutable-current",
+        LEARN + "azure/storage/blobs/immutable-storage-overview",
+        ["146,000", "Legal hold", "Locked", "Unlocked"],
+        "Time-based retention spans1-146000 days; container and version WORM differ. "
+        "Locked versus unlocked and legal hold are distinct. Configuration alone proves "
+        "neither required data coverage, legal suitability nor effective protection.",
+    ),
+    (
+        "machine-configuration-linked",
+        LEARN + "azure/governance/machine-configuration/overview",
+        ["November 2026", "50 guest assignments", "Audit", "ARM64"],
+        "Redirects to overview/01-overview-concepts. Guest configurations differ from "
+        "Policy definitions; assignments and Audit/Apply modes are not completed audits. "
+        "Current OS/client/architecture and November2026 Linux PowerShell compatibility "
+        "restrictions require human review. No guest/package/results payload is retained.",
+    ),
+    (
+        "operational-compliance-linked",
+        LEARN + "azure/cloud-adoption-framework/ready/landing-zone/design-area/"
+        "management-operational-compliance#update-management-considerations",
+        ["Azure Update Manager", "Windows and Linux", "business continuity"],
+        "Shared linked guidance requires separate Azure and outside-Azure patch coverage, "
+        "responsibility, schedules and business-continuity decisions; configured assessment "
+        "or assignments do not prove installed patches or fleet compliance.",
+    ),
+    (
+        "update-manager-current",
+        LEARN + "azure/update-manager/overview",
+        ["Azure Arc", "24 hours", "No dependency on Log Analytics"],
+        "Current Update Manager supports Azure/Arc server patching without Log Analytics "
+        "or Automation dependency; periodic24-hour assessment is not patch installation. "
+        "Maintenance windows, scope, eligibility, results and exceptions remain human.",
+    ),
+    (
+        "watcher-linked",
+        LEARN + "azure/network-watcher/network-watcher-monitoring-overview",
+        ["network-watcher-overview", "September 30, 2027", "no longer supports new"],
+        "Actual link redirects to Network Watcher overview. Automatic regional enablement "
+        "is not traffic analysis. NSG flow logs no longer support new creation and retire "
+        "2027-09-30; VNet flow migration and actual storage/analytics operation need review.",
+    ),
+    (
+        "locks-linked",
+        LEARN + "azure/azure-resource-manager/management/lock-resources?tabs=json",
+        ["control plane", "data plane", "management groups", "subscription cancellation"],
+        "CanNotDelete and ReadOnly restrict control-plane operations, not data. Parent "
+        "inheritance/most restrictive behavior and side effects need review; no management "
+        "group locks or cancellation protection. Presence is not complete critical-resource "
+        "protection or applicability; notes/owners are not retained.",
+    ),
+    (
+        "deny-linked",
+        LEARN + "azure/governance/policy/concepts/effect-deny",
+        ["403", "existing resources", "non-compliant"],
+        "Policy deny blocks matching create/update requests; existing resources can be "
+        "noncompliant, not remediated. Exact definition/version/assignment/parameters/"
+        "exemptions/enforcement/scope and role authority remain separate, not interpreted.",
+    ),
+    (
+        "rbac-deny-distinction",
+        LEARN + "azure/role-based-access-control/deny-assignments",
+        ["private preview", "Azure creates and manages", "Exclude principals"],
+        "RBAC deny assignments differ from Policy deny. Customer-managed denies are "
+        "private preview; generated APIs do not imply general availability. No new "
+        "deny-assignment transport, principal capture or effective-access assertion.",
+    ),
+    *[
+        (
+            identity,
+            LEARN + "azure/templates/" + path,
+            markers,
+            finding,
+        )
+        for identity, path, markers, finding in [
+            (
+                "table-arm",
+                "microsoft.operationalinsights/2023-09-01/workspaces/tables",
+                ["4383", "730", "Setting this property to -1", "'Analytics'"],
+                "2023-09-01 supports Analytics/Basic, explicit4-730 analytics and4-4383 "
+                "total days. -1 is an inheritance sentinel, not negative retained days. "
+                "Basic semantics differ from old provider docs; do not infer defaults.",
+            ),
+            (
+                "export-arm",
+                "microsoft.operationalinsights/2020-08-01/workspaces/dataexports",
+                ["tableNames", "resourceId", "enable"],
+                "2020-08-01 exposes explicit enable, selected tables and destination "
+                "resource ID, not delivered export or implied historical coverage.",
+            ),
+            (
+                "guest-arm",
+                "microsoft.guestconfiguration/2024-04-05/guestconfigurationassignments",
+                ["Audit", "configurationProtectedParameter", "latestAssignmentReport"],
+                "2024-04-05 extension assignment retains only assignmentType/kind. "
+                "Protected parameters, content URI/hash, reports and guest values excluded.",
+            ),
+            (
+                "arc-arm",
+                "microsoft.hybridcompute/2024-07-10/machines",
+                ["assessmentMode", "patchMode", "osType"],
+                "2024-07-10 has explicit OS and patch assessment/mode settings; these "
+                "are not completed assessments, installed updates or Arc connectivity.",
+            ),
+            (
+                "immutable-arm",
+                "microsoft.storage/2023-05-01/storageaccounts/"
+                "blobservices/containers/immutabilitypolicies",
+                ["immutabilityPeriodSinceCreationInDays", "allowProtectedAppendWrites"],
+                "2023-05-01 container policy day interval/append options are supplied "
+                "configuration; template declaration does not prove a locked policy.",
+            ),
+            (
+                "lock-arm",
+                "microsoft.authorization/2020-05-01/locks",
+                ["CanNotDelete", "ReadOnly", "NotSpecified"],
+                "2020-05-01 lock level schema also lists NotSpecified, which provides "
+                "no protection claim. Generated deployment scope list is not operational "
+                "permission to use unsupported management-group locks.",
+            ),
+        ]
+    ],
+    *[
+        (
+            "operations-provider-" + name,
+            RAW + "website/docs/r/" + name + ".html.markdown",
+            markers,
+            finding,
+        )
+        for name, markers, finding in [
+            (
+                "log_analytics_workspace_table",
+                ["4383", "eight days", "2022-10-01"],
+                "Pinned4.50.0 uses2022-10-01 and allows4-730 or discrete annual total "
+                "values1095/1460/1826/2191/2556/2922/3288/3653/4018/4383. Basic eight-day "
+                "wording differs from current30-day Learn; Basic analytics stays unknown.",
+            ),
+            (
+                "log_analytics_data_export_rule",
+                ["workspace_resource_id", "table_names"],
+                "Pinned4.50.0 exports explicit tables/enable/destination using2020-08-01; "
+                "no missing false default, historical export or delivery inferred.",
+            ),
+            (
+                "policy_virtual_machine_configuration_assignment",
+                ["assignment_type", "will not be executed", "content_uri"],
+                "Pinned4.50.0 exposes VM extension assignment and configuration block; "
+                "assignment alone is not executed without prerequisite extension. "
+                "No guest/package/parameter values retained or fetched.",
+            ),
+            (
+                "management_lock",
+                ["lock_level", "2020-05-01"],
+                "Pinned4.50.0 explicit scope/level become extension identity, not "
+                "inferred criticality, complete inheritance or effective protection.",
+            ),
+            (
+                "storage_container_immutability_policy",
+                ["locked", "immutability_period_in_days", "2023-05-01"],
+                "Pinned4.50.0 distinguishes explicit locked boolean/append settings/"
+                "days from absent defaults. No legal sufficiency or effective WORM proof.",
+            ),
+            (
+                "arc_machine",
+                ["2024-07-10", "SystemAssigned"],
+                "Pinned4.50.0 Arc resource exposes no patch assessment/mode fields. "
+                "Terraform Arc patch configuration remains explicit unsupported unknown, "
+                "not populated from invented arguments, identity or resource presence.",
+            ),
+        ]
+    ],
+    *[
+        row
+        for row in SOURCES_23 + SOURCES_22 + SOURCES_19 + SOURCES_27 + SOURCES_04
+        if row[0]
+        in {
+            "workspace-arm",
+            "terraform-workspace",
+            "terraform-linux-patch",
+            "terraform-windows-patch",
+            "vm-patch-rest",
+            "flow-log-arm",
+            "terraform-flow-log",
+            "vnet-flow-log-coverage",
+            "traffic-analytics-pipeline",
+            "policy-spec-policyDefinitions",
+            "policy-spec-policyAssignments",
+            "policy-provider-policy_definition",
+            "policy-provider-subscription_policy_assignment",
+            "role-assignment-arm",
+            "terraform-role-assignment",
+            "learn-terms",
+            "policy-spec-license",
+            "policy-provider-license",
+        }
+    ],
+]
+
+
 SOURCES_26 = [
     (
         "bcdr-linked",
@@ -4551,6 +4786,7 @@ def main() -> None:
             "22",
             "27",
             "23",
+            "24",
             "25",
             "26",
             "29",
@@ -4562,12 +4798,12 @@ def main() -> None:
     if args.vwan_supplement and (args.batch != "16" or not args.preparation_only):
         raise ValueError("The vWAN supplement is cohort16 preparation only")
     if (
-        args.batch in {"02", "05", "06", "10", "12", "16", "20", "23", "25", "26", "27", "29", "30"}
+        args.batch
+        in {"02", "05", "06", "10", "12", "16", "20", "23", "24", "25", "26", "27", "29", "30"}
     ) != args.preparation_only:
         raise ValueError(
-            "Cohorts 02/05/06/10/12/16/20/23/25/26/27/29/30 source capture "
-            "require --preparation-only; "
-            "no activation"
+            "Cohorts 02/05/06/10/12/16/20/23/24/25/27/29/30 source capture require "
+            "--preparation-only; no activation"
         )
     prefix = "preparation" if args.preparation_only else "batch"
     suffix = "-vwan" if args.vwan_supplement else ""
@@ -4604,6 +4840,7 @@ def main() -> None:
         "22": SOURCES_22,
         "27": SOURCES_27,
         "23": SOURCES_23,
+        "24": SOURCES_24,
         "25": SOURCES_25,
         "26": SOURCES_26,
         "29": SOURCES_29,

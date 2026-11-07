@@ -18,6 +18,26 @@ Sentinel-onboarding links are configuration only, not ingestion, regular log
 review, attack detection or operating Sentinel integration. Current source
 redirects, service defaults/support and conflicting Front Door category wording
 are explicitly qualified in the matrix; missing facts never become defaults.
+Cohort24's [accepted support](automation-matrix.md#cohort-24-log-retention-machine-operations-and-resource-guardrails)
+in `.23` follows the explicit sole slot after actual25/09 delivery. Its nine workflows
+keep workspace exceptions/design, source-specific retention, actual export and
+legal WORM sufficiency, completed guest audits, Azure/Arc patch results, operating
+traffic analysis and effective lock/Policy-role protection as separate human
+decisions. Current Basic30-day versus pinned provider8-day wording is not
+silently reconciled. A configured day interval, guest assignment, patch mode,
+flow definition, lock level or literal deny effect is context, not a pass.
+No new live operation or private log/guest/patch/traffic payload is introduced.
+
+Cohort09 [source-qualified support](automation-matrix.md#cohort-09-sovereign-organization-regions-and-classification)
+in `.22` is not sovereignty certification or receipted delivery. Positive MG parentage is not an
+organizational designation; explicit VM location labels are not geographic/legal
+independence, appropriate regional selection, DR, capacity or required feature
+availability. Tag counts are not data classification, sovereignty or enforcement.
+Current SLZ's four-zone architecture qualifies the immutable checklist's Public
+wording without requiring a Public-named MG. Regional requirements and organization
+classification remain separate manual decisions. No private classification,
+workload/employee/location payload, live availability/account read or legal
+eligibility judgment is introduced.
 
 Cohort25 prepares [nine independent reviews](../references/recommendation-batches/batch-25.json)
 using minimized activity/action/static-metric/storage metadata and reused

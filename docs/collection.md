@@ -332,6 +332,20 @@ make inventory complete. Permission gaps or truncated pages still invalidate it.
 Do not use the flag for a partially accessible estate. Saved evidence's
 `inventory_complete` is likewise a producer assertion, not a discovery of rights.
 
+## Cohort 24 supplied operations configuration
+
+Cohort24 prepares supplied table/export/immutability, guest
+assignment, Arc patch and lock configuration in the
+[nine-GUID accepted matrix](../references/recommendation-batches/batch-24.json).
+Only exact reviewed ARM versions and AzureRM4.50.0 explicit values are projected.
+The pinned Arc Terraform resource exposes no patch fields and stays unsupported
+unknown. Related workspace/storage/machine IDs require unique known selected-scope
+bindings; export table selections are bounded fingerprints, not log data.
+Guest content/parameters/reports, patch results, traffic, secrets and lock notes
+are excluded. No Collector endpoint or live authorization changes. This is
+configuration support, not completed audits/patches/traffic analysis or effective
+retention, legal WORM sufficiency, complete protection or receipted delivery.
+
 ## Credentials and failure handling
 
 Supply an **already authorized** ARM token through a selected environment

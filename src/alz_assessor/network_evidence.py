@@ -12,6 +12,7 @@ from .governance_evidence import PATHS as GOVERNANCE_PATHS
 from .identity_evidence import PATHS as IDENTITY_PATHS
 from .logging_evidence import PATHS as LOGGING_PATHS
 from .network_policy_evidence import PATHS as NETWORK_POLICY_PATHS
+from .operations_evidence import PATHS as OPERATIONS_PATHS
 from .platform_health_evidence import PATHS as PLATFORM_HEALTH_PATHS
 from .policy_strategy_evidence import PATHS as POLICY_STRATEGY_PATHS
 from .protection_evidence import KINDS as PROTECTION_KINDS
@@ -78,6 +79,7 @@ REVIEW_PATHS = (
     | PLATFORM_HEALTH_PATHS
     | RECOVERY_PATHS
     | TOPOLOGY_PATHS
+    | OPERATIONS_PATHS
 )
 
 
@@ -527,6 +529,10 @@ def review_fact(properties: dict[str, Any], path: str) -> Any:
         from .recovery_evidence import review_fact as recovery_fact
 
         return recovery_fact(properties, path)
+    if path in OPERATIONS_PATHS:
+        from .operations_evidence import review_fact as operations_fact
+
+        return operations_fact(properties, path)
     if path in PLATFORM_HEALTH_PATHS:
         from .platform_health_evidence import review_fact as platform_health_fact
 

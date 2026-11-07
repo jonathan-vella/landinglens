@@ -6,8 +6,95 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.21"
+BANK_VERSION = "2026-11-06.23"
 BANK = {
+    "log-retention-machine-resource-guardrails": {
+        "question": (
+            "Provide nine independently attributable original-time decisions and exceptions, "
+            "not a shared approval. F01.01: identify the approved central workspace and "
+            "justify separate tenant, RBAC, ownership, sovereignty and per-resource same-"
+            "table retention exceptions, with complete ingestion evidence. F01.02: approve "
+            "single versus regional workspaces against required geography/resilience, VM "
+            "bandwidth versus diagnostic-setting egress, access and cost; location "
+            "labels/counts do not establish suitable design. F01.03: specify each required "
+            "dataset's retention/recovery/privacy obligations and source-qualified analytics "
+            "versus total day periods, acknowledging current4383-day/12-year total, ARM "
+            "inheritance, Basic30 versus old provider8 and CLI2556 differences; if longer or "
+            "tamper protection is required, show supported selected-table new-data export, "
+            "historical coverage, actual same-region destination/container delivery and "
+            "suitable locked/version/container WORM/legal hold interval, not settings-only "
+            "legal assurance. F01.04: identify required Azure/Arc OS configuration drift "
+            "audits, current OS/client/architecture and November2026 compatibility, "
+            "prerequisite identity/extension and exact Policy/guest assignment scope/mode, "
+            "then attributable completed audit/freshness/coverage evidence; assignments are "
+            "not executed audits. F01.05: demonstrate actual Windows/Linux Azure VM Update "
+            "Manager adoption, eligibility, extension/source health, maintenance and "
+            "business-continuity schedules, complete patch results and exceptions; "
+            "assessmentMode/patchMode are not installed updates. F01.06: separately "
+            "demonstrate outside-Azure Arc server enrollment/support/connectivity, "
+            "extension/source health, schedules, scope and actual patch results/exceptions; "
+            "AzureRM4.50.0 Arc has no patch fields, and Log Analytics/Automation is not a "
+            "prerequisite. F01.07: show required Network Watcher flow/traffic analytics "
+            "operation, VNet migration from NSG flow logs (no new creation; "
+            "retirement2027-09-30), actual supported targets, arriving storage/analytics, "
+            "freshness/coverage and owned response; regional enablement or definitions are "
+            "not executed traffic analysis. F01.08: independently designate critical shared "
+            "services and review actual lock scope/level, full ancestor coverage, removal "
+            "authority, control-plane/data-plane limits, side effects and exceptions; no "
+            "management-group or subscription-cancellation protection inferred. F01.09: "
+            "demonstrate appropriate Policy deny plus role-assignment guardrails with exact "
+            "definitions/versions/conditions/parameters, assignment/enforcement, "
+            "scope/inheritance/exemptions and actual permitted/blocked operations; "
+            "distinguish RBAC deny assignments/private preview, no generic literal effect or "
+            "role presence proves effective enforcement."
+        ),
+        "controls": [
+            "ALZ-67e7a8ed-4b30-4e38-a3f2-9812b2363cef",
+            "ALZ-7418ada9-4199-4c28-8286-d15e9433e8f3",
+            "ALZ-5e6c4cfd-3e50-4454-9c24-47ec66138a72",
+            "ALZ-e7d7e484-3276-4d8b-bc05-5bcf619e8a13",
+            "ALZ-f9887952-5d62-4688-9d70-ba6c97be9951",
+            "ALZ-c806c048-26b7-4ddf-b4c2-b4f0c476925d",
+            "ALZ-90483845-c986-4cb2-a131-56a12476e49f",
+            "ALZ-541acdce-9793-477b-adb3-751ab2ab13ad",
+            "ALZ-a6e55d7d-8a2a-4db1-87d6-326af625ca44",
+        ],
+    },
+    "sovereign-organization-regions-classification": {
+        "question": "Decide all seven GUIDs independently with attributable redacted evidence "
+        "and explicit scope/content/time/expiry binding. For C02.15 designate the authoritative "
+        "landing-zones parent and both confidential organizational roles and substantiate each "
+        "direct placement; names and positive parentage do not designate purposes. For C03.01 "
+        "bind approved residency, latency, cost, reliability and dependency requirements to "
+        "chosen regions and separately authorized access/quota/capacity references, not private "
+        "workload/employee/location inventories or legal eligibility judgments. For C03.02 "
+        "justify regional organization and actual independent failure domains, replication, "
+        "recovery dependencies and tested failover/capacity; distinct labels and region pairs "
+        "prove none, and current guidance does not mandate pairing or historical distance. "
+        "For C03.03 reconcile every required service/SKU/feature/version/dependency in each "
+        "primary/recovery region with dated evidence and independently review actual "
+        "entitlement/access/quota/capacity; the public product page is informational and subject "
+        "to change. For C04.01 explicitly reconcile immutable Public wording with the pinned "
+        "four-zone Corp/Online and confidential architecture, approved customization, connectivity "
+        "and confidential-computing policy controls; no Public-named MG is assumed. For C04.02 "
+        "cite the organization's approved taxonomy, scope across processing/flows/backup/cache/"
+        "preproduction, handling rules, unclassified/ambiguous decisions and ongoing maintenance; "
+        "example labels are not a universal taxonomy and no actual private data is classified. "
+        "For C04.03 substantiate approved non-sensitive sovereign metadata and actual consistent "
+        "usage plus separate policy controls/enforcement; tags are plain text, not inherited or "
+        "supported on MGs, and counts prove no classification/sovereignty. Preserve independent "
+        "applicability, outcomes and exceptions; C03.01/C04.02 stay manual. No shared answer, "
+        "name, Signals or humanConfirmed manufactures Verified.",
+        "controls": [
+            "ALZ-6cc0ea22-42bb-441e-a345-804ab0a09666",
+            "ALZ-250d81ce-8bbe-4f85-9051-6a18a8221e50",
+            "ALZ-19ca3f89-397d-44b1-b5b6-5e18661372ac",
+            "ALZ-4c27d42e-8bba-4c75-9155-9ab9153e8908",
+            "ALZ-914b8cb7-c2f6-40fa-ae18-81c049e0cb5a",
+            "ALZ-51a1e9e9-a49a-40b2-87b9-ff753bc6de86",
+            "ALZ-a89153d8-18b2-4caf-bc19-850fc8fba00f",
+        ],
+    },
     "platform-health-alerts-log-boundaries-redundancy": {
         "question": "Decide each of the nine monitoring recommendations independently "
         "from attributable "

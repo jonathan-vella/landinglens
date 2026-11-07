@@ -1,0 +1,177 @@
+{
+  "batch": "09",
+  "review_state": "reviewed",
+  "sources": [
+    {
+      "id": "slz-architecture",
+      "url": "https://raw.githubusercontent.com/Azure/sovereign-landing-zone/778c5df2aee5e398e1e4a752befd06b8c5cc613d/docs/02-Architecture.md",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/sovereign-landing-zone/778c5df2aee5e398e1e4a752befd06b8c5cc613d/docs/02-Architecture.md",
+      "original_guidance": "https://github.com/Azure/sovereign-landing-zone/blob/main/docs/02-Architecture.md",
+      "sha256": "60441f79d5cb931ea454a48bd950b3b3d8002d31e1bb615122d668e4e9247878",
+      "retrieved_at": "2026-11-06T22:15:07.317336+00:00",
+      "revision": "778c5df2aee5e398e1e4a752befd06b8c5cc613d",
+      "finding": "Pinned architecture has four default workload zones: non-confidential Corp and Online and their Confidential counterparts. Connectivity and confidential-computing policy intent differ. It permits customization and alternate pilot placement; Public is not a mandatory named MG. Preserve immutable checklist wording while requiring explicit approved role/root mapping and actual controls.",
+      "reuse": "MIT Microsoft source; attribution, metadata and independently authored factual findings only, no guidance or diagram redistributed"
+    },
+    {
+      "id": "slz-notice",
+      "url": "https://raw.githubusercontent.com/Azure/sovereign-landing-zone/778c5df2aee5e398e1e4a752befd06b8c5cc613d/docs/NOTICE.md",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/sovereign-landing-zone/778c5df2aee5e398e1e4a752befd06b8c5cc613d/docs/NOTICE.md",
+      "sha256": "cd02c7e244f82d5fa52d8c5568b55ffdfd5decbc5ad6ae6951738c1acd0e3471",
+      "retrieved_at": "2026-11-06T22:15:07.567388+00:00",
+      "revision": "778c5df2aee5e398e1e4a752befd06b8c5cc613d",
+      "finding": "SLZ is not legal advice or a substitute for professional judgment; accuracy/currentness/completeness are not warranted and customers remain responsible for their compliance. Assessor support is not sovereignty certification or a legal/eligibility determination.",
+      "reuse": "Microsoft notice reviewed; attribution, metadata and independently authored findings only"
+    },
+    {
+      "id": "slz-license",
+      "url": "https://raw.githubusercontent.com/Azure/sovereign-landing-zone/778c5df2aee5e398e1e4a752befd06b8c5cc613d/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/sovereign-landing-zone/778c5df2aee5e398e1e4a752befd06b8c5cc613d/LICENSE",
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "retrieved_at": "2026-11-06T22:15:07.808738+00:00",
+      "revision": "778c5df2aee5e398e1e4a752befd06b8c5cc613d",
+      "finding": "Pinned repository uses MIT with Microsoft copyright and notice requirements for copied substantial portions. No source content, diagrams or code is redistributed in this cohort.",
+      "reuse": "MIT; metadata and own factual findings only"
+    },
+    {
+      "id": "regional-requirements",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/regions",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-setup-guide/regions",
+      "sha256": "2db2be0d10c631fad6f7891a08c81a0dc88826c594df27515bdb895c131c8d8d",
+      "retrieved_at": "2026-11-06T22:15:08.335764+00:00",
+      "revision": "094d858ebf2e44d924b7b3c1a4865abe95134e9f",
+      "finding": "Selection depends on approved residency/compliance, latency, cost, service/features, zones/pairs, access and capacity requirements. Current Consider multiple regions supersedes the old checklist fragment and does not mandate pairing or historical distance. Referenced CLI/support actions are not authorized or implemented.",
+      "reuse": "Microsoft Learn attribution; source metadata and independently authored findings only"
+    },
+    {
+      "id": "regional-services",
+      "url": "https://azure.microsoft.com/explore/global-infrastructure/products-by-region/",
+      "resolved_url": "https://azure.microsoft.com/en-us/explore/global-infrastructure/products-by-region/",
+      "sha256": "11fb4aa460cc122ea67ba70e8fb0cb20268e7b1233433b1feb73d4eebf4b013c",
+      "retrieved_at": "2026-11-06T22:15:28.913655+00:00",
+      "revision": "unversioned-public-product-page",
+      "finding": "Public product-region information is informational, unwarranted and subject to feature/release changes; some regions are restricted access. The page has no source commit revision. A dated page hash cannot prove every required feature/SKU, customer entitlement/access, quota, available capacity or successful provisioning. No availability endpoint is fetched.",
+      "reuse": "Microsoft Azure attribution; metadata and own factual findings only, no product table redistributed"
+    },
+    {
+      "id": "region-pairs",
+      "url": "https://learn.microsoft.com/en-us/azure/reliability/regions-paired",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/reliability/regions-paired",
+      "sha256": "1b43e671931e5b70be9d552c6979c438fd9faee66694950d3d3a7406f50ca389",
+      "retrieved_at": "2026-11-06T22:15:29.460082+00:00",
+      "revision": "12bb98a3460c0d83c61e0f419deade1229d8edcb",
+      "finding": "Paired and nonpaired regions can support resilient designs; pairing is service-specific, can be asymmetric and has geographic exceptions. Pair membership or distinct labels never automatically establishes HA/DR/failover, legal independence or recovery readiness.",
+      "reuse": "Microsoft Learn attribution; source metadata and independently authored findings only"
+    },
+    {
+      "id": "management-hierarchy",
+      "url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+      "sha256": "576243c73bd2e8d016cb15734b8c256be10f60aaa8ddd6dec56f6f830264740a",
+      "retrieved_at": "2026-11-06T22:15:29.779101+00:00",
+      "revision": "84d6ae283915e42535dac6184ccce6d8a1969027",
+      "finding": "MG/subscription parentage has one parent, supports policy/RBAC inheritance and is distinct from grouping by tags or billing access. Names/display names and missing parents do not designate tenant/landing-zone roots or organizational purposes. Only supplied positive scoped edges are used, not complete hierarchy or effective control conclusions.",
+      "reuse": "Microsoft Learn attribution; source metadata and independently authored findings only"
+    },
+    {
+      "id": "data-classification",
+      "url": "https://learn.microsoft.com/en-us/azure/well-architected/security/data-classification",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/well-architected/security/data-classification",
+      "sha256": "79798eddd4c2d5408d9edec7eeb809474973522d87d4a9eefe265151cf8d1208",
+      "retrieved_at": "2026-11-06T22:15:30.060699+00:00",
+      "revision": "a3fa10710fd98dabc8074a51d946c25b95c1a8bb",
+      "finding": "Organization-defined taxonomy is not universal; workload owners should not invent their own system. Scope includes processing/data flows, backups/caches/preproduction and maintenance; tools need manual verification. Unclassified/ambiguous handling must be explicit. This cohort asks for redacted references, never classifies actual private data or retains sensitive labels.",
+      "reuse": "Microsoft Learn attribution; source metadata and independently authored findings only"
+    },
+    {
+      "id": "tag-rules",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources",
+      "sha256": "3a3225a1467ff2fadd62754e9a2895e1044058061141250ecf2454f4b51dd431",
+      "retrieved_at": "2026-11-06T22:15:30.360158+00:00",
+      "revision": "fa91c9dd975e99eba2d8e105d639bc2b20edc200",
+      "finding": "Tags are plain-text, not for sensitive metadata. Support varies; MGs cannot be tagged and resource tags do not automatically inherit. Existing projection validates max50 pairs, case-insensitive names, string values, 512/256 length and storage128-key limit. Counts, including explicit zero, are context not required taxonomy, classification, sovereignty or policy enforcement.",
+      "reuse": "Microsoft Learn attribution; source metadata and independently authored findings only"
+    },
+    {
+      "id": "subscription-limits",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits",
+      "sha256": "381b3e797eb4d53cd1342d444d22f291efe6bb90bb8653249bebffbd5ff08bd1",
+      "retrieved_at": "2026-11-06T22:15:30.911365+00:00",
+      "revision": "b925adaad71e273e5a1379e52d082568ef8fbf6f",
+      "finding": "Adjustable/fixed limits and regional constraints differ by service and subscription offer. Public maxima or granted quota do not establish physical capacity or account entitlement. No quota, billing, usage, support or financial action is performed.",
+      "reuse": "Microsoft Learn attribution; source metadata and independently authored findings only"
+    },
+    {
+      "id": "management-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups",
+      "sha256": "a90c592e1fc63ef43447f8df4ae5b7afe3d05aa3b92e37ca2a96bd8671c7627e",
+      "retrieved_at": "2026-11-06T22:15:31.428450+00:00",
+      "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+      "finding": "Existing pinned2020-05-01 properties.details.parent.id is optional and a fully qualified MG reference; displayName is only friendly text. No omitted parent/root default or semantic role is inferred. Existing tenant-scope limitations remain unchanged.",
+      "reuse": "Microsoft Learn schema attribution; metadata and independently authored findings only"
+    },
+    {
+      "id": "vm-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/virtualmachines",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/virtualmachines",
+      "sha256": "46cb451b2b0c09b88809a0bed99e506781c185d08d04f42bbf876e5ea3f6f852",
+      "retrieved_at": "2026-11-06T22:15:31.967694+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Existing pinned2024-07-01 VM location and tags are top-level declaration metadata, not organizational location requirements or classification. Reuse bounded normalized location and tag-count projections only; never VM private settings, identities or payload.",
+      "reuse": "Microsoft Learn schema attribution; metadata and independently authored findings only"
+    },
+    {
+      "id": "terraform-management",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/management_group.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/management_group.html.markdown",
+      "sha256": "2e3970ddbac4377de21efea78d27889e0a2d165cff4f27b5ae29426657cd4b22",
+      "retrieved_at": "2026-11-06T22:15:32.264306+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Provider4.50.0 optional parent_management_group_id maps to an explicit parent reference; name/display_name are not purpose. Existing local parser only, no subscription_ids membership inference or Terraform execution.",
+      "reuse": "MPL-2.0 provider attribution; metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-linux-vm",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/linux_virtual_machine.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/linux_virtual_machine.html.markdown",
+      "sha256": "eb59c9fd48961e1a80e9fe31c0ed66ef3f04674e76706d66ae3820362c58a560",
+      "retrieved_at": "2026-11-06T22:15:32.504573+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned Linux VM location and tags reuse existing projections; raw state can expose administrator information and must not be retained. Sensitive/unresolved planned attributes remain unknown, not substituted with observed/default values.",
+      "reuse": "MPL-2.0 provider attribution; metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-windows-vm",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/windows_virtual_machine.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/windows_virtual_machine.html.markdown",
+      "sha256": "98109d65ccb47b5d3665b7c5232ad262782f3dc79dd08d69b3ab6f625ad397c7",
+      "retrieved_at": "2026-11-06T22:15:32.818762+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned Windows VM location and tags reuse existing projections; neither is actual DR/service availability/sovereignty evidence. No administrator, license or private machine payload is retained.",
+      "reuse": "MPL-2.0 provider attribution; metadata and own factual findings only"
+    },
+    {
+      "id": "learn-reuse-terms",
+      "url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "resolved_url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "sha256": "10b51fb37a95d82a5be8296261d1599d04bed1c46e289dc29db0dfcfffe1a2cb",
+      "retrieved_at": "2026-11-06T22:16:54.397446+00:00",
+      "revision": "9fd90ed833034800434458aef187ba08d8dc9d5b",
+      "finding": "Reviewed source reuse terms. Preserve attribution and URL/hash/revision provenance with own factual findings only; no page text, images, tables or samples redistributed.",
+      "reuse": "Microsoft Learn attribution; source metadata and own factual findings only"
+    },
+    {
+      "id": "provider-reuse-terms",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "sha256": "4e2bb185ebd706f76329206869ccb348b92b6236100cfb07775fe31530dab0d5",
+      "retrieved_at": "2026-11-06T22:16:54.648323+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider license is MPL-2.0. No implementation or substantial documentation is copied; only metadata, attribution and independently authored findings are included.",
+      "reuse": "MPL-2.0 provider attribution; metadata and own factual findings only"
+    }
+  ]
+}

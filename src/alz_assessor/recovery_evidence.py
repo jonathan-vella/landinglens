@@ -277,12 +277,15 @@ def projected_properties(
             )
         }
     if kind == GUEST:
+        from .operations_evidence import projected_properties as operations_properties
+
+        configuration = operations_properties(kind, values, terraform=terraform)
         return {
             "guestAssignmentSummary": guest_facts(
                 {
-                    "assignmentType": block(values.get("configuration")).get("assignment_type")
-                    if terraform
-                    else property_at(values, "guestConfiguration.assignmentType")
+                    "assignmentType": configuration["operationsGuestAssignment"].get(
+                        "assignmentType"
+                    )
                 }
             )
         }
@@ -520,11 +523,6 @@ def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str 
     boundary = scope_id(scope)
     parents = {
         "azurerm_virtual_machine_extension": ("virtual_machine_id", VM, "/extensions/"),
-        "azurerm_policy_virtual_machine_configuration_assignment": (
-            "virtual_machine_id",
-            VM,
-            "/providers/" + GUEST + "/",
-        ),
         "azurerm_mssql_failover_group": ("server_id", SQL, "/failovergroups/"),
     }
     if kind in parents:

@@ -22,6 +22,79 @@ No live routes, queries, guest commands, deployment or operating tests are added
 Accepted source/matrix/bank/catalog/crosswalk/history/counts and receipts remain
 unchanged until an explicit serialized slot and its actual delivery gates.
 
+## Cohort 24 accepted boundary
+
+After actual25/09 checked implementation/receipt delivery and the explicit sole
+slot, the [nine F01.01-.09 workflows](../../references/recommendation-batches/batch-24.json)
+activate reviewed successor `.23`, preserving exact `.22`, all255/fixed251,
+original four complete controls and all203 preceding rows/24 receipts.
+Nine registered decisions and exceptions remain independent and blank. Typed
+workspace/table/export/immutability/guest/Arc/lock facts reuse existing helpers,
+not new operational predicates or live routes. Source-qualified retention
+units/provider differences, lifecycle, control-plane lock limits and Policy-deny
+versus RBAC-deny distinctions are explicit. Actual checked merged implementation,
+guarded own receipt publication and final-main CI remain delivery gates.
+See [integration evidence](plan.md#cohort-24-accepted-integration-2026-11-07).
+
+Implementation #155 merged normally after exact-head8-job/CodeQL/security/review
+and four downloaded matching21-case compiler gates. Guarded `deliveries.24`
+binds all nine GUIDs to the actual head/merge/runs/771-test own wheel, recording
+212 delivered/39 pending and25 receipts on checked publication. Every203 earlier
+row/24 receipts stays unchanged; checked receipt publication/final-main CI still
+gate satisfied #148 completion and sole-slot release.
+
+## Cohort 24 preparation boundary
+
+The [nine F01.01-.09 workflows](../../references/recommendation-batches/preparation-24.json)
+for [#148](https://github.com/jonathan-vella/landinglens/issues/148) prepare
+workspace architecture, source-qualified retention/export/immutability,
+Machine Configuration, distinct Azure/Arc patching, Network Watcher and
+lock/Policy-role review without accepted activation or delivery. Cohorts25/09
+precede its coordinator-granted slot. All nine human decisions and exceptions
+remain independent and blank; source/provider conflicts remain visible rather
+than becoming defaults or relaxed predicates. Supplied settings establish no
+ingestion, sovereignty, legal WORM sufficiency, completed audit/patch/traffic
+operation, criticality or effective protection/access. See the
+[preparation boundaries](plan.md#cohort-24-independent-preparation-2026-11-07).
+
+## Cohort 09 accepted boundary
+
+The explicit sole coordinator slot after actual10 implementation146/receipt147
+and25 implementation149/receipt150, completed issues and checked final main
+`e5506c3d4061845b4250a68046ba281156de676d` activates the
+[seven-GUID matrix](../../references/recommendation-batches/batch-09.json) in
+builder-derived catalog/crosswalk `.22`. Exact `.21`, all196 prior own rows/
+23 receipts, every non-own complete control and the original four remain frozen.
+Five assisted and two manual source-specific workflows share the existing engine,
+strict scoped typed positive joins, privacy-safe projections, registered bank,
+sessions, tiers, outputs and original-time replay. No whole-guidance predicate,
+collector, availability fetch or personal/legal decision is added. All seven
+decisions and exceptions stay independently blank and bound. Actual implementation
+review/checks/normal merge, guarded own-GUID checked receipt publication and
+final-main CI still gate #145 completion.
+
+Implementation [#152](https://github.com/jonathan-vella/landinglens/pull/152)
+passed all exact-head eight-job/CodeQL/security/review and four twenty-case
+downloaded compiler gates and merged normally. Guarded `deliveries.09` binds all
+seven GUIDs to the actual head/merge/runs/747-test own implementation wheel.
+Checked reconciliation records203 delivered/48 pending/24 receipts, preserving
+all196 earlier rows/23 receipts. Checked receipt publication and actual final-main
+CI still gate #145 closure, not issue status or source activation.
+
+## Cohort 09 independent preparation
+
+[#145](https://github.com/jonathan-vella/landinglens/issues/145) prepares seven
+source-specific organization/region/classification workflows outside accepted
+activation, after actual `.19`/177 delivered and before its serialized slot
+following10/25. Existing typed scoped parentage, VM location labels and safe tag
+counts remain partial Signals, never organizational purpose/root designation,
+physical/legal independence, regional suitability, availability/capacity,
+classification or enforcement. C03.01/C04.02 stay manual. Seven independent blank
+decisions and exceptions retain scope/content/time/expiry binding and attribution.
+Current SLZ four-zone and regional-guidance qualifications do not rewrite immutable
+wording. See the [preparation boundaries](plan.md#cohort-09-independent-preparation-2026-11-06).
+No accepted successor/bank/catalog/crosswalk/count/history, PR/merge/receipt or
+closure occurs before the explicit slot and actual final gates.
 ## Cohort 25 accepted boundary
 
 The explicit sole slot after actual06/10 implementation, checked receipt and

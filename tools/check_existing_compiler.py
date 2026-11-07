@@ -60,6 +60,10 @@ if compiler:
         "test_real_bicep_vnet_routing_attachment_without_restore",
         "test_platform_health_preparation.PlatformHealthPreparationTests."
         "test_real_bicep_platform_health_configuration_without_restore",
+        "test_sovereign_preparation.SovereignPreparationTests."
+        "test_real_bicep_location_and_tag_configuration_without_restore",
+        "test_operations_preparation.OperationsPreparationTests."
+        "test_real_bicep_operations_configuration_without_restore",
         "test_recovery_preparation.RecoveryPreparationTests."
         "test_real_bicep_recovery_guest_sql_waf_configuration_without_restore",
     ]

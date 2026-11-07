@@ -1,0 +1,241 @@
+{
+  "batch": "09",
+  "issue": 145,
+  "review_state": "owner-delegated-source-backed-matrix",
+  "activation": "Explicit sole coordinator slot after actual10 implementation146/receipt147 and25 implementation149/receipt150, completed issues and checked final main e5506c3. Exact .21 frozen; existing offline builders derive unique .22. Accepted sources/workflows do not establish delivery; exact-head implementation, normal merge, guarded own-GUID checked receipt publication and actual final-main CI remain mandatory.",
+  "baseline_main": "e5506c3d4061845b4250a68046ba281156de676d",
+  "interview": {
+    "id": "sovereign-organization-regions-classification",
+    "question": "Decide all seven GUIDs independently with attributable redacted evidence and explicit scope/content/time/expiry binding. For C02.15 designate the authoritative landing-zones parent and both confidential organizational roles and substantiate each direct placement; names and positive parentage do not designate purposes. For C03.01 bind approved residency, latency, cost, reliability and dependency requirements to chosen regions and separately authorized access/quota/capacity references, not private workload/employee/location inventories or legal eligibility judgments. For C03.02 justify regional organization and actual independent failure domains, replication, recovery dependencies and tested failover/capacity; distinct labels and region pairs prove none, and current guidance does not mandate pairing or historical distance. For C03.03 reconcile every required service/SKU/feature/version/dependency in each primary/recovery region with dated evidence and independently review actual entitlement/access/quota/capacity; the public product page is informational and subject to change. For C04.01 explicitly reconcile immutable Public wording with the pinned four-zone Corp/Online and confidential architecture, approved customization, connectivity and confidential-computing policy controls; no Public-named MG is assumed. For C04.02 cite the organization's approved taxonomy, scope across processing/flows/backup/cache/preproduction, handling rules, unclassified/ambiguous decisions and ongoing maintenance; example labels are not a universal taxonomy and no actual private data is classified. For C04.03 substantiate approved non-sensitive sovereign metadata and actual consistent usage plus separate policy controls/enforcement; tags are plain text, not inherited or supported on MGs, and counts prove no classification/sovereignty. Preserve independent applicability, outcomes and exceptions; C03.01/C04.02 stay manual. No shared answer, name, Signals or humanConfirmed manufactures Verified.",
+    "controls": [
+      "ALZ-6cc0ea22-42bb-441e-a345-804ab0a09666",
+      "ALZ-250d81ce-8bbe-4f85-9051-6a18a8221e50",
+      "ALZ-19ca3f89-397d-44b1-b5b6-5e18661372ac",
+      "ALZ-4c27d42e-8bba-4c75-9155-9ab9153e8908",
+      "ALZ-914b8cb7-c2f6-40fa-ae18-81c049e0cb5a",
+      "ALZ-51a1e9e9-a49a-40b2-87b9-ff753bc6de86",
+      "ALZ-a89153d8-18b2-4caf-bc19-850fc8fba00f"
+    ]
+  },
+  "recommendations": [
+    {
+      "upstream_id": "C02.15",
+      "guid": "6cc0ea22-42bb-441e-a345-804ab0a09666",
+      "classification": "assisted",
+      "sources": [
+        "slz-architecture",
+        "slz-notice",
+        "slz-license",
+        "management-hierarchy",
+        "management-arm",
+        "terraform-management"
+      ],
+      "review_resource_types": [
+        "Microsoft.Management/managementGroups"
+      ],
+      "review_fact_paths": [
+        "managementParentId"
+      ],
+      "evidence_requirements": [
+        "Preparation: explicit parent references joined only to unique known typed in-selected-scope management groups and consistent original-time saved positive hierarchy edges. No name/display name establishes purpose, root designation or complete ancestry.",
+        "Reviewer decision: establish SLZ applicability and explicitly designate the authoritative landing-zones parent and both confidential organizational roles using approved redacted architecture references; substantiate each direct placement separately.",
+        "Reviewer decision: reconcile actual policy/connectivity/confidential-computing requirements and exceptions with the pinned current four-zone architecture, not the immutable checklist's names alone; no deployment or legal determination."
+      ],
+      "limitations": "Typed positive parentage is a partial configuration Signal, not organizational role, authoritative landing-zones root, actual confidential workload isolation, complete policy inheritance/enforcement or sovereignty certification.",
+      "flags": []
+    },
+    {
+      "upstream_id": "C03.01",
+      "guid": "250d81ce-8bbe-4f85-9051-6a18a8221e50",
+      "classification": "manual",
+      "sources": [
+        "regional-requirements",
+        "regional-services",
+        "region-pairs",
+        "subscription-limits"
+      ],
+      "evidence_requirements": [
+        "Preparation: current guidance distinguishes residency/compliance, latency, costs, service/feature capabilities, access restrictions, zones/pairs and quota versus capacity; the old operate-in-multiple-geographic-regions fragment is no longer the current section.",
+        "Reviewer decision: cite approved scoped regional requirements and accountable organizational decisions, including residency, latency, reliability/recovery objectives, cost and dependencies; use redacted references, not private workload, employee or location inventories.",
+        "Reviewer decision: reconcile chosen regions and documented exceptions against all requirements and dated separately authorized service/feature/access/quota/capacity evidence. No new availability, account or location reads and no legal/eligibility determination."
+      ],
+      "limitations": "Inherently manual suitability judgment. A configured location, region pair, public table, shared narrative or legal example cannot choose regions for an organization or establish current entitlement, quota, available capacity or compliance.",
+      "flags": []
+    },
+    {
+      "upstream_id": "C03.02",
+      "guid": "19ca3f89-397d-44b1-b5b6-5e18661372ac",
+      "classification": "assisted",
+      "sources": [
+        "regional-requirements",
+        "region-pairs",
+        "subscription-limits",
+        "vm-arm",
+        "terraform-linux-vm",
+        "terraform-windows-vm"
+      ],
+      "review_resource_types": [
+        "Microsoft.Compute/virtualMachines"
+      ],
+      "review_fact_paths": [
+        "resourceLocation"
+      ],
+      "evidence_requirements": [
+        "Preparation: reuse only explicit bounded VM resource-location labels from supported pinned schemas and unique known typed selected-scope resources; this is a partial supplied inventory, never an estate-wide region count or a canonical geographic mapping.",
+        "Reviewer decision: independently justify single/multiple-region organization against approved customer/service requirements, latency, residency and exceptions; current guidance does not mandate paired regions or the old 150-mile rule.",
+        "Reviewer decision: substantiate actual independent failure domains, replication, recovery dependencies and tested failover/capacity readiness with redacted evidence. Distinct strings, paired regions or multiple configured resources establish none."
+      ],
+      "limitations": "Explicit location labels provide configuration context only. No two-region compliance threshold, physical/legal independence, appropriate regional choice, capacity guarantee, automatic DR or failover outcome is inferred.",
+      "flags": []
+    },
+    {
+      "upstream_id": "C03.03",
+      "guid": "4c27d42e-8bba-4c75-9155-9ab9153e8908",
+      "classification": "assisted",
+      "sources": [
+        "regional-services",
+        "regional-requirements",
+        "subscription-limits",
+        "vm-arm",
+        "terraform-linux-vm",
+        "terraform-windows-vm"
+      ],
+      "review_resource_types": [
+        "Microsoft.Compute/virtualMachines"
+      ],
+      "review_fact_paths": [
+        "resourceLocation"
+      ],
+      "evidence_requirements": [
+        "Preparation: supplied explicit VM location labels orient review only. The public products-by-region page is informational, subject to change and distinguishes restricted-access regions; it is not queried as a customer availability endpoint.",
+        "Reviewer decision: bind a complete approved required service/SKU/feature/version/dependency list to every chosen primary/recovery region and dated service-specific supported availability evidence, including preview restrictions.",
+        "Reviewer decision: separately substantiate customer entitlement/access, quota and deployable capacity through already authorized redacted references, with gaps/exceptions explicit; public product availability or resource presence proves none."
+      ],
+      "limitations": "Partial resource location is not required-service coverage, current feature availability, entitlement, quota, capacity or successful provisioning. No provider/availability/account fetch, availability cache, query or speculative public-table parser is introduced.",
+      "flags": []
+    },
+    {
+      "upstream_id": "C04.01",
+      "guid": "914b8cb7-c2f6-40fa-ae18-81c049e0cb5a",
+      "classification": "assisted",
+      "sources": [
+        "slz-architecture",
+        "slz-notice",
+        "management-hierarchy",
+        "management-arm",
+        "terraform-management"
+      ],
+      "review_resource_types": [
+        "Microsoft.Management/managementGroups"
+      ],
+      "review_fact_paths": [
+        "managementParentId"
+      ],
+      "evidence_requirements": [
+        "Preparation: original-time explicit typed positive parentage only; neither resource/display names nor a supplied parent determines Public/Corp/Online/confidential purpose or the authoritative landing-zones root.",
+        "Reviewer decision: explicitly map the immutable Public, Confidential Corp and Confidential Online wording to the organization's approved current architecture. The pinned SLZ describes Corp and Online non-confidential zones plus Confidential Corp and Confidential Online, not a required Public-named MG.",
+        "Reviewer decision: substantiate approved grouping by connectivity/confidentiality, policy assignments and effective isolation/confidential-computing constraints, plus justified customization/exceptions and complete intended scope. Group existence or hierarchy alone proves none."
+      ],
+      "limitations": "No label-derived designation or universal Public-named management group requirement. Configuration, grouping and organizational meaning remain separate; this is not sovereignty certification, a legal conclusion or enforcement assurance.",
+      "flags": []
+    },
+    {
+      "upstream_id": "C04.02",
+      "guid": "51a1e9e9-a49a-40b2-87b9-ff753bc6de86",
+      "classification": "manual",
+      "sources": [
+        "data-classification",
+        "slz-notice"
+      ],
+      "evidence_requirements": [
+        "Preparation: current Well-Architected guidance calls for an organization-defined taxonomy and explicit scope, consistent protection/metadata and ongoing maintenance; example labels are not a universal required taxonomy.",
+        "Reviewer decision: reference approved organization-wide classification levels, meanings, owners and handling/protection requirements with explicit workload/data-flow/backup/cache/preproduction boundaries; do not retain private labels, classified data or personal inventories.",
+        "Reviewer decision: substantiate communicated adoption, ambiguity/unclassified handling, review/maintenance and independently approved exceptions through redacted dated references. Do not classify data, infer personal attributes or make legal/eligibility decisions."
+      ],
+      "limitations": "Inherently manual organizational definition and operating judgment. Tags, resource names, scanner presence, public examples and shared answers cannot define an approved taxonomy or classify actual private data.",
+      "flags": []
+    },
+    {
+      "upstream_id": "C04.03",
+      "guid": "a89153d8-18b2-4caf-bc19-850fc8fba00f",
+      "classification": "assisted",
+      "sources": [
+        "tag-rules",
+        "data-classification",
+        "slz-architecture",
+        "vm-arm",
+        "terraform-linux-vm",
+        "terraform-windows-vm"
+      ],
+      "review_resource_types": [
+        "Microsoft.Compute/virtualMachines",
+        "Microsoft.Storage/storageAccounts",
+        "Microsoft.Portal/dashboards",
+        "Microsoft.Resources/resourceGroups",
+        "Microsoft.Resources/subscriptions"
+      ],
+      "review_fact_paths": [
+        "tagCount"
+      ],
+      "evidence_requirements": [
+        "Preparation: reuse existing cohort08 minimized validated tag-pair counts for reviewed resource types only. Explicit empty is zero pairs; missing/unresolved/malformed/ambiguous/over-bound stays unknown. No tag names/values or sensitive sovereign metadata are retained.",
+        "Reviewer decision: cite the approved non-sensitive sovereign-workload metadata taxonomy, required scope and actual consistent usage with redacted references; do not impose example keys/values or classify actual private workloads.",
+        "Reviewer decision: reconcile tag support/limits, plain-text exposure, noninheritance and separately evidenced policy controls/enforcement and exceptions. Management groups cannot be tagged; tag counts prove neither relevant metadata nor classification, sovereignty or enforcement."
+      ],
+      "limitations": "Count-only configuration context. The existing 50-pair, key/value/type/case and storage-key bounds are source limits, not compliance thresholds. No sensitive metadata/tag values, tag inheritance, classification or policy-enforcement claim.",
+      "flags": []
+    }
+  ],
+  "source_acquisition_notes": [
+    "The authenticated public SLZ commit request returned HTTP403 organization SAML enforcement. Unauthenticated public HTTPS resolved the same public repository revision without login, permissions or account changes.",
+    "The original checklist C03.02 fragment is retained unchanged; current region guidance uses Consider multiple regions and no longer mandates paired regions or the historical distance rule.",
+    "The public product page is unversioned, informational and subject to change; hash and retrieval time are provenance, not current customer availability evidence.",
+    "Only attribution, source metadata and independently authored factual findings are redistributed; no upstream guidance/provider payloads or customer data are copied.",
+    "Existing cohort08 schemas/projections for other supported tag-count resource types remain unchanged; this cohort introduces no new projection, collector API or live route."
+  ],
+  "catalog_version": "2026-11-06.22",
+  "accepted_at": "2026-11-06T23:53:14.091616+00:00",
+  "preparation_commit": "62399143e015533721adb8e11a63e28e7dfc09f7",
+  "reconciliation_commit": "4f0b766fab2ae07292065b6a8120890818d62285",
+  "prerequisites": [
+    "06",
+    "08",
+    "10",
+    "25",
+    "27",
+    "29"
+  ],
+  "preserved_delivery_batches": [
+    "01",
+    "02",
+    "04",
+    "05",
+    "06",
+    "08",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "22",
+    "23",
+    "25",
+    "27",
+    "29",
+    "30"
+  ],
+  "preserved_delivery_receipts_sha256": "3c9c407684434cb78f080091c8397ead7fcf1a935f62370d44faa704afd9ecf6",
+  "preserved_merged_recommendations_sha256": "85d3f5fb4281cc5d3e1471887bed8095930928dcbd26edf8a93c8a24cee0c99b",
+  "preserved_catalog_bytes": {
+    "2026-11-06.21": "b7395794a08feed20fe29b61849409541639f525b2970aaad248964f13b7860c"
+  },
+  "preserved_crosswalk_bytes": {
+    "2026-11-06.21": "5476deaef6c8d9463bf23a4c7f62f18e2dc4341108d3ea880c0aea3aabaa22a0"
+  }
+}
