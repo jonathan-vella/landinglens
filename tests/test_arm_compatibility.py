@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from alz_assessor.arm import Expressions, arm_source
+from alz_assessor.arm import API_VERSIONS, PLANNED_API_VERSIONS, Expressions, arm_source
 from alz_assessor.terraform import InputError
 
 SUB = "/subscriptions/00000000-0000-0000-0000-000000000001"
@@ -301,6 +301,16 @@ class ArmCompatibilityTests(unittest.TestCase):
         self.assertEqual(row["state"], "unknown")
         self.assertEqual(row["properties"], {})
 
+    def test_offline_api_support_does_not_change_observed_allowlists(self):
+        for kind, version in (
+            ("microsoft.network/virtualnetworks/virtualnetworkpeerings", "2024-01-01"),
+            ("microsoft.network/routetables", "2024-07-01"),
+            ("microsoft.network/azurefirewalls", "2024-10-01"),
+            ("microsoft.network/firewallpolicies", "2024-10-01"),
+        ):
+            self.assertEqual(API_VERSIONS[kind], {"2024-05-01"})
+            self.assertIn(version, PLANNED_API_VERSIONS[kind])
+
     def test_reviewed_workspace_perimeter_and_sku_boundaries(self):
         workspace = {
             "type": "Microsoft.OperationalInsights/workspaces",
@@ -321,6 +331,7 @@ class ArmCompatibilityTests(unittest.TestCase):
         self.assertEqual(facts["publicNetworkAccessForQuery"], "Enabled")
 
     def test_step_budget_remains_enforced(self):
+        self.assertIn("unknown", self.evaluate("[split('" + "x/" * 257 + "', '/')]"))
         context = Expressions({}, {}, GROUP)
         context.steps = 10_000
         self.assertIn("unknown", context.value("[createArray()]"))

@@ -256,7 +256,7 @@ class HybridIdentityPreparationTests(unittest.TestCase):
         self.assertEqual((PREPARATION / "batch-06-sources.json").read_bytes(), before)
 
     def test_only_real_existing_resource_apis_no_directory_transport(self):
-        self.assertEqual(PLANNED_API_VERSIONS[PEERING_KIND], {"2024-05-01"})
+        self.assertEqual(PLANNED_API_VERSIONS[PEERING_KIND], {"2024-05-01", "2024-01-01"})
         self.assertEqual(PLANNED_API_VERSIONS[VAULT_KIND], {"2024-11-01"})
         self.assertEqual(API_VERSIONS[PEERING_KIND], {"2024-05-01"})
         for kind in API_VERSIONS:

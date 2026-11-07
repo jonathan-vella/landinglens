@@ -46,10 +46,10 @@ STRING: /'(?:[^']|'')*'/
 
 API_VERSIONS = {
     "microsoft.storage/storageaccounts": {"2023-05-01"},
-    "microsoft.network/firewallpolicies": {"2024-05-01", "2024-10-01"},
+    "microsoft.network/firewallpolicies": {"2024-05-01"},
     "microsoft.keyvault/vaults": {"2024-11-01"},
     "microsoft.storage/storageaccounts/blobservices": {"2023-05-01"},
-    "microsoft.network/azurefirewalls": {"2024-05-01", "2024-10-01"},
+    "microsoft.network/azurefirewalls": {"2024-05-01"},
     "microsoft.network/virtualnetworks/subnets": {"2024-05-01"},
     "microsoft.network/ipgroups": {"2024-05-01"},
     "microsoft.network/virtualnetworks": {"2024-05-01"},
@@ -59,8 +59,8 @@ API_VERSIONS = {
     "microsoft.network/networksecuritygroups/securityrules": {"2024-05-01"},
     "microsoft.network/virtualnetworkgateways": {"2024-05-01"},
     "microsoft.network/networkwatchers/flowlogs": {"2024-05-01"},
-    "microsoft.network/routetables": {"2024-05-01", "2024-07-01"},
-    "microsoft.network/virtualnetworks/virtualnetworkpeerings": {"2024-05-01", "2024-01-01"},
+    "microsoft.network/routetables": {"2024-05-01"},
+    "microsoft.network/virtualnetworks/virtualnetworkpeerings": {"2024-05-01"},
     "microsoft.network/loadbalancers": {"2024-05-01"},
     "microsoft.network/loadbalancers/backendaddresspools": {"2024-05-01"},
     "microsoft.network/expressrouteports": {"2024-05-01"},
@@ -85,6 +85,10 @@ API_VERSIONS = {
     "microsoft.network/bastionhosts": {"2024-05-01"},
 }
 PLANNED_API_VERSIONS = API_VERSIONS | {
+    "microsoft.network/firewallpolicies": {"2024-05-01", "2024-10-01"},
+    "microsoft.network/azurefirewalls": {"2024-05-01", "2024-10-01"},
+    "microsoft.network/routetables": {"2024-05-01", "2024-07-01"},
+    "microsoft.network/virtualnetworks/virtualnetworkpeerings": {"2024-05-01", "2024-01-01"},
     "microsoft.consumption/budgets": {"2024-08-01"},
     "microsoft.recoveryservices/vaults": {"2024-01-01"},
     "microsoft.recoveryservices/vaults/backupstorageconfig": {"2023-02-01"},
@@ -572,7 +576,10 @@ class Expressions:
                 value, part = args[0].lower(), args[1].lower()
                 return value.startswith(part) if name == "startswith" else value.endswith(part)
         if name == "split" and len(args) == 2 and all(isinstance(arg, str) for arg in args):
-            return args[0].split(args[1]) if args[1] else unknown("invalid_arm_split")
+            if not args[1]:
+                return unknown("invalid_arm_split")
+            parts = args[0].split(args[1], 256)
+            return parts if len(parts) <= 256 else unknown("arm_array_limit")
         if name == "last" and len(args) == 1 and isinstance(args[0], (str, list)) and args[0]:
             return args[0][-1]
         if name == "int" and len(args) == 1:

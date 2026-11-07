@@ -69,6 +69,8 @@ restricted to the reviewed projections, including workspace `2025-07-01`,
 onboarding `2025-09-01`, peering `2024-01-01`, firewall/policy `2024-10-01`
 and route table `2024-07-01`. Newer perimeter access states remain unknown under
 the existing two-state workspace projection; they are not mapped to Enabled.
+These API additions apply only to offline ARM/Bicep interpretation; observed
+collector API allowlists and routes are unchanged.
 
 These are **useful selected-template results, not full accelerator compatibility**.
 A known record can still contain unknown properties. Inventory remains explicitly

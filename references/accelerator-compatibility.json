@@ -6,6 +6,7 @@
   "source_and_compiled_template_bytes_unchanged": true,
   "fictional_parameters": true,
   "azure_login_deployment_or_live_collection": false,
+  "api_support_scope": "Planned ARM/Bicep only; observed collector API allowlists/routes unchanged",
   "api_reviews": [
     {
       "resource_type": "Microsoft.OperationalInsights/workspaces",
