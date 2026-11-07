@@ -66,6 +66,55 @@ installation importing `.22`. This implementation wheel, not preparation or the
 invalidated concurrent compiler invocation, is the later recorder input. Remote
 exact-head/four-platform acceptance and checked publication gates remain pending.
 
+### Cohort 09 implementation and guarded receipt reconciliation
+
+[#152](https://github.com/jonathan-vella/landinglens/pull/152) merged normally as
+`b5da05e9e3fb19873df201e66514be4b9114eadd` at2026-11-07T00:14:59Z.
+Exact checked head `224090e0fc4e60d12080d800a01b40ad3fff536e` passed all eight
+push/PR platform jobs in `42315872153`/`42315897641`, CodeQL `42315894768`
+and GitHub Advanced Security `42315902624`. All eleven actual PR checks and live
+head/base/main/comments/reviews/threads were refreshed both before ready and before
+normal SHA-bound merge. Every feedback surface was empty. No admin/force/bypass,
+auto-merge, protection/settings change or fabricated approval was used.
+
+All four downloaded exact-head PR compiler artifacts exercised the same twenty
+cases without skips: Ubuntu3.12 `13550702542`, Ubuntu3.13 `13550987599`,
+Windows3.12 `13550583920`, Windows3.13 `13551350608`. JSON SHA256:
+`8eda82eac65a08886dc299b55ba1405d14e8cc871dc574afc9ab55102bb6157a`
+on Ubuntu and
+`cac902f0b8185e6f260e6373f6b8213ba4f6e86f1a48f8dbe4f57fdf279a8809`
+on Windows. These downloaded proofs, not preparation or local compiler execution,
+were required for acceptance.
+
+The guarded recorder independently reread actual #152 merged head, both complete
+four-job runs and all four downloaded artifacts before binding `deliveries.09`
+and every own GUID to the final747-test implementation wheel. All196 earlier rows/
+23 receipts remain exact. Checked receipt publication records **203 delivered /
+48 pending /24 receipts**, with unchanged `.22`,255GUIDs/fixed251/original four
+controls and12/200/43 dispositions. The receipt regression pins the historical203
+prefix, not future global totals. Checked receipt publication and actual final-main
+CI still gate #145 completion and release of the sole slot; no operational
+sovereignty, classification, regional suitability or availability decision is
+claimed from a receipt.
+
+The first installed receipt regression ran748 tests but encountered an actual
+Windows `WinError 5` on the existing network-policy resume revision directory
+rename (one error, plus the original privilege skip). The same29-case
+network-policy preparation suite then passed in isolation without code, dependency,
+assertion or permission changes. The failed full run remains invalidated history,
+not acceptance; a complete repeated installed suite is required rather than
+treating the targeted rerun as sufficient.
+
+Corrected receipt reconciliation checkout and own exact installed implementation
+wheel suites each ran **748 tests**:747 passed with only the original Windows
+symlink-privilege skip. All27 cohort09 cases pass. Format/lint,48-source-file
+typing, dependency consistency and505 local documentation links pass. All151
+package members and the final747-test implementation wheel remain unchanged;
+the receipt records that actual implementation acceptance, not a fictional
+748-test implementation wheel. Actual implementation-main platform `42317056697`
+and CodeQL `42317056485` also passed on `b5da05e`. Checked receipt publication and
+its final-main checks, not these local results alone, remain the closure gate.
+
 ## Cohort 09 independent preparation: 2026-11-06
 
 [#145](https://github.com/jonathan-vella/landinglens/issues/145) owns only the
