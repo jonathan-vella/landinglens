@@ -33,11 +33,38 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.23` retains all 255 entries: 12 automated, 200 assisted
-and 43 manual. Crosswalk `2026-11-06.23` rebinds the unchanged 51-control,
+Current successor `2026-11-06.25` retains all 255 entries: 12 automated, 200 assisted
+and 43 manual. Crosswalk `2026-11-06.25` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-Exact predecessor `.22` is frozen; source-matrix acceptance alone is not delivery.
+Exact predecessor `.24` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
+
+### Cohort 07: naming, hierarchy and scoped authorization
+
+The explicit sole slot after actual checked24/26 delivery activates
+[eight workflows](../references/recommendation-batches/batch-07.json) and the
+`naming-hierarchy-scoped-authorization` interview in `.25`. The original
+[preparation](../references/preparation/batch-07.json) and
+[12 source captures](../references/preparation/batch-07-sources.json) remain unchanged.
+
+| Recommendation | Preparation and independent decision |
+|---|---|
+| C01.01 | Redacted approved naming-standard reference, type/scope coverage, adoption and exceptions; syntax/examples/counts are not an enterprise standard |
+| C02.01 | Bounded explicit positive MG-edge depth below the selected anchor, excluding subscriptions; independently designate tenant/intermediate roots and counting convention, reconcile immutable four-level/CAF ideal three-to-four wording separately from six-level service limit |
+| C02.02 | Positive parentage only; independently designate sandbox purpose, experimentation, isolation, guardrails, cost/lifecycle and ownership |
+| C02.03 | Typed direct parentage only; independently designate platform and intended tenant/intermediate parent, actual placement and effective Policy/RBAC |
+| C02.04 | Saved typed subscription-parent membership only; independently designate dedicated connectivity use, required services, operational ownership and scale/regional exceptions |
+| C02.05 | Explicit joined default group affects new subscriptions only; separately establish authoritative tenant root and complete existing subscription placement/absence with exceptions |
+| C02.06 | Explicit pinned creation-authorization boolean only; independently establish actual tenant-root setting and effective create/move/delete/settings/access authority, inheritance, PIM and emergency exceptions |
+| C02.07 | Positive ancestry only; independently map approved workload security/compliance/connectivity/feature requirements to designated landing-zones groups and effective controls |
+
+All outcomes and exceptions remain independently blank, attributable and
+scope/content/time/expiry-bound. Names, syntax, partial graphs, counts, Signals
+or human confirmation never manufacture Verified. No new live route, query,
+built-in fetch/second Policy interpreter, tenant/settings/permission change,
+private name/tag/principal payload or operating assurance is introduced.
+Checked implementation, guarded own-GUID receipt and final-main CI remain
+mandatory; source activation alone is not delivery.
 
 ### Cohort 24: log retention, machine operations and resource guardrails
 

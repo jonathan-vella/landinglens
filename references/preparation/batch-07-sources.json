@@ -1,0 +1,126 @@
+{
+  "batch": "07",
+  "review_state": "preparation-only-reviewed",
+  "sources": [
+    {
+      "id": "naming-standard",
+      "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming",
+      "sha256": "214ac7d3c0cb1549601dd7b13ad678486f2ba2de0aeb983d8ad045a2566cee01",
+      "retrieved_at": "2026-11-07T01:00:11.066389+00:00",
+      "revision": "bb56333ed2e86d11a049945f7a4114786c0d7488",
+      "finding": "Naming must satisfy organization-specific requirements and per-type scope, character and length rules. Examples are not an approved enterprise standard; names are often immutable and must not contain confidential information. No raw names are retained.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "management-design",
+      "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups",
+      "sha256": "e83901efe892dcca1b286c46a652b748ad9dd851e882418a84be26f032990d4f",
+      "retrieved_at": "2026-11-07T01:00:11.242679+00:00",
+      "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+      "finding": "CAF ideally recommends three to four levels, while separately documenting the six-level service bound excluding tenant root/subscriptions. The ALZ intermediate root is below tenant root. Sandbox purpose, platform placement, workload requirements and dedicated connectivity need explicit organizational designation; no naming/count predicate. Dedicated regional connectivity subscriptions can be justified by scale.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "management-overview",
+      "url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+      "sha256": "8fa25035c24da8e8e66c2f68b355eb14293823aacd95becd7db866d629aa1d54",
+      "retrieved_at": "2026-11-07T01:00:11.458047+00:00",
+      "revision": "84d6ae283915e42535dac6184ccce6d8a1969027",
+      "finding": "Single-parent hierarchy supports six MG levels below tenant root, excluding subscriptions. This is a service maximum, not CAF's ideal or a universal four-level counting convention. Partial positive parentage and selected scope cannot designate tenant root, establish complete estate depth, subscription absence, policy results or effective permissions.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "hierarchy-protection",
+      "url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/how-to/protect-resource-hierarchy",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/how-to/protect-resource-hierarchy",
+      "sha256": "b6ada087d3d8c79b8f16766ad47f39df0a0279ee979771b423f5db7e16e40674",
+      "retrieved_at": "2026-11-07T01:00:11.663489+00:00",
+      "revision": "533ecdb3d7a5c4ab06226486bb2c88ef86f80592",
+      "finding": "defaultManagementGroup governs new subscription placement, not existing membership or absence of root subscriptions. requireAuthorizationForGroupCreation requires root write permission for creation, not all effective privileged operations. Settings read/write permissions themselves grant no other hierarchy/resource access.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "hierarchy-settings-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups/settings",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups/settings",
+      "sha256": "2df5f5cc0fa2b20d4e92e2b83980432b0caf3160fe5a05201de4edf9cafb47d7",
+      "retrieved_at": "2026-11-07T01:00:12.122599+00:00",
+      "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+      "finding": "Pinned tenant resource managementGroups/settings/default exposes independent explicit default MG reference and creation-authorization boolean. Supplied settings attach to a unique known selected anchor; that does not designate it as authoritative tenant root. No implicit defaults or ARM permission operations are executed.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "management-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups",
+      "sha256": "73cd540d88d08c8a2cb1107bfba5eb9e2f676b296ca376aac6f8e8d6f8a6918f",
+      "retrieved_at": "2026-11-07T01:00:12.612608+00:00",
+      "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+      "finding": "Pinned tenant MG resource has explicit resource key and details.parent.id. Resource keys are identities, never business-purpose or root designations. Display names, tenant/principal payloads and private metadata are not projected.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-management",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group.html.markdown",
+      "sha256": "2e3970ddbac4377de21efea78d27889e0a2d165cff4f27b5ae29426657cd4b22",
+      "retrieved_at": "2026-11-07T01:00:12.881668+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned AzureRM4.50 MG supplies explicit name key and optional parent ID. Omitted name is generated and cannot bind an identity. Optional subscription_ids and the separate association resource conflict if both managed; neither omission nor empty selected input proves complete actual root subscription absence. No settings resource is assumed.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-management-association",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group_subscription_association.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group_subscription_association.html.markdown",
+      "sha256": "410e5ea2266c6822fa62e68b90ba101f9a811824a10b8711e60578f2ce01424d",
+      "retrieved_at": "2026-11-07T01:00:13.152248+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Separate AzureRM association binds a specific subscription to an MG, not a subscription purpose. It is not a new subscription object or settings resource; unsupported association inputs remain unknown rather than inventing complete inventory or deployment authority.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "policy-scope",
+      "url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/scope",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/scope",
+      "sha256": "23f79df8c56d87cd0fc439a2c4410639ff9306e37291799de81c86e44eee26f1",
+      "retrieved_at": "2026-11-07T01:00:13.609958+00:00",
+      "revision": "335102b882bfe205071a0b561c28b21eabf0a5ee",
+      "finding": "Custom definitions live at management groups or subscriptions, not resource groups. Assignment must be at that location or a descendant. Exclusions omit evaluation/compliance counting; tracked exemptions are separate objects with extra permissions.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "management-hierarchy",
+      "url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+      "sha256": "8fa25035c24da8e8e66c2f68b355eb14293823aacd95becd7db866d629aa1d54",
+      "retrieved_at": "2026-11-07T01:00:13.799485+00:00",
+      "revision": "84d6ae283915e42535dac6184ccce6d8a1969027",
+      "finding": "Tenant root is directory-bound, not a name or the highest visible selected node. Use positive saved parent paths only; missing parents or incomplete trees prove no root identity or effective inherited policy/role outcome.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "provider-reuse",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "sha256": "4e2bb185ebd706f76329206869ccb348b92b6236100cfb07775fe31530dab0d5",
+      "retrieved_at": "2026-11-07T01:00:14.071868+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider is MPL-2.0. No provider source, page content or licensed implementation is redistributed in the preparation; retain attribution, hashes and own factual findings.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "learn-reuse",
+      "url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "resolved_url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "sha256": "6b2a36ad19e8305e32d5ec0755b9d412e5633e8bf53aed93a1249c74b3c2a7ce",
+      "retrieved_at": "2026-11-07T01:00:14.399558+00:00",
+      "revision": "9fd90ed833034800434458aef187ba08d8dc9d5b",
+      "finding": "Learn's general document reuse terms are constrained and explicit document licenses can govern separately. Retain URL/revision/hash attribution and own factual findings only; no Microsoft page text, graphics, layouts or assets are redistributed.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    }
+  ]
+}

@@ -19,6 +19,7 @@ from .identity_evidence import replay_properties as identity_properties
 from .logging_evidence import replay_properties as logging_properties
 from .network_evidence import replay_properties
 from .operations_evidence import replay_properties as operations_properties
+from .organization_evidence import replay_properties as organization_properties
 from .platform_health_evidence import replay_properties as platform_health_properties
 from .policy_strategy_evidence import replay_properties as policy_strategy_properties
 from .recovery_evidence import replay_properties as recovery_properties
@@ -124,6 +125,16 @@ def sanitize_evidence(bundle: dict[str, Any]) -> dict[str, Any]:
                         "state",
                     )
                 },
+                **(
+                    {
+                        "api_version": "2020-05-01"
+                        if resource.get("api_version") == "2020-05-01"
+                        else None
+                    }
+                    if resource["resource_type"].lower()
+                    == "microsoft.management/managementgroups/settings"
+                    else {}
+                ),
                 "reason": resource["reason"]
                 if resource["reason"] in KNOWN_REASONS
                 else label(resource["reason"])
@@ -177,6 +188,7 @@ def sanitize_evidence(bundle: dict[str, Any]) -> dict[str, Any]:
                     **identity_properties(resource["resource_type"], values),
                     **security_properties(resource["resource_type"], values),
                     **governance_properties(resource["resource_type"], values),
+                    **organization_properties(resource["resource_type"], values),
                     **policy_strategy_properties(resource["resource_type"], values),
                     **topology_properties(resource["resource_type"], values),
                     **tenant_properties(resource["resource_type"], values),

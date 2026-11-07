@@ -1,0 +1,148 @@
+{
+  "batch": "07",
+  "issue": 154,
+  "review_state": "source-reviewed-preparation-not-accepted",
+  "activation": "Preparation only. No accepted successor registration, bank/catalog/crosswalk/count/history activation, PR, merge, delivery receipt or closure until explicit coordinator slot after actual cohorts24 and26.",
+  "baseline_main": "e489d7125c2b60669dfe0599cd30ab189984ff43",
+  "interview": {
+    "id": "naming-hierarchy-scoped-authorization",
+    "question": "Decide all eight GUIDs independently using attributable redacted evidence, explicit selected scope/content/time/expiry binding and separate exceptions. C01.01: cite the approved organization-specific naming standard, covered resource types/scopes, component order and immutable versus mutable metadata, actual adoption, ownership and exceptions; Azure syntax/examples/counts are not approval and no resource names or private tag values are retained. C02.01: declare the authoritative tenant root and ALZ intermediate root, exact level-counting convention, complete dated hierarchy and justified flatness/exceptions; immutable four-level wording must be reconciled with current CAF ideally three-to-four guidance, separately from the six-level service limit excluding tenant root/subscriptions. Supplied relative MG edges exclude the selected anchor and subscriptions and do not determine estate depth. C02.02: explicitly designate the sandbox and evidence experimentation, isolation from development/test/production, guardrails, access, cost/lifecycle and actual operating ownership; a label or group is insufficient. C02.03: designate the platform and intended tenant/intermediate parent, substantiate direct placement and common platform Policy/RBAC and accountable ownership; do not infer purpose/root from names or parentage. C02.04: designate the dedicated connectivity subscription and intended Connectivity MG, substantiate actual membership, required central networking/DNS/ER or justified alternatives and scale/regional exceptions; subscription or networking presence does not prove dedicated use. C02.05: separately establish authoritative tenant root, complete existing subscription placement and approved exceptions, and the explicit default group for future subscriptions; defaultManagementGroup does not relocate existing subscriptions or prove absence at root. C02.06: reconcile the explicit requireAuthorizationForGroupCreation setting attached to independently designated tenant root with separately evidenced effective least-privileged create/move/delete/settings/access operations, inheritance, PIM and emergency exceptions; the creation toggle and settings-read/write role do not prove all privileged operations. C02.07: bind each designated landing-zones child group to approved security/compliance/connectivity/feature requirements, actual placement and effective Policy/ownership; do not copy organizational charts or infer business purpose from graph shape. Missing/partial/ambiguous/stale/denied/unsupported/over-bound inputs remain unknown. No tenant reads, changes, queries or fabricated owner confirmation. Signals and humanConfirmed never manufacture Verified.",
+    "controls": [
+      "ALZ-cacf55bc-e4e4-46be-96bc-57a5f23a269a",
+      "ALZ-2df27ee4-12e7-4f98-9f63-04722dd69c5b",
+      "ALZ-667313b4-f566-44b5-b984-a859c773e7d2",
+      "ALZ-61623a76-5a91-47e1-b348-ef254c27d42e",
+      "ALZ-8bbac757-1559-4ab9-853e-8908ae28c84c",
+      "ALZ-33b6b780-8b9f-4e5c-9104-9d403a923c34",
+      "ALZ-74d00018-ac6a-49e0-8e6a-83de5de32c19",
+      "ALZ-92481607-d5d1-4e4e-9146-58d3558fd772"
+    ]
+  },
+  "recommendations": [
+    {
+      "upstream_id": "C01.01",
+      "guid": "cacf55bc-e4e4-46be-96bc-57a5f23a269a",
+      "classification": "assisted",
+      "sources": ["naming-standard", "learn-reuse"],
+      "evidence_requirements": [
+        "Preparation: current guidance calls for a tailored organization-specific standard and per-resource naming scopes/length/characters. Examples, valid Azure syntax and counts do not establish an approved standard. No raw resource names or private tag values are retained.",
+        "Reviewer decision: cite approved resource-type/scope coverage, component order, immutable naming versus mutable metadata, accountable ownership and actual adoption using redacted dated references.",
+        "Reviewer decision: independently reconcile Azure resource constraints, sensitive-data exclusion, migration/legacy exceptions and ongoing maintenance. Do not prescribe a universal delimiter, regex or example naming convention."
+      ],
+      "limitations": "Assisted document workflow, no machine naming compliance predicate. Public examples and name syntax cannot prove an approved naming standard or estate-wide adoption.",
+      "flags": []
+    },
+    {
+      "upstream_id": "C02.01",
+      "guid": "2df27ee4-12e7-4f98-9f63-04722dd69c5b",
+      "classification": "assisted",
+      "sources": ["management-design", "management-overview", "management-arm", "terraform-management"],
+      "review_resource_types": ["Microsoft.Management/managementGroups"],
+      "review_fact_paths": ["managementParentId"],
+      "evidence_requirements": [
+        "Preparation: unique known typed explicit positive parent graph bounded to 100 relevant supplied records. Relative depth counts MG edges below the selected anchor and excludes subscriptions; no selected scope/name is designated tenant root and no complete estate is inferred.",
+        "Reviewer decision: independently designate authoritative tenant root and ALZ intermediate root, state the level-counting convention and substantiate a complete original-time scoped hierarchy and flatness with justified exceptions.",
+        "Reviewer decision: reconcile immutable no-more-than-four wording with current CAF ideally three-to-four levels. Separately review the service maximum six below tenant root excluding subscriptions; do not substitute that limit or relative subtree depth for recommendation compliance."
+      ],
+      "limitations": "Partial graph context only. No four-level automated threshold, complete estate depth, root designation, policy inheritance or organizational suitability inferred.",
+      "flags": []
+    },
+    {
+      "upstream_id": "C02.02",
+      "guid": "667313b4-f566-44b5-b984-a859c773e7d2",
+      "classification": "assisted",
+      "sources": ["management-design", "management-arm", "terraform-management"],
+      "review_resource_types": ["Microsoft.Management/managementGroups"],
+      "review_fact_paths": ["managementParentId"],
+      "evidence_requirements": [
+        "Preparation: typed positive MG parentage only. A sandbox-like identifier or graph position never designates experimentation purpose or an operating model.",
+        "Reviewer decision: explicitly designate the sandbox boundary and evidence approved experimentation and isolation from development/test/production, with actual accountable ownership.",
+        "Reviewer decision: substantiate appropriate Policy/access guardrails, cost controls, lifecycle/cleanup and exceptions independently. Group existence does not prove safe experimentation or effective governance."
+      ],
+      "limitations": "No name-derived sandbox, runtime isolation, policy enforcement, expenditure cap or owner approval.",
+      "flags": []
+    },
+    {
+      "upstream_id": "C02.03",
+      "guid": "61623a76-5a91-47e1-b348-ef254c27d42e",
+      "classification": "assisted",
+      "sources": ["management-design", "management-overview", "management-arm", "terraform-management"],
+      "review_resource_types": ["Microsoft.Management/managementGroups"],
+      "review_fact_paths": ["managementParentId"],
+      "evidence_requirements": [
+        "Preparation: unique known typed direct MG parent references, not resource/display names, provide partial placement context. Current ALZ intermediate root sits directly below tenant root.",
+        "Reviewer decision: independently designate the platform and intended tenant/intermediate root according to approved architecture, then substantiate actual direct placement and justified customization.",
+        "Reviewer decision: substantiate common platform Policy/RBAC, effective access, ownership and required platform child populations with redacted evidence; parentage alone does not establish purpose or enforcement."
+      ],
+      "limitations": "Neither selected scope nor root/platform-like names establish organizational roles, intended direct parent, complete hierarchy, billing aggregation or effective Policy/RBAC.",
+      "flags": []
+    },
+    {
+      "upstream_id": "C02.04",
+      "guid": "8bbac757-1559-4ab9-853e-8908ae28c84c",
+      "classification": "assisted",
+      "sources": ["management-design", "management-overview", "terraform-management-association"],
+      "review_resource_types": ["Microsoft.Management/managementGroups", "Microsoft.Resources/subscriptions"],
+      "review_fact_paths": ["managementParentId"],
+      "evidence_requirements": [
+        "Preparation: existing saved explicit subscription-parent edges require unique known typed subscription and parent resources in the supplied graph. Unsupported association input, absent resource or partial joins remain unknown.",
+        "Reviewer decision: explicitly designate the dedicated connectivity subscription and intended Connectivity MG, substantiate actual membership and dedicated platform use with redacted dated references.",
+        "Reviewer decision: reconcile required networking/DNS/ExpressRoute services or justified topology alternatives, accountable operations and scale/regional subscription exceptions. A subscription or network resource count proves neither dedication nor completeness."
+      ],
+      "limitations": "Positive membership is not dedicated connectivity purpose, required-service coverage, actual network reachability, quota/capacity or operational ownership.",
+      "flags": []
+    },
+    {
+      "upstream_id": "C02.05",
+      "guid": "33b6b780-8b9f-4e5c-9104-9d403a923c34",
+      "classification": "assisted",
+      "sources": ["management-design", "hierarchy-protection", "hierarchy-settings-arm", "management-overview"],
+      "review_resource_types": ["Microsoft.Management/managementGroups", "Microsoft.Resources/subscriptions", "Microsoft.Management/managementGroups/settings"],
+      "review_fact_paths": ["managementParentId", "defaultManagementGroup"],
+      "evidence_requirements": [
+        "Preparation: explicit defaultManagementGroup reference on settings/default attached to the selected known anchor, joined to a unique known MG in the supplied graph; no implicit defaults. It controls future subscriptions, not existing placement.",
+        "Reviewer decision: independently designate authoritative tenant root, establish the complete dated actual subscription-parent population and substantiate no root-level subscriptions or justified explicit exceptions.",
+        "Reviewer decision: independently approve and evidence the default dedicated group for future subscriptions and its appropriate controls. Default configuration, zero selected records and inventory_complete cannot prove existing root-subscription absence."
+      ],
+      "limitations": "No absence predicate or root designation. A supplied default setting neither relocates existing subscriptions nor proves it is effective at the actual tenant root.",
+      "flags": []
+    },
+    {
+      "upstream_id": "C02.06",
+      "guid": "74d00018-ac6a-49e0-8e6a-83de5de32c19",
+      "classification": "assisted",
+      "sources": ["management-design", "hierarchy-protection", "hierarchy-settings-arm", "management-overview"],
+      "review_resource_types": ["Microsoft.Management/managementGroups", "Microsoft.Management/managementGroups/settings"],
+      "review_fact_paths": ["requireAuthorizationForGroupCreation"],
+      "evidence_requirements": [
+        "Preparation: only explicit boolean requireAuthorizationForGroupCreation from pinned settings/default attached to the selected unique known anchor. Missing, wrong-type, unsupported-version, denied or unbound input remains unknown.",
+        "Reviewer decision: independently designate authoritative tenant root and substantiate the actual setting there. Its source-qualified meaning is root write permission for group creation, not all management-group operations.",
+        "Reviewer decision: separately substantiate effective least-privileged create/move/delete/settings/access operations, inherited roles/deny/conditions, PIM and emergency exceptions. Settings read/write permission itself grants no other hierarchy/resource access; counts or humanConfirmed do not establish authorization."
+      ],
+      "limitations": "Creation-authorization configuration only, not a whole-guidance predicate, complete effective permissions, privileged-user designation or runtime authorization assurance.",
+      "flags": []
+    },
+    {
+      "upstream_id": "C02.07",
+      "guid": "92481607-d5d1-4e4e-9146-58d3558fd772",
+      "classification": "assisted",
+      "sources": ["management-design", "management-overview", "management-arm", "terraform-management"],
+      "review_resource_types": ["Microsoft.Management/managementGroups"],
+      "review_fact_paths": ["managementParentId"],
+      "evidence_requirements": [
+        "Preparation: supplied explicit typed direct parentage only. Current CAF places workload-type groups under the landing-zones parent and bases grouping on security/compliance/connectivity/feature needs, not a copied organization chart.",
+        "Reviewer decision: explicitly designate landing-zones parent and each workload-type group, reconcile immutable root-level wording with approved current ALZ intermediate-root architecture and substantiate actual placement.",
+        "Reviewer decision: bind each grouping to approved workload requirements, appropriate effective Policy and accountable ownership with independent exceptions. Never infer business purpose from names, graph shape, hierarchy depth or generic Policy presence."
+      ],
+      "limitations": "No label-derived workload requirement, organizational root, approved grouping, complete workload population or effective policy claim.",
+      "flags": []
+    }
+  ],
+  "source_acquisition_notes": [
+    "Only linked provenance, hashes and independently authored factual findings are redistributed; no upstream page, sample scripts or customer payloads.",
+    "The first capture stopped before writing because the HTML escaped an apostrophe in a reviewed marker; the marker was changed to the actual stable role label after inspecting the current page.",
+    "Pinned AzureRM management_group_settings documentation returns HTTP404; no such resource or fallback endpoint is invented. Settings preparation uses pinned ARM/Bicep or already normalized saved/injected configuration only.",
+    "No ARM/Collector live endpoint or API allowlist is added. No built-in Policy fetch, second interpreter, query execution or new tenant authority.",
+    "All eight classifications remain assisted and all eight human decisions remain independently blank. The preparation bank is injected only in authored tests, not registered in accepted runtime."
+  ]
+}
