@@ -4,3 +4,8 @@
 references/** -text whitespace=cr-at-eol
 src/alz_assessor/data/** -text whitespace=cr-at-eol
 tests/fixtures/alz-avm/snapshots/workspace/** -text
+# Preserve byte-exact inputs recorded by the multi-region fixture provenance.
+docs/examples/bicep-multiregion-alz/**/*.bicep -text whitespace=cr-at-eol
+docs/examples/bicep-multiregion-alz/scenarios/**/*.json -text whitespace=cr-at-eol
+docs/examples/bicep-multiregion-alz/scope-map.json -text whitespace=cr-at-eol
+tests/fixtures/multiregion-alz/*.json -text whitespace=cr-at-eol
