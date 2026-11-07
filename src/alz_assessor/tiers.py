@@ -30,6 +30,9 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     from .logging_evidence import resource_paths, scoped_identity
     from .network_evidence import REVIEW_PATHS, review_fact
     from .network_policy_evidence import GUIDS as NETWORK_POLICY_GUIDS
+    from .operations_evidence import GUIDS as OPERATIONS_GUIDS
+    from .operations_evidence import resource_paths as operations_paths
+    from .operations_evidence import unique_known as operations_unique
     from .platform_health_evidence import GUIDS as PLATFORM_HEALTH_GUIDS
     from .platform_health_evidence import resource_paths as platform_paths
     from .policy_strategy_evidence import GUIDS as POLICY_STRATEGY_GUIDS
@@ -56,12 +59,14 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
         "aa45be6a-8f2d-4896-b0e3-775e6e94e610"
     }
     topology = control["upstream_guid"] in TOPOLOGY_GUIDS
+    operations = control["upstream_guid"] in OPERATIONS_GUIDS
     if (
         vwan
         or policy
         or logging
         or platform
         or topology
+        or operations
         or control["upstream_guid"] in TENANT_GUIDS | HYBRID_GUIDS | SOVEREIGN_GUIDS
     ):
         for resource in bundle["resources"]:
@@ -82,6 +87,8 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
         if policy and not policy_unique_known(resource, bundle, by_id):
             continue
         if topology and not topology_unique_known(resource, bundle, by_id):
+            continue
+        if operations and not operations_unique(resource, bundle, by_id):
             continue
         if control["upstream_guid"] in TENANT_GUIDS:
             if tenant_signal(resource, by_id, bundle):
@@ -109,6 +116,8 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
         ):
             continue
         for path in control.get("review_fact_paths", []):
+            if operations and path not in operations_paths(resource["resource_type"]):
+                continue
             if topology and path not in topology_paths(resource["resource_type"]):
                 continue
             if logging and path not in resource_paths(resource["resource_type"]):

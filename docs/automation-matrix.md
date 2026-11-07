@@ -33,11 +33,50 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.22` retains all 255 entries: 12 automated, 200 assisted
-and 43 manual. Crosswalk `2026-11-06.22` rebinds the unchanged 51-control,
+Current successor `2026-11-06.23` retains all 255 entries: 12 automated, 200 assisted
+and 43 manual. Crosswalk `2026-11-06.23` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-Exact predecessor `.21` is frozen; source-matrix acceptance alone is not delivery.
+Exact predecessor `.22` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
+
+### Cohort 24: log retention, machine operations and resource guardrails
+
+The [nine-GUID matrix](../references/recommendation-batches/batch-24.json) and
+[42 unchanged captures](../references/recommendation-batches/batch-24-sources.json)
+activate `.23` only after the explicit sole slot and actual25/09 checked
+implementation/receipt/final-main delivery. Every non-own full control, all203
+earlier rows/24 receipts and original four complete controls remain unchanged.
+
+| Recommendation | Configuration context and independent human decision |
+|---|---|
+| F01.01 | Workspace SKU/default retention/network flags and typed location; approved centralization, complete ingestion and tenant/RBAC/ownership/sovereignty/retention exceptions |
+| F01.02 | Supplied workspace locations; single/regional design against residency, resilience and actual VM bandwidth versus diagnostic-setting egress/cost |
+| F01.03 | Source-qualified explicit table day periods/inheritance, bounded export fingerprints/storage join and container immutability metadata; required datasets, actual historical/new-data coverage, delivery, container binding and legal WORM suitability |
+| F01.04 | Guest assignment mode/kind joined to one selected VM/Arc machine and existing Policy context; prerequisites, current compatibility and actual completed drift audits |
+| F01.05 | Existing typed Azure VM OS/agent/assessment/patch configuration; eligible fleet, schedules, update-source/extension health and actual patch results |
+| F01.06 | Explicit Arc OS/patch profile in reviewed ARM/saved evidence; separate outside-Azure adoption/connectivity/results; pinned AzureRM exposes no patch fields |
+| F01.07 | Existing flow target/storage/analytics facts and strict joins; actual proactive traffic analysis, coverage/response and NSG-to-VNet flow lifecycle |
+| F01.08 | Explicit lock level and identity-derived supported scope; independently designate critical services, ancestor coverage, removal authority, applicability/side effects and control-plane-only protection |
+| F01.09 | Existing Policy definition/assignment/version joins and minimized role context; exact conditions/parameters/exemptions and real permitted/blocked operations, distinct from RBAC deny assignments |
+
+No whole-guidance predicate is added. All nine registered interview outcomes and
+exceptions stay independently blank and bound to source/content/scope/time/expiry.
+Signals and human confirmation never manufacture Verified. Missing, partial,
+ambiguous, denied, stale, unsupported or over-bound evidence remains unknown.
+Accepted original-time privacy-safe replay and exact predecessor meaning are
+preserved through the shared evaluator, adapters, reports/trackers, CLI and session.
+
+Current total4383-day/12-year retention differs from730-day analytics and
+workspace defaults; ARM `-1` is inheritance, not actual days. Basic current30-day
+guidance differs from provider8-day wording, and CLI2556 differs from portal/REST.
+Explicit immutability1-146000-day settings do not establish locked/legal coverage.
+Guest/patch/flow definitions are not audits, installed patches or traffic analysis.
+NSG flow creation is withdrawn; retirement is2027-09-30. Machine Configuration's
+November2026 OS/client changes remain applicability decisions. Locks protect
+control-plane operations, not data or subscription cancellation; generated ARM
+scope lists do not establish management-group support. Policy deny is not an
+RBAC deny assignment/private-preview entitlement. No new live route, interpreter,
+built-in fetch, query/guest/patch/traffic operation or private payload is introduced.
 
 ### Cohort 09: sovereign organization, regions and classification
 

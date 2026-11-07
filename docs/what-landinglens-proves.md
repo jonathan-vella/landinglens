@@ -8,6 +8,16 @@ are in the [plan](planning/plan.md).
 
 ## Evidence and outcomes
 
+Cohort24's [accepted support](automation-matrix.md#cohort-24-log-retention-machine-operations-and-resource-guardrails)
+in `.23` follows the explicit sole slot after actual25/09 delivery. Its nine workflows
+keep workspace exceptions/design, source-specific retention, actual export and
+legal WORM sufficiency, completed guest audits, Azure/Arc patch results, operating
+traffic analysis and effective lock/Policy-role protection as separate human
+decisions. Current Basic30-day versus pinned provider8-day wording is not
+silently reconciled. A configured day interval, guest assignment, patch mode,
+flow definition, lock level or literal deny effect is context, not a pass.
+No new live operation or private log/guest/patch/traffic payload is introduced.
+
 Cohort09 [source-qualified support](automation-matrix.md#cohort-09-sovereign-organization-regions-and-classification)
 in `.22` is not sovereignty certification or receipted delivery. Positive MG parentage is not an
 organizational designation; explicit VM location labels are not geographic/legal

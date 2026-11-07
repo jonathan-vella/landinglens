@@ -1,5 +1,33 @@
 # LandingLens product requirements
 
+## Cohort 24 accepted boundary
+
+After actual25/09 checked implementation/receipt delivery and the explicit sole
+slot, the [nine F01.01-.09 workflows](../../references/recommendation-batches/batch-24.json)
+activate reviewed successor `.23`, preserving exact `.22`, all255/fixed251,
+original four complete controls and all203 preceding rows/24 receipts.
+Nine registered decisions and exceptions remain independent and blank. Typed
+workspace/table/export/immutability/guest/Arc/lock facts reuse existing helpers,
+not new operational predicates or live routes. Source-qualified retention
+units/provider differences, lifecycle, control-plane lock limits and Policy-deny
+versus RBAC-deny distinctions are explicit. Actual checked merged implementation,
+guarded own receipt publication and final-main CI remain delivery gates.
+See [integration evidence](plan.md#cohort-24-accepted-integration-2026-11-07).
+
+## Cohort 24 preparation boundary
+
+The [nine F01.01-.09 workflows](../../references/recommendation-batches/preparation-24.json)
+for [#148](https://github.com/jonathan-vella/landinglens/issues/148) prepare
+workspace architecture, source-qualified retention/export/immutability,
+Machine Configuration, distinct Azure/Arc patching, Network Watcher and
+lock/Policy-role review without accepted activation or delivery. Cohorts25/09
+precede its coordinator-granted slot. All nine human decisions and exceptions
+remain independent and blank; source/provider conflicts remain visible rather
+than becoming defaults or relaxed predicates. Supplied settings establish no
+ingestion, sovereignty, legal WORM sufficiency, completed audit/patch/traffic
+operation, criticality or effective protection/access. See the
+[preparation boundaries](plan.md#cohort-24-independent-preparation-2026-11-07).
+
 ## Cohort 09 accepted boundary
 
 The explicit sole coordinator slot after actual10 implementation146/receipt147

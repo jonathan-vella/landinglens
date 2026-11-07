@@ -55,6 +55,10 @@ def prepared_resource(
 ) -> dict[str, Any]:
     from .logging_evidence import GUIDS as LOGGING_GUIDS
     from .logging_evidence import linked_context, resource_paths
+    from .operations_evidence import GUIDS as OPERATIONS_GUIDS
+    from .operations_evidence import configuration_context as operations_context
+    from .operations_evidence import resource_paths as operations_paths
+    from .operations_evidence import unique_known as operations_unique
     from .platform_health_evidence import GUIDS as PLATFORM_HEALTH_GUIDS
     from .platform_health_evidence import linked_context as platform_context
     from .platform_health_evidence import resource_paths as platform_paths
@@ -67,6 +71,16 @@ def prepared_resource(
     for path in control.get("review_fact_paths", []):
         if resource["state"] != "known":
             facts[path] = {"unknown": "resource_not_known"}
+        elif (
+            bundle is not None
+            and control["upstream_guid"] in OPERATIONS_GUIDS
+            and not operations_unique(resource, bundle, by_id)
+        ):
+            facts[path] = {"unknown": "operations_resource_not_unique_known_in_scope"}
+        elif control["upstream_guid"] in OPERATIONS_GUIDS and path not in operations_paths(
+            resource["resource_type"]
+        ):
+            facts[path] = {"unknown": "fact_not_applicable_to_resource_type"}
         elif (
             bundle is not None
             and control["upstream_guid"] in TOPOLOGY_GUIDS
@@ -116,6 +130,8 @@ def prepared_resource(
             prepared["logging_context"] = linked_context(resource, by_id, scope)
     if bundle is not None and control["upstream_guid"] in TOPOLOGY_GUIDS:
         prepared["topology_configuration"] = topology_context(resource, bundle, by_id)
+    if bundle is not None and control["upstream_guid"] in OPERATIONS_GUIDS:
+        prepared["operations_configuration"] = operations_context(resource, bundle, by_id)
     if bundle is not None:
         from .policy_strategy_evidence import GUIDS as POLICY_STRATEGY_GUIDS
         from .policy_strategy_evidence import configuration_context
@@ -439,6 +455,7 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     from .logging_evidence import GUIDS as LOGGING_GUIDS
     from .logging_evidence import scoped_identity
     from .network_policy_evidence import GUIDS as NETWORK_POLICY_GUIDS
+    from .operations_evidence import GUIDS as OPERATIONS_GUIDS
     from .platform_health_evidence import GUIDS as PLATFORM_HEALTH_GUIDS
     from .policy_strategy_evidence import GUIDS as POLICY_STRATEGY_GUIDS
     from .sovereign_evidence import GUIDS as SOVEREIGN_GUIDS
@@ -460,6 +477,7 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
         | NETWORK_POLICY_GUIDS
         | TENANT_GUIDS
         | TOPOLOGY_GUIDS
+        | OPERATIONS_GUIDS
     )
     if policy_prepared:
         scoped_guids |= POLICY_STRATEGY_GUIDS | {"aa45be6a-8f2d-4896-b0e3-775e6e94e610"}
