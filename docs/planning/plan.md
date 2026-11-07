@@ -88,6 +88,18 @@ recording, source activation or issue status, determine satisfied #154 completio
 No new Azure reads, queries, deployment, settings/permissions changes or owner/
 runtime assurances are asserted.
 
+The first receipt-head `00274b5bb09e06326a8e9c8635461efe2a817175` failed all
+eight platform jobs in push42334892706/PR42334908306 because the pending-priority
+table still included delivered cohort07, while its guarded ledger correctly
+derived23 pending GUIDs. CodeQL42334905523 and Advanced Security42334909975
+passed, but that head is not accepted publication evidence. The correction removes
+only the delivered07 pending row and reconciles the current summary to `.25`/
+23 remaining. The unchanged ledger-derived exact-membership assertion now passes;
+no test weakening, receipt/wheel replacement, production code change or bypass.
+Both failed run IDs/logs remain retained as invalidated history. Implementation
+final-main platform42334794664 and CodeQL42334794536 passed independently;
+receipt publication still needs its own fresh exact-head and final-main gates.
+
 ## Cohort 07 independent preparation: 2026-11-07
 
 [#154](https://github.com/jonathan-vella/landinglens/issues/154) prepares the
