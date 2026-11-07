@@ -1,0 +1,416 @@
+{
+  "batch": "28",
+  "review_state": "preparation-only-reviewed",
+  "sources": [
+    {
+      "id": "budget-alert-tutorial",
+      "url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-acm-create-budgets?bc=%2Fazure%2Fcloud-adoption-framework%2F_bread%2Ftoc.json&toc=%2Fazure%2Fcloud-adoption-framework%2Ftoc.json",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-acm-create-budgets?bc=%2Fazure%2Fcloud-adoption-framework%2F_bread%2Ftoc.json&toc=%2Fazure%2Fcloud-adoption-framework%2Ftoc.json",
+      "sha256": "e656447c28075a638c3d590f6caf581ba43b193f13126bb774a97a872db4be4c",
+      "retrieved_at": "2026-11-07T04:22:37.955220+00:00",
+      "revision": "981d4c7a114a9026e67c1ac75226043c035d2ab5",
+      "finding": "Actual E02.01 link: actual and forecasted alerts are separate configuration. Tutorial alert range is0.01%-1000%; cost evaluation is periodic, not real-time. Resources/consumption are not stopped. Scope/currency/filters, expiry, recipients and delivery need separate evidence and are not retained or tested here.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "sovereign-release-history",
+      "url": "https://learn.microsoft.com/industry/release-plan/2023wave2/cloud-sovereignty/enable-data-sovereignty-policy-baseline",
+      "resolved_url": "https://learn.microsoft.com/en-us/previous-versions/industry/release-plan/2023wave2/cloud-sovereignty/enable-data-sovereignty-policy-baseline",
+      "sha256": "67a4c6d120534137470968d4f1c0655a209d8e44308d2c71428886982640c9e9",
+      "retrieved_at": "2026-11-07T04:22:39.298893+00:00",
+      "revision": "b001e98f8deeb30464126938b86dc890fe719baf",
+      "finding": "Actual E03.01 redirects to retired previous-versions2023wave2 release history. The2023 GA promise is not a current definition/version, deployed assignment, complete sovereignty requirement or enforcement result.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "sovereign-policy-design",
+      "url": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/implementing-workloads/design-sovereign-policies#sovereign-policy-initiatives",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-sovereign-clouds/public/design-sovereign-policies",
+      "sha256": "5481f5476b553256d5ffa75bf40222aecd0579dce6c83fc36639298122d894f0",
+      "retrieved_at": "2026-11-07T04:22:40.181286+00:00",
+      "revision": "3479ef7a3e2fad94a5e4afcef61621899239b37c",
+      "finding": "Actual E03.02 redirects to Azure Sovereign Clouds public design. Current L1 locality/transit, L2 at-rest/CMK and L3 in-use/confidential initiatives are service-specific, customized to requirements and applied to appropriate MGs including supporting services. Audit-first guidance is not enforced deny. Names/global references alone prove no content, version, placement or outcome.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "sovereign-objectives-link",
+      "url": "https://learn.microsoft.com/en-us/industry/sovereign-cloud/sovereign-public-cloud/sovereign-landing-zone/implement-controls-principles",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-sovereign-clouds/public/implementation-options",
+      "sha256": "a7dcd34c5f49f8dc0928da7948de9638100dbeda1a036a024e6b2646a7911b05",
+      "retrieved_at": "2026-11-07T04:22:41.123661+00:00",
+      "revision": "3479ef7a3e2fad94a5e4afcef61621899239b37c",
+      "finding": "Actual E03.03 now redirects to implementation-options, not an organization control-objective mapping. The article describes incremental SLZ variants and Terraform/Bicep paths. Preserve immutable wording and require an independent attributable redacted objectives-to-controls decision.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "paired-regions",
+      "url": "https://learn.microsoft.com/en-us/azure/reliability/regions-paired",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/reliability/regions-paired",
+      "sha256": "5cf8eacd683f374e5bb6de9239105f915dcd77e75e3e3dd18a2418959c7844e1",
+      "retrieved_at": "2026-11-07T04:22:41.858080+00:00",
+      "revision": "12bb98a3460c0d83c61e0f419deade1229d8edcb",
+      "finding": "Actual E03.04: pairing is optional/service-specific and can be asymmetric; Brazil South/South Central US is an explicit cross-geography exception. A pair gives no automatic HA/DR/failover or approved jurisdiction. No region table is turned into an organizational or physical-location allowlist.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "service-data-residency",
+      "url": "https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency",
+      "resolved_url": "https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency",
+      "sha256": "8d55af910b0d874e1ca8cee70e06aabb10de0193a05cfaa244597799319cd3cb",
+      "retrieved_at": "2026-11-07T04:22:50.448950+00:00",
+      "revision": "retrieved-page",
+      "finding": "Actual E03.05: regional deployment differs from data processing. Page lists operational copies, personnel remote operation and service-specific exceptions including Cloud Services, ADX traces, ML metadata, Databricks identities, Serial Console, Foundry Global/DataZone, Extended Zones and prerelease services. No resource region establishes all storage/backup/control/support locations, feature availability, contractual authorization or legal suitability.",
+      "reuse": "Microsoft site terms: linked metadata and own findings only; no article/comments/sample scripts redistributed"
+    },
+    {
+      "id": "vendor-access-linked-recommendations",
+      "url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/recommendations-reference-identity-access",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/recommendations-reference-identity-access",
+      "sha256": "fdc359ad89ebe146f4f5a16e91360d22560f106ab7d0bb7851fe422ed3c34cbc",
+      "retrieved_at": "2026-11-07T04:22:51.077256+00:00",
+      "revision": "307ea66e69b8532a9c397a1f4672585c5a56481d",
+      "finding": "Actual E03.06 is a Defender identity/access recommendations reference, not a vendor personnel jurisdiction/nationality register or contract. Account, role, external-domain or recommendation status cannot establish personnel location or vendor access eligibility. Keep that decision manual; collect no personnel.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "confidential-computing-linked",
+      "url": "https://learn.microsoft.com/en-us/azure/confidential-computing/",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/confidential-computing/",
+      "sha256": "033afea66b79e239d3f702b97470e44be356ede3a9d365affb3f171c5f904d66",
+      "retrieved_at": "2026-11-07T04:22:51.532006+00:00",
+      "revision": "53e548cc6652179ebd5d01805a8b24af6fc812d6",
+      "finding": "Actual E03.07 current portfolio covers VM/container/services and specialized enclaves; applicability and service/region/feature choices need workload-specific requirements, not a blanket confidential flag or at-rest CMK claim.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "confidential-computing-in-use",
+      "url": "https://learn.microsoft.com/en-us/azure/confidential-computing/overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/confidential-computing/overview",
+      "sha256": "6cd820fb55318b6a30adc319cbaf4ee13dd8c47464032af443ca836aee03f3dc",
+      "retrieved_at": "2026-11-07T04:22:52.010294+00:00",
+      "revision": "53e548cc6652179ebd5d01805a8b24af6fc812d6",
+      "finding": "In-use protection uses a hardware-based attested TEE and depends on proper configuration. At-rest CMK, Trusted Launch, VM names and confidential labels are not equivalent. No workload content, attestation execution or actual operator-access assurance is collected or manufactured.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "sovereign-global-current",
+      "url": "https://learn.microsoft.com/en-us/azure/governance/policy/samples/mcfs-baseline-global",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/governance/policy/samples/mcfs-baseline-global",
+      "sha256": "886b59918fc17d33e4d9ced9355fd86d2f3f8a9dff50a7c807624b190dddaf5f",
+      "retrieved_at": "2026-11-07T04:22:52.460199+00:00",
+      "revision": "9f52a3754ca90e9f24463e1bbb443012a18b0c15",
+      "finding": "Current global baseline sample distinguishes residency and Trusted Launch. Its explicit partial-compliance caveat and changing associations prevent turning a name/initiative ID/Compliant Signal into legal compliance.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "sovereign-confidential-current",
+      "url": "https://learn.microsoft.com/en-us/azure/governance/policy/samples/mcfs-baseline-confidential",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/governance/policy/samples/mcfs-baseline-confidential",
+      "sha256": "24c3f609b46465998fb051045f1b1a8f860b2e858e46df8ac63978cebe9aaa9d",
+      "retrieved_at": "2026-11-07T04:22:52.886843+00:00",
+      "revision": "68e5f859eed6dab7a73a3819aa3741ff5932b546",
+      "finding": "Current confidential baseline includes service-specific residency/CMK controls and a partial-compliance caveat. Baseline identity/name is not versioned content, workload coverage, appropriate placement or in-use protection.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "storage-regional-redundancy",
+      "url": "https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy",
+      "sha256": "8aff1ddb40f610feeb3f2e191daab48da7be1c3db138a175df1dfb4666b2771c",
+      "retrieved_at": "2026-11-07T04:22:53.240358+00:00",
+      "revision": "600b459b67367f93f8426065bac787d0b7766c3e",
+      "finding": "Storage-specific ZRS stays in primary-region zones; GRS/GZRS replicate asynchronously to a paired secondary selected from primary, with LRS there. GZRS needs zones and a pair; archive/unmanaged-disk constraints differ. Redundancy SKU is not actual secondary location, replication success, DR readiness, every service's behavior or approved jurisdiction.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "foundry-processing-types",
+      "url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/deployment-types",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/deployment-types",
+      "sha256": "67749ef0b7bc8dbba0f8888f646e4c3740340b66f72f305b95697ec120ad367f",
+      "retrieved_at": "2026-11-07T04:22:54.083534+00:00",
+      "revision": "32726378f9adc67a78fef2187aa9197cdfea657a",
+      "finding": "Current redirect is Foundry Models deployment-types. Global, Data Zone and geography-based processing differ from stored-at-rest geography; regional types can process between regions within that geography. Availability is model/type-specific and not inferred or probed from a resource location.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "budget-arm-2024",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.consumption/2024-08-01/budgets",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.consumption/2024-08-01/budgets",
+      "sha256": "d41e6d2d2dc91b0107fa64d2d9f7f00bc6a6915bedf7426672c2ed7ef4259dfc",
+      "retrieved_at": "2026-11-07T04:22:54.418127+00:00",
+      "revision": "a80a6ca0ce31aae2ff0424e8453153664e18bc8b",
+      "finding": "Versioned2024-08-01 reference exposes explicit enabled/operator/threshold/type, up to five notifications and decimal REST percent0..1000 prose versus tutorial minimum0.01. No omitted defaults, period validity, recipients or delivery inferred.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "budget-rest-2019-10-01",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/consumption/resource-manager/Microsoft.Consumption/Consumption/stable/2019-10-01/consumption.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/consumption/resource-manager/Microsoft.Consumption/Consumption/stable/2019-10-01/consumption.json",
+      "sha256": "8d02a3bd0e5b8fb8f318346976cd30280ed81bd42d526ac0fcc1f5c276bc823f",
+      "retrieved_at": "2026-11-07T04:22:54.576679+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned2019-10-01: thresholdType enum declares Actual only despite provider documentation advertising Forecasted on its2019-10-01 API; do not silently conflate contracts. Percent is numeric/decimal with0..1000 prose. Max-five notifications and all required source facts need separate validation; financial/contact payloads are never persisted. Initial unnested guessed paths returned404; public pinned directory inspection established this exact Consumption path.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "budget-rest-2024-08-01",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/consumption/resource-manager/Microsoft.Consumption/Consumption/stable/2024-08-01/openapi.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/consumption/resource-manager/Microsoft.Consumption/Consumption/stable/2024-08-01/openapi.json",
+      "sha256": "2a56b9d02c1ad5182151d8e1d459aebae1a4328516dacac7f53094a6d36fdfa3",
+      "retrieved_at": "2026-11-07T04:22:54.777422+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned2024-08-01: thresholdType explicitly declares Actual and Forecasted. Percent is numeric/decimal with0..1000 prose. Max-five notifications and all required source facts need separate validation; financial/contact payloads are never persisted. Initial unnested guessed paths returned404; public pinned directory inspection established this exact Consumption path.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "budget-provider-subscription",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/consumption_budget_subscription.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/consumption_budget_subscription.html.markdown",
+      "sha256": "25d03020b10aa71085313ab982c3931f24df9e19d9d09a560110064e865541c3",
+      "retrieved_at": "2026-11-07T04:22:55.038276+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "AzureRM4.50.0 explicit subscription notification enabled/operator/type fields. Documented defaults are not observed facts. Docs allow Actual/Forecasted but identify2019-10-01 API whose pinned enum lists only Actual; keep source qualification. Percentage threshold is not amount/spend; do not retain amount/currency/billing/filter/contact payloads or infer delivery.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "budget-provider-resource_group",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/consumption_budget_resource_group.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/consumption_budget_resource_group.html.markdown",
+      "sha256": "d7d904bfbd55c84217ade69aed974ad04ea1b791a07cf341ce01d95a5a7325a3",
+      "retrieved_at": "2026-11-07T04:22:55.345553+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "AzureRM4.50.0 explicit resource_group notification enabled/operator/type fields. Documented defaults are not observed facts. Docs allow Actual/Forecasted but identify2019-10-01 API whose pinned enum lists only Actual; keep source qualification. Percentage threshold is not amount/spend; do not retain amount/currency/billing/filter/contact payloads or infer delivery.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "policy-overview",
+      "url": "https://learn.microsoft.com/en-us/azure/governance/policy/overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/governance/policy/overview",
+      "sha256": "5d57ce3ad07769d7cbde39feb6c7055e273060bae3e9dc0ef42edc2ba552106a",
+      "retrieved_at": "2026-11-07T04:22:55.750661+00:00",
+      "revision": "f5122cc9a56620b3e86ab6e47a77b9d4bb826992",
+      "finding": "Actual E01.01/.03/.04/.05/.07/.08/.09 link. Initiatives group rules; definition placement and assignment scopes differ. Begin with audit and review as code. The current overview now discusses identity-aware policies; that is not an implemented interpreter, entitlement check or blanket replacement for RBAC.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "policy-scope",
+      "url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/scope",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/scope",
+      "sha256": "8ed8b90d1a8495826da7c467263e07520947979cd1163288fc73bb362031cd6c",
+      "retrieved_at": "2026-11-07T04:22:56.202341+00:00",
+      "revision": "335102b882bfe205071a0b561c28b21eabf0a5ee",
+      "finding": "Custom definitions live at management groups or subscriptions, not resource groups. Assignment must be at that location or a descendant. Exclusions omit evaluation/compliance counting; tracked exemptions are separate objects with extra permissions.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "policy-assignment",
+      "url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure",
+      "sha256": "dfdcfeb2e0080a7bc6795c6646920fe0fcc8eb06c174626327ee6969a132e809",
+      "retrieved_at": "2026-11-07T04:22:56.517697+00:00",
+      "revision": "a404a6abd3de4275ac00471ae996ec31443b9aeb",
+      "finding": "ID creation scope, excluded scopes, selectors, overrides, parameters, versions and enforcement mode are independent applicability/effect constraints. Missing/default/wildcard/effective versions are not exact supplied-version joins. DoNotEnforce does not disable evaluation; Default is not effective enforcement proof.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "policy-exemption",
+      "url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/exemption-structure",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/exemption-structure",
+      "sha256": "cbdb0503ca09b115eb4fe9f29e0cb9cb396c04a6e603dab5b5c83d7390f3f77e",
+      "retrieved_at": "2026-11-07T04:22:57.000420+00:00",
+      "revision": "ad08d6209a5960ed91d1c46131250915ea9f2da7",
+      "finding": "Exemptions can select initiative members and resource/identity subsets, expire without object deletion and relax assignment-scope validation. Saved references alone cannot establish effective exemption, approval or complete coverage.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "management-hierarchy",
+      "url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+      "sha256": "722134a7f78faad3a1b9edccae9d5f3a371255bab0a80e582ebe737e7ec3eb12",
+      "retrieved_at": "2026-11-07T04:22:57.294402+00:00",
+      "revision": "84d6ae283915e42535dac6184ccce6d8a1969027",
+      "finding": "Tenant root is directory-bound, not a name or the highest visible selected node. Use positive saved parent paths only; missing parents or incomplete trees prove no root identity or effective inherited policy/role outcome.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "landing-zone-hierarchy",
+      "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups",
+      "sha256": "3335e9f4032953dfa9606f03639053f09c7aaa095048cf555d0d0eb5efb8e94d",
+      "retrieved_at": "2026-11-07T04:22:57.587953+00:00",
+      "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+      "finding": "Intermediate root is below tenant root with ALZ-wide parent purpose, requiring explicit designation. Root assignments should be limited but no numeric cap is specified. Workload RBAC is normally subscription/resource-group scoped, unlike platform-team MG access controlled through PIM. Initial management-group URL without resource-org prefix returned404; this actual page is the reviewed source.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "policy-spec-policyDefinitions",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json",
+      "sha256": "9d707ad996174330367c811461f5f3b2e1c710b63e5b171e804ad058850d9ad6",
+      "retrieved_at": "2026-11-07T04:22:57.889559+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned2023-04-01 custom subscription/MG definitions versus global built-ins. Minimize type, explicit supported mode, exact version and literal effect; withhold rule/parameters/metadata and never fetch referenced definitions.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "policy-spec-policySetDefinitions",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json",
+      "sha256": "a75b99bf469062e594abc1468aea4f473c5f070b21311e894c4b1e3a86d89e48",
+      "retrieved_at": "2026-11-07T04:22:58.171670+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned2023-04-01 initiative references with per-member versions and unique reference IDs. Retain typed IDs, hashed member labels and bounded group counts only; no group names, regulatory mapping, parameter values or recursive evaluation.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "policy-spec-policyAssignments",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json",
+      "sha256": "85934922ce8fe3e200fe0642df802f38b72ad153d66807ad874fdf78ee443989",
+      "retrieved_at": "2026-11-07T04:22:58.469048+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned2023-04-01 assignment scope is ID prefix; scope property is readOnly. Minimized references/exclusions and counts preserve missing inputs as unknown. Selectors/overrides/parameters/identity bodies are not retained or interpreted.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "policy-provider-policy_definition",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_definition.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_definition.html.markdown",
+      "sha256": "74cf604cb0de66c8428b0114ff594ef3c02956e49c411ef7d692b0a782893993",
+      "retrieved_at": "2026-11-07T04:22:58.744678+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "PinnedAzureRM4.50.0 explicit subscription/MG definitions; JSON-string rule is bounded/duplicate-checked before extracting literal effect only. Metadata version is not an effective or REST version; no join synthesized.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "policy-provider-policy_set_definition",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_set_definition.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_set_definition.html.markdown",
+      "sha256": "9348c71eb855dbe45ff5299a9a37778dd41224534668fd64df74620e04ab9a9c",
+      "retrieved_at": "2026-11-07T04:22:59.014537+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "PinnedAzureRM4.50.0 subscription initiative references; member version optional, so absent/unresolved versions cannot make an exact supplied-version join. This resource has no management_group_id argument.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "policy-provider-management_group_policy_assignment",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group_policy_assignment.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group_policy_assignment.html.markdown",
+      "sha256": "474694e8983a628f6a6443c48c517b2dcac214dea7229dae307fe91465fd7f91",
+      "retrieved_at": "2026-11-07T04:22:59.292466+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "PinnedAzureRM4.50.0 MG assignment with exact explicit target binding. Omitted enforce, exclusions, selectors or overrides are not inferred defaults.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "policy-provider-subscription_policy_assignment",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subscription_policy_assignment.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subscription_policy_assignment.html.markdown",
+      "sha256": "1eed39b22a8e715763c0e5334940c7a27cd259d2c116a637a2599019cab1d272",
+      "retrieved_at": "2026-11-07T04:22:59.556778+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "PinnedAzureRM4.50.0 subscription assignment. Separate scope-specific provider resources share one minimized model; unsupported resource assignments stay unsupported.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "policy-provider-resource_group_policy_assignment",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/resource_group_policy_assignment.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/resource_group_policy_assignment.html.markdown",
+      "sha256": "d43953099295faf63678a5fa43130bad6c906429318be58ca62e64784f6bfccf",
+      "retrieved_at": "2026-11-07T04:22:59.877441+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "PinnedAzureRM4.50.0 RG assignment with explicit typed target; no subscription/MG promotion, service approval or automatic inheritance claim.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "learn-terms",
+      "url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "resolved_url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "sha256": "a5812317807f86509aa2c8d29b484a53c9cc7261a3303c4be4f89163d53e0114",
+      "retrieved_at": "2026-11-07T04:23:00.046859+00:00",
+      "revision": "9fd90ed833034800434458aef187ba08d8dc9d5b",
+      "finding": "Reviewed Learn terms and documentation-specific terms; retain source metadata, URLs/revisions/hashes and own factual findings only, not articles/sample scripts.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "policy-spec-license",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/LICENSE",
+      "sha256": "b37363bf2295aa0acde60ce78a60034a71a0955075fc01aa09cc23eadff44436",
+      "retrieved_at": "2026-11-07T04:23:00.316612+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned REST-spec MIT terms reviewed; only own findings and source metadata retained.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "policy-provider-license",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "sha256": "4e2bb185ebd706f76329206869ccb348b92b6236100cfb07775fe31530dab0d5",
+      "retrieved_at": "2026-11-07T04:23:00.596950+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider MPL2.0 terms reviewed; no provider source code redistributed.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "storage-identity-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts",
+      "sha256": "80fd20eb27260ce6815875d7b2235ad748d37830c811168892a44fa7187684d5",
+      "retrieved_at": "2026-11-07T04:23:01.030700+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Storage identity configuration exposes explicit type and user-assigned bindings; count/type alone cannot establish the consuming workload's authentication. IDs and arbitrary root identity properties are not exported.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-storage-identity",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown",
+      "sha256": "2497fd8c88453f99b82d2697bda7b7faee30f889693a1840fafc5bc59305219a",
+      "retrieved_at": "2026-11-07T04:23:01.330774+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned storage identity block is optional; missing/symbolic/invalid values do not become defaults. Count validated supplied user-assigned references without retaining IDs.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "microsoft-site-reuse",
+      "url": "https://www.microsoft.com/en-us/legal/terms-of-use",
+      "resolved_url": "https://www.microsoft.com/en-us/legal/terms-of-use",
+      "sha256": "a59931761bcc0f2d1fade8be4189c50f7803f8458fa324dc1ddb8e77383de9e4",
+      "retrieved_at": "2026-11-07T04:29:09.428389+00:00",
+      "revision": "retrieved-page",
+      "finding": "Microsoft site terms do not grant unrestricted reuse of Azure marketing pages. Keep linked metadata, checksum and original factual findings, not page text/assets.",
+      "reuse": "Microsoft site terms: linked metadata and own findings only; no article/comments/sample scripts redistributed"
+    },
+    {
+      "id": "sovereign-global-pinned-snapshot",
+      "url": "https://raw.githubusercontent.com/Azure/azure-policy/f096d8de10fb25e71dd7f82b78ded110ec711d73/built-in-policies/policySetDefinitions/Regulatory%20Compliance/MCfS_Sovereignty_Baseline_Global_Policies.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-policy/f096d8de10fb25e71dd7f82b78ded110ec711d73/built-in-policies/policySetDefinitions/Regulatory%20Compliance/MCfS_Sovereignty_Baseline_Global_Policies.json",
+      "sha256": "5349e9e8e51f18c78eafaaec871651b4d48a9595283eeb1f5f01d3a3d4ac7d83",
+      "retrieved_at": "2026-11-07T04:37:35.514254+00:00",
+      "revision": "f096d8de10fb25e71dd7f82b78ded110ec711d73",
+      "finding": "Explicitly reviewed public snapshot at the repository's existing Policy pin: global initiativec1cbff38-87c0-4b9f-9f70-035c7a3b5523 version1.2.0 has five members and SO.1 residency/SO.5 Trusted Launch groups, with wildcard member versions. This public-source review is not an implicit runtime definition fetch, observed assignment binding, exact resolved member versions or approved jurisdiction.",
+      "reuse": "MIT Azure policy/library: metadata and own factual findings only"
+    },
+    {
+      "id": "sovereign-confidential-pinned-snapshot",
+      "url": "https://raw.githubusercontent.com/Azure/azure-policy/f096d8de10fb25e71dd7f82b78ded110ec711d73/built-in-policies/policySetDefinitions/Regulatory%20Compliance/MCfS_Sovereignty_Baseline_Confidential_Policies.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-policy/f096d8de10fb25e71dd7f82b78ded110ec711d73/built-in-policies/policySetDefinitions/Regulatory%20Compliance/MCfS_Sovereignty_Baseline_Confidential_Policies.json",
+      "sha256": "89824174fdb24ca0c866a625f62a41e93d4a19e0de8bba8e5b51defeff3f4817",
+      "retrieved_at": "2026-11-07T04:37:35.613613+00:00",
+      "revision": "f096d8de10fb25e71dd7f82b78ded110ec711d73",
+      "finding": "Explicit public pinned snapshot: confidential initiative03de05a4-c324-4ccd-882f-a814ea8ab9ea version1.2.0 has22 members and SO.1/SO.3/SO.4 residency/CMK/confidential groups with wildcard and preview member versions. Those group numbers are not current design L1-L3 levels. No copied definitions are packaged, implicitly fetched or interpreted; no original-time deployed content/version, placement, in-use protection or complete compliance is inferred.",
+      "reuse": "MIT Azure policy/library: metadata and own factual findings only"
+    },
+    {
+      "id": "sovereign-policy-snapshot-license",
+      "url": "https://raw.githubusercontent.com/Azure/azure-policy/f096d8de10fb25e71dd7f82b78ded110ec711d73/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-policy/f096d8de10fb25e71dd7f82b78ded110ec711d73/LICENSE",
+      "sha256": "27ebda9d51f0a56b7e281ccd8230a27236dcb51c05f64b07869ecf6e965d68b0",
+      "retrieved_at": "2026-11-07T04:37:35.851781+00:00",
+      "revision": "f096d8de10fb25e71dd7f82b78ded110ec711d73",
+      "finding": "MIT public Azure Policy repository at the exact reviewed pin; preserve attributed URL/revision/hash and own factual findings only, not copied policy bodies.",
+      "reuse": "MIT Azure policy/library: metadata and own factual findings only"
+    }
+  ]
+}

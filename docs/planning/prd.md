@@ -1,5 +1,60 @@
 # LandingLens product requirements
 
+## Final cohort 28 accepted boundary
+
+The explicit final sole slot after checked03/21 delivery activates
+[eight independent source-qualified workflows](../../references/recommendation-batches/batch-28.json)
+in builder-derived `.28`, preserving exact `.27`, all243 earlier rows/29 receipts,
+all255/fixed251 and the original four complete automated controls. There is no
+successor. Budget modes, suitable Policy content/placement/effective enforcement,
+objectives mapping, jurisdiction/service processing, vendor personnel constraints
+and in-use confidential-computing requirements stay independent and exceptable.
+Delivered03/21 helpers are reused unchanged; no duplicate normalizer, new Policy
+interpreter/fetch, live action, private financial/personnel/confidential payload or
+manufactured financial/legal/sovereignty assurance is added. Only the existing
+query Signals remain executable, without execution here.
+All eight decisions start blank and bound, Signals/human confirmation never
+manufacture Verified. Exact-head implementation and checked own receipt/final-main
+publication, not activation or issue status, gate delivery of the final8 targets.
+
+## Cohort 28 merged-budget preparation boundary
+
+After the preparation-only dependency unblock, actual merged
+[#164](https://github.com/jonathan-vella/landinglens/pull/164) supplies the shared
+source-version-qualified budget helper for candidate E02.01. No accepted28 bank/
+catalog/crosswalk/ledger/count/receipt changes occur. API-only metadata gives no
+Signal, AzureRM2019 withholds Forecasted, explicit reviewed2024 provenance permits
+both types, and separate budgets are not aggregated into a both-modes result.
+Thresholds, financial/contact payloads, period/coverage and actual delivery remain
+withheld or human-reviewed, never spend enforcement. Candidate Policy/location
+tiers use the same strict scoped configuration as reviews. All eight outcomes and
+exceptions remain independently blank and bound. Actual21 integration, checked03/21
+delivery and the sole explicit slot still gate accepted activation and delivery;
+implementation164 alone does not satisfy those gates. See the
+[reconciliation boundary](plan.md#cohort-28-merged-budget-preparation-2026-11-07).
+
+## Cohort 28 initial preparation boundary
+
+[#163](https://github.com/jonathan-vella/landinglens/issues/163) prepares
+[eight source-specific budget/sovereign workflows](../../references/recommendation-batches/preparation-28.json)
+outside accepted activation. Initial `.25`/255 GUIDs/fixed251 and228 own deliveries/
+23 pending/27 receipts remain unchanged. Actual03/21 checked delivery and the sole
+explicit coordinator slot gate accepted integration; no cohort follows28.
+
+Reuse existing Policy custom-version/placement, location/hierarchy and storage
+summaries, not a second Policy interpreter or built-in fetch. Actual merged03
+budget and21 storage/key integration remain explicit dependencies. Eight independent
+blank attributable decisions and separate exceptions distinguish configuration
+from financial notification delivery/spend enforcement, sovereign identity/effective
+enforcement, approved jurisdiction, all service/feature processing/backup/control/
+support locations, vendor personnel constraints and in-use confidential-computing
+requirements. Archived release history/current redirects, version-specific budget
+type contracts, optional/asymmetric region pairing, storage constraints and service
+processing exceptions remain source-qualified without rewriting immutable wording.
+No financial/contact/personnel/confidential/private payload retention, live probe,
+new query, deployment or manufactured legal/owner/runtime assurance is authorized.
+Preparation is not acceptance, receipt publication or satisfied issue closure.
+
 ## Cohort 21 accepted boundary
 
 After checked07/03 delivery and the explicit sole slot, cohort21/#160 activates

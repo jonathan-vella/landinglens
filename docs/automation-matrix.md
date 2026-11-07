@@ -1,5 +1,35 @@
 # Accepted release automation matrix
 
+## Final cohort 28: budget modes and sovereign requirements
+
+The explicit final sole slot after checked03/21 delivery activates
+[eight fixed workflows](../references/recommendation-batches/batch-28.json) and
+[44 reviewed captures](../references/recommendation-batches/batch-28-sources.json)
+in `.28`, preserving exact `.27`, all243 earlier rows/29 receipts, all255 GUIDs/
+fixed251 and four complete original automated controls. There is no successor.
+Five assisted and three manual workflows keep every outcome and exception
+independently blank, attributable and selected/content/scope/time/expiry-bound.
+
+E02.01 reuses03's source-version-qualified budget helper:2019/AzureRM withholds
+Forecasted, explicit reviewed2024 permits both, API-only metadata gives no Signal,
+and separate budgets are not aggregated. Threshold/period/coverage/recipient
+suitability and actual delivery remain human-reviewed; no financial payload or
+spend-enforcement predicate is retained. E03.01/.02 reuse27's strict custom-version/
+placement context without implicit built-ins or an enforcement interpreter.
+E03.03/.06/.07 remain independent manual objectives, vendor/personnel constraints
+and in-use confidential-computing requirements, not inferred eligibility.
+E03.04/.05 qualify region/storage and service-specific processing/feature choices;
+actual21 keySource/infrastructure/Queue-Table settings are separate from physical
+location, jurisdiction and in-use protection. Optional/asymmetric pairing,
+cross-geography and processing exceptions remain explicit. No legal, financial,
+personnel, runtime or sovereignty assurance is manufactured.
+
+Only D07.06/.07's existing allowlisted query Signals are executable, and none was
+run. No new live read, collector, query, deployment, contact/alert, permission,
+financial or confidential-data action is introduced. Implementation merge,
+guarded own-GUID receipt and checked receipt/final-main publication still gate
+delivery of the last8 targets; activation alone leaves243 delivered/8 pending.
+
 ## Cohort 21: incident response, Zero Trust and key lifecycle
 
 The explicit sole slot after checked07/03 delivery activates the
@@ -123,10 +153,10 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.27` retains all 255 entries: 12 automated, 200 assisted
-and 43 manual. Crosswalk `2026-11-06.27` rebinds the unchanged 51-control,
+Current successor `2026-11-06.28` retains all 255 entries: 12 automated, 200 assisted
+and 43 manual. Crosswalk `2026-11-06.28` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-Exact predecessor `.26` is frozen; source-matrix acceptance alone is not delivery.
+Exact predecessor `.27` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
 
 ### Cohort 07: naming, hierarchy and scoped authorization

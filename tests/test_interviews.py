@@ -52,9 +52,19 @@ class InterviewTests(unittest.TestCase):
 
     def test_bank_specific_requirements_and_blank_explicit_decisions(self):
         bank = question_bank(self.catalog)
-        self.assertEqual(len(bank["questions"]), 26)
+        self.assertEqual(len(bank["questions"]), 27)
         self.assertEqual(
-            len([q for q in bank["questions"] if q["id"] != "incident-zero-trust-key-lifecycle"]),
+            len(
+                [
+                    q
+                    for q in bank["questions"]
+                    if q["id"]
+                    not in {
+                        "incident-zero-trust-key-lifecycle",
+                        "budget-alert-modes-sovereign-requirements",
+                    }
+                ]
+            ),
             25,
         )
         self.assertEqual(
@@ -65,6 +75,7 @@ class InterviewTests(unittest.TestCase):
                     if q["id"]
                     not in {
                         "incident-zero-trust-key-lifecycle",
+                        "budget-alert-modes-sovereign-requirements",
                         "agreement-budgets-visibility-billing-governance",
                         "recovery-guest-drift-waf-telemetry",
                         "naming-hierarchy-scoped-authorization",

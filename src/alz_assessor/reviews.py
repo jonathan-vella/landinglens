@@ -150,10 +150,13 @@ def prepared_resource(
     if bundle is not None:
         from .policy_strategy_evidence import GUIDS as POLICY_STRATEGY_GUIDS
         from .policy_strategy_evidence import configuration_context
+        from .sovereign_evidence import POLICY_GUIDS as SOVEREIGN_POLICY_GUIDS
 
         if (
             control["upstream_guid"]
-            in POLICY_STRATEGY_GUIDS | {"aa45be6a-8f2d-4896-b0e3-775e6e94e610"}
+            in POLICY_STRATEGY_GUIDS
+            | SOVEREIGN_POLICY_GUIDS
+            | {"aa45be6a-8f2d-4896-b0e3-775e6e94e610"}
             or (
                 control["upstream_guid"] in GUEST_GUIDS
                 and resource["resource_type"].lower()
@@ -491,17 +494,27 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     from .policy_strategy_evidence import GUIDS as POLICY_STRATEGY_GUIDS
     from .recovery_evidence import GUEST_GUIDS
     from .recovery_evidence import GUIDS as RECOVERY_GUIDS
+    from .sovereign_evidence import (
+        BUDGET_GUID,
+        LOCATION_GUIDS,
+        POLICY_GUIDS,
+        REQUIREMENT_GUIDS,
+        REQUIREMENTS_WARNING,
+    )
     from .sovereign_evidence import GUIDS as SOVEREIGN_GUIDS
     from .sovereign_evidence import configuration_context as sovereign_context
     from .tenant_evidence import GUIDS as TENANT_GUIDS
     from .topology_evidence import GUIDS as TOPOLOGY_GUIDS
 
+    billing_guids = BILLING_GUIDS | {BUDGET_GUID}
     unbound = 0
-    sovereign_prepared = control["upstream_guid"] in SOVEREIGN_GUIDS and bool(
+    sovereign_prepared = control["upstream_guid"] in SOVEREIGN_GUIDS | LOCATION_GUIDS and bool(
         control.get("review_fact_paths")
     )
     key_prepared = control["upstream_guid"] in KEY_GUIDS and bool(control.get("review_fact_paths"))
-    policy_prepared = control["upstream_guid"] in POLICY_STRATEGY_GUIDS | GUEST_GUIDS | {
+    policy_prepared = control[
+        "upstream_guid"
+    ] in POLICY_STRATEGY_GUIDS | POLICY_GUIDS | GUEST_GUIDS | {
         "aa45be6a-8f2d-4896-b0e3-775e6e94e610"
     } and bool(control.get("review_fact_paths"))
     scoped_guids = (
@@ -510,7 +523,7 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
         | HYBRID_GUIDS
         | NETWORK_POLICY_GUIDS
         | TENANT_GUIDS
-        | BILLING_GUIDS
+        | billing_guids
         | TOPOLOGY_GUIDS
         | RECOVERY_GUIDS
         | OPERATIONS_GUIDS
@@ -518,10 +531,13 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     )
     if policy_prepared:
         scoped_guids |= (
-            POLICY_STRATEGY_GUIDS | GUEST_GUIDS | {"aa45be6a-8f2d-4896-b0e3-775e6e94e610"}
+            POLICY_STRATEGY_GUIDS
+            | POLICY_GUIDS
+            | GUEST_GUIDS
+            | {"aa45be6a-8f2d-4896-b0e3-775e6e94e610"}
         )
     if sovereign_prepared:
-        scoped_guids |= SOVEREIGN_GUIDS
+        scoped_guids |= SOVEREIGN_GUIDS | LOCATION_GUIDS
     if (
         control["upstream_guid"] in LOGGING_GUIDS | PLATFORM_HEALTH_GUIDS | RECOVERY_GUIDS
         and not policy_prepared
@@ -556,6 +572,8 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     }
     if control["upstream_guid"] in scoped_guids | LOGGING_GUIDS | PLATFORM_HEALTH_GUIDS:
         context["unbound_resources"] = unbound
+    if control["upstream_guid"] in REQUIREMENT_GUIDS:
+        context["warning"] = REQUIREMENTS_WARNING
     if control["upstream_guid"] in HYBRID_GUIDS:
         for prepared, resource in zip(context["resources"], matches[:100], strict=True):
             configuration = hybrid_context(resource, by_id, bundle)
@@ -596,7 +614,7 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
 
         for prepared, resource in zip(context["resources"], matches[:100], strict=True):
             prepared["tenant_configuration"] = resource_context(resource, by_id, bundle)
-    if control["upstream_guid"] in BILLING_GUIDS:
+    if control["upstream_guid"] in billing_guids:
         for prepared, resource in zip(context["resources"], matches[:100], strict=True):
             configuration = billing_context(resource, by_id, bundle)
             prepared["billing_configuration"] = configuration

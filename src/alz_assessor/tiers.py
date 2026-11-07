@@ -63,6 +63,7 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     from .recovery_evidence import resource_paths as recovery_paths
     from .recovery_evidence import unique_known as recovery_unique_known
     from .sources import boolean, enumeration, property_at
+    from .sovereign_evidence import BUDGET_GUID, LOCATION_GUIDS, POLICY_GUIDS
     from .sovereign_evidence import GUIDS as SOVEREIGN_GUIDS
     from .sovereign_evidence import configuration_context as sovereign_context
     from .tenant_evidence import GUIDS as TENANT_GUIDS
@@ -81,9 +82,12 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     platform = control["upstream_guid"] in PLATFORM_HEALTH_GUIDS
     recovery = control["upstream_guid"] in RECOVERY_GUIDS
     by_id: dict[str, list[dict[str, Any]]] = {}
-    policy = control["upstream_guid"] in POLICY_STRATEGY_GUIDS | {
-        "aa45be6a-8f2d-4896-b0e3-775e6e94e610"
-    }
+    policy = (
+        control["upstream_guid"]
+        in POLICY_STRATEGY_GUIDS | {"aa45be6a-8f2d-4896-b0e3-775e6e94e610"} | POLICY_GUIDS
+    )
+    billing = control["upstream_guid"] in BILLING_GUIDS | {BUDGET_GUID}
+    sovereign = control["upstream_guid"] in SOVEREIGN_GUIDS | LOCATION_GUIDS
     topology = control["upstream_guid"] in TOPOLOGY_GUIDS
     operations = control["upstream_guid"] in OPERATIONS_GUIDS
     if (
@@ -94,8 +98,9 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
         or topology
         or recovery
         or operations
-        or control["upstream_guid"]
-        in TENANT_GUIDS | HYBRID_GUIDS | SOVEREIGN_GUIDS | BILLING_GUIDS | KEY_GUIDS
+        or billing
+        or sovereign
+        or control["upstream_guid"] in TENANT_GUIDS | HYBRID_GUIDS | KEY_GUIDS
     ):
         for resource in bundle["resources"]:
             by_id.setdefault((resource.get("arm_id") or "").lower(), []).append(resource)
@@ -107,11 +112,11 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
             if has_fact(context.get("facts", {})):
                 return True
             continue
-        if control["upstream_guid"] in BILLING_GUIDS:
+        if billing:
             if billing_signal(resource, by_id, bundle):
                 return True
             continue
-        if control["upstream_guid"] in SOVEREIGN_GUIDS:
+        if sovereign:
             context = sovereign_context(resource, by_id, bundle, control["review_fact_paths"])
             if has_fact(context.get("facts", {})):
                 return True

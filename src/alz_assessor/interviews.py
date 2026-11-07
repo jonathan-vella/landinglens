@@ -6,8 +6,64 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.27"
+BANK_VERSION = "2026-11-06.28"
 BANK = {
+    "budget-alert-modes-sovereign-requirements": {
+        "question": (
+            "Decide all eight controls independently at the original evidence time using "
+            "attributable redacted references, selected scope/content/time/expiry binding "
+            "and separate exceptions. E02.01: establish explicit enabled Actual and "
+            "Forecasted notifications on the same appropriate cost budget, source/API/"
+            "provider version, valid period, scope/filter coverage, threshold suitability "
+            "and independently evidenced recipients/delivery. Tutorial0.01%-1000% differs "
+            "from REST/provider0..1000 prose;2019 REST lists only Actual,2024 lists both. "
+            "API-only metadata is no Signal; defaults are not observations, separate budgets "
+            "are not combined, and configuration is neither delivery nor spend enforcement. "
+            "E03.01: establish applicable sovereignty requirements, exact suitable Policy "
+            "controls/versions/parameters, complete intended coverage, evaluation and "
+            "remediation; the linked2023 release plan is archived, not current enforcement. "
+            "E03.02: identify actual original-time global/confidential or service-specific "
+            "L1/L2/L3 initiative content and versions, explicitly designated management "
+            "groups including supporting services, positive ancestry, exclusions/exemptions "
+            "and effects. Names, IDs, custom joins and Default mode prove no sovereign "
+            "identity or enforcement; pinned wildcard/preview members are not exact resolved "
+            "versions. E03.03: cite approved sovereign control objectives and an attributable "
+            "objectives-to-controls mapping with responsibilities and gaps; the immutable "
+            "link now redirects to implementation options and no mapping is inferred. "
+            "E03.04: independently identify approved jurisdiction, primary/DR locations and "
+            "each service's replication/backup/failover behavior. Pairing can be absent, "
+            "asymmetric or cross-geography; ZRS is primary-zone replication, GRS/GZRS adds "
+            "asynchronous paired-secondary replication subject to service/tier/region "
+            "constraints. Storage keySource, infrastructure encryption and Queue/Table key "
+            "types are separate settings, not processing location or jurisdiction; "
+            "Terraform CMK block absence cannot reconcile separate CMK configuration. "
+            "E03.05: review each Database/Storage/Container/Analytics/AI service and feature, "
+            "processing versus at-rest/backup/control/support locations and current "
+            "availability/exceptions, including Foundry Global/DataZone/geography, Extended "
+            "Zones and prerelease behavior. A VM region proves none of them. E03.06: "
+            "establish vendor remote-access/personnel jurisdiction constraints, contractual "
+            "responsibilities, actual access/approval and exceptions without collecting "
+            "personnel identity/nationality/location; Defender recommendations are not that "
+            "determination. E03.07: independently decide whether sensitive workloads require "
+            "in-use protection and the service/region/feature, attested TEE, key-release/"
+            "trust requirements and justified exceptions; at-rest CMK, Trusted Launch and "
+            "confidential labels are not requirements or proper execution. Missing, partial, "
+            "ambiguous, stale, denied, unsupported and over-bound inputs stay unknown. No "
+            "financial/contact/tag/rule/personnel/confidential/private payload retention, "
+            "live read, query, alert test, deployment or legal/owner/runtime assurance. "
+            "Signals and humanConfirmed never manufacture Verified."
+        ),
+        "controls": [
+            "ALZ-29fd366b-a180-452b-9bd7-954b7700c667",
+            "ALZ-5a917e1f-348e-4f25-9c27-d42e8bbac757",
+            "ALZ-78b22132-b41c-460b-a4d3-df8f73a67dc2",
+            "ALZ-caeea0e9-1024-41df-a52e-d99c3f22a6f4",
+            "ALZ-9b461617-db7b-4399-8ac6-d4eb7153893a",
+            "ALZ-bfaf7b7a-9e6c-4840-a2bd-2c524326bdf6",
+            "ALZ-3105633e-b168-4ce0-a016-5f10e7cdea5a",
+            "ALZ-77cf1acd-16b4-4092-8d30-6ec9579854ce",
+        ],
+    },
     "incident-zero-trust-key-lifecycle": {
         "question": (
             "Decide all eight recommendations independently, with separately attributable "

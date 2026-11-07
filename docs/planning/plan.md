@@ -1,5 +1,258 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Final cohort 28 accepted integration: 2026-11-07
+
+The explicit final sole coordinator slot follows actual03 implementation164/
+receipt165 and21 implementation166/receipt167, completed157/160 and checked main
+`792e652f642eba7ace77a8f32861e6b9024d1bd6`. Reconciliation `6243cc4` retains
+initial `0a11067`, merged-budget `b8ebfb4`, every original source capture/wheel/
+proof and invalidated history. Actual25 predecessor compiler cases, including
+21 storage, precede own genuine existing-budget-fixture wiring case26.
+
+Existing offline builders derive unique catalog/crosswalk `.28` from exact `.27`
+and the [eight-GUID matrix](../../references/recommendation-batches/batch-28.json).
+The [44-source accepted manifest](../../references/recommendation-batches/batch-28-sources.json)
+preserves all41 own captures and appends three actual21 storage-source captures,
+without recollection or source wording changes. Every non-own full control, all243
+prior own rows/29 receipts and bindings, all255 GUIDs/fixed251, original four complete
+objects and historical bytes remain frozen. Counts remain12 automated/200 assisted/
+43 manual; unchanged51-control/53-association crosswalk rebinds only the catalog.
+Activation leaves243 delivered/8 pending until actual own checked delivery.
+
+Delivered03 budget and21 keySource/infrastructure/Queue-Table projections are reused
+unchanged. Actual/Forecasted configuration is source-version-qualified, not valid
+threshold/period/coverage, recipients/delivery or spend enforcement; separate
+budgets are not combined. Scoped custom Policy joins are not sovereign baseline
+identity or effective enforcement. Archived release history/current redirects,
+wildcard/preview initiative members, optional/asymmetric/cross-geography pairing,
+storage constraints and service processing/feature exceptions stay explicit.
+Encryption settings do not locate data or prove in-use execution. Objectives,
+personnel/vendor constraints and confidential-computing requirements stay manual.
+All eight decisions and exceptions start independently blank, attributable,
+selected/content/scope/time/expiry-bound. No financial/contact/tag/rule/personnel/
+confidential/private payload, new collector/query/interpreter/fetch, live action,
+legal decision or owner/runtime assurance is introduced. Signals and humanConfirmed
+never manufacture Verified.
+
+Accepted successor/predecessor replay, actual adapters, review/interview/session
+atomicity, tiers, outputs/trackers and CLI use one evaluator. Own exact installed
+wheel/full suite/static checks, all26 exercised compiler cases, exact-head eight
+push/PR jobs, CodeQL/security/review and four downloaded matching compiler proofs
+precede fresh live head/base/main/feedback checks and normal SHA-bound merge.
+Guarded actual own receipt plus checked publication/final-main CI gate satisfied
+163 closure and the final251 own bindings/zero pending/30 receipts reconciliation,
+never251 automated predicates or actual compliance. No successor exists after28.
+
+Exact frozen `.27` catalog bytes SHA256:
+`fe8f6094f54d12cafa39fd51eaefed8a9c37f36c9cabff834ba5d085eb5ef446`;
+crosswalk:
+`7584f548975accaff49d42cdaa2014d2828760b405383f284509fe6bfc45a0a7`.
+The own accepted implementation wheel SHA256 is
+`c92956e6e88fd20a4105697727454b2b3937eddcebcc6f202d258d72c9cad879`.
+All180 package members match checkout, wheel and the dedicated outside-checkout
+site-packages installation importing `.28`. All205 protected historical data/batch
+files and the original prepared matrix/41 captures remain byte-identical.
+Both delivered03/21 helper Git blobs remain unchanged. After the new clean import
+reported missing `lark`, only the same three locally retained exact manifest-hash-
+verified runtime wheels were restored; no dependency or compiler acquisition.
+All53 source files pass static typing; formatting/lint, dependency consistency and
+604 local documentation links pass. All26 existing-compiler cases exercised
+without skips or restore; own proof SHA256
+`55858723bcf022fc24bc66f08d6924df77a54700f331ec533aac44a802644219`.
+
+The first918-test installed-wheel run exposed one historical negative-fixture
+assumption: the old builder test selected an actual `pending` row, but activation
+of the final cohort correctly leaves none in that status (last8 are in progress).
+Its stale-reference tests now author the same invalid pending/in-progress states
+on the exact E02.01 GUID, clearing fixture receipt fields first. This also works
+after final receipt publication; actual builder byte-reproduction, all real ledger
+counts/bindings and rejection conditions are unchanged. The corrected exact
+targeted test passes against the unchanged wheel. The failed full run is retained
+as invalidated history, not acceptance evidence.
+
+The corrected final installed-wheel full suite completed918 tests:917 passed,
+with only the original Windows symlink-privilege skip. All33 own preparation/
+accepted cases pass, including registered independent decisions, actual21
+storage context, original-time successor/predecessor replay, atomic failure/resume,
+all outputs/CLI and the real existing-fixture compiler wiring. These fresh
+post-slot proofs, not either preparation wheel, supply the later guarded recorder.
+
+## Cohort 28 merged-budget preparation: 2026-11-07
+
+The coordinator's bounded preparation-only unblock verifies actual
+[#164](https://github.com/jonathan-vella/landinglens/pull/164), merged as
+`592826b4e991f8f8ce0655c6d76e7c8a906f468a` from checked head
+`d0196d08385d4dfc029249856c53e1c79b3e6e3b`. Reconciliation merge `73164ba`
+retains initial PREPARED `0a11067`, all41 original captures, the original matrix/
+wheel/proofs and invalidated history below. Both cohorts' planning history and
+source-capture paths are retained; actual merged03 `.26` is the predecessor here,
+not an accepted28 successor. Implementation164 is not checked03 receipt delivery;
+receipt165 and actual21 storage/key integration remain separate gates.03 retains
+the sole accepted slot and no cohort follows28.
+
+The [candidate matrix](../../references/recommendation-batches/preparation-28.json)
+now routes E02.01 through the actual shared `billing_evidence` helper, without
+changing that helper, accepted bank, source matrices/catalog/crosswalk, ledger,
+counts, historical bytes or receipts. Reuse its original subscription/RG
+identity/known-state/scope checks, category/time-grain and up-to-five notification
+enabled/operator/type facts. AzureRM4.50.0 binds2019-10-01, which withholds
+Forecasted; explicit reviewed2024-08-01 provenance permits both notification types.
+The ARM adapter supports2024-08-01 only; saved2019 provenance is not a new
+declaration API. Missing/unreviewed versions stay unknown, API-only metadata gives
+no Signal, and no default, threshold, period, filter, financial/contact payload,
+delivery or spend-enforcement outcome is inferred. Each budget remains separate:
+Actual in one and Forecasted in another do not become a both-modes claim.
+
+Review preparation and tiers share the same minimized helper. Candidate Policy/
+location tier routing also uses the existing unique-known selected-scope context,
+so unbound/wrong-type/denied/ambiguous inputs cannot advertise a usable Signal.
+All eight independent decisions remain blank and exceptions separate, with
+content/scope/time/expiry/attribution, original-time replay and atomic sessions
+unchanged. Existing raw/module/plan/ARM/Bicep and saved/injected privacy paths
+remain offline. The original23 compiler cases and actual merged03 case24 are
+preserved; own case25 reuses the genuine existing budget fixture solely to prove
+candidate review wiring, not a financial or sovereignty result. No new fixture,
+collector, normalization, Policy interpreter/fetch or live action is introduced.
+
+Actual merged21 storage/key reconciliation, checked03/21 delivery and the explicit
+sole slot still precede accepted28 registration/activation, PR, merge, guarded own
+receipt, final-main CI and satisfied163 completion. The initial local wheel below
+is historical, not the proof for this merged-budget preparation.
+
+The refreshed own offline wheel SHA256 is
+`11ba21f7f821e639e31d939cc18f653501b99563bd4d32637c6595168d4f6c7e`.
+All171 package members match checkout, wheel and the new dedicated outside-checkout
+site-packages installation importing `.26`; the original c602 wheel/environment/
+proofs remain untouched. Its first import reported missing `lark`; only the same
+three locally retained manifest-hash-verified runtime wheels were restored into
+this new own environment, with no new acquisition or dependency change.
+All201 actual dependency accepted-data/batch files and the original41 source-capture
+bytes remain exact. The shared03 helper's Git blob remains
+`eaa8b3e57c4725df8a0c2c90fd19a5314a9d6bbd`; Windows text checkout CRLF differs
+from the repository LF blob under `.gitattributes`, while checkout/wheel/installed
+package bytes are verified without normalization. The first verification harness
+correctly stopped before running the full suite when its raw helper-versus-blob
+comparison encountered that EOL distinction. The corrected harness uses Git's
+attribute-aware blob identity only for the unchanged helper and retains exact
+binary accepted-data and all package-member byte comparisons; no helper/runtime
+code or accepted bytes were changed.
+
+All27 candidate tests pass,52 source files pass static typing, and formatting/
+lint, dependency consistency and579 local documentation links pass. The existing
+compiler independently exercised all25 cases without skips or restore against
+this own wheel; proof SHA256
+`4fccfb4e42a1cb7fe52058f1a679f7c3c1999b5b096efb1f27292f8d3d7d2a08`.
+Initial targeted fixture failures used an unresolved lowercase authored ARM type
+and a nonexistent session attribute; the fixtures now use the actual supported
+ARM declaration and session contracts. The declaration-version assertion was
+also corrected to the actual2024-only adapter, not inferred2019 declaration support.
+No adapter/helper support was expanded or source-version restriction weakened.
+
+The final exact installed-wheel suite completed885 tests:884 passed and only the
+original Windows symlink-privilege case skipped. All27 own candidate cases pass,
+including the real existing-fixture compiler wiring. These fresh local proofs
+do not replace actual21 reconciliation, accepted replay, later exact-head remote
+checks or implementation/own-receipt/final-main delivery gates.
+
+## Cohort 28 independent preparation: 2026-11-07
+
+[#163](https://github.com/jonathan-vella/landinglens/issues/163) owns only the
+[eight fixed E02.01/E03.01-.07 workflows](../../references/recommendation-batches/preparation-28.json).
+Preparation starts from actual main `99b4c58a8f2193789d3ca81aabe692366e8cb257`,
+accepted `.25`,228 delivered/23 pending/27 receipts,255 GUIDs/fixed251.
+No successor cohort follows28. Actual checked03/21 delivery and an explicit sole
+coordinator slot precede any successor selection/registration, source/matrix/bank
+activation, catalog/crosswalk/count/history update, PR, merge, receipt or closure.
+
+The [reviewed source manifest](../../references/recommendation-batches/preparation-28-sources.json)
+records actual redirects, revisions, hashes and reuse terms without redistributing
+articles or private payloads. E03.01 redirects to archived2023 release history.
+E03.02 now describes current service-specific L1 locality/transit, L2 at-rest/CMK
+and L3 in-use controls, while E03.03 redirects to implementation options rather
+than a customer objectives mapping. Current global/confidential baseline samples
+explicitly qualify partial compliance. No label, ID, literal effect, positive
+custom join or saved Compliant Signal establishes sovereign identity, suitable
+content/version/placement, effective enforcement or legal compliance.
+The existing pinned public Azure Policy snapshots identify global
+`c1cbff38-87c0-4b9f-9f70-035c7a3b5523` and confidential
+`03de05a4-c324-4ccd-882f-a814ea8ab9ea`, both1.2.0 with5/22 members.
+Their SO group numbers differ from current design L1-L3 levels, and wildcard/
+preview member versions are not exact resolved versions. Explicit public source
+review does not fetch or interpret definitions at runtime or bind deployed content.
+
+Region pairing is optional/service-specific and can be asymmetric or cross-geography.
+ZRS replicates within primary-region zones; GRS/GZRS adds asynchronous paired
+secondary replication with LRS there, subject to service/tier/region constraints.
+Current residency guidance lists processing/metadata/operational/remote-support
+exceptions. Foundry Global/DataZone/geography processing and Extended Zones differ
+from deployment and at-rest location. A VM location or storage SKU is not approved
+jurisdiction, all processing/backup/control/support locations, service availability
+or actual recovery. Vendor/personnel constraints and confidential-computing
+requirements remain independent manual judgments without personnel records or
+confidential workload collection; at-rest CMK and Trusted Launch are not in-use
+attested execution. Immutable recommendation wording remains unchanged.
+
+Reuse27's exact supplied-version custom Policy joins,09's typed scoped location/
+positive hierarchy and existing minimized storage redundancy. Eight independently
+blank decisions and exceptions use existing content/scope/time/expiry/attribution,
+selection, atomic session and one-evaluator contracts across adapters, reports,
+trackers, CLI and original-time privacy-safe replay. Candidate-bank injection is
+test-only and unaccepted candidate replay remains rejected. Missing, ambiguous,
+partial, stale, denied, unsupported and over-bound inputs are unknown, not absence,
+defaults, pass or Verified. No new collector, query, Policy interpreter/fetch,
+deployment, alert/contact/financial action or owner/runtime assurance is added.
+
+E02.01 configuration integration deliberately awaits the actual merged03 helper:
+no duplicate budget normalizer or fictitious budget compiler fixture is created.
+The tutorial documents0.01%-1000% versus REST/provider0..1000 prose.
+Pinned2019-10-01 REST lists only Actual;2024-08-01 explicitly lists Actual/Forecasted,
+while AzureRM4.50.0 advertises both on its2019-10-01 API. Those contracts and omitted
+defaults are not conflated. Actual merged21 storage/key context also requires
+reconciliation before accepted integration. Preparation preserves all23 existing
+genuine compiler cases; it introduces no new IaC fact needing a synthetic fixture.
+
+At the explicit slot, freeze the actual predecessor, derive a unique reviewed
+successor with existing builders, preserve all historical bytes/full controls/
+receipts/bindings, integrate actual03/21 helpers and prove accepted replay.
+The own final implementation wheel, full tests/static checks, exact-head eight
+push/PR platform jobs, CodeQL/security/review, four downloaded matching exercised
+compiler proofs and fresh live head/base/main/feedback precede normal SHA-bound
+merge. Guarded actual own-GUID receipt publication and checked final-main CI gate
+satisfied completion; preparation and implementation merge alone are not delivery.
+
+The41 actual source captures and20 cohort-specific preparation cases preserve
+all195 pre-existing accepted-data/recommendation-batch files byte-for-byte, including
+every historical control/catalog/crosswalk and all27 receipt objects/bindings.
+The own offline preparation wheel SHA256 is
+`c60286c8b1e49111a27167423595be86233e1314dac0f6178c45cc5819a17a02`.
+All166 package members match checkout, wheel and the dedicated outside-checkout
+site-packages installation importing accepted predecessor `.25`. Its first import
+correctly failed for missing `lark`; only the three exact reviewed runtime wheels
+were acquired, verified against `docs/dependencies.json` filenames/hashes and
+restored into this session's own clean environment, with no dependency change.
+All51 source files pass static typing; formatting/lint, dependency consistency and
+560 local documentation links pass. The existing compiler independently exercised
+all23 predecessor integrations against this own installed wheel without skips,
+installation or restore; proof SHA256
+`89bb24ad7a82a8e4738bdf0b6dbc7f32d49db06e29897fdcfe7cd3e37e548ddb`.
+Identical compiler JSON bytes reflect repeating the same23 cases, not borrowing
+another cohort's execution.
+
+The initial source run852 tests had one new provenance assertion failure after
+the marketing-site terms capture correctly reported `retrieved-page` instead of
+a fabricated commit revision. The corrected test explicitly permits that actual
+source qualification; all20 current own cases pass. The first854-test isolated
+wheel run had one transient Windows `PermissionError` at an existing workspace
+test's atomic directory rename. That exact test passed immediately in isolation
+against the unchanged own wheel, without source/test/runtime changes or a retry
+wrapper. Neither failed full run is final acceptance evidence.
+
+The final unchanged isolated-wheel full-suite rerun completed854 tests:
+853 passed with only the original Windows symlink-privilege skip. All20 current
+cohort28 cases pass; no compiler case was skipped. These are local preparation
+proofs only, not03/21 integration, accepted successor replay, exact-head remote
+checks or own-GUID delivery/receipt/final-main acceptance.
+
 ## Cohort 21 accepted integration: 2026-11-07
 
 The explicit sole coordinator slot follows checked07 implementation161/receipt162,
