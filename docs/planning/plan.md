@@ -61,6 +61,12 @@ are220 delivered/31 undelivered and26 receipts, retaining all212 earlier rows/
 actual final-main CI still gate satisfied #151 closure; neither activation,
 implementation merge nor this local receipt record alone completes delivery.
 
+First receipt head `34461db` failed the unchanged pending-priority-table test:
+the guarded ledger correctly removed26 from undelivered membership, but the
+backlog still displayed its row. The correction removes that delivered row and
+derives31 remaining targets; no test assertion is changed. Invalidated receipt
+push42328596560/PR42328610904 remain history, not checked publication evidence.
+
 ## Historical cohort 26 independent preparation: 2026-11-07
 
 [#151](https://github.com/jonathan-vella/landinglens/issues/151) owns exactly the

@@ -129,15 +129,14 @@ reconciled against the new foundations when resumed on 2026-11-06.
 
 | Cohort | Undelivered GUIDs | High / Medium / Low | Controls with associations |
 |---|---|---|---|
-| 26 | 8 | 1 / 6 / 1 | 0 |
 | 07 | 8 | 0 / 8 / 0 | 2 |
 | 03 | 7 | 0 / 2 / 5 | 0 |
 | 21 | 8 | 0 / 8 / 0 | 0 |
 | 28 | 8 | 0 / 8 / 0 | 0 |
 
-These remain39 undelivered GUIDs on cohort24 guarded receipt reconciliation.
-Cohorts19/11/04/13/22/14/12/15/08/30/20/05/16/23/02/27/29/06/10/25/09/24 left the pending table only after actual
-#90/#93/#96/#101/#104/#107/#110/#113/#116/#119/#122/#125/#128/#131/#134/#137/#140/#143/#146/#149/#152/#155 implementation delivery and their guarded per-GUID receipts.
+These remain31 undelivered GUIDs on cohort26 guarded receipt reconciliation.
+Cohorts19/11/04/13/22/14/12/15/08/30/20/05/16/23/02/27/29/06/10/25/09/24/26 left the pending table only after actual
+#90/#93/#96/#101/#104/#107/#110/#113/#116/#119/#122/#125/#128/#131/#134/#137/#140/#143/#146/#149/#152/#155/#158 implementation delivery and their guarded per-GUID receipts.
 No membership or original baseline
 hash changes through reprioritisation.
 
