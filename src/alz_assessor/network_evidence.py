@@ -3,6 +3,7 @@
 from ipaddress import ip_address, ip_network
 from typing import Any
 
+from .billing_evidence import PATHS as BILLING_PATHS
 from .contracts import canonical_id, identity_type
 from .dns_evidence import KINDS as DNS_KINDS
 from .dns_evidence import PATHS as DNS_PATHS
@@ -69,6 +70,7 @@ REVIEW_PATHS = (
     | PROTECTION_PATHS
     | GOVERNANCE_PATHS
     | TENANT_PATHS
+    | BILLING_PATHS
     | {"connectionMonitorSummary", "expressRouteAlertSummary"}
     | DNS_PATHS
     | NETWORK_POLICY_PATHS
@@ -523,6 +525,10 @@ def private_connections(values: dict[str, Any], *, terraform: bool) -> Any:
 
 
 def review_fact(properties: dict[str, Any], path: str) -> Any:
+    if path in BILLING_PATHS:
+        from .billing_evidence import review_fact as billing_fact
+
+        return billing_fact(properties, path)
     if path in OPERATIONS_PATHS:
         from .operations_evidence import review_fact as operations_fact
 
@@ -1001,6 +1007,7 @@ def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
         - LOGGING_PATHS
         - PLATFORM_HEALTH_PATHS
         - TENANT_PATHS
+        - BILLING_PATHS
         - POLICY_STRATEGY_PATHS
         - TOPOLOGY_PATHS
     ):

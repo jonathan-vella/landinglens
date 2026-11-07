@@ -64,6 +64,8 @@ if compiler:
         "test_real_bicep_location_and_tag_configuration_without_restore",
         "test_operations_preparation.OperationsPreparationTests."
         "test_real_bicep_operations_configuration_without_restore",
+        "test_billing_preparation.BillingPreparationTests."
+        "test_real_bicep_budget_configuration_without_restore",
     ]
     suite = unittest.defaultTestLoader.loadTestsFromNames(cases)
     result = unittest.TextTestRunner(verbosity=2).run(suite)

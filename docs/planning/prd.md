@@ -1,5 +1,21 @@
 # LandingLens product requirements
 
+## Cohort 03 preparation boundary
+
+The [seven A03.03-.05/A04.01-.04 workflows](../../references/preparation/batch-03.json)
+for [#157](https://github.com/jonathan-vella/landinglens/issues/157) prepare
+agreement budgets, EA DA/AO visibility, distinct EA/MCA dev-test qualifications,
+notification ownership, MCA organization and manual billing-role audits outside
+accepted activation. All decisions and exceptions stay independently blank.
+Minimized explicit subscription/RG budget metadata is partial configuration only:
+no spending enforcement, complete department/account allocation, effective billing
+access, active period, required recipients, mailbox suitability, actual delivery,
+offer entitlement or financial outcome. No new live read, query, contact test,
+commerce resource, eligibility decision or purchase is added.
+See the [preparation boundary](plan.md#cohort-03-independent-preparation-2026-11-07).
+Cohorts26/07 and the explicit coordinator slot precede accepted registration,
+then-current reconciliation and actual implementation/receipt/final-main gates.
+
 ## Cohort 24 accepted boundary
 
 After actual25/09 checked implementation/receipt delivery and the explicit sole

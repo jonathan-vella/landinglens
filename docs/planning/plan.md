@@ -1,5 +1,73 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 03 independent preparation: 2026-11-07
+
+[#157](https://github.com/jonathan-vella/landinglens/issues/157) prepares the
+[seven immutable agreement workflows](../../references/preparation/batch-03.json)
+and [20 actual public-source captures](../../references/preparation/batch-03-sources.json)
+on main `e2b71b212b47b1d240368e9da13ab51bd66797ee`. Cohorts26/07 precede03.
+No accepted successor, source/matrix/bank/catalog/crosswalk/history/count,
+delivery receipt, PR, merge or issue closure is activated during preparation.
+
+Existing governance selected-scope and cohort02 cost-view boundaries are reused.
+The baseline had no budget helper. New minimized budget configuration uses only
+unique known subscription/RG identities, explicit pinned time grain and bounded
+notification enabled/operator/type metadata. Amounts, currencies, spend, dates,
+filters, thresholds, notification names and recipients are withheld. No defaults,
+financial limits, offer entitlement, contract type or complete billing hierarchy
+are inferred. There is no new Collector endpoint or query execution.
+
+Seven source-specific decisions and exceptions remain independent and blank;
+the interview is an unregistered preparation fixture. EA DA/AO policy plus scoped
+permissions, MCA Azure charges/partner visibility, separate0148P/0148G qualification,
+group-mailbox continuity, profiles/sections and actual periodic billing-role audit
+operation require redacted attributable human evidence. Budget configuration is
+not spend enforcement, complete allocation, active-period evaluation or actual
+notification delivery. Resource RBAC is not billing authorization.
+
+Current product-movement exceptions, contact/sign-in/invoice distinctions,
+legacy EA portal/App Center wording and upcoming November16 WSA-only new EA
+assignments qualify rather than rewrite the immutable checklist. Failed guessed
+source paths and authenticated REST-spec403 are retained in the preparation
+notes; actual pinned ARM2024-08-01 and AzureRM4.50.0 definitions support the fields.
+No private lookup, sign-in or permission change was attempted.
+
+The genuine no-restore Bicep fixture exercises only budget declarations, never
+financial/organizational processes. Raw Terraform, explicitly supplied modules,
+plan JSON, ARM, existing Bicep, saved/injected evidence, shared evaluator/tiers,
+reports/trackers, CLI/local sessions and original-time replay use the same facts.
+Then-current26/07 reconciliation, accepted registration/replay, exact-head remote
+checks/review/compiler artifacts, normal SHA-bound merge, guarded own receipt and
+final-main checks remain deferred coordinator-slot gates.
+
+Source and own clean outside-checkout installed-wheel suites each ran **788
+tests:787 passed, one original Windows symlink-privilege skip**. The16 new cases
+cover all seven workflows, selected/type/version/boundary/notification/privacy
+behavior, blank decisions, selection/content/scope/time/expiry/attribution,
+atomic session saves, exceptions, outputs and accepted/predecessor original-time
+replay. All22 real compiler cases exercise without skip or restore, retaining
+the21 predecessors and adding only the genuine budget declaration.
+Ruff/format,50-source-file mypy, dependency consistency and534 local links pass.
+All157 packaged members match checkout and the dedicated installed bytes;
+all181 accepted-data/fixed-target/ledger/reference files remain byte-identical.
+Catalog `.23`,255 GUIDs/fixed251/original four controls and25 receipts stay frozen.
+Own wheel SHA256:
+`03dd62b8952b94f84b032b10ac4ea6c079013236db87f1d7712050c660f0f7ed`.
+Both22-case compiler-proof JSON SHA256:
+`2fc7c8a03b8d4e3599a7c65e0b422d0d9e20b0e68151e5b05a9a8b8ad145500c`.
+
+The initial source suite's five isolated-subprocess failures used an unrelated,
+older globally installed package despite source `PYTHONPATH`. It was not changed;
+the corrected final source run uses this cohort's own matching installation for
+isolated subprocesses. An installed compiler repeat exposed a test clock fixed
+more than five minutes before actual collection; the fixture now evaluates at
+its original collection time, preserving freshness rules. Its failed JSON is
+retained separately, not proof. Initial targeted fixture identity/exception/import
+errors were corrected without weakening contracts. The first isolated import
+lacked `hcl2`; only the three unchanged manifest-hash-verified runtime wheels were
+restored into this cohort's dedicated environment. No other session environment
+or accepted bank was modified.
+
 ## Cohort 24 accepted integration: 2026-11-07
 
 The explicit sole coordinator grant for

@@ -1,5 +1,40 @@
 # Accepted release automation matrix
 
+## Cohort 03 preparation only: agreement and billing governance
+
+The [preparation matrix](../references/preparation/batch-03.json) and
+[20 reviewed captures](../references/preparation/batch-03-sources.json) are not
+accepted activation or delivery. Cohorts26/07 precede the coordinator-granted
+slot; the accepted catalog/bank/crosswalk/counts and fixed ledger stay unchanged.
+
+| Recommendation | Preparation and separate required decision |
+|---|---|
+| A03.03 | Unique known selected subscription/RG budget metadata; complete EA department/account allocations, associated alerts, suitable periods/filters/currency and actual delivery/response |
+| A03.04 | Current DA/AO scope/permission distinctions; independently established EA applicability, policies and effective intended-audience visibility |
+| A03.05 | EA0148P versus MCA0148G and current portal qualifications; authoritative approved EA dev/test qualification, permitted actual adoption and reliability exceptions |
+| A04.01 | Account contact, sold-to, bill-to, invoice email and sign-in destinations differ; maintained suitable group-mailbox ownership and actual category coverage/delivery |
+| A04.02 | Profiles represent invoices, sections group costs; complete approved MCA organization/mapping/authority and charge/reservation implications |
+| A04.03 | MCA0148G, active Visual Studio conditions and dev/test-only use; independent authoritative qualification/adoption and reliability exceptions, not EA or monthly credits |
+| A04.04 | Manual approved periodic billing-role audit with direct/inherited/elevated access, chosen cadence, completed findings and verified remediation |
+
+Pinned ARM2024-08-01 and AzureRM4.50.0 subscription/RG projections retain only
+explicit time grain and at most five notification enabled/operator/type records
+(ARM Cost category when explicit). Missing defaults remain unknown. Dictionary
+keys/order, amounts, currencies, spend, dates, filters, thresholds and all
+recipients/contact payloads are discarded. No active period or notification
+suitability is evaluated. Generic ARM scopes do not override service limits;
+MG/billing-parent budgets are not supported projections.
+
+Budgets do not stop consumption; daily evaluation uses delayed data. Configured
+alerts do not prove complete allocation, required recipients or delivery.
+Resource RBAC does not establish billing authority. Billing scopes and EA/MCA/
+partner visibility differ; no cost-view/query or resource hierarchy establishes
+them. Current product-movement exceptions and legacy offer wording qualify,
+not overwrite, immutable recommendations. All seven independent decisions and
+exceptions remain blank; no Signals or human confirmation becomes Verified.
+No live collector route, query, private billing/role/contact read, alert test,
+eligibility decision, enrollment, purchase or permission/contact change occurs.
+
 Local triage routes shared tier/severity evidence and explicit bound reviews,
 not new predicates. Bulk/interview saves validate every selected outcome before
 one immutable revision; unknown/pending decisions stay in the queue. Active
