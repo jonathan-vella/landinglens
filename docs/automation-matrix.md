@@ -1,11 +1,15 @@
 # Accepted release automation matrix
 
-## Cohort 03 preparation only: agreement and billing governance
+## Cohort 03: agreement and billing governance
 
-The [preparation matrix](../references/preparation/batch-03.json) and
-[20 reviewed captures](../references/preparation/batch-03-sources.json) are not
-accepted activation or delivery. Cohorts26/07 precede the coordinator-granted
-slot; the accepted catalog/bank/crosswalk/counts and fixed ledger stay unchanged.
+The [accepted seven-GUID matrix](../references/recommendation-batches/batch-03.json)
+and [23 reviewed captures](../references/recommendation-batches/batch-03-sources.json)
+activate builder-derived `.26` only after the explicit sole slot following
+actual26/07 checked delivery. The original preparation/20 captures remain exact;
+the [three-source version supplement](../references/preparation/batch-03-version-sources.json)
+qualifies source-specific API behavior. Exact `.25`, all228 earlier rows/27
+receipts, fixed251/all255 and original four complete controls stay frozen.
+Activation is not delivery.
 
 | Recommendation | Preparation and separate required decision |
 |---|---|
@@ -18,12 +22,19 @@ slot; the accepted catalog/bank/crosswalk/counts and fixed ledger stay unchanged
 | A04.04 | Manual approved periodic billing-role audit with direct/inherited/elevated access, chosen cadence, completed findings and verified remediation |
 
 Pinned ARM2024-08-01 and AzureRM4.50.0 subscription/RG projections retain only
-explicit time grain and at most five notification enabled/operator/type records
+reviewed API provenance, explicit time grain and at most five enabled/operator/type records
 (ARM Cost category when explicit). Missing defaults remain unknown. Dictionary
 keys/order, amounts, currencies, spend, dates, filters, thresholds and all
 recipients/contact payloads are discarded. No active period or notification
 suitability is evaluated. Generic ARM scopes do not override service limits;
 MG/billing-parent budgets are not supported projections.
+
+Actual pinned REST2019 declares only Actual, with an extensible string enum,
+despite AzureRM4.50's Forecasted documentation and2019 API use. This conflict
+does not establish runtime support: Forecasted projects only with explicit
+reviewed2024 provenance; missing/unreviewed API versions yield unknown type.
+API provenance alone is not a configuration Signal. Tutorial0.01 versus
+REST/provider0..1000 threshold wording is not converted into a compliance limit.
 
 Budgets do not stop consumption; daily evaluation uses delayed data. Configured
 alerts do not prove complete allocation, required recipients or delivery.
@@ -68,10 +79,10 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.25` retains all 255 entries: 12 automated, 200 assisted
-and 43 manual. Crosswalk `2026-11-06.25` rebinds the unchanged 51-control,
+Current successor `2026-11-06.26` retains all 255 entries: 12 automated, 200 assisted
+and 43 manual. Crosswalk `2026-11-06.26` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-Exact predecessor `.24` is frozen; source-matrix acceptance alone is not delivery.
+Exact predecessor `.25` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
 
 ### Cohort 07: naming, hierarchy and scoped authorization

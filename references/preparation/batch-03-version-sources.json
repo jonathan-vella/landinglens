@@ -1,0 +1,36 @@
+{
+  "batch": "03",
+  "review_state": "preparation-only-reviewed",
+  "sources": [
+    {
+      "id": "budget-rest-2019",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/consumption/resource-manager/Microsoft.Consumption/Consumption/stable/2019-10-01/consumption.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/consumption/resource-manager/Microsoft.Consumption/Consumption/stable/2019-10-01/consumption.json",
+      "sha256": "8d02a3bd0e5b8fb8f318346976cd30280ed81bd42d526ac0fcc1f5c276bc823f",
+      "retrieved_at": "2026-11-07T04:23:18.011287+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned Notification.thresholdType enum declares Actual only with modelAsString=true. AzureRM4.50 docs advertise Forecasted while using this API. This conflict stays explicit: do not infer runtime support or a Forecasted fact from provider wording. No threshold value is retained or evaluated.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "budget-rest-2024",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/consumption/resource-manager/Microsoft.Consumption/Consumption/stable/2024-08-01/openapi.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/consumption/resource-manager/Microsoft.Consumption/Consumption/stable/2024-08-01/openapi.json",
+      "sha256": "2a56b9d02c1ad5182151d8e1d459aebae1a4328516dacac7f53094a6d36fdfa3",
+      "retrieved_at": "2026-11-07T04:23:18.173488+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned2024 Notification explicitly declares Actual and Forecasted. Type projection requires explicit reviewed API provenance; missing/unreviewed versions stay unknown. Tutorial0.01 versus REST0..1000 threshold wording is not converted into an assessor compliance threshold; values, amounts, contacts and financial payloads stay withheld.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "rest-spec-reuse",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/LICENSE",
+      "sha256": "b37363bf2295aa0acde60ce78a60034a71a0955075fc01aa09cc23eadff44436",
+      "retrieved_at": "2026-11-07T04:23:18.291173+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned Microsoft REST schemas are MIT licensed; retain metadata and own factual findings.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    }
+  ]
+}

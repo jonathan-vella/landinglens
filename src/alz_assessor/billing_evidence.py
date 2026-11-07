@@ -24,6 +24,7 @@ GUIDS = {
     "ae757485-92a4-482a-8bc9-eefe6f5b5ec3",
 }
 GRAINS = ("Monthly", "Quarterly", "Annually", "BillingMonth", "BillingQuarter", "BillingAnnual")
+VERSIONS = ("2019-10-01", "2024-08-01")
 OPERATORS = ("EqualTo", "GreaterThan", "GreaterThanOrEqualTo")
 WARNING = (
     "Supplied subscription/RG configuration only, not EA department/account allocation, "
@@ -32,6 +33,8 @@ WARNING = (
     "Amounts, currencies, spend, filters, dates, thresholds and contacts are withheld; "
     "active period, currency compatibility and notification suitability are not evaluated. "
     "Budgets do not stop consumption or enforce spending."
+    " Pinned REST2019 declares Actual only despite AzureRM Forecasted documentation; "
+    "Forecasted is projected only with explicit reviewed2024 API provenance."
 )
 
 
@@ -78,7 +81,9 @@ def terraform_identity(scope: str | None, kind: str, values: dict[str, Any]) -> 
     return None
 
 
-def notifications(value: Any, *, terraform: bool = False, normalized: bool = False) -> Any:
+def notifications(
+    value: Any, *, terraform: bool = False, normalized: bool = False, api_version: Any = None
+) -> Any:
     if not terraform and not normalized:
         if not isinstance(value, dict) or "unknown" in value or len(value) > 5:
             return unknown("budget_notifications_missing_malformed_or_over_five")
@@ -96,34 +101,49 @@ def notifications(value: Any, *, terraform: bool = False, normalized: bool = Fal
                 "operator": enumeration(row.get("operator"), OPERATORS),
                 "thresholdType": enumeration(
                     row.get("threshold_type" if terraform else "thresholdType"),
-                    ("Actual", "Forecasted"),
+                    ("Actual", "Forecasted")
+                    if api_version == "2024-08-01"
+                    else ("Actual",)
+                    if api_version == "2019-10-01"
+                    else (),
                 ),
             }
         )
     return sorted(result, key=lambda row: json.dumps(row, sort_keys=True))
 
 
-def configuration(value: Any, *, terraform: bool = False, normalized: bool = False) -> Any:
+def configuration(
+    value: Any, *, terraform: bool = False, normalized: bool = False, api_version: Any = None
+) -> Any:
     if not isinstance(value, dict) or "unknown" in value:
         return unknown("budget_configuration_not_explicit")
+    version = "2019-10-01" if terraform else value.get("apiVersion") if normalized else api_version
     result = {
+        "apiVersion": enumeration(version, VERSIONS),
         "category": enumeration(value.get("category") if not terraform else None, ("Cost",)),
         "timeGrain": enumeration(value.get("time_grain" if terraform else "timeGrain"), GRAINS),
         "notifications": notifications(
             value.get("notification" if terraform else "notifications"),
             terraform=terraform,
             normalized=normalized,
+            api_version=version,
         ),
     }
     return result
 
 
 def projected_properties(
-    kind: str, values: dict[str, Any], *, terraform: bool = False
+    kind: str, values: dict[str, Any], *, terraform: bool = False, root: Any = None
 ) -> dict[str, Any]:
     if kind.lower() != BUDGET:
         return {}
-    return {"budgetConfiguration": configuration(values, terraform=terraform)}
+    return {
+        "budgetConfiguration": configuration(
+            values,
+            terraform=terraform,
+            api_version=root.get("apiVersion") if isinstance(root, dict) else None,
+        )
+    }
 
 
 def review_fact(properties: dict[str, Any], path: str) -> Any:
@@ -181,4 +201,5 @@ def prepared_signal(
 ) -> bool:
     from .tiers import has_fact
 
-    return has_fact(resource_context(resource, by_id, bundle).get("facts", {}))
+    fact = resource_context(resource, by_id, bundle).get("facts", {}).get("budgetConfiguration", {})
+    return has_fact({key: value for key, value in fact.items() if key != "apiVersion"})

@@ -4961,11 +4961,37 @@ SOURCES_26 += [
 ]
 
 
+SOURCES_03_VERSION = [
+    (
+        "budget-rest-2019",
+        SPEC_RAW + "specification/consumption/resource-manager/Microsoft.Consumption/"
+        "Consumption/stable/2019-10-01/consumption.json",
+        ['"version": "2019-10-01"', '"thresholdType"', '"Actual"'],
+        "Pinned Notification.thresholdType enum declares Actual only with modelAsString=true. "
+        "AzureRM4.50 docs advertise Forecasted while using this API. This conflict stays "
+        "explicit: do not infer runtime support or a Forecasted fact from provider wording. "
+        "No threshold value is retained or evaluated.",
+    ),
+    (
+        "budget-rest-2024",
+        SPEC_RAW + "specification/consumption/resource-manager/Microsoft.Consumption/"
+        "Consumption/stable/2024-08-01/openapi.json",
+        ['"version": "2024-08-01"', '"Forecasted"', '"Notification"'],
+        "Pinned2024 Notification explicitly declares Actual and Forecasted. Type projection "
+        "requires explicit reviewed API provenance; missing/unreviewed versions stay unknown. "
+        "Tutorial0.01 versus REST0..1000 threshold wording is not converted into an assessor "
+        "compliance threshold; values, amounts, contacts and financial payloads stay withheld.",
+    ),
+    *[source for source in SOURCES_14 if source[0] == "rest-spec-reuse"],
+]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
     parser.add_argument("--preparation-only", action="store_true")
     parser.add_argument("--vwan-supplement", action="store_true")
+    parser.add_argument("--budget-version-supplement", action="store_true")
     parser.add_argument(
         "--batch",
         choices=[
@@ -5002,6 +5028,8 @@ def main() -> None:
     args = parser.parse_args()
     if args.vwan_supplement and (args.batch != "16" or not args.preparation_only):
         raise ValueError("The vWAN supplement is cohort16 preparation only")
+    if args.budget_version_supplement and (args.batch != "03" or not args.preparation_only):
+        raise ValueError("The budget version supplement is cohort03 preparation only")
     if (
         args.batch
         in {
@@ -5037,6 +5065,8 @@ def main() -> None:
     )
     if args.batch in {"02", "03", "05", "06", "07"}:
         target = ROOT / "references" / "preparation" / f"batch-{args.batch}-sources.json"
+    if args.budget_version_supplement:
+        target = ROOT / "references" / "preparation" / "batch-03-version-sources.json"
     if target.exists() and not args.append_new_sources:
         raise ValueError("Frozen source review exists; do not silently recollect or redate it")
     sources = json.loads(target.read_text("utf-8"))["sources"] if target.exists() else []
@@ -5071,7 +5101,11 @@ def main() -> None:
         "30": SOURCES_30,
     }[args.batch]
     for identity, url, markers, finding in (
-        SOURCES_16_VWAN if args.vwan_supplement else selected_sources
+        SOURCES_03_VERSION
+        if args.budget_version_supplement
+        else SOURCES_16_VWAN
+        if args.vwan_supplement
+        else selected_sources
     ):
         if identity in existing:
             if existing[identity]["url"] != url:

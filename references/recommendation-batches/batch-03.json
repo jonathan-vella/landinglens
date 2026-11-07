@@ -1,0 +1,140 @@
+{
+  "batch": "03",
+  "issue": 157,
+  "review_state": "owner-delegated-source-backed-matrix",
+  "baseline_main": "e2b71b212b47b1d240368e9da13ab51bd66797ee",
+  "activation": "Explicit sole coordinator slot after actual26 implementation158/receipt159 and07 implementation161/receipt162, completed154 and checked final main99b4c58a8f2193789d3ca81aabe692366e8cb257. Preparationc379613 preserved and reconciled inc500bf0. Freeze exact.25, derive unique.26 using existing builders. Source activation is not delivery; checked implementation merge, guarded own receipt and final-main publication remain mandatory.",
+  "catalog_version": "2026-11-06.26",
+  "preparation_base_commit": "c379613bd699d4104091463574f9f9727b071e44",
+  "activation_base_main": "99b4c58a8f2193789d3ca81aabe692366e8cb257",
+  "accepted_at": "2026-11-07T04:20:16Z",
+  "prerequisites": ["26", "07"],
+  "preserved_delivery_batches": [
+    "01", "17", "18", "19", "11", "04", "13", "22", "14", "12", "15", "08", "30",
+    "20", "05", "16", "23", "02", "27", "29", "06", "10", "25", "09", "24", "26", "07"
+  ],
+  "preserved_merged_recommendations_sha256": "abacf9b6d399571e47276298d2637a7b6907750534f649507442497ed67e23b2",
+  "preserved_delivery_receipts_sha256": "404d40da8d37d04587390cde093813cd3f8ef5a8d4ba83416d98e24579d48e95",
+  "preserved_catalog_bytes": {
+    "2026-11-06.25": "5d0ca51b7f2b76343f03f49bb32354d963ae4fc38c7ad15efb68b6c3eab60e83"
+  },
+  "preserved_crosswalk_bytes": {
+    "2026-11-06.25": "9c37c12360039c04416957778f335d854173d9181340e6226e9369487dd4f7f7"
+  },
+  "recommendations": [
+    {
+      "upstream_id": "A03.03",
+      "guid": "54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+      "classification": "assisted",
+      "sources": ["ea-guidance", "mca-guidance", "budget-guidance", "budget-arm", "terraform-budget-subscription", "terraform-budget-resource_group", "terraform-budget-implementation", "cost-scopes", "budget-rest-2019", "budget-rest-2024", "rest-spec-reuse"],
+      "review_resource_types": ["Microsoft.Consumption/budgets"],
+      "review_fact_paths": ["budgetConfiguration"],
+      "evidence_requirements": [
+        "Preparation: unique known supplied subscription/RG budget parent inside selected scope, explicit reviewed API provenance, time grain and bounded up-to-five notification enabled/operator/type metadata only. Pinned REST2019-10-01 declares Actual only despite AzureRM4.50.0 Forecasted wording; Forecasted projects only with explicit2024-08-01 provenance, not missing/unreviewed API versions. No runtime support is inferred. Missing defaults stay unknown; dates, amounts, currencies, spend, thresholds, filters, dictionary keys and recipients are withheld. Tutorial0.01 versus REST/provider0..1000 wording is not an assessor threshold.",
+        "Reviewer decision: independently establish EA applicability and authoritative department/account population, approved allocation and owner mapping; reconcile each required budget and associated alert against that complete population using redacted attributable references, not resource names or subscription counts. MCA profiles/sections and partner-managed structures are different.",
+        "Reviewer decision: separately substantiate appropriate periods/filters/currency compatibility, actual/forecasted semantics, authorized required recipients and current delivery/review/escalation. Cost data is delayed and evaluation daily; budget alerts do not stop consumption or enforce spending. Action groups are supported only at subscription/RG scope; portal/API recipient requirements differ."
+      ],
+      "limitations": "Narrow supplied resource configuration is not complete EA department/account allocation, active-period evaluation, acceptable financial limits, billing authority, recipients or actual notification delivery. No new budget/billing reads, queries, alert test, contact change or financial action. Generic ARM tenant/MG lists do not override service restrictions; supported projection deliberately excludes billing/MG scope.",
+      "flags": []
+    },
+    {
+      "upstream_id": "A03.04",
+      "guid": "ca0fe401-12ad-46fc-8a7e-86293866a9f6",
+      "classification": "assisted",
+      "sources": ["ea-guidance", "budget-access", "ea-notification", "cost-scopes", "cost-csp"],
+      "evidence_requirements": [
+        "Preparation: current EA department scope needs DA View Charges; enrollment account and Azure resource scopes need AO View Charges plus the applicable scoped permissions. Enterprise administrator access differs. No billing-policy or role data is collected.",
+        "Reviewer decision: establish each applicable EA enrollment and independent DA/AO policy review with attributable redacted current settings and authorized intended-audience evidence; document omissions, denied access and exceptions rather than inferring settings from resource RBAC.",
+        "Reviewer decision: demonstrate actual appropriate cost visibility at each required scope, propagation and cross-tenant qualifications without retaining data or running a query. MCA Azure charges policy and partner Azure Plan customer cost visibility are distinct and never substitutes for EA DA/AO evidence."
+      ],
+      "limitations": "Configuration flags, Cost Management views and resource roles cannot prove billing authority or effective access. No synthetic commerce/Graph resource, account/role/identity lookup, live policy read or permission change. Non-EA applicability needs its own bound rationale.",
+      "flags": []
+    },
+    {
+      "upstream_id": "A03.05",
+      "guid": "5cf9f485-2784-49b3-9824-75d9b8bdb57b",
+      "classification": "assisted",
+      "sources": ["enterprise-devtest-offer", "ea-guidance", "ea-devtest-current", "azure-plan-devtest-offer"],
+      "evidence_requirements": [
+        "Preparation: actual0148P Enterprise Dev/Test offer is EA-specific with account enablement, Visual Studio software rights and development/testing restrictions. The original offer's retired EA portal/App Center wording must be qualified by current portal guidance, not silently rewritten.",
+        "Reviewer decision: independently cite an approved authoritative redacted qualification and workload-usage review for the applicable EA offer, active Visual Studio rights, supported software and non-production development/testing purposes; do not make an eligibility or legal determination in the assessor.",
+        "Reviewer decision: substantiate actual permitted adoption and separately approved reliability/availability exceptions against current terms. Non-production labels, budget metadata and public discounts establish no entitlement, purchase, achieved saving or general financially backed SLA."
+      ],
+      "limitations": "No financial outcome or eligibility decision, price calculation, account enrollment, purchase, private contract/workload/license inventory or offer detection. Azure Plan0148G/MCA and monthly Visual Studio credits are different offers. Unknown or not-applicable remains explicit and independently justified.",
+      "flags": []
+    },
+    {
+      "upstream_id": "A04.01",
+      "guid": "6ad5c3dd-e5ea-4ff1-81a4-7886ff87845c",
+      "classification": "assisted",
+      "sources": ["mca-guidance", "billing-contact-semantics", "ea-notification", "mca-roles"],
+      "evidence_requirements": [
+        "Preparation: MCA agreement notification contact, legal sold-to, per-profile bill-to, invoice email, user contact and sign-in address have distinct semantics. Critical service notifications remain sent to sign-in; EA Notification Contact is not the Bill to invoice contact.",
+        "Reviewer decision: establish applicable agreement-specific categories and authorized configuration/ownership through redacted dated references; independently confirm appropriate maintained group-mailbox coverage, continuity, access and required recipients without recording their addresses or memberships.",
+        "Reviewer decision: separately substantiate actual delivery, review and escalation of all required categories with attributable redacted operation evidence and exceptions. A configured address, budget notification or action group cannot establish mailbox suitability or end-to-end operation."
+      ],
+      "limitations": "No contact/notification/mailbox read or change, sent message, email verification, sign-in or retained address, phone, webhook or message content. Public profile/contact instructions do not prove a specific billing-account setting or all notification categories.",
+      "flags": []
+    },
+    {
+      "upstream_id": "A04.02",
+      "guid": "90e87802-602f-4dfb-acea-67c60689f1d7",
+      "classification": "assisted",
+      "sources": ["mca-organization", "mca-guidance", "mca-roles", "cost-scopes", "csp-guidance"],
+      "evidence_requirements": [
+        "Preparation: MCA profiles represent invoices and sections group costs. Current organization guidance permits product moves with exceptions and does not amend historical invoices; frozen CAF same-profile wording is retained and qualified, not treated as an evaluator.",
+        "Reviewer decision: independently establish MCA applicability, approved organizational allocation and justified profile versus section design, including separate-invoice need and charge/reservation implications, from redacted authoritative decisions. EA departments/accounts and partner MPA/customer structures are not equivalent.",
+        "Reviewer decision: demonstrate complete actual profile/section/subscription mapping, scoped ownership, current billing-role authority and operating reviews without retaining identifiers, invoices or amounts. Saved cost views, resource hierarchy and counts do not prove effective organization or financial suitability."
+      ],
+      "limitations": "No new billing objects or inferred hierarchy, private account/profile/invoice content, financial advice, profile creation, product movement or queries. Extra profiles can affect charges/reservations; no universal number or cost threshold is prescribed.",
+      "flags": []
+    },
+    {
+      "upstream_id": "A04.03",
+      "guid": "e81a73f0-84c4-4641-b406-14db3b4d1f50",
+      "classification": "assisted",
+      "sources": ["azure-plan-devtest-offer", "mca-guidance", "enterprise-devtest-offer", "csp-guidance"],
+      "evidence_requirements": [
+        "Preparation: actual0148G Azure Plan for DevTest requires MCA and active Visual Studio subscriber conditions, development/testing-only usage and qualified SLA exclusions; it is not EA0148P or monthly Visual Studio credits. No partner agreement or offer availability is inferred.",
+        "Reviewer decision: independently cite approved redacted authoritative offer qualification and permitted workload/software use, active subscriber rights, applicable agreement/channel and current availability; the assessor does not decide eligibility or purchase an offer.",
+        "Reviewer decision: demonstrate actual authorized adoption, non-production development/testing boundaries and approved reliability exceptions against current terms. Public lower-rate examples and a non-production tag do not prove entitlement, actual saving or financially backed service availability."
+      ],
+      "limitations": "No eligibility/financial/legal determination, prices, license/workload inventories, enrollment, subscription creation, purchase or customer-specific assurance. Qualification and exceptions are independent of EA Dev/Test and other six recommendations.",
+      "flags": []
+    },
+    {
+      "upstream_id": "A04.04",
+      "guid": "ae757485-92a4-482a-8bc9-eefe6f5b5ec3",
+      "classification": "manual",
+      "sources": ["mca-guidance", "mca-roles", "ea-notification"],
+      "evidence_requirements": [
+        "Preparation: MCA billing account/profile/section roles and inherited permissions differ from resource RBAC. Parent permissions cannot be removed below; current billing elevation paths and role/task differences require explicit review.",
+        "Reviewer decision: independently establish applicable agreement scope and approved documented periodic audit process, accountable roles, organization-chosen cadence, coverage of direct/inherited/elevated access, least privilege and exception/remediation ownership through redacted attributable references.",
+        "Reviewer decision: substantiate actual dated completed audit, findings, follow-up, remediation verification and continuity, not merely a written policy or role inventory. EA WSA-only new assignment guidance begins November16,2026 and is not MCA audit evidence or a retroactive claim about existing MSA roles."
+      ],
+      "limitations": "Manual process and actual operation only; no invented cadence, new role/identity lookup, principal retention, access change, audit execution or effective authorization claim. Human confirmation and Signals never manufacture Verified.",
+      "flags": []
+    }
+  ],
+  "interview": {
+    "id": "agreement-budgets-visibility-billing-governance",
+    "question": "Decide seven recommendations independently with dated attributable redacted evidence and separate exceptions. A03.03: establish actual EA department/account population, complete approved allocations and each budget/alert, including periods/filters/currency suitability, actual/forecasted semantics, authorized required recipients and demonstrated delivery/escalation; daily delayed budget evaluation does not stop consumption, and subscription/RG metadata proves no enrollment coverage. A03.04: independently substantiate every applicable EA DA/AO visibility policy plus appropriate scoped permissions and effective audience access; MCA Azure charges and partner cost policies differ, resource RBAC is not billing authority. A03.05: cite approved authoritative EA0148P qualification, Visual Studio rights and actual permitted development/testing adoption with current-terms reliability exceptions, not an assessor eligibility decision or saving claim. A04.01: independently establish MCA notification categories, maintained group-mailbox ownership/continuity, appropriate configuration and actual delivery/review/escalation; account contact, sold-to, bill-to, invoice email and sign-in destinations differ. A04.02: justify MCA profiles versus sections against organization and separate-invoice requirements, current complete mapping/roles and charge/reservation implications; qualify frozen same-profile movement wording with current product exceptions, never infer from MGs or cost views. A04.03: independently cite approved MCA0148G qualification, active Visual Studio subscriber conditions, permitted actual development/testing use and reliability exceptions; EA0148P and monthly credits are different. A04.04: document and demonstrate actual periodic billing-role audits covering direct/inherited/elevated authority, least privilege, cadence chosen by the organization, completed findings and verified remediation; written process or resource role assignments alone are insufficient. Keep each applicability/outcome blank until explicitly decided; no shared answer, Signals or humanConfirmed produces Verified. Do not retain amounts/currency/spend/billing identifiers/account or invoice content/contact/recipient/principal/secret payloads, and perform no live read, query, alert test, contact/permission change, eligibility decision, enrollment or purchase.",
+    "controls": [
+      "ALZ-54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+      "ALZ-ca0fe401-12ad-46fc-8a7e-86293866a9f6",
+      "ALZ-5cf9f485-2784-49b3-9824-75d9b8bdb57b",
+      "ALZ-6ad5c3dd-e5ea-4ff1-81a4-7886ff87845c",
+      "ALZ-90e87802-602f-4dfb-acea-67c60689f1d7",
+      "ALZ-e81a73f0-84c4-4641-b406-14db3b4d1f50",
+      "ALZ-ae757485-92a4-482a-8bc9-eefe6f5b5ec3"
+    ]
+  },
+  "source_acquisition_notes": [
+    "All seven exact original guidance links and actual current linked offer terms/qualifications were inspected.20 original captures remain exact; three actual REST/version/license supplement captures qualify2019 versus2024. No article/provider body is redistributed.",
+    "Initial capture rejected an inaccurate five-notifications tutorial marker; the actual tutorial says five thresholds, while ARM explicitly bounds notifications at five. The corrected final capture is the proof.",
+    "Guessed MCA email/profile article paths, budget_base_resource.go and a REST specification path returned404. Actual change-azure-account-profile and consumption_budget_base.go were inspected instead. The authenticated Azure REST-spec tree endpoint returned403 SAML; no private access, login or permission change was attempted. Pinned ARM2024-08-01 definitions suffice for the implemented fields; no REST body is claimed.",
+    "The old ea-portal-administration devtest fragment redirects to a general get-started page without that section. Actual current direct-ea-administration and both original offer pages are separately captured. Legacy portal/App Center offer wording is not current operational assurance.",
+    "Existing cohort02 cost-view/scope and governance selected-scope helpers are reused; the baseline contains no budget projection to reuse. New budget metadata is deliberately narrower than service support, with no live Collector route, billing-plane resource, accepted predicate or default inference.",
+    "The coordinated28 source finding identified actual Consumption/Consumption paths at pinned5531fa8. Both were retrieved and definitions inspected directly without authenticated private access. REST2019 thresholdType enum is Actual only with modelAsString=true;2024 explicitly includes Forecasted. AzureRM documentation/implementation differs and does not establish2019 runtime support. Projection now retains reviewed API provenance and conservatively withholds unsupported/unversioned thresholdType; no threshold value is retained."
+  ]
+}

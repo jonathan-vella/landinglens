@@ -168,7 +168,7 @@ def properties(
             root["identity"], terraform=False, resource_type=kind
         )
     if isinstance(values, dict):
-        result.update(billing_properties(kind, values))
+        result.update(billing_properties(kind, values, root=root))
         result.update(security_properties(kind, values, root=root))
         result.update(governance_properties(kind, values, root=root))
         result.update(organization_properties(kind, values))
@@ -700,6 +700,7 @@ def arm_source(
                             arm_type,
                             context.value(entry.get("properties", {})),
                             root={
+                                "apiVersion": version,
                                 "location": context.value(entry.get("location")),
                                 "scope": diagnostic_target,
                                 "name": name,

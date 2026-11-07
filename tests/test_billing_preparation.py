@@ -126,7 +126,7 @@ class BillingPreparationTests(unittest.TestCase):
                     "state": "known",
                     "reason": "",
                     "source_location": "fixture://authored-budget",
-                    "properties": properties(BUDGET, self.raw()),
+                    "properties": properties(BUDGET, self.raw(), root={"apiVersion": "2024-08-01"}),
                 }
             ],
         )
@@ -165,7 +165,7 @@ class BillingPreparationTests(unittest.TestCase):
         )
         return path
 
-    def test_exact_seven_guids_sources_and_unchanged_accepted_boundary(self):
+    def test_exact_seven_guids_sources_and_historical_preparation_boundary(self):
         targets = ROOT / "references" / "recommendation-batches" / "targets.json"
         rows = json.loads(targets.read_text("utf-8"))["targets"]
         self.assertEqual({r["upstream_id"]: r["guid"] for r in rows if r["batch"] == "03"}, OWN)
@@ -203,11 +203,21 @@ class BillingPreparationTests(unittest.TestCase):
                     for r in row["evidence_requirements"]
                 )
             )
-        self.assertNotIn(self.matrix["interview"]["id"], interviews.BANK)
+        accepted = json.loads(
+            (PREPARATION.parent / "recommendation-batches" / "batch-03.json").read_text("utf-8")
+        )
+        self.assertEqual(accepted["review_state"], "owner-delegated-source-backed-matrix")
+        self.assertEqual(
+            {
+                "id": self.matrix["interview"]["id"],
+                **interviews.BANK[self.matrix["interview"]["id"]],
+            },
+            self.matrix["interview"],
+        )
         self.assertEqual(len(load_catalog()["controls"]), 255)
 
     def test_explicit_metadata_only_no_defaults_financial_or_recipient_payload(self):
-        fact = configuration(self.raw())
+        fact = configuration(self.raw(), api_version="2024-08-01")
         self.assertEqual(fact["category"], "Cost")
         self.assertEqual(fact["timeGrain"], "Monthly")
         self.assertEqual(
@@ -226,7 +236,7 @@ class BillingPreparationTests(unittest.TestCase):
         for operator in OPERATORS:
             for kind in ("Actual", "Forecasted"):
                 row = {"enabled": False, "operator": operator, "thresholdType": kind}
-                self.assertEqual(notifications({"name": row}), [row])
+                self.assertEqual(notifications({"name": row}, api_version="2024-08-01"), [row])
         fact = configuration({})
         self.assertTrue(all("unknown" in value for value in fact.values()))
         tf = tf_properties(
@@ -281,13 +291,44 @@ class BillingPreparationTests(unittest.TestCase):
         one = {"enabled": True, "operator": "EqualTo", "thresholdType": "Actual"}
         two = {"enabled": False, "operator": "GreaterThan", "thresholdType": "Forecasted"}
         self.assertEqual(
-            notifications({"financial-key": one, PRIVATE: two}),
-            notifications({"other-key": two, "third-key": one}),
+            notifications({"financial-key": one, PRIVATE: two}, api_version="2024-08-01"),
+            notifications({"other-key": two, "third-key": one}, api_version="2024-08-01"),
         )
         self.assertEqual(
-            configuration(self.raw()),
-            review_fact({"budgetConfiguration": configuration(self.raw())}, "budgetConfiguration"),
+            configuration(self.raw(), api_version="2024-08-01"),
+            review_fact(
+                {"budgetConfiguration": configuration(self.raw(), api_version="2024-08-01")},
+                "budgetConfiguration",
+            ),
         )
+
+    def test_api_version_qualification_provider_conflict_and_no_forecast_defaults(self):
+        raw = self.raw()
+        raw["notifications"][PRIVATE]["thresholdType"] = "Forecasted"
+        for version in (None, "2019-10-01", "2026-06-01", True, PRIVATE):
+            fact = configuration(raw, api_version=version)
+            self.assertIn("unknown", fact["notifications"][0]["thresholdType"])
+        fact = configuration(raw, api_version="2024-08-01")
+        self.assertEqual(fact["notifications"][0]["thresholdType"], "Forecasted")
+        tf = {
+            "time_grain": "Monthly",
+            "notification": [
+                {"enabled": True, "operator": "GreaterThan", "threshold_type": "Forecasted"}
+            ],
+        }
+        for kind in TF_KINDS:
+            config = tf_properties(kind, tf)["budgetConfiguration"]
+            self.assertEqual(config["apiVersion"], "2019-10-01")
+            self.assertIn("unknown", config["notifications"][0]["thresholdType"])
+            self.assertNotIn("Forecasted", json.dumps(config))
+            self.assertEqual(
+                review_fact({"budgetConfiguration": config}, "budgetConfiguration"), config
+            )
+        for version in (None, "2019-10-01", "unreviewed"):
+            config = {**fact, "apiVersion": version}
+            minimized = review_fact({"budgetConfiguration": config}, "budgetConfiguration")
+            self.assertIn("unknown", minimized["notifications"][0]["thresholdType"])
+        self.assertIn("unknown", properties(BUDGET, raw)["budgetConfiguration"]["apiVersion"])
 
     def test_unique_known_typed_selected_scope_relationship_required(self):
         self.assertIn("facts", self.context())
@@ -456,9 +497,8 @@ class BillingPreparationTests(unittest.TestCase):
             entry["sensitive_values"] = {"notification": True, "time_grain": True}
             path.write_text(json.dumps(data))
             sensitive = plan_source(path, scope=SUB, provider_version="4.50.0")
-            self.assertFalse(
-                has_fact(sensitive["resources"][0]["properties"]["budgetConfiguration"])
-            )
+            fact = sensitive["resources"][0]["properties"]["budgetConfiguration"]
+            self.assertFalse(has_fact({k: v for k, v in fact.items() if k != "apiVersion"}))
             values["id"] = OTHER + "/providers/" + BUDGET + "/authored"
             with self.assertRaises(InputError):
                 plan_source(self.plan(kind, values), scope=SUB, provider_version="4.50.0")

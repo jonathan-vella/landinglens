@@ -1,5 +1,78 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 03 accepted integration: 2026-11-07
+
+The explicit sole coordinator slot follows actual26 implementation158/receipt159,
+07 implementation161/receipt162, completed154 and checked final main
+`99b4c58a8f2193789d3ca81aabe692366e8cb257`. Preserved preparation `c379613`
+reconciles that baseline in `c500bf0`, retaining recovery, operations and hierarchy
+helpers. All23 current genuine compiler cases precede the own budget case.
+
+The [seven-GUID matrix](../../references/recommendation-batches/batch-03.json)
+and [23 captures](../../references/recommendation-batches/batch-03-sources.json)
+derive unique accepted catalog/crosswalk `.26` with existing offline builders.
+Exact `.25` catalog SHA256:
+`5d0ca51b7f2b76343f03f49bb32354d963ae4fc38c7ad15efb68b6c3eab60e83`;
+crosswalk SHA256:
+`9c37c12360039c04416957778f335d854173d9181340e6226e9369487dd4f7f7`.
+All255 GUIDs/fixed251/original four complete objects, every non-own full control,
+all228 prior own rows/27 receipts and exact historical bytes remain preserved.
+Dispositions stay12/200/43; activation alone leaves228 delivered/23 pending.
+
+Seven registered independently blank decisions/exceptions reuse the evaluator,
+adapters, tiers, outputs, CLI/session and original-time accepted/predecessor replay.
+EA/MCA/partner applicability, complete allocations, effective billing visibility,
+distinct offer qualification, group-mailbox continuity, MCA organization and real
+audit operation remain explicit human judgments. No live collector, query, private
+billing/contact/role read, notification test, eligibility decision, purchase or
+permission/contact change is added. Signals never manufacture Verified.
+
+The coordinated28 source finding identified actual Consumption/Consumption paths
+at pinned5531fa8. Both REST definitions and MIT terms were retrieved and inspected:
+2019 declares Actual only with an extensible enum, while2024 explicitly includes
+Forecasted. AzureRM4.50 advertises Forecasted but uses2019; no runtime support is
+inferred from that conflict. The original20 captures remain exact and three
+new captures supplement them. Budget metadata now retains reviewed API provenance;
+Forecasted projects only with explicit2024 provenance, and provenance alone is
+not a configuration Signal. Missing defaults and unsupported types remain unknown.
+Tutorial0.01 versus REST/provider0..1000 threshold wording is not an assessor
+limit; all financial/recipient/threshold values and notification keys remain
+withheld. No active-period, currency-suitability, delivery or spend enforcement
+assurance is implied.
+
+Own final source/installed-wheel/static/compiler proofs, exact-head eight-job/
+CodeQL/security/review and four downloaded exercised artifacts, normal SHA-bound
+merge, guarded actual own receipt and checked final-main publication still gate
+satisfied #157 completion. Preparation proofs below do not replace these gates.
+The initial accepted targeted bank CLI failure used the stale global installation
+for an isolated subprocess, not this source; final runs must use the own matching
+installation. No global or other-session environment was changed.
+
+Final source and own clean outside-checkout installed-wheel suites each ran
+**858 tests:857 passed, one original Windows symlink-privilege skip**.
+All24 own preparation/accepted cases pass, including registered-bank selection/
+content/scope/time/expiry/attribution, transactional failure/resume, independent
+exceptions, source-version conflicts, all outputs and private accepted/predecessor
+original-time replay. All24 genuine compiler cases exercise without skip/restore,
+retaining recovery/operations and07 MG settings before the own budget fixture.
+Ruff/format,52-source-file mypy, dependency consistency and568 local links pass.
+All171 package members match checkout, own wheel and dedicated installed bytes;
+all191 non-active predecessor source/data/fixed-target members,228 old rows/
+27 receipts and the original03 preparation matrix/20 captures remain exact.
+Final own implementation wheel SHA256:
+`af591d9c285124df1c600b92e77ef9f85d36bdbe5860f3eff330d9ea98e83c0f`.
+Both source/installed24-case compiler JSON SHA256:
+`4632f0716b155657a7d5b1b9adfaa5d171cb7cb37769d6b9eea91ec387ea1612`.
+
+The first accepted-wheel install was invoked with source metadata on `PYTHONPATH`
+and pip incorrectly reported it present; the outside import refused. Installation
+was repeated from the clean outside directory without that source path, then the
+actual missing `hcl2` failure justified restoring only the same three manifest-
+hash-verified runtime wheels into this cohort's dedicated environment. No package,
+compiler or module acquisition/restore beyond those reviewed runtime wheels, and
+no other-session/global environment modification occurred. Those failed invocations
+are not final proof; the exact171-member import/byteproof and full suites above are.
+
 ## Cohort 03 independent preparation: 2026-11-07
 
 [#157](https://github.com/jonathan-vella/landinglens/issues/157) prepares the

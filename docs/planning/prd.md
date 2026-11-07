@@ -1,5 +1,20 @@
 # LandingLens product requirements
 
+## Cohort 03 accepted boundary
+
+The explicit sole slot after actual26/07 checked delivery activates
+[seven agreement workflows](../../references/recommendation-batches/batch-03.json)
+in builder-derived `.26`, preserving exact `.25`, all228 earlier rows/27 receipts,
+all255/fixed251 and original four complete objects. Seven registered decisions
+and exceptions remain independently blank. Typed budget configuration is not
+complete allocation, spending enforcement, billing authority, required recipients,
+actual delivery, offer qualification, financial outcome or actual audit operation.
+Actual REST2019 versus2024 threshold-type differences qualify AzureRM wording;
+Forecasted needs explicit reviewed2024 provenance and no defaults are inferred.
+The [integration evidence](plan.md#cohort-03-accepted-integration-2026-11-07)
+retains source, privacy and actual delivery gates. No new live read, query,
+contact test, eligibility decision, purchase or permission change occurs.
+
 ## Cohort 03 preparation boundary
 
 The [seven A03.03-.05/A04.01-.04 workflows](../../references/preparation/batch-03.json)
