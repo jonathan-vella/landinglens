@@ -2,10 +2,12 @@ import json
 import os
 import shutil
 import subprocess
+import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
 
+from alz_assessor.arm import arm_source
 from alz_assessor.bicep import compile_bicep
 from alz_assessor.terraform import InputError
 
@@ -88,6 +90,38 @@ class BicepTests(unittest.TestCase):
         with self.assertRaisesRegex(InputError, "BCP190"):
             compile_bicep(FIXTURE / "unrestored.bicep", compiler)
         self.assertNotIn("fabricated", json.dumps(result))
+
+    def test_actual_installed_compiler_parameter_wrappers_and_existing_references(self):
+        compiler = os.environ.get("BICEP_COMPILER") or shutil.which("bicep")
+        if not compiler:
+            self.skipTest("Set BICEP_COMPILER to an existing standalone compiler for integration")
+        compiled = compile_bicep(FIXTURE / "parameter-wrapper-main.bicep", compiler)["template"]
+        self.assertTrue(compiled["resources"]["group"]["existing"])
+        self.assertIsInstance(
+            compiled["resources"]["child"]["properties"]["parameters"]["secure"], str
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            template = root / "template.json"
+            template.write_text(json.dumps(compiled), encoding="utf-8")
+            parameters = root / "parameters.json"
+            for region, expected in (("", False), ("westeurope", True)):
+                parameters.write_text(
+                    json.dumps({"parameters": {"configuration": {"value": {"region": region}}}}),
+                    encoding="utf-8",
+                )
+                bundle = arm_source(
+                    template,
+                    scope="/subscriptions/00000000-0000-0000-0000-000000000001",
+                    parameters=parameters,
+                )
+                self.assertEqual(len(bundle["resources"]), 1)
+                self.assertIs(
+                    bundle["resources"][0]["properties"]["supportsHttpsTrafficOnly"], expected
+                )
+                self.assertIn(
+                    "/resourcegroups/rg-offline-binding/", bundle["resources"][0]["arm_id"]
+                )
 
 
 if __name__ == "__main__":

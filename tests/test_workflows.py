@@ -10,7 +10,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from alz_assessor.arm import arm_source
+from alz_assessor.arm import Expressions, arm_source
 from alz_assessor.catalog import load_catalog, reviewed_refresh
 from alz_assessor.cli import main
 from alz_assessor.comparison import compare
@@ -237,6 +237,133 @@ class WorkflowTests(unittest.TestCase):
         self.assertEqual(bundle["resources"], [])
         self.assertFalse(bundle["inventory_complete"])
         self.assertIn("expression_scope", bundle["diagnostics"][0]["reason"])
+
+    def test_arm_object_parameter_wrapper_functions_are_bounded_and_typed(self):
+        context = Expressions({}, {}, SCOPE)
+        for value in ("", [], {}):
+            context = Expressions(
+                {"parameters": {"value": {"type": "object"}}}, {"value": value}, SCOPE
+            )
+            self.assertTrue(context.value("[empty(parameters('value'))]"))
+        self.assertEqual(
+            context.value("[createObject('value', false(), 'optional', null())]"),
+            {"value": False, "optional": None},
+        )
+        for expression in (
+            "[createObject('unpaired')]",
+            "[createObject(1, true())]",
+            "[createObject('value', true(), 'VALUE', false())]",
+            "[empty(true())]",
+            "[createObject('value', reference('runtime'))]",
+            "[createObject(" + ",".join(f"'key{i}',true()" for i in range(257)) + ")]",
+        ):
+            with self.subTest(expression=expression):
+                self.assertIn("unknown", context.value(expression))
+
+    def test_nested_arm_expression_parameter_wrappers_preserve_literal_values(self):
+        child = {
+            "parameters": {"secure": {"type": "bool"}, "name": {"type": "string"}},
+            "resources": [
+                {
+                    "type": "Microsoft.Storage/storageAccounts",
+                    "apiVersion": "2023-05-01",
+                    "name": "[parameters('name')]",
+                    "properties": {"supportsHttpsTrafficOnly": "[parameters('secure')]"},
+                }
+            ],
+        }
+        deployment = {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2022-09-01",
+            "name": "child",
+            "properties": {
+                "expressionEvaluationOptions": {"scope": "inner"},
+                "parameters": {
+                    "secure": (
+                        "[if(empty(''), createObject('value', false()), "
+                        "createObject('value', true()))]"
+                    ),
+                    "name": "[createObject('value', parameters('literalName'))]",
+                },
+                "template": child,
+            },
+        }
+        template = {
+            "parameters": {"literalName": {"type": "string"}},
+            "resources": [deployment],
+        }
+        parameters = self.write(
+            "parameters.json",
+            {"parameters": {"literalName": {"value": "[reference('must-not-execute')]"}}},
+        )
+        bundle = arm_source(
+            self.write("wrappers.json", template), scope=SCOPE, parameters=parameters
+        )
+        resource = bundle["resources"][0]
+        self.assertIs(resource["properties"]["supportsHttpsTrafficOnly"], False)
+        self.assertIn("must-not-execute", resource["arm_id"])
+        deployment["properties"]["parameters"]["secure"] = "[reference('runtime')]"
+        bundle = arm_source(
+            self.write("wrappers.json", template), scope=SCOPE, parameters=parameters
+        )
+        self.assertIn("unknown", bundle["resources"][0]["properties"]["supportsHttpsTrafficOnly"])
+        self.assertFalse(bundle["inventory_complete"])
+        self.assertIn(
+            "nested_parameter_binding_unresolved",
+            {entry["reason"] for entry in bundle["diagnostics"]},
+        )
+
+    def test_nested_arm_expression_parameter_wrappers_reject_scalar_results(self):
+        for binding in (True, "literal", "[true()]"):
+            template = {
+                "resources": [
+                    {
+                        "type": "Microsoft.Resources/deployments",
+                        "properties": {
+                            "expressionEvaluationOptions": {"scope": "inner"},
+                            "parameters": {"value": binding},
+                            "template": {
+                                "parameters": {"value": {"type": "bool"}},
+                                "resources": [],
+                            },
+                        },
+                    }
+                ]
+            }
+            with (
+                self.subTest(binding=binding),
+                self.assertRaisesRegex(InputError, "parameters must contain objects"),
+            ):
+                arm_source(self.write("invalid-wrapper.json", template), scope=SCOPE)
+
+    def test_arm_existing_references_do_not_duplicate_or_invent_resource_inventory(self):
+        created = {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2023-05-01",
+            "name": "storage",
+            "properties": {"supportsHttpsTrafficOnly": False},
+        }
+        reference = {
+            "existing": True,
+            "type": created["type"],
+            "apiVersion": created["apiVersion"],
+            "name": created["name"],
+        }
+        template = {"languageVersion": "2.0", "resources": {"pointer": reference, "new": created}}
+        bundle = arm_source(self.write("references.json", template), scope=SCOPE)
+        self.assertEqual(len(bundle["resources"]), 1)
+        self.assertIs(bundle["resources"][0]["properties"]["supportsHttpsTrafficOnly"], False)
+        self.assertIn(
+            "existing_resource_reference_not_inventory",
+            {entry["reason"] for entry in bundle["diagnostics"]},
+        )
+        template["resources"].pop("new")
+        bundle = arm_source(self.write("references-only.json", template), scope=SCOPE)
+        self.assertEqual(bundle["resources"], [])
+        self.assertFalse(bundle["inventory_complete"])
+        reference["existing"] = "true"
+        with self.assertRaisesRegex(InputError, "existing resource marker must be a boolean"):
+            arm_source(self.write("invalid-reference.json", template), scope=SCOPE)
 
     def test_provider_selectors_do_not_invent_identity(self):
         for declaration, selector, bound in (
