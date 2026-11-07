@@ -15,6 +15,14 @@ private payload retention, tenant/permission/settings change or operating assura
 is added. Exact implementation and checked receipt/final-main gates, not source
 activation or issue status, determine delivery.
 
+Implementation [#161](https://github.com/jonathan-vella/landinglens/pull/161)
+merged normally after exact checked-head eight-job/CodeQL/security/review and
+four downloaded23-case compiler gates. Guarded `deliveries.07` binds all eight
+GUIDs to that actual head/merge/runs and own834-test wheel, deriving228 delivered/
+23 pending/27 receipts while preserving all220 earlier rows/26 receipts.
+Checked receipt publication and actual final-main CI determine satisfied closure,
+not source activation, local preparation or issue status.
+
 ## Cohort 07 preparation boundary
 
 [#154](https://github.com/jonathan-vella/landinglens/issues/154) prepares
