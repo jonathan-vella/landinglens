@@ -1,5 +1,36 @@
 # LandingLens product requirements
 
+## Cohort 03 accepted boundary
+
+The explicit sole slot after actual26/07 checked delivery activates
+[seven agreement workflows](../../references/recommendation-batches/batch-03.json)
+in builder-derived `.26`, preserving exact `.25`, all228 earlier rows/27 receipts,
+all255/fixed251 and original four complete objects. Seven registered decisions
+and exceptions remain independently blank. Typed budget configuration is not
+complete allocation, spending enforcement, billing authority, required recipients,
+actual delivery, offer qualification, financial outcome or actual audit operation.
+Actual REST2019 versus2024 threshold-type differences qualify AzureRM wording;
+Forecasted needs explicit reviewed2024 provenance and no defaults are inferred.
+The [integration evidence](plan.md#cohort-03-accepted-integration-2026-11-07)
+retains source, privacy and actual delivery gates. No new live read, query,
+contact test, eligibility decision, purchase or permission change occurs.
+
+## Cohort 03 preparation boundary
+
+The [seven A03.03-.05/A04.01-.04 workflows](../../references/preparation/batch-03.json)
+for [#157](https://github.com/jonathan-vella/landinglens/issues/157) prepare
+agreement budgets, EA DA/AO visibility, distinct EA/MCA dev-test qualifications,
+notification ownership, MCA organization and manual billing-role audits outside
+accepted activation. All decisions and exceptions stay independently blank.
+Minimized explicit subscription/RG budget metadata is partial configuration only:
+no spending enforcement, complete department/account allocation, effective billing
+access, active period, required recipients, mailbox suitability, actual delivery,
+offer entitlement or financial outcome. No new live read, query, contact test,
+commerce resource, eligibility decision or purchase is added.
+See the [preparation boundary](plan.md#cohort-03-independent-preparation-2026-11-07).
+Cohorts26/07 and the explicit coordinator slot precede accepted registration,
+then-current reconciliation and actual implementation/receipt/final-main gates.
+
 ## Cohort 07 accepted boundary
 
 The explicit sole slot after actual24/26 checked implementation, receipts and

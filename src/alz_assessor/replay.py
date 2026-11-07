@@ -10,6 +10,7 @@ from itertools import islice
 from pathlib import Path
 from typing import Any
 
+from .billing_evidence import replay_properties as billing_properties
 from .catalog import load_catalog
 from .contracts import digest, document, hashes, parse_document, require, scope_id, validate
 from .diagnostics import REASONS
@@ -192,6 +193,7 @@ def sanitize_evidence(bundle: dict[str, Any]) -> dict[str, Any]:
                     **policy_strategy_properties(resource["resource_type"], values),
                     **topology_properties(resource["resource_type"], values),
                     **tenant_properties(resource["resource_type"], values),
+                    **billing_properties(resource["resource_type"], values),
                     **logging_properties(resource["resource_type"], values),
                     **operations_properties(resource["resource_type"], values),
                     **platform_health_properties(resource["resource_type"], values),

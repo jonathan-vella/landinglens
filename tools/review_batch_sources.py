@@ -4519,6 +4519,122 @@ SOURCES_24 = [
 ]
 
 
+SOURCES_03 = [
+    source
+    for source in SOURCES_02
+    if source[0]
+    in {
+        "ea-guidance",
+        "mca-guidance",
+        "ea-notification",
+        "csp-guidance",
+        "cost-scopes",
+        "cost-csp",
+        "learn-terms",
+        "provider-license",
+    }
+] + [
+    (
+        "budget-guidance",
+        LEARN + "azure/cost-management-billing/costs/tutorial-acm-create-budgets",
+        ["consumption isn't stopped", "five thresholds", "24 hours"],
+        "Budgets inform accountability, not spending enforcement. Evaluation is daily on "
+        "delayed data; configured alerts do not establish delivery or complete allocations. "
+        "Action groups are supported only at subscription/RG scope; currency and scope "
+        "qualifications need separate review. Portal and API recipient rules differ.",
+    ),
+    (
+        "budget-arm",
+        LEARN + "azure/templates/microsoft.consumption/2024-08-01/budgets",
+        ["five notifications", "GreaterThanOrEqualTo", "Forecasted"],
+        "Pinned 2024-08-01 declares Cost, six time grains and up to five notification "
+        "entries with explicit enabled/operator/type. Only minimized subscription/RG "
+        "metadata is prepared; generic tenant/MG deployment lists imply no billing scope "
+        "support or permissions. Amounts, filters, dates, thresholds and recipients withheld.",
+    ),
+    (
+        "budget-access",
+        LEARN + "azure/cost-management-billing/costs/assign-access-acm-data",
+        ["DA view charges", "AO view charges", "Azure charges", "30 minutes"],
+        "EA department access needs DA visibility; enrollment-account and resource scopes "
+        "need AO visibility plus appropriate permissions. MCA Azure charges policy differs. "
+        "EA administrator visibility is distinct; flags and resource RBAC alone do not prove "
+        "effective billing access. Propagation and cross-tenant restrictions remain explicit.",
+    ),
+    (
+        "enterprise-devtest-offer",
+        "https://azure.microsoft.com/pricing/offers/ms-azr-0148p",
+        ["Visual Studio", "Enterprise Agreement", "financially-backed"],
+        "The actual locale redirect retains Enterprise Dev/Test terms: EA/account enablement, "
+        "Visual Studio software rights and development/testing use; no general production "
+        "SLA. Legacy EA portal and App Center wording is not current operational assurance. "
+        "No eligibility, purchase, discount calculation or customer entitlement is inferred.",
+    ),
+    (
+        "azure-plan-devtest-offer",
+        "https://azure.microsoft.com/offers/ms-azr-0148g/",
+        ["active Visual Studio", "Microsoft Customer Agreement", "Azure DevOps"],
+        "Actual redirect is Azure Plan for DevTest, distinct from EA0148P and monthly credits. "
+        "MCA and active Visual Studio subscriber conditions, dev/test-only usage and no "
+        "financially backed SLA except Azure DevOps require independent owner qualification. "
+        "No account enrollment, purchase or financial/eligibility decision is made.",
+    ),
+    (
+        "mca-organization",
+        LEARN + "azure/cost-management-billing/manage/mca-section-invoice",
+        ["monthly invoice", "invoice section", "reservations", "Existing invoices"],
+        "Profiles organize invoices and sections group costs; additional profiles may "
+        "affect charges/reservations. Current product movement has exceptions and historic "
+        "invoices are not amended. Organizational suitability is a decision, not a resource "
+        "hierarchy/count, and current movement guidance qualifies frozen CAF wording.",
+    ),
+    (
+        "mca-roles",
+        LEARN + "azure/cost-management-billing/manage/understand-mca-roles",
+        ["inherited permissions cannot be removed", "Invoice manager", "Global Administrator"],
+        "Billing account/profile/section roles and inherited authority differ from Azure "
+        "resource RBAC. Periodic audit must cover current direct/inherited roles, elevation, "
+        "least privilege, actual review and remediation; no audit cadence is invented.",
+    ),
+    (
+        "billing-contact-semantics",
+        LEARN + "azure/cost-management-billing/manage/change-azure-account-profile",
+        ["always sent to your sign-in address", "one-time verification", "90 days"],
+        "Sold-to legal identity, per-profile bill-to, contact/service notifications and "
+        "sign-in address differ. Critical service notifications still go to sign-in; a "
+        "contact setting cannot prove all categories or maintained group-mailbox coverage. "
+        "No addresses, verification, permission or contact changes occur.",
+    ),
+    (
+        "ea-devtest-current",
+        LEARN + "azure/cost-management-billing/manage/direct-ea-administration",
+        ["Enterprise Dev/Test", "November 16, 2026", "Bill to contact"],
+        "Current portal administration qualifies legacy EA offer instructions. New billing "
+        "role assignments become WSA-only November16; existing MSA roles are not yet impacted. "
+        "Notification contacts and Bill to invoice contacts have different purposes.",
+    ),
+    *[
+        (
+            "terraform-budget-" + name,
+            RAW + "website/docs/r/consumption_budget_" + name + ".html.markdown",
+            ["threshold_type", "contact_groups", "2019-10-01"],
+            "Pinned AzureRM4.50.0 " + name + " budget uses Consumption2019-10-01. "
+            "Project explicit time grain and enabled/operator/threshold_type only. Missing "
+            "defaults remain unknown; do not retain amounts, contacts, filters or thresholds.",
+        )
+        for name in ("subscription", "resource_group")
+    ],
+    (
+        "terraform-budget-implementation",
+        RAW + "internal/services/consumption/consumption_budget_base.go",
+        ["CategoryTypeCost", "ThresholdTypeActual", "2019-10-01"],
+        "Provider supplies Cost at create/update; raw explicit category is not a provider "
+        "field and is not invented. Provider defaults enabled/type/grain are not inferred "
+        "from omissions. Notification keys encode thresholds and are discarded.",
+    ),
+]
+
+
 SOURCES_26 = [
     (
         "bcdr-linked",
@@ -4845,16 +4961,43 @@ SOURCES_26 += [
 ]
 
 
+SOURCES_03_VERSION = [
+    (
+        "budget-rest-2019",
+        SPEC_RAW + "specification/consumption/resource-manager/Microsoft.Consumption/"
+        "Consumption/stable/2019-10-01/consumption.json",
+        ['"version": "2019-10-01"', '"thresholdType"', '"Actual"'],
+        "Pinned Notification.thresholdType enum declares Actual only with modelAsString=true. "
+        "AzureRM4.50 docs advertise Forecasted while using this API. This conflict stays "
+        "explicit: do not infer runtime support or a Forecasted fact from provider wording. "
+        "No threshold value is retained or evaluated.",
+    ),
+    (
+        "budget-rest-2024",
+        SPEC_RAW + "specification/consumption/resource-manager/Microsoft.Consumption/"
+        "Consumption/stable/2024-08-01/openapi.json",
+        ['"version": "2024-08-01"', '"Forecasted"', '"Notification"'],
+        "Pinned2024 Notification explicitly declares Actual and Forecasted. Type projection "
+        "requires explicit reviewed API provenance; missing/unreviewed versions stay unknown. "
+        "Tutorial0.01 versus REST0..1000 threshold wording is not converted into an assessor "
+        "compliance threshold; values, amounts, contacts and financial payloads stay withheld.",
+    ),
+    *[source for source in SOURCES_14 if source[0] == "rest-spec-reuse"],
+]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
     parser.add_argument("--preparation-only", action="store_true")
     parser.add_argument("--vwan-supplement", action="store_true")
+    parser.add_argument("--budget-version-supplement", action="store_true")
     parser.add_argument(
         "--batch",
         choices=[
             "01",
             "02",
+            "03",
             "04",
             "05",
             "06",
@@ -4885,10 +5028,13 @@ def main() -> None:
     args = parser.parse_args()
     if args.vwan_supplement and (args.batch != "16" or not args.preparation_only):
         raise ValueError("The vWAN supplement is cohort16 preparation only")
+    if args.budget_version_supplement and (args.batch != "03" or not args.preparation_only):
+        raise ValueError("The budget version supplement is cohort03 preparation only")
     if (
         args.batch
         in {
             "02",
+            "03",
             "05",
             "06",
             "07",
@@ -4906,7 +5052,7 @@ def main() -> None:
         }
     ) != args.preparation_only:
         raise ValueError(
-            "Cohorts 02/05/06/07/10/12/16/20/23/24/25/26/27/29/30 source capture require "
+            "Cohorts 02/03/05/06/07/10/12/16/20/23/24/25/26/27/29/30 source capture require "
             "--preparation-only; no activation"
         )
     prefix = "preparation" if args.preparation_only else "batch"
@@ -4917,8 +5063,10 @@ def main() -> None:
         / "recommendation-batches"
         / f"{prefix}-{args.batch}{suffix}-sources.json"
     )
-    if args.batch in {"02", "05", "06", "07"}:
+    if args.batch in {"02", "03", "05", "06", "07"}:
         target = ROOT / "references" / "preparation" / f"batch-{args.batch}-sources.json"
+    if args.budget_version_supplement:
+        target = ROOT / "references" / "preparation" / "batch-03-version-sources.json"
     if target.exists() and not args.append_new_sources:
         raise ValueError("Frozen source review exists; do not silently recollect or redate it")
     sources = json.loads(target.read_text("utf-8"))["sources"] if target.exists() else []
@@ -4926,6 +5074,7 @@ def main() -> None:
     selected_sources = {
         "01": SOURCES,
         "02": SOURCES_02,
+        "03": SOURCES_03,
         "04": SOURCES_04,
         "05": SOURCES_05,
         "06": SOURCES_06,
@@ -4952,7 +5101,11 @@ def main() -> None:
         "30": SOURCES_30,
     }[args.batch]
     for identity, url, markers, finding in (
-        SOURCES_16_VWAN if args.vwan_supplement else selected_sources
+        SOURCES_03_VERSION
+        if args.budget_version_supplement
+        else SOURCES_16_VWAN
+        if args.vwan_supplement
+        else selected_sources
     ):
         if identity in existing:
             if existing[identity]["url"] != url:
