@@ -141,6 +141,7 @@ PLANNED_API_VERSIONS = API_VERSIONS | {
     "microsoft.managedservices/registrationassignments": {"2022-10-01"},
     "microsoft.costmanagement/views": {"2019-11-01"},
 }
+UNSUPPORTED_PLANNED_RESOURCE_TYPES = {"microsoft.network/localnetworkgateways"}
 
 
 def unresolved(value: Any) -> bool:
@@ -745,6 +746,13 @@ def arm_source(
             child_scope = target_scope
             if "scope" in entry:
                 explicit = context.value(entry["scope"])
+                if (
+                    isinstance(explicit, str)
+                    and explicit.lower().startswith(
+                        "microsoft.management/managementgroups/"
+                    )
+                ):
+                    explicit = "/providers/" + explicit
                 child_scope = scope_id(explicit) if isinstance(explicit, str) else None
             elif "subscriptionId" in entry or "resourceGroup" in entry:
                 parent_sub = (
@@ -939,11 +947,19 @@ def arm_source(
                     else False
                 )
                 applicable = arm_type.lower() in PLANNED_API_VERSIONS
+                unsupported_type = arm_type.lower() in UNSUPPORTED_PLANNED_RESOURCE_TYPES
                 state = (
                     "known"
-                    if condition is True and known_count and (supported or not applicable)
+                    if condition is True
+                    and known_count
+                    and (supported or not applicable)
+                    and not unsupported_type
                     else "unknown"
                 )
+                if unsupported_type:
+                    diagnostics.append(
+                        {"reason": "arm_resource_type_unsupported", "address": logical}
+                    )
                 if arm_type.lower() == "microsoft.aadiam/diagnosticsettings":
                     state = "unknown"
                     diagnostics.append(
@@ -1144,6 +1160,8 @@ def arm_source(
                         "state": state,
                         "reason": ""
                         if state == "known"
+                        else "arm_resource_type_unsupported"
+                        if unsupported_type
                         else "arm_condition_copy_or_api_unresolved",
                         "source_location": str(source) + "#/resources/" + logical,
                     }

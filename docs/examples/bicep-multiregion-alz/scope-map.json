@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "kind": "fictional-alz-scope-map",
+  "scopes": {
+    "governance": "/providers/Microsoft.Management/managementGroups/fictional-alz",
+    "management": "/subscriptions/00000000-0000-0000-0000-000000000001",
+    "connectivity": "/subscriptions/00000000-0000-0000-0000-000000000002",
+    "workloads": "/subscriptions/00000000-0000-0000-0000-000000000005/resourceGroups/rg-alz-workloads"
+  }
+}

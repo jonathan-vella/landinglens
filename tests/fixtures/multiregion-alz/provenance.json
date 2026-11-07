@@ -1,0 +1,42 @@
+{
+  "compilation": "Compiled with --no-restore from the checked-in Bicep sources and isolated module cache.",
+  "compiler": "Bicep CLI 0.47.16",
+  "fixtures": {
+    "connectivity.json": "0e3798f092172685d2e4e3a1c5f29edb5b177c740484157f54455457a2c258ff",
+    "governance.json": "db4b6fd9d3bfab06d232b0771e8aa74137f6c222cd6e858c5e51d7614a9c2149",
+    "management.json": "78af70fa3a28b3db6fd6449697bd5fa173326ecc6b636417d581974773b061f6",
+    "workloads.json": "bea261c1e5c9c541d01dec2229432991c10b9586ff8ae349c8d38a00f511ab31"
+  },
+  "kind": "frozen-multiregion-alz-arm-fixtures",
+  "parameters": {
+    "docs/examples/bicep-multiregion-alz/scenarios/baseline/connectivity.parameters.json": "77e60858629772801ee995015391d025f90cd77b88087e4a59c54f58e6a0973f",
+    "docs/examples/bicep-multiregion-alz/scenarios/baseline/management.parameters.json": "301757f04caa4af3cd4f381e7e04ecb7d8d40f4578a5f7e5c44ce2bd07b72b49",
+    "docs/examples/bicep-multiregion-alz/scenarios/baseline/workloads.parameters.json": "02f1d67c3c7e1971f75c4d56d34e8c6b547e348c969abb360aa01c2875fed5fc",
+    "docs/examples/bicep-multiregion-alz/scenarios/defective/connectivity.parameters.json": "3c31c940acae3cb085cda022a5e456c175be9d93eca4bc2fa5276b3209af316a",
+    "docs/examples/bicep-multiregion-alz/scenarios/defective/management.parameters.json": "f614edc2cc2437e9488da4ee7669a3de516ec0296452f41228da701cbc1e3456",
+    "docs/examples/bicep-multiregion-alz/scenarios/defective/workloads.parameters.json": "3924592fb47d19ef2cd2fdbb252e76a63e29f04ea68396b1a992e746fef04253",
+    "docs/examples/bicep-multiregion-alz/scenarios/remediated/connectivity.parameters.json": "77e60858629772801ee995015391d025f90cd77b88087e4a59c54f58e6a0973f",
+    "docs/examples/bicep-multiregion-alz/scenarios/remediated/management.parameters.json": "301757f04caa4af3cd4f381e7e04ecb7d8d40f4578a5f7e5c44ce2bd07b72b49",
+    "docs/examples/bicep-multiregion-alz/scenarios/remediated/workloads.parameters.json": "02f1d67c3c7e1971f75c4d56d34e8c6b547e348c969abb360aa01c2875fed5fc"
+  },
+  "scope_map_sha256": "b9ea5e4dc870997d0ea3189e600c3cb663533f5b1ba90ce777cd9378e77163b4",
+  "sources": {
+    "docs/examples/bicep-multiregion-alz/connectivity/hub-spoke.bicep": "7da932f2542802750ba7c90f948ce3b999de00ea24a88f546075d151f01f749f",
+    "docs/examples/bicep-multiregion-alz/connectivity/main.bicep": "42539ba89ad7f98db23ba1f8d3752db06559a7ee8aa40750647d8ece8d3966d4",
+    "docs/examples/bicep-multiregion-alz/connectivity/region.bicep": "ecb0f2dc8751a4b913727f3242f7c250807872d2ee2969205b26389553cb8279",
+    "docs/examples/bicep-multiregion-alz/governance/main.bicep": "09ba151dcf47cd7bd75516a3b7b816512e4eb3a17444020b9126a4f30daa910c",
+    "docs/examples/bicep-multiregion-alz/governance/policies.bicep": "d76452fe55056c1e476b8e3a33db2d955ceb587ee780fdecd947741790cab913",
+    "docs/examples/bicep-multiregion-alz/management/main.bicep": "c06f0846a2988d069ef89f35d8e31a7a87756ec114b6b90ca3ea361b11529ce5",
+    "docs/examples/bicep-multiregion-alz/upstream/templates/core/logging/main.bicep": "b19fdc4d7514a155a059a9c3390c53fd73be18897c768cdd11a490c907273462",
+    "docs/examples/bicep-multiregion-alz/upstream/templates/networking/hubnetworking/main.bicep": "498ed4dd5d8fd7c5b5eac94711b714c815b5e3ae85c76ff0bde9773237c0e63a",
+    "docs/examples/bicep-multiregion-alz/workloads/deploy.bicep": "5aab000d13f7eb8d2684c0ef03c6e5b57a95dad5ce093280a091bcf06a77f62d",
+    "docs/examples/bicep-multiregion-alz/workloads/main.bicep": "ff5d5a1cc154c91ecbff2d9f665be7f539ecf29673f86756c6eaf3fc7e537d08"
+  },
+  "upstream": {
+    "archive_sha256": "d8334226b08802b9e8b1839016c73c120bd0c6e24c8f1aae983c5a22376484fd",
+    "module_provenance_file": "references/accelerator-validation.json",
+    "module_provenance_sha256": "4a7038cbe1886358206ba022b0fddeb769484e74e61d5d5b3d2e22da00cc768d",
+    "repository": "https://github.com/Azure/alz-bicep-accelerator",
+    "revision": "88dcafa6afcd57e1b3ccd772a81c88bd29ae2ac2"
+  }
+}

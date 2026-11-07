@@ -1,0 +1,244 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.47.16.16243",
+      "templateHash": "15619036726423718817"
+    }
+  },
+  "parameters": {
+    "workloadResourceGroupName": {
+      "type": "string",
+      "defaultValue": "rg-alz-workloads"
+    },
+    "connectivitySubscriptionId": {
+      "type": "string"
+    },
+    "useSwedenRemoteGateway": {
+      "type": "bool",
+      "defaultValue": true
+    },
+    "useGermanyRemoteGateway": {
+      "type": "bool",
+      "defaultValue": true
+    },
+    "allowSwedenPeeringAccess": {
+      "type": "bool",
+      "defaultValue": true
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2025-04-01",
+      "name": "alz-workload-network",
+      "resourceGroup": "[parameters('workloadResourceGroupName')]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "connectivitySubscriptionId": {
+            "value": "[parameters('connectivitySubscriptionId')]"
+          },
+          "useSwedenRemoteGateway": {
+            "value": "[parameters('useSwedenRemoteGateway')]"
+          },
+          "useGermanyRemoteGateway": {
+            "value": "[parameters('useGermanyRemoteGateway')]"
+          },
+          "allowSwedenPeeringAccess": {
+            "value": "[parameters('allowSwedenPeeringAccess')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.47.16.16243",
+              "templateHash": "14777707121382675550"
+            }
+          },
+          "parameters": {
+            "connectivitySubscriptionId": {
+              "type": "string"
+            },
+            "useSwedenRemoteGateway": {
+              "type": "bool",
+              "defaultValue": true
+            },
+            "useGermanyRemoteGateway": {
+              "type": "bool",
+              "defaultValue": true
+            },
+            "allowSwedenPeeringAccess": {
+              "type": "bool",
+              "defaultValue": true
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Network/networkSecurityGroups",
+              "apiVersion": "2024-05-01",
+              "name": "nsg-spoke-swedencentral",
+              "location": "swedencentral",
+              "properties": {
+                "securityRules": []
+              }
+            },
+            {
+              "type": "Microsoft.Network/networkSecurityGroups",
+              "apiVersion": "2024-05-01",
+              "name": "nsg-spoke-germanywestcentral",
+              "location": "germanywestcentral",
+              "properties": {
+                "securityRules": []
+              }
+            },
+            {
+              "type": "Microsoft.Network/routeTables",
+              "apiVersion": "2024-07-01",
+              "name": "rt-spoke-swedencentral",
+              "location": "swedencentral",
+              "properties": {
+                "disableBgpRoutePropagation": false,
+                "routes": [
+                  {
+                    "name": "default-via-regional-firewall",
+                    "properties": {
+                      "addressPrefix": "0.0.0.0/0",
+                      "nextHopType": "VirtualAppliance",
+                      "nextHopIpAddress": "10.10.0.4"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "type": "Microsoft.Network/routeTables",
+              "apiVersion": "2024-07-01",
+              "name": "rt-spoke-germanywestcentral",
+              "location": "germanywestcentral",
+              "properties": {
+                "disableBgpRoutePropagation": false,
+                "routes": [
+                  {
+                    "name": "default-via-regional-firewall",
+                    "properties": {
+                      "addressPrefix": "0.0.0.0/0",
+                      "nextHopType": "VirtualAppliance",
+                      "nextHopIpAddress": "10.20.0.4"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "type": "Microsoft.Network/virtualNetworks",
+              "apiVersion": "2024-05-01",
+              "name": "vnet-spoke-swedencentral",
+              "location": "swedencentral",
+              "properties": {
+                "addressSpace": {
+                  "addressPrefixes": [
+                    "10.11.0.0/24"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "Microsoft.Network/virtualNetworks",
+              "apiVersion": "2024-05-01",
+              "name": "vnet-spoke-germanywestcentral",
+              "location": "germanywestcentral",
+              "properties": {
+                "addressSpace": {
+                  "addressPrefixes": [
+                    "10.21.0.0/24"
+                  ]
+                }
+              }
+            },
+            {
+              "type": "Microsoft.Network/virtualNetworks/subnets",
+              "apiVersion": "2024-05-01",
+              "name": "[format('{0}/{1}', 'vnet-spoke-swedencentral', 'workload')]",
+              "properties": {
+                "addressPrefix": "10.11.0.0/24",
+                "networkSecurityGroup": {
+                  "id": "[resourceId('Microsoft.Network/networkSecurityGroups', 'nsg-spoke-swedencentral')]"
+                },
+                "routeTable": {
+                  "id": "[resourceId('Microsoft.Network/routeTables', 'rt-spoke-swedencentral')]"
+                }
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', 'nsg-spoke-swedencentral')]",
+                "[resourceId('Microsoft.Network/routeTables', 'rt-spoke-swedencentral')]",
+                "[resourceId('Microsoft.Network/virtualNetworks', 'vnet-spoke-swedencentral')]"
+              ]
+            },
+            {
+              "type": "Microsoft.Network/virtualNetworks/subnets",
+              "apiVersion": "2024-05-01",
+              "name": "[format('{0}/{1}', 'vnet-spoke-germanywestcentral', 'workload')]",
+              "properties": {
+                "addressPrefix": "10.21.0.0/24",
+                "networkSecurityGroup": {
+                  "id": "[resourceId('Microsoft.Network/networkSecurityGroups', 'nsg-spoke-germanywestcentral')]"
+                },
+                "routeTable": {
+                  "id": "[resourceId('Microsoft.Network/routeTables', 'rt-spoke-germanywestcentral')]"
+                }
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', 'nsg-spoke-germanywestcentral')]",
+                "[resourceId('Microsoft.Network/routeTables', 'rt-spoke-germanywestcentral')]",
+                "[resourceId('Microsoft.Network/virtualNetworks', 'vnet-spoke-germanywestcentral')]"
+              ]
+            },
+            {
+              "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+              "apiVersion": "2024-01-01",
+              "name": "[format('{0}/{1}', 'vnet-spoke-swedencentral', 'to-hub-swedencentral')]",
+              "properties": {
+                "remoteVirtualNetwork": {
+                  "id": "[format('/subscriptions/{0}/resourceGroups/rg-alz-hub-swedencentral/providers/Microsoft.Network/virtualNetworks/vnet-hub-swedencentral', parameters('connectivitySubscriptionId'))]"
+                },
+                "allowVirtualNetworkAccess": "[parameters('allowSwedenPeeringAccess')]",
+                "allowForwardedTraffic": true,
+                "allowGatewayTransit": false,
+                "useRemoteGateways": "[parameters('useSwedenRemoteGateway')]"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', 'vnet-spoke-swedencentral')]"
+              ]
+            },
+            {
+              "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+              "apiVersion": "2024-01-01",
+              "name": "[format('{0}/{1}', 'vnet-spoke-germanywestcentral', 'to-hub-germanywestcentral')]",
+              "properties": {
+                "remoteVirtualNetwork": {
+                  "id": "[format('/subscriptions/{0}/resourceGroups/rg-alz-hub-germanywestcentral/providers/Microsoft.Network/virtualNetworks/vnet-hub-germanywestcentral', parameters('connectivitySubscriptionId'))]"
+                },
+                "allowVirtualNetworkAccess": true,
+                "allowForwardedTraffic": true,
+                "allowGatewayTransit": false,
+                "useRemoteGateways": "[parameters('useGermanyRemoteGateway')]"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', 'vnet-spoke-germanywestcentral')]"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

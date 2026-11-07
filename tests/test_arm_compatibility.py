@@ -311,6 +311,51 @@ class ArmCompatibilityTests(unittest.TestCase):
         self.assertEqual(row["state"], "unknown")
         self.assertEqual(row["properties"], {})
 
+    def test_local_network_gateways_remain_explicitly_unsupported(self):
+        resource = {
+            "type": "Microsoft.Network/localNetworkGateways",
+            "apiVersion": "2024-05-01",
+            "name": "fictional-on-premises",
+            "location": "swedencentral",
+            "properties": {"gatewayIpAddress": "203.0.113.10"},
+        }
+        bundle = self.bundle({"module": self.deployment({"resources": [resource]})})
+        row = bundle["resources"][0]
+        self.assertEqual(row["state"], "unknown")
+        self.assertEqual(row["properties"], {})
+        self.assertEqual(row["reason"], "arm_resource_type_unsupported")
+        self.assertIn(
+            {"reason": "arm_resource_type_unsupported", "address": row["logical_id"]},
+            bundle["diagnostics"],
+        )
+
+    def test_management_group_module_scope_is_normalized(self):
+        nested = self.deployment(
+            {
+                "resources": [
+                    {
+                        "type": "Microsoft.Authorization/roleAssignments",
+                        "apiVersion": "2022-04-01",
+                        "name": "00000000-0000-0000-0000-000000000001",
+                        "properties": {},
+                    }
+                ]
+            }
+        )
+        nested["scope"] = "Microsoft.Management/managementGroups/fictional-alz"
+        bundle = self.bundle({"module": nested})
+        row = bundle["resources"][0]
+        self.assertTrue(
+            row["arm_id"].startswith(
+                "/providers/microsoft.management/managementgroups/fictional-alz/"
+                "providers/microsoft.authorization/roleassignments/"
+            )
+        )
+        self.assertNotIn(
+            "nested_deployment_scope_unresolved",
+            {item["reason"] for item in bundle["diagnostics"]},
+        )
+
     def test_offline_api_support_does_not_change_observed_allowlists(self):
         for kind, version in (
             ("microsoft.network/virtualnetworks/virtualnetworkpeerings", "2024-01-01"),

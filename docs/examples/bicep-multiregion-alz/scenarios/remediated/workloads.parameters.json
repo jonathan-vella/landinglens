@@ -1,0 +1,11 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "connectivitySubscriptionId": { "value": "00000000-0000-0000-0000-000000000002" },
+    "workloadResourceGroupName": { "value": "rg-alz-workloads" },
+    "allowSwedenPeeringAccess": { "value": true },
+    "useSwedenRemoteGateway": { "value": true },
+    "useGermanyRemoteGateway": { "value": true }
+  }
+}

@@ -4,6 +4,22 @@ You do not need a deployed ALZ to test LandingLens. Public Microsoft templates
 provide representative **declared configuration**, not observed Azure evidence.
 No Azure login, deployment, traffic test or live collection is part of this workflow.
 
+## Multi-region scenario and report package
+
+The reusable
+[fictional two-region Bicep ALZ](examples/bicep-multiregion-alz/README.md)
+adds governance, central logging, Sweden Central and Germany West Central hubs,
+Premium Azure Firewalls, VPN declarations, and one spoke per region. Its
+baseline, controlled-defect, and remediated assessments remain separate across
+four explicit fictional scopes. Frozen compiler-produced ARM fixtures make the
+assessment/report workflow reproducible without a compiler or network access.
+
+The scenario demonstrates supported firewall-threat-intelligence and peering
+configuration changes, while keeping VPN operation, unsupported
+local-network-gateway properties, and owner-specific retention requirements
+unknown or manual. The sample reports are planned configuration evidence only;
+they do not prove deployed behavior or compliance.
+
 ## Reviewed inputs and results
 
 The offline experiment used the MIT-licensed

@@ -1,0 +1,749 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.47.16.16243",
+      "templateHash": "13965259225204697736"
+    }
+  },
+  "parameters": {
+    "managementSubscriptionId": {
+      "type": "string",
+      "defaultValue": "00000000-0000-0000-0000-000000000001"
+    },
+    "connectivitySubscriptionId": {
+      "type": "string",
+      "defaultValue": "00000000-0000-0000-0000-000000000002"
+    },
+    "workloadSubscriptionId": {
+      "type": "string",
+      "defaultValue": "00000000-0000-0000-0000-000000000005"
+    },
+    "identitySubscriptionId": {
+      "type": "string",
+      "defaultValue": "00000000-0000-0000-0000-000000000003"
+    },
+    "securitySubscriptionId": {
+      "type": "string",
+      "defaultValue": "00000000-0000-0000-0000-000000000004"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Management/managementGroups",
+      "apiVersion": "2020-05-01",
+      "name": "fictional-alz",
+      "properties": {
+        "details": {
+          "parent": {
+            "id": "/providers/Microsoft.Management/managementGroups/fictional-tenant-root"
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Management/managementGroups",
+      "apiVersion": "2020-05-01",
+      "name": "platform",
+      "properties": {
+        "details": {
+          "parent": {
+            "id": "[tenantResourceId('Microsoft.Management/managementGroups', 'fictional-alz')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[tenantResourceId('Microsoft.Management/managementGroups', 'fictional-alz')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Management/managementGroups",
+      "apiVersion": "2020-05-01",
+      "name": "landing-zones",
+      "properties": {
+        "details": {
+          "parent": {
+            "id": "[tenantResourceId('Microsoft.Management/managementGroups', 'fictional-alz')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[tenantResourceId('Microsoft.Management/managementGroups', 'fictional-alz')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Management/managementGroups",
+      "apiVersion": "2020-05-01",
+      "name": "sandbox",
+      "properties": {
+        "details": {
+          "parent": {
+            "id": "[tenantResourceId('Microsoft.Management/managementGroups', 'fictional-alz')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[tenantResourceId('Microsoft.Management/managementGroups', 'fictional-alz')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Management/managementGroups",
+      "apiVersion": "2020-05-01",
+      "name": "decommissioned",
+      "properties": {
+        "details": {
+          "parent": {
+            "id": "[tenantResourceId('Microsoft.Management/managementGroups', 'fictional-alz')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[tenantResourceId('Microsoft.Management/managementGroups', 'fictional-alz')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Management/managementGroups",
+      "apiVersion": "2020-05-01",
+      "name": "management",
+      "properties": {
+        "details": {
+          "parent": {
+            "id": "[tenantResourceId('Microsoft.Management/managementGroups', 'platform')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[tenantResourceId('Microsoft.Management/managementGroups', 'platform')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Management/managementGroups",
+      "apiVersion": "2020-05-01",
+      "name": "connectivity",
+      "properties": {
+        "details": {
+          "parent": {
+            "id": "[tenantResourceId('Microsoft.Management/managementGroups', 'platform')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[tenantResourceId('Microsoft.Management/managementGroups', 'platform')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Management/managementGroups",
+      "apiVersion": "2020-05-01",
+      "name": "identity",
+      "properties": {
+        "details": {
+          "parent": {
+            "id": "[tenantResourceId('Microsoft.Management/managementGroups', 'platform')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[tenantResourceId('Microsoft.Management/managementGroups', 'platform')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Management/managementGroups",
+      "apiVersion": "2020-05-01",
+      "name": "security",
+      "properties": {
+        "details": {
+          "parent": {
+            "id": "[tenantResourceId('Microsoft.Management/managementGroups', 'platform')]"
+          }
+        }
+      },
+      "dependsOn": [
+        "[tenantResourceId('Microsoft.Management/managementGroups', 'platform')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Management/managementGroups/subscriptions",
+      "apiVersion": "2020-05-01",
+      "name": "[format('{0}/{1}', 'management', parameters('managementSubscriptionId'))]",
+      "dependsOn": [
+        "[tenantResourceId('Microsoft.Management/managementGroups', 'management')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Management/managementGroups/subscriptions",
+      "apiVersion": "2020-05-01",
+      "name": "[format('{0}/{1}', 'connectivity', parameters('connectivitySubscriptionId'))]",
+      "dependsOn": [
+        "[tenantResourceId('Microsoft.Management/managementGroups', 'connectivity')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Management/managementGroups/subscriptions",
+      "apiVersion": "2020-05-01",
+      "name": "[format('{0}/{1}', 'identity', parameters('identitySubscriptionId'))]",
+      "dependsOn": [
+        "[tenantResourceId('Microsoft.Management/managementGroups', 'identity')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Management/managementGroups/subscriptions",
+      "apiVersion": "2020-05-01",
+      "name": "[format('{0}/{1}', 'security', parameters('securitySubscriptionId'))]",
+      "dependsOn": [
+        "[tenantResourceId('Microsoft.Management/managementGroups', 'security')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Management/managementGroups/subscriptions",
+      "apiVersion": "2020-05-01",
+      "name": "[format('{0}/{1}', 'landing-zones', parameters('workloadSubscriptionId'))]",
+      "dependsOn": [
+        "[tenantResourceId('Microsoft.Management/managementGroups', 'landing-zones')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2025-04-01",
+      "name": "alz-workload-policies",
+      "scope": "[format('Microsoft.Management/managementGroups/{0}', 'landing-zones')]",
+      "location": "[deployment().location]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "deployNetworkPolicy": {
+            "value": true
+          },
+          "deployTagPolicy": {
+            "value": false
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.47.16.16243",
+              "templateHash": "16858470019663983419"
+            }
+          },
+          "parameters": {
+            "deployNetworkPolicy": {
+              "type": "bool"
+            },
+            "deployTagPolicy": {
+              "type": "bool"
+            }
+          },
+          "variables": {
+            "$fxv#0": {
+              "id": "/providers/Microsoft.Management/managementGroups/alz/providers/Microsoft.Authorization/policyDefinitions/Deny-Subnet-Without-Udr",
+              "name": "Deny-Subnet-Without-Udr",
+              "properties": {
+                "description": "This policy denies the creation of a subnet without a User Defined Route (UDR).",
+                "displayName": "Subnets should have a User Defined Route",
+                "metadata": {
+                  "alzCloudEnvironments": [
+                    "AzureCloud",
+                    "AzureChinaCloud",
+                    "AzureUSGovernment"
+                  ],
+                  "category": "Network",
+                  "source": "https://github.com/Azure/Enterprise-Scale/",
+                  "version": "2.1.0"
+                },
+                "mode": "All",
+                "parameters": {
+                  "effect": {
+                    "allowedValues": [
+                      "Audit",
+                      "Deny",
+                      "Disabled"
+                    ],
+                    "defaultValue": "Deny",
+                    "metadata": {
+                      "description": "Enable or disable the execution of the policy",
+                      "displayName": "Effect"
+                    },
+                    "type": "String"
+                  },
+                  "excludedSubnets": {
+                    "defaultValue": [
+                      "AzureBastionSubnet",
+                      "RouteServerSubnet"
+                    ],
+                    "metadata": {
+                      "description": "Array of subnet names that are excluded from this policy",
+                      "displayName": "Excluded Subnets"
+                    },
+                    "type": "Array"
+                  }
+                },
+                "policyRule": {
+                  "if": {
+                    "anyOf": [
+                      {
+                        "allOf": [
+                          {
+                            "equals": "Microsoft.Network/virtualNetworks",
+                            "field": "type"
+                          },
+                          {
+                            "count": {
+                              "field": "Microsoft.Network/virtualNetworks/subnets[*]",
+                              "where": {
+                                "allOf": [
+                                  {
+                                    "exists": "false",
+                                    "field": "Microsoft.Network/virtualNetworks/subnets[*].routeTable.id"
+                                  },
+                                  {
+                                    "field": "Microsoft.Network/virtualNetworks/subnets[*].name",
+                                    "notIn": "[[[parameters('excludedSubnets')]"
+                                  }
+                                ]
+                              }
+                            },
+                            "notEquals": 0
+                          }
+                        ]
+                      },
+                      {
+                        "allOf": [
+                          {
+                            "equals": "Microsoft.Network/virtualNetworks/subnets",
+                            "field": "type"
+                          },
+                          {
+                            "field": "name",
+                            "notIn": "[[[parameters('excludedSubnets')]"
+                          },
+                          {
+                            "exists": "false",
+                            "field": "Microsoft.Network/virtualNetworks/subnets/routeTable.id"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "then": {
+                    "effect": "[[[parameters('effect')]"
+                  }
+                },
+                "policyType": "Custom"
+              },
+              "type": "Microsoft.Authorization/policyDefinitions"
+            },
+            "$fxv#1": {
+              "id": "/providers/Microsoft.Management/managementGroups/alz/providers/Microsoft.Authorization/policyDefinitions/Audit-Tags-Mandatory",
+              "name": "Audit-Tags-Mandatory",
+              "properties": {
+                "description": "Audits resources to ensure they have required tags based on tag array. Does not apply to resource groups.",
+                "displayName": "Audit for mandatory tags on resources",
+                "metadata": {
+                  "alzCloudEnvironments": [
+                    "AzureCloud",
+                    "AzureChinaCloud",
+                    "AzureUSGovernment"
+                  ],
+                  "category": "Tags",
+                  "source": "https://github.com/Azure/Enterprise-Scale/",
+                  "version": "1.0.1"
+                },
+                "mode": "Indexed",
+                "parameters": {
+                  "effect": {
+                    "allowedValues": [
+                      "Audit",
+                      "Deny",
+                      "Disabled"
+                    ],
+                    "defaultValue": "Audit",
+                    "metadata": {
+                      "description": "Enable or disable the execution of the policy",
+                      "displayName": "Effect"
+                    },
+                    "type": "String"
+                  },
+                  "mandatoryTags": {
+                    "defaultValue": [
+                      "owner",
+                      "costcenter"
+                    ],
+                    "metadata": {
+                      "description": "Array of mandatory tags that must be present on the resource group. The array should contain semicolon separated list of the tag names.",
+                      "displayName": "Array of mandatory tags"
+                    },
+                    "type": "Array"
+                  }
+                },
+                "policyRule": {
+                  "if": {
+                    "not": {
+                      "count": {
+                        "name": "tagcount",
+                        "value": "[[[parameters('mandatoryTags')]",
+                        "where": {
+                          "containsKey": "[[[current('tagcount')]",
+                          "field": "tags"
+                        }
+                      },
+                      "equals": "[[[length(parameters('mandatoryTags'))]"
+                    }
+                  },
+                  "then": {
+                    "effect": "[[[parameters('effect')]"
+                  }
+                },
+                "policyType": "Custom"
+              },
+              "type": "Microsoft.Authorization/policyDefinitions"
+            },
+            "alzPolicyLibrary": "../upstream/templates/core/governance/lib/alz",
+            "denySubnetWithoutUdr": "[variables('$fxv#0')]",
+            "auditMandatoryTags": "[variables('$fxv#1')]"
+          },
+          "resources": [
+            {
+              "condition": "[parameters('deployNetworkPolicy')]",
+              "type": "Microsoft.Authorization/policyDefinitions",
+              "apiVersion": "2023-04-01",
+              "name": "[variables('denySubnetWithoutUdr').name]",
+              "properties": "[variables('denySubnetWithoutUdr').properties]"
+            },
+            {
+              "condition": "[parameters('deployTagPolicy')]",
+              "type": "Microsoft.Authorization/policyDefinitions",
+              "apiVersion": "2023-04-01",
+              "name": "[variables('auditMandatoryTags').name]",
+              "properties": "[variables('auditMandatoryTags').properties]"
+            },
+            {
+              "condition": "[parameters('deployNetworkPolicy')]",
+              "type": "Microsoft.Authorization/policyAssignments",
+              "apiVersion": "2023-04-01",
+              "name": "alz-deny-subnet-without-udr",
+              "properties": {
+                "displayName": "ALZ: require a user-defined route on workload subnets",
+                "description": "Fictional assignment of the pinned upstream ALZ policy.",
+                "policyDefinitionId": "[extensionResourceId(managementGroup().id, 'Microsoft.Authorization/policyDefinitions', variables('denySubnetWithoutUdr').name)]",
+                "parameters": {
+                  "effect": {
+                    "value": "Deny"
+                  }
+                }
+              },
+              "dependsOn": [
+                "[extensionResourceId(managementGroup().id, 'Microsoft.Authorization/policyDefinitions', variables('denySubnetWithoutUdr').name)]"
+              ]
+            },
+            {
+              "condition": "[parameters('deployTagPolicy')]",
+              "type": "Microsoft.Authorization/policyAssignments",
+              "apiVersion": "2023-04-01",
+              "name": "alz-audit-mandatory-tags",
+              "properties": {
+                "displayName": "ALZ: audit mandatory resource tags",
+                "description": "Fictional assignment of the pinned upstream ALZ policy.",
+                "policyDefinitionId": "[extensionResourceId(managementGroup().id, 'Microsoft.Authorization/policyDefinitions', variables('auditMandatoryTags').name)]",
+                "parameters": {
+                  "effect": {
+                    "value": "Audit"
+                  },
+                  "mandatoryTags": {
+                    "value": [
+                      "owner",
+                      "costcenter"
+                    ]
+                  }
+                }
+              },
+              "dependsOn": [
+                "[extensionResourceId(managementGroup().id, 'Microsoft.Authorization/policyDefinitions', variables('auditMandatoryTags').name)]"
+              ]
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[tenantResourceId('Microsoft.Management/managementGroups', 'landing-zones')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2025-04-01",
+      "name": "alz-platform-policies",
+      "scope": "[format('Microsoft.Management/managementGroups/{0}', 'platform')]",
+      "location": "[deployment().location]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "deployNetworkPolicy": {
+            "value": false
+          },
+          "deployTagPolicy": {
+            "value": true
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.47.16.16243",
+              "templateHash": "16858470019663983419"
+            }
+          },
+          "parameters": {
+            "deployNetworkPolicy": {
+              "type": "bool"
+            },
+            "deployTagPolicy": {
+              "type": "bool"
+            }
+          },
+          "variables": {
+            "$fxv#0": {
+              "id": "/providers/Microsoft.Management/managementGroups/alz/providers/Microsoft.Authorization/policyDefinitions/Deny-Subnet-Without-Udr",
+              "name": "Deny-Subnet-Without-Udr",
+              "properties": {
+                "description": "This policy denies the creation of a subnet without a User Defined Route (UDR).",
+                "displayName": "Subnets should have a User Defined Route",
+                "metadata": {
+                  "alzCloudEnvironments": [
+                    "AzureCloud",
+                    "AzureChinaCloud",
+                    "AzureUSGovernment"
+                  ],
+                  "category": "Network",
+                  "source": "https://github.com/Azure/Enterprise-Scale/",
+                  "version": "2.1.0"
+                },
+                "mode": "All",
+                "parameters": {
+                  "effect": {
+                    "allowedValues": [
+                      "Audit",
+                      "Deny",
+                      "Disabled"
+                    ],
+                    "defaultValue": "Deny",
+                    "metadata": {
+                      "description": "Enable or disable the execution of the policy",
+                      "displayName": "Effect"
+                    },
+                    "type": "String"
+                  },
+                  "excludedSubnets": {
+                    "defaultValue": [
+                      "AzureBastionSubnet",
+                      "RouteServerSubnet"
+                    ],
+                    "metadata": {
+                      "description": "Array of subnet names that are excluded from this policy",
+                      "displayName": "Excluded Subnets"
+                    },
+                    "type": "Array"
+                  }
+                },
+                "policyRule": {
+                  "if": {
+                    "anyOf": [
+                      {
+                        "allOf": [
+                          {
+                            "equals": "Microsoft.Network/virtualNetworks",
+                            "field": "type"
+                          },
+                          {
+                            "count": {
+                              "field": "Microsoft.Network/virtualNetworks/subnets[*]",
+                              "where": {
+                                "allOf": [
+                                  {
+                                    "exists": "false",
+                                    "field": "Microsoft.Network/virtualNetworks/subnets[*].routeTable.id"
+                                  },
+                                  {
+                                    "field": "Microsoft.Network/virtualNetworks/subnets[*].name",
+                                    "notIn": "[[[parameters('excludedSubnets')]"
+                                  }
+                                ]
+                              }
+                            },
+                            "notEquals": 0
+                          }
+                        ]
+                      },
+                      {
+                        "allOf": [
+                          {
+                            "equals": "Microsoft.Network/virtualNetworks/subnets",
+                            "field": "type"
+                          },
+                          {
+                            "field": "name",
+                            "notIn": "[[[parameters('excludedSubnets')]"
+                          },
+                          {
+                            "exists": "false",
+                            "field": "Microsoft.Network/virtualNetworks/subnets/routeTable.id"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "then": {
+                    "effect": "[[[parameters('effect')]"
+                  }
+                },
+                "policyType": "Custom"
+              },
+              "type": "Microsoft.Authorization/policyDefinitions"
+            },
+            "$fxv#1": {
+              "id": "/providers/Microsoft.Management/managementGroups/alz/providers/Microsoft.Authorization/policyDefinitions/Audit-Tags-Mandatory",
+              "name": "Audit-Tags-Mandatory",
+              "properties": {
+                "description": "Audits resources to ensure they have required tags based on tag array. Does not apply to resource groups.",
+                "displayName": "Audit for mandatory tags on resources",
+                "metadata": {
+                  "alzCloudEnvironments": [
+                    "AzureCloud",
+                    "AzureChinaCloud",
+                    "AzureUSGovernment"
+                  ],
+                  "category": "Tags",
+                  "source": "https://github.com/Azure/Enterprise-Scale/",
+                  "version": "1.0.1"
+                },
+                "mode": "Indexed",
+                "parameters": {
+                  "effect": {
+                    "allowedValues": [
+                      "Audit",
+                      "Deny",
+                      "Disabled"
+                    ],
+                    "defaultValue": "Audit",
+                    "metadata": {
+                      "description": "Enable or disable the execution of the policy",
+                      "displayName": "Effect"
+                    },
+                    "type": "String"
+                  },
+                  "mandatoryTags": {
+                    "defaultValue": [
+                      "owner",
+                      "costcenter"
+                    ],
+                    "metadata": {
+                      "description": "Array of mandatory tags that must be present on the resource group. The array should contain semicolon separated list of the tag names.",
+                      "displayName": "Array of mandatory tags"
+                    },
+                    "type": "Array"
+                  }
+                },
+                "policyRule": {
+                  "if": {
+                    "not": {
+                      "count": {
+                        "name": "tagcount",
+                        "value": "[[[parameters('mandatoryTags')]",
+                        "where": {
+                          "containsKey": "[[[current('tagcount')]",
+                          "field": "tags"
+                        }
+                      },
+                      "equals": "[[[length(parameters('mandatoryTags'))]"
+                    }
+                  },
+                  "then": {
+                    "effect": "[[[parameters('effect')]"
+                  }
+                },
+                "policyType": "Custom"
+              },
+              "type": "Microsoft.Authorization/policyDefinitions"
+            },
+            "alzPolicyLibrary": "../upstream/templates/core/governance/lib/alz",
+            "denySubnetWithoutUdr": "[variables('$fxv#0')]",
+            "auditMandatoryTags": "[variables('$fxv#1')]"
+          },
+          "resources": [
+            {
+              "condition": "[parameters('deployNetworkPolicy')]",
+              "type": "Microsoft.Authorization/policyDefinitions",
+              "apiVersion": "2023-04-01",
+              "name": "[variables('denySubnetWithoutUdr').name]",
+              "properties": "[variables('denySubnetWithoutUdr').properties]"
+            },
+            {
+              "condition": "[parameters('deployTagPolicy')]",
+              "type": "Microsoft.Authorization/policyDefinitions",
+              "apiVersion": "2023-04-01",
+              "name": "[variables('auditMandatoryTags').name]",
+              "properties": "[variables('auditMandatoryTags').properties]"
+            },
+            {
+              "condition": "[parameters('deployNetworkPolicy')]",
+              "type": "Microsoft.Authorization/policyAssignments",
+              "apiVersion": "2023-04-01",
+              "name": "alz-deny-subnet-without-udr",
+              "properties": {
+                "displayName": "ALZ: require a user-defined route on workload subnets",
+                "description": "Fictional assignment of the pinned upstream ALZ policy.",
+                "policyDefinitionId": "[extensionResourceId(managementGroup().id, 'Microsoft.Authorization/policyDefinitions', variables('denySubnetWithoutUdr').name)]",
+                "parameters": {
+                  "effect": {
+                    "value": "Deny"
+                  }
+                }
+              },
+              "dependsOn": [
+                "[extensionResourceId(managementGroup().id, 'Microsoft.Authorization/policyDefinitions', variables('denySubnetWithoutUdr').name)]"
+              ]
+            },
+            {
+              "condition": "[parameters('deployTagPolicy')]",
+              "type": "Microsoft.Authorization/policyAssignments",
+              "apiVersion": "2023-04-01",
+              "name": "alz-audit-mandatory-tags",
+              "properties": {
+                "displayName": "ALZ: audit mandatory resource tags",
+                "description": "Fictional assignment of the pinned upstream ALZ policy.",
+                "policyDefinitionId": "[extensionResourceId(managementGroup().id, 'Microsoft.Authorization/policyDefinitions', variables('auditMandatoryTags').name)]",
+                "parameters": {
+                  "effect": {
+                    "value": "Audit"
+                  },
+                  "mandatoryTags": {
+                    "value": [
+                      "owner",
+                      "costcenter"
+                    ]
+                  }
+                }
+              },
+              "dependsOn": [
+                "[extensionResourceId(managementGroup().id, 'Microsoft.Authorization/policyDefinitions', variables('auditMandatoryTags').name)]"
+              ]
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[tenantResourceId('Microsoft.Management/managementGroups', 'platform')]"
+      ]
+    }
+  ]
+}
