@@ -33,20 +33,20 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.21` retains all 255 entries: 12 automated, 200 assisted
-and 43 manual. Crosswalk `2026-11-06.21` rebinds the unchanged 51-control,
+Current successor `2026-11-06.22` retains all 255 entries: 12 automated, 200 assisted
+and 43 manual. Crosswalk `2026-11-06.22` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-Exact predecessor `.20` is frozen; source-matrix acceptance alone is not delivery.
+Exact predecessor `.21` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
 
-### Cohort 09: independent preparation, not accepted
+### Cohort 09: sovereign organization, regions and classification
 
-[#145](https://github.com/jonathan-vella/landinglens/issues/145) prepares the
-[seven fixed GUIDs](../references/preparation/batch-09.json) against
-[17 public captures](../references/preparation/batch-09-sources.json).
-It does not register a successor catalog/interview bank, change dispositions,
-record delivery or close the issue. Activation awaits the coordinator's explicit
-serialized slot after cohorts10 and25.
+[#145](https://github.com/jonathan-vella/landinglens/issues/145) integrates the
+[seven fixed GUIDs](../references/recommendation-batches/batch-09.json) against
+[17 unchanged captures](../references/recommendation-batches/batch-09-sources.json)
+in `.22` after the explicit sole slot and actual10/25 checked implementation/
+receipt/final-main delivery. All196 earlier rows/23 receipts and non-own complete
+controls remain unchanged. Source/bank activation is not receipted delivery.
 
 | Recommendation | Preparation and separate human decision |
 |---|---|
@@ -61,9 +61,10 @@ serialized slot after cohorts10 and25.
 No whole-recommendation predicate is added. Preparation uses the existing engine,
 adapters, bound review/interview/session contracts, tiers and outputs. Missing,
 partial, denied, ambiguous, stale, unsupported or over-bound evidence is unknown.
-The draft interview is exercised only through authored in-memory preparation;
-it is deliberately absent from the accepted bank. Original-time predecessor
-replay remains accepted; candidate replay remains rejected.
+The registered `sovereign-organization-regions-classification` interview starts
+with seven independent blank outcomes and separate attribution/requirements/
+scope/content/time/expiry bindings. Original-time accepted and predecessor replay
+remain supported; altered candidate catalogs remain rejected.
 
 Resource/display names do not designate purposes or roots. Distinct location
 strings and paired regions prove no geographic/legal independence, appropriate

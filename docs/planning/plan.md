@@ -1,5 +1,71 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 09 accepted integration: 2026-11-06
+
+The coordinator explicitly granted [#145](https://github.com/jonathan-vella/landinglens/issues/145)
+the sole slot after actual10 implementation146/receipt147 and25
+implementation149/receipt150, completed issues and checked final main
+`e5506c3d4061845b4250a68046ba281156de676d`. Preserved preparation `6239914`
+reconciles this baseline in `4f0b766`, retaining strict identity RG shape,
+topology, platform-health, manual team/vending and Policy bank/helper behavior.
+All nineteen current genuine compiler cases precede the own VM location/tag case.
+
+The [seven-GUID matrix](../../references/recommendation-batches/batch-09.json)
+and [17 unchanged captures](../../references/recommendation-batches/batch-09-sources.json)
+activate unique `.22` through existing offline builders. Exact `.21` catalog bytes:
+`b7395794a08feed20fe29b61849409541639f525b2970aaad248964f13b7860c`;
+crosswalk bytes:
+`5476deaef6c8d9463bf23a4c7f62f18e2dc4341108d3ea880c0aea3aabaa22a0`.
+All255GUIDs/fixed251/original four complete objects, every non-own full control,
+all196 prior own rows and23 receipts remain unchanged. Dispositions stay12/200/43;
+crosswalk stays51 controls/53 associations. Accepted activation alone leaves
+196 delivered/55 pending until actual checked own delivery.
+
+Five assisted workflows expose only strict known unique typed selected-scope
+parent joins consistent with saved positive edges, existing explicit VM location
+labels and existing safe tag counts. C03.01/C04.02 stay manual. Seven independent
+blank outcomes and exceptions retain source-specific requirements, attribution,
+scope/content/time/expiry binding in the registered bank and local sessions.
+Names never designate roles or roots; labels/pairs never prove independence,
+regional suitability, DR, required features or available capacity. Public product
+information is not customer entitlement or quota. Counts never establish taxonomy,
+classification, sovereignty or policy enforcement. The immutable Public wording
+is qualified by the current four-zone SLZ; current regional guidance does not
+mandate pairing or historical distance. No actual private data classification,
+private tag/workload/employee/location payload, legal/eligibility judgment, query
+execution, collector or new availability/account read is introduced.
+
+Candidate export remains refused and original-time accepted/predecessor replay
+preserves prior meaning. Initial accepted targeted execution found a fixture
+expectation using a nonexistent allowlist `upstream_id`; the assertion now joins
+the actual GUID schema and checks only `allowed` entries, preserving exact
+D07.06/.07 execution boundaries without running either query. All final wheel,
+suite/static, exact-head eight-job/CodeQL/security/review and four downloaded
+exercised compiler gates remain required before normal SHA-bound merge, guarded
+own-GUID receipt publication and final-main CI satisfy closure.
+
+The first installed compiler check was incorrectly launched concurrently with
+replacement of this session's own preparation installation. That process retained
+old imported modules while reading the new catalog, producing eight errors; its
+failed JSON is preserved as `invalidated-compiler-install-race.json`, not proof.
+After installation completed and all151 package members were byte-verified against
+the exact wheel and checkout, the repeated compiler check exercised all twenty
+cases without skips or restore. Corrected local compiler proof SHA256:
+`d0904d737a37386642b8294edcd70db95cfaa2a4876972523c00bd29dc13bd5b`.
+No production change or assertion weakening was used to correct the invocation.
+
+Final accepted checkout and own exact installed-wheel suites each ran **747 tests**:
+746 passed with only the original Windows symlink-privilege skip. All26 cohort09
+preparation/accepted cases pass, including the registered seven-decision session,
+atomic failure, original-time replay and predecessor rejection of changed review
+meaning. Format/lint,48-source-file typing, dependency consistency and503 local
+documentation links pass. Final offline implementation wheel SHA256:
+`6e3b14c0838ade2ab8c3bb6e318a5e90ed44befa162467a78899dcb33811c14c`.
+All151 package members match checkout, wheel and the dedicated own outside-checkout
+installation importing `.22`. This implementation wheel, not preparation or the
+invalidated concurrent compiler invocation, is the later recorder input. Remote
+exact-head/four-platform acceptance and checked publication gates remain pending.
+
 ## Cohort 09 independent preparation: 2026-11-06
 
 [#145](https://github.com/jonathan-vella/landinglens/issues/145) owns only the

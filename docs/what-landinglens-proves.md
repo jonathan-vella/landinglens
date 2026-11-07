@@ -8,8 +8,8 @@ are in the [plan](planning/plan.md).
 
 ## Evidence and outcomes
 
-Cohort09 [independent preparation](automation-matrix.md#cohort-09-independent-preparation-not-accepted)
-does not activate accepted support or delivery. Positive MG parentage is not an
+Cohort09 [source-qualified support](automation-matrix.md#cohort-09-sovereign-organization-regions-and-classification)
+in `.22` is not sovereignty certification or receipted delivery. Positive MG parentage is not an
 organizational designation; explicit VM location labels are not geographic/legal
 independence, appropriate regional selection, DR, capacity or required feature
 availability. Tag counts are not data classification, sovereignty or enforcement.

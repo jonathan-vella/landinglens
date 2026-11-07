@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "kind": "catalog",
-  "catalog_version": "2026-11-06.21",
+  "catalog_version": "2026-11-06.22",
   "design_areas": [
     "Azure billing and Active Directory tenant",
     "Identity and access management",
@@ -3772,15 +3772,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Typed positive parentage is a partial configuration Signal, not organizational role, authoritative landing-zones root, actual confidential workload isolation, complete policy inheritance/enforcement or sovereignty certification.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: explicit parent references joined only to unique known typed in-selected-scope management groups and consistent original-time saved positive hierarchy edges. No name/display name establishes purpose, root designation or complete ancestry.",
+        "Reviewer decision: establish SLZ applicability and explicitly designate the authoritative landing-zones parent and both confidential organizational roles using approved redacted architecture references; substantiate each direct placement separately.",
+        "Reviewer decision: reconcile actual policy/connectivity/confidential-computing requirements and exceptions with the pinned current four-zone architecture, not the immutable checklist's names alone; no deployment or legal determination."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-09",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -3794,9 +3793,63 @@
           "pointer": "/items/54",
           "item_sha256": "78e4d9cf1d027acaf37c33b4486d9cb9dba04f1174f9d2aef04b6c34d63785e6",
           "guidance": "https://github.com/Azure/sovereign-landing-zone/blob/main/docs/02-Architecture.md"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/sovereign-landing-zone/778c5df2aee5e398e1e4a752befd06b8c5cc613d/docs/02-Architecture.md",
+          "source_sha256": "60441f79d5cb931ea454a48bd950b3b3d8002d31e1bb615122d668e4e9247878",
+          "revision": "778c5df2aee5e398e1e4a752befd06b8c5cc613d",
+          "retrieved_at": "2026-11-06T22:15:07.317336+00:00",
+          "pointer": "6cc0ea22-42bb-441e-a345-804ab0a09666",
+          "guidance": "https://raw.githubusercontent.com/Azure/sovereign-landing-zone/778c5df2aee5e398e1e4a752befd06b8c5cc613d/docs/02-Architecture.md"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/sovereign-landing-zone/778c5df2aee5e398e1e4a752befd06b8c5cc613d/docs/NOTICE.md",
+          "source_sha256": "cd02c7e244f82d5fa52d8c5568b55ffdfd5decbc5ad6ae6951738c1acd0e3471",
+          "revision": "778c5df2aee5e398e1e4a752befd06b8c5cc613d",
+          "retrieved_at": "2026-11-06T22:15:07.567388+00:00",
+          "pointer": "6cc0ea22-42bb-441e-a345-804ab0a09666",
+          "guidance": "https://raw.githubusercontent.com/Azure/sovereign-landing-zone/778c5df2aee5e398e1e4a752befd06b8c5cc613d/docs/NOTICE.md"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/sovereign-landing-zone/778c5df2aee5e398e1e4a752befd06b8c5cc613d/LICENSE",
+          "source_sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+          "revision": "778c5df2aee5e398e1e4a752befd06b8c5cc613d",
+          "retrieved_at": "2026-11-06T22:15:07.808738+00:00",
+          "pointer": "6cc0ea22-42bb-441e-a345-804ab0a09666",
+          "guidance": "https://raw.githubusercontent.com/Azure/sovereign-landing-zone/778c5df2aee5e398e1e4a752befd06b8c5cc613d/LICENSE"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+          "source_sha256": "576243c73bd2e8d016cb15734b8c256be10f60aaa8ddd6dec56f6f830264740a",
+          "revision": "84d6ae283915e42535dac6184ccce6d8a1969027",
+          "retrieved_at": "2026-11-06T22:15:29.779101+00:00",
+          "pointer": "6cc0ea22-42bb-441e-a345-804ab0a09666",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups",
+          "source_sha256": "a90c592e1fc63ef43447f8df4ae5b7afe3d05aa3b92e37ca2a96bd8671c7627e",
+          "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+          "retrieved_at": "2026-11-06T22:15:31.428450+00:00",
+          "pointer": "6cc0ea22-42bb-441e-a345-804ab0a09666",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/management_group.html.markdown",
+          "source_sha256": "2e3970ddbac4377de21efea78d27889e0a2d165cff4f27b5ae29426657cd4b22",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T22:15:32.264306+00:00",
+          "pointer": "6cc0ea22-42bb-441e-a345-804ab0a09666",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/management_group.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Management/managementGroups"
+      ],
+      "review_fact_paths": [
+        "managementParentId"
+      ]
     },
     {
       "control_id": "ALZ-250d81ce-8bbe-4f85-9051-6a18a8221e50",
@@ -3816,15 +3869,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Requires organizational decision/process evidence outside IaC alone.",
+      "rationale": "Inherently manual suitability judgment. A configured location, region pair, public table, shared narrative or legal example cannot choose regions for an organization or establish current entitlement, quota, available capacity or compliance.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: current guidance distinguishes residency/compliance, latency, costs, service/feature capabilities, access restrictions, zones/pairs and quota versus capacity; the old operate-in-multiple-geographic-regions fragment is no longer the current section.",
+        "Reviewer decision: cite approved scoped regional requirements and accountable organizational decisions, including residency, latency, reliability/recovery objectives, cost and dependencies; use redacted references, not private workload, employee or location inventories.",
+        "Reviewer decision: reconcile chosen regions and documented exceptions against all requirements and dated separately authorized service/feature/access/quota/capacity evidence. No new availability, account or location reads and no legal/eligibility determination."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-09",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -3838,6 +3890,38 @@
           "pointer": "/items/55",
           "item_sha256": "6abba27eb052a629294035c50c244e3c3457239d550e1549731c4d425f6fa792",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/regions"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/regions",
+          "source_sha256": "2db2be0d10c631fad6f7891a08c81a0dc88826c594df27515bdb895c131c8d8d",
+          "revision": "094d858ebf2e44d924b7b3c1a4865abe95134e9f",
+          "retrieved_at": "2026-11-06T22:15:08.335764+00:00",
+          "pointer": "250d81ce-8bbe-4f85-9051-6a18a8221e50",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/regions"
+        },
+        {
+          "source_url": "https://azure.microsoft.com/explore/global-infrastructure/products-by-region/",
+          "source_sha256": "11fb4aa460cc122ea67ba70e8fb0cb20268e7b1233433b1feb73d4eebf4b013c",
+          "revision": "unversioned-public-product-page",
+          "retrieved_at": "2026-11-06T22:15:28.913655+00:00",
+          "pointer": "250d81ce-8bbe-4f85-9051-6a18a8221e50",
+          "guidance": "https://azure.microsoft.com/explore/global-infrastructure/products-by-region/"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/reliability/regions-paired",
+          "source_sha256": "1b43e671931e5b70be9d552c6979c438fd9faee66694950d3d3a7406f50ca389",
+          "revision": "12bb98a3460c0d83c61e0f419deade1229d8edcb",
+          "retrieved_at": "2026-11-06T22:15:29.460082+00:00",
+          "pointer": "250d81ce-8bbe-4f85-9051-6a18a8221e50",
+          "guidance": "https://learn.microsoft.com/en-us/azure/reliability/regions-paired"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits",
+          "source_sha256": "381b3e797eb4d53cd1342d444d22f291efe6bb90bb8653249bebffbd5ff08bd1",
+          "revision": "b925adaad71e273e5a1379e52d082568ef8fbf6f",
+          "retrieved_at": "2026-11-06T22:15:30.911365+00:00",
+          "pointer": "250d81ce-8bbe-4f85-9051-6a18a8221e50",
+          "guidance": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits"
         }
       ],
       "severity": "High"
@@ -3860,15 +3944,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Explicit location labels provide configuration context only. No two-region compliance threshold, physical/legal independence, appropriate regional choice, capacity guarantee, automatic DR or failover outcome is inferred.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: reuse only explicit bounded VM resource-location labels from supported pinned schemas and unique known typed selected-scope resources; this is a partial supplied inventory, never an estate-wide region count or a canonical geographic mapping.",
+        "Reviewer decision: independently justify single/multiple-region organization against approved customer/service requirements, latency, residency and exceptions; current guidance does not mandate paired regions or the old 150-mile rule.",
+        "Reviewer decision: substantiate actual independent failure domains, replication, recovery dependencies and tested failover/capacity readiness with redacted evidence. Distinct strings, paired regions or multiple configured resources establish none."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-09",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -3882,9 +3965,63 @@
           "pointer": "/items/56",
           "item_sha256": "98f33cb777f4a364f6e521a1491f7c79a3e746adc4c2a1f72e5daf17e7ac6f06",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/regions#operate-in-multiple-geographic-regions"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/regions",
+          "source_sha256": "2db2be0d10c631fad6f7891a08c81a0dc88826c594df27515bdb895c131c8d8d",
+          "revision": "094d858ebf2e44d924b7b3c1a4865abe95134e9f",
+          "retrieved_at": "2026-11-06T22:15:08.335764+00:00",
+          "pointer": "19ca3f89-397d-44b1-b5b6-5e18661372ac",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/regions"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/reliability/regions-paired",
+          "source_sha256": "1b43e671931e5b70be9d552c6979c438fd9faee66694950d3d3a7406f50ca389",
+          "revision": "12bb98a3460c0d83c61e0f419deade1229d8edcb",
+          "retrieved_at": "2026-11-06T22:15:29.460082+00:00",
+          "pointer": "19ca3f89-397d-44b1-b5b6-5e18661372ac",
+          "guidance": "https://learn.microsoft.com/en-us/azure/reliability/regions-paired"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits",
+          "source_sha256": "381b3e797eb4d53cd1342d444d22f291efe6bb90bb8653249bebffbd5ff08bd1",
+          "revision": "b925adaad71e273e5a1379e52d082568ef8fbf6f",
+          "retrieved_at": "2026-11-06T22:15:30.911365+00:00",
+          "pointer": "19ca3f89-397d-44b1-b5b6-5e18661372ac",
+          "guidance": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/virtualmachines",
+          "source_sha256": "46cb451b2b0c09b88809a0bed99e506781c185d08d04f42bbf876e5ea3f6f852",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T22:15:31.967694+00:00",
+          "pointer": "19ca3f89-397d-44b1-b5b6-5e18661372ac",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/virtualmachines"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/linux_virtual_machine.html.markdown",
+          "source_sha256": "eb59c9fd48961e1a80e9fe31c0ed66ef3f04674e76706d66ae3820362c58a560",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T22:15:32.504573+00:00",
+          "pointer": "19ca3f89-397d-44b1-b5b6-5e18661372ac",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/linux_virtual_machine.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/windows_virtual_machine.html.markdown",
+          "source_sha256": "98109d65ccb47b5d3665b7c5232ad262782f3dc79dd08d69b3ab6f625ad397c7",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T22:15:32.818762+00:00",
+          "pointer": "19ca3f89-397d-44b1-b5b6-5e18661372ac",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/windows_virtual_machine.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Compute/virtualMachines"
+      ],
+      "review_fact_paths": [
+        "resourceLocation"
+      ]
     },
     {
       "control_id": "ALZ-4c27d42e-8bba-4c75-9155-9ab9153e8908",
@@ -3904,15 +4041,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Partial resource location is not required-service coverage, current feature availability, entitlement, quota, capacity or successful provisioning. No provider/availability/account fetch, availability cache, query or speculative public-table parser is introduced.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: supplied explicit VM location labels orient review only. The public products-by-region page is informational, subject to change and distinguishes restricted-access regions; it is not queried as a customer availability endpoint.",
+        "Reviewer decision: bind a complete approved required service/SKU/feature/version/dependency list to every chosen primary/recovery region and dated service-specific supported availability evidence, including preview restrictions.",
+        "Reviewer decision: separately substantiate customer entitlement/access, quota and deployable capacity through already authorized redacted references, with gaps/exceptions explicit; public product availability or resource presence proves none."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-09",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -3926,9 +4062,63 @@
           "pointer": "/items/57",
           "item_sha256": "ead196527b159c4b67e9003fe166b674c001d5251bc406177234ef9bee599c4a",
           "guidance": "https://azure.microsoft.com/explore/global-infrastructure/products-by-region/"
+        },
+        {
+          "source_url": "https://azure.microsoft.com/explore/global-infrastructure/products-by-region/",
+          "source_sha256": "11fb4aa460cc122ea67ba70e8fb0cb20268e7b1233433b1feb73d4eebf4b013c",
+          "revision": "unversioned-public-product-page",
+          "retrieved_at": "2026-11-06T22:15:28.913655+00:00",
+          "pointer": "4c27d42e-8bba-4c75-9155-9ab9153e8908",
+          "guidance": "https://azure.microsoft.com/explore/global-infrastructure/products-by-region/"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/regions",
+          "source_sha256": "2db2be0d10c631fad6f7891a08c81a0dc88826c594df27515bdb895c131c8d8d",
+          "revision": "094d858ebf2e44d924b7b3c1a4865abe95134e9f",
+          "retrieved_at": "2026-11-06T22:15:08.335764+00:00",
+          "pointer": "4c27d42e-8bba-4c75-9155-9ab9153e8908",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/regions"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits",
+          "source_sha256": "381b3e797eb4d53cd1342d444d22f291efe6bb90bb8653249bebffbd5ff08bd1",
+          "revision": "b925adaad71e273e5a1379e52d082568ef8fbf6f",
+          "retrieved_at": "2026-11-06T22:15:30.911365+00:00",
+          "pointer": "4c27d42e-8bba-4c75-9155-9ab9153e8908",
+          "guidance": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/virtualmachines",
+          "source_sha256": "46cb451b2b0c09b88809a0bed99e506781c185d08d04f42bbf876e5ea3f6f852",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T22:15:31.967694+00:00",
+          "pointer": "4c27d42e-8bba-4c75-9155-9ab9153e8908",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/virtualmachines"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/linux_virtual_machine.html.markdown",
+          "source_sha256": "eb59c9fd48961e1a80e9fe31c0ed66ef3f04674e76706d66ae3820362c58a560",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T22:15:32.504573+00:00",
+          "pointer": "4c27d42e-8bba-4c75-9155-9ab9153e8908",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/linux_virtual_machine.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/windows_virtual_machine.html.markdown",
+          "source_sha256": "98109d65ccb47b5d3665b7c5232ad262782f3dc79dd08d69b3ab6f625ad397c7",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T22:15:32.818762+00:00",
+          "pointer": "4c27d42e-8bba-4c75-9155-9ab9153e8908",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/windows_virtual_machine.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Compute/virtualMachines"
+      ],
+      "review_fact_paths": [
+        "resourceLocation"
+      ]
     },
     {
       "control_id": "ALZ-914b8cb7-c2f6-40fa-ae18-81c049e0cb5a",
@@ -3948,15 +4138,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No label-derived designation or universal Public-named management group requirement. Configuration, grouping and organizational meaning remain separate; this is not sovereignty certification, a legal conclusion or enforcement assurance.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: original-time explicit typed positive parentage only; neither resource/display names nor a supplied parent determines Public/Corp/Online/confidential purpose or the authoritative landing-zones root.",
+        "Reviewer decision: explicitly map the immutable Public, Confidential Corp and Confidential Online wording to the organization's approved current architecture. The pinned SLZ describes Corp and Online non-confidential zones plus Confidential Corp and Confidential Online, not a required Public-named MG.",
+        "Reviewer decision: substantiate approved grouping by connectivity/confidentiality, policy assignments and effective isolation/confidential-computing constraints, plus justified customization/exceptions and complete intended scope. Group existence or hierarchy alone proves none."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-09",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -3970,9 +4159,55 @@
           "pointer": "/items/58",
           "item_sha256": "ffc1e65408cc4e9b35fa6ecde3e9400fe31ec9f50efce3908110d67fcbecd39e",
           "guidance": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/sovereign-landing-zone/778c5df2aee5e398e1e4a752befd06b8c5cc613d/docs/02-Architecture.md",
+          "source_sha256": "60441f79d5cb931ea454a48bd950b3b3d8002d31e1bb615122d668e4e9247878",
+          "revision": "778c5df2aee5e398e1e4a752befd06b8c5cc613d",
+          "retrieved_at": "2026-11-06T22:15:07.317336+00:00",
+          "pointer": "914b8cb7-c2f6-40fa-ae18-81c049e0cb5a",
+          "guidance": "https://raw.githubusercontent.com/Azure/sovereign-landing-zone/778c5df2aee5e398e1e4a752befd06b8c5cc613d/docs/02-Architecture.md"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/sovereign-landing-zone/778c5df2aee5e398e1e4a752befd06b8c5cc613d/docs/NOTICE.md",
+          "source_sha256": "cd02c7e244f82d5fa52d8c5568b55ffdfd5decbc5ad6ae6951738c1acd0e3471",
+          "revision": "778c5df2aee5e398e1e4a752befd06b8c5cc613d",
+          "retrieved_at": "2026-11-06T22:15:07.567388+00:00",
+          "pointer": "914b8cb7-c2f6-40fa-ae18-81c049e0cb5a",
+          "guidance": "https://raw.githubusercontent.com/Azure/sovereign-landing-zone/778c5df2aee5e398e1e4a752befd06b8c5cc613d/docs/NOTICE.md"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+          "source_sha256": "576243c73bd2e8d016cb15734b8c256be10f60aaa8ddd6dec56f6f830264740a",
+          "revision": "84d6ae283915e42535dac6184ccce6d8a1969027",
+          "retrieved_at": "2026-11-06T22:15:29.779101+00:00",
+          "pointer": "914b8cb7-c2f6-40fa-ae18-81c049e0cb5a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups",
+          "source_sha256": "a90c592e1fc63ef43447f8df4ae5b7afe3d05aa3b92e37ca2a96bd8671c7627e",
+          "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+          "retrieved_at": "2026-11-06T22:15:31.428450+00:00",
+          "pointer": "914b8cb7-c2f6-40fa-ae18-81c049e0cb5a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/management_group.html.markdown",
+          "source_sha256": "2e3970ddbac4377de21efea78d27889e0a2d165cff4f27b5ae29426657cd4b22",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T22:15:32.264306+00:00",
+          "pointer": "914b8cb7-c2f6-40fa-ae18-81c049e0cb5a",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/management_group.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Management/managementGroups"
+      ],
+      "review_fact_paths": [
+        "managementParentId"
+      ]
     },
     {
       "control_id": "ALZ-51a1e9e9-a49a-40b2-87b9-ff753bc6de86",
@@ -3992,15 +4227,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Requires organizational decision/process evidence outside IaC alone.",
+      "rationale": "Inherently manual organizational definition and operating judgment. Tags, resource names, scanner presence, public examples and shared answers cannot define an approved taxonomy or classify actual private data.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: current Well-Architected guidance calls for an organization-defined taxonomy and explicit scope, consistent protection/metadata and ongoing maintenance; example labels are not a universal required taxonomy.",
+        "Reviewer decision: reference approved organization-wide classification levels, meanings, owners and handling/protection requirements with explicit workload/data-flow/backup/cache/preproduction boundaries; do not retain private labels, classified data or personal inventories.",
+        "Reviewer decision: substantiate communicated adoption, ambiguity/unclassified handling, review/maintenance and independently approved exceptions through redacted dated references. Do not classify data, infer personal attributes or make legal/eligibility decisions."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-09",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -4014,6 +4248,22 @@
           "pointer": "/items/59",
           "item_sha256": "244ac8f40a4eff5293078afea312081fc8670d92c11bbe51341258395f94a590",
           "guidance": "https://learn.microsoft.com/en-us/azure/well-architected/security/data-classification"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/well-architected/security/data-classification",
+          "source_sha256": "79798eddd4c2d5408d9edec7eeb809474973522d87d4a9eefe265151cf8d1208",
+          "revision": "a3fa10710fd98dabc8074a51d946c25b95c1a8bb",
+          "retrieved_at": "2026-11-06T22:15:30.060699+00:00",
+          "pointer": "51a1e9e9-a49a-40b2-87b9-ff753bc6de86",
+          "guidance": "https://learn.microsoft.com/en-us/azure/well-architected/security/data-classification"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/sovereign-landing-zone/778c5df2aee5e398e1e4a752befd06b8c5cc613d/docs/NOTICE.md",
+          "source_sha256": "cd02c7e244f82d5fa52d8c5568b55ffdfd5decbc5ad6ae6951738c1acd0e3471",
+          "revision": "778c5df2aee5e398e1e4a752befd06b8c5cc613d",
+          "retrieved_at": "2026-11-06T22:15:07.567388+00:00",
+          "pointer": "51a1e9e9-a49a-40b2-87b9-ff753bc6de86",
+          "guidance": "https://raw.githubusercontent.com/Azure/sovereign-landing-zone/778c5df2aee5e398e1e4a752befd06b8c5cc613d/docs/NOTICE.md"
         }
       ],
       "severity": "Medium"
@@ -4036,15 +4286,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Count-only configuration context. The existing 50-pair, key/value/type/case and storage-key bounds are source limits, not compliance thresholds. No sensitive metadata/tag values, tag inheritance, classification or policy-enforcement claim.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: reuse existing cohort08 minimized validated tag-pair counts for reviewed resource types only. Explicit empty is zero pairs; missing/unresolved/malformed/ambiguous/over-bound stays unknown. No tag names/values or sensitive sovereign metadata are retained.",
+        "Reviewer decision: cite the approved non-sensitive sovereign-workload metadata taxonomy, required scope and actual consistent usage with redacted references; do not impose example keys/values or classify actual private workloads.",
+        "Reviewer decision: reconcile tag support/limits, plain-text exposure, noninheritance and separately evidenced policy controls/enforcement and exceptions. Management groups cannot be tagged; tag counts prove neither relevant metadata nor classification, sovereignty or enforcement."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-09",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -4058,9 +4307,67 @@
           "pointer": "/items/60",
           "item_sha256": "7a350d3c58ab2ad3fbb9bfeadd84e30eb7bb9c6148156c868da938695219a668",
           "guidance": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources",
+          "source_sha256": "3a3225a1467ff2fadd62754e9a2895e1044058061141250ecf2454f4b51dd431",
+          "revision": "fa91c9dd975e99eba2d8e105d639bc2b20edc200",
+          "retrieved_at": "2026-11-06T22:15:30.360158+00:00",
+          "pointer": "a89153d8-18b2-4caf-bc19-850fc8fba00f",
+          "guidance": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/well-architected/security/data-classification",
+          "source_sha256": "79798eddd4c2d5408d9edec7eeb809474973522d87d4a9eefe265151cf8d1208",
+          "revision": "a3fa10710fd98dabc8074a51d946c25b95c1a8bb",
+          "retrieved_at": "2026-11-06T22:15:30.060699+00:00",
+          "pointer": "a89153d8-18b2-4caf-bc19-850fc8fba00f",
+          "guidance": "https://learn.microsoft.com/en-us/azure/well-architected/security/data-classification"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/sovereign-landing-zone/778c5df2aee5e398e1e4a752befd06b8c5cc613d/docs/02-Architecture.md",
+          "source_sha256": "60441f79d5cb931ea454a48bd950b3b3d8002d31e1bb615122d668e4e9247878",
+          "revision": "778c5df2aee5e398e1e4a752befd06b8c5cc613d",
+          "retrieved_at": "2026-11-06T22:15:07.317336+00:00",
+          "pointer": "a89153d8-18b2-4caf-bc19-850fc8fba00f",
+          "guidance": "https://raw.githubusercontent.com/Azure/sovereign-landing-zone/778c5df2aee5e398e1e4a752befd06b8c5cc613d/docs/02-Architecture.md"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/virtualmachines",
+          "source_sha256": "46cb451b2b0c09b88809a0bed99e506781c185d08d04f42bbf876e5ea3f6f852",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T22:15:31.967694+00:00",
+          "pointer": "a89153d8-18b2-4caf-bc19-850fc8fba00f",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/virtualmachines"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/linux_virtual_machine.html.markdown",
+          "source_sha256": "eb59c9fd48961e1a80e9fe31c0ed66ef3f04674e76706d66ae3820362c58a560",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T22:15:32.504573+00:00",
+          "pointer": "a89153d8-18b2-4caf-bc19-850fc8fba00f",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/linux_virtual_machine.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/windows_virtual_machine.html.markdown",
+          "source_sha256": "98109d65ccb47b5d3665b7c5232ad262782f3dc79dd08d69b3ab6f625ad397c7",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T22:15:32.818762+00:00",
+          "pointer": "a89153d8-18b2-4caf-bc19-850fc8fba00f",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/v4.50.0/website/docs/r/windows_virtual_machine.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Compute/virtualMachines",
+        "Microsoft.Storage/storageAccounts",
+        "Microsoft.Portal/dashboards",
+        "Microsoft.Resources/resourceGroups",
+        "Microsoft.Resources/subscriptions"
+      ],
+      "review_fact_paths": [
+        "tagCount"
+      ]
     },
     {
       "control_id": "ALZ-373f482f-3e39-4d39-8aa4-7e566f6082b6",
@@ -19898,72 +20205,60 @@
   "reviewed_at": "2026-11-04T13:25:57.057372+00:00",
   "reference_manifest_sha256": "c287f93a4ff4c94c577b0248345d813f44fb27dff66524408870095024305d30",
   "control_source_manifest_sha256": "d189615f2793f141a6ee6cd5a7f026556a4146fd44d65705e6f08d0e01f7debf",
-  "accepted_matrix_sha256": "6056f9fb3629a708d6fd9c9594484dbdcd676646f1041ac4b2f06e46fd86b023",
+  "accepted_matrix_sha256": "086a96e7f46845cc90d43d588a8421a9ae4cd691c6323d0d5b138eae46a43bbf",
   "wave_source_manifest_sha256": "617e66a497a1f6bb1ddf50f53b3f75f3ff2cec2989324d42496aeeb4d9d0ef38",
   "change_review": {
-    "base_sha256": "9edb211004a7f57a61c97ebe96e08086c88991c6b91820a07a6fd02cccaedd1e",
-    "matrix_sha256": "6056f9fb3629a708d6fd9c9594484dbdcd676646f1041ac4b2f06e46fd86b023",
-    "reviewed_at": "2026-11-06T23:08:14.225Z",
+    "base_sha256": "1db49642853c5425cf8ab75bb8982983332e481f6743c46b9c28d095c5c62a93",
+    "matrix_sha256": "086a96e7f46845cc90d43d588a8421a9ae4cd691c6323d0d5b138eae46a43bbf",
+    "reviewed_at": "2026-11-06T23:53:14.091616+00:00",
     "reviewer": "owner-delegated-source-backed-batch-review",
     "changes": [
       {
-        "control_id": "ALZ-e5695f22-23ac-4e8c-a123-08ca5017f154",
-        "before_sha256": "474d879eac7ab7c68eb4e4e5ed07f58dcfd73e346eef98ed44c1360403a29830",
-        "after_sha256": "f5b35622736c83030b921b3957c62ea1bcaaa77468263e767c6d0e9484c290f2",
-        "rationale": "Owner-delegated source-backed batch 25 acceptance: assisted"
+        "control_id": "ALZ-6cc0ea22-42bb-441e-a345-804ab0a09666",
+        "before_sha256": "74777b7b7a3e57c34bcdcca229b1421e9940548e4586939b396fbd893c1bf9e1",
+        "after_sha256": "bb865ec645d3459b0b831fb8ef19a720cf1a5e014200371868525a7e2461de68",
+        "rationale": "Owner-delegated source-backed batch 09 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-d5f345bf-97ab-41a7-819c-6104baa7d48c",
-        "before_sha256": "6629706bc2f20dc1100b42757d7d9b890ce946f7a588a8627cf0ab776c3d2739",
-        "after_sha256": "ffec53dc219539f18bf0a9b7de6d9d6e1ab0f8de26eed7b8cc139d122768027f",
-        "rationale": "Owner-delegated source-backed batch 25 acceptance: assisted"
+        "control_id": "ALZ-250d81ce-8bbe-4f85-9051-6a18a8221e50",
+        "before_sha256": "59a4e7e88327646a05e5b52c6353e5f6f7f24f1e8b4a5a059de607ee0fd38c76",
+        "after_sha256": "e0b369b553a733e14a5006417027fbefac1d6e47eb007817daf58d09c55b4013",
+        "rationale": "Owner-delegated source-backed batch 09 acceptance: manual"
       },
       {
-        "control_id": "ALZ-e3ab3693-829e-47e3-8618-3687a0477a20",
-        "before_sha256": "72be9a0a6fb07889f75a5978b7b185842ceed8b376d5f520fcdb35ba8a7f8e87",
-        "after_sha256": "a26ecc314ec4e0b319e2f4476f697e9d621a854432a27c8c6d8c009acf973cfb",
-        "rationale": "Owner-delegated source-backed batch 25 acceptance: assisted"
+        "control_id": "ALZ-19ca3f89-397d-44b1-b5b6-5e18661372ac",
+        "before_sha256": "83f5fd86decfd3dac850296fecea76d988a2655f307bc72e961b785ac4a2169d",
+        "after_sha256": "a6c3678f4f4426962aee24409905eb2e5d1e2e7f9d8c31525e8fb2c6b313ea0a",
+        "rationale": "Owner-delegated source-backed batch 09 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-6944008b-e7d7-4e48-9327-6d8bdc055bcf",
-        "before_sha256": "c714f57dcc1daa5401721f7d2b8330ec82cc6a92b689245eb1c9144febf46ad7",
-        "after_sha256": "c19f55e5ef5ee260202c25ffd912fb4f1e51dfc5c33243c0afca442d876aa5fb",
-        "rationale": "Owner-delegated source-backed batch 25 acceptance: assisted"
+        "control_id": "ALZ-4c27d42e-8bba-4c75-9155-9ab9153e8908",
+        "before_sha256": "943867f0d3eb62a69d33d72119746abf0173f44808cfabcff917551d4d47c9a0",
+        "after_sha256": "e7695d6396e17bb112df59b229ba9bb0c96bf750db303fcbb57c1241e48d8087",
+        "rationale": "Owner-delegated source-backed batch 09 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-619e8a13-f988-4795-85d6-26886d70ba6c",
-        "before_sha256": "d6df86ff55d301efe47c1f0c6db2f5d362a4bc59d1c1bc7edd50768cf9422b91",
-        "after_sha256": "14fcd16a6de4bf26d59126fe656bab897bef2564a2676a33d74a42b0034a1afa",
-        "rationale": "Owner-delegated source-backed batch 25 acceptance: assisted"
+        "control_id": "ALZ-914b8cb7-c2f6-40fa-ae18-81c049e0cb5a",
+        "before_sha256": "bb68698bce117553cb33d001c71a7feae7961b3bab87e9277a8140d3d4ef5767",
+        "after_sha256": "a899c3f44daa97847f9751f4f7c35b7e20ebb62ee33f32a61f0b92399859f86e",
+        "rationale": "Owner-delegated source-backed batch 09 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-97be9951-9048-4384-9c98-6cb2913156a1",
-        "before_sha256": "a78d76bd73740a11052eac849d5cfd3f60fdac67d1c8ef0fac51c1c805d2e97b",
-        "after_sha256": "1ce74d18f6f1b2730a954ab3ed849d8de9e4dbb455eb38388c89db3d24bd37dd",
-        "rationale": "Owner-delegated source-backed batch 25 acceptance: assisted"
+        "control_id": "ALZ-51a1e9e9-a49a-40b2-87b9-ff753bc6de86",
+        "before_sha256": "7530314e818f1d1d21e282387f138f4501987ee466b979a81038893c9fd26c1e",
+        "after_sha256": "5794a87f508a3b0f8374be68bf7dd6a2f885ab651ee252cd3b05ef634189ff41",
+        "rationale": "Owner-delegated source-backed batch 09 acceptance: manual"
       },
       {
-        "control_id": "ALZ-859c3900-4514-41eb-b010-475d695abd74",
-        "before_sha256": "319e56c4d2291508f3de94b4f31f820219d305a87a890b4660c0139f453c6c6d",
-        "after_sha256": "fc975a8e95943ad049c6b3c3c0d1bc17c61c33bb6fe396fa426faa096efdde7a",
-        "rationale": "Owner-delegated source-backed batch 25 acceptance: manual"
-      },
-      {
-        "control_id": "ALZ-aa45be6a-8f2d-4896-b0e3-775e6e94e610",
-        "before_sha256": "300d148b9bedb71b6c66d611e5719ab20d6b83946c3438f2e1828c3303b4d3f3",
-        "after_sha256": "4deca404f047c06fc432da834d48009b5779614a96731745796a25da5db17832",
-        "rationale": "Owner-delegated source-backed batch 25 acceptance: assisted"
-      },
-      {
-        "control_id": "ALZ-0d83fd81-952c-4d47-a6cb-3a930925ef2e",
-        "before_sha256": "c3326e7c59f63b63d98bfb800de753ed0f044a943dcf2b01c8500bbc08b31814",
-        "after_sha256": "6a5d54da78e6340a7a614bb46dd238edf8bafe07b7c7c64cce911975f8d473b5",
-        "rationale": "Owner-delegated source-backed batch 25 acceptance: assisted"
+        "control_id": "ALZ-a89153d8-18b2-4caf-bc19-850fc8fba00f",
+        "before_sha256": "a6782dd3396988f7d590e99cfe3e84350768868dc8b804be2b4a7f05bbb84cbe",
+        "after_sha256": "1293fff435f65870a6aae36babfc47024af27ae5d9a2a14a0c4af4135cbcc73d",
+        "rationale": "Owner-delegated source-backed batch 09 acceptance: assisted"
       }
     ]
   },
   "first_wave_matrix_sha256": "f649b2293211c844d661ea93c6978fe2db948eff17237af01ca090809da8e1fb",
-  "batch_source_manifest_sha256": "60f407d12b5b146d8a7810f0fef12b0bcdb003c57fd5d9763a8d89e57778b402",
-  "batch_catalog_version": "2026-11-06.21",
+  "batch_source_manifest_sha256": "f81b93d4f92b9b26c49219a34b3cb56d29881837ab74bc1b80c1ba8da12d67e9",
+  "batch_catalog_version": "2026-11-06.22",
   "priority_manifest_sha256": "b42971f85b9110f71fdc5ae81695fe4be72c1f28022ec27aeb719140ed1475c0"
 }

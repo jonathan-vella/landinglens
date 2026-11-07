@@ -1,5 +1,21 @@
 # LandingLens product requirements
 
+## Cohort 09 accepted boundary
+
+The explicit sole coordinator slot after actual10 implementation146/receipt147
+and25 implementation149/receipt150, completed issues and checked final main
+`e5506c3d4061845b4250a68046ba281156de676d` activates the
+[seven-GUID matrix](../../references/recommendation-batches/batch-09.json) in
+builder-derived catalog/crosswalk `.22`. Exact `.21`, all196 prior own rows/
+23 receipts, every non-own complete control and the original four remain frozen.
+Five assisted and two manual source-specific workflows share the existing engine,
+strict scoped typed positive joins, privacy-safe projections, registered bank,
+sessions, tiers, outputs and original-time replay. No whole-guidance predicate,
+collector, availability fetch or personal/legal decision is added. All seven
+decisions and exceptions stay independently blank and bound. Actual implementation
+review/checks/normal merge, guarded own-GUID checked receipt publication and
+final-main CI still gate #145 completion.
+
 ## Cohort 09 independent preparation
 
 [#145](https://github.com/jonathan-vella/landinglens/issues/145) prepares seven

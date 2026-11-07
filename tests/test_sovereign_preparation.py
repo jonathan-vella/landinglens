@@ -153,7 +153,7 @@ class SovereignPreparationTests(unittest.TestCase):
             decision["outcome"] = "fail"
         return value
 
-    def test_exact_fixed_seven_sources_and_unregistered_preparation(self):
+    def test_exact_fixed_seven_sources_and_preserved_historical_preparation(self):
         targets_path = ROOT / "references" / "recommendation-batches" / "targets.json"
         targets = json.loads(targets_path.read_text("utf-8"))["targets"]
         self.assertEqual({r["upstream_id"]: r["guid"] for r in targets if r["batch"] == "09"}, OWN)
@@ -166,7 +166,8 @@ class SovereignPreparationTests(unittest.TestCase):
         self.assertEqual(matrix["review_state"], "source-reviewed-preparation-not-accepted")
         self.assertNotIn("catalog_version", matrix)
         self.assertEqual({r["upstream_id"]: r["guid"] for r in matrix["recommendations"]}, OWN)
-        self.assertNotIn(matrix["interview"]["id"], BANK)
+        question = matrix["interview"]
+        self.assertEqual(question, {"id": question["id"], **BANK[question["id"]]})
         self.assertEqual(BANK_VERSION, load_catalog()["catalog_version"])
         manifest = json.loads((PREPARATION / "batch-09-sources.json").read_text("utf-8"))
         sources = {s["id"]: s for s in manifest["sources"]}
@@ -219,7 +220,7 @@ class SovereignPreparationTests(unittest.TestCase):
         self.assertTrue(
             all(
                 not c.get("review_fact_paths")
-                for c in accepted["controls"]
+                for c in load_catalog(str(data / "catalog-2026-11-06.21.json"))["controls"]
                 if c["upstream_guid"] in GUIDS
             )
         )
@@ -470,6 +471,7 @@ class SovereignPreparationTests(unittest.TestCase):
         self.assertEqual(review_context(self.control("C03.02"), bundle)["unbound_resources"], 1)
 
     def test_seven_blank_independent_decisions_and_binding_attribution_expiry(self):
+        before = copy.deepcopy(BANK)
         catalog, bundle = self.catalog(), self.bundle()
         report = assess(bundle, catalog, at=AT, evidence_tiers=True)
         item = self.matrix()["interview"]
@@ -521,7 +523,7 @@ class SovereignPreparationTests(unittest.TestCase):
             )
             with self.assertRaises(InputError):
                 compile_interview(filled, changed, at=AT)
-        self.assertNotIn(item["id"], BANK)
+        self.assertEqual(BANK, before)
 
     def test_selection_binding_does_not_apply_to_unselected_or_expired_controls(self):
         bundle, catalog = self.bundle(), self.catalog()
