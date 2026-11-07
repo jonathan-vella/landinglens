@@ -8,6 +8,18 @@ are in the [plan](planning/plan.md).
 
 ## Evidence and outcomes
 
+Cohort26 activates [eight independent reviews](../references/recommendation-batches/batch-26.json)
+in `.24` after the explicit checked09/24 slot, preserving exact `.23`, prior
+controls/receipts and all21 predecessor compiler cases. Activation is not delivery;
+the implementation/receipt/final-main gates remain separate. Service-qualified vault
+settings are not suitable backup choices, retention, recovery success or achieved
+RPO/RTO. Guest assignments/extensions and Policy references do not establish
+compliant settings or actual drift monitoring. SQL Database groups do not prove
+universal PaaS DR or tested failover. Exact WAF category/destination and default
+Sentinel-onboarding links are configuration only, not ingestion, regular log
+review, attack detection or operating Sentinel integration. Current source
+redirects, service defaults/support and conflicting Front Door category wording
+are explicitly qualified in the matrix; missing facts never become defaults.
 Cohort24's [accepted support](automation-matrix.md#cohort-24-log-retention-machine-operations-and-resource-guardrails)
 in `.23` follows the explicit sole slot after actual25/09 delivery. Its nine workflows
 keep workspace exceptions/design, source-specific retention, actual export and

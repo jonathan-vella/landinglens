@@ -1,5 +1,109 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 26 accepted integration: 2026-11-07
+
+The explicit sole coordinator slot follows actual09 implementation152/receipt153
+and24 implementation155/receipt156, completed issues and checked final main
+`e2b71b212b47b1d240368e9da13ab51bd66797ee`. Preparation `b39b67a` is preserved;
+reconciliation `88a20fc` retains09 hierarchy/VM metadata and24 table/export/
+immutability/guest/Arc/lock behavior. Guest extension scope and Terraform identity
+reuse24's implementation, and guest-mode projection delegates to its helper.
+All21 actual predecessor compiler cases precede the recovery configuration case.
+
+Existing builders derive unique catalog/crosswalk `2026-11-06.24` from exact
+frozen `.23` bytes, [45 unchanged captures](../../references/recommendation-batches/batch-26-sources.json)
+and the [eight-GUID accepted matrix](../../references/recommendation-batches/batch-26.json).
+Original255/fixed251, four complete original automated controls, every non-own
+control, all212 prior own-GUID rows/25 receipts and every historical binding remain
+unchanged. Dispositions remain12 automated/200 assisted/43 manual. Before guarded
+delivery,212 are delivered and39 undelivered; activation is not a receipt.
+
+Eight registered independent decisions share existing evaluator, review/tier,
+report/tracker, CLI/local-session and original-time private replay mechanisms.
+Recovery Services versus Data Protection/workload defaults, Files snapshot versus
+vaulted backup, current Machine Configuration lifecycle and legacy Backup Center
+are source-qualified. The Front Door service monitoring/Sentinel category-name
+discrepancy is retained. Configured recovery/guest/SQL/WAF facts establish neither
+protected fleet, successful recovery/achieved RPO/RTO, compliant guests/operating
+drift monitoring, universal PaaS DR nor WAF/Sentinel ingestion/review/detection.
+Human coverage/requirements/retention/testing/operation decisions remain blank and
+exceptable; Signals and human confirmations never manufacture Verified.
+
+Fresh own installed-wheel/static/accepted-replay checks, exact-head eight
+platform jobs, CodeQL/security/review and four downloaded exercised compiler proofs
+gate the normal SHA-bound implementation merge. Guarded actual own-GUID recording,
+checked receipt publication and actual final-main CI gate satisfied #151 closure.
+Preparation proofs below cannot substitute for these delivery gates.
+
+## Historical cohort 26 independent preparation: 2026-11-07
+
+[#151](https://github.com/jonathan-vella/landinglens/issues/151) owns exactly the
+eight F02.01-.02/F03.01-.02/F04.01-.02/F06.01-.02 GUIDs in the
+[preparation matrix](../../references/recommendation-batches/preparation-26.json)
+and [reviewed source captures](../../references/recommendation-batches/preparation-26-sources.json).
+Baseline is actual main `e5506c3d4061845b4250a68046ba281156de676d`,
+catalog/crosswalk `2026-11-06.21`,196 delivered/55 pending/23 receipts.
+This preparation does not choose/register a successor, activate the interview
+bank/source/matrix/catalog/crosswalk/counts/history, open a PR, merge, record
+delivery or close the issue. Cohorts09/24 precede the explicit serialized slot.
+
+Minimized configuration uses existing typed VM, recovery, storage, Policy,
+protection and logging helpers. Strict unique known selected-scope relationships
+join configured VM backup/A2A references, guest assignment/extension parents,
+SQL Database group members/partners and WAF diagnostic service/destination/
+default Sentinel-onboarding references. Raw backup protected-item identities
+need explicit source-hash-bound mapping rather than guessed container names.
+No live Collector/API registry, built-in fetch or second Policy interpreter is
+added. Terraform explicit local modules/supplied plan, pinned ARM/existing
+no-restore Bicep and normalized saved/injected evidence share projections;
+planned and observed facts remain separate.
+
+Recovery Services documents default GRS, but Data Protection datastore settings
+and workload/region support need separate review. Azure Files snapshot backup
+does not inherit vaulted-backup redundancy. Missing settings never become
+defaults; no generic storage SKU answers backup choice or retention. Current
+Machine Configuration redirects and November2026 Linux PowerShell support changes
+qualify immutable guest wording; assignments/extensions do not establish installed
+compliant settings or operating drift monitoring. Backup Center is a legacy
+experience pointing to Resiliency/Business Continuity Center. SQL failover groups
+are narrow asynchronous configuration, not universal PaaS DR or tested recovery.
+
+The service monitoring reference specifies
+`FrontDoorWebApplicationFirewallLog` for Standard/Premium and
+`FrontdoorWebApplicationFirewallLog` for classic, while the Sentinel walkthrough
+currently says `FrontDoorFirewallLog`/`FrontdoorFirewallLog`. This discrepancy is
+retained, not silently equated. Explicit exact categories are distinct from
+metrics/access/activity logs or unexpanded groups. Workspace/onboarding links
+cannot manufacture actual telemetry, review, detection or response.
+
+Eight attributable, selected, time-bound, independently blank and exceptable
+decisions preserve recovery requirements/coverage/retention/drills/RPO/RTO,
+compliant guest execution, actual Policy drift operation, service-specific
+PaaS failover, backup compatibility and WAF/Sentinel operation as human judgments.
+No logs, guest/package/report payloads, private scripts/settings, credentials,
+queries or personal data are retained. Signals and human confirmations never
+create Verified. At the later slot, reconcile actual09/24 main and operations
+helpers, freeze its exact predecessor, derive the successor with existing
+builders, preserve all original objects/bytes/receipts/bindings, and rerun actual
+accepted-bank/replay/wheel/exact-head platform/CodeQL/security/review/compiler
+gates before normal SHA-bound merge, guarded receipt and final-main closure.
+
+Final preparation uses45 actual captures and27 cohort-specific cases. The own
+clean outside-checkout installed wheel ran **748 tests:747 passed and the one
+original Windows symlink-privilege skip**. All20 actual no-restore compiler cases
+were exercised without skips, preserving all19 predecessors and adding only
+genuine recovery/guest/SQL/WAF configuration compilation, not a recovery or
+security operating test. Format/lint,48-source-file typing, dependency consistency,
+384 local documentation links and exact147-member installed-package/source byte
+comparison passed. Final own wheel SHA256:
+`ab2d99a48729eae750c1c7a55bdb7b927c47a5863ce58f4e0fe2abeb6d4c3447`.
+An earlier wheel was superseded after tightening unsupported service/SKU,
+guest-parent and exact storage-child qualification; its running suite was stopped,
+not reused as final proof. The first isolated import exposed missing runtime
+dependencies; only the three exact reviewed manifest-hash wheels were restored
+into this session's own environment. Accepted data/ledger/targets remain unchanged.
+These are local preparation proofs, not later accepted-bank replay, exact-head
+platform/security/CodeQL/review gates, merged delivery or a checked receipt.
 ## Cohort 24 accepted integration: 2026-11-07
 
 The explicit sole coordinator grant for

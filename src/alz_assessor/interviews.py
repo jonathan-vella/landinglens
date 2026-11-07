@@ -6,8 +6,61 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.23"
+BANK_VERSION = "2026-11-06.24"
 BANK = {
+    "recovery-guest-drift-waf-telemetry": {
+        "question": (
+            "Decide all eight recommendations independently using attributable redacted evidence, "
+            "never one shared outcome. For Azure VM DR, reconcile complete eligible VM/application/"
+            "dependency populations, Azure-to-Azure Site Recovery and native backup configuration "
+            "with separately approved RPO/RTO, recovery points, retention, network/failback and "
+            "actual drill/restore evidence. For redundancy, preserve the immutable GRS-default "
+            "wording but qualify Recovery Services versus Data Protection Backup vaults, datastore/"
+            "workload/region support and Azure Files snapshot versus vaulted backup; generic "
+            "account SKU and omitted settings prove no default or suitable backup choice. For "
+            "guest deployment, distinguish legacy Guest Configuration wording from current Machine "
+            "Configuration, direct versus Policy-created assignments, Audit/apply/autocorrect "
+            "modes, exact guest extension publisher/type/instance names, identity/network/content "
+            "prerequisites and current OS/architecture/VMSS/Arc support, including November 2026 "
+            "Linux PowerShell changes; assignments do not prove execution or compliance. For "
+            "security drift monitoring, separately substantiate expected baselines, Policy "
+            "definitions/versions/assignments/parameters/exclusions, timely compliance "
+            "observations, "
+            "responsible review and operating response. No built-in fetch or second rule "
+            "interpreter. For PaaS DR, assess every actual service/SKU/region and "
+            "component/workload "
+            "failover/failback plan with original-time drills; a SQL Database failover group is "
+            "narrow configuration, not universal support, successful failover or achieved RPO/RTO. "
+            "For native/third-party backup, substantiate compatible workload/version coverage, "
+            "retention/restore/security and ownership; legacy Backup Center now points to "
+            "Resiliency/Business Continuity Center, whose presence is not protection. For WAF "
+            "diagnostics, bind the actual delivery resource/service to explicit enabled firewall-"
+            "log categories and destinations, then independently substantiate ingestion, "
+            "retention, "
+            "regular attack and false-positive review/tuning. Standard/Premium Front Door uses "
+            "FrontDoorWebApplicationFirewallLog; classic capitalization differs and is unsupported "
+            "by this preparatory target model. The Sentinel walkthrough's FrontDoorFirewallLog "
+            "names conflict with the service-specific monitoring page: do not equate them. For "
+            "WAF-to-Sentinel, separately prove connector/content configuration, arriving WAF data, "
+            "analytics/detection coverage and accountable response; shared workspace/onboarding "
+            "and categories do not prove integration. All requirements, coverage, testing, "
+            "operating decisions and exceptions remain blank until explicitly supplied. No live "
+            "probes, commands, backup/restore/failover, guest or compliance execution, "
+            "WAF attacks, "
+            "queries, traffic or telemetry retrieval; no logs, guest/package/report payloads, "
+            "scripts, settings, secrets, private endpoints or personal data retained."
+        ),
+        "controls": [
+            "ALZ-7ea02e1c-7166-45a3-bdf5-098891367fcb",
+            "ALZ-eba8cf22-45c6-4dc1-9b57-2cceb3b97ce5",
+            "ALZ-f541acdc-e979-4377-acdb-3751ab2ab13a",
+            "ALZ-da6e55d7-d8a2-4adb-817d-6326af625ca4",
+            "ALZ-b2ab13ad-a6e5-45d7-b8a2-adb117d6326a",
+            "ALZ-f625ca44-e569-45f2-823a-ce8cb12308ca",
+            "ALZ-89cc5e11-aa4d-4c3b-893d-feb99215266a",
+            "ALZ-7f408960-c626-44cb-a018-347c8d790cdf",
+        ],
+    },
     "log-retention-machine-resource-guardrails": {
         "question": (
             "Provide nine independently attributable original-time decisions and exceptions, "

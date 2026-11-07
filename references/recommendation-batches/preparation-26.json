@@ -1,0 +1,153 @@
+{
+  "batch": "26",
+  "review_state": "preparation-only-reviewed",
+  "issue": "https://github.com/jonathan-vella/landinglens/issues/151",
+  "preparation_base_commit": "e5506c3d4061845b4250a68046ba281156de676d",
+  "activation": "Deferred until the coordinator explicitly grants the serialized slot after cohorts09/24. No accepted successor registration, interview-bank/catalog/crosswalk/count/history activation, PR, merge, delivery recording or issue closure in independent preparation.",
+  "supported_modes": "Offline raw Terraform including explicit local modules and supplied plan JSON with explicit AzureRM 4.50.0; pinned planned ARM and existing no-restore Bicep; saved/injected normalized evidence and original-time privacy-projected replay. New facts describe explicit service-qualified vault settings, Azure-to-Azure replication/source VM references, VM backup/source policy references, guest assignment modes/extensions, SQL Database failover groups and WAF categories/destinations. Reuse existing VM/Policy/logging/protection helpers. Raw backup protected-item identities require explicit source-hash-bound identity mapping rather than guessed container IDs. No new Collector registry/routes, built-in fetching, second Policy interpreter or live operations.",
+  "acceptance_evidence": "Eight distinct source-specific assisted workflows, not whole-guidance predicates. Each human decision is independently blank, selected, attributable, time-bound and exceptable. Configured backup/replication/extension/assignment/category/destination facts do not prove protection coverage, retention adequacy, achieved RPO/RTO, successful recovery/drills, compliant guests, operating drift monitoring or WAF/Sentinel ingestion/review/detection. Missing, partial, denied, ambiguous, stale, unsupported and over-bound input stays unknown; Signals or human confirmations never manufacture Verified.",
+  "interview": {
+    "id": "recovery-guest-drift-waf-telemetry",
+    "question": "Decide all eight recommendations independently using attributable redacted evidence, never one shared outcome. For Azure VM DR, reconcile complete eligible VM/application/dependency populations, Azure-to-Azure Site Recovery and native backup configuration with separately approved RPO/RTO, recovery points, retention, network/failback and actual drill/restore evidence. For redundancy, preserve the immutable GRS-default wording but qualify Recovery Services versus Data Protection Backup vaults, datastore/workload/region support and Azure Files snapshot versus vaulted backup; generic account SKU and omitted settings prove no default or suitable backup choice. For guest deployment, distinguish legacy Guest Configuration wording from current Machine Configuration, direct versus Policy-created assignments, Audit/apply/autocorrect modes, exact guest extension publisher/type/instance names, identity/network/content prerequisites and current OS/architecture/VMSS/Arc support, including November 2026 Linux PowerShell changes; assignments do not prove execution or compliance. For security drift monitoring, separately substantiate expected baselines, Policy definitions/versions/assignments/parameters/exclusions, timely compliance observations, responsible review and operating response. No built-in fetch or second rule interpreter. For PaaS DR, assess every actual service/SKU/region and component/workload failover/failback plan with original-time drills; a SQL Database failover group is narrow configuration, not universal support, successful failover or achieved RPO/RTO. For native/third-party backup, substantiate compatible workload/version coverage, retention/restore/security and ownership; legacy Backup Center now points to Resiliency/Business Continuity Center, whose presence is not protection. For WAF diagnostics, bind the actual delivery resource/service to explicit enabled firewall-log categories and destinations, then independently substantiate ingestion, retention, regular attack and false-positive review/tuning. Standard/Premium Front Door uses FrontDoorWebApplicationFirewallLog; classic capitalization differs and is unsupported by this preparatory target model. The Sentinel walkthrough's FrontDoorFirewallLog names conflict with the service-specific monitoring page: do not equate them. For WAF-to-Sentinel, separately prove connector/content configuration, arriving WAF data, analytics/detection coverage and accountable response; shared workspace/onboarding and categories do not prove integration. All requirements, coverage, testing, operating decisions and exceptions remain blank until explicitly supplied. No live probes, commands, backup/restore/failover, guest or compliance execution, WAF attacks, queries, traffic or telemetry retrieval; no logs, guest/package/report payloads, scripts, settings, secrets, private endpoints or personal data retained.",
+    "controls": [
+      "ALZ-7ea02e1c-7166-45a3-bdf5-098891367fcb",
+      "ALZ-eba8cf22-45c6-4dc1-9b57-2cceb3b97ce5",
+      "ALZ-f541acdc-e979-4377-acdb-3751ab2ab13a",
+      "ALZ-da6e55d7-d8a2-4adb-817d-6326af625ca4",
+      "ALZ-b2ab13ad-a6e5-45d7-b8a2-adb117d6326a",
+      "ALZ-f625ca44-e569-45f2-823a-ce8cb12308ca",
+      "ALZ-89cc5e11-aa4d-4c3b-893d-feb99215266a",
+      "ALZ-7f408960-c626-44cb-a018-347c8d790cdf"
+    ]
+  },
+  "recommendations": [
+    {
+      "guid": "7ea02e1c-7166-45a3-bdf5-098891367fcb",
+      "upstream_id": "F02.01",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit A2A replication source VM/policy/recovery-RG and Azure VM backup source/policy references, with unique known typed selected-scope relationships.",
+      "sources": ["bcdr-linked", "asr-arm", "backup-item-arm", "terraform-site_recovery_replicated_vm", "terraform-backup_protected_vm"],
+      "review_resource_types": ["Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems", "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems"],
+      "review_fact_paths": ["a2aReplicationSummary", "vmBackupSummary"],
+      "evidence_requirements": [
+        "Identify complete intended eligible Azure VM/application/dependency populations and Azure-to-Azure DR applicability, approved business RPO/RTO, recovery consistency, retention, residency, networking, security and ownership; record justified exclusions independently.",
+        "Reconcile actual source VMs, vaults, backup/replication policies and recovery regions/resources with intended coverage and current service support. Prepared A2A and backup references are partial configuration only; absent/denied/ambiguous/stale records do not establish no protection or complete protection.",
+        "Reviewer decision: are Azure-to-Azure Site Recovery and Azure-native backup appropriately employed for actual requirements, with original-time successful backup/restore/recovery-drill and failback evidence and accepted gaps? Configured replication/backup references establish neither operating health nor achieved RPO/RTO."
+      ],
+      "limitations": "Only A2A and exact Microsoft.Compute/virtualMachines backup item discriminator are supported. No protected-fleet count, recovery points, job/health/payload retention, live reads, operations or runtime assurance.",
+      "flags": ["a2a-not-every-asr-provider", "backup-reference-not-success", "configuration-not-recovery-objectives"]
+    },
+    {
+      "guid": "eba8cf22-45c6-4dc1-9b57-2cceb3b97ce5",
+      "upstream_id": "F02.02",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit Recovery Services storage configuration/CRR and Data Protection datastore/redundancy pairs, not generic storage-account SKU or inferred defaults.",
+      "sources": ["redundancy-linked", "recovery-vault-settings", "backup-vault-settings", "recovery-storage-arm", "backup-vault-arm", "terraform-recovery_services_vault", "terraform-data_protection_backup_vault"],
+      "review_resource_types": ["Microsoft.RecoveryServices/vaults", "Microsoft.RecoveryServices/vaults/backupstorageconfig", "Microsoft.DataProtection/backupVaults"],
+      "review_fact_paths": ["recoveryStorageSummary", "backupVaultSummary"],
+      "evidence_requirements": [
+        "Reference approved workload recovery, durability, regional/zone failure, residency, availability, cost, retention and restore requirements. Preserve the immutable recommendation's GRS-default wording while reviewing the actual vault family, source/API/provider version, datastore, workload and region.",
+        "Recovery Services guidance documents GRS by default and explicit LRS/ZRS choices before protection; its vault setting governs Azure Files vaulted backup, not file-share snapshots. Data Protection Backup vaults require service-specific datastore/redundancy choices, and current overview does not prove a universal GRS default. Omitted settings and generic account replication are unknown here; SnapshotStore is not silently mapped to OperationalStore.",
+        "Reviewer decision: are the actual explicit GRS/ZRS/LRS settings appropriate for each supported backup workload and recovery/residency requirement, with restore/drill evidence and exceptions? Cross-region-restore configuration has workload/region constraints and proves no successful secondary restore or achieved objective."
+      ],
+      "limitations": "No fabricated vault defaults, backup-policy retention threshold or appropriate-redundancy verdict. Soft-delete duration, account SKU, configured CRR and storage replica capability are not backup retention, coverage or recovery success.",
+      "flags": ["recoveryservices-default-not-universal", "snapshot-not-vaulted-backup", "configured-redundancy-not-suitability"]
+    },
+    {
+      "guid": "f541acdc-e979-4377-acdb-3751ab2ab13a",
+      "upstream_id": "F03.01",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit guest assignment mode and exact Machine Configuration extension publisher/type/upgrade flags, with typed VM-parent and reused Policy configuration.",
+      "sources": ["guest-linked", "guest-assignments", "guest-extension", "guest-arm", "extension-arm", "terraform-policy_virtual_machine_configuration_assignment", "terraform-virtual_machine_extension"],
+      "review_resource_types": ["Microsoft.GuestConfiguration/guestConfigurationAssignments", "Microsoft.Compute/virtualMachines/extensions", "Microsoft.Authorization/policyDefinitions", "Microsoft.Authorization/policySetDefinitions", "Microsoft.Authorization/policyAssignments"],
+      "review_fact_paths": ["guestAssignmentSummary", "machineConfigurationExtension", "policyDefinitionSummary", "policyInitiativeSummary", "policyAssignmentSummary"],
+      "evidence_requirements": [
+        "Define approved baseline/software settings, intended machines, ownership, applicability and enforcement mode. Legacy Guest Configuration now redirects to Machine Configuration. Review current OS/architecture/VMSS/Arc support and November 2026 Linux PowerShell compatibility changes without assuming a VM extension applies to every machine.",
+        "Reconcile Policy-created versus manual guest assignments, exact definition/version/scope/parameters/exclusions and machine identity/network/content prerequisites. Distinguish Audit, ApplyAndMonitor and ApplyAndAutoCorrect. Exact Microsoft.GuestConfiguration publisher/type and baseline instance names are narrow deployment context, not installed/running agents or applied settings.",
+        "Reviewer decision: do actual guest policies automatically deploy the intended software/configuration baseline and enforce compliance for the applicable population, with attributable original-time execution/compliance evidence and exceptions? A guest assignment, apply mode, extension or Policy effect alone proves none of these outcomes."
+      ],
+      "limitations": "Azure VM guest-parent joins only in this preparation; Arc and unsupported scopes are explicit unknown, not unsupported runtime claims. No package/parameter/protected-setting/report contents, built-in acquisition, commands, scans or deployment.",
+      "flags": ["legacy-wording-current-machine-configuration", "assignment-not-execution", "extension-not-compliance"]
+    },
+    {
+      "guid": "da6e55d7-d8a2-4adb-817d-6326af625ca4",
+      "upstream_id": "F03.02",
+      "classification": "assisted",
+      "implemented_subclaim": "Reused strict supplied Policy definition/initiative/assignment version/scope joins plus explicit guest modes/extensions as partial drift-monitoring context.",
+      "sources": ["drift-linked", "guest-linked", "guest-assignments", "guest-arm", "extension-arm", "terraform-policy_virtual_machine_configuration_assignment"],
+      "review_resource_types": ["Microsoft.Authorization/policyDefinitions", "Microsoft.Authorization/policySetDefinitions", "Microsoft.Authorization/policyAssignments", "Microsoft.GuestConfiguration/guestConfigurationAssignments", "Microsoft.Compute/virtualMachines/extensions"],
+      "review_fact_paths": ["policyDefinitionSummary", "policyInitiativeSummary", "policyAssignmentSummary", "guestAssignmentSummary", "machineConfigurationExtension"],
+      "evidence_requirements": [
+        "Identify expected VM security baseline settings, accountable owners, complete applicable machine populations and monitoring/evaluation/response requirements. CAF specifically describes in-machine Machine Configuration auditing; IaC resource drift alone is not guest security drift monitoring.",
+        "Bind actual reviewed Policy definitions/versions, initiatives, assignments, scopes, parameters, exclusions/exemptions and guest prerequisites to those requirements. Reuse saved/injected policy-compliance observations only as source-qualified Signals with evaluation time; never fetch built-ins, reinterpret Policy rules or infer compliance from assignment presence.",
+        "Reviewer decision: is VM security configuration drift actually monitored through Azure Policy with timely original-time evaluations, responsible review, response and accepted gaps? Guest mode/extensions and generic Policy references do not establish baseline correctness, actual observation, remediation or complete monitored coverage."
+      ],
+      "limitations": "No compliance scan, guest command, second Policy interpreter or invented monitoring cadence/threshold. Source configuration and current operation remain separate; human confirmation does not turn Signals into Verified.",
+      "flags": ["guest-drift-not-only-iac-drift", "policy-assignment-not-observation", "no-invented-monitoring-threshold"]
+    },
+    {
+      "guid": "b2ab13ad-a6e5-45d7-b8a2-adb117d6326a",
+      "upstream_id": "F04.01",
+      "classification": "assisted",
+      "implemented_subclaim": "Narrow SQL Database failover-group read-write policy and typed database/primary/partner references, separate from a complete service-specific PaaS DR and drill decision.",
+      "sources": ["paas-linked", "sql-recovery", "sql-arm", "terraform-mssql_failover_group"],
+      "review_resource_types": ["Microsoft.Sql/servers/failoverGroups"],
+      "review_fact_paths": ["sqlFailoverSummary"],
+      "evidence_requirements": [
+        "Identify every actual PaaS component/service/SKU/region, business criticality, approved RPO/RTO, data consistency/retention/residency, dependency sequencing and current native recovery/failover support. The linked legacy resiliency URL now redirects to Well-Architected disaster recovery, not a universal service implementation.",
+        "For SQL Database groups, reconcile complete database membership, distinct known primary/partner servers, actual regions, read-write policy, data-loss grace, client connectivity and dependency behavior. API Manual/Automatic wording is preserved separately from current customer-managed/Microsoft-managed guidance; asynchronous replication can lose data during forced failover. Other services need their own evidence.",
+        "Reviewer decision: are native PaaS DR capabilities appropriately used and failover/failback tested for each applicable component and the workload as a whole, with original-time drill results, measured objectives, safe operating ownership and exceptions? Group presence and policy configuration prove neither successful failover nor achieved RPO/RTO."
+      ],
+      "limitations": "SQL Database configuration is a narrow example, not universal PaaS DR. No failover, restore, production drill, connection-string retention or arbitrary grace/SLA threshold; test evidence is human-supplied.",
+      "flags": ["sql-not-universal-paas-dr", "asynchronous-not-zero-data-loss", "configured-group-not-tested-failover"]
+    },
+    {
+      "guid": "f625ca44-e569-45f2-823a-ce8cb12308ca",
+      "upstream_id": "F04.02",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit VM backup source/policy and service-qualified Data Protection vault settings support a separate native-or-compatible third-party coverage/restore review.",
+      "sources": ["backup-center-linked", "paas-linked", "backup-vault-settings", "backup-item-arm", "backup-vault-arm", "terraform-backup_protected_vm", "terraform-data_protection_backup_vault"],
+      "review_resource_types": ["Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems", "Microsoft.DataProtection/backupVaults"],
+      "review_fact_paths": ["vmBackupSummary", "backupVaultSummary"],
+      "evidence_requirements": [
+        "Map complete workload/data populations and approved backup, retention, consistency, recovery, residency, access/security and ownership requirements to actual Azure-native or Azure-compatible third-party capabilities; establish product/version/workload compatibility independently.",
+        "Reconcile actual backup policies/items/vault families/datastores and attributable protection/restore evidence, including gaps and retained/stopped/deleted-source scenarios. Backup Center is now a legacy experience accessed through Resiliency/Business Continuity Center; console capability or vault presence does not establish protected fleet coverage or successful jobs.",
+        "Reviewer decision: is an appropriate native or compatible third-party backup solution actually in use with evidenced complete intended coverage, adequate retention and successful original-time restores, accountable operations and accepted exceptions? Prepared VM references and storage settings do not establish compatibility, recovery points or operating recovery."
+      ],
+      "limitations": "No third-party product detection from names or resource absence. No backup jobs, recovery points/private payloads, data-plane reads, restore execution or inferred retention threshold.",
+      "flags": ["backup-center-legacy", "native-or-compatible-not-presence", "coverage-retention-restores-independent"]
+    },
+    {
+      "guid": "89cc5e11-aa4d-4c3b-893d-feb99215266a",
+      "upstream_id": "F06.01",
+      "classification": "assisted",
+      "implemented_subclaim": "Exact supplied firewall-log category/enabled configuration and typed service/diagnostic/workspace/storage relationships, not log contents or review.",
+      "sources": ["waf-diagnostics-linked", "frontdoor-logs", "appgateway-logs", "diagnostic-arm", "profile-arm", "terraform-monitor_diagnostic_setting", "terraform-cdn_frontdoor_profile"],
+      "review_resource_types": ["Microsoft.Insights/diagnosticSettings", "Microsoft.Cdn/profiles", "Microsoft.Network/applicationGateways", "Microsoft.OperationalInsights/workspaces"],
+      "review_fact_paths": ["wafDiagnosticSummary", "targetResourceId", "workspaceId", "frontDoorProfileSummary", "firewallPolicy.id", "logWorkspaceSummary"],
+      "evidence_requirements": [
+        "Identify intended application-delivery/WAF resources, actual service/tier and complete logging destinations, owners, privacy/retention and review requirements. The linked best-practices page is Front Door Premium-qualified; distinguish Application Gateway and Front Door Standard/Premium from classic and other CDN services.",
+        "Bind each diagnostic extension to its exact actual resource identity and unique known typed selected-scope destinations. Standard/Premium Front Door uses FrontDoorWebApplicationFirewallLog, classic uses FrontdoorWebApplicationFirewallLog and Application Gateway uses ApplicationGatewayFirewallLog. Metrics, access/activity logs and unexpanded category groups are not explicit WAF categories; enabled routing is not arriving or retained data.",
+        "Reviewer decision: are applicable WAF logs actually saved and regularly reviewed for attacks and false-positive detections, with attributable original-time ingestion, retention, review/tuning actions, accountable cadence and exceptions? No configured flag, resource count, workspace or WAF policy proves complete ingestion or human review."
+      ],
+      "limitations": "No WAF log/request/attack/client/query payload retention or execution. Classic target model and indirect Event Hub/partner destinations remain explicit unsupported/unknown here, not absence or pass; no invented review interval.",
+      "flags": ["service-qualified-exact-waf-category", "routing-not-ingestion", "logs-not-review"]
+    },
+    {
+      "guid": "7f408960-c626-44cb-a018-347c8d790cdf",
+      "upstream_id": "F06.02",
+      "classification": "assisted",
+      "implemented_subclaim": "Supplied WAF diagnostic target/category/workspace and exact default workspace Sentinel-onboarding relationships as configuration-only context.",
+      "sources": ["waf-sentinel-linked", "waf-sentinel", "frontdoor-logs", "appgateway-logs", "diagnostic-arm", "terraform-monitor_diagnostic_setting"],
+      "review_resource_types": ["Microsoft.Insights/diagnosticSettings", "Microsoft.Cdn/profiles", "Microsoft.Network/applicationGateways", "Microsoft.OperationalInsights/workspaces", "Microsoft.SecurityInsights/onboardingStates"],
+      "review_fact_paths": ["wafDiagnosticSummary", "targetResourceId", "workspaceId", "frontDoorProfileSummary", "firewallPolicy.id", "logWorkspaceSummary", "sentinelOnboardingSummary"],
+      "evidence_requirements": [
+        "Identify intended WAF services/resources, actual Sentinel workspace/tenant boundaries, approved telemetry integration, complete analytic/detection coverage, ownership, privacy and response requirements independently of resource presence.",
+        "Reconcile actual exact service-specific firewall-log categories and destinations with supplied default workspace Sentinel onboarding, connector/content solution and arriving data evidence. The Sentinel walkthrough currently names FrontDoorFirewallLog/FrontdoorFirewallLog, which conflicts with the service-specific WebApplicationFirewallLog category reference; preserve that source discrepancy rather than silently equating names or guessing service output.",
+        "Reviewer decision: are WAF logs actually sent to Microsoft Sentinel, used to detect attacks and integrated into overall Azure security analysis with attributable original-time ingestion/analytics/incident-response evidence and exceptions? Shared workspace, onboarding, category flags or rule templates do not establish telemetry, functioning connectors or detection."
+      ],
+      "limitations": "No new executable query, WAF attack, Sentinel connector installation, content/analytics/playbook operation, log retrieval or manufactured runtime assurance. Only existing D07.06/.07 query Signals remain executable; none run here.",
+      "flags": ["sentinel-walkthrough-category-discrepancy", "workspace-onboarding-not-telemetry", "configuration-not-detection"]
+    }
+  ]
+}

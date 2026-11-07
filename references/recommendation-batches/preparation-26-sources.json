@@ -1,0 +1,456 @@
+{
+  "batch": "26",
+  "review_state": "preparation-only-reviewed",
+  "sources": [
+    {
+      "id": "bcdr-linked",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-business-continuity-disaster-recovery#design-recommendations",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-business-continuity-disaster-recovery",
+      "sha256": "ad49711cb0e4772dd9659359d9368b69b3f949f99f1f7781343575c65efee08a",
+      "retrieved_at": "2026-11-06T23:55:08.844096+00:00",
+      "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+      "finding": "CAF separates Azure-to-Azure VM replication, native backup and service-specific PaaS DR. Configuration cannot establish complete protection, achieved recovery objectives or drills.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "redundancy-linked",
+      "url": "https://learn.microsoft.com/azure/storage/common/storage-redundancy",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy",
+      "sha256": "8fb707268ba4a60a13c8c61f4d0f6aa895f63b2931223f48bf5f045cf36558f6",
+      "retrieved_at": "2026-11-06T23:55:09.568209+00:00",
+      "revision": "600b459b67367f93f8426065bac787d0b7766c3e",
+      "finding": "Storage redundancy describes account replication, not a universal Azure Backup default or correct backup choice. Preserve immutable GRS wording with vault/workload qualifications.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "recovery-vault-settings",
+      "url": "https://learn.microsoft.com/en-us/azure/backup/backup-create-rs-vault",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/backup/backup-create-recovery-services-vault",
+      "sha256": "ec56d6e344b6923af6a5be2503f6385801957c23c26be9cf8d2e0fa3bf519705",
+      "retrieved_at": "2026-11-06T23:55:10.296536+00:00",
+      "revision": "6e232e43ce97e38e61c9a265b3148485e5414892",
+      "finding": "Redirects to backup-create-recovery-services-vault. Recovery Services documents default GRS and explicit LRS/ZRS choices before protection. Vault settings do not govern Azure Files snapshot backups, only vaulted backup; CRR has workload/region constraints and configuration does not prove a successful secondary restore or an achieved RPO.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "backup-vault-settings",
+      "url": "https://learn.microsoft.com/en-us/azure/backup/backup-vault-overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/backup/backup-vault-overview",
+      "sha256": "ee9218f7dbd8bd59bece73967741f5952f189d4024e283316406929b13cb9e7c",
+      "retrieved_at": "2026-11-06T23:55:10.601832+00:00",
+      "revision": "8ec165efbe56a9ea50ae0ce0ea42b0fbb5f23cf0",
+      "finding": "Data Protection Backup vaults require service-specific datastore/redundancy review; this page does not establish a universal GRS default. CRR support is workload-specific. No omitted setting is converted into observed configuration.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "guest-linked",
+      "url": "https://learn.microsoft.com/azure/governance/policy/concepts/guest-configuration",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/governance/machine-configuration/overview/01-overview-concepts",
+      "sha256": "fb49340f7b302e33cdc8e77d447facc796a195c4017713ecc1c18832b81ebb3e",
+      "retrieved_at": "2026-11-06T23:55:11.360746+00:00",
+      "revision": "1971c1c48336883cdfe86d6fff3de6130c99a322",
+      "finding": "Legacy Guest Configuration URL redirects to Machine Configuration. Assignments are distinct from Policy definitions; Audit, ApplyAndMonitor and ApplyAndAutoCorrect differ. November 2026 Linux PowerShell compatibility changes, OS/architecture and Arc/VMSS support require review; configured extension/assignment is not execution or compliance.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "guest-assignments",
+      "url": "https://learn.microsoft.com/en-us/azure/governance/machine-configuration/concepts/assignments",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/governance/machine-configuration/concepts/assignments",
+      "sha256": "0c70484e79318d1744b6b0666a0cad4f9f403158d40cde3aac0e1d345f6808d8",
+      "retrieved_at": "2026-11-06T23:55:11.810778+00:00",
+      "revision": "e2507938b2a97d1c5db073fc57046b84254900a0",
+      "finding": "Guest assignments can be created manually or by Policy. A temporary null assignment type is documented; neither assignment presence nor apply mode proves compliant settings or current drift monitoring. Package contents, URIs and reports are withheld.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "guest-extension",
+      "url": "https://learn.microsoft.com/en-us/azure/virtual-machines/extensions/guest-configuration",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/virtual-machines/extensions/guest-configuration",
+      "sha256": "5f2a1cdc00bea865e744feb25420903d73bde3b447886117c6f5f46b306b7e0c",
+      "retrieved_at": "2026-11-06T23:55:12.252414+00:00",
+      "revision": "098be497342076662a3479fe3d1cb087e518b356",
+      "finding": "Reviewed exact publisher/type pairs and AzurePolicyforLinux/Windows instance names. System identity, supported OS, network/content access and actual installation/reporting remain independent requirements. Never deploy or execute an extension.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "drift-linked",
+      "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-operational-compliance#monitoring-for-configuration-drift",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-operational-compliance",
+      "sha256": "f4e147ecc2a300a2a4ebfe8689481440cb7d413b73e98419b7779e8285d6cdfc",
+      "retrieved_at": "2026-11-06T23:55:12.756737+00:00",
+      "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+      "finding": "CAF recommends in-machine drift auditing through Policy and Machine Configuration. Reuse supplied Policy configuration/compliance Signals without interpreting rules or fetching built-ins; assignment references do not prove actual monitoring or remediation.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "paas-linked",
+      "url": "https://learn.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/well-architected/reliability/disaster-recovery",
+      "sha256": "7d9e3f8c2b86331b19df896e940077c87010de565ec8923d6ba2ab91d17428ad",
+      "retrieved_at": "2026-11-06T23:55:14.022345+00:00",
+      "revision": "f28b7d43eeabdd2fc945944b071c1109b20b75d1",
+      "finding": "Legacy resiliency URL redirects to Well-Architected disaster recovery. No single tool covers every service; approve per-component RPO/RTO, retention, dependencies, failback and attributable drill results. A SQL failover group is not universal PaaS DR.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "sql-recovery",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-sql/database/failover-group-sql-db",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/azure-sql/database/failover-group-sql-db?view=azuresql",
+      "sha256": "57a09af94bff37fcfe024cbb2dc806628c1278e267ab72f6889076c2773ffa65",
+      "retrieved_at": "2026-11-06T23:55:14.308223+00:00",
+      "revision": "c1d92c9d18596d6c14dae6a3dfef2afeb3896a30",
+      "finding": "SQL Database failover groups use asynchronous geo-replication; forced failover can lose data. Current customer-managed versus Microsoft-managed terminology differs from the pinned API Manual/Automatic enum. Configured policy is neither a drill nor achieved RPO.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "backup-center-linked",
+      "url": "https://learn.microsoft.com/azure/backup/backup-center-overview",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/backup/backup-center-overview",
+      "sha256": "c26b81b4b9a3c8fef19c75618e52465a3f8a92fc413f5fd9bd5024289cb006d3",
+      "retrieved_at": "2026-11-06T23:55:15.094021+00:00",
+      "revision": "1ca43d975cb84704d536e1c795e5164f52628640",
+      "finding": "Backup Center is a legacy experience, no longer in portal search; current guidance points to Resiliency/Business Continuity Center. Console capability is not protected fleet coverage, third-party compatibility or successful backup/restore.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "waf-diagnostics-linked",
+      "url": "https://learn.microsoft.com/azure/web-application-firewall/afds/waf-front-door-best-practices#add-diagnostic-settings-to-save-your-wafs-logs",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/web-application-firewall/afds/waf-front-door-best-practices",
+      "sha256": "b9514e6e8f44e1ac1fddd024c60eb0c25b190b43361b2f7402779c243c1317f0",
+      "retrieved_at": "2026-11-06T23:55:15.952263+00:00",
+      "revision": "69a6b9416c998fe7bcae0a1e9d65df061de97397",
+      "finding": "Premium-qualified best practices separate configured log routing, regular attack review and false-positive tuning. No categories or WAF resource can prove actual log review.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "waf-sentinel-linked",
+      "url": "https://learn.microsoft.com/azure/web-application-firewall/afds/waf-front-door-best-practices#send-logs-to-microsoft-sentinel",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/web-application-firewall/afds/waf-front-door-best-practices",
+      "sha256": "b9514e6e8f44e1ac1fddd024c60eb0c25b190b43361b2f7402779c243c1317f0",
+      "retrieved_at": "2026-11-06T23:55:16.317475+00:00",
+      "revision": "69a6b9416c998fe7bcae0a1e9d65df061de97397",
+      "finding": "WAF telemetry integration requires ingestion and analysis, not a shared workspace or Sentinel onboarding reference. No connectors, analytics, incidents or playbooks executed.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "frontdoor-logs",
+      "url": "https://learn.microsoft.com/en-us/azure/web-application-firewall/afds/waf-front-door-monitor",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/web-application-firewall/afds/waf-front-door-monitor",
+      "sha256": "ae9e617564ba5b8743a673637b559e4431acf7d8196294c297eab2982e4a704c",
+      "retrieved_at": "2026-11-06T23:55:16.794686+00:00",
+      "revision": "06d56036f1be30f98cc5642d4c33b2946bbf7785",
+      "finding": "Authoritative service page distinguishes Standard/Premium FrontDoorWebApplicationFirewallLog from classic FrontdoorWebApplicationFirewallLog. Metrics/activity logs are not WAF logs; logging is not enabled by default. Only exact supplied categories are prepared; no payloads are retained.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "appgateway-logs",
+      "url": "https://learn.microsoft.com/en-us/azure/web-application-firewall/ag/web-application-firewall-logs",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/web-application-firewall/ag/web-application-firewall-logs",
+      "sha256": "976b7ae70bdc5138be18c0c616b12e54d4404797110748d3d6147db86e052650",
+      "retrieved_at": "2026-11-06T23:55:17.264380+00:00",
+      "revision": "278f3e7de02d1dbaf65a14e553651ceaad77a3cc",
+      "finding": "ApplicationGatewayFirewallLog is distinct from access/performance/activity logs. Diagnostic destinations can be workspace, storage or Event Hubs; configured flags do not establish ingestion, attacks, false positives, retention or review.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "waf-sentinel",
+      "url": "https://learn.microsoft.com/en-us/azure/web-application-firewall/waf-sentinel",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/web-application-firewall/waf-sentinel",
+      "sha256": "c6a4c9a0c8459f06405fbd1c4b5459f091590b524fb64370625117c601f74952",
+      "retrieved_at": "2026-11-06T23:55:17.633570+00:00",
+      "revision": "82b8e4f803342c1a495447ec5f161ceec8e33ea1",
+      "finding": "Walkthrough currently says FrontDoorFirewallLog/FrontdoorFirewallLog, unlike the service-specific monitoring page's WebApplicationFirewallLog categories. Do not silently equate them. Actual connector/content/ingestion/analytics evidence remains a blank human decision, separate from category/destination/onboarding configuration.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "recovery-storage-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.recoveryservices/2023-02-01/vaults/backupstorageconfig",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.recoveryservices/2023-02-01/vaults/backupstorageconfig",
+      "sha256": "6a244f30cc7a7b9efc013c832d6949d72b39723b481a362c51806bd08ae3431f",
+      "retrieved_at": "2026-11-06T23:55:18.121252+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Pinned child vaultstorageconfig exposes explicit storageModelType and CRR flag; do not read generic account SKU or unrelated vault properties as these settings.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "backup-vault-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.dataprotection/2024-04-01/backupvaults",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.dataprotection/2024-04-01/backupvaults",
+      "sha256": "db955baaa013511544c01d716e7853f18d90c910e0a15fde537cd2c2678f03ad",
+      "retrieved_at": "2026-11-06T23:55:18.287468+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Pinned storageSettings pairs explicit datastore and redundancy. SnapshotStore is not in this ARM enum despite stale provider docs; unknown forms remain unknown. Soft-delete retention is not backup-policy/recovery-point retention.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "backup-item-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.recoveryservices/2024-01-01/vaults/backupfabrics/protectioncontainers/protecteditems",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.recoveryservices/2024-01-01/vaults/backupfabrics/protectioncontainers/protecteditems",
+      "sha256": "e0e2b99953efa8a5c8616a97e567f9d27d687a67567132c2eaf14cc995a7c25d",
+      "retrieved_at": "2026-11-06T23:55:18.473896+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Only exact Microsoft.Compute/virtualMachines item discriminator is normalized to typed source VM and backup-policy references; no job, payload or protection-health assertion, and no inferred identity from container names.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "asr-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.recoveryservices/2024-04-01/vaults/replicationfabrics/replicationprotectioncontainers/replicationprotecteditems",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.recoveryservices/2024-04-01/vaults/replicationfabrics/replicationprotectioncontainers/replicationprotecteditems",
+      "sha256": "dfa4a76a07cbabd155ebbd0473b49915e36e84d9a40448123cca08c23cfcda03",
+      "retrieved_at": "2026-11-06T23:55:18.656019+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Only A2A providerSpecificDetails with explicit source VM, replication policy and recovery RG references is prepared. Other providers/migration kinds are unsupported. No replication health, recovery-point, RPO/RTO or failover outcome retained.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "guest-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.guestconfiguration/2024-04-05/guestconfigurationassignments",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.guestconfiguration/2024-04-05/guestconfigurationassignments",
+      "sha256": "76a088d83b214d0b61214c2b9afa12a5e8aa6e2885e6ee5b7925b4575c70ea48",
+      "retrieved_at": "2026-11-06T23:55:18.943909+00:00",
+      "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+      "finding": "Pinned extension resource retains exact assignment type only. Parameters, content URIs/hashes, reports and VMSS payloads are withheld; null is unknown, not Audit.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "extension-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/virtualmachines/extensions",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/2024-07-01/virtualmachines/extensions",
+      "sha256": "792d1888a7cd9aa2d2e5400d0962f0b6be375df345e40c23fbec03bd180ddbd8",
+      "retrieved_at": "2026-11-06T23:55:19.657896+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Retain only reviewed guest publisher/type and explicit upgrade booleans. No settings/protected settings/scripts/statuses or inferred installed version.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "sql-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.sql/2023-08-01/servers/failovergroups",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.sql/2023-08-01/servers/failovergroups",
+      "sha256": "8228f54aeba90a72fb6c2148a2d64cee1516cd6d50ca8176987ed83328cf7f08",
+      "retrieved_at": "2026-11-06T23:55:20.132665+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Pinned SQL Database group has typed database/partner-server references and read-write policy; full grace/data-loss/region/dependency/drill review remains human.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "profile-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.cdn/2024-02-01/profiles",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.cdn/2024-02-01/profiles",
+      "sha256": "125c4a1b2b525393294777c9042d859c247815e38bd01ae731404f761781abd8",
+      "retrieved_at": "2026-11-06T23:55:20.672180+00:00",
+      "revision": "a80a6ca0ce31aae2ff0424e8453153664e18bc8b",
+      "finding": "Root SKU qualifies a Standard/Premium Front Door profile. Classic and other CDN profiles stay unsupported; no security-policy or telemetry inference from SKU.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "diagnostic-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/2021-05-01-preview/diagnosticsettings",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.insights/2021-05-01-preview/diagnosticsettings",
+      "sha256": "580357cdd843130c556b7f8c17317b53d116f6d290db381141e72298dc5d6e50",
+      "retrieved_at": "2026-11-06T23:55:21.223521+00:00",
+      "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+      "finding": "Retain only exact WAF categories/enabled values and typed workspace/storage references. Category groups are not expanded into individual categories; Event Hub keys/names/authorization payloads and private logs are withheld.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-recovery_services_vault",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/recovery_services_vault.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/recovery_services_vault.html.markdown",
+      "sha256": "93b75e5f323963d0e1e6865ae146dbf1bd0b3145881630f156a4e5f9251b8f9d",
+      "retrieved_at": "2026-11-06T23:55:21.483831+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "AzureRM 4.50.0 documents GRS default but only explicit storage_mode_type/CRR are projected. Generic vault ARM properties are not the storage-config child.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-data_protection_backup_vault",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/data_protection_backup_vault.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/data_protection_backup_vault.html.markdown",
+      "sha256": "72a0c1582e8543f28fa85c15b64a8c5b47e161da1398090c9ff7db3c5ae2bb0c",
+      "retrieved_at": "2026-11-06T23:55:21.784064+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "4.50.0 requires explicit datastore/redundancy, not universal GRS. Stale SnapshotStore note is not silently accepted as the pinned ARM OperationalStore enum.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-backup_protected_vm",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/backup_protected_vm.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/backup_protected_vm.html.markdown",
+      "sha256": "e73437ed868b9becee68099813020d7276a3255f3dfd38714a318662a1b23a30",
+      "retrieved_at": "2026-11-06T23:55:22.074417+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "4.50.0 source/policy can be omitted for retained/stopped protection; missing values stay unknown. Raw record identity needs explicit mapping; no guessed container ID.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-site_recovery_replicated_vm",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/site_recovery_replicated_vm.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/site_recovery_replicated_vm.html.markdown",
+      "sha256": "a2c4b00200cff2da88437247ce1f00bff9b4c15b567cffab44eebc2defbc6141",
+      "retrieved_at": "2026-11-06T23:55:22.338116+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "4.50.0 resource is Azure-to-Azure only. Explicit typed references are configuration, not replication success or tested failover.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-policy_virtual_machine_configuration_assignment",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_virtual_machine_configuration_assignment.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_virtual_machine_configuration_assignment.html.markdown",
+      "sha256": "c9272572b3e4500382dac3fce16dfb3d9c7eb174ebd76362f5cc35933e505660",
+      "retrieved_at": "2026-11-06T23:55:22.594038+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "4.50.0 guest assignment can exist without extension execution. Only explicit assignment mode is retained; no package, parameter or reported compliance payloads.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-virtual_machine_extension",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_machine_extension.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/virtual_machine_extension.html.markdown",
+      "sha256": "0fbb219bfe161fa712db5906d36ec5c0672117f9008a93de6fa2e04bdcdf06b9",
+      "retrieved_at": "2026-11-06T23:55:22.679862+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "4.50.0 explicit guest publisher/type/upgrade flags only; defaults, settings and protected settings are never retained or executed.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-mssql_failover_group",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/mssql_failover_group.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/mssql_failover_group.html.markdown",
+      "sha256": "9fa9e61f7a75860ab2120937dc0d7731cd9b8e46a413748929a71eb571afec3e",
+      "retrieved_at": "2026-11-06T23:55:22.965068+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "4.50.0 explicit SQL server/database references and failover mode normalize, without computed role, connection strings or default policy assumptions.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-cdn_frontdoor_profile",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/cdn_frontdoor_profile.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/cdn_frontdoor_profile.html.markdown",
+      "sha256": "f33fa6a6540ef15856a25dc0fa2fe0362272347a1595858dc398967969b4d04f",
+      "retrieved_at": "2026-11-06T23:55:23.044385+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "4.50.0 exact Standard/Premium SKU qualifies Front Door categories, not WAF coverage.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-monitor_diagnostic_setting",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/monitor_diagnostic_setting.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/monitor_diagnostic_setting.html.markdown",
+      "sha256": "095f0692015969113d6d296e881e77e3728fff89da7eb123ab98f49235df2db6",
+      "retrieved_at": "2026-11-06T23:55:23.163015+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "4.50.0 enabled_log is explicit enabled-category configuration. Do not expand groups or confuse metrics/access logs with WAF logs; destination IDs are configuration only.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "learn-terms",
+      "url": "https://learn.microsoft.com/legal/termsofuse",
+      "resolved_url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "sha256": "b925125fd2c11eae0153e9eab3cf8b635d2c4469b73bc651f72252fdff43f25f",
+      "retrieved_at": "2026-11-06T23:55:23.707925+00:00",
+      "revision": "9fd90ed833034800434458aef187ba08d8dc9d5b",
+      "finding": "Reviewed Learn terms; preserve attributed metadata and own factual findings only, not article text, sample scripts, logs or third-party content.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "provider-license",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "sha256": "4e2bb185ebd706f76329206869ccb348b92b6236100cfb07775fe31530dab0d5",
+      "retrieved_at": "2026-11-06T23:55:24.022586+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider MPL-2.0: retain source metadata and independently authored findings only.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "workspace-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.operationalinsights/2023-09-01/workspaces",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.operationalinsights/2023-09-01/workspaces",
+      "sha256": "4c5198452016a20164de34ac705b36fdb8a2a06a0c440ce25566dbd9bdba19a2",
+      "retrieved_at": "2026-11-07T00:00:47.630886+00:00",
+      "revision": "a80a6ca0ce31aae2ff0424e8453153664e18bc8b",
+      "finding": "2023-09-01 has explicit SKU, default retention and network configuration. Only these bounded fields are retained; they are not table overrides, effective retention, ingest availability or completeness.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-workspace",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/log_analytics_workspace.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/log_analytics_workspace.html.markdown",
+      "sha256": "241918b71949554ce92012eb9af5a59c95a45c2006b1a73b8845c248dca4c945",
+      "retrieved_at": "2026-11-07T00:00:47.918020+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned 4.50.0 explicit SKU, retention 30-730 and Internet flags normalize without inferring defaults; shared keys/customer IDs and arbitrary tags are withheld. Workspace retention is not every table's actual retention.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "policy-spec-policyDefinitions",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json",
+      "sha256": "9d707ad996174330367c811461f5f3b2e1c710b63e5b171e804ad058850d9ad6",
+      "retrieved_at": "2026-11-07T00:00:48.233122+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned2023-04-01 custom subscription/MG definitions versus global built-ins. Minimize type, explicit supported mode, exact version and literal effect; withhold rule/parameters/metadata and never fetch referenced definitions.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "policy-spec-policySetDefinitions",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json",
+      "sha256": "a75b99bf469062e594abc1468aea4f473c5f070b21311e894c4b1e3a86d89e48",
+      "retrieved_at": "2026-11-07T00:00:48.534027+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned2023-04-01 initiative references with per-member versions and unique reference IDs. Retain typed IDs, hashed member labels and bounded group counts only; no group names, regulatory mapping, parameter values or recursive evaluation.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "policy-spec-policyAssignments",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json",
+      "sha256": "85934922ce8fe3e200fe0642df802f38b72ad153d66807ad874fdf78ee443989",
+      "retrieved_at": "2026-11-07T00:00:48.867205+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned2023-04-01 assignment scope is ID prefix; scope property is readOnly. Minimized references/exclusions and counts preserve missing inputs as unknown. Selectors/overrides/parameters/identity bodies are not retained or interpreted.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "policy-spec-license",
+      "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/LICENSE",
+      "sha256": "b37363bf2295aa0acde60ce78a60034a71a0955075fc01aa09cc23eadff44436",
+      "retrieved_at": "2026-11-07T00:00:49.151573+00:00",
+      "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+      "finding": "Pinned REST-spec MIT terms reviewed; only own findings and source metadata retained.",
+      "reuse": "MIT Microsoft REST specification: metadata and own factual findings only"
+    },
+    {
+      "id": "onboarding-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.securityinsights/2024-03-01/onboardingstates",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.securityinsights/2024-03-01/onboardingstates",
+      "sha256": "d764f7a67c1c08f1201b2b6a33d45d0f21c158a408b599b658be3051126e8208",
+      "retrieved_at": "2026-11-07T00:00:49.674399+00:00",
+      "revision": "a80a6ca0ce31aae2ff0424e8453153664e18bc8b",
+      "finding": "2024-03-01 is a real workspace extension with customerManagedKey boolean. Only the exact default child joins a unique supplied workspace; no synthetic M365/Graph/Lockbox ARM types or universal SIEM predicate are added.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-onboarding",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/sentinel_log_analytics_workspace_onboarding.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/sentinel_log_analytics_workspace_onboarding.html.markdown",
+      "sha256": "86c2768dd6c4c572eb6811ca294602e0a186d99864b16c1acdd051238f2a8052",
+      "retrieved_at": "2026-11-07T00:00:49.974943+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider supports workspace-bound Sentinel onboarding; omitted CMK does not default false in evidence. Documentation import plural defaults is corrected by the actual implementation's literal default; no operational success inferred.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-onboarding-implementation",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/sentinel/sentinel_log_analytics_workspace_onboarding_resource.go",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/sentinel/sentinel_log_analytics_workspace_onboarding_resource.go",
+      "sha256": "7cfc87e337c7d2964629730f7e4e5921e1595e154dde614467dc58db7a364dbc",
+      "retrieved_at": "2026-11-07T00:00:50.291518+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Actual 4.50.0 implementation constructs workspace extension onboardingStates/default using 2022-11-01. Strict parent IDs, not name heuristics, bind raw/plan evidence. No provider run, state polling, onboarding or default-value inference occurs.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    }
+  ]
+}

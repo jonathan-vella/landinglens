@@ -21,6 +21,7 @@ from .network_evidence import replay_properties
 from .operations_evidence import replay_properties as operations_properties
 from .platform_health_evidence import replay_properties as platform_health_properties
 from .policy_strategy_evidence import replay_properties as policy_strategy_properties
+from .recovery_evidence import replay_properties as recovery_properties
 from .security_evidence import replay_properties as security_properties
 from .sources import boolean, enumeration, property_at
 from .tenant_evidence import replay_properties as tenant_properties
@@ -182,6 +183,7 @@ def sanitize_evidence(bundle: dict[str, Any]) -> dict[str, Any]:
                     **logging_properties(resource["resource_type"], values),
                     **operations_properties(resource["resource_type"], values),
                     **platform_health_properties(resource["resource_type"], values),
+                    **recovery_properties(resource["resource_type"], values),
                 },
             }
         )

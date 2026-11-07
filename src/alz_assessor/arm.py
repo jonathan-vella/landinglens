@@ -82,6 +82,17 @@ API_VERSIONS = {
     "microsoft.network/bastionhosts": {"2024-05-01"},
 }
 PLANNED_API_VERSIONS = API_VERSIONS | {
+    "microsoft.recoveryservices/vaults": {"2024-01-01"},
+    "microsoft.recoveryservices/vaults/backupstorageconfig": {"2023-02-01"},
+    "microsoft.recoveryservices/vaults/backupfabrics/protectioncontainers/protecteditems": {
+        "2024-01-01"
+    },
+    "microsoft.recoveryservices/vaults/replicationfabrics/"
+    "replicationprotectioncontainers/replicationprotecteditems": {"2024-04-01"},
+    "microsoft.dataprotection/backupvaults": {"2024-04-01"},
+    "microsoft.compute/virtualmachines/extensions": {"2024-07-01"},
+    "microsoft.sql/servers/failovergroups": {"2023-08-01"},
+    "microsoft.cdn/profiles": {"2024-02-01"},
     "microsoft.operationalinsights/workspaces/tables": {"2023-09-01"},
     "microsoft.operationalinsights/workspaces/dataexports": {"2020-08-01"},
     "microsoft.storage/storageaccounts/blobservices/containers/immutabilitypolicies": {
@@ -140,6 +151,7 @@ def properties(
     from .operations_evidence import projected_properties as operations_properties
     from .platform_health_evidence import projected_properties as platform_health_properties
     from .policy_strategy_evidence import projected_properties as policy_strategy_properties
+    from .recovery_evidence import projected_properties as recovery_properties
     from .security_evidence import projected_properties as security_properties
     from .tenant_evidence import projected_properties as tenant_properties
     from .topology_evidence import projected_properties as topology_properties
@@ -156,6 +168,7 @@ def properties(
         result.update(governance_properties(kind, values, root=root))
         result.update(logging_properties(kind, values, root=root))
         result.update(platform_health_properties(kind, values, root=root))
+        result.update(recovery_properties(kind, values, root=root))
         result.update(network_policy_properties(kind, values))
         result.update(identity_properties(kind, values, root=root))
         result.update(policy_strategy_properties(kind, values))

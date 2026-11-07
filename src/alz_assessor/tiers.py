@@ -37,6 +37,9 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     from .platform_health_evidence import resource_paths as platform_paths
     from .policy_strategy_evidence import GUIDS as POLICY_STRATEGY_GUIDS
     from .policy_strategy_evidence import unique_known as policy_unique_known
+    from .recovery_evidence import GUIDS as RECOVERY_GUIDS
+    from .recovery_evidence import resource_paths as recovery_paths
+    from .recovery_evidence import unique_known as recovery_unique_known
     from .sources import boolean, enumeration, property_at
     from .sovereign_evidence import GUIDS as SOVEREIGN_GUIDS
     from .sovereign_evidence import configuration_context as sovereign_context
@@ -54,6 +57,7 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     vwan = control["upstream_guid"] in VWAN_GUIDS
     logging = control["upstream_guid"] in LOGGING_GUIDS
     platform = control["upstream_guid"] in PLATFORM_HEALTH_GUIDS
+    recovery = control["upstream_guid"] in RECOVERY_GUIDS
     by_id: dict[str, list[dict[str, Any]]] = {}
     policy = control["upstream_guid"] in POLICY_STRATEGY_GUIDS | {
         "aa45be6a-8f2d-4896-b0e3-775e6e94e610"
@@ -66,6 +70,7 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
         or logging
         or platform
         or topology
+        or recovery
         or operations
         or control["upstream_guid"] in TENANT_GUIDS | HYBRID_GUIDS | SOVEREIGN_GUIDS
     ):
@@ -85,6 +90,8 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
                 return True
             continue
         if policy and not policy_unique_known(resource, bundle, by_id):
+            continue
+        if recovery and not recovery_unique_known(resource, bundle, by_id):
             continue
         if topology and not topology_unique_known(resource, bundle, by_id):
             continue
@@ -123,6 +130,8 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
             if logging and path not in resource_paths(resource["resource_type"]):
                 continue
             if platform and path not in platform_paths(resource["resource_type"]):
+                continue
+            if recovery and path not in recovery_paths(resource["resource_type"]):
                 continue
             properties = resource["properties"]
             if path in REVIEW_PATHS:

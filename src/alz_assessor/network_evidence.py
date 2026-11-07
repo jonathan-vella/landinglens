@@ -17,6 +17,7 @@ from .platform_health_evidence import PATHS as PLATFORM_HEALTH_PATHS
 from .policy_strategy_evidence import PATHS as POLICY_STRATEGY_PATHS
 from .protection_evidence import KINDS as PROTECTION_KINDS
 from .protection_evidence import PATHS as PROTECTION_PATHS
+from .recovery_evidence import PATHS as RECOVERY_PATHS
 from .routing_evidence import KINDS as ROUTING_KINDS
 from .routing_evidence import PATHS as ROUTING_PATHS
 from .security_evidence import PATHS as SECURITY_PATHS
@@ -76,6 +77,7 @@ REVIEW_PATHS = (
     | POLICY_STRATEGY_PATHS
     | LOGGING_PATHS
     | PLATFORM_HEALTH_PATHS
+    | RECOVERY_PATHS
     | TOPOLOGY_PATHS
     | OPERATIONS_PATHS
 )
@@ -523,6 +525,10 @@ def private_connections(values: dict[str, Any], *, terraform: bool) -> Any:
 
 
 def review_fact(properties: dict[str, Any], path: str) -> Any:
+    if path in RECOVERY_PATHS:
+        from .recovery_evidence import review_fact as recovery_fact
+
+        return recovery_fact(properties, path)
     if path in OPERATIONS_PATHS:
         from .operations_evidence import review_fact as operations_fact
 
@@ -1000,6 +1006,7 @@ def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
         - GOVERNANCE_PATHS
         - LOGGING_PATHS
         - PLATFORM_HEALTH_PATHS
+        - RECOVERY_PATHS
         - TENANT_PATHS
         - POLICY_STRATEGY_PATHS
         - TOPOLOGY_PATHS
