@@ -6,8 +6,43 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.21"
+BANK_VERSION = "2026-11-06.22"
 BANK = {
+    "sovereign-organization-regions-classification": {
+        "question": "Decide all seven GUIDs independently with attributable redacted evidence "
+        "and explicit scope/content/time/expiry binding. For C02.15 designate the authoritative "
+        "landing-zones parent and both confidential organizational roles and substantiate each "
+        "direct placement; names and positive parentage do not designate purposes. For C03.01 "
+        "bind approved residency, latency, cost, reliability and dependency requirements to "
+        "chosen regions and separately authorized access/quota/capacity references, not private "
+        "workload/employee/location inventories or legal eligibility judgments. For C03.02 "
+        "justify regional organization and actual independent failure domains, replication, "
+        "recovery dependencies and tested failover/capacity; distinct labels and region pairs "
+        "prove none, and current guidance does not mandate pairing or historical distance. "
+        "For C03.03 reconcile every required service/SKU/feature/version/dependency in each "
+        "primary/recovery region with dated evidence and independently review actual "
+        "entitlement/access/quota/capacity; the public product page is informational and subject "
+        "to change. For C04.01 explicitly reconcile immutable Public wording with the pinned "
+        "four-zone Corp/Online and confidential architecture, approved customization, connectivity "
+        "and confidential-computing policy controls; no Public-named MG is assumed. For C04.02 "
+        "cite the organization's approved taxonomy, scope across processing/flows/backup/cache/"
+        "preproduction, handling rules, unclassified/ambiguous decisions and ongoing maintenance; "
+        "example labels are not a universal taxonomy and no actual private data is classified. "
+        "For C04.03 substantiate approved non-sensitive sovereign metadata and actual consistent "
+        "usage plus separate policy controls/enforcement; tags are plain text, not inherited or "
+        "supported on MGs, and counts prove no classification/sovereignty. Preserve independent "
+        "applicability, outcomes and exceptions; C03.01/C04.02 stay manual. No shared answer, "
+        "name, Signals or humanConfirmed manufactures Verified.",
+        "controls": [
+            "ALZ-6cc0ea22-42bb-441e-a345-804ab0a09666",
+            "ALZ-250d81ce-8bbe-4f85-9051-6a18a8221e50",
+            "ALZ-19ca3f89-397d-44b1-b5b6-5e18661372ac",
+            "ALZ-4c27d42e-8bba-4c75-9155-9ab9153e8908",
+            "ALZ-914b8cb7-c2f6-40fa-ae18-81c049e0cb5a",
+            "ALZ-51a1e9e9-a49a-40b2-87b9-ff753bc6de86",
+            "ALZ-a89153d8-18b2-4caf-bc19-850fc8fba00f",
+        ],
+    },
     "platform-health-alerts-log-boundaries-redundancy": {
         "question": "Decide each of the nine monitoring recommendations independently "
         "from attributable "

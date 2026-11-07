@@ -265,6 +265,18 @@ Guidance links require HTTPS and only navigate when explicitly selected.
 
 ### Identity, manual evidence and optional plans
 
+Use `--question sovereign-organization-regions-classification` for cohort09's
+seven distinct decisions. Explicitly designate organizational MG roles/root and
+reconcile immutable Public wording with current SLZ's four-zone architecture.
+Substantiate regional requirements, justified organization, actual required
+service/feature availability and separate entitlement/quota/capacity references;
+location strings, region pairs and public tables prove none. Separately reference
+the approved classification taxonomy and non-sensitive sovereign tag usage.
+No actual private data classification, legal/eligibility decision, sensitive tag
+value, private workload/employee/location payload or new live availability/account
+read is performed. Every outcome stays blank until explicit bound confirmation;
+Signals and exceptions never manufacture Verified.
+
 Use `--question central-logging-support-service-enablement` for cohort23's
 seven distinct decisions. Review actual central logging/ingestion and SIEM
 correlation separately; workspace routing or Sentinel onboarding does not prove

@@ -441,10 +441,15 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     from .network_policy_evidence import GUIDS as NETWORK_POLICY_GUIDS
     from .platform_health_evidence import GUIDS as PLATFORM_HEALTH_GUIDS
     from .policy_strategy_evidence import GUIDS as POLICY_STRATEGY_GUIDS
+    from .sovereign_evidence import GUIDS as SOVEREIGN_GUIDS
+    from .sovereign_evidence import configuration_context as sovereign_context
     from .tenant_evidence import GUIDS as TENANT_GUIDS
     from .topology_evidence import GUIDS as TOPOLOGY_GUIDS
 
     unbound = 0
+    sovereign_prepared = control["upstream_guid"] in SOVEREIGN_GUIDS and bool(
+        control.get("review_fact_paths")
+    )
     policy_prepared = control["upstream_guid"] in POLICY_STRATEGY_GUIDS | {
         "aa45be6a-8f2d-4896-b0e3-775e6e94e610"
     } and bool(control.get("review_fact_paths"))
@@ -458,6 +463,8 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     )
     if policy_prepared:
         scoped_guids |= POLICY_STRATEGY_GUIDS | {"aa45be6a-8f2d-4896-b0e3-775e6e94e610"}
+    if sovereign_prepared:
+        scoped_guids |= SOVEREIGN_GUIDS
     if control["upstream_guid"] in LOGGING_GUIDS | PLATFORM_HEALTH_GUIDS and not policy_prepared:
         scoped = [
             resource for resource in matches if scoped_identity(resource, bundle.get("scope"))
@@ -495,6 +502,12 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
             prepared["hybrid_configuration"] = configuration
             prepared["facts"] = configuration.get("facts", configuration)
             prepared["subchecks"] = {}
+    if sovereign_prepared:
+        for prepared, resource in zip(context["resources"], matches[:100], strict=True):
+            configuration = sovereign_context(resource, by_id, bundle, control["review_fact_paths"])
+            prepared["sovereign_configuration"] = configuration
+            prepared["facts"] = configuration.get("facts", configuration)
+            prepared["subchecks"] = {}
     if policy_prepared and available:
         from .policy_strategy_evidence import population_context
 
@@ -505,7 +518,9 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
         for prepared, resource in zip(context["resources"], matches[:100], strict=True):
             prepared["tenant_configuration"] = resource_context(resource, by_id, bundle)
     if (
-        policy_prepared or control["upstream_guid"] == "3a923c34-74d0-4001-aac6-a9e01e6a83de"
+        policy_prepared
+        or (sovereign_prepared and "managementParentId" in control["review_fact_paths"])
+        or control["upstream_guid"] == "3a923c34-74d0-4001-aac6-a9e01e6a83de"
     ) and available:
         from .governance_evidence import hierarchy_context
 

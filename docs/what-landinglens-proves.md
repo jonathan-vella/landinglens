@@ -8,6 +8,17 @@ are in the [plan](planning/plan.md).
 
 ## Evidence and outcomes
 
+Cohort09 [source-qualified support](automation-matrix.md#cohort-09-sovereign-organization-regions-and-classification)
+in `.22` is not sovereignty certification or receipted delivery. Positive MG parentage is not an
+organizational designation; explicit VM location labels are not geographic/legal
+independence, appropriate regional selection, DR, capacity or required feature
+availability. Tag counts are not data classification, sovereignty or enforcement.
+Current SLZ's four-zone architecture qualifies the immutable checklist's Public
+wording without requiring a Public-named MG. Regional requirements and organization
+classification remain separate manual decisions. No private classification,
+workload/employee/location payload, live availability/account read or legal
+eligibility judgment is introduced.
+
 Cohort25 prepares [nine independent reviews](../references/recommendation-batches/batch-25.json)
 using minimized activity/action/static-metric/storage metadata and reused
 workspace/log-alert/Policy context. Service Health is not Resource Health;

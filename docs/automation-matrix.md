@@ -33,11 +33,45 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.21` retains all 255 entries: 12 automated, 200 assisted
-and 43 manual. Crosswalk `2026-11-06.21` rebinds the unchanged 51-control,
+Current successor `2026-11-06.22` retains all 255 entries: 12 automated, 200 assisted
+and 43 manual. Crosswalk `2026-11-06.22` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-Exact predecessor `.20` is frozen; source-matrix acceptance alone is not delivery.
+Exact predecessor `.21` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
+
+### Cohort 09: sovereign organization, regions and classification
+
+[#145](https://github.com/jonathan-vella/landinglens/issues/145) integrates the
+[seven fixed GUIDs](../references/recommendation-batches/batch-09.json) against
+[17 unchanged captures](../references/recommendation-batches/batch-09-sources.json)
+in `.22` after the explicit sole slot and actual10/25 checked implementation/
+receipt/final-main delivery. All196 earlier rows/23 receipts and non-own complete
+controls remain unchanged. Source/bank activation is not receipted delivery.
+
+| Recommendation | Preparation and separate human decision |
+|---|---|
+| C02.15 | Unique known typed in-scope parent joins consistent with saved positive edges; explicitly designate the landing-zones parent and both confidential organizational roles and substantiate direct placement |
+| C03.01 | Manual approved residency/latency/cost/recovery/dependency requirements and regional suitability; no location-based legal or eligibility judgment |
+| C03.02 | Existing explicit VM location labels only; substantiate regional organization, independent failure domains, replication, tested recovery and capacity separately |
+| C03.03 | VM labels orient review, not availability; reconcile every required service/SKU/feature in every primary/recovery region plus actual access/entitlement/quota/capacity |
+| C04.01 | Typed positive parentage only; reconcile immutable Public wording with current SLZ's non-confidential Corp/Online and confidential counterparts and actual policy/isolation constraints |
+| C04.02 | Manual organization-approved taxonomy, scope, handling, ambiguity and maintenance; no private data classification |
+| C04.03 | Existing validated tag counts only; separately substantiate approved non-sensitive metadata, actual usage and policy enforcement |
+
+No whole-recommendation predicate is added. Preparation uses the existing engine,
+adapters, bound review/interview/session contracts, tiers and outputs. Missing,
+partial, denied, ambiguous, stale, unsupported or over-bound evidence is unknown.
+The registered `sovereign-organization-regions-classification` interview starts
+with seven independent blank outcomes and separate attribution/requirements/
+scope/content/time/expiry bindings. Original-time accepted and predecessor replay
+remain supported; altered candidate catalogs remain rejected.
+
+Resource/display names do not designate purposes or roots. Distinct location
+strings and paired regions prove no geographic/legal independence, appropriate
+choice, DR or capacity; current guidance mandates neither pairing nor a historical
+distance. Public availability is not customer entitlement or quota. Plain-text tags
+must not contain sensitive information, do not automatically inherit and are not
+supported on MGs. Counts establish neither classification nor enforcement.
 
 ### Cohort 25: platform health, operational alerts and resilient log storage
 
