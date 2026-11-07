@@ -17,6 +17,31 @@ GUIDS = {
     "51a1e9e9-a49a-40b2-87b9-ff753bc6de86",
     "a89153d8-18b2-4caf-bc19-850fc8fba00f",
 }
+POLICY_GUIDS = {
+    "5a917e1f-348e-4f25-9c27-d42e8bbac757",
+    "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+}
+LOCATION_GUIDS = {
+    "9b461617-db7b-4399-8ac6-d4eb7153893a",
+    "bfaf7b7a-9e6c-4840-a2bd-2c524326bdf6",
+}
+REQUIREMENT_GUIDS = (
+    POLICY_GUIDS
+    | LOCATION_GUIDS
+    | {
+        "29fd366b-a180-452b-9bd7-954b7700c667",
+        "caeea0e9-1024-41df-a52e-d99c3f22a6f4",
+        "3105633e-b168-4ce0-a016-5f10e7cdea5a",
+        "77cf1acd-16b4-4092-8d30-6ec9579854ce",
+    }
+)
+REQUIREMENTS_WARNING = (
+    "Source-qualified original-time partial configuration only. No budget delivery/spend "
+    "enforcement, sovereign initiative identity/version/effective enforcement, approved "
+    "jurisdiction, all processing/backup/control/support locations, service availability, "
+    "vendor/personnel eligibility or in-use confidential-computing assurance. Requirements, "
+    "objectives, access and confidentiality decisions remain independently human."
+)
 WARNING = (
     "Original-time partial configuration only. No organizational role/root designation, "
     "classification, physical/legal independence, appropriate region, DR, service/feature "
@@ -29,6 +54,7 @@ def resource_paths(kind: str) -> set[str]:
     return (
         ({"managementParentId"} if kind == MG_KIND else set())
         | ({"resourceLocation"} if kind == VM_KIND else set())
+        | ({"storageRedundancySummary"} if kind == "microsoft.storage/storageaccounts" else set())
         | ({"tagCount"} if kind in TAG_KINDS else set())
     )
 

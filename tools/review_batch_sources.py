@@ -4845,6 +4845,239 @@ SOURCES_26 += [
 ]
 
 
+SOURCES_28 = [
+    *[source for source in SOURCES_30 if source[0] == "microsoft-site-reuse"],
+    (
+        "sovereign-global-pinned-snapshot",
+        POLICY_RAW + "built-in-policies/policySetDefinitions/Regulatory%20Compliance/"
+        "MCfS_Sovereignty_Baseline_Global_Policies.json",
+        ["c1cbff38-87c0-4b9f-9f70-035c7a3b5523", "1.2.0", "SO.5", "1.*.*"],
+        "Explicitly reviewed public snapshot at the repository's existing Policy pin: "
+        "global initiativec1cbff38-87c0-4b9f-9f70-035c7a3b5523 version1.2.0 has five members "
+        "and SO.1 residency/SO.5 Trusted Launch groups, with wildcard member versions. "
+        "This public-source review is not an implicit runtime definition fetch, observed "
+        "assignment binding, exact resolved member versions or approved jurisdiction.",
+    ),
+    (
+        "sovereign-confidential-pinned-snapshot",
+        POLICY_RAW + "built-in-policies/policySetDefinitions/Regulatory%20Compliance/"
+        "MCfS_Sovereignty_Baseline_Confidential_Policies.json",
+        ["03de05a4-c324-4ccd-882f-a814ea8ab9ea", "1.2.0", "SO.4", "1.*.*-preview"],
+        "Explicit public pinned snapshot: confidential initiative"
+        "03de05a4-c324-4ccd-882f-a814ea8ab9ea version1.2.0 has22 members and SO.1/SO.3/SO.4 "
+        "residency/CMK/confidential groups with wildcard and preview member versions. "
+        "Those group numbers are not current design L1-L3 levels. No copied definitions "
+        "are packaged, implicitly fetched or interpreted; no original-time deployed "
+        "content/version, placement, in-use protection or complete compliance is inferred.",
+    ),
+    (
+        "sovereign-policy-snapshot-license",
+        POLICY_RAW + "LICENSE",
+        ["MIT License", "Microsoft"],
+        "MIT public Azure Policy repository at the exact reviewed pin; preserve attributed "
+        "URL/revision/hash and own factual findings only, not copied policy bodies.",
+    ),
+    (
+        "budget-alert-tutorial",
+        LEARN + "azure/cost-management-billing/costs/tutorial-acm-create-budgets?"
+        "bc=%2Fazure%2Fcloud-adoption-framework%2F_bread%2Ftoc.json"
+        "&toc=%2Fazure%2Fcloud-adoption-framework%2Ftoc.json",
+        ["Actual", "Forecasted", "0.01", "1000", "consumption isn't stopped"],
+        "Actual E02.01 link: actual and forecasted alerts are separate configuration. "
+        "Tutorial alert range is0.01%-1000%; cost evaluation is periodic, not real-time. "
+        "Resources/consumption are not stopped. Scope/currency/filters, expiry, recipients "
+        "and delivery need separate evidence and are not retained or tested here.",
+    ),
+    (
+        "sovereign-release-history",
+        "https://learn.microsoft.com/industry/release-plan/2023wave2/cloud-sovereignty/"
+        "enable-data-sovereignty-policy-baseline",
+        ["archived", "2023", "policy"],
+        "Actual E03.01 redirects to retired previous-versions2023wave2 release history. "
+        "The2023 GA promise is not a current definition/version, deployed assignment, "
+        "complete sovereignty requirement or enforcement result.",
+    ),
+    (
+        "sovereign-policy-design",
+        LEARN + "industry/sovereign-cloud/sovereign-public-cloud/implementing-workloads/"
+        "design-sovereign-policies#sovereign-policy-initiatives",
+        ["Level", "audit", "management groups", "Confidential Policies"],
+        "Actual E03.02 redirects to Azure Sovereign Clouds public design. Current L1 "
+        "locality/transit, L2 at-rest/CMK and L3 in-use/confidential initiatives are "
+        "service-specific, customized to requirements and applied to appropriate MGs "
+        "including supporting services. Audit-first guidance is not enforced deny. "
+        "Names/global references alone prove no content, version, placement or outcome.",
+    ),
+    (
+        "sovereign-objectives-link",
+        LEARN + "industry/sovereign-cloud/sovereign-public-cloud/sovereign-landing-zone/"
+        "implement-controls-principles",
+        ["implementation options", "architectural variant", "Bicep", "Terraform"],
+        "Actual E03.03 now redirects to implementation-options, not an organization "
+        "control-objective mapping. The article describes incremental SLZ variants "
+        "and Terraform/Bicep paths. Preserve immutable wording and require an "
+        "independent attributable redacted objectives-to-controls decision.",
+    ),
+    (
+        "paired-regions",
+        LEARN + "azure/reliability/regions-paired",
+        ["nonpaired", "Brazil South", "asymmetrical", "doesn't automatically"],
+        "Actual E03.04: pairing is optional/service-specific and can be asymmetric; "
+        "Brazil South/South Central US is an explicit cross-geography exception. "
+        "A pair gives no automatic HA/DR/failover or approved jurisdiction. No region "
+        "table is turned into an organizational or physical-location allowlist.",
+    ),
+    (
+        "service-data-residency",
+        "https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency",
+        ["subprocessors", "outside", "DataZone", "Preview", "Azure Databricks"],
+        "Actual E03.05: regional deployment differs from data processing. Page lists "
+        "operational copies, personnel remote operation and service-specific exceptions "
+        "including Cloud Services, ADX traces, ML metadata, Databricks identities, "
+        "Serial Console, Foundry Global/DataZone, Extended Zones and prerelease services. "
+        "No resource region establishes all storage/backup/control/support locations, "
+        "feature availability, contractual authorization or legal suitability.",
+    ),
+    (
+        "vendor-access-linked-recommendations",
+        LEARN + "azure/defender-for-cloud/recommendations-reference-identity-access",
+        ["identity and access", "recommendations", "owner"],
+        "Actual E03.06 is a Defender identity/access recommendations reference, not a "
+        "vendor personnel jurisdiction/nationality register or contract. Account, role, "
+        "external-domain or recommendation status cannot establish personnel location "
+        "or vendor access eligibility. Keep that decision manual; collect no personnel.",
+    ),
+    (
+        "confidential-computing-linked",
+        LEARN + "azure/confidential-computing/",
+        ["data", "processed", "attestation", "confidential"],
+        "Actual E03.07 current portfolio covers VM/container/services and specialized "
+        "enclaves; applicability and service/region/feature choices need workload-specific "
+        "requirements, not a blanket confidential flag or at-rest CMK claim.",
+    ),
+    (
+        "confidential-computing-in-use",
+        LEARN + "azure/confidential-computing/overview",
+        ["data in use", "attested", "properly configured"],
+        "In-use protection uses a hardware-based attested TEE and depends on proper "
+        "configuration. At-rest CMK, Trusted Launch, VM names and confidential labels "
+        "are not equivalent. No workload content, attestation execution or actual "
+        "operator-access assurance is collected or manufactured.",
+    ),
+    (
+        "sovereign-global-current",
+        LEARN + "azure/governance/policy/samples/mcfs-baseline-global",
+        ["Global Policies", "partial view", "Allowed locations", "Trusted Launch"],
+        "Current global baseline sample distinguishes residency and Trusted Launch. "
+        "Its explicit partial-compliance caveat and changing associations prevent "
+        "turning a name/initiative ID/Compliant Signal into legal compliance.",
+    ),
+    (
+        "sovereign-confidential-current",
+        LEARN + "azure/governance/policy/samples/mcfs-baseline-confidential",
+        ["Confidential Policies", "partial view", "Customer-Managed Keys"],
+        "Current confidential baseline includes service-specific residency/CMK controls "
+        "and a partial-compliance caveat. Baseline identity/name is not versioned "
+        "content, workload coverage, appropriate placement or in-use protection.",
+    ),
+    (
+        "storage-regional-redundancy",
+        LEARN + "azure/storage/common/storage-redundancy",
+        ["ZRS", "GZRS", "asynchronously", "can't be changed", "archive tier"],
+        "Storage-specific ZRS stays in primary-region zones; GRS/GZRS replicate "
+        "asynchronously to a paired secondary selected from primary, with LRS there. "
+        "GZRS needs zones and a pair; archive/unmanaged-disk constraints differ. "
+        "Redundancy SKU is not actual secondary location, replication success, DR "
+        "readiness, every service's behavior or approved jurisdiction.",
+    ),
+    (
+        "foundry-processing-types",
+        LEARN + "azure/ai-foundry/openai/how-to/deployment-types",
+        ["Global", "Data Zone", "geography", "operational purposes"],
+        "Current redirect is Foundry Models deployment-types. Global, Data Zone and "
+        "geography-based processing differ from stored-at-rest geography; regional "
+        "types can process between regions within that geography. Availability is "
+        "model/type-specific and not inferred or probed from a resource location.",
+    ),
+    (
+        "budget-arm-2024",
+        LEARN + "azure/templates/microsoft.consumption/2024-08-01/budgets",
+        ["Actual", "Forecasted", "five notifications", "1000"],
+        "Versioned2024-08-01 reference exposes explicit enabled/operator/threshold/type, "
+        "up to five notifications and decimal REST percent0..1000 prose versus tutorial "
+        "minimum0.01. No omitted defaults, period validity, recipients or delivery inferred.",
+    ),
+    *[
+        (
+            "budget-rest-" + revision,
+            SPEC_RAW + "specification/consumption/resource-manager/Microsoft.Consumption/"
+            "Consumption/stable/" + revision + "/" + filename,
+            ["Notification", "thresholdType", "Actual", "1000"]
+            + (["Forecasted"] if revision == "2024-08-01" else []),
+            "Pinned"
+            + revision
+            + ": "
+            + (
+                "thresholdType enum declares Actual only despite provider documentation "
+                "advertising Forecasted on its2019-10-01 API; do not silently conflate contracts. "
+                if revision == "2019-10-01"
+                else "thresholdType explicitly declares Actual and Forecasted. "
+            )
+            + "Percent is numeric/decimal with0..1000 prose. Max-five notifications "
+            "and all required source facts need separate validation; financial/contact "
+            "payloads are never persisted. Initial unnested guessed paths returned404; "
+            "public pinned directory inspection established this exact Consumption path.",
+        )
+        for revision, filename in [
+            ("2019-10-01", "consumption.json"),
+            ("2024-08-01", "openapi.json"),
+        ]
+    ],
+    *[
+        (
+            "budget-provider-" + scope,
+            RAW + "website/docs/r/consumption_budget_" + scope + ".html.markdown",
+            ["Actual", "Forecasted", "1000", "2019-10-01"],
+            "AzureRM4.50.0 explicit " + scope + " notification enabled/operator/type fields. "
+            "Documented defaults are not observed facts. Docs allow Actual/Forecasted "
+            "but identify2019-10-01 API whose pinned enum lists only Actual; keep source "
+            "qualification. Percentage threshold is not amount/spend; do not retain "
+            "amount/currency/billing/filter/contact payloads or infer delivery.",
+        )
+        for scope in ("subscription", "resource_group")
+    ],
+    *[
+        source
+        for source in SOURCES_27
+        if source[0]
+        in {
+            "policy-overview",
+            "policy-scope",
+            "policy-assignment",
+            "policy-exemption",
+            "management-hierarchy",
+            "landing-zone-hierarchy",
+            "policy-spec-policyDefinitions",
+            "policy-spec-policySetDefinitions",
+            "policy-spec-policyAssignments",
+            "policy-provider-policy_definition",
+            "policy-provider-policy_set_definition",
+            "policy-provider-management_group_policy_assignment",
+            "policy-provider-subscription_policy_assignment",
+            "policy-provider-resource_group_policy_assignment",
+            "learn-terms",
+            "policy-spec-license",
+            "policy-provider-license",
+        }
+    ],
+    *[
+        source
+        for source in SOURCES_04
+        if source[0] in {"storage-identity-arm", "terraform-storage-identity"}
+    ],
+]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
@@ -4873,6 +5106,7 @@ def main() -> None:
             "20",
             "22",
             "27",
+            "28",
             "23",
             "24",
             "25",
@@ -4901,12 +5135,13 @@ def main() -> None:
             "25",
             "26",
             "27",
+            "28",
             "29",
             "30",
         }
     ) != args.preparation_only:
         raise ValueError(
-            "Cohorts 02/05/06/07/10/12/16/20/23/24/25/26/27/29/30 source capture require "
+            "Cohorts 02/05/06/07/10/12/16/20/23/24/25/26/27/28/29/30 source capture require "
             "--preparation-only; no activation"
         )
     prefix = "preparation" if args.preparation_only else "batch"
@@ -4944,6 +5179,7 @@ def main() -> None:
         "20": SOURCES_20,
         "22": SOURCES_22,
         "27": SOURCES_27,
+        "28": SOURCES_28,
         "23": SOURCES_23,
         "24": SOURCES_24,
         "25": SOURCES_25,

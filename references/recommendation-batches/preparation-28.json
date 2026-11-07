@@ -1,0 +1,106 @@
+{
+  "batch": "28",
+  "review_state": "source-reviewed-preparation-not-accepted",
+  "issue": "https://github.com/jonathan-vella/landinglens/issues/163",
+  "source_manifest": "preparation-28-sources.json",
+  "activation_gate": "Final fixed cohort only, after actual checked03/21 delivery and an explicit sole coordinator slot. Reconcile then-main and freeze the exact predecessor before builder-derived unique successor registration. No accepted catalog/crosswalk/bank/count/history activation, PR, merge, receipt or satisfied issue closure during preparation.",
+  "supported_modes": "Existing single evaluator and source-qualified Policy2023-04-01 ARM/no-restore Bicep, pinned AzureRM4.50.0 raw/supplied local modules/optional plans and normalized saved/injected evidence. Reuse27 exact supplied-version custom Policy joins,09 VM location/hierarchy and existing storage redundancy summary. No new collector, query, definition interpreter or implicit acquisition.",
+  "deferred_integration": "Use actual merged03 privacy-minimized budget helper, including source/version-qualified notification types, before E02.01 configuration acceptance. No budget normalizer or fictitious budget fixture is introduced here. Reconcile actual merged21 storage/key context before final regional workflow acceptance. Neither dependency is currently delivered on preparation baseline99b4c58/catalog2026-11-06.25.",
+  "privacy": "Typed source references, supported enums, bounded counts, exact supplied versions and existing member hashes only. No amount/currency/spend/billing/recipient/filter/tag/rule/private parameter payloads, personnel identity/nationality/location records, confidential workload content, secret or contractual documents. Redacted human supporting references are not anonymous data.",
+  "interview": {
+    "id": "budget-alert-modes-sovereign-requirements",
+    "question": "Decide all eight controls independently at the original evidence time with attributable redacted references, explicit selected scope/content/time/expiry binding and separate exceptions. E02.01: establish explicit enabled Actual and Forecasted alert configuration for the same appropriate cost budget, source/API/provider version, valid period, scope/filter coverage, threshold suitability and independently evidenced recipients/delivery; tutorial0.01%-1000% differs from REST/provider0..1000 prose,2019-10-01 REST lists only Actual while2024-08-01 lists both, and omitted provider defaults are not observations. Configuration is neither delivery nor spend enforcement; retain no financial/contact payload. E03.01: establish applicable data sovereignty requirements and source-specific Policy controls, parameters, versions, complete intended coverage, evaluation and remediation evidence; the linked2023 release plan is archived and not current enforcement. E03.02: identify actual original-time global/confidential or service-specific L1/L2/L3 initiative content/version, intended designated management groups and supporting platform services, positive placement ancestry, exclusions/exemptions and actual effects; labels, initiative IDs, custom joins or Default enforcementMode do not prove sovereign identity or enforcement. E03.03: cite independently approved sovereign control objectives and an attributable objectives-to-controls/Policy mapping with responsibilities and gaps; the immutable link now redirects to implementation options and no mapping is inferred. E03.04: independently identify approved jurisdiction, primary/DR locations and each service's replication/backup/failover behavior and constraints; pairing can be absent/asymmetric/cross-geography, ZRS is primary-zone replication and GRS/GZRS adds asynchronous paired-secondary replication, subject to service/tier/region exceptions. Location strings/redundancy are not approved jurisdiction or DR readiness. E03.05: review each Database/Storage/Container/Analytics/AI service and feature, processing versus at-rest/backup/control/support locations and current availability/exceptions; Foundry Global/DataZone/geography processing, Extended Zones and prerelease behavior differ, and a resource region proves none of them. E03.06: establish vendor remote-access and managed-personnel jurisdiction constraints, contractual responsibilities, actual access controls, approval and exceptions without collecting personnel identity, nationality or location; Defender identity/access recommendations are not that determination. E03.07: independently decide whether sensitive workloads require in-use protection, the relevant service/region/feature, attested TEE and key-release/trust requirements and justified exceptions; at-rest CMK, Trusted Launch, names and confidential initiative labels are not confidential-computing requirements or evidence of proper execution. Missing/partial/ambiguous/stale/denied/unsupported/over-bound stays unknown. No new live read, query, contact, alert test, deployment, financial action or fabricated legal/personnel/owner/runtime assurance; Signals and humanConfirmed never manufacture Verified.",
+    "controls": [
+      "ALZ-29fd366b-a180-452b-9bd7-954b7700c667",
+      "ALZ-5a917e1f-348e-4f25-9c27-d42e8bbac757",
+      "ALZ-78b22132-b41c-460b-a4d3-df8f73a67dc2",
+      "ALZ-caeea0e9-1024-41df-a52e-d99c3f22a6f4",
+      "ALZ-9b461617-db7b-4399-8ac6-d4eb7153893a",
+      "ALZ-bfaf7b7a-9e6c-4840-a2bd-2c524326bdf6",
+      "ALZ-3105633e-b168-4ce0-a016-5f10e7cdea5a",
+      "ALZ-77cf1acd-16b4-4092-8d30-6ec9579854ce"
+    ]
+  },
+  "recommendations": [
+    {
+      "guid": "29fd366b-a180-452b-9bd7-954b7700c667",
+      "upstream_id": "E02.01",
+      "classification": "assisted",
+      "implemented_subclaim": "Independent source-qualified budget-mode review; configuration integration explicitly deferred to the actual merged03 helper, not a second normalization or premature predicate.",
+      "sources": ["budget-alert-tutorial", "budget-arm-2024", "budget-rest-2019-10-01", "budget-rest-2024-08-01", "budget-provider-subscription", "budget-provider-resource_group"],
+      "evidence_requirements": ["Reviewer decision: Are explicit enabled Actual and Forecasted notifications configured for the same appropriate source/version-qualified cost budget, with separately evidenced valid scope/period/threshold suitability and recipients/delivery? No financial/contact payload or spend-enforcement inference."],
+      "limitations": "Budget configuration remains deferred until03 merges. Tutorial0.01..1000 percent differs from REST/provider0..1000 prose. Pinned2019-10-01 REST lists only Actual despite provider docs advertising both;2024-08-01 lists both. No omitted defaults, delivered messages, financial suitability or consumption stop inferred."
+    },
+    {
+      "guid": "5a917e1f-348e-4f25-9c27-d42e8bbac757",
+      "upstream_id": "E03.01",
+      "classification": "assisted",
+      "implemented_subclaim": "Reuse explicit Policy definition/initiative/assignment summaries and exact custom-version/placement joins plus saved hierarchy; no sovereign identity or enforcement predicate.",
+      "sources": ["sovereign-release-history", "sovereign-policy-design", "policy-overview", "policy-scope", "policy-assignment", "policy-exemption", "policy-spec-policyDefinitions", "policy-spec-policySetDefinitions", "policy-spec-policyAssignments"],
+      "review_resource_types": ["Microsoft.Authorization/policyDefinitions", "Microsoft.Authorization/policySetDefinitions", "Microsoft.Authorization/policyAssignments", "Microsoft.Management/managementGroups"],
+      "review_fact_paths": ["policyDefinitionSummary", "policyInitiativeSummary", "policyAssignmentSummary", "managementParentId"],
+      "evidence_requirements": ["Reviewer decision: Which data sovereignty requirements actually apply, and do the exact suitable Policy controls, versions, parameters, complete intended assignment coverage, exceptions and evaluation/remediation evidence address them?"],
+      "limitations": "Actual link redirects to archived2023 release history. Names, references, literal effects, positive placement, Default enforcementMode and saved Compliant Signals establish neither sovereign requirements nor effective enforcement or legal compliance."
+    },
+    {
+      "guid": "78b22132-b41c-460b-a4d3-df8f73a67dc2",
+      "upstream_id": "E03.02",
+      "classification": "assisted",
+      "implemented_subclaim": "Reuse27 exact supplied custom-version joins and original-time positive assignment ancestry; independent qualified review of current global/confidential and service-specific L1-L3 initiatives.",
+      "sources": ["sovereign-policy-design", "sovereign-global-current", "sovereign-confidential-current", "sovereign-global-pinned-snapshot", "sovereign-confidential-pinned-snapshot", "sovereign-policy-snapshot-license", "policy-scope", "policy-assignment", "policy-exemption", "management-hierarchy", "landing-zone-hierarchy", "policy-spec-policyDefinitions", "policy-spec-policySetDefinitions", "policy-spec-policyAssignments", "policy-provider-policy_definition", "policy-provider-policy_set_definition", "policy-provider-management_group_policy_assignment", "policy-provider-subscription_policy_assignment", "policy-provider-resource_group_policy_assignment"],
+      "review_resource_types": ["Microsoft.Authorization/policyDefinitions", "Microsoft.Authorization/policySetDefinitions", "Microsoft.Authorization/policyAssignments", "Microsoft.Management/managementGroups"],
+      "review_fact_paths": ["policyDefinitionSummary", "policyInitiativeSummary", "policyAssignmentSummary", "managementParentId"],
+      "evidence_requirements": ["Reviewer decision: Are actual original-time sovereign initiative content and exact versions suitable and assigned at explicitly designated management-group levels, including supporting platform services, with independently justified exclusions/exemptions and actual evaluation/effects?"],
+      "limitations": "Current design L1 locality/transit, L2 at-rest/CMK and L3 in-use levels differ from pinned baseline SO group numbers. Reviewed public global/confidential1.2.0 snapshots have5/22 members with wildcard/preview member versions; they are not original-time deployed content or exact member resolutions. No label, initiative ID, literal effect or custom join identifies an effective sovereign baseline; runtime built-in references stay unfetched. Audit-first guidance is not enforced deny."
+    },
+    {
+      "guid": "caeea0e9-1024-41df-a52e-d99c3f22a6f4",
+      "upstream_id": "E03.03",
+      "classification": "manual",
+      "implemented_subclaim": "Independently blank attributable objectives-to-controls decision with selection/content/time/expiry binding and separately managed exceptions.",
+      "sources": ["sovereign-objectives-link", "sovereign-policy-design", "sovereign-global-current", "sovereign-confidential-current"],
+      "evidence_requirements": ["Reviewer decision: What sovereign control objectives have been approved, and what attributable source-specific mapping to Policy and independent controls, responsibilities, gaps and exceptions substantiates them?"],
+      "limitations": "Actual link now redirects to implementation options, not a customer mapping. Counts, regulatory groupings, configuration, framework labels and another control's decision cannot document or approve objectives."
+    },
+    {
+      "guid": "9b461617-db7b-4399-8ac6-d4eb7153893a",
+      "upstream_id": "E03.04",
+      "classification": "assisted",
+      "implemented_subclaim": "Reuse09 typed scoped VM location and existing bounded storage kind/SKU/redundancy summaries as partial configuration only; actual merged21 storage/key integration remains a later explicit dependency.",
+      "sources": ["paired-regions", "storage-regional-redundancy", "service-data-residency", "storage-identity-arm", "terraform-storage-identity"],
+      "review_resource_types": ["Microsoft.Compute/virtualMachines", "Microsoft.Storage/storageAccounts"],
+      "review_fact_paths": ["resourceLocation", "storageRedundancySummary"],
+      "evidence_requirements": ["Reviewer decision: Are independently approved primary and DR jurisdictions satisfied by actual service-specific storage/replication/backup/failover locations and supported tier/region behavior, including pairing asymmetry, cross-geography exceptions and ZRS/GZRS constraints?"],
+      "limitations": "Location strings are not jurisdiction. Pairing is optional and service-specific; ZRS stays in primary zones, GRS/GZRS uses asynchronous paired-secondary replication with LRS there. No secondary location, actual replication, universal pairing, approved jurisdiction or DR readiness inferred."
+    },
+    {
+      "guid": "bfaf7b7a-9e6c-4840-a2bd-2c524326bdf6",
+      "upstream_id": "E03.05",
+      "classification": "assisted",
+      "implemented_subclaim": "Reuse09 scoped typed VM location solely as limited deployment context; independent service/feature processing and availability decision, with explicit current-source exceptions.",
+      "sources": ["service-data-residency", "foundry-processing-types", "paired-regions", "confidential-computing-linked"],
+      "review_resource_types": ["Microsoft.Compute/virtualMachines"],
+      "review_fact_paths": ["resourceLocation"],
+      "evidence_requirements": ["Reviewer decision: For each Database/Storage/Container/Analytics/AI service and feature, are actual processing, at-rest/backup/control/support locations and current availability acceptable against explicit permitted jurisdictions and reviewed service-specific exceptions?"],
+      "limitations": "One VM location is not service inventory/completeness or a processing map. Foundry Global/DataZone/geography types, operational metadata/copies, Extended Zones and prerelease exceptions differ. No region availability, capacity, contractual authorization or legal suitability probed or inferred."
+    },
+    {
+      "guid": "3105633e-b168-4ce0-a016-5f10e7cdea5a",
+      "upstream_id": "E03.06",
+      "classification": "manual",
+      "implemented_subclaim": "Independent attributable vendor remote-access and personnel-jurisdiction requirements decision, without collecting personnel records or making an eligibility determination.",
+      "sources": ["vendor-access-linked-recommendations", "service-data-residency", "sovereign-policy-design"],
+      "evidence_requirements": ["Reviewer decision: Have vendor remote-access and managed-services personnel jurisdiction constraints, contractual responsibilities, actual approval/access controls and exceptions been independently established with redacted evidence, without personnel identity/nationality/location collection?"],
+      "limitations": "Defender identity/access recommendations, external account domains, roles, resource regions and baseline labels cannot establish vendor personnel jurisdiction or access eligibility. No contact, personnel probe or legal decision is performed."
+    },
+    {
+      "guid": "77cf1acd-16b4-4092-8d30-6ec9579854ce",
+      "upstream_id": "E03.07",
+      "classification": "manual",
+      "implemented_subclaim": "Independent source-specific confidential-computing requirements/threat-model decision; no confidential workload payload or synthetic VM proof.",
+      "sources": ["confidential-computing-linked", "confidential-computing-in-use", "sovereign-policy-design", "sovereign-confidential-current"],
+      "evidence_requirements": ["Reviewer decision: Do the applicable sensitive workloads require in-use confidential computing, and what service/region/feature, attested TEE, key-release/trust requirements, proper configuration evidence and justified exceptions address that need?"],
+      "limitations": "At-rest CMK, Trusted Launch, workload names and confidential initiative labels are not in-use protection, attestation, a human requirement or proper execution. No confidential contents, workload classification inference, attestation run or operator-access assurance."
+    }
+  ]
+}

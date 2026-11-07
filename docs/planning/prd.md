@@ -1,5 +1,27 @@
 # LandingLens product requirements
 
+## Cohort 28 independent preparation boundary
+
+[#163](https://github.com/jonathan-vella/landinglens/issues/163) prepares
+[eight source-specific budget/sovereign workflows](../../references/recommendation-batches/preparation-28.json)
+outside accepted activation. Current `.25`/255 GUIDs/fixed251 and228 own deliveries/
+23 pending/27 receipts remain unchanged. Actual03/21 checked delivery and the sole
+explicit coordinator slot gate accepted integration; no cohort follows28.
+
+Reuse existing Policy custom-version/placement, location/hierarchy and storage
+summaries, not a second Policy interpreter or built-in fetch. Actual merged03
+budget and21 storage/key integration remain explicit dependencies. Eight independent
+blank attributable decisions and separate exceptions distinguish configuration
+from financial notification delivery/spend enforcement, sovereign identity/effective
+enforcement, approved jurisdiction, all service/feature processing/backup/control/
+support locations, vendor personnel constraints and in-use confidential-computing
+requirements. Archived release history/current redirects, version-specific budget
+type contracts, optional/asymmetric region pairing, storage constraints and service
+processing exceptions remain source-qualified without rewriting immutable wording.
+No financial/contact/personnel/confidential/private payload retention, live probe,
+new query, deployment or manufactured legal/owner/runtime assurance is authorized.
+Preparation is not acceptance, receipt publication or satisfied issue closure.
+
 ## Cohort 07 accepted boundary
 
 The explicit sole slot after actual24/26 checked implementation, receipts and
