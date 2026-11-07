@@ -89,6 +89,27 @@ The reviewed logging and hub templates yield scoped inventory and controlled
 configuration outcomes locally. Unsupported/runtime facts remain unknown; this
 is not a deployed ALZ or compliance assessment.
 
+## Browse saved reports in a canvas
+
+Build a portable read-only explorer from one or more saved **planned-only**
+assessments. This uses the existing minimized report model, not another evaluator:
+
+```powershell
+.venv\Scripts\python tools\build_report_canvas.py --report "Hub networking" hub.assessment.json --report "Logging" logging.assessment.json --fictional --output-directory report-preview
+```
+
+Open `report-preview\index.html` in Copilot's Browser canvas or your browser.
+Select a report, filter by outcome/design area, search recommendation IDs and
+inspect the recorded facts, methods and sources. Full HTML reports and a
+presentation JSON download remain separate from editable assessment/evidence.
+Use a new output directory; existing files are never overwritten.
+
+`--fictional` labels demonstration inputs; omit it for your own saved planned
+configuration. This is a Browser-compatible preview, not an installed custom
+canvas extension. It cannot save review decisions. Use the existing HTML reports
+for observed/comparison assessments and the reviewer workspace below for decisions.
+Do not commit generated previews or identity-bearing assessment inputs.
+
 ## Triage and record decisions
 
 Start from your current saved normalised evidence:

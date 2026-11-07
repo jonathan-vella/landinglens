@@ -1,0 +1,341 @@
+<!doctype html>
+<!--
+THESIS: A read-only assessment desk: find a recommendation, inspect its narrow evidence.
+OWN-WORLD: Existing LandingLens/Clawpilot colors and Segoe UI; flat, bordered working panes.
+STORY: Choose a saved planned report, filter its recorded outcomes, inspect facts and sources.
+FIRST VIEWPORT: Report selector and scope warning above a recommendation list and detail pane.
+FORM: Scoped extension of the existing report/reviewer world; no new evaluator or visual rebrand.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>LandingLens report canvas</title>
+<script>
+(() => {
+  const param = new URLSearchParams(window.location.search).get("scoutTheme");
+  const theme =
+    param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  document.documentElement.setAttribute("data-theme", theme);
+})();
+</script>
+<style>
+:root {
+  color-scheme: light;
+  --cp-bg: #f7f4ef;
+  --cp-bg-elevated: #fcfbf8;
+  --cp-surface: #ffffff;
+  --cp-surface-soft: #f5f5f5;
+  --cp-border: #dedede;
+  --cp-border-strong: #919191;
+  --cp-text: #242424;
+  --cp-text-muted: #5c5c5c;
+  --cp-text-soft: #6f6f6f;
+  --cp-accent: #b11f4b;
+  --cp-accent-hover: #9a1a41;
+  --cp-accent-soft: rgba(177, 31, 75, 0.08);
+  --cp-accent-fg: #ffffff;
+  --cp-success: #16a34a;
+  --cp-danger: #dc2626;
+  --cp-warning: #f59e0b;
+  --cp-link: #0078d4;
+  --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+  --cp-overlay: rgba(255, 255, 255, 0.8);
+  --cp-panel: rgba(255, 255, 255, 0.86);
+  --cp-panel-strong: rgba(255, 255, 255, 0.96);
+  --cp-sheen: rgba(255, 255, 255, 0.55);
+  --cp-highlight: rgba(177, 31, 75, 0.12);
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --cp-bg: #3d3b3a;
+  --cp-bg-elevated: #343231;
+  --cp-surface: #292929;
+  --cp-surface-soft: #2e2e2e;
+  --cp-border: #474747;
+  --cp-border-strong: #5f5f5f;
+  --cp-text: #dedede;
+  --cp-text-muted: #919191;
+  --cp-text-soft: #b0b0b0;
+  --cp-accent: #fd8ea1;
+  --cp-accent-hover: #fb7b91;
+  --cp-accent-soft: rgba(253, 142, 161, 0.14);
+  --cp-accent-fg: #1a1a1a;
+  --cp-success: #4ade80;
+  --cp-danger: #f87171;
+  --cp-warning: #fbbf24;
+  --cp-link: #4da6ff;
+  --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+  --cp-overlay: rgba(41, 41, 41, 0.88);
+  --cp-panel: rgba(41, 41, 41, 0.72);
+  --cp-panel-strong: rgba(41, 41, 41, 0.96);
+  --cp-sheen: rgba(255, 255, 255, 0.04);
+  --cp-highlight: rgba(253, 142, 161, 0.12);
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--cp-bg); color: var(--cp-text); font: 15px/1.5 "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif; }
+button, input, select { font: inherit; }
+button, select, input { border: 1px solid var(--cp-border-strong); background: var(--cp-surface); color: var(--cp-text); border-radius: 0.625rem; padding: 9px 12px; min-height: 42px; }
+button { cursor: pointer; }
+button:hover:not(:disabled) { background: var(--cp-surface-soft); border-color: var(--cp-accent); }
+button:disabled { cursor: default; color: var(--cp-text-muted); background: var(--cp-surface-soft); }
+button.primary { background: var(--cp-accent); color: var(--cp-accent-fg); border-color: var(--cp-accent); }
+button.primary:hover { background: var(--cp-accent-hover); }
+:focus-visible { outline: 3px solid var(--cp-accent); outline-offset: 3px; }
+a { color: var(--cp-link); text-underline-offset: 3px; overflow-wrap: anywhere; }
+h1 { font-size: 28px; line-height: 1.2; margin: 0 0 8px; font-weight: 650; }
+h2 { font-size: 21px; line-height: 1.4; margin: 0 0 16px; }
+h3 { font-size: 16px; margin: 24px 0 8px; }
+p { margin: 0 0 12px; max-width: 75ch; }
+small, .muted { color: var(--cp-text-soft); }
+header { padding: 24px 28px 16px; border-bottom: 1px solid var(--cp-border); background: var(--cp-bg-elevated); }
+.header-line { display: flex; align-items: start; justify-content: space-between; gap: 20px; }
+.scope { font-size: 13px; margin-bottom: 0; }
+.notice { margin: 16px 0 0; padding: 12px 16px; background: var(--cp-surface-soft); border: 1px solid var(--cp-border); border-radius: 0.625rem; max-width: none; }
+.toolbar { padding: 20px 28px 16px; }
+.filters { display: grid; grid-template-columns: 200px minmax(180px, 1fr) minmax(220px, 1.5fr); gap: 16px; align-items: end; }
+label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+input, select { width: 100%; }
+.report-row { display: flex; gap: 16px; align-items: end; margin-bottom: 16px; }
+.report-row > div { width: 240px; }
+.report-row a { font-size: 13px; margin-bottom: 11px; }
+.summary { display: flex; gap: 16px 24px; flex-wrap: wrap; margin-top: 16px; }
+.summary span { font-size: 13px; }
+.summary strong { font-size: 16px; margin-right: 5px; }
+.outcomes { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+.outcomes button { min-height: 36px; font-size: 13px; padding: 6px 12px; }
+.outcomes button[aria-pressed="true"] { background: var(--cp-accent-soft); border-color: var(--cp-accent); color: var(--cp-text); }
+main { padding: 0 28px 28px; }
+.explorer { display: grid; grid-template-columns: minmax(260px, 38%) minmax(0, 1fr); border: 1px solid var(--cp-border); border-radius: 0.625rem; background: var(--cp-surface); overflow: hidden; }
+.list-pane { border-right: 1px solid var(--cp-border); min-width: 0; }
+.list-head { padding: 16px; border-bottom: 1px solid var(--cp-border); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.list-head h2 { font-size: 16px; margin: 0; }
+.list { max-height: 580px; overflow: auto; }
+.finding { display: block; width: 100%; border: 0; border-bottom: 1px solid var(--cp-border); border-radius: 0; text-align: left; padding: 14px 16px; background: var(--cp-surface); }
+.finding:hover { background: var(--cp-surface-soft); }
+.finding[aria-pressed="true"] { background: var(--cp-accent-soft); box-shadow: inset 0 0 0 1px var(--cp-accent); }
+.finding-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
+.finding-title { display: block; font-size: 14px; line-height: 1.5; }
+.finding-meta { display: block; margin-top: 6px; font-size: 12px; color: var(--cp-text-soft); }
+.finding[aria-pressed="true"] .finding-meta { color: var(--cp-text); }
+.badge { display: inline-block; font-size: 12px; padding: 2px 8px; border: 1px solid var(--cp-border); border-radius: 6px; background: var(--cp-surface-soft); color: var(--cp-text); white-space: nowrap; }
+.badge.fail { border-color: var(--cp-danger); }
+.badge.pass { border-color: var(--cp-success); }
+.badge.unknown { border-color: var(--cp-border-strong); }
+.pager { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-top: 1px solid var(--cp-border); font-size: 13px; }
+.pager button { font-size: 13px; min-height: 36px; padding: 6px 10px; }
+.detail { padding: 24px; min-width: 0; }
+.detail-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.detail h2 { max-width: 60ch; }
+.fact { padding: 14px 16px; background: var(--cp-surface-soft); border: 1px solid var(--cp-border); border-radius: 0.625rem; margin: 12px 0 16px; }
+.fact pre { margin: 6px 0 0; font: 14px/1.5 Consolas, "Courier New", Courier, monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
+dl { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 10px 16px; margin: 16px 0; font-size: 13px; }
+dt { color: var(--cp-text-soft); }
+dd { margin: 0; overflow-wrap: anywhere; }
+ul { margin: 8px 0 16px; padding-left: 20px; }
+li { margin: 8px 0; overflow-wrap: anywhere; }
+code { font: 12px/1.5 Consolas, "Courier New", Courier, monospace; }
+.empty { padding: 36px 20px; text-align: center; }
+.empty p { margin: 0 auto 16px; }
+.mobile-back { display: none; margin-bottom: 16px; }
+footer { padding: 0 28px 24px; font-size: 12px; color: var(--cp-text-soft); }
+.skip { position: absolute; left: 12px; top: -80px; padding: 8px 12px; background: var(--cp-surface); color: var(--cp-text); z-index: 2; }
+.skip:focus { top: 12px; }
+@media (max-width: 840px) {
+  header, .toolbar { padding-left: 16px; padding-right: 16px; }
+  main { padding-left: 16px; padding-right: 16px; }
+  .filters { grid-template-columns: 1fr 1fr; }
+  .search-field { grid-column: 1 / -1; }
+  .explorer { grid-template-columns: 1fr; }
+  .list-pane { border-right: 0; border-bottom: 1px solid var(--cp-border); }
+  .list { max-height: 360px; }
+  .detail { padding: 20px 16px; }
+  .mobile-back { display: inline-block; }
+}
+@media (max-width: 460px) {
+  h1 { font-size: 24px; }
+  .header-line { gap: 12px; }
+  #theme { font-size: 12px; padding: 8px; }
+  .filters { grid-template-columns: 1fr; }
+  .search-field { grid-column: auto; }
+  .report-row { align-items: start; flex-direction: column; gap: 8px; }
+  .report-row > div { width: 100%; }
+  dl { grid-template-columns: 1fr; gap: 4px; }
+  dd { margin-bottom: 10px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .finding { transition: background-color 140ms ease-out; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#recommendations">Skip to recommendations</a>
+<header>
+  <div class="header-line"><div><h1>LandingLens report canvas</h1><p id="scope" class="scope">Saved planned configuration · Read-only local preview</p></div><button id="theme" type="button" aria-label="Switch color theme">Dark theme</button></div>
+  <p class="notice">These are saved assessor results, not live Azure evidence. Unknown and manual outcomes are not passes. A narrow verified fact is not estate-wide compliance.</p>
+</header>
+<section class="toolbar" aria-label="Report and filters">
+  <div class="report-row"><div><label for="report">Saved report</label><select id="report"></select></div><a id="full-report" href="#">Open full HTML report</a><button id="download" type="button">Download presentation JSON</button></div>
+  <div class="filters">
+    <div><label for="outcome">Outcome</label><select id="outcome"></select></div>
+    <div><label for="area">Design area</label><select id="area"></select></div>
+    <div class="search-field"><label for="search">Find a recommendation</label><input id="search" type="search" placeholder="ID, recommendation or evidence" autocomplete="off"></div>
+  </div>
+  <div class="summary" id="summary"></div>
+  <div class="outcomes" id="outcome-buttons" aria-label="Filter by recorded outcome"></div>
+</section>
+<main id="recommendations" tabindex="-1">
+  <div class="explorer">
+    <section class="list-pane" aria-label="Recommendation results">
+      <div class="list-head"><h2>Recommendations</h2><span id="result-count" class="muted" role="status" aria-live="polite"></span></div>
+      <div id="list" class="list"></div>
+      <nav class="pager" aria-label="Result pages"><button id="previous" type="button">Previous</button><span id="page"></span><button id="next" type="button">Next</button></nav>
+    </section>
+    <section id="detail" class="detail" aria-label="Selected recommendation"></section>
+  </div>
+</main>
+<footer id="footer"></footer>
+<noscript>This interactive preview requires JavaScript. Use the full HTML reports linked from this conversation instead.</noscript>
+<script id="report-data" type="application/json">__REPORT_DATA__</script>
+<script>
+"use strict";
+const DATA = JSON.parse(document.getElementById("report-data").textContent);
+const $ = id => document.getElementById(id);
+const LABELS = {all: "All outcomes", fail: "Fail", unknown: "Unknown", manual: "Manual decision", pass: "Pass", not_applicable: "Not applicable", accepted_exception: "Accepted exception", error: "Error"};
+const hash = new URLSearchParams(location.hash.slice(1));
+let reportId = DATA.reports[hash.get("report")] ? hash.get("report") : Object.keys(DATA.reports)[0];
+let outcome = LABELS[hash.get("outcome")] ? hash.get("outcome") : ((DATA.reports[reportId].coverage.modes.planned.outcomes.fail || 0) ? "fail" : "all");
+let area = hash.get("area") || "";
+let query = hash.get("q") || "";
+let selected = hash.get("selected") || "";
+let page = 0;
+const PAGE_SIZE = 30;
+function node(tag, text, className) {
+  const element = document.createElement(tag);
+  if (text !== undefined) element.textContent = text;
+  if (className) element.className = className;
+  return element;
+}
+function option(value, label) {
+  const element = node("option", label); element.value = value; return element;
+}
+function key(row) { return row.control_id + "|" + row.logical_id; }
+function body(row) { return row.planned || row.observed || {}; }
+function saveView() {
+  const params = new URLSearchParams({report: reportId, outcome, area, q: query, selected});
+  history.replaceState(null, "", "#" + params.toString());
+}
+function renderDetail(row, scroll = false) {
+  const detail = $("detail"); detail.replaceChildren();
+  if (!row) { detail.append(node("h2", "No recommendation selected"), node("p", "Choose a result or reset the filters to see the saved assessment.", "muted")); return; }
+  const result = body(row);
+  const back = node("button", "Back to recommendations", "mobile-back"); back.type = "button";
+  back.addEventListener("click", () => $("recommendations").scrollIntoView({block: "start"}));
+  const meta = node("div", undefined, "detail-meta");
+  meta.append(node("span", LABELS[result.outcome] || result.outcome, "badge " + result.outcome), node("span", row.automation, "badge"), node("span", row.severity || "Severity not supplied", "badge"));
+  detail.append(back, meta, node("h2", row.upstream_id + " · " + row.recommendation), node("p", row.design_area, "muted"));
+  const fact = node("div", undefined, "fact");
+  fact.append(node("strong", "Recorded technical fact"));
+  const value = result.fact === undefined || result.fact === null ? "No conclusive technical fact recorded." : typeof result.fact === "string" ? result.fact : JSON.stringify(result.fact, null, 2);
+  fact.append(node("pre", value)); detail.append(fact);
+  const fields = node("dl");
+  const tier = result.evidence_tier === "verified" ? "Verified narrow fact (not compliance)" : (result.evidence_tier || "Not supplied").replaceAll("_", " ");
+  for (const [label, value] of [["Outcome reason", (result.reason || "Not supplied").replaceAll("_", " ")], ["Evidence tier", tier], ["Method", result.method || "Not supplied"], ["Confidence", result.confidence || "Not supplied"], ["Freshness", result.freshness || "Not supplied"], ["Result instance", row.logical_id], ["Control GUID", row.control_id]]) {
+    fields.append(node("dt", label), node("dd", value));
+  }
+  detail.append(fields, node("h3", "What this result does—and does not—say"), node("p", row.rationale || "Review the original report for the stated scope."));
+  if (result.guidance) {
+    detail.append(node("h3", "Next action"), node("p", result.guidance.next_action || result.guidance.explanation));
+  }
+  detail.append(node("h3", "Evidence requirements"));
+  const requirements = node("ul"); for (const value of row.evidence_requirements || []) requirements.append(node("li", value));
+  detail.append(requirements, node("p", "Source identities and evidence links are minimized in this presentation. No human decision is saved or inferred here.", "muted"));
+  detail.append(node("h3", "Reviewed references"));
+  const references = node("ul");
+  for (const reference of row.references || []) {
+    const link = node("a", reference.label); link.href = reference.url; link.target = "_blank"; link.rel = "noopener noreferrer";
+    const item = node("li"); item.append(link); references.append(item);
+  }
+  detail.append(references);
+  if (scroll && matchMedia("(max-width: 840px)").matches) detail.scrollIntoView({block: "start"});
+}
+function renderList(scroll = false) {
+  const model = DATA.reports[reportId];
+  const needle = query.toLocaleLowerCase();
+  const exactId = model.rows.some(row => row.upstream_id.toLocaleLowerCase() === needle || row.control_id.toLocaleLowerCase() === needle);
+  const rows = model.rows.filter(row => (outcome === "all" || body(row).outcome === outcome) && (!area || row.design_area === area) && (!needle || (exactId ? row.upstream_id.toLocaleLowerCase() === needle || row.control_id.toLocaleLowerCase() === needle : [row.upstream_id, row.control_id, row.recommendation, row.rationale, ...(row.evidence_requirements || [])].join(" ").toLocaleLowerCase().includes(needle))));
+  const pages = Math.max(1, Math.ceil(rows.length / PAGE_SIZE)); page = Math.min(page, pages - 1);
+  let chosen = rows.find(row => key(row) === selected) || rows[page * PAGE_SIZE];
+  if (chosen) selected = key(chosen); else selected = "";
+  const list = $("list"); list.replaceChildren();
+  for (const row of rows.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)) {
+    const button = node("button", undefined, "finding"); button.type = "button"; button.dataset.result = key(row); button.setAttribute("aria-pressed", String(key(row) === selected));
+    const top = node("span", undefined, "finding-top");
+    top.append(node("strong", row.upstream_id), node("span", LABELS[body(row).outcome] || body(row).outcome, "badge " + body(row).outcome));
+    button.append(top, node("span", row.recommendation, "finding-title"), node("span", row.automation + " · " + (row.severity || "Severity not supplied") + " · " + row.logical_id, "finding-meta"));
+    button.addEventListener("click", () => {
+      selected = key(row);
+      list.querySelectorAll(".finding").forEach(item => item.setAttribute("aria-pressed", String(item.dataset.result === selected)));
+      saveView(); renderDetail(row, true);
+    });
+    list.append(button);
+  }
+  if (!rows.length) {
+    const empty = node("div", undefined, "empty");
+    empty.append(node("h2", "No matching results"), node("p", "Try another outcome or clear the design area and search.", "muted"));
+    const reset = node("button", "Reset filters", "primary"); reset.type = "button"; reset.addEventListener("click", resetFilters); empty.append(reset); list.append(empty);
+  }
+  $("result-count").textContent = rows.length + " of " + model.rows.length + " result rows";
+  $("page").textContent = rows.length ? "Page " + (page + 1) + " of " + pages : "No results";
+  $("previous").disabled = page === 0; $("next").disabled = page + 1 >= pages || !rows.length;
+  renderDetail(chosen, scroll); saveView();
+}
+function resetFilters() { outcome = "all"; area = ""; query = ""; page = 0; selected = ""; renderReport(); }
+function renderReport() {
+  const model = DATA.reports[reportId];
+  $("report").replaceChildren(...Object.entries(DATA.reports).map(([value, report]) => option(value, report.label)));
+  $("report").value = reportId;
+  $("scope").textContent = (DATA.fictional ? "Fictional offline inputs · " : "") + "Saved planned configuration · Read-only local preview";
+  $("full-report").href = model.fullReport;
+  $("outcome").replaceChildren(...Object.entries(LABELS).map(([value, label]) => option(value, label)));
+  $("outcome").value = outcome;
+  const areas = [...new Set(model.rows.map(row => row.design_area))].sort();
+  if (!areas.includes(area)) area = "";
+  $("area").replaceChildren(option("", "All design areas"), ...areas.map(value => option(value, value)));
+  $("area").value = area; $("search").value = query;
+  $("summary").replaceChildren();
+  for (const [count, label] of [[model.coverage.controls, "recommendations"], [model.coverage.result_instances, "result rows"], [model.declaredResources, "declared resource records"], [model.coverage.automated_controls, "automated controls"]]) {
+    const item = node("span"); item.append(node("strong", count), document.createTextNode(" " + label)); $("summary").append(item);
+  }
+  $("outcome-buttons").replaceChildren();
+  const counts = model.coverage.modes.planned.outcomes;
+  for (const value of ["all", "fail", "unknown", "manual", "pass", "not_applicable"]) {
+    const count = value === "all" ? model.rows.length : counts[value] || 0;
+    const button = node("button", (LABELS[value] || value) + " " + count); button.type = "button"; button.setAttribute("aria-pressed", String(value === outcome));
+    button.addEventListener("click", () => { outcome = value; page = 0; selected = ""; renderReport(); });
+    $("outcome-buttons").append(button);
+  }
+  $("footer").textContent = "Saved assessment: " + model.generatedAt + " · Catalog " + model.catalogVersion + " · Read-only: filters change the view, not the results. " + model.coverage.warning;
+  renderList();
+}
+$("report").addEventListener("change", event => {
+  reportId = event.target.value; outcome = "all"; area = ""; query = ""; page = 0; selected = ""; renderReport(); window.scrollTo(0, 0);
+});
+document.querySelector(".skip").addEventListener("click", event => { event.preventDefault(); $("recommendations").focus(); $("recommendations").scrollIntoView({block: "start"}); });
+$("outcome").addEventListener("change", event => { outcome = event.target.value; page = 0; selected = ""; renderReport(); });
+$("area").addEventListener("change", event => { area = event.target.value; page = 0; selected = ""; renderList(); });
+$("search").addEventListener("input", event => { query = event.target.value; page = 0; selected = ""; renderList(); });
+$("previous").addEventListener("click", () => { page--; selected = ""; renderList(); $("list").scrollTop = 0; });
+$("next").addEventListener("click", () => { page++; selected = ""; renderList(); $("list").scrollTop = 0; });
+$("theme").addEventListener("click", () => { const dark = document.documentElement.dataset.theme !== "dark"; document.documentElement.dataset.theme = dark ? "dark" : "light"; $("theme").textContent = dark ? "Light theme" : "Dark theme"; });
+$("theme").textContent = document.documentElement.dataset.theme === "dark" ? "Light theme" : "Dark theme";
+$("download").addEventListener("click", () => {
+  const model = DATA.reports[reportId];
+  const url = URL.createObjectURL(new Blob([JSON.stringify(model.presentation, null, 2)], {type: "application/json"}));
+  const link = node("a"); link.href = url; link.download = "landinglens-" + reportId + "-presentation.json"; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+});
+renderReport();
+</script>
+</body>
+</html>
