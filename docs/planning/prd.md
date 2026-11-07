@@ -1,5 +1,46 @@
 # LandingLens product requirements
 
+## Cohort 21 accepted boundary
+
+After checked07/03 delivery and the explicit sole slot, cohort21/#160 activates
+[eight independent workflows](../../references/recommendation-batches/batch-21.json)
+in builder-derived `.27`. Exact `.26`, all255/fixed251, original four complete
+controls, every non-own object, all235 prior rows/28 receipts and every binding
+remain unchanged. All24 predecessor compiler cases precede the genuine new
+storage configuration case. Dispositions remain12/200/43.
+
+Public-CA renewal, key rotation, consumer updates, vault delegation, MMK/CMK
+necessity and service-qualified BYOK support stay separate. Four assisted and
+four manual decisions and exceptions start independently blank; no configuration
+proves operating security, complete coverage, IR rehearsal, Zero Trust maturity
+or sovereignty/legal eligibility. Existing private replay projections minimize
+saved/injected properties before CLI/local-session persistence. No new live read,
+key/certificate child, URI/material retention or action is introduced.
+Checked implementation, guarded own receipt and final-main CI determine
+delivery and satisfied #160 completion, not activation.
+
+## Cohort 21 independent preparation boundary
+
+Cohort21/[#160](https://github.com/jonathan-vella/landinglens/issues/160) prepares
+[four assisted and four manual source-specific workflows](../../references/recommendation-batches/preparation-21.json)
+outside accepted activation, after `.24`/220 deliveries and before its explicit
+serialized slot following07/03. All eight decisions stay independently blank,
+attributable, selected, time-bound and exceptable. Existing vault/Policy/role
+helpers and explicit storage key-source/infrastructure/Queue-Table metadata
+support review without new live collection or key/certificate/URI retention.
+Terraform final key source remains unknown when separate CMK configuration is
+unreconciled; no omitted defaults or vault links are invented.
+
+Partner-CA renewal, arbitrary issuer workflows, key rotation and consumer updates
+are distinct; Key Vault is not Managed HSM. MMK/CMK necessity, complete required
+service BYOK compatibility, incident planning, Zero Trust and sovereignty
+requirements remain separate human decisions. Configuration proves no renewal,
+rehearsal, effective delegation/enforcement, complete coverage, maturity or legal
+eligibility. Signals and confirmations never become Verified. No accepted
+source/matrix/bank/catalog/crosswalk/count/history or receipt changes occur until
+the explicit slot and actual delivery gates described in the
+[preparation plan](plan.md#cohort-21-independent-preparation-2026-11-07).
+
 ## Cohort 03 accepted boundary
 
 The explicit sole slot after actual26/07 checked delivery activates

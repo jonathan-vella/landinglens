@@ -1,5 +1,125 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 21 accepted integration: 2026-11-07
+
+The explicit sole coordinator slot follows checked07 implementation161/receipt162,
+03 implementation164/receipt165, completed154/157 and final main
+`226caec2d4eb2f183d2cdbfa1fbde3c9d7698ec1`. Preparation `b77a4a9` is preserved;
+reconciliation `d9e1a12` integrates07 hierarchy/settings and03 API-qualified budgets
+without changing26 recovery or24 operations. All24 actual predecessor compiler
+cases precede the new genuine storage-encryption configuration case.
+
+Existing builders derive unique catalog/crosswalk `2026-11-06.27` from exact
+frozen `.26`, [27 unchanged captures](../../references/recommendation-batches/batch-21-sources.json)
+and the [eight-GUID accepted matrix](../../references/recommendation-batches/batch-21.json).
+All255/fixed251, original four complete controls, every non-own complete object,
+all235 preceding own-GUID rows/28 receipts and every historical binding remain
+unchanged. Dispositions remain12 automated/200 assisted/43 manual. Before guarded
+delivery235 are delivered and16 undelivered; activation is not a receipt.
+
+Four assisted and four manual independent decisions register in the existing bank
+and evaluator/review/tier/report/tracker/CLI/session/replay workflow. Public-CA
+renewal, key rotation and consumer adoption remain distinct, as do Key Vault and
+Managed HSM, MMK/CMK requirements and complete service-specific BYOK compatibility.
+IR readiness, Zero Trust, ownership, effective delegation/enforcement, coverage
+and sovereignty/legal judgments stay independently blank and exceptable.
+Signals and human confirmation never manufacture Verified.
+
+The only new configuration is explicit storage keySource/infrastructure/
+Queue-Table metadata; Terraform final keySource remains unknown because a separate
+CMK resource may override inline settings. No private key reference or invented
+vault/consumer join is retained. Saved/injected vault/storage/Policy/role property
+payloads are minimized through existing replay projections before CLI/session
+persistence, preserving other reviewed features without retaining keys,
+certificates, URIs, issuers, principals or incidents. No new live route, data-plane
+child, built-in fetch, second Policy interpreter or operational action is added.
+
+Fresh own accepted installed-wheel/static/replay checks, exact-head eight platform
+jobs, CodeQL/security/review and four downloaded matching exercised compiler proofs
+gate the normal SHA-bound implementation merge. Actual guarded own-GUID receipt
+publication and checked final-main CI gate satisfied #160 completion; preparation
+proofs and implementation merge alone are not delivery.
+
+The first accepted local full suite ran885 tests and exposed three unchanged
+session-evidence equality assertions: the initial privacy projection inserted
+absent unknown placeholder fields. The correction retains only originally
+supplied approved top-level properties while still sanitizing their contents;
+no assertion is weakened. Initial wheel
+`16c7558ef0a49fb25334801d93419a9c5cfa05f339ef4138d77d9192707ba0e4`
+and its stopped installed-suite run are invalidated history, not acceptance.
+
+The corrected source suite ran885 tests:884 passed and the original Windows
+symlink-privilege skip1. Format/lint,53-file typing, dependency consistency and
+587 local links passed. Corrected own wheel SHA256:
+`f4b9e62f1cfa7ab7d7945fbc7d16a8065c33a94e4ea4e88035642ee1e5893aa9`.
+Exact176-member byteproof confirms dedicated site-packages == wheel == workspace.
+Its first full installed attempt encountered WinError5 during an unchanged
+sovereign session's atomic revision-directory rename; the isolated eight-test
+sovereign suite then passed on the same wheel without changes. That failed
+attempt is retained, not counted as acceptance; a complete installed rerun and
+all actual CI/compiler/review gates remain mandatory before merge.
+
+## Cohort 21 independent preparation: 2026-11-07
+
+[#160](https://github.com/jonathan-vella/landinglens/issues/160) prepares exactly
+G01.01/.02 and G02.05/.06/.09/.10/.11/.12 in the
+[eight-GUID matrix](../../references/recommendation-batches/preparation-21.json),
+with [current source provenance](../../references/recommendation-batches/preparation-21-sources.json).
+Baseline is actual main `a2454003de0564de236ca56443cf7f5123d09d0e`,
+catalog/crosswalk `.24`,220 delivered/31 pending/26 receipts. Cohorts07/03
+precede21. This preparation does not register a successor, activate accepted
+source/matrix/bank/catalog/crosswalk/counts/history, open a PR, merge, record
+delivery or close the issue.
+
+Four assisted and four manual workflows keep every source-specific requirement,
+applicability, ownership, operating and exception decision independently blank.
+Legacy incident-response benchmark guidance is qualified by current MCSB;
+Zero Trust extends beyond landing-zone technical settings. Partner-CA renewal
+is not arbitrary imported-CA signing or self-signed regeneration; key rotation,
+certificate renewal and consumer updates are distinct. Managed HSM is key-only.
+Service-specific MMK/CMK/BYOK compatibility and sovereignty necessity remain human
+decisions, never inferred from encryption, location or a general support table.
+
+Existing minimized vault RBAC/network and strict supplied Policy/role/version/
+scope/ancestry helpers are reused. The only new facts are explicit storage
+keySource, infrastructure encryption and Queue/Table key types. Blob/Files CMK
+support does not imply Queue/Table account-key configuration; storage's daily
+version refresh is not key creation or confirmed consumer adoption. Terraform
+inline CMK presence/absence cannot reconcile separately managed CMK resources,
+so final key source remains unknown. No private key reference is retained or
+vault/consumer relationship invented. No key/certificate child type, collector,
+live route, built-in fetch or second Policy interpreter is added.
+
+Offline Terraform/local modules/supplied plan, pinned ARM/existing no-restore
+Bicep and normalized saved/injected evidence feed the existing evaluator,
+interviews/reviews, tiers, reports/trackers, CLI/local sessions and original-time
+private replay. Unsupported, missing, stale, denied, ambiguous and over-bound
+context stays unknown. Signals and human confirmations never manufacture
+Verified. The new compiler fixture proves only explicit storage configuration,
+not security operations, IR rehearsal or legal eligibility.
+
+At the explicit slot, reconcile actual then-current07/03 main, freeze its exact
+predecessor and use existing builders for a unique reviewed accepted successor.
+Preserve all255/fixed251, original four complete objects, historical bytes,
+earlier receipts and every own binding. Fresh own installed-wheel/static/replay,
+exact-head eight platform jobs, CodeQL/security/review and four downloaded matching
+exercised compiler proofs precede normal SHA-bound merge. Guarded actual own-GUID
+receipt publication and checked final-main CI precede satisfied #160 completion.
+Preparation evidence is not delivery.
+
+Preparation verification ran826 tests in both source and own clean
+outside-checkout installed-wheel environments:825 passed, with only the original
+Windows symlink-privilege skip. All23 actual compiler cases exercised without
+skips, preserving all22 predecessors and adding only the genuine storage
+configuration fixture. Formatting/lint,51-file static typing,545 local doc links
+and dependency consistency passed. Exact162-member byte comparison proved
+wheel == dedicated site-packages == workspace. Own wheel SHA256:
+`55d6372ce5ebaef0f126fa2f40f24384d803c4d07d5e58dca0c71ea85382ef4a`.
+After an actual no-index missing-dependency failure, only the three reviewed
+runtime wheels were restored from the configured approved feed; every wheel hash
+matched the reviewed manifest. All113 protected accepted package assets and
+fixed-target/ledger files remain byte-identical to the preparation baseline.
+
 ## Cohort 03 accepted integration: 2026-11-07
 
 The explicit sole coordinator slot follows actual26 implementation158/receipt159,

@@ -4961,6 +4961,149 @@ SOURCES_26 += [
 ]
 
 
+SOURCES_21 = [
+    (
+        "incident-linked",
+        "https://learn.microsoft.com/security/benchmark/azure/security-control-incident-response",
+        ["incident response guide", "Test security response procedures"],
+        "Legacy Azure benchmark guidance points to newer benchmark material. Written roles, "
+        "prioritization, communications and exercises are organizational evidence, not IaC facts.",
+    ),
+    (
+        "incident-current",
+        LEARN + "security/benchmark/azure/mcsb-incident-response",
+        ["IR-1", "shared responsibility", "Regularly test"],
+        "Current MCSB distinguishes service-specific shared responsibility and actual tested "
+        "handling plans. No incident/contact payloads, exercise or investigation is added.",
+    ),
+    (
+        "zero-trust-linked",
+        "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/"
+        "design-area/security-zero-trust",
+        ["Verify explicitly", "Use least-privilege access", "Assume breach"],
+        "CAF deployment objectives extend beyond landing-zone technical configurations. "
+        "No resource-presence score establishes Zero Trust maturity or effective access.",
+    ),
+    (
+        "vault-linked",
+        "https://learn.microsoft.com/azure/key-vault/general/best-practices",
+        ["autorotation", "control plane", "data plane", "role-based access"],
+        "Redirects to secure-key-vault. Separate vault boundaries, data/control planes, RBAC "
+        "and Policy from effective delegation, actual renewal and complete coverage.",
+    ),
+    (
+        "certificate-renewal",
+        LEARN + "azure/key-vault/certificates/overview-renew-certificate",
+        ["DigiCert", "GlobalSign", "nonintegrated", "Self-signed"],
+        "Integrated partner CAs support end-to-end renewal; arbitrary imported CA certificates "
+        "need their own CSR/sign/merge workflow. Self-signed renewal does not satisfy public-CA "
+        "automation. Notifications are not renewal or consumer deployment.",
+    ),
+    (
+        "autorotation",
+        LEARN + "azure/key-vault/general/autorotation",
+        ["asset type", "dependent systems", "fallback"],
+        "Keys, certificates and secrets have different automation mechanisms. Configured "
+        "rotation is distinct from successful operations, consumer adoption and tested fallback.",
+    ),
+    (
+        "key-rotation",
+        LEARN + "azure/key-vault/keys/how-to-configure-key-rotation",
+        ["seven days", "versionless", "specific Azure service", "imported from local HSM"],
+        "Key rotation generates a new version, not a renewed public certificate. Imported "
+        "external-HSM material may require a separate process. Service refresh latency and "
+        "old-version retention require service-specific review; no universal cadence predicate.",
+    ),
+    (
+        "encryption-linked",
+        "https://learn.microsoft.com/azure/security/fundamentals/encryption-atrest",
+        ["Platform-managed keys", "Customer-managed keys", "external key management (preview)"],
+        "Preserve immutable Microsoft-managed wording; current guidance also says platform- "
+        "or service-managed. CMK adds responsibility and is requirement-driven, not a universal "
+        "upgrade. External-key-management preview does not establish sovereignty eligibility.",
+    ),
+    (
+        "service-support-linked",
+        LEARN + "azure/security/fundamentals/encryption-customer-managed-keys-support",
+        ["Key Vault", "Managed HSM", "service-specific"],
+        "Key Vault and Managed HSM columns differ by service/feature and contain qualifications. "
+        "A general support table, blank cell or vault presence cannot prove every required "
+        "BYOK algorithm, origin, SKU, cloud, region or lifecycle is supported.",
+    ),
+    (
+        "storage-cmk",
+        LEARN + "azure/storage/common/customer-managed-keys-overview",
+        ["Queue and Table", "daily", "24 hours", "Azure Storage doesn't handle key rotation"],
+        "Storage account key source is narrow configuration. Blob/Files CMK support differs "
+        "from opt-in Queue/Table account key type. Storage version refresh is separate from "
+        "key creation; versionless automatic update checks daily and old versions need overlap. "
+        "No URI, key name/version, issuer, principal or material is retained.",
+    ),
+    (
+        "vault-object-types",
+        LEARN + "azure/key-vault/general/about-keys-secrets-certificates",
+        ["Managed HSM Pools", "Not supported", "Certificates", "deprecated"],
+        "Managed HSM supports HSM-protected keys, not secrets or certificates. Key Vault's "
+        "legacy Storage account-key feature is deprecated and distinct from CMK wrapping "
+        "and certificate renewal. No data-plane object identifiers are retained.",
+    ),
+    (
+        "storage-encryption-arm",
+        LEARN + "azure/templates/microsoft.storage/2023-05-01/storageaccounts",
+        ["keySource", "Microsoft.Storage", "Microsoft.Keyvault", "requireInfrastructureEncryption"],
+        "Pinned 2023-05-01 exposes explicit keySource, infrastructure encryption and service "
+        "keyType. Omitted fields never become defaults; no keyvaultproperties are projected.",
+    ),
+    (
+        "terraform-storage-encryption",
+        RAW + "website/docs/r/storage_account.html.markdown",
+        [
+            "customer_managed_key",
+            "queue_encryption_key_type",
+            "table_encryption_key_type",
+            "infrastructure_encryption_enabled",
+            "azurerm_storage_account_customer_managed_key",
+        ],
+        "AzureRM 4.50.0 allows inline or separate CMK configuration, so absent inline blocks "
+        "cannot establish MMK. Only explicit infrastructure and Queue/Table key types are "
+        "projected; no key/principal/URI inspection or retained identifiers.",
+    ),
+    (
+        "terraform-vault",
+        RAW + "website/docs/r/key_vault.html.markdown",
+        ["rbac_authorization_enabled", "purge_protection_enabled"],
+        "Reuse reviewed explicit vault RBAC and purge-protection settings; these do not "
+        "establish effective privileged access, automated renewal or actual consumer updates.",
+    ),
+    (
+        "vault-arm",
+        LEARN + "azure/templates/microsoft.keyvault/2024-11-01/vaults",
+        ["enableRbacAuthorization", "enablePurgeProtection"],
+        "Reuse pinned vault settings only. Managed HSM is a distinct resource and key-only "
+        "service, not a certificate vault or a public-CA renewal workflow.",
+    ),
+]
+SOURCES_21 += [
+    source
+    for source in SOURCES_27
+    if source[0]
+    in {
+        "policy-spec-policyDefinitions",
+        "policy-spec-policySetDefinitions",
+        "policy-spec-policyAssignments",
+        "policy-role-arm",
+        "policy-provider-policy_definition",
+        "policy-provider-policy_set_definition",
+        "policy-provider-management_group_policy_assignment",
+        "policy-provider-subscription_policy_assignment",
+        "policy-provider-resource_group_policy_assignment",
+        "policy-spec-license",
+        "policy-provider-license",
+        "learn-terms",
+    }
+]
+
+
 SOURCES_03_VERSION = [
     (
         "budget-rest-2019",
@@ -5014,6 +5157,7 @@ def main() -> None:
             "18",
             "19",
             "20",
+            "21",
             "22",
             "27",
             "23",
@@ -5042,6 +5186,7 @@ def main() -> None:
             "12",
             "16",
             "20",
+            "21",
             "23",
             "24",
             "25",
@@ -5091,6 +5236,7 @@ def main() -> None:
         "18": SOURCES_18,
         "19": SOURCES_19,
         "20": SOURCES_20,
+        "21": SOURCES_21,
         "22": SOURCES_22,
         "27": SOURCES_27,
         "23": SOURCES_23,

@@ -6,8 +6,64 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.26"
+BANK_VERSION = "2026-11-06.27"
 BANK = {
+    "incident-zero-trust-key-lifecycle": {
+        "question": (
+            "Decide all eight recommendations independently, with separately attributable "
+            "redacted evidence and exceptions, never one shared outcome. For G01.01, review "
+            "service-specific pre-production incident plans, shared responsibilities, roles, "
+            "escalation, prioritization, containment/recovery and original-time "
+            "exercise/lessons evidence; legacy benchmark wording is qualified by current MCSB"
+            " IR guidance. No incidents or personal contacts are retained and no exercise is "
+            "run. For G01.02, substantiate verify-explicitly, least-privilege and assume-"
+            "breach objectives across identities, endpoints, applications, infrastructure, "
+            "networks and data, including workload and non-landing-zone responsibilities; a "
+            "resource checklist is not Zero Trust maturity. For G02.05, distinguish "
+            "integrated public-CA automation (currently DigiCert/GlobalSign), nonintegrated "
+            "CA signing/merge workflows and self-signed regeneration. An imported "
+            "certificate, expiration notification or vault is not automated public-CA "
+            "renewal, deployment or successful adoption by consumers. For G02.06, separately "
+            "review key generation/rotation, certificate renewal and consumer updates, "
+            "ownership, lifetimes, service-specific refresh/old-version overlap and tested "
+            "failure/recovery paths. Native key rotation is not import of externally "
+            "generated HSM material; Managed HSM is key-only, not a certificate vault. For "
+            "G02.09, distinguish vault instantiation/control-plane authority from data-plane "
+            "access, actual team delegation/PIM/conditions/deny constraints and exact "
+            "reviewed Policy definitions/versions/assignments/scopes/exclusions/exemptions "
+            "plus timely compliance evidence. No referenced definition is fetched or rule "
+            "interpreted. For G02.10, retain immutable MMK wording and current "
+            "platform/service-managed terminology, default MMK versus requirement-driven CMK "
+            "decisions per service/data set, dependencies, availability and recovery "
+            "ownership. Storage keySource is only an explicit narrow setting; Blob/Files "
+            "differs from Queue/Table Account versus Service key type, infrastructure "
+            "encryption is separate and Terraform inline CMK presence/absence cannot "
+            "reconcile separate CMK resources. Storage's versionless daily refresh is not key"
+            " rotation or proof that consumers have updated. For G02.11, independently "
+            "determine whether an accountable organizational sovereignty requirement mandates"
+            " CMK; no geography, encryption setting or external-key-management preview "
+            "establishes legal eligibility or sufficient sovereignty. For G02.12, review "
+            "every required service/feature/SKU/cloud/region, Key Vault versus Managed HSM "
+            "support, key origin/BYOK/algorithm/size/lifecycle and end-to-end "
+            "availability/consumer integration against current service-specific references. A"
+            " general support-table Yes or blank is not universal BYOK compatibility. All "
+            "coverage, requirements, ownership, operation and exception decisions stay blank "
+            "until explicitly supplied. No "
+            "key/certificate/secret/URI/issuer/principal/incident/private payload retention, "
+            "live probes, scans, queries, credential/key/renewal/rotation changes, contact or"
+            " incident exercises."
+        ),
+        "controls": [
+            "ALZ-b86ad884-08e3-4727-94b8-75ba18f20459",
+            "ALZ-01365d38-e43f-49cc-ad86-8266abca264f",
+            "ALZ-6d70ba6c-97be-4995-8904-83845c986cb2",
+            "ALZ-913156a1-2476-4e49-b541-acdce979377b",
+            "ALZ-b12308ca-5017-4f15-9e3a-b3693829e7e3",
+            "ALZ-16183687-a047-47a2-8994-5bda43334f24",
+            "ALZ-b48ade7f-50be-4d2e-9866-d57b17942fc2",
+            "ALZ-25d62688-6d70-4ba6-a97b-e99519048384",
+        ],
+    },
     "agreement-budgets-visibility-billing-governance": {
         "question": (
             "Decide seven recommendations independently with dated attributable redacted evidence "
