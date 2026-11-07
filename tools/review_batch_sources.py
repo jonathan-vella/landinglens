@@ -4197,6 +4197,93 @@ SOURCES_10 = [
 ]
 
 
+SOURCES_07 = [
+    (
+        "naming-standard",
+        LEARN + "azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming",
+        ["tailored naming convention", "personal, sensitive, or confidential", "permanence"],
+        "Naming must satisfy organization-specific requirements and per-type scope, character "
+        "and length rules. Examples are not an approved enterprise standard; names are often "
+        "immutable and must not contain confidential information. No raw names are retained.",
+    ),
+    (
+        "management-design",
+        LEARN + "azure/cloud-adoption-framework/ready/landing-zone/design-area/"
+        "resource-org-management-groups",
+        ["three to four", "Intermediate root", "sandbox", "connectivity subscription"],
+        "CAF ideally recommends three to four levels, while separately documenting the six-level "
+        "service bound excluding tenant root/subscriptions. The ALZ intermediate root is below "
+        "tenant root. Sandbox purpose, platform placement, workload requirements and dedicated "
+        "connectivity need explicit organizational designation; no naming/count predicate. "
+        "Dedicated regional connectivity subscriptions can be justified by scale.",
+    ),
+    (
+        "management-overview",
+        LEARN + "azure/governance/management-groups/overview",
+        ["six levels", "only one parent", "root level or the subscription level", "10,000"],
+        "Single-parent hierarchy supports six MG levels below tenant root, "
+        "excluding subscriptions. "
+        "This is a service maximum, not CAF's ideal or a universal four-level counting convention. "
+        "Partial positive parentage and selected scope cannot designate tenant root, establish "
+        "complete estate depth, subscription absence, policy results or effective permissions.",
+    ),
+    (
+        "hierarchy-protection",
+        LEARN + "azure/governance/management-groups/how-to/protect-resource-hierarchy",
+        [
+            "defaultManagementGroup",
+            "requireAuthorizationForGroupCreation",
+            "Hierarchy Settings Administrator",
+        ],
+        "defaultManagementGroup governs new subscription placement, not existing membership or "
+        "absence of root subscriptions. requireAuthorizationForGroupCreation requires root write "
+        "permission for creation, not all effective privileged operations. Settings read/write "
+        "permissions themselves grant no other hierarchy/resource access.",
+    ),
+    (
+        "hierarchy-settings-arm",
+        LEARN + "azure/templates/microsoft.management/2020-05-01/managementgroups/settings",
+        ["Tenant", "'default'", "requireAuthorizationForGroupCreation", "defaultManagementGroup"],
+        "Pinned tenant resource managementGroups/settings/default exposes independent explicit "
+        "default MG reference and creation-authorization boolean. Supplied settings attach to "
+        "a unique known selected anchor; that does not designate it as authoritative tenant root. "
+        "No implicit defaults or ARM permission operations are executed.",
+    ),
+    (
+        "management-arm",
+        LEARN + "azure/templates/microsoft.management/2020-05-01/managementgroups",
+        ["Tenant", "parent", "displayName"],
+        "Pinned tenant MG resource has explicit resource key and details.parent.id. Resource "
+        "keys are identities, never business-purpose or root designations. Display names, "
+        "tenant/principal payloads and private metadata are not projected.",
+    ),
+    (
+        "terraform-management",
+        RAW + "website/docs/r/management_group.html.markdown",
+        ["parent_management_group_id", "subscription_ids", "2020-05-01"],
+        "Pinned AzureRM4.50 MG supplies explicit name key and optional parent ID. Omitted name "
+        "is generated and cannot bind an identity. Optional subscription_ids and the separate "
+        "association resource conflict if both managed; neither omission nor empty selected "
+        "input proves complete actual root subscription absence. No settings resource is assumed.",
+    ),
+    (
+        "terraform-management-association",
+        RAW + "website/docs/r/management_group_subscription_association.html.markdown",
+        ["management_group_id", "subscription_id", "2020-05-01"],
+        "Separate AzureRM association binds a specific subscription to an MG, not a subscription "
+        "purpose. It is not a new subscription object or settings resource; "
+        "unsupported association "
+        "inputs remain unknown rather than inventing complete inventory or deployment authority.",
+    ),
+    *[
+        source
+        for source in SOURCES_27
+        if source[0] in {"policy-scope", "policy-assignment-structure", "management-hierarchy"}
+    ],
+    *[source for source in SOURCES_15 if source[0] in {"provider-reuse", "learn-reuse"}],
+]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--append-new-sources", action="store_true")
@@ -4210,6 +4297,7 @@ def main() -> None:
             "04",
             "05",
             "06",
+            "07",
             "08",
             "10",
             "11",
@@ -4235,10 +4323,10 @@ def main() -> None:
     if args.vwan_supplement and (args.batch != "16" or not args.preparation_only):
         raise ValueError("The vWAN supplement is cohort16 preparation only")
     if (
-        args.batch in {"02", "05", "06", "10", "12", "16", "20", "23", "25", "27", "29", "30"}
+        args.batch in {"02", "05", "06", "07", "10", "12", "16", "20", "23", "25", "27", "29", "30"}
     ) != args.preparation_only:
         raise ValueError(
-            "Cohorts 02/05/06/10/12/16/20/23/25/27/29/30 source capture "
+            "Cohorts 02/05/06/07/10/12/16/20/23/25/27/29/30 source capture "
             "require --preparation-only; "
             "no activation"
         )
@@ -4250,7 +4338,7 @@ def main() -> None:
         / "recommendation-batches"
         / f"{prefix}-{args.batch}{suffix}-sources.json"
     )
-    if args.batch in {"02", "05", "06"}:
+    if args.batch in {"02", "05", "06", "07"}:
         target = ROOT / "references" / "preparation" / f"batch-{args.batch}-sources.json"
     if target.exists() and not args.append_new_sources:
         raise ValueError("Frozen source review exists; do not silently recollect or redate it")
@@ -4262,6 +4350,7 @@ def main() -> None:
         "04": SOURCES_04,
         "05": SOURCES_05,
         "06": SOURCES_06,
+        "07": SOURCES_07,
         "08": SOURCES_08,
         "10": SOURCES_10,
         "11": SOURCES_11,

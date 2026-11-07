@@ -41,6 +41,18 @@ redaction and bounded expansion without adding a test dependency.
 
 ## Assessment workflows
 
+Cohort07's [eight-workflow preparation](../references/preparation/batch-07.json)
+is not registered in the accepted interview bank. Its authored tests inject the
+candidate bank and catalog explicitly; ordinary accepted sessions remain unchanged.
+Existing raw/local-module Terraform and supplied plans can prepare explicit MG
+keys/parents; pinned ARM/Bicep2020-05-01 can additionally prepare
+`managementGroups/settings/default`. Saved normalized settings must retain that
+explicit `api_version`; no AzureRM settings resource or new live route is assumed.
+Only unique known typed positively joined selected-scope graphs are usable.
+Unsupported expressions, missing parent records, conflicting/cyclic ancestry and
+over100 relevant records remain unknown. Neither root purpose nor complete estate
+depth is inferred. All source-specific decisions and exceptions remain independent.
+
 Cohort25's [accepted matrix](../references/recommendation-batches/batch-25.json)
 and [captured source findings](../references/recommendation-batches/batch-25-sources.json)
 define nine separate F01.10-F01.18 reviews and a registered blank interview in

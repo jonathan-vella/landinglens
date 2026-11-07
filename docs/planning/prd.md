@@ -1,5 +1,20 @@
 # LandingLens product requirements
 
+## Cohort 07 preparation boundary
+
+[#154](https://github.com/jonathan-vella/landinglens/issues/154) prepares
+[eight fixed source-specific workflows](../../references/preparation/batch-07.json)
+outside accepted activation, serialized after actual24/26 and an explicit slot.
+Typed explicit keys, supplied positive parentage and pinned settings provide only
+partial original-time configuration. Relative subtree depth is not full-estate
+depth; ideal flatness and service limits differ. Default placement is not absence
+of existing root subscriptions; creation authorization is not all effective access.
+Naming standard/adoption, sandbox purpose, platform/connectivity/workload roles,
+root designation and effective authority require eight independently blank,
+attributable scoped/content/time/expiry-bound decisions and separate exceptions.
+No live collector/API, tenant read, query, deployment, settings/permissions change,
+private name/tag/principal payload or new whole-guidance predicate is authorized.
+
 ## Cohort 09 accepted boundary
 
 The explicit sole coordinator slot after actual10 implementation146/receipt147

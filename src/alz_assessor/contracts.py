@@ -19,7 +19,7 @@ OUTCOMES = {"pass", "fail", "unknown", "error", "manual", "not_applicable"}
 STATES = {"known", "unknown", "inaccessible", "error", "absent"}
 ARM_ID = re.compile(
     r"^/(?:subscriptions/[0-9a-f-]{36}(?:/resourceGroups/[^/]+)?|"
-    r"providers/Microsoft.Management/managementGroups/[^/]+)"
+    r"providers/Microsoft.Management/managementGroups/[^/]+(?:/settings/default)?)"
     r"(?:/providers/[^/]+(?:/[^/]+/[^/]+)+)?$",
     re.IGNORECASE,
 )
@@ -339,6 +339,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                 from .identity_evidence import PATHS as IDENTITY_PATHS
                 from .logging_evidence import PATHS as LOGGING_PATHS
                 from .network_policy_evidence import PATHS as NETWORK_POLICY_PATHS
+                from .organization_evidence import PATHS as ORGANIZATION_PATHS
                 from .platform_health_evidence import PATHS as PLATFORM_HEALTH_PATHS
                 from .policy_strategy_evidence import PATHS as POLICY_STRATEGY_PATHS
                 from .tenant_evidence import PATHS as TENANT_PATHS
@@ -466,6 +467,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                             | LOGGING_PATHS
                             | PLATFORM_HEALTH_PATHS
                             | TOPOLOGY_PATHS
+                            | ORGANIZATION_PATHS
                         )
                         for path in paths
                     )

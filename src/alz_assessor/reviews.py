@@ -508,6 +508,15 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
             prepared["sovereign_configuration"] = configuration
             prepared["facts"] = configuration.get("facts", configuration)
             prepared["subchecks"] = {}
+    from .organization_evidence import GUIDS as ORGANIZATION_GUIDS
+    from .organization_evidence import configuration_context as organization_context
+
+    if control["upstream_guid"] in ORGANIZATION_GUIDS and control.get("review_fact_paths"):
+        configuration = organization_context(bundle)
+        context["organization_configuration"] = configuration
+        # Only the joined graph/settings are usable; unjoined raw facts are not evidence.
+        context["resources"] = []
+        context["warning"] = configuration["warning"]
     if policy_prepared and available:
         from .policy_strategy_evidence import population_context
 

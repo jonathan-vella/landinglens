@@ -33,6 +33,17 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
+Cohort07 [preparation](../references/preparation/batch-07.json) and
+[source findings](../references/preparation/batch-07-sources.json) are not an
+accepted release or bank registration. Eight independent blank decisions cover
+naming standard, qualified depth, sandbox governance, platform placement,
+dedicated connectivity, root subscription placement/defaults, creation versus
+effective authorization and workload requirements. Supplied positive parentage
+and explicit pinned settings are partial Signals only. Names, valid syntax,
+counts and human confirmation never manufacture Verified. No threshold, root
+designation, complete estate or business purpose is inferred; serialized
+activation and all delivery gates remain deferred.
+
 Current successor `2026-11-06.22` retains all 255 entries: 12 automated, 200 assisted
 and 43 manual. Crosswalk `2026-11-06.22` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.

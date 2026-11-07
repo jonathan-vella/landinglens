@@ -1,5 +1,57 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 07 independent preparation: 2026-11-07
+
+[#154](https://github.com/jonathan-vella/landinglens/issues/154) prepares the
+[eight fixed naming/hierarchy GUIDs](../../references/preparation/batch-07.json)
+and [reviewed source provenance](../../references/preparation/batch-07-sources.json)
+against actual main `e489d7125c2b60669dfe0599cd30ab189984ff43` / `.22`.
+This does not register an accepted successor or interview, activate a matrix,
+change delivery counts/history, open a PR, merge, publish a receipt or close the
+issue. Actual cohorts24/26 and an explicit sole coordinator slot precede those gates.
+
+Existing governance parent projections and saved hierarchy edges feed one bounded,
+typed, unique-known graph. Explicit tenant resource keys can identify planned MGs
+without designating their organizational purpose or tenant-root status. Pinned
+ARM/Bicep settings/default configuration supplies two independent minimized fields;
+AzureRM has no assumed settings resource. No new Collector endpoint or observed
+API allowlist entry is added. Unsupported expressions, versions, unresolved keys,
+duplicates/cycles/conflicting/missing parents, out-of-scope and over100 relevant
+records remain unknown. Relative MG-edge depth excludes the selected anchor and
+subscriptions; it is not a full-estate measurement or a compliance threshold.
+Current CAF ideally three-to-four guidance, immutable four-level wording and the
+service maximum six below tenant root remain distinct source-qualified boundaries.
+
+All eight source-specific human decisions start independently blank with separate
+exceptions, attribution, scope/content/time/expiry binding. Naming policy and actual
+adoption, sandbox operating model, platform/connectivity placement, existing root
+subscriptions, effective privileged operations and workload needs cannot be inferred
+from names, syntax, counts, positive ancestry or humanConfirmed. A default group
+controls future placement, not existing membership; the authorization toggle covers
+creation, not every operation. Preparation-only bank injection exercises existing
+reviews/interviews, tiers/outputs, CLI/local sessions and original-time private replay.
+The genuine no-restore compiler fixture proves explicit keys/parent/settings only,
+not root designation, complete tenant topology or organizational intent.
+
+The final preparation wheel SHA256 is
+`ebc3af929f3044cbe934fc1b3d3974bef5248ff8903cc9a09ed30d4f08c02501`.
+All152 package members match checkout, wheel and the dedicated outside-checkout
+site-packages installation importing unchanged `.22`. Its full suite ran769
+tests:768 passed and only the original Windows symlink-privilege case skipped.
+All21 real compiler cases, including all20 predecessors and the new literal
+MG-key/parent/settings fixture, exercised the existing compiler without skips or
+restore. Compiler proof SHA256:
+`f93b8e6655306d628a48be46701b8c6a08a795b64289aadad9e96691a4dc8bcb`.
+All21 own workflow cases,49-source-file typing, formatting/lint, dependency
+consistency and516 local documentation links pass. A clean-environment import
+first failed on missing hcl2; only the three exact reviewed manifest wheels were
+then restored and hash-verified in this session's own environment. No other
+session installation was used. Preparation proof is not accepted delivery:
+actual then-main reconciliation, accepted registration/replay, exact-head
+eight platform jobs/CodeQL/security/review, four downloaded matching compiler
+proofs, normal SHA-bound merge, guarded own-GUID receipt and checked final-main
+publication remain deferred until the coordinator grants the slot.
+
 ## Cohort 09 accepted integration: 2026-11-06
 
 The coordinator explicitly granted [#145](https://github.com/jonathan-vella/landinglens/issues/145)

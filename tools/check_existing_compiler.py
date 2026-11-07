@@ -62,6 +62,8 @@ if compiler:
         "test_real_bicep_platform_health_configuration_without_restore",
         "test_sovereign_preparation.SovereignPreparationTests."
         "test_real_bicep_location_and_tag_configuration_without_restore",
+        "test_organization_preparation.OrganizationPreparationTests."
+        "test_real_bicep_management_keys_parents_settings_without_restore",
     ]
     suite = unittest.defaultTestLoader.loadTestsFromNames(cases)
     result = unittest.TextTestRunner(verbosity=2).run(suite)

@@ -527,6 +527,10 @@ def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str 
         if not isinstance(parent, str) or not parent or "/" in parent or not isinstance(name, str):
             return None
         name = parent + "/" + name
+    if kind == "azurerm_management_group":
+        from .organization_evidence import explicit_identity
+
+        return explicit_identity(TF_TYPES[kind], name, scope)
     return derive_id(resource_scope(scope, values), TF_TYPES.get(kind, kind), name)
 
 

@@ -99,6 +99,7 @@ PLANNED_API_VERSIONS = API_VERSIONS | {
     "microsoft.compute/virtualmachines": {"2024-07-01"},
     "microsoft.portal/dashboards": {"2020-09-01-preview"},
     "microsoft.management/managementgroups": {"2020-05-01"},
+    "microsoft.management/managementgroups/settings": {"2020-05-01"},
     "microsoft.operationalinsights/workspaces": {"2023-09-01"},
     "microsoft.securityinsights/onboardingstates": {"2024-03-01"},
     "microsoft.insights/scheduledqueryrules": {"2023-12-01"},
@@ -129,6 +130,7 @@ def properties(
     from .identity_evidence import projected_properties as identity_properties
     from .logging_evidence import projected_properties as logging_properties
     from .network_policy_evidence import projected_properties as network_policy_properties
+    from .organization_evidence import projected_properties as organization_properties
     from .platform_health_evidence import projected_properties as platform_health_properties
     from .policy_strategy_evidence import projected_properties as policy_strategy_properties
     from .security_evidence import projected_properties as security_properties
@@ -145,6 +147,7 @@ def properties(
     if isinstance(values, dict):
         result.update(security_properties(kind, values, root=root))
         result.update(governance_properties(kind, values, root=root))
+        result.update(organization_properties(kind, values))
         result.update(logging_properties(kind, values, root=root))
         result.update(platform_health_properties(kind, values, root=root))
         result.update(network_policy_properties(kind, values))
@@ -609,6 +612,17 @@ def arm_source(
                     if state == "known"
                     else None
                 )
+                if (
+                    arm_type.lower()
+                    in {
+                        "microsoft.management/managementgroups",
+                        "microsoft.management/managementgroups/settings",
+                    }
+                    and state == "known"
+                ):
+                    from .organization_evidence import explicit_identity
+
+                    identity = explicit_identity(arm_type, name, binding)
                 records.append(
                     {
                         "logical_id": logical,
