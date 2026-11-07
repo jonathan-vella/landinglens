@@ -360,6 +360,8 @@ class Expressions:
         return value
 
     def expand(self, copy: dict[str, Any], depth: int) -> Any:
+        if "input" not in copy:
+            return unknown("arm_copy_input_missing")
         count = self.value(copy.get("count"), depth + 1)
         if type(count) is not int or not 0 <= count <= 256:
             return unknown("arm_variable_copy_limit_or_unknown")
@@ -418,6 +420,8 @@ class Expressions:
                 else unknown("arm_condition_unresolved")
             )
         if name == "coalesce":
+            if len(children) == 1:
+                return unknown("invalid_arm_coalesce")
             for child in children[1:]:
                 value = self.node(child, depth + 1)
                 if value is not None:

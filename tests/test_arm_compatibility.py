@@ -148,6 +148,16 @@ class ArmCompatibilityTests(unittest.TestCase):
             self.assertIn("unknown", self.evaluate(expression))
 
     def test_null_safe_access_does_not_hide_unknowns(self):
+        self.assertIn("unknown", self.evaluate("[coalesce()]"))
+        self.assertIn(
+            "unknown",
+            self.evaluate(
+                "[variables('x')]",
+                {
+                    "copy": [{"name": "x", "count": 1}],
+                },
+            ),
+        )
         self.assertIsNone(self.evaluate("[tryGet(null(), 'name')]"))
         self.assertEqual(
             self.evaluate("[coalesce(tryGet(null(), 'name'), 'fallback')]"), "fallback"
