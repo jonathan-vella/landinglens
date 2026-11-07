@@ -14,6 +14,13 @@ versus RBAC-deny distinctions are explicit. Actual checked merged implementation
 guarded own receipt publication and final-main CI remain delivery gates.
 See [integration evidence](plan.md#cohort-24-accepted-integration-2026-11-07).
 
+Implementation #155 merged normally after exact-head8-job/CodeQL/security/review
+and four downloaded matching21-case compiler gates. Guarded `deliveries.24`
+binds all nine GUIDs to the actual head/merge/runs/771-test own wheel, recording
+212 delivered/39 pending and25 receipts on checked publication. Every203 earlier
+row/24 receipts stays unchanged; checked receipt publication/final-main CI still
+gate satisfied #148 completion and sole-slot release.
+
 ## Cohort 24 preparation boundary
 
 The [nine F01.01-.09 workflows](../../references/recommendation-batches/preparation-24.json)

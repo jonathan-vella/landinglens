@@ -58,6 +58,34 @@ run; preparation proofs below remain historical. Remote exact-head push/PR,
 CodeQL/security/review and four downloaded matching compiler artifacts still
 gate the normal SHA-bound merge and subsequent guarded own receipt publication.
 
+Implementation [#155](https://github.com/jonathan-vella/landinglens/pull/155)
+passed actual push42322775297/PR42322793806 (all8 jobs), CodeQL42322791895 and
+Advanced Security42322799581. Both CodeQL analyses2116561367/2116560179 reported
+0 findings/no errors or warnings; live comments/reviews/threads and open code/
+dependency/secret alerts were0. Both before-ready and pre-merge head/base/main/
+feedback refreshes matched. Normal SHA-bound merge of
+`cd2ebbf5445007d1c9c2542d92a98df25eba740b` produced
+`09567810b28bd7d6e54f9f66d7a2808d053396c7` at `2026-11-07T01:24:29Z`.
+No admin, force, bypass, settings change or fabricated approval was used.
+
+Four downloaded exact-head PR artifacts13554401071 (Windows3.12),
+13554091248 (Windows3.13),13553623594 (Ubuntu3.13) and13553348787 (Ubuntu3.12)
+exercise all21 matching cases without skips. Windows JSON SHA256:
+`91779f864fb664119610ce52d27418ad0ca275e29f82350d2ece0cb2f6ed553a`;
+Ubuntu:
+`f172986b68ed021419e2b276619127a7c0c06236cc9d17b151adf6962375b680`.
+Runner-image/Node-runtime migration annotations are platform notices, not
+CodeQL findings or weakened software checks.
+
+The guarded recorder independently rechecked the actual merge, both own runs,
+all four downloaded artifacts and the final771-test own implementation wheel
+before binding `deliveries.24` and every own GUID. All203 earlier rows/24 receipts
+remain unchanged. Checked publication records212 delivered/39 pending and25
+receipts; catalog/crosswalk `.23`,255/fixed251/original four controls and12/200/43
+dispositions remain unchanged. The issue stayed open after implementation.
+Checked receipt publication and actual final-main CI still gate satisfied
+#148 closure and coordinator slot release, not classification or merge alone.
+
 ## Cohort 24 independent preparation: 2026-11-07
 
 [#148](https://github.com/jonathan-vella/landinglens/issues/148) prepares the

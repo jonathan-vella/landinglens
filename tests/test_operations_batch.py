@@ -271,3 +271,41 @@ class OperationsBatchTests(unittest.TestCase):
             {display[q["guid"]] for q in allowlist["queries"] if q["allowed"] is True},
             {"D07.06", "D07.07"},
         )
+
+    def test_checked_delivery_receipt_binds_all_nine_to_actual_merged_implementation(self):
+        ledger = json.loads((REFERENCE / "ledger.json").read_text("utf-8"))
+        receipt = ledger["deliveries"]["24"]
+        self.assertEqual(receipt["pr"], "https://github.com/jonathan-vella/landinglens/pull/155")
+        self.assertEqual(receipt["checked_head"], "cd2ebbf5445007d1c9c2542d92a98df25eba740b")
+        self.assertEqual(receipt["merge_commit"], "09567810b28bd7d6e54f9f66d7a2808d053396c7")
+        self.assertEqual(
+            receipt["checks"],
+            [
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42322775297",
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42322793806",
+            ],
+        )
+        self.assertEqual(
+            receipt["local_installed_suite"], {"tests": 771, "passed": 770, "skipped": 1}
+        )
+        self.assertEqual(
+            receipt["wheel_sha256"],
+            "95cc35a3e8a7ddd9f38c6098215a5fc3bdcab430fd1a32b413922c93587eacce",
+        )
+        self.assertEqual(len(receipt["compiler_integration_cases"]), 21)
+        self.assertEqual(
+            receipt["compiler_integration_cases"][:-1],
+            ledger["deliveries"]["09"]["compiler_integration_cases"],
+        )
+        self.assertEqual(
+            receipt["compiler_integration_cases"][-1],
+            "test_operations_preparation.OperationsPreparationTests."
+            "test_real_bicep_operations_configuration_without_restore",
+        )
+        own = [r for r in ledger["recommendations"] if r["batch"] == "24"]
+        self.assertEqual({r["guid"] for r in own}, GUIDS)
+        for row in own:
+            self.assertEqual(row["status"], "merged")
+            self.assertEqual(row["pr"], receipt["pr"])
+            self.assertEqual(row["merge_commit"], receipt["merge_commit"])
+            self.assertIn("deliveries.24", " ".join(row["runtime_evidence"]))

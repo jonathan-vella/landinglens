@@ -53,7 +53,7 @@ owner-authorized increment. Baseline `2026-11-04.2` remains 4 automated /
 
 | Cohort | Scope | Dependencies | Acceptance/delivery |
 |---|---|---|---|
-| 24 / [#148](https://github.com/jonathan-vella/landinglens/issues/148) | Nine fixed F01.01-.09 workspace/retention/machine/patch/traffic/guardrail GUIDs | Explicit sole slot after actual25 implementation149/receipt150 and09 implementation152/receipt153, completed issues and checked final main | [Accepted matrix](../../references/recommendation-batches/batch-24.json) and42 unchanged captures derive `.23`; exact-head checked merged implementation, guarded own receipt publication and final-main CI still gate delivery/closure |
+| 24 / [#148](https://github.com/jonathan-vella/landinglens/issues/148) | Nine fixed F01.01-.09 workspace/retention/machine/patch/traffic/guardrail GUIDs | Explicit sole slot after actual25 implementation149/receipt150 and09 implementation152/receipt153, completed issues and checked final main | [#155](https://github.com/jonathan-vella/landinglens/pull/155) merged normally after eight jobs, CodeQL/security/review and four21-case compiler proofs; guarded `deliveries.24` binds all nine GUIDs; checked receipt publication/final-main CI gate completion |
 | 09 / [#145](https://github.com/jonathan-vella/landinglens/issues/145) | Seven fixed sovereign organization/region/classification GUIDs | Explicit sole slot after actual10 implementation146/receipt147 and25 implementation149/receipt150, completed issues and checked final main | [#152](https://github.com/jonathan-vella/landinglens/pull/152) merged normally after eight jobs, CodeQL/security/review and four twenty-case compiler proofs; guarded `deliveries.09` binds all seven GUIDs; checked receipt publication/final-main CI gate completion |
 | 25 / [#142](https://github.com/jonathan-vella/landinglens/issues/142) | Nine fixed F01.10-F01.18 health/alerts/log-boundary/reporting/conditional legacy storage/requirements/AMBA/redundancy GUIDs | Sole coordinator slot after actual checked06/10 and completed issues | [#149](https://github.com/jonathan-vella/landinglens/pull/149) merged normally after eight jobs, CodeQL/security/review and four19-case exercised compiler gates; guarded `deliveries.25` binds all nine GUIDs; checked receipt publication/final-main CI gate completion |
 | 10 / [#139](https://github.com/jonathan-vella/landinglens/issues/139) | Ten fixed D01 topology/Route Server/shared-service/monitoring/scale GUIDs; no D01.05 | Explicit sole coordinator slot after actual29 implementation140/receipt141 and06 implementation143/receipt144 | [#146](https://github.com/jonathan-vella/landinglens/pull/146) merged normally after eight jobs, CodeQL/security/review and four eighteen-case compiler proofs; guarded `deliveries.10` binds all ten GUIDs; checked receipt publication/final-main CI gate #139 closure |
@@ -78,7 +78,7 @@ owner-authorized increment. Baseline `2026-11-04.2` remains 4 automated /
 | 17 / [#48](https://github.com/jonathan-vella/landinglens/issues/48) | Nine firewall GUIDs; duplicate D07.12 entries remain distinct | Merged cohort 01, actual source review, reviewed network schemas | [#49](https://github.com/jonathan-vella/landinglens/pull/49) merged; all eight checks passed, exact installed suite and all four CI compiler integrations exercised; issue closed |
 | 18 / [#50](https://github.com/jonathan-vella/landinglens/issues/50) | Nine TLS/resilience/private-connectivity GUIDs | Merged cohort 17; 18 actual source captures and reviewed versioned schemas | [#51](https://github.com/jonathan-vella/landinglens/pull/51) merged; all eight checks passed, exact installed suite and all four compiler integrations exercised; issue closed |
 | 19 / [#52](https://github.com/jonathan-vella/landinglens/issues/52) | Nine service-endpoint/subnet/segmentation GUIDs | Merged cohort 18 and reconciled `.5` efficiency foundations | [#90](https://github.com/jonathan-vella/landinglens/pull/90) merged; all eight jobs, CodeQL and four compiler artifacts passed; `deliveries.19` binds each GUID to actual acceptance |
-| Other cohorts | Other 48 GUIDs in unchanged 5-10-item cohorts | Evidence foundations, then LL-34 severity/crosswalk priority with per-batch source requirements | Pending; cohort24 retains its sole slot through checked receipt/final-main delivery; partitioning/tiering is not delivery |
+| Other cohorts | Other 39 GUIDs in unchanged 5-10-item cohorts | Evidence foundations, then LL-34 severity/crosswalk priority with per-batch source requirements | Pending; cohort24 retains its sole slot through checked receipt/final-main delivery; partitioning/tiering is not delivery |
 
 Reviewed successor `2026-11-06.23`: 12 automated / 200 assisted /43 manual,
 all255 visible. Exact `.22` and earlier bytes/receipts remain frozen.
@@ -105,6 +105,10 @@ Actual #152 and guarded own-seven `deliveries.09` reconciliation derive203
 delivered/48 pending and24 receipts on checked publication. All196 earlier rows/
 23 receipts remain unchanged; checked receipt publication and actual final-main
 CI gate #145 completion and sole-slot release.
+Actual #155 and guarded own-nine `deliveries.24` reconciliation derive212
+delivered/39 pending and25 receipts on checked publication. All203 earlier rows/
+24 receipts remain unchanged; checked receipt publication and actual final-main
+CI gate #148 completion and sole-slot release.
 Classification alone is not delivery.
 G02.02 is explicitly manual; unsupported Terraform vault soft-delete evidence
 remains unknown. Create ready batch issues as implementation proceeds, not 251
@@ -124,16 +128,15 @@ reconciled against the new foundations when resumed on 2026-11-06.
 
 | Cohort | Undelivered GUIDs | High / Medium / Low | Controls with associations |
 |---|---|---|---|
-| 24 | 9 | 1 / 7 / 1 | 0 |
 | 26 | 8 | 1 / 6 / 1 | 0 |
 | 07 | 8 | 0 / 8 / 0 | 2 |
 | 03 | 7 | 0 / 2 / 5 | 0 |
 | 21 | 8 | 0 / 8 / 0 | 0 |
 | 28 | 8 | 0 / 8 / 0 | 0 |
 
-These remain48 undelivered GUIDs on cohort09 guarded receipt reconciliation.
-Cohorts19/11/04/13/22/14/12/15/08/30/20/05/16/23/02/27/29/06/10/25/09 left the pending table only after actual
-#90/#93/#96/#101/#104/#107/#110/#113/#116/#119/#122/#125/#128/#131/#134/#137/#140/#143/#146/#149/#152 implementation delivery and their guarded per-GUID receipts.
+These remain39 undelivered GUIDs on cohort24 guarded receipt reconciliation.
+Cohorts19/11/04/13/22/14/12/15/08/30/20/05/16/23/02/27/29/06/10/25/09/24 left the pending table only after actual
+#90/#93/#96/#101/#104/#107/#110/#113/#116/#119/#122/#125/#128/#131/#134/#137/#140/#143/#146/#149/#152/#155 implementation delivery and their guarded per-GUID receipts.
 No membership or original baseline
 hash changes through reprioritisation.
 
