@@ -1,5 +1,8 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+This is a historical delivery record. Use the [user guide](../user-guide.md)
+for current workflows; status statements below describe their recorded time.
+
 ## Final cohort 28 accepted integration: 2026-11-07
 
 The explicit final sole coordinator slot follows actual03 implementation164/

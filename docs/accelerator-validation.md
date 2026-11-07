@@ -167,11 +167,11 @@ Use the recorded `collected_at`, not a new timestamp to make old evidence curren
 Replay retains scoped resource identities and is not anonymized. Keep review
 files and local capability URLs private.
 
-The refreshed offline kit includes the unchanged compiled inputs, all seven
-fictional parameter variants, reports, acceptance assertions, provenance and
-original MIT notices. With the updated LandingLens installed, run its
-`compatibility\acceptance.py --output NEW_DIRECTORY` to reproduce the checks
-without Azure or a compiler. Runtime dependencies must already be available.
+The historical compatibility experiment also produced a separate offline kit;
+its `compatibility\acceptance.py` script is not included in this repository.
+For a reproducible repository-contained workflow, use the
+[multi-region example](examples/bicep-multiregion-alz/README.md) and its frozen
+fixtures. The historical provenance record remains available above.
 
 This validates local compilation, selected-template interpretation and the
 review/export workflow. Other accelerator entry points and unsupported patterns

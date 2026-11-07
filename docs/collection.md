@@ -4,6 +4,9 @@ The original release collector was verified with injected transports and saved
 fixtures, not a live tenant. That historical baseline is unchanged. Subsequent
 owner-authorized access probes are bounded access evidence, not full collector
 or control verification. Normal assessment and tests need no Azure credentials.
+References to the #40 pilot below describe that historical authorization only.
+Every user must obtain separate authorization for their own explicit scope
+and operations before collecting.
 
 Cohort22's pricing/HSM/VM API versions are supported only for planned ARM/Bicep,
 not added to the live Collector registry. Previously supported diagnostic details
@@ -39,8 +42,8 @@ operation and does not broaden #40's authorization.
 LL-30 consumes the existing scoped collector's separate assignments, exemptions
 and original-time PolicyStates records as assessment 1.2 Signals. No new
 management-plane operation, permission, scope expansion or evaluation trigger is
-introduced. The existing #40 guard and API versions/actions below remain the
-live boundary. Saved exports can be attached through an explicit
+introduced. The historical #40 guard and API versions/actions below describe
+that pilot's boundary. Saved exports can be attached through an explicit
 [`policy-export` wrapper](contracts.md#policy-export-and-signals); normalised
 collector evidence needs no wrapper or new collection command.
 
@@ -70,8 +73,8 @@ The opt-in `collect --query-guid GUID --subscription UUID` path uses existing
 `Microsoft.ResourceGraph/resources/read`, API 2022-10-01 and the same scoped
 transport/retry/byte guards. It requires explicit subscriptions in every POST
 body, never derives authority from query text or an ambient account, and does
-not enumerate management-group descendants. The caller must stay within the
-previously approved exact #40 boundary; no new live run is performed for acceptance.
+not enumerate management-group descendants. The historical acceptance did not
+perform a new live run; callers need their own explicit authorization.
 The existing token environment is required; no login or permission change occurs.
 
 At most 100 pages/10,000 identities are retained; missing/repeated tokens,

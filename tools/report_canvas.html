@@ -335,7 +335,7 @@ function renderReport() {
   $("comparison").value = comparison;
   $("search").value = query;
   $("summary").replaceChildren();
-  for (const [count, label] of [[model.coverage.controls, "recommendations"], [model.coverage.result_instances, "result rows"], [model.declaredResources, "declared resource records"], [model.coverage.automated_controls, "automated controls"]]) {
+  for (const [count, label] of [[model.coverage.controls, "recommendations"], [model.coverage.result_instances, "result rows"], [model.declaredResources ?? "Unavailable", "resource records"], [model.coverage.automated_controls, "automated controls"]]) {
     const item = node("span"); item.append(node("strong", count), document.createTextNode(" " + label)); $("summary").append(item);
   }
   $("outcome-buttons").replaceChildren();

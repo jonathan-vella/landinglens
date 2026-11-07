@@ -1,5 +1,9 @@
 # Dependency review
 
+This is a dated review record, not the current dependency manifest. For current
+pins, consult [`pyproject.toml`](../pyproject.toml); for example, the build
+backend is now pinned to `setuptools==84.1.0`, not the historical pin below.
+
 ## Tracker XLSX decision: 2026-11-05
 
 LL-38 requires a static tracker snapshot, not spreadsheet calculation/editing.

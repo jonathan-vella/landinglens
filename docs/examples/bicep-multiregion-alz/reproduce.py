@@ -16,7 +16,6 @@ from alz_assessor.arm import arm_source
 from alz_assessor.catalog import load_catalog
 from alz_assessor.engine import assess
 
-
 ROOT = Path(__file__).resolve().parents[3]
 EXAMPLE = Path(__file__).resolve().parent
 FIXTURES = ROOT / "tests" / "fixtures" / "multiregion-alz"
@@ -36,9 +35,7 @@ def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def render_summary(
-    reports: dict[str, dict[str, dict[str, Path]]], scopes: dict[str, str]
-) -> str:
+def render_summary(reports: dict[str, dict[str, dict[str, Path]]], scopes: dict[str, str]) -> str:
     lines = [
         "# Fictional offline ALZ assessment",
         "",
@@ -60,7 +57,8 @@ def render_summary(
             "Counts below are per saved assessment. A recommendation can have",
             "multiple resource-result rows; the reports retain all 255 recommendations.",
             "",
-            "| Scenario | Scope | Recommendations | Result rows | Resources | Pass | Fail | Manual | Unknown | Not applicable |",
+            "| Scenario | Scope | Recommendations | Result rows | Resources | "
+            "Pass | Fail | Manual | Unknown | Not applicable |",
             "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|",
         ]
     )
@@ -119,9 +117,7 @@ def render_summary(
                     ", ".join(f"{key}: {value}" for key, value in sorted(outcomes.items()))
                     or "no applicable rows"
                 )
-            lines.append(
-                f"| {control_id} | {surface} | {values[0]} | {values[1]} | {values[2]} |"
-            )
+            lines.append(f"| {control_id} | {surface} | {values[0]} | {values[1]} | {values[2]} |")
     lines.extend(
         [
             "",
@@ -221,10 +217,7 @@ def build_package(output: Path) -> None:
                 for name, path in outputs.items()
             }
         explorer_dir = scenario_dir / "explorer"
-        run(
-            explorer_args
-            + ["--fictional", "--output-directory", str(explorer_dir)]
-        )
+        run(explorer_args + ["--fictional", "--output-directory", str(explorer_dir)])
         manifest["scenarios"][scenario]["explorer"] = {
             "path": str((explorer_dir / "index.html").relative_to(output)),
             "sha256": digest(explorer_dir / "index.html"),
@@ -234,15 +227,16 @@ def build_package(output: Path) -> None:
     summary = output / "assessment-summary.md"
     summary.write_text(render_summary(reports, scopes), encoding="utf-8", newline="\n")
     links = "\n".join(
-        f'<li><a href="{html.escape(name)}/explorer/index.html">{html.escape(name.title())} scenario</a></li>'
+        f'<li><a href="{html.escape(name)}/explorer/index.html">'
+        f"{html.escape(name.title())} scenario</a></li>"
         for name in SCENARIOS
     )
     (output / "index.html").write_text(
-        "<!doctype html><html lang=\"en\"><meta charset=\"utf-8\">"
+        '<!doctype html><html lang="en"><meta charset="utf-8">'
         "<title>Fictional offline ALZ report package</title>"
         "<h1>Fictional offline ALZ assessment</h1>"
         "<p>Planned configuration only. No Azure deployment or live collection.</p>"
-        f"<ul>{links}</ul><p><a href=\"assessment-summary.md\">Assessment summary</a></p>"
+        f'<ul>{links}</ul><p><a href="assessment-summary.md">Assessment summary</a></p>'
         "</html>\n",
         encoding="utf-8",
         newline="\n",

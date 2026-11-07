@@ -358,7 +358,8 @@ effort or an audit commitment.
 
 Normal assessment, reporting and replay are offline. Live collection requires
 explicit separately authorised subscriptions or management groups and an existing
-token. The only approved live boundary remains the private selection in #40.
+token. The private selection in #40 was a historical pilot, not authorization
+for another user or scope.
 No automatic login, consent, role change, broader Graph/billing/data-plane access,
 policy evaluation trigger, deployment or remediation occurs.
 
@@ -370,15 +371,9 @@ with explicit subscription transport scope, as Signals.
 
 ## Privacy and saved records
 
-Full evidence/review files retain resource identities, paths, topology and
-reviewer text. Use minimised reports/trackers before sharing. Minimisation is
-presentation-only, not identity evidence for comparison or replay; hashes can
-still reveal sensitive inventory associations.
-
-The temporary workspace is loopback-only with a random capability URL, exact
-Host/origin checks and bounded fixed routes. Local processes/users are trusted;
-this is not an authentication service. No remote assets, telemetry or automatic
-uploads are loaded. Stop the listener when finished.
+The [user guide](user-guide.md#privacy-and-troubleshooting) describes how to
+handle full records, minimized presentations and the local workspace. Hashes
+can still reveal sensitive inventory associations.
 
 Saves and bulk/interview decisions require explicit outcomes and replacement
 consent. Invalid records leave earlier revisions intact. Resume checks bounded
@@ -410,8 +405,8 @@ Historical catalogs and original control meanings remain frozen.
 Fixture/injected, installed CLI, actual browser/workbook and live evidence are
 different verification labels. This efficiency increment has no new live Azure
 run; the earlier narrowly scoped pilot is not proof of every control or a tenant.
-See [collection](collection.md), [contracts](contracts.md) and
-[detailed workflows](usage.md) for precise supported cases and bounds.
+See [collection](collection.md), [contracts](contracts.md) and the
+[technical reference](technical-reference.md) for precise supported cases and bounds.
 
 ## Cohort 22: security configuration and explicit review
 

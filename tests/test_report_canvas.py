@@ -6,6 +6,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from copy import deepcopy
 from pathlib import Path
 
 from alz_assessor.arm import arm_source
@@ -33,6 +34,7 @@ class ReportCanvasTests(unittest.TestCase):
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name)
         template = self.root / "template.json"
+        self.template = template
         template.write_text(
             json.dumps(
                 {
@@ -161,6 +163,97 @@ class ReportCanvasTests(unittest.TestCase):
         minimized = self.write("presentation.json", report_model(self.assessment, minimize=True))
         with self.assertRaises(InputError):
             BUILDER.build_preview([("Minimized", minimized)], self.root / "minimized-preview")
+
+    def test_resource_counts_are_per_report_and_never_partial(self):
+        complete = deepcopy(self.assessment)
+        complete["evidence"].append(deepcopy(complete["evidence"][0]))
+        partial = deepcopy(complete)
+        del partial["evidence"][0]["resources"]
+        missing = deepcopy(partial)
+        del missing["evidence"][1]["resources"]
+        page = BUILDER.build_preview(
+            [
+                ("Complete", self.write("complete.json", complete)),
+                ("Partial", self.write("partial.json", partial)),
+                ("Missing", self.write("missing.json", missing)),
+            ],
+            self.root / "counts",
+        )
+        reports = self.data(page)["reports"]
+        self.assertEqual(reports["report-1"]["declaredResources"], 2)
+        self.assertIsNone(reports["report-2"]["declaredResources"])
+        self.assertIsNone(reports["report-3"]["declaredResources"])
+        self.assertIn('model.declaredResources ?? "Unavailable"', page.read_text(encoding="utf-8"))
+        for malformed in (None, {}, "invalid", 0):
+            invalid = deepcopy(partial)
+            invalid["evidence"][1]["resources"] = malformed
+            with (
+                self.subTest(resources=malformed),
+                self.assertRaisesRegex(InputError, "resources must be an array"),
+            ):
+                BUILDER.build_preview(
+                    [("Invalid", self.write("invalid-resources.json", invalid))],
+                    self.root / "invalid-resources",
+                )
+        self.assertFalse((self.root / "invalid-resources").exists())
+
+    def test_cli_saved_assessments_and_comparison_build_portable_canvas(self):
+        observed_input = ROOT / "tests" / "fixtures" / "slice" / "observed.json"
+        planned = self.root / "planned.json"
+        observed = self.root / "observed.json"
+        comparison = self.root / "comparison.json"
+        at = "2026-11-04T00:00:00Z"
+        scope = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/test"
+        commands = (
+            [
+                "assess",
+                str(self.template),
+                "--input",
+                "arm",
+                "--scope",
+                scope,
+                "--at",
+                at,
+                "--output",
+                str(planned),
+            ],
+            [
+                "assess",
+                str(observed_input),
+                "--input",
+                "evidence",
+                "--at",
+                at,
+                "--output",
+                str(observed),
+            ],
+            ["compare", str(planned), str(observed), "--at", at, "--output", str(comparison)],
+        )
+        for command in commands:
+            result = subprocess.run(
+                [sys.executable, "-m", "alz_assessor.cli", *command],
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+        page = BUILDER.build_preview(
+            [("Planned", planned), ("Observed", observed), ("Comparison", comparison)],
+            self.root / "cli-saved-preview",
+        )
+        reports = self.data(page)["reports"]
+        self.assertEqual(
+            [report["modeSummary"] for report in reports.values()],
+            ["planned", "observed", "comparison"],
+        )
+        self.assertTrue(all(report["declaredResources"] is None for report in reports.values()))
+        self.assertTrue(
+            all(
+                "resources" not in bundle
+                for report in reports.values()
+                for bundle in report["presentation"]["evidence"]
+            )
+        )
 
     def test_review_status_whitelist_and_filter_controls_in_canvas(self):
         scope = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/test"

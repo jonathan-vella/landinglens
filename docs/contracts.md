@@ -71,8 +71,9 @@ Signal, not wholly Verified. Retired entries remain traceable as Needs decision
 but stay outside active completion denominators. All 255 packaged GUIDs are
 counted. No crosswalk, assignment presence, empty query, arbitrary scanner
 metadata, resource presence or exception creates machine evidence or a pass.
-The first tier producer uses existing reviewed typed preparation only; ingestion
-adapters are separately scoped work.
+The first tier producer used existing reviewed typed preparation. The later
+saved policy, scanner and allowlisted-query adapters have the separate contracts
+below; none turns a Signal into a pass.
 
 Validation recomputes tiers/counts and rejects boolean/coerced counts, changed
 identities and fields grafted onto 1.0/1.1 assessments. Comparison requires matching

@@ -1,49 +1,19 @@
 # LandingLens
 
-Offline-first, advisory Azure Landing Zones CLI for assessing supplied IaC or
-saved observed evidence. All 255 checklist GUIDs remain visible. The current
-catalog has 12 accepted configuration predicates, 200 assisted recommendations
-and 43 manual recommendations.
+LandingLens is an offline-first, advisory assessor for Azure Landing Zones. It
+assesses supplied infrastructure-as-code or saved observed evidence against the
+packaged ALZ checklist, highlights configuration findings and unknowns, and
+helps reviewers record decisions. It does not deploy infrastructure, certify
+compliance, or prove that a configuration works in a live environment.
 
-Virtual WAN adds an exact scoped ASPath configuration check and eight separate
-blank decisions for scenario, topology, security, Insights, branch exceptions,
-labels and capacity. These facts do not prove effective routing, filtering,
-monitoring, complete regional coverage or free growth capacity; current Firewall
-maximum scaling needs /22 hub space, not just the general /23 recommendation.
-
-Resource/cost governance prepares scoped tag counts, dashboard structure,
-capacity-group references and hierarchy context with seven separate blank
-decisions. These do not establish cost attribution, monitoring health, identity
-roles or available capacity; owner awareness and operating plans remain manual.
-
-The NSG and route-count predicates are observed-only. Declared rules/routes do
-not establish complete custom populations. Peering access is an explicit setting,
-not proof of reachability; configured segmentation is not effective isolation.
-The reviewed cohorts also prepare WAF/origin, DDoS/logging, explicit outbound and
-hybrid-path evidence. Those facts are not protection, ingestion, enforcement,
-failover or measured demand. Both D05.08 recommendations stay distinct.
-
-DR addressing, DNS and Bastion review now includes minimized typed configuration
-and ten separate blank decisions. Configured links, registration, zones or
-Bastion presence do not prove resolution, record lifecycle, resilience or secure
-access; workload DNS and multi-region strategies remain manual.
-
-ExpressRoute monitoring/routing/failover adds eight separate blank decisions and
-a strictly joined GatewaySubnet propagation configuration check. Missing flags,
-unbound/ambiguous/out-of-scope tables and empty inventory cannot pass. Configured
-monitors, alert routing and location labels do not prove health, ingestion,
-physical independence, edge BFD or actual convergence/failover.
-
-Read [what LandingLens does and doesn't prove](docs/what-landinglens-proves.md)
-before interpreting results. The [User Guide](docs/user-guide.md),
-[detailed workflows](docs/usage.md), [contracts](docs/contracts.md) and the
-[accepted matrix](docs/automation-matrix.md) describe exact supported inputs,
-multi-bundle composition, interactive review triage, canvas exploration and
-evidence requirements.
+The catalog retains all 255 checklist GUIDs. Some recommendations have bounded
+configuration checks; others need machine-assisted or manual review. A result
+row can represent one resource target, so row counts are not counts of distinct
+recommendations. See [what LandingLens does and doesn't prove](docs/what-landinglens-proves.md).
 
 ## Install
 
-Use Python 3.12 or 3.13 and your approved package index. From this checkout:
+Use Python 3.12 or 3.13 and an approved package index. From a checkout on Windows:
 
 ```powershell
 python -m venv .venv
@@ -51,118 +21,39 @@ python -m venv .venv
 .venv\Scripts\alz-assessor catalog validate
 ```
 
-Windows and Linux are supported. The examples below use Windows paths;
-activate the installed environment or use its console-script path.
+On Linux, use `.venv/bin/python` and `.venv/bin/alz-assessor` instead. Run
+commands from the repository root.
 
 ## Try an offline assessment
 
-The supplied observed fixture is historical, so evaluate it at its recorded time:
+The supplied observed fixture is historical. The explicit time reproduces the
+example; it does not make old evidence current.
 
 ```powershell
 .venv\Scripts\alz-assessor doctor tests\fixtures\slice\observed.json --input evidence
 .venv\Scripts\alz-assessor assess tests\fixtures\slice\observed.json --input evidence --at 2026-11-04T00:00:00Z --evidence-tiers --output assessment.json
 .venv\Scripts\alz-assessor render assessment.json --format html --minimize --output report.html
-.venv\Scripts\alz-assessor render assessment.json --format csv --minimize --output tracker.csv
 .venv\Scripts\alz-assessor render assessment.json --format xlsx --minimize --output tracker.xlsx
+.venv\Scripts\python tools\build_report_canvas.py --report "Example" assessment.json --fictional --output-directory report-preview
 ```
 
-XLSX requires a new output file. Findings, unknowns and manual work return exit 0;
-invalid input or software failures return exit 2. Selecting a historical time
-does not make the fixture current evidence.
+Open `report.html` or `report-preview\index.html` in a browser. Use new paths for
+the XLSX file and preview directory; they are not overwritten. Findings,
+unknowns and manual work do not make the command fail. Invalid input or an
+unrecoverable error returns exit code 2.
 
-## Use your own inputs
+Full evidence and review files can contain resource identities and reviewer
+text. Minimized output is presentation-only, not a guarantee of anonymity, and
+cannot be used for comparison or replay. Keep generated files private and
+review them before sharing.
 
-For Terraform, prefer a separately prepared plan JSON:
+## Learn more
 
-```powershell
-alz-assessor doctor plan.json --input terraform-plan --provider-version 4.50.0 --scope /subscriptions/00000000-0000-0000-0000-000000000001
-alz-assessor assess plan.json --input terraform-plan --provider-version 4.50.0 --scope /subscriptions/00000000-0000-0000-0000-000000000001 --evidence-tiers --output planned.json
-```
-
-LandingLens does not generate plans. Raw Terraform with explicit local module
-snapshots remains the supported fallback. ARM JSON, an existing no-restore Bicep
-compiler and saved observed evidence are also supported.
-[Input preparation and identity binding](docs/usage.md#assessment-workflows)
-explain the required flags; use your actual authorised scope.
-
-Without a deployed ALZ, use the
-[offline accelerator validation workflow](docs/accelerator-validation.md).
-The reviewed logging and hub templates yield scoped inventory and controlled
-configuration outcomes locally. Unsupported/runtime facts remain unknown; this
-is not a deployed ALZ or compliance assessment.
-
-## Browse saved reports in a canvas
-
-Build a portable read-only explorer from one or more saved **planned**, **observed**,
-or **comparison** assessments. This uses the existing minimized report model, not
-another evaluator:
-
-```powershell
-.venv\Scripts\python tools\build_report_canvas.py --report "Hub networking" hub.assessment.json --report "Logging" logging.assessment.json --fictional --output-directory report-preview
-```
-
-Open `report-preview\index.html` in Copilot's Browser canvas or your browser.
-Select a report, filter by outcome, design area, severity, evidence tier or
-comparison status (`drift` / `match`), navigate with `ArrowUp`/`ArrowDown` or `/`,
-and inspect the recorded facts, methods, review status and sources. Full HTML
-reports and a presentation JSON download remain separate from editable
-assessment/evidence. Use a new output directory; existing files are never overwritten.
-
-`--fictional` labels demonstration inputs; omit it for your own saved
-configuration. For interactive agent-driven exploration in the GitHub Copilot App,
-this repository also includes a project-scoped native canvas extension in
-`.github/extensions/landinglens-canvas/` (`load_assessment`, `filter_findings`,
-`select_control`, and non-committing `stage_decision` drafts). Use the reviewer
-workspace below to validate and save real decisions. Do not commit generated
-previews or identity-bearing assessment inputs.
-
-## Compose multi-template evidence
-
-Merge multiple normalized evidence bundles (such as separate management-group,
-logging, and hub-networking templates) into a single scoped bundle before
-running `assess` or `review serve`:
-
-```powershell
-alz-assessor compose logging.evidence.json hub.evidence.json --scope /subscriptions/00000000-0000-0000-0000-000000000001 --output estate.evidence.json
-```
-
-## Triage and record decisions
-
-Start from your current saved normalised evidence:
-
-```powershell
-alz-assessor review serve evidence.json --directory private-reviews --evidence-tiers
-alz-assessor review serve private-reviews\revision-0002 --resume --directory resumed-reviews
-alz-assessor review migrate manual.json --from-catalog old-catalog.json --to-catalog new-catalog.json --scope /subscriptions/00000000-0000-0000-0000-000000000001 --output migrated-manual.json
-```
-
-The local workspace provides area progress, a tier/severity queue, evidence,
-explicit bulk decisions and interviews. Supply reviewer, rationale, supporting
-evidence and validity. Saves create immutable revisions and regenerate reports
-and trackers. Resume verifies the saved hashes and preserves original evidence
-times. Keep the local capability URL and identity-bearing files private.
-
-## Evidence reuse and CI
-
-Use `catalog crosswalk inspect --id G04.01` to inspect reviewed associations.
-Attach saved Policy/PSRule/SARIF evidence with the documented wrapper contracts.
-Only explicitly allowlisted queries can run through scoped collection. These
-sources produce Signals, not automatic passes. See
-[evidence reuse](docs/usage.md#assessment-workflows) and
-[collection boundaries](docs/collection.md).
-
-`--format sarif` and `--format pr-summary` support advisory CI.
-The [example workflow](docs/examples/advisory-pr-workflow.yml) includes an
-optional pinned SARIF uploader; repository permissions must already allow it.
-Source polling retains candidates and a generated PR body when workflow PR
-creation or safe auto-merge is blocked. Accepted catalogs are immutable
-[Release assets](https://github.com/jonathan-vella/landinglens/releases),
-never runtime auto-replacements.
-
-## Development and history
-
-[Development checks and parser details](docs/usage.md#install-and-check),
-[dependency decisions](docs/dependency-review.md),
-[delivery history](docs/planning/plan.md#catalog-delivery-history) and the
-[current backlog](docs/planning/backlog.md#assessor-efficiency-work-items)
-record supported behaviour, verification and outstanding blockers.
+- [User guide](docs/user-guide.md): inputs, assessment, review, reports and canvases.
+- [Multi-region example](docs/examples/bicep-multiregion-alz/README.md): fictional
+  Bicep scenarios and reproducible offline reports.
+- [Collection boundaries](docs/collection.md): explicit authorization and
+  existing-token requirements for optional live collection.
+- [Contracts](docs/contracts.md), [automation matrix](docs/automation-matrix.md)
+  and [technical reference](docs/technical-reference.md): supported formats,
+  limitations and maintenance.

@@ -26,9 +26,7 @@ def file_hash(path):
 
 def outcome_counts(report, upstream_id):
     return Counter(
-        row["planned"]["outcome"]
-        for row in report["results"]
-        if row["upstream_id"] == upstream_id
+        row["planned"]["outcome"] for row in report["results"] if row["upstream_id"] == upstream_id
     )
 
 
@@ -71,9 +69,7 @@ class MultiRegionAlzExampleTests(unittest.TestCase):
         self.assertEqual(provenance["upstream"]["revision"], upstream["revision"])
         self.assertEqual(provenance["upstream"]["archive_sha256"], upstream["archive_sha256"])
         self.assertTrue(provenance["compiler"].endswith(upstream["compiler_version"]))
-        self.assertEqual(
-            file_hash(EXAMPLE / "scope-map.json"), provenance["scope_map_sha256"]
-        )
+        self.assertEqual(file_hash(EXAMPLE / "scope-map.json"), provenance["scope_map_sha256"])
         for relative_path, expected in provenance["fixtures"].items():
             self.assertEqual(file_hash(FIXTURES / relative_path), expected)
         for relative_path, expected in provenance["sources"].items():
@@ -112,9 +108,7 @@ class MultiRegionAlzExampleTests(unittest.TestCase):
                         {row["control_id"] for row in report["results"]}, expected_controls
                     )
                     self.assertEqual(report["coverage"]["controls"], len(expected_controls))
-                    self.assertEqual(
-                        report["coverage"]["result_instances"], RESULT_ROWS[surface]
-                    )
+                    self.assertEqual(report["coverage"]["result_instances"], RESULT_ROWS[surface])
 
     def test_controlled_defects_and_remediation(self):
         self.assertEqual(
@@ -178,8 +172,7 @@ class MultiRegionAlzExampleTests(unittest.TestCase):
             workspaces = [
                 resource
                 for resource in self.bundles[scenario]["management"]["resources"]
-                if resource["resource_type"].lower()
-                == "microsoft.operationalinsights/workspaces"
+                if resource["resource_type"].lower() == "microsoft.operationalinsights/workspaces"
             ]
             self.assertEqual(len(workspaces), 1)
             self.assertEqual(
