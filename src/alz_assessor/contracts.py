@@ -338,6 +338,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                 from .billing_evidence import PATHS as BILLING_PATHS
                 from .dns_evidence import PATHS as DNS_PATHS
                 from .identity_evidence import PATHS as IDENTITY_PATHS
+                from .key_lifecycle_evidence import PATHS as KEY_PATHS
                 from .logging_evidence import PATHS as LOGGING_PATHS
                 from .network_policy_evidence import PATHS as NETWORK_POLICY_PATHS
                 from .operations_evidence import PATHS as OPERATIONS_PATHS
@@ -412,6 +413,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                                 "defenderPricing",
                                 "activityLogRouting",
                                 "hsmConfiguration",
+                                *KEY_PATHS,
                                 "patchConfiguration",
                                 "wafMode",
                                 "wafEnabled",

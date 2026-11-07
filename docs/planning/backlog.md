@@ -54,7 +54,8 @@ owner-authorized increment. Baseline `2026-11-04.2` remains 4 automated /
 | Cohort | Scope | Dependencies | Acceptance/delivery |
 |---|---|---|---|
 | 28 / [#163](https://github.com/jonathan-vella/landinglens/issues/163) | Eight fixed E02.01/E03.01-.07 budget-mode/sovereign-requirements GUIDs | Actual03/21 checked delivery and explicit sole coordinator slot; no successor after28 | [Candidate preparation](../../references/recommendation-batches/preparation-28.json) reuses actual merged164 budget helper under preparation-only unblock; actual21 storage/key reconciliation, accepted activation/replay, remote gates, own receipt and final-main CI remain deferred |
-| 03 / [#157](https://github.com/jonathan-vella/landinglens/issues/157) | Seven fixed A03.03-.05/A04.01-.04 agreement-budget/visibility/dev-test/contact/organization/audit GUIDs | Explicit sole slot after actual26 implementation158/receipt159 and07 implementation161/receipt162, completed154 and checked final main99b4c58 | [Seven accepted workflows](../../references/recommendation-batches/batch-03.json),23 public captures and source-version-qualified budget metadata; exact-head implementation checks/merge, guarded own receipt and final-main CI still gate delivery |
+| 21 / [#160](https://github.com/jonathan-vella/landinglens/issues/160) | Eight fixed G01.01/.02 and G02.05/.06/.09/.10/.11/.12 incident/Zero-Trust/renewal/rotation/delegation/encryption/sovereignty/BYOK GUIDs | Explicit sole slot after checked07 implementation161/receipt162 and03 implementation164/receipt165, completed154/157 and final main226caec | [#166](https://github.com/jonathan-vella/landinglens/pull/166) merged normally after eight jobs, CodeQL/security/review and four25-case compiler proofs; guarded `deliveries.21` derives243 delivered/8 pending/29 receipts. Checked receipt publication/final-main CI still gate completion |
+| 03 / [#157](https://github.com/jonathan-vella/landinglens/issues/157) | Seven fixed A03.03-.05/A04.01-.04 agreement-budget/visibility/dev-test/contact/organization/audit GUIDs | Explicit sole slot after actual26 implementation158/receipt159 and07 implementation161/receipt162, completed154 and checked final main99b4c58 | [#164](https://github.com/jonathan-vella/landinglens/pull/164) merged normally after eight jobs, CodeQL/security/review and four24-case compiler proofs; guarded `deliveries.03` binds all seven GUIDs. Checked receipt publication/final-main CI determine completion |
 | 07 / [#154](https://github.com/jonathan-vella/landinglens/issues/154) | Eight fixed C01.01/C02.01-.07 naming/hierarchy/authorization GUIDs | Explicit sole slot after actual24 implementation155/receipt156 and26 implementation158/receipt159, completed151 and checked final main | [#161](https://github.com/jonathan-vella/landinglens/pull/161) merged normally after eight jobs, CodeQL/security/review and four23-case compiler proofs; guarded `deliveries.07` binds all eight GUIDs; checked receipt publication and final-main CI determine completion |
 | 26 / [#151](https://github.com/jonathan-vella/landinglens/issues/151) | Eight fixed recovery/redundancy/guest-drift/PaaS-backup/WAF-telemetry GUIDs | Explicit sole coordinator slot after checked09/24 delivery | [#158](https://github.com/jonathan-vella/landinglens/pull/158) merged normally after all eight jobs/CodeQL/security/review and four matching22-case compiler proofs; guarded `deliveries.26` derives220 delivered/31 undelivered/26 receipts. Checked receipt publication/final-main CI gate completion; all212 prior rows/25 receipts remain unchanged |
 | 24 / [#148](https://github.com/jonathan-vella/landinglens/issues/148) | Nine fixed F01.01-.09 workspace/retention/machine/patch/traffic/guardrail GUIDs | Explicit sole slot after actual25 implementation149/receipt150 and09 implementation152/receipt153, completed issues and checked final main | [#155](https://github.com/jonathan-vella/landinglens/pull/155) merged normally after eight jobs, CodeQL/security/review and four21-case compiler proofs; guarded `deliveries.24` binds all nine GUIDs; checked receipt publication/final-main CI gate completion |
@@ -82,7 +83,7 @@ owner-authorized increment. Baseline `2026-11-04.2` remains 4 automated /
 | 17 / [#48](https://github.com/jonathan-vella/landinglens/issues/48) | Nine firewall GUIDs; duplicate D07.12 entries remain distinct | Merged cohort 01, actual source review, reviewed network schemas | [#49](https://github.com/jonathan-vella/landinglens/pull/49) merged; all eight checks passed, exact installed suite and all four CI compiler integrations exercised; issue closed |
 | 18 / [#50](https://github.com/jonathan-vella/landinglens/issues/50) | Nine TLS/resilience/private-connectivity GUIDs | Merged cohort 17; 18 actual source captures and reviewed versioned schemas | [#51](https://github.com/jonathan-vella/landinglens/pull/51) merged; all eight checks passed, exact installed suite and all four compiler integrations exercised; issue closed |
 | 19 / [#52](https://github.com/jonathan-vella/landinglens/issues/52) | Nine service-endpoint/subnet/segmentation GUIDs | Merged cohort 18 and reconciled `.5` efficiency foundations | [#90](https://github.com/jonathan-vella/landinglens/pull/90) merged; all eight jobs, CodeQL and four compiler artifacts passed; `deliveries.19` binds each GUID to actual acceptance |
-| Other cohorts | Other 23 GUIDs in unchanged 5-10-item cohorts | Evidence foundations, then LL-34 severity/crosswalk priority with per-batch source requirements | Pending; cohort07 retains its sole slot through checked receipt/final-main delivery; partitioning/tiering is not delivery |
+| Other cohorts | Other 8 GUIDs in unchanged 5-10-item cohorts | Evidence foundations, then LL-34 severity/crosswalk priority with per-batch source requirements | Pending; cohort21 retains its sole slot through checked receipt/final-main delivery; partitioning/tiering is not delivery |
 
 Reviewed successor `2026-11-06.26`: 12 automated / 200 assisted /43 manual,
 all255 visible. Exact `.25` and earlier bytes/receipts remain frozen.
@@ -113,6 +114,10 @@ Actual #155 and guarded own-nine `deliveries.24` reconciliation derive212
 delivered/39 pending and25 receipts on checked publication. All203 earlier rows/
 24 receipts remain unchanged; checked receipt publication and actual final-main
 CI gate #148 completion and sole-slot release.
+Actual #164 and guarded own-seven `deliveries.03` reconciliation derive235
+delivered/16 pending/28 receipts on checked publication. All228 earlier rows/
+27 receipts remain unchanged; checked receipt publication and actual final-main
+CI gate #157 completion and sole-slot release.
 Classification alone is not delivery.
 G02.02 is explicitly manual; unsupported Terraform vault soft-delete evidence
 remains unknown. Create ready batch issues as implementation proceeds, not 251
@@ -132,19 +137,18 @@ reconciled against the new foundations when resumed on 2026-11-06.
 
 | Cohort | Undelivered GUIDs | High / Medium / Low | Controls with associations |
 |---|---|---|---|
-| 03 | 7 | 0 / 2 / 5 | 0 |
-| 21 | 8 | 0 / 8 / 0 | 0 |
 | 28 | 8 | 0 / 8 / 0 | 0 |
 
-These remain23 undelivered GUIDs on cohort07 guarded receipt reconciliation.
-Cohorts19/11/04/13/22/14/12/15/08/30/20/05/16/23/02/27/29/06/10/25/09/24/26/07 left the pending table only after actual
-#90/#93/#96/#101/#104/#107/#110/#113/#116/#119/#122/#125/#128/#131/#134/#137/#140/#143/#146/#149/#152/#155/#158/#161 implementation delivery and their guarded per-GUID receipts.
+These remain8 undelivered GUIDs on cohort21 guarded receipt reconciliation.
+Cohorts19/11/04/13/22/14/12/15/08/30/20/05/16/23/02/27/29/06/10/25/09/24/26/07/03/21 left the pending table only after actual
+#90/#93/#96/#101/#104/#107/#110/#113/#116/#119/#122/#125/#128/#131/#134/#137/#140/#143/#146/#149/#152/#155/#158/#161/#164/#166 implementation delivery and their guarded per-GUID receipts.
 No membership or original baseline
 hash changes through reprioritisation.
 
-The owner asked for parallel work. After actual26/07 checked receipt delivery
-and final-main verification, cohort03/#157 owns the explicit sole delivery slot;
-isolated21/28 preparation continues under the coordinator, reusing shared helpers.
+The owner asked for parallel work. After actual07/03 checked receipt delivery
+and final-main verification, cohort21/#160 owns the explicit sole delivery slot
+through its checked receipt and final-main gates. Cohort28 remains prepared
+under the coordinator; no successor slot is inferred.
 Catalog activation, exact-head merges and receipt reconciliation stay serialized
 under coordinator-granted slots; preparation alone is not delivery.
 Preparation alone grants neither successor activation nor a delivery slot.

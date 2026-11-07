@@ -41,6 +41,30 @@ redaction and bounded expansion without adding a test dependency.
 
 ## Assessment workflows
 
+Use `--question incident-zero-trust-key-lifecycle` for cohort21's
+[accepted matrix](../references/recommendation-batches/batch-21.json) in `.27`,
+following the explicit sole slot after checked07/03 delivery. Its original
+[preparation](../references/recommendation-batches/preparation-21.json) and
+[reviewed sources](../references/recommendation-batches/preparation-21-sources.json)
+remain separate; activation is not delivery. Four assisted and four
+manual decisions separately cover incident planning, Zero Trust, public-CA
+renewal, key/certificate rotation, vault delegation/Policy, MMK/CMK choice,
+sovereignty requirements and complete service BYOK support. Existing vault and
+Policy context and explicit storage keySource/infrastructure/Queue-Table settings
+are configuration only. Terraform inline CMK presence/absence does not reconcile
+separate CMK resources, so final key source remains unknown.
+
+Integrated partner-CA renewal is not arbitrary issuer automation or self-signed
+regeneration. Key rotation is not certificate renewal or confirmed consumer
+updates; storage version refresh is separate. Managed HSM is key-only. No
+configuration or general support table establishes effective privilege,
+enforcement, complete coverage, rehearsed IR, Zero Trust maturity or sovereignty
+eligibility. Every decision and exception stays independently blank. No new live
+route, key/certificate/secret/URI/issuer/principal/incident payload, query, security
+scan or operational change is introduced. Existing private replay projections
+minimize saved/injected vault/storage/Policy/role properties before CLI and
+local-session persistence, including immutable session revisions and resume.
+
 Use `--question naming-hierarchy-scoped-authorization` for cohort07's
 [eight accepted workflows](../references/recommendation-batches/batch-07.json)
 in `.25`. Its original [preparation](../references/preparation/batch-07.json)

@@ -11,6 +11,7 @@ from .expressroute_evidence import CIRCUIT_KIND, PORT_KIND
 from .expressroute_evidence import PATHS as EXPRESSROUTE_PATHS
 from .governance_evidence import PATHS as GOVERNANCE_PATHS
 from .identity_evidence import PATHS as IDENTITY_PATHS
+from .key_lifecycle_evidence import PATHS as KEY_PATHS
 from .logging_evidence import PATHS as LOGGING_PATHS
 from .network_policy_evidence import PATHS as NETWORK_POLICY_PATHS
 from .operations_evidence import PATHS as OPERATIONS_PATHS
@@ -84,6 +85,7 @@ REVIEW_PATHS = (
     | RECOVERY_PATHS
     | TOPOLOGY_PATHS
     | OPERATIONS_PATHS
+    | KEY_PATHS
 )
 
 
@@ -529,6 +531,10 @@ def private_connections(values: dict[str, Any], *, terraform: bool) -> Any:
 
 
 def review_fact(properties: dict[str, Any], path: str) -> Any:
+    if path in KEY_PATHS:
+        from .key_lifecycle_evidence import review_fact as key_fact
+
+        return key_fact(properties, path)
     if path in BILLING_PATHS:
         from .billing_evidence import review_fact as billing_fact
 

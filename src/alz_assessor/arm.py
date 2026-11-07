@@ -149,6 +149,7 @@ def properties(
     from .governance_evidence import projected_properties as governance_properties
     from .identity_evidence import IDENTITY_KINDS, ROLE_KIND, identity_summary, role_properties
     from .identity_evidence import projected_properties as identity_properties
+    from .key_lifecycle_evidence import projected_properties as key_properties
     from .logging_evidence import projected_properties as logging_properties
     from .network_policy_evidence import projected_properties as network_policy_properties
     from .operations_evidence import projected_properties as operations_properties
@@ -170,6 +171,7 @@ def properties(
     if isinstance(values, dict):
         result.update(billing_properties(kind, values, root=root))
         result.update(security_properties(kind, values, root=root))
+        result.update(key_properties(kind, values))
         result.update(governance_properties(kind, values, root=root))
         result.update(organization_properties(kind, values))
         result.update(logging_properties(kind, values, root=root))

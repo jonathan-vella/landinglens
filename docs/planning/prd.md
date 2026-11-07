@@ -38,6 +38,54 @@ No financial/contact/personnel/confidential/private payload retention, live prob
 new query, deployment or manufactured legal/owner/runtime assurance is authorized.
 Preparation is not acceptance, receipt publication or satisfied issue closure.
 
+## Cohort 21 accepted boundary
+
+After checked07/03 delivery and the explicit sole slot, cohort21/#160 activates
+[eight independent workflows](../../references/recommendation-batches/batch-21.json)
+in builder-derived `.27`. Exact `.26`, all255/fixed251, original four complete
+controls, every non-own object, all235 prior rows/28 receipts and every binding
+remain unchanged. All24 predecessor compiler cases precede the genuine new
+storage configuration case. Dispositions remain12/200/43.
+
+Public-CA renewal, key rotation, consumer updates, vault delegation, MMK/CMK
+necessity and service-qualified BYOK support stay separate. Four assisted and
+four manual decisions and exceptions start independently blank; no configuration
+proves operating security, complete coverage, IR rehearsal, Zero Trust maturity
+or sovereignty/legal eligibility. Existing private replay projections minimize
+saved/injected properties before CLI/local-session persistence. No new live read,
+key/certificate child, URI/material retention or action is introduced.
+Checked implementation, guarded own receipt and final-main CI determine
+delivery and satisfied #160 completion, not activation.
+
+Implementation #166 merged normally after all eight exact-head jobs,
+CodeQL/security/review and four downloaded matching25-case compiler proofs.
+The final own installed suite passed885 tests:884 passed, original Windows skip1.
+Guarded `deliveries.21` binds all eight GUIDs to that actual head/merge/runs/wheel,
+deriving243 delivered/8 pending/29 receipts while preserving all235 earlier
+rows/28 receipts. Checked receipt publication/final-main CI still gate completion.
+
+## Cohort 21 independent preparation boundary
+
+Cohort21/[#160](https://github.com/jonathan-vella/landinglens/issues/160) prepares
+[four assisted and four manual source-specific workflows](../../references/recommendation-batches/preparation-21.json)
+outside accepted activation, after `.24`/220 deliveries and before its explicit
+serialized slot following07/03. All eight decisions stay independently blank,
+attributable, selected, time-bound and exceptable. Existing vault/Policy/role
+helpers and explicit storage key-source/infrastructure/Queue-Table metadata
+support review without new live collection or key/certificate/URI retention.
+Terraform final key source remains unknown when separate CMK configuration is
+unreconciled; no omitted defaults or vault links are invented.
+
+Partner-CA renewal, arbitrary issuer workflows, key rotation and consumer updates
+are distinct; Key Vault is not Managed HSM. MMK/CMK necessity, complete required
+service BYOK compatibility, incident planning, Zero Trust and sovereignty
+requirements remain separate human decisions. Configuration proves no renewal,
+rehearsal, effective delegation/enforcement, complete coverage, maturity or legal
+eligibility. Signals and confirmations never become Verified. No accepted
+source/matrix/bank/catalog/crosswalk/count/history or receipt changes occur until
+the explicit slot and actual delivery gates described in the
+[preparation plan](plan.md#cohort-21-independent-preparation-2026-11-07).
+
 ## Cohort 03 accepted boundary
 
 The explicit sole slot after actual26/07 checked delivery activates
@@ -52,6 +100,14 @@ Forecasted needs explicit reviewed2024 provenance and no defaults are inferred.
 The [integration evidence](plan.md#cohort-03-accepted-integration-2026-11-07)
 retains source, privacy and actual delivery gates. No new live read, query,
 contact test, eligibility decision, purchase or permission change occurs.
+
+Implementation [#164](https://github.com/jonathan-vella/landinglens/pull/164)
+merged normally after exact-head8-job/CodeQL/security/review and four downloaded
+matching24-case compiler gates. Guarded `deliveries.03` binds all seven GUIDs
+to that actual head/merge/runs and own858-test wheel, deriving235 delivered/
+16 pending/28 receipts while preserving all228 earlier rows/27 receipts.
+Checked receipt publication and actual final-main CI, not source activation,
+recording, implementation merge or issue status, gate satisfied #157 completion.
 
 ## Cohort 03 preparation boundary
 

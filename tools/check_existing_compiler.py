@@ -70,6 +70,8 @@ if compiler:
         "test_real_bicep_management_keys_parents_settings_without_restore",
         "test_billing_preparation.BillingPreparationTests."
         "test_real_bicep_budget_configuration_without_restore",
+        "test_key_lifecycle_preparation.KeyLifecyclePreparationTests."
+        "test_real_bicep_storage_encryption_configuration_without_restore",
         "test_sovereign_requirements_preparation.SovereignRequirementsPreparationTests."
         "test_real_bicep_existing_budget_fixture_feeds_candidate_without_restore",
     ]

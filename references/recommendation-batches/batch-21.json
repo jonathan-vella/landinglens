@@ -1,0 +1,293 @@
+{
+  "batch": "21",
+  "review_state": "owner-delegated-source-backed-matrix",
+  "issue": 160,
+  "preparation_base_commit": "a2454003de0564de236ca56443cf7f5123d09d0e",
+  "activation": "Explicit sole coordinator slot after actual07 implementation161/receipt162 and 03 implementation164/receipt165, completed154/157 and checked final main226caec. Preparationb77a4a9 is preserved and reconciled with all24 predecessor compiler cases. Freeze exact.26, derive unique.27 using existing builders. Source activation is not delivery; checked implementation merge, guarded own receipt and final-main CI remain mandatory.",
+  "supported_modes": "Existing offline raw Terraform/local modules and supplied plan JSON with explicit AzureRM4.50.0; pinned planned ARM/existing no-restore Bicep; saved/injected normalized evidence and original-time privacy-projected replay. Reuse vault/storage, Policy exact-version/scope/definition/role and governance helpers. Only new facts are explicit storage account keySource, infrastructure encryption and Queue/Table key types. Terraform key source stays unknown because separate CMK configuration is not reconciled; block presence/absence is not MMK/CMK evidence. No new resource type, live route, key/certificate child projection, URI retention, built-in fetch or second Policy interpreter.",
+  "acceptance_evidence": "Four assisted and four manual source-specific workflows. All eight requirements, applicability, ownership, compatibility and operating decisions are independently blank, selected, attributable, time-bound and exceptable. Configuration supports review, not actual public-CA renewal, generated key versions, deployed consumer updates, effective delegation/enforcement, complete asset coverage, rehearsed IR, Zero Trust maturity or legal sovereignty. Signals and human confirmation never manufacture Verified. Missing/partial/ambiguous/stale/denied/unsupported/over-bound input stays explicit unknown.",
+  "interview": {
+    "id": "incident-zero-trust-key-lifecycle",
+    "question": "Decide all eight recommendations independently, with separately attributable redacted evidence and exceptions, never one shared outcome. For G01.01, review service-specific pre-production incident plans, shared responsibilities, roles, escalation, prioritization, containment/recovery and original-time exercise/lessons evidence; legacy benchmark wording is qualified by current MCSB IR guidance. No incidents or personal contacts are retained and no exercise is run. For G01.02, substantiate verify-explicitly, least-privilege and assume-breach objectives across identities, endpoints, applications, infrastructure, networks and data, including workload and non-landing-zone responsibilities; a resource checklist is not Zero Trust maturity. For G02.05, distinguish integrated public-CA automation (currently DigiCert/GlobalSign), nonintegrated CA signing/merge workflows and self-signed regeneration. An imported certificate, expiration notification or vault is not automated public-CA renewal, deployment or successful adoption by consumers. For G02.06, separately review key generation/rotation, certificate renewal and consumer updates, ownership, lifetimes, service-specific refresh/old-version overlap and tested failure/recovery paths. Native key rotation is not import of externally generated HSM material; Managed HSM is key-only, not a certificate vault. For G02.09, distinguish vault instantiation/control-plane authority from data-plane access, actual team delegation/PIM/conditions/deny constraints and exact reviewed Policy definitions/versions/assignments/scopes/exclusions/exemptions plus timely compliance evidence. No referenced definition is fetched or rule interpreted. For G02.10, retain immutable MMK wording and current platform/service-managed terminology, default MMK versus requirement-driven CMK decisions per service/data set, dependencies, availability and recovery ownership. Storage keySource is only an explicit narrow setting; Blob/Files differs from Queue/Table Account versus Service key type, infrastructure encryption is separate and Terraform inline CMK presence/absence cannot reconcile separate CMK resources. Storage's versionless daily refresh is not key rotation or proof that consumers have updated. For G02.11, independently determine whether an accountable organizational sovereignty requirement mandates CMK; no geography, encryption setting or external-key-management preview establishes legal eligibility or sufficient sovereignty. For G02.12, review every required service/feature/SKU/cloud/region, Key Vault versus Managed HSM support, key origin/BYOK/algorithm/size/lifecycle and end-to-end availability/consumer integration against current service-specific references. A general support-table Yes or blank is not universal BYOK compatibility. All coverage, requirements, ownership, operation and exception decisions stay blank until explicitly supplied. No key/certificate/secret/URI/issuer/principal/incident/private payload retention, live probes, scans, queries, credential/key/renewal/rotation changes, contact or incident exercises.",
+    "controls": [
+      "ALZ-b86ad884-08e3-4727-94b8-75ba18f20459",
+      "ALZ-01365d38-e43f-49cc-ad86-8266abca264f",
+      "ALZ-6d70ba6c-97be-4995-8904-83845c986cb2",
+      "ALZ-913156a1-2476-4e49-b541-acdce979377b",
+      "ALZ-b12308ca-5017-4f15-9e3a-b3693829e7e3",
+      "ALZ-16183687-a047-47a2-8994-5bda43334f24",
+      "ALZ-b48ade7f-50be-4d2e-9866-d57b17942fc2",
+      "ALZ-25d62688-6d70-4ba6-a97b-e99519048384"
+    ]
+  },
+  "recommendations": [
+    {
+      "guid": "b86ad884-08e3-4727-94b8-75ba18f20459",
+      "upstream_id": "G01.01",
+      "classification": "manual",
+      "implemented_subclaim": "Independent pre-production service-specific incident-response decision, not a resource-presence predicate.",
+      "sources": [
+        "incident-linked",
+        "incident-current"
+      ],
+      "evidence_requirements": [
+        "Identify actual services/workloads, pre-production admission criteria, shared IaaS/PaaS/SaaS responsibilities, accountable roles and approved incident handling requirements.",
+        "Reference redacted original-time plans covering detection/triage, prioritization, communication/escalation, containment, eradication, recovery and post-incident improvement, plus separately supplied exercise/lessons evidence. Preserve legacy benchmark wording while using current MCSB qualifications.",
+        "Reviewer decision: was an appropriate incident response plan determined before production admission for each applicable service, with accountable ownership and accepted gaps? No incident/contact details retained or exercise performed."
+      ],
+      "limitations": "Manual organizational review only; logs, alerts, SIEM, Policy or vault configuration cannot prove planning, rehearsal, readiness or response effectiveness.",
+      "flags": [
+        "legacy-benchmark-qualified",
+        "no-incident-payload",
+        "planning-not-runtime-assurance"
+      ]
+    },
+    {
+      "guid": "01365d38-e43f-49cc-ad86-8266abca264f",
+      "upstream_id": "G01.02",
+      "classification": "manual",
+      "implemented_subclaim": "Independent Zero Trust approach decision spanning platform and workload responsibilities.",
+      "sources": [
+        "zero-trust-linked"
+      ],
+      "evidence_requirements": [
+        "Document verify-explicitly, least-privilege and assume-breach requirements across applicable identities, endpoints, applications, infrastructure, networks and data.",
+        "Reference accountable architecture and operating evidence, segmentation/access/telemetry dependencies, complete intended populations and responsibilities outside the landing zone; retain justified exclusions and maturity gaps separately.",
+        "Reviewer decision: is a Zero Trust approach actually applied to Azure platform access for the intended scope, with attributable evidence and accepted gaps? No inferred maturity score or security testing."
+      ],
+      "limitations": "Manual architecture and operating decision. Vaults, roles, encryption and network settings are neither effective access verification nor Zero Trust maturity.",
+      "flags": [
+        "zero-trust-not-resource-checklist",
+        "workload-responsibilities-independent"
+      ]
+    },
+    {
+      "guid": "6d70ba6c-97be-4995-8904-83845c986cb2",
+      "upstream_id": "G02.05",
+      "classification": "assisted",
+      "implemented_subclaim": "Existing minimized vault RBAC/network context supports a distinct public-CA renewal workflow; no certificate inventory or renewal predicate.",
+      "sources": [
+        "vault-linked",
+        "certificate-renewal",
+        "autorotation",
+        "vault-arm",
+        "terraform-vault"
+      ],
+      "review_resource_types": [
+        "Microsoft.KeyVault/vaults"
+      ],
+      "review_fact_paths": [
+        "enableRbacAuthorization",
+        "publicNetworkAccess"
+      ],
+      "evidence_requirements": [
+        "Identify the complete intended public-CA certificate/consumer population, compatible issuance integration, ownership, approved lifetimes, renewal/deployment requirements and explicit exceptions without retaining names, URIs, issuer identities or material.",
+        "Integrated partner CAs currently include DigiCert/GlobalSign; nonintegrated CA CSR/sign/merge and externally orchestrated renewal need independent evidence. Self-signed regeneration, imported certificates and expiration notifications do not prove automated public-CA renewal.",
+        "Reviewer decision: is public-CA certificate management and renewal appropriately automated, including successful original-time renewal, delivery to all intended consumers, failure monitoring and tested fallback? Vault settings establish none of these outcomes."
+      ],
+      "limitations": "No certificate/key/issuer/data-plane collection or projection. Existing vault context is explicitly not coverage, CA compatibility, automated renewal or consumer adoption.",
+      "flags": [
+        "integrated-ca-not-arbitrary-issuer",
+        "notification-not-renewal",
+        "renewal-not-deployed-consumers"
+      ]
+    },
+    {
+      "guid": "913156a1-2476-4e49-b541-acdce979377b",
+      "upstream_id": "G02.06",
+      "classification": "assisted",
+      "implemented_subclaim": "Existing safe vault configuration accompanies a separate key/certificate lifecycle and consumer-update decision.",
+      "sources": [
+        "vault-linked",
+        "key-rotation",
+        "autorotation",
+        "certificate-renewal",
+        "storage-cmk"
+      ],
+      "review_resource_types": [
+        "Microsoft.KeyVault/vaults"
+      ],
+      "review_fact_paths": [
+        "enableRbacAuthorization",
+        "publicNetworkAccess"
+      ],
+      "evidence_requirements": [
+        "Identify intended key and certificate populations, independent requirements/owners, native versus external generation/import, expiration/rotation/renewal schedules, privileges and accepted exceptions. Key Vault and Managed HSM are distinct; Managed HSM does not store certificates.",
+        "Distinguish generating a new key version, renewing a certificate, importing externally generated material, notifying expiry and updating every consumer. Review each actual service's refresh latency/version binding and old-version overlap; do not infer a universal safe cadence or immediate uptake.",
+        "Reviewer decision: is an automated key and certificate rotation process established with original-time successful operations, deployed consumer updates, monitoring, recovery/fallback and complete intended coverage? Vaults or configured rotation references alone are insufficient."
+      ],
+      "limitations": "No rotation-policy object/URI/material retained or executed. No automatic MMK/CMK suitability, native-rotation support for arbitrary imported keys or actual renewal/consumer assurance.",
+      "flags": [
+        "key-rotation-not-certificate-renewal",
+        "consumer-update-independent",
+        "imported-origin-qualified"
+      ]
+    },
+    {
+      "guid": "b12308ca-5017-4f15-9e3a-b3693829e7e3",
+      "upstream_id": "G02.09",
+      "classification": "assisted",
+      "implemented_subclaim": "Reuse vault permission model and strict supplied Policy definition/initiative/assignment/version/scope and role-reference context, not effective authority or enforcement.",
+      "sources": [
+        "vault-linked",
+        "vault-arm",
+        "terraform-vault",
+        "policy-spec-policyDefinitions",
+        "policy-spec-policySetDefinitions",
+        "policy-spec-policyAssignments",
+        "policy-role-arm",
+        "policy-provider-policy_definition",
+        "policy-provider-policy_set_definition",
+        "policy-provider-management_group_policy_assignment",
+        "policy-provider-subscription_policy_assignment",
+        "policy-provider-resource_group_policy_assignment"
+      ],
+      "review_resource_types": [
+        "Microsoft.KeyVault/vaults",
+        "Microsoft.Authorization/policyDefinitions",
+        "Microsoft.Authorization/policySetDefinitions",
+        "Microsoft.Authorization/policyAssignments",
+        "Microsoft.Authorization/roleAssignments"
+      ],
+      "review_fact_paths": [
+        "enableRbacAuthorization",
+        "publicNetworkAccess",
+        "policyDefinitionSummary",
+        "policyInitiativeSummary",
+        "policyAssignmentSummary",
+        "principalType",
+        "roleDefinitionId"
+      ],
+      "evidence_requirements": [
+        "Decide accountable vault instantiation and privileged access ownership separately, distinguishing control-plane creation from data-plane key/certificate/secret access and Key Vault from Managed HSM. Review actual team authority, PIM, conditions, deny constraints and least privilege without retaining principals.",
+        "Bind exact reviewed definitions/versions, initiative members, selected assignment scopes, exclusions, exemptions, parameters and modes to intended vault configuration requirements, then separately substantiate timely saved compliance observations and operating response. Global built-ins are not fetched; no second interpreter.",
+        "Reviewer decision: are instantiation and privileged access appropriately delegated and consistent configuration actually enforced through Azure Policy for the intended complete population, with attributable operating evidence and accepted exceptions? RBAC flags, role references and assignments alone prove neither."
+      ],
+      "limitations": "Positive unique known typed selected-scope relationships only. Exact supplied definition/version ancestry is configuration, not effective privilege/enforcement, inheritance completeness or compliant vault coverage.",
+      "flags": [
+        "control-plane-not-data-plane",
+        "assignment-not-enforcement",
+        "role-reference-not-effective-delegation"
+      ]
+    },
+    {
+      "guid": "16183687-a047-47a2-8994-5bda43334f24",
+      "upstream_id": "G02.10",
+      "classification": "assisted",
+      "implemented_subclaim": "Explicit storage keySource/infrastructure/Queue-Table key-type settings as a narrow example, never universal service encryption or CMK necessity.",
+      "sources": [
+        "encryption-linked",
+        "service-support-linked",
+        "storage-cmk",
+        "storage-encryption-arm",
+        "terraform-storage-encryption"
+      ],
+      "review_resource_types": [
+        "Microsoft.Storage/storageAccounts"
+      ],
+      "review_fact_paths": [
+        "storageEncryptionSummary"
+      ],
+      "evidence_requirements": [
+        "Determine service/data-specific encryption, key-control, availability/recovery and operating requirements. Preserve immutable Microsoft-managed terminology while qualifying current platform/service-managed wording; justify CMK necessity independently rather than treating CMK as universally preferable.",
+        "Reconcile actual supported service/feature/SKU/cloud/region settings, storage Blob/Files versus Queue/Table Account or Service key type, key-store capabilities/access and consumer lifecycle. Infrastructure encryption is separate. Omitted ARM settings and Terraform inline CMK presence/absence cannot establish final key source or defaults.",
+        "Reviewer decision: is MMK appropriately the default and CMK used where required, with service-specific compatibility, accountable lifecycle/recovery ownership and accepted exceptions? Explicit storage keySource is configuration only, not usable keys, compliant encryption, requirement sufficiency or consumer refresh."
+      ],
+      "limitations": "Storage is not a universal model. No private key reference/URI/version or inferred vault link retained. Terraform final key source remains unknown without separate-CMK reconciliation; no implicit defaults or actual key-use/refresh proof.",
+      "flags": [
+        "mmk-default-cmk-requirement-driven",
+        "storage-not-all-services",
+        "queue-table-keytype-qualified"
+      ]
+    },
+    {
+      "guid": "b48ade7f-50be-4d2e-9866-d57b17942fc2",
+      "upstream_id": "G02.11",
+      "classification": "manual",
+      "implemented_subclaim": "Independent accountable sovereignty-driven CMK requirement decision, without legal inference.",
+      "sources": [
+        "encryption-linked",
+        "service-support-linked"
+      ],
+      "evidence_requirements": [
+        "Reference the accountable organization's actual sovereignty, contractual and key-control requirements and qualified interpretation for the specific data, services, locations and operating model; no legal eligibility decision is made by this assessor.",
+        "Distinguish CMK control, key origin/custody, Key Vault versus Managed HSM and any external-key-management preview limitations from data location, personnel/access, availability and complete sovereignty requirements.",
+        "Reviewer decision: is there an actual sovereignty requirement to use CMK for this scope, with independently recorded applicability, evidence, ownership and exceptions? Encryption configuration, geography and CMK presence cannot determine that requirement or sovereignty sufficiency."
+      ],
+      "limitations": "Manual requirement decision. No legal certification, sovereignty score, entitlement check, external key management deployment or inferred mandate.",
+      "flags": [
+        "sovereignty-requirement-not-setting",
+        "no-legal-eligibility-inference"
+      ]
+    },
+    {
+      "guid": "25d62688-6d70-4ba6-a97b-e99519048384",
+      "upstream_id": "G02.12",
+      "classification": "manual",
+      "implemented_subclaim": "Independent complete required-service BYOK compatibility review using current qualified references.",
+      "sources": [
+        "service-support-linked",
+        "encryption-linked",
+        "storage-cmk",
+        "key-rotation"
+      ],
+      "evidence_requirements": [
+        "Identify the complete required service/feature/SKU/cloud/region/dependency population and actual key origin, import/BYOK, algorithm/size, protection/custody and lifecycle requirements without retaining key or issuer identifiers/material.",
+        "Review current service-specific implementation evidence and Key Vault versus Managed HSM support separately. A general support-table Yes is not arbitrary BYOK/import/algorithm/rotation compatibility, and a blank cell is not a verified unsupported verdict. Distinguish key generation, import, availability, rotation and consumer adoption.",
+        "Reviewer decision: if BYOK is applicable, are the actual keys supported across every required service with evidenced compatible lifecycle/integration and accepted exceptions? No fabricated universal compatibility, live key probe or support/eligibility determination."
+      ],
+      "limitations": "Manual service-specific completeness and compatibility decision. Vault/storage presence or one service example cannot establish all required services, imported-key support or successful operation.",
+      "flags": [
+        "byok-not-universal-cmk-support",
+        "keyvault-not-managedhsm",
+        "complete-service-review-required"
+      ]
+    }
+  ],
+  "catalog_version": "2026-11-06.27",
+  "activation_base_main": "226caec2d4eb2f183d2cdbfa1fbde3c9d7698ec1",
+  "accepted_at": "2026-11-07T05:31:14.848355+00:00",
+  "prerequisites": [
+    "26",
+    "07",
+    "03"
+  ],
+  "preserved_delivery_batches": [
+    "01",
+    "17",
+    "18",
+    "19",
+    "11",
+    "04",
+    "13",
+    "22",
+    "14",
+    "12",
+    "15",
+    "08",
+    "30",
+    "20",
+    "05",
+    "16",
+    "23",
+    "02",
+    "27",
+    "29",
+    "06",
+    "10",
+    "25",
+    "09",
+    "24",
+    "26",
+    "07",
+    "03"
+  ],
+  "preserved_merged_recommendations_sha256": "5676db62ea51bcc8687f5d1f34f9ad7e9bc68b8efe6c89373c2400af5d75b71a",
+  "preserved_delivery_receipts_sha256": "12e77990679a8cf6ba3538d2975340533aa86a5f6e4cca1fd7dfa06909b7111a",
+  "preserved_catalog_bytes": {
+    "2026-11-06.26": "a5b7630aa83858ab234fca1d5c2fa7e46aeeb87a77e5c6c9fe3f5f6c158743bb"
+  },
+  "preserved_crosswalk_bytes": {
+    "2026-11-06.26": "45ce62162a35bdb71d637e5f93a4ef9f3ef5b4501d9a5c50c03772f0014ff90c"
+  }
+}
