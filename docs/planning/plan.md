@@ -61,6 +61,332 @@ runtime wheels were restored from the configured approved feed; every wheel hash
 matched the reviewed manifest. All113 protected accepted package assets and
 fixed-target/ledger files remain byte-identical to the preparation baseline.
 
+## Cohort 03 accepted integration: 2026-11-07
+
+The explicit sole coordinator slot follows actual26 implementation158/receipt159,
+07 implementation161/receipt162, completed154 and checked final main
+`99b4c58a8f2193789d3ca81aabe692366e8cb257`. Preserved preparation `c379613`
+reconciles that baseline in `c500bf0`, retaining recovery, operations and hierarchy
+helpers. All23 current genuine compiler cases precede the own budget case.
+
+The [seven-GUID matrix](../../references/recommendation-batches/batch-03.json)
+and [23 captures](../../references/recommendation-batches/batch-03-sources.json)
+derive unique accepted catalog/crosswalk `.26` with existing offline builders.
+Exact `.25` catalog SHA256:
+`5d0ca51b7f2b76343f03f49bb32354d963ae4fc38c7ad15efb68b6c3eab60e83`;
+crosswalk SHA256:
+`9c37c12360039c04416957778f335d854173d9181340e6226e9369487dd4f7f7`.
+All255 GUIDs/fixed251/original four complete objects, every non-own full control,
+all228 prior own rows/27 receipts and exact historical bytes remain preserved.
+Dispositions stay12/200/43; activation alone leaves228 delivered/23 pending.
+
+Seven registered independently blank decisions/exceptions reuse the evaluator,
+adapters, tiers, outputs, CLI/session and original-time accepted/predecessor replay.
+EA/MCA/partner applicability, complete allocations, effective billing visibility,
+distinct offer qualification, group-mailbox continuity, MCA organization and real
+audit operation remain explicit human judgments. No live collector, query, private
+billing/contact/role read, notification test, eligibility decision, purchase or
+permission/contact change is added. Signals never manufacture Verified.
+
+The coordinated28 source finding identified actual Consumption/Consumption paths
+at pinned5531fa8. Both REST definitions and MIT terms were retrieved and inspected:
+2019 declares Actual only with an extensible enum, while2024 explicitly includes
+Forecasted. AzureRM4.50 advertises Forecasted but uses2019; no runtime support is
+inferred from that conflict. The original20 captures remain exact and three
+new captures supplement them. Budget metadata now retains reviewed API provenance;
+Forecasted projects only with explicit2024 provenance, and provenance alone is
+not a configuration Signal. Missing defaults and unsupported types remain unknown.
+Tutorial0.01 versus REST/provider0..1000 threshold wording is not an assessor
+limit; all financial/recipient/threshold values and notification keys remain
+withheld. No active-period, currency-suitability, delivery or spend enforcement
+assurance is implied.
+
+Own final source/installed-wheel/static/compiler proofs, exact-head eight-job/
+CodeQL/security/review and four downloaded exercised artifacts, normal SHA-bound
+merge, guarded actual own receipt and checked final-main publication still gate
+satisfied #157 completion. Preparation proofs below do not replace these gates.
+The initial accepted targeted bank CLI failure used the stale global installation
+for an isolated subprocess, not this source; final runs must use the own matching
+installation. No global or other-session environment was changed.
+
+Final source and own clean outside-checkout installed-wheel suites each ran
+**858 tests:857 passed, one original Windows symlink-privilege skip**.
+All24 own preparation/accepted cases pass, including registered-bank selection/
+content/scope/time/expiry/attribution, transactional failure/resume, independent
+exceptions, source-version conflicts, all outputs and private accepted/predecessor
+original-time replay. All24 genuine compiler cases exercise without skip/restore,
+retaining recovery/operations and07 MG settings before the own budget fixture.
+Ruff/format,52-source-file mypy, dependency consistency and568 local links pass.
+All171 package members match checkout, own wheel and dedicated installed bytes;
+all191 non-active predecessor source/data/fixed-target members,228 old rows/
+27 receipts and the original03 preparation matrix/20 captures remain exact.
+Final own implementation wheel SHA256:
+`af591d9c285124df1c600b92e77ef9f85d36bdbe5860f3eff330d9ea98e83c0f`.
+Both source/installed24-case compiler JSON SHA256:
+`4632f0716b155657a7d5b1b9adfaa5d171cb7cb37769d6b9eea91ec387ea1612`.
+
+The first accepted-wheel install was invoked with source metadata on `PYTHONPATH`
+and pip incorrectly reported it present; the outside import refused. Installation
+was repeated from the clean outside directory without that source path, then the
+actual missing `hcl2` failure justified restoring only the same three manifest-
+hash-verified runtime wheels into this cohort's dedicated environment. No package,
+compiler or module acquisition/restore beyond those reviewed runtime wheels, and
+no other-session/global environment modification occurred. Those failed invocations
+are not final proof; the exact171-member import/byteproof and full suites above are.
+
+### Cohort 03 implementation and guarded receipt reconciliation
+
+[#164](https://github.com/jonathan-vella/landinglens/pull/164) merged normally as
+`592826b4e991f8f8ce0655c6d76e7c8a906f468a` at2026-11-07T04:56:04Z.
+Exact checked head `d0196d08385d4dfc029249856c53e1c79b3e6e3b` passed all eight
+push/PR platform jobs in42339416908/42339428464, CodeQL42339426528 and Advanced
+Security42339432133. Actual CodeQL analyses2117101068/2117099964 each have
+zero findings/errors/warnings. All11 PR checks and head/base/main/comments/
+reviews/threads/security alerts were refreshed before ready and before normal
+SHA-bound merge; every feedback/alert surface was empty. No admin/force/bypass,
+auto-merge, protection change or fabricated approval was used.
+
+All four downloaded exact-head PR compiler artifacts exercise the same24 cases
+without skips: Ubuntu3.12 `13560962330`, Ubuntu3.13 `13560698327`,
+Windows3.12 `13561002462`, Windows3.13 `13561013479`.
+Ubuntu JSON SHA256:
+`c16b69ac7c751dad3fab805f1aee856d695133b75c5c6a6a6a9523aaec62a9a6`;
+Windows:
+`a244403238bbbda28997a02ad7303e9dfa2cc0262128f2a96809798ff1d31b19`.
+These actual PR/head proofs, not preparation or another cohort's artifacts,
+match all23 predecessor cases plus the budget declaration.
+
+The existing guarded recorder independently verified actual merged164, both
+own exact-head runs/all8 jobs, all four downloaded matching compiler artifacts
+and the final own858-test wheel before writing `deliveries.03` and binding each
+of the seven actual GUIDs. Derived totals are **235 delivered /16 pending /
+28 receipts**. All228 earlier rows/27 receipts, original255/fixed251/four complete
+controls, exact historical bytes and every own binding remain preserved;
+dispositions stay12/200/43. The issue stayed open after implementation.
+Checked receipt publication and actual final-main CI still gate satisfied
+#157 completion and sole-slot release; implementation merge/recording alone
+is not delivery. No new Azure access, operational/financial action or human
+assurance is asserted.
+
+## Cohort 03 independent preparation: 2026-11-07
+
+[#157](https://github.com/jonathan-vella/landinglens/issues/157) prepares the
+[seven immutable agreement workflows](../../references/preparation/batch-03.json)
+and [20 actual public-source captures](../../references/preparation/batch-03-sources.json)
+on main `e2b71b212b47b1d240368e9da13ab51bd66797ee`. Cohorts26/07 precede03.
+No accepted successor, source/matrix/bank/catalog/crosswalk/history/count,
+delivery receipt, PR, merge or issue closure is activated during preparation.
+
+Existing governance selected-scope and cohort02 cost-view boundaries are reused.
+The baseline had no budget helper. New minimized budget configuration uses only
+unique known subscription/RG identities, explicit pinned time grain and bounded
+notification enabled/operator/type metadata. Amounts, currencies, spend, dates,
+filters, thresholds, notification names and recipients are withheld. No defaults,
+financial limits, offer entitlement, contract type or complete billing hierarchy
+are inferred. There is no new Collector endpoint or query execution.
+
+Seven source-specific decisions and exceptions remain independent and blank;
+the interview is an unregistered preparation fixture. EA DA/AO policy plus scoped
+permissions, MCA Azure charges/partner visibility, separate0148P/0148G qualification,
+group-mailbox continuity, profiles/sections and actual periodic billing-role audit
+operation require redacted attributable human evidence. Budget configuration is
+not spend enforcement, complete allocation, active-period evaluation or actual
+notification delivery. Resource RBAC is not billing authorization.
+
+Current product-movement exceptions, contact/sign-in/invoice distinctions,
+legacy EA portal/App Center wording and upcoming November16 WSA-only new EA
+assignments qualify rather than rewrite the immutable checklist. Failed guessed
+source paths and authenticated REST-spec403 are retained in the preparation
+notes; actual pinned ARM2024-08-01 and AzureRM4.50.0 definitions support the fields.
+No private lookup, sign-in or permission change was attempted.
+
+The genuine no-restore Bicep fixture exercises only budget declarations, never
+financial/organizational processes. Raw Terraform, explicitly supplied modules,
+plan JSON, ARM, existing Bicep, saved/injected evidence, shared evaluator/tiers,
+reports/trackers, CLI/local sessions and original-time replay use the same facts.
+Then-current26/07 reconciliation, accepted registration/replay, exact-head remote
+checks/review/compiler artifacts, normal SHA-bound merge, guarded own receipt and
+final-main checks remain deferred coordinator-slot gates.
+
+Source and own clean outside-checkout installed-wheel suites each ran **788
+tests:787 passed, one original Windows symlink-privilege skip**. The16 new cases
+cover all seven workflows, selected/type/version/boundary/notification/privacy
+behavior, blank decisions, selection/content/scope/time/expiry/attribution,
+atomic session saves, exceptions, outputs and accepted/predecessor original-time
+replay. All22 real compiler cases exercise without skip or restore, retaining
+the21 predecessors and adding only the genuine budget declaration.
+Ruff/format,50-source-file mypy, dependency consistency and534 local links pass.
+All157 packaged members match checkout and the dedicated installed bytes;
+all181 accepted-data/fixed-target/ledger/reference files remain byte-identical.
+Catalog `.23`,255 GUIDs/fixed251/original four controls and25 receipts stay frozen.
+Own wheel SHA256:
+`03dd62b8952b94f84b032b10ac4ea6c079013236db87f1d7712050c660f0f7ed`.
+Both22-case compiler-proof JSON SHA256:
+`2fc7c8a03b8d4e3599a7c65e0b422d0d9e20b0e68151e5b05a9a8b8ad145500c`.
+
+The initial source suite's five isolated-subprocess failures used an unrelated,
+older globally installed package despite source `PYTHONPATH`. It was not changed;
+the corrected final source run uses this cohort's own matching installation for
+isolated subprocesses. An installed compiler repeat exposed a test clock fixed
+more than five minutes before actual collection; the fixture now evaluates at
+its original collection time, preserving freshness rules. Its failed JSON is
+retained separately, not proof. Initial targeted fixture identity/exception/import
+errors were corrected without weakening contracts. The first isolated import
+lacked `hcl2`; only the three unchanged manifest-hash-verified runtime wheels were
+restored into this cohort's dedicated environment. No other session environment
+or accepted bank was modified.
+
+## Cohort 07 accepted integration: 2026-11-07
+
+The explicit sole coordinator slot follows actual24 implementation155/receipt156
+and26 implementation158/receipt159, completed151 and checked final main
+`a2454003de0564de236ca56443cf7f5123d09d0e`. Preserved preparation `93de055`
+reconciles this baseline in `c9d2bcb`; all22 existing genuine compiler cases,
+including operations and recovery, precede the own MG-key/parent/settings case.
+
+The [eight-GUID matrix](../../references/recommendation-batches/batch-07.json)
+and [12 unchanged captures](../../references/recommendation-batches/batch-07-sources.json)
+activate builder-derived catalog/crosswalk `.25`. Exact `.24` catalog bytes:
+`34698f9a9f861bab60b96caa78ed03da2557d7d4f902a595f79191d48c38aedd`;
+crosswalk bytes:
+`b0d6d942aa996ca6c7679317bb4f4965f7f2fbc55ff2391989ce035b07496853`.
+All255GUIDs/fixed251/original four complete objects, every non-own full control,
+all220 prior own rows and26 receipts remain frozen. Counts stay12/200/43 and
+crosswalk51 controls/53 associations. Activation alone leaves220 delivered/
+31 pending until actual checked own delivery.
+
+All eight source-specific independent outcomes and exceptions start blank with
+scope/content/time/expiry binding and attribution. Naming policy/adoption,
+sandbox/platform/connectivity/workload purpose, authoritative tenant/intermediate
+root, complete estate depth and effective operations remain human judgments.
+Relative edges exclude the selected anchor/subscriptions, not an asserted tenant
+root. CAF ideal three-to-four, immutable four-level wording and the six-level
+service bound are not interchangeable. Default settings govern new subscriptions,
+not absence of existing root subscriptions; creation authorization does not prove
+every privileged operation. Missing/partial/ambiguous/stale/denied/unsupported/
+over-bound inputs remain unknown. No new live route, tenant query, Policy fetch/
+interpreter, private payload retention, settings/permissions change or operational
+assurance is introduced. Existing adapters, evaluator, bank, sessions, tiers,
+outputs and private original-time accepted/predecessor replay carry the same
+qualified workflow. Exact own implementation wheel/full suite/static/23-case
+compiler proof, eight-job exact-head/CodeQL/security/review and four downloaded
+matching exercised proofs, normal SHA-bound merge, guarded own-GUID receipt and
+checked final-main publication still gate satisfied #154 closure.
+
+The final own accepted implementation wheel SHA256 is
+`366c4aefbc1adf63a3befc9003440c6c1a0d74835c6086f157bda6b0bd81cb5b`.
+All166 package members match checkout, wheel and the dedicated outside-checkout
+site-packages installation importing `.25`. Its full suite ran834 tests:
+833 passed with only the original Windows symlink-privilege skip. All28 own
+preparation/accepted cases pass, including registered independent decisions,
+atomic failure/resume, original-time replay and predecessor/candidate rejection.
+The existing compiler exercised all23 cases without skips or restore; proof
+SHA256 `89bb24ad7a82a8e4738bdf0b6dbc7f32d49db06e29897fdcfe7cd3e37e548ddb`.
+All51 source files pass static typing; formatting/lint, dependency consistency
+and551 local documentation links pass. The initial834-test source run found
+one missed historical interview-bank count assertion; the corrected assertion
+pins the original22 questions after excluding both later additions, while
+requiring24 current questions. The failed run is not final acceptance evidence.
+Preparation wheels/proofs remain separate and do not replace these post-slot
+implementation proofs or the remote merge/delivery gates.
+
+### Cohort 07 implementation and guarded receipt reconciliation
+
+[#161](https://github.com/jonathan-vella/landinglens/pull/161) merged normally as
+`b02116231d76a222b13d1cc375856e883afd81e4` at2026-11-07T03:36:36Z.
+Exact checked head `724244b9dfa5f28c48f1cd459a00458967199835` passed all eight
+push/PR platform jobs in42333701287/42333715145, CodeQL42333712287 and Advanced
+Security42333718319. All11 PR checks and live head/base/main/comments/reviews/
+threads were refreshed both before ready and before normal SHA-bound merge;
+every feedback surface was empty. No admin/force/bypass, auto-merge or
+protection/settings change was used.
+
+All four downloaded exact-head PR compiler artifacts exercised the same23 cases
+without skips: Ubuntu3.12 `13557904526`, Ubuntu3.13 `13559061318`,
+Windows3.12 `13559146640`, Windows3.13 `13559460625`. JSON SHA256:
+`06f956d3ae295abd08fcfea2e6cac46435bda674b78beeefa4268e8c16fd383a`
+on Ubuntu and
+`08fee069c0c3cd032ddd2e3cceb7ed4e94ce6196fc85976c4038d05cbed31a94`
+on Windows. These downloaded proofs match this cohort's actual PR/head, not
+preparation or another cohort's artifacts.
+
+The existing guarded recorder verified actual merged161, both own checked runs,
+all eight platform jobs and all four matching exercised compiler artifacts before
+writing `deliveries.07` and binding every one of the eight actual GUIDs to that
+receipt. Its own implementation wheel is
+`366c4aefbc1adf63a3befc9003440c6c1a0d74835c6086f157bda6b0bd81cb5b`,
+834 tests/833 passed/one original Windows skip. Derived ledger totals are
+**228 delivered / 23 pending / 27 receipts**. All220 earlier rows/26 receipts,
+all255 GUIDs/fixed251/original four full controls, exact historical bytes and
+every own binding remain preserved; dispositions stay12/200/43.
+Checked receipt publication and actual final-main CI, not implementation merge,
+recording, source activation or issue status, determine satisfied #154 completion.
+No new Azure reads, queries, deployment, settings/permissions changes or owner/
+runtime assurances are asserted.
+
+The first receipt-head `00274b5bb09e06326a8e9c8635461efe2a817175` failed all
+eight platform jobs in push42334892706/PR42334908306 because the pending-priority
+table still included delivered cohort07, while its guarded ledger correctly
+derived23 pending GUIDs. CodeQL42334905523 and Advanced Security42334909975
+passed, but that head is not accepted publication evidence. The correction removes
+only the delivered07 pending row and reconciles the current summary to `.25`/
+23 remaining. The unchanged ledger-derived exact-membership assertion now passes;
+no test weakening, receipt/wheel replacement, production code change or bypass.
+Both failed run IDs/logs remain retained as invalidated history. Implementation
+final-main platform42334794664 and CodeQL42334794536 passed independently;
+receipt publication still needs its own fresh exact-head and final-main gates.
+
+## Cohort 07 independent preparation: 2026-11-07
+
+[#154](https://github.com/jonathan-vella/landinglens/issues/154) prepares the
+[eight fixed naming/hierarchy GUIDs](../../references/preparation/batch-07.json)
+and [reviewed source provenance](../../references/preparation/batch-07-sources.json)
+against actual main `e489d7125c2b60669dfe0599cd30ab189984ff43` / `.22`.
+This does not register an accepted successor or interview, activate a matrix,
+change delivery counts/history, open a PR, merge, publish a receipt or close the
+issue. Actual cohorts24/26 and an explicit sole coordinator slot precede those gates.
+
+Existing governance parent projections and saved hierarchy edges feed one bounded,
+typed, unique-known graph. Explicit tenant resource keys can identify planned MGs
+without designating their organizational purpose or tenant-root status. Pinned
+ARM/Bicep settings/default configuration supplies two independent minimized fields;
+AzureRM has no assumed settings resource. No new Collector endpoint or observed
+API allowlist entry is added. Unsupported expressions, versions, unresolved keys,
+duplicates/cycles/conflicting/missing parents, out-of-scope and over100 relevant
+records remain unknown. Relative MG-edge depth excludes the selected anchor and
+subscriptions; it is not a full-estate measurement or a compliance threshold.
+Current CAF ideally three-to-four guidance, immutable four-level wording and the
+service maximum six below tenant root remain distinct source-qualified boundaries.
+
+All eight source-specific human decisions start independently blank with separate
+exceptions, attribution, scope/content/time/expiry binding. Naming policy and actual
+adoption, sandbox operating model, platform/connectivity placement, existing root
+subscriptions, effective privileged operations and workload needs cannot be inferred
+from names, syntax, counts, positive ancestry or humanConfirmed. A default group
+controls future placement, not existing membership; the authorization toggle covers
+creation, not every operation. Preparation-only bank injection exercises existing
+reviews/interviews, tiers/outputs, CLI/local sessions and original-time private replay.
+The genuine no-restore compiler fixture proves explicit keys/parent/settings only,
+not root designation, complete tenant topology or organizational intent.
+
+The final preparation wheel SHA256 is
+`ebc3af929f3044cbe934fc1b3d3974bef5248ff8903cc9a09ed30d4f08c02501`.
+All152 package members match checkout, wheel and the dedicated outside-checkout
+site-packages installation importing unchanged `.22`. Its full suite ran769
+tests:768 passed and only the original Windows symlink-privilege case skipped.
+All21 real compiler cases, including all20 predecessors and the new literal
+MG-key/parent/settings fixture, exercised the existing compiler without skips or
+restore. Compiler proof SHA256:
+`f93b8e6655306d628a48be46701b8c6a08a795b64289aadad9e96691a4dc8bcb`.
+All21 own workflow cases,49-source-file typing, formatting/lint, dependency
+consistency and516 local documentation links pass. A clean-environment import
+first failed on missing hcl2; only the three exact reviewed manifest wheels were
+then restored and hash-verified in this session's own environment. No other
+session installation was used. Preparation proof is not accepted delivery:
+actual then-main reconciliation, accepted registration/replay, exact-head
+eight platform jobs/CodeQL/security/review, four downloaded matching compiler
+proofs, normal SHA-bound merge, guarded own-GUID receipt and checked final-main
+publication remain deferred until the coordinator grants the slot.
 ## Cohort 26 accepted integration: 2026-11-07
 
 The explicit sole coordinator slot follows actual09 implementation152/receipt153

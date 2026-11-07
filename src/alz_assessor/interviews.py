@@ -6,8 +6,147 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.24"
+BANK_VERSION = "2026-11-06.26"
 BANK = {
+    "agreement-budgets-visibility-billing-governance": {
+        "question": (
+            "Decide seven recommendations independently with dated attributable redacted evidence "
+            "and separate exceptions. A03.03: establish actual EA department/account population, "
+            "complete approved allocations and each budget/alert, including "
+            "periods/filters/currency suitability, actual/forecasted semantics, "
+            "authorized required recipients and demonstrated "
+            "delivery/escalation; daily delayed budget evaluation does not stop consumption, and "
+            "subscription/RG metadata proves no enrollment coverage. A03.04: independently "
+            "substantiate every applicable EA DA/AO visibility policy plus appropriate scoped "
+            "permissions and effective audience access; MCA Azure charges and "
+            "partner cost policies "
+            "differ, resource RBAC is not billing authority. A03.05: cite approved authoritative "
+            "EA0148P qualification, Visual Studio rights and actual permitted development/testing "
+            "adoption with current-terms reliability exceptions, not an assessor "
+            "eligibility decision or saving claim. A04.01: independently establish "
+            "MCA notification categories, maintained group-mailbox ownership/continuity, "
+            "appropriate configuration and actual delivery/review/"
+            "escalation; account contact, sold-to, bill-to, invoice email and sign-in destinations "
+            "differ. A04.02: justify MCA profiles versus sections against organization "
+            "and separate-invoice requirements, current complete mapping/roles and "
+            "charge/reservation implications; "
+            "qualify frozen same-profile movement wording with current product exceptions, never "
+            "infer from MGs or cost views. A04.03: independently cite approved "
+            "MCA0148G qualification, "
+            "active Visual Studio subscriber conditions, permitted actual development/testing use "
+            "and reliability exceptions; EA0148P and monthly credits are different. "
+            "A04.04: document and demonstrate actual periodic billing-role audits "
+            "covering direct/inherited/elevated authority, least privilege, cadence "
+            "chosen by the organization, completed findings and "
+            "verified remediation; written process or resource role assignments alone are "
+            "insufficient. Keep each applicability/outcome blank until explicitly "
+            "decided; no shared "
+            "answer, Signals or humanConfirmed produces Verified. Do not retain amounts/currency/"
+            "spend/billing identifiers/account or invoice content/contact/recipient/"
+            "principal/secret "
+            "payloads, and perform no live read, query, alert test, contact/permission change, "
+            "eligibility decision, enrollment or purchase."
+        ),
+        "controls": [
+            "ALZ-54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+            "ALZ-ca0fe401-12ad-46fc-8a7e-86293866a9f6",
+            "ALZ-5cf9f485-2784-49b3-9824-75d9b8bdb57b",
+            "ALZ-6ad5c3dd-e5ea-4ff1-81a4-7886ff87845c",
+            "ALZ-90e87802-602f-4dfb-acea-67c60689f1d7",
+            "ALZ-e81a73f0-84c4-4641-b406-14db3b4d1f50",
+            "ALZ-ae757485-92a4-482a-8bc9-eefe6f5b5ec3",
+        ],
+    },
+    "naming-hierarchy-scoped-authorization": {
+        "question": "Decide all eight GUIDs independently "
+        "using attributable redacted evidence, "
+        "explicit selected "
+        "scope/content/time/expiry binding and "
+        "separate exceptions. C01.01: cite the "
+        "approved organization-specific naming "
+        "standard, covered resource "
+        "types/scopes, component order and "
+        "immutable versus mutable metadata, "
+        "actual adoption, ownership and "
+        "exceptions; Azure "
+        "syntax/examples/counts are not "
+        "approval and no resource names or "
+        "private tag values are retained. "
+        "C02.01: declare the authoritative "
+        "tenant root and ALZ intermediate root, "
+        "exact level-counting convention, "
+        "complete dated hierarchy and justified "
+        "flatness/exceptions; immutable "
+        "four-level wording must be reconciled "
+        "with current CAF ideally three-to-four "
+        "guidance, separately from the "
+        "six-level service limit excluding "
+        "tenant root/subscriptions. Supplied "
+        "relative MG edges exclude the selected "
+        "anchor and subscriptions and do not "
+        "determine estate depth. C02.02: "
+        "explicitly designate the sandbox and "
+        "evidence experimentation, isolation "
+        "from development/test/production, "
+        "guardrails, access, cost/lifecycle and "
+        "actual operating ownership; a label or "
+        "group is insufficient. C02.03: "
+        "designate the platform and intended "
+        "tenant/intermediate parent, "
+        "substantiate direct placement and "
+        "common platform Policy/RBAC and "
+        "accountable ownership; do not infer "
+        "purpose/root from names or parentage. "
+        "C02.04: designate the dedicated "
+        "connectivity subscription and intended "
+        "Connectivity MG, substantiate actual "
+        "membership, required central "
+        "networking/DNS/ER or justified "
+        "alternatives and scale/regional "
+        "exceptions; subscription or networking "
+        "presence does not prove dedicated use. "
+        "C02.05: separately establish "
+        "authoritative tenant root, complete "
+        "existing subscription placement and "
+        "approved exceptions, and the explicit "
+        "default group for future "
+        "subscriptions; defaultManagementGroup "
+        "does not relocate existing "
+        "subscriptions or prove absence at "
+        "root. C02.06: reconcile the explicit "
+        "requireAuthorizationForGroupCreation "
+        "setting attached to independently "
+        "designated tenant root with separately "
+        "evidenced effective least-privileged "
+        "create/move/delete/settings/access "
+        "operations, inheritance, PIM and "
+        "emergency exceptions; the creation "
+        "toggle and settings-read/write role do "
+        "not prove all privileged operations. "
+        "C02.07: bind each designated "
+        "landing-zones child group to approved "
+        "security/compliance/connectivity/feature "
+        "requirements, actual placement and "
+        "effective Policy/ownership; do not "
+        "copy organizational charts or infer "
+        "business purpose from graph shape. "
+        "Missing/partial/ambiguous/stale/denied/unsupported/over-bound "
+        "inputs remain unknown. No tenant "
+        "reads, changes, queries or fabricated "
+        "owner confirmation. Signals and "
+        "humanConfirmed never manufacture "
+        "Verified.",
+        "controls": [
+            "ALZ-cacf55bc-e4e4-46be-96bc-57a5f23a269a",
+            "ALZ-2df27ee4-12e7-4f98-9f63-04722dd69c5b",
+            "ALZ-667313b4-f566-44b5-b984-a859c773e7d2",
+            "ALZ-61623a76-5a91-47e1-b348-ef254c27d42e",
+            "ALZ-8bbac757-1559-4ab9-853e-8908ae28c84c",
+            "ALZ-33b6b780-8b9f-4e5c-9104-9d403a923c34",
+            "ALZ-74d00018-ac6a-49e0-8e6a-83de5de32c19",
+            "ALZ-92481607-d5d1-4e4e-9146-58d3558fd772",
+        ],
+    },
     "recovery-guest-drift-waf-telemetry": {
         "question": (
             "Decide all eight recommendations independently using attributable redacted evidence, "

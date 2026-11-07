@@ -8,6 +8,15 @@ are in the [plan](planning/plan.md).
 
 ## Evidence and outcomes
 
+Cohort07 [accepted source-qualified support](../references/recommendation-batches/batch-07.json)
+in `.25` is not operating assurance or receipted delivery. Relative MG-edge depth below a supplied anchor does not
+designate tenant root or measure the full estate; CAF ideal flatness and the
+six-level service limit are different. Explicit default placement concerns new
+subscriptions, not existing root membership. The creation-authorization boolean
+does not establish effective authorization for all privileged operations.
+Naming policy/adoption, sandbox/platform/connectivity/workload purposes and
+organizational suitability require independent attributable decisions, never
+name/syntax/count/graph-shape inference or a human-confirmation-derived Verified.
 Cohort26 activates [eight independent reviews](../references/recommendation-batches/batch-26.json)
 in `.24` after the explicit checked09/24 slot, preserving exact `.23`, prior
 controls/receipts and all21 predecessor compiler cases. Activation is not delivery;

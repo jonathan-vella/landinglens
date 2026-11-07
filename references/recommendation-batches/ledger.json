@@ -804,6 +804,93 @@
       },
       "wheel_sha256": "00c3eb05a81acf7dbe13acca096169c6ccec16994ed8708c95652ce92d5d4340",
       "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
+    },
+    "07": {
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/161",
+      "merge_commit": "b02116231d76a222b13d1cc375856e883afd81e4",
+      "merged_at": "2026-11-07T03:36:36Z",
+      "checked_head": "724244b9dfa5f28c48f1cd459a00458967199835",
+      "checks": [
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42333701287",
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42333715145"
+      ],
+      "acceptance": "Actual push/PR runs on the merged head passed all eight supported jobs. All four downloaded PR compiler artifacts exercised the same integration cases without skips. Normal exact-head merge and other applicable checks were gated before recording; this receipt does not imply protected-branch enforcement.",
+      "compiler_integration_cases": [
+        "test_bicep.BicepTests.test_actual_installed_compiler_local_success_and_unrestored_failure",
+        "test_segmentation_batch.SegmentationBatchTests.test_real_bicep_nsg_gateway_subnet_flow_without_restore",
+        "test_routing_batch.RoutingBatchTests.test_real_bicep_routing_peering_lb_macsec_connection_no_restore",
+        "test_identity_batch.IdentityBatchTests.test_real_bicep_storage_identity_role_context_without_restore",
+        "test_protection_batch.ProtectionBatchTests.test_real_bicep_protection_outbound_hybrid_no_restore",
+        "test_security_batch.SecurityBatchTests.test_real_bicep_security_configuration_without_restore",
+        "test_expressroute_preparation.ExpressRoutePreparationTests.test_real_bicep_expressroute_cost_capacity_fastpath_without_restore",
+        "test_dns_batch.DnsBatchTests.test_real_bicep_dns_bastion_no_restore",
+        "test_monitoring_preparation.MonitoringPreparationTests.test_real_bicep_monitor_and_gateway_route_join_without_restore",
+        "test_governance_preparation.GovernancePreparationTests.test_real_bicep_governance_without_restore",
+        "test_virtual_wan_preparation.VirtualWanPreparationTests.test_real_bicep_virtual_wan_scoped_configuration_without_restore",
+        "test_identity_resilience_preparation.IdentityResiliencePreparationTests.test_real_bicep_identity_resilience_without_restore",
+        "test_network_policy_preparation.NetworkPolicyPreparationTests.test_real_bicep_policy_gateway_diagnostics_without_restore",
+        "test_logging_preparation.LoggingPreparationTests.test_real_bicep_logging_workspace_extensions_and_alerts_without_restore",
+        "test_tenant_preparation.TenantPreparationTests.test_real_bicep_tenant_configuration_without_restore",
+        "test_policy_strategy_preparation.PolicyStrategyPreparationTests.test_real_bicep_policy_strategy_without_restore",
+        "test_hybrid_identity_preparation.HybridIdentityPreparationTests.test_real_bicep_peering_and_vault_configuration_without_restore",
+        "test_topology_preparation.TopologyPreparationTests.test_real_bicep_vnet_routing_attachment_without_restore",
+        "test_platform_health_preparation.PlatformHealthPreparationTests.test_real_bicep_platform_health_configuration_without_restore",
+        "test_sovereign_preparation.SovereignPreparationTests.test_real_bicep_location_and_tag_configuration_without_restore",
+        "test_operations_preparation.OperationsPreparationTests.test_real_bicep_operations_configuration_without_restore",
+        "test_recovery_preparation.RecoveryPreparationTests.test_real_bicep_recovery_guest_sql_waf_configuration_without_restore",
+        "test_organization_preparation.OrganizationPreparationTests.test_real_bicep_management_keys_parents_settings_without_restore"
+      ],
+      "local_installed_suite": {
+        "tests": 834,
+        "passed": 833,
+        "skipped": 1
+      },
+      "wheel_sha256": "366c4aefbc1adf63a3befc9003440c6c1a0d74835c6086f157bda6b0bd81cb5b",
+      "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
+    },
+    "03": {
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/164",
+      "merge_commit": "592826b4e991f8f8ce0655c6d76e7c8a906f468a",
+      "merged_at": "2026-11-07T04:56:04Z",
+      "checked_head": "d0196d08385d4dfc029249856c53e1c79b3e6e3b",
+      "checks": [
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42339416908",
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42339428464"
+      ],
+      "acceptance": "Actual push/PR runs on the merged head passed all eight supported jobs. All four downloaded PR compiler artifacts exercised the same integration cases without skips. Normal exact-head merge and other applicable checks were gated before recording; this receipt does not imply protected-branch enforcement.",
+      "compiler_integration_cases": [
+        "test_bicep.BicepTests.test_actual_installed_compiler_local_success_and_unrestored_failure",
+        "test_segmentation_batch.SegmentationBatchTests.test_real_bicep_nsg_gateway_subnet_flow_without_restore",
+        "test_routing_batch.RoutingBatchTests.test_real_bicep_routing_peering_lb_macsec_connection_no_restore",
+        "test_identity_batch.IdentityBatchTests.test_real_bicep_storage_identity_role_context_without_restore",
+        "test_protection_batch.ProtectionBatchTests.test_real_bicep_protection_outbound_hybrid_no_restore",
+        "test_security_batch.SecurityBatchTests.test_real_bicep_security_configuration_without_restore",
+        "test_expressroute_preparation.ExpressRoutePreparationTests.test_real_bicep_expressroute_cost_capacity_fastpath_without_restore",
+        "test_dns_batch.DnsBatchTests.test_real_bicep_dns_bastion_no_restore",
+        "test_monitoring_preparation.MonitoringPreparationTests.test_real_bicep_monitor_and_gateway_route_join_without_restore",
+        "test_governance_preparation.GovernancePreparationTests.test_real_bicep_governance_without_restore",
+        "test_virtual_wan_preparation.VirtualWanPreparationTests.test_real_bicep_virtual_wan_scoped_configuration_without_restore",
+        "test_identity_resilience_preparation.IdentityResiliencePreparationTests.test_real_bicep_identity_resilience_without_restore",
+        "test_network_policy_preparation.NetworkPolicyPreparationTests.test_real_bicep_policy_gateway_diagnostics_without_restore",
+        "test_logging_preparation.LoggingPreparationTests.test_real_bicep_logging_workspace_extensions_and_alerts_without_restore",
+        "test_tenant_preparation.TenantPreparationTests.test_real_bicep_tenant_configuration_without_restore",
+        "test_policy_strategy_preparation.PolicyStrategyPreparationTests.test_real_bicep_policy_strategy_without_restore",
+        "test_hybrid_identity_preparation.HybridIdentityPreparationTests.test_real_bicep_peering_and_vault_configuration_without_restore",
+        "test_topology_preparation.TopologyPreparationTests.test_real_bicep_vnet_routing_attachment_without_restore",
+        "test_platform_health_preparation.PlatformHealthPreparationTests.test_real_bicep_platform_health_configuration_without_restore",
+        "test_sovereign_preparation.SovereignPreparationTests.test_real_bicep_location_and_tag_configuration_without_restore",
+        "test_operations_preparation.OperationsPreparationTests.test_real_bicep_operations_configuration_without_restore",
+        "test_recovery_preparation.RecoveryPreparationTests.test_real_bicep_recovery_guest_sql_waf_configuration_without_restore",
+        "test_organization_preparation.OrganizationPreparationTests.test_real_bicep_management_keys_parents_settings_without_restore",
+        "test_billing_preparation.BillingPreparationTests.test_real_bicep_budget_configuration_without_restore"
+      ],
+      "local_installed_suite": {
+        "tests": 858,
+        "passed": 857,
+        "skipped": 1
+      },
+      "wheel_sha256": "af591d9c285124df1c600b92e77ef9f85d36bdbe5860f3eff330d9ea98e83c0f",
+      "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
     }
   },
   "recommendations": [
@@ -1503,12 +1590,46 @@
       "baseline_control_sha256": "fa768e1a524e6fab3c8b1dfca3857a71a75100f4778b347fc2cf65e5da54ca01",
       "design_area": "Azure billing and Active Directory tenant",
       "batch": "03",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "A03.03",
+        "guid": "54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+        "classification": "assisted",
+        "sources": [
+          "ea-guidance",
+          "mca-guidance",
+          "budget-guidance",
+          "budget-arm",
+          "terraform-budget-subscription",
+          "terraform-budget-resource_group",
+          "terraform-budget-implementation",
+          "cost-scopes",
+          "budget-rest-2019",
+          "budget-rest-2024",
+          "rest-spec-reuse"
+        ],
+        "review_resource_types": [
+          "Microsoft.Consumption/budgets"
+        ],
+        "review_fact_paths": [
+          "budgetConfiguration"
+        ],
+        "evidence_requirements": [
+          "Preparation: unique known supplied subscription/RG budget parent inside selected scope, explicit reviewed API provenance, time grain and bounded up-to-five notification enabled/operator/type metadata only. Pinned REST2019-10-01 declares Actual only despite AzureRM4.50.0 Forecasted wording; Forecasted projects only with explicit2024-08-01 provenance, not missing/unreviewed API versions. No runtime support is inferred. Missing defaults stay unknown; dates, amounts, currencies, spend, thresholds, filters, dictionary keys and recipients are withheld. Tutorial0.01 versus REST/provider0..1000 wording is not an assessor threshold.",
+          "Reviewer decision: independently establish EA applicability and authoritative department/account population, approved allocation and owner mapping; reconcile each required budget and associated alert against that complete population using redacted attributable references, not resource names or subscription counts. MCA profiles/sections and partner-managed structures are different.",
+          "Reviewer decision: separately substantiate appropriate periods/filters/currency compatibility, actual/forecasted semantics, authorized required recipients and current delivery/review/escalation. Cost data is delayed and evaluation daily; budget alerts do not stop consumption or enforce spending. Action groups are supported only at subscription/RG scope; portal/API recipient requirements differ."
+        ],
+        "limitations": "Narrow supplied resource configuration is not complete EA department/account allocation, active-period evaluation, acceptable financial limits, billing authority, recipients or actual notification delivery. No new budget/billing reads, queries, alert test, contact change or financial action. Generic ARM tenant/MG lists do not override service restrictions; supported projection deliberately excludes billing/MG scope.",
+        "flags": []
+      },
+      "issue": 157,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/164",
+      "merge_commit": "592826b4e991f8f8ce0655c6d76e7c8a906f468a",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.03: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "ca0fe401-12ad-46fc-8a7e-86293866a9f6",
@@ -1518,12 +1639,34 @@
       "baseline_control_sha256": "78dd6782baf3f1149cbee554a49550943e6af98cf4c983f62a5a5006dfbae6ee",
       "design_area": "Azure billing and Active Directory tenant",
       "batch": "03",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "A03.04",
+        "guid": "ca0fe401-12ad-46fc-8a7e-86293866a9f6",
+        "classification": "assisted",
+        "sources": [
+          "ea-guidance",
+          "budget-access",
+          "ea-notification",
+          "cost-scopes",
+          "cost-csp"
+        ],
+        "evidence_requirements": [
+          "Preparation: current EA department scope needs DA View Charges; enrollment account and Azure resource scopes need AO View Charges plus the applicable scoped permissions. Enterprise administrator access differs. No billing-policy or role data is collected.",
+          "Reviewer decision: establish each applicable EA enrollment and independent DA/AO policy review with attributable redacted current settings and authorized intended-audience evidence; document omissions, denied access and exceptions rather than inferring settings from resource RBAC.",
+          "Reviewer decision: demonstrate actual appropriate cost visibility at each required scope, propagation and cross-tenant qualifications without retaining data or running a query. MCA Azure charges policy and partner Azure Plan customer cost visibility are distinct and never substitutes for EA DA/AO evidence."
+        ],
+        "limitations": "Configuration flags, Cost Management views and resource roles cannot prove billing authority or effective access. No synthetic commerce/Graph resource, account/role/identity lookup, live policy read or permission change. Non-EA applicability needs its own bound rationale.",
+        "flags": []
+      },
+      "issue": 157,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/164",
+      "merge_commit": "592826b4e991f8f8ce0655c6d76e7c8a906f468a",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.03: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "5cf9f485-2784-49b3-9824-75d9b8bdb57b",
@@ -1533,12 +1676,33 @@
       "baseline_control_sha256": "6ff4a2afb4a3b733d3006919ae516a33dde30d52c219feed043552707c799c0d",
       "design_area": "Azure billing and Active Directory tenant",
       "batch": "03",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "A03.05",
+        "guid": "5cf9f485-2784-49b3-9824-75d9b8bdb57b",
+        "classification": "assisted",
+        "sources": [
+          "enterprise-devtest-offer",
+          "ea-guidance",
+          "ea-devtest-current",
+          "azure-plan-devtest-offer"
+        ],
+        "evidence_requirements": [
+          "Preparation: actual0148P Enterprise Dev/Test offer is EA-specific with account enablement, Visual Studio software rights and development/testing restrictions. The original offer's retired EA portal/App Center wording must be qualified by current portal guidance, not silently rewritten.",
+          "Reviewer decision: independently cite an approved authoritative redacted qualification and workload-usage review for the applicable EA offer, active Visual Studio rights, supported software and non-production development/testing purposes; do not make an eligibility or legal determination in the assessor.",
+          "Reviewer decision: substantiate actual permitted adoption and separately approved reliability/availability exceptions against current terms. Non-production labels, budget metadata and public discounts establish no entitlement, purchase, achieved saving or general financially backed SLA."
+        ],
+        "limitations": "No financial outcome or eligibility decision, price calculation, account enrollment, purchase, private contract/workload/license inventory or offer detection. Azure Plan0148G/MCA and monthly Visual Studio credits are different offers. Unknown or not-applicable remains explicit and independently justified.",
+        "flags": []
+      },
+      "issue": 157,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/164",
+      "merge_commit": "592826b4e991f8f8ce0655c6d76e7c8a906f468a",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.03: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "6ad5c3dd-e5ea-4ff1-81a4-7886ff87845c",
@@ -1548,12 +1712,33 @@
       "baseline_control_sha256": "0dc4d345df6c97050d4ced14c30d3d177f9dc3cb11daedff62429ff621a0c4ce",
       "design_area": "Azure billing and Active Directory tenant",
       "batch": "03",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "A04.01",
+        "guid": "6ad5c3dd-e5ea-4ff1-81a4-7886ff87845c",
+        "classification": "assisted",
+        "sources": [
+          "mca-guidance",
+          "billing-contact-semantics",
+          "ea-notification",
+          "mca-roles"
+        ],
+        "evidence_requirements": [
+          "Preparation: MCA agreement notification contact, legal sold-to, per-profile bill-to, invoice email, user contact and sign-in address have distinct semantics. Critical service notifications remain sent to sign-in; EA Notification Contact is not the Bill to invoice contact.",
+          "Reviewer decision: establish applicable agreement-specific categories and authorized configuration/ownership through redacted dated references; independently confirm appropriate maintained group-mailbox coverage, continuity, access and required recipients without recording their addresses or memberships.",
+          "Reviewer decision: separately substantiate actual delivery, review and escalation of all required categories with attributable redacted operation evidence and exceptions. A configured address, budget notification or action group cannot establish mailbox suitability or end-to-end operation."
+        ],
+        "limitations": "No contact/notification/mailbox read or change, sent message, email verification, sign-in or retained address, phone, webhook or message content. Public profile/contact instructions do not prove a specific billing-account setting or all notification categories.",
+        "flags": []
+      },
+      "issue": 157,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/164",
+      "merge_commit": "592826b4e991f8f8ce0655c6d76e7c8a906f468a",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.03: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "90e87802-602f-4dfb-acea-67c60689f1d7",
@@ -1563,12 +1748,34 @@
       "baseline_control_sha256": "4ab6dfdf49244d9b4b37c362b61abf44ded4ab25cc59319e98b7649125fbc365",
       "design_area": "Azure billing and Active Directory tenant",
       "batch": "03",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "A04.02",
+        "guid": "90e87802-602f-4dfb-acea-67c60689f1d7",
+        "classification": "assisted",
+        "sources": [
+          "mca-organization",
+          "mca-guidance",
+          "mca-roles",
+          "cost-scopes",
+          "csp-guidance"
+        ],
+        "evidence_requirements": [
+          "Preparation: MCA profiles represent invoices and sections group costs. Current organization guidance permits product moves with exceptions and does not amend historical invoices; frozen CAF same-profile wording is retained and qualified, not treated as an evaluator.",
+          "Reviewer decision: independently establish MCA applicability, approved organizational allocation and justified profile versus section design, including separate-invoice need and charge/reservation implications, from redacted authoritative decisions. EA departments/accounts and partner MPA/customer structures are not equivalent.",
+          "Reviewer decision: demonstrate complete actual profile/section/subscription mapping, scoped ownership, current billing-role authority and operating reviews without retaining identifiers, invoices or amounts. Saved cost views, resource hierarchy and counts do not prove effective organization or financial suitability."
+        ],
+        "limitations": "No new billing objects or inferred hierarchy, private account/profile/invoice content, financial advice, profile creation, product movement or queries. Extra profiles can affect charges/reservations; no universal number or cost threshold is prescribed.",
+        "flags": []
+      },
+      "issue": 157,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/164",
+      "merge_commit": "592826b4e991f8f8ce0655c6d76e7c8a906f468a",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.03: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "e81a73f0-84c4-4641-b406-14db3b4d1f50",
@@ -1578,12 +1785,33 @@
       "baseline_control_sha256": "3359386f617f921314617dab0d232d7ac48fe4c22c183976cda07c04295297ed",
       "design_area": "Azure billing and Active Directory tenant",
       "batch": "03",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "A04.03",
+        "guid": "e81a73f0-84c4-4641-b406-14db3b4d1f50",
+        "classification": "assisted",
+        "sources": [
+          "azure-plan-devtest-offer",
+          "mca-guidance",
+          "enterprise-devtest-offer",
+          "csp-guidance"
+        ],
+        "evidence_requirements": [
+          "Preparation: actual0148G Azure Plan for DevTest requires MCA and active Visual Studio subscriber conditions, development/testing-only usage and qualified SLA exclusions; it is not EA0148P or monthly Visual Studio credits. No partner agreement or offer availability is inferred.",
+          "Reviewer decision: independently cite approved redacted authoritative offer qualification and permitted workload/software use, active subscriber rights, applicable agreement/channel and current availability; the assessor does not decide eligibility or purchase an offer.",
+          "Reviewer decision: demonstrate actual authorized adoption, non-production development/testing boundaries and approved reliability exceptions against current terms. Public lower-rate examples and a non-production tag do not prove entitlement, actual saving or financially backed service availability."
+        ],
+        "limitations": "No eligibility/financial/legal determination, prices, license/workload inventories, enrollment, subscription creation, purchase or customer-specific assurance. Qualification and exceptions are independent of EA Dev/Test and other six recommendations.",
+        "flags": []
+      },
+      "issue": 157,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/164",
+      "merge_commit": "592826b4e991f8f8ce0655c6d76e7c8a906f468a",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.03: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "ae757485-92a4-482a-8bc9-eefe6f5b5ec3",
@@ -1593,12 +1821,32 @@
       "baseline_control_sha256": "33a4f354d9958e61e5b07388b0a9acdfbd617d675229a8260fd67e81973d09a2",
       "design_area": "Azure billing and Active Directory tenant",
       "batch": "03",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "A04.04",
+        "guid": "ae757485-92a4-482a-8bc9-eefe6f5b5ec3",
+        "classification": "manual",
+        "sources": [
+          "mca-guidance",
+          "mca-roles",
+          "ea-notification"
+        ],
+        "evidence_requirements": [
+          "Preparation: MCA billing account/profile/section roles and inherited permissions differ from resource RBAC. Parent permissions cannot be removed below; current billing elevation paths and role/task differences require explicit review.",
+          "Reviewer decision: independently establish applicable agreement scope and approved documented periodic audit process, accountable roles, organization-chosen cadence, coverage of direct/inherited/elevated access, least privilege and exception/remediation ownership through redacted attributable references.",
+          "Reviewer decision: substantiate actual dated completed audit, findings, follow-up, remediation verification and continuity, not merely a written policy or role inventory. EA WSA-only new assignment guidance begins November16,2026 and is not MCA audit evidence or a retroactive claim about existing MSA roles."
+        ],
+        "limitations": "Manual process and actual operation only; no invented cadence, new role/identity lookup, principal retention, access change, audit execution or effective authorization claim. Human confirmation and Signals never manufacture Verified.",
+        "flags": []
+      },
+      "issue": 157,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/164",
+      "merge_commit": "592826b4e991f8f8ce0655c6d76e7c8a906f468a",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.03: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "348ef254-c27d-442e-abba-c7571559ab91",
@@ -2572,12 +2820,31 @@
       "baseline_control_sha256": "9f76fa5f9c5950dff8af62661aa272eabd6ca23862b2bf0d62079283824ddaba",
       "design_area": "Resource organization",
       "batch": "07",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "C01.01",
+        "guid": "cacf55bc-e4e4-46be-96bc-57a5f23a269a",
+        "classification": "assisted",
+        "sources": [
+          "naming-standard",
+          "learn-reuse"
+        ],
+        "evidence_requirements": [
+          "Preparation: current guidance calls for a tailored organization-specific standard and per-resource naming scopes/length/characters. Examples, valid Azure syntax and counts do not establish an approved standard. No raw resource names or private tag values are retained.",
+          "Reviewer decision: cite approved resource-type/scope coverage, component order, immutable naming versus mutable metadata, accountable ownership and actual adoption using redacted dated references.",
+          "Reviewer decision: independently reconcile Azure resource constraints, sensitive-data exclusion, migration/legacy exceptions and ongoing maintenance. Do not prescribe a universal delimiter, regex or example naming convention."
+        ],
+        "limitations": "Assisted document workflow, no machine naming compliance predicate. Public examples and name syntax cannot prove an approved naming standard or estate-wide adoption.",
+        "flags": []
+      },
+      "issue": 154,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/161",
+      "merge_commit": "b02116231d76a222b13d1cc375856e883afd81e4",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.07: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "2df27ee4-12e7-4f98-9f63-04722dd69c5b",
@@ -2587,12 +2854,39 @@
       "baseline_control_sha256": "1cf8ea67494a07d6b1c569bd9a93ca44d69ff11835145ae23ccd8333bab3f8ad",
       "design_area": "Resource organization",
       "batch": "07",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "C02.01",
+        "guid": "2df27ee4-12e7-4f98-9f63-04722dd69c5b",
+        "classification": "assisted",
+        "sources": [
+          "management-design",
+          "management-overview",
+          "management-arm",
+          "terraform-management"
+        ],
+        "review_resource_types": [
+          "Microsoft.Management/managementGroups"
+        ],
+        "review_fact_paths": [
+          "managementParentId"
+        ],
+        "evidence_requirements": [
+          "Preparation: unique known typed explicit positive parent graph bounded to 100 relevant supplied records. Relative depth counts MG edges below the selected anchor and excludes subscriptions; no selected scope/name is designated tenant root and no complete estate is inferred.",
+          "Reviewer decision: independently designate authoritative tenant root and ALZ intermediate root, state the level-counting convention and substantiate a complete original-time scoped hierarchy and flatness with justified exceptions.",
+          "Reviewer decision: reconcile immutable no-more-than-four wording with current CAF ideally three-to-four levels. Separately review the service maximum six below tenant root excluding subscriptions; do not substitute that limit or relative subtree depth for recommendation compliance."
+        ],
+        "limitations": "Partial graph context only. No four-level automated threshold, complete estate depth, root designation, policy inheritance or organizational suitability inferred.",
+        "flags": []
+      },
+      "issue": 154,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/161",
+      "merge_commit": "b02116231d76a222b13d1cc375856e883afd81e4",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.07: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "667313b4-f566-44b5-b984-a859c773e7d2",
@@ -2602,12 +2896,38 @@
       "baseline_control_sha256": "befeb8a6f171dae90989ebba2cd42e22f1c26fffe375af18a142d652a5c551d7",
       "design_area": "Resource organization",
       "batch": "07",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "C02.02",
+        "guid": "667313b4-f566-44b5-b984-a859c773e7d2",
+        "classification": "assisted",
+        "sources": [
+          "management-design",
+          "management-arm",
+          "terraform-management"
+        ],
+        "review_resource_types": [
+          "Microsoft.Management/managementGroups"
+        ],
+        "review_fact_paths": [
+          "managementParentId"
+        ],
+        "evidence_requirements": [
+          "Preparation: typed positive MG parentage only. A sandbox-like identifier or graph position never designates experimentation purpose or an operating model.",
+          "Reviewer decision: explicitly designate the sandbox boundary and evidence approved experimentation and isolation from development/test/production, with actual accountable ownership.",
+          "Reviewer decision: substantiate appropriate Policy/access guardrails, cost controls, lifecycle/cleanup and exceptions independently. Group existence does not prove safe experimentation or effective governance."
+        ],
+        "limitations": "No name-derived sandbox, runtime isolation, policy enforcement, expenditure cap or owner approval.",
+        "flags": []
+      },
+      "issue": 154,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/161",
+      "merge_commit": "b02116231d76a222b13d1cc375856e883afd81e4",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.07: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "61623a76-5a91-47e1-b348-ef254c27d42e",
@@ -2617,12 +2937,39 @@
       "baseline_control_sha256": "5f42eaab0e4f228eff300b9b129be11642378a05c3d7780a92951fe959b7cdb0",
       "design_area": "Resource organization",
       "batch": "07",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "C02.03",
+        "guid": "61623a76-5a91-47e1-b348-ef254c27d42e",
+        "classification": "assisted",
+        "sources": [
+          "management-design",
+          "management-overview",
+          "management-arm",
+          "terraform-management"
+        ],
+        "review_resource_types": [
+          "Microsoft.Management/managementGroups"
+        ],
+        "review_fact_paths": [
+          "managementParentId"
+        ],
+        "evidence_requirements": [
+          "Preparation: unique known typed direct MG parent references, not resource/display names, provide partial placement context. Current ALZ intermediate root sits directly below tenant root.",
+          "Reviewer decision: independently designate the platform and intended tenant/intermediate root according to approved architecture, then substantiate actual direct placement and justified customization.",
+          "Reviewer decision: substantiate common platform Policy/RBAC, effective access, ownership and required platform child populations with redacted evidence; parentage alone does not establish purpose or enforcement."
+        ],
+        "limitations": "Neither selected scope nor root/platform-like names establish organizational roles, intended direct parent, complete hierarchy, billing aggregation or effective Policy/RBAC.",
+        "flags": []
+      },
+      "issue": 154,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/161",
+      "merge_commit": "b02116231d76a222b13d1cc375856e883afd81e4",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.07: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "8bbac757-1559-4ab9-853e-8908ae28c84c",
@@ -2632,12 +2979,39 @@
       "baseline_control_sha256": "0ad9d603106eaa64076efc51d67a795dbea0fd3052bb6351287506eed4ee260a",
       "design_area": "Resource organization",
       "batch": "07",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "C02.04",
+        "guid": "8bbac757-1559-4ab9-853e-8908ae28c84c",
+        "classification": "assisted",
+        "sources": [
+          "management-design",
+          "management-overview",
+          "terraform-management-association"
+        ],
+        "review_resource_types": [
+          "Microsoft.Management/managementGroups",
+          "Microsoft.Resources/subscriptions"
+        ],
+        "review_fact_paths": [
+          "managementParentId"
+        ],
+        "evidence_requirements": [
+          "Preparation: existing saved explicit subscription-parent edges require unique known typed subscription and parent resources in the supplied graph. Unsupported association input, absent resource or partial joins remain unknown.",
+          "Reviewer decision: explicitly designate the dedicated connectivity subscription and intended Connectivity MG, substantiate actual membership and dedicated platform use with redacted dated references.",
+          "Reviewer decision: reconcile required networking/DNS/ExpressRoute services or justified topology alternatives, accountable operations and scale/regional subscription exceptions. A subscription or network resource count proves neither dedication nor completeness."
+        ],
+        "limitations": "Positive membership is not dedicated connectivity purpose, required-service coverage, actual network reachability, quota/capacity or operational ownership.",
+        "flags": []
+      },
+      "issue": 154,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/161",
+      "merge_commit": "b02116231d76a222b13d1cc375856e883afd81e4",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.07: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "33b6b780-8b9f-4e5c-9104-9d403a923c34",
@@ -2647,12 +3021,42 @@
       "baseline_control_sha256": "c3f8b7f0f924da24c01d77e91182ec72bea8a6a18ed58631e005ea8dffd61fe2",
       "design_area": "Resource organization",
       "batch": "07",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "C02.05",
+        "guid": "33b6b780-8b9f-4e5c-9104-9d403a923c34",
+        "classification": "assisted",
+        "sources": [
+          "management-design",
+          "hierarchy-protection",
+          "hierarchy-settings-arm",
+          "management-overview"
+        ],
+        "review_resource_types": [
+          "Microsoft.Management/managementGroups",
+          "Microsoft.Resources/subscriptions",
+          "Microsoft.Management/managementGroups/settings"
+        ],
+        "review_fact_paths": [
+          "managementParentId",
+          "defaultManagementGroup"
+        ],
+        "evidence_requirements": [
+          "Preparation: explicit defaultManagementGroup reference on settings/default attached to the selected known anchor, joined to a unique known MG in the supplied graph; no implicit defaults. It controls future subscriptions, not existing placement.",
+          "Reviewer decision: independently designate authoritative tenant root, establish the complete dated actual subscription-parent population and substantiate no root-level subscriptions or justified explicit exceptions.",
+          "Reviewer decision: independently approve and evidence the default dedicated group for future subscriptions and its appropriate controls. Default configuration, zero selected records and inventory_complete cannot prove existing root-subscription absence."
+        ],
+        "limitations": "No absence predicate or root designation. A supplied default setting neither relocates existing subscriptions nor proves it is effective at the actual tenant root.",
+        "flags": []
+      },
+      "issue": 154,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/161",
+      "merge_commit": "b02116231d76a222b13d1cc375856e883afd81e4",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.07: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "74d00018-ac6a-49e0-8e6a-83de5de32c19",
@@ -2662,12 +3066,40 @@
       "baseline_control_sha256": "98555b8c447c653a5057aeb290815b53eb5e6e027f724fcd9a0c563d4144dcdd",
       "design_area": "Resource organization",
       "batch": "07",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "C02.06",
+        "guid": "74d00018-ac6a-49e0-8e6a-83de5de32c19",
+        "classification": "assisted",
+        "sources": [
+          "management-design",
+          "hierarchy-protection",
+          "hierarchy-settings-arm",
+          "management-overview"
+        ],
+        "review_resource_types": [
+          "Microsoft.Management/managementGroups",
+          "Microsoft.Management/managementGroups/settings"
+        ],
+        "review_fact_paths": [
+          "requireAuthorizationForGroupCreation"
+        ],
+        "evidence_requirements": [
+          "Preparation: only explicit boolean requireAuthorizationForGroupCreation from pinned settings/default attached to the selected unique known anchor. Missing, wrong-type, unsupported-version, denied or unbound input remains unknown.",
+          "Reviewer decision: independently designate authoritative tenant root and substantiate the actual setting there. Its source-qualified meaning is root write permission for group creation, not all management-group operations.",
+          "Reviewer decision: separately substantiate effective least-privileged create/move/delete/settings/access operations, inherited roles/deny/conditions, PIM and emergency exceptions. Settings read/write permission itself grants no other hierarchy/resource access; counts or humanConfirmed do not establish authorization."
+        ],
+        "limitations": "Creation-authorization configuration only, not a whole-guidance predicate, complete effective permissions, privileged-user designation or runtime authorization assurance.",
+        "flags": []
+      },
+      "issue": 154,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/161",
+      "merge_commit": "b02116231d76a222b13d1cc375856e883afd81e4",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.07: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "92481607-d5d1-4e4e-9146-58d3558fd772",
@@ -2677,12 +3109,39 @@
       "baseline_control_sha256": "c3d8b516de760f83d0fba059072ce9887719fe66806037246df3c876bb60fe6e",
       "design_area": "Resource organization",
       "batch": "07",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "upstream_id": "C02.07",
+        "guid": "92481607-d5d1-4e4e-9146-58d3558fd772",
+        "classification": "assisted",
+        "sources": [
+          "management-design",
+          "management-overview",
+          "management-arm",
+          "terraform-management"
+        ],
+        "review_resource_types": [
+          "Microsoft.Management/managementGroups"
+        ],
+        "review_fact_paths": [
+          "managementParentId"
+        ],
+        "evidence_requirements": [
+          "Preparation: supplied explicit typed direct parentage only. Current CAF places workload-type groups under the landing-zones parent and bases grouping on security/compliance/connectivity/feature needs, not a copied organization chart.",
+          "Reviewer decision: explicitly designate landing-zones parent and each workload-type group, reconcile immutable root-level wording with approved current ALZ intermediate-root architecture and substantiate actual placement.",
+          "Reviewer decision: bind each grouping to approved workload requirements, appropriate effective Policy and accountable ownership with independent exceptions. Never infer business purpose from names, graph shape, hierarchy depth or generic Policy presence."
+        ],
+        "limitations": "No label-derived workload requirement, organizational root, approved grouping, complete workload population or effective policy claim.",
+        "flags": []
+      },
+      "issue": 154,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/161",
+      "merge_commit": "b02116231d76a222b13d1cc375856e883afd81e4",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.07: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "49b82111-2df2-47ee-912e-7f983f630472",

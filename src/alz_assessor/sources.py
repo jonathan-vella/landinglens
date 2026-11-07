@@ -20,6 +20,8 @@ from .terraform import Analyzer, InputError
 
 PROVIDER_VERSION = "4.50.0"
 TF_TYPES = {
+    "azurerm_consumption_budget_subscription": "Microsoft.Consumption/budgets",
+    "azurerm_consumption_budget_resource_group": "Microsoft.Consumption/budgets",
     "azurerm_recovery_services_vault": "Microsoft.RecoveryServices/vaults",
     "azurerm_data_protection_backup_vault": "Microsoft.DataProtection/backupVaults",
     "azurerm_backup_protected_vm": (
@@ -169,6 +171,7 @@ def property_at(properties: Any, path: str) -> Any:
 
 
 def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
+    from .billing_evidence import projected_properties as billing_properties
     from .governance_evidence import projected_properties as governance_properties
     from .identity_evidence import IDENTITY_KINDS, identity_summary, role_properties
     from .identity_evidence import projected_properties as identity_properties
@@ -186,6 +189,7 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     if kind == "azurerm_role_assignment":
         return role_properties(properties, terraform=True)
     result = _tf_properties(kind, properties)
+    result.update(billing_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     if TF_TYPES.get(kind, "").lower() in IDENTITY_KINDS and "identity" in properties:
         result["identitySummary"] = identity_summary(
             properties["identity"], terraform=True, resource_type=TF_TYPES[kind]
@@ -356,6 +360,11 @@ def resource_scope(scope: str | None, properties: dict[str, Any]) -> str | None:
 
 
 def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str | None:
+    from .billing_evidence import TF_KINDS as BILLING_TF_KINDS
+    from .billing_evidence import terraform_identity as budget_identity
+
+    if kind in BILLING_TF_KINDS:
+        return budget_identity(scope, kind, values)
     from .operations_evidence import TF_KINDS, terraform_identity
 
     if kind in TF_KINDS:
@@ -571,6 +580,10 @@ def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str 
         if not isinstance(parent, str) or not parent or "/" in parent or not isinstance(name, str):
             return None
         name = parent + "/" + name
+    if kind == "azurerm_management_group":
+        from .organization_evidence import explicit_identity
+
+        return explicit_identity(TF_TYPES[kind], name, scope)
     return derive_id(resource_scope(scope, values), TF_TYPES.get(kind, kind), name)
 
 

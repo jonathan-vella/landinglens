@@ -19,7 +19,7 @@ OUTCOMES = {"pass", "fail", "unknown", "error", "manual", "not_applicable"}
 STATES = {"known", "unknown", "inaccessible", "error", "absent"}
 ARM_ID = re.compile(
     r"^/(?:subscriptions/[0-9a-f-]{36}(?:/resourceGroups/[^/]+)?|"
-    r"providers/Microsoft.Management/managementGroups/[^/]+)"
+    r"providers/Microsoft.Management/managementGroups/[^/]+(?:/settings/default)?)"
     r"(?:/providers/[^/]+(?:/[^/]+/[^/]+)+)?$",
     re.IGNORECASE,
 )
@@ -335,12 +335,14 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                 ):
                     raise InputError("Review resource preparation requires 1-10 explicit types")
             if "review_fact_paths" in control:
+                from .billing_evidence import PATHS as BILLING_PATHS
                 from .dns_evidence import PATHS as DNS_PATHS
                 from .identity_evidence import PATHS as IDENTITY_PATHS
                 from .key_lifecycle_evidence import PATHS as KEY_PATHS
                 from .logging_evidence import PATHS as LOGGING_PATHS
                 from .network_policy_evidence import PATHS as NETWORK_POLICY_PATHS
                 from .operations_evidence import PATHS as OPERATIONS_PATHS
+                from .organization_evidence import PATHS as ORGANIZATION_PATHS
                 from .platform_health_evidence import PATHS as PLATFORM_HEALTH_PATHS
                 from .policy_strategy_evidence import PATHS as POLICY_STRATEGY_PATHS
                 from .recovery_evidence import PATHS as RECOVERY_PATHS
@@ -464,6 +466,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                             | DNS_PATHS
                             | IDENTITY_PATHS
                             | TENANT_PATHS
+                            | BILLING_PATHS
                             | NETWORK_POLICY_PATHS
                             | VWAN_PATHS
                             | POLICY_STRATEGY_PATHS
@@ -471,6 +474,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                             | PLATFORM_HEALTH_PATHS
                             | RECOVERY_PATHS
                             | TOPOLOGY_PATHS
+                            | ORGANIZATION_PATHS
                             | OPERATIONS_PATHS
                         )
                         for path in paths

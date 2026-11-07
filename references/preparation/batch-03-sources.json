@@ -1,0 +1,206 @@
+{
+  "batch": "03",
+  "review_state": "preparation-only-reviewed",
+  "sources": [
+    {
+      "id": "csp-guidance",
+      "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-cloud-solution-provider#design-recommendations",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-cloud-solution-provider#design-recommendations",
+      "sha256": "8eef1041235e7194bc3e47fa9918cb7276be99d958bf0b794552fc5ea14df39e",
+      "retrieved_at": "2026-11-07T01:54:17.557534+00:00",
+      "revision": "e881a31e3b8bb9b6425939609d9a9fc6e7405be5",
+      "finding": "Partner manages MPA and is the first support contact; agree case creation/escalation and use granular resource delegation and GDAP appropriately. GDAP directory authority and Lighthouse resource delegation are distinct; actual support process stays manual.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "mca-guidance",
+      "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations",
+      "sha256": "6ae411a4190d677760c23a0c6a178f75cc4cc9cd64326ea9cfc5861f9a51f1f4",
+      "retrieved_at": "2026-11-07T01:54:17.726322+00:00",
+      "revision": "3bebc7ff1c27a170d5fb41b9df844cc5b9a8fa7a",
+      "finding": "MCA uses billing account/profile/invoice-section hierarchy, not EA departments/accounts. Billing roles are distinct from Azure RBAC and cannot be assigned at MG/RG. Reports, mailbox suitability and approved organizational mapping need separate evidence.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "ea-guidance",
+      "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement#design-considerations",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement#design-considerations",
+      "sha256": "473df6dc1143ee3fddad7f2b60371c2fe491c8c64ea2dd9f761c33fd0a0ffaa7",
+      "retrieved_at": "2026-11-07T01:54:17.864585+00:00",
+      "revision": "3bebc7ff1c27a170d5fb41b9df844cc5b9a8fa7a",
+      "finding": "EA departments/accounts/subscriptions differ from resource MG hierarchy and MCA. EA portal retired in February 2024; department quota is reporting, not enforcement. Actual agreement, owners and suitable billing separation cannot be inferred.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "ea-notification",
+      "url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/direct-ea-administration#manage-notification-contacts",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/direct-ea-administration#manage-notification-contacts",
+      "sha256": "8be2c72d41654e15d849da97e07cc7eebc6c8366219e99089a1cac27a44f9618",
+      "retrieved_at": "2026-11-07T01:54:18.074584+00:00",
+      "revision": "f8867ca6fa353f27dbab4ad997734ed9885eea72",
+      "finding": "EA notification contacts receive selected usage/user/lifecycle notifications without billing access; invoices go separately to Bill to contact. Group mailbox ownership, coverage and delivery require manual evidence. Upcoming 2026-11-16 WSA-only new billing role assignments are dated guidance, not a retroactive claim about existing roles.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "cost-scopes",
+      "url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/understand-work-scopes",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/understand-work-scopes",
+      "sha256": "e68de3fc1f9919f3a77df59b478da23c577d3df0822f5928220bb81087569115",
+      "retrieved_at": "2026-11-07T01:54:18.241132+00:00",
+      "revision": "e2507938b2a97d1c5db073fc57046b84254900a0",
+      "finding": "Azure RBAC/resource scopes and agreement billing scopes differ. MCA Cost Management does not currently support MGs; cost-details MG support is absent for EA and MCA. View configuration grants no billing/invoice visibility or completeness.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "cost-csp",
+      "url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/get-started-partners",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/get-started-partners",
+      "sha256": "1586d1489f21abb197e0d9985465c460da7623dc34b6f3fd3e1b9bf374390c41",
+      "retrieved_at": "2026-11-07T01:54:18.441490+00:00",
+      "revision": "347827720157742c186e6c6cca8c96c90564272d",
+      "finding": "CSP customer cost access depends on Azure Plan/MCA, provider visibility policy and customer RBAC; retail customer views differ from partner invoice prices. Historical costs do not move to a new partner billing relationship. No prices or usage retained.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "learn-terms",
+      "url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "resolved_url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "sha256": "6b2a36ad19e8305e32d5ec0755b9d412e5633e8bf53aed93a1249c74b3c2a7ce",
+      "retrieved_at": "2026-11-07T01:54:18.615204+00:00",
+      "revision": "9fd90ed833034800434458aef187ba08d8dc9d5b",
+      "finding": "Retain attributed links, revision/hash/redirect metadata and independently authored findings only. Do not redistribute articles, samples, provider implementation or private tenant, billing, partner and contact data.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "provider-license",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/LICENSE",
+      "sha256": "4e2bb185ebd706f76329206869ccb348b92b6236100cfb07775fe31530dab0d5",
+      "retrieved_at": "2026-11-07T01:54:18.869476+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned provider is MPL-2.0; only metadata and independently authored findings are redistributed, with no upstream implementation copied.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "budget-guidance",
+      "url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-acm-create-budgets",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-acm-create-budgets",
+      "sha256": "0e9a164a0d06637509f849651308f5c53c27759f7af47a84a9e5d4ae4086750a",
+      "retrieved_at": "2026-11-07T01:54:19.044423+00:00",
+      "revision": "981d4c7a114a9026e67c1ac75226043c035d2ab5",
+      "finding": "Budgets inform accountability, not spending enforcement. Evaluation is daily on delayed data; configured alerts do not establish delivery or complete allocations. Action groups are supported only at subscription/RG scope; currency and scope qualifications need separate review. Portal and API recipient rules differ.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "budget-arm",
+      "url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.consumption/2024-08-01/budgets",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.consumption/2024-08-01/budgets",
+      "sha256": "b69796d6558b4245184ee68fa33031c7c2eb972b44eb17aaf441fce43a876238",
+      "retrieved_at": "2026-11-07T01:54:19.583477+00:00",
+      "revision": "a80a6ca0ce31aae2ff0424e8453153664e18bc8b",
+      "finding": "Pinned 2024-08-01 declares Cost, six time grains and up to five notification entries with explicit enabled/operator/type. Only minimized subscription/RG metadata is prepared; generic tenant/MG deployment lists imply no billing scope support or permissions. Amounts, filters, dates, thresholds and recipients withheld.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "budget-access",
+      "url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/assign-access-acm-data",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/assign-access-acm-data",
+      "sha256": "f278a8c5ee4e45d8e28e4ba941035df49d203ca9832749ad09a3343b907eaaa2",
+      "retrieved_at": "2026-11-07T01:54:20.027456+00:00",
+      "revision": "f167779e01c49fe06a2738abe278e994649999e1",
+      "finding": "EA department access needs DA visibility; enrollment-account and resource scopes need AO visibility plus appropriate permissions. MCA Azure charges policy differs. EA administrator visibility is distinct; flags and resource RBAC alone do not prove effective billing access. Propagation and cross-tenant restrictions remain explicit.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "enterprise-devtest-offer",
+      "url": "https://azure.microsoft.com/pricing/offers/ms-azr-0148p",
+      "resolved_url": "https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0148p",
+      "sha256": "813c5897a91208bcaccb18418c356f95f9c5fc3148d1070d32438198472bee1b",
+      "retrieved_at": "2026-11-07T01:54:38.552379+00:00",
+      "revision": "retrieved-page",
+      "finding": "The actual locale redirect retains Enterprise Dev/Test terms: EA/account enablement, Visual Studio software rights and development/testing use; no general production SLA. Legacy EA portal and App Center wording is not current operational assurance. No eligibility, purchase, discount calculation or customer entitlement is inferred.",
+      "reuse": "Microsoft site terms: linked metadata and own findings only; no article/comments/sample scripts redistributed"
+    },
+    {
+      "id": "azure-plan-devtest-offer",
+      "url": "https://azure.microsoft.com/offers/ms-azr-0148g/",
+      "resolved_url": "https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0148g/",
+      "sha256": "f6844b6c1238fd9ec9f2f2e4e3a8def4bd641993a52112866c93fea06a1a32a0",
+      "retrieved_at": "2026-11-07T01:54:56.021128+00:00",
+      "revision": "retrieved-page",
+      "finding": "Actual redirect is Azure Plan for DevTest, distinct from EA0148P and monthly credits. MCA and active Visual Studio subscriber conditions, dev/test-only usage and no financially backed SLA except Azure DevOps require independent owner qualification. No account enrollment, purchase or financial/eligibility decision is made.",
+      "reuse": "Microsoft site terms: linked metadata and own findings only; no article/comments/sample scripts redistributed"
+    },
+    {
+      "id": "mca-organization",
+      "url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/mca-section-invoice",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/mca-section-invoice",
+      "sha256": "a4d9ea5742b56a66fd10ae934eabc87a4a3492eb09f9678f7ed242f342beb8be",
+      "retrieved_at": "2026-11-07T01:54:56.466126+00:00",
+      "revision": "ad9e62b76dd1c0ac6853153d1a93cafd3d19f689",
+      "finding": "Profiles organize invoices and sections group costs; additional profiles may affect charges/reservations. Current product movement has exceptions and historic invoices are not amended. Organizational suitability is a decision, not a resource hierarchy/count, and current movement guidance qualifies frozen CAF wording.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "mca-roles",
+      "url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/understand-mca-roles",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/understand-mca-roles",
+      "sha256": "1933240d33beacbb7d3e75203b9f950032af61eff823c8b4ebc16a9a6c0cda5b",
+      "retrieved_at": "2026-11-07T01:54:56.766970+00:00",
+      "revision": "387a439fa0733709940e26cab3abdbbc3a17b0e0",
+      "finding": "Billing account/profile/section roles and inherited authority differ from Azure resource RBAC. Periodic audit must cover current direct/inherited roles, elevation, least privilege, actual review and remediation; no audit cadence is invented.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "billing-contact-semantics",
+      "url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/change-azure-account-profile",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/change-azure-account-profile",
+      "sha256": "3b29491b60cf1bec15fa44e5efc1e665c2a8165d1eab2c1f96eaebc42ef7b669",
+      "retrieved_at": "2026-11-07T01:54:57.068490+00:00",
+      "revision": "4f35be849c8d345d36b86798b06754efe8e74154",
+      "finding": "Sold-to legal identity, per-profile bill-to, contact/service notifications and sign-in address differ. Critical service notifications still go to sign-in; a contact setting cannot prove all categories or maintained group-mailbox coverage. No addresses, verification, permission or contact changes occur.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "ea-devtest-current",
+      "url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/direct-ea-administration",
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/direct-ea-administration",
+      "sha256": "8be2c72d41654e15d849da97e07cc7eebc6c8366219e99089a1cac27a44f9618",
+      "retrieved_at": "2026-11-07T01:54:57.265617+00:00",
+      "revision": "f8867ca6fa353f27dbab4ad997734ed9885eea72",
+      "finding": "Current portal administration qualifies legacy EA offer instructions. New billing role assignments become WSA-only November16; existing MSA roles are not yet impacted. Notification contacts and Bill to invoice contacts have different purposes.",
+      "reuse": "Microsoft Learn attribution: source metadata and own factual findings only; no page content redistributed"
+    },
+    {
+      "id": "terraform-budget-subscription",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/consumption_budget_subscription.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/consumption_budget_subscription.html.markdown",
+      "sha256": "25d03020b10aa71085313ab982c3931f24df9e19d9d09a560110064e865541c3",
+      "retrieved_at": "2026-11-07T01:54:57.549696+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned AzureRM4.50.0 subscription budget uses Consumption2019-10-01. Project explicit time grain and enabled/operator/threshold_type only. Missing defaults remain unknown; do not retain amounts, contacts, filters or thresholds.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-budget-resource_group",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/consumption_budget_resource_group.html.markdown",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/consumption_budget_resource_group.html.markdown",
+      "sha256": "d7d904bfbd55c84217ade69aed974ad04ea1b791a07cf341ce01d95a5a7325a3",
+      "retrieved_at": "2026-11-07T01:54:57.821282+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Pinned AzureRM4.50.0 resource_group budget uses Consumption2019-10-01. Project explicit time grain and enabled/operator/threshold_type only. Missing defaults remain unknown; do not retain amounts, contacts, filters or thresholds.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    },
+    {
+      "id": "terraform-budget-implementation",
+      "url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/consumption/consumption_budget_base.go",
+      "resolved_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/consumption/consumption_budget_base.go",
+      "sha256": "45e56f4131695f887ee3f4e6e8784da02f8f30d295c9a4721f8e39bc15f2860a",
+      "retrieved_at": "2026-11-07T01:54:58.084074+00:00",
+      "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+      "finding": "Provider supplies Cost at create/update; raw explicit category is not a provider field and is not invented. Provider defaults enabled/type/grain are not inferred from omissions. Notification keys encode thresholds and are discarded.",
+      "reuse": "MPL-2.0 provider: metadata and own factual findings only"
+    }
+  ]
+}

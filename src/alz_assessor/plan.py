@@ -88,12 +88,14 @@ def plan_source(
             verified = provider_version == PROVIDER_VERSION
             candidate = tf_resource_id(scope, kind, values) if verified else None
             explicit_id = values.get("id")
+            from .billing_evidence import TF_KINDS as BILLING_TF_KINDS
             from .operations_evidence import TF_KINDS
             from .policy_strategy_evidence import TF_SCOPES
 
             if (
                 kind in TF_SCOPES
                 or kind in TF_KINDS
+                or kind in BILLING_TF_KINDS
                 or kind
                 in {
                     "azurerm_policy_definition",
@@ -105,6 +107,12 @@ def plan_source(
                     candidate is None or canonical_id(explicit_id) != candidate
                 ):
                     raise InputError("Policy plan ID conflicts with explicit typed scope/name")
+            elif kind == "azurerm_management_group":
+                identity = candidate
+                if isinstance(explicit_id, str) and (
+                    candidate is None or canonical_id(explicit_id) != candidate
+                ):
+                    raise InputError("Management-group plan ID conflicts with explicit key/scope")
             elif kind in {"azurerm_role_definition", "azurerm_active_directory_domain_service"}:
                 from uuid import UUID
 
@@ -179,7 +187,11 @@ def plan_source(
                 target = values.get("scope")
                 if parent is None or not isinstance(target, str) or parent != target.lower():
                     raise InputError("Lighthouse plan identity conflicts with supported scope")
-            if identity and (not scope or not identity.startswith(scope.lower() + "/")):
+            if (
+                identity
+                and kind != "azurerm_management_group"
+                and (not scope or not identity.startswith(scope.lower() + "/"))
+            ):
                 raise InputError("Plan resource ID is outside the explicit assessment scope")
             records.append(
                 {

@@ -82,6 +82,7 @@ API_VERSIONS = {
     "microsoft.network/bastionhosts": {"2024-05-01"},
 }
 PLANNED_API_VERSIONS = API_VERSIONS | {
+    "microsoft.consumption/budgets": {"2024-08-01"},
     "microsoft.recoveryservices/vaults": {"2024-01-01"},
     "microsoft.recoveryservices/vaults/backupstorageconfig": {"2023-02-01"},
     "microsoft.recoveryservices/vaults/backupfabrics/protectioncontainers/protecteditems": {
@@ -118,6 +119,7 @@ PLANNED_API_VERSIONS = API_VERSIONS | {
     "microsoft.compute/virtualmachines": {"2024-07-01"},
     "microsoft.portal/dashboards": {"2020-09-01-preview"},
     "microsoft.management/managementgroups": {"2020-05-01"},
+    "microsoft.management/managementgroups/settings": {"2020-05-01"},
     "microsoft.operationalinsights/workspaces": {"2023-09-01"},
     "microsoft.securityinsights/onboardingstates": {"2024-03-01"},
     "microsoft.insights/scheduledqueryrules": {"2023-12-01"},
@@ -143,6 +145,7 @@ def unresolved(value: Any) -> bool:
 def properties(
     kind: str, values: Any, *, root: Any = None, observed: bool = False
 ) -> dict[str, Any]:
+    from .billing_evidence import projected_properties as billing_properties
     from .governance_evidence import projected_properties as governance_properties
     from .identity_evidence import IDENTITY_KINDS, ROLE_KIND, identity_summary, role_properties
     from .identity_evidence import projected_properties as identity_properties
@@ -150,6 +153,7 @@ def properties(
     from .logging_evidence import projected_properties as logging_properties
     from .network_policy_evidence import projected_properties as network_policy_properties
     from .operations_evidence import projected_properties as operations_properties
+    from .organization_evidence import projected_properties as organization_properties
     from .platform_health_evidence import projected_properties as platform_health_properties
     from .policy_strategy_evidence import projected_properties as policy_strategy_properties
     from .recovery_evidence import projected_properties as recovery_properties
@@ -165,9 +169,11 @@ def properties(
             root["identity"], terraform=False, resource_type=kind
         )
     if isinstance(values, dict):
+        result.update(billing_properties(kind, values, root=root))
         result.update(security_properties(kind, values, root=root))
         result.update(key_properties(kind, values))
         result.update(governance_properties(kind, values, root=root))
+        result.update(organization_properties(kind, values))
         result.update(logging_properties(kind, values, root=root))
         result.update(platform_health_properties(kind, values, root=root))
         result.update(recovery_properties(kind, values, root=root))
@@ -674,6 +680,17 @@ def arm_source(
                     if state == "known"
                     else None
                 )
+                if (
+                    arm_type.lower()
+                    in {
+                        "microsoft.management/managementgroups",
+                        "microsoft.management/managementgroups/settings",
+                    }
+                    and state == "known"
+                ):
+                    from .organization_evidence import explicit_identity
+
+                    identity = explicit_identity(arm_type, name, binding)
                 records.append(
                     {
                         "logical_id": logical,
@@ -685,6 +702,7 @@ def arm_source(
                             arm_type,
                             context.value(entry.get("properties", {})),
                             root={
+                                "apiVersion": version,
                                 "location": context.value(entry.get("location")),
                                 "scope": diagnostic_target,
                                 "name": name,

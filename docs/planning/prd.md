@@ -22,6 +22,82 @@ source/matrix/bank/catalog/crosswalk/count/history or receipt changes occur unti
 the explicit slot and actual delivery gates described in the
 [preparation plan](plan.md#cohort-21-independent-preparation-2026-11-07).
 
+## Cohort 03 accepted boundary
+
+The explicit sole slot after actual26/07 checked delivery activates
+[seven agreement workflows](../../references/recommendation-batches/batch-03.json)
+in builder-derived `.26`, preserving exact `.25`, all228 earlier rows/27 receipts,
+all255/fixed251 and original four complete objects. Seven registered decisions
+and exceptions remain independently blank. Typed budget configuration is not
+complete allocation, spending enforcement, billing authority, required recipients,
+actual delivery, offer qualification, financial outcome or actual audit operation.
+Actual REST2019 versus2024 threshold-type differences qualify AzureRM wording;
+Forecasted needs explicit reviewed2024 provenance and no defaults are inferred.
+The [integration evidence](plan.md#cohort-03-accepted-integration-2026-11-07)
+retains source, privacy and actual delivery gates. No new live read, query,
+contact test, eligibility decision, purchase or permission change occurs.
+
+Implementation [#164](https://github.com/jonathan-vella/landinglens/pull/164)
+merged normally after exact-head8-job/CodeQL/security/review and four downloaded
+matching24-case compiler gates. Guarded `deliveries.03` binds all seven GUIDs
+to that actual head/merge/runs and own858-test wheel, deriving235 delivered/
+16 pending/28 receipts while preserving all228 earlier rows/27 receipts.
+Checked receipt publication and actual final-main CI, not source activation,
+recording, implementation merge or issue status, gate satisfied #157 completion.
+
+## Cohort 03 preparation boundary
+
+The [seven A03.03-.05/A04.01-.04 workflows](../../references/preparation/batch-03.json)
+for [#157](https://github.com/jonathan-vella/landinglens/issues/157) prepare
+agreement budgets, EA DA/AO visibility, distinct EA/MCA dev-test qualifications,
+notification ownership, MCA organization and manual billing-role audits outside
+accepted activation. All decisions and exceptions stay independently blank.
+Minimized explicit subscription/RG budget metadata is partial configuration only:
+no spending enforcement, complete department/account allocation, effective billing
+access, active period, required recipients, mailbox suitability, actual delivery,
+offer entitlement or financial outcome. No new live read, query, contact test,
+commerce resource, eligibility decision or purchase is added.
+See the [preparation boundary](plan.md#cohort-03-independent-preparation-2026-11-07).
+Cohorts26/07 and the explicit coordinator slot precede accepted registration,
+then-current reconciliation and actual implementation/receipt/final-main gates.
+
+## Cohort 07 accepted boundary
+
+The explicit sole slot after actual24/26 checked implementation, receipts and
+final main activates [eight source-specific naming/hierarchy workflows](../../references/recommendation-batches/batch-07.json)
+in builder-derived `.25`. Exact `.24`, every non-own control, original four
+complete objects, all220 prior own rows/26 receipts and fixed251 remain frozen.
+All eight decisions and exceptions remain independently blank and bound.
+Names/valid syntax/partial ancestry cannot establish purpose, authoritative root,
+complete estate depth, approved naming or actual adoption. Default placement
+does not prove existing root-subscription absence; creation authorization is not
+all effective operations. No new live collector/query, Policy interpreter/fetch,
+private payload retention, tenant/permission/settings change or operating assurance
+is added. Exact implementation and checked receipt/final-main gates, not source
+activation or issue status, determine delivery.
+
+Implementation [#161](https://github.com/jonathan-vella/landinglens/pull/161)
+merged normally after exact checked-head eight-job/CodeQL/security/review and
+four downloaded23-case compiler gates. Guarded `deliveries.07` binds all eight
+GUIDs to that actual head/merge/runs and own834-test wheel, deriving228 delivered/
+23 pending/27 receipts while preserving all220 earlier rows/26 receipts.
+Checked receipt publication and actual final-main CI determine satisfied closure,
+not source activation, local preparation or issue status.
+
+## Cohort 07 preparation boundary
+
+[#154](https://github.com/jonathan-vella/landinglens/issues/154) prepares
+[eight fixed source-specific workflows](../../references/preparation/batch-07.json)
+outside accepted activation, serialized after actual24/26 and an explicit slot.
+Typed explicit keys, supplied positive parentage and pinned settings provide only
+partial original-time configuration. Relative subtree depth is not full-estate
+depth; ideal flatness and service limits differ. Default placement is not absence
+of existing root subscriptions; creation authorization is not all effective access.
+Naming standard/adoption, sandbox purpose, platform/connectivity/workload roles,
+root designation and effective authority require eight independently blank,
+attributable scoped/content/time/expiry-bound decisions and separate exceptions.
+No live collector/API, tenant read, query, deployment, settings/permissions change,
+private name/tag/principal payload or new whole-guidance predicate is authorized.
 ## Cohort 26 accepted boundary
 
 After checked09/24 delivery and the explicit sole slot, cohort26/#151 activates

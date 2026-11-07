@@ -23,6 +23,26 @@ def has_fact(value: Any) -> bool:
 
 
 def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
+    from .billing_evidence import GUIDS as BILLING_GUIDS
+    from .billing_evidence import prepared_signal as billing_signal
+    from .organization_evidence import GUIDS as ORGANIZATION_GUIDS
+    from .organization_evidence import configuration_context as organization_context
+
+    if control["upstream_guid"] in ORGANIZATION_GUIDS:
+        paths = control.get("review_fact_paths", [])
+        if not paths:
+            return False
+        context = organization_context(bundle)
+        if "unknown" in context:
+            return False
+        return bool(
+            ("managementParentId" in paths and context["relationships"])
+            or any(
+                has_fact(setting["facts"].get(path))
+                for setting in context["settings"]
+                for path in paths
+            )
+        )
     from .governance_evidence import GUIDS as GOVERNANCE_GUIDS
     from .governance_evidence import resource_in_scope
     from .identity_evidence import HYBRID_GUIDS, RESILIENCE_GUIDS, hybrid_context
@@ -74,7 +94,8 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
         or topology
         or recovery
         or operations
-        or control["upstream_guid"] in TENANT_GUIDS | HYBRID_GUIDS | SOVEREIGN_GUIDS | KEY_GUIDS
+        or control["upstream_guid"]
+        in TENANT_GUIDS | HYBRID_GUIDS | SOVEREIGN_GUIDS | BILLING_GUIDS | KEY_GUIDS
     ):
         for resource in bundle["resources"]:
             by_id.setdefault((resource.get("arm_id") or "").lower(), []).append(resource)
@@ -84,6 +105,10 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
         if control["upstream_guid"] in KEY_GUIDS:
             context = key_context(resource, by_id, bundle, control["review_fact_paths"])
             if has_fact(context.get("facts", {})):
+                return True
+            continue
+        if control["upstream_guid"] in BILLING_GUIDS:
+            if billing_signal(resource, by_id, bundle):
                 return True
             continue
         if control["upstream_guid"] in SOVEREIGN_GUIDS:

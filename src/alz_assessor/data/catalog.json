@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "kind": "catalog",
-  "catalog_version": "2026-11-06.24",
+  "catalog_version": "2026-11-06.26",
   "design_areas": [
     "Azure billing and Active Directory tenant",
     "Identity and access management",
@@ -712,16 +712,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Narrow supplied resource configuration is not complete EA department/account allocation, active-period evaluation, acceptable financial limits, billing authority, recipients or actual notification delivery. No new budget/billing reads, queries, alert test, contact change or financial action. Generic ARM tenant/MG lists do not override service restrictions; supported projection deliberately excludes billing/MG scope.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: unique known supplied subscription/RG budget parent inside selected scope, explicit reviewed API provenance, time grain and bounded up-to-five notification enabled/operator/type metadata only. Pinned REST2019-10-01 declares Actual only despite AzureRM4.50.0 Forecasted wording; Forecasted projects only with explicit2024-08-01 provenance, not missing/unreviewed API versions. No runtime support is inferred. Missing defaults stay unknown; dates, amounts, currencies, spend, thresholds, filters, dictionary keys and recipients are withheld. Tutorial0.01 versus REST/provider0..1000 wording is not an assessor threshold.",
+        "Reviewer decision: independently establish EA applicability and authoritative department/account population, approved allocation and owner mapping; reconcile each required budget and associated alert against that complete population using redacted attributable references, not resource names or subscription counts. MCA profiles/sections and partner-managed structures are different.",
+        "Reviewer decision: separately substantiate appropriate periods/filters/currency compatibility, actual/forecasted semantics, authorized required recipients and current delivery/review/escalation. Cost data is delayed and evaluation daily; budget alerts do not stop consumption or enforce spending. Action groups are supported only at subscription/RG scope; portal/API recipient requirements differ."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified",
-        "billing-taxonomy-label-conflict"
-      ],
+      "mapping_state": "source-reviewed-batch-03",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified",
@@ -736,9 +734,103 @@
           "pointer": "/items/8",
           "item_sha256": "9a0c5d9cf875643c5992db337161b4d196452d5335226d5e1ead269aa86df71d",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement#design-considerations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement#design-considerations",
+          "source_sha256": "473df6dc1143ee3fddad7f2b60371c2fe491c8c64ea2dd9f761c33fd0a0ffaa7",
+          "revision": "3bebc7ff1c27a170d5fb41b9df844cc5b9a8fa7a",
+          "retrieved_at": "2026-11-07T01:54:17.864585+00:00",
+          "pointer": "54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement#design-considerations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations",
+          "source_sha256": "6ae411a4190d677760c23a0c6a178f75cc4cc9cd64326ea9cfc5861f9a51f1f4",
+          "revision": "3bebc7ff1c27a170d5fb41b9df844cc5b9a8fa7a",
+          "retrieved_at": "2026-11-07T01:54:17.726322+00:00",
+          "pointer": "54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-acm-create-budgets",
+          "source_sha256": "0e9a164a0d06637509f849651308f5c53c27759f7af47a84a9e5d4ae4086750a",
+          "revision": "981d4c7a114a9026e67c1ac75226043c035d2ab5",
+          "retrieved_at": "2026-11-07T01:54:19.044423+00:00",
+          "pointer": "54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-acm-create-budgets"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.consumption/2024-08-01/budgets",
+          "source_sha256": "b69796d6558b4245184ee68fa33031c7c2eb972b44eb17aaf441fce43a876238",
+          "revision": "a80a6ca0ce31aae2ff0424e8453153664e18bc8b",
+          "retrieved_at": "2026-11-07T01:54:19.583477+00:00",
+          "pointer": "54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.consumption/2024-08-01/budgets"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/consumption_budget_subscription.html.markdown",
+          "source_sha256": "25d03020b10aa71085313ab982c3931f24df9e19d9d09a560110064e865541c3",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T01:54:57.549696+00:00",
+          "pointer": "54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/consumption_budget_subscription.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/consumption_budget_resource_group.html.markdown",
+          "source_sha256": "d7d904bfbd55c84217ade69aed974ad04ea1b791a07cf341ce01d95a5a7325a3",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T01:54:57.821282+00:00",
+          "pointer": "54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/consumption_budget_resource_group.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/consumption/consumption_budget_base.go",
+          "source_sha256": "45e56f4131695f887ee3f4e6e8784da02f8f30d295c9a4721f8e39bc15f2860a",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T01:54:58.084074+00:00",
+          "pointer": "54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/internal/services/consumption/consumption_budget_base.go"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/understand-work-scopes",
+          "source_sha256": "e68de3fc1f9919f3a77df59b478da23c577d3df0822f5928220bb81087569115",
+          "revision": "e2507938b2a97d1c5db073fc57046b84254900a0",
+          "retrieved_at": "2026-11-07T01:54:18.241132+00:00",
+          "pointer": "54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/understand-work-scopes"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/consumption/resource-manager/Microsoft.Consumption/Consumption/stable/2019-10-01/consumption.json",
+          "source_sha256": "8d02a3bd0e5b8fb8f318346976cd30280ed81bd42d526ac0fcc1f5c276bc823f",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-07T04:23:18.011287+00:00",
+          "pointer": "54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/consumption/resource-manager/Microsoft.Consumption/Consumption/stable/2019-10-01/consumption.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/consumption/resource-manager/Microsoft.Consumption/Consumption/stable/2024-08-01/openapi.json",
+          "source_sha256": "2a56b9d02c1ad5182151d8e1d459aebae1a4328516dacac7f53094a6d36fdfa3",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-07T04:23:18.173488+00:00",
+          "pointer": "54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/consumption/resource-manager/Microsoft.Consumption/Consumption/stable/2024-08-01/openapi.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/LICENSE",
+          "source_sha256": "b37363bf2295aa0acde60ce78a60034a71a0955075fc01aa09cc23eadff44436",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-07T04:23:18.291173+00:00",
+          "pointer": "54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/LICENSE"
         }
       ],
-      "severity": "Low"
+      "severity": "Low",
+      "review_resource_types": [
+        "Microsoft.Consumption/budgets"
+      ],
+      "review_fact_paths": [
+        "budgetConfiguration"
+      ]
     },
     {
       "control_id": "ALZ-ca0fe401-12ad-46fc-8a7e-86293866a9f6",
@@ -757,16 +849,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Configuration flags, Cost Management views and resource roles cannot prove billing authority or effective access. No synthetic commerce/Graph resource, account/role/identity lookup, live policy read or permission change. Non-EA applicability needs its own bound rationale.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: current EA department scope needs DA View Charges; enrollment account and Azure resource scopes need AO View Charges plus the applicable scoped permissions. Enterprise administrator access differs. No billing-policy or role data is collected.",
+        "Reviewer decision: establish each applicable EA enrollment and independent DA/AO policy review with attributable redacted current settings and authorized intended-audience evidence; document omissions, denied access and exceptions rather than inferring settings from resource RBAC.",
+        "Reviewer decision: demonstrate actual appropriate cost visibility at each required scope, propagation and cross-tenant qualifications without retaining data or running a query. MCA Azure charges policy and partner Azure Plan customer cost visibility are distinct and never substitutes for EA DA/AO evidence."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified",
-        "billing-taxonomy-label-conflict"
-      ],
+      "mapping_state": "source-reviewed-batch-03",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified",
@@ -781,6 +871,46 @@
           "pointer": "/items/9",
           "item_sha256": "48cd86b959389cd00231cf51b40b1822e3de31f7f6b44cb818bb6fd5368c8f62",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement#design-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement#design-considerations",
+          "source_sha256": "473df6dc1143ee3fddad7f2b60371c2fe491c8c64ea2dd9f761c33fd0a0ffaa7",
+          "revision": "3bebc7ff1c27a170d5fb41b9df844cc5b9a8fa7a",
+          "retrieved_at": "2026-11-07T01:54:17.864585+00:00",
+          "pointer": "ca0fe401-12ad-46fc-8a7e-86293866a9f6",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement#design-considerations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/assign-access-acm-data",
+          "source_sha256": "f278a8c5ee4e45d8e28e4ba941035df49d203ca9832749ad09a3343b907eaaa2",
+          "revision": "f167779e01c49fe06a2738abe278e994649999e1",
+          "retrieved_at": "2026-11-07T01:54:20.027456+00:00",
+          "pointer": "ca0fe401-12ad-46fc-8a7e-86293866a9f6",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/assign-access-acm-data"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/direct-ea-administration#manage-notification-contacts",
+          "source_sha256": "8be2c72d41654e15d849da97e07cc7eebc6c8366219e99089a1cac27a44f9618",
+          "revision": "f8867ca6fa353f27dbab4ad997734ed9885eea72",
+          "retrieved_at": "2026-11-07T01:54:18.074584+00:00",
+          "pointer": "ca0fe401-12ad-46fc-8a7e-86293866a9f6",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/direct-ea-administration#manage-notification-contacts"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/understand-work-scopes",
+          "source_sha256": "e68de3fc1f9919f3a77df59b478da23c577d3df0822f5928220bb81087569115",
+          "revision": "e2507938b2a97d1c5db073fc57046b84254900a0",
+          "retrieved_at": "2026-11-07T01:54:18.241132+00:00",
+          "pointer": "ca0fe401-12ad-46fc-8a7e-86293866a9f6",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/understand-work-scopes"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/get-started-partners",
+          "source_sha256": "1586d1489f21abb197e0d9985465c460da7623dc34b6f3fd3e1b9bf374390c41",
+          "revision": "347827720157742c186e6c6cca8c96c90564272d",
+          "retrieved_at": "2026-11-07T01:54:18.441490+00:00",
+          "pointer": "ca0fe401-12ad-46fc-8a7e-86293866a9f6",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/get-started-partners"
         }
       ],
       "severity": "Medium"
@@ -802,16 +932,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No financial outcome or eligibility decision, price calculation, account enrollment, purchase, private contract/workload/license inventory or offer detection. Azure Plan0148G/MCA and monthly Visual Studio credits are different offers. Unknown or not-applicable remains explicit and independently justified.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: actual0148P Enterprise Dev/Test offer is EA-specific with account enablement, Visual Studio software rights and development/testing restrictions. The original offer's retired EA portal/App Center wording must be qualified by current portal guidance, not silently rewritten.",
+        "Reviewer decision: independently cite an approved authoritative redacted qualification and workload-usage review for the applicable EA offer, active Visual Studio rights, supported software and non-production development/testing purposes; do not make an eligibility or legal determination in the assessor.",
+        "Reviewer decision: substantiate actual permitted adoption and separately approved reliability/availability exceptions against current terms. Non-production labels, budget metadata and public discounts establish no entitlement, purchase, achieved saving or general financially backed SLA."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified",
-        "billing-taxonomy-label-conflict"
-      ],
+      "mapping_state": "source-reviewed-batch-03",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified",
@@ -826,6 +954,38 @@
           "pointer": "/items/10",
           "item_sha256": "95a4de171f6b95a311311fbe5787c2e671b2b19dda05d769d5439ce3c8016898",
           "guidance": "https://azure.microsoft.com/pricing/offers/ms-azr-0148p"
+        },
+        {
+          "source_url": "https://azure.microsoft.com/pricing/offers/ms-azr-0148p",
+          "source_sha256": "813c5897a91208bcaccb18418c356f95f9c5fc3148d1070d32438198472bee1b",
+          "revision": "retrieved-page",
+          "retrieved_at": "2026-11-07T01:54:38.552379+00:00",
+          "pointer": "5cf9f485-2784-49b3-9824-75d9b8bdb57b",
+          "guidance": "https://azure.microsoft.com/pricing/offers/ms-azr-0148p"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement#design-considerations",
+          "source_sha256": "473df6dc1143ee3fddad7f2b60371c2fe491c8c64ea2dd9f761c33fd0a0ffaa7",
+          "revision": "3bebc7ff1c27a170d5fb41b9df844cc5b9a8fa7a",
+          "retrieved_at": "2026-11-07T01:54:17.864585+00:00",
+          "pointer": "5cf9f485-2784-49b3-9824-75d9b8bdb57b",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-enterprise-agreement#design-considerations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/direct-ea-administration",
+          "source_sha256": "8be2c72d41654e15d849da97e07cc7eebc6c8366219e99089a1cac27a44f9618",
+          "revision": "f8867ca6fa353f27dbab4ad997734ed9885eea72",
+          "retrieved_at": "2026-11-07T01:54:57.265617+00:00",
+          "pointer": "5cf9f485-2784-49b3-9824-75d9b8bdb57b",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/direct-ea-administration"
+        },
+        {
+          "source_url": "https://azure.microsoft.com/offers/ms-azr-0148g/",
+          "source_sha256": "f6844b6c1238fd9ec9f2f2e4e3a8def4bd641993a52112866c93fea06a1a32a0",
+          "revision": "retrieved-page",
+          "retrieved_at": "2026-11-07T01:54:56.021128+00:00",
+          "pointer": "5cf9f485-2784-49b3-9824-75d9b8bdb57b",
+          "guidance": "https://azure.microsoft.com/offers/ms-azr-0148g/"
         }
       ],
       "severity": "Low"
@@ -847,16 +1007,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No contact/notification/mailbox read or change, sent message, email verification, sign-in or retained address, phone, webhook or message content. Public profile/contact instructions do not prove a specific billing-account setting or all notification categories.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: MCA agreement notification contact, legal sold-to, per-profile bill-to, invoice email, user contact and sign-in address have distinct semantics. Critical service notifications remain sent to sign-in; EA Notification Contact is not the Bill to invoice contact.",
+        "Reviewer decision: establish applicable agreement-specific categories and authorized configuration/ownership through redacted dated references; independently confirm appropriate maintained group-mailbox coverage, continuity, access and required recipients without recording their addresses or memberships.",
+        "Reviewer decision: separately substantiate actual delivery, review and escalation of all required categories with attributable redacted operation evidence and exceptions. A configured address, budget notification or action group cannot establish mailbox suitability or end-to-end operation."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified",
-        "billing-taxonomy-label-conflict"
-      ],
+      "mapping_state": "source-reviewed-batch-03",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified",
@@ -871,6 +1029,38 @@
           "pointer": "/items/11",
           "item_sha256": "81741623aba424876d9c997f2f0ae89d04200c3224d1192492c0a5406da0acfa",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations",
+          "source_sha256": "6ae411a4190d677760c23a0c6a178f75cc4cc9cd64326ea9cfc5861f9a51f1f4",
+          "revision": "3bebc7ff1c27a170d5fb41b9df844cc5b9a8fa7a",
+          "retrieved_at": "2026-11-07T01:54:17.726322+00:00",
+          "pointer": "6ad5c3dd-e5ea-4ff1-81a4-7886ff87845c",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/change-azure-account-profile",
+          "source_sha256": "3b29491b60cf1bec15fa44e5efc1e665c2a8165d1eab2c1f96eaebc42ef7b669",
+          "revision": "4f35be849c8d345d36b86798b06754efe8e74154",
+          "retrieved_at": "2026-11-07T01:54:57.068490+00:00",
+          "pointer": "6ad5c3dd-e5ea-4ff1-81a4-7886ff87845c",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/change-azure-account-profile"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/direct-ea-administration#manage-notification-contacts",
+          "source_sha256": "8be2c72d41654e15d849da97e07cc7eebc6c8366219e99089a1cac27a44f9618",
+          "revision": "f8867ca6fa353f27dbab4ad997734ed9885eea72",
+          "retrieved_at": "2026-11-07T01:54:18.074584+00:00",
+          "pointer": "6ad5c3dd-e5ea-4ff1-81a4-7886ff87845c",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/direct-ea-administration#manage-notification-contacts"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/understand-mca-roles",
+          "source_sha256": "1933240d33beacbb7d3e75203b9f950032af61eff823c8b4ebc16a9a6c0cda5b",
+          "revision": "387a439fa0733709940e26cab3abdbbc3a17b0e0",
+          "retrieved_at": "2026-11-07T01:54:56.766970+00:00",
+          "pointer": "6ad5c3dd-e5ea-4ff1-81a4-7886ff87845c",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/understand-mca-roles"
         }
       ],
       "severity": "Low"
@@ -892,16 +1082,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No new billing objects or inferred hierarchy, private account/profile/invoice content, financial advice, profile creation, product movement or queries. Extra profiles can affect charges/reservations; no universal number or cost threshold is prescribed.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: MCA profiles represent invoices and sections group costs. Current organization guidance permits product moves with exceptions and does not amend historical invoices; frozen CAF same-profile wording is retained and qualified, not treated as an evaluator.",
+        "Reviewer decision: independently establish MCA applicability, approved organizational allocation and justified profile versus section design, including separate-invoice need and charge/reservation implications, from redacted authoritative decisions. EA departments/accounts and partner MPA/customer structures are not equivalent.",
+        "Reviewer decision: demonstrate complete actual profile/section/subscription mapping, scoped ownership, current billing-role authority and operating reviews without retaining identifiers, invoices or amounts. Saved cost views, resource hierarchy and counts do not prove effective organization or financial suitability."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified",
-        "billing-taxonomy-label-conflict"
-      ],
+      "mapping_state": "source-reviewed-batch-03",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified",
@@ -916,6 +1104,46 @@
           "pointer": "/items/12",
           "item_sha256": "859f9857c410457048735d32282562f1cacc383dbb09be1e560a836532e413be",
           "guidance": "https://learn.microsoft.com/azure/cost-management-billing/manage/mca-section-invoice"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/mca-section-invoice",
+          "source_sha256": "a4d9ea5742b56a66fd10ae934eabc87a4a3492eb09f9678f7ed242f342beb8be",
+          "revision": "ad9e62b76dd1c0ac6853153d1a93cafd3d19f689",
+          "retrieved_at": "2026-11-07T01:54:56.466126+00:00",
+          "pointer": "90e87802-602f-4dfb-acea-67c60689f1d7",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/mca-section-invoice"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations",
+          "source_sha256": "6ae411a4190d677760c23a0c6a178f75cc4cc9cd64326ea9cfc5861f9a51f1f4",
+          "revision": "3bebc7ff1c27a170d5fb41b9df844cc5b9a8fa7a",
+          "retrieved_at": "2026-11-07T01:54:17.726322+00:00",
+          "pointer": "90e87802-602f-4dfb-acea-67c60689f1d7",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/understand-mca-roles",
+          "source_sha256": "1933240d33beacbb7d3e75203b9f950032af61eff823c8b4ebc16a9a6c0cda5b",
+          "revision": "387a439fa0733709940e26cab3abdbbc3a17b0e0",
+          "retrieved_at": "2026-11-07T01:54:56.766970+00:00",
+          "pointer": "90e87802-602f-4dfb-acea-67c60689f1d7",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/understand-mca-roles"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/understand-work-scopes",
+          "source_sha256": "e68de3fc1f9919f3a77df59b478da23c577d3df0822f5928220bb81087569115",
+          "revision": "e2507938b2a97d1c5db073fc57046b84254900a0",
+          "retrieved_at": "2026-11-07T01:54:18.241132+00:00",
+          "pointer": "90e87802-602f-4dfb-acea-67c60689f1d7",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/understand-work-scopes"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-cloud-solution-provider#design-recommendations",
+          "source_sha256": "8eef1041235e7194bc3e47fa9918cb7276be99d958bf0b794552fc5ea14df39e",
+          "revision": "e881a31e3b8bb9b6425939609d9a9fc6e7405be5",
+          "retrieved_at": "2026-11-07T01:54:17.557534+00:00",
+          "pointer": "90e87802-602f-4dfb-acea-67c60689f1d7",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-cloud-solution-provider#design-recommendations"
         }
       ],
       "severity": "Low"
@@ -937,16 +1165,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No eligibility/financial/legal determination, prices, license/workload inventories, enrollment, subscription creation, purchase or customer-specific assurance. Qualification and exceptions are independent of EA Dev/Test and other six recommendations.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: actual0148G Azure Plan for DevTest requires MCA and active Visual Studio subscriber conditions, development/testing-only usage and qualified SLA exclusions; it is not EA0148P or monthly Visual Studio credits. No partner agreement or offer availability is inferred.",
+        "Reviewer decision: independently cite approved redacted authoritative offer qualification and permitted workload/software use, active subscriber rights, applicable agreement/channel and current availability; the assessor does not decide eligibility or purchase an offer.",
+        "Reviewer decision: demonstrate actual authorized adoption, non-production development/testing boundaries and approved reliability exceptions against current terms. Public lower-rate examples and a non-production tag do not prove entitlement, actual saving or financially backed service availability."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified",
-        "billing-taxonomy-label-conflict"
-      ],
+      "mapping_state": "source-reviewed-batch-03",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified",
@@ -961,6 +1187,38 @@
           "pointer": "/items/13",
           "item_sha256": "8562c396f8fd074f67b4ca34a2bb98c92c2fc0daaf1b466ea665369c92d021e9",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations"
+        },
+        {
+          "source_url": "https://azure.microsoft.com/offers/ms-azr-0148g/",
+          "source_sha256": "f6844b6c1238fd9ec9f2f2e4e3a8def4bd641993a52112866c93fea06a1a32a0",
+          "revision": "retrieved-page",
+          "retrieved_at": "2026-11-07T01:54:56.021128+00:00",
+          "pointer": "e81a73f0-84c4-4641-b406-14db3b4d1f50",
+          "guidance": "https://azure.microsoft.com/offers/ms-azr-0148g/"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations",
+          "source_sha256": "6ae411a4190d677760c23a0c6a178f75cc4cc9cd64326ea9cfc5861f9a51f1f4",
+          "revision": "3bebc7ff1c27a170d5fb41b9df844cc5b9a8fa7a",
+          "retrieved_at": "2026-11-07T01:54:17.726322+00:00",
+          "pointer": "e81a73f0-84c4-4641-b406-14db3b4d1f50",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations"
+        },
+        {
+          "source_url": "https://azure.microsoft.com/pricing/offers/ms-azr-0148p",
+          "source_sha256": "813c5897a91208bcaccb18418c356f95f9c5fc3148d1070d32438198472bee1b",
+          "revision": "retrieved-page",
+          "retrieved_at": "2026-11-07T01:54:38.552379+00:00",
+          "pointer": "e81a73f0-84c4-4641-b406-14db3b4d1f50",
+          "guidance": "https://azure.microsoft.com/pricing/offers/ms-azr-0148p"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-cloud-solution-provider#design-recommendations",
+          "source_sha256": "8eef1041235e7194bc3e47fa9918cb7276be99d958bf0b794552fc5ea14df39e",
+          "revision": "e881a31e3b8bb9b6425939609d9a9fc6e7405be5",
+          "retrieved_at": "2026-11-07T01:54:17.557534+00:00",
+          "pointer": "e81a73f0-84c4-4641-b406-14db3b4d1f50",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-cloud-solution-provider#design-recommendations"
         }
       ],
       "severity": "Low"
@@ -982,16 +1240,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Requires organizational decision/process evidence outside IaC alone.",
+      "rationale": "Manual process and actual operation only; no invented cadence, new role/identity lookup, principal retention, access change, audit execution or effective authorization claim. Human confirmation and Signals never manufacture Verified.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: MCA billing account/profile/section roles and inherited permissions differ from resource RBAC. Parent permissions cannot be removed below; current billing elevation paths and role/task differences require explicit review.",
+        "Reviewer decision: independently establish applicable agreement scope and approved documented periodic audit process, accountable roles, organization-chosen cadence, coverage of direct/inherited/elevated access, least privilege and exception/remediation ownership through redacted attributable references.",
+        "Reviewer decision: substantiate actual dated completed audit, findings, follow-up, remediation verification and continuity, not merely a written policy or role inventory. EA WSA-only new assignment guidance begins November16,2026 and is not MCA audit evidence or a retroactive claim about existing MSA roles."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified",
-        "billing-taxonomy-label-conflict"
-      ],
+      "mapping_state": "source-reviewed-batch-03",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified",
@@ -1006,6 +1262,30 @@
           "pointer": "/items/14",
           "item_sha256": "0e4c2893e6de4ea37cb656c389681af964ba0c7bec3a7b0b8738ab62dbe6ea87",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations",
+          "source_sha256": "6ae411a4190d677760c23a0c6a178f75cc4cc9cd64326ea9cfc5861f9a51f1f4",
+          "revision": "3bebc7ff1c27a170d5fb41b9df844cc5b9a8fa7a",
+          "retrieved_at": "2026-11-07T01:54:17.726322+00:00",
+          "pointer": "ae757485-92a4-482a-8bc9-eefe6f5b5ec3",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-customer-agreement#design-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/understand-mca-roles",
+          "source_sha256": "1933240d33beacbb7d3e75203b9f950032af61eff823c8b4ebc16a9a6c0cda5b",
+          "revision": "387a439fa0733709940e26cab3abdbbc3a17b0e0",
+          "retrieved_at": "2026-11-07T01:54:56.766970+00:00",
+          "pointer": "ae757485-92a4-482a-8bc9-eefe6f5b5ec3",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/understand-mca-roles"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/direct-ea-administration#manage-notification-contacts",
+          "source_sha256": "8be2c72d41654e15d849da97e07cc7eebc6c8366219e99089a1cac27a44f9618",
+          "revision": "f8867ca6fa353f27dbab4ad997734ed9885eea72",
+          "retrieved_at": "2026-11-07T01:54:18.074584+00:00",
+          "pointer": "ae757485-92a4-482a-8bc9-eefe6f5b5ec3",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/direct-ea-administration#manage-notification-contacts"
         }
       ],
       "severity": "Medium"
@@ -2852,15 +3132,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Assisted document workflow, no machine naming compliance predicate. Public examples and name syntax cannot prove an approved naming standard or estate-wide adoption.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: current guidance calls for a tailored organization-specific standard and per-resource naming scopes/length/characters. Examples, valid Azure syntax and counts do not establish an approved standard. No raw resource names or private tag values are retained.",
+        "Reviewer decision: cite approved resource-type/scope coverage, component order, immutable naming versus mutable metadata, accountable ownership and actual adoption using redacted dated references.",
+        "Reviewer decision: independently reconcile Azure resource constraints, sensitive-data exclusion, migration/legacy exceptions and ongoing maintenance. Do not prescribe a universal delimiter, regex or example naming convention."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-07",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -2874,6 +3153,22 @@
           "pointer": "/items/39",
           "item_sha256": "94bcaf0a822c3090c202e2d941abcfdab2aba330c0d9edb0089a16998af7cac8",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming",
+          "source_sha256": "214ac7d3c0cb1549601dd7b13ad678486f2ba2de0aeb983d8ad045a2566cee01",
+          "revision": "bb56333ed2e86d11a049945f7a4114786c0d7488",
+          "retrieved_at": "2026-11-07T01:00:11.066389+00:00",
+          "pointer": "cacf55bc-e4e4-46be-96bc-57a5f23a269a",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+          "source_sha256": "6b2a36ad19e8305e32d5ec0755b9d412e5633e8bf53aed93a1249c74b3c2a7ce",
+          "revision": "9fd90ed833034800434458aef187ba08d8dc9d5b",
+          "retrieved_at": "2026-11-07T01:00:14.399558+00:00",
+          "pointer": "cacf55bc-e4e4-46be-96bc-57a5f23a269a",
+          "guidance": "https://learn.microsoft.com/en-us/legal/termsofuse"
         }
       ],
       "severity": "Medium"
@@ -2896,15 +3191,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Partial graph context only. No four-level automated threshold, complete estate depth, root designation, policy inheritance or organizational suitability inferred.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: unique known typed explicit positive parent graph bounded to 100 relevant supplied records. Relative depth counts MG edges below the selected anchor and excludes subscriptions; no selected scope/name is designated tenant root and no complete estate is inferred.",
+        "Reviewer decision: independently designate authoritative tenant root and ALZ intermediate root, state the level-counting convention and substantiate a complete original-time scoped hierarchy and flatness with justified exceptions.",
+        "Reviewer decision: reconcile immutable no-more-than-four wording with current CAF ideally three-to-four levels. Separately review the service maximum six below tenant root excluding subscriptions; do not substitute that limit or relative subtree depth for recommendation compliance."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-07",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -2918,9 +3212,47 @@
           "pointer": "/items/40",
           "item_sha256": "008cb0f7117211a70cab3512ded3701ae1390a0f726df5ffa9b6512d7868bb81",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups",
+          "source_sha256": "e83901efe892dcca1b286c46a652b748ad9dd851e882418a84be26f032990d4f",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-07T01:00:11.242679+00:00",
+          "pointer": "2df27ee4-12e7-4f98-9f63-04722dd69c5b",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+          "source_sha256": "8fa25035c24da8e8e66c2f68b355eb14293823aacd95becd7db866d629aa1d54",
+          "revision": "84d6ae283915e42535dac6184ccce6d8a1969027",
+          "retrieved_at": "2026-11-07T01:00:11.458047+00:00",
+          "pointer": "2df27ee4-12e7-4f98-9f63-04722dd69c5b",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups",
+          "source_sha256": "73cd540d88d08c8a2cb1107bfba5eb9e2f676b296ca376aac6f8e8d6f8a6918f",
+          "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+          "retrieved_at": "2026-11-07T01:00:12.612608+00:00",
+          "pointer": "2df27ee4-12e7-4f98-9f63-04722dd69c5b",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group.html.markdown",
+          "source_sha256": "2e3970ddbac4377de21efea78d27889e0a2d165cff4f27b5ae29426657cd4b22",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T01:00:12.881668+00:00",
+          "pointer": "2df27ee4-12e7-4f98-9f63-04722dd69c5b",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Management/managementGroups"
+      ],
+      "review_fact_paths": [
+        "managementParentId"
+      ]
     },
     {
       "control_id": "ALZ-667313b4-f566-44b5-b984-a859c773e7d2",
@@ -2940,15 +3272,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No name-derived sandbox, runtime isolation, policy enforcement, expenditure cap or owner approval.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: typed positive MG parentage only. A sandbox-like identifier or graph position never designates experimentation purpose or an operating model.",
+        "Reviewer decision: explicitly designate the sandbox boundary and evidence approved experimentation and isolation from development/test/production, with actual accountable ownership.",
+        "Reviewer decision: substantiate appropriate Policy/access guardrails, cost controls, lifecycle/cleanup and exceptions independently. Group existence does not prove safe experimentation or effective governance."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-07",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -2962,9 +3293,39 @@
           "pointer": "/items/41",
           "item_sha256": "681d0d6d53940593d2c1b1a0a122ad19da6b95f44d58b009f33e338a596afed2",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups#management-group-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups",
+          "source_sha256": "e83901efe892dcca1b286c46a652b748ad9dd851e882418a84be26f032990d4f",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-07T01:00:11.242679+00:00",
+          "pointer": "667313b4-f566-44b5-b984-a859c773e7d2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups",
+          "source_sha256": "73cd540d88d08c8a2cb1107bfba5eb9e2f676b296ca376aac6f8e8d6f8a6918f",
+          "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+          "retrieved_at": "2026-11-07T01:00:12.612608+00:00",
+          "pointer": "667313b4-f566-44b5-b984-a859c773e7d2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group.html.markdown",
+          "source_sha256": "2e3970ddbac4377de21efea78d27889e0a2d165cff4f27b5ae29426657cd4b22",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T01:00:12.881668+00:00",
+          "pointer": "667313b4-f566-44b5-b984-a859c773e7d2",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Management/managementGroups"
+      ],
+      "review_fact_paths": [
+        "managementParentId"
+      ]
     },
     {
       "control_id": "ALZ-61623a76-5a91-47e1-b348-ef254c27d42e",
@@ -2984,15 +3345,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Neither selected scope nor root/platform-like names establish organizational roles, intended direct parent, complete hierarchy, billing aggregation or effective Policy/RBAC.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: unique known typed direct MG parent references, not resource/display names, provide partial placement context. Current ALZ intermediate root sits directly below tenant root.",
+        "Reviewer decision: independently designate the platform and intended tenant/intermediate root according to approved architecture, then substantiate actual direct placement and justified customization.",
+        "Reviewer decision: substantiate common platform Policy/RBAC, effective access, ownership and required platform child populations with redacted evidence; parentage alone does not establish purpose or enforcement."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-07",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -3006,9 +3366,47 @@
           "pointer": "/items/42",
           "item_sha256": "a7eb1b143438ed8c4dc2fd16175df129c0953abfec540c4945bd678ff418c140",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups#management-group-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups",
+          "source_sha256": "e83901efe892dcca1b286c46a652b748ad9dd851e882418a84be26f032990d4f",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-07T01:00:11.242679+00:00",
+          "pointer": "61623a76-5a91-47e1-b348-ef254c27d42e",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+          "source_sha256": "8fa25035c24da8e8e66c2f68b355eb14293823aacd95becd7db866d629aa1d54",
+          "revision": "84d6ae283915e42535dac6184ccce6d8a1969027",
+          "retrieved_at": "2026-11-07T01:00:11.458047+00:00",
+          "pointer": "61623a76-5a91-47e1-b348-ef254c27d42e",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups",
+          "source_sha256": "73cd540d88d08c8a2cb1107bfba5eb9e2f676b296ca376aac6f8e8d6f8a6918f",
+          "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+          "retrieved_at": "2026-11-07T01:00:12.612608+00:00",
+          "pointer": "61623a76-5a91-47e1-b348-ef254c27d42e",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group.html.markdown",
+          "source_sha256": "2e3970ddbac4377de21efea78d27889e0a2d165cff4f27b5ae29426657cd4b22",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T01:00:12.881668+00:00",
+          "pointer": "61623a76-5a91-47e1-b348-ef254c27d42e",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Management/managementGroups"
+      ],
+      "review_fact_paths": [
+        "managementParentId"
+      ]
     },
     {
       "control_id": "ALZ-8bbac757-1559-4ab9-853e-8908ae28c84c",
@@ -3028,15 +3426,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Positive membership is not dedicated connectivity purpose, required-service coverage, actual network reachability, quota/capacity or operational ownership.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: existing saved explicit subscription-parent edges require unique known typed subscription and parent resources in the supplied graph. Unsupported association input, absent resource or partial joins remain unknown.",
+        "Reviewer decision: explicitly designate the dedicated connectivity subscription and intended Connectivity MG, substantiate actual membership and dedicated platform use with redacted dated references.",
+        "Reviewer decision: reconcile required networking/DNS/ExpressRoute services or justified topology alternatives, accountable operations and scale/regional subscription exceptions. A subscription or network resource count proves neither dedication nor completeness."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-07",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -3050,9 +3447,40 @@
           "pointer": "/items/43",
           "item_sha256": "0090af0281755ddb49e3311e563c2844bc2de731255b3bbdae582bf8698f109c",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups#management-group-recommendations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups",
+          "source_sha256": "e83901efe892dcca1b286c46a652b748ad9dd851e882418a84be26f032990d4f",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-07T01:00:11.242679+00:00",
+          "pointer": "8bbac757-1559-4ab9-853e-8908ae28c84c",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+          "source_sha256": "8fa25035c24da8e8e66c2f68b355eb14293823aacd95becd7db866d629aa1d54",
+          "revision": "84d6ae283915e42535dac6184ccce6d8a1969027",
+          "retrieved_at": "2026-11-07T01:00:11.458047+00:00",
+          "pointer": "8bbac757-1559-4ab9-853e-8908ae28c84c",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group_subscription_association.html.markdown",
+          "source_sha256": "410e5ea2266c6822fa62e68b90ba101f9a811824a10b8711e60578f2ce01424d",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T01:00:13.152248+00:00",
+          "pointer": "8bbac757-1559-4ab9-853e-8908ae28c84c",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group_subscription_association.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Management/managementGroups",
+        "Microsoft.Resources/subscriptions"
+      ],
+      "review_fact_paths": [
+        "managementParentId"
+      ]
     },
     {
       "control_id": "ALZ-33b6b780-8b9f-4e5c-9104-9d403a923c34",
@@ -3072,15 +3500,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No absence predicate or root designation. A supplied default setting neither relocates existing subscriptions nor proves it is effective at the actual tenant root.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: explicit defaultManagementGroup reference on settings/default attached to the selected known anchor, joined to a unique known MG in the supplied graph; no implicit defaults. It controls future subscriptions, not existing placement.",
+        "Reviewer decision: independently designate authoritative tenant root, establish the complete dated actual subscription-parent population and substantiate no root-level subscriptions or justified explicit exceptions.",
+        "Reviewer decision: independently approve and evidence the default dedicated group for future subscriptions and its appropriate controls. Default configuration, zero selected records and inventory_complete cannot prove existing root-subscription absence."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-07",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -3094,9 +3521,50 @@
           "pointer": "/items/44",
           "item_sha256": "41d2520bdccd9f8da2462e891a0b209085d95de00e203b7888e7bf344634ca96",
           "guidance": "https://learn.microsoft.com/azure/governance/management-groups/how-to/protect-resource-hierarchy#setting---default-management-group"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups",
+          "source_sha256": "e83901efe892dcca1b286c46a652b748ad9dd851e882418a84be26f032990d4f",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-07T01:00:11.242679+00:00",
+          "pointer": "33b6b780-8b9f-4e5c-9104-9d403a923c34",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/how-to/protect-resource-hierarchy",
+          "source_sha256": "b6ada087d3d8c79b8f16766ad47f39df0a0279ee979771b423f5db7e16e40674",
+          "revision": "533ecdb3d7a5c4ab06226486bb2c88ef86f80592",
+          "retrieved_at": "2026-11-07T01:00:11.663489+00:00",
+          "pointer": "33b6b780-8b9f-4e5c-9104-9d403a923c34",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/management-groups/how-to/protect-resource-hierarchy"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups/settings",
+          "source_sha256": "2df5f5cc0fa2b20d4e92e2b83980432b0caf3160fe5a05201de4edf9cafb47d7",
+          "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+          "retrieved_at": "2026-11-07T01:00:12.122599+00:00",
+          "pointer": "33b6b780-8b9f-4e5c-9104-9d403a923c34",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups/settings"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+          "source_sha256": "8fa25035c24da8e8e66c2f68b355eb14293823aacd95becd7db866d629aa1d54",
+          "revision": "84d6ae283915e42535dac6184ccce6d8a1969027",
+          "retrieved_at": "2026-11-07T01:00:11.458047+00:00",
+          "pointer": "33b6b780-8b9f-4e5c-9104-9d403a923c34",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Management/managementGroups",
+        "Microsoft.Resources/subscriptions",
+        "Microsoft.Management/managementGroups/settings"
+      ],
+      "review_fact_paths": [
+        "managementParentId",
+        "defaultManagementGroup"
+      ]
     },
     {
       "control_id": "ALZ-74d00018-ac6a-49e0-8e6a-83de5de32c19",
@@ -3116,15 +3584,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Creation-authorization configuration only, not a whole-guidance predicate, complete effective permissions, privileged-user designation or runtime authorization assurance.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: only explicit boolean requireAuthorizationForGroupCreation from pinned settings/default attached to the selected unique known anchor. Missing, wrong-type, unsupported-version, denied or unbound input remains unknown.",
+        "Reviewer decision: independently designate authoritative tenant root and substantiate the actual setting there. Its source-qualified meaning is root write permission for group creation, not all management-group operations.",
+        "Reviewer decision: separately substantiate effective least-privileged create/move/delete/settings/access operations, inherited roles/deny/conditions, PIM and emergency exceptions. Settings read/write permission itself grants no other hierarchy/resource access; counts or humanConfirmed do not establish authorization."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-07",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -3138,9 +3605,48 @@
           "pointer": "/items/45",
           "item_sha256": "63e0448f188311545c3b9693febba2ce1780bce7076cf1bb8a47aaa67647aa95",
           "guidance": "https://learn.microsoft.com/azure/governance/management-groups/how-to/protect-resource-hierarchy#setting---require-authorization"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups",
+          "source_sha256": "e83901efe892dcca1b286c46a652b748ad9dd851e882418a84be26f032990d4f",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-07T01:00:11.242679+00:00",
+          "pointer": "74d00018-ac6a-49e0-8e6a-83de5de32c19",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/how-to/protect-resource-hierarchy",
+          "source_sha256": "b6ada087d3d8c79b8f16766ad47f39df0a0279ee979771b423f5db7e16e40674",
+          "revision": "533ecdb3d7a5c4ab06226486bb2c88ef86f80592",
+          "retrieved_at": "2026-11-07T01:00:11.663489+00:00",
+          "pointer": "74d00018-ac6a-49e0-8e6a-83de5de32c19",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/management-groups/how-to/protect-resource-hierarchy"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups/settings",
+          "source_sha256": "2df5f5cc0fa2b20d4e92e2b83980432b0caf3160fe5a05201de4edf9cafb47d7",
+          "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+          "retrieved_at": "2026-11-07T01:00:12.122599+00:00",
+          "pointer": "74d00018-ac6a-49e0-8e6a-83de5de32c19",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups/settings"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+          "source_sha256": "8fa25035c24da8e8e66c2f68b355eb14293823aacd95becd7db866d629aa1d54",
+          "revision": "84d6ae283915e42535dac6184ccce6d8a1969027",
+          "retrieved_at": "2026-11-07T01:00:11.458047+00:00",
+          "pointer": "74d00018-ac6a-49e0-8e6a-83de5de32c19",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Management/managementGroups",
+        "Microsoft.Management/managementGroups/settings"
+      ],
+      "review_fact_paths": [
+        "requireAuthorizationForGroupCreation"
+      ]
     },
     {
       "control_id": "ALZ-92481607-d5d1-4e4e-9146-58d3558fd772",
@@ -3160,15 +3666,14 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No label-derived workload requirement, organizational root, approved grouping, complete workload population or effective policy claim.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Preparation: supplied explicit typed direct parentage only. Current CAF places workload-type groups under the landing-zones parent and bases grouping on security/compliance/connectivity/feature needs, not a copied organization chart.",
+        "Reviewer decision: explicitly designate landing-zones parent and each workload-type group, reconcile immutable root-level wording with approved current ALZ intermediate-root architecture and substantiate actual placement.",
+        "Reviewer decision: bind each grouping to approved workload requirements, appropriate effective Policy and accountable ownership with independent exceptions. Never infer business purpose from names, graph shape, hierarchy depth or generic Policy presence."
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-07",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -3182,9 +3687,47 @@
           "pointer": "/items/46",
           "item_sha256": "d162aa8ae92fb0a134f9479fa9421a96891b9dd7fb37c812c9922c3efe73a031",
           "guidance": "https://learn.microsoft.com/azure/governance/management-groups/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups",
+          "source_sha256": "e83901efe892dcca1b286c46a652b748ad9dd851e882418a84be26f032990d4f",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-07T01:00:11.242679+00:00",
+          "pointer": "92481607-d5d1-4e4e-9146-58d3558fd772",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview",
+          "source_sha256": "8fa25035c24da8e8e66c2f68b355eb14293823aacd95becd7db866d629aa1d54",
+          "revision": "84d6ae283915e42535dac6184ccce6d8a1969027",
+          "retrieved_at": "2026-11-07T01:00:11.458047+00:00",
+          "pointer": "92481607-d5d1-4e4e-9146-58d3558fd772",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/management-groups/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups",
+          "source_sha256": "73cd540d88d08c8a2cb1107bfba5eb9e2f676b296ca376aac6f8e8d6f8a6918f",
+          "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+          "retrieved_at": "2026-11-07T01:00:12.612608+00:00",
+          "pointer": "92481607-d5d1-4e4e-9146-58d3558fd772",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.management/2020-05-01/managementgroups"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group.html.markdown",
+          "source_sha256": "2e3970ddbac4377de21efea78d27889e0a2d165cff4f27b5ae29426657cd4b22",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T01:00:12.881668+00:00",
+          "pointer": "92481607-d5d1-4e4e-9146-58d3558fd772",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Management/managementGroups"
+      ],
+      "review_fact_paths": [
+        "managementParentId"
+      ]
     },
     {
       "control_id": "ALZ-49b82111-2df2-47ee-912e-7f983f630472",
@@ -21124,66 +21667,60 @@
   "reviewed_at": "2026-11-04T13:25:57.057372+00:00",
   "reference_manifest_sha256": "c287f93a4ff4c94c577b0248345d813f44fb27dff66524408870095024305d30",
   "control_source_manifest_sha256": "d189615f2793f141a6ee6cd5a7f026556a4146fd44d65705e6f08d0e01f7debf",
-  "accepted_matrix_sha256": "fb99512f5d8173b44a5eb40bf83041454f15b7fe61822faea2c592727fc19211",
+  "accepted_matrix_sha256": "17d0caa2981429832b5308aa9a3fbf3a293be9e9b1782c854b578923c56b0212",
   "wave_source_manifest_sha256": "617e66a497a1f6bb1ddf50f53b3f75f3ff2cec2989324d42496aeeb4d9d0ef38",
   "change_review": {
-    "base_sha256": "2eb4c34958391614541ab3439afd38a4130db18a33d71a1eff846efc3cf2f85a",
-    "matrix_sha256": "fb99512f5d8173b44a5eb40bf83041454f15b7fe61822faea2c592727fc19211",
-    "reviewed_at": "2026-11-07T01:53:10.877955+00:00",
+    "base_sha256": "e8d897855b60352423ce704a7d0462c662f9daf5e72a2e66b5cee46d0a0168a4",
+    "matrix_sha256": "17d0caa2981429832b5308aa9a3fbf3a293be9e9b1782c854b578923c56b0212",
+    "reviewed_at": "2026-11-07T04:20:16Z",
     "reviewer": "owner-delegated-source-backed-batch-review",
     "changes": [
       {
-        "control_id": "ALZ-7ea02e1c-7166-45a3-bdf5-098891367fcb",
-        "before_sha256": "1b83e8bdd57af10aa31d883c9faef4b290db149f0d5bc2ffeb091c268f153ff5",
-        "after_sha256": "7650d2c1b19912cea84490839a5a8525046e0075d421b4a7cbfa9d3d2e5df990",
-        "rationale": "Owner-delegated source-backed batch 26 acceptance: assisted"
+        "control_id": "ALZ-54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+        "before_sha256": "fa768e1a524e6fab3c8b1dfca3857a71a75100f4778b347fc2cf65e5da54ca01",
+        "after_sha256": "c65d6e750d61d4ebd4c9a22a10fa097071015419af9361fd89071ed1e83be17d",
+        "rationale": "Owner-delegated source-backed batch 03 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-eba8cf22-45c6-4dc1-9b57-2cceb3b97ce5",
-        "before_sha256": "9a722bf31a6cf5056c5961792339f6ba0aa61c9bafb7d7f02936482844d7a31c",
-        "after_sha256": "86a9493ca13f7877d5cc33fa49277dbbe26819cbd302c3f1f824018665910336",
-        "rationale": "Owner-delegated source-backed batch 26 acceptance: assisted"
+        "control_id": "ALZ-ca0fe401-12ad-46fc-8a7e-86293866a9f6",
+        "before_sha256": "78dd6782baf3f1149cbee554a49550943e6af98cf4c983f62a5a5006dfbae6ee",
+        "after_sha256": "eb646423aba4354e064508eb4eccea6407008e6ccd49c19283f0f5ed87f3fef3",
+        "rationale": "Owner-delegated source-backed batch 03 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-f541acdc-e979-4377-acdb-3751ab2ab13a",
-        "before_sha256": "3f8f1d95064df69e9ce5c3a778051c9bd96190da2e3c2224ee2d87185eafd109",
-        "after_sha256": "8d8df9884cb7abde6ab8d45e8de806f832f5bc39960d079650cf8f7b86617b7d",
-        "rationale": "Owner-delegated source-backed batch 26 acceptance: assisted"
+        "control_id": "ALZ-5cf9f485-2784-49b3-9824-75d9b8bdb57b",
+        "before_sha256": "6ff4a2afb4a3b733d3006919ae516a33dde30d52c219feed043552707c799c0d",
+        "after_sha256": "da5c3effca942e88357843165cb73bb46805e51068ec04ae6f9efa4c397ca350",
+        "rationale": "Owner-delegated source-backed batch 03 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-da6e55d7-d8a2-4adb-817d-6326af625ca4",
-        "before_sha256": "36896894c39ec459052b5217dc8ae85b7414b5c7ac23c5c9f5b9c7230f644a88",
-        "after_sha256": "6d2442d6dd42ab83d516e22bb00642a38e9cd74d2cf0c3d600591efd6485a36c",
-        "rationale": "Owner-delegated source-backed batch 26 acceptance: assisted"
+        "control_id": "ALZ-6ad5c3dd-e5ea-4ff1-81a4-7886ff87845c",
+        "before_sha256": "0dc4d345df6c97050d4ced14c30d3d177f9dc3cb11daedff62429ff621a0c4ce",
+        "after_sha256": "f0aaac21313e80bafccf0e56a29bc7c5db0f6d7e6dc7bdf4a40341591fcaf273",
+        "rationale": "Owner-delegated source-backed batch 03 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-b2ab13ad-a6e5-45d7-b8a2-adb117d6326a",
-        "before_sha256": "e419068538b7e06f12c11254146554e9f66c8bd0cc3dc8af1fcee23086a9f705",
-        "after_sha256": "4db3506e1f1392b951b42631b1279f0bf38822f9430f529ddfede858a3e72c07",
-        "rationale": "Owner-delegated source-backed batch 26 acceptance: assisted"
+        "control_id": "ALZ-90e87802-602f-4dfb-acea-67c60689f1d7",
+        "before_sha256": "4ab6dfdf49244d9b4b37c362b61abf44ded4ab25cc59319e98b7649125fbc365",
+        "after_sha256": "a90dddb8ad77abf7cd41e084fa92e1ec41a76d2fd8abfec7f2c62966cf30310a",
+        "rationale": "Owner-delegated source-backed batch 03 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-f625ca44-e569-45f2-823a-ce8cb12308ca",
-        "before_sha256": "c4458158681c7e1fe7444be4930bc0fd4b6b6662764b4d495e8499462950c12e",
-        "after_sha256": "8437f177e1b0565035e850f0cf93089fe23d626fe0c5277054a2f5ad9eecf4a8",
-        "rationale": "Owner-delegated source-backed batch 26 acceptance: assisted"
+        "control_id": "ALZ-e81a73f0-84c4-4641-b406-14db3b4d1f50",
+        "before_sha256": "3359386f617f921314617dab0d232d7ac48fe4c22c183976cda07c04295297ed",
+        "after_sha256": "8934cc9b6f11700eb868c329ec83c64983143935c3de12d7bf15f9a76d8cf05c",
+        "rationale": "Owner-delegated source-backed batch 03 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-89cc5e11-aa4d-4c3b-893d-feb99215266a",
-        "before_sha256": "030586956bceda818176e44f8f33f2892113188ce7a157545ad9f576c8d11fec",
-        "after_sha256": "80a54c3f404e58065510dac6c1a80441d220418b7707e68e9c403a54d5803c05",
-        "rationale": "Owner-delegated source-backed batch 26 acceptance: assisted"
-      },
-      {
-        "control_id": "ALZ-7f408960-c626-44cb-a018-347c8d790cdf",
-        "before_sha256": "4d44eb8d4cafb9e27f8531c3046ce4c8488cb99ba93e8fe9e29935db0f237bd4",
-        "after_sha256": "a0e00351ec58af80774dabdb5f978ece106365515c8333f35167b26621f94bf1",
-        "rationale": "Owner-delegated source-backed batch 26 acceptance: assisted"
+        "control_id": "ALZ-ae757485-92a4-482a-8bc9-eefe6f5b5ec3",
+        "before_sha256": "33a4f354d9958e61e5b07388b0a9acdfbd617d675229a8260fd67e81973d09a2",
+        "after_sha256": "739ee43137eb8d76729acfb2a9c5d70e39252f01cf484543e4c8bc89e2512c9d",
+        "rationale": "Owner-delegated source-backed batch 03 acceptance: manual"
       }
     ]
   },
   "first_wave_matrix_sha256": "f649b2293211c844d661ea93c6978fe2db948eff17237af01ca090809da8e1fb",
-  "batch_source_manifest_sha256": "79a105937322aa21e21ceece013cc6576983c0227018526ad8b07460b2e6dddc",
-  "batch_catalog_version": "2026-11-06.24",
+  "batch_source_manifest_sha256": "92ca4abb80db1de5c8ed65709eb2a6858282cff3853a7b0bec3b0a1ef48b5678",
+  "batch_catalog_version": "2026-11-06.26",
   "priority_manifest_sha256": "b42971f85b9110f71fdc5ae81695fe4be72c1f28022ec27aeb719140ed1475c0"
 }

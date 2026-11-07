@@ -66,6 +66,10 @@ if compiler:
         "test_real_bicep_operations_configuration_without_restore",
         "test_recovery_preparation.RecoveryPreparationTests."
         "test_real_bicep_recovery_guest_sql_waf_configuration_without_restore",
+        "test_organization_preparation.OrganizationPreparationTests."
+        "test_real_bicep_management_keys_parents_settings_without_restore",
+        "test_billing_preparation.BillingPreparationTests."
+        "test_real_bicep_budget_configuration_without_restore",
         "test_key_lifecycle_preparation.KeyLifecyclePreparationTests."
         "test_real_bicep_storage_encryption_configuration_without_restore",
     ]
