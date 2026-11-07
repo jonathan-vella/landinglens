@@ -12,7 +12,13 @@ from .network_evidence import address_list, bounded_count, nat_collections
 from .policy_evidence import policy_signals
 from .query_signals import query_signals
 from .scanner_evidence import scanner_signals
-from .sources import BLOB_SERVICE_TYPE, complete_blob_services, property_at, unknown
+from .sources import (
+    BLOB_SERVICE_TYPE,
+    PLANNED_RESOURCE_LIMIT,
+    complete_blob_services,
+    property_at,
+    unknown,
+)
 from .terraform import InputError
 from .tiers import attach, prepared_signal
 
@@ -202,7 +208,7 @@ def assess(
     ):
         complete_blob_services(
             resources,
-            256
+            PLANNED_RESOURCE_LIMIT
             if bundle["mode"] == "planned"
             and bundle["source"] in {"terraform", "terraform-plan", "arm", "bicep"}
             else 10_000,
@@ -464,20 +470,27 @@ def assess(
                         applicable_review = scope_matches and (
                             bound or (legacy and catalog["schema_version"] == "1.0")
                         )
-                        reviews.append(
-                            {
-                                "kind": "manual" if manual_set else "exceptions",
-                                "binding": "scope_mismatch"
-                                if not scope_matches
-                                else "bound"
-                                if bound
-                                else "legacy_unbound"
-                                if legacy
-                                else "changed_control",
-                                "reviewer": entry.get("reviewer") if bound else None,
-                                "requires_review": not bound or not active or not scope_matches,
-                            }
-                        )
+                        requires_review = not bound or not active or not scope_matches
+                        review_entry: dict[str, Any] = {
+                            "kind": "manual" if manual_set else "exceptions",
+                            "binding": "scope_mismatch"
+                            if not scope_matches
+                            else "bound"
+                            if bound
+                            else "legacy_unbound"
+                            if legacy
+                            else "changed_control",
+                            "reviewer": entry.get("reviewer") if bound else None,
+                            "requires_review": requires_review,
+                        }
+                        if not requires_review:
+                            review_entry.update(
+                                rationale=entry["rationale"],
+                                evidence=entry["evidence"],
+                                valid_from=entry["valid_from"],
+                                valid_until=entry["valid_until"],
+                            )
+                        reviews.append(review_entry)
                         validity["manual" if manual_set else "exceptions"] = (
                             "active" if active else "expired_or_not_yet_valid"
                         )

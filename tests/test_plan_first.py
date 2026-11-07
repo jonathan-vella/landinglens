@@ -6,6 +6,9 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
+from alz_assessor.catalog import load_catalog
+from alz_assessor.engine import assess
+from alz_assessor.plan import plan_source
 from alz_assessor.preflight import preflight, render_preflight
 
 
@@ -85,3 +88,64 @@ class PlanFirstTests(unittest.TestCase):
                 self.assertIn(
                     "separately prepared", json.loads(result.stdout)["terraform_guidance"]
                 )
+
+    def test_large_terraform_plan_up_to_2500_resources_and_parameter_placeholder_preflight(self):
+        scope = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-alz"
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            plan_path = root / "large-plan.json"
+            resources = [
+                {
+                    "address": f"azurerm_virtual_network.vnet_{i}",
+                    "mode": "managed",
+                    "type": "azurerm_virtual_network",
+                    "values": {
+                        "id": f"{scope}/providers/Microsoft.Network/virtualNetworks/vnet-{i}",
+                        "name": f"vnet-{i}",
+                        "resource_group_name": "rg-alz",
+                        "address_space": ["10.0.0.0/16"],
+                    },
+                }
+                for i in range(400)
+            ]
+            plan_path.write_text(
+                json.dumps(
+                    {
+                        "format_version": "1.2",
+                        "complete": True,
+                        "planned_values": {"root_module": {"resources": resources}},
+                    }
+                ),
+                encoding="utf-8",
+            )
+            bundle = plan_source(plan_path, scope=scope, provider_version="4.50.0")
+            self.assertEqual(len(bundle["resources"]), 400)
+            report = assess(bundle, load_catalog(), at="2026-11-05T00:00:00Z")
+            self.assertEqual(report["kind"], "assessment")
+
+            arm_file = root / "template.json"
+            arm_file.write_text(json.dumps({"resources": []}), encoding="utf-8")
+            params_file = root / "parameters.json"
+            params_file.write_text(
+                json.dumps(
+                    {
+                        "parameters": {
+                            "subscriptionId": {"value": "{{ subscription_id_management }}"},
+                        }
+                    }
+                ),
+                encoding="utf-8",
+            )
+            for mode in ("arm", "bicep"):
+                result = preflight(
+                    arm_file,
+                    mode,
+                    lambda: {"inventory_complete": True, "diagnostics": [], "resources": []},
+                    scope=scope,
+                    provider_version=None,
+                    compiler=None,
+                    probe_compiler=False,
+                    parameters=params_file,
+                )
+                reasons = [c["reason"] for c in result["checks"]]
+                self.assertIn("accelerator_placeholder_unresolved", reasons)

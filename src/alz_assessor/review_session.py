@@ -364,8 +364,8 @@ class ReviewSession:
         if type(payload["revision"]) is not int or payload["revision"] != self.revision:
             raise InputError("The review changed in another page; reload before saving")
         reviews = require(payload, "reviews", list)
-        if not 1 <= len(reviews) <= 20:
-            raise InputError("Select 1-20 explicit bound review decisions")
+        if not 1 <= len(reviews) <= 50:
+            raise InputError("Select 1-50 explicit bound review decisions")
         at = self.clock()
         baseline = assess(
             self.evidence,

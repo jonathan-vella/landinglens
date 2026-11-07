@@ -46,15 +46,44 @@ function showRecord() {
     item.textContent = text;
     preparation.appendChild(item);
   }
+  const structured = document.getElementById("evidence-structured");
+  structured.replaceChildren();
+  if (row && row.available_evidence) {
+  const ev = row.available_evidence;
+  const summary = document.createElement("p");
+  summary.textContent =
+    `Mode: ${ev.mode || "n/a"} | Collected: ${ev.collected_at || "n/a"} | ` +
+    `Inventory complete: ${Boolean(ev.inventory_complete)} | ` +
+    `Matching resources: ${ev.matching_resources ?? (ev.resources || []).length}`;
+  structured.append(summary);
+  if ((ev.resources || []).length) {
+    const list = document.createElement("ul");
+    for (const r of (ev.resources || []).slice(0, 10)) {
+      const item = document.createElement("li");
+      const id = r.arm_id || r.logical_id || r.resource_type || "resource";
+      const facts = Object.entries(r.facts || {})
+        .map(([k, v]) => `${k}: ${typeof v === "object" ? JSON.stringify(v) : v}`)
+        .join(", ");
+      item.textContent = facts ? `${id} (${facts})` : id;
+      list.append(item);
+    }
+    structured.append(list);
+  }
+  }
   document.getElementById("available-evidence").textContent =
-    row ? JSON.stringify(row.available_evidence, null, 2) : "";
+  row ? JSON.stringify(row.available_evidence, null, 2) : "";
   options(decision, (kind.value === "exceptions"
     ? ["accepted", "rejected", "pending"] : outcomes).map(v => [v, v]), true);
   const record = currentRecord();
   for (const field of fields) {
-    document.getElementById(field).value = record
-      ? (field.startsWith("valid_") ? localTime(record[field]) : record[field])
-      : (field === "valid_from" ? localTime(new Date()) : "");
+    const el = document.getElementById(field);
+    if (record) {
+      el.value = field.startsWith("valid_") ? localTime(record[field]) : record[field];
+    } else if (field === "valid_from") {
+      if (!el.value) el.value = localTime(new Date());
+    } else if (field === "rationale" || field === "evidence") {
+      el.value = "";
+    }
   }
   decision.value = record ? record.decision : "";
   document.getElementById("replacement").hidden = !record;
@@ -69,6 +98,9 @@ function selectControl() {
   options(kind, (row ? row.kinds : []).map(k => [
     k, k === "manual" ? "Manual evidence decision" : "Exception (technical result unchanged)"
   ]));
+  for (const card of document.querySelectorAll("#queue-cards [data-card-control]")) {
+    card.setAttribute("aria-pressed", String(card.dataset.cardControl === control.value));
+  }
   showRecord();
 }
 function updateSummary() {
@@ -93,6 +125,16 @@ async function post(route, payload) {
 }
 control.addEventListener("change", selectControl);
 kind.addEventListener("change", showRecord);
+document.getElementById("insert-evidence-summary").addEventListener("click", () => {
+  const row = state.controls.find(c => c.control_id === control.value);
+  if (!row || !row.available_evidence) return;
+  const ev = row.available_evidence;
+  const summary = `Prepared scope (${ev.mode || "observed"} at ${ev.collected_at || "unknown"}): ` +
+    `${(ev.matched_resources || []).length} matched resource(s)` +
+    (ev.truncated ? " (truncated)." : ".");
+  const field = document.getElementById("evidence");
+  field.value = (field.value ? field.value.trim() + "\\n" + summary : summary).slice(0, 4000);
+});
 for (const button of document.querySelectorAll("[data-days]")) {
   button.addEventListener("click", () => {
     const from = document.getElementById("valid_from");
@@ -146,6 +188,10 @@ if (!state.controls.length) document.getElementById("save").disabled = true;
 
 WORKSPACE_SCRIPT = """
 function refreshWorkspace() {
+  const oldArea = document.getElementById("area-filter").value;
+  options(document.getElementById("area-filter"),
+    [["", "All areas"], ...(state.areas || []).map(a => [a.name, a.name])]);
+  document.getElementById("area-filter").value = oldArea;
   const areas = document.getElementById("area-progress");
   areas.replaceChildren();
   for (const area of state.areas || []) {
@@ -153,16 +199,25 @@ function refreshWorkspace() {
     const button = document.createElement("button");
     button.type = "button";
     button.textContent = `${area.name}: ${area.remaining} remaining / ${area.total} controls`;
+    button.setAttribute(
+      "aria-pressed",
+      String(document.getElementById("area-filter").value === area.name)
+    );
+    const track = document.createElement("span");
+    track.className = "progress-track";
+    const fill = document.createElement("span");
+    fill.className = "progress-fill";
+    fill.style.width = `${
+      area.total ? Math.round(((area.total - area.remaining) / area.total) * 100) : 0
+    }%`;
+    track.append(fill);
+    button.append(track);
     button.addEventListener("click", () => {
       document.getElementById("area-filter").value = area.name;
       refreshWorkspace();
     });
     item.append(button); areas.append(item);
   }
-  const oldArea = document.getElementById("area-filter").value;
-  options(document.getElementById("area-filter"),
-    [["", "All areas"], ...(state.areas || []).map(a => [a.name, a.name])]);
-  document.getElementById("area-filter").value = oldArea;
   const query = document.getElementById("queue-search").value.toLocaleLowerCase();
   const visible = state.controls.filter(row =>
     (!document.getElementById("only-needs").checked || state.needs_me.includes(row.control_id)) &&
@@ -178,13 +233,43 @@ function refreshWorkspace() {
   ]));
   if (visible.some(row => row.control_id === previous)) control.value = previous;
   else if (visible.length) control.selectedIndex = 0;
+  const cards = document.getElementById("queue-cards");
+  cards.replaceChildren();
+  for (const row of visible.slice(0, 50)) {
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = "queue-card";
+    card.dataset.cardControl = row.control_id;
+    card.setAttribute("aria-pressed", String(row.control_id === control.value));
+    const badges = document.createElement("span");
+    badges.className = "queue-badges";
+    for (const text of [
+      row.severity || "Unknown",
+      row.tier,
+      row.review_status || "needs-review"
+    ]) {
+      const badge = document.createElement("span");
+      badge.className = "status";
+      badge.textContent = text;
+      badges.append(badge);
+    }
+    const label = document.createElement("span");
+    label.className = "queue-card-label";
+    label.textContent = row.label;
+    card.append(badges, label);
+    card.addEventListener("click", () => {
+      control.value = row.control_id;
+      selectControl();
+    });
+    cards.append(card);
+  }
   document.getElementById("queue-count").textContent =
     `${visible.length} shown; ${state.needs_me.length} controls need a decision.`;
   selectControl();
   document.getElementById("save").disabled = !control.value;
   const bulk = document.getElementById("bulk-options");
   bulk.replaceChildren();
-  for (const row of visible.filter(row => row.tier === "signal")) {
+  for (const row of visible.filter(row => (row.kinds || []).includes("manual"))) {
     const line = document.createElement("div");
     const label = document.createElement("label");
     const checkbox = document.createElement("input");
@@ -212,13 +297,30 @@ function showInterview() {
   decisions.replaceChildren();
   for (const item of selected ? selected.template.decisions : []) {
     const row = state.controls.find(control => control.control_id === item.control_id);
+    const card = document.createElement("div");
     const label = document.createElement("label");
     label.textContent = row ? row.label : item.control_id;
     const select = document.createElement("select");
     select.dataset.interviewDecision = item.control_id;
     select.setAttribute("aria-label", `Explicit interview outcome for ${label.textContent}`);
     options(select, outcomes.map(value => [value, value]), true);
-    label.append(select); decisions.append(label);
+    label.append(select);
+    card.append(label);
+    if (row) {
+      const reqs = document.createElement("p");
+      const items = [...(row.evidence_requirements || []), row.limitations || ""];
+      reqs.textContent = items.filter(Boolean).join(" | ");
+      card.append(reqs);
+    }
+    const note = document.createElement("input");
+    note.type = "text";
+    note.maxLength = 1000;
+    note.placeholder = "Optional per-control note";
+    note.dataset.interviewNote = item.control_id;
+    const labelText = row ? row.label : item.control_id;
+    note.setAttribute("aria-label", `Optional per-control note for ${labelText}`);
+    card.append(note);
+    decisions.append(card);
   }
 }
 function reviewFields() {
@@ -268,6 +370,9 @@ document.getElementById("interview-save").addEventListener("click", async () => 
     for (const entry of response.decisions) {
       entry.outcome = [...document.querySelectorAll("[data-interview-decision]")].find(
         element => element.dataset.interviewDecision === entry.control_id).value;
+      const noteEl = [...document.querySelectorAll("[data-interview-note]")].find(
+        element => element.dataset.interviewNote === entry.control_id);
+      if (noteEl && noteEl.value.trim()) entry.note = noteEl.value.trim();
     }
     const replace = document.getElementById("interview-replace").checked
       ? response.decisions.filter(entry => state.records.some(record =>
@@ -298,6 +403,19 @@ document.addEventListener("keydown", event => {
     event.preventDefault(); moveQueue(event.key === "ArrowDown" ? 1 : -1);
   }
 });
+function switchWorkflowTab(activeTab) {
+  for (const button of document.querySelectorAll(".workflow-tabs [role=tab]")) {
+    button.setAttribute("aria-selected", String(button.dataset.tab === activeTab));
+  }
+  for (const panel of document.querySelectorAll("[data-panel]")) {
+    const match = activeTab === "all" || panel.dataset.panel === activeTab;
+    panel.classList.toggle("hidden-panel", !match);
+    panel.hidden = !match;
+  }
+}
+for (const button of document.querySelectorAll(".workflow-tabs [role=tab]")) {
+  button.addEventListener("click", () => switchWorkflowTab(button.dataset.tab));
+}
 """
 
 
@@ -311,9 +429,16 @@ def review_page(state: dict[str, Any], token: str, nonce: str) -> str:
         )
 
     safe_nonce = html.escape(nonce, quote=True)
+    base_style = STYLE.replace(
+        ".notice { border-left: 4px solid var(--cp-accent); }",
+        ".notice { border-left: none; background: var(--cp-accent-soft);"
+        " border: 1px solid var(--cp-border-strong); }",
+    )
     styles = (
-        STYLE
+        base_style
         + """
+.notice { border-left: none; background: var(--cp-accent-soft);
+  border: 1px solid var(--cp-border-strong); }
 textarea { display: block; width: 100%; min-height: 80px; font: inherit; padding: 8px;
   color: var(--cp-text); background: var(--cp-surface);
   border: 1px solid var(--cp-border-strong); border-radius: .625rem; }
@@ -325,6 +450,27 @@ iframe { width: 100%; height: 65vh; border: 1px solid var(--cp-border); border-r
 .workspace-grid select, .workspace-grid input { max-width: 100%; }
 #area-progress { padding-left: 0; list-style: none; }
 #area-progress button { text-align: left; width: 100%; margin-bottom: 8px; }
+#area-progress button[aria-pressed="true"] { border-color: var(--cp-accent);
+  background: var(--cp-accent-soft); font-weight: 600; }
+.progress-track { display: block; width: 100%; height: 6px; margin-top: 6px;
+  background: var(--cp-surface-soft); border-radius: 999px; }
+.progress-fill { display: block; height: 100%; background: var(--cp-accent);
+  border-radius: 999px; }
+.queue-cards { display: flex; flex-direction: column; gap: 8px; max-height: 280px;
+  overflow-y: auto; margin: 8px 0; }
+.queue-card { display: block; width: 100%; text-align: left; padding: 8px 10px;
+  background: var(--cp-surface-soft); border: 1px solid var(--cp-border);
+  border-radius: .625rem; }
+.queue-card[aria-pressed="true"] { border-color: var(--cp-accent);
+  background: var(--cp-accent-soft); }
+.queue-badges { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 4px; }
+.queue-card-label { display: block; font-size: .92rem; }
+.evidence-structured { margin: 8px 0; padding: 8px 12px; background: var(--cp-surface-soft);
+  border: 1px solid var(--cp-border); border-radius: .625rem; font-size: .92rem; }
+.workflow-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.workflow-tabs [role="tab"][aria-selected="true"] { background: var(--cp-accent);
+  color: var(--cp-accent-fg); border-color: var(--cp-accent); }
+.hidden-panel { display: none; }
 @media (max-width: 1000px) { .workspace-grid { grid-template-columns: 1fr; } }
 .primary { background: var(--cp-accent); color: var(--cp-accent-fg); }
 .primary:hover { background: var(--cp-accent-hover); }
@@ -363,14 +509,22 @@ and saved reports remain available without JavaScript.</noscript>
 <p id="queue-count" role="status"></p>
 <label for="control">Finding (scope-wide review)</label>
 <select id="control" size="12" form="review" required></select>
+<div id="queue-cards" class="queue-cards" role="region" aria-label="Interactive control cards">
+</div>
 <p><button id="previous-control" type="button">Previous</button>
 <button id="next-control" type="button">Next</button></p>
 <p>Keyboard: Alt+Up / Alt+Down.</p></section>
 <section aria-label="Evidence and decisions">
-<form id="review" class="card"><p id="technical"></p>
+<div class="workflow-tabs" role="tablist" aria-label="Review workflow mode">
+<button type="button" role="tab" data-tab="single" aria-selected="true">Single control</button>
+<button type="button" role="tab" data-tab="batch" aria-selected="false">Batch triage</button>
+<button type="button" role="tab" data-tab="interview" aria-selected="false">
+Guided interview</button></div>
+<form id="review" class="card" data-panel="single"><p id="technical"></p>
 <details open><summary>Evidence to prepare and decision boundaries</summary>
 <ul id="preparation"></ul></details>
 <details><summary>Already available scoped inventory (not a decision)</summary>
+<div id="evidence-structured" class="evidence-structured"></div>
 <pre id="available-evidence"></pre></details>
 <label for="kind">Review kind</label><select id="kind" required></select>
 <label for="decision">Your decision</label><select id="decision" required></select>
@@ -380,6 +534,7 @@ and saved reports remain available without JavaScript.</noscript>
 <label for="rationale">Justification</label>
 <textarea id="rationale" required maxlength="4000"></textarea>
 <label for="evidence">Supporting evidence or attributable owner statement</label>
+<p><button id="insert-evidence-summary" type="button">Insert prepared evidence summary</button></p>
 <textarea id="evidence" required maxlength="4000"></textarea>
 <label for="valid_from">Valid from (your local time)</label>
 <input id="valid_from" type="datetime-local" step="1" required>
@@ -391,14 +546,16 @@ and saved reports remain available without JavaScript.</noscript>
 Replace this saved review; preserve its earlier revision.</label>
 <p><button id="save" class="primary" type="submit">Save review and update reports</button></p>
 </form>
-<details class="card"><summary>Review selected Signals together</summary>
+<details class="card" id="batch-panel" data-panel="batch" open>
+<summary>Review selected Signals together</summary>
 <p>Select each Signal and its explicit outcome. Shared reviewer, evidence,
 justification and validity come from the form above. No outcome is prefilled.
 Human confirmation does not replace an accepted technical predicate.</p>
 <div id="bulk-options"></div>
 <label><input id="bulk-replace" type="checkbox">Replace selected existing manual reviews</label>
 <button id="bulk-save" type="button">Save selected explicit reviews</button></details>
-<details class="card"><summary>Guided interview</summary>
+<details class="card" id="interview-panel" data-panel="interview" open>
+<summary>Guided interview</summary>
 <label for="interview-question">Question</label><select id="interview-question"></select>
 <p id="interview-question-text"></p>
 <label for="interview-answer">Shared narrative answer</label>

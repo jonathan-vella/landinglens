@@ -1,6 +1,7 @@
 # LandingLens workflows
 
-For the short path, start with the [quickstart](../README.md).
+For the short path, start with the [quickstart](../README.md) or the
+[end-to-end User Guide](user-guide.md).
 [What LandingLens does and doesn't prove](what-landinglens-proves.md) defines
 evidence guarantees and limits. [Catalog delivery history](planning/plan.md#catalog-delivery-history)
 and the [accepted matrix](automation-matrix.md) retain version-specific decisions.

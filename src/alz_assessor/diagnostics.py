@@ -227,6 +227,7 @@ REASONS = {
         "compiler_not_probed",
         "compilation_not_run",
         "input_path_not_authorized",
+        "accelerator_placeholder_unresolved",
     ),
     "verified": (
         "explicit_hub_aspath_configured",

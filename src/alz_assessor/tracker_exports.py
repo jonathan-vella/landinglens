@@ -26,6 +26,9 @@ HEADERS = (
     "Review status",
     "Evidence references",
     "Comparison",
+    "Reviewer",
+    "Review rationale",
+    "Review valid until",
 )
 
 
@@ -49,6 +52,13 @@ def tracker_rows(model: dict[str, Any]) -> list[list[str]]:
                 continue
             if any(not isinstance(link, str) for link in body["evidence_links"]):
                 raise InputError("Tracker evidence references must be explicit strings")
+            active_reviews = [
+                review
+                for review in body.get("reviews", [])
+                if not review.get("requires_review") and review.get("rationale")
+            ]
+            active_reviews.sort(key=lambda item: item.get("kind") != "manual")
+            primary_review = active_reviews[0] if active_reviews else {}
             result.append(
                 [
                     safe_text(value)
@@ -75,6 +85,9 @@ def tracker_rows(model: dict[str, Any]) -> list[list[str]]:
                         ),
                         "\n".join(body["evidence_links"]),
                         row.get("comparison"),
+                        primary_review.get("reviewer"),
+                        primary_review.get("rationale"),
+                        primary_review.get("valid_until"),
                     )
                 ]
             )

@@ -144,11 +144,30 @@ class PriorityTests(unittest.TestCase):
         proposal = suggestions([self.bound(mapping)], AT)[0]
         self.assertEqual(proposal["suggested_controls"], [])
         self.assertEqual(proposal["reason"], "stale_archetype_binding")
-        mapping = copy.deepcopy(self.mapping)
-        mapping["entries"][0]["group_id"] = "corp"
-        proposal = suggestions([self.bound(mapping)], AT)[0]
-        self.assertEqual(proposal["suggested_controls"], [])
-        self.assertEqual(proposal["reason"], "archetype_mapping_not_reviewed")
+        for reviewed_group in (
+            "alz",
+            "platform",
+            "landingzones",
+            "corp",
+            "online",
+            "sandbox",
+            "security",
+            "management",
+            "connectivity",
+            "identity",
+        ):
+            mapping = copy.deepcopy(self.mapping)
+            mapping["entries"][0]["group_id"] = reviewed_group
+            proposal = suggestions([self.bound(mapping)], AT)[0]
+            self.assertEqual(proposal["reason"], "reviewed_archetype_assignment")
+            self.assertTrue(proposal["suggested_controls"])
+            self.assertTrue(proposal["requires_confirmation"])
+        for unreviewed_group in ("decommissioned", "local"):
+            mapping = copy.deepcopy(self.mapping)
+            mapping["entries"][0]["group_id"] = unreviewed_group
+            proposal = suggestions([self.bound(mapping)], AT)[0]
+            self.assertEqual(proposal["suggested_controls"], [])
+            self.assertEqual(proposal["reason"], "archetype_mapping_not_reviewed")
 
     def test_binding_guards_and_no_raw_fields(self):
         for field, value in (

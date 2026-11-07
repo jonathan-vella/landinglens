@@ -35,9 +35,11 @@ monitors, alert routing and location labels do not prove health, ingestion,
 physical independence, edge BFD or actual convergence/failover.
 
 Read [what LandingLens does and doesn't prove](docs/what-landinglens-proves.md)
-before interpreting results. [Detailed workflows](docs/usage.md),
-[contracts](docs/contracts.md) and the [accepted matrix](docs/automation-matrix.md)
-describe exact supported inputs and evidence requirements.
+before interpreting results. The [User Guide](docs/user-guide.md),
+[detailed workflows](docs/usage.md), [contracts](docs/contracts.md) and the
+[accepted matrix](docs/automation-matrix.md) describe exact supported inputs,
+multi-bundle composition, interactive review triage, canvas exploration and
+evidence requirements.
 
 ## Install
 
@@ -91,24 +93,38 @@ is not a deployed ALZ or compliance assessment.
 
 ## Browse saved reports in a canvas
 
-Build a portable read-only explorer from one or more saved **planned-only**
-assessments. This uses the existing minimized report model, not another evaluator:
+Build a portable read-only explorer from one or more saved **planned**, **observed**,
+or **comparison** assessments. This uses the existing minimized report model, not
+another evaluator:
 
 ```powershell
 .venv\Scripts\python tools\build_report_canvas.py --report "Hub networking" hub.assessment.json --report "Logging" logging.assessment.json --fictional --output-directory report-preview
 ```
 
 Open `report-preview\index.html` in Copilot's Browser canvas or your browser.
-Select a report, filter by outcome/design area, search recommendation IDs and
-inspect the recorded facts, methods and sources. Full HTML reports and a
-presentation JSON download remain separate from editable assessment/evidence.
-Use a new output directory; existing files are never overwritten.
+Select a report, filter by outcome, design area, severity, evidence tier or
+comparison status (`drift` / `match`), navigate with `ArrowUp`/`ArrowDown` or `/`,
+and inspect the recorded facts, methods, review status and sources. Full HTML
+reports and a presentation JSON download remain separate from editable
+assessment/evidence. Use a new output directory; existing files are never overwritten.
 
-`--fictional` labels demonstration inputs; omit it for your own saved planned
-configuration. This is a Browser-compatible preview, not an installed custom
-canvas extension. It cannot save review decisions. Use the existing HTML reports
-for observed/comparison assessments and the reviewer workspace below for decisions.
-Do not commit generated previews or identity-bearing assessment inputs.
+`--fictional` labels demonstration inputs; omit it for your own saved
+configuration. For interactive agent-driven exploration in the GitHub Copilot App,
+this repository also includes a project-scoped native canvas extension in
+`.github/extensions/landinglens-canvas/` (`load_assessment`, `filter_findings`,
+`select_control`, and non-committing `stage_decision` drafts). Use the reviewer
+workspace below to validate and save real decisions. Do not commit generated
+previews or identity-bearing assessment inputs.
+
+## Compose multi-template evidence
+
+Merge multiple normalized evidence bundles (such as separate management-group,
+logging, and hub-networking templates) into a single scoped bundle before
+running `assess` or `review serve`:
+
+```powershell
+alz-assessor compose logging.evidence.json hub.evidence.json --scope /subscriptions/00000000-0000-0000-0000-000000000001 --output estate.evidence.json
+```
 
 ## Triage and record decisions
 
@@ -117,6 +133,7 @@ Start from your current saved normalised evidence:
 ```powershell
 alz-assessor review serve evidence.json --directory private-reviews --evidence-tiers
 alz-assessor review serve private-reviews\revision-0002 --resume --directory resumed-reviews
+alz-assessor review migrate manual.json --from-catalog old-catalog.json --to-catalog new-catalog.json --scope /subscriptions/00000000-0000-0000-0000-000000000001 --output migrated-manual.json
 ```
 
 The local workspace provides area progress, a tier/severity queue, evidence,

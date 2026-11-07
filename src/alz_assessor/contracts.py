@@ -335,150 +335,14 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                 ):
                     raise InputError("Review resource preparation requires 1-10 explicit types")
             if "review_fact_paths" in control:
-                from .billing_evidence import PATHS as BILLING_PATHS
-                from .dns_evidence import PATHS as DNS_PATHS
-                from .identity_evidence import PATHS as IDENTITY_PATHS
-                from .key_lifecycle_evidence import PATHS as KEY_PATHS
-                from .logging_evidence import PATHS as LOGGING_PATHS
-                from .network_policy_evidence import PATHS as NETWORK_POLICY_PATHS
-                from .operations_evidence import PATHS as OPERATIONS_PATHS
-                from .organization_evidence import PATHS as ORGANIZATION_PATHS
-                from .platform_health_evidence import PATHS as PLATFORM_HEALTH_PATHS
-                from .policy_strategy_evidence import PATHS as POLICY_STRATEGY_PATHS
-                from .recovery_evidence import PATHS as RECOVERY_PATHS
-                from .tenant_evidence import PATHS as TENANT_PATHS
-                from .topology_evidence import PATHS as TOPOLOGY_PATHS
-                from .virtual_wan_evidence import PATHS as VWAN_PATHS
+                from .registry import catalog_review_fact_paths
 
+                allowed_paths = catalog_review_fact_paths()
                 paths = require(control, "review_fact_paths", list)
                 if (
                     not paths
                     or len(paths) > 8
-                    or any(
-                        not isinstance(path, str)
-                        or path
-                        not in (
-                            {
-                                "enableRbacAuthorization",
-                                "publicNetworkAccess",
-                                "networkAcls.defaultAction",
-                                "minimumTlsVersion",
-                                "sku.tier",
-                                "sku.name",
-                                "subnetReferences",
-                                "firewallPolicy.id",
-                                "addressPrefixes",
-                                "routeTable.id",
-                                "natGateway.id",
-                                "targetResourceId",
-                                "workspaceId",
-                                "logAnalyticsDestinationType",
-                                "natRuleCollections",
-                                "ipAddresses",
-                                "configuredZones",
-                                "applicationRules",
-                                "enableDdosProtection",
-                                "ddosProtectionPlan.id",
-                                "privateConnections",
-                                "subnet.id",
-                                "networkSecurityGroup.id",
-                                "serviceEndpointCount",
-                                "serviceEndpointNetworkIdentifiers",
-                                "privateEndpointNetworkPolicies",
-                                "gatewayType",
-                                "securityRuleCount",
-                                "securityRuleSummary",
-                                "defaultRuleSummary",
-                                "egressRules",
-                                "enabled",
-                                "storageId",
-                                "trafficAnalytics.enabled",
-                                "trafficAnalytics.workspaceResourceId",
-                                "filteringConfigured",
-                                "routeCount",
-                                "allowVirtualNetworkAccess",
-                                "remoteVirtualNetwork.id",
-                                "loadBalancerSku",
-                                "frontendSummary",
-                                "backendSummary",
-                                "macsecLinks",
-                                "connectionType",
-                                "useLocalAzureIpAddress",
-                                "virtualNetworkGateway1.id",
-                                "virtualNetworkGateway2.id",
-                                "virtualNetworkPrefixes",
-                                "identitySummary",
-                                "principalType",
-                                "roleDefinitionId",
-                                "defenderPricing",
-                                "activityLogRouting",
-                                "hsmConfiguration",
-                                *KEY_PATHS,
-                                "patchConfiguration",
-                                "wafMode",
-                                "wafEnabled",
-                                "frontDoorSku",
-                                "customRuleCount",
-                                "managedRuleSetCount",
-                                "wafPolicyId",
-                                "wafAssociations",
-                                "fdidRuleSummary",
-                                "inboundRuleSummary",
-                                "applicationBackendSummary",
-                                "ddosProtectionMode",
-                                "ipConfigurationId",
-                                "nicIpConfigurations",
-                                "virtualMachineId",
-                                "defaultOutboundAccess",
-                                "ddosLogCategories",
-                                "diagnosticStorageId",
-                                "enableBgp",
-                                "activeActive",
-                                "routingWeight",
-                                "expressRouteCircuitId",
-                                "localNetworkGatewayId",
-                                "gatewaySku",
-                                "vpnGatewayGeneration",
-                                "circuitSku.tier",
-                                "circuitSku.family",
-                                "providerCircuitBandwidthMbps",
-                                "directCircuitBandwidthGbps",
-                                "expressRoutePort.id",
-                                "directPortRateLimit",
-                                "directPortBandwidthGbps",
-                                "directPortBillingType",
-                                "directPortEncapsulation",
-                                "peeringLocationConfigured",
-                                "expressRouteGatewayBypass",
-                                "enablePrivateLinkFastPath",
-                                "gatewayScaleBounds",
-                                "gatewayPublicIpReferences",
-                                "publicIpSku",
-                                "disableBgpRoutePropagation",
-                                "connectionMonitorSummary",
-                                "expressRouteAlertSummary",
-                                "peeringLocationFingerprint",
-                                "tagCount",
-                                "dashboardSummary",
-                                "capacityReservationGroupId",
-                                "managementParentId",
-                            }
-                            | DNS_PATHS
-                            | IDENTITY_PATHS
-                            | TENANT_PATHS
-                            | BILLING_PATHS
-                            | NETWORK_POLICY_PATHS
-                            | VWAN_PATHS
-                            | POLICY_STRATEGY_PATHS
-                            | LOGGING_PATHS
-                            | PLATFORM_HEALTH_PATHS
-                            | RECOVERY_PATHS
-                            | TOPOLOGY_PATHS
-                            | ORGANIZATION_PATHS
-                            | OPERATIONS_PATHS
-                        )
-                        for path in paths
-                    )
+                    or any(not isinstance(path, str) or path not in allowed_paths for path in paths)
                 ):
                     raise InputError("Review fact preparation requires 1-8 reviewed typed paths")
             if control["automation"] == "automated":
@@ -794,7 +658,7 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                     "archetype_mapping_not_reviewed",
                 ):
                     raise InputError("Unreviewed applicability suggestion mode or reason")
-                from .priorities import load_priorities
+                from .priorities import ARCHETYPE_SUGGESTIONS, load_priorities
 
                 architecture = load_priorities()["architecture"]
                 group = require(suggestion, "group_id", str)
@@ -803,10 +667,12 @@ def validate(data: Any, kind: str | None = None) -> dict[str, Any]:
                     or suggestion["archetypes"] != architecture[group]["archetypes"]
                 ):
                     raise InputError("Unreviewed archetype identity")
-                if suggestion["suggested_controls"] not in (
-                    [],
-                    ["ALZ-b03ed428-4617-4067-a787-85468b9ccf3f"],
-                ):
+                expected_controls = [
+                    cid
+                    for arch in suggestion["archetypes"]
+                    for cid in ARCHETYPE_SUGGESTIONS.get(arch, [])
+                ]
+                if suggestion["suggested_controls"] not in ([], expected_controls):
                     raise InputError("Unreviewed archetype control association")
                 if suggestion.get("scope") is not None:
                     scope_id(suggestion["scope"])

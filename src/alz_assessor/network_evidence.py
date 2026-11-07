@@ -3,90 +3,17 @@
 from ipaddress import ip_address, ip_network
 from typing import Any
 
-from .billing_evidence import PATHS as BILLING_PATHS
 from .contracts import canonical_id, identity_type
 from .dns_evidence import KINDS as DNS_KINDS
-from .dns_evidence import PATHS as DNS_PATHS
 from .expressroute_evidence import CIRCUIT_KIND, PORT_KIND
-from .expressroute_evidence import PATHS as EXPRESSROUTE_PATHS
-from .governance_evidence import PATHS as GOVERNANCE_PATHS
-from .identity_evidence import PATHS as IDENTITY_PATHS
-from .key_lifecycle_evidence import PATHS as KEY_PATHS
-from .logging_evidence import PATHS as LOGGING_PATHS
-from .network_policy_evidence import PATHS as NETWORK_POLICY_PATHS
-from .operations_evidence import PATHS as OPERATIONS_PATHS
-from .organization_evidence import PATHS as ORGANIZATION_PATHS
-from .platform_health_evidence import PATHS as PLATFORM_HEALTH_PATHS
-from .policy_strategy_evidence import PATHS as POLICY_STRATEGY_PATHS
 from .protection_evidence import KINDS as PROTECTION_KINDS
-from .protection_evidence import PATHS as PROTECTION_PATHS
-from .recovery_evidence import PATHS as RECOVERY_PATHS
+from .registry import dispatch_domain_review_fact, network_replay_paths, network_review_paths
 from .routing_evidence import KINDS as ROUTING_KINDS
-from .routing_evidence import PATHS as ROUTING_PATHS
-from .security_evidence import PATHS as SECURITY_PATHS
 from .sources import boolean, enumeration, property_at, unknown
-from .tenant_evidence import PATHS as TENANT_PATHS
 from .terraform import InputError
-from .topology_evidence import PATHS as TOPOLOGY_PATHS
 from .virtual_wan_evidence import KINDS as VWAN_KINDS
-from .virtual_wan_evidence import PATHS as VWAN_PATHS
 
-REVIEW_PATHS = (
-    {
-        "sku.tier",
-        "sku.name",
-        "subnetReferences",
-        "firewallPolicy.id",
-        "addressPrefixes",
-        "routeTable.id",
-        "natGateway.id",
-        "targetResourceId",
-        "workspaceId",
-        "logAnalyticsDestinationType",
-        "natRuleCollections",
-        "ipAddresses",
-        "configuredZones",
-        "applicationRules",
-        "enableDdosProtection",
-        "ddosProtectionPlan.id",
-        "privateConnections",
-        "subnet.id",
-        "networkSecurityGroup.id",
-        "serviceEndpointCount",
-        "serviceEndpointNetworkIdentifiers",
-        "privateEndpointNetworkPolicies",
-        "gatewayType",
-        "securityRuleCount",
-        "securityRuleSummary",
-        "defaultRuleSummary",
-        "egressRules",
-        "enabled",
-        "storageId",
-        "trafficAnalytics.enabled",
-        "trafficAnalytics.workspaceResourceId",
-        "filteringConfigured",
-    }
-    | ROUTING_PATHS
-    | IDENTITY_PATHS
-    | EXPRESSROUTE_PATHS
-    | SECURITY_PATHS
-    | PROTECTION_PATHS
-    | GOVERNANCE_PATHS
-    | ORGANIZATION_PATHS
-    | TENANT_PATHS
-    | BILLING_PATHS
-    | {"connectionMonitorSummary", "expressRouteAlertSummary"}
-    | DNS_PATHS
-    | NETWORK_POLICY_PATHS
-    | VWAN_PATHS
-    | POLICY_STRATEGY_PATHS
-    | LOGGING_PATHS
-    | PLATFORM_HEALTH_PATHS
-    | RECOVERY_PATHS
-    | TOPOLOGY_PATHS
-    | OPERATIONS_PATHS
-    | KEY_PATHS
-)
+REVIEW_PATHS = set(network_review_paths())
 
 
 def bounded_count(value: Any, maximum: int) -> Any:
@@ -531,86 +458,9 @@ def private_connections(values: dict[str, Any], *, terraform: bool) -> Any:
 
 
 def review_fact(properties: dict[str, Any], path: str) -> Any:
-    if path in KEY_PATHS:
-        from .key_lifecycle_evidence import review_fact as key_fact
-
-        return key_fact(properties, path)
-    if path in BILLING_PATHS:
-        from .billing_evidence import review_fact as billing_fact
-
-        return billing_fact(properties, path)
-    if path in ORGANIZATION_PATHS:
-        from .organization_evidence import review_fact as organization_fact
-
-        return organization_fact(properties, path)
-    if path in RECOVERY_PATHS:
-        from .recovery_evidence import review_fact as recovery_fact
-
-        return recovery_fact(properties, path)
-    if path in OPERATIONS_PATHS:
-        from .operations_evidence import review_fact as operations_fact
-
-        return operations_fact(properties, path)
-    if path in PLATFORM_HEALTH_PATHS:
-        from .platform_health_evidence import review_fact as platform_health_fact
-
-        return platform_health_fact(properties, path)
-    if path in TOPOLOGY_PATHS:
-        from .topology_evidence import review_fact as topology_fact
-
-        return topology_fact(properties, path)
-    if path in POLICY_STRATEGY_PATHS:
-        from .policy_strategy_evidence import review_fact as policy_strategy_fact
-
-        return policy_strategy_fact(properties, path)
-    if path in TENANT_PATHS:
-        from .tenant_evidence import review_fact as tenant_fact
-
-        return tenant_fact(properties, path)
-    if path in LOGGING_PATHS:
-        from .logging_evidence import review_fact as logging_fact
-
-        return logging_fact(properties, path)
-    if path in NETWORK_POLICY_PATHS:
-        from .network_policy_evidence import review_fact as network_policy_fact
-
-        return network_policy_fact(properties, path)
-    if path in VWAN_PATHS:
-        from .virtual_wan_evidence import review_fact as vwan_fact
-
-        return vwan_fact(properties, path)
-    if path in GOVERNANCE_PATHS:
-        from .governance_evidence import review_fact as governance_fact
-
-        return governance_fact(properties, path)
-    if path in {"connectionMonitorSummary", "expressRouteAlertSummary"}:
-        from .monitoring_evidence import review_fact as monitoring_fact
-
-        return monitoring_fact(properties, path)
-    if path in DNS_PATHS:
-        from .dns_evidence import review_fact as dns_fact
-
-        return dns_fact(properties, path)
-    if path in EXPRESSROUTE_PATHS:
-        from .expressroute_evidence import review_fact as expressroute_fact
-
-        return expressroute_fact(properties, path)
-    if path in SECURITY_PATHS:
-        from .security_evidence import review_fact as security_fact
-
-        return security_fact(properties, path)
-    if path in PROTECTION_PATHS:
-        from .protection_evidence import review_fact as protection_fact
-
-        return protection_fact(properties, path)
-    if path in IDENTITY_PATHS:
-        from .identity_evidence import review_fact as identity_fact
-
-        return identity_fact(properties, path)
-    if path in ROUTING_PATHS:
-        from .routing_evidence import review_fact as routing_fact
-
-        return routing_fact(properties, path)
+    matched, domain_value = dispatch_domain_review_fact(properties, path)
+    if matched:
+        return domain_value
     value = property_at(properties, path)
     if path == "sku.tier":
         return enumeration(value, ("Basic", "Standard", "Premium"))
@@ -1018,19 +868,7 @@ def replay_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     } | ROUTING_KINDS | PROTECTION_KINDS | DNS_KINDS | VWAN_KINDS | {CIRCUIT_KIND, PORT_KIND}:
         return {}
     result: dict[str, Any] = {}
-    for path in sorted(
-        REVIEW_PATHS
-        - SECURITY_PATHS
-        - GOVERNANCE_PATHS
-        - ORGANIZATION_PATHS
-        - LOGGING_PATHS
-        - PLATFORM_HEALTH_PATHS
-        - RECOVERY_PATHS
-        - TENANT_PATHS
-        - BILLING_PATHS
-        - POLICY_STRATEGY_PATHS
-        - TOPOLOGY_PATHS
-    ):
+    for path in sorted(network_replay_paths()):
         parts = path.split(".")
         target = result
         for part in parts[:-1]:

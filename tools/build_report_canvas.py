@@ -40,15 +40,8 @@ def build_preview(
         if original.get("presentation_only"):
             raise InputError("Use a saved assessment, not a minimized presentation")
         evidence = original.get("evidence", [])
-        if (
-            not evidence
-            or any(bundle.get("mode") != "planned" for bundle in evidence)
-            or any(row.get("observed") is not None for row in original["results"])
-        ):
-            raise InputError(
-                "This preview supports planned-only assessments; "
-                "use the full HTML report for observed or comparison assessments"
-            )
+        if not evidence:
+            raise InputError("Saved assessment requires at least one evidence bundle")
         model = report_model(original, minimize=True)
         rows = []
         for row in sorted(model["results"], key=sort_key):
@@ -66,7 +59,34 @@ def build_preview(
                     "evidence_requirements",
                     "planned",
                     "observed",
+                    "comparison",
+                    "comparison_reason",
                 )
+            }
+            body_data = row.get("planned") or row.get("observed") or {}
+            reviews_list = body_data.get("reviews") or []
+            active_review = next(
+                (r for r in reviews_list if not r.get("requires_review")),
+                reviews_list[0] if reviews_list else None,
+            )
+            kept["review_status"] = {
+                "recorded": bool(reviews_list),
+                "active": bool(active_review and not active_review.get("requires_review")),
+                "kind": active_review.get("kind") if active_review else None,
+                "decision": (
+                    active_review.get("decision")
+                    or (
+                        body_data.get("exception_disposition")
+                        if active_review.get("kind") == "exceptions"
+                        else (
+                            body_data.get("outcome")
+                            if body_data.get("reason") == "manual_attestation"
+                            else None
+                        )
+                    )
+                )
+                if active_review
+                else None,
             }
             references = []
             seen = set()
@@ -86,10 +106,18 @@ def build_preview(
                 references.append({"url": url, "label": parsed.netloc + parsed.path})
             kept["references"] = references
             rows.append(kept)
+        mode_summary = (
+            "comparison"
+            if any(row.get("comparison") is not None for row in rows)
+            else "observed"
+            if all(bundle.get("mode") == "observed" for bundle in evidence)
+            else "planned"
+        )
         identifier = f"report-{index}"
         full_reports[identifier + ".html"] = render(original, "html", minimize=True)
         data["reports"][identifier] = {
             "label": label,
+            "modeSummary": mode_summary,
             "rows": rows,
             "coverage": model["coverage"],
             "declaredResources": sum(len(bundle["resources"]) for bundle in evidence),

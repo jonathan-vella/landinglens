@@ -104,10 +104,33 @@ class WorkspaceTests(unittest.TestCase):
             "Alt+Up",
             "interview-save",
             "bulk-save",
+            "insert-evidence-summary",
+            "data-interview-note",
+            "queue-cards",
+            "evidence-structured",
+            "workflow-tabs",
+            "progress-track",
+            'data-panel="single"',
+            'data-panel="batch"',
+            'data-panel="interview"',
         ):
             self.assertIn(expected, html)
         self.assertNotIn("innerHTML", html)
+        self.assertNotIn("border-left: 4px solid", html)
         self.assertIn("else if (visible.length) control.selectedIndex = 0", html)
+
+    def test_bulk_save_supports_up_to_50_manual_controls_across_non_rule_tiers(self):
+        manual_controls = [
+            c["control_id"] for c in self.session.state()["controls"] if "manual" in c["kinds"]
+        ]
+        self.assertGreater(len(manual_controls), 50)
+        batch_25 = [self.payload(cid, "pass") for cid in manual_controls[:25]]
+        state = self.session.save_many({"revision": 0, "reviews": batch_25})
+        self.assertEqual(self.session.revision, 1)
+        self.assertEqual(len(state["records"]), 25)
+        batch_51 = [self.payload(cid, "pass", revision=1) for cid in manual_controls[25:76]]
+        with self.assertRaisesRegex(InputError, "1-50"):
+            self.session.save_many({"revision": 1, "reviews": batch_51})
 
     def test_atomic_bulk_explicit_outcomes_preserve_previous_revision_and_exports(self):
         identities = self.signals()

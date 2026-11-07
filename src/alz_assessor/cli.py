@@ -25,7 +25,7 @@ from .priorities import archetype_bindings
 from .replay import export_bundle, replay_bundle
 from .reports import render, render_xlsx
 from .review_session import ReviewSession, serve_reviews
-from .reviews import prepare_reviews, validate_reviews
+from .reviews import migrate_reviews, prepare_reviews, validate_reviews
 from .scanner_evidence import import_scanner
 from .sources import terraform_source
 from .terraform import Analyzer, InputError, tree_hash
@@ -183,11 +183,14 @@ def main() -> int:
     explanation.add_argument("reason")
     explanation.add_argument("--format", choices=["json", "text"], default="text")
     review = commands.add_parser("review", help="Prepare or validate explicit local human reviews")
-    review.add_argument("operation", choices=["prepare", "validate", "serve"])
+    review.add_argument("operation", choices=["prepare", "validate", "serve", "migrate"])
     review.add_argument("source", type=Path)
     review.add_argument("--catalog")
+    review.add_argument("--from-catalog")
+    review.add_argument("--to-catalog")
     review.add_argument("--scope")
     review.add_argument("--control", action="append", default=[])
+    review.add_argument("--confirm-control", action="append", default=[])
     review.add_argument("--kind", choices=["manual", "exceptions"], default="manual")
     review.add_argument("--at")
     review.add_argument("--output", type=Path)
@@ -235,9 +238,15 @@ def main() -> int:
     )
     comparison.add_argument("planned", type=Path)
     comparison.add_argument("observed", type=Path)
+    comparison.add_argument("--at")
+    compose_command = commands.add_parser(
+        "compose", help="Compose multiple normalized evidence bundles into one scoped bundle"
+    )
+    compose_command.add_argument("sources", nargs="+", type=Path)
+    compose_command.add_argument("--scope")
+    compose_command.add_argument("--output", type=Path)
     rendering = commands.add_parser("render", help="Render an existing assessment")
     rendering.add_argument("source", type=Path)
-    comparison.add_argument("--at")
     catalog_command = commands.add_parser(
         "catalog", help="Inspect, validate or explicitly refresh a reviewed local catalog"
     )
@@ -329,6 +338,46 @@ def main() -> int:
                 sys.stdout.write(output)
             return 0
         if args.command == "review":
+            if args.operation == "migrate":
+                if (
+                    not args.from_catalog
+                    or not args.to_catalog
+                    or not args.scope
+                    or any(
+                        (
+                            args.catalog,
+                            args.control,
+                            args.at,
+                            args.directory,
+                            args.manual,
+                            args.exceptions,
+                            args.no_browser,
+                            args.evidence_tiers,
+                            args.resume,
+                        )
+                    )
+                ):
+                    raise InputError(
+                        "review migrate requires --from-catalog, --to-catalog, and --scope"
+                    )
+                result = migrate_reviews(
+                    read_json(args.source),
+                    load_catalog(args.from_catalog),
+                    load_catalog(args.to_catalog),
+                    args.scope,
+                    args.confirm_control,
+                )
+                output = json.dumps(result, indent=2) + "\n"
+                if args.output:
+                    args.output.write_text(output, encoding="utf-8")
+                else:
+                    sys.stdout.write(output)
+                return 0
+            if args.from_catalog or args.to_catalog or args.confirm_control:
+                raise InputError(
+                    "--from-catalog, --to-catalog, and --confirm-control are only valid "
+                    "for review migrate"
+                )
             catalog = load_catalog(args.catalog)
             if args.operation == "serve":
                 if not args.directory or any((args.scope, args.at, args.output, args.control)):
@@ -424,6 +473,7 @@ def main() -> int:
                     provider_version=args.provider_version,
                     compiler=args.compiler,
                     probe_compiler=args.probe_compiler,
+                    parameters=args.parameters,
                 )
                 output = render_preflight(result, args.format)
                 if args.output:
@@ -469,6 +519,21 @@ def main() -> int:
             )
         elif args.command == "compare":
             result = compare(read_json(args.planned), read_json(args.observed), args.at)
+        elif args.command == "compose":
+            from .composition import compose_evidence
+
+            composed = compose_evidence(
+                [read_json(path) for path in args.sources],
+                scope=args.scope,
+            )
+            text = json.dumps(composed, indent=2, allow_nan=False) + "\n"
+            if args.output:
+                if args.output.exists():
+                    raise InputError("Compose output requires a new file; existing files preserved")
+                args.output.write_text(text, encoding="utf-8")
+            else:
+                sys.stdout.write(text)
+            return 0
         elif args.command == "collect":
             if args.query_guid:
                 from .query_signals import selected_query

@@ -10,6 +10,18 @@ from .contracts import digest, require, scope_id, timestamp, validate
 from .terraform import InputError
 
 SEVERITIES = ("High", "Medium", "Low", "Unknown")
+ARCHETYPE_SUGGESTIONS: dict[str, list[str]] = {
+    "root": ["ALZ-223ace8c-b123-408c-a501-7f154e3ab369"],
+    "platform": ["ALZ-2df27ee4-12e7-4f98-9f63-04722dd69c5b"],
+    "landing_zones": ["ALZ-b03ed428-4617-4067-a787-85468b9ccf3f"],
+    "corp": ["ALZ-e8bbac75-7155-49ab-a153-e8908ae28c84"],
+    "online": ["ALZ-373f482f-3e39-4d39-8aa4-7e566f6082b6"],
+    "sandbox": ["ALZ-667313b4-f566-44b5-b984-a859c773e7d2"],
+    "security": ["ALZ-b86ad884-08e3-4727-94b8-75ba18f20459"],
+    "management": ["ALZ-67e7a8ed-4b30-4e38-a3f2-9812b2363cef"],
+    "connectivity": ["ALZ-7bc1c396-2461-4698-b57f-30ca69525252"],
+    "identity": ["ALZ-348ef254-c27d-442e-abba-c7571559ab91"],
+}
 
 
 def sort_key(row: dict[str, Any]) -> tuple[Any, ...]:
@@ -96,16 +108,15 @@ def suggestions(
         for binding in bindings["entries"]:
             group = metadata["architecture"][binding["group_id"]]
             archetypes = group["archetypes"]
-            relevant = "landing_zones" in archetypes
+            mapped = [cid for arch in archetypes for cid in ARCHETYPE_SUGGESTIONS.get(arch, [])]
+            relevant = bool(mapped)
             result.append(
                 {
                     "mode": bundle["mode"],
                     "scope": binding["scope"],
                     "group_id": binding["group_id"],
                     "archetypes": archetypes,
-                    "suggested_controls": ["ALZ-b03ed428-4617-4067-a787-85468b9ccf3f"]
-                    if relevant and current
-                    else [],
+                    "suggested_controls": mapped if relevant and current else [],
                     "reason": "reviewed_archetype_assignment"
                     if relevant and current
                     else (

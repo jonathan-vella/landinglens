@@ -104,3 +104,29 @@ class HtmlReportTests(unittest.TestCase):
         minimized = render(self.report, "html", minimize=True)
         self.assertIn("Minimized presentation only", minimized)
         self.assertNotIn("/resourcegroups/test", minimized.lower())
+
+    def test_smart_collapse_heatmap_buttons_and_semantic_findings(self):
+        self.report["results"][0]["planned"]["outcome"] = "fail"
+        self.report["results"][1]["planned"]["outcome"] = "pass"
+        text = render(self.report, "html")
+        page = Page()
+        page.feed(text)
+        self.assertNotIn("border-left: 4px solid", text)
+        self.assertIn(
+            "<details open><summary>Shared coverage model and denominators</summary>", text
+        )
+        fail_id = self.report["results"][0]["upstream_id"]
+        pass_id = self.report["results"][1]["upstream_id"]
+        self.assertIn(f"<details open><summary>{fail_id}:", text)
+        self.assertIn(f"<details><summary>{pass_id}:", text)
+        heatmap_btns = [
+            attrs
+            for tag, attrs in page.tags
+            if tag == "button" and "heatmap-btn" in attrs.get("class", "").split()
+        ]
+        self.assertTrue(heatmap_btns)
+        self.assertTrue(
+            all("data-filter-area" in b and "data-filter-status" in b for b in heatmap_btns)
+        )
+        self.assertTrue(any("zero" in b.get("class", "").split() for b in heatmap_btns))
+        self.assertIn("No recorded human reviews.", text)

@@ -1,16 +1,29 @@
 """Offline prerequisite inspection, not compilation or evidence completion."""
 
 import json
+import re
 import shutil
 import subprocess
 from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
-from .contracts import scope_id
+from .contracts import read_document, scope_id
 from .diagnostics import guidance
 from .sources import PROVIDER_VERSION
 from .terraform import InputError
+
+_PLACEHOLDER_RE = re.compile(r"\{\{\s*[A-Za-z0-9_.-]+\s*\}\}")
+
+
+def _contains_placeholder(value: Any) -> bool:
+    if isinstance(value, str):
+        return bool(_PLACEHOLDER_RE.search(value))
+    if isinstance(value, dict):
+        return any(_contains_placeholder(v) for v in value.values())
+    if isinstance(value, list):
+        return any(_contains_placeholder(v) for v in value)
+    return False
 
 
 def preflight(
@@ -22,6 +35,7 @@ def preflight(
     provider_version: str | None,
     compiler: str | None,
     probe_compiler: bool,
+    parameters: Path | None = None,
 ) -> dict[str, Any]:
     checks: list[dict[str, Any]] = []
 
@@ -51,6 +65,25 @@ def preflight(
             add("provider_mapping", "unsupported", "unverified_provider_version")
         if mode != "evidence" and not scope:
             add("identity_scope", "warning", "scope_required")
+        if mode in {"arm", "bicep"} and parameters is not None:
+            if not parameters.exists() or parameters.is_symlink() or not parameters.is_file():
+                add("parameters_file", "blocked", "input_unavailable")
+            else:
+                try:
+                    params_doc = read_document(parameters)
+                    params_root = (
+                        params_doc.get("parameters", params_doc)
+                        if isinstance(params_doc, dict)
+                        else params_doc
+                    )
+                    if _contains_placeholder(params_root):
+                        add(
+                            "parameter_placeholders",
+                            "warning",
+                            "accelerator_placeholder_unresolved",
+                        )
+                except (InputError, OSError, UnicodeError):
+                    add("parameters_file", "blocked", "input_invalid")
         if mode == "bicep":
             executable = shutil.which(compiler or "bicep")
             if executable is None:

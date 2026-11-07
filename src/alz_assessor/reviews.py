@@ -887,3 +887,92 @@ def validate_reviews(
         "ready_to_apply": bool(records) and all(not r["requires_review"] for r in records),
         "warning": "Reviewer attribution is producer-supplied, not authenticated identity proof.",
     }
+
+
+def migrate_reviews(
+    reviews: dict[str, Any],
+    from_catalog: dict[str, Any],
+    to_catalog: dict[str, Any],
+    scope: str,
+    confirmed_controls: list[str] | None = None,
+) -> dict[str, Any]:
+    validate(reviews)
+    if reviews["kind"] not in {"manual", "exceptions"}:
+        raise InputError("Expected completed manual or exception records")
+    validate(from_catalog, "catalog")
+    validate(to_catalog, "catalog")
+    scope = scope_id(scope)
+    from_controls = {c["control_id"]: c for c in from_catalog["controls"]}
+    to_controls = {c["control_id"]: c for c in to_catalog["controls"]}
+    confirmed = set(confirmed_controls or [])
+    for cid in confirmed:
+        if cid not in to_controls or to_controls[cid]["lifecycle"] != "active":
+            raise InputError("Confirmed control must be an active control in the target catalog")
+    migrated_entries = []
+    summary_records = []
+    for entry in reviews["entries"]:
+        cid = entry["control_id"]
+        target = to_controls.get(cid)
+        if target is None or scope_id(entry["scope"]) != scope:
+            raise InputError("Review references an unknown control or a different explicit scope")
+        if target["lifecycle"] != "active":
+            raise InputError("Cannot migrate a review for a retired control")
+        target_sha = control_digest(target)
+        source = from_controls.get(cid)
+        source_sha = control_digest(source) if source is not None else None
+        new_entry = dict(entry)
+        new_entry["scope"] = scope
+        diff = None
+        if source is not None and source_sha != target_sha:
+            diff = {
+                field: {"from": source.get(field), "to": target.get(field)}
+                for field in ("recommendation", "method", "rationale", "evidence_requirements")
+                if source.get(field) != target.get(field)
+            }
+        if reviews["schema_version"] == "1.0":
+            reviewer = new_entry.get("reviewer")
+            evidence = new_entry.get("evidence")
+            if (
+                cid not in confirmed
+                or not isinstance(reviewer, str)
+                or not reviewer.strip()
+                or not isinstance(evidence, str)
+                or not evidence.strip()
+            ):
+                raise InputError(
+                    "Legacy 1.0 reviews require reviewer, evidence, and explicit "
+                    "--confirm-control to bind control_sha256"
+                )
+            new_entry["control_sha256"] = target_sha
+            status = "confirmed_legacy_bound"
+        else:
+            current_sha = entry["control_sha256"]
+            if current_sha == target_sha:
+                status = "unchanged"
+            elif cid in confirmed:
+                new_entry["control_sha256"] = target_sha
+                status = "confirmed_rebound"
+            elif source_sha is not None and current_sha == source_sha:
+                status = "changed_requires_confirmation"
+            else:
+                status = "unrecognized_binding"
+        migrated_entries.append(new_entry)
+        summary_records.append(
+            {
+                "control_id": cid,
+                "status": status,
+                "control_sha256": new_entry["control_sha256"],
+                "target_control_sha256": target_sha,
+                **({"diff": diff} if diff else {}),
+            }
+        )
+    return document(
+        reviews["kind"],
+        schema_version="1.1",
+        entries=migrated_entries,
+        migration={
+            "from_catalog_version": from_catalog["catalog_version"],
+            "to_catalog_version": to_catalog["catalog_version"],
+            "records": summary_records,
+        },
+    )

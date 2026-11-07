@@ -19,6 +19,7 @@ from .contracts import (
 from .terraform import Analyzer, InputError
 
 PROVIDER_VERSION = "4.50.0"
+PLANNED_RESOURCE_LIMIT = 2_500
 TF_TYPES = {
     "azurerm_consumption_budget_subscription": "Microsoft.Consumption/budgets",
     "azurerm_consumption_budget_resource_group": "Microsoft.Consumption/budgets",

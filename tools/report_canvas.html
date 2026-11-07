@@ -94,7 +94,7 @@ header { padding: 24px 28px 16px; border-bottom: 1px solid var(--cp-border); bac
 .scope { font-size: 13px; margin-bottom: 0; }
 .notice { margin: 16px 0 0; padding: 12px 16px; background: var(--cp-surface-soft); border: 1px solid var(--cp-border); border-radius: 0.625rem; max-width: none; }
 .toolbar { padding: 20px 28px 16px; }
-.filters { display: grid; grid-template-columns: 200px minmax(180px, 1fr) minmax(220px, 1.5fr); gap: 16px; align-items: end; }
+.filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; align-items: end; }
 label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
 input, select { width: 100%; }
 .report-row { display: flex; gap: 16px; align-items: end; margin-bottom: 16px; }
@@ -180,6 +180,9 @@ footer { padding: 0 28px 24px; font-size: 12px; color: var(--cp-text-soft); }
   <div class="filters">
     <div><label for="outcome">Outcome</label><select id="outcome"></select></div>
     <div><label for="area">Design area</label><select id="area"></select></div>
+    <div><label for="severity">Severity</label><select id="severity"><option value="">All severities</option><option value="High">High</option><option value="Medium">Medium</option><option value="Low">Low</option><option value="Unknown">Unknown</option></select></div>
+    <div><label for="tier">Evidence tier</label><select id="tier"><option value="">All evidence tiers</option><option value="verified">Verified</option><option value="signal">Signal</option><option value="needs_decision">Needs decision</option><option value="manual">Manual</option></select></div>
+    <div id="comparison-filter"><label for="comparison">Comparison</label><select id="comparison"><option value="">All comparisons</option><option value="drift">Drift</option><option value="match">Match</option><option value="absent">Absent</option><option value="not_comparable">Not comparable</option></select></div>
     <div class="search-field"><label for="search">Find a recommendation</label><input id="search" type="search" placeholder="ID, recommendation or evidence" autocomplete="off"></div>
   </div>
   <div class="summary" id="summary"></div>
@@ -203,10 +206,22 @@ footer { padding: 0 28px 24px; font-size: 12px; color: var(--cp-text-soft); }
 const DATA = JSON.parse(document.getElementById("report-data").textContent);
 const $ = id => document.getElementById(id);
 const LABELS = {all: "All outcomes", fail: "Fail", unknown: "Unknown", manual: "Manual decision", pass: "Pass", not_applicable: "Not applicable", accepted_exception: "Accepted exception", error: "Error"};
+const SCOPE_LABELS = {
+  comparison: "Planned vs. observed comparison · Read-only local preview",
+  observed: "Saved observed evidence · Read-only local preview",
+  planned: "Saved planned configuration · Read-only local preview"
+};
 const hash = new URLSearchParams(location.hash.slice(1));
 let reportId = DATA.reports[hash.get("report")] ? hash.get("report") : Object.keys(DATA.reports)[0];
-let outcome = LABELS[hash.get("outcome")] ? hash.get("outcome") : ((DATA.reports[reportId].coverage.modes.planned.outcomes.fail || 0) ? "fail" : "all");
+function hasFailures(rep) {
+  const modes = (rep.coverage && rep.coverage.modes) || {};
+  return Boolean(((modes.planned && modes.planned.outcomes && modes.planned.outcomes.fail) || 0) + ((modes.observed && modes.observed.outcomes && modes.observed.outcomes.fail) || 0));
+}
+let outcome = LABELS[hash.get("outcome")] ? hash.get("outcome") : (hasFailures(DATA.reports[reportId]) ? "fail" : "all");
 let area = hash.get("area") || "";
+let severity = hash.get("severity") || "";
+let tier = hash.get("tier") || "";
+let comparison = hash.get("comparison") || "";
 let query = hash.get("q") || "";
 let selected = hash.get("selected") || "";
 let page = 0;
@@ -223,7 +238,7 @@ function option(value, label) {
 function key(row) { return row.control_id + "|" + row.logical_id; }
 function body(row) { return row.planned || row.observed || {}; }
 function saveView() {
-  const params = new URLSearchParams({report: reportId, outcome, area, q: query, selected});
+  const params = new URLSearchParams({report: reportId, outcome, area, severity, tier, comparison, q: query, selected});
   history.replaceState(null, "", "#" + params.toString());
 }
 function renderDetail(row, scroll = false) {
@@ -234,15 +249,22 @@ function renderDetail(row, scroll = false) {
   back.addEventListener("click", () => $("recommendations").scrollIntoView({block: "start"}));
   const meta = node("div", undefined, "detail-meta");
   meta.append(node("span", LABELS[result.outcome] || result.outcome, "badge " + result.outcome), node("span", row.automation, "badge"), node("span", row.severity || "Severity not supplied", "badge"));
+  if (row.comparison) meta.append(node("span", "Comparison: " + row.comparison, "badge"));
+  const reviewSummary = row.review_status && row.review_status.recorded ? (row.review_status.decision || "recorded") + (row.review_status.active ? " (active)" : " (needs review)") : "";
+  if (reviewSummary) meta.append(node("span", "Review: " + reviewSummary, "badge"));
   detail.append(back, meta, node("h2", row.upstream_id + " · " + row.recommendation), node("p", row.design_area, "muted"));
   const fact = node("div", undefined, "fact");
   fact.append(node("strong", "Recorded technical fact"));
   const value = result.fact === undefined || result.fact === null ? "No conclusive technical fact recorded." : typeof result.fact === "string" ? result.fact : JSON.stringify(result.fact, null, 2);
   fact.append(node("pre", value)); detail.append(fact);
   const fields = node("dl");
-  const tier = result.evidence_tier === "verified" ? "Verified narrow fact (not compliance)" : (result.evidence_tier || "Not supplied").replaceAll("_", " ");
-  for (const [label, value] of [["Outcome reason", (result.reason || "Not supplied").replaceAll("_", " ")], ["Evidence tier", tier], ["Method", result.method || "Not supplied"], ["Confidence", result.confidence || "Not supplied"], ["Freshness", result.freshness || "Not supplied"], ["Result instance", row.logical_id], ["Control GUID", row.control_id]]) {
-    fields.append(node("dt", label), node("dd", value));
+  const tierLabel = result.evidence_tier === "verified" ? "Verified narrow fact (not compliance)" : (result.evidence_tier || "Not supplied").replaceAll("_", " ");
+  const entries = [["Outcome reason", (result.reason || "Not supplied").replaceAll("_", " ")], ["Evidence tier", tierLabel], ["Method", result.method || "Not supplied"], ["Confidence", result.confidence || "Not supplied"], ["Freshness", result.freshness || "Not supplied"], ["Result instance", row.logical_id], ["Control GUID", row.control_id]];
+  if (row.comparison) entries.push(["Comparison", row.comparison + (row.comparison_reason ? " (" + row.comparison_reason.replaceAll("_", " ") + ")" : "")]);
+  if (reviewSummary) entries.push(["Human review status", reviewSummary]);
+  if (result.exception_disposition) entries.push(["Exception disposition", result.exception_disposition]);
+  for (const [label, val] of entries) {
+    fields.append(node("dt", label), node("dd", val));
   }
   detail.append(fields, node("h3", "What this result does—and does not—say"), node("p", row.rationale || "Review the original report for the stated scope."));
   if (result.guidance) {
@@ -264,7 +286,7 @@ function renderList(scroll = false) {
   const model = DATA.reports[reportId];
   const needle = query.toLocaleLowerCase();
   const exactId = model.rows.some(row => row.upstream_id.toLocaleLowerCase() === needle || row.control_id.toLocaleLowerCase() === needle);
-  const rows = model.rows.filter(row => (outcome === "all" || body(row).outcome === outcome) && (!area || row.design_area === area) && (!needle || (exactId ? row.upstream_id.toLocaleLowerCase() === needle || row.control_id.toLocaleLowerCase() === needle : [row.upstream_id, row.control_id, row.recommendation, row.rationale, ...(row.evidence_requirements || [])].join(" ").toLocaleLowerCase().includes(needle))));
+  const rows = model.rows.filter(row => (outcome === "all" || body(row).outcome === outcome) && (!area || row.design_area === area) && (!severity || (row.severity || "Unknown") === severity) && (!tier || (body(row).evidence_tier || row.evidence_tier || "") === tier) && (!comparison || row.comparison === comparison) && (!needle || (exactId ? row.upstream_id.toLocaleLowerCase() === needle || row.control_id.toLocaleLowerCase() === needle : [row.upstream_id, row.control_id, row.recommendation, row.rationale, ...(row.evidence_requirements || [])].join(" ").toLocaleLowerCase().includes(needle))));
   const pages = Math.max(1, Math.ceil(rows.length / PAGE_SIZE)); page = Math.min(page, pages - 1);
   let chosen = rows.find(row => key(row) === selected) || rows[page * PAGE_SIZE];
   if (chosen) selected = key(chosen); else selected = "";
@@ -291,27 +313,34 @@ function renderList(scroll = false) {
   $("previous").disabled = page === 0; $("next").disabled = page + 1 >= pages || !rows.length;
   renderDetail(chosen, scroll); saveView();
 }
-function resetFilters() { outcome = "all"; area = ""; query = ""; page = 0; selected = ""; renderReport(); }
+function resetFilters() { outcome = "all"; area = ""; severity = ""; tier = ""; comparison = ""; query = ""; page = 0; selected = ""; renderReport(); }
 function renderReport() {
   const model = DATA.reports[reportId];
   $("report").replaceChildren(...Object.entries(DATA.reports).map(([value, report]) => option(value, report.label)));
   $("report").value = reportId;
-  $("scope").textContent = (DATA.fictional ? "Fictional offline inputs · " : "") + "Saved planned configuration · Read-only local preview";
+  $("scope").textContent = (DATA.fictional ? "Fictional offline inputs · " : "") + (SCOPE_LABELS[model.modeSummary] || SCOPE_LABELS.planned);
   $("full-report").href = model.fullReport;
   $("outcome").replaceChildren(...Object.entries(LABELS).map(([value, label]) => option(value, label)));
   $("outcome").value = outcome;
   const areas = [...new Set(model.rows.map(row => row.design_area))].sort();
   if (!areas.includes(area)) area = "";
   $("area").replaceChildren(option("", "All design areas"), ...areas.map(value => option(value, value)));
-  $("area").value = area; $("search").value = query;
+  $("area").value = area;
+  $("severity").value = severity;
+  $("tier").value = tier;
+  const hasComparison = model.modeSummary === "comparison" || model.rows.some(row => row.comparison !== null && row.comparison !== undefined);
+  if (!hasComparison) comparison = "";
+  $("comparison-filter").hidden = !hasComparison;
+  $("comparison").disabled = !hasComparison;
+  $("comparison").value = comparison;
+  $("search").value = query;
   $("summary").replaceChildren();
   for (const [count, label] of [[model.coverage.controls, "recommendations"], [model.coverage.result_instances, "result rows"], [model.declaredResources, "declared resource records"], [model.coverage.automated_controls, "automated controls"]]) {
     const item = node("span"); item.append(node("strong", count), document.createTextNode(" " + label)); $("summary").append(item);
   }
   $("outcome-buttons").replaceChildren();
-  const counts = model.coverage.modes.planned.outcomes;
   for (const value of ["all", "fail", "unknown", "manual", "pass", "not_applicable"]) {
-    const count = value === "all" ? model.rows.length : counts[value] || 0;
+    const count = value === "all" ? model.rows.length : model.rows.filter(r => body(r).outcome === value).length;
     const button = node("button", (LABELS[value] || value) + " " + count); button.type = "button"; button.setAttribute("aria-pressed", String(value === outcome));
     button.addEventListener("click", () => { outcome = value; page = 0; selected = ""; renderReport(); });
     $("outcome-buttons").append(button);
@@ -320,12 +349,34 @@ function renderReport() {
   renderList();
 }
 $("report").addEventListener("change", event => {
-  reportId = event.target.value; outcome = "all"; area = ""; query = ""; page = 0; selected = ""; renderReport(); window.scrollTo(0, 0);
+  reportId = event.target.value; outcome = "all"; area = ""; severity = ""; tier = ""; comparison = ""; query = ""; page = 0; selected = ""; renderReport(); window.scrollTo(0, 0);
 });
 document.querySelector(".skip").addEventListener("click", event => { event.preventDefault(); $("recommendations").focus(); $("recommendations").scrollIntoView({block: "start"}); });
 $("outcome").addEventListener("change", event => { outcome = event.target.value; page = 0; selected = ""; renderReport(); });
 $("area").addEventListener("change", event => { area = event.target.value; page = 0; selected = ""; renderList(); });
+$("severity").addEventListener("change", event => { severity = event.target.value; page = 0; selected = ""; renderList(); });
+$("tier").addEventListener("change", event => { tier = event.target.value; page = 0; selected = ""; renderList(); });
+$("comparison").addEventListener("change", event => { comparison = event.target.value; page = 0; selected = ""; renderList(); });
 $("search").addEventListener("input", event => { query = event.target.value; page = 0; selected = ""; renderList(); });
+document.addEventListener("keydown", event => {
+  const tag = (event.target && event.target.tagName) ? event.target.tagName.toLowerCase() : "";
+  const inField = tag === "input" || tag === "select" || tag === "textarea" || Boolean(event.target && event.target.isContentEditable);
+  if (event.key === "/" && !inField && !event.ctrlKey && !event.metaKey && !event.altKey) {
+    event.preventDefault();
+    $("search").focus();
+    return;
+  }
+  if ((event.key === "ArrowDown" || event.key === "ArrowUp") && ($("list").contains(document.activeElement) || event.altKey)) {
+    const items = [...$("list").querySelectorAll(".finding")];
+    if (!items.length) return;
+    event.preventDefault();
+    const current = items.findIndex(item => item === document.activeElement || item.dataset.result === selected);
+    const delta = event.key === "ArrowDown" ? 1 : -1;
+    const nextIndex = current < 0 ? 0 : Math.min(items.length - 1, Math.max(0, current + delta));
+    items[nextIndex].click();
+    items[nextIndex].focus();
+  }
+});
 $("previous").addEventListener("click", () => { page--; selected = ""; renderList(); $("list").scrollTop = 0; });
 $("next").addEventListener("click", () => { page++; selected = ""; renderList(); $("list").scrollTop = 0; });
 $("theme").addEventListener("click", () => { const dark = document.documentElement.dataset.theme !== "dark"; document.documentElement.dataset.theme = dark ? "dark" : "light"; $("theme").textContent = dark ? "Light theme" : "Dark theme"; });

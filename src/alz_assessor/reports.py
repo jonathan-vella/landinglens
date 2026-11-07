@@ -114,6 +114,8 @@ def report_model(assessment: dict[str, Any], minimize: bool = False) -> dict[str
                     entry[mode]["evidence_links"] = ["[minimized]"]
                     for review in entry[mode].get("reviews", []):
                         review["reviewer"] = None
+                        for field in ("rationale", "evidence", "valid_from", "valid_until"):
+                            review.pop(field, None)
         for bundle in result["evidence"]:
             bundle["scope"] = None
             bundle["artifact_hashes"] = {
@@ -149,60 +151,81 @@ def render(
         return sarif(model, sarif_base) if format == "sarif" else pr_summary(model)
     if format == "json":
         return json.dumps(model, indent=2, allow_nan=False) + "\n"
+
+    def escaped_text(value: str) -> str:
+        return html.escape(value, quote=False).replace("|", "\\|").replace("[", "\\[")
+
+    def md_cell(value: str) -> str:
+        return escaped_text(value).replace("\n", " ")
+
     heading = (
         f"LandingLens advisory assessment | catalog {model['catalog_version']} | "
         f"{model['generated_at']}"
     )
-    lines = [heading, "", json.dumps(model["coverage"], sort_keys=True), ""]
+    lines = [
+        escaped_text(heading),
+        "",
+        escaped_text(json.dumps(model["coverage"], sort_keys=True)),
+        "",
+    ]
     if "catalog_status" in model:
-        lines += [model["catalog_status"]["warning"], ""]
+        lines += [escaped_text(model["catalog_status"]["warning"]), ""]
     if "evidence_tiers" in model:
         lines += [
-            "Evidence tiers: " + json.dumps(model["evidence_tiers"]["counts"], sort_keys=True),
-            "Verified includes failures; Signals are not passes. Counts are once per control.",
+            escaped_text(
+                "Evidence tiers: " + json.dumps(model["evidence_tiers"]["counts"], sort_keys=True)
+            ),
+            escaped_text(
+                "Verified includes failures; Signals are not passes. Counts are once per control."
+            ),
             "",
         ]
     if "applicability_suggestions" in model:
         lines += [
-            "Applicability suggestions (reviewer confirmation required): "
-            + json.dumps(model["applicability_suggestions"], sort_keys=True),
+            escaped_text(
+                "Applicability suggestions (reviewer confirmation required): "
+                + json.dumps(model["applicability_suggestions"], sort_keys=True)
+            ),
             "",
         ]
     if "policy_signals" in model:
         lines += [
-            "Policy Signals (not checklist outcomes): "
-            + json.dumps(model["policy_signals"], sort_keys=True),
+            escaped_text(
+                "Policy Signals (not checklist outcomes): "
+                + json.dumps(model["policy_signals"], sort_keys=True)
+            ),
             "",
         ]
     for retired in model.get("retired_controls", []):
-        lines += ["Retired/historical: " + json.dumps(retired, sort_keys=True), ""]
+        lines += [escaped_text("Retired/historical: " + json.dumps(retired, sort_keys=True)), ""]
     for bundle in model["evidence"]:
-        lines += [json.dumps(bundle, sort_keys=True), ""]
+        lines += [escaped_text(json.dumps(bundle, sort_keys=True)), ""]
     area = None
     for entry in sorted(model["results"], key=sort_key):
         if entry["design_area"] != area:
             area = entry["design_area"]
-            lines += ["## " + area, ""]
-        cells = [
-            entry["upstream_id"],
-            entry["logical_id"],
-            "/".join(entry["applicability"]),
-            entry["recommendation"],
+            lines += [
+                "## " + escaped_text(area),
+                "",
+                "| ID | Target | Applicability | Recommendation | Details |",
+                "|---|---|---|---|---|",
+            ]
+        details = [
             *(["Severity: " + entry["severity"]] if "severity" in entry else []),
         ]
         for mode in ("planned", "observed"):
             item = entry.get(mode)
-            cells.append(
+            details.append(
                 mode + ": " + (json.dumps(item, sort_keys=True) if item else "unavailable")
             )
-        cells.append(
+        details.append(
             "comparison: "
             + str(entry["comparison"])
             + (" (" + entry["comparison_reason"] + ")" if entry.get("comparison_reason") else "")
         )
         if entry.get("comparison_guidance"):
-            cells.append(json.dumps(entry["comparison_guidance"], sort_keys=True))
-        cells.append(
+            details.append(json.dumps(entry["comparison_guidance"], sort_keys=True))
+        details.append(
             "guidance/evidence: "
             + json.dumps(
                 {
@@ -212,26 +235,39 @@ def render(
                 sort_keys=True,
             )
         )
-        lines += [" | ".join(cells), ""]
+        cells = [
+            entry["upstream_id"],
+            entry["logical_id"],
+            "/".join(entry["applicability"]),
+            entry["recommendation"],
+            " ; ".join(details),
+        ]
+        lines += ["| " + " | ".join(md_cell(c) for c in cells) + " |"]
     if "scanner_signals" in model:
         lines += [
-            "Scanner Signals (not checklist outcomes): "
-            + json.dumps(model["scanner_signals"], sort_keys=True),
+            "",
+            escaped_text(
+                "Scanner Signals (not checklist outcomes): "
+                + json.dumps(model["scanner_signals"], sort_keys=True)
+            ),
             "",
         ]
     if "scanner_signal_runs" in model:
         lines += [
-            "Separate scanner runs: " + json.dumps(model["scanner_signal_runs"], sort_keys=True)
+            escaped_text(
+                "Separate scanner runs: " + json.dumps(model["scanner_signal_runs"], sort_keys=True)
+            )
         ]
     if "query_signals" in model:
         lines += [
-            "Query Signals (not checklist outcomes): "
-            + json.dumps(model["query_signals"], sort_keys=True)
+            escaped_text(
+                "Query Signals (not checklist outcomes): "
+                + json.dumps(model["query_signals"], sort_keys=True)
+            )
         ]
     text = "\n".join(lines)
     if format == "markdown":
-        # Escape raw HTML, table delimiters and link syntax from untrusted input.
-        return html.escape(text, quote=False).replace("|", "\\|").replace("[", "\\[")
+        return text
     if format == "html":
         return render_html(model)
     raise ValueError("Unsupported report format")

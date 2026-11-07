@@ -1210,24 +1210,34 @@ def compile_interview(
     seen = set()
     entries = []
     for decision in decisions:
-        if not isinstance(decision, dict) or set(decision) != {
-            "control_id",
-            "control_sha256",
-            "outcome",
-        }:
+        if (
+            not isinstance(decision, dict)
+            or not {"control_id", "control_sha256", "outcome"} <= set(decision)
+            or not set(decision) <= {"control_id", "control_sha256", "outcome", "note"}
+        ):
             raise InputError("Supply exact per-control interview outcome and binding")
+        note = decision.get("note")
+        if note is not None and (not isinstance(note, str) or len(note) > 1000):
+            raise InputError("Interview per-control note must be a string up to 1,000 characters")
         identity = require(decision, "control_id", str)
         if identity not in BANK[question_id]["controls"] or identity in seen:
             raise InputError("Unknown or duplicate interview control")
         seen.add(identity)
         if decision["control_sha256"] != control_digest(controls[identity]):
             raise InputError("Interview control content changed")
+        rationale = answer.strip() + "\n\n" + response["rationale"].strip()
+        if note and note.strip():
+            rationale = f"{rationale}\n\nControl note: {note.strip()}"
+        if len(rationale) > 4000:
+            raise InputError("Combined interview answer and rationale exceed review field bounds")
         entries.append(
             {
-                **decision,
+                "control_id": decision["control_id"],
+                "control_sha256": decision["control_sha256"],
+                "outcome": decision["outcome"],
                 "scope": scope,
                 **{field: response[field].strip() for field in FIELDS},
-                "rationale": answer.strip() + "\n\n" + response["rationale"].strip(),
+                "rationale": rationale,
             }
         )
     if response["requirements_sha256"] != digest(

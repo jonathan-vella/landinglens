@@ -97,9 +97,21 @@ class InterviewTests(unittest.TestCase):
             compile_interview(self.response, self.catalog, at=AT)
 
     def test_one_narrative_compiles_separate_bound_decisions_without_technical_override(self):
-        manual = compile_interview(self.completed(), self.catalog, at=AT)
+        completed = self.completed()
+        completed["decisions"][0]["note"] = "Peering path verified via ExpressRoute circuit A."
+        manual = compile_interview(completed, self.catalog, at=AT)
         self.assertEqual(len(manual["entries"]), 2)
         self.assertEqual([entry["outcome"] for entry in manual["entries"]], ["pass", "fail"])
+        self.assertIn(
+            "Control note: Peering path verified via ExpressRoute circuit A.",
+            manual["entries"][0]["rationale"],
+        )
+        self.assertNotIn("Control note:", manual["entries"][1]["rationale"])
+        self.assertNotIn("note", manual["entries"][0])
+        too_long_note = self.completed()
+        too_long_note["decisions"][0]["note"] = "x" * 1001
+        with self.assertRaisesRegex(InputError, "1,000"):
+            compile_interview(too_long_note, self.catalog, at=AT)
         report = assess(self.bundle, self.catalog, at=AT, evidence_tiers=True, manual=manual)
         for entry in manual["entries"]:
             row = next(row for row in report["results"] if row["control_id"] == entry["control_id"])

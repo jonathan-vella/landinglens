@@ -10,26 +10,13 @@ from itertools import islice
 from pathlib import Path
 from typing import Any
 
-from .billing_evidence import replay_properties as billing_properties
 from .catalog import load_catalog
 from .contracts import digest, document, hashes, parse_document, require, scope_id, validate
 from .diagnostics import REASONS
 from .engine import assess
-from .governance_evidence import replay_properties as governance_properties
-from .identity_evidence import replay_properties as identity_properties
-from .key_lifecycle_evidence import replay_properties as key_properties
-from .logging_evidence import replay_properties as logging_properties
-from .network_evidence import replay_properties
-from .operations_evidence import replay_properties as operations_properties
-from .organization_evidence import replay_properties as organization_properties
-from .platform_health_evidence import replay_properties as platform_health_properties
-from .policy_strategy_evidence import replay_properties as policy_strategy_properties
-from .recovery_evidence import replay_properties as recovery_properties
-from .security_evidence import replay_properties as security_properties
+from .registry import collect_domain_replay_properties
 from .sources import boolean, enumeration, property_at
-from .tenant_evidence import replay_properties as tenant_properties
 from .terraform import InputError
-from .topology_evidence import replay_properties as topology_properties
 
 MEMBERS = {"catalog.json", "evidence.json", "reviews.json"}
 MAX_BYTES = 8_000_000
@@ -186,20 +173,7 @@ def sanitize_evidence(bundle: dict[str, Any]) -> dict[str, Any]:
                             ("Alert", "Deny", "Off"),
                         )
                     },
-                    **replay_properties(resource["resource_type"], values),
-                    **identity_properties(resource["resource_type"], values),
-                    **security_properties(resource["resource_type"], values),
-                    **key_properties(resource["resource_type"], values),
-                    **governance_properties(resource["resource_type"], values),
-                    **organization_properties(resource["resource_type"], values),
-                    **policy_strategy_properties(resource["resource_type"], values),
-                    **topology_properties(resource["resource_type"], values),
-                    **tenant_properties(resource["resource_type"], values),
-                    **billing_properties(resource["resource_type"], values),
-                    **logging_properties(resource["resource_type"], values),
-                    **operations_properties(resource["resource_type"], values),
-                    **platform_health_properties(resource["resource_type"], values),
-                    **recovery_properties(resource["resource_type"], values),
+                    **collect_domain_replay_properties(resource["resource_type"], values),
                 },
             }
         )

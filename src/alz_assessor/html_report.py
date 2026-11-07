@@ -76,10 +76,11 @@ main, header { max-width: 1200px; margin: auto; padding: 24px; }
 h1, h2, h3 { line-height: 1.25; } h1 { margin-bottom: 8px; }
 a { color: var(--cp-link); } :focus-visible { outline: 3px solid var(--cp-accent); }
 .skip { position: absolute; left: -10000px; } .skip:focus { left: 16px; }
-.muted { color: var(--cp-text-muted); } .notice { border-left: 4px solid var(--cp-accent); }
+.muted { color: var(--cp-text-muted); }
 .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 16px; }
 .card, .finding, .notice { background: var(--cp-surface); border: 1px solid var(--cp-border);
   border-radius: 16px; padding: 16px; margin-bottom: 16px; overflow-wrap: anywhere; }
+.notice { background: var(--cp-accent-soft); border-color: var(--cp-border-strong); }
 .card strong { display: block; font-size: 1.8rem; }
 nav ul { display: flex; flex-wrap: wrap; gap: 8px 24px; padding-left: 24px; }
 label { display: inline-block; margin: 8px 16px 8px 0; }
@@ -98,6 +99,8 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: .9rem; }
 .heatmap table { width: auto; border-collapse: collapse; }
 .heatmap th, .heatmap td { border: 1px solid var(--cp-border); padding: 8px; text-align: left; }
 .heatmap td { background: var(--cp-surface-soft); }
+.heatmap-btn { padding: 4px 10px; font-variant-numeric: tabular-nums; }
+.heatmap-btn.zero { opacity: 0.55; border-color: var(--cp-border); }
 @media print {
   html, html[data-theme="dark"] { color-scheme: light; }
   body { background: var(--cp-surface); color: var(--cp-text); font-size: 10pt; }
@@ -130,6 +133,14 @@ document.getElementById("expand").addEventListener("click", () => {
 document.getElementById("collapse").addEventListener("click", () => {
   for (const row of rows) row.querySelector("details").open = false;
 });
+for (const btn of document.querySelectorAll(".heatmap-btn")) {
+  btn.addEventListener("click", () => {
+    area.value = btn.dataset.filterArea;
+    status.value = btn.dataset.filterStatus;
+    filter();
+    document.getElementById("findings").scrollIntoView();
+  });
+}
 document.querySelector(".filters").hidden = false;
 let beforePrint = [];
 let printTheme = null;
@@ -176,6 +187,45 @@ def fields(values: dict[str, Any]) -> str:
     )
 
 
+def render_reviews(reviews: list[Any]) -> str:
+    if not reviews:
+        return "<p>No recorded human reviews.</p>"
+    items = []
+    for review in reviews:
+        if not isinstance(review, dict):
+            items.append(f"<li>{escaped(review)}</li>")
+            continue
+        review_fields = {
+            key: review[key]
+            for key in (
+                "kind",
+                "binding",
+                "decision",
+                "reviewer",
+                "rationale",
+                "evidence",
+                "valid_from",
+                "valid_until",
+                "requires_review",
+            )
+            if key in review and review[key] is not None
+        }
+        items.append("<li>" + fields(review_fields) + "</li>")
+    return "<ul>" + "".join(items) + "</ul>"
+
+
+def render_reference(ref: Any) -> str:
+    if not isinstance(ref, dict):
+        return f"<li>{escaped(ref)}</li>"
+    primary = ref.get("guidance") or ref.get("source_url") or ""
+    parts = [link(primary)]
+    if ref.get("source_url") and ref.get("guidance") and ref["source_url"] != ref["guidance"]:
+        parts.append(f" (source: {link(ref['source_url'])})")
+    if ref.get("pointer"):
+        parts.append(f" <code>{escaped(ref['pointer'])}</code>")
+    return "<li>" + "".join(parts) + "</li>"
+
+
 def executive_summary(model: dict[str, Any]) -> str:
     metrics = model["coverage"]
     parts = [
@@ -211,6 +261,7 @@ def executive_summary(model: dict[str, Any]) -> str:
         )
     outcomes = ("pass", "fail", "unknown", "error", "manual", "not_applicable")
     areas = sorted({row["design_area"] for row in model["results"]})
+    area_ids = {name: str(i) for i, name in enumerate(areas)}
     parts += [
         '<h3>Design-area heat map</h3><div class="heatmap"><table>',
         "<caption>Result-instance counts with text labels, not a maturity score.</caption>",
@@ -226,11 +277,15 @@ def executive_summary(model: dict[str, Any]) -> str:
                     if row.get(mode):
                         counts[row[mode]["outcome"]] += 1
         parts.append(f'<tr><th scope="row">{escaped(area)}</th>')
-        parts += [
-            f'<td class="{outcome}" aria-label="{outcome}: {counts[outcome]}">'
-            f"{counts[outcome]}</td>"
-            for outcome in outcomes
-        ]
+        for outcome in outcomes:
+            count = counts[outcome]
+            btn_class = "heatmap-btn zero muted" if count == 0 else "heatmap-btn"
+            parts.append(
+                f'<td class="{outcome}" aria-label="{outcome}: {count}">'
+                f'<button type="button" class="{btn_class}" '
+                f'data-filter-area="{area_ids[area]}" data-filter-status="{outcome}" '
+                f'aria-label="{escaped(area)} {outcome}: {count}">{count}</button></td>'
+            )
         parts.append("</tr>")
     parts.append("</tbody></table></div></section>")
     return "".join(parts)
@@ -329,7 +384,7 @@ def render_html(model: dict[str, Any]) -> str:
             "Counts are once per control across targets and modes; manual stays separate.</p>"
         )
     parts.append(
-        "<details><summary>Shared coverage model and denominators</summary><pre>"
+        "<details open><summary>Shared coverage model and denominators</summary><pre>"
         + escaped(json.dumps(coverage, sort_keys=True))
         + "</pre></details>"
     )
@@ -387,10 +442,23 @@ def render_html(model: dict[str, Any]) -> str:
             seen_areas.add(area)
             parts.append(f'<h3 id="area-{area_ids[area]}">{escaped(area)}</h3>')
         statuses = [row[m]["outcome"] for m in ("planned", "observed") if row.get(m)]
+        is_open = any(s in {"fail", "error"} for s in statuses) or row.get("comparison") == "drift"
+        open_attr = " open" if is_open else ""
+        badges = [
+            f'<span class="status {escaped(row[m]["outcome"])}">'
+            f"{escaped(m)}: {escaped(row[m]['outcome'])}</span>"
+            for m in ("planned", "observed")
+            if row.get(m)
+        ]
+        if "severity" in row:
+            badges.append(f'<span class="status">{escaped(row["severity"])}</span>')
+        if row.get("automation"):
+            badges.append(f'<span class="status">{escaped(row["automation"])}</span>')
         parts.append(
             f'<article class="finding" data-area="{area_ids[area]}" '
-            f'data-status="{escaped(" ".join(statuses))}"><details open><summary>'
-            f"{escaped(row['upstream_id'])}: {escaped(row['recommendation'])}"
+            f'data-status="{escaped(" ".join(statuses))}"><details{open_attr}><summary>'
+            f"{escaped(row['upstream_id'])}: {escaped(row['recommendation'])} "
+            f"{''.join(badges)}"
             "</summary>"
         )
         parts.append(
@@ -442,19 +510,20 @@ def render_html(model: dict[str, Any]) -> str:
                 + "</ul>"
             )
             parts.append(
-                "<h5>Human review ownership and status</h5><pre>"
-                + escaped(json.dumps(body.get("reviews", []), indent=2))
-                + "</pre></section>"
+                "<h5>Human review ownership and status</h5>"
+                + render_reviews(body.get("reviews", []))
+                + "</section>"
             )
         parts.append(
             "<h4>Rule transparency and guidance</h4>"
             + fields(
                 {
                     "Rationale": row.get("rationale"),
-                    "Evidence requirements": json.dumps(
-                        row.get("evidence_requirements"), sort_keys=True
-                    ),
-                    "Flags": json.dumps(row.get("flags"), sort_keys=True),
+                    "Evidence requirements": "; ".join(
+                        str(item) for item in (row.get("evidence_requirements") or [])
+                    )
+                    or "None",
+                    "Flags": ", ".join(str(item) for item in (row.get("flags") or [])) or "none",
                     "Control hash": row.get("control_sha256"),
                     "Rule hash": row.get("rule_sha256"),
                 }
@@ -462,16 +531,7 @@ def render_html(model: dict[str, Any]) -> str:
         )
         parts.append(
             "<ul>"
-            + "".join(
-                "<li>"
-                + link(ref.get("guidance") or ref.get("source_url"))
-                + "<pre>"
-                + escaped(json.dumps(ref, sort_keys=True))
-                + "</pre></li>"
-                if isinstance(ref, dict)
-                else "<li>" + escaped(ref) + "</li>"
-                for ref in row.get("references", [])
-            )
+            + "".join(render_reference(ref) for ref in row.get("references", []))
             + "</ul></details></article>"
         )
     parts.append("</section><section><h2>Retired / historical controls</h2>")

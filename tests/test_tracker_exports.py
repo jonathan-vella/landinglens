@@ -177,3 +177,45 @@ class TrackerExportTests(unittest.TestCase):
             )
             self.assertEqual(result.returncode, 2)
             self.assertEqual(target.read_bytes(), before)
+
+    def test_bound_review_rationale_columns_and_minimized_redaction(self):
+        from alz_assessor.contracts import control_digest
+
+        control = next(c for c in self.catalog["controls"] if not c.get("rule"))
+        manual = document(
+            "manual",
+            schema_version="1.1",
+            entries=[
+                {
+                    "control_id": control["control_id"],
+                    "control_sha256": control_digest(control),
+                    "scope": SCOPE,
+                    "reviewer": "=ReviewerName",
+                    "evidence": "https://example.invalid/private-doc",
+                    "rationale": "+Architecture decision rationale",
+                    "valid_from": "2026-11-01T00:00:00Z",
+                    "valid_until": "2026-12-01T00:00:00Z",
+                    "outcome": "pass",
+                }
+            ],
+        )
+        reviewed = assess(self.bundle, self.catalog, at=AT, manual=manual, evidence_tiers=True)
+        full_rows = list(csv.reader(io.StringIO(render(reviewed, "csv"))))
+        self.assertEqual(full_rows, self.cells(render_xlsx(reviewed)))
+        row = next(r for r in full_rows[1:] if r[0] == control["control_id"])
+        self.assertEqual(
+            row[16:19],
+            ["'=ReviewerName", "'+Architecture decision rationale", "2026-12-01T00:00:00Z"],
+        )
+        min_rows = list(csv.reader(io.StringIO(render(reviewed, "csv", minimize=True))))
+        self.assertEqual(min_rows, self.cells(render_xlsx(reviewed, minimize=True)))
+        min_row = next(r for r in min_rows[1:] if r[0] == control["control_id"])
+        self.assertEqual(min_row[16:19], ["", "", ""])
+        for text in (
+            render(reviewed, "csv", minimize=True),
+            render(reviewed, "markdown", minimize=True),
+            render(reviewed, "html", minimize=True),
+        ):
+            self.assertNotIn("ReviewerName", text)
+            self.assertNotIn("Architecture decision rationale", text)
+            self.assertNotIn("private-doc", text)

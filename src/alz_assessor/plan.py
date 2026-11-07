@@ -5,6 +5,7 @@ from typing import Any
 
 from .contracts import canonical_id, digest, document, now, read_document, validate
 from .sources import (
+    PLANNED_RESOURCE_LIMIT,
     PROVIDER_VERSION,
     TF_TYPES,
     file_hash,
@@ -13,6 +14,8 @@ from .sources import (
     tf_resource_id,
 )
 from .terraform import InputError
+
+PLAN_BYTE_LIMIT = 32_000_000
 
 
 def plan_source(
@@ -23,9 +26,9 @@ def plan_source(
     source_binding: dict[str, Any] | None = None,
     binding: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    if path.stat().st_size > 2_000_000:
+    if path.stat().st_size > PLAN_BYTE_LIMIT:
         raise InputError("Plan JSON exceeds byte limit")
-    plan = read_document(path, 2_000_000)
+    plan = read_document(path, PLAN_BYTE_LIMIT)
     if not isinstance(plan, dict) or not str(plan.get("format_version", "")).startswith("1."):
         raise InputError("Unsupported Terraform plan JSON format")
     if not isinstance(plan.get("planned_values"), dict):
@@ -69,7 +72,7 @@ def plan_source(
                 raise InputError("Planned resource must be an object")
             if resource.get("mode") != "managed":
                 continue
-            if len(records) >= 256:
+            if len(records) >= PLANNED_RESOURCE_LIMIT:
                 raise InputError("Plan resource limit exceeded")
             kind = resource.get("type")
             if not isinstance(kind, str) or not isinstance(resource.get("values"), dict):
@@ -206,7 +209,7 @@ def plan_source(
             )
             if kind == "azurerm_storage_account":
                 records.append(tf_blob_service(records[-1], values))
-            if len(records) > 256:
+            if len(records) > PLANNED_RESOURCE_LIMIT:
                 raise InputError("Plan resource limit includes default blob-service children")
         for child in children:
             if not isinstance(child, dict):
