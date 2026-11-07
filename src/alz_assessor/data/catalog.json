@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "kind": "catalog",
-  "catalog_version": "2026-11-06.22",
+  "catalog_version": "2026-11-06.23",
   "design_areas": [
     "Azure billing and Active Directory tenant",
     "Identity and access management",
@@ -15346,15 +15346,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Workspace configuration is not complete ingestion, organization-wide central ownership, suitable access or legal/residency design.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Is the approved central workspace appropriate, with independently justified tenant/RBAC/ownership/sovereignty/retention exceptions and complete arriving data coverage?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-24",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -15368,9 +15365,40 @@
           "pointer": "/items/183",
           "item_sha256": "0cd3abb3fcfe1c1ffdebd497300b1fbcdcbe33ccf64cfaaf3451b8f030eb7231",
           "guidance": "https://learn.microsoft.com/azure/azure-monitor/logs/workspace-design#azure-regions"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/workspace-design#azure-regions",
+          "source_sha256": "bdda724b2b7f472b108e343520bbf32d2ecc7235ab2ae04dca7e8530bc9fc766",
+          "revision": "52bb405da89c17f0eeda6cb32945cc94f7698e62",
+          "retrieved_at": "2026-11-06T23:11:17.483037+00:00",
+          "pointer": "67e7a8ed-4b30-4e38-a3f2-9812b2363cef",
+          "guidance": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/workspace-design#azure-regions"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.operationalinsights/2023-09-01/workspaces",
+          "source_sha256": "2ad701c034a1ab4baae4a24b760f85fa22c7b9a0031f7dc97cc19d9e5f3e31f3",
+          "revision": "a80a6ca0ce31aae2ff0424e8453153664e18bc8b",
+          "retrieved_at": "2026-11-06T23:11:29.067584+00:00",
+          "pointer": "67e7a8ed-4b30-4e38-a3f2-9812b2363cef",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.operationalinsights/2023-09-01/workspaces"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/log_analytics_workspace.html.markdown",
+          "source_sha256": "241918b71949554ce92012eb9af5a59c95a45c2006b1a73b8845c248dca4c945",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T23:11:29.360722+00:00",
+          "pointer": "67e7a8ed-4b30-4e38-a3f2-9812b2363cef",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/log_analytics_workspace.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.OperationalInsights/workspaces"
+      ],
+      "review_fact_paths": [
+        "logWorkspaceSummary",
+        "resourceLocation"
+      ]
     },
     {
       "control_id": "ALZ-7418ada9-4199-4c28-8286-d15e9433e8f3",
@@ -15390,15 +15418,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Location labels and selected workspace counts prove neither physical independence, sovereignty, complete regions nor cost suitability.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Does the single/regional workspace design meet required geography, resilience, access, retention and justified VM bandwidth/commitment-cost tradeoffs, distinguishing diagnostic-setting egress?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-24",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -15412,9 +15437,48 @@
           "pointer": "/items/184",
           "item_sha256": "884f08df1f36b0c603409168c77670b86f54ae500e6729b65ffe3b44daad8b9e",
           "guidance": "https://learn.microsoft.com/azure/azure-monitor/logs/design-logs-deployment"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/design-logs-deployment",
+          "source_sha256": "bdda724b2b7f472b108e343520bbf32d2ecc7235ab2ae04dca7e8530bc9fc766",
+          "revision": "52bb405da89c17f0eeda6cb32945cc94f7698e62",
+          "retrieved_at": "2026-11-06T23:11:17.892309+00:00",
+          "pointer": "7418ada9-4199-4c28-8286-d15e9433e8f3",
+          "guidance": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/design-logs-deployment"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/workspace-design#azure-regions",
+          "source_sha256": "bdda724b2b7f472b108e343520bbf32d2ecc7235ab2ae04dca7e8530bc9fc766",
+          "revision": "52bb405da89c17f0eeda6cb32945cc94f7698e62",
+          "retrieved_at": "2026-11-06T23:11:17.483037+00:00",
+          "pointer": "7418ada9-4199-4c28-8286-d15e9433e8f3",
+          "guidance": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/workspace-design#azure-regions"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.operationalinsights/2023-09-01/workspaces",
+          "source_sha256": "2ad701c034a1ab4baae4a24b760f85fa22c7b9a0031f7dc97cc19d9e5f3e31f3",
+          "revision": "a80a6ca0ce31aae2ff0424e8453153664e18bc8b",
+          "retrieved_at": "2026-11-06T23:11:29.067584+00:00",
+          "pointer": "7418ada9-4199-4c28-8286-d15e9433e8f3",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.operationalinsights/2023-09-01/workspaces"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/log_analytics_workspace.html.markdown",
+          "source_sha256": "241918b71949554ce92012eb9af5a59c95a45c2006b1a73b8845c248dca4c945",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T23:11:29.360722+00:00",
+          "pointer": "7418ada9-4199-4c28-8286-d15e9433e8f3",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/log_analytics_workspace.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.OperationalInsights/workspaces"
+      ],
+      "review_fact_paths": [
+        "resourceLocation",
+        "logWorkspaceSummary"
+      ]
     },
     {
       "control_id": "ALZ-5e6c4cfd-3e50-4454-9c24-47ec66138a72",
@@ -15434,15 +15498,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Basic current30-day versus provider8 and CLI2556 versus REST4383 remain distinct. No omitted defaults, effective inheritance, complete required data, delivered export, container linkage or legal WORM sufficiency inferred.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: For each required dataset, are source-qualified analytics/total retention and privacy/recovery requirements satisfied, including conditional >12-year export, historical/new-data coverage, actual destination/container delivery and legally suitable locked WORM/legal holds?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-24",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -15456,9 +15517,93 @@
           "pointer": "/items/185",
           "item_sha256": "57c4e8c4b121e95e2be28bb9c8c7dea5157b1438a054b74f778323356ad01837",
           "guidance": "https://learn.microsoft.com/azure/azure-monitor/logs/data-retention-archive?tabs=portal-1%2Cportal-2#how-retention-and-archiving-work"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/data-retention-archive?tabs=portal-1%2Cportal-2",
+          "source_sha256": "eaa03c01a7a791adb2183431201ffd3ebf2d7732cbe83504d5417e70161795ba",
+          "revision": "dda53ebc0c46430cded570bdc06e9ff266fa5ef3",
+          "retrieved_at": "2026-11-06T23:11:18.731884+00:00",
+          "pointer": "5e6c4cfd-3e50-4454-9c24-47ec66138a72",
+          "guidance": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/data-retention-archive?tabs=portal-1%2Cportal-2"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/logs-data-export",
+          "source_sha256": "2f6c97b4526ce5d428ebd739d8e8a0c94530c73418f7576c182b8307184d1cba",
+          "revision": "022db371850311fc1d3db8923b5de1ab38cfbbaa",
+          "retrieved_at": "2026-11-06T23:11:19.231411+00:00",
+          "pointer": "5e6c4cfd-3e50-4454-9c24-47ec66138a72",
+          "guidance": "https://learn.microsoft.com/en-us/azure/azure-monitor/logs/logs-data-export"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/storage/blobs/immutable-storage-overview",
+          "source_sha256": "a824304f9213d58c43165914724cdfdffb99ed5dabdd129be12795c825f01f3f",
+          "revision": "cdf0d71d6878c96f2d38f3ff00f3df6f91bb82b2",
+          "retrieved_at": "2026-11-06T23:11:19.702399+00:00",
+          "pointer": "5e6c4cfd-3e50-4454-9c24-47ec66138a72",
+          "guidance": "https://learn.microsoft.com/en-us/azure/storage/blobs/immutable-storage-overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.operationalinsights/2023-09-01/workspaces/tables",
+          "source_sha256": "d98956f26bc8a422417498a96175610d1945ac9a3cdddf425f72fc16730332e7",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T23:11:24.169639+00:00",
+          "pointer": "5e6c4cfd-3e50-4454-9c24-47ec66138a72",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.operationalinsights/2023-09-01/workspaces/tables"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.operationalinsights/2020-08-01/workspaces/dataexports",
+          "source_sha256": "a1a4f7c7243fccf325bf4e09efe7bdc0defa0757c927bd9d922299de61101817",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T23:11:24.628021+00:00",
+          "pointer": "5e6c4cfd-3e50-4454-9c24-47ec66138a72",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.operationalinsights/2020-08-01/workspaces/dataexports"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts/blobservices/containers/immutabilitypolicies",
+          "source_sha256": "8a4d19c740c660f31b8d217746bf5bb4a6af691f0642c5b860e4e34893e264bd",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T23:11:26.292600+00:00",
+          "pointer": "5e6c4cfd-3e50-4454-9c24-47ec66138a72",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts/blobservices/containers/immutabilitypolicies"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/log_analytics_workspace_table.html.markdown",
+          "source_sha256": "b6b97c7cb4ce65a8b496ae3604d634b4f2b6e501430f5157e313b51a4c4a7ca3",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T23:11:27.024193+00:00",
+          "pointer": "5e6c4cfd-3e50-4454-9c24-47ec66138a72",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/log_analytics_workspace_table.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/log_analytics_data_export_rule.html.markdown",
+          "source_sha256": "0fdfdd79b4dfaf1a6da75a1c32cb0e9ef2d20671b138721664ead6673653b7e9",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T23:11:27.296562+00:00",
+          "pointer": "5e6c4cfd-3e50-4454-9c24-47ec66138a72",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/log_analytics_data_export_rule.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_container_immutability_policy.html.markdown",
+          "source_sha256": "d4ca24858c22d0ba1ed938ef9e1eff00a0ebb34653e201723c410e9710f8ef53",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T23:11:28.135805+00:00",
+          "pointer": "5e6c4cfd-3e50-4454-9c24-47ec66138a72",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_container_immutability_policy.html.markdown"
         }
       ],
-      "severity": "High"
+      "severity": "High",
+      "review_resource_types": [
+        "Microsoft.OperationalInsights/workspaces",
+        "Microsoft.OperationalInsights/workspaces/tables",
+        "Microsoft.OperationalInsights/workspaces/dataExports",
+        "Microsoft.Storage/storageAccounts/blobServices/containers/immutabilityPolicies"
+      ],
+      "review_fact_paths": [
+        "logWorkspaceSummary",
+        "operationsTableRetention",
+        "operationsExport",
+        "operationsImmutability"
+      ]
     },
     {
       "control_id": "ALZ-e7d7e484-3276-4d8b-bc05-5bcf619e8a13",
@@ -15478,15 +15623,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Assignment is not completed guest audit; Apply modes are not Audit. No content/parameters/package/report inspected, downloaded or retained; no implicit built-in definition fetch or guest-policy interpreter.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Are required supported Azure/Arc OS drift audits correctly scoped and enabled with prerequisites/current compatibility, and do fresh attributable completed audit results establish coverage and exceptions?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-24",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -15500,9 +15642,57 @@
           "pointer": "/items/186",
           "item_sha256": "3f77d6a2142ea2413c800cff01159575bca593a6b07173fff42b56109e4519ad",
           "guidance": "https://learn.microsoft.com/azure/governance/machine-configuration/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/machine-configuration/overview",
+          "source_sha256": "fb49340f7b302e33cdc8e77d447facc796a195c4017713ecc1c18832b81ebb3e",
+          "revision": "1971c1c48336883cdfe86d6fff3de6130c99a322",
+          "retrieved_at": "2026-11-06T23:11:20.435237+00:00",
+          "pointer": "e7d7e484-3276-4d8b-bc05-5bcf619e8a13",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/machine-configuration/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-operational-compliance#update-management-considerations",
+          "source_sha256": "f4e147ecc2a300a2a4ebfe8689481440cb7d413b73e98419b7779e8285d6cdfc",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T23:11:20.906501+00:00",
+          "pointer": "e7d7e484-3276-4d8b-bc05-5bcf619e8a13",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-operational-compliance#update-management-considerations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.guestconfiguration/2024-04-05/guestconfigurationassignments",
+          "source_sha256": "76a088d83b214d0b61214c2b9afa12a5e8aa6e2885e6ee5b7925b4575c70ea48",
+          "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+          "retrieved_at": "2026-11-06T23:11:25.163236+00:00",
+          "pointer": "e7d7e484-3276-4d8b-bc05-5bcf619e8a13",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.guestconfiguration/2024-04-05/guestconfigurationassignments"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_virtual_machine_configuration_assignment.html.markdown",
+          "source_sha256": "c9272572b3e4500382dac3fce16dfb3d9c7eb174ebd76362f5cc35933e505660",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T23:11:27.570223+00:00",
+          "pointer": "e7d7e484-3276-4d8b-bc05-5bcf619e8a13",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_virtual_machine_configuration_assignment.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json",
+          "source_sha256": "85934922ce8fe3e200fe0642df802f38b72ad153d66807ad874fdf78ee443989",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T23:11:33.168451+00:00",
+          "pointer": "e7d7e484-3276-4d8b-bc05-5bcf619e8a13",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.GuestConfiguration/guestConfigurationAssignments",
+        "Microsoft.Authorization/policyAssignments"
+      ],
+      "review_fact_paths": [
+        "operationsGuestAssignment",
+        "policyAssignmentSummary"
+      ]
     },
     {
       "control_id": "ALZ-f9887952-5d62-4688-9d70-ba6c97be9951",
@@ -15522,15 +15712,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Periodic assessment or patch mode is not completed patching, fleet compliance or authorization to install updates. Log Analytics and Automation are not required dependencies.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Does Azure VM Update Manager adoption cover eligible Windows/Linux machines, extension/update-source health, owned maintenance/BC schedules, actual installed patch results and explicit exclusions?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-24",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -15544,9 +15731,55 @@
           "pointer": "/items/187",
           "item_sha256": "9182cb71eaf1545e8f5a2dc4e7373b727e19e04868368e50461ccf97129afe74",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-operational-compliance#update-management-considerations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-operational-compliance#update-management-considerations",
+          "source_sha256": "f4e147ecc2a300a2a4ebfe8689481440cb7d413b73e98419b7779e8285d6cdfc",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T23:11:20.906501+00:00",
+          "pointer": "f9887952-5d62-4688-9d70-ba6c97be9951",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-operational-compliance#update-management-considerations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/update-manager/overview",
+          "source_sha256": "01018b29f807dabdbb5ac19cb0366f097a6841d9ef2b634bedb0d6a82522cd68",
+          "revision": "524e07c02a94f1f9fbb5cc7404058f2fff3c44b1",
+          "retrieved_at": "2026-11-06T23:11:21.351377+00:00",
+          "pointer": "f9887952-5d62-4688-9d70-ba6c97be9951",
+          "guidance": "https://learn.microsoft.com/en-us/azure/update-manager/overview"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2024-07-01/computeRPCommon.json",
+          "source_sha256": "eaea4fa7a4312b865ca6b9a53fe6eb36bf220076f271ad5f0b074b3ee90d053d",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T23:11:29.723356+00:00",
+          "pointer": "f9887952-5d62-4688-9d70-ba6c97be9951",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2024-07-01/computeRPCommon.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/linux_virtual_machine.html.markdown",
+          "source_sha256": "eb59c9fd48961e1a80e9fe31c0ed66ef3f04674e76706d66ae3820362c58a560",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T23:11:30.013486+00:00",
+          "pointer": "f9887952-5d62-4688-9d70-ba6c97be9951",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/linux_virtual_machine.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/windows_virtual_machine.html.markdown",
+          "source_sha256": "98109d65ccb47b5d3665b7c5232ad262782f3dc79dd08d69b3ab6f625ad397c7",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T23:11:30.341568+00:00",
+          "pointer": "f9887952-5d62-4688-9d70-ba6c97be9951",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/windows_virtual_machine.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Compute/virtualMachines"
+      ],
+      "review_fact_paths": [
+        "patchConfiguration"
+      ]
     },
     {
       "control_id": "ALZ-c806c048-26b7-4ddf-b4c2-b4f0c476925d",
@@ -15566,15 +15799,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Arc existence, OS settings or periodic assessment do not prove enrollment health, installed patches or fleet compliance. Terraform4.50.0 has no patch fields; invented arguments and resource identity cannot fill the gap.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Is outside-Azure Arc Windows/Linux Update Manager adoption supported and connected, with extension/source health, complete schedule/scope/results coverage and exceptions independent of Azure VM evidence?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-24",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -15588,9 +15818,47 @@
           "pointer": "/items/188",
           "item_sha256": "3c0e03bea442a97ed7a3742bba9f63937f921ca66a0e87a577c1d2ea3fff61b8",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-operational-compliance#update-management-considerations "
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-operational-compliance#update-management-considerations",
+          "source_sha256": "f4e147ecc2a300a2a4ebfe8689481440cb7d413b73e98419b7779e8285d6cdfc",
+          "revision": "8dc442b91a5ddaa77e94900baae3d4e319cd52d3",
+          "retrieved_at": "2026-11-06T23:11:20.906501+00:00",
+          "pointer": "c806c048-26b7-4ddf-b4c2-b4f0c476925d",
+          "guidance": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-operational-compliance#update-management-considerations"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/update-manager/overview",
+          "source_sha256": "01018b29f807dabdbb5ac19cb0366f097a6841d9ef2b634bedb0d6a82522cd68",
+          "revision": "524e07c02a94f1f9fbb5cc7404058f2fff3c44b1",
+          "retrieved_at": "2026-11-06T23:11:21.351377+00:00",
+          "pointer": "c806c048-26b7-4ddf-b4c2-b4f0c476925d",
+          "guidance": "https://learn.microsoft.com/en-us/azure/update-manager/overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.hybridcompute/2024-07-10/machines",
+          "source_sha256": "c3ced1851b0282158381ab947a03417fb77deff86b47d094b6d6c9204405f842",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T23:11:25.933913+00:00",
+          "pointer": "c806c048-26b7-4ddf-b4c2-b4f0c476925d",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.hybridcompute/2024-07-10/machines"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/arc_machine.html.markdown",
+          "source_sha256": "20f11a3d1a7397cadb7dcffbe62e2f173c73babcb0500c48f04d378513daf67e",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T23:11:28.436108+00:00",
+          "pointer": "c806c048-26b7-4ddf-b4c2-b4f0c476925d",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/arc_machine.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.HybridCompute/machines"
+      ],
+      "review_fact_paths": [
+        "operationsArcPatch"
+      ]
     },
     {
       "control_id": "ALZ-90483845-c986-4cb2-a131-56a12476e49f",
@@ -15610,15 +15878,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Definition or regional enablement is not executed traffic analysis. No probes, packet captures, traffic payloads, diagnostics, log/query execution or new live route.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Is proactive Network Watcher traffic/flow analysis actually operating with supported VNet migration, arriving storage/analytics, fresh complete coverage and owned response, acknowledging NSG creation withdrawal/2027-09-30 retirement?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-24",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -15632,9 +15897,59 @@
           "pointer": "/items/189",
           "item_sha256": "01d4690bc9197ae921bb5fed99d611a35a2b4a16c83616fd345cdfe5153142bc",
           "guidance": "https://learn.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview",
+          "source_sha256": "cdf105d8c74570786fb8a205ce29cfd212fa1bd2b6092e4658eecd8c3220a635",
+          "revision": "72d285d0aefe1746c6b2c92672e049d20885583b",
+          "retrieved_at": "2026-11-06T23:11:22.059575+00:00",
+          "pointer": "90483845-c986-4cb2-a131-56a12476e49f",
+          "guidance": "https://learn.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/network-watcher/vnet-flow-logs-overview",
+          "source_sha256": "10fc1713d4f8aa020b386caf6227bb809dbb0eceb086036d65baad1d58b852d1",
+          "revision": "1d0b93ef19bb0828f1c6fae226f485b631826be7",
+          "retrieved_at": "2026-11-06T23:11:30.821691+00:00",
+          "pointer": "90483845-c986-4cb2-a131-56a12476e49f",
+          "guidance": "https://learn.microsoft.com/en-us/azure/network-watcher/vnet-flow-logs-overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/network-watcher/traffic-analytics",
+          "source_sha256": "227d1a503384c02f388b43a32f0d9d5ae55d340810077e7ae5b1f8b0b8636045",
+          "revision": "18b9d761020f6c1ce3c64ff01abf5084c5b366a1",
+          "retrieved_at": "2026-11-06T23:11:31.287717+00:00",
+          "pointer": "90483845-c986-4cb2-a131-56a12476e49f",
+          "guidance": "https://learn.microsoft.com/en-us/azure/network-watcher/traffic-analytics"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/networkwatchers/flowlogs",
+          "source_sha256": "4f7f2c81561ae3956752fd7a421520aa732baf7b4462effb706720d45a89952d",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T23:11:31.932449+00:00",
+          "pointer": "90483845-c986-4cb2-a131-56a12476e49f",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.network/2024-05-01/networkwatchers/flowlogs"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/network_watcher_flow_log.html.markdown",
+          "source_sha256": "13a8af706567b83dd007a595916b7aeaff83651f34337dda22272a2bb1189afc",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T23:11:32.436252+00:00",
+          "pointer": "90483845-c986-4cb2-a131-56a12476e49f",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/network_watcher_flow_log.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Network/networkWatchers/flowLogs"
+      ],
+      "review_fact_paths": [
+        "enabled",
+        "storageId",
+        "targetResourceId",
+        "trafficAnalytics.enabled",
+        "trafficAnalytics.workspaceResourceId"
+      ]
     },
     {
       "control_id": "ALZ-541acdce-9793-477b-adb3-751ab2ab13ad",
@@ -15654,15 +15969,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Explicit configuration property is a candidate for bounded evaluation; applicability, provider mapping and positive/negative fixtures remain unverified.",
+      "rationale": "No management-group locks or data/cancellation protection. Presence does not establish inherited complete protection, human criticality or effective applicability.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Which shared services are independently critical, and do actual locks/ancestor coverage/removal authority provide appropriate control-plane protection after applicability/side effects/data-plane/cancellation exceptions?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-24",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -15676,9 +15988,39 @@
           "pointer": "/items/190",
           "item_sha256": "89fb473c0e90f649630b0bf79d6ed16c95db67f16ef076df3401938c083ac4f3",
           "guidance": "https://learn.microsoft.com/azure/azure-resource-manager/management/lock-resources?tabs=json"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/lock-resources?tabs=json",
+          "source_sha256": "dd4965e9b3eaa315f5ae28932a62881314780932b96ed9388392705828fe4346",
+          "revision": "e90dd2cd9106e12ee0b9e1743cc3b29e79422434",
+          "retrieved_at": "2026-11-06T23:11:22.533152+00:00",
+          "pointer": "541acdce-9793-477b-adb3-751ab2ab13ad",
+          "guidance": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/lock-resources?tabs=json"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2020-05-01/locks",
+          "source_sha256": "c38fbdc189a904601f3f6dc3086c105433fc0252eee17e02e9b9b297705175c5",
+          "revision": "9a8f8820ebf02dc4524627037dcf7fa736fe7337",
+          "retrieved_at": "2026-11-06T23:11:26.750884+00:00",
+          "pointer": "541acdce-9793-477b-adb3-751ab2ab13ad",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2020-05-01/locks"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_lock.html.markdown",
+          "source_sha256": "3cdca38dd72e27ce6213f9cac3405a58813af1607a4113346554f81e49a8f86f",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T23:11:27.869383+00:00",
+          "pointer": "541acdce-9793-477b-adb3-751ab2ab13ad",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_lock.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Authorization/locks"
+      ],
+      "review_fact_paths": [
+        "operationsLock"
+      ]
     },
     {
       "control_id": "ALZ-a6e55d7d-8a2a-4db1-87d6-326af625ca44",
@@ -15698,15 +16040,12 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Literal effect, assignment or role presence cannot prove appropriate/effective guardrails. No new Policy interpreter, built-in fetch, access evaluation or principal retention.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reviewer decision: Do exact scoped/versioned Policy deny rules and role authority enforce appropriate actual operations after conditions/parameters/enforcement/inheritance/exemptions, separately from RBAC deny/private-preview behavior?"
       ],
-      "mapping_state": "inventory-category-only",
-      "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
-      ],
+      "mapping_state": "source-reviewed-batch-24",
+      "flags": [],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
         "platform-application-applicability-unverified"
@@ -15720,9 +16059,84 @@
           "pointer": "/items/191",
           "item_sha256": "1151d799ecef88efa584f00269972cb07658a186c8b676ae84d1e15ddc80f9be",
           "guidance": "https://learn.microsoft.com/azure/governance/policy/concepts/effect-deny"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effect-deny",
+          "source_sha256": "c9a881545478745414fd087282dd0c44139c3a8ba07f63db41b9e6463901d183",
+          "revision": "335102b882bfe205071a0b561c28b21eabf0a5ee",
+          "retrieved_at": "2026-11-06T23:11:22.982234+00:00",
+          "pointer": "a6e55d7d-8a2a-4db1-87d6-326af625ca44",
+          "guidance": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effect-deny"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/role-based-access-control/deny-assignments",
+          "source_sha256": "28520a0bc4980962a5fbfe7c594ad92fbac6c17fe09497d7fda65fa4143eb08a",
+          "revision": "072bd784f4cc4968f69c6629d6e2f27e787af6d0",
+          "retrieved_at": "2026-11-06T23:11:23.720811+00:00",
+          "pointer": "a6e55d7d-8a2a-4db1-87d6-326af625ca44",
+          "guidance": "https://learn.microsoft.com/en-us/azure/role-based-access-control/deny-assignments"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json",
+          "source_sha256": "9d707ad996174330367c811461f5f3b2e1c710b63e5b171e804ad058850d9ad6",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T23:11:32.839976+00:00",
+          "pointer": "a6e55d7d-8a2a-4db1-87d6-326af625ca44",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json",
+          "source_sha256": "85934922ce8fe3e200fe0642df802f38b72ad153d66807ad874fdf78ee443989",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-06T23:11:33.168451+00:00",
+          "pointer": "a6e55d7d-8a2a-4db1-87d6-326af625ca44",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_definition.html.markdown",
+          "source_sha256": "74cf604cb0de66c8428b0114ff594ef3c02956e49c411ef7d692b0a782893993",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T23:11:33.487396+00:00",
+          "pointer": "a6e55d7d-8a2a-4db1-87d6-326af625ca44",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_definition.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subscription_policy_assignment.html.markdown",
+          "source_sha256": "1eed39b22a8e715763c0e5334940c7a27cd259d2c116a637a2599019cab1d272",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T23:11:33.772578+00:00",
+          "pointer": "a6e55d7d-8a2a-4db1-87d6-326af625ca44",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subscription_policy_assignment.html.markdown"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2022-04-01/roleassignments",
+          "source_sha256": "02df56b66b59a56f7b95c138a7d92a04be0c9ff6bdbdbc85061873cae165ba07",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-06T23:11:35.300972+00:00",
+          "pointer": "a6e55d7d-8a2a-4db1-87d6-326af625ca44",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2022-04-01/roleassignments"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/role_assignment.html.markdown",
+          "source_sha256": "a21d48890385aabc039c7172070c4a2292ca928a89cdd6ec078d550f14f21ba9",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-06T23:11:35.603677+00:00",
+          "pointer": "a6e55d7d-8a2a-4db1-87d6-326af625ca44",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/role_assignment.html.markdown"
         }
       ],
-      "severity": "Low"
+      "severity": "Low",
+      "review_resource_types": [
+        "Microsoft.Authorization/policyDefinitions",
+        "Microsoft.Authorization/policyAssignments",
+        "Microsoft.Authorization/roleAssignments"
+      ],
+      "review_fact_paths": [
+        "policyDefinitionSummary",
+        "policyAssignmentSummary",
+        "principalType",
+        "roleDefinitionId"
+      ]
     },
     {
       "control_id": "ALZ-e5695f22-23ac-4e8c-a123-08ca5017f154",
@@ -20205,60 +20619,72 @@
   "reviewed_at": "2026-11-04T13:25:57.057372+00:00",
   "reference_manifest_sha256": "c287f93a4ff4c94c577b0248345d813f44fb27dff66524408870095024305d30",
   "control_source_manifest_sha256": "d189615f2793f141a6ee6cd5a7f026556a4146fd44d65705e6f08d0e01f7debf",
-  "accepted_matrix_sha256": "086a96e7f46845cc90d43d588a8421a9ae4cd691c6323d0d5b138eae46a43bbf",
+  "accepted_matrix_sha256": "729b03fe5ed56274d159fb767dcc0df9980c3ee4d7328dcde8c2b59e93e81a41",
   "wave_source_manifest_sha256": "617e66a497a1f6bb1ddf50f53b3f75f3ff2cec2989324d42496aeeb4d9d0ef38",
   "change_review": {
-    "base_sha256": "1db49642853c5425cf8ab75bb8982983332e481f6743c46b9c28d095c5c62a93",
-    "matrix_sha256": "086a96e7f46845cc90d43d588a8421a9ae4cd691c6323d0d5b138eae46a43bbf",
-    "reviewed_at": "2026-11-06T23:53:14.091616+00:00",
+    "base_sha256": "c91692a96a5a0aad0580d00446c43ee90d790735d1322897578abd74b3865ddc",
+    "matrix_sha256": "729b03fe5ed56274d159fb767dcc0df9980c3ee4d7328dcde8c2b59e93e81a41",
+    "reviewed_at": "2026-11-07T00:58:47.062334+00:00",
     "reviewer": "owner-delegated-source-backed-batch-review",
     "changes": [
       {
-        "control_id": "ALZ-6cc0ea22-42bb-441e-a345-804ab0a09666",
-        "before_sha256": "74777b7b7a3e57c34bcdcca229b1421e9940548e4586939b396fbd893c1bf9e1",
-        "after_sha256": "bb865ec645d3459b0b831fb8ef19a720cf1a5e014200371868525a7e2461de68",
-        "rationale": "Owner-delegated source-backed batch 09 acceptance: assisted"
+        "control_id": "ALZ-67e7a8ed-4b30-4e38-a3f2-9812b2363cef",
+        "before_sha256": "0821c2ce97b6fbbffdec656370137c2c43b4dcffbccc72971ad38487bfaed1fa",
+        "after_sha256": "20e9e02f45637a3feec3c144dff1b23dec9dc821cadde90f6f7d38c706c95c03",
+        "rationale": "Owner-delegated source-backed batch 24 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-250d81ce-8bbe-4f85-9051-6a18a8221e50",
-        "before_sha256": "59a4e7e88327646a05e5b52c6353e5f6f7f24f1e8b4a5a059de607ee0fd38c76",
-        "after_sha256": "e0b369b553a733e14a5006417027fbefac1d6e47eb007817daf58d09c55b4013",
-        "rationale": "Owner-delegated source-backed batch 09 acceptance: manual"
+        "control_id": "ALZ-7418ada9-4199-4c28-8286-d15e9433e8f3",
+        "before_sha256": "f02a53f93fd5cda8cc7f525ccc69aad1f7b852884f7d7da2ffc6c9bdcc62cdc5",
+        "after_sha256": "9912ce1875edaa10484b5d8be999832f0ecfbc4b72125c593a3ca4a81549d0e3",
+        "rationale": "Owner-delegated source-backed batch 24 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-19ca3f89-397d-44b1-b5b6-5e18661372ac",
-        "before_sha256": "83f5fd86decfd3dac850296fecea76d988a2655f307bc72e961b785ac4a2169d",
-        "after_sha256": "a6c3678f4f4426962aee24409905eb2e5d1e2e7f9d8c31525e8fb2c6b313ea0a",
-        "rationale": "Owner-delegated source-backed batch 09 acceptance: assisted"
+        "control_id": "ALZ-5e6c4cfd-3e50-4454-9c24-47ec66138a72",
+        "before_sha256": "b1024f1dd8fd9423f5655278ac2e01b2a5ae1d91a326c3c294ef2080483ac60e",
+        "after_sha256": "e984be94788cb0d248560aeb6afd20d6b5996ede1905b944d97ebffa21431f1e",
+        "rationale": "Owner-delegated source-backed batch 24 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-4c27d42e-8bba-4c75-9155-9ab9153e8908",
-        "before_sha256": "943867f0d3eb62a69d33d72119746abf0173f44808cfabcff917551d4d47c9a0",
-        "after_sha256": "e7695d6396e17bb112df59b229ba9bb0c96bf750db303fcbb57c1241e48d8087",
-        "rationale": "Owner-delegated source-backed batch 09 acceptance: assisted"
+        "control_id": "ALZ-e7d7e484-3276-4d8b-bc05-5bcf619e8a13",
+        "before_sha256": "b0cc79cd69d1c8c20011f33ceb4cf2e4b1c48665e6249abd35db390c7c36b297",
+        "after_sha256": "dec10d8a621a2333eedae60b53951b03675f91830bc32d5939b03b1cd94f03fa",
+        "rationale": "Owner-delegated source-backed batch 24 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-914b8cb7-c2f6-40fa-ae18-81c049e0cb5a",
-        "before_sha256": "bb68698bce117553cb33d001c71a7feae7961b3bab87e9277a8140d3d4ef5767",
-        "after_sha256": "a899c3f44daa97847f9751f4f7c35b7e20ebb62ee33f32a61f0b92399859f86e",
-        "rationale": "Owner-delegated source-backed batch 09 acceptance: assisted"
+        "control_id": "ALZ-f9887952-5d62-4688-9d70-ba6c97be9951",
+        "before_sha256": "dccb62951f01df1119d8059541db6b084ac31973c3a53e1c7aa6d585501bff73",
+        "after_sha256": "e74bfa11af87699c9d243eab1c043876faf4a927c20e1bc5a0fbae7a80f5e6ae",
+        "rationale": "Owner-delegated source-backed batch 24 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-51a1e9e9-a49a-40b2-87b9-ff753bc6de86",
-        "before_sha256": "7530314e818f1d1d21e282387f138f4501987ee466b979a81038893c9fd26c1e",
-        "after_sha256": "5794a87f508a3b0f8374be68bf7dd6a2f885ab651ee252cd3b05ef634189ff41",
-        "rationale": "Owner-delegated source-backed batch 09 acceptance: manual"
+        "control_id": "ALZ-c806c048-26b7-4ddf-b4c2-b4f0c476925d",
+        "before_sha256": "a30b2784163b04173f734fd1e658a3d420b0b8115af36add7bc80a734a4674b8",
+        "after_sha256": "8357aedc36eb595880088a4cf0a2681fa0e735b07aee32c0a7eefe34c6456742",
+        "rationale": "Owner-delegated source-backed batch 24 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-a89153d8-18b2-4caf-bc19-850fc8fba00f",
-        "before_sha256": "a6782dd3396988f7d590e99cfe3e84350768868dc8b804be2b4a7f05bbb84cbe",
-        "after_sha256": "1293fff435f65870a6aae36babfc47024af27ae5d9a2a14a0c4af4135cbcc73d",
-        "rationale": "Owner-delegated source-backed batch 09 acceptance: assisted"
+        "control_id": "ALZ-90483845-c986-4cb2-a131-56a12476e49f",
+        "before_sha256": "e8ac3927de7d9694749d716e8787e20910a950ad7572c1df446addd3215db477",
+        "after_sha256": "f5039694f9f8430e9c639611a9e81204d5fee2a5e5da8482f0bba0685e5e9109",
+        "rationale": "Owner-delegated source-backed batch 24 acceptance: assisted"
+      },
+      {
+        "control_id": "ALZ-541acdce-9793-477b-adb3-751ab2ab13ad",
+        "before_sha256": "99789596a73baa4be2f566ef161e5ca0af6f19d6eb913b8d0ec6714c314989cb",
+        "after_sha256": "6a2d48b1df6ff35f1aa34fe1b999922b1732e4e891d08fa46f02e41015f3922b",
+        "rationale": "Owner-delegated source-backed batch 24 acceptance: assisted"
+      },
+      {
+        "control_id": "ALZ-a6e55d7d-8a2a-4db1-87d6-326af625ca44",
+        "before_sha256": "c59e5b3d43d4a0a7400876af8524c693c04aaba74b38b079d351f4c9113a751f",
+        "after_sha256": "70262e498b6be78a1e3ca0d2204c575be421fd544fd04a14add718e6d29b9589",
+        "rationale": "Owner-delegated source-backed batch 24 acceptance: assisted"
       }
     ]
   },
   "first_wave_matrix_sha256": "f649b2293211c844d661ea93c6978fe2db948eff17237af01ca090809da8e1fb",
-  "batch_source_manifest_sha256": "f81b93d4f92b9b26c49219a34b3cb56d29881837ab74bc1b80c1ba8da12d67e9",
-  "batch_catalog_version": "2026-11-06.22",
+  "batch_source_manifest_sha256": "4b63b847f2ef9486cbfceef4f7e46b136923cbb68daefdc1d859842ebef5e7d1",
+  "batch_catalog_version": "2026-11-06.23",
   "priority_manifest_sha256": "b42971f85b9110f71fdc5ae81695fe4be72c1f28022ec27aeb719140ed1475c0"
 }

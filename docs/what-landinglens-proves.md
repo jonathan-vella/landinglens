@@ -8,8 +8,8 @@ are in the [plan](planning/plan.md).
 
 ## Evidence and outcomes
 
-Cohort24's [independent preparation](../references/recommendation-batches/preparation-24.json)
-does not activate the accepted catalog or interview bank. Its nine workflows
+Cohort24's [accepted support](automation-matrix.md#cohort-24-log-retention-machine-operations-and-resource-guardrails)
+in `.23` follows the explicit sole slot after actual25/09 delivery. Its nine workflows
 keep workspace exceptions/design, source-specific retention, actual export and
 legal WORM sufficiency, completed guest audits, Azure/Arc patch results, operating
 traffic analysis and effective lock/Policy-role protection as separate human

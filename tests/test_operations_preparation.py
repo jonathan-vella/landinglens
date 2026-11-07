@@ -6,6 +6,7 @@ import os
 import tempfile
 import unittest
 import zipfile
+from importlib.resources import files
 from pathlib import Path
 from unittest.mock import patch
 
@@ -63,6 +64,10 @@ PRIVATE = "PRIVATE-LOG-GUEST-PATCH-TRAFFIC-CONTENT"
 CONTROLS = {"ALZ-" + guid for guid in GUIDS}
 
 
+def previous_catalog():
+    return load_catalog(str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.22.json")))
+
+
 class OperationsPreparationTests(unittest.TestCase):
     def setUp(self):
         temporary = tempfile.TemporaryDirectory()
@@ -71,7 +76,7 @@ class OperationsPreparationTests(unittest.TestCase):
         self.matrix = json.loads(
             (ROOT / "references/recommendation-batches/preparation-24.json").read_text("utf-8")
         )
-        self.catalog = copy.deepcopy(load_catalog())
+        self.catalog = copy.deepcopy(previous_catalog())
         self.catalog["review_state"] = "authored-in-memory-fixture-not-accepted"
         rows = {r["guid"]: r for r in self.matrix["recommendations"]}
         for control in self.catalog["controls"]:
@@ -277,7 +282,7 @@ class OperationsPreparationTests(unittest.TestCase):
             r for r in report["results"] if r["control_id"] == self.control(upstream)["control_id"]
         )["observed"]
 
-    def test_exact_fixed_nine_and_unactivated_accepted_bytes_and_bank(self):
+    def test_exact_fixed_nine_and_preserved_preparation_catalog(self):
         targets = json.loads((ROOT / "references/recommendation-batches/targets.json").read_text())
         fixed = {t["upstream_id"]: t["guid"] for t in targets["targets"] if t["batch"] == "24"}
         self.assertEqual(
@@ -285,9 +290,8 @@ class OperationsPreparationTests(unittest.TestCase):
         )
         self.assertEqual(set(fixed.values()), GUIDS)
         self.assertEqual(set(self.matrix["interview"]["controls"]), CONTROLS)
-        self.assertNotIn(self.matrix["interview"]["id"], interviews.BANK)
         self.assertNotIn("catalog_version", self.matrix)
-        for control in load_catalog()["controls"]:
+        for control in previous_catalog()["controls"]:
             if control["upstream_guid"] in GUIDS:
                 self.assertNotIn("review_fact_paths", control)
                 self.assertIsNone(control["rule"])
