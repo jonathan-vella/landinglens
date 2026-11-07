@@ -6,8 +6,113 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.22"
+BANK_VERSION = "2026-11-06.24"
 BANK = {
+    "recovery-guest-drift-waf-telemetry": {
+        "question": (
+            "Decide all eight recommendations independently using attributable redacted evidence, "
+            "never one shared outcome. For Azure VM DR, reconcile complete eligible VM/application/"
+            "dependency populations, Azure-to-Azure Site Recovery and native backup configuration "
+            "with separately approved RPO/RTO, recovery points, retention, network/failback and "
+            "actual drill/restore evidence. For redundancy, preserve the immutable GRS-default "
+            "wording but qualify Recovery Services versus Data Protection Backup vaults, datastore/"
+            "workload/region support and Azure Files snapshot versus vaulted backup; generic "
+            "account SKU and omitted settings prove no default or suitable backup choice. For "
+            "guest deployment, distinguish legacy Guest Configuration wording from current Machine "
+            "Configuration, direct versus Policy-created assignments, Audit/apply/autocorrect "
+            "modes, exact guest extension publisher/type/instance names, identity/network/content "
+            "prerequisites and current OS/architecture/VMSS/Arc support, including November 2026 "
+            "Linux PowerShell changes; assignments do not prove execution or compliance. For "
+            "security drift monitoring, separately substantiate expected baselines, Policy "
+            "definitions/versions/assignments/parameters/exclusions, timely compliance "
+            "observations, "
+            "responsible review and operating response. No built-in fetch or second rule "
+            "interpreter. For PaaS DR, assess every actual service/SKU/region and "
+            "component/workload "
+            "failover/failback plan with original-time drills; a SQL Database failover group is "
+            "narrow configuration, not universal support, successful failover or achieved RPO/RTO. "
+            "For native/third-party backup, substantiate compatible workload/version coverage, "
+            "retention/restore/security and ownership; legacy Backup Center now points to "
+            "Resiliency/Business Continuity Center, whose presence is not protection. For WAF "
+            "diagnostics, bind the actual delivery resource/service to explicit enabled firewall-"
+            "log categories and destinations, then independently substantiate ingestion, "
+            "retention, "
+            "regular attack and false-positive review/tuning. Standard/Premium Front Door uses "
+            "FrontDoorWebApplicationFirewallLog; classic capitalization differs and is unsupported "
+            "by this preparatory target model. The Sentinel walkthrough's FrontDoorFirewallLog "
+            "names conflict with the service-specific monitoring page: do not equate them. For "
+            "WAF-to-Sentinel, separately prove connector/content configuration, arriving WAF data, "
+            "analytics/detection coverage and accountable response; shared workspace/onboarding "
+            "and categories do not prove integration. All requirements, coverage, testing, "
+            "operating decisions and exceptions remain blank until explicitly supplied. No live "
+            "probes, commands, backup/restore/failover, guest or compliance execution, "
+            "WAF attacks, "
+            "queries, traffic or telemetry retrieval; no logs, guest/package/report payloads, "
+            "scripts, settings, secrets, private endpoints or personal data retained."
+        ),
+        "controls": [
+            "ALZ-7ea02e1c-7166-45a3-bdf5-098891367fcb",
+            "ALZ-eba8cf22-45c6-4dc1-9b57-2cceb3b97ce5",
+            "ALZ-f541acdc-e979-4377-acdb-3751ab2ab13a",
+            "ALZ-da6e55d7-d8a2-4adb-817d-6326af625ca4",
+            "ALZ-b2ab13ad-a6e5-45d7-b8a2-adb117d6326a",
+            "ALZ-f625ca44-e569-45f2-823a-ce8cb12308ca",
+            "ALZ-89cc5e11-aa4d-4c3b-893d-feb99215266a",
+            "ALZ-7f408960-c626-44cb-a018-347c8d790cdf",
+        ],
+    },
+    "log-retention-machine-resource-guardrails": {
+        "question": (
+            "Provide nine independently attributable original-time decisions and exceptions, "
+            "not a shared approval. F01.01: identify the approved central workspace and "
+            "justify separate tenant, RBAC, ownership, sovereignty and per-resource same-"
+            "table retention exceptions, with complete ingestion evidence. F01.02: approve "
+            "single versus regional workspaces against required geography/resilience, VM "
+            "bandwidth versus diagnostic-setting egress, access and cost; location "
+            "labels/counts do not establish suitable design. F01.03: specify each required "
+            "dataset's retention/recovery/privacy obligations and source-qualified analytics "
+            "versus total day periods, acknowledging current4383-day/12-year total, ARM "
+            "inheritance, Basic30 versus old provider8 and CLI2556 differences; if longer or "
+            "tamper protection is required, show supported selected-table new-data export, "
+            "historical coverage, actual same-region destination/container delivery and "
+            "suitable locked/version/container WORM/legal hold interval, not settings-only "
+            "legal assurance. F01.04: identify required Azure/Arc OS configuration drift "
+            "audits, current OS/client/architecture and November2026 compatibility, "
+            "prerequisite identity/extension and exact Policy/guest assignment scope/mode, "
+            "then attributable completed audit/freshness/coverage evidence; assignments are "
+            "not executed audits. F01.05: demonstrate actual Windows/Linux Azure VM Update "
+            "Manager adoption, eligibility, extension/source health, maintenance and "
+            "business-continuity schedules, complete patch results and exceptions; "
+            "assessmentMode/patchMode are not installed updates. F01.06: separately "
+            "demonstrate outside-Azure Arc server enrollment/support/connectivity, "
+            "extension/source health, schedules, scope and actual patch results/exceptions; "
+            "AzureRM4.50.0 Arc has no patch fields, and Log Analytics/Automation is not a "
+            "prerequisite. F01.07: show required Network Watcher flow/traffic analytics "
+            "operation, VNet migration from NSG flow logs (no new creation; "
+            "retirement2027-09-30), actual supported targets, arriving storage/analytics, "
+            "freshness/coverage and owned response; regional enablement or definitions are "
+            "not executed traffic analysis. F01.08: independently designate critical shared "
+            "services and review actual lock scope/level, full ancestor coverage, removal "
+            "authority, control-plane/data-plane limits, side effects and exceptions; no "
+            "management-group or subscription-cancellation protection inferred. F01.09: "
+            "demonstrate appropriate Policy deny plus role-assignment guardrails with exact "
+            "definitions/versions/conditions/parameters, assignment/enforcement, "
+            "scope/inheritance/exemptions and actual permitted/blocked operations; "
+            "distinguish RBAC deny assignments/private preview, no generic literal effect or "
+            "role presence proves effective enforcement."
+        ),
+        "controls": [
+            "ALZ-67e7a8ed-4b30-4e38-a3f2-9812b2363cef",
+            "ALZ-7418ada9-4199-4c28-8286-d15e9433e8f3",
+            "ALZ-5e6c4cfd-3e50-4454-9c24-47ec66138a72",
+            "ALZ-e7d7e484-3276-4d8b-bc05-5bcf619e8a13",
+            "ALZ-f9887952-5d62-4688-9d70-ba6c97be9951",
+            "ALZ-c806c048-26b7-4ddf-b4c2-b4f0c476925d",
+            "ALZ-90483845-c986-4cb2-a131-56a12476e49f",
+            "ALZ-541acdce-9793-477b-adb3-751ab2ab13ad",
+            "ALZ-a6e55d7d-8a2a-4db1-87d6-326af625ca44",
+        ],
+    },
     "sovereign-organization-regions-classification": {
         "question": "Decide all seven GUIDs independently with attributable redacted evidence "
         "and explicit scope/content/time/expiry binding. For C02.15 designate the authoritative "

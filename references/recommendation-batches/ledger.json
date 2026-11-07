@@ -721,6 +721,89 @@
       },
       "wheel_sha256": "6e3b14c0838ade2ab8c3bb6e318a5e90ed44befa162467a78899dcb33811c14c",
       "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
+    },
+    "24": {
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/155",
+      "merge_commit": "09567810b28bd7d6e54f9f66d7a2808d053396c7",
+      "merged_at": "2026-11-07T01:24:29Z",
+      "checked_head": "cd2ebbf5445007d1c9c2542d92a98df25eba740b",
+      "checks": [
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42322775297",
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42322793806"
+      ],
+      "acceptance": "Actual push/PR runs on the merged head passed all eight supported jobs. All four downloaded PR compiler artifacts exercised the same integration cases without skips. Normal exact-head merge and other applicable checks were gated before recording; this receipt does not imply protected-branch enforcement.",
+      "compiler_integration_cases": [
+        "test_bicep.BicepTests.test_actual_installed_compiler_local_success_and_unrestored_failure",
+        "test_segmentation_batch.SegmentationBatchTests.test_real_bicep_nsg_gateway_subnet_flow_without_restore",
+        "test_routing_batch.RoutingBatchTests.test_real_bicep_routing_peering_lb_macsec_connection_no_restore",
+        "test_identity_batch.IdentityBatchTests.test_real_bicep_storage_identity_role_context_without_restore",
+        "test_protection_batch.ProtectionBatchTests.test_real_bicep_protection_outbound_hybrid_no_restore",
+        "test_security_batch.SecurityBatchTests.test_real_bicep_security_configuration_without_restore",
+        "test_expressroute_preparation.ExpressRoutePreparationTests.test_real_bicep_expressroute_cost_capacity_fastpath_without_restore",
+        "test_dns_batch.DnsBatchTests.test_real_bicep_dns_bastion_no_restore",
+        "test_monitoring_preparation.MonitoringPreparationTests.test_real_bicep_monitor_and_gateway_route_join_without_restore",
+        "test_governance_preparation.GovernancePreparationTests.test_real_bicep_governance_without_restore",
+        "test_virtual_wan_preparation.VirtualWanPreparationTests.test_real_bicep_virtual_wan_scoped_configuration_without_restore",
+        "test_identity_resilience_preparation.IdentityResiliencePreparationTests.test_real_bicep_identity_resilience_without_restore",
+        "test_network_policy_preparation.NetworkPolicyPreparationTests.test_real_bicep_policy_gateway_diagnostics_without_restore",
+        "test_logging_preparation.LoggingPreparationTests.test_real_bicep_logging_workspace_extensions_and_alerts_without_restore",
+        "test_tenant_preparation.TenantPreparationTests.test_real_bicep_tenant_configuration_without_restore",
+        "test_policy_strategy_preparation.PolicyStrategyPreparationTests.test_real_bicep_policy_strategy_without_restore",
+        "test_hybrid_identity_preparation.HybridIdentityPreparationTests.test_real_bicep_peering_and_vault_configuration_without_restore",
+        "test_topology_preparation.TopologyPreparationTests.test_real_bicep_vnet_routing_attachment_without_restore",
+        "test_platform_health_preparation.PlatformHealthPreparationTests.test_real_bicep_platform_health_configuration_without_restore",
+        "test_sovereign_preparation.SovereignPreparationTests.test_real_bicep_location_and_tag_configuration_without_restore",
+        "test_operations_preparation.OperationsPreparationTests.test_real_bicep_operations_configuration_without_restore"
+      ],
+      "local_installed_suite": {
+        "tests": 771,
+        "passed": 770,
+        "skipped": 1
+      },
+      "wheel_sha256": "95cc35a3e8a7ddd9f38c6098215a5fc3bdcab430fd1a32b413922c93587eacce",
+      "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
+    },
+    "26": {
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/158",
+      "merge_commit": "67e8cb85c2b8e56438b292baf59a8163e7654933",
+      "merged_at": "2026-11-07T02:17:33Z",
+      "checked_head": "0a27ad5700f3945a785efb35d4a062b601cdba9f",
+      "checks": [
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42327421284",
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42327426873"
+      ],
+      "acceptance": "Actual push/PR runs on the merged head passed all eight supported jobs. All four downloaded PR compiler artifacts exercised the same integration cases without skips. Normal exact-head merge and other applicable checks were gated before recording; this receipt does not imply protected-branch enforcement.",
+      "compiler_integration_cases": [
+        "test_bicep.BicepTests.test_actual_installed_compiler_local_success_and_unrestored_failure",
+        "test_segmentation_batch.SegmentationBatchTests.test_real_bicep_nsg_gateway_subnet_flow_without_restore",
+        "test_routing_batch.RoutingBatchTests.test_real_bicep_routing_peering_lb_macsec_connection_no_restore",
+        "test_identity_batch.IdentityBatchTests.test_real_bicep_storage_identity_role_context_without_restore",
+        "test_protection_batch.ProtectionBatchTests.test_real_bicep_protection_outbound_hybrid_no_restore",
+        "test_security_batch.SecurityBatchTests.test_real_bicep_security_configuration_without_restore",
+        "test_expressroute_preparation.ExpressRoutePreparationTests.test_real_bicep_expressroute_cost_capacity_fastpath_without_restore",
+        "test_dns_batch.DnsBatchTests.test_real_bicep_dns_bastion_no_restore",
+        "test_monitoring_preparation.MonitoringPreparationTests.test_real_bicep_monitor_and_gateway_route_join_without_restore",
+        "test_governance_preparation.GovernancePreparationTests.test_real_bicep_governance_without_restore",
+        "test_virtual_wan_preparation.VirtualWanPreparationTests.test_real_bicep_virtual_wan_scoped_configuration_without_restore",
+        "test_identity_resilience_preparation.IdentityResiliencePreparationTests.test_real_bicep_identity_resilience_without_restore",
+        "test_network_policy_preparation.NetworkPolicyPreparationTests.test_real_bicep_policy_gateway_diagnostics_without_restore",
+        "test_logging_preparation.LoggingPreparationTests.test_real_bicep_logging_workspace_extensions_and_alerts_without_restore",
+        "test_tenant_preparation.TenantPreparationTests.test_real_bicep_tenant_configuration_without_restore",
+        "test_policy_strategy_preparation.PolicyStrategyPreparationTests.test_real_bicep_policy_strategy_without_restore",
+        "test_hybrid_identity_preparation.HybridIdentityPreparationTests.test_real_bicep_peering_and_vault_configuration_without_restore",
+        "test_topology_preparation.TopologyPreparationTests.test_real_bicep_vnet_routing_attachment_without_restore",
+        "test_platform_health_preparation.PlatformHealthPreparationTests.test_real_bicep_platform_health_configuration_without_restore",
+        "test_sovereign_preparation.SovereignPreparationTests.test_real_bicep_location_and_tag_configuration_without_restore",
+        "test_operations_preparation.OperationsPreparationTests.test_real_bicep_operations_configuration_without_restore",
+        "test_recovery_preparation.RecoveryPreparationTests.test_real_bicep_recovery_guest_sql_waf_configuration_without_restore"
+      ],
+      "local_installed_suite": {
+        "tests": 806,
+        "passed": 805,
+        "skipped": 1
+      },
+      "wheel_sha256": "00c3eb05a81acf7dbe13acca096169c6ccec16994ed8708c95652ce92d5d4340",
+      "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
     }
   },
   "recommendations": [
@@ -9161,12 +9244,38 @@
       "baseline_control_sha256": "0821c2ce97b6fbbffdec656370137c2c43b4dcffbccc72971ad38487bfaed1fa",
       "design_area": "Management",
       "batch": "24",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "67e7a8ed-4b30-4e38-a3f2-9812b2363cef",
+        "upstream_id": "F01.01",
+        "classification": "assisted",
+        "implemented_subclaim": "Existing minimized workspace SKU/default retention/network facts and explicit location, with strict unique-known selected-scope identity, prepare centralization and exceptions review.",
+        "sources": [
+          "workspace-design-linked",
+          "workspace-arm",
+          "terraform-workspace"
+        ],
+        "review_resource_types": [
+          "Microsoft.OperationalInsights/workspaces"
+        ],
+        "review_fact_paths": [
+          "logWorkspaceSummary",
+          "resourceLocation"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Is the approved central workspace appropriate, with independently justified tenant/RBAC/ownership/sovereignty/retention exceptions and complete arriving data coverage?"
+        ],
+        "limitations": "Workspace configuration is not complete ingestion, organization-wide central ownership, suitable access or legal/residency design.",
+        "flags": []
+      },
+      "issue": 148,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/155",
+      "merge_commit": "09567810b28bd7d6e54f9f66d7a2808d053396c7",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.24: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "7418ada9-4199-4c28-8286-d15e9433e8f3",
@@ -9176,12 +9285,39 @@
       "baseline_control_sha256": "f02a53f93fd5cda8cc7f525ccc69aad1f7b852884f7d7da2ffc6c9bdcc62cdc5",
       "design_area": "Management",
       "batch": "24",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "7418ada9-4199-4c28-8286-d15e9433e8f3",
+        "upstream_id": "F01.02",
+        "classification": "assisted",
+        "implemented_subclaim": "Supplied workspace locations/configuration support explicit single-versus-regional design review, without inferring cost or completeness from selected counts.",
+        "sources": [
+          "regional-workspace-linked",
+          "workspace-design-linked",
+          "workspace-arm",
+          "terraform-workspace"
+        ],
+        "review_resource_types": [
+          "Microsoft.OperationalInsights/workspaces"
+        ],
+        "review_fact_paths": [
+          "resourceLocation",
+          "logWorkspaceSummary"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Does the single/regional workspace design meet required geography, resilience, access, retention and justified VM bandwidth/commitment-cost tradeoffs, distinguishing diagnostic-setting egress?"
+        ],
+        "limitations": "Location labels and selected workspace counts prove neither physical independence, sovereignty, complete regions nor cost suitability.",
+        "flags": []
+      },
+      "issue": 148,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/155",
+      "merge_commit": "09567810b28bd7d6e54f9f66d7a2808d053396c7",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.24: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "5e6c4cfd-3e50-4454-9c24-47ec66138a72",
@@ -9191,12 +9327,49 @@
       "baseline_control_sha256": "b1024f1dd8fd9423f5655278ac2e01b2a5ae1d91a326c3c294ef2080483ac60e",
       "design_area": "Management",
       "batch": "24",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "5e6c4cfd-3e50-4454-9c24-47ec66138a72",
+        "upstream_id": "F01.03",
+        "classification": "assisted",
+        "implemented_subclaim": "Source-qualified explicit table day periods/inheritance, bounded hashed export selection and storage destination, container immutability days/state/append flags and typed workspace/storage joins prepare retention/export review.",
+        "sources": [
+          "retention-linked",
+          "export-current",
+          "immutable-current",
+          "table-arm",
+          "export-arm",
+          "immutable-arm",
+          "operations-provider-log_analytics_workspace_table",
+          "operations-provider-log_analytics_data_export_rule",
+          "operations-provider-storage_container_immutability_policy"
+        ],
+        "review_resource_types": [
+          "Microsoft.OperationalInsights/workspaces",
+          "Microsoft.OperationalInsights/workspaces/tables",
+          "Microsoft.OperationalInsights/workspaces/dataExports",
+          "Microsoft.Storage/storageAccounts/blobServices/containers/immutabilityPolicies"
+        ],
+        "review_fact_paths": [
+          "logWorkspaceSummary",
+          "operationsTableRetention",
+          "operationsExport",
+          "operationsImmutability"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: For each required dataset, are source-qualified analytics/total retention and privacy/recovery requirements satisfied, including conditional >12-year export, historical/new-data coverage, actual destination/container delivery and legally suitable locked WORM/legal holds?"
+        ],
+        "limitations": "Basic current30-day versus provider8 and CLI2556 versus REST4383 remain distinct. No omitted defaults, effective inheritance, complete required data, delivered export, container linkage or legal WORM sufficiency inferred.",
+        "flags": []
+      },
+      "issue": 148,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/155",
+      "merge_commit": "09567810b28bd7d6e54f9f66d7a2808d053396c7",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.24: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "e7d7e484-3276-4d8b-bc05-5bcf619e8a13",
@@ -9206,12 +9379,41 @@
       "baseline_control_sha256": "b0cc79cd69d1c8c20011f33ceb4cf2e4b1c48665e6249abd35db390c7c36b297",
       "design_area": "Management",
       "batch": "24",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "e7d7e484-3276-4d8b-bc05-5bcf619e8a13",
+        "upstream_id": "F01.04",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit minimized guest assignment mode/kind joined to one known selected-scope VM/Arc machine, plus existing Policy assignment/version-bound custom context, prepare drift-audit review.",
+        "sources": [
+          "machine-configuration-linked",
+          "operational-compliance-linked",
+          "guest-arm",
+          "operations-provider-policy_virtual_machine_configuration_assignment",
+          "policy-spec-policyAssignments"
+        ],
+        "review_resource_types": [
+          "Microsoft.GuestConfiguration/guestConfigurationAssignments",
+          "Microsoft.Authorization/policyAssignments"
+        ],
+        "review_fact_paths": [
+          "operationsGuestAssignment",
+          "policyAssignmentSummary"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Are required supported Azure/Arc OS drift audits correctly scoped and enabled with prerequisites/current compatibility, and do fresh attributable completed audit results establish coverage and exceptions?"
+        ],
+        "limitations": "Assignment is not completed guest audit; Apply modes are not Audit. No content/parameters/package/report inspected, downloaded or retained; no implicit built-in definition fetch or guest-policy interpreter.",
+        "flags": []
+      },
+      "issue": 148,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/155",
+      "merge_commit": "09567810b28bd7d6e54f9f66d7a2808d053396c7",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.24: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "f9887952-5d62-4688-9d70-ba6c97be9951",
@@ -9221,12 +9423,39 @@
       "baseline_control_sha256": "dccb62951f01df1119d8059541db6b084ac31973c3a53e1c7aa6d585501bff73",
       "design_area": "Management",
       "batch": "24",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "f9887952-5d62-4688-9d70-ba6c97be9951",
+        "upstream_id": "F01.05",
+        "classification": "assisted",
+        "implemented_subclaim": "Reuse existing source-qualified OS/agent/assessmentMode/patchMode facts for strictly bound Azure VMs and a specific independent patch-adoption workflow.",
+        "sources": [
+          "operational-compliance-linked",
+          "update-manager-current",
+          "vm-patch-rest",
+          "terraform-linux-patch",
+          "terraform-windows-patch"
+        ],
+        "review_resource_types": [
+          "Microsoft.Compute/virtualMachines"
+        ],
+        "review_fact_paths": [
+          "patchConfiguration"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Does Azure VM Update Manager adoption cover eligible Windows/Linux machines, extension/update-source health, owned maintenance/BC schedules, actual installed patch results and explicit exclusions?"
+        ],
+        "limitations": "Periodic assessment or patch mode is not completed patching, fleet compliance or authorization to install updates. Log Analytics and Automation are not required dependencies.",
+        "flags": []
+      },
+      "issue": 148,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/155",
+      "merge_commit": "09567810b28bd7d6e54f9f66d7a2808d053396c7",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.24: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "c806c048-26b7-4ddf-b4c2-b4f0c476925d",
@@ -9236,12 +9465,38 @@
       "baseline_control_sha256": "a30b2784163b04173f734fd1e658a3d420b0b8115af36add7bc80a734a4674b8",
       "design_area": "Management",
       "batch": "24",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "c806c048-26b7-4ddf-b4c2-b4f0c476925d",
+        "upstream_id": "F01.06",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit single-OS Arc profile/assessment/patch-mode summary for reviewed ARM2024-07-10 or saved normalized evidence; pinned Terraform Arc patch fields stay unsupported unknown.",
+        "sources": [
+          "operational-compliance-linked",
+          "update-manager-current",
+          "arc-arm",
+          "operations-provider-arc_machine"
+        ],
+        "review_resource_types": [
+          "Microsoft.HybridCompute/machines"
+        ],
+        "review_fact_paths": [
+          "operationsArcPatch"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Is outside-Azure Arc Windows/Linux Update Manager adoption supported and connected, with extension/source health, complete schedule/scope/results coverage and exceptions independent of Azure VM evidence?"
+        ],
+        "limitations": "Arc existence, OS settings or periodic assessment do not prove enrollment health, installed patches or fleet compliance. Terraform4.50.0 has no patch fields; invented arguments and resource identity cannot fill the gap.",
+        "flags": []
+      },
+      "issue": 148,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/155",
+      "merge_commit": "09567810b28bd7d6e54f9f66d7a2808d053396c7",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.24: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "90483845-c986-4cb2-a131-56a12476e49f",
@@ -9251,12 +9506,43 @@
       "baseline_control_sha256": "e8ac3927de7d9694749d716e8787e20910a950ad7572c1df446addd3215db477",
       "design_area": "Management",
       "batch": "24",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "90483845-c986-4cb2-a131-56a12476e49f",
+        "upstream_id": "F01.07",
+        "classification": "assisted",
+        "implemented_subclaim": "Reuse explicit bounded flow-log target/storage/analytics configuration and strict selected-scope storage/workspace joins for a lifecycle-aware traffic workflow.",
+        "sources": [
+          "watcher-linked",
+          "vnet-flow-log-coverage",
+          "traffic-analytics-pipeline",
+          "flow-log-arm",
+          "terraform-flow-log"
+        ],
+        "review_resource_types": [
+          "Microsoft.Network/networkWatchers/flowLogs"
+        ],
+        "review_fact_paths": [
+          "enabled",
+          "storageId",
+          "targetResourceId",
+          "trafficAnalytics.enabled",
+          "trafficAnalytics.workspaceResourceId"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Is proactive Network Watcher traffic/flow analysis actually operating with supported VNet migration, arriving storage/analytics, fresh complete coverage and owned response, acknowledging NSG creation withdrawal/2027-09-30 retirement?"
+        ],
+        "limitations": "Definition or regional enablement is not executed traffic analysis. No probes, packet captures, traffic payloads, diagnostics, log/query execution or new live route.",
+        "flags": []
+      },
+      "issue": 148,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/155",
+      "merge_commit": "09567810b28bd7d6e54f9f66d7a2808d053396c7",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.24: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "541acdce-9793-477b-adb3-751ab2ab13ad",
@@ -9266,12 +9552,37 @@
       "baseline_control_sha256": "99789596a73baa4be2f566ef161e5ca0af6f19d6eb913b8d0ec6714c314989cb",
       "design_area": "Management",
       "batch": "24",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "541acdce-9793-477b-adb3-751ab2ab13ad",
+        "upstream_id": "F01.08",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit supported lock level and identity-derived subscription/RG/resource scope prepare critical-shared-service deletion protection review, never a presence pass.",
+        "sources": [
+          "locks-linked",
+          "lock-arm",
+          "operations-provider-management_lock"
+        ],
+        "review_resource_types": [
+          "Microsoft.Authorization/locks"
+        ],
+        "review_fact_paths": [
+          "operationsLock"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Which shared services are independently critical, and do actual locks/ancestor coverage/removal authority provide appropriate control-plane protection after applicability/side effects/data-plane/cancellation exceptions?"
+        ],
+        "limitations": "No management-group locks or data/cancellation protection. Presence does not establish inherited complete protection, human criticality or effective applicability.",
+        "flags": []
+      },
+      "issue": 148,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/155",
+      "merge_commit": "09567810b28bd7d6e54f9f66d7a2808d053396c7",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.24: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "a6e55d7d-8a2a-4db1-87d6-326af625ca44",
@@ -9281,12 +9592,47 @@
       "baseline_control_sha256": "c59e5b3d43d4a0a7400876af8524c693c04aaba74b38b079d351f4c9113a751f",
       "design_area": "Management",
       "batch": "24",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "a6e55d7d-8a2a-4db1-87d6-326af625ca44",
+        "upstream_id": "F01.09",
+        "classification": "assisted",
+        "implemented_subclaim": "Reuse existing bounded Policy definition/assignment and minimized role context with unique typed scope/version joins, distinct from RBAC deny assignments.",
+        "sources": [
+          "deny-linked",
+          "rbac-deny-distinction",
+          "policy-spec-policyDefinitions",
+          "policy-spec-policyAssignments",
+          "policy-provider-policy_definition",
+          "policy-provider-subscription_policy_assignment",
+          "role-assignment-arm",
+          "terraform-role-assignment"
+        ],
+        "review_resource_types": [
+          "Microsoft.Authorization/policyDefinitions",
+          "Microsoft.Authorization/policyAssignments",
+          "Microsoft.Authorization/roleAssignments"
+        ],
+        "review_fact_paths": [
+          "policyDefinitionSummary",
+          "policyAssignmentSummary",
+          "principalType",
+          "roleDefinitionId"
+        ],
+        "evidence_requirements": [
+          "Reviewer decision: Do exact scoped/versioned Policy deny rules and role authority enforce appropriate actual operations after conditions/parameters/enforcement/inheritance/exemptions, separately from RBAC deny/private-preview behavior?"
+        ],
+        "limitations": "Literal effect, assignment or role presence cannot prove appropriate/effective guardrails. No new Policy interpreter, built-in fetch, access evaluation or principal retention.",
+        "flags": []
+      },
+      "issue": 148,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/155",
+      "merge_commit": "09567810b28bd7d6e54f9f66d7a2808d053396c7",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.24: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "e5695f22-23ac-4e8c-a123-08ca5017f154",
@@ -9728,12 +10074,47 @@
       "baseline_control_sha256": "1b83e8bdd57af10aa31d883c9faef4b290db149f0d5bc2ffeb091c268f153ff5",
       "design_area": "Management",
       "batch": "26",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "7ea02e1c-7166-45a3-bdf5-098891367fcb",
+        "upstream_id": "F02.01",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit A2A replication source VM/policy/recovery-RG and Azure VM backup source/policy references, with unique known typed selected-scope relationships.",
+        "sources": [
+          "bcdr-linked",
+          "asr-arm",
+          "backup-item-arm",
+          "terraform-site_recovery_replicated_vm",
+          "terraform-backup_protected_vm"
+        ],
+        "review_resource_types": [
+          "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems",
+          "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems"
+        ],
+        "review_fact_paths": [
+          "a2aReplicationSummary",
+          "vmBackupSummary"
+        ],
+        "evidence_requirements": [
+          "Identify complete intended eligible Azure VM/application/dependency populations and Azure-to-Azure DR applicability, approved business RPO/RTO, recovery consistency, retention, residency, networking, security and ownership; record justified exclusions independently.",
+          "Reconcile actual source VMs, vaults, backup/replication policies and recovery regions/resources with intended coverage and current service support. Prepared A2A and backup references are partial configuration only; absent/denied/ambiguous/stale records do not establish no protection or complete protection.",
+          "Reviewer decision: are Azure-to-Azure Site Recovery and Azure-native backup appropriately employed for actual requirements, with original-time successful backup/restore/recovery-drill and failback evidence and accepted gaps? Configured replication/backup references establish neither operating health nor achieved RPO/RTO."
+        ],
+        "limitations": "Only A2A and exact Microsoft.Compute/virtualMachines backup item discriminator are supported. No protected-fleet count, recovery points, job/health/payload retention, live reads, operations or runtime assurance.",
+        "flags": [
+          "a2a-not-every-asr-provider",
+          "backup-reference-not-success",
+          "configuration-not-recovery-objectives"
+        ]
+      },
+      "issue": 151,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/158",
+      "merge_commit": "67e8cb85c2b8e56438b292baf59a8163e7654933",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.26: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "eba8cf22-45c6-4dc1-9b57-2cceb3b97ce5",
@@ -9743,12 +10124,50 @@
       "baseline_control_sha256": "9a722bf31a6cf5056c5961792339f6ba0aa61c9bafb7d7f02936482844d7a31c",
       "design_area": "Management",
       "batch": "26",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "eba8cf22-45c6-4dc1-9b57-2cceb3b97ce5",
+        "upstream_id": "F02.02",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit Recovery Services storage configuration/CRR and Data Protection datastore/redundancy pairs, not generic storage-account SKU or inferred defaults.",
+        "sources": [
+          "redundancy-linked",
+          "recovery-vault-settings",
+          "backup-vault-settings",
+          "recovery-storage-arm",
+          "backup-vault-arm",
+          "terraform-recovery_services_vault",
+          "terraform-data_protection_backup_vault"
+        ],
+        "review_resource_types": [
+          "Microsoft.RecoveryServices/vaults",
+          "Microsoft.RecoveryServices/vaults/backupstorageconfig",
+          "Microsoft.DataProtection/backupVaults"
+        ],
+        "review_fact_paths": [
+          "recoveryStorageSummary",
+          "backupVaultSummary"
+        ],
+        "evidence_requirements": [
+          "Reference approved workload recovery, durability, regional/zone failure, residency, availability, cost, retention and restore requirements. Preserve the immutable recommendation's GRS-default wording while reviewing the actual vault family, source/API/provider version, datastore, workload and region.",
+          "Recovery Services guidance documents GRS by default and explicit LRS/ZRS choices before protection; its vault setting governs Azure Files vaulted backup, not file-share snapshots. Data Protection Backup vaults require service-specific datastore/redundancy choices, and current overview does not prove a universal GRS default. Omitted settings and generic account replication are unknown here; SnapshotStore is not silently mapped to OperationalStore.",
+          "Reviewer decision: are the actual explicit GRS/ZRS/LRS settings appropriate for each supported backup workload and recovery/residency requirement, with restore/drill evidence and exceptions? Cross-region-restore configuration has workload/region constraints and proves no successful secondary restore or achieved objective."
+        ],
+        "limitations": "No fabricated vault defaults, backup-policy retention threshold or appropriate-redundancy verdict. Soft-delete duration, account SKU, configured CRR and storage replica capability are not backup retention, coverage or recovery success.",
+        "flags": [
+          "recoveryservices-default-not-universal",
+          "snapshot-not-vaulted-backup",
+          "configured-redundancy-not-suitability"
+        ]
+      },
+      "issue": 151,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/158",
+      "merge_commit": "67e8cb85c2b8e56438b292baf59a8163e7654933",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.26: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "f541acdc-e979-4377-acdb-3751ab2ab13a",
@@ -9758,12 +10177,55 @@
       "baseline_control_sha256": "3f8f1d95064df69e9ce5c3a778051c9bd96190da2e3c2224ee2d87185eafd109",
       "design_area": "Management",
       "batch": "26",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "f541acdc-e979-4377-acdb-3751ab2ab13a",
+        "upstream_id": "F03.01",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit guest assignment mode and exact Machine Configuration extension publisher/type/upgrade flags, with typed VM-parent and reused Policy configuration.",
+        "sources": [
+          "guest-linked",
+          "guest-assignments",
+          "guest-extension",
+          "guest-arm",
+          "extension-arm",
+          "terraform-policy_virtual_machine_configuration_assignment",
+          "terraform-virtual_machine_extension"
+        ],
+        "review_resource_types": [
+          "Microsoft.GuestConfiguration/guestConfigurationAssignments",
+          "Microsoft.Compute/virtualMachines/extensions",
+          "Microsoft.Authorization/policyDefinitions",
+          "Microsoft.Authorization/policySetDefinitions",
+          "Microsoft.Authorization/policyAssignments"
+        ],
+        "review_fact_paths": [
+          "guestAssignmentSummary",
+          "machineConfigurationExtension",
+          "policyDefinitionSummary",
+          "policyInitiativeSummary",
+          "policyAssignmentSummary"
+        ],
+        "evidence_requirements": [
+          "Define approved baseline/software settings, intended machines, ownership, applicability and enforcement mode. Legacy Guest Configuration now redirects to Machine Configuration. Review current OS/architecture/VMSS/Arc support and November 2026 Linux PowerShell compatibility changes without assuming a VM extension applies to every machine.",
+          "Reconcile Policy-created versus manual guest assignments, exact definition/version/scope/parameters/exclusions and machine identity/network/content prerequisites. Distinguish Audit, ApplyAndMonitor and ApplyAndAutoCorrect. Exact Microsoft.GuestConfiguration publisher/type and baseline instance names are narrow deployment context, not installed/running agents or applied settings.",
+          "Reviewer decision: do actual guest policies automatically deploy the intended software/configuration baseline and enforce compliance for the applicable population, with attributable original-time execution/compliance evidence and exceptions? A guest assignment, apply mode, extension or Policy effect alone proves none of these outcomes."
+        ],
+        "limitations": "Azure VM guest-parent joins only in this preparation; Arc and unsupported scopes are explicit unknown, not unsupported runtime claims. No package/parameter/protected-setting/report contents, built-in acquisition, commands, scans or deployment.",
+        "flags": [
+          "legacy-wording-current-machine-configuration",
+          "assignment-not-execution",
+          "extension-not-compliance"
+        ]
+      },
+      "issue": 151,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/158",
+      "merge_commit": "67e8cb85c2b8e56438b292baf59a8163e7654933",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.26: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "da6e55d7-d8a2-4adb-817d-6326af625ca4",
@@ -9773,12 +10235,54 @@
       "baseline_control_sha256": "36896894c39ec459052b5217dc8ae85b7414b5c7ac23c5c9f5b9c7230f644a88",
       "design_area": "Management",
       "batch": "26",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "da6e55d7-d8a2-4adb-817d-6326af625ca4",
+        "upstream_id": "F03.02",
+        "classification": "assisted",
+        "implemented_subclaim": "Reused strict supplied Policy definition/initiative/assignment version/scope joins plus explicit guest modes/extensions as partial drift-monitoring context.",
+        "sources": [
+          "drift-linked",
+          "guest-linked",
+          "guest-assignments",
+          "guest-arm",
+          "extension-arm",
+          "terraform-policy_virtual_machine_configuration_assignment"
+        ],
+        "review_resource_types": [
+          "Microsoft.Authorization/policyDefinitions",
+          "Microsoft.Authorization/policySetDefinitions",
+          "Microsoft.Authorization/policyAssignments",
+          "Microsoft.GuestConfiguration/guestConfigurationAssignments",
+          "Microsoft.Compute/virtualMachines/extensions"
+        ],
+        "review_fact_paths": [
+          "policyDefinitionSummary",
+          "policyInitiativeSummary",
+          "policyAssignmentSummary",
+          "guestAssignmentSummary",
+          "machineConfigurationExtension"
+        ],
+        "evidence_requirements": [
+          "Identify expected VM security baseline settings, accountable owners, complete applicable machine populations and monitoring/evaluation/response requirements. CAF specifically describes in-machine Machine Configuration auditing; IaC resource drift alone is not guest security drift monitoring.",
+          "Bind actual reviewed Policy definitions/versions, initiatives, assignments, scopes, parameters, exclusions/exemptions and guest prerequisites to those requirements. Reuse saved/injected policy-compliance observations only as source-qualified Signals with evaluation time; never fetch built-ins, reinterpret Policy rules or infer compliance from assignment presence.",
+          "Reviewer decision: is VM security configuration drift actually monitored through Azure Policy with timely original-time evaluations, responsible review, response and accepted gaps? Guest mode/extensions and generic Policy references do not establish baseline correctness, actual observation, remediation or complete monitored coverage."
+        ],
+        "limitations": "No compliance scan, guest command, second Policy interpreter or invented monitoring cadence/threshold. Source configuration and current operation remain separate; human confirmation does not turn Signals into Verified.",
+        "flags": [
+          "guest-drift-not-only-iac-drift",
+          "policy-assignment-not-observation",
+          "no-invented-monitoring-threshold"
+        ]
+      },
+      "issue": 151,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/158",
+      "merge_commit": "67e8cb85c2b8e56438b292baf59a8163e7654933",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.26: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "b2ab13ad-a6e5-45d7-b8a2-adb117d6326a",
@@ -9788,12 +10292,44 @@
       "baseline_control_sha256": "e419068538b7e06f12c11254146554e9f66c8bd0cc3dc8af1fcee23086a9f705",
       "design_area": "Management",
       "batch": "26",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "b2ab13ad-a6e5-45d7-b8a2-adb117d6326a",
+        "upstream_id": "F04.01",
+        "classification": "assisted",
+        "implemented_subclaim": "Narrow SQL Database failover-group read-write policy and typed database/primary/partner references, separate from a complete service-specific PaaS DR and drill decision.",
+        "sources": [
+          "paas-linked",
+          "sql-recovery",
+          "sql-arm",
+          "terraform-mssql_failover_group"
+        ],
+        "review_resource_types": [
+          "Microsoft.Sql/servers/failoverGroups"
+        ],
+        "review_fact_paths": [
+          "sqlFailoverSummary"
+        ],
+        "evidence_requirements": [
+          "Identify every actual PaaS component/service/SKU/region, business criticality, approved RPO/RTO, data consistency/retention/residency, dependency sequencing and current native recovery/failover support. The linked legacy resiliency URL now redirects to Well-Architected disaster recovery, not a universal service implementation.",
+          "For SQL Database groups, reconcile complete database membership, distinct known primary/partner servers, actual regions, read-write policy, data-loss grace, client connectivity and dependency behavior. API Manual/Automatic wording is preserved separately from current customer-managed/Microsoft-managed guidance; asynchronous replication can lose data during forced failover. Other services need their own evidence.",
+          "Reviewer decision: are native PaaS DR capabilities appropriately used and failover/failback tested for each applicable component and the workload as a whole, with original-time drill results, measured objectives, safe operating ownership and exceptions? Group presence and policy configuration prove neither successful failover nor achieved RPO/RTO."
+        ],
+        "limitations": "SQL Database configuration is a narrow example, not universal PaaS DR. No failover, restore, production drill, connection-string retention or arbitrary grace/SLA threshold; test evidence is human-supplied.",
+        "flags": [
+          "sql-not-universal-paas-dr",
+          "asynchronous-not-zero-data-loss",
+          "configured-group-not-tested-failover"
+        ]
+      },
+      "issue": 151,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/158",
+      "merge_commit": "67e8cb85c2b8e56438b292baf59a8163e7654933",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.26: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "f625ca44-e569-45f2-823a-ce8cb12308ca",
@@ -9803,12 +10339,49 @@
       "baseline_control_sha256": "c4458158681c7e1fe7444be4930bc0fd4b6b6662764b4d495e8499462950c12e",
       "design_area": "Management",
       "batch": "26",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "f625ca44-e569-45f2-823a-ce8cb12308ca",
+        "upstream_id": "F04.02",
+        "classification": "assisted",
+        "implemented_subclaim": "Explicit VM backup source/policy and service-qualified Data Protection vault settings support a separate native-or-compatible third-party coverage/restore review.",
+        "sources": [
+          "backup-center-linked",
+          "paas-linked",
+          "backup-vault-settings",
+          "backup-item-arm",
+          "backup-vault-arm",
+          "terraform-backup_protected_vm",
+          "terraform-data_protection_backup_vault"
+        ],
+        "review_resource_types": [
+          "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems",
+          "Microsoft.DataProtection/backupVaults"
+        ],
+        "review_fact_paths": [
+          "vmBackupSummary",
+          "backupVaultSummary"
+        ],
+        "evidence_requirements": [
+          "Map complete workload/data populations and approved backup, retention, consistency, recovery, residency, access/security and ownership requirements to actual Azure-native or Azure-compatible third-party capabilities; establish product/version/workload compatibility independently.",
+          "Reconcile actual backup policies/items/vault families/datastores and attributable protection/restore evidence, including gaps and retained/stopped/deleted-source scenarios. Backup Center is now a legacy experience accessed through Resiliency/Business Continuity Center; console capability or vault presence does not establish protected fleet coverage or successful jobs.",
+          "Reviewer decision: is an appropriate native or compatible third-party backup solution actually in use with evidenced complete intended coverage, adequate retention and successful original-time restores, accountable operations and accepted exceptions? Prepared VM references and storage settings do not establish compatibility, recovery points or operating recovery."
+        ],
+        "limitations": "No third-party product detection from names or resource absence. No backup jobs, recovery points/private payloads, data-plane reads, restore execution or inferred retention threshold.",
+        "flags": [
+          "backup-center-legacy",
+          "native-or-compatible-not-presence",
+          "coverage-retention-restores-independent"
+        ]
+      },
+      "issue": 151,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/158",
+      "merge_commit": "67e8cb85c2b8e56438b292baf59a8163e7654933",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.26: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "89cc5e11-aa4d-4c3b-893d-feb99215266a",
@@ -9818,12 +10391,55 @@
       "baseline_control_sha256": "030586956bceda818176e44f8f33f2892113188ce7a157545ad9f576c8d11fec",
       "design_area": "Management",
       "batch": "26",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "89cc5e11-aa4d-4c3b-893d-feb99215266a",
+        "upstream_id": "F06.01",
+        "classification": "assisted",
+        "implemented_subclaim": "Exact supplied firewall-log category/enabled configuration and typed service/diagnostic/workspace/storage relationships, not log contents or review.",
+        "sources": [
+          "waf-diagnostics-linked",
+          "frontdoor-logs",
+          "appgateway-logs",
+          "diagnostic-arm",
+          "profile-arm",
+          "terraform-monitor_diagnostic_setting",
+          "terraform-cdn_frontdoor_profile"
+        ],
+        "review_resource_types": [
+          "Microsoft.Insights/diagnosticSettings",
+          "Microsoft.Cdn/profiles",
+          "Microsoft.Network/applicationGateways",
+          "Microsoft.OperationalInsights/workspaces"
+        ],
+        "review_fact_paths": [
+          "wafDiagnosticSummary",
+          "targetResourceId",
+          "workspaceId",
+          "frontDoorProfileSummary",
+          "firewallPolicy.id",
+          "logWorkspaceSummary"
+        ],
+        "evidence_requirements": [
+          "Identify intended application-delivery/WAF resources, actual service/tier and complete logging destinations, owners, privacy/retention and review requirements. The linked best-practices page is Front Door Premium-qualified; distinguish Application Gateway and Front Door Standard/Premium from classic and other CDN services.",
+          "Bind each diagnostic extension to its exact actual resource identity and unique known typed selected-scope destinations. Standard/Premium Front Door uses FrontDoorWebApplicationFirewallLog, classic uses FrontdoorWebApplicationFirewallLog and Application Gateway uses ApplicationGatewayFirewallLog. Metrics, access/activity logs and unexpanded category groups are not explicit WAF categories; enabled routing is not arriving or retained data.",
+          "Reviewer decision: are applicable WAF logs actually saved and regularly reviewed for attacks and false-positive detections, with attributable original-time ingestion, retention, review/tuning actions, accountable cadence and exceptions? No configured flag, resource count, workspace or WAF policy proves complete ingestion or human review."
+        ],
+        "limitations": "No WAF log/request/attack/client/query payload retention or execution. Classic target model and indirect Event Hub/partner destinations remain explicit unsupported/unknown here, not absence or pass; no invented review interval.",
+        "flags": [
+          "service-qualified-exact-waf-category",
+          "routing-not-ingestion",
+          "logs-not-review"
+        ]
+      },
+      "issue": 151,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/158",
+      "merge_commit": "67e8cb85c2b8e56438b292baf59a8163e7654933",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.26: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "7f408960-c626-44cb-a018-347c8d790cdf",
@@ -9833,12 +10449,56 @@
       "baseline_control_sha256": "4d44eb8d4cafb9e27f8531c3046ce4c8488cb99ba93e8fe9e29935db0f237bd4",
       "design_area": "Management",
       "batch": "26",
-      "status": "pending",
-      "review": null,
-      "issue": null,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "status": "merged",
+      "review": {
+        "guid": "7f408960-c626-44cb-a018-347c8d790cdf",
+        "upstream_id": "F06.02",
+        "classification": "assisted",
+        "implemented_subclaim": "Supplied WAF diagnostic target/category/workspace and exact default workspace Sentinel-onboarding relationships as configuration-only context.",
+        "sources": [
+          "waf-sentinel-linked",
+          "waf-sentinel",
+          "frontdoor-logs",
+          "appgateway-logs",
+          "diagnostic-arm",
+          "terraform-monitor_diagnostic_setting"
+        ],
+        "review_resource_types": [
+          "Microsoft.Insights/diagnosticSettings",
+          "Microsoft.Cdn/profiles",
+          "Microsoft.Network/applicationGateways",
+          "Microsoft.OperationalInsights/workspaces",
+          "Microsoft.SecurityInsights/onboardingStates"
+        ],
+        "review_fact_paths": [
+          "wafDiagnosticSummary",
+          "targetResourceId",
+          "workspaceId",
+          "frontDoorProfileSummary",
+          "firewallPolicy.id",
+          "logWorkspaceSummary",
+          "sentinelOnboardingSummary"
+        ],
+        "evidence_requirements": [
+          "Identify intended WAF services/resources, actual Sentinel workspace/tenant boundaries, approved telemetry integration, complete analytic/detection coverage, ownership, privacy and response requirements independently of resource presence.",
+          "Reconcile actual exact service-specific firewall-log categories and destinations with supplied default workspace Sentinel onboarding, connector/content solution and arriving data evidence. The Sentinel walkthrough currently names FrontDoorFirewallLog/FrontdoorFirewallLog, which conflicts with the service-specific WebApplicationFirewallLog category reference; preserve that source discrepancy rather than silently equating names or guessing service output.",
+          "Reviewer decision: are WAF logs actually sent to Microsoft Sentinel, used to detect attacks and integrated into overall Azure security analysis with attributable original-time ingestion/analytics/incident-response evidence and exceptions? Shared workspace, onboarding, category flags or rule templates do not establish telemetry, functioning connectors or detection."
+        ],
+        "limitations": "No new executable query, WAF attack, Sentinel connector installation, content/analytics/playbook operation, log retrieval or manufactured runtime assurance. Only existing D07.06/.07 query Signals remain executable; none run here.",
+        "flags": [
+          "sentinel-walkthrough-category-discrepancy",
+          "workspace-onboarding-not-telemetry",
+          "configuration-not-detection"
+        ]
+      },
+      "issue": 151,
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/158",
+      "merge_commit": "67e8cb85c2b8e56438b292baf59a8163e7654933",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.26: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "5c986cb2-9131-456a-8247-6e49f541acdc",

@@ -52,7 +52,11 @@ class InterviewTests(unittest.TestCase):
 
     def test_bank_specific_requirements_and_blank_explicit_decisions(self):
         bank = question_bank(self.catalog)
-        self.assertEqual(len(bank["questions"]), 21)
+        self.assertEqual(len(bank["questions"]), 23)
+        self.assertEqual(
+            len([q for q in bank["questions"] if q["id"] != "recovery-guest-drift-waf-telemetry"]),
+            22,
+        )
         for question in bank["questions"]:
             self.assertTrue(question["question"])
             self.assertTrue(

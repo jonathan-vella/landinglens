@@ -277,6 +277,16 @@ Guidance links require HTTPS and only navigate when explicitly selected.
 
 ### Identity, manual evidence and optional plans
 
+Use `--question log-retention-machine-resource-guardrails` for cohort24's nine
+independent decisions. Review central/regional workspace exceptions, dataset
+retention/recovery/privacy and actual export/container WORM separately. Preserve
+source-qualified units and Basic30/provider8/CLI2556/REST4383 differences. Guest
+assignments, Azure/Arc assessment/patch modes and flow definitions require actual
+completed audit/patch/traffic evidence, not resource-presence approval. Explicitly
+designate critical services and review actual lock scope/side effects and Policy
+deny plus role authority, distinct from RBAC deny assignments. Every outcome and
+exception remains independently blank and bound; no new live operation occurs.
+
 Use `--question sovereign-organization-regions-classification` for cohort09's
 seven distinct decisions. Explicitly designate organizational MG roles/root and
 reconcile immutable Public wording with current SLZ's four-zone architecture.

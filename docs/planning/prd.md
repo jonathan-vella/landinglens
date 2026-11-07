@@ -14,6 +14,88 @@ root designation and effective authority require eight independently blank,
 attributable scoped/content/time/expiry-bound decisions and separate exceptions.
 No live collector/API, tenant read, query, deployment, settings/permissions change,
 private name/tag/principal payload or new whole-guidance predicate is authorized.
+## Cohort 26 accepted boundary
+
+After checked09/24 delivery and the explicit sole slot, cohort26/#151 activates
+[eight assisted workflows](../../references/recommendation-batches/batch-26.json)
+in builder-derived catalog/crosswalk `2026-11-06.24`. Exact `.23`, all255/fixed251,
+four complete original automated controls, every non-own object, all212 earlier
+rows/25 receipts and every binding remain unchanged.24 guest identity/scope and
+projection helpers are reused; all21 predecessor compiler cases remain.
+
+Eight independently blank source-specific decisions distinguish configured
+recovery/redundancy, guest assignment/extension/drift context, narrow SQL Database
+failover and WAF category/destination/onboarding facts from actual recovery,
+compliance, telemetry and operating assurance. Source-qualified defaults/current
+guest lifecycle/legacy Backup Center and conflicting Front Door category wording
+remain explicit. No live collection, query, guest command, restore/failover,
+second Policy interpreter or built-in acquisition is added. Dispositions remain
+12/200/43; guarded implementation/receipt/final-main gates, not activation, change
+212 delivered/39 undelivered and permit satisfied #151 closure.
+
+Implementation #158 merged normally after final exact-head eight-job/CodeQL/
+security/review and four downloaded matching22-case compiler gates. Guarded
+`deliveries.26` binds all eight GUIDs to that actual head/merge/runs/806-test own
+wheel, deriving220 delivered/31 undelivered and26 receipts. All212 earlier
+rows/25 receipts remain unchanged; checked receipt publication and final-main CI
+still gate satisfied #151 closure, not classification or merge alone.
+
+## Historical cohort 26 independent preparation boundary
+
+Cohort26/#151 prepares [eight source-specific assisted workflows](../../references/recommendation-batches/preparation-26.json),
+not accepted activation or delivery. Cohorts09/24 retain their preceding slots.
+Explicit service-qualified Recovery Services/Data Protection settings, A2A/VM
+backup references, guest assignment/extension modes, SQL Database failover
+configuration and WAF category/destination links share existing adapters,
+evaluator, reviews, tiers, reports/trackers, CLI/session and original-time replay.
+All eight decisions stay independently blank and exceptable.
+
+Recovery Services' documented GRS default is not universal across Backup vaults
+or workloads; generic account redundancy and omitted settings prove no backup
+choice. Guest Configuration redirects to Machine Configuration, with current
+November2026 Linux PowerShell support qualifications. Backup Center is legacy.
+The Sentinel walkthrough's Front Door category names differ from the
+service-specific monitoring reference; no silent category equivalence is added.
+Configuration proves neither recovery success/RPO/RTO, guest compliance/drift
+operation, universal PaaS DR nor WAF/Sentinel ingestion/review/detection.
+No live routes, queries, guest commands, deployment or operating tests are added.
+Accepted source/matrix/bank/catalog/crosswalk/history/counts and receipts remain
+unchanged until an explicit serialized slot and its actual delivery gates.
+
+## Cohort 24 accepted boundary
+
+After actual25/09 checked implementation/receipt delivery and the explicit sole
+slot, the [nine F01.01-.09 workflows](../../references/recommendation-batches/batch-24.json)
+activate reviewed successor `.23`, preserving exact `.22`, all255/fixed251,
+original four complete controls and all203 preceding rows/24 receipts.
+Nine registered decisions and exceptions remain independent and blank. Typed
+workspace/table/export/immutability/guest/Arc/lock facts reuse existing helpers,
+not new operational predicates or live routes. Source-qualified retention
+units/provider differences, lifecycle, control-plane lock limits and Policy-deny
+versus RBAC-deny distinctions are explicit. Actual checked merged implementation,
+guarded own receipt publication and final-main CI remain delivery gates.
+See [integration evidence](plan.md#cohort-24-accepted-integration-2026-11-07).
+
+Implementation #155 merged normally after exact-head8-job/CodeQL/security/review
+and four downloaded matching21-case compiler gates. Guarded `deliveries.24`
+binds all nine GUIDs to the actual head/merge/runs/771-test own wheel, recording
+212 delivered/39 pending and25 receipts on checked publication. Every203 earlier
+row/24 receipts stays unchanged; checked receipt publication/final-main CI still
+gate satisfied #148 completion and sole-slot release.
+
+## Cohort 24 preparation boundary
+
+The [nine F01.01-.09 workflows](../../references/recommendation-batches/preparation-24.json)
+for [#148](https://github.com/jonathan-vella/landinglens/issues/148) prepare
+workspace architecture, source-qualified retention/export/immutability,
+Machine Configuration, distinct Azure/Arc patching, Network Watcher and
+lock/Policy-role review without accepted activation or delivery. Cohorts25/09
+precede its coordinator-granted slot. All nine human decisions and exceptions
+remain independent and blank; source/provider conflicts remain visible rather
+than becoming defaults or relaxed predicates. Supplied settings establish no
+ingestion, sovereignty, legal WORM sufficiency, completed audit/patch/traffic
+operation, criticality or effective protection/access. See the
+[preparation boundaries](plan.md#cohort-24-independent-preparation-2026-11-07).
 
 ## Cohort 09 accepted boundary
 

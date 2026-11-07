@@ -20,6 +20,30 @@ from .terraform import Analyzer, InputError
 
 PROVIDER_VERSION = "4.50.0"
 TF_TYPES = {
+    "azurerm_recovery_services_vault": "Microsoft.RecoveryServices/vaults",
+    "azurerm_data_protection_backup_vault": "Microsoft.DataProtection/backupVaults",
+    "azurerm_backup_protected_vm": (
+        "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems"
+    ),
+    "azurerm_site_recovery_replicated_vm": (
+        "Microsoft.RecoveryServices/vaults/replicationFabrics/"
+        "replicationProtectionContainers/replicationProtectedItems"
+    ),
+    "azurerm_log_analytics_workspace_table": "Microsoft.OperationalInsights/workspaces/tables",
+    "azurerm_log_analytics_data_export_rule": (
+        "Microsoft.OperationalInsights/workspaces/dataExports"
+    ),
+    "azurerm_policy_virtual_machine_configuration_assignment": (
+        "Microsoft.GuestConfiguration/guestConfigurationAssignments"
+    ),
+    "azurerm_virtual_machine_extension": "Microsoft.Compute/virtualMachines/extensions",
+    "azurerm_mssql_failover_group": "Microsoft.Sql/servers/failoverGroups",
+    "azurerm_cdn_frontdoor_profile": "Microsoft.Cdn/profiles",
+    "azurerm_storage_container_immutability_policy": (
+        "Microsoft.Storage/storageAccounts/blobServices/containers/immutabilityPolicies"
+    ),
+    "azurerm_management_lock": "Microsoft.Authorization/locks",
+    "azurerm_arc_machine": "Microsoft.HybridCompute/machines",
     "azurerm_monitor_activity_log_alert": "Microsoft.Insights/activityLogAlerts",
     "azurerm_monitor_action_group": "Microsoft.Insights/actionGroups",
     "azurerm_monitor_metric_alert": "Microsoft.Insights/metricAlerts",
@@ -150,8 +174,10 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     from .identity_evidence import projected_properties as identity_properties
     from .logging_evidence import projected_properties as logging_properties
     from .network_policy_evidence import projected_properties as network_policy_properties
+    from .operations_evidence import projected_properties as operations_properties
     from .platform_health_evidence import projected_properties as platform_health_properties
     from .policy_strategy_evidence import projected_properties as policy_strategy_properties
+    from .recovery_evidence import projected_properties as recovery_properties
     from .security_evidence import projected_properties as security_properties
     from .tenant_evidence import projected_properties as tenant_properties
     from .topology_evidence import projected_properties as topology_properties
@@ -171,10 +197,12 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     result.update(governance_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(logging_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(platform_health_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
+    result.update(recovery_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(network_policy_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(identity_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(policy_strategy_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(tenant_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
+    result.update(operations_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(
         topology_properties(
             TF_TYPES.get(kind, kind), properties, terraform=True, terraform_kind=kind
@@ -326,6 +354,20 @@ def resource_scope(scope: str | None, properties: dict[str, Any]) -> str | None:
 
 
 def tf_resource_id(scope: str | None, kind: str, values: dict[str, Any]) -> str | None:
+    from .operations_evidence import TF_KINDS, terraform_identity
+
+    if kind in TF_KINDS:
+        return terraform_identity(scope, kind, values)
+    if kind in {
+        "azurerm_virtual_machine_extension",
+        "azurerm_mssql_failover_group",
+        "azurerm_site_recovery_replicated_vm",
+    }:
+        from .recovery_evidence import tf_resource_id as recovery_resource_id
+
+        return recovery_resource_id(scope, kind, values)
+    if kind == "azurerm_backup_protected_vm":
+        return None
     if kind in {"azurerm_lighthouse_definition", "azurerm_lighthouse_assignment"}:
         from .tenant_evidence import resource_parent, uuid_literal
 

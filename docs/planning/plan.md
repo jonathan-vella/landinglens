@@ -51,6 +51,284 @@ actual then-main reconciliation, accepted registration/replay, exact-head
 eight platform jobs/CodeQL/security/review, four downloaded matching compiler
 proofs, normal SHA-bound merge, guarded own-GUID receipt and checked final-main
 publication remain deferred until the coordinator grants the slot.
+## Cohort 26 accepted integration: 2026-11-07
+
+The explicit sole coordinator slot follows actual09 implementation152/receipt153
+and24 implementation155/receipt156, completed issues and checked final main
+`e2b71b212b47b1d240368e9da13ab51bd66797ee`. Preparation `b39b67a` is preserved;
+reconciliation `88a20fc` retains09 hierarchy/VM metadata and24 table/export/
+immutability/guest/Arc/lock behavior. Guest extension scope and Terraform identity
+reuse24's implementation, and guest-mode projection delegates to its helper.
+All21 actual predecessor compiler cases precede the recovery configuration case.
+
+Existing builders derive unique catalog/crosswalk `2026-11-06.24` from exact
+frozen `.23` bytes, [45 unchanged captures](../../references/recommendation-batches/batch-26-sources.json)
+and the [eight-GUID accepted matrix](../../references/recommendation-batches/batch-26.json).
+Original255/fixed251, four complete original automated controls, every non-own
+control, all212 prior own-GUID rows/25 receipts and every historical binding remain
+unchanged. Dispositions remain12 automated/200 assisted/43 manual. Before guarded
+delivery,212 are delivered and39 undelivered; activation is not a receipt.
+
+Eight registered independent decisions share existing evaluator, review/tier,
+report/tracker, CLI/local-session and original-time private replay mechanisms.
+Recovery Services versus Data Protection/workload defaults, Files snapshot versus
+vaulted backup, current Machine Configuration lifecycle and legacy Backup Center
+are source-qualified. The Front Door service monitoring/Sentinel category-name
+discrepancy is retained. Configured recovery/guest/SQL/WAF facts establish neither
+protected fleet, successful recovery/achieved RPO/RTO, compliant guests/operating
+drift monitoring, universal PaaS DR nor WAF/Sentinel ingestion/review/detection.
+Human coverage/requirements/retention/testing/operation decisions remain blank and
+exceptable; Signals and human confirmations never manufacture Verified.
+
+Fresh own installed-wheel/static/accepted-replay checks, exact-head eight
+platform jobs, CodeQL/security/review and four downloaded exercised compiler proofs
+gate the normal SHA-bound implementation merge. Guarded actual own-GUID recording,
+checked receipt publication and actual final-main CI gate satisfied #151 closure.
+Preparation proofs below cannot substitute for these delivery gates.
+
+Implementation [#158](https://github.com/jonathan-vella/landinglens/pull/158)
+merged normally as `67e8cb85c2b8e56438b292baf59a8163e7654933` after final head
+`0a27ad5700f3945a785efb35d4a062b601cdba9f` passed push42327421284 and
+PR42327426873 (all eight jobs), CodeQL42327422652/security42327428474 and
+fresh zero-feedback/head/base/main gates. All four downloaded PR artifacts match
+that head/run and exercise the same22 compiler cases without skips.
+The final own clean outside-checkout installed wheel ran806 tests:805 passed and
+the original Windows symlink-privilege skip1. Format/lint,50-file typing,
+dependency consistency,417 local doc links and exact161-member package byte
+comparison passed. Actual own accepted wheel SHA256:
+`00c3eb05a81acf7dbe13acca096169c6ccec16994ed8708c95652ce92d5d4340`.
+
+First accepted head `c9d78e6` and its local suite/push42326808397 failed only the
+stale22-question bank count. The correction pins exact23 and separately retains
+the22 predecessor-question count; no assertion or test was weakened. Obsolete
+PR42326824993 was cancelled. Those runs and earlier preparation proofs remain
+history, not final-head acceptance. Runtime/guest/recovery/security operation
+is still not asserted.
+
+The guarded recorder binds every own GUID through `deliveries.26` to actual
+implementation158/head/merge/two runs/22 cases/806-test own wheel. Derived totals
+are220 delivered/31 undelivered and26 receipts, retaining all212 earlier rows/
+25 receipts and their own bindings unchanged. Checked receipt publication and
+actual final-main CI still gate satisfied #151 closure; neither activation,
+implementation merge nor this local receipt record alone completes delivery.
+
+First receipt head `34461db` failed the unchanged pending-priority-table test:
+the guarded ledger correctly removed26 from undelivered membership, but the
+backlog still displayed its row. The correction removes that delivered row and
+derives31 remaining targets; no test assertion is changed. Invalidated receipt
+push42328596560/PR42328610904 remain history, not checked publication evidence.
+
+## Historical cohort 26 independent preparation: 2026-11-07
+
+[#151](https://github.com/jonathan-vella/landinglens/issues/151) owns exactly the
+eight F02.01-.02/F03.01-.02/F04.01-.02/F06.01-.02 GUIDs in the
+[preparation matrix](../../references/recommendation-batches/preparation-26.json)
+and [reviewed source captures](../../references/recommendation-batches/preparation-26-sources.json).
+Baseline is actual main `e5506c3d4061845b4250a68046ba281156de676d`,
+catalog/crosswalk `2026-11-06.21`,196 delivered/55 pending/23 receipts.
+This preparation does not choose/register a successor, activate the interview
+bank/source/matrix/catalog/crosswalk/counts/history, open a PR, merge, record
+delivery or close the issue. Cohorts09/24 precede the explicit serialized slot.
+
+Minimized configuration uses existing typed VM, recovery, storage, Policy,
+protection and logging helpers. Strict unique known selected-scope relationships
+join configured VM backup/A2A references, guest assignment/extension parents,
+SQL Database group members/partners and WAF diagnostic service/destination/
+default Sentinel-onboarding references. Raw backup protected-item identities
+need explicit source-hash-bound mapping rather than guessed container names.
+No live Collector/API registry, built-in fetch or second Policy interpreter is
+added. Terraform explicit local modules/supplied plan, pinned ARM/existing
+no-restore Bicep and normalized saved/injected evidence share projections;
+planned and observed facts remain separate.
+
+Recovery Services documents default GRS, but Data Protection datastore settings
+and workload/region support need separate review. Azure Files snapshot backup
+does not inherit vaulted-backup redundancy. Missing settings never become
+defaults; no generic storage SKU answers backup choice or retention. Current
+Machine Configuration redirects and November2026 Linux PowerShell support changes
+qualify immutable guest wording; assignments/extensions do not establish installed
+compliant settings or operating drift monitoring. Backup Center is a legacy
+experience pointing to Resiliency/Business Continuity Center. SQL failover groups
+are narrow asynchronous configuration, not universal PaaS DR or tested recovery.
+
+The service monitoring reference specifies
+`FrontDoorWebApplicationFirewallLog` for Standard/Premium and
+`FrontdoorWebApplicationFirewallLog` for classic, while the Sentinel walkthrough
+currently says `FrontDoorFirewallLog`/`FrontdoorFirewallLog`. This discrepancy is
+retained, not silently equated. Explicit exact categories are distinct from
+metrics/access/activity logs or unexpanded groups. Workspace/onboarding links
+cannot manufacture actual telemetry, review, detection or response.
+
+Eight attributable, selected, time-bound, independently blank and exceptable
+decisions preserve recovery requirements/coverage/retention/drills/RPO/RTO,
+compliant guest execution, actual Policy drift operation, service-specific
+PaaS failover, backup compatibility and WAF/Sentinel operation as human judgments.
+No logs, guest/package/report payloads, private scripts/settings, credentials,
+queries or personal data are retained. Signals and human confirmations never
+create Verified. At the later slot, reconcile actual09/24 main and operations
+helpers, freeze its exact predecessor, derive the successor with existing
+builders, preserve all original objects/bytes/receipts/bindings, and rerun actual
+accepted-bank/replay/wheel/exact-head platform/CodeQL/security/review/compiler
+gates before normal SHA-bound merge, guarded receipt and final-main closure.
+
+Final preparation uses45 actual captures and27 cohort-specific cases. The own
+clean outside-checkout installed wheel ran **748 tests:747 passed and the one
+original Windows symlink-privilege skip**. All20 actual no-restore compiler cases
+were exercised without skips, preserving all19 predecessors and adding only
+genuine recovery/guest/SQL/WAF configuration compilation, not a recovery or
+security operating test. Format/lint,48-source-file typing, dependency consistency,
+384 local documentation links and exact147-member installed-package/source byte
+comparison passed. Final own wheel SHA256:
+`ab2d99a48729eae750c1c7a55bdb7b927c47a5863ce58f4e0fe2abeb6d4c3447`.
+An earlier wheel was superseded after tightening unsupported service/SKU,
+guest-parent and exact storage-child qualification; its running suite was stopped,
+not reused as final proof. The first isolated import exposed missing runtime
+dependencies; only the three exact reviewed manifest-hash wheels were restored
+into this session's own environment. Accepted data/ledger/targets remain unchanged.
+These are local preparation proofs, not later accepted-bank replay, exact-head
+platform/security/CodeQL/review gates, merged delivery or a checked receipt.
+## Cohort 24 accepted integration: 2026-11-07
+
+The explicit sole coordinator grant for
+[#148](https://github.com/jonathan-vella/landinglens/issues/148) follows actual25
+implementation149/receipt150 and09 implementation152/receipt153, completed
+issues and checked final main `e489d7125c2b60669dfe0599cd30ab189984ff43`.
+Preparation `56ac581` reconciles that baseline in `5ffacbc`, retaining25 health
+helpers and09 hierarchy/VM location/tag support. All20 predecessor compiler
+cases remain in order before the genuine operations configuration case.
+
+The [nine-GUID matrix](../../references/recommendation-batches/batch-24.json)
+and [42 byte-preserved captures](../../references/recommendation-batches/batch-24-sources.json)
+derive unique successor `2026-11-06.23` through the existing offline builders.
+Exact `.22` catalog SHA256:
+`8d5229f1766b327a98fb2a1d0be1e93d17cadfb28ba7796a7116d97a7986cae4`;
+crosswalk SHA256:
+`31ac3661628de0850ef0c5becfc16a24e14110c894c3aa5e8783201e57bbc696`.
+All255 GUIDs/fixed251, original four complete controls/hashes, every non-own
+predecessor object and all203 earlier own-GUID rows/24 receipts remain unchanged.
+Counts stay12 automated/200 assisted/43 manual. Activation leaves203 delivered/
+48 pending until the actual checked implementation and guarded receipt gates.
+
+The registered nine independent blank decisions and separate exceptions reuse
+the single evaluator, raw/supplied-module/plan/ARM/no-restore Bicep/saved evidence,
+tiers, reports/trackers, CLI, local session and original-time accepted replay.
+No new Azure read, built-in fetch, second Policy interpreter or private log/
+guest/package/patch/traffic payload is introduced. Source-specific units,
+provider/current-service differences, lifecycle and lock/deny qualifications
+remain explicit in the
+[accepted boundary](../automation-matrix.md#cohort-24-log-retention-machine-operations-and-resource-guardrails).
+Configuration Signals establish no ingestion/design, effective/legal retention/
+export/WORM, executed guest audits/patches/traffic analysis, criticality or
+effective lock/Policy-role protection. Human confirmation never becomes Verified.
+
+Final source and own clean outside-checkout installed-wheel suites each ran
+**771 tests:770 passed, one original Windows symlink-privilege skip**.
+The23 cohort preparation/accepted cases include actual registered-bank session,
+scope/content/time/expiry/attribution/selection/atomicity, all outputs and
+accepted/predecessor privacy-safe original-time replay. All21 real compiler cases
+exercise without skips/restore, including25 health and09 VM metadata before24.
+Ruff/format,49-source-file mypy, dependency consistency and523 local links pass.
+All156 packaged members match checkout and the dedicated installed bytes;
+all169 predecessor reference/data files remain byte-identical apart from the
+explicit active catalog/crosswalk/binding/own-ledger updates. All203 previous
+own-GUID rows and24 receipts remain exact. Final implementation wheel SHA256:
+`95cc35a3e8a7ddd9f38c6098215a5fc3bdcab430fd1a32b413922c93587eacce`.
+Installed21-case compiler-proof SHA256:
+`46ebfa34080af09b4f8ac9cf24ee112b01ec9a1d65a96c988ab4d8276432f5fe`.
+No dependency restoration was needed during this accepted integration.
+
+The initial accepted targeted run exposed the exact21-question historical-bank
+assertion and a test-only query-identity lookup. These were corrected to the new
+exact22-question bank and existing GUID/allowed mapping without weakening
+predicates or query identities. Final proofs above supersede that failed targeted
+run; preparation proofs below remain historical. Remote exact-head push/PR,
+CodeQL/security/review and four downloaded matching compiler artifacts still
+gate the normal SHA-bound merge and subsequent guarded own receipt publication.
+
+Implementation [#155](https://github.com/jonathan-vella/landinglens/pull/155)
+passed actual push42322775297/PR42322793806 (all8 jobs), CodeQL42322791895 and
+Advanced Security42322799581. Both CodeQL analyses2116561367/2116560179 reported
+0 findings/no errors or warnings; live comments/reviews/threads and open code/
+dependency/secret alerts were0. Both before-ready and pre-merge head/base/main/
+feedback refreshes matched. Normal SHA-bound merge of
+`cd2ebbf5445007d1c9c2542d92a98df25eba740b` produced
+`09567810b28bd7d6e54f9f66d7a2808d053396c7` at `2026-11-07T01:24:29Z`.
+No admin, force, bypass, settings change or fabricated approval was used.
+
+Four downloaded exact-head PR artifacts13554401071 (Windows3.12),
+13554091248 (Windows3.13),13553623594 (Ubuntu3.13) and13553348787 (Ubuntu3.12)
+exercise all21 matching cases without skips. Windows JSON SHA256:
+`91779f864fb664119610ce52d27418ad0ca275e29f82350d2ece0cb2f6ed553a`;
+Ubuntu:
+`f172986b68ed021419e2b276619127a7c0c06236cc9d17b151adf6962375b680`.
+Runner-image/Node-runtime migration annotations are platform notices, not
+CodeQL findings or weakened software checks.
+
+The guarded recorder independently rechecked the actual merge, both own runs,
+all four downloaded artifacts and the final771-test own implementation wheel
+before binding `deliveries.24` and every own GUID. All203 earlier rows/24 receipts
+remain unchanged. Checked publication records212 delivered/39 pending and25
+receipts; catalog/crosswalk `.23`,255/fixed251/original four controls and12/200/43
+dispositions remain unchanged. The issue stayed open after implementation.
+Checked receipt publication and actual final-main CI still gate satisfied
+#148 closure and coordinator slot release, not classification or merge alone.
+
+## Cohort 24 independent preparation: 2026-11-07
+
+[#148](https://github.com/jonathan-vella/landinglens/issues/148) prepares the
+[nine immutable F01.01-.09 workflows](../../references/recommendation-batches/preparation-24.json)
+and [42 actual public-source captures](../../references/recommendation-batches/preparation-24-sources.json)
+on main `c953eee1fc66dbd013c59dc27e8616a5001f9630`. Cohorts25/09 retain the
+preceding delivery slots. Accepted sources/matrices, catalog/crosswalk/history,
+bank, counts, fixed targets, receipts and issue state remain unchanged.
+
+Existing workspace, patch, flow-log, Policy and role helpers are reused.
+New minimized table/export/immutability/guest/Arc/lock facts use explicit units
+and typed unique-known selected-scope relationships. Nine source-specific
+decisions and exceptions stay independently blank in the preparation fixture;
+the accepted interview bank is not registered. No generic resource presence,
+human confirmation or Signal becomes Verified or a whole-guidance pass.
+
+Source distinctions include current4383-day/12-year total versus730-day
+analytics retention, explicit ARM inheritance, provider discrete annual values,
+Basic current30 versus older provider8-day wording, CLI2556 versus REST4383,
+and workspace30 potentially retaining31. Export configuration is not historical
+backfill or identified-container WORM. Guest assignments, Azure/Arc patch modes,
+and flow definitions prove no completed audit, installed patches or traffic
+analysis. NSG flow creation is withdrawn and retirement is2027-09-30.
+Locks apply to control-plane operations, not data or subscription cancellation;
+generic ARM scope lists do not establish supported management-group locks.
+Policy deny and RBAC deny assignments/private preview remain distinct.
+
+The existing no-restore compiler fixture exercises real workspace/table/export/
+storage/lock declarations, not runtime operations. No new Collector route,
+query execution, guest/package/report payload, definition fetch, second Policy
+interpreter, acquisition, restore, deployment or Azure read is introduced.
+Then-current-main reconciliation, accepted successor/bank/package replay,
+exact-head remote checks/review/compiler proofs, normal merged implementation,
+guarded own receipt publication and final-main CI remain deferred slot gates.
+
+Source and own exact installed-wheel suites each ran **711 tests:710 passed,
+one original Windows symlink-privilege skip**. All16 cohort preparation cases
+are included; both source and own installed-compiler proofs exercise all19
+cases without skips/restore, preserving the18 predecessor cases. Final format/
+lint,47-source-file mypy, dependency consistency and484 local links pass.
+All142 package members match checkout and the dedicated outside-checkout
+installation. All97 accepted-data/fixed-target/ledger files remain byte-identical.
+Wheel SHA256:
+`95c8cc36ba995ebc55e3ece5e2dfbb3b3c0b15e837692a65c5a442ac91ee999a`.
+Both compiler-proof JSON SHA256:
+`84fd90ab7318b3eba8ee188c1932d036fd27f7c13a1fa60c478bc8dba54b39b6`.
+
+Initial targeted runs exposed fixture-call/duplicate-contract expectations and
+missing saved-plan Arc identity; these were corrected without weakening
+validation. An initial static run caught an optional flow-target variable type,
+fixed before the final clean static and installed proofs. The first isolated
+import lacked `hcl2`; only the three unchanged manifest-hash-verified runtime
+wheels were restored. Wheel
+`9267cd6abcf6824daac889f78d2e166366d8b91edcd1dc4778f454343368ec19`
+is superseded, not the final preparation proof. These local preparation checks
+are not accepted successor replay, remote exact-head gates or merged delivery.
 
 ## Cohort 09 accepted integration: 2026-11-06
 
