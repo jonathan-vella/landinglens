@@ -88,12 +88,14 @@ def plan_source(
             verified = provider_version == PROVIDER_VERSION
             candidate = tf_resource_id(scope, kind, values) if verified else None
             explicit_id = values.get("id")
+            from .billing_evidence import TF_KINDS as BILLING_TF_KINDS
             from .operations_evidence import TF_KINDS
             from .policy_strategy_evidence import TF_SCOPES
 
             if (
                 kind in TF_SCOPES
                 or kind in TF_KINDS
+                or kind in BILLING_TF_KINDS
                 or kind
                 in {
                     "azurerm_policy_definition",

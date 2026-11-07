@@ -6,8 +6,57 @@ from .contracts import control_digest, digest, document, require, scope_id, vali
 from .reviews import prepare_reviews, validate_reviews
 from .terraform import InputError
 
-BANK_VERSION = "2026-11-06.25"
+BANK_VERSION = "2026-11-06.26"
 BANK = {
+    "agreement-budgets-visibility-billing-governance": {
+        "question": (
+            "Decide seven recommendations independently with dated attributable redacted evidence "
+            "and separate exceptions. A03.03: establish actual EA department/account population, "
+            "complete approved allocations and each budget/alert, including "
+            "periods/filters/currency suitability, actual/forecasted semantics, "
+            "authorized required recipients and demonstrated "
+            "delivery/escalation; daily delayed budget evaluation does not stop consumption, and "
+            "subscription/RG metadata proves no enrollment coverage. A03.04: independently "
+            "substantiate every applicable EA DA/AO visibility policy plus appropriate scoped "
+            "permissions and effective audience access; MCA Azure charges and "
+            "partner cost policies "
+            "differ, resource RBAC is not billing authority. A03.05: cite approved authoritative "
+            "EA0148P qualification, Visual Studio rights and actual permitted development/testing "
+            "adoption with current-terms reliability exceptions, not an assessor "
+            "eligibility decision or saving claim. A04.01: independently establish "
+            "MCA notification categories, maintained group-mailbox ownership/continuity, "
+            "appropriate configuration and actual delivery/review/"
+            "escalation; account contact, sold-to, bill-to, invoice email and sign-in destinations "
+            "differ. A04.02: justify MCA profiles versus sections against organization "
+            "and separate-invoice requirements, current complete mapping/roles and "
+            "charge/reservation implications; "
+            "qualify frozen same-profile movement wording with current product exceptions, never "
+            "infer from MGs or cost views. A04.03: independently cite approved "
+            "MCA0148G qualification, "
+            "active Visual Studio subscriber conditions, permitted actual development/testing use "
+            "and reliability exceptions; EA0148P and monthly credits are different. "
+            "A04.04: document and demonstrate actual periodic billing-role audits "
+            "covering direct/inherited/elevated authority, least privilege, cadence "
+            "chosen by the organization, completed findings and "
+            "verified remediation; written process or resource role assignments alone are "
+            "insufficient. Keep each applicability/outcome blank until explicitly "
+            "decided; no shared "
+            "answer, Signals or humanConfirmed produces Verified. Do not retain amounts/currency/"
+            "spend/billing identifiers/account or invoice content/contact/recipient/"
+            "principal/secret "
+            "payloads, and perform no live read, query, alert test, contact/permission change, "
+            "eligibility decision, enrollment or purchase."
+        ),
+        "controls": [
+            "ALZ-54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
+            "ALZ-ca0fe401-12ad-46fc-8a7e-86293866a9f6",
+            "ALZ-5cf9f485-2784-49b3-9824-75d9b8bdb57b",
+            "ALZ-6ad5c3dd-e5ea-4ff1-81a4-7886ff87845c",
+            "ALZ-90e87802-602f-4dfb-acea-67c60689f1d7",
+            "ALZ-e81a73f0-84c4-4641-b406-14db3b4d1f50",
+            "ALZ-ae757485-92a4-482a-8bc9-eefe6f5b5ec3",
+        ],
+    },
     "naming-hierarchy-scoped-authorization": {
         "question": "Decide all eight GUIDs independently "
         "using attributable redacted evidence, "

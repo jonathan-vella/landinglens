@@ -82,6 +82,7 @@ API_VERSIONS = {
     "microsoft.network/bastionhosts": {"2024-05-01"},
 }
 PLANNED_API_VERSIONS = API_VERSIONS | {
+    "microsoft.consumption/budgets": {"2024-08-01"},
     "microsoft.recoveryservices/vaults": {"2024-01-01"},
     "microsoft.recoveryservices/vaults/backupstorageconfig": {"2023-02-01"},
     "microsoft.recoveryservices/vaults/backupfabrics/protectioncontainers/protecteditems": {
@@ -144,6 +145,7 @@ def unresolved(value: Any) -> bool:
 def properties(
     kind: str, values: Any, *, root: Any = None, observed: bool = False
 ) -> dict[str, Any]:
+    from .billing_evidence import projected_properties as billing_properties
     from .governance_evidence import projected_properties as governance_properties
     from .identity_evidence import IDENTITY_KINDS, ROLE_KIND, identity_summary, role_properties
     from .identity_evidence import projected_properties as identity_properties
@@ -166,6 +168,7 @@ def properties(
             root["identity"], terraform=False, resource_type=kind
         )
     if isinstance(values, dict):
+        result.update(billing_properties(kind, values, root=root))
         result.update(security_properties(kind, values, root=root))
         result.update(governance_properties(kind, values, root=root))
         result.update(organization_properties(kind, values))
@@ -697,6 +700,7 @@ def arm_source(
                             arm_type,
                             context.value(entry.get("properties", {})),
                             root={
+                                "apiVersion": version,
                                 "location": context.value(entry.get("location")),
                                 "scope": diagnostic_target,
                                 "name": name,

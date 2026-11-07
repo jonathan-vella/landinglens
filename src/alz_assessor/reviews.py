@@ -462,6 +462,9 @@ def prepared_resource(
 
 
 def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str, Any]:
+    from .billing_evidence import GUIDS as BILLING_GUIDS
+    from .billing_evidence import resource_context as billing_context
+
     available = "resources" in bundle
     if available:
         validate(bundle, "evidence")
@@ -514,6 +517,7 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
         | HYBRID_GUIDS
         | NETWORK_POLICY_GUIDS
         | TENANT_GUIDS
+        | BILLING_GUIDS
         | TOPOLOGY_GUIDS
         | RECOVERY_GUIDS
         | OPERATIONS_GUIDS
@@ -593,6 +597,12 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
 
         for prepared, resource in zip(context["resources"], matches[:100], strict=True):
             prepared["tenant_configuration"] = resource_context(resource, by_id, bundle)
+    if control["upstream_guid"] in BILLING_GUIDS:
+        for prepared, resource in zip(context["resources"], matches[:100], strict=True):
+            configuration = billing_context(resource, by_id, bundle)
+            prepared["billing_configuration"] = configuration
+            prepared["facts"] = configuration.get("facts", configuration)
+            prepared["subchecks"] = {}
     if (
         policy_prepared
         or (sovereign_prepared and "managementParentId" in control["review_fact_paths"])

@@ -1,5 +1,51 @@
 # Accepted release automation matrix
 
+## Cohort 03: agreement and billing governance
+
+The [accepted seven-GUID matrix](../references/recommendation-batches/batch-03.json)
+and [23 reviewed captures](../references/recommendation-batches/batch-03-sources.json)
+activate builder-derived `.26` only after the explicit sole slot following
+actual26/07 checked delivery. The original preparation/20 captures remain exact;
+the [three-source version supplement](../references/preparation/batch-03-version-sources.json)
+qualifies source-specific API behavior. Exact `.25`, all228 earlier rows/27
+receipts, fixed251/all255 and original four complete controls stay frozen.
+Activation is not delivery.
+
+| Recommendation | Preparation and separate required decision |
+|---|---|
+| A03.03 | Unique known selected subscription/RG budget metadata; complete EA department/account allocations, associated alerts, suitable periods/filters/currency and actual delivery/response |
+| A03.04 | Current DA/AO scope/permission distinctions; independently established EA applicability, policies and effective intended-audience visibility |
+| A03.05 | EA0148P versus MCA0148G and current portal qualifications; authoritative approved EA dev/test qualification, permitted actual adoption and reliability exceptions |
+| A04.01 | Account contact, sold-to, bill-to, invoice email and sign-in destinations differ; maintained suitable group-mailbox ownership and actual category coverage/delivery |
+| A04.02 | Profiles represent invoices, sections group costs; complete approved MCA organization/mapping/authority and charge/reservation implications |
+| A04.03 | MCA0148G, active Visual Studio conditions and dev/test-only use; independent authoritative qualification/adoption and reliability exceptions, not EA or monthly credits |
+| A04.04 | Manual approved periodic billing-role audit with direct/inherited/elevated access, chosen cadence, completed findings and verified remediation |
+
+Pinned ARM2024-08-01 and AzureRM4.50.0 subscription/RG projections retain only
+reviewed API provenance, explicit time grain and at most five enabled/operator/type records
+(ARM Cost category when explicit). Missing defaults remain unknown. Dictionary
+keys/order, amounts, currencies, spend, dates, filters, thresholds and all
+recipients/contact payloads are discarded. No active period or notification
+suitability is evaluated. Generic ARM scopes do not override service limits;
+MG/billing-parent budgets are not supported projections.
+
+Actual pinned REST2019 declares only Actual, with an extensible string enum,
+despite AzureRM4.50's Forecasted documentation and2019 API use. This conflict
+does not establish runtime support: Forecasted projects only with explicit
+reviewed2024 provenance; missing/unreviewed API versions yield unknown type.
+API provenance alone is not a configuration Signal. Tutorial0.01 versus
+REST/provider0..1000 threshold wording is not converted into a compliance limit.
+
+Budgets do not stop consumption; daily evaluation uses delayed data. Configured
+alerts do not prove complete allocation, required recipients or delivery.
+Resource RBAC does not establish billing authority. Billing scopes and EA/MCA/
+partner visibility differ; no cost-view/query or resource hierarchy establishes
+them. Current product-movement exceptions and legacy offer wording qualify,
+not overwrite, immutable recommendations. All seven independent decisions and
+exceptions remain blank; no Signals or human confirmation becomes Verified.
+No live collector route, query, private billing/role/contact read, alert test,
+eligibility decision, enrollment, purchase or permission/contact change occurs.
+
 Local triage routes shared tier/severity evidence and explicit bound reviews,
 not new predicates. Bulk/interview saves validate every selected outcome before
 one immutable revision; unknown/pending decisions stay in the queue. Active
@@ -33,10 +79,10 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.25` retains all 255 entries: 12 automated, 200 assisted
-and 43 manual. Crosswalk `2026-11-06.25` rebinds the unchanged 51-control,
+Current successor `2026-11-06.26` retains all 255 entries: 12 automated, 200 assisted
+and 43 manual. Crosswalk `2026-11-06.26` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-Exact predecessor `.24` is frozen; source-matrix acceptance alone is not delivery.
+Exact predecessor `.25` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
 
 ### Cohort 07: naming, hierarchy and scoped authorization

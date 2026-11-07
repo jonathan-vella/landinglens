@@ -52,7 +52,7 @@ class InterviewTests(unittest.TestCase):
 
     def test_bank_specific_requirements_and_blank_explicit_decisions(self):
         bank = question_bank(self.catalog)
-        self.assertEqual(len(bank["questions"]), 24)
+        self.assertEqual(len(bank["questions"]), 25)
         self.assertEqual(
             len(
                 [
@@ -60,6 +60,7 @@ class InterviewTests(unittest.TestCase):
                     for q in bank["questions"]
                     if q["id"]
                     not in {
+                        "agreement-budgets-visibility-billing-governance",
                         "recovery-guest-drift-waf-telemetry",
                         "naming-hierarchy-scoped-authorization",
                     }

@@ -92,6 +92,8 @@ def validate_input_options(args: argparse.Namespace) -> None:
 
 
 def load_evidence(args: argparse.Namespace) -> dict[str, Any]:
+    from .billing_evidence import minimized_evidence as minimized_budgets
+
     validate_input_options(args)
     if args.input == "terraform":
         if args.command == "doctor" and args.snapshots:
@@ -132,7 +134,7 @@ def load_evidence(args: argparse.Namespace) -> dict[str, Any]:
         bundle = read_json(args.source)
     if args.identity_map:
         bundle = apply_identity_map(bundle, read_json(args.identity_map))
-    return validate(bundle, "evidence")
+    return minimized_budgets(validate(bundle, "evidence"))
 
 
 def main() -> int:

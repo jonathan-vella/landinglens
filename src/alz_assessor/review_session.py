@@ -55,7 +55,10 @@ class ReviewSession:
         if catalog["schema_version"] != "1.1":
             raise InputError("Interactive reviews require a content-bound version-1.1 catalog")
         self.scope = scope_id(require(evidence, "scope", str))
-        self.evidence, self.catalog = copy.deepcopy(evidence), copy.deepcopy(catalog)
+        from .billing_evidence import minimized_evidence as minimized_budgets
+
+        self.evidence = minimized_budgets(copy.deepcopy(evidence))
+        self.catalog = copy.deepcopy(catalog)
         self.directory = directory.resolve()
         self.landing_zone, self.max_age_hours, self.clock = landing_zone, max_age_hours, clock
         self.evidence_tiers = evidence_tiers
