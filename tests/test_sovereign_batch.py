@@ -256,6 +256,48 @@ class SovereignBatchTests(unittest.TestCase):
             {"D07.06", "D07.07"},
         )
 
+    def test_checked_delivery_receipt_binds_all_seven_to_actual_merged_implementation(self):
+        ledger = json.loads((REFERENCE / "ledger.json").read_text("utf-8"))
+        receipt = ledger["deliveries"]["09"]
+        self.assertEqual(receipt["pr"], "https://github.com/jonathan-vella/landinglens/pull/152")
+        self.assertEqual(receipt["checked_head"], "224090e0fc4e60d12080d800a01b40ad3fff536e")
+        self.assertEqual(receipt["merge_commit"], "b5da05e9e3fb19873df201e66514be4b9114eadd")
+        self.assertEqual(
+            receipt["checks"],
+            [
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42315872153",
+                "https://github.com/jonathan-vella/landinglens/actions/runs/42315897641",
+            ],
+        )
+        self.assertEqual(
+            receipt["local_installed_suite"], {"tests": 747, "passed": 746, "skipped": 1}
+        )
+        self.assertEqual(
+            receipt["wheel_sha256"],
+            "6e3b14c0838ade2ab8c3bb6e318a5e90ed44befa162467a78899dcb33811c14c",
+        )
+        self.assertEqual(len(receipt["compiler_integration_cases"]), 20)
+        prior_cases = ledger["deliveries"]["25"]["compiler_integration_cases"]
+        self.assertEqual(receipt["compiler_integration_cases"][:-1], prior_cases)
+        self.assertEqual(
+            receipt["compiler_integration_cases"][-1],
+            "test_sovereign_preparation.SovereignPreparationTests."
+            "test_real_bicep_location_and_tag_configuration_without_restore",
+        )
+        earlier = set(self.matrix["preserved_delivery_batches"])
+        historical_prefix = [r for r in ledger["recommendations"] if r["batch"] in earlier | {"09"}]
+        self.assertEqual(len(historical_prefix), 203)
+        self.assertTrue(all(r["status"] == "merged" for r in historical_prefix))
+        own = [r for r in ledger["recommendations"] if r["batch"] == "09"]
+        self.assertEqual({r["guid"] for r in own}, set(OWN.values()))
+        for row in own:
+            self.assertEqual(row["pr"], receipt["pr"])
+            self.assertEqual(row["merge_commit"], receipt["merge_commit"])
+            self.assertIn(
+                "deliveries.09: all eight CI jobs and four compiler artifacts verified",
+                row["runtime_evidence"],
+            )
+
 
 if __name__ == "__main__":
     unittest.main()
