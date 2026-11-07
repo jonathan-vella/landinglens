@@ -1,5 +1,20 @@
 # LandingLens product requirements
 
+## Cohort 07 accepted boundary
+
+The explicit sole slot after actual24/26 checked implementation, receipts and
+final main activates [eight source-specific naming/hierarchy workflows](../../references/recommendation-batches/batch-07.json)
+in builder-derived `.25`. Exact `.24`, every non-own control, original four
+complete objects, all220 prior own rows/26 receipts and fixed251 remain frozen.
+All eight decisions and exceptions remain independently blank and bound.
+Names/valid syntax/partial ancestry cannot establish purpose, authoritative root,
+complete estate depth, approved naming or actual adoption. Default placement
+does not prove existing root-subscription absence; creation authorization is not
+all effective operations. No new live collector/query, Policy interpreter/fetch,
+private payload retention, tenant/permission/settings change or operating assurance
+is added. Exact implementation and checked receipt/final-main gates, not source
+activation or issue status, determine delivery.
+
 ## Cohort 07 preparation boundary
 
 [#154](https://github.com/jonathan-vella/landinglens/issues/154) prepares

@@ -41,9 +41,11 @@ redaction and bounded expansion without adding a test dependency.
 
 ## Assessment workflows
 
-Cohort07's [eight-workflow preparation](../references/preparation/batch-07.json)
-is not registered in the accepted interview bank. Its authored tests inject the
-candidate bank and catalog explicitly; ordinary accepted sessions remain unchanged.
+Use `--question naming-hierarchy-scoped-authorization` for cohort07's
+[eight accepted workflows](../references/recommendation-batches/batch-07.json)
+in `.25`. Its original [preparation](../references/preparation/batch-07.json)
+remains separate; all eight accepted decisions and exceptions start independently
+blank with attribution and scope/content/time/expiry binding.
 Existing raw/local-module Terraform and supplied plans can prepare explicit MG
 keys/parents; pinned ARM/Bicep2020-05-01 can additionally prepare
 `managementGroups/settings/default`. Saved normalized settings must retain that

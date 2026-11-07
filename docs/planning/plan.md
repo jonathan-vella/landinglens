@@ -1,5 +1,59 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 07 accepted integration: 2026-11-07
+
+The explicit sole coordinator slot follows actual24 implementation155/receipt156
+and26 implementation158/receipt159, completed151 and checked final main
+`a2454003de0564de236ca56443cf7f5123d09d0e`. Preserved preparation `93de055`
+reconciles this baseline in `c9d2bcb`; all22 existing genuine compiler cases,
+including operations and recovery, precede the own MG-key/parent/settings case.
+
+The [eight-GUID matrix](../../references/recommendation-batches/batch-07.json)
+and [12 unchanged captures](../../references/recommendation-batches/batch-07-sources.json)
+activate builder-derived catalog/crosswalk `.25`. Exact `.24` catalog bytes:
+`34698f9a9f861bab60b96caa78ed03da2557d7d4f902a595f79191d48c38aedd`;
+crosswalk bytes:
+`b0d6d942aa996ca6c7679317bb4f4965f7f2fbc55ff2391989ce035b07496853`.
+All255GUIDs/fixed251/original four complete objects, every non-own full control,
+all220 prior own rows and26 receipts remain frozen. Counts stay12/200/43 and
+crosswalk51 controls/53 associations. Activation alone leaves220 delivered/
+31 pending until actual checked own delivery.
+
+All eight source-specific independent outcomes and exceptions start blank with
+scope/content/time/expiry binding and attribution. Naming policy/adoption,
+sandbox/platform/connectivity/workload purpose, authoritative tenant/intermediate
+root, complete estate depth and effective operations remain human judgments.
+Relative edges exclude the selected anchor/subscriptions, not an asserted tenant
+root. CAF ideal three-to-four, immutable four-level wording and the six-level
+service bound are not interchangeable. Default settings govern new subscriptions,
+not absence of existing root subscriptions; creation authorization does not prove
+every privileged operation. Missing/partial/ambiguous/stale/denied/unsupported/
+over-bound inputs remain unknown. No new live route, tenant query, Policy fetch/
+interpreter, private payload retention, settings/permissions change or operational
+assurance is introduced. Existing adapters, evaluator, bank, sessions, tiers,
+outputs and private original-time accepted/predecessor replay carry the same
+qualified workflow. Exact own implementation wheel/full suite/static/23-case
+compiler proof, eight-job exact-head/CodeQL/security/review and four downloaded
+matching exercised proofs, normal SHA-bound merge, guarded own-GUID receipt and
+checked final-main publication still gate satisfied #154 closure.
+
+The final own accepted implementation wheel SHA256 is
+`366c4aefbc1adf63a3befc9003440c6c1a0d74835c6086f157bda6b0bd81cb5b`.
+All166 package members match checkout, wheel and the dedicated outside-checkout
+site-packages installation importing `.25`. Its full suite ran834 tests:
+833 passed with only the original Windows symlink-privilege skip. All28 own
+preparation/accepted cases pass, including registered independent decisions,
+atomic failure/resume, original-time replay and predecessor/candidate rejection.
+The existing compiler exercised all23 cases without skips or restore; proof
+SHA256 `89bb24ad7a82a8e4738bdf0b6dbc7f32d49db06e29897fdcfe7cd3e37e548ddb`.
+All51 source files pass static typing; formatting/lint, dependency consistency
+and551 local documentation links pass. The initial834-test source run found
+one missed historical interview-bank count assertion; the corrected assertion
+pins the original22 questions after excluding both later additions, while
+requiring24 current questions. The failed run is not final acceptance evidence.
+Preparation wheels/proofs remain separate and do not replace these post-slot
+implementation proofs or the remote merge/delivery gates.
+
 ## Cohort 07 independent preparation: 2026-11-07
 
 [#154](https://github.com/jonathan-vella/landinglens/issues/154) prepares the

@@ -8,8 +8,8 @@ are in the [plan](planning/plan.md).
 
 ## Evidence and outcomes
 
-Cohort07 [preparation](../references/preparation/batch-07.json) is not accepted
-activation or delivery. Relative MG-edge depth below a supplied anchor does not
+Cohort07 [accepted source-qualified support](../references/recommendation-batches/batch-07.json)
+in `.25` is not operating assurance or receipted delivery. Relative MG-edge depth below a supplied anchor does not
 designate tenant root or measure the full estate; CAF ideal flatness and the
 six-level service limit are different. Explicit default placement concerns new
 subscriptions, not existing root membership. The creation-authorization boolean

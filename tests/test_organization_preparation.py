@@ -159,7 +159,8 @@ class OrganizationPreparationTests(unittest.TestCase):
         self.assertEqual(GUIDS, set(OWN.values()))
         self.assertEqual(matrix["review_state"], "source-reviewed-preparation-not-accepted")
         self.assertNotIn("catalog_version", matrix)
-        self.assertNotIn(matrix["interview"]["id"], BANK)
+        question = matrix["interview"]
+        self.assertEqual(question, {"id": question["id"], **BANK[question["id"]]})
         self.assertEqual(BANK_VERSION, load_catalog()["catalog_version"])
         self.assertEqual({r["upstream_id"]: r["guid"] for r in matrix["recommendations"]}, OWN)
         sources = json.loads((PREPARATION / "batch-07-sources.json").read_text("utf-8"))["sources"]
