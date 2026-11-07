@@ -1,0 +1,99 @@
+{
+    "kind": "offline-accelerator-validation-provenance",
+    "reviewed_date": "2026-11-07",
+    "repository": "https://github.com/Azure/alz-bicep-accelerator",
+    "revision": "88dcafa6afcd57e1b3ccd772a81c88bd29ae2ac2",
+    "archive_sha256": "d8334226b08802b9e8b1839016c73c120bd0c6e24c8f1aae983c5a22376484fd",
+    "license": "MIT",
+    "license_url": "https://github.com/Azure/alz-bicep-accelerator/blob/88dcafa6afcd57e1b3ccd772a81c88bd29ae2ac2/LICENSE",
+    "compiler_version": "0.47.16",
+    "sources_unchanged": true,
+    "fictional_parameters": true,
+    "azure_login_deployment_or_live_collection": false,
+    "acquisition": "Explicit user-approved public registry restore into a dedicated cache; no-restore compilation thereafter",
+    "templates": [
+        {
+            "path": "templates/core/logging/main.bicep",
+            "sha256": "b19fdc4d7514a155a059a9c3390c53fd73be18897c768cdd11a490c907273462",
+            "compiled_sha256": "8517fa717627c9f54cbb7af4cefa47020c126a9a5c56336783780cf0473f6866",
+            "resource_records": 16,
+            "known_records": 5,
+            "unknown_records": 11,
+            "all_12_automated_outcomes": "unknown"
+        },
+        {
+            "path": "templates/networking/hubnetworking/main.bicep",
+            "sha256": "498ed4dd5d8fd7c5b5eac94711b714c815b5e3ae85c76ff0bde9773237c0e63a",
+            "compiled_sha256": "de77addc6a0cbccb3a42b6bb15683943c3d4ace3df7e7531ec1563ca4138c3c1",
+            "resource_records": 2,
+            "known_records": 2,
+            "unknown_records": 0,
+            "all_resource_identities": "unresolved",
+            "all_12_automated_outcomes": "unknown"
+        }
+    ],
+    "modules": [
+        {
+            "reference": "br:mcr.microsoft.com/bicep/avm/ptn/alz/ama:0.2.0",
+            "manifest_digest": "sha256:5dccd9643bdbdc2d739ea1cd79b5203080ea120719b520f4cabe7aa4e9f768e6"
+        },
+        {
+            "reference": "br:mcr.microsoft.com/bicep/avm/ptn/network/private-link-private-dns-zones:0.7.2",
+            "manifest_digest": "sha256:ca6c28942185972960d6c10bb45ee50efcac624ffaea6a85f2bf518b20cf86b1"
+        },
+        {
+            "reference": "br:mcr.microsoft.com/bicep/avm/res/automation/automation-account:0.17.1",
+            "manifest_digest": "sha256:3db7ab5684d9a0cec37d49416c6b3b6553b1c6e06fbf77a32b5c6865422794a0"
+        },
+        {
+            "reference": "br:mcr.microsoft.com/bicep/avm/res/network/azure-firewall:0.9.2",
+            "manifest_digest": "sha256:dcf9c022a1f4d943db6ac32af1dfa4c92977a62b6aa73b43566487ed0b2ec350"
+        },
+        {
+            "reference": "br:mcr.microsoft.com/bicep/avm/res/network/bastion-host:0.8.2",
+            "manifest_digest": "sha256:6b553553cff57f2d9158fb0620090ed6ee732c033684800822775e84b75fd992"
+        },
+        {
+            "reference": "br:mcr.microsoft.com/bicep/avm/res/network/ddos-protection-plan:0.3.2",
+            "manifest_digest": "sha256:e00317c3111d5dd3319ddabf3e5fc7f1c76452c365a42f06c9068f58267748ed"
+        },
+        {
+            "reference": "br:mcr.microsoft.com/bicep/avm/res/network/dns-resolver:0.5.6",
+            "manifest_digest": "sha256:f07ce4933d973a4547ba4037f856157e3ee48287778fb8c2e9a283e4d3844cbb"
+        },
+        {
+            "reference": "br:mcr.microsoft.com/bicep/avm/res/network/firewall-policy:0.3.4",
+            "manifest_digest": "sha256:6feb3eccace0db71538af40c89df3f3a8302ef8f7f5eba68c8ff47e882d8f68a"
+        },
+        {
+            "reference": "br:mcr.microsoft.com/bicep/avm/res/network/network-security-group:0.5.2",
+            "manifest_digest": "sha256:2114c63c1182edc5646cb2c10dda7f6641d5acee7fdf857f6de4632ce3cb3183"
+        },
+        {
+            "reference": "br:mcr.microsoft.com/bicep/avm/res/network/route-table:0.5.0",
+            "manifest_digest": "sha256:59067d0b5aed599eb7b1e778cab5961630d82115e64ffba22c7afe72f194a590"
+        },
+        {
+            "reference": "br:mcr.microsoft.com/bicep/avm/res/network/virtual-network:0.7.2",
+            "manifest_digest": "sha256:0e56bad0810f3f1d17306c6e29500664b8267322bed5efd730ac25fc3d450e1f"
+        },
+        {
+            "reference": "br:mcr.microsoft.com/bicep/avm/res/network/virtual-network-gateway:0.10.1",
+            "manifest_digest": "sha256:1979ae0c8a94b3232264fd8c28ba39ad53f186985775f2e35d234c2fcf5f37b8"
+        },
+        {
+            "reference": "br:mcr.microsoft.com/bicep/avm/res/operational-insights/workspace:0.14.2",
+            "manifest_digest": "sha256:28edf9e18ff710ceb993b573f71b7458b4341e647e6e50ef8703845c3e9cc2cd"
+        },
+        {
+            "reference": "br:mcr.microsoft.com/bicep/avm/res/resources/resource-group:0.4.3",
+            "manifest_digest": "sha256:8784581eefdadf4bb24cd6d5dc7d1f5f1699267d0886ffcf840faef6b8ab0c98"
+        }
+    ],
+    "limitations": [
+        "Partial interpretation is not full accelerator compatibility.",
+        "Known resource records can contain unknown properties or lack resolved identities.",
+        "Variable copies, named indices, lambdas, module outputs, runtime expressions and newer unreviewed APIs remain gaps.",
+        "No deployed state, estate completeness, monitoring, routing or compliance assurance is established."
+    ]
+}

@@ -369,6 +369,18 @@ class Expressions:
             return all(args) if name == "and" else any(args)
         if name == "length" and len(args) == 1 and isinstance(args[0], (dict, list, str)):
             return len(args[0])
+        if name == "empty" and len(args) == 1 and isinstance(args[0], (dict, list, str)):
+            return len(args[0]) == 0
+        if name == "createobject":
+            keys = args[::2]
+            if (
+                len(args) % 2
+                or len(keys) > 256
+                or not all(isinstance(key, str) for key in keys)
+                or len({key.casefold() for key in keys}) != len(keys)
+            ):
+                return unknown("invalid_or_overbound_arm_object")
+            return dict(zip(keys, args[1::2], strict=True))
         if (
             name == "resourcegroup"
             and not args
@@ -461,6 +473,13 @@ def arm_source(
         for label, entry in items:
             if not isinstance(entry, dict):
                 raise InputError("ARM resource declaration must be an object")
+            if "existing" in entry and type(entry["existing"]) is not bool:
+                raise InputError("ARM existing resource marker must be a boolean")
+            if entry.get("existing") is True:
+                diagnostics.append(
+                    {"reason": "existing_resource_reference_not_inventory", "address": label}
+                )
+                continue
             condition = context.value(entry.get("condition", True))
             if condition is False:
                 continue
@@ -532,14 +551,38 @@ def arm_source(
                         )
                         continue
                     bindings = properties_value.get("parameters", {})
-                    if not isinstance(bindings, dict) or any(
-                        not isinstance(value, dict) for value in bindings.values()
-                    ):
+                    if not isinstance(bindings, dict):
                         raise InputError("Nested deployment parameters must contain objects")
-                    child = {
-                        key: context.value(value.get("value", unknown("nested_parameter_missing")))
-                        for key, value in bindings.items()
-                    }
+                    child = {}
+                    for key, binding in bindings.items():
+                        if isinstance(binding, dict):
+                            child[key] = context.value(
+                                binding.get("value", unknown("nested_parameter_missing"))
+                            )
+                        elif (
+                            isinstance(binding, str)
+                            and binding.startswith("[")
+                            and binding.endswith("]")
+                        ):
+                            descriptor = context.value(binding)
+                            if unresolved(descriptor):
+                                child[key] = unknown("nested_parameter_binding_unresolved")
+                                diagnostics.append(
+                                    {
+                                        "reason": "nested_parameter_binding_unresolved",
+                                        "address": logical,
+                                    }
+                                )
+                            elif isinstance(descriptor, dict):
+                                child[key] = descriptor.get(
+                                    "value", unknown("nested_parameter_missing")
+                                )
+                            else:
+                                raise InputError(
+                                    "Nested deployment parameters must contain objects"
+                                )
+                        else:
+                            raise InputError("Nested deployment parameters must contain objects")
                     walk(inner, child, child_scope, logical + ".", depth + 1)
                     continue
                 arm_type = kind if isinstance(kind, str) else "unknown"
