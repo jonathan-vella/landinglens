@@ -1,5 +1,8 @@
 # LandingLens implementation backlog
 
+This is a historical delivery record; its tables preserve the recorded state
+and test dependencies. Check linked issues for current status.
+
 This backlog tracks the complete [implementation plan](plan.md) and
 [product requirements](prd.md). Each work item links to its GitHub issue;
 issue status is the source of truth. Dependencies describe implementation

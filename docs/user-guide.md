@@ -1,26 +1,35 @@
-# LandingLens User Guide
+# LandingLens user guide
 
-This guide walks through the end-to-end workflow for assessing, reviewing, and documenting an Azure Landing Zone (ALZ) with LandingLens (`alz-assessor`).
+LandingLens assesses **supplied** Azure Landing Zones configuration or saved
+observations. Its reports are advisory: they are not a compliance determination,
+an Azure deployment, or a test of effective security and operations. Start with
+the [offline quickstart](../README.md#try-an-offline-assessment), then use this
+guide with your own inputs.
 
-For evidence boundaries and non-goals, read [What LandingLens does and doesn't prove](what-landinglens-proves.md). For JSON schema details, see [Contracts](contracts.md) and the [Automation matrix](automation-matrix.md).
+## Understand the results
 
----
+- **Planned** evidence describes supported declarations in Terraform, ARM or
+  Bicep. It does not prove what was deployed or how it operates.
+- **Observed** evidence describes collected facts within a stated scope and
+  time. A partial, stale or inaccessible inventory is not proof of absence.
+- **Unknown** is not a pass. Manual decisions and exceptions remain separate
+  from technical results; an exception does not turn a failure into a pass.
+- With `--evidence-tiers`, **Verified** means an accepted configuration
+  predicate had sufficient current evidence; it includes both passes and
+  failures. **Signal** is context for review, not a pass. **Needs decision**
+  and **Manual** identify remaining review work.
+- The packaged catalog has 255 checklist GUIDs. Reports may contain multiple
+  result rows per recommendation and target. Completion and the pass rate
+  among assessed results use different denominators.
 
-## 1. Core Concepts
+For detailed boundaries and source-qualified caveats, see
+[what LandingLens does and doesn't prove](what-landinglens-proves.md) and the
+[automation matrix](automation-matrix.md).
 
-- **Complete Catalog Visibility**: Every assessment evaluates all **255 active ALZ checklist recommendations** across 8 design areas (`12` automated configuration predicates, `200` assisted recommendations with prepared machine context, and `43` manual recommendations).
-- **Four Evidence Tiers (`--evidence-tiers`)**:
-  - `Verified`: Deterministic configuration predicate evaluated against current, scoped machine evidence (`pass` or `fail`).
-  - `Signal`: Machine context (prepared resource facts, Azure Policy states, PSRule/SARIF scanner runs, or allowlisted ARG queries) is present to assist human review, but never auto-passes a control.
-  - `Needs decision`: Assisted control awaiting scoped evidence or human review.
-  - `Manual`: Process, organizational, or operational recommendation requiring human attestation.
-- **Explicit Scope & Content Binding**: Human decisions (`manual` and `exceptions`) are bound to an explicit Azure scope (`subscription`, `resourceGroup`, or `managementGroup`), a `control_sha256` content hash, and a validity window (`valid_from` to `valid_until`).
+## Install
 
----
-
-## 2. Installation & Setup
-
-Use Python 3.12 or 3.13:
+Python 3.12 and 3.13 are supported. From the repository root, using your
+approved package index:
 
 ```powershell
 python -m venv .venv
@@ -28,156 +37,197 @@ python -m venv .venv
 .venv\Scripts\alz-assessor catalog validate
 ```
 
----
+The commands below assume the environment is activated or `alz-assessor` is on
+your path. Windows examples use backslashes; on Linux use `.venv/bin/activate`
+and forward slashes. Normal assessment and reporting need no Azure credentials.
 
-## 3. Step 1: Preflight & Normalize Inputs (`doctor` and `assess`)
+## Prepare inputs and assess
 
-Run `alz-assessor doctor` before assessing to verify paths, module snapshot hashes, provider versions, and parameter files offline without executing Terraform, Bicep, or Azure logins.
+Start with `doctor` to check the selected input and prerequisites. Its `ready`,
+`partial` and `blocked` states describe input readiness, not Azure readiness.
+Use the same scope and input options for assessment. Findings and partial
+evidence do not themselves cause a nonzero exit; invalid input or an
+unrecoverable error returns 2.
 
-### Terraform Plan JSON (Recommended for Terraform)
+### Observed evidence
 
-Supports plans up to **32 MB** and **2,500 managed resources** (including default storage blob-service children):
+The offline fixture can be assessed at its recorded time:
+
+```powershell
+alz-assessor doctor tests\fixtures\slice\observed.json --input evidence
+alz-assessor assess tests\fixtures\slice\observed.json --input evidence --at 2026-11-04T00:00:00Z --evidence-tiers --output observed.assessment.json
+```
+
+Selecting a historical evaluation time reproduces a historical example; it
+does not make the evidence current. For your own evidence, omit `--at` to
+evaluate freshness at the current time. Optional live `collect` is a separate
+operation requiring an existing ARM token and **separate authorization for the
+exact scope and operations**. See [collection boundaries](collection.md); the
+historical pilot is not authorization for your environment. Do not put tokens
+in commands, documents, reports or chat.
+
+### Terraform, ARM and Bicep
+
+For Terraform, prefer a separately created plan JSON. LandingLens reads it; it
+does not run Terraform:
 
 ```powershell
 alz-assessor doctor plan.json --input terraform-plan --provider-version 4.50.0 --scope /subscriptions/00000000-0000-0000-0000-000000000001
 alz-assessor assess plan.json --input terraform-plan --provider-version 4.50.0 --scope /subscriptions/00000000-0000-0000-0000-000000000001 --evidence-tiers --evidence-output planned.evidence.json --output planned.assessment.json
 ```
 
-### Raw Terraform with Local Snapshots
+For raw Terraform, use explicit local snapshots and authorized roots:
 
 ```powershell
-alz-assessor doctor .\infra --input terraform --snapshots snapshots.json --authorize-root .\modules --provider-version 4.50.0 --scope /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-hub
-alz-assessor assess .\infra --input terraform --snapshots snapshots.json --authorize-root .\modules --provider-version 4.50.0 --scope /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-hub --evidence-tiers --output tf.assessment.json
+alz-assessor doctor .\infra --input terraform --snapshots snapshots.json --authorize-root .\modules --provider-version 4.50.0 --scope /subscriptions/00000000-0000-0000-0000-000000000001
+alz-assessor assess .\infra --input terraform --snapshots snapshots.json --authorize-root .\modules --provider-version 4.50.0 --scope /subscriptions/00000000-0000-0000-0000-000000000001 --evidence-tiers --output terraform.assessment.json
 ```
 
-### ARM Templates & Bicep (`--parameters` Placeholder Preflight)
-
-When `--parameters` is supplied for `arm` or `bicep`, `doctor` inspects the JSON parameter file for unresolved ALZ Accelerator placeholders (`{{...}}`) and reports `accelerator_placeholder_unresolved` before compilation or evaluation:
+For ARM JSON, supply parameters when applicable:
 
 ```powershell
-alz-assessor doctor template.json --input arm --parameters parameters.json --scope /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-logging
-alz-assessor assess template.json --input arm --parameters parameters.json --scope /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-logging --evidence-tiers --evidence-output logging.evidence.json --output logging.assessment.json
+alz-assessor doctor template.json --input arm --parameters parameters.json --scope /subscriptions/00000000-0000-0000-0000-000000000001
+alz-assessor assess template.json --input arm --parameters parameters.json --scope /subscriptions/00000000-0000-0000-0000-000000000001 --evidence-tiers --evidence-output arm.evidence.json --output arm.assessment.json
 ```
 
-### Saved Observed Evidence & Read-Only Collection
-
-See [Collection boundaries](collection.md) for explicit-scope read-only collection (`alz-assessor collect`) using an existing bearer token environment variable.
-
----
-
-## 4. Step 2: Compose Multi-Template Estates (`compose`)
-
-Modular ALZ estates typically split management groups, logging, hub networking, and identity across separate templates or subscriptions. Use `alz-assessor compose` to merge `2–20` normalized evidence bundles of the same mode (`planned` or `observed`) into one estate-wide bundle:
+Bicep requires an already-installed standalone compiler and restored local
+modules; replace the example compiler path with your own:
 
 ```powershell
-alz-assessor compose mg.evidence.json logging.evidence.json hub.evidence.json --scope /providers/Microsoft.Management/managementGroups/alz --output estate.evidence.json
+alz-assessor doctor main.bicep --input bicep --compiler C:\path\to\bicep.exe --parameters parameters.json --scope /subscriptions/00000000-0000-0000-0000-000000000001
+alz-assessor assess main.bicep --input bicep --compiler C:\path\to\bicep.exe --parameters parameters.json --scope /subscriptions/00000000-0000-0000-0000-000000000001 --evidence-tiers --output bicep.assessment.json
+```
+
+Compilation uses `--no-restore`. LandingLens does not install compilers,
+restore modules, log in, run Terraform, or deploy. Identity maps and plan/source
+associations must be explicitly bound to supplied inputs; names alone are not
+identities. See the [technical reference](technical-reference.md#assessment-workflows).
+
+The [multi-region Bicep example](examples/bicep-multiregion-alz/README.md)
+provides fictional governance, logging, firewall and VPN declarations and
+offline baseline, defect and remediation scenarios. Its results are planned,
+not observed Azure evidence.
+
+### Compose and enrich evidence
+
+To combine compatible normalized evidence bundles in an explicitly selected
+scope, use `compose` before assessment:
+
+```powershell
+alz-assessor compose logging.evidence.json hub.evidence.json --scope /subscriptions/00000000-0000-0000-0000-000000000001 --output estate.evidence.json
 alz-assessor assess estate.evidence.json --input evidence --evidence-tiers --output estate.assessment.json
 ```
 
-- Template-local `logical_id` and `artifact_hashes` keys are automatically namespaced (`bundle-1:...`, `bundle-2:...`).
-- Resources sharing the same canonical `arm_id` with identical normalized facts are deduplicated; conflicting declarations for the same `arm_id` emit a `conflicting_composed_resource` diagnostic and set `inventory_complete: false`.
+Composition requires compatible modes and scope relationships; unrelated
+subscriptions are not automatically one estate. Conflicts and unsupported
+relationships remain explicit. Preserve the normalized evidence files if you
+need review, composition or replay; an assessment report is not a replacement.
 
----
-
-## 5. Step 3: Enrich Assessments & Compare Drift (`assess`, `compare`)
-
-### Management-Group Archetype Suggestions (`--archetypes`)
-
-Attach an explicit management-group archetype binding file (`alz`, `platform`, `landingzones`, `corp`, `online`, `sandbox`, `security`, `management`, `connectivity`, `identity`) alongside `--evidence-tiers` to surface nonbinding `applicability_suggestions` (`requires_confirmation: true`):
+Saved policy and scanner exports can provide Signals:
 
 ```powershell
-alz-assessor assess estate.evidence.json --input evidence --evidence-tiers --archetypes archetypes.json --output estate.assessment.json
+alz-assessor assess observed.evidence.json --input evidence --evidence-tiers --policy-evidence policy-export.json --scanner-evidence scanner-export.json --output enriched.assessment.json
 ```
 
-### Policy, Scanner, and Query Signals
+`scanner-export.json` must be the documented **scanner-export wrapper**, with
+provenance, mode, scope and explicit result-to-resource bindings; raw SARIF or
+PSRule output alone is not accepted. The policy export also has a specific
+wrapper and scope. See the [scanner](contracts.md#saved-scanner-evidence) and
+[policy](contracts.md#policy-export-and-signals) contracts. Scanner and Policy
+Signals are not automated passes. Only explicitly allowlisted queries can be
+collected separately; see [query evidence](contracts.md#allowlisted-query-evidence).
 
-```powershell
-alz-assessor assess estate.evidence.json --input evidence --evidence-tiers --policy-evidence policy-export.json --scanner-evidence psrule.sarif --output estate.assessment.json
-```
-
-### Planned vs. Observed Comparison (`compare`)
+### Compare planned and observed
 
 ```powershell
 alz-assessor compare planned.assessment.json observed.assessment.json --output comparison.assessment.json
 ```
 
----
+Comparison requires compatible assessment contracts and uses explicit identity,
+scope and freshness bindings. Missing or stale bindings can yield
+`not_comparable`, not drift. Use `--at` only to reproduce a historical comparison.
+Minimized presentations cannot be compared.
 
-## 6. Step 4: Triage & Record Human Decisions (`review`, `interview`)
+## Review decisions
 
-### Interactive Local Review Workspace (`review serve`)
-
-Launch the loopback-only review workspace from a saved normalized evidence bundle:
+The local review workspace starts from **normalized evidence**, not a rendered
+assessment:
 
 ```powershell
 alz-assessor review serve estate.evidence.json --directory private-reviews --evidence-tiers
+alz-assessor review serve private-reviews\revision-0002 --resume --directory resumed-reviews
 ```
 
-Key workspace features:
-- **Design-Area Progress Sidebar**: Click any design area to filter the queue; visual progress bars track `(total - remaining) / total` completion.
-- **Interactive Queue Cards & Filters**: Filter by search text, design area, evidence tier (`Verified`, `Signal`, `Needs decision`, `Manual`), and severity (`High`, `Medium`, `Low`). Navigate with mouse clicks or `Alt+Up` / `Alt+Down`.
-- **3-Tab Workflow Switcher**:
-  1. **Single control**: Inspect structured prepared resource facts/subchecks, click **Insert prepared evidence summary** to cite machine context in `#evidence`, and save a `manual` or `exceptions` decision. Reviewer label and validity dates stay sticky when moving to the next unreviewed control.
-  2. **Batch triage**: Record explicit per-control outcomes across up to **50** eligible `signal`, `needs_decision`, or `manual` controls in one atomic revision.
-  3. **Guided interview**: Answer any of the **27** multi-control architecture questions (`question_bank`), review inline per-control evidence requirements, attach optional per-control `note` annotations (`<= 1,000` chars), and compile separate content-bound decisions.
+Inspect the queue and evidence, then explicitly provide the decision, reviewer,
+rationale, supporting evidence and validity. Bulk review and guided interviews
+still require separate explicit outcomes. Saves create immutable revisions;
+resume verifies saved hashes and preserves original evidence times. Use a new
+directory, keep the loopback capability URL and files private, and stop the
+server with **Stop local review** or Ctrl+C.
 
-Resume a previous session directory safely (verifying all saved file hashes):
+For file-based review, `review prepare` creates a blank scoped template;
+`review validate` checks the completed record, and `assess --manual` or
+`--exceptions` imports it. `interview inspect`, `interview prepare` and
+`interview apply` support multi-control questions. Review migration across
+catalogs is available with `review migrate`. See
+[review contracts](contracts.md#review-workspace-version-10) and the
+[technical reference](technical-reference.md#identity-manual-evidence-and-optional-plans).
 
-```powershell
-alz-assessor review serve private-reviews\revision-0003 --resume --directory resumed-reviews
-```
+## Render and explore
 
-### CLI Interview & Review Commands
-
-```powershell
-alz-assessor interview inspect
-alz-assessor interview prepare estate.assessment.json --question private-service-paths --scope /subscriptions/00000000-0000-0000-0000-000000000001 --output interview.template.json
-alz-assessor interview apply completed-interview.json --output manual.json
-```
-
-### Migrate Reviews Across Catalog Updates (`review migrate`)
-
-When upgrading to a newer catalog version, carry forward unchanged bound reviews automatically and flag controls whose wording or requirements changed:
+Render a saved assessment in the format you need:
 
 ```powershell
-alz-assessor review migrate manual.json --from-catalog old-catalog.json --to-catalog new-catalog.json --scope /subscriptions/00000000-0000-0000-0000-000000000001 --output migrated-manual.json
-```
-
-If a control's `control_sha256` changed between catalogs, inspect the field diff in `migrated-manual.json` (`migration.records`) and re-run with `--confirm-control <CONTROL_ID>` after verifying your decision still holds.
-
----
-
-## 7. Step 5: Render Deliverables & Explore in Canvas
-
-### Render Reports & Trackers (`render`)
-
-```powershell
-# Standalone HTML report (smart default collapse for non-failing controls, click-to-filter heatmap)
-alz-assessor render estate.assessment.json --format html --output report.html
-
-# Redacted public/shareable HTML report (strips scopes, resource IDs, reviewer names, and rationales)
-alz-assessor render estate.assessment.json --format html --minimize --output report.minimized.html
-
-# Markdown report (valid Markdown tables per design area + attributed review rationale)
+alz-assessor render estate.assessment.json --format html --minimize --output report.html
 alz-assessor render estate.assessment.json --format markdown --output report.md
-
-# CSV and native Excel (.xlsx) trackers (includes Reviewer, Review rationale, and Review valid until columns)
-alz-assessor render estate.assessment.json --format csv --output tracker.csv
-alz-assessor render estate.assessment.json --format xlsx --output tracker.xlsx
+alz-assessor render estate.assessment.json --format json --output report.json
+alz-assessor render estate.assessment.json --format csv --minimize --output tracker.csv
+alz-assessor render estate.assessment.json --format xlsx --minimize --output tracker.xlsx
 ```
 
-### Portable Browser Report Canvas (`tools/build_report_canvas.py`)
+XLSX requires a new output file. SARIF and `pr-summary` are also available for
+advisory CI; the [example workflow](examples/advisory-pr-workflow.yml) does not
+grant repository or code-scanning permissions.
 
-Build a read-only multi-report explorer supporting `planned`, `observed`, and `comparison` assessments:
+### Portable report canvas
+
+Build a read-only explorer from one to eight saved **non-minimized** planned,
+observed or comparison assessments:
 
 ```powershell
-python tools\build_report_canvas.py --report "Planned Hub" planned.assessment.json --report "Observed Hub" observed.assessment.json --report "Drift Comparison" comparison.assessment.json --output-directory report-preview
+python tools\build_report_canvas.py --report "Planned" planned.assessment.json --report "Observed" observed.assessment.json --output-directory report-preview
 ```
 
-Open `report-preview\index.html` to filter by **Outcome**, **Design area**, **Severity**, **Evidence tier**, and **Comparison** (`drift`, `match`, `absent`, `not_comparable`), navigate with `ArrowUp`/`ArrowDown` and `/`, and inspect privacy-safe review status badges.
+Open `report-preview\index.html` in a browser or Copilot's Browser canvas.
+Filters and navigation change the view, not the results or decisions. The
+preview includes minimized presentations and HTML reports. Resource-record
+counts are unavailable when the saved report does not retain those arrays;
+this is not a count of zero. Use a new output directory. Add `--fictional`
+only for demonstration inputs.
 
-### Native GitHub Copilot App Canvas Extension (`.github/extensions/landinglens-canvas/`)
+### Native Copilot canvas
 
-When working inside the GitHub Copilot App, the repository includes a project-scoped canvas extension (`landinglens` / **LandingLens ALZ Workspace**):
-- Supports live agent actions: `load_assessment`, `filter_findings`, `select_control`, and `stage_decision` (non-committing draft staging labeled **Draft — not saved / not approved**).
-- Uses a capability-token-gated loopback server with Server-Sent Events (`/events`), strict nonce-backed CSP, and Rampa theme tokens.
+In the GitHub Copilot App, open the repository's **LandingLens ALZ Workspace**
+canvas and ask Copilot to load a saved assessment by path. The canvas can
+filter findings and select a control. Its `stage_decision` action creates a
+**draft, not saved or approved**; use the review workspace or file-based
+workflow to validate and persist actual decisions. Opening the canvas without
+loading an assessment does not populate it.
+
+## Privacy and troubleshooting
+
+Full evidence and reviews may contain resource identities, paths, topology,
+reviewer names and review text. Treat them and the local capability URL as
+private. `--minimize` removes selected sensitive fields for presentation, but
+is **not** a guarantee of anonymity; inspect output before sharing. A minimized
+presentation cannot establish identity for comparison or replay, and cannot be
+used as the portable canvas's source assessment. Replay bundles also retain
+scoped identities and are not anonymous.
+
+If `doctor` reports `partial`, inspect its diagnostics rather than assuming
+complete coverage. Missing compiler modules, unsupported expressions, absent
+identity bindings and stale evidence remain unknown. For a reason code, run
+`alz-assessor explain REASON`; use `--format json` for machine-readable output.
+If a preview or XLSX destination exists, choose a new path. For detailed
+schemas, limits and failure handling, see [contracts](contracts.md),
+[collection](collection.md) and the [technical reference](technical-reference.md).

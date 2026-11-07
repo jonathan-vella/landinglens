@@ -746,11 +746,8 @@ def arm_source(
             child_scope = target_scope
             if "scope" in entry:
                 explicit = context.value(entry["scope"])
-                if (
-                    isinstance(explicit, str)
-                    and explicit.lower().startswith(
-                        "microsoft.management/managementgroups/"
-                    )
+                if isinstance(explicit, str) and explicit.lower().startswith(
+                    "microsoft.management/managementgroups/"
                 ):
                     explicit = "/providers/" + explicit
                 child_scope = scope_id(explicit) if isinstance(explicit, str) else None

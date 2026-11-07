@@ -42,6 +42,14 @@ def build_preview(
         evidence = original.get("evidence", [])
         if not evidence:
             raise InputError("Saved assessment requires at least one evidence bundle")
+        resource_count: int | None = 0
+        for bundle in evidence:
+            if "resources" not in bundle:
+                resource_count = None
+            elif not isinstance(bundle["resources"], list):
+                raise InputError("Assessment evidence resources must be an array when present")
+            elif resource_count is not None:
+                resource_count += len(bundle["resources"])
         model = report_model(original, minimize=True)
         rows = []
         for row in sorted(model["results"], key=sort_key):
@@ -120,7 +128,7 @@ def build_preview(
             "modeSummary": mode_summary,
             "rows": rows,
             "coverage": model["coverage"],
-            "declaredResources": sum(len(bundle["resources"]) for bundle in evidence),
+            "declaredResources": resource_count,
             "generatedAt": model["generated_at"],
             "catalogVersion": model["catalog_version"],
             "fullReport": identifier + ".html",

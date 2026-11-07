@@ -1,5 +1,8 @@
 # LandingLens product requirements
 
+This is a historical requirements and delivery record. For current usage, see
+the [user guide](../user-guide.md) and [technical reference](../technical-reference.md).
+
 ## Final cohort 28 accepted boundary
 
 The explicit final sole slot after checked03/21 delivery activates
