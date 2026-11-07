@@ -1,5 +1,27 @@
 # LandingLens product requirements
 
+## Cohort 21 independent preparation boundary
+
+Cohort21/[#160](https://github.com/jonathan-vella/landinglens/issues/160) prepares
+[four assisted and four manual source-specific workflows](../../references/recommendation-batches/preparation-21.json)
+outside accepted activation, after `.24`/220 deliveries and before its explicit
+serialized slot following07/03. All eight decisions stay independently blank,
+attributable, selected, time-bound and exceptable. Existing vault/Policy/role
+helpers and explicit storage key-source/infrastructure/Queue-Table metadata
+support review without new live collection or key/certificate/URI retention.
+Terraform final key source remains unknown when separate CMK configuration is
+unreconciled; no omitted defaults or vault links are invented.
+
+Partner-CA renewal, arbitrary issuer workflows, key rotation and consumer updates
+are distinct; Key Vault is not Managed HSM. MMK/CMK necessity, complete required
+service BYOK compatibility, incident planning, Zero Trust and sovereignty
+requirements remain separate human decisions. Configuration proves no renewal,
+rehearsal, effective delegation/enforcement, complete coverage, maturity or legal
+eligibility. Signals and confirmations never become Verified. No accepted
+source/matrix/bank/catalog/crosswalk/count/history or receipt changes occur until
+the explicit slot and actual delivery gates described in the
+[preparation plan](plan.md#cohort-21-independent-preparation-2026-11-07).
+
 ## Cohort 26 accepted boundary
 
 After checked09/24 delivery and the explicit sole slot, cohort26/#151 activates

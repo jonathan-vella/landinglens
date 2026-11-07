@@ -172,6 +172,7 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
     from .governance_evidence import projected_properties as governance_properties
     from .identity_evidence import IDENTITY_KINDS, identity_summary, role_properties
     from .identity_evidence import projected_properties as identity_properties
+    from .key_lifecycle_evidence import projected_properties as key_properties
     from .logging_evidence import projected_properties as logging_properties
     from .network_policy_evidence import projected_properties as network_policy_properties
     from .operations_evidence import projected_properties as operations_properties
@@ -195,6 +196,7 @@ def tf_properties(kind: str, properties: dict[str, Any]) -> dict[str, Any]:
         )
     )
     result.update(governance_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
+    result.update(key_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(logging_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(platform_health_properties(TF_TYPES.get(kind, kind), properties, terraform=True))
     result.update(recovery_properties(TF_TYPES.get(kind, kind), properties, terraform=True))

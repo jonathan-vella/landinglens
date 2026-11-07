@@ -41,6 +41,25 @@ redaction and bounded expansion without adding a test dependency.
 
 ## Assessment workflows
 
+Cohort21's [preparation matrix](../references/recommendation-batches/preparation-21.json)
+and [reviewed sources](../references/recommendation-batches/preparation-21-sources.json)
+are not accepted catalog or interview-bank activation. Four assisted and four
+manual decisions separately cover incident planning, Zero Trust, public-CA
+renewal, key/certificate rotation, vault delegation/Policy, MMK/CMK choice,
+sovereignty requirements and complete service BYOK support. Existing vault and
+Policy context and explicit storage keySource/infrastructure/Queue-Table settings
+are configuration only. Terraform inline CMK presence/absence does not reconcile
+separate CMK resources, so final key source remains unknown.
+
+Integrated partner-CA renewal is not arbitrary issuer automation or self-signed
+regeneration. Key rotation is not certificate renewal or confirmed consumer
+updates; storage version refresh is separate. Managed HSM is key-only. No
+configuration or general support table establishes effective privilege,
+enforcement, complete coverage, rehearsed IR, Zero Trust maturity or sovereignty
+eligibility. Every decision and exception stays independently blank. No new live
+route, key/certificate/secret/URI/issuer/principal/incident payload, query, security
+scan or operational change is introduced.
+
 Cohort25's [accepted matrix](../references/recommendation-batches/batch-25.json)
 and [captured source findings](../references/recommendation-batches/batch-25-sources.json)
 define nine separate F01.10-F01.18 reviews and a registered blank interview in

@@ -1,5 +1,66 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 21 independent preparation: 2026-11-07
+
+[#160](https://github.com/jonathan-vella/landinglens/issues/160) prepares exactly
+G01.01/.02 and G02.05/.06/.09/.10/.11/.12 in the
+[eight-GUID matrix](../../references/recommendation-batches/preparation-21.json),
+with [current source provenance](../../references/recommendation-batches/preparation-21-sources.json).
+Baseline is actual main `a2454003de0564de236ca56443cf7f5123d09d0e`,
+catalog/crosswalk `.24`,220 delivered/31 pending/26 receipts. Cohorts07/03
+precede21. This preparation does not register a successor, activate accepted
+source/matrix/bank/catalog/crosswalk/counts/history, open a PR, merge, record
+delivery or close the issue.
+
+Four assisted and four manual workflows keep every source-specific requirement,
+applicability, ownership, operating and exception decision independently blank.
+Legacy incident-response benchmark guidance is qualified by current MCSB;
+Zero Trust extends beyond landing-zone technical settings. Partner-CA renewal
+is not arbitrary imported-CA signing or self-signed regeneration; key rotation,
+certificate renewal and consumer updates are distinct. Managed HSM is key-only.
+Service-specific MMK/CMK/BYOK compatibility and sovereignty necessity remain human
+decisions, never inferred from encryption, location or a general support table.
+
+Existing minimized vault RBAC/network and strict supplied Policy/role/version/
+scope/ancestry helpers are reused. The only new facts are explicit storage
+keySource, infrastructure encryption and Queue/Table key types. Blob/Files CMK
+support does not imply Queue/Table account-key configuration; storage's daily
+version refresh is not key creation or confirmed consumer adoption. Terraform
+inline CMK presence/absence cannot reconcile separately managed CMK resources,
+so final key source remains unknown. No private key reference is retained or
+vault/consumer relationship invented. No key/certificate child type, collector,
+live route, built-in fetch or second Policy interpreter is added.
+
+Offline Terraform/local modules/supplied plan, pinned ARM/existing no-restore
+Bicep and normalized saved/injected evidence feed the existing evaluator,
+interviews/reviews, tiers, reports/trackers, CLI/local sessions and original-time
+private replay. Unsupported, missing, stale, denied, ambiguous and over-bound
+context stays unknown. Signals and human confirmations never manufacture
+Verified. The new compiler fixture proves only explicit storage configuration,
+not security operations, IR rehearsal or legal eligibility.
+
+At the explicit slot, reconcile actual then-current07/03 main, freeze its exact
+predecessor and use existing builders for a unique reviewed accepted successor.
+Preserve all255/fixed251, original four complete objects, historical bytes,
+earlier receipts and every own binding. Fresh own installed-wheel/static/replay,
+exact-head eight platform jobs, CodeQL/security/review and four downloaded matching
+exercised compiler proofs precede normal SHA-bound merge. Guarded actual own-GUID
+receipt publication and checked final-main CI precede satisfied #160 completion.
+Preparation evidence is not delivery.
+
+Preparation verification ran826 tests in both source and own clean
+outside-checkout installed-wheel environments:825 passed, with only the original
+Windows symlink-privilege skip. All23 actual compiler cases exercised without
+skips, preserving all22 predecessors and adding only the genuine storage
+configuration fixture. Formatting/lint,51-file static typing,545 local doc links
+and dependency consistency passed. Exact162-member byte comparison proved
+wheel == dedicated site-packages == workspace. Own wheel SHA256:
+`55d6372ce5ebaef0f126fa2f40f24384d803c4d07d5e58dca0c71ea85382ef4a`.
+After an actual no-index missing-dependency failure, only the three reviewed
+runtime wheels were restored from the configured approved feed; every wheel hash
+matched the reviewed manifest. All113 protected accepted package assets and
+fixed-target/ledger files remain byte-identical to the preparation baseline.
+
 ## Cohort 26 accepted integration: 2026-11-07
 
 The explicit sole coordinator slot follows actual09 implementation152/receipt153

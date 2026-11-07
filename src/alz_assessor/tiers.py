@@ -26,6 +26,8 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
     from .governance_evidence import GUIDS as GOVERNANCE_GUIDS
     from .governance_evidence import resource_in_scope
     from .identity_evidence import HYBRID_GUIDS, RESILIENCE_GUIDS, hybrid_context
+    from .key_lifecycle_evidence import GUIDS as KEY_GUIDS
+    from .key_lifecycle_evidence import configuration_context as key_context
     from .logging_evidence import GUIDS as LOGGING_GUIDS
     from .logging_evidence import resource_paths, scoped_identity
     from .network_evidence import REVIEW_PATHS, review_fact
@@ -72,12 +74,17 @@ def prepared_signal(control: dict[str, Any], bundle: dict[str, Any]) -> bool:
         or topology
         or recovery
         or operations
-        or control["upstream_guid"] in TENANT_GUIDS | HYBRID_GUIDS | SOVEREIGN_GUIDS
+        or control["upstream_guid"] in TENANT_GUIDS | HYBRID_GUIDS | SOVEREIGN_GUIDS | KEY_GUIDS
     ):
         for resource in bundle["resources"]:
             by_id.setdefault((resource.get("arm_id") or "").lower(), []).append(resource)
     for resource in bundle["resources"]:
         if resource["state"] != "known" or resource["resource_type"].lower() not in kinds:
+            continue
+        if control["upstream_guid"] in KEY_GUIDS:
+            context = key_context(resource, by_id, bundle, control["review_fact_paths"])
+            if has_fact(context.get("facts", {})):
+                return True
             continue
         if control["upstream_guid"] in SOVEREIGN_GUIDS:
             context = sovereign_context(resource, by_id, bundle, control["review_fact_paths"])

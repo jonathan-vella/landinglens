@@ -66,6 +66,8 @@ if compiler:
         "test_real_bicep_operations_configuration_without_restore",
         "test_recovery_preparation.RecoveryPreparationTests."
         "test_real_bicep_recovery_guest_sql_waf_configuration_without_restore",
+        "test_key_lifecycle_preparation.KeyLifecyclePreparationTests."
+        "test_real_bicep_storage_encryption_configuration_without_restore",
     ]
     suite = unittest.defaultTestLoader.loadTestsFromNames(cases)
     result = unittest.TextTestRunner(verbosity=2).run(suite)

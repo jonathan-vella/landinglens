@@ -16,6 +16,7 @@ from .diagnostics import REASONS
 from .engine import assess
 from .governance_evidence import replay_properties as governance_properties
 from .identity_evidence import replay_properties as identity_properties
+from .key_lifecycle_evidence import replay_properties as key_properties
 from .logging_evidence import replay_properties as logging_properties
 from .network_evidence import replay_properties
 from .operations_evidence import replay_properties as operations_properties
@@ -176,6 +177,7 @@ def sanitize_evidence(bundle: dict[str, Any]) -> dict[str, Any]:
                     **replay_properties(resource["resource_type"], values),
                     **identity_properties(resource["resource_type"], values),
                     **security_properties(resource["resource_type"], values),
+                    **key_properties(resource["resource_type"], values),
                     **governance_properties(resource["resource_type"], values),
                     **policy_strategy_properties(resource["resource_type"], values),
                     **topology_properties(resource["resource_type"], values),
