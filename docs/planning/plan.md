@@ -59,6 +59,23 @@ sovereign suite then passed on the same wheel without changes. That failed
 attempt is retained, not counted as acceptance; a complete installed rerun and
 all actual CI/compiler/review gates remain mandatory before merge.
 
+Implementation [#166](https://github.com/jonathan-vella/landinglens/pull/166)
+merged normally as `e48718556dceac19f91aa8a2b326155d7de001ec` after final head
+`0a5d37349b871dc4a0a60da28fae79ac77f0de48` passed push42345101958 and
+PR42345149574 (all eight jobs), CodeQL/security/Python/actions analysis and
+fresh zero-feedback/head/base/main gates. All four downloaded matching PR
+artifacts exercise the same25 compiler cases without skips. The final unchanged
+own installed-wheel rerun passed885 tests:884 passed and original Windows
+symlink-privilege skip1; the actual25-case local compiler runner also passed
+without skips. The preceding failed/stopped attempts remain history.
+
+Guarded `deliveries.21` binds every own GUID to actual implementation166,
+head/merge/two checked runs/25 cases/885-test own wheel. Derived totals are
+243 delivered/8 undelivered and29 receipts. All235 prior rows/28 receipts and
+their own bindings remain unchanged. Checked receipt publication and actual
+final-main CI still gate satisfied #160 completion; neither implementation
+merge nor local guarded recording alone is delivery.
+
 ## Cohort 21 independent preparation: 2026-11-07
 
 [#160](https://github.com/jonathan-vella/landinglens/issues/160) prepares exactly
