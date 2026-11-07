@@ -77,6 +77,36 @@ storage context, original-time successor/predecessor replay, atomic failure/resu
 all outputs/CLI and the real existing-fixture compiler wiring. These fresh
 post-slot proofs, not either preparation wheel, supply the later guarded recorder.
 
+### Final implementation and guarded receipt reconciliation
+
+[#168](https://github.com/jonathan-vella/landinglens/pull/168) merged normally as
+`b56af5da04bf7aab74bce7188deebc029c2bd6ce` at2026-11-07T07:39:01Z from exact
+checked head `0269146420ba127d13a5a82a609c5ba3dc56a2ed`. All eight platform jobs
+passed in push42350934974/PR42350947604, plus CodeQL42350945891 and Advanced
+Security42350950799. All11 checks and live head/base/main/comments/reviews/threads
+were refreshed before ready and before normal SHA-bound merge; every feedback
+surface was empty. No admin/force/bypass, auto-merge or settings/protection change.
+
+All four actual PR compiler artifacts were downloaded and identity-checked
+against that run/head, exercising the same26 cases without skips:
+Ubuntu3.12 `13566270937`, Ubuntu3.13 `13565868156`, Windows3.12 `13565928511`,
+Windows3.13 `13565229052`. JSON SHA256:
+`a40e0777b0f97417fc5e8d23fd9aa7d562cd9a489fe021b322714b198ca46541`
+on Ubuntu and
+`d1238f212191ff57e2a3fdf2ba88753320a5db4fab7d8aad022a79d1537bacab`
+on Windows. These are actual matching implementation proofs, not preparation.
+
+The existing guarded recorder verified actual merged168, both exact-head own
+runs, all eight jobs and all four downloaded exercised artifacts before recording
+`deliveries.28`. Every one of the eight own GUIDs binds that actual PR/head/merge/
+runs and own c929 implementation wheel,918 tests/917 passed/original Windows skip1.
+All243 earlier rows/29 receipts and every binding remain unchanged. The actual
+ledger now derives **251 delivered / zero pending / 30 receipts** for the immutable
+fixed251, with no pending-priority row or successor. Dispositions remain12/200/43;
+this is not251 automatic predicates or financial/legal/personnel/sovereign
+compliance assurance. Checked receipt publication and actual final-main CI still
+gate satisfied163 closure; implementation merge or recording alone is not delivery.
+
 ## Cohort 28 merged-budget preparation: 2026-11-07
 
 The coordinator's bounded preparation-only unblock verifies actual

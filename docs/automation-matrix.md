@@ -26,9 +26,16 @@ personnel, runtime or sovereignty assurance is manufactured.
 
 Only D07.06/.07's existing allowlisted query Signals are executable, and none was
 run. No new live read, collector, query, deployment, contact/alert, permission,
-financial or confidential-data action is introduced. Implementation merge,
-guarded own-GUID receipt and checked receipt/final-main publication still gate
-delivery of the last8 targets; activation alone leaves243 delivered/8 pending.
+financial or confidential-data action is introduced.
+
+Implementation [#168](https://github.com/jonathan-vella/landinglens/pull/168)
+merged normally after all eight exact-head jobs, CodeQL/security/review and four
+downloaded matching26-case compiler proofs. Guarded `deliveries.28` binds its
+actual head/merge/runs/918-test own wheel to all eight GUIDs, deriving
+**251 delivered / 0 pending / 30 receipts** while preserving every prior binding.
+No stale pending-priority row or successor remains. Checked receipt publication
+and actual final-main CI gate satisfied completion;251 own-receipted targets
+are not251 automatic checks or an assertion of actual compliance.
 
 ## Cohort 21: incident response, Zero Trust and key lifecycle
 
