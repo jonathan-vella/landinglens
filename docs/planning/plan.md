@@ -35,6 +35,32 @@ gate the normal SHA-bound implementation merge. Guarded actual own-GUID recordin
 checked receipt publication and actual final-main CI gate satisfied #151 closure.
 Preparation proofs below cannot substitute for these delivery gates.
 
+Implementation [#158](https://github.com/jonathan-vella/landinglens/pull/158)
+merged normally as `67e8cb85c2b8e56438b292baf59a8163e7654933` after final head
+`0a27ad5700f3945a785efb35d4a062b601cdba9f` passed push42327421284 and
+PR42327426873 (all eight jobs), CodeQL42327422652/security42327428474 and
+fresh zero-feedback/head/base/main gates. All four downloaded PR artifacts match
+that head/run and exercise the same22 compiler cases without skips.
+The final own clean outside-checkout installed wheel ran806 tests:805 passed and
+the original Windows symlink-privilege skip1. Format/lint,50-file typing,
+dependency consistency,417 local doc links and exact161-member package byte
+comparison passed. Actual own accepted wheel SHA256:
+`00c3eb05a81acf7dbe13acca096169c6ccec16994ed8708c95652ce92d5d4340`.
+
+First accepted head `c9d78e6` and its local suite/push42326808397 failed only the
+stale22-question bank count. The correction pins exact23 and separately retains
+the22 predecessor-question count; no assertion or test was weakened. Obsolete
+PR42326824993 was cancelled. Those runs and earlier preparation proofs remain
+history, not final-head acceptance. Runtime/guest/recovery/security operation
+is still not asserted.
+
+The guarded recorder binds every own GUID through `deliveries.26` to actual
+implementation158/head/merge/two runs/22 cases/806-test own wheel. Derived totals
+are220 delivered/31 undelivered and26 receipts, retaining all212 earlier rows/
+25 receipts and their own bindings unchanged. Checked receipt publication and
+actual final-main CI still gate satisfied #151 closure; neither activation,
+implementation merge nor this local receipt record alone completes delivery.
+
 ## Historical cohort 26 independent preparation: 2026-11-07
 
 [#151](https://github.com/jonathan-vella/landinglens/issues/151) owns exactly the
