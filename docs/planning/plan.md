@@ -54,6 +54,52 @@ requiring24 current questions. The failed run is not final acceptance evidence.
 Preparation wheels/proofs remain separate and do not replace these post-slot
 implementation proofs or the remote merge/delivery gates.
 
+### Cohort 07 implementation and guarded receipt reconciliation
+
+[#161](https://github.com/jonathan-vella/landinglens/pull/161) merged normally as
+`b02116231d76a222b13d1cc375856e883afd81e4` at2026-11-07T03:36:36Z.
+Exact checked head `724244b9dfa5f28c48f1cd459a00458967199835` passed all eight
+push/PR platform jobs in42333701287/42333715145, CodeQL42333712287 and Advanced
+Security42333718319. All11 PR checks and live head/base/main/comments/reviews/
+threads were refreshed both before ready and before normal SHA-bound merge;
+every feedback surface was empty. No admin/force/bypass, auto-merge or
+protection/settings change was used.
+
+All four downloaded exact-head PR compiler artifacts exercised the same23 cases
+without skips: Ubuntu3.12 `13557904526`, Ubuntu3.13 `13559061318`,
+Windows3.12 `13559146640`, Windows3.13 `13559460625`. JSON SHA256:
+`06f956d3ae295abd08fcfea2e6cac46435bda674b78beeefa4268e8c16fd383a`
+on Ubuntu and
+`08fee069c0c3cd032ddd2e3cceb7ed4e94ce6196fc85976c4038d05cbed31a94`
+on Windows. These downloaded proofs match this cohort's actual PR/head, not
+preparation or another cohort's artifacts.
+
+The existing guarded recorder verified actual merged161, both own checked runs,
+all eight platform jobs and all four matching exercised compiler artifacts before
+writing `deliveries.07` and binding every one of the eight actual GUIDs to that
+receipt. Its own implementation wheel is
+`366c4aefbc1adf63a3befc9003440c6c1a0d74835c6086f157bda6b0bd81cb5b`,
+834 tests/833 passed/one original Windows skip. Derived ledger totals are
+**228 delivered / 23 pending / 27 receipts**. All220 earlier rows/26 receipts,
+all255 GUIDs/fixed251/original four full controls, exact historical bytes and
+every own binding remain preserved; dispositions stay12/200/43.
+Checked receipt publication and actual final-main CI, not implementation merge,
+recording, source activation or issue status, determine satisfied #154 completion.
+No new Azure reads, queries, deployment, settings/permissions changes or owner/
+runtime assurances are asserted.
+
+The first receipt-head `00274b5bb09e06326a8e9c8635461efe2a817175` failed all
+eight platform jobs in push42334892706/PR42334908306 because the pending-priority
+table still included delivered cohort07, while its guarded ledger correctly
+derived23 pending GUIDs. CodeQL42334905523 and Advanced Security42334909975
+passed, but that head is not accepted publication evidence. The correction removes
+only the delivered07 pending row and reconciles the current summary to `.25`/
+23 remaining. The unchanged ledger-derived exact-membership assertion now passes;
+no test weakening, receipt/wheel replacement, production code change or bypass.
+Both failed run IDs/logs remain retained as invalidated history. Implementation
+final-main platform42334794664 and CodeQL42334794536 passed independently;
+receipt publication still needs its own fresh exact-head and final-main gates.
+
 ## Cohort 07 independent preparation: 2026-11-07
 
 [#154](https://github.com/jonathan-vella/landinglens/issues/154) prepares the

@@ -53,7 +53,7 @@ owner-authorized increment. Baseline `2026-11-04.2` remains 4 automated /
 
 | Cohort | Scope | Dependencies | Acceptance/delivery |
 |---|---|---|---|
-| 07 / [#154](https://github.com/jonathan-vella/landinglens/issues/154) | Eight fixed C01.01/C02.01-.07 naming/hierarchy/authorization GUIDs | Explicit sole slot after actual24 implementation155/receipt156 and26 implementation158/receipt159, completed151 and checked final main | Reviewed [eight-workflow activation](../../references/recommendation-batches/batch-07.json) in `.25`; exact-head implementation, guarded own-GUID receipt and checked final-main gates remain pending |
+| 07 / [#154](https://github.com/jonathan-vella/landinglens/issues/154) | Eight fixed C01.01/C02.01-.07 naming/hierarchy/authorization GUIDs | Explicit sole slot after actual24 implementation155/receipt156 and26 implementation158/receipt159, completed151 and checked final main | [#161](https://github.com/jonathan-vella/landinglens/pull/161) merged normally after eight jobs, CodeQL/security/review and four23-case compiler proofs; guarded `deliveries.07` binds all eight GUIDs; checked receipt publication and final-main CI determine completion |
 | 26 / [#151](https://github.com/jonathan-vella/landinglens/issues/151) | Eight fixed recovery/redundancy/guest-drift/PaaS-backup/WAF-telemetry GUIDs | Explicit sole coordinator slot after checked09/24 delivery | [#158](https://github.com/jonathan-vella/landinglens/pull/158) merged normally after all eight jobs/CodeQL/security/review and four matching22-case compiler proofs; guarded `deliveries.26` derives220 delivered/31 undelivered/26 receipts. Checked receipt publication/final-main CI gate completion; all212 prior rows/25 receipts remain unchanged |
 | 24 / [#148](https://github.com/jonathan-vella/landinglens/issues/148) | Nine fixed F01.01-.09 workspace/retention/machine/patch/traffic/guardrail GUIDs | Explicit sole slot after actual25 implementation149/receipt150 and09 implementation152/receipt153, completed issues and checked final main | [#155](https://github.com/jonathan-vella/landinglens/pull/155) merged normally after eight jobs, CodeQL/security/review and four21-case compiler proofs; guarded `deliveries.24` binds all nine GUIDs; checked receipt publication/final-main CI gate completion |
 | 09 / [#145](https://github.com/jonathan-vella/landinglens/issues/145) | Seven fixed sovereign organization/region/classification GUIDs | Explicit sole slot after actual10 implementation146/receipt147 and25 implementation149/receipt150, completed issues and checked final main | [#152](https://github.com/jonathan-vella/landinglens/pull/152) merged normally after eight jobs, CodeQL/security/review and four twenty-case compiler proofs; guarded `deliveries.09` binds all seven GUIDs; checked receipt publication/final-main CI gate completion |
@@ -80,10 +80,10 @@ owner-authorized increment. Baseline `2026-11-04.2` remains 4 automated /
 | 17 / [#48](https://github.com/jonathan-vella/landinglens/issues/48) | Nine firewall GUIDs; duplicate D07.12 entries remain distinct | Merged cohort 01, actual source review, reviewed network schemas | [#49](https://github.com/jonathan-vella/landinglens/pull/49) merged; all eight checks passed, exact installed suite and all four CI compiler integrations exercised; issue closed |
 | 18 / [#50](https://github.com/jonathan-vella/landinglens/issues/50) | Nine TLS/resilience/private-connectivity GUIDs | Merged cohort 17; 18 actual source captures and reviewed versioned schemas | [#51](https://github.com/jonathan-vella/landinglens/pull/51) merged; all eight checks passed, exact installed suite and all four compiler integrations exercised; issue closed |
 | 19 / [#52](https://github.com/jonathan-vella/landinglens/issues/52) | Nine service-endpoint/subnet/segmentation GUIDs | Merged cohort 18 and reconciled `.5` efficiency foundations | [#90](https://github.com/jonathan-vella/landinglens/pull/90) merged; all eight jobs, CodeQL and four compiler artifacts passed; `deliveries.19` binds each GUID to actual acceptance |
-| Other cohorts | Other 39 GUIDs in unchanged 5-10-item cohorts | Evidence foundations, then LL-34 severity/crosswalk priority with per-batch source requirements | Pending; cohort24 retains its sole slot through checked receipt/final-main delivery; partitioning/tiering is not delivery |
+| Other cohorts | Other 23 GUIDs in unchanged 5-10-item cohorts | Evidence foundations, then LL-34 severity/crosswalk priority with per-batch source requirements | Pending; cohort07 retains its sole slot through checked receipt/final-main delivery; partitioning/tiering is not delivery |
 
-Reviewed successor `2026-11-06.23`: 12 automated / 200 assisted /43 manual,
-all255 visible. Exact `.22` and earlier bytes/receipts remain frozen.
+Reviewed successor `2026-11-06.25`: 12 automated / 200 assisted /43 manual,
+all255 visible. Exact `.24` and earlier bytes/receipts remain frozen.
 Actual merged implementation #128 and checked receipt #129 completed cohort16/#121,
 recording139 delivered/112 pending. Actual #131 and guarded `deliveries.23`
 reconciliation plus checked receipt #132 and final-main CI completed #124,
@@ -130,14 +130,13 @@ reconciled against the new foundations when resumed on 2026-11-06.
 
 | Cohort | Undelivered GUIDs | High / Medium / Low | Controls with associations |
 |---|---|---|---|
-| 07 | 8 | 0 / 8 / 0 | 2 |
 | 03 | 7 | 0 / 2 / 5 | 0 |
 | 21 | 8 | 0 / 8 / 0 | 0 |
 | 28 | 8 | 0 / 8 / 0 | 0 |
 
-These remain31 undelivered GUIDs on cohort26 guarded receipt reconciliation.
-Cohorts19/11/04/13/22/14/12/15/08/30/20/05/16/23/02/27/29/06/10/25/09/24/26 left the pending table only after actual
-#90/#93/#96/#101/#104/#107/#110/#113/#116/#119/#122/#125/#128/#131/#134/#137/#140/#143/#146/#149/#152/#155/#158 implementation delivery and their guarded per-GUID receipts.
+These remain23 undelivered GUIDs on cohort07 guarded receipt reconciliation.
+Cohorts19/11/04/13/22/14/12/15/08/30/20/05/16/23/02/27/29/06/10/25/09/24/26/07 left the pending table only after actual
+#90/#93/#96/#101/#104/#107/#110/#113/#116/#119/#122/#125/#128/#131/#134/#137/#140/#143/#146/#149/#152/#155/#158/#161 implementation delivery and their guarded per-GUID receipts.
 No membership or original baseline
 hash changes through reprioritisation.
 
