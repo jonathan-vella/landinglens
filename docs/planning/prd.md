@@ -19,6 +19,13 @@ key/certificate child, URI/material retention or action is introduced.
 Checked implementation, guarded own receipt and final-main CI determine
 delivery and satisfied #160 completion, not activation.
 
+Implementation #166 merged normally after all eight exact-head jobs,
+CodeQL/security/review and four downloaded matching25-case compiler proofs.
+The final own installed suite passed885 tests:884 passed, original Windows skip1.
+Guarded `deliveries.21` binds all eight GUIDs to that actual head/merge/runs/wheel,
+deriving243 delivered/8 pending/29 receipts while preserving all235 earlier
+rows/28 receipts. Checked receipt publication/final-main CI still gate completion.
+
 ## Cohort 21 independent preparation boundary
 
 Cohort21/[#160](https://github.com/jonathan-vella/landinglens/issues/160) prepares
