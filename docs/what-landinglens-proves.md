@@ -8,6 +8,17 @@ are in the [plan](planning/plan.md).
 
 ## Evidence and outcomes
 
+Cohort26 independently prepares [eight reviews](../references/recommendation-batches/preparation-26.json)
+without accepted catalog/interview activation or delivery. Service-qualified vault
+settings are not suitable backup choices, retention, recovery success or achieved
+RPO/RTO. Guest assignments/extensions and Policy references do not establish
+compliant settings or actual drift monitoring. SQL Database groups do not prove
+universal PaaS DR or tested failover. Exact WAF category/destination and default
+Sentinel-onboarding links are configuration only, not ingestion, regular log
+review, attack detection or operating Sentinel integration. Current source
+redirects, service defaults/support and conflicting Front Door category wording
+are explicitly qualified in the matrix; missing facts never become defaults.
+
 Cohort25 prepares [nine independent reviews](../references/recommendation-batches/batch-25.json)
 using minimized activity/action/static-metric/storage metadata and reused
 workspace/log-alert/Policy context. Service Health is not Resource Health;

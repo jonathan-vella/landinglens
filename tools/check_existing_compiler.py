@@ -60,6 +60,8 @@ if compiler:
         "test_real_bicep_vnet_routing_attachment_without_restore",
         "test_platform_health_preparation.PlatformHealthPreparationTests."
         "test_real_bicep_platform_health_configuration_without_restore",
+        "test_recovery_preparation.RecoveryPreparationTests."
+        "test_real_bicep_recovery_guest_sql_waf_configuration_without_restore",
     ]
     suite = unittest.defaultTestLoader.loadTestsFromNames(cases)
     result = unittest.TextTestRunner(verbosity=2).run(suite)

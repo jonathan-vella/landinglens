@@ -58,6 +58,11 @@ def prepared_resource(
     from .platform_health_evidence import GUIDS as PLATFORM_HEALTH_GUIDS
     from .platform_health_evidence import linked_context as platform_context
     from .platform_health_evidence import resource_paths as platform_paths
+    from .recovery_evidence import GUEST_GUIDS
+    from .recovery_evidence import GUIDS as RECOVERY_GUIDS
+    from .recovery_evidence import linked_context as recovery_context
+    from .recovery_evidence import resource_paths as recovery_paths
+    from .recovery_evidence import unique_known as recovery_unique_known
     from .topology_evidence import GUIDS as TOPOLOGY_GUIDS
     from .topology_evidence import configuration_context as topology_context
     from .topology_evidence import resource_paths as topology_paths
@@ -67,6 +72,14 @@ def prepared_resource(
     for path in control.get("review_fact_paths", []):
         if resource["state"] != "known":
             facts[path] = {"unknown": "resource_not_known"}
+        elif control["upstream_guid"] in RECOVERY_GUIDS and (
+            bundle is None or not recovery_unique_known(resource, bundle, by_id)
+        ):
+            facts[path] = {"unknown": "recovery_resource_not_unique_known_in_scope_or_over_bound"}
+        elif control["upstream_guid"] in RECOVERY_GUIDS and path not in recovery_paths(
+            resource["resource_type"]
+        ):
+            facts[path] = {"unknown": "fact_not_applicable_to_resource_type"}
         elif (
             bundle is not None
             and control["upstream_guid"] in TOPOLOGY_GUIDS
@@ -105,6 +118,8 @@ def prepared_resource(
     }
     if control["upstream_guid"] in LOGGING_GUIDS:
         prepared["logging_context"] = linked_context(resource, by_id, scope)
+    if bundle is not None and control["upstream_guid"] in RECOVERY_GUIDS:
+        prepared["recovery_configuration"] = recovery_context(resource, bundle, by_id)
     if control["upstream_guid"] in PLATFORM_HEALTH_GUIDS and control["upstream_guid"] != (
         "aa45be6a-8f2d-4896-b0e3-775e6e94e610"
     ):
@@ -120,9 +135,19 @@ def prepared_resource(
         from .policy_strategy_evidence import GUIDS as POLICY_STRATEGY_GUIDS
         from .policy_strategy_evidence import configuration_context
 
-        if control["upstream_guid"] in POLICY_STRATEGY_GUIDS | {
-            "aa45be6a-8f2d-4896-b0e3-775e6e94e610"
-        } and control.get("review_fact_paths"):
+        if (
+            control["upstream_guid"]
+            in POLICY_STRATEGY_GUIDS | {"aa45be6a-8f2d-4896-b0e3-775e6e94e610"}
+            or (
+                control["upstream_guid"] in GUEST_GUIDS
+                and resource["resource_type"].lower()
+                in {
+                    "microsoft.authorization/policydefinitions",
+                    "microsoft.authorization/policysetdefinitions",
+                    "microsoft.authorization/policyassignments",
+                }
+            )
+        ) and control.get("review_fact_paths"):
             prepared["policy_configuration"] = configuration_context(resource, bundle, by_id)
         from .network_policy_evidence import (
             FIREWALL,
@@ -441,11 +466,13 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     from .network_policy_evidence import GUIDS as NETWORK_POLICY_GUIDS
     from .platform_health_evidence import GUIDS as PLATFORM_HEALTH_GUIDS
     from .policy_strategy_evidence import GUIDS as POLICY_STRATEGY_GUIDS
+    from .recovery_evidence import GUEST_GUIDS
+    from .recovery_evidence import GUIDS as RECOVERY_GUIDS
     from .tenant_evidence import GUIDS as TENANT_GUIDS
     from .topology_evidence import GUIDS as TOPOLOGY_GUIDS
 
     unbound = 0
-    policy_prepared = control["upstream_guid"] in POLICY_STRATEGY_GUIDS | {
+    policy_prepared = control["upstream_guid"] in POLICY_STRATEGY_GUIDS | GUEST_GUIDS | {
         "aa45be6a-8f2d-4896-b0e3-775e6e94e610"
     } and bool(control.get("review_fact_paths"))
     scoped_guids = (
@@ -455,10 +482,16 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
         | NETWORK_POLICY_GUIDS
         | TENANT_GUIDS
         | TOPOLOGY_GUIDS
+        | RECOVERY_GUIDS
     )
     if policy_prepared:
-        scoped_guids |= POLICY_STRATEGY_GUIDS | {"aa45be6a-8f2d-4896-b0e3-775e6e94e610"}
-    if control["upstream_guid"] in LOGGING_GUIDS | PLATFORM_HEALTH_GUIDS and not policy_prepared:
+        scoped_guids |= (
+            POLICY_STRATEGY_GUIDS | GUEST_GUIDS | {"aa45be6a-8f2d-4896-b0e3-775e6e94e610"}
+        )
+    if (
+        control["upstream_guid"] in LOGGING_GUIDS | PLATFORM_HEALTH_GUIDS | RECOVERY_GUIDS
+        and not policy_prepared
+    ):
         scoped = [
             resource for resource in matches if scoped_identity(resource, bundle.get("scope"))
         ]
