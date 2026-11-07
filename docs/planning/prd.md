@@ -15,6 +15,14 @@ The [integration evidence](plan.md#cohort-03-accepted-integration-2026-11-07)
 retains source, privacy and actual delivery gates. No new live read, query,
 contact test, eligibility decision, purchase or permission change occurs.
 
+Implementation [#164](https://github.com/jonathan-vella/landinglens/pull/164)
+merged normally after exact-head8-job/CodeQL/security/review and four downloaded
+matching24-case compiler gates. Guarded `deliveries.03` binds all seven GUIDs
+to that actual head/merge/runs and own858-test wheel, deriving235 delivered/
+16 pending/28 receipts while preserving all228 earlier rows/27 receipts.
+Checked receipt publication and actual final-main CI, not source activation,
+recording, implementation merge or issue status, gate satisfied #157 completion.
+
 ## Cohort 03 preparation boundary
 
 The [seven A03.03-.05/A04.01-.04 workflows](../../references/preparation/batch-03.json)

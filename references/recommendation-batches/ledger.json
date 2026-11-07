@@ -847,6 +847,50 @@
       },
       "wheel_sha256": "366c4aefbc1adf63a3befc9003440c6c1a0d74835c6086f157bda6b0bd81cb5b",
       "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
+    },
+    "03": {
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/164",
+      "merge_commit": "592826b4e991f8f8ce0655c6d76e7c8a906f468a",
+      "merged_at": "2026-11-07T04:56:04Z",
+      "checked_head": "d0196d08385d4dfc029249856c53e1c79b3e6e3b",
+      "checks": [
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42339416908",
+        "https://github.com/jonathan-vella/landinglens/actions/runs/42339428464"
+      ],
+      "acceptance": "Actual push/PR runs on the merged head passed all eight supported jobs. All four downloaded PR compiler artifacts exercised the same integration cases without skips. Normal exact-head merge and other applicable checks were gated before recording; this receipt does not imply protected-branch enforcement.",
+      "compiler_integration_cases": [
+        "test_bicep.BicepTests.test_actual_installed_compiler_local_success_and_unrestored_failure",
+        "test_segmentation_batch.SegmentationBatchTests.test_real_bicep_nsg_gateway_subnet_flow_without_restore",
+        "test_routing_batch.RoutingBatchTests.test_real_bicep_routing_peering_lb_macsec_connection_no_restore",
+        "test_identity_batch.IdentityBatchTests.test_real_bicep_storage_identity_role_context_without_restore",
+        "test_protection_batch.ProtectionBatchTests.test_real_bicep_protection_outbound_hybrid_no_restore",
+        "test_security_batch.SecurityBatchTests.test_real_bicep_security_configuration_without_restore",
+        "test_expressroute_preparation.ExpressRoutePreparationTests.test_real_bicep_expressroute_cost_capacity_fastpath_without_restore",
+        "test_dns_batch.DnsBatchTests.test_real_bicep_dns_bastion_no_restore",
+        "test_monitoring_preparation.MonitoringPreparationTests.test_real_bicep_monitor_and_gateway_route_join_without_restore",
+        "test_governance_preparation.GovernancePreparationTests.test_real_bicep_governance_without_restore",
+        "test_virtual_wan_preparation.VirtualWanPreparationTests.test_real_bicep_virtual_wan_scoped_configuration_without_restore",
+        "test_identity_resilience_preparation.IdentityResiliencePreparationTests.test_real_bicep_identity_resilience_without_restore",
+        "test_network_policy_preparation.NetworkPolicyPreparationTests.test_real_bicep_policy_gateway_diagnostics_without_restore",
+        "test_logging_preparation.LoggingPreparationTests.test_real_bicep_logging_workspace_extensions_and_alerts_without_restore",
+        "test_tenant_preparation.TenantPreparationTests.test_real_bicep_tenant_configuration_without_restore",
+        "test_policy_strategy_preparation.PolicyStrategyPreparationTests.test_real_bicep_policy_strategy_without_restore",
+        "test_hybrid_identity_preparation.HybridIdentityPreparationTests.test_real_bicep_peering_and_vault_configuration_without_restore",
+        "test_topology_preparation.TopologyPreparationTests.test_real_bicep_vnet_routing_attachment_without_restore",
+        "test_platform_health_preparation.PlatformHealthPreparationTests.test_real_bicep_platform_health_configuration_without_restore",
+        "test_sovereign_preparation.SovereignPreparationTests.test_real_bicep_location_and_tag_configuration_without_restore",
+        "test_operations_preparation.OperationsPreparationTests.test_real_bicep_operations_configuration_without_restore",
+        "test_recovery_preparation.RecoveryPreparationTests.test_real_bicep_recovery_guest_sql_waf_configuration_without_restore",
+        "test_organization_preparation.OrganizationPreparationTests.test_real_bicep_management_keys_parents_settings_without_restore",
+        "test_billing_preparation.BillingPreparationTests.test_real_bicep_budget_configuration_without_restore"
+      ],
+      "local_installed_suite": {
+        "tests": 858,
+        "passed": 857,
+        "skipped": 1
+      },
+      "wheel_sha256": "af591d9c285124df1c600b92e77ef9f85d36bdbe5860f3eff330d9ea98e83c0f",
+      "live_verification": "Source/fixture/saved/injected and exact installed-CLI verified. No new Azure access, traffic/runtime test or human decision is asserted."
     }
   },
   "recommendations": [
@@ -1546,7 +1590,7 @@
       "baseline_control_sha256": "fa768e1a524e6fab3c8b1dfca3857a71a75100f4778b347fc2cf65e5da54ca01",
       "design_area": "Azure billing and Active Directory tenant",
       "batch": "03",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "upstream_id": "A03.03",
         "guid": "54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
@@ -1579,9 +1623,13 @@
         "flags": []
       },
       "issue": 157,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/164",
+      "merge_commit": "592826b4e991f8f8ce0655c6d76e7c8a906f468a",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.03: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "ca0fe401-12ad-46fc-8a7e-86293866a9f6",
@@ -1591,7 +1639,7 @@
       "baseline_control_sha256": "78dd6782baf3f1149cbee554a49550943e6af98cf4c983f62a5a5006dfbae6ee",
       "design_area": "Azure billing and Active Directory tenant",
       "batch": "03",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "upstream_id": "A03.04",
         "guid": "ca0fe401-12ad-46fc-8a7e-86293866a9f6",
@@ -1612,9 +1660,13 @@
         "flags": []
       },
       "issue": 157,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/164",
+      "merge_commit": "592826b4e991f8f8ce0655c6d76e7c8a906f468a",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.03: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "5cf9f485-2784-49b3-9824-75d9b8bdb57b",
@@ -1624,7 +1676,7 @@
       "baseline_control_sha256": "6ff4a2afb4a3b733d3006919ae516a33dde30d52c219feed043552707c799c0d",
       "design_area": "Azure billing and Active Directory tenant",
       "batch": "03",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "upstream_id": "A03.05",
         "guid": "5cf9f485-2784-49b3-9824-75d9b8bdb57b",
@@ -1644,9 +1696,13 @@
         "flags": []
       },
       "issue": 157,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/164",
+      "merge_commit": "592826b4e991f8f8ce0655c6d76e7c8a906f468a",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.03: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "6ad5c3dd-e5ea-4ff1-81a4-7886ff87845c",
@@ -1656,7 +1712,7 @@
       "baseline_control_sha256": "0dc4d345df6c97050d4ced14c30d3d177f9dc3cb11daedff62429ff621a0c4ce",
       "design_area": "Azure billing and Active Directory tenant",
       "batch": "03",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "upstream_id": "A04.01",
         "guid": "6ad5c3dd-e5ea-4ff1-81a4-7886ff87845c",
@@ -1676,9 +1732,13 @@
         "flags": []
       },
       "issue": 157,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/164",
+      "merge_commit": "592826b4e991f8f8ce0655c6d76e7c8a906f468a",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.03: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "90e87802-602f-4dfb-acea-67c60689f1d7",
@@ -1688,7 +1748,7 @@
       "baseline_control_sha256": "4ab6dfdf49244d9b4b37c362b61abf44ded4ab25cc59319e98b7649125fbc365",
       "design_area": "Azure billing and Active Directory tenant",
       "batch": "03",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "upstream_id": "A04.02",
         "guid": "90e87802-602f-4dfb-acea-67c60689f1d7",
@@ -1709,9 +1769,13 @@
         "flags": []
       },
       "issue": 157,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/164",
+      "merge_commit": "592826b4e991f8f8ce0655c6d76e7c8a906f468a",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.03: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "e81a73f0-84c4-4641-b406-14db3b4d1f50",
@@ -1721,7 +1785,7 @@
       "baseline_control_sha256": "3359386f617f921314617dab0d232d7ac48fe4c22c183976cda07c04295297ed",
       "design_area": "Azure billing and Active Directory tenant",
       "batch": "03",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "upstream_id": "A04.03",
         "guid": "e81a73f0-84c4-4641-b406-14db3b4d1f50",
@@ -1741,9 +1805,13 @@
         "flags": []
       },
       "issue": 157,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/164",
+      "merge_commit": "592826b4e991f8f8ce0655c6d76e7c8a906f468a",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.03: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "ae757485-92a4-482a-8bc9-eefe6f5b5ec3",
@@ -1753,7 +1821,7 @@
       "baseline_control_sha256": "33a4f354d9958e61e5b07388b0a9acdfbd617d675229a8260fd67e81973d09a2",
       "design_area": "Azure billing and Active Directory tenant",
       "batch": "03",
-      "status": "implementation-in-progress",
+      "status": "merged",
       "review": {
         "upstream_id": "A04.04",
         "guid": "ae757485-92a4-482a-8bc9-eefe6f5b5ec3",
@@ -1772,9 +1840,13 @@
         "flags": []
       },
       "issue": 157,
-      "pr": null,
-      "merge_commit": null,
-      "runtime_evidence": []
+      "pr": "https://github.com/jonathan-vella/landinglens/pull/164",
+      "merge_commit": "592826b4e991f8f8ce0655c6d76e7c8a906f468a",
+      "runtime_evidence": [
+        "fixture/saved/injected verified",
+        "exact installed CLI verified",
+        "deliveries.03: all eight CI jobs and four compiler artifacts verified"
+      ]
     },
     {
       "guid": "348ef254-c27d-442e-abba-c7571559ab91",
