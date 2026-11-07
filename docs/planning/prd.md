@@ -17,6 +17,16 @@ All eight decisions start blank and bound, Signals/human confirmation never
 manufacture Verified. Exact-head implementation and checked own receipt/final-main
 publication, not activation or issue status, gate delivery of the final8 targets.
 
+Implementation [#168](https://github.com/jonathan-vella/landinglens/pull/168)
+merged normally after all eight exact-head jobs, CodeQL/security/review and four
+matching downloaded26-case compiler proofs. Guarded `deliveries.28` binds all
+eight GUIDs to that actual checked head/merge/runs/own wheel, deriving
+251 delivered/zero pending/30 receipts. All243 earlier rows/29 receipts and every
+binding remain unchanged. No pending priority row or successor remains. Checked
+receipt publication and final-main CI still gate satisfied closure;251 fixed
+supported/own-receipted recommendations do not imply251 automatic checks or
+financial, legal, personnel, runtime or sovereign compliance assurance.
+
 ## Cohort 28 merged-budget preparation boundary
 
 After the preparation-only dependency unblock, actual merged

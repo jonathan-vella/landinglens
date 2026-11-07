@@ -38,6 +38,32 @@ class SovereignRequirementsBatchTests(unittest.TestCase):
         self.fixture.catalog = self.catalog
         self.fixture.matrix = self.matrix
 
+    def test_final251_targets_all_have_own_receipts_and_no_pending_cohort(self):
+        ledger = json.loads((REFERENCE / "ledger.json").read_text("utf-8"))
+        targets = json.loads((REFERENCE / "targets.json").read_text("utf-8"))
+        self.assertEqual(len(ledger["recommendations"]), 251)
+        self.assertEqual(len(ledger["deliveries"]), 30)
+        self.assertEqual(ledger["fixed_targets_sha256"], digest(targets))
+        self.assertEqual(
+            {r["guid"]: r["batch"] for r in ledger["recommendations"]},
+            {r["guid"]: r["batch"] for r in targets["targets"]},
+        )
+        self.assertEqual(set(ledger["deliveries"]), {r["batch"] for r in targets["targets"]})
+        for row in ledger["recommendations"]:
+            receipt = ledger["deliveries"][row["batch"]]
+            self.assertEqual(row["status"], "merged")
+            self.assertEqual(row["pr"], receipt["pr"])
+            self.assertEqual(row["merge_commit"], receipt["merge_commit"])
+        own = ledger["deliveries"]["28"]
+        self.assertEqual(own["pr"], "https://github.com/jonathan-vella/landinglens/pull/168")
+        self.assertEqual(own["checked_head"], "0269146420ba127d13a5a82a609c5ba3dc56a2ed")
+        self.assertEqual(own["merge_commit"], "b56af5da04bf7aab74bce7188deebc029c2bd6ce")
+        self.assertEqual(
+            own["wheel_sha256"], "c92956e6e88fd20a4105697727454b2b3937eddcebcc6f202d258d72c9cad879"
+        )
+        self.assertEqual(own["local_installed_suite"], {"tests": 918, "passed": 917, "skipped": 1})
+        self.assertEqual(len(own["compiler_integration_cases"]), 26)
+
     def test_exact_final_successor_nonown_objects_original_four_and_frozen_bytes(self):
         self.assertEqual(self.catalog["catalog_version"], "2026-11-06.28")
         self.assertEqual(self.matrix["catalog_version"], self.catalog["catalog_version"])
