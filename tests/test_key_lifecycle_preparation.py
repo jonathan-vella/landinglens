@@ -741,7 +741,14 @@ class KeyLifecyclePreparationTests(unittest.TestCase):
             semantic(assess(bundle, self.accepted, at=AT, evidence_tiers=True)),
             semantic(assess(sanitized, self.accepted, at=AT, evidence_tiers=True)),
         )
-        self.assertEqual(digest(self.accepted), digest(load_catalog()))
+        self.assertEqual(
+            digest(self.accepted),
+            digest(
+                load_catalog(
+                    str(files("alz_assessor").joinpath("data", "catalog-2026-11-06.24.json"))
+                )
+            ),
+        )
 
     def test_cli_candidate_and_local_session_atomic_save_privacy(self):
         saved = self.write("saved.json", self.bundle())

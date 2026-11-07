@@ -41,9 +41,12 @@ redaction and bounded expansion without adding a test dependency.
 
 ## Assessment workflows
 
-Cohort21's [preparation matrix](../references/recommendation-batches/preparation-21.json)
-and [reviewed sources](../references/recommendation-batches/preparation-21-sources.json)
-are not accepted catalog or interview-bank activation. Four assisted and four
+Use `--question incident-zero-trust-key-lifecycle` for cohort21's
+[accepted matrix](../references/recommendation-batches/batch-21.json) in `.27`,
+following the explicit sole slot after checked07/03 delivery. Its original
+[preparation](../references/recommendation-batches/preparation-21.json) and
+[reviewed sources](../references/recommendation-batches/preparation-21-sources.json)
+remain separate; activation is not delivery. Four assisted and four
 manual decisions separately cover incident planning, Zero Trust, public-CA
 renewal, key/certificate rotation, vault delegation/Policy, MMK/CMK choice,
 sovereignty requirements and complete service BYOK support. Existing vault and
@@ -58,7 +61,9 @@ configuration or general support table establishes effective privilege,
 enforcement, complete coverage, rehearsed IR, Zero Trust maturity or sovereignty
 eligibility. Every decision and exception stays independently blank. No new live
 route, key/certificate/secret/URI/issuer/principal/incident payload, query, security
-scan or operational change is introduced.
+scan or operational change is introduced. Existing private replay projections
+minimize saved/injected vault/storage/Policy/role properties before CLI and
+local-session persistence, including immutable session revisions and resume.
 
 Use `--question naming-hierarchy-scoped-authorization` for cohort07's
 [eight accepted workflows](../references/recommendation-batches/batch-07.json)

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "kind": "catalog",
-  "catalog_version": "2026-11-06.26",
+  "catalog_version": "2026-11-06.27",
   "design_areas": [
     "Azure billing and Active Directory tenant",
     "Identity and access management",
@@ -18323,14 +18323,17 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Requires organizational decision/process evidence outside IaC alone.",
+      "rationale": "Manual organizational review only; logs, alerts, SIEM, Policy or vault configuration cannot prove planning, rehearsal, readiness or response effectiveness.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Identify actual services/workloads, pre-production admission criteria, shared IaaS/PaaS/SaaS responsibilities, accountable roles and approved incident handling requirements.",
+        "Reference redacted original-time plans covering detection/triage, prioritization, communication/escalation, containment, eradication, recovery and post-incident improvement, plus separately supplied exercise/lessons evidence. Preserve legacy benchmark wording while using current MCSB qualifications.",
+        "Reviewer decision: was an appropriate incident response plan determined before production admission for each applicable service, with accountable ownership and accepted gaps? No incident/contact details retained or exercise performed."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-21",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "legacy-benchmark-qualified",
+        "no-incident-payload",
+        "planning-not-runtime-assurance"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -18345,6 +18348,22 @@
           "pointer": "/items/209",
           "item_sha256": "a1f549f32b8ecb97b0c5e4adfb5493d5dbdd2507f16f6ddbf44d8446e27b7789",
           "guidance": "https://learn.microsoft.com/security/benchmark/azure/security-control-incident-response"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/security/benchmark/azure/security-control-incident-response",
+          "source_sha256": "37a799257dc611407fd372ffc4d2b3f8564856a2404ccc03560f308056e2ccc1",
+          "revision": "054ec67a09cfba351ee533241aafd4490795cd7f",
+          "retrieved_at": "2026-11-07T03:00:27.915120+00:00",
+          "pointer": "b86ad884-08e3-4727-94b8-75ba18f20459",
+          "guidance": "https://learn.microsoft.com/security/benchmark/azure/security-control-incident-response"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/security/benchmark/azure/mcsb-incident-response",
+          "source_sha256": "933bd09507b47cc7e5ee98248fc5a0efb7138bdc2122b2295ef28b9a543436b1",
+          "revision": "335725e0257c43a94a37bf012fcf9f50053faa56",
+          "retrieved_at": "2026-11-07T03:00:28.389004+00:00",
+          "pointer": "b86ad884-08e3-4727-94b8-75ba18f20459",
+          "guidance": "https://learn.microsoft.com/en-us/security/benchmark/azure/mcsb-incident-response"
         }
       ],
       "severity": "Medium"
@@ -18367,14 +18386,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Requires organizational decision/process evidence outside IaC alone.",
+      "rationale": "Manual architecture and operating decision. Vaults, roles, encryption and network settings are neither effective access verification nor Zero Trust maturity.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Document verify-explicitly, least-privilege and assume-breach requirements across applicable identities, endpoints, applications, infrastructure, networks and data.",
+        "Reference accountable architecture and operating evidence, segmentation/access/telemetry dependencies, complete intended populations and responsibilities outside the landing zone; retain justified exclusions and maturity gaps separately.",
+        "Reviewer decision: is a Zero Trust approach actually applied to Azure platform access for the intended scope, with attributable evidence and accepted gaps? No inferred maturity score or security testing."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-21",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "zero-trust-not-resource-checklist",
+        "workload-responsibilities-independent"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -18388,6 +18409,14 @@
           "retrieved_at": "2026-11-04T12:49:42.300152+00:00",
           "pointer": "/items/210",
           "item_sha256": "b2f3a898dfb1fcc00c14ed167aae55213c560d380b533ca67e1c0a05a6808c5b",
+          "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/security-zero-trust"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/security-zero-trust",
+          "source_sha256": "95e3c0ecad2d332f36d32b1684c360c4a9653d905e47f2369fef92209b88d6e3",
+          "revision": "a176e5769a86f8b1a6f4e582cda4d233a5cbd2d9",
+          "retrieved_at": "2026-11-07T03:00:29.104431+00:00",
+          "pointer": "01365d38-e43f-49cc-ad86-8266abca264f",
           "guidance": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/design-area/security-zero-trust"
         }
       ],
@@ -18719,14 +18748,17 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No certificate/key/issuer/data-plane collection or projection. Existing vault context is explicitly not coverage, CA compatibility, automated renewal or consumer adoption.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Identify the complete intended public-CA certificate/consumer population, compatible issuance integration, ownership, approved lifetimes, renewal/deployment requirements and explicit exceptions without retaining names, URIs, issuer identities or material.",
+        "Integrated partner CAs currently include DigiCert/GlobalSign; nonintegrated CA CSR/sign/merge and externally orchestrated renewal need independent evidence. Self-signed regeneration, imported certificates and expiration notifications do not prove automated public-CA renewal.",
+        "Reviewer decision: is public-CA certificate management and renewal appropriately automated, including successful original-time renewal, delivery to all intended consumers, failure monitoring and tested fallback? Vault settings establish none of these outcomes."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-21",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "integrated-ca-not-arbitrary-issuer",
+        "notification-not-renewal",
+        "renewal-not-deployed-consumers"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -18741,9 +18773,56 @@
           "pointer": "/items/215",
           "item_sha256": "32cfcd5554640db8d3fba1a1be33f2b3a49cf207c32b88479bad112e121fd071",
           "guidance": "https://learn.microsoft.com/azure/key-vault/general/best-practices"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/key-vault/general/best-practices",
+          "source_sha256": "43b332c4aa72813e8228da2f4baeb02936d715f5133a3479bcdc3d3468a549e1",
+          "revision": "8dfb50ed846e99053e32805d00bf6bd9eface9c4",
+          "retrieved_at": "2026-11-07T03:00:30.072357+00:00",
+          "pointer": "6d70ba6c-97be-4995-8904-83845c986cb2",
+          "guidance": "https://learn.microsoft.com/azure/key-vault/general/best-practices"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/key-vault/certificates/overview-renew-certificate",
+          "source_sha256": "8389bf7f80fd3a0e60bb5031a33fed6170a050cce390ef5ae53f74127adfd305",
+          "revision": "cc9ac0f545a688e4f2016a1541f565f136e23129",
+          "retrieved_at": "2026-11-07T03:00:30.547706+00:00",
+          "pointer": "6d70ba6c-97be-4995-8904-83845c986cb2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/key-vault/certificates/overview-renew-certificate"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/key-vault/general/autorotation",
+          "source_sha256": "ea488b0eac572ef2f0ce1dc916f4370e211d7894a6be36b5f3c759b26a19bd3c",
+          "revision": "cc9ac0f545a688e4f2016a1541f565f136e23129",
+          "retrieved_at": "2026-11-07T03:00:30.979365+00:00",
+          "pointer": "6d70ba6c-97be-4995-8904-83845c986cb2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/key-vault/general/autorotation"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/2024-11-01/vaults",
+          "source_sha256": "ce60bdb6066044886f248510533633253a9476b934b8bf10688c22aaaed75fd3",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-07T03:00:35.209112+00:00",
+          "pointer": "6d70ba6c-97be-4995-8904-83845c986cb2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/2024-11-01/vaults"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/key_vault.html.markdown",
+          "source_sha256": "225c6dd855527be91b60a9d3f22f9c34a6ae89ed6b5a22b07700cbe9388853c7",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T03:00:34.401545+00:00",
+          "pointer": "6d70ba6c-97be-4995-8904-83845c986cb2",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/key_vault.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.KeyVault/vaults"
+      ],
+      "review_fact_paths": [
+        "enableRbacAuthorization",
+        "publicNetworkAccess"
+      ]
     },
     {
       "control_id": "ALZ-913156a1-2476-4e49-b541-acdce979377b",
@@ -18763,14 +18842,17 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "No rotation-policy object/URI/material retained or executed. No automatic MMK/CMK suitability, native-rotation support for arbitrary imported keys or actual renewal/consumer assurance.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Identify intended key and certificate populations, independent requirements/owners, native versus external generation/import, expiration/rotation/renewal schedules, privileges and accepted exceptions. Key Vault and Managed HSM are distinct; Managed HSM does not store certificates.",
+        "Distinguish generating a new key version, renewing a certificate, importing externally generated material, notifying expiry and updating every consumer. Review each actual service's refresh latency/version binding and old-version overlap; do not infer a universal safe cadence or immediate uptake.",
+        "Reviewer decision: is an automated key and certificate rotation process established with original-time successful operations, deployed consumer updates, monitoring, recovery/fallback and complete intended coverage? Vaults or configured rotation references alone are insufficient."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-21",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "key-rotation-not-certificate-renewal",
+        "consumer-update-independent",
+        "imported-origin-qualified"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -18785,9 +18867,56 @@
           "pointer": "/items/216",
           "item_sha256": "8b3deda9ac190c76e174c96883a804eda2b9105008499ac10ba1e9d73669f90c",
           "guidance": "https://learn.microsoft.com/azure/key-vault/general/best-practices"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/key-vault/general/best-practices",
+          "source_sha256": "43b332c4aa72813e8228da2f4baeb02936d715f5133a3479bcdc3d3468a549e1",
+          "revision": "8dfb50ed846e99053e32805d00bf6bd9eface9c4",
+          "retrieved_at": "2026-11-07T03:00:30.072357+00:00",
+          "pointer": "913156a1-2476-4e49-b541-acdce979377b",
+          "guidance": "https://learn.microsoft.com/azure/key-vault/general/best-practices"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/key-vault/keys/how-to-configure-key-rotation",
+          "source_sha256": "42229f10513e7f091ac36b7ebb25943325fb073a7c8bb6bbd60bfb08a3281cd5",
+          "revision": "cc9ac0f545a688e4f2016a1541f565f136e23129",
+          "retrieved_at": "2026-11-07T03:00:31.405681+00:00",
+          "pointer": "913156a1-2476-4e49-b541-acdce979377b",
+          "guidance": "https://learn.microsoft.com/en-us/azure/key-vault/keys/how-to-configure-key-rotation"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/key-vault/general/autorotation",
+          "source_sha256": "ea488b0eac572ef2f0ce1dc916f4370e211d7894a6be36b5f3c759b26a19bd3c",
+          "revision": "cc9ac0f545a688e4f2016a1541f565f136e23129",
+          "retrieved_at": "2026-11-07T03:00:30.979365+00:00",
+          "pointer": "913156a1-2476-4e49-b541-acdce979377b",
+          "guidance": "https://learn.microsoft.com/en-us/azure/key-vault/general/autorotation"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/key-vault/certificates/overview-renew-certificate",
+          "source_sha256": "8389bf7f80fd3a0e60bb5031a33fed6170a050cce390ef5ae53f74127adfd305",
+          "revision": "cc9ac0f545a688e4f2016a1541f565f136e23129",
+          "retrieved_at": "2026-11-07T03:00:30.547706+00:00",
+          "pointer": "913156a1-2476-4e49-b541-acdce979377b",
+          "guidance": "https://learn.microsoft.com/en-us/azure/key-vault/certificates/overview-renew-certificate"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview",
+          "source_sha256": "814e21b37edf08e292fef83d7700d05705459d7fe454125e1dd685b5b760db6b",
+          "revision": "cdf0d71d6878c96f2d38f3ff00f3df6f91bb82b2",
+          "retrieved_at": "2026-11-07T03:00:33.057199+00:00",
+          "pointer": "913156a1-2476-4e49-b541-acdce979377b",
+          "guidance": "https://learn.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.KeyVault/vaults"
+      ],
+      "review_fact_paths": [
+        "enableRbacAuthorization",
+        "publicNetworkAccess"
+      ]
     },
     {
       "control_id": "ALZ-cdb3751a-b2ab-413a-ba6e-55d7d8a2adb1",
@@ -18948,14 +19077,17 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Positive unique known typed selected-scope relationships only. Exact supplied definition/version ancestry is configuration, not effective privilege/enforcement, inheritance completeness or compliant vault coverage.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Decide accountable vault instantiation and privileged access ownership separately, distinguishing control-plane creation from data-plane key/certificate/secret access and Key Vault from Managed HSM. Review actual team authority, PIM, conditions, deny constraints and least privilege without retaining principals.",
+        "Bind exact reviewed definitions/versions, initiative members, selected assignment scopes, exclusions, exemptions, parameters and modes to intended vault configuration requirements, then separately substantiate timely saved compliance observations and operating response. Global built-ins are not fetched; no second interpreter.",
+        "Reviewer decision: are instantiation and privileged access appropriately delegated and consistent configuration actually enforced through Azure Policy for the intended complete population, with attributable operating evidence and accepted exceptions? RBAC flags, role references and assignments alone prove neither."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-21",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "control-plane-not-data-plane",
+        "assignment-not-enforcement",
+        "role-reference-not-effective-delegation"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -18970,9 +19102,121 @@
           "pointer": "/items/219",
           "item_sha256": "fa9fdc8bc9fb746148e6bb7d619dbe0f18afe2c2e5c845dcc47935abdca7bc11",
           "guidance": "https://learn.microsoft.com/azure/key-vault/general/best-practices"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/key-vault/general/best-practices",
+          "source_sha256": "43b332c4aa72813e8228da2f4baeb02936d715f5133a3479bcdc3d3468a549e1",
+          "revision": "8dfb50ed846e99053e32805d00bf6bd9eface9c4",
+          "retrieved_at": "2026-11-07T03:00:30.072357+00:00",
+          "pointer": "b12308ca-5017-4f15-9e3a-b3693829e7e3",
+          "guidance": "https://learn.microsoft.com/azure/key-vault/general/best-practices"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/2024-11-01/vaults",
+          "source_sha256": "ce60bdb6066044886f248510533633253a9476b934b8bf10688c22aaaed75fd3",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-07T03:00:35.209112+00:00",
+          "pointer": "b12308ca-5017-4f15-9e3a-b3693829e7e3",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.keyvault/2024-11-01/vaults"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/key_vault.html.markdown",
+          "source_sha256": "225c6dd855527be91b60a9d3f22f9c34a6ae89ed6b5a22b07700cbe9388853c7",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T03:00:34.401545+00:00",
+          "pointer": "b12308ca-5017-4f15-9e3a-b3693829e7e3",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/key_vault.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json",
+          "source_sha256": "9d707ad996174330367c811461f5f3b2e1c710b63e5b171e804ad058850d9ad6",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-07T03:01:20.603134+00:00",
+          "pointer": "b12308ca-5017-4f15-9e3a-b3693829e7e3",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyDefinitions.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json",
+          "source_sha256": "a75b99bf469062e594abc1468aea4f473c5f070b21311e894c4b1e3a86d89e48",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-07T03:01:20.907714+00:00",
+          "pointer": "b12308ca-5017-4f15-9e3a-b3693829e7e3",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policySetDefinitions.json"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json",
+          "source_sha256": "85934922ce8fe3e200fe0642df802f38b72ad153d66807ad874fdf78ee443989",
+          "revision": "5531fa823aafa40895d51db03315fa749fcb9cf0",
+          "retrieved_at": "2026-11-07T03:01:21.235887+00:00",
+          "pointer": "b12308ca-5017-4f15-9e3a-b3693829e7e3",
+          "guidance": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/5531fa823aafa40895d51db03315fa749fcb9cf0/specification/resources/resource-manager/Microsoft.Authorization/policy/stable/2023-04-01/policyAssignments.json"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2022-04-01/roleassignments",
+          "source_sha256": "fbfc719e4317ed6b739a183975001b0cdea49acc4d8f67b4ecc155390ef27f43",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-07T03:01:23.078048+00:00",
+          "pointer": "b12308ca-5017-4f15-9e3a-b3693829e7e3",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.authorization/2022-04-01/roleassignments"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_definition.html.markdown",
+          "source_sha256": "74cf604cb0de66c8428b0114ff594ef3c02956e49c411ef7d692b0a782893993",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T03:01:21.538860+00:00",
+          "pointer": "b12308ca-5017-4f15-9e3a-b3693829e7e3",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_definition.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_set_definition.html.markdown",
+          "source_sha256": "9348c71eb855dbe45ff5299a9a37778dd41224534668fd64df74620e04ab9a9c",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T03:01:21.838999+00:00",
+          "pointer": "b12308ca-5017-4f15-9e3a-b3693829e7e3",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/policy_set_definition.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group_policy_assignment.html.markdown",
+          "source_sha256": "474694e8983a628f6a6443c48c517b2dcac214dea7229dae307fe91465fd7f91",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T03:01:22.150794+00:00",
+          "pointer": "b12308ca-5017-4f15-9e3a-b3693829e7e3",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/management_group_policy_assignment.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subscription_policy_assignment.html.markdown",
+          "source_sha256": "1eed39b22a8e715763c0e5334940c7a27cd259d2c116a637a2599019cab1d272",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T03:01:22.436605+00:00",
+          "pointer": "b12308ca-5017-4f15-9e3a-b3693829e7e3",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/subscription_policy_assignment.html.markdown"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/resource_group_policy_assignment.html.markdown",
+          "source_sha256": "d43953099295faf63678a5fa43130bad6c906429318be58ca62e64784f6bfccf",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T03:01:22.737901+00:00",
+          "pointer": "b12308ca-5017-4f15-9e3a-b3693829e7e3",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/resource_group_policy_assignment.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.KeyVault/vaults",
+        "Microsoft.Authorization/policyDefinitions",
+        "Microsoft.Authorization/policySetDefinitions",
+        "Microsoft.Authorization/policyAssignments",
+        "Microsoft.Authorization/roleAssignments"
+      ],
+      "review_fact_paths": [
+        "enableRbacAuthorization",
+        "publicNetworkAccess",
+        "policyDefinitionSummary",
+        "policyInitiativeSummary",
+        "policyAssignmentSummary",
+        "principalType",
+        "roleDefinitionId"
+      ]
     },
     {
       "control_id": "ALZ-16183687-a047-47a2-8994-5bda43334f24",
@@ -18992,14 +19236,17 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Recommendation reviewed; applicability, complete inventory and guidance-level mapping require reviewer judgment. No implemented evaluator or validated query.",
+      "rationale": "Storage is not a universal model. No private key reference/URI/version or inferred vault link retained. Terraform final key source remains unknown without separate-CMK reconciliation; no implicit defaults or actual key-use/refresh proof.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Determine service/data-specific encryption, key-control, availability/recovery and operating requirements. Preserve immutable Microsoft-managed terminology while qualifying current platform/service-managed wording; justify CMK necessity independently rather than treating CMK as universally preferable.",
+        "Reconcile actual supported service/feature/SKU/cloud/region settings, storage Blob/Files versus Queue/Table Account or Service key type, key-store capabilities/access and consumer lifecycle. Infrastructure encryption is separate. Omitted ARM settings and Terraform inline CMK presence/absence cannot establish final key source or defaults.",
+        "Reviewer decision: is MMK appropriately the default and CMK used where required, with service-specific compatibility, accountable lifecycle/recovery ownership and accepted exceptions? Explicit storage keySource is configuration only, not usable keys, compliant encryption, requirement sufficiency or consumer refresh."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-21",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "mmk-default-cmk-requirement-driven",
+        "storage-not-all-services",
+        "queue-table-keytype-qualified"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -19014,9 +19261,55 @@
           "pointer": "/items/220",
           "item_sha256": "01900d814d4df4f15c470b32f865e4b439d8f0e39fc06f5a4264858b6462c7f8",
           "guidance": "https://learn.microsoft.com/azure/security/fundamentals/encryption-atrest"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/security/fundamentals/encryption-atrest",
+          "source_sha256": "5a350891ad835a1b15c6cddef9261d8f9ead80f34c8991efcf49d802ff6e6ab7",
+          "revision": "1db406cc91002fd50ba80c0cafa4204c4127c282",
+          "retrieved_at": "2026-11-07T03:00:32.135918+00:00",
+          "pointer": "16183687-a047-47a2-8994-5bda43334f24",
+          "guidance": "https://learn.microsoft.com/azure/security/fundamentals/encryption-atrest"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/security/fundamentals/encryption-customer-managed-keys-support",
+          "source_sha256": "ef9f9e821d1168d24874bf1f11a01fbbfdf52d07f9c85379afefb95116ad3046",
+          "revision": "4cb15191d099adc39be2e00d3d99072703c0037b",
+          "retrieved_at": "2026-11-07T03:00:32.597802+00:00",
+          "pointer": "16183687-a047-47a2-8994-5bda43334f24",
+          "guidance": "https://learn.microsoft.com/en-us/azure/security/fundamentals/encryption-customer-managed-keys-support"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview",
+          "source_sha256": "814e21b37edf08e292fef83d7700d05705459d7fe454125e1dd685b5b760db6b",
+          "revision": "cdf0d71d6878c96f2d38f3ff00f3df6f91bb82b2",
+          "retrieved_at": "2026-11-07T03:00:33.057199+00:00",
+          "pointer": "16183687-a047-47a2-8994-5bda43334f24",
+          "guidance": "https://learn.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts",
+          "source_sha256": "307f4a0da46534762fe97ec28ca0cddd2d43b1299f77a4b9a9bc4eaa103e655c",
+          "revision": "34186641da814105fd2729b572f9fe866f2cc961",
+          "retrieved_at": "2026-11-07T03:00:33.863187+00:00",
+          "pointer": "16183687-a047-47a2-8994-5bda43334f24",
+          "guidance": "https://learn.microsoft.com/en-us/azure/templates/microsoft.storage/2023-05-01/storageaccounts"
+        },
+        {
+          "source_url": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown",
+          "source_sha256": "2497fd8c88453f99b82d2697bda7b7faee30f889693a1840fafc5bc59305219a",
+          "revision": "211156b6c9c3c4721a2a4631998a6bd08433a9ee",
+          "retrieved_at": "2026-11-07T03:00:34.120711+00:00",
+          "pointer": "16183687-a047-47a2-8994-5bda43334f24",
+          "guidance": "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/211156b6c9c3c4721a2a4631998a6bd08433a9ee/website/docs/r/storage_account.html.markdown"
         }
       ],
-      "severity": "Medium"
+      "severity": "Medium",
+      "review_resource_types": [
+        "Microsoft.Storage/storageAccounts"
+      ],
+      "review_fact_paths": [
+        "storageEncryptionSummary"
+      ]
     },
     {
       "control_id": "ALZ-b48ade7f-50be-4d2e-9866-d57b17942fc2",
@@ -19036,14 +19329,16 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Requires organizational decision/process evidence outside IaC alone.",
+      "rationale": "Manual requirement decision. No legal certification, sovereignty score, entitlement check, external key management deployment or inferred mandate.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Reference the accountable organization's actual sovereignty, contractual and key-control requirements and qualified interpretation for the specific data, services, locations and operating model; no legal eligibility decision is made by this assessor.",
+        "Distinguish CMK control, key origin/custody, Key Vault versus Managed HSM and any external-key-management preview limitations from data location, personnel/access, availability and complete sovereignty requirements.",
+        "Reviewer decision: is there an actual sovereignty requirement to use CMK for this scope, with independently recorded applicability, evidence, ownership and exceptions? Encryption configuration, geography and CMK presence cannot determine that requirement or sovereignty sufficiency."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-21",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "sovereignty-requirement-not-setting",
+        "no-legal-eligibility-inference"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -19058,6 +19353,22 @@
           "pointer": "/items/221",
           "item_sha256": "94aebcebf69a80bea7ff22c26b015f184df01b6b66d0e793040f2886b310c887",
           "guidance": "https://learn.microsoft.com/azure/security/fundamentals/encryption-atrest"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/security/fundamentals/encryption-atrest",
+          "source_sha256": "5a350891ad835a1b15c6cddef9261d8f9ead80f34c8991efcf49d802ff6e6ab7",
+          "revision": "1db406cc91002fd50ba80c0cafa4204c4127c282",
+          "retrieved_at": "2026-11-07T03:00:32.135918+00:00",
+          "pointer": "b48ade7f-50be-4d2e-9866-d57b17942fc2",
+          "guidance": "https://learn.microsoft.com/azure/security/fundamentals/encryption-atrest"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/security/fundamentals/encryption-customer-managed-keys-support",
+          "source_sha256": "ef9f9e821d1168d24874bf1f11a01fbbfdf52d07f9c85379afefb95116ad3046",
+          "revision": "4cb15191d099adc39be2e00d3d99072703c0037b",
+          "retrieved_at": "2026-11-07T03:00:32.597802+00:00",
+          "pointer": "b48ade7f-50be-4d2e-9866-d57b17942fc2",
+          "guidance": "https://learn.microsoft.com/en-us/azure/security/fundamentals/encryption-customer-managed-keys-support"
         }
       ],
       "severity": "Medium"
@@ -19080,14 +19391,17 @@
       "rule": null,
       "lifecycle": "active",
       "baseline": "microsoft-recommendation",
-      "rationale": "Requires organizational decision/process evidence outside IaC alone.",
+      "rationale": "Manual service-specific completeness and compatibility decision. Vault/storage presence or one service example cannot establish all required services, imported-key support or successful operation.",
       "evidence_requirements": [
-        "Scoped human review of linked recommendation, applicability and supporting evidence"
+        "Identify the complete required service/feature/SKU/cloud/region/dependency population and actual key origin, import/BYOK, algorithm/size, protection/custody and lifecycle requirements without retaining key or issuer identifiers/material.",
+        "Review current service-specific implementation evidence and Key Vault versus Managed HSM support separately. A general support-table Yes is not arbitrary BYOK/import/algorithm/rotation compatibility, and a blank cell is not a verified unsupported verdict. Distinguish key generation, import, availability, rotation and consumer adoption.",
+        "Reviewer decision: if BYOK is applicable, are the actual keys supported across every required service with evidenced compatible lifecycle/integration and accepted exceptions? No fabricated universal compatibility, live key probe or support/eligibility determination."
       ],
-      "mapping_state": "inventory-category-only",
+      "mapping_state": "source-reviewed-batch-21",
       "flags": [
-        "item-guidance-mapping-unverified",
-        "platform-application-applicability-unverified"
+        "byok-not-universal-cmk-support",
+        "keyvault-not-managedhsm",
+        "complete-service-review-required"
       ],
       "inventory_flags": [
         "item-guidance-mapping-unverified",
@@ -19102,6 +19416,38 @@
           "pointer": "/items/222",
           "item_sha256": "87bca1f0ee1f78df3b4286d84b3f08abd18e711cef30f416887ab246a01b8b69",
           "guidance": "https://learn.microsoft.com/en-us/azure/security/fundamentals/encryption-customer-managed-keys-support"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/security/fundamentals/encryption-customer-managed-keys-support",
+          "source_sha256": "ef9f9e821d1168d24874bf1f11a01fbbfdf52d07f9c85379afefb95116ad3046",
+          "revision": "4cb15191d099adc39be2e00d3d99072703c0037b",
+          "retrieved_at": "2026-11-07T03:00:32.597802+00:00",
+          "pointer": "25d62688-6d70-4ba6-a97b-e99519048384",
+          "guidance": "https://learn.microsoft.com/en-us/azure/security/fundamentals/encryption-customer-managed-keys-support"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/azure/security/fundamentals/encryption-atrest",
+          "source_sha256": "5a350891ad835a1b15c6cddef9261d8f9ead80f34c8991efcf49d802ff6e6ab7",
+          "revision": "1db406cc91002fd50ba80c0cafa4204c4127c282",
+          "retrieved_at": "2026-11-07T03:00:32.135918+00:00",
+          "pointer": "25d62688-6d70-4ba6-a97b-e99519048384",
+          "guidance": "https://learn.microsoft.com/azure/security/fundamentals/encryption-atrest"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview",
+          "source_sha256": "814e21b37edf08e292fef83d7700d05705459d7fe454125e1dd685b5b760db6b",
+          "revision": "cdf0d71d6878c96f2d38f3ff00f3df6f91bb82b2",
+          "retrieved_at": "2026-11-07T03:00:33.057199+00:00",
+          "pointer": "25d62688-6d70-4ba6-a97b-e99519048384",
+          "guidance": "https://learn.microsoft.com/en-us/azure/storage/common/customer-managed-keys-overview"
+        },
+        {
+          "source_url": "https://learn.microsoft.com/en-us/azure/key-vault/keys/how-to-configure-key-rotation",
+          "source_sha256": "42229f10513e7f091ac36b7ebb25943325fb073a7c8bb6bbd60bfb08a3281cd5",
+          "revision": "cc9ac0f545a688e4f2016a1541f565f136e23129",
+          "retrieved_at": "2026-11-07T03:00:31.405681+00:00",
+          "pointer": "25d62688-6d70-4ba6-a97b-e99519048384",
+          "guidance": "https://learn.microsoft.com/en-us/azure/key-vault/keys/how-to-configure-key-rotation"
         }
       ],
       "severity": "Medium"
@@ -21667,60 +22013,66 @@
   "reviewed_at": "2026-11-04T13:25:57.057372+00:00",
   "reference_manifest_sha256": "c287f93a4ff4c94c577b0248345d813f44fb27dff66524408870095024305d30",
   "control_source_manifest_sha256": "d189615f2793f141a6ee6cd5a7f026556a4146fd44d65705e6f08d0e01f7debf",
-  "accepted_matrix_sha256": "17d0caa2981429832b5308aa9a3fbf3a293be9e9b1782c854b578923c56b0212",
+  "accepted_matrix_sha256": "2ef2fcebb9d6cb4d07d15f1efbd97d9b0289656f60d2de3bb44008e973c9f835",
   "wave_source_manifest_sha256": "617e66a497a1f6bb1ddf50f53b3f75f3ff2cec2989324d42496aeeb4d9d0ef38",
   "change_review": {
-    "base_sha256": "e8d897855b60352423ce704a7d0462c662f9daf5e72a2e66b5cee46d0a0168a4",
-    "matrix_sha256": "17d0caa2981429832b5308aa9a3fbf3a293be9e9b1782c854b578923c56b0212",
-    "reviewed_at": "2026-11-07T04:20:16Z",
+    "base_sha256": "a3ae0504098752c35d79ba958bab475201c3a4f6b2a4a5c2469f50c153664e5c",
+    "matrix_sha256": "2ef2fcebb9d6cb4d07d15f1efbd97d9b0289656f60d2de3bb44008e973c9f835",
+    "reviewed_at": "2026-11-07T05:31:14.848355+00:00",
     "reviewer": "owner-delegated-source-backed-batch-review",
     "changes": [
       {
-        "control_id": "ALZ-54f0d8b1-22a3-4c0d-8ce2-58b9e086c93a",
-        "before_sha256": "fa768e1a524e6fab3c8b1dfca3857a71a75100f4778b347fc2cf65e5da54ca01",
-        "after_sha256": "c65d6e750d61d4ebd4c9a22a10fa097071015419af9361fd89071ed1e83be17d",
-        "rationale": "Owner-delegated source-backed batch 03 acceptance: assisted"
+        "control_id": "ALZ-b86ad884-08e3-4727-94b8-75ba18f20459",
+        "before_sha256": "0ff36e7a023b84903e3cc9c204fc55f8a11ac109540c37b14a72f34e145f64c7",
+        "after_sha256": "f3da7b44d54b4813c24cbf0750e09bff2aed478e1c49348a06f1f085cb2a1f88",
+        "rationale": "Owner-delegated source-backed batch 21 acceptance: manual"
       },
       {
-        "control_id": "ALZ-ca0fe401-12ad-46fc-8a7e-86293866a9f6",
-        "before_sha256": "78dd6782baf3f1149cbee554a49550943e6af98cf4c983f62a5a5006dfbae6ee",
-        "after_sha256": "eb646423aba4354e064508eb4eccea6407008e6ccd49c19283f0f5ed87f3fef3",
-        "rationale": "Owner-delegated source-backed batch 03 acceptance: assisted"
+        "control_id": "ALZ-01365d38-e43f-49cc-ad86-8266abca264f",
+        "before_sha256": "416a5ef89f324ad1f8b7c0efabf604c5e7421c56a55bedbe0ba7966b328963d7",
+        "after_sha256": "659ac78fc9d7420469fabffc8736dcc0930e28eb965972091f26644454bd3181",
+        "rationale": "Owner-delegated source-backed batch 21 acceptance: manual"
       },
       {
-        "control_id": "ALZ-5cf9f485-2784-49b3-9824-75d9b8bdb57b",
-        "before_sha256": "6ff4a2afb4a3b733d3006919ae516a33dde30d52c219feed043552707c799c0d",
-        "after_sha256": "da5c3effca942e88357843165cb73bb46805e51068ec04ae6f9efa4c397ca350",
-        "rationale": "Owner-delegated source-backed batch 03 acceptance: assisted"
+        "control_id": "ALZ-6d70ba6c-97be-4995-8904-83845c986cb2",
+        "before_sha256": "860df77d51b10721d2547d533b955caa5c64de3cc51706a1e56e36a7b57d066d",
+        "after_sha256": "39431edc4a158b20bb9daa3715cdaf330b6d153866d2f36279d75de645ef3394",
+        "rationale": "Owner-delegated source-backed batch 21 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-6ad5c3dd-e5ea-4ff1-81a4-7886ff87845c",
-        "before_sha256": "0dc4d345df6c97050d4ced14c30d3d177f9dc3cb11daedff62429ff621a0c4ce",
-        "after_sha256": "f0aaac21313e80bafccf0e56a29bc7c5db0f6d7e6dc7bdf4a40341591fcaf273",
-        "rationale": "Owner-delegated source-backed batch 03 acceptance: assisted"
+        "control_id": "ALZ-913156a1-2476-4e49-b541-acdce979377b",
+        "before_sha256": "3bde89e904dfa364821e87a8b68c3541d4c7464f567db06a5aa54c815ea244bb",
+        "after_sha256": "3fa253f0a2f4a671059ee0d128e09e39299dcc1f99134784aff3a15aa539a0c3",
+        "rationale": "Owner-delegated source-backed batch 21 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-90e87802-602f-4dfb-acea-67c60689f1d7",
-        "before_sha256": "4ab6dfdf49244d9b4b37c362b61abf44ded4ab25cc59319e98b7649125fbc365",
-        "after_sha256": "a90dddb8ad77abf7cd41e084fa92e1ec41a76d2fd8abfec7f2c62966cf30310a",
-        "rationale": "Owner-delegated source-backed batch 03 acceptance: assisted"
+        "control_id": "ALZ-b12308ca-5017-4f15-9e3a-b3693829e7e3",
+        "before_sha256": "2c92076d7afa4db203f9db6d83817e3087a1b592fcedab51e05e082d7b73bca2",
+        "after_sha256": "ea7d887ab3aed3c3e15e2d744fa2fdafee6b2d7b011ed1b7a5d2d521d5d5965d",
+        "rationale": "Owner-delegated source-backed batch 21 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-e81a73f0-84c4-4641-b406-14db3b4d1f50",
-        "before_sha256": "3359386f617f921314617dab0d232d7ac48fe4c22c183976cda07c04295297ed",
-        "after_sha256": "8934cc9b6f11700eb868c329ec83c64983143935c3de12d7bf15f9a76d8cf05c",
-        "rationale": "Owner-delegated source-backed batch 03 acceptance: assisted"
+        "control_id": "ALZ-16183687-a047-47a2-8994-5bda43334f24",
+        "before_sha256": "1da69366315b8650ca03f37cf6f3bdc2a8b2d14cbe178f9e1e751ef3d1f78f9c",
+        "after_sha256": "4d8b3075739549a039a1455438220b316b61e6383d3ea4ff9ae02b0a7b64c712",
+        "rationale": "Owner-delegated source-backed batch 21 acceptance: assisted"
       },
       {
-        "control_id": "ALZ-ae757485-92a4-482a-8bc9-eefe6f5b5ec3",
-        "before_sha256": "33a4f354d9958e61e5b07388b0a9acdfbd617d675229a8260fd67e81973d09a2",
-        "after_sha256": "739ee43137eb8d76729acfb2a9c5d70e39252f01cf484543e4c8bc89e2512c9d",
-        "rationale": "Owner-delegated source-backed batch 03 acceptance: manual"
+        "control_id": "ALZ-b48ade7f-50be-4d2e-9866-d57b17942fc2",
+        "before_sha256": "50ecda07769504522e83e1d7a227c8ece354479b5656f8a7cfa43d8a0b2c59f4",
+        "after_sha256": "b8ccb1970ceff6976dc1062323f16a5c03355486440d2378e1064e1984c50dd1",
+        "rationale": "Owner-delegated source-backed batch 21 acceptance: manual"
+      },
+      {
+        "control_id": "ALZ-25d62688-6d70-4ba6-a97b-e99519048384",
+        "before_sha256": "1ba6af42a6140f34155a2cc4d5476e13b5d782cca6ada766eb36053ea63457c8",
+        "after_sha256": "5e2c56527cf86efd6d131777c9430df70be1e3183c37decd1e268ffd2f1d2868",
+        "rationale": "Owner-delegated source-backed batch 21 acceptance: manual"
       }
     ]
   },
   "first_wave_matrix_sha256": "f649b2293211c844d661ea93c6978fe2db948eff17237af01ca090809da8e1fb",
-  "batch_source_manifest_sha256": "92ca4abb80db1de5c8ed65709eb2a6858282cff3853a7b0bec3b0a1ef48b5678",
-  "batch_catalog_version": "2026-11-06.26",
+  "batch_source_manifest_sha256": "54c3f70652b9fccdef7f76cc6b181467ee9d4bd69885cc21ec8b4a300fc50f61",
+  "batch_catalog_version": "2026-11-06.27",
   "priority_manifest_sha256": "b42971f85b9110f71fdc5ae81695fe4be72c1f28022ec27aeb719140ed1475c0"
 }

@@ -8,6 +8,16 @@ are in the [plan](planning/plan.md).
 
 ## Evidence and outcomes
 
+Cohort21's [accepted support](automation-matrix.md#cohort-21-incident-response-zero-trust-and-key-lifecycle)
+in `.27` distinguishes public-CA renewal, key rotation and consumer updates,
+Key Vault versus Managed HSM, and service-specific MMK/CMK/BYOK requirements.
+Explicit storage settings and reused vault/Policy/role context prove no actual
+renewal, effective delegation/enforcement, complete coverage, rehearsed IR,
+Zero Trust maturity or sovereignty/legal eligibility. Four assisted and four
+manual decisions remain independently blank and exceptable; Signals or human
+confirmation never become Verified. No live probe, key/certificate child,
+private key/URI/issuer/principal/incident payload or operational action is added.
+
 Cohort07 [accepted source-qualified support](../references/recommendation-batches/batch-07.json)
 in `.25` is not operating assurance or receipted delivery. Relative MG-edge depth below a supplied anchor does not
 designate tenant root or measure the full estate; CAF ideal flatness and the

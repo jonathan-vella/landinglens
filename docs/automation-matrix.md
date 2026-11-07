@@ -1,5 +1,49 @@
 # Accepted release automation matrix
 
+## Cohort 21: incident response, Zero Trust and key lifecycle
+
+The explicit sole slot after checked07/03 delivery activates the
+[eight-GUID matrix](../references/recommendation-batches/batch-21.json) and
+[27 unchanged reviewed captures](../references/recommendation-batches/batch-21-sources.json)
+in `.27`. Exact `.26`, all255/fixed251, original four complete controls and
+all235 preceding own-GUID rows/28 receipts remain frozen. Source activation
+is not delivery. Four assisted and four manual workflows share one evaluator
+and independently blank attributable/selected/content/time/expiry-bound decisions.
+
+| Recommendation | Preparation and separate required decision |
+|---|---|
+| G01.01 | Manual service-specific pre-production incident plan, shared responsibilities, roles, handling and separately evidenced exercises/lessons |
+| G01.02 | Manual verify-explicitly/least-privilege/assume-breach approach, including workload and non-landing-zone responsibilities |
+| G02.05 | Safe vault context; public-CA management/renewal automation, successful renewal and deployed consumer adoption |
+| G02.06 | Safe vault context; independent key rotation/certificate renewal, origin/lifetimes/ownership, consumer updates, failure monitoring and recovery |
+| G02.09 | Reused vault permission model and strict supplied Policy/role/version/scope joins; actual team delegation and consistent effective enforcement |
+| G02.10 | Explicit storage keySource/infrastructure/Queue-Table settings; requirement-driven MMK/CMK necessity and actual service compatibility |
+| G02.11 | Manual accountable sovereignty-driven CMK requirement, never inferred legal eligibility or sufficient sovereignty |
+| G02.12 | Manual complete required-service/feature/SKU/cloud/region/origin/algorithm/lifecycle BYOK compatibility |
+
+Partner-CA renewal currently covers DigiCert/GlobalSign integrations, not arbitrary
+imported issuers or self-signed regeneration. Expiration notifications are not
+renewal. Key rotation creates a new key version, not a certificate or confirmed
+consumer deployment; imported external-HSM material may need another process.
+Managed HSM is key-only and differs from Key Vault.
+
+ARM2023-05-01 retains only explicit storage keySource, infrastructure encryption
+and Queue/Table Service/Account key types. Blob/Files CMK support is not
+automatic Queue/Table account-key coverage. Storage's daily version refresh is
+separate from key creation and needs service-specific old-version overlap.
+AzureRM4.50.0 exposes infrastructure/Queue-Table settings, but inline CMK presence
+or absence cannot reconcile separate CMK configuration, so final keySource stays
+unknown. No private key reference or invented vault/consumer join is retained.
+
+Existing typed unique known selected-scope Policy/role/version/ancestry helpers
+are reused without fetching built-ins or interpreting rules. Configuration is
+not effective privilege/enforcement, actual renewal/rotation, complete coverage,
+IR rehearsal, Zero Trust maturity or sovereignty assurance. Saved/injected
+vault/storage/Policy/role properties use existing private replay projections
+before CLI/session persistence. No live route, key/certificate child, key/secret/
+certificate/URI/issuer/principal/incident payload or operational action is added.
+Signals and human confirmations never manufacture Verified.
+
 ## Cohort 03: agreement and billing governance
 
 The [accepted seven-GUID matrix](../references/recommendation-batches/batch-03.json)
@@ -79,10 +123,10 @@ limits interpreter expansion to bug fixes or explicit reviewed cohort needs.
 
 ## Evidence crosswalk foundation
 
-Current successor `2026-11-06.26` retains all 255 entries: 12 automated, 200 assisted
-and 43 manual. Crosswalk `2026-11-06.26` rebinds the unchanged 51-control,
+Current successor `2026-11-06.27` retains all 255 entries: 12 automated, 200 assisted
+and 43 manual. Crosswalk `2026-11-06.27` rebinds the unchanged 51-control,
 53-association mapping to this exact catalog, without new external equivalence.
-Exact predecessor `.25` is frozen; source-matrix acceptance alone is not delivery.
+Exact predecessor `.26` is frozen; source-matrix acceptance alone is not delivery.
 The history below remains version-specific.
 
 ### Cohort 07: naming, hierarchy and scoped authorization

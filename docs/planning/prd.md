@@ -1,5 +1,24 @@
 # LandingLens product requirements
 
+## Cohort 21 accepted boundary
+
+After checked07/03 delivery and the explicit sole slot, cohort21/#160 activates
+[eight independent workflows](../../references/recommendation-batches/batch-21.json)
+in builder-derived `.27`. Exact `.26`, all255/fixed251, original four complete
+controls, every non-own object, all235 prior rows/28 receipts and every binding
+remain unchanged. All24 predecessor compiler cases precede the genuine new
+storage configuration case. Dispositions remain12/200/43.
+
+Public-CA renewal, key rotation, consumer updates, vault delegation, MMK/CMK
+necessity and service-qualified BYOK support stay separate. Four assisted and
+four manual decisions and exceptions start independently blank; no configuration
+proves operating security, complete coverage, IR rehearsal, Zero Trust maturity
+or sovereignty/legal eligibility. Existing private replay projections minimize
+saved/injected properties before CLI/local-session persistence. No new live read,
+key/certificate child, URI/material retention or action is introduced.
+Checked implementation, guarded own receipt and final-main CI determine
+delivery and satisfied #160 completion, not activation.
+
 ## Cohort 21 independent preparation boundary
 
 Cohort21/[#160](https://github.com/jonathan-vella/landinglens/issues/160) prepares

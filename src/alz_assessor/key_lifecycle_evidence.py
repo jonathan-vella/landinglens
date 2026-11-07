@@ -96,6 +96,31 @@ def replay_properties(kind: str, values: dict[str, Any]) -> dict[str, Any]:
     )
 
 
+def minimized_evidence(bundle: dict[str, Any]) -> dict[str, Any]:
+    from .replay import sanitize_evidence
+
+    relevant = [row for row in bundle["resources"] if row["resource_type"].lower() in FACTS]
+    projected = iter(sanitize_evidence({**bundle, "resources": relevant})["resources"])
+    resources = []
+    for row in bundle["resources"]:
+        if row["resource_type"].lower() in FACTS:
+            safe = next(projected)["properties"]
+            resources.append(
+                {
+                    **row,
+                    "properties": {
+                        key: value for key, value in safe.items() if key in row["properties"]
+                    },
+                }
+            )
+        else:
+            resources.append(row)
+    return {
+        **bundle,
+        "resources": resources,
+    }
+
+
 def configuration_context(
     resource: dict[str, Any],
     by_id: dict[str, list[dict[str, Any]]],
