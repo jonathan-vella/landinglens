@@ -5,7 +5,14 @@
   "source_manifest": "preparation-28-sources.json",
   "activation_gate": "Final fixed cohort only, after actual checked03/21 delivery and an explicit sole coordinator slot. Reconcile then-main and freeze the exact predecessor before builder-derived unique successor registration. No accepted catalog/crosswalk/bank/count/history activation, PR, merge, receipt or satisfied issue closure during preparation.",
   "supported_modes": "Existing single evaluator and source-qualified Policy2023-04-01 ARM/no-restore Bicep, pinned AzureRM4.50.0 raw/supplied local modules/optional plans and normalized saved/injected evidence. Reuse27 exact supplied-version custom Policy joins,09 VM location/hierarchy and existing storage redundancy summary. No new collector, query, definition interpreter or implicit acquisition.",
-  "deferred_integration": "Use actual merged03 privacy-minimized budget helper, including source/version-qualified notification types, before E02.01 configuration acceptance. No budget normalizer or fictitious budget fixture is introduced here. Reconcile actual merged21 storage/key context before final regional workflow acceptance. Neither dependency is currently delivered on preparation baseline99b4c58/catalog2026-11-06.25.",
+  "budget_integration": {
+    "state": "candidate-preparation-only-not-delivery",
+    "merged_pr": "https://github.com/jonathan-vella/landinglens/pull/164",
+    "merge_commit": "592826b4e991f8f8ce0655c6d76e7c8a906f468a",
+    "helper": "alz_assessor.billing_evidence",
+    "source_qualification": "Actual merged03 helper: AzureRM4.50.0 binds2019-10-01 and withholds Forecasted; explicit reviewed2024-08-01 provenance permits both types. Missing/unreviewed versions stay unknown; API version alone supplies no Signal. Thresholds, period, recipients and financial payloads remain withheld."
+  },
+  "deferred_integration": "Actual merged03 budget helper is integrated in the candidate only;03 receipt165 remains a separate checked-delivery gate. Reconcile actual merged21 storage/key context before final regional workflow acceptance. No accepted28 activation, PR, receipt or closure before actual checked03/21 delivery and the explicit sole coordinator slot.",
   "privacy": "Typed source references, supported enums, bounded counts, exact supplied versions and existing member hashes only. No amount/currency/spend/billing/recipient/filter/tag/rule/private parameter payloads, personnel identity/nationality/location records, confidential workload content, secret or contractual documents. Redacted human supporting references are not anonymous data.",
   "interview": {
     "id": "budget-alert-modes-sovereign-requirements",
@@ -26,10 +33,12 @@
       "guid": "29fd366b-a180-452b-9bd7-954b7700c667",
       "upstream_id": "E02.01",
       "classification": "assisted",
-      "implemented_subclaim": "Independent source-qualified budget-mode review; configuration integration explicitly deferred to the actual merged03 helper, not a second normalization or premature predicate.",
+      "implemented_subclaim": "Reuse actual merged03 budgetConfiguration helper for explicit source-version-qualified subscription/RG category, time grain and up-to-five notification enabled/operator/type facts. Each budget is prepared separately with strict typed known selected-scope identity; API-only metadata gives no Signal. No new normalizer or outcome predicate.",
       "sources": ["budget-alert-tutorial", "budget-arm-2024", "budget-rest-2019-10-01", "budget-rest-2024-08-01", "budget-provider-subscription", "budget-provider-resource_group"],
+      "review_resource_types": ["Microsoft.Consumption/budgets"],
+      "review_fact_paths": ["budgetConfiguration"],
       "evidence_requirements": ["Reviewer decision: Are explicit enabled Actual and Forecasted notifications configured for the same appropriate source/version-qualified cost budget, with separately evidenced valid scope/period/threshold suitability and recipients/delivery? No financial/contact payload or spend-enforcement inference."],
-      "limitations": "Budget configuration remains deferred until03 merges. Tutorial0.01..1000 percent differs from REST/provider0..1000 prose. Pinned2019-10-01 REST lists only Actual despite provider docs advertising both;2024-08-01 lists both. No omitted defaults, delivered messages, financial suitability or consumption stop inferred."
+      "limitations": "Candidate-only reuse of actual merged164, not checked03 delivery or28 activation. Tutorial0.01..1000 percent differs from REST/provider0..1000 prose; no percentage or threshold predicate is retained. Pinned2019-10-01 REST lists only Actual despite AzureRM docs advertising both;2024-08-01 lists both. Missing/unreviewed provenance stays unknown. No valid active period, filters/coverage, required recipients, omitted defaults, delivered messages, financial suitability or consumption stop inferred; types from different budgets are never combined into a both-modes claim."
     },
     {
       "guid": "5a917e1f-348e-4f25-9c27-d42e8bbac757",

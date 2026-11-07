@@ -491,17 +491,19 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
     from .policy_strategy_evidence import GUIDS as POLICY_STRATEGY_GUIDS
     from .recovery_evidence import GUEST_GUIDS
     from .recovery_evidence import GUIDS as RECOVERY_GUIDS
-    from .sovereign_evidence import GUIDS as SOVEREIGN_GUIDS
     from .sovereign_evidence import (
+        BUDGET_GUID,
         LOCATION_GUIDS,
         POLICY_GUIDS,
         REQUIREMENT_GUIDS,
         REQUIREMENTS_WARNING,
     )
+    from .sovereign_evidence import GUIDS as SOVEREIGN_GUIDS
     from .sovereign_evidence import configuration_context as sovereign_context
     from .tenant_evidence import GUIDS as TENANT_GUIDS
     from .topology_evidence import GUIDS as TOPOLOGY_GUIDS
 
+    billing_guids = BILLING_GUIDS | {BUDGET_GUID}
     unbound = 0
     sovereign_prepared = control["upstream_guid"] in SOVEREIGN_GUIDS | LOCATION_GUIDS and bool(
         control.get("review_fact_paths")
@@ -517,7 +519,7 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
         | HYBRID_GUIDS
         | NETWORK_POLICY_GUIDS
         | TENANT_GUIDS
-        | BILLING_GUIDS
+        | billing_guids
         | TOPOLOGY_GUIDS
         | RECOVERY_GUIDS
         | OPERATIONS_GUIDS
@@ -597,7 +599,7 @@ def review_context(control: dict[str, Any], bundle: dict[str, Any]) -> dict[str,
 
         for prepared, resource in zip(context["resources"], matches[:100], strict=True):
             prepared["tenant_configuration"] = resource_context(resource, by_id, bundle)
-    if control["upstream_guid"] in BILLING_GUIDS:
+    if control["upstream_guid"] in billing_guids:
         for prepared, resource in zip(context["resources"], matches[:100], strict=True):
             configuration = billing_context(resource, by_id, bundle)
             prepared["billing_configuration"] = configuration

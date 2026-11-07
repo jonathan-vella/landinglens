@@ -25,11 +25,12 @@ LOCATION_GUIDS = {
     "9b461617-db7b-4399-8ac6-d4eb7153893a",
     "bfaf7b7a-9e6c-4840-a2bd-2c524326bdf6",
 }
+BUDGET_GUID = "29fd366b-a180-452b-9bd7-954b7700c667"
 REQUIREMENT_GUIDS = (
     POLICY_GUIDS
     | LOCATION_GUIDS
     | {
-        "29fd366b-a180-452b-9bd7-954b7700c667",
+        BUDGET_GUID,
         "caeea0e9-1024-41df-a52e-d99c3f22a6f4",
         "3105633e-b168-4ce0-a016-5f10e7cdea5a",
         "77cf1acd-16b4-4092-8d30-6ec9579854ce",

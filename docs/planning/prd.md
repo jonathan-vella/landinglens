@@ -1,10 +1,26 @@
 # LandingLens product requirements
 
-## Cohort 28 independent preparation boundary
+## Cohort 28 merged-budget preparation boundary
+
+After the preparation-only dependency unblock, actual merged
+[#164](https://github.com/jonathan-vella/landinglens/pull/164) supplies the shared
+source-version-qualified budget helper for candidate E02.01. No accepted28 bank/
+catalog/crosswalk/ledger/count/receipt changes occur. API-only metadata gives no
+Signal, AzureRM2019 withholds Forecasted, explicit reviewed2024 provenance permits
+both types, and separate budgets are not aggregated into a both-modes result.
+Thresholds, financial/contact payloads, period/coverage and actual delivery remain
+withheld or human-reviewed, never spend enforcement. Candidate Policy/location
+tiers use the same strict scoped configuration as reviews. All eight outcomes and
+exceptions remain independently blank and bound. Actual21 integration, checked03/21
+delivery and the sole explicit slot still gate accepted activation and delivery;
+implementation164 alone does not satisfy those gates. See the
+[reconciliation boundary](plan.md#cohort-28-merged-budget-preparation-2026-11-07).
+
+## Cohort 28 initial preparation boundary
 
 [#163](https://github.com/jonathan-vella/landinglens/issues/163) prepares
 [eight source-specific budget/sovereign workflows](../../references/recommendation-batches/preparation-28.json)
-outside accepted activation. Current `.25`/255 GUIDs/fixed251 and228 own deliveries/
+outside accepted activation. Initial `.25`/255 GUIDs/fixed251 and228 own deliveries/
 23 pending/27 receipts remain unchanged. Actual03/21 checked delivery and the sole
 explicit coordinator slot gate accepted integration; no cohort follows28.
 

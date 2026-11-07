@@ -1,5 +1,82 @@
 # Implementation plan: standalone Azure Landing Zones assessor
 
+## Cohort 28 merged-budget preparation: 2026-11-07
+
+The coordinator's bounded preparation-only unblock verifies actual
+[#164](https://github.com/jonathan-vella/landinglens/pull/164), merged as
+`592826b4e991f8f8ce0655c6d76e7c8a906f468a` from checked head
+`d0196d08385d4dfc029249856c53e1c79b3e6e3b`. Reconciliation merge `73164ba`
+retains initial PREPARED `0a11067`, all41 original captures, the original matrix/
+wheel/proofs and invalidated history below. Both cohorts' planning history and
+source-capture paths are retained; actual merged03 `.26` is the predecessor here,
+not an accepted28 successor. Implementation164 is not checked03 receipt delivery;
+receipt165 and actual21 storage/key integration remain separate gates.03 retains
+the sole accepted slot and no cohort follows28.
+
+The [candidate matrix](../../references/recommendation-batches/preparation-28.json)
+now routes E02.01 through the actual shared `billing_evidence` helper, without
+changing that helper, accepted bank, source matrices/catalog/crosswalk, ledger,
+counts, historical bytes or receipts. Reuse its original subscription/RG
+identity/known-state/scope checks, category/time-grain and up-to-five notification
+enabled/operator/type facts. AzureRM4.50.0 binds2019-10-01, which withholds
+Forecasted; explicit reviewed2024-08-01 provenance permits both notification types.
+The ARM adapter supports2024-08-01 only; saved2019 provenance is not a new
+declaration API. Missing/unreviewed versions stay unknown, API-only metadata gives
+no Signal, and no default, threshold, period, filter, financial/contact payload,
+delivery or spend-enforcement outcome is inferred. Each budget remains separate:
+Actual in one and Forecasted in another do not become a both-modes claim.
+
+Review preparation and tiers share the same minimized helper. Candidate Policy/
+location tier routing also uses the existing unique-known selected-scope context,
+so unbound/wrong-type/denied/ambiguous inputs cannot advertise a usable Signal.
+All eight independent decisions remain blank and exceptions separate, with
+content/scope/time/expiry/attribution, original-time replay and atomic sessions
+unchanged. Existing raw/module/plan/ARM/Bicep and saved/injected privacy paths
+remain offline. The original23 compiler cases and actual merged03 case24 are
+preserved; own case25 reuses the genuine existing budget fixture solely to prove
+candidate review wiring, not a financial or sovereignty result. No new fixture,
+collector, normalization, Policy interpreter/fetch or live action is introduced.
+
+Actual merged21 storage/key reconciliation, checked03/21 delivery and the explicit
+sole slot still precede accepted28 registration/activation, PR, merge, guarded own
+receipt, final-main CI and satisfied163 completion. The initial local wheel below
+is historical, not the proof for this merged-budget preparation.
+
+The refreshed own offline wheel SHA256 is
+`11ba21f7f821e639e31d939cc18f653501b99563bd4d32637c6595168d4f6c7e`.
+All171 package members match checkout, wheel and the new dedicated outside-checkout
+site-packages installation importing `.26`; the original c602 wheel/environment/
+proofs remain untouched. Its first import reported missing `lark`; only the same
+three locally retained manifest-hash-verified runtime wheels were restored into
+this new own environment, with no new acquisition or dependency change.
+All201 actual dependency accepted-data/batch files and the original41 source-capture
+bytes remain exact. The shared03 helper's Git blob remains
+`eaa8b3e57c4725df8a0c2c90fd19a5314a9d6bbd`; Windows text checkout CRLF differs
+from the repository LF blob under `.gitattributes`, while checkout/wheel/installed
+package bytes are verified without normalization. The first verification harness
+correctly stopped before running the full suite when its raw helper-versus-blob
+comparison encountered that EOL distinction. The corrected harness uses Git's
+attribute-aware blob identity only for the unchanged helper and retains exact
+binary accepted-data and all package-member byte comparisons; no helper/runtime
+code or accepted bytes were changed.
+
+All27 candidate tests pass,52 source files pass static typing, and formatting/
+lint, dependency consistency and579 local documentation links pass. The existing
+compiler independently exercised all25 cases without skips or restore against
+this own wheel; proof SHA256
+`4fccfb4e42a1cb7fe52058f1a679f7c3c1999b5b096efb1f27292f8d3d7d2a08`.
+Initial targeted fixture failures used an unresolved lowercase authored ARM type
+and a nonexistent session attribute; the fixtures now use the actual supported
+ARM declaration and session contracts. The declaration-version assertion was
+also corrected to the actual2024-only adapter, not inferred2019 declaration support.
+No adapter/helper support was expanded or source-version restriction weakened.
+
+The final exact installed-wheel suite completed885 tests:884 passed and only the
+original Windows symlink-privilege case skipped. All27 own candidate cases pass,
+including the real existing-fixture compiler wiring. These fresh local proofs
+do not replace actual21 reconciliation, accepted replay, later exact-head remote
+checks or implementation/own-receipt/final-main delivery gates.
+
 ## Cohort 28 independent preparation: 2026-11-07
 
 [#163](https://github.com/jonathan-vella/landinglens/issues/163) owns only the

@@ -3,6 +3,7 @@ import copy
 import hashlib
 import io
 import json
+import os
 import tempfile
 import unittest
 import zipfile
@@ -13,6 +14,7 @@ from unittest.mock import patch
 from alz_assessor import interviews
 from alz_assessor.arm import API_VERSIONS, PLANNED_API_VERSIONS, arm_source, properties
 from alz_assessor.azure import Collector, Response
+from alz_assessor.billing_evidence import BUDGET, configuration
 from alz_assessor.catalog import load_catalog
 from alz_assessor.cli import main
 from alz_assessor.comparison import compare
@@ -35,6 +37,7 @@ from alz_assessor.sovereign_evidence import (
 )
 from alz_assessor.sovereign_evidence import configuration_context as location_context
 from alz_assessor.terraform import InputError, tree_hash
+from alz_assessor.tiers import prepared_signal
 
 ROOT = Path(__file__).resolve().parents[1]
 SCOPE = "/subscriptions/00000000-0000-0000-0000-000000000001"
@@ -45,6 +48,7 @@ VM_KIND = "microsoft.compute/virtualmachines"
 STORAGE = "microsoft.storage/storageaccounts"
 VM = RG + "/providers/" + VM_KIND + "/authored"
 STORE = RG + "/providers/" + STORAGE + "/authored"
+BUDGET_ID = RG + "/providers/" + BUDGET + "/authored"
 AUTH = "/providers/microsoft.authorization/"
 DEF = SCOPE + AUTH + "policydefinitions/custom"
 SET = SCOPE + AUTH + "policysetdefinitions/not-a-sovereign-baseline"
@@ -184,8 +188,36 @@ class SovereignRequirementsPreparationTests(unittest.TestCase):
                     {"encryption": {PRIVATE: PRIVATE}},
                     {"sku": {"name": "Standard_GZRS"}, "kind": "StorageV2"},
                 ),
+                self.record(BUDGET, BUDGET_ID, self.budget_raw(), {"apiVersion": "2024-08-01"}),
             ],
         )
+
+    def budget_raw(self):
+        return {
+            "category": "Cost",
+            "timeGrain": "Monthly",
+            "amount": PRIVATE,
+            "currency": PRIVATE,
+            "currentSpend": PRIVATE,
+            "forecastSpend": PRIVATE,
+            "filter": {PRIVATE: PRIVATE},
+            "timePeriod": {PRIVATE: PRIVATE},
+            "notifications": {
+                mode + PRIVATE: {
+                    "enabled": True,
+                    "operator": "GreaterThan",
+                    "thresholdType": mode,
+                    "threshold": PRIVATE,
+                    "contactEmails": [PRIVATE],
+                    "contactGroups": [PRIVATE],
+                    "contactRoles": [PRIVATE],
+                }
+                for mode in ("Actual", "Forecasted")
+            },
+        }
+
+    def budget_fact(self, bundle=None):
+        return self.context("E02.01", bundle)["resources"][0]["facts"]["budgetConfiguration"]
 
     def context(self, display, bundle=None):
         return review_context(self.control(display), bundle or self.bundle())
@@ -446,13 +478,14 @@ class SovereignRequirementsPreparationTests(unittest.TestCase):
         bundle["metadata"]["relationships"] = []
         self.assertEqual(self.context("E03.02", bundle)["resources"], [])
 
-    def test_manual_requirements_and_deferred_budget_never_inspect_private_payloads(self):
-        for display in ("E02.01", "E03.03", "E03.06", "E03.07"):
+    def test_manual_requirements_and_integrated_budget_keep_decisions_independent(self):
+        for display in ("E03.03", "E03.06", "E03.07"):
             context = self.context(display)
             self.assertEqual(context["resources"], [])
             self.assertEqual(context["warning"], REQUIREMENTS_WARNING)
-        self.assertIn("actual merged03", self.matrix["deferred_integration"])
+        self.assertIn("Actual merged03", self.matrix["deferred_integration"])
         self.assertIn("actual merged21", self.matrix["deferred_integration"])
+        self.assertEqual(self.budget_fact()["apiVersion"], "2024-08-01")
         report = assess(self.bundle(), self.catalog, at=AT, evidence_tiers=True)
         for row in self.own(report):
             self.assertEqual(row["observed"]["outcome"], "manual")
@@ -832,7 +865,7 @@ class SovereignRequirementsPreparationTests(unittest.TestCase):
             self.assertEqual(self.context(display, clean), self.context(display, bundle))
         with self.assertRaisesRegex(InputError, "differs from a packaged artifact"):
             export_bundle(self.root / "candidate", bundle, self.catalog, at=AT, evidence_tiers=True)
-        for version in ("catalog.json", "catalog-2026-11-06.24.json"):
+        for version in ("catalog.json", "catalog-2026-11-06.25.json", "catalog-2026-11-06.24.json"):
             accepted = load_catalog(str(files("alz_assessor").joinpath("data", version)))
             destination = self.root / version
             export_bundle(destination, bundle, accepted, at=AT, evidence_tiers=True)
@@ -870,3 +903,229 @@ class SovereignRequirementsPreparationTests(unittest.TestCase):
         self.assertEqual(len(self.own(report)), 8)
         self.assertNotIn(PRIVATE, json.dumps(report))
         self.assertTrue(all(r["observed"]["outcome"] == "manual" for r in self.own(report)))
+
+    def test_budget_reuses_merged_version_qualified_helper_not_two_mode_compliance(self):
+        fact = self.budget_fact()
+        self.assertEqual(
+            fact,
+            configuration(self.budget_raw(), api_version="2024-08-01"),
+        )
+        self.assertEqual(
+            {row["thresholdType"] for row in fact["notifications"]}, {"Actual", "Forecasted"}
+        )
+        self.assertTrue(all(row["enabled"] is True for row in fact["notifications"]))
+        context = self.context("E02.01")
+        self.assertIn("billing_configuration", context["resources"][0])
+        self.assertEqual(context["resources"][0]["subchecks"], {})
+        self.assertNotIn(PRIVATE, json.dumps(context))
+        for version in ("2019-10-01", None, "2023-05-01", "future"):
+            bundle = self.bundle()
+            bundle["resources"][-1]["properties"] = properties(
+                BUDGET, self.budget_raw(), root={"apiVersion": version}
+            )
+            notifications = self.budget_fact(bundle)["notifications"]
+            if version == "2019-10-01":
+                self.assertEqual(sum(r["thresholdType"] == "Actual" for r in notifications), 1)
+            self.assertTrue(any(isinstance(r["thresholdType"], dict) for r in notifications))
+            self.assertNotIn("Forecasted", json.dumps(notifications))
+
+    def test_budget_api_alone_has_no_signal_and_other_tiers_use_strict_context(self):
+        for display in ("E02.01", "E03.02", "E03.04", "E03.05"):
+            bundle = self.bundle()
+            self.assertTrue(prepared_signal(self.control(display), bundle))
+            bundle["scope"] = OTHER
+            self.assertFalse(prepared_signal(self.control(display), bundle))
+        for values in (
+            {"apiVersion": "2024-08-01"},
+            {"apiVersion": "future"},
+            {},
+        ):
+            bundle = self.bundle()
+            bundle["resources"][-1]["properties"] = {"budgetConfiguration": values}
+            self.assertFalse(prepared_signal(self.control("E02.01"), bundle))
+        bundle = self.bundle()
+        row = bundle["resources"][-1]
+        row["state"], row["reason"] = "unknown", "permission denied"
+        self.assertIn("unknown", self.context("E02.01", bundle)["resources"][0]["facts"])
+        self.assertFalse(prepared_signal(self.control("E02.01"), bundle))
+
+    def test_budget_notification_bounds_types_disabled_and_thresholds_are_not_evaluated(self):
+        for count in (0, 1, 5, 6):
+            raw = self.budget_raw()
+            example = next(iter(raw["notifications"].values()))
+            raw["notifications"] = {str(i): copy.deepcopy(example) for i in range(count)}
+            bundle = self.bundle()
+            bundle["resources"][-1]["properties"] = properties(
+                BUDGET, raw, root={"apiVersion": "2024-08-01"}
+            )
+            notifications = self.budget_fact(bundle)["notifications"]
+            if count <= 5:
+                self.assertEqual(len(notifications), count)
+            else:
+                self.assertEqual(
+                    notifications,
+                    {"unknown": "budget_notifications_missing_malformed_or_over_five"},
+                )
+        for field, value in (
+            ("enabled", "true"),
+            ("operator", "Unsupported"),
+            ("thresholdType", "actual"),
+        ):
+            raw = self.budget_raw()
+            next(iter(raw["notifications"].values()))[field] = value
+            fact = configuration(raw, api_version="2024-08-01")
+            self.assertTrue(any(isinstance(r[field], dict) for r in fact["notifications"]))
+        for threshold in (-1, 0, 0.01, 1000, 1000.01, True, None, "[parameters('private')]"):
+            raw = self.budget_raw()
+            for notification in raw["notifications"].values():
+                notification["threshold"] = threshold
+                notification["enabled"] = False
+            fact = configuration(raw, api_version="2024-08-01")
+            self.assertTrue(all(r["enabled"] is False for r in fact["notifications"]))
+            self.assertNotIn('threshold"', json.dumps(fact))
+            self.assertNotIn(PRIVATE, json.dumps(fact))
+
+    def test_budget_parent_scope_duplicates_and_different_budgets_are_not_combined(self):
+        bundle = self.bundle()
+        first = bundle["resources"][-1]
+        first["properties"]["budgetConfiguration"]["notifications"] = [
+            {"enabled": True, "operator": "GreaterThan", "thresholdType": "Actual"}
+        ]
+        second = copy.deepcopy(first)
+        second["arm_id"] += "-second"
+        second["logical_id"] += "-second"
+        second["properties"]["budgetConfiguration"]["notifications"][0]["thresholdType"] = (
+            "Forecasted"
+        )
+        bundle["resources"].append(second)
+        context = self.context("E02.01", bundle)
+        self.assertEqual(len(context["resources"]), 2)
+        for row in context["resources"]:
+            notifications = row["facts"]["budgetConfiguration"]["notifications"]
+            self.assertEqual(len(notifications), 1)
+            self.assertEqual(row["subchecks"], {})
+        bundle["resources"][-1]["arm_id"] = first["arm_id"]
+        with self.assertRaises(InputError):
+            self.context("E02.01", bundle)
+        bundle = self.bundle()
+        bundle["resources"][-1]["arm_id"] = MG + "/providers/" + BUDGET + "/authored"
+        bundle["scope"] = MG
+        self.assertIn("unknown", self.context("E02.01", bundle)["resources"][0]["facts"])
+        self.assertFalse(prepared_signal(self.control("E02.01"), bundle))
+
+    def test_budget_raw_modules_plan_and_arm_preserve_source_version_and_privacy(self):
+        values = {
+            "name": "authored",
+            "subscription_id": SCOPE,
+            "resource_group_id": RG,
+            "amount": PRIVATE,
+            "time_grain": "Monthly",
+            "notification": [
+                {
+                    "enabled": True,
+                    "operator": "GreaterThan",
+                    "threshold_type": mode,
+                    "threshold": PRIVATE,
+                    "contact_emails": [PRIVATE],
+                }
+                for mode in ("Actual", "Forecasted")
+            ],
+        }
+        source = self.write(
+            "budget-raw/main.tf.json",
+            {"resource": {"azurerm_consumption_budget_resource_group": {"authored": values}}},
+        )
+        self.write("budget-parent/main.tf.json", {"module": {"budget": {"source": "./module"}}})
+        self.write("budget-parent/module/main.tf.json", json.loads(source.read_text("utf-8")))
+        planned = self.write(
+            "budget-plan.json",
+            {
+                "format_version": "1.2",
+                "planned_values": {
+                    "root_module": {
+                        "resources": [
+                            {
+                                "mode": "managed",
+                                "type": "azurerm_consumption_budget_resource_group",
+                                "address": "azurerm_consumption_budget_resource_group.authored",
+                                "values": {**values, "id": BUDGET_ID},
+                            }
+                        ]
+                    }
+                },
+            },
+        )
+        bundles = [
+            terraform_source(source.parent, scope=RG, provider_version="4.50.0"),
+            terraform_source(
+                self.root / "budget-parent",
+                scope=RG,
+                provider_version="4.50.0",
+                authorized_roots=[self.root],
+            ),
+            plan_source(planned, scope=RG, provider_version="4.50.0"),
+        ]
+        for bundle in bundles:
+            fact = self.budget_fact(bundle)
+            self.assertEqual(fact["apiVersion"], "2019-10-01")
+            self.assertNotIn("Forecasted", json.dumps(fact))
+            self.assertNotIn(PRIVATE, json.dumps(bundle))
+        template = self.write(
+            "budget-arm.json",
+            {
+                "resources": [
+                    {
+                        "type": "Microsoft.Consumption/budgets",
+                        "apiVersion": "2024-08-01",
+                        "name": "authored",
+                        "properties": self.budget_raw(),
+                    }
+                ]
+            },
+        )
+        bundle = arm_source(template, scope=RG)
+        self.assertEqual(
+            {r["thresholdType"] for r in self.budget_fact(bundle)["notifications"]},
+            {"Actual", "Forecasted"},
+        )
+        self.assertNotIn(PRIVATE, json.dumps(bundle))
+        self.assertNotIn(BUDGET, API_VERSIONS)
+        self.assertEqual(PLANNED_API_VERSIONS[BUDGET], {"2024-08-01"})
+
+    def test_budget_session_strips_injected_financial_fields_and_preserves_original_replay(self):
+        bundle = self.bundle()
+        bundle["resources"][-1]["properties"].update(self.budget_raw())
+        session = ReviewSession(
+            bundle,
+            self.catalog,
+            self.root / "budget-session",
+            clock=lambda: AT,
+            evidence_tiers=True,
+        )
+        for path in (session.directory / "revision-0000").rglob("*"):
+            if path.is_file():
+                self.assertNotIn(PRIVATE.encode(), path.read_bytes(), msg=path.name)
+        self.assertEqual(session.evidence["collected_at"], AT)
+        clean = sanitize_evidence(bundle)
+        self.assertEqual(self.budget_fact(clean), self.budget_fact(bundle))
+        self.assertNotIn(PRIVATE, json.dumps(clean))
+
+    @unittest.skipUnless(os.environ.get("BICEP_COMPILER"), "No existing Bicep compiler supplied")
+    def test_real_bicep_existing_budget_fixture_feeds_candidate_without_restore(self):
+        bundle = arm_source(
+            ROOT / "tests/fixtures/billing/main.bicep",
+            scope=RG,
+            bicep=True,
+            compiler=os.environ["BICEP_COMPILER"],
+        )
+        fact = self.budget_fact(bundle)
+        self.assertEqual(fact["apiVersion"], "2024-08-01")
+        self.assertEqual(
+            fact["notifications"],
+            [{"enabled": True, "operator": "GreaterThan", "thresholdType": "Actual"}],
+        )
+        self.assertEqual(self.context("E02.01", bundle)["resources"][0]["subchecks"], {})
+        report = assess(bundle, self.catalog, at=bundle["collected_at"], evidence_tiers=True)
+        row = next(r for r in self.own(report) if r["upstream_id"] == "E02.01")
+        self.assertEqual(row["planned"]["outcome"], "manual")
+        self.assertNotEqual(row["planned"]["evidence_tier"], "verified")
