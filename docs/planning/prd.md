@@ -19,6 +19,13 @@ second Policy interpreter or built-in acquisition is added. Dispositions remain
 12/200/43; guarded implementation/receipt/final-main gates, not activation, change
 212 delivered/39 undelivered and permit satisfied #151 closure.
 
+Implementation #158 merged normally after final exact-head eight-job/CodeQL/
+security/review and four downloaded matching22-case compiler gates. Guarded
+`deliveries.26` binds all eight GUIDs to that actual head/merge/runs/806-test own
+wheel, deriving220 delivered/31 undelivered and26 receipts. All212 earlier
+rows/25 receipts remain unchanged; checked receipt publication and final-main CI
+still gate satisfied #151 closure, not classification or merge alone.
+
 ## Historical cohort 26 independent preparation boundary
 
 Cohort26/#151 prepares [eight source-specific assisted workflows](../../references/recommendation-batches/preparation-26.json),
