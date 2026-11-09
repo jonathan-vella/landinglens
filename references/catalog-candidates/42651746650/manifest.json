@@ -1,0 +1,58 @@
+{
+  "snapshot_version": "candidate-2026-11-09T16:13:20.136384+00:00",
+  "sources": [
+    {
+      "id": "alz-site",
+      "url": "https://azure.github.io/Azure-Landing-Zones/",
+      "content_url": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones/33d793f2c4a0a6433bfee35be11bf85d6c736861/docs/content/_index.md",
+      "revision": "33d793f2c4a0a6433bfee35be11bf85d6c736861",
+      "file": "alz-site.md",
+      "sha256": "d4f4da902f808c99efc9d69610610f34b9ad10fa2702e741ab34cdc8f7794c51",
+      "license": "MIT",
+      "license_file": "alz-site.LICENSE",
+      "license_sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "retrieved_at": "2026-11-09T16:13:20.136384+00:00",
+      "review_state": "candidate-unreviewed"
+    },
+    {
+      "id": "caf-design-areas",
+      "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-areas",
+      "content_url": "https://raw.githubusercontent.com/MicrosoftDocs/cloud-adoption-framework/79580679eaa7a8a966e395a586b92a4fd08bbc8f/docs/ready/landing-zone/design-areas.md",
+      "revision": "79580679eaa7a8a966e395a586b92a4fd08bbc8f",
+      "file": "caf-design-areas.md",
+      "sha256": "a8dbf3a22e0e4dad162aaf23e893d68fc639bc82b9e53b6001a5913d011d665c",
+      "license": "CC-BY-4.0",
+      "license_file": "caf-design-areas.LICENSE",
+      "license_sha256": "7183ef9749eb9b75e710a81a4c812a9405cc184f087500581a973e5929ac3f5e",
+      "retrieved_at": "2026-11-09T16:13:20.136384+00:00",
+      "review_state": "candidate-unreviewed"
+    },
+    {
+      "id": "alz-checklist",
+      "url": "https://github.com/Azure/review-checklists/blob/main/checklists/alz_checklist.en.json",
+      "content_url": "https://raw.githubusercontent.com/Azure/review-checklists/f131b93418892102b00c247fd9cf685e3d356522/checklists/alz_checklist.en.json",
+      "revision": "f131b93418892102b00c247fd9cf685e3d356522",
+      "file": "alz-checklist.json",
+      "sha256": "c812868dc68d137a2352d838f5a7293062e999acaaf59775b5eff9a3d38cea28",
+      "license": "MIT",
+      "license_file": "alz-checklist.LICENSE",
+      "license_sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "retrieved_at": "2026-11-09T16:13:20.136384+00:00",
+      "review_state": "candidate-unreviewed"
+    },
+    {
+      "id": "bicep-cli",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-cli",
+      "content_url": "https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/230317afaf1e11fe57aa905fcab223246a00ac60/articles/azure-resource-manager/bicep/bicep-cli.md",
+      "revision": "230317afaf1e11fe57aa905fcab223246a00ac60",
+      "file": "bicep-cli.md",
+      "sha256": "5986d1fe3aece66c09bd9ef528e8e96d5029a9d0ac6453b7518ec2a529ff003a",
+      "license": "CC-BY-4.0",
+      "license_file": "bicep-cli.LICENSE",
+      "license_sha256": "15c406491bac79b9344852d0dc85a3345528dbdadf2c812f9468e0629258be90",
+      "retrieved_at": "2026-11-09T16:13:20.136384+00:00",
+      "review_state": "candidate-unreviewed"
+    }
+  ],
+  "review_state": "candidate-unreviewed"
+}
